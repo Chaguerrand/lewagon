@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Interface — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">User Interface</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html" class="active">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">MLOps & Production</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>User Interface</span>
+      </div>
+
+      <div class="page-header">
+        <h1>User Interface</h1>
+        <p class="page-objective">Créer une interface utilisateur pour un modèle ML avec Streamlit — construire une app interactive, la connecter à une API de prédiction, et la déployer sur Streamlit Cloud.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Streamlit</div>
+        <div class="key-concept-def">Framework Python qui transforme un script en app web interactive.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Gradio</div>
+        <div class="key-concept-def">Génération rapide d&#x27;interfaces pour prototyper une démo de modèle ML.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">State management</div>
+        <div class="key-concept-def">Comment l&#x27;UI mémorise les données entre interactions utilisateur.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">UX</div>
+        <div class="key-concept-def">User eXperience : ergonomie et fluidité ressenties par l&#x27;utilisateur.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-user-interface-streamlit">Cheatsheet — User Interface (Streamlit)</a><ol><li><a href="#app-streamlit-minimale">App Streamlit minimale</a></li><li><a href="#structure-de-projet-multi-pages">Structure de projet multi-pages</a></li><li><a href="#déployer-sur-streamlit-cloud">Déployer sur Streamlit Cloud</a></li><li><a href="#secrets">Secrets</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-rappels-web-http">1) Rappels Web — HTTP</a><ol><li><a href="#11-requête-réponse">1.1 Requête / Réponse</a></li><li><a href="#12-get-vs-post">1.2 GET vs POST</a></li></ol></li><li><a href="#2-streamlit-framework-dapps-ml">2) Streamlit — Framework d'apps ML</a><ol><li><a href="#21-présentation">2.1 Présentation</a></li><li><a href="#22-comparaison-des-frameworks">2.2 Comparaison des frameworks</a></li><li><a href="#23-exemple-dapp">2.3 Exemple d'app</a></li><li><a href="#24-lancer-et-hot-reload">2.4 Lancer et hot-reload</a></li></ol></li><li><a href="#3-déployer-sur-streamlit-cloud">3) Déployer sur Streamlit Cloud</a><ol><li><a href="#31-structure-du-projet">3.1 Structure du projet</a></li><li><a href="#32-déploiement">3.2 Déploiement</a></li><li><a href="#33-secrets">3.3 Secrets</a></li></ol></li><li><a href="#4-architecture-backendfrontend">4) Architecture backend/frontend</a><ol><li><a href="#41-bonne-pratique">4.1 Bonne pratique</a></li><li><a href="#42-pourquoi-séparer">4.2 Pourquoi séparer ?</a></li></ol></li><li><a href="#5-design-tips">5) Design Tips</a><ol><li><a href="#51-ux-user-experience">5.1 UX — User Experience</a></li><li><a href="#52-ui-user-interface">5.2 UI — User Interface</a></li><li><a href="#53-accessibilité-wcag">5.3 Accessibilité (WCAG)</a></li></ol></li><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-user-interface-streamlit">📋 Cheatsheet — User Interface (Streamlit)</h2>
+
+<h3 id="app-streamlit-minimale">App Streamlit minimale</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import streamlit as st
+import pandas as pd
+import requests
+
+## Titre et texte
+st.markdown(&quot;# My ML App&quot;)                                # markdown rendu en HTML
+st.write(&quot;Welcome to the prediction app&quot;)                  # affiche texte, DataFrame, charts...
+
+## Contrôles utilisateur
+name = st.text_input(&quot;Your name&quot;)                          # champ texte
+age = st.slider(&quot;Your age&quot;, 0, 100, 25)                   # slider (min, max, default)
+option = st.selectbox(&quot;Model&quot;, [&quot;Linear&quot;, &quot;XGBoost&quot;])      # dropdown
+
+## Bouton + appel API
+if st.button(&quot;Predict&quot;):
+    params = {&quot;age&quot;: age, &quot;name&quot;: name}
+    response = requests.get(&quot;https://my-api.com/predict&quot;, params=params)
+    prediction = response.json()[&quot;prediction&quot;]
+    st.success(f&quot;Prediction: {prediction}&quot;)                # affiche un message de succès
+
+## Afficher un DataFrame
+df = pd.DataFrame({&quot;col1&quot;: [1, 2, 3], &quot;col2&quot;: [4, 5, 6]})
+st.dataframe(df)                                           # tableau interactif
+
+## Afficher un graphique
+st.line_chart(df)                                          # chart intégré</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install streamlit
+streamlit run app.py                                       # lance l&#x27;app dans le navigateur
+## → http://localhost:8501                                  # auto-reload à chaque save</code></pre></div>
+
+
+<h3 id="structure-de-projet-multi-pages">Structure de projet multi-pages</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## Structure
+## ├── app.py                     # page principale
+## ├── pages/
+## │   ├── page_01.py             # page secondaire (auto-détectée)
+## │   └── page_02.py
+## ├── requirements.txt           # dépendances
+## └── .streamlit/
+##     └── secrets.toml            # secrets locaux (⚠️ dans .gitignore)</code></pre></div>
+
+
+<h3 id="déployer-sur-streamlit-cloud">Déployer sur Streamlit Cloud</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## 1. Pusher le repo sur GitHub
+## 2. Connecter Streamlit Cloud à GitHub
+## 3. Sélectionner le repo et le fichier app.py
+## 4. Ajouter les SECRETS si nécessaire (API keys, credentials)
+## → URL publique générée automatiquement</code></pre></div>
+
+
+<h3 id="secrets">Secrets</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Dans Streamlit Cloud : Settings → Secrets (format TOML)
+## spell = &quot;alohomora&quot;
+## [api]
+## key = &quot;secretkey&quot;
+
+## Dans le code :
+import streamlit as st
+spell = st.secrets[&quot;spell&quot;]                                # accès direct
+api_key = st.secrets.api.key                               # accès par section</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier que Streamlit réexécute tout le script à chaque interaction</strong></p>
+<p>Chaque clic, chaque changement de slider relance le script de haut en bas — les calculs lourds sont recalculés à chaque fois.</p>
+<p>❌ <code>model = load_model()</code> au top-level → rechargé à chaque interaction</p>
+<p>✅ Utiliser <code>@st.cache_data</code> ou <code>@st.cache_resource</code> pour mettre en cache les résultats lourds</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Mettre le modèle ML directement dans l'app Streamlit</strong></p>
+<p>Streamlit est un frontend léger — le modèle doit tourner côté backend (API).</p>
+<p>❌ <code>import tensorflow; model = tf.keras.models.load_model(...)</code> dans <code>app.py</code> → app lourde, lente, fragile</p>
+<p>✅ Séparer backend (API FastAPI sur Cloud Run) et frontend (Streamlit) — l'app appelle l'API via <code>requests.get()</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Commiter <code>secrets.toml</code> dans Git</strong></p>
+<p>Ce fichier contient des API keys et credentials — il doit rester local.</p>
+<p>❌ <code>git add .streamlit/secrets.toml</code> → credentials exposées</p>
+<p>✅ Ajouter <code>.streamlit/secrets.toml</code> dans <code>.gitignore</code> et utiliser les Secrets de Streamlit Cloud en production</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Stocker des données sensibles ou lourdes directement dans le repo</strong></p>
+<p>Le repo est public (ou partagé) — les fichiers lourds ralentissent le clone et le déploiement.</p>
+<p>❌ <code>raw_data/dataset_500MB.csv</code> dans le repo GitHub</p>
+<p>✅ Stocker sur Google Cloud Storage et accéder via les Secrets Streamlit</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Créer un repo Git à l'intérieur d'un autre repo Git</strong></p>
+<p>Imbriquer des repos cause des comportements imprévisibles avec Git.</p>
+<p>❌ <code>cd ~/code/data-challenges &amp;&amp; mkdir myapp &amp;&amp; cd myapp &amp;&amp; git init</code></p>
+<p>✅ Créer le repo à côté : <code>cd ~/code/USER_NAME &amp;&amp; mkdir myapp &amp;&amp; cd myapp &amp;&amp; git init</code></p></div></div>
+
+<hr>
+
+<h2 id="1-rappels-web-http">1) Rappels Web — HTTP</h2>
+
+<h3 id="11-requête-réponse">1.1 Requête / Réponse</h3>
+
+<figure><img src="../../assets/images/user-interface-01-9cf89402.png" alt="" loading="lazy"></figure>
+
+<p>Le navigateur (ou le code) envoie une <strong>requête HTTP</strong> à un serveur, qui renvoie une <strong>réponse</strong> (HTML pour un site, JSON pour une API).</p>
+
+<figure><img src="../../assets/images/user-interface-02-06e60dc1.png" alt="" loading="lazy"></figure>
+
+<h3 id="12-get-vs-post">1.2 GET vs POST</h3>
+
+<ul>
+<li><strong>GET</strong> : récupérer des données (paramètres dans l'URL via query string)</li>
+<li><strong>POST</strong> : envoyer des données (paramètres dans le body de la requête)</li>
+</ul>
+
+<hr>
+
+<h2 id="2-streamlit-framework-dapps-ml">2) Streamlit — Framework d'apps ML</h2>
+
+<h3 id="21-présentation">2.1 Présentation</h3>
+
+<figure><img src="../../assets/images/user-interface-03-e2f7a877.png" alt="" loading="lazy"></figure>
+
+<p>Streamlit permet aux Data Scientists de créer des apps web interactives <strong>sans équipe de développement frontend</strong>. Le script Python est interprété de haut en bas, chaque élément étant rendu dans le navigateur.</p>
+
+<h3 id="22-comparaison-des-frameworks">2.2 Comparaison des frameworks</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Jupyter</th><th>Streamlit</th><th>Flask</th><th>Django</th></tr></thead><tbody><tr><td><strong>Environnement</strong></td><td>❌ Notebook</td><td>✅ Site web</td><td>✅ Site web</td><td>✅ Site web</td></tr><tr><td><strong>Input utilisateur</strong></td><td>❌ DataFrame</td><td>✅ Contrôles</td><td>✅ Contrôles</td><td>✅ Contrôles</td></tr><tr><td><strong>Design</strong></td><td>❌ Notebook</td><td>✅ Auto</td><td>✅ HTML/CSS</td><td>✅ HTML/CSS</td></tr><tr><td><strong>Complexité</strong></td><td>✅ Aucune</td><td>✅ Faible</td><td>❌ Moyenne</td><td>❌ Élevée</td></tr></tbody></table></div>
+<h3 id="23-exemple-dapp">2.3 Exemple d'app</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import streamlit as st
+import numpy as np
+import pandas as pd
+
+st.markdown(&quot;&quot;&quot;# This is a header
+## This is a sub header
+This is text&quot;&quot;&quot;)
+
+df = pd.DataFrame({
+    &#x27;first column&#x27;: list(range(1, 11)),
+    &#x27;second column&#x27;: np.arange(10, 101, 10)
+})
+
+line_count = st.slider(&#x27;Select a line count&#x27;, 1, 10, 3)   # slider interactif
+head_df = df.head(line_count)                               # filtre selon le slider
+head_df                                                     # affiche le DataFrame</code></pre></div>
+
+
+<figure><img src="../../assets/images/user-interface-04-84fb8d30.png" alt="" loading="lazy"></figure>
+
+<h3 id="24-lancer-et-hot-reload">2.4 Lancer et hot-reload</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">streamlit run app.py</code></pre></div>
+
+
+<p>Streamlit recharge automatiquement la page à chaque sauvegarde du fichier.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Streamlit <strong>réinterprète tout le script</strong> à chaque interaction utilisateur. Utiliser <code>@st.cache_data</code> pour les calculs lourds et <code>@st.cache_resource</code> pour les connexions/modèles.</p></div></div>
+
+<p>👉 <a href="https://streamlit.lewagon.ai/" target="_blank" rel="noopener">Streamlit quick reference — Le Wagon</a></p>
+
+<p>👉 <a href="https://docs.streamlit.io/en/stable/api.html" target="_blank" rel="noopener">Streamlit documentation officielle</a></p>
+
+<hr>
+
+<h2 id="3-déployer-sur-streamlit-cloud">3) Déployer sur Streamlit Cloud</h2>
+
+<h3 id="31-structure-du-projet">3.1 Structure du projet</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">.
+├── app.py                          # script principal
+├── pages/                          # pages secondaires (auto-détectées)
+│   ├── page_01.py
+│   └── page_02.py
+├── requirements.txt                # dépendances (streamlit, pandas, requests…)
+└── .streamlit/
+    └── secrets.toml                # secrets locaux (⚠️ dans .gitignore)</code></pre></div>
+
+
+<h3 id="32-déploiement">3.2 Déploiement</h3>
+
+<figure><img src="../../assets/images/user-interface-05-96a74544.png" alt="" loading="lazy"></figure>
+
+<ol>
+<li>Pusher le repo sur GitHub</li>
+<li>Connecter Streamlit Cloud à GitHub</li>
+<li>Sélectionner le repo et le fichier <code>app.py</code></li>
+<li>L'app est déployée avec une URL publique</li>
+</ol>
+
+<figure><img src="../../assets/images/user-interface-06-d6880d04.png" alt="" loading="lazy"></figure>
+
+<h3 id="33-secrets">3.3 Secrets</h3>
+
+<figure><img src="../../assets/images/user-interface-07-a4fccbd8.png" alt="" loading="lazy"></figure>
+
+<p>Pour les credentials (API keys, GCS access…), utiliser les <strong>Secrets</strong> de Streamlit Cloud (format TOML) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Définir dans Streamlit Cloud → Settings → Secrets :
+## [api]
+## key = &quot;my_secret_key&quot;
+
+## Accéder dans le code :
+api_key = st.secrets.api.key</code></pre></div>
+
+
+<p>Pour tester localement : créer <code>.streamlit/secrets.toml</code> (et l'ajouter à <code>.gitignore</code>).</p>
+
+<p>👉 <a href="https://docs.streamlit.io/knowledge-base/tutorials/databases/gcs" target="_blank" rel="noopener">Streamlit Secrets + GCS</a></p>
+
+<hr>
+
+<h2 id="4-architecture-backendfrontend">4) Architecture backend/frontend</h2>
+
+<h3 id="41-bonne-pratique">4.1 Bonne pratique</h3>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Séparer le <strong>backend</strong> (API de prédiction, modèle lourd → Cloud Run) du <strong>frontend</strong> (interface légère → Streamlit Cloud). L'app Streamlit appelle l'API via <code>requests.get()</code>.</p></div></div>
+
+<figure><img src="../../assets/images/user-interface-08-d72b6e70.png" alt="" loading="lazy"></figure>
+
+<h3 id="42-pourquoi-séparer">4.2 Pourquoi séparer ?</h3>
+
+<ul>
+<li>Le modèle peut être lourd (>1 GB) — trop pour Streamlit Cloud</li>
+<li>Les environnements sont différents (TensorFlow côté backend, pas côté frontend)</li>
+<li>Le scaling est indépendant (l'API peut scaler sans toucher au frontend)</li>
+</ul>
+
+<hr>
+
+<h2 id="5-design-tips">5) Design Tips</h2>
+
+<h3 id="51-ux-user-experience">5.1 UX — User Experience</h3>
+
+<ul>
+<li>L'app explique-t-elle clairement les résultats du modèle ?</li>
+<li>Combien de clics pour obtenir une prédiction ?</li>
+<li>Le feedback est-il immédiat ?</li>
+</ul>
+
+<h3 id="52-ui-user-interface">5.2 UI — User Interface</h3>
+
+<ul>
+<li>Les résultats sont-ils affichés dans un graphique clair ?</li>
+<li>Les boutons et formulaires sont-ils faciles à repérer ?</li>
+</ul>
+
+<h3 id="53-accessibilité-wcag">5.3 Accessibilité (WCAG)</h3>
+
+<ul>
+<li>✅ Contraste de couleurs élevé, ne pas transmettre d'info par la couleur seule</li>
+<li>✅ Texte suffisamment grand avec espacement adéquat</li>
+<li>✅ Titres descriptifs pour chaque graphique</li>
+<li>✅ Résumés textuels des insights visuels</li>
+</ul>
+
+<p>👉 <a href="https://yellowchalk.com/blog/designing-for-color-blindness/" target="_blank" rel="noopener">Guide couleurs accessibles</a></p>
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://docs.streamlit.io/" target="_blank" rel="noopener">Streamlit documentation</a></li>
+<li>👉 <a href="https://streamlit.lewagon.ai/" target="_blank" rel="noopener">Streamlit quick reference — Le Wagon</a></li>
+<li>👉 <a href="https://docs.streamlit.io/streamlit-cloud/get-started/deploy-an-app" target="_blank" rel="noopener">Streamlit Cloud deployment</a></li>
+<li>👉 <a href="https://docs.streamlit.io/streamlit-cloud/get-started/deploy-an-app/connect-to-data-sources/secrets-management" target="_blank" rel="noopener">Streamlit Secrets management</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">🚀 Challenges</h2>
+
+<ul>
+<li>Créer une app Streamlit qui appelle l'API TaxiFare et affiche la prédiction</li>
+<li>Déployer l'app sur Streamlit Cloud connectée au repo GitHub</li>
+<li>Ajouter des contrôles interactifs (sliders, inputs, carte) et du design</li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-a-retenir">A retenir</a></li><li><a href="#ref-analogie-fil-rouge">Analogie fil rouge</a></li><li><a href="#ref-plan-du-cours">Plan du cours</a></li></ol></li><li><a href="#ref-1-rappels-web-http">1. Rappels Web — HTTP</a><ol><li><a href="#ref-11-comment-fonctionne-une-requête-web">1.1 Comment fonctionne une requête web ?</a></li><li><a href="#ref-12-get-vs-post-deux-façons-denvoyer-des-données">1.2 GET vs POST — deux façons d'envoyer des données</a></li></ol></li><li><a href="#ref-2-streamlit-créer-une-app-interactive-en-python">2. Streamlit — Créer une app interactive en Python</a><ol><li><a href="#ref-21-cest-quoi-streamlit">2.1 C'est quoi Streamlit ?</a></li><li><a href="#ref-22-installation-et-lancement">2.2 Installation et lancement</a></li><li><a href="#ref-23-les-éléments-de-base-dune-app-streamlit">2.3 Les éléments de base d'une app Streamlit</a></li><li><a href="#ref-24-un-exemple-complet-app-de-prédiction">2.4 Un exemple complet : app de prédiction</a></li><li><a href="#ref-25-le-comportement-clé-de-streamlit-tout-est-réexécuté">2.5 Le comportement clé de Streamlit : tout est réexécuté</a></li></ol></li><li><a href="#ref-3-déployer-sur-streamlit-cloud">3. Déployer sur Streamlit Cloud</a><ol><li><a href="#ref-31-structure-de-projet-recommandée">3.1 Structure de projet recommandée</a></li><li><a href="#ref-32-étapes-de-déploiement">3.2 Étapes de déploiement</a></li><li><a href="#ref-33-gérer-les-secrets-clés-api-mots-de-passe">3.3 Gérer les secrets (clés API, mots de passe)</a></li></ol></li><li><a href="#ref-4-architecture-backend-frontend">4. Architecture backend / frontend</a><ol><li><a href="#ref-41-pourquoi-séparer-linterface-du-modèle">4.1 Pourquoi séparer l'interface du modèle ?</a></li><li><a href="#ref-42-les-avantages-de-cette-séparation">4.2 Les avantages de cette séparation</a></li></ol></li><li><a href="#ref-5-bonnes-pratiques-de-design-uxui">5. Bonnes pratiques de design (UX/UI)</a><ol><li><a href="#ref-51-ux-expérience-utilisateur">5.1 UX — Expérience utilisateur</a></li><li><a href="#ref-52-ui-interface-visuelle">5.2 UI — Interface visuelle</a></li><li><a href="#ref-53-accessibilité">5.3 Accessibilité</a></li></ol></li><li><a href="#ref-5-erreurs-classiques-à-éviter">5 erreurs classiques à éviter</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Imaginez que vous venez de construire un modèle de machine learning capable de prédire le prix d'une course de taxi. Bravo ! Mais comment est-ce qu'un utilisateur lambda — quelqu'un qui ne sait pas coder — va pouvoir l'utiliser ? Il ne peut pas ouvrir un terminal et lancer des lignes Python.</p>
+
+<p>C'est là qu'intervient l'<strong>interface utilisateur</strong> (UI). C'est la <strong>vitrine de votre modèle ML</strong> : une page web que n'importe qui peut utiliser pour entrer des données et obtenir une prédiction, sans avoir à toucher une seule ligne de code.</p>
+
+<p>Dans ce cours, on va utiliser <strong>Streamlit</strong>, un outil Python qui permet de créer cette vitrine très rapidement, sans avoir besoin de connaitre HTML, CSS ou JavaScript.</p>
+
+<h3 id="ref-a-retenir">A retenir</h3>
+
+<ul>
+<li>Streamlit transforme un script Python en application web interactive.</li>
+<li>L'interface (frontend) est séparée du modèle (backend) — elles communiquent via une API.</li>
+<li>Chaque interaction utilisateur (clic, glissement de slider) <strong>relance tout le script</strong> de haut en bas.</li>
+<li>Les secrets (clés API, mots de passe) ne doivent <strong>jamais</strong> être mis dans le code ni dans Git.</li>
+<li>Streamlit Cloud permet de déployer votre app gratuitement en quelques clics.</li>
+</ul>
+
+<h3 id="ref-analogie-fil-rouge">Analogie fil rouge</h3>
+
+<p>Votre modèle ML, c'est le cuisinier en cuisine. L'interface Streamlit, c'est la salle du restaurant : le client (utilisateur) n'entre jamais en cuisine — il commande via le menu (les contrôles), et le serveur (l'API) fait le lien entre les deux.</p>
+
+<h3 id="ref-plan-du-cours">Plan du cours</h3>
+
+<ol>
+<li>Rappels Web — comment fonctionne une requête HTTP</li>
+<li>Streamlit — créer une app interactive en Python</li>
+<li>Déployer sur Streamlit Cloud</li>
+<li>Architecture backend / frontend — pourquoi séparer les deux</li>
+<li>Bonnes pratiques de design (UX/UI)</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-rappels-web-http">1. Rappels Web — HTTP</h2>
+
+<h3 id="ref-11-comment-fonctionne-une-requête-web">1.1 Comment fonctionne une requête web ?</h3>
+
+<p>Quand vous tapez une adresse dans votre navigateur, voici ce qui se passe :</p>
+
+<ol>
+<li>Votre navigateur envoie une <strong>requête</strong> à un serveur (un ordinateur quelque part sur internet).</li>
+<li>Le serveur traite la demande et renvoie une <strong>réponse</strong>.</li>
+<li>Si c'est un site web, la réponse contient du HTML. Si c'est une API, la réponse contient du JSON (des données structurées).</li>
+</ol>
+
+<p>C'est exactement le même principe quand votre app Streamlit "appelle" votre API ML : elle envoie une requête, l'API répond avec une prédiction en JSON.</p>
+
+<h3 id="ref-12-get-vs-post-deux-façons-denvoyer-des-données">1.2 GET vs POST — deux façons d'envoyer des données</h3>
+
+<p>Il existe deux méthodes HTTP principales :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Méthode</th><th>Usage</th><th>Exemple</th></tr></thead><tbody><tr><td><strong>GET</strong></td><td>Récupérer des données</td><td>Demander une prédiction en passant les paramètres dans l'URL</td></tr><tr><td><strong>POST</strong></td><td>Envoyer des données (corps de la requête)</td><td>Envoyer une image, un fichier, un texte long</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Pour une API ML simple, on utilise souvent GET : les paramètres (age, distance, etc.) sont passés dans l'URL, comme <code>https://mon-api.com/predict?age=30&amp;distance=5</code>.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-streamlit-créer-une-app-interactive-en-python">2. Streamlit — Créer une app interactive en Python</h2>
+
+<h3 id="ref-21-cest-quoi-streamlit">2.1 C'est quoi Streamlit ?</h3>
+
+<p>Streamlit est une bibliothèque Python qui permet de créer des <strong>applications web interactives</strong> uniquement en Python. Pas besoin de HTML, CSS ou JavaScript.</p>
+
+<p>Vous écrivez un script Python, vous le lancez avec une commande, et Streamlit ouvre automatiquement une page web dans votre navigateur.</p>
+
+<p><strong>Comparaison avec d'autres outils :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Outil</th><th>Type</th><th>Facilité</th><th>Contrôles utilisateur</th></tr></thead><tbody><tr><td>Jupyter</td><td>Notebook (pas un site)</td><td>Très facile</td><td>Non</td></tr><tr><td>Streamlit</td><td>Site web</td><td>Facile</td><td>Oui</td></tr><tr><td>Flask</td><td>Site web</td><td>Moyenne</td><td>Oui (mais HTML requis)</td></tr><tr><td>Django</td><td>Site web</td><td>Difficile</td><td>Oui (mais HTML requis)</td></tr></tbody></table></div>
+<p>Streamlit est le choix parfait pour un data scientist qui veut montrer son modèle sans devenir développeur web.</p>
+
+<h3 id="ref-22-installation-et-lancement">2.2 Installation et lancement</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install streamlit        # installe Streamlit une seule fois
+streamlit run app.py         # lance l&#x27;app — ouvre http://localhost:8501
+# Streamlit recharge automatiquement la page à chaque fois que vous sauvegardez le fichier</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le "hot-reload" est très pratique : vous modifiez votre code, vous sauvegardez, et la page se met à jour immédiatement. Pas besoin de relancer la commande.</p></div></div>
+
+<h3 id="ref-23-les-éléments-de-base-dune-app-streamlit">2.3 Les éléments de base d'une app Streamlit</h3>
+
+<p>Voici les briques de base que vous utiliserez tout le temps.</p>
+
+<p><strong>Afficher du texte et des titres :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import streamlit as st
+
+# st.markdown() permet d&#x27;utiliser la syntaxe Markdown (titres, gras, listes...)
+st.markdown(&quot;# Mon Application ML&quot;)        # affiche un grand titre (H1)
+st.markdown(&quot;## Bienvenue !&quot;)              # sous-titre (H2)
+
+# st.write() est très polyvalent : il affiche du texte, des DataFrames, des graphiques...
+st.write(&quot;Entrez vos paramètres ci-dessous pour obtenir une prédiction.&quot;)</code></pre></div>
+
+
+<p><strong>Collecter des informations de l'utilisateur :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import streamlit as st
+
+# Champ de texte libre
+nom = st.text_input(&quot;Votre nom&quot;)            # l&#x27;utilisateur tape du texte
+
+# Slider pour choisir un nombre
+age = st.slider(&quot;Votre âge&quot;, 0, 100, 25)   # (label, min, max, valeur_par_défaut)
+
+# Menu déroulant
+modele = st.selectbox(&quot;Choisir un modèle&quot;, [&quot;Régression linéaire&quot;, &quot;XGBoost&quot;])
+
+# Bouton
+if st.button(&quot;Lancer la prédiction&quot;):       # le code dans le if s&#x27;exécute au clic
+    st.write(f&quot;Bonjour {nom}, vous avez {age} ans !&quot;)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Chaque widget (slider, champ texte, bouton) retourne une valeur Python normale. <code>age</code> est un entier, <code>nom</code> est une chaîne, <code>modele</code> est une chaîne. Vous les utilisez comme n'importe quelle variable Python.</p></div></div>
+
+<p><strong>Afficher des données et des graphiques :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import streamlit as st
+import pandas as pd
+import numpy as np
+
+# Créer un DataFrame exemple
+df = pd.DataFrame({
+    &quot;distance_km&quot;: [1, 2, 3, 4, 5],
+    &quot;prix_euros&quot;:  [5, 8, 11, 14, 17]
+})
+
+# Afficher le DataFrame sous forme de tableau interactif
+st.dataframe(df)              # tableau avec tri, filtres intégrés
+
+# Afficher un graphique en ligne directement depuis le DataFrame
+st.line_chart(df.set_index(&quot;distance_km&quot;))   # axe X = distance, axe Y = prix</code></pre></div>
+
+
+<h3 id="ref-24-un-exemple-complet-app-de-prédiction">2.4 Un exemple complet : app de prédiction</h3>
+
+<p>Voici une app complète qui appelle une API externe et affiche la prédiction.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import streamlit as st      # pour l&#x27;interface
+import requests             # pour appeler l&#x27;API
+
+# --- Titre de l&#x27;application ---
+st.markdown(&quot;# Prédiction du prix de taxi&quot;)
+st.write(&quot;Remplissez les informations ci-dessous pour estimer le prix de votre course.&quot;)
+
+# --- Contrôles utilisateur ---
+distance = st.slider(&quot;Distance (km)&quot;, 1, 50, 10)        # slider de 1 à 50 km, défaut 10
+nb_passagers = st.selectbox(&quot;Nombre de passagers&quot;, [1, 2, 3, 4, 5, 6])
+heure = st.slider(&quot;Heure de départ (h)&quot;, 0, 23, 8)      # heure entre 0h et 23h
+
+# --- Bouton de prédiction ---
+if st.button(&quot;Calculer le prix&quot;):
+    # On prépare les paramètres à envoyer à l&#x27;API
+    params = {
+        &quot;distance&quot;: distance,
+        &quot;passengers&quot;: nb_passagers,
+        &quot;hour&quot;: heure
+    }
+
+    # On appelle l&#x27;API (méthode GET) — l&#x27;API est hébergée sur Cloud Run
+    response = requests.get(&quot;https://mon-api-taxifare.com/predict&quot;, params=params)
+
+    # On extrait la prédiction de la réponse JSON
+    prediction = response.json()[&quot;fare&quot;]
+
+    # On affiche le résultat en vert (message de succès)
+    st.success(f&quot;Prix estimé : {prediction:.2f} €&quot;)</code></pre></div>
+
+
+<p><strong>Ce que fait ce code, étape par étape :</strong></p>
+
+<ol>
+<li>On crée 3 contrôles (2 sliders + 1 selectbox) pour collecter les infos de l'utilisateur.</li>
+<li>Quand l'utilisateur clique sur le bouton, le code dans le <code>if</code> s'exécute.</li>
+<li>On envoie les paramètres à l'API via une requête GET.</li>
+<li>L'API renvoie un JSON avec le prix prédit.</li>
+<li>On affiche ce prix avec <code>st.success()</code>.</li>
+</ol>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Si l'API n'est pas accessible (serveur éteint, mauvaise URL), <code>requests.get()</code> va lever une exception. En production, il faut ajouter un <code>try/except</code> pour afficher un message d'erreur clair à l'utilisateur.</p></div></div>
+
+<h3 id="ref-25-le-comportement-clé-de-streamlit-tout-est-réexécuté">2.5 Le comportement clé de Streamlit : tout est réexécuté</h3>
+
+<p>C'est le point le plus important à comprendre sur Streamlit.</p>
+
+<p><strong>A chaque interaction (clic, mouvement de slider, saisie de texte), Streamlit réexécute le script Python de haut en bas.</strong></p>
+
+<p>Cela a une conséquence importante : si vous chargez un modèle lourd au début du script, il sera rechargé à chaque interaction.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import streamlit as st
+import tensorflow as tf
+
+# MAUVAISE PRATIQUE : rechargé à chaque interaction (lent !)
+model = tf.keras.models.load_model(&quot;mon_modele.h5&quot;)
+
+# ...suite de l&#x27;app</code></pre></div>
+
+
+<p>La solution : utiliser les décorateurs de cache de Streamlit.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import streamlit as st
+import tensorflow as tf
+
+# BONNE PRATIQUE : le modèle est chargé une seule fois, puis mis en cache
+@st.cache_resource                              # cache les ressources lourdes (modèles, connexions)
+def charger_modele():
+    return tf.keras.models.load_model(&quot;mon_modele.h5&quot;)
+
+model = charger_modele()   # appel du modèle : chargé une fois, mémorisé ensuite
+
+# BONNE PRATIQUE aussi : cache pour les données
+@st.cache_data                                  # cache les DataFrames, listes, résultats de calculs
+def charger_donnees():
+    return pd.read_csv(&quot;data.csv&quot;)
+
+df = charger_donnees()</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Deux décorateurs à retenir :</p>
+<p>- <code>@st.cache_resource</code> : pour les objets lourds qui ne changent pas (modèles ML, connexions à une base de données).</p>
+<p>- <code>@st.cache_data</code> : pour les données (DataFrames, résultats de requêtes).</p>
+<p>Streamlit ne réexécute la fonction que si les paramètres d'entrée changent.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-déployer-sur-streamlit-cloud">3. Déployer sur Streamlit Cloud</h2>
+
+<h3 id="ref-31-structure-de-projet-recommandée">3.1 Structure de projet recommandée</h3>
+
+<p>Avant de déployer, organisez votre projet comme ceci :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">mon-projet/
+├── app.py                   # script principal — point d&#x27;entrée de l&#x27;app
+├── pages/                   # pages supplémentaires (optionnel)
+│   ├── page_01.py           # Streamlit les détecte automatiquement
+│   └── page_02.py
+├── requirements.txt         # liste des bibliothèques Python nécessaires
+└── .streamlit/
+    └── secrets.toml         # clés API et secrets — JAMAIS dans Git !</code></pre></div>
+
+
+<p>Le fichier <code>requirements.txt</code> est indispensable pour le déploiement. Il liste toutes les bibliothèques que votre app utilise :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">streamlit
+pandas
+requests
+numpy</code></pre></div>
+
+
+<h3 id="ref-32-étapes-de-déploiement">3.2 Étapes de déploiement</h3>
+
+<ol>
+<li>Pousser votre code sur GitHub (avec <code>git push</code>).</li>
+<li>Aller sur <a href="https://share.streamlit.io" target="_blank" rel="noopener">share.streamlit.io</a> et connecter votre compte GitHub.</li>
+<li>Sélectionner votre repo et indiquer le fichier <code>app.py</code>.</li>
+<li>Streamlit Cloud installe les dépendances et déploie l'app automatiquement.</li>
+<li>Vous obtenez une URL publique que vous pouvez partager avec n'importe qui.</li>
+</ol>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Streamlit Cloud est gratuit pour les projets publics. Votre app est accessible 24h/24 sans que vous ayez besoin de garder votre ordinateur allumé.</p></div></div>
+
+<h3 id="ref-33-gérer-les-secrets-clés-api-mots-de-passe">3.3 Gérer les secrets (clés API, mots de passe)</h3>
+
+<p>Votre app a besoin de clés API pour appeler des services externes ? Il ne faut <strong>jamais</strong> les écrire en dur dans le code.</p>
+
+<p><strong>En local</strong>, créez le fichier <code>.streamlit/secrets.toml</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># .streamlit/secrets.toml
+# Ce fichier NE DOIT PAS être dans Git !
+
+api_url = &quot;https://mon-api-taxifare.com&quot;
+
+[google]
+credentials = &quot;ma-cle-json-google&quot;</code></pre></div>
+
+
+<p><strong>Dans le code</strong>, accédez aux secrets ainsi :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import streamlit as st
+
+# Accès direct à une valeur
+api_url = st.secrets[&quot;api_url&quot;]               # retourne &quot;https://mon-api-taxifare.com&quot;
+
+# Accès à une valeur dans une section
+cle_google = st.secrets.google.credentials   # accès via la section [google]</code></pre></div>
+
+
+<p><strong>Sur Streamlit Cloud</strong>, ajoutez les mêmes secrets dans Settings → Secrets (interface web). Streamlit Cloud les injecte automatiquement dans <code>st.secrets</code>.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Toujours ajouter <code>.streamlit/secrets.toml</code> dans votre fichier <code>.gitignore</code>. Si vous committez ce fichier par erreur, vos clés sont exposées publiquement sur GitHub — il faut alors les révoquer immédiatement.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-architecture-backend-frontend">4. Architecture backend / frontend</h2>
+
+<h3 id="ref-41-pourquoi-séparer-linterface-du-modèle">4.1 Pourquoi séparer l'interface du modèle ?</h3>
+
+<p>C'est la bonne pratique fondamentale de ce cours.</p>
+
+<p><strong>Ne faites pas ça :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># app.py — MAUVAISE PRATIQUE
+import streamlit as st
+import tensorflow as tf       # bibliothèque très lourde (plusieurs GB)
+
+model = tf.keras.models.load_model(&quot;mon_modele.h5&quot;)   # charge le modèle dans Streamlit
+
+if st.button(&quot;Prédire&quot;):
+    result = model.predict(...)
+    st.write(result)</code></pre></div>
+
+
+<p><strong>Pourquoi c'est problématique :</strong></p>
+
+<ul>
+<li>Streamlit Cloud est un environnement léger — il ne peut pas gérer des modèles de plusieurs GB.</li>
+<li>TensorFlow/PyTorch ne sont pas faits pour tourner dans une interface web.</li>
+<li>Si vous voulez mettre à jour le modèle, vous devez redeployer toute l'interface.</li>
+</ul>
+
+<p><strong>Faites ça à la place :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">[Utilisateur]
+    |
+    | (navigateur web)
+    v
+[Streamlit Cloud]        ← interface légère (app.py, ~quelques Mo)
+    |
+    | requests.get(&quot;https://mon-api.com/predict?...&quot;)
+    v
+[Cloud Run / API FastAPI] ← backend lourd (modèle ML, TensorFlow, ~plusieurs GB)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># app.py — BONNE PRATIQUE
+import streamlit as st
+import requests
+
+if st.button(&quot;Prédire&quot;):
+    # On appelle l&#x27;API — le modèle tourne ailleurs, pas ici
+    response = requests.get(&quot;https://mon-api.com/predict&quot;, params={&quot;distance&quot;: 10})
+    prediction = response.json()[&quot;fare&quot;]
+    st.write(f&quot;Prédiction : {prediction} €&quot;)</code></pre></div>
+
+
+<h3 id="ref-42-les-avantages-de-cette-séparation">4.2 Les avantages de cette séparation</h3>
+
+<ul>
+<li><strong>Légèreté</strong> : Streamlit Cloud n'a besoin que de <code>requests</code>, pas de TensorFlow.</li>
+<li><strong>Indépendance</strong> : vous pouvez mettre à jour le modèle sans toucher à l'interface.</li>
+<li><strong>Scalabilité</strong> : le backend peut gérer plus de requêtes indépendamment du frontend.</li>
+<li><strong>Clarté</strong> : chaque composant a une seule responsabilité.</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Cette architecture s'appelle "découplage frontend/backend". C'est un principe universel en développement logiciel. Le frontend affiche, le backend calcule. Les deux se parlent via une API.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-bonnes-pratiques-de-design-uxui">5. Bonnes pratiques de design (UX/UI)</h2>
+
+<h3 id="ref-51-ux-expérience-utilisateur">5.1 UX — Expérience utilisateur</h3>
+
+<p>L'UX, c'est la question : "Est-ce que mon app est agréable et facile à utiliser ?"</p>
+
+<p>Posez-vous ces questions :</p>
+
+<ul>
+<li><strong>Est-ce que l'app explique clairement ce qu'elle fait ?</strong> Un utilisateur qui arrive pour la première fois doit comprendre en 5 secondes.</li>
+<li><strong>Combien de clics pour obtenir une prédiction ?</strong> Moins c'est mieux. L'idéal : remplir les champs, cliquer sur un bouton, voir le résultat.</li>
+<li><strong>Le feedback est-il immédiat ?</strong> Si l'appel API prend 3 secondes, affichez un spinner (<code>st.spinner()</code>).</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import streamlit as st
+import requests
+import time
+
+if st.button(&quot;Calculer&quot;):
+    with st.spinner(&quot;Calcul en cours...&quot;):     # affiche une animation pendant l&#x27;attente
+        response = requests.get(&quot;https://mon-api.com/predict&quot;)
+        prediction = response.json()[&quot;fare&quot;]
+    st.success(f&quot;Résultat : {prediction} €&quot;)   # s&#x27;affiche une fois le calcul terminé</code></pre></div>
+
+
+<h3 id="ref-52-ui-interface-visuelle">5.2 UI — Interface visuelle</h3>
+
+<p>L'UI, c'est la question : "Est-ce que mon app est claire et bien organisée ?"</p>
+
+<ul>
+<li><strong>Utilisez des graphiques</strong> pour afficher les résultats quand c'est pertinent (<code>st.bar_chart()</code>, <code>st.line_chart()</code>).</li>
+<li><strong>Regroupez les contrôles logiquement</strong> — Streamlit permet d'organiser en colonnes avec <code>st.columns()</code>.</li>
+<li><strong>Donnez des titres clairs</strong> à chaque section.</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import streamlit as st
+
+# Organiser en deux colonnes
+col1, col2 = st.columns(2)          # crée deux colonnes côte à côte
+
+with col1:
+    distance = st.slider(&quot;Distance (km)&quot;, 1, 50, 10)
+
+with col2:
+    passagers = st.slider(&quot;Passagers&quot;, 1, 6, 1)</code></pre></div>
+
+
+<h3 id="ref-53-accessibilité">5.3 Accessibilité</h3>
+
+<p>Une bonne interface est utilisable par tous, y compris les personnes ayant des déficiences visuelles.</p>
+
+<ul>
+<li>Assurez-vous que le contraste entre le texte et le fond est suffisamment élevé.</li>
+<li>Ne transmettez pas d'information par la couleur seule (ex : rouge = erreur) — ajoutez toujours un texte.</li>
+<li>Donnez des titres descriptifs à vos graphiques.</li>
+<li>Ajoutez des résumés textuels pour les insights visuels importants.</li>
+</ul>
+
+<hr>
+
+<h2 id="ref-5-erreurs-classiques-à-éviter">5 erreurs classiques à éviter</h2>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur 1 — Charger le modèle sans cache</strong></p>
+<p>Mettre <code>model = load_model()</code> au top-level du script sans <code>@st.cache_resource</code> : le modèle est rechargé à chaque interaction. L'app devient lente et inutilisable.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur 2 — Mettre le modèle ML dans Streamlit</strong></p>
+<p>Importer TensorFlow ou PyTorch directement dans <code>app.py</code> : Streamlit Cloud ne peut pas gérer des modèles lourds. Utilisez une API FastAPI sur Cloud Run et appelez-la depuis Streamlit.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur 3 — Committer secrets.toml dans Git</strong></p>
+<p><code>git add .streamlit/secrets.toml</code> expose vos clés API publiquement. Ajoutez toujours ce fichier à <code>.gitignore</code> avant de committer quoi que ce soit.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur 4 — Mettre des fichiers de données lourds dans le repo</strong></p>
+<p>Un fichier CSV de 500 Mo dans le repo GitHub ralentit tout le déploiement. Stockez vos données sur Google Cloud Storage et accédez-y via les secrets Streamlit.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur 5 — Créer un repo Git dans un autre repo Git</strong></p>
+<p>Ne faites jamais <code>git init</code> dans un dossier qui appartient déjà à un repo Git. Créez toujours votre repo à côté, pas à l'intérieur.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<ol>
+<li><strong>Que se passe-t-il exactement dans Streamlit quand l'utilisateur déplace un slider ?</strong></li>
+</ol>
+<p>Pensez à ce que Streamlit fait avec le script Python à ce moment-là, et ce que cela implique pour les calculs lourds.</p>
+
+<ol>
+<li><strong>Quelle est la différence entre <code>@st.cache_data</code> et <code>@st.cache_resource</code> ? Donnez un exemple d'utilisation pour chacun.</strong></li>
+</ol>
+
+<ol>
+<li><strong>Pourquoi est-il déconseillé de charger un modèle TensorFlow directement dans <code>app.py</code> ? Quelle architecture faut-il préférer, et comment les deux parties communiquent-elles ?</strong></li>
+</ol>
+
+<ol>
+<li><strong>Vous devez stocker une clé API Google Maps pour votre app Streamlit. Décrivez les deux endroits où vous allez la renseigner (local et production) et pourquoi vous ne pouvez pas simplement l'écrire dans <code>app.py</code>.</strong></li>
+</ol>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li><strong>Streamlit</strong> transforme un script Python en application web interactive — parfait pour exposer un modèle ML sans connaitre HTML/CSS.</li>
+<li>Le script est <strong>réexécuté de haut en bas à chaque interaction</strong> : utilisez <code>@st.cache_resource</code> (modèles) et <code>@st.cache_data</code> (données) pour éviter les rechargements inutiles.</li>
+<li>L'architecture recommandée sépare le <strong>frontend</strong> (Streamlit Cloud, léger) du <strong>backend</strong> (API FastAPI sur Cloud Run, modèle lourd) — les deux communiquent via <code>requests.get()</code>.</li>
+<li>Pour déployer : pusher sur GitHub, connecter Streamlit Cloud, sélectionner <code>app.py</code> — une URL publique est générée automatiquement.</li>
+<li>Les secrets (clés API) se gèrent via <code>.streamlit/secrets.toml</code> en local et Settings → Secrets sur Streamlit Cloud — <strong>jamais dans le code, jamais dans Git</strong>.</li>
+<li>Un <code>requirements.txt</code> est indispensable pour le déploiement : il liste toutes les bibliothèques utilisées.</li>
+<li>Pensez UX : titre clair, peu de clics, feedback immédiat avec <code>st.spinner()</code> pendant les appels API.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-pourquoi-un-data-scientist-doit-savoir-faire-des-ui">Pourquoi un data scientist doit savoir faire des UI</a></li><li><a href="#syn-streamlit-du-python-à-lapp-web">Streamlit : du Python à l'app web</a></li><li><a href="#syn-composants-de-base">Composants de base</a></li><li><a href="#syn-state-et-caching">State et caching</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-gradio-pour-les-démos-ml">Gradio pour les démos ML</a></li><li><a href="#syn-dash-pour-les-dashboards-complexes">Dash pour les dashboards complexes</a></li><li><a href="#syn-déploiement-et-hébergement">Déploiement et hébergement</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-pourquoi-un-data-scientist-doit-savoir-faire-des-ui">Pourquoi un data scientist doit savoir faire des UI</h3>
+
+<p>Un modèle qui reste dans un notebook Jupyter n'a aucune valeur pour le business. Pour qu'il soit utilisé, il faut le <strong>rendre accessible</strong> aux décideurs, analysts, ou utilisateurs finaux qui ne savent pas lancer Python.</p>
+
+<p>Trois cas d'usage :</p>
+
+<ol>
+<li><strong>Démos clients/internes</strong> : montrer ce que votre modèle fait, en live, avec des inputs réels</li>
+<li><strong>Outils analytiques</strong> : permettre à un analyste de filtrer, explorer, comparer sans demander à un dev</li>
+<li><strong>Prototypes produits</strong> : valider une idée avant d'engager une équipe frontend pour la version finale</li>
+</ol>
+
+<p>Avant Streamlit (2019), faire une UI demandait Flask + HTML/CSS/JS — quelques jours de travail. Aujourd'hui, on transforme un script Python en app web en quelques minutes.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : un modèle ML sans UI, c'est comme un orchestre symphonique sans salle de concert. Vous avez beau jouer parfaitement, personne n'entend. L'UI est le pont entre votre travail technique et les utilisateurs qui en bénéficient. C'est ce qui transforme un POC en produit.</p></div></div>
+
+<h3 id="syn-streamlit-du-python-à-lapp-web">Streamlit : du Python à l'app web</h3>
+
+<p><strong>Streamlit</strong> (2019) permet de créer une app web en pur Python. Pas de HTML/CSS/JS, pas de routing, pas de framework JavaScript.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># app.py
+import streamlit as st
+import pandas as pd
+
+# Titre principal — équivalent d&#x27;un &lt;h1&gt;
+st.title(&quot;Customer Churn Predictor&quot;)
+
+# Bloc de texte (supporte le markdown)
+st.write(&quot;Predict if a customer is likely to churn based on their profile.&quot;)
+
+# --- Widgets d&#x27;input : Streamlit rerun le script à chaque changement ---
+# Signature : slider(label, min, max, default)
+age = st.slider(&quot;Age&quot;, 18, 100, 35)
+tenure = st.number_input(&quot;Tenure (months)&quot;, 0, 240, 12)
+monthly_charges = st.slider(&quot;Monthly charges ($)&quot;, 0, 200, 50)
+
+# --- Bouton : l&#x27;action n&#x27;a lieu que si cliqué (renvoie True une fois) ---
+if st.button(&quot;Predict&quot;):
+    # Construire un DataFrame à 1 ligne avec les bons noms de colonnes
+    features = pd.DataFrame([[age, tenure, monthly_charges]],
+                             columns=[&quot;age&quot;, &quot;tenure&quot;, &quot;monthly_charges&quot;])
+    prob = model.predict_proba(features)[0, 1]
+
+    # st.metric affiche un gros chiffre façon dashboard
+    st.metric(&quot;Churn probability&quot;, f&quot;{prob:.1%}&quot;)
+
+    # Feedback coloré selon la prédiction
+    if prob &gt; 0.5:
+        st.error(&quot;This customer is at risk of churning&quot;)
+    else:
+        st.success(&quot;This customer is likely to stay&quot;)</code></pre></div>
+
+
+<p>Lancement :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">streamlit run app.py</code></pre></div>
+
+
+<p>Vous obtenez immédiatement une app web sur <code>http://localhost:8501</code>. Aucune configuration. C'est presque magique.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : pour un data scientist, <strong>Streamlit doit être dans votre toolbox</strong>. Il vous permet de partager vos résultats avec n'importe qui, sans avoir à expliquer comment lancer un notebook ou un script. C'est la différence entre "j'ai un modèle" et "j'ai un produit".</p></div></div>
+
+<h3 id="syn-composants-de-base">Composants de base</h3>
+
+<p>Streamlit propose ~50 composants pour construire des UI complètes.</p>
+
+<p><strong>Texte et structure</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">st.title(&quot;Title&quot;)
+st.header(&quot;Header&quot;)
+st.subheader(&quot;Subheader&quot;)
+st.write(&quot;Plain text or markdown&quot;)
+st.markdown(&quot;**Bold** and _italic_&quot;)
+st.code(&quot;print(&#x27;hello&#x27;)&quot;, language=&quot;python&quot;)
+st.latex(r&quot;e^{i\pi} + 1 = 0&quot;)</code></pre></div>
+
+
+<p><strong>Inputs</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">name = st.text_input(&quot;Name&quot;)
+age = st.number_input(&quot;Age&quot;, 0, 120, 30)
+mood = st.slider(&quot;Mood&quot;, 0, 10, 5)
+city = st.selectbox(&quot;City&quot;, [&quot;Paris&quot;, &quot;Lyon&quot;, &quot;Marseille&quot;])
+hobbies = st.multiselect(&quot;Hobbies&quot;, [&quot;sport&quot;, &quot;music&quot;, &quot;code&quot;])
+agreed = st.checkbox(&quot;I agree&quot;)
+file = st.file_uploader(&quot;Upload CSV&quot;, type=[&quot;csv&quot;])</code></pre></div>
+
+
+<p><strong>Outputs</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">st.dataframe(df)              # Tableau interactif
+st.table(df)                   # Tableau statique
+st.metric(&quot;Sales&quot;, &quot;$50k&quot;, &quot;+12%&quot;)
+st.line_chart(df)
+st.bar_chart(df)
+st.map(geo_df)                 # Carte avec lat/lng
+st.image(&quot;image.png&quot;)
+st.audio(&quot;audio.mp3&quot;)
+st.video(&quot;video.mp4&quot;)</code></pre></div>
+
+
+<p><strong>Layouts</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">col1, col2, col3 = st.columns(3)
+col1.metric(&quot;Sales&quot;, &quot;$50k&quot;)
+col2.metric(&quot;Visits&quot;, &quot;1,234&quot;)
+col3.metric(&quot;Conversion&quot;, &quot;4.2%&quot;)
+
+with st.sidebar:
+    st.header(&quot;Filters&quot;)
+    category = st.selectbox(&quot;Category&quot;, categories)
+
+with st.expander(&quot;Show details&quot;):
+    st.write(&quot;Hidden by default&quot;)
+
+tab1, tab2, tab3 = st.tabs([&quot;Overview&quot;, &quot;Details&quot;, &quot;Help&quot;])
+with tab1:
+    st.write(&quot;Overview content&quot;)</code></pre></div>
+
+
+<h3 id="syn-state-et-caching">State et caching</h3>
+
+<p>Par défaut, Streamlit <strong>réexécute tout le script</strong> à chaque interaction utilisateur. C'est simple à comprendre mais peut être lent si vous chargez un gros modèle.</p>
+
+<p><strong>Caching</strong> : utiliser <code>@st.cache_data</code> ou <code>@st.cache_resource</code> pour éviter de recharger.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># @st.cache_data : sérialise le retour (bon pour DataFrames, dicts, listes)
+# Re-exécuté uniquement si les arguments de la fonction changent
+@st.cache_data
+def load_data():
+    return pd.read_csv(&quot;big_dataset.csv&quot;)  # Lu une seule fois
+
+# @st.cache_resource : partagé entre toutes les sessions, pas sérialisé
+# À utiliser pour des objets lourds non-picklables (modèles, connexions DB)
+@st.cache_resource
+def load_model():
+    return joblib.load(&quot;model.pkl&quot;)  # Chargé une seule fois au démarrage
+
+df = load_data()
+model = load_model()</code></pre></div>
+
+
+<p><code>@st.cache_data</code> est pour les <strong>données</strong> (DataFrames, dicts, listes). <code>@st.cache_resource</code> est pour les <strong>objets coûteux</strong> (modèles, connexions DB).</p>
+
+<p><strong>Session state</strong> : pour persister l'état entre les exécutions du script.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">if &quot;counter&quot; not in st.session_state:
+    st.session_state.counter = 0
+
+if st.button(&quot;Increment&quot;):
+    st.session_state.counter += 1
+
+st.write(f&quot;Counter: {st.session_state.counter}&quot;)</code></pre></div>
+
+
+<p>C'est crucial pour des apps multi-étapes (formulaires longs, conversations, wizards).</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège classique</strong> : oublier le caching et avoir une app qui prend 30 secondes à charger à chaque clic. Toujours mettre <code>@st.cache_data</code> ou <code>@st.cache_resource</code> sur les fonctions de chargement de données et de modèles. Vérifiez en cliquant plusieurs fois — si c'est lent à chaque clic, vous avez oublié le cache.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-gradio-pour-les-démos-ml">Gradio pour les démos ML</h3>
+
+<p><strong>Gradio</strong> (2019, racheté par Hugging Face) est l'alternative orientée démos ML. Particulièrement pratique pour exposer un modèle qui prend des images, audio, ou texte.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import gradio as gr
+
+def predict(image):
+    return model.predict(image)
+
+gr.Interface(
+    fn=predict,
+    inputs=gr.Image(),
+    outputs=gr.Label(num_top_classes=3),
+    title=&quot;Image Classifier&quot;,
+).launch()</code></pre></div>
+
+
+<p>Avantages par rapport à Streamlit :</p>
+
+<ul>
+<li><strong>Encore plus rapide</strong> pour exposer un modèle (5 lignes au lieu de 20)</li>
+<li><strong>Meilleurs widgets pour le ML</strong> : image avec annotation, audio waveform, vidéo</li>
+<li><strong>Génère un lien public partageable</strong> (<code>launch(share=True)</code>) en un clic</li>
+<li><strong>Intégré à Hugging Face Spaces</strong> pour héberger gratuitement</li>
+</ul>
+
+<p>Inconvénients :</p>
+
+<ul>
+<li><strong>Moins flexible</strong> pour des UI custom complexes</li>
+<li><strong>Moins de composants</strong> que Streamlit</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Recommandation</strong> : utilisez <strong>Gradio</strong> pour les démos rapides de modèles individuels (vision, audio, texte). Utilisez <strong>Streamlit</strong> pour les apps plus larges avec plusieurs onglets, dashboards, et state complexe.</p></div></div>
+
+<h3 id="syn-dash-pour-les-dashboards-complexes">Dash pour les dashboards complexes</h3>
+
+<p><strong>Dash</strong> (Plotly, 2017) est plus puissant mais plus complexe. Construit sur Flask + React.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from dash import Dash, html, dcc, callback, Output, Input
+import plotly.express as px
+
+app = Dash(__name__)
+
+app.layout = html.Div([
+    html.H1(&quot;Sales Dashboard&quot;),
+    dcc.Dropdown([&quot;Q1&quot;, &quot;Q2&quot;, &quot;Q3&quot;, &quot;Q4&quot;], &quot;Q1&quot;, id=&quot;quarter&quot;),
+    dcc.Graph(id=&quot;chart&quot;),
+])
+
+@callback(Output(&quot;chart&quot;, &quot;figure&quot;), Input(&quot;quarter&quot;, &quot;value&quot;))
+def update_chart(quarter):
+    df_filtered = df[df[&quot;quarter&quot;] == quarter]
+    return px.bar(df_filtered, x=&quot;region&quot;, y=&quot;sales&quot;)
+
+app.run(debug=True)</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Streamlit</th><th>Dash</th><th>Gradio</th></tr></thead><tbody><tr><td>Syntaxe</td><td>Très simple</td><td>Verbose</td><td>Très simple</td></tr><tr><td>Customisation</td><td>Modérée</td><td>Très flexible</td><td>Limitée</td></tr><tr><td>Cas d'usage</td><td>Apps data, prototypes</td><td>Dashboards corporate</td><td>Démos ML</td></tr><tr><td>Apprentissage</td><td>< 1h</td><td>Plusieurs jours</td><td>< 30 min</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Quand passer à Dash</strong> : quand vous avez besoin d'une UI vraiment custom (pixel-perfect), avec des callbacks complexes, des composants Plotly avancés, ou une intégration dans une infra existante. Pour 90% des cas data science, Streamlit ou Gradio suffisent.</p></div></div>
+
+<h3 id="syn-déploiement-et-hébergement">Déploiement et hébergement</h3>
+
+<p>Quatre options pour héberger votre app Streamlit/Gradio :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Plateforme</th><th>Coût</th><th>Quand</th></tr></thead><tbody><tr><td><strong>Streamlit Community Cloud</strong></td><td>Gratuit</td><td>Apps publiques, prototypes</td></tr><tr><td><strong>Hugging Face Spaces</strong></td><td>Gratuit (CPU), payant (GPU)</td><td>Démos ML, Gradio</td></tr><tr><td><strong>Render, Railway, Fly.io</strong></td><td>$5-20/mois</td><td>Apps privées simples</td></tr><tr><td><strong>Cloud Run, AWS App Runner, Azure Container Apps</strong></td><td>Pay-per-use</td><td>Production sérieuse</td></tr><tr><td><strong>Kubernetes</strong></td><td>Variable</td><td>Très grosse échelle</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Streamlit Community Cloud : juste push sur GitHub, ils détectent et déploient
+# Hugging Face Spaces : git push vers leur registry
+# Cloud Run :
+gcloud run deploy churn-app --source . --region us-central1 --allow-unauthenticated</code></pre></div>
+
+
+<p><strong>Authentification</strong> : par défaut, votre app est publique. Pour la sécuriser :</p>
+
+<ul>
+<li><strong>Streamlit-Authenticator</strong> : login avec mot de passe (basique)</li>
+<li><strong>OAuth via fournisseurs externes</strong> : Auth0, Clerk, Firebase Auth</li>
+<li><strong>Behind reverse proxy</strong> : Nginx + auth basic, ou un load balancer cloud avec IAM</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Auth basique avec Streamlit-Authenticator
+import streamlit_authenticator as stauth
+
+authenticator = stauth.Authenticate(config[&quot;credentials&quot;], ...)
+name, auth_status, username = authenticator.login(&quot;Login&quot;, &quot;main&quot;)
+
+if auth_status:
+    st.write(f&quot;Welcome {name}&quot;)
+    # ... reste de l&#x27;app ...</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Sécurité</strong> : ne <strong>jamais</strong> déployer une app Streamlit avec des données sensibles sans authentification. Streamlit Community Cloud rend tout public par défaut. Pour des données business, choisissez une plateforme privée et activez l'auth dès le début.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi Streamlit réexécute-t-il tout le script à chaque interaction utilisateur, et comment éviter que cela rende l'app lente ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>caching.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Streamlit a un modèle d'exécution <strong>stateless par défaut</strong> : à chaque interaction (clic, sélection), tout le script Python est ré-exécuté de haut en bas. C'est simple à comprendre — pas de gestion de state complexe à la React — mais cela signifie que <strong>toute opération coûteuse est recomputée à chaque clic</strong>. Solution : <code>@st.cache_data</code> et <code>@st.cache_resource</code>. Le décorateur mémorise le résultat selon les arguments d'entrée. Au prochain appel avec les mêmes arguments, Streamlit retourne directement le résultat caché sans exécuter la fonction. <strong>Cas d'usage typique</strong> : <code>@st.cache_resource</code> sur le chargement du modèle ML (objet lourd, immuable), <code>@st.cache_data</code> sur le chargement et le préprocessing du dataset. Sans ces décorateurs, votre app est inutilisable dès qu'elle dépasse quelques fonctions lourdes. Pour persister un état utilisateur entre les exécutions (formulaire multi-étapes, conversation), utilisez <code>st.session_state</code> qui est un dict persistant. Question d'entretien Streamlit : "Comment gérer l'état dans une app Streamlit ?" — la réponse parle de cache_data, cache_resource, et session_state.</p>
+
+</details>
+
+<p><strong>Q2 : Vous voulez exposer votre modèle de classification d'images à un client non technique. Streamlit, Gradio ou Dash ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>démo rapide.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Gradio</strong> est le bon choix. Trois raisons. (1) <strong>Spécialisé ML</strong> : Gradio a des composants natifs <code>gr.Image()</code>, <code>gr.Audio()</code>, <code>gr.Video()</code> avec preview, drag-and-drop, et même la webcam pour l'image. C'est exactement ce dont vous avez besoin pour une démo de classification d'images. (2) <strong>5 lignes de code</strong> : la version minimale d'un demo Gradio fait littéralement 5 lignes. C'est plus rapide que d'écrire un README. (3) <strong>Lien public partageable</strong> : <code>gr.Interface(...).launch(share=True)</code> génère un URL <code>*.gradio.live</code> valide 72h, accessible depuis n'importe où sans hébergement. Idéal pour envoyer à un client par email. Pour aller plus loin : déployer sur <strong>Hugging Face Spaces</strong> est gratuit, donne une URL permanente, et supporte même les GPU. <strong>Streamlit</strong> est plus adapté pour des apps multi-page complexes (dashboard + démos + analytics). <strong>Dash</strong> est réservé aux dashboards corporate hyper-customisés. Pour une démo modèle ML simple, Gradio gagne. Question d'entretien data science applicative : "Comment exposez-vous une démo de modèle à un non-technique ?" — la réponse mentionne Gradio + HF Spaces.</p>
+
+</details>
+
+<p><strong>Q3 : Vous voulez authentifier les utilisateurs de votre app Streamlit pour qu'ils ne puissent pas tous voir les données. Comment faire proprement ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>OAuth ou reverse proxy.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Trois niveaux selon le contexte. <strong>Niveau 1 — Streamlit-Authenticator</strong> : librairie tierce qui ajoute un formulaire de login avec mots de passe stockés dans un YAML. Simple mais limité (pas de SSO, pas de gestion des permissions granulaires). OK pour des outils internes avec quelques utilisateurs. <strong>Niveau 2 — OAuth via fournisseur externe</strong> : utiliser Auth0, Clerk, Firebase Auth, ou Supabase Auth. Vous redirigez l'utilisateur vers leur page de login, ils retournent avec un token, vous le validez dans Streamlit. C'est plus robuste, supporte SSO Google/GitHub/Microsoft, et permet de gérer les rôles. C'est le standard pour des apps internes d'entreprise. <strong>Niveau 3 — Reverse proxy</strong> : déployer Streamlit derrière Nginx/Cloudflare/Cloud Run avec IAM. L'authentification est gérée à un niveau supérieur (load balancer, IdP), et Streamlit ne voit que des utilisateurs déjà authentifiés via des headers ou cookies. C'est la solution <strong>production sérieuse</strong> : zero impact sur le code Streamlit, intégration avec votre IdP entreprise, audit logs, etc. <strong>Recommandation</strong> : commencer par Streamlit-Authenticator pour valider le concept, passer à OAuth dès qu'il y a > 5 utilisateurs ou des données sensibles. Question d'entretien sécurité : "Comment authentifier une app Streamlit en prod ?" — la réponse exhaustive mentionne les 3 niveaux et leur trade-off.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://docs.streamlit.io/" target="_blank" rel="noopener">Streamlit documentation</a> — claire et exhaustive</li>
+<li><a href="https://www.gradio.app/docs" target="_blank" rel="noopener">Gradio documentation</a> — pour les démos ML</li>
+<li><a href="https://huggingface.co/spaces" target="_blank" rel="noopener">Hugging Face Spaces</a> — héberger des Gradio gratuitement</li>
+<li><a href="https://streamlit.io/components" target="_blank" rel="noopener">Streamlit Components</a> — composants tiers avancés</li>
+<li><a href="https://dash.plotly.com/" target="_blank" rel="noopener">Plotly Dash</a> — pour les dashboards complexes</li>
+<li><a href="https://docs.streamlit.io/library/cheatsheet" target="_blank" rel="noopener">The Streamlit Cookbook</a> — toutes les API d'un coup</li>
+<li><em>Web Application Development with Streamlit</em> (Mohammad Khorasani) — pour aller au-delà des basics</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../mlops/coding-team.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Coding as a Team</span>
+  </a>
+  <a href="../synthese/synthese-ml.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Synthèse ML (v2) →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

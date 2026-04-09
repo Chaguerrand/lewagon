@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ML Workflow — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">ML Workflow</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html" class="active">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Data Engineering</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>ML Workflow</span>
+      </div>
+
+      <div class="page-header">
+        <h1>ML Workflow</h1>
+        <p class="page-objective">Structurer un projet ML complet avec les Pipelines sklearn : chaîner les étapes de preprocessing et de modélisation, gérer les colonnes hétérogènes, créer des features custom, tuner l'ensemble en une seule passe, et exporter le pipeline final.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Pipeline sklearn</div>
+        <div class="key-concept-def">Chaîne d&#x27;étapes (preprocess + modèle) qui s&#x27;entraîne et prédit en bloc.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">ColumnTransformer</div>
+        <div class="key-concept-def">Applique différents préprocesseurs à différents groupes de colonnes.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Train/test split</div>
+        <div class="key-concept-def">Réserve une portion des données qui ne sert jamais à entraîner.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Data leakage</div>
+        <div class="key-concept-def">Information du test qui fuit dans l&#x27;entraînement → score irréaliste.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-ml-workflow-pipelines">Cheatsheet — ML Workflow & Pipelines</a><ol><li><a href="#pipeline-séquentiel">Pipeline séquentiel (→ → →)</a></li><li><a href="#columntransformer-traitements-parallèles-par-colonne">ColumnTransformer (⑂ — traitements parallèles par colonne)</a></li><li><a href="#make_-shortcuts">make_* shortcuts ⚡️</a></li><li><a href="#functiontransformer-transformer-custom-stateless">FunctionTransformer — transformer custom stateless</a></li><li><a href="#custom-transformer-stateful-classe-python">Custom Transformer stateful (classe Python)</a></li><li><a href="#featureunion-concatène-des-branches-parallèles">FeatureUnion (|| — concatène des branches parallèles)</a></li><li><a href="#pipeline-complet-avec-modèle">Pipeline complet avec modèle</a></li><li><a href="#cross-validation-et-gridsearchcv-sur-pipeline">Cross-validation et GridSearchCV sur Pipeline</a></li><li><a href="#export-et-rechargement">Export et rechargement</a></li><li><a href="#debug-et-cache">Debug et cache</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-sélection-du-modèle">1) Sélection du modèle</a><ol><li><a href="#11-modèles-paramétriques-vs-non-paramétriques">1.1 Modèles paramétriques vs non-paramétriques</a></li></ol></li><li><a href="#2-pipelines-sklearn">2) Pipelines sklearn</a><li><a href="#3-pipelines-de-preprocessing">3) Pipelines de preprocessing</a><ol><li><a href="#31-pipeline-séquentiel">3.1 Pipeline → → → (séquentiel)</a></li><li><a href="#32-columntransformer-traitements-parallèles-par-colonne">3.2 ColumnTransformer ⑂ (traitements parallèles par colonne)</a></li><li><a href="#33-functiontransformer-transformer-custom-stateless">3.3 FunctionTransformer → (transformer custom stateless)</a></li><li><a href="#34-custom-transformer-stateful-classe-python">3.4 Custom Transformer stateful (classe Python)</a></li><li><a href="#35-featureunion-concaténation-de-branches-parallèles">3.5 FeatureUnion || (concaténation de branches parallèles)</a></li><li><a href="#36-shortcuts-make_">3.6 Shortcuts make_* ⚡️</a></li></ol></li><li><a href="#4-pipeline-complet-avec-modèle">4) Pipeline complet avec modèle</a><ol><li><a href="#41-cross-validation-sans-data-leakage">4.1 Cross-validation sans data leakage</a></li><li><a href="#42-gridsearchcv-sur-le-pipeline">4.2 GridSearchCV sur le Pipeline</a></li><li><a href="#43-debug-du-pipeline">4.3 Debug du Pipeline</a></li><li><a href="#44-cache-pour-accélérer-le-gridsearch">4.4 Cache pour accélérer le GridSearch</a></li><li><a href="#45-export-du-pipeline-pickle">4.5 Export du Pipeline (pickle)</a></li></ol></li><li><a href="#5-automl-tpot">5) AutoML — TPOT</a><li><a href="#6-récapitulatif-composants-sklearn">6) Récapitulatif — Composants sklearn</a><li><a href="#ressources">Ressources</a></ol></div>
+<p>Structurer un projet ML complet avec les Pipelines sklearn : chaîner les étapes de preprocessing et de modélisation, gérer les colonnes hétérogènes, créer des features custom, tuner l'ensemble en une seule passe, et exporter le pipeline final.</p>
+
+<hr>
+
+<h2 id="cheatsheet-ml-workflow-pipelines">📋 Cheatsheet — ML Workflow & Pipelines</h2>
+
+<h3 id="pipeline-séquentiel">Pipeline séquentiel (→ → →)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
+
+## Chaîne d&#x27;étapes appliquées en séquence
+pipeline = Pipeline([
+    (&#x27;imputer&#x27;, SimpleImputer(strategy=&quot;median&quot;)),  # étape 1 : imputation
+    (&#x27;scaler&#x27;,  StandardScaler())                   # étape 2 : scaling
+])
+
+pipeline.fit(X_train[[&#x27;age&#x27;]])              # apprend median et std sur le train
+pipeline.transform(X_train[[&#x27;age&#x27;]])        # applique imputation puis scaling</code></pre></div>
+
+
+<h3 id="columntransformer-traitements-parallèles-par-colonne">ColumnTransformer (⑂ — traitements parallèles par colonne)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
+
+num_transformer = Pipeline([
+    (&#x27;imputer&#x27;, SimpleImputer(strategy=&quot;mean&quot;)),  # impute les NaN numériques
+    (&#x27;scaler&#x27;,  StandardScaler())                 # standardise
+])
+cat_transformer = OneHotEncoder(handle_unknown=&#x27;ignore&#x27;)  # encode les catégories
+
+preprocessor = ColumnTransformer([
+    (&#x27;num&#x27;, num_transformer, [&#x27;age&#x27;, &#x27;bmi&#x27;]),          # num → pipeline séquentiel
+    (&#x27;cat&#x27;, cat_transformer, [&#x27;smoker&#x27;, &#x27;region&#x27;])     # cat → OHE
+], remainder=&#x27;passthrough&#x27;)   # &#x27;passthrough&#x27; conserve les autres colonnes non transformées
+
+X_train_transformed = preprocessor.fit_transform(X_train)  # fit + transform en une passe
+preprocessor.get_feature_names_out()                        # noms des colonnes après transformation</code></pre></div>
+
+
+<h3 id="make_-shortcuts">make_* shortcuts ⚡️</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.pipeline import make_pipeline, make_union
+from sklearn.compose import make_column_transformer, make_column_selector
+
+## Équivalent Pipeline([...]) sans nommer les étapes
+num_transformer = make_pipeline(SimpleImputer(), StandardScaler())
+
+## Sélection automatique des colonnes par dtype
+num_col = make_column_selector(dtype_include=[&#x27;float64&#x27;])          # colonnes numériques
+cat_col = make_column_selector(dtype_include=[&#x27;object&#x27;, &#x27;bool&#x27;])   # colonnes catégorielles
+
+preproc = make_column_transformer(
+    (num_transformer, num_col),
+    (OneHotEncoder(), cat_col),
+    remainder=&#x27;passthrough&#x27;
+)</code></pre></div>
+
+
+<h3 id="functiontransformer-transformer-custom-stateless">FunctionTransformer — transformer custom stateless</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import FunctionTransformer
+import numpy as np
+
+## Encapsule une fonction Python dans un transformer sklearn
+rounder = FunctionTransformer(lambda arr: np.round(arr, decimals=2))  # arrondi à 2 décimales
+log_transformer = FunctionTransformer(np.log1p)                        # log(1 + x)
+
+## Compatible Pipeline et ColumnTransformer
+num_transformer = make_pipeline(SimpleImputer(), StandardScaler(), rounder)</code></pre></div>
+
+
+<h3 id="custom-transformer-stateful-classe-python">Custom Transformer stateful (classe Python)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.base import TransformerMixin, BaseEstimator
+
+class MyCustomTransformer(TransformerMixin, BaseEstimator):
+    # BaseEstimator    → fournit get_params() et set_params() nécessaires aux Pipelines
+    # TransformerMixin → génère fit_transform() depuis fit() et transform()
+
+    def __init__(self):
+        pass
+
+    def fit(self, X, y=None):
+        # Stocker ce qui est &quot;appris&quot; sur X_train (ex: self.mean_ = X.mean())
+        return self    # retourner self pour permettre le chaînage .fit().transform()
+
+    def transform(self, X, y=None):
+        # Appliquer la transformation et retourner un DataFrame
+        return X</code></pre></div>
+
+
+<h3 id="featureunion-concatène-des-branches-parallèles">FeatureUnion (|| — concatène des branches parallèles)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.pipeline import FeatureUnion
+
+## Crée une nouvelle feature et la concatène au preprocessing existant
+bmi_age_ratio = FunctionTransformer(lambda df: pd.DataFrame(df[&#x27;bmi&#x27;] / df[&#x27;age&#x27;]))
+
+union = FeatureUnion([
+    (&#x27;preprocess&#x27;,    preprocessor),      # colonnes 0-7 (preprocessing standard)
+    (&#x27;bmi_age_ratio&#x27;, bmi_age_ratio)      # colonne 8 (nouvelle feature créée)
+])
+X_transformed = union.fit_transform(X_train)   # shape = (n, 9)</code></pre></div>
+
+
+<h3 id="pipeline-complet-avec-modèle">Pipeline complet avec modèle</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import Ridge
+
+pipeline = make_pipeline(preproc, Ridge())      # preprocessor + modèle en 1 objet
+pipeline.fit(X_train, y_train)                  # fit tout le pipeline d&#x27;un coup
+pipeline.predict(X_test)                        # transform + predict automatiquement
+pipeline.score(X_test, y_test)                  # → 0.747</code></pre></div>
+
+
+<h3 id="cross-validation-et-gridsearchcv-sur-pipeline">Cross-validation et GridSearchCV sur Pipeline</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import cross_val_score, GridSearchCV
+
+## Cross-validation sur le pipeline entier (pas de leakage !)
+cross_val_score(pipeline, X_train, y_train, cv=5, scoring=&#x27;r2&#x27;).mean()  # → 0.743
+
+## Accéder aux hyperparamètres : syntaxe step__transformer__param
+pipeline.get_params()   # affiche tous les hyperparamètres accessibles
+
+grid_search = GridSearchCV(
+    pipeline,
+    param_grid={
+        &#x27;columntransformer__pipeline__simpleimputer__strategy&#x27;: [&#x27;mean&#x27;, &#x27;median&#x27;],
+        &#x27;ridge__alpha&#x27;: [0.1, 0.5, 1, 5, 10]
+    },
+    cv=5, scoring=&#x27;r2&#x27;
+)
+grid_search.fit(X_train, y_train)
+grid_search.best_params_      # → {&#x27;...strategy&#x27;: &#x27;mean&#x27;, &#x27;ridge__alpha&#x27;: 1}
+pipeline_tuned = grid_search.best_estimator_   # meilleur pipeline prêt à l&#x27;emploi</code></pre></div>
+
+
+<h3 id="export-et-rechargement">Export et rechargement</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pickle
+
+## Exporter le pipeline en fichier pickle
+with open(&quot;pipeline.pkl&quot;, &quot;wb&quot;) as f:
+    pickle.dump(pipeline_tuned, f)
+
+## Recharger et utiliser sans ré-entraîner
+pipeline_loaded = pickle.load(open(&quot;pipeline.pkl&quot;, &quot;rb&quot;))
+pipeline_loaded.score(X_test, y_test)   # → 0.747</code></pre></div>
+
+
+<h3 id="debug-et-cache">Debug et cache</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Inspecter les étapes du pipeline
+pipeline_tuned.named_steps.keys()   # dict_keys([&#x27;columntransformer&#x27;, &#x27;ridge&#x27;])
+
+## Vérifier le shape après preprocessing
+pipeline_tuned.named_steps[&#x27;columntransformer&#x27;].fit_transform(X_train).shape  # (1070, 9)
+
+## Cache pour éviter de recalculer le preprocessing en GridSearch
+from tempfile import mkdtemp
+from shutil import rmtree
+cachedir = mkdtemp()
+pipeline = Pipeline(steps, memory=cachedir)   # preprocessing mis en cache
+rmtree(cachedir)                              # nettoyer après usage</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Fitter le preprocessor sur tout le dataset avant le Pipeline</strong></p>
+<p>❌ <code>preprocessor.fit_transform(X)</code> puis <code>cross_val_score(model, X_transformed, y)</code> → data leakage : le scaler "a vu" les données de validation</p>
+<p>✅ Mettre le preprocessor <strong>dans le Pipeline</strong>, passer <code>pipeline</code> à <code>cross_val_score</code> → le fit du scaler se fait uniquement sur chaque fold de train</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser FunctionTransformer pour une transformation stateful</strong></p>
+<p>❌ <code>FunctionTransformer(lambda X: (X - X.mean()) / X.std())</code> → la moyenne et std sont recalculées à chaque appel <code>.transform()</code>, y compris sur le test</p>
+<p>✅ Créer une classe héritant de <code>TransformerMixin</code> + <code>BaseEstimator</code> qui stocke <code>self.mean_</code> et <code>self.std_</code> dans <code>.fit()</code> et les réutilise dans <code>.transform()</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier <code>remainder=&#x27;passthrough&#x27;</code> et perdre des colonnes</strong></p>
+<p>❌ <code>ColumnTransformer([...])</code> sans <code>remainder</code> → les colonnes non listées sont <strong>supprimées silencieusement</strong> du dataset transformé</p>
+<p>✅ Ajouter <code>remainder=&#x27;passthrough&#x27;</code> pour conserver les colonnes non transformées</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser la mauvaise syntaxe pour GridSearch sur un Pipeline</strong></p>
+<p>❌ <code>param_grid={&#x27;alpha&#x27;: [0.1, 1]}</code> → sklearn ne trouve pas le paramètre dans le pipeline et lève une erreur</p>
+<p>✅ Syntaxe correcte : <code>&#x27;nom_étape__nom_transformer__paramètre&#x27;</code> ex: <code>&#x27;ridge__alpha&#x27;</code> ou <code>&#x27;columntransformer__pipeline__simpleimputer__strategy&#x27;</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Refitter le pipeline exporté sur de nouvelles données</strong></p>
+<p>❌ <code>pipeline_loaded.fit(X_new, y_new)</code> avant de prédire → écrase les paramètres appris sur le train set original</p>
+<p>✅ <code>pipeline_loaded.predict(X_new)</code> directement : le pipeline chargé applique les transformations apprises sans refitting</p></div></div>
+
+<hr>
+
+<h2 id="1-sélection-du-modèle">1) Sélection du modèle</h2>
+
+<h3 id="11-modèles-paramétriques-vs-non-paramétriques">1.1 Modèles paramétriques vs non-paramétriques</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Modèles paramétriques</th><th>Modèles non-paramétriques</th></tr></thead><tbody><tr><td><strong>Exemples</strong></td><td>Régression linéaire, Logistique, Réseaux de neurones</td><td>KNN, SVM-kernel, Arbres</td></tr><tr><td><strong>Principe</strong></td><td>$\hat{y} = f_\beta(X)$ — nb. de paramètres fixe</td><td>Pas d'hypothèse sur la structure des données</td></tr><tr><td><strong>Avantages</strong></td><td>Rapides à entraîner, scalables (SGD)</td><td>Capturent des patterns complexes</td></tr><tr><td><strong>Inconvénients</strong></td><td>Hypothèses a priori sur la structure</td><td>Difficiles à entraîner sur grands datasets, sujets à l'overfitting</td></tr></tbody></table></div>
+<figure><img src="../../assets/images/ml-workflow-01-18f12595.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="2-pipelines-sklearn">2) Pipelines sklearn</h2>
+
+<figure><img src="../../assets/images/ml-workflow-02-4b9fcdfb.png" alt="" loading="lazy"></figure>
+
+<p>Un <strong>Pipeline</strong> est une chaîne d'opérations ML (preprocessing, entraînement, prédiction…).</p>
+
+<p><strong>Avantages :</strong></p>
+
+<ul>
+<li>🏄 Workflow lisible et structuré</li>
+<li>💪 Ordre des étapes garanti</li>
+<li>⚙️ Reproductible et déployable</li>
+<li>🛡️ Prévient le data leakage en cross-validation</li>
+</ul>
+
+<figure><img src="../../assets/images/ml-workflow-03-e4a47980.png" alt="" loading="lazy"></figure>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/compose.html" target="_blank" rel="noopener">sklearn — Pipeline and composite estimators</a></p>
+
+<hr>
+
+<h2 id="3-pipelines-de-preprocessing">3) Pipelines de preprocessing</h2>
+
+<p>Dataset utilisé : assurance santé (charges ~ age, bmi, children, smoker, region)</p>
+
+<p>👉 <a href="https://wagon-public-datasets.s3.amazonaws.com/data_workflow.csv" target="_blank" rel="noopener">Télécharger le dataset</a></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">X = data.drop(columns=&#x27;charges&#x27;)
+y = data[&#x27;charges&#x27;]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20)
+## X_train.shape = (1070, 5), X_test.shape = (268, 5)</code></pre></div>
+
+
+<h3 id="31-pipeline-séquentiel">3.1 Pipeline → → → (séquentiel)</h3>
+
+<p>Un <code>Pipeline</code> <strong>chaîne</strong> plusieurs étapes en séquence — chaque étape reçoit l'output de la précédente.</p>
+
+<p>👉 <a href="https://scikit-learn.org/0.16/modules/generated/sklearn.pipeline.Pipeline.html" target="_blank" rel="noopener">sklearn.pipeline.Pipeline</a></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
+
+## Imputer puis scaler la feature &#x27;age&#x27;
+pipeline = Pipeline([
+    (&#x27;imputer&#x27;, SimpleImputer(strategy=&quot;median&quot;)),  # remplace NaN par la médiane
+    (&#x27;scaler&#x27;,  StandardScaler())                   # standardise (µ=0, σ=1)
+])
+
+pipeline.fit(X_train[[&#x27;age&#x27;]])         # apprend médiane + µ/σ sur le train
+pipeline.transform(X_train[[&#x27;age&#x27;]])   # applique les deux transformations</code></pre></div>
+
+
+<h3 id="32-columntransformer-traitements-parallèles-par-colonne">3.2 ColumnTransformer ⑂ (traitements parallèles par colonne)</h3>
+
+<p>Un <code>ColumnTransformer</code> applique des transformations <strong>différentes</strong> à des <strong>colonnes différentes</strong> en parallèle.</p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html" target="_blank" rel="noopener">sklearn.compose.ColumnTransformer</a></p>
+
+<figure><img src="../../assets/images/ml-workflow-04-cb065b1e.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
+
+## Transformer pour colonnes numériques : impute puis scale
+num_transformer = Pipeline([
+    (&#x27;imputer&#x27;, SimpleImputer(strategy=&quot;mean&quot;)),  # remplace NaN par la moyenne
+    (&#x27;scaler&#x27;,  StandardScaler())                 # standardise
+])
+
+## Transformer pour colonnes catégorielles : encode
+cat_transformer = OneHotEncoder(handle_unknown=&#x27;ignore&#x27;)  # ignore les catégories inconnues au test
+
+preprocessor = ColumnTransformer([
+    (&#x27;num&#x27;, num_transformer, [&#x27;age&#x27;, &#x27;bmi&#x27;]),       # applique num_transformer à age et bmi
+    (&#x27;cat&#x27;, cat_transformer, [&#x27;smoker&#x27;, &#x27;region&#x27;])  # applique OHE à smoker et region
+], remainder=&#x27;passthrough&#x27;)   # conserve &#x27;children&#x27; sans transformation</code></pre></div>
+
+
+<p><strong>Récupérer les noms des colonnes après transformation :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">preprocessor.fit_transform(X_train)          # shape (1070, 8) sans children
+preprocessor.get_feature_names_out()
+## → [&#x27;num__age&#x27;, &#x27;num__bmi&#x27;, &#x27;cat__smoker_False&#x27;, &#x27;cat__smoker_True&#x27;,
+##    &#x27;cat__region_northeast&#x27;, &#x27;cat__region_northwest&#x27;, ...]</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>remainder=&#x27;passthrough&#x27;</code> : conserve les colonnes non listées (ici <code>children</code>). Sans cette option, elles sont supprimées silencieusement.</p></div></div>
+
+<h3 id="33-functiontransformer-transformer-custom-stateless">3.3 FunctionTransformer → (transformer custom stateless)</h3>
+
+<p>Encapsule une <strong>fonction Python</strong> dans un transformer sklearn compatible Pipeline / ColumnTransformer.</p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.FunctionTransformer.html" target="_blank" rel="noopener">sklearn.preprocessing.FunctionTransformer</a></p>
+
+<figure><img src="../../assets/images/ml-workflow-05-540ebb3d.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import FunctionTransformer
+import numpy as np
+
+## Arrondi à 2 décimales (stateless : ne &quot;apprend&quot; rien)
+rounder = FunctionTransformer(lambda arr: np.round(arr, decimals=2))
+
+## Intégration dans le pipeline numérique
+num_transformer = Pipeline([
+    (&#x27;imputer&#x27;, SimpleImputer()),
+    (&#x27;scaler&#x27;,  StandardScaler()),
+    (&#x27;rounder&#x27;, rounder)         # arrondi après scaling
+])</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>FunctionTransformer</code> ne fonctionne que pour les transformations <strong>stateless</strong> (sans mémoire entre fit et transform). Pour des transformations qui "apprennent" quelque chose sur le train (comme StandardScaler), il faut créer une classe custom.</p></div></div>
+
+<p><strong>Transformations stateless vs stateful :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Stateless</th><th>Stateful</th></tr></thead><tbody><tr><td><strong>Définition</strong></td><td>Ne stocke rien pendant <code>.fit()</code></td><td>Stocke des constantes pendant <code>.fit()</code></td></tr><tr><td><strong>Exemples</strong></td><td><code>log(X)</code>, <code>X₁ + 5·X₂</code>, arrondi</td><td><code>StandardScaler</code> (apprend µ, σ), <code>MinMaxScaler</code> (apprend min, max)</td></tr><tr><td><strong>Outil sklearn</strong></td><td><code>FunctionTransformer</code></td><td>Classe héritant de <code>TransformerMixin</code>  • <code>BaseEstimator</code></td></tr></tbody></table></div>
+<h3 id="34-custom-transformer-stateful-classe-python">3.4 Custom Transformer stateful (classe Python)</h3>
+
+<p>Pour les transformations qui doivent <strong>mémoriser des valeurs sur le train set</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.base import TransformerMixin, BaseEstimator
+
+class MyCustomTransformer(TransformerMixin, BaseEstimator):
+    # BaseEstimator    → fournit get_params() / set_params() requis par les Pipelines
+    # TransformerMixin → génère fit_transform() automatiquement depuis fit() + transform()
+
+    def __init__(self):
+        pass
+
+    def fit(self, X, y=None):
+        # Apprendre et stocker les constantes en attributs d&#x27;instance
+        # ex: self.mean_ = X.mean()
+        return self    # retourner self pour le chaînage .fit().transform()
+
+    def transform(self, X, y=None):
+        # Appliquer la transformation en utilisant les attributs stockés
+        # Retourner un DataFrame pour compatibilité ColumnTransformer
+        return X
+
+## Usage
+my_transformer = MyCustomTransformer()
+my_transformer.fit(X_train)         # apprend sur le train
+my_transformer.transform(X_train)   # transforme le train
+my_transformer.transform(X_test)    # transforme le test avec les constantes du train</code></pre></div>
+
+
+<h3 id="35-featureunion-concaténation-de-branches-parallèles">3.5 FeatureUnion || (concaténation de branches parallèles)</h3>
+
+<p><code>FeatureUnion</code> applique des transformateurs en parallèle et <strong>concatène</strong> les résultats — utile pour créer de nouvelles features.</p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.FeatureUnion.html" target="_blank" rel="noopener">sklearn.pipeline.FeatureUnion</a></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.pipeline import FeatureUnion
+
+## Créer une nouvelle feature : ratio bmi/age
+bmi_age_ratio = FunctionTransformer(
+    lambda df: pd.DataFrame(df[&#x27;bmi&#x27;] / df[&#x27;age&#x27;])  # retourne une nouvelle colonne
+)
+
+## Concaténer le preprocessing existant avec la nouvelle feature
+union = FeatureUnion([
+    (&#x27;preprocess&#x27;,    preprocessor),   # colonnes 0-7 (résultat du ColumnTransformer)
+    (&#x27;bmi_age_ratio&#x27;, bmi_age_ratio)   # colonne 8 (nouvelle feature)
+])
+
+pd.DataFrame(union.fit_transform(X_train)).head(1)
+## shape = (1070, 9) : 8 colonnes preprocessées + 1 nouvelle feature</code></pre></div>
+
+
+<h3 id="36-shortcuts-make_">3.6 Shortcuts make_* ⚡️</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.pipeline import make_pipeline, make_union
+from sklearn.compose import make_column_transformer, make_column_selector
+
+## make_pipeline : pas besoin de nommer les étapes
+num_transformer = make_pipeline(SimpleImputer(), StandardScaler())
+
+## make_column_selector : sélection automatique par dtype
+num_col = make_column_selector(dtype_include=[&#x27;float64&#x27;])          # age, bmi
+cat_col = make_column_selector(dtype_include=[&#x27;object&#x27;, &#x27;bool&#x27;])   # region, smoker
+
+## Pipeline de preprocessing complet
+preproc = make_column_transformer(
+    (num_transformer, num_col),       # scale les float
+    (OneHotEncoder(), cat_col),       # encode les catégories
+    remainder=&#x27;passthrough&#x27;           # conserve children
+)
+
+## Ajouter une feature créée
+preproc_full = make_union(preproc, bmi_age_ratio)</code></pre></div>
+
+
+<hr>
+
+<h2 id="4-pipeline-complet-avec-modèle">4) Pipeline complet avec modèle</h2>
+
+<p>Un modèle sklearn peut être ajouté <strong>en dernière étape</strong> du Pipeline — le pipeline hérite alors des méthodes du modèle (<code>.predict()</code>, <code>.score()</code>).</p>
+
+<figure><img src="../../assets/images/ml-workflow-06-e4a47980.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import Ridge
+
+## Preprocessor + modèle en un seul objet
+pipeline = make_pipeline(preproc, Ridge())
+
+## .fit() : appelle fit_transform() sur le preprocessor puis fit() sur Ridge
+pipeline.fit(X_train, y_train)
+
+## .predict() : appelle transform() sur le preprocessor puis predict() sur Ridge
+pipeline.predict(X_test.iloc[0:1])   # → array([10216.57])
+
+## .score() : score du modèle sur les données transformées
+pipeline.score(X_test, y_test)       # → 0.747</code></pre></div>
+
+
+<h3 id="41-cross-validation-sans-data-leakage">4.1 Cross-validation sans data leakage</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import cross_val_score
+
+## Le Pipeline garantit que le fit du preprocessor se fait uniquement sur le fold de train
+cross_val_score(pipeline, X_train, y_train, cv=5, scoring=&#x27;r2&#x27;).mean()  # → 0.743</code></pre></div>
+
+
+<h3 id="42-gridsearchcv-sur-le-pipeline">4.2 GridSearchCV sur le Pipeline</h3>
+
+<p>La syntaxe pour accéder aux hyperparamètres d'un Pipeline est <code>étape__sous_étape__paramètre</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import GridSearchCV
+
+## Voir tous les hyperparamètres accessibles
+pipeline.get_params()
+
+## Grid Search sur le preprocessing ET le modèle simultanément
+grid_search = GridSearchCV(
+    pipeline,
+    param_grid={
+        # Hyperparamètre du SimpleImputer dans le ColumnTransformer
+        &#x27;columntransformer__pipeline__simpleimputer__strategy&#x27;: [&#x27;mean&#x27;, &#x27;median&#x27;],
+        # Hyperparamètre du modèle Ridge
+        &#x27;ridge__alpha&#x27;: [0.1, 0.5, 1, 5, 10]
+    },
+    cv=5,
+    scoring=&#x27;r2&#x27;
+)
+
+grid_search.fit(X_train, y_train)
+grid_search.best_params_      # → {&#x27;...strategy&#x27;: &#x27;mean&#x27;, &#x27;ridge__alpha&#x27;: 1}
+
+## Meilleur pipeline, déjà entraîné
+pipeline_tuned = grid_search.best_estimator_
+pipeline_tuned.predict(X_test[0:1])   # → array([10216.57])</code></pre></div>
+
+
+<h3 id="43-debug-du-pipeline">4.3 Debug du Pipeline</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Lister les étapes nommées du pipeline
+pipeline_tuned.named_steps.keys()   # → dict_keys([&#x27;columntransformer&#x27;, &#x27;ridge&#x27;])
+
+## Vérifier le shape à une étape intermédiaire
+print(X_train.shape)   # (1070, 5) avant preprocessing
+pipeline_tuned.named_steps[&#x27;columntransformer&#x27;].fit_transform(X_train).shape  # (1070, 9) après</code></pre></div>
+
+
+<h3 id="44-cache-pour-accélérer-le-gridsearch">4.4 Cache pour accélérer le GridSearch</h3>
+
+<p>Utile quand le preprocessing est long et que seul le modèle change entre les combinaisons.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tempfile import mkdtemp
+from shutil import rmtree
+
+cachedir = mkdtemp()   # répertoire temporaire pour le cache
+
+pipeline = Pipeline(steps, memory=cachedir)   # preprocessing mis en cache après le 1er fit
+
+## ... GridSearchCV ici, le preprocessing ne sera calculé qu&#x27;une fois ...
+
+rmtree(cachedir)   # nettoyer le cache après usage</code></pre></div>
+
+
+<h3 id="45-export-du-pipeline-pickle">4.5 Export du Pipeline (pickle)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pickle
+
+## Sauvegarder le pipeline entraîné
+with open(&quot;pipeline.pkl&quot;, &quot;wb&quot;) as f:
+    pickle.dump(pipeline_tuned, f)
+
+## Recharger sans ré-entraîner
+pipeline_loaded = pickle.load(open(&quot;pipeline.pkl&quot;, &quot;rb&quot;))
+pipeline_loaded.score(X_test, y_test)   # → 0.747</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Le fichier pickle peut être déployé sur un serveur (voir le module <strong>ML Ops</strong>) pour faire des prédictions en production sans ré-entraîner le modèle.</p></div></div>
+
+<hr>
+
+<h2 id="5-automl-tpot">5) AutoML — TPOT</h2>
+
+<p><strong>TPOT</strong> (Tree-based Pipeline Optimization Tool) explore et optimise automatiquement les pipelines ML via des algorithmes évolutionnaires.</p>
+
+<figure><img src="../../assets/images/ml-workflow-07-841d2e3e.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install TPOT</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tpot import TPOTRegressor
+
+## Preprocessing manuel nécessaire avant TPOT
+X_train_preproc = preproc.fit_transform(X_train)
+X_test_preproc  = preproc.transform(X_test)
+
+## Lancer l&#x27;AutoML
+tpot = TPOTRegressor(
+    generations=4,       # nombre de générations évolutionnaires
+    population_size=20,  # taille de la population de pipelines
+    scoring=&#x27;r2&#x27;,
+    n_jobs=-1,
+    cv=2
+)
+tpot.fit(X_train_preproc, y_train)
+tpot.score(X_test_preproc, y_test)   # → 0.873</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Exporter le meilleur pipeline en fichier Python
+tpot.export(&#x27;tpot_best_pipeline.py&#x27;)</code></pre></div>
+
+
+<p>👉 <a href="http://epistasislab.github.io/tpot/" target="_blank" rel="noopener">Documentation TPOT</a></p>
+
+<hr>
+
+<h2 id="6-récapitulatif-composants-sklearn">6) Récapitulatif — Composants sklearn</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Composant</th><th>Rôle</th><th>Symbole</th></tr></thead><tbody><tr><td><code>Pipeline</code></td><td>Chaîne d'étapes séquentielles</td><td>→ → →</td></tr><tr><td><code>ColumnTransformer</code></td><td>Étapes parallèles par colonnes</td><td>⑂</td></tr><tr><td><code>FunctionTransformer</code></td><td>Encapsule une fonction stateless</td><td>→</td></tr><tr><td><code>FeatureUnion</code></td><td>Branches parallèles concaténées</td><td>\</td></tr><tr><td><code>make_pipeline</code></td><td>Shortcut <code>Pipeline</code> sans nommage</td><td>⚡️</td></tr><tr><td><code>make_column_transformer</code></td><td>Shortcut <code>ColumnTransformer</code></td><td>⚡️</td></tr><tr><td><code>make_column_selector</code></td><td>Sélection auto par dtype</td><td>⚡️</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="ressources">📚 Ressources</h2>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/compose.html" target="_blank" rel="noopener">sklearn — Pipeline and composite estimators</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/0.16/modules/generated/sklearn.pipeline.Pipeline.html" target="_blank" rel="noopener">sklearn.pipeline.Pipeline</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html" target="_blank" rel="noopener">sklearn.compose.ColumnTransformer</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.FunctionTransformer.html" target="_blank" rel="noopener">sklearn.preprocessing.FunctionTransformer</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.FeatureUnion.html" target="_blank" rel="noopener">sklearn.pipeline.FeatureUnion</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html" target="_blank" rel="noopener">sklearn.model_selection.GridSearchCV</a></p>
+
+<p>👉 <a href="http://epistasislab.github.io/tpot/" target="_blank" rel="noopener">TPOT AutoML documentation</a></p>
+
+<p>👉 <a href="https://wagon-public-datasets.s3.amazonaws.com/data_workflow.csv" target="_blank" rel="noopener">Dataset assurance santé</a></p>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><li><a href="#ref-1-choisir-son-modèle-paramétrique-vs-non-paramétrique">1. Choisir son modèle : paramétrique vs non-paramétrique</a><ol><li><a href="#ref-les-modèles-paramétriques">Les modèles paramétriques</a></li><li><a href="#ref-les-modèles-non-paramétriques">Les modèles non-paramétriques</a></li></ol></li><li><a href="#ref-2-les-pipelines-sklearn-cest-quoi-exactement">2. Les Pipelines sklearn : c'est quoi exactement ?</a><li><a href="#ref-3-pipeline-séquentiel-chaîner-des-étapes">3. Pipeline séquentiel : chaîner des étapes</a><ol><li><a href="#ref-le-contexte-dataset-assurance-santé">Le contexte : dataset assurance santé</a></li><li><a href="#ref-construire-un-pipeline-séquentiel">Construire un Pipeline séquentiel</a></li></ol></li><li><a href="#ref-4-columntransformer-des-traitements-différents-par-colonne">4. ColumnTransformer : des traitements différents par colonne</a><ol><li><a href="#ref-visualiser-ce-qui-se-passe">Visualiser ce qui se passe</a></li></ol></li><li><a href="#ref-5-functiontransformer-encapsuler-une-fonction-python">5. FunctionTransformer : encapsuler une fonction Python</a><ol><li><a href="#ref-stateless-vs-stateful-une-distinction-importante">Stateless vs Stateful : une distinction importante</a></li></ol></li><li><a href="#ref-6-custom-transformer-stateful-créer-sa-propre-classe">6. Custom Transformer stateful : créer sa propre classe</a><li><a href="#ref-7-featureunion-créer-de-nouvelles-features-et-les-fusionner">7. FeatureUnion : créer de nouvelles features et les fusionner</a><li><a href="#ref-8-raccourcis-make_-coder-plus-vite">8. Raccourcis make_* : coder plus vite</a><li><a href="#ref-9-pipeline-complet-avec-modèle">9. Pipeline complet avec modèle</a><li><a href="#ref-10-cross-validation-sans-data-leakage">10. Cross-validation sans data leakage</a><ol><li><a href="#ref-le-problème-du-data-leakage-expliqué-simplement">Le problème du data leakage expliqué simplement</a></li></ol></li><li><a href="#ref-11-gridsearchcv-tuner-le-pipeline-entier">11. GridSearchCV : tuner le pipeline entier</a><ol><li><a href="#ref-la-syntaxe-des-hyperparamètres-dans-un-pipeline">La syntaxe des hyperparamètres dans un Pipeline</a></li></ol></li><li><a href="#ref-12-débugger-un-pipeline">12. Débugger un Pipeline</a><ol><li><a href="#ref-accélérer-le-gridsearch-avec-le-cache">Accélérer le GridSearch avec le cache</a></li></ol></li><li><a href="#ref-13-exporter-et-recharger-un-pipeline-pickle">13. Exporter et recharger un Pipeline (pickle)</a><li><a href="#ref-14-automl-avec-tpot-bonus">14. AutoML avec TPOT (bonus)</a><li><a href="#ref-15-récapitulatif-des-composants-sklearn">15. Récapitulatif des composants sklearn</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<hr>
+
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Quand on construit un modèle de machine learning, on ne fait pas juste "entraîner un algo". On suit un <strong>pipeline</strong>, c'est-à-dire une chaîne d'étapes ordonnées : préparer les données, entraîner le modèle, évaluer ses performances sur des données qu'il n'a jamais vues.</p>
+
+<p><strong>L'analogie fil rouge : une recette de cuisine</strong></p>
+
+<p>Imagine que tu cuisines un plat. Tu dois :</p>
+<ol>
+<li>Préparer les ingrédients (couper, éplucher, assaisonner) — c'est le <strong>preprocessing</strong></li>
+<li>Cuisiner (cuire à la bonne température) — c'est <strong>l'entraînement du modèle</strong></li>
+<li>Goûter et ajuster — c'est <strong>l'évaluation et le tuning</strong></li>
+<li>Mettre en boîte pour livrer — c'est <strong>l'export du pipeline</strong></li>
+</ol>
+
+<p>En ML, <code>sklearn</code> te donne des outils pour automatiser tout ça en un seul objet appelé <strong>Pipeline</strong>.</p>
+
+<p><strong>5 points à retenir avant de commencer :</strong></p>
+
+<ul>
+<li>Un pipeline ML enchaîne les étapes de preprocessing et de modélisation dans un seul objet</li>
+<li>On entraîne toujours sur <code>X_train</code> et on évalue sur <code>X_test</code> — jamais on ne mélange les deux</li>
+<li>Le <strong>data leakage</strong> (fuite de données) est l'erreur la plus fréquente : si le preprocessor "voit" les données de test pendant l'entraînement, les scores sont faussement bons</li>
+<li><code>Pipeline</code> de sklearn est le remède principal contre le data leakage</li>
+<li>On peut tuner le preprocessing ET le modèle en une seule passe avec <code>GridSearchCV</code></li>
+</ul>
+
+<p><strong>Mini-plan du cours :</strong></p>
+
+<ol>
+<li>Choisir un modèle : paramétrique vs non-paramétrique</li>
+<li>Construire un Pipeline séquentiel</li>
+<li>Gérer des colonnes hétérogènes avec <code>ColumnTransformer</code></li>
+<li>Créer des transformations custom</li>
+<li>Assembler le Pipeline complet avec modèle</li>
+<li>Tuner, débugger, exporter</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-choisir-son-modèle-paramétrique-vs-non-paramétrique">1. Choisir son modèle : paramétrique vs non-paramétrique</h2>
+
+<p>Avant même d'écrire du code, il faut choisir quel type de modèle utiliser. Il en existe deux grandes familles.</p>
+
+<h3 id="ref-les-modèles-paramétriques">Les modèles paramétriques</h3>
+
+<p>Ce sont des modèles qui ont une <strong>forme fixée à l'avance</strong>. Leur formule mathématique ressemble à :</p>
+
+<div class="katex-display">$$\hat{y} = f_\beta(X)$$</div>
+
+<p>Où $\beta$ représente les paramètres que le modèle apprend (par exemple les coefficients d'une régression linéaire). Peu importe la taille du dataset, le nombre de paramètres reste le même.</p>
+
+<p><strong>Exemples :</strong> régression linéaire, régression logistique, réseaux de neurones</p>
+
+<p><strong>Analogie :</strong> c'est comme une balance à deux plateaux — on sait déjà que la structure est "plateau gauche vs plateau droit", on ajuste juste les poids.</p>
+
+<p><strong>Avantages :</strong> rapides à entraîner, fonctionnent bien sur de grands datasets</p>
+<p><strong>Inconvénients :</strong> si les données ne correspondent pas à la forme supposée, le modèle performe mal</p>
+
+<h3 id="ref-les-modèles-non-paramétriques">Les modèles non-paramétriques</h3>
+
+<p>Ces modèles ne supposent <strong>aucune forme a priori</strong>. Ils s'adaptent à la structure des données.</p>
+
+<p><strong>Exemples :</strong> K-Nearest Neighbors (KNN), arbres de décision, SVM avec kernel</p>
+
+<p><strong>Analogie :</strong> c'est comme un sculpteur qui part d'un bloc et s'adapte à la matière — la forme finale dépend entièrement des données.</p>
+
+<p><strong>Avantages :</strong> capturent des patterns complexes et non linéaires</p>
+<p><strong>Inconvénients :</strong> plus lents, plus sujets à l'overfitting sur de grands datasets</p>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Paramétriques</th><th>Non-paramétriques</th></tr></thead><tbody><tr><td>Exemples</td><td>Régression linéaire, logistique</td><td>KNN, arbres de décision, SVM</td></tr><tr><td>Forme</td><td>Fixée ($\hat{y} = f_\beta(X)$)</td><td>Adaptée aux données</td></tr><tr><td>Avantages</td><td>Rapides, scalables</td><td>Capturent des patterns complexes</td></tr><tr><td>Inconvénients</td><td>Hypothèses a priori</td><td>Overfitting, lents sur grands datasets</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>En pratique, on commence souvent par un modèle paramétrique simple (régression linéaire/logistique) pour établir une baseline, puis on essaie des modèles plus complexes.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-les-pipelines-sklearn-cest-quoi-exactement">2. Les Pipelines sklearn : c'est quoi exactement ?</h2>
+
+<p>Un <code>Pipeline</code> sklearn, c'est un <strong>objet qui regroupe plusieurs étapes de traitement dans une séquence</strong>. Au lieu d'appliquer manuellement chaque transformation puis d'entraîner le modèle, tu mets tout dans un pipeline et tu appelles <code>.fit()</code> une seule fois.</p>
+
+<p><strong>Pourquoi c'est utile ?</strong></p>
+
+<ul>
+<li>Le code est lisible et organisé</li>
+<li>L'ordre des étapes est garanti (on ne peut pas oublier une étape)</li>
+<li>C'est facilement exportable et déployable</li>
+<li>Cela <strong>prévient le data leakage</strong> en cross-validation (point capital, expliqué plus bas)</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Imagine un pipeline comme une chaîne de montage dans une usine. Chaque poste fait une opération précise, dans un ordre fixe. La voiture (tes données) passe de poste en poste et ressort transformée à la fin.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-pipeline-séquentiel-chaîner-des-étapes">3. Pipeline séquentiel : chaîner des étapes</h2>
+
+<h3 id="ref-le-contexte-dataset-assurance-santé">Le contexte : dataset assurance santé</h3>
+
+<p>On travaille sur un dataset de frais d'assurance santé. On veut prédire les <code>charges</code> (montant payé) à partir de variables comme l'âge, l'IMC, le nombre d'enfants, le statut fumeur, et la région.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Séparation des features (X) et de la cible (y)
+X = data.drop(columns=&#x27;charges&#x27;)   # toutes les colonnes sauf charges
+y = data[&#x27;charges&#x27;]                 # la colonne à prédire
+
+# Découpage train / test : 80% pour entraîner, 20% pour évaluer
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20)
+# X_train.shape = (1070, 5) → 1070 lignes, 5 colonnes
+# X_test.shape  = (268, 5)  → 268 lignes, 5 colonnes</code></pre></div>
+
+
+<p><strong>Explication ligne par ligne :</strong></p>
+<ul>
+<li><code>drop(columns=&#x27;charges&#x27;)</code> : on retire la colonne à prédire des features</li>
+<li><code>train_test_split(..., test_size=0.20)</code> : 20 % des données sont mises de côté pour le test final — le modèle ne les verra jamais pendant l'entraînement</li>
+</ul>
+
+<h3 id="ref-construire-un-pipeline-séquentiel">Construire un Pipeline séquentiel</h3>
+
+<p>Un <code>Pipeline</code> séquentiel enchaîne des transformations une à une. La sortie de l'étape 1 devient l'entrée de l'étape 2, etc.</p>
+
+<p><strong>Exemple :</strong> on veut imputer les valeurs manquantes de la colonne <code>age</code>, puis la standardiser.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.pipeline import Pipeline           # import du Pipeline
+from sklearn.impute import SimpleImputer        # pour gérer les valeurs manquantes
+from sklearn.preprocessing import StandardScaler # pour standardiser
+
+# Création du pipeline : liste de tuples (nom, transformateur)
+pipeline = Pipeline([
+    (&#x27;imputer&#x27;, SimpleImputer(strategy=&quot;median&quot;)),  # étape 1 : remplace NaN par la médiane
+    (&#x27;scaler&#x27;,  StandardScaler())                   # étape 2 : standardise (µ=0, écart-type=1)
+])
+
+# .fit() : le pipeline apprend la médiane ET les paramètres de scaling sur X_train
+pipeline.fit(X_train[[&#x27;age&#x27;]])
+
+# .transform() : applique l&#x27;imputation PUIS le scaling dans l&#x27;ordre
+pipeline.transform(X_train[[&#x27;age&#x27;]])</code></pre></div>
+
+
+<p><strong>Récap :</strong> on crée un pipeline avec <code>Pipeline([...])</code>, chaque étape est un tuple <code>(&#x27;nom&#x27;, transformateur)</code>. On appelle <code>.fit()</code> pour apprendre, <code>.transform()</code> pour appliquer.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>On appelle toujours <code>.fit()</code> uniquement sur <code>X_train</code>. Si on fitait sur tout le dataset (train + test), le modèle "tricherait" en connaissant les données de test à l'avance.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-columntransformer-des-traitements-différents-par-colonne">4. ColumnTransformer : des traitements différents par colonne</h2>
+
+<p>Dans la vraie vie, un dataset a plusieurs types de colonnes :</p>
+<ul>
+<li>Des colonnes <strong>numériques</strong> (age, bmi) → on impute et on standardise</li>
+<li>Des colonnes <strong>catégorielles</strong> (smoker, region) → on encode en one-hot</li>
+</ul>
+
+<p>Le <code>ColumnTransformer</code> permet d'appliquer des <strong>transformations différentes à des colonnes différentes, en parallèle</strong>.</p>
+
+<p><strong>Analogie :</strong> c'est comme un tri postal. Les lettres (colonnes numériques) vont dans un couloir, les colis (colonnes catégorielles) dans un autre, et chaque couloir a son propre traitement.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.compose import ColumnTransformer      # pour le tri par colonnes
+from sklearn.preprocessing import OneHotEncoder    # pour encoder les catégories
+
+# --- Transformer pour colonnes NUMERIQUES ---
+num_transformer = Pipeline([
+    (&#x27;imputer&#x27;, SimpleImputer(strategy=&quot;mean&quot;)),  # remplace NaN par la moyenne
+    (&#x27;scaler&#x27;,  StandardScaler())                 # centre et réduit (moyenne=0, écart-type=1)
+])
+
+# --- Transformer pour colonnes CATEGORIELLES ---
+# handle_unknown=&#x27;ignore&#x27; : si une catégorie inconnue apparaît au test, elle est ignorée
+cat_transformer = OneHotEncoder(handle_unknown=&#x27;ignore&#x27;)
+
+# --- Assemblage du ColumnTransformer ---
+preprocessor = ColumnTransformer([
+    (&#x27;num&#x27;, num_transformer, [&#x27;age&#x27;, &#x27;bmi&#x27;]),          # applique num_transformer à age et bmi
+    (&#x27;cat&#x27;, cat_transformer, [&#x27;smoker&#x27;, &#x27;region&#x27;])     # applique OHE à smoker et region
+], remainder=&#x27;passthrough&#x27;)  # conserve les colonnes non listées (ici : children) sans les toucher
+
+# Application : fit + transform en une seule passe sur X_train
+X_train_transformed = preprocessor.fit_transform(X_train)
+# → shape (1070, 8) : age, bmi, smoker_False, smoker_True, region_ne, region_nw, region_se, region_sw
+
+# Voir les noms des colonnes après transformation
+preprocessor.get_feature_names_out()
+# → [&#x27;num__age&#x27;, &#x27;num__bmi&#x27;, &#x27;cat__smoker_False&#x27;, &#x27;cat__smoker_True&#x27;, ...]</code></pre></div>
+
+
+<p><strong>Récap :</strong> <code>ColumnTransformer</code> prend une liste de tuples <code>(nom, transformateur, colonnes)</code> et applique chaque transformateur à ses colonnes. La sortie est une matrice avec toutes les colonnes transformées concaténées.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Sans <code>remainder=&#x27;passthrough&#x27;</code>, toutes les colonnes non listées dans le <code>ColumnTransformer</code> sont <strong>supprimées silencieusement</strong>. C'est un piège classique ! Ici, la colonne <code>children</code> aurait disparu sans cette option.</p></div></div>
+
+<h3 id="ref-visualiser-ce-qui-se-passe">Visualiser ce qui se passe</h3>
+
+<p>Avant transformation : 5 colonnes (<code>age</code>, <code>bmi</code>, <code>children</code>, <code>smoker</code>, <code>region</code>)</p>
+
+<p>Après transformation :</p>
+<ul>
+<li><code>age</code> → 1 colonne (standardisée)</li>
+<li><code>bmi</code> → 1 colonne (standardisée)</li>
+<li><code>smoker</code> → 2 colonnes (True/False encodé)</li>
+<li><code>region</code> → 4 colonnes (northeast, northwest, southeast, southwest)</li>
+<li><code>children</code> → 1 colonne (inchangée via passthrough)</li>
+</ul>
+
+<p>Total : <strong>9 colonnes</strong> en sortie</p>
+
+<hr>
+
+<h2 id="ref-5-functiontransformer-encapsuler-une-fonction-python">5. FunctionTransformer : encapsuler une fonction Python</h2>
+
+<p>Parfois on veut appliquer une transformation simple — comme prendre le logarithme d'une colonne — sans créer une classe entière. C'est le rôle de <code>FunctionTransformer</code>.</p>
+
+<p><strong>Exemple :</strong> les charges d'assurance ont une distribution très asymétrique. Appliquer $\log(1 + x)$ permet de la rendre plus symétrique et d'améliorer certains modèles.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import FunctionTransformer  # encapsule une fonction simple
+import numpy as np
+
+# Créer un transformer qui arrondit à 2 décimales
+# lambda : une petite fonction anonyme Python
+rounder = FunctionTransformer(lambda arr: np.round(arr, decimals=2))
+
+# Créer un transformer qui applique log(1 + x)
+# np.log1p(x) = log(1 + x) → évite log(0) quand x=0
+log_transformer = FunctionTransformer(np.log1p)
+
+# Intégration dans un pipeline numérique
+num_transformer = Pipeline([
+    (&#x27;imputer&#x27;, SimpleImputer()),     # remplace les NaN
+    (&#x27;scaler&#x27;,  StandardScaler()),    # standardise
+    (&#x27;rounder&#x27;, rounder)              # arrondit à 2 décimales après scaling
+])</code></pre></div>
+
+
+<p><strong>Récap :</strong> <code>FunctionTransformer</code> "enveloppe" une fonction Python classique pour la rendre compatible avec un pipeline sklearn. C'est pratique pour des transformations simples et sans mémoire.</p>
+
+<h3 id="ref-stateless-vs-stateful-une-distinction-importante">Stateless vs Stateful : une distinction importante</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Stateless (sans mémoire)</th><th>Stateful (avec mémoire)</th></tr></thead><tbody><tr><td>Définition</td><td>Ne stocke rien pendant <code>.fit()</code></td><td>Apprend et stocke des valeurs pendant <code>.fit()</code></td></tr><tr><td>Exemples</td><td><code>log(x)</code>, arrondi, $x^2$</td><td><code>StandardScaler</code> (apprend $\mu$ et $\sigma$), <code>MinMaxScaler</code></td></tr><tr><td>Outil sklearn</td><td><code>FunctionTransformer</code></td><td>Classe héritant de <code>TransformerMixin</code> + <code>BaseEstimator</code></td></tr></tbody></table></div>
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais utiliser <code>FunctionTransformer</code> pour une transformation <strong>stateful</strong>. Par exemple, <code>FunctionTransformer(lambda X: (X - X.mean()) / X.std())</code> recalculerait la moyenne et l'écart-type à chaque appel — y compris sur les données de test — ce qui est du data leakage !</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-custom-transformer-stateful-créer-sa-propre-classe">6. Custom Transformer stateful : créer sa propre classe</h2>
+
+<p>Quand une transformation doit <strong>apprendre quelque chose sur le train set</strong> et <strong>réutiliser ces valeurs appris sur le test set</strong>, il faut créer une classe Python.</p>
+
+<p><strong>Exemple concret :</strong> imaginons qu'on veuille créer un transformateur qui apprend la médiane de chaque colonne sur le train, puis remplace les valeurs aberrantes par cette médiane sur le test.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.base import TransformerMixin, BaseEstimator
+# TransformerMixin : donne la méthode fit_transform() automatiquement
+# BaseEstimator    : donne get_params() et set_params() requis par sklearn
+
+class MyCustomTransformer(TransformerMixin, BaseEstimator):
+
+    def __init__(self):
+        # Ici : paramètres de configuration (hyperparamètres)
+        # Exemple : self.threshold = threshold
+        pass
+
+    def fit(self, X, y=None):
+        # Ici : on &quot;apprend&quot; sur X_train et on stocke les résultats en attributs
+        # Exemple : self.median_ = X.median()
+        # Le underscore final (_) est une convention sklearn pour les attributs appris
+        return self   # OBLIGATOIRE : retourner self pour permettre le chaînage
+
+    def transform(self, X, y=None):
+        # Ici : on applique la transformation en utilisant les attributs stockés dans fit()
+        # Exemple : remplacer valeurs &gt; seuil par self.median_
+        return X   # retourner le DataFrame transformé
+
+# Utilisation
+my_transformer = MyCustomTransformer()
+my_transformer.fit(X_train)          # apprend sur le train uniquement
+my_transformer.transform(X_train)    # transforme le train
+my_transformer.transform(X_test)     # transforme le test AVEC les valeurs du train</code></pre></div>
+
+
+<p><strong>Récap :</strong> la structure est toujours la même : <code>__init__</code> pour les paramètres de config, <code>fit</code> pour apprendre, <code>transform</code> pour appliquer. On retourne toujours <code>self</code> à la fin de <code>fit</code>.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>La convention du underscore final (ex: <code>self.mean_</code>) indique que cet attribut a été appris lors du <code>.fit()</code>. C'est une convention de la communauté sklearn, pas une obligation Python — mais c'est une bonne pratique à adopter.</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-featureunion-créer-de-nouvelles-features-et-les-fusionner">7. FeatureUnion : créer de nouvelles features et les fusionner</h2>
+
+<p><code>FeatureUnion</code> applique plusieurs transformateurs <strong>en parallèle</strong> et <strong>concatène</strong> leurs sorties. C'est utile pour créer de nouvelles features et les ajouter aux features existantes.</p>
+
+<p><strong>Exemple :</strong> on veut ajouter une nouvelle feature <code>bmi/age</code> (ratio IMC par âge) à notre preprocessing existant.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.pipeline import FeatureUnion
+import pandas as pd
+
+# Créer la nouvelle feature : ratio bmi/age
+# FunctionTransformer + lambda qui retourne un DataFrame (colonne unique)
+bmi_age_ratio = FunctionTransformer(
+    lambda df: pd.DataFrame(df[&#x27;bmi&#x27;] / df[&#x27;age&#x27;])  # nouvelle colonne = bmi divisé par age
+)
+
+# Assembler le preprocessing existant + la nouvelle feature
+union = FeatureUnion([
+    (&#x27;preprocess&#x27;,    preprocessor),    # résultat du ColumnTransformer : 8 colonnes
+    (&#x27;bmi_age_ratio&#x27;, bmi_age_ratio)    # nouvelle feature créée : 1 colonne
+])
+
+# fit_transform applique les deux branches et concatène horizontalement
+X_transformed = union.fit_transform(X_train)
+# shape = (1070, 9) : 8 colonnes preprocessées + 1 nouvelle feature</code></pre></div>
+
+
+<p><strong>Récap :</strong> <code>FeatureUnion</code> prend une liste de tuples <code>(nom, transformateur)</code>, les applique en parallèle sur les mêmes données, et colle les résultats côte à côte.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>FeatureUnion</code> est parfait pour l'<strong>ingénierie de features</strong> : tu gardes toutes tes features originales preprocessées ET tu ajoutes de nouvelles features créées à partir des données.</p></div></div>
+
+<hr>
+
+<h2 id="ref-8-raccourcis-make_-coder-plus-vite">8. Raccourcis make_* : coder plus vite</h2>
+
+<p>sklearn propose des fonctions <code>make_*</code> qui sont des versions raccourcies des constructeurs, sans avoir besoin de nommer chaque étape.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.pipeline import make_pipeline, make_union
+from sklearn.compose import make_column_transformer, make_column_selector
+
+# make_pipeline : équivalent de Pipeline([...]) sans les noms
+# Avant : Pipeline([(&#x27;imputer&#x27;, SimpleImputer()), (&#x27;scaler&#x27;, StandardScaler())])
+# Après :
+num_transformer = make_pipeline(SimpleImputer(), StandardScaler())  # plus concis
+
+# make_column_selector : sélectionne les colonnes automatiquement par type (dtype)
+num_col = make_column_selector(dtype_include=[&#x27;float64&#x27;])         # → sélectionne age, bmi
+cat_col = make_column_selector(dtype_include=[&#x27;object&#x27;, &#x27;bool&#x27;])  # → sélectionne region, smoker
+
+# make_column_transformer : équivalent de ColumnTransformer([...])
+preproc = make_column_transformer(
+    (num_transformer, num_col),    # pipeline numérique sur colonnes float
+    (OneHotEncoder(), cat_col),    # OHE sur colonnes catégorielles
+    remainder=&#x27;passthrough&#x27;        # conserve children
+)
+
+# make_union : équivalent de FeatureUnion([...])
+preproc_full = make_union(preproc, bmi_age_ratio)  # fusionne preprocessing + nouvelle feature</code></pre></div>
+
+
+<p><strong>Récap :</strong> les <code>make_*</code> font exactement la même chose que leurs équivalents, mais avec moins de code. L'inconvénient : les étapes sont nommées automatiquement (moins lisible pour le debug et GridSearch).</p>
+
+<hr>
+
+<h2 id="ref-9-pipeline-complet-avec-modèle">9. Pipeline complet avec modèle</h2>
+
+<p>C'est là que tout s'assemble. Le modèle de prédiction est ajouté <strong>en dernière étape</strong> du pipeline. Le pipeline hérite alors des méthodes <code>.predict()</code> et <code>.score()</code> du modèle.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import Ridge  # modèle de régression régularisée
+
+# Créer le pipeline complet : preprocessing + modèle
+pipeline = make_pipeline(preproc, Ridge())
+# Équivalent : Pipeline([(&#x27;columntransformer&#x27;, preproc), (&#x27;ridge&#x27;, Ridge())])
+
+# .fit() : appelle fit_transform() sur preproc PUIS fit() sur Ridge
+# Il apprend tout en une seule ligne !
+pipeline.fit(X_train, y_train)
+
+# .predict() : appelle transform() sur preproc PUIS predict() sur Ridge
+pipeline.predict(X_test.iloc[0:1])   # prédiction pour la première ligne de X_test
+# → array([10216.57])  (montant de charges prédit en dollars)
+
+# .score() : calcule le R² sur les données transformées
+pipeline.score(X_test, y_test)
+# → 0.747  (le modèle explique 74.7% de la variance des charges)</code></pre></div>
+
+
+<p><strong>Récap :</strong> avec un pipeline complet, <code>.fit(X_train, y_train)</code> fait tout en une fois : transforme les données d'entraînement ET entraîne le modèle. <code>.predict(X_test)</code> transforme et prédit automatiquement.</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>C'est la grande force du Pipeline : une seule interface unifiée. On n'a plus à se souvenir d'appeler <code>transform()</code> avant <code>predict()</code> — le pipeline le fait automatiquement.</p></div></div>
+
+<hr>
+
+<h2 id="ref-10-cross-validation-sans-data-leakage">10. Cross-validation sans data leakage</h2>
+
+<h3 id="ref-le-problème-du-data-leakage-expliqué-simplement">Le problème du data leakage expliqué simplement</h3>
+
+<p>Imagine que tu prépares un exam blanc pour tes étudiants. Si tu leur donnes les réponses avant l'exam (même inconsciemment), leurs notes ne reflèteront pas leur vrai niveau.</p>
+
+<p>C'est pareil en ML : si le <code>StandardScaler</code> "voit" les données de validation pendant son <code>.fit()</code>, les paramètres de normalisation sont biaisés par ces données. Le modèle performe artificiellement bien.</p>
+
+<p><strong>La mauvaise façon (avec data leakage) :</strong></p>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ERREUR : le scaler voit TOUT le dataset, y compris la validation
+preprocessor.fit_transform(X)   # X contient les données de validation !
+cross_val_score(model, X_transformed, y)  # les scores sont optimistes et faux</code></pre></div>
+
+
+<p><strong>La bonne façon (sans data leakage) :</strong></p>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import cross_val_score
+
+# Le Pipeline garantit que le fit du preprocessor se fait UNIQUEMENT sur chaque fold de train
+# sklearn découpe X_train en 5 morceaux (folds), et pour chaque fold :
+#   - fit le pipeline sur les 4 autres folds
+#   - évalue sur le fold restant
+cross_val_score(pipeline, X_train, y_train, cv=5, scoring=&#x27;r2&#x27;).mean()
+# → 0.743  (score moyen sur 5 folds)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Règle d'or : <strong>toujours passer le pipeline (et non les données déjà transformées) à <code>cross_val_score</code></strong>. Ainsi, le preprocessing est re-appris sur chaque fold de train — jamais sur les données de validation.</p></div></div>
+
+<hr>
+
+<h2 id="ref-11-gridsearchcv-tuner-le-pipeline-entier">11. GridSearchCV : tuner le pipeline entier</h2>
+
+<p><code>GridSearchCV</code> teste toutes les combinaisons d'hyperparamètres que tu lui donnes et garde la meilleure. Avec un Pipeline, on peut tuner <strong>le preprocessing ET le modèle simultanément</strong>.</p>
+
+<h3 id="ref-la-syntaxe-des-hyperparamètres-dans-un-pipeline">La syntaxe des hyperparamètres dans un Pipeline</h3>
+
+<p>Pour accéder à un hyperparamètre d'une étape du pipeline, la syntaxe est :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">nom_etape__nom_sous_etape__parametre</code></pre></div>
+
+
+<p>Par exemple : <code>ridge__alpha</code> pour le paramètre <code>alpha</code> de l'étape <code>ridge</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import GridSearchCV
+
+# Voir tous les hyperparamètres accessibles dans le pipeline
+pipeline.get_params()
+# → {&#x27;columntransformer__...__strategy&#x27;: &#x27;mean&#x27;, &#x27;ridge__alpha&#x27;: 1.0, ...}
+
+# Définir la grille de recherche
+grid_search = GridSearchCV(
+    pipeline,    # on cherche sur le pipeline ENTIER
+    param_grid={
+        # Hyperparamètre du SimpleImputer (3 niveaux d&#x27;imbrication)
+        &#x27;columntransformer__pipeline__simpleimputer__strategy&#x27;: [&#x27;mean&#x27;, &#x27;median&#x27;],
+        # Hyperparamètre du modèle Ridge (1 niveau)
+        &#x27;ridge__alpha&#x27;: [0.1, 0.5, 1, 5, 10]   # 5 valeurs à tester
+    },
+    cv=5,            # 5-fold cross-validation
+    scoring=&#x27;r2&#x27;     # métrique d&#x27;évaluation : R²
+)
+
+# Lance la recherche : 2 × 5 = 10 combinaisons × 5 folds = 50 entraînements
+grid_search.fit(X_train, y_train)
+
+# Meilleurs hyperparamètres trouvés
+grid_search.best_params_
+# → {&#x27;columntransformer__pipeline__simpleimputer__strategy&#x27;: &#x27;mean&#x27;, &#x27;ridge__alpha&#x27;: 1}
+
+# Meilleur pipeline déjà entraîné avec les meilleurs hyperparamètres
+pipeline_tuned = grid_search.best_estimator_
+pipeline_tuned.predict(X_test[0:1])   # → array([10216.57])</code></pre></div>
+
+
+<p><strong>Récap :</strong> <code>GridSearchCV</code> teste toutes les combinaisons de paramètres via cross-validation, et <code>best_estimator_</code> te donne directement le meilleur pipeline entraîné, prêt à être utilisé.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>La syntaxe <code>etape__parametre</code> peut être longue pour des pipelines imbriqués. Utilise <code>pipeline.get_params()</code> pour voir exactement les clés disponibles — ne les devine pas.</p></div></div>
+
+<hr>
+
+<h2 id="ref-12-débugger-un-pipeline">12. Débugger un Pipeline</h2>
+
+<p>Quand quelque chose ne va pas, on peut inspecter les étapes internes du pipeline.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Lister les étapes nommées du pipeline
+pipeline_tuned.named_steps.keys()
+# → dict_keys([&#x27;columntransformer&#x27;, &#x27;ridge&#x27;])
+
+# Vérifier le shape des données à une étape intermédiaire
+print(X_train.shape)  # (1070, 5) : 5 colonnes avant preprocessing
+
+# Accéder à l&#x27;étape &#x27;columntransformer&#x27; et vérifier sa sortie
+pipeline_tuned.named_steps[&#x27;columntransformer&#x27;].fit_transform(X_train).shape
+# → (1070, 9) : 9 colonnes après preprocessing (les 4 originales + les encoded)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Débugger un pipeline = vérifier les shapes à chaque étape. Si une étape produit une sortie inattendue, c'est souvent un problème de <code>remainder</code>, d'encodage, ou d'ordre des transformations.</p></div></div>
+
+<h3 id="ref-accélérer-le-gridsearch-avec-le-cache">Accélérer le GridSearch avec le cache</h3>
+
+<p>Quand le preprocessing est long (ex: plein de colonnes, features complexes), on peut le mettre en cache pour éviter de le recalculer à chaque combinaison du GridSearch.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tempfile import mkdtemp   # crée un dossier temporaire
+from shutil import rmtree      # supprime un dossier
+
+cachedir = mkdtemp()   # crée un dossier temporaire sur le disque
+
+# Activer le cache : le preprocessing ne sera calculé qu&#x27;une seule fois par fold
+pipeline = Pipeline(steps, memory=cachedir)
+
+# ... lancer GridSearchCV ici ...
+
+rmtree(cachedir)   # nettoyer le cache après usage (important !)</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-13-exporter-et-recharger-un-pipeline-pickle">13. Exporter et recharger un Pipeline (pickle)</h2>
+
+<p>Une fois le pipeline tuné et évalué, on peut le <strong>sauvegarder sur le disque</strong> pour l'utiliser plus tard, ou le déployer sur un serveur de production.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pickle   # module Python standard pour sérialiser des objets
+
+# --- SAUVEGARDER ---
+with open(&quot;pipeline.pkl&quot;, &quot;wb&quot;) as f:   # &quot;wb&quot; = write binary
+    pickle.dump(pipeline_tuned, f)      # sauvegarde le pipeline dans le fichier
+
+# --- RECHARGER ---
+pipeline_loaded = pickle.load(open(&quot;pipeline.pkl&quot;, &quot;rb&quot;))  # &quot;rb&quot; = read binary
+
+# Utiliser directement sans ré-entraîner
+pipeline_loaded.score(X_test, y_test)   # → 0.747</code></pre></div>
+
+
+<p><strong>Récap :</strong> <code>.pkl</code> (pickle) sérialise n'importe quel objet Python. On sauvegarde le pipeline entraîné avec <code>pickle.dump()</code> et on le recharge avec <code>pickle.load()</code>.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais appeler <code>.fit()</code> sur un pipeline rechargé avant de prédire ! Tu écraserias les paramètres appris lors de l'entraînement original. Utilise directement <code>.predict()</code> ou <code>.score()</code>.</p></div></div>
+
+<hr>
+
+<h2 id="ref-14-automl-avec-tpot-bonus">14. AutoML avec TPOT (bonus)</h2>
+
+<p><strong>TPOT</strong> (Tree-based Pipeline Optimization Tool) explore automatiquement des centaines de pipelines ML via des algorithmes évolutionnaires (inspirés de la sélection naturelle). Il cherche le meilleur pipeline pour tes données.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tpot import TPOTRegressor
+
+# TPOT nécessite des données déjà preprocessées (numériques uniquement)
+X_train_preproc = preproc.fit_transform(X_train)  # preprocessing manuel avant TPOT
+X_test_preproc  = preproc.transform(X_test)
+
+# Lancer l&#x27;AutoML
+tpot = TPOTRegressor(
+    generations=4,       # nombre de &quot;générations&quot; évolutionnaires
+    population_size=20,  # nombre de pipelines testés par génération
+    scoring=&#x27;r2&#x27;,        # métrique d&#x27;optimisation
+    n_jobs=-1,           # utiliser tous les coeurs CPU
+    cv=2                 # 2-fold CV pour aller plus vite
+)
+tpot.fit(X_train_preproc, y_train)
+tpot.score(X_test_preproc, y_test)   # → 0.873 (meilleur que Ridge !)
+
+# Exporter le meilleur pipeline en code Python lisible
+tpot.export(&#x27;tpot_best_pipeline.py&#x27;)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>TPOT est comme un GridSearch surboosté qui explore non seulement les hyperparamètres, mais aussi quels modèles et quelles transformations utiliser. Utile pour explorer rapidement, mais attention au temps de calcul !</p></div></div>
+
+<hr>
+
+<h2 id="ref-15-récapitulatif-des-composants-sklearn">15. Récapitulatif des composants sklearn</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Composant</th><th>Rôle</th><th>Symbole</th></tr></thead><tbody><tr><td><code>Pipeline</code></td><td>Chaîne d'étapes séquentielles</td><td>→ → →</td></tr><tr><td><code>ColumnTransformer</code></td><td>Étapes parallèles par colonnes</td><td>⑂</td></tr><tr><td><code>FunctionTransformer</code></td><td>Encapsule une fonction stateless</td><td>→</td></tr><tr><td><code>FeatureUnion</code></td><td>Branches parallèles concaténées</td><td>\</td><td>\</td><td></td></tr><tr><td><code>make_pipeline</code></td><td>Raccourci <code>Pipeline</code> sans nommage</td><td>⚡</td></tr><tr><td><code>make_column_transformer</code></td><td>Raccourci <code>ColumnTransformer</code></td><td>⚡</td></tr><tr><td><code>make_column_selector</code></td><td>Sélection auto par dtype</td><td>⚡</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1 — Data leakage</strong></p>
+<p>Tu veux faire une cross-validation. Tu appliques d'abord <code>preprocessor.fit_transform(X_train)</code> pour avoir tes données transformées, puis tu passes ces données à <code>cross_val_score</code>. Quel est le problème ?</p>
+
+<details>
+<summary>Réponse</summary>
+<p>Le preprocessor a été fitté sur tout <code>X_train</code> avant la cross-validation. Lors de chaque fold, les données de validation ont donc influencé le <code>.fit()</code> du preprocessor (leur valeur est incluse dans la médiane/moyenne/écart-type calculés). C'est du data leakage : le modèle "a vu" indirectement les données de validation. La bonne approche : passer le pipeline entier (non fitté) à <code>cross_val_score</code>.</p>
+</details>
+
+<p><strong>Question 2 — FunctionTransformer vs classe custom</strong></p>
+<p>Tu veux créer un transformer qui, pour chaque colonne, remplace les valeurs supérieures au 95e percentile par cette valeur seuil. Dois-tu utiliser <code>FunctionTransformer</code> ou créer une classe héritant de <code>TransformerMixin</code> ? Pourquoi ?</p>
+
+<details>
+<summary>Réponse</summary>
+<p>Il faut créer une <strong>classe custom</strong> héritant de <code>TransformerMixin</code> et <code>BaseEstimator</code>. Cette transformation est <strong>stateful</strong> : le 95e percentile doit être calculé (appris) sur <code>X_train</code> uniquement, stocké dans <code>self.percentiles_</code>, puis réutilisé sans recalcul sur <code>X_test</code>. Avec <code>FunctionTransformer</code>, le percentile serait recalculé à chaque appel — y compris sur le test — ce qui serait du data leakage.</p>
+</details>
+
+<p><strong>Question 3 — Syntaxe GridSearchCV</strong></p>
+<p>Tu as un pipeline avec un <code>ColumnTransformer</code> nommé <code>&#x27;preproc&#x27;</code>, qui contient un <code>Pipeline</code> nommé <code>&#x27;num_pipe&#x27;</code>, qui contient un <code>SimpleImputer</code>. Comment écris-tu la clé pour modifier le paramètre <code>strategy</code> du <code>SimpleImputer</code> dans <code>param_grid</code> ?</p>
+
+<details>
+<summary>Réponse</summary>
+<p>La syntaxe est : <code>&#x27;preproc__num_pipe__simpleimputer__strategy&#x27;</code>. Chaque niveau d'imbrication est séparé par un double underscore <code>__</code>. Utilise <code>pipeline.get_params()</code> pour voir toutes les clés disponibles.</p>
+</details>
+
+<p><strong>Question 4 — remainder dans ColumnTransformer</strong></p>
+<p>Tu as 6 colonnes dans ton DataFrame. Ton <code>ColumnTransformer</code> liste explicitement 4 de ces colonnes. Que se passe-t-il avec les 2 colonnes restantes si tu n'ajoutes pas <code>remainder=&#x27;passthrough&#x27;</code> ?</p>
+
+<details>
+<summary>Réponse</summary>
+<p>Les 2 colonnes restantes sont <strong>supprimées silencieusement</strong> du résultat transformé. Sans <code>remainder=&#x27;passthrough&#x27;</code>, le <code>ColumnTransformer</code> ne conserve que les colonnes explicitement listées. Pour garder les autres colonnes intactes, il faut ajouter <code>remainder=&#x27;passthrough&#x27;</code>.</p>
+</details>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Un <strong>Pipeline sklearn</strong> enchaîne preprocessing et modèle dans un seul objet : <code>.fit()</code> tout apprend, <code>.predict()</code> tout applique automatiquement</li>
+<li>Le <code>ColumnTransformer</code> applique des transformations différentes à des colonnes différentes en parallèle — toujours ajouter <code>remainder=&#x27;passthrough&#x27;</code> pour ne pas perdre de colonnes</li>
+<li><code>FunctionTransformer</code> encapsule une fonction Python <strong>stateless</strong> (sans mémoire) ; pour les transformations <strong>stateful</strong> (qui apprennent sur le train), créer une classe héritant de <code>TransformerMixin</code> + <code>BaseEstimator</code></li>
+<li>Le <strong>data leakage</strong> survient quand le preprocessor "voit" les données de validation — le Pipeline utilisé avec <code>cross_val_score</code> l'empêche automatiquement</li>
+<li><code>GridSearchCV</code> peut tuner le preprocessing ET le modèle simultanément ; la syntaxe des hyperparamètres est <code>etape__sous_etape__parametre</code></li>
+<li>Un pipeline entraîné se sauvegarde avec <code>pickle.dump()</code> et se recharge avec <code>pickle.load()</code> — jamais de <code>.fit()</code> sur le pipeline rechargé</li>
+<li><code>FeatureUnion</code> crée de nouvelles features et les concatène aux features existantes</li>
+<li>Les <code>make_*</code> (<code>make_pipeline</code>, <code>make_column_transformer</code>, etc.) sont des raccourcis plus concis mais avec des noms d'étapes moins explicites</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-le-besoin-de-pipelines">Le besoin de pipelines</a></li><li><a href="#syn-pipeline-et-columntransformer-sklearn">`Pipeline` et `ColumnTransformer` sklearn</a></li><li><a href="#syn-trainvalidationtest-split">Train/validation/test split</a></li><li><a href="#syn-cross-validation">Cross-validation</a></li><li><a href="#syn-hyperparameter-tuning-avec-gridsearchcv">Hyperparameter tuning avec GridSearchCV</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-custom-transformers">Custom transformers</a></li><li><a href="#syn-pipelines-imbriqués-et-stacking">Pipelines imbriqués et stacking</a></li><li><a href="#syn-sérialisation-et-déploiement">Sérialisation et déploiement</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-le-besoin-de-pipelines">Le besoin de pipelines</h3>
+
+<p>Sans pipeline, votre code ML ressemble à ça :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Anti-pattern : preprocessing dispersé et manuel
+imputer = SimpleImputer(strategy=&quot;median&quot;)
+X_train_imp = imputer.fit_transform(X_train)   # fit + transform sur train
+X_test_imp = imputer.transform(X_test)         # transform seul sur test (si vous n&#x27;oubliez pas)
+
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train_imp)
+X_test_scaled = scaler.transform(X_test_imp)
+
+model = LogisticRegression()
+model.fit(X_train_scaled, y_train)
+y_pred = model.predict(X_test_scaled)</code></pre></div>
+
+
+<p>Trois problèmes majeurs :</p>
+
+<ol>
+<li><strong>Bug-prone</strong> : oubli facile d'appliquer la même transformation au test (oublier <code>.transform(X_test)</code> ou faire un second <code>fit_transform</code>). Source classique de leakage.</li>
+<li><strong>Non sérialisable</strong> : vous devez sauvegarder l'imputer ET le scaler ET le modèle pour déployer. Trois fichiers à gérer, aucune garantie qu'ils sont cohérents.</li>
+<li><strong>Non utilisable en cross-validation</strong> : <code>GridSearchCV</code> ne sait pas refitter votre imputer manuellement à chaque fold — il va refitter seulement le modèle et introduire du leakage.</li>
+</ol>
+
+<p>Le <strong><code>Pipeline</code></strong> sklearn règle tout ça en encapsulant les étapes en un seul objet.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+
+# Une seule chaîne : impute → scale → fit model
+pipe = Pipeline([
+    (&quot;imputer&quot;, SimpleImputer(strategy=&quot;median&quot;)),    # étape 1
+    (&quot;scaler&quot;, StandardScaler()),                      # étape 2
+    (&quot;model&quot;, LogisticRegression()),                   # estimateur final
+])
+
+pipe.fit(X_train, y_train)                             # fit toutes les étapes sur train
+pipe.score(X_test, y_test)                             # applique impute + scale + predict
+y_pred = pipe.predict(X_new)                           # pipeline complet à l&#x27;inférence</code></pre></div>
+
+
+<p>Toutes les étapes sont fittées <strong>uniquement sur le train</strong>, et appliquées proprement au test. Plus de leakage possible, plus d'oubli, un seul objet à sauvegarder.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : un Pipeline, c'est une chaîne de production qui prend des matières premières (données brutes) et sort un produit fini (prédiction). Sans pipeline, vous avez 5 ouvriers indépendants qui peuvent oublier des étapes ou les faire dans le mauvais ordre. Avec pipeline, c'est automatique, reproductible, et testable en un seul appel.</p></div></div>
+
+<h3 id="syn-pipeline-et-columntransformer-sklearn"><code>Pipeline</code> et <code>ColumnTransformer</code> sklearn</h3>
+
+<p>Quand votre dataset a plusieurs types de colonnes (numériques, catégorielles, textuelles), vous voulez appliquer <strong>différents</strong> preprocessing à chacun. C'est le rôle de <code>ColumnTransformer</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
+
+numeric_features = [&quot;age&quot;, &quot;income&quot;, &quot;credit_score&quot;]
+categorical_features = [&quot;city&quot;, &quot;employment_type&quot;]
+
+preprocessor = ColumnTransformer([
+    # Sous-pipeline numérique : impute (médiane) + scale
+    (&quot;num&quot;, Pipeline([
+        (&quot;imputer&quot;, SimpleImputer(strategy=&quot;median&quot;)),
+        (&quot;scaler&quot;, StandardScaler()),
+    ]), numeric_features),
+
+    # Sous-pipeline catégoriel : impute (constante) + one-hot
+    (&quot;cat&quot;, Pipeline([
+        (&quot;imputer&quot;, SimpleImputer(strategy=&quot;constant&quot;, fill_value=&quot;missing&quot;)),
+        (&quot;encoder&quot;, OneHotEncoder(handle_unknown=&quot;ignore&quot;)),
+    ]), categorical_features),
+])
+
+# Pipeline final : preprocessor + modèle
+full_pipe = Pipeline([
+    (&quot;preprocess&quot;, preprocessor),
+    (&quot;model&quot;, LogisticRegression()),
+])
+
+full_pipe.fit(X_train, y_train)           # tout est fitté sur train
+# En 1 appel : impute num + scale num + impute cat + one-hot cat + fit modèle</code></pre></div>
+
+
+<p>Lecture : <em>chaque tuple du <code>ColumnTransformer</code> suit le format <code>(nom, transformer, colonnes)</code>. Les sorties des différents transformers sont concaténées horizontalement pour former la matrice finale passée au modèle.</em></p>
+
+<p>Le <code>ColumnTransformer</code> peut être imbriqué dans un Pipeline, qui peut lui-même contenir des sous-pipelines. C'est la manière idiomatique d'organiser un workflow ML complet, propre et déployable.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : structurer votre pipeline complet en <strong>un seul objet</strong> sérialisable. Au moment du déploiement, vous chargez ce seul fichier et appelez <code>pipe.predict(new_data)</code>. Pas besoin de re-importer 10 transformers manuellement. C'est la différence entre un script jetable et un pipeline de prod.</p></div></div>
+
+<h3 id="syn-trainvalidationtest-split">Train/validation/test split</h3>
+
+<p>La règle d'or : <strong>trois jeux de données distincts</strong>, jamais croisés :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Set</th><th>Usage</th><th>Pourcentage typique</th></tr></thead><tbody><tr><td><strong>Train</strong></td><td>Entraînement du modèle</td><td>60-80%</td></tr><tr><td><strong>Validation</strong></td><td>Réglage des hyperparamètres</td><td>10-20%</td></tr><tr><td><strong>Test</strong></td><td>Évaluation finale, <strong>une seule fois</strong></td><td>10-20%</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import train_test_split
+
+# Premier split : 80/20 pour isoler le test
+X_temp, X_test, y_temp, y_test = train_test_split(
+    X, y,
+    test_size=0.2,                # 20% en test
+    random_state=42,              # reproductibilité
+    stratify=y                    # conserve les proportions de classes
+)
+
+# Deuxième split sur le 80% restant : 75/25 → 60/20 du total
+X_train, X_val, y_train, y_val = train_test_split(
+    X_temp, y_temp,
+    test_size=0.25,               # 25% de 80% = 20% du total
+    random_state=42,
+    stratify=y_temp
+)
+# Résultat : 60% train, 20% val, 20% test</code></pre></div>
+
+
+<p>Trois précautions :</p>
+
+<ol>
+<li><strong><code>stratify=y</code></strong> pour la classification : conserve les proportions des classes dans chaque split. Crucial pour les datasets déséquilibrés (sans stratification, un fold peut se retrouver avec 0% de classe minoritaire).</li>
+</ol>
+
+<ol>
+<li><strong><code>random_state</code></strong> : reproductibilité. Sans seed, les résultats changent à chaque run et vous ne pouvez plus comparer les modèles.</li>
+</ol>
+
+<ol>
+<li><strong>Ne JAMAIS toucher au test set</strong> avant l'évaluation finale. Pas de "juste un coup d'œil pour comprendre". L'œil suffit à contaminer.</li>
+</ol>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Anti-pattern</strong> : optimiser les hyperparamètres en regardant le score sur le <strong>test set</strong>. Vous overfittez aux données de test, et votre score ne reflète plus la vraie performance. Le test set n'est utilisé qu'<strong>une seule fois</strong>, à la fin, pour rapporter le score final. La validation set sert à itérer, à expérimenter, à choisir les hyperparamètres.</p></div></div>
+
+<h3 id="syn-cross-validation">Cross-validation</h3>
+
+<p>La cross-validation (CV) divise le train set en K folds. Vous entraînez K fois, en gardant chaque fold à tour de rôle comme validation interne. Le score moyen est plus stable qu'un seul split.</p>
+
+<p>Formellement : $\text{CV}_K(\text{score}) = \frac{1}{K}\sum_{k=1}^{K} \text{score}(f_{-k}, \text{fold}_k)$.</p>
+
+<p>Lecture : <em>on moyenne les scores obtenus en entraînant sur K-1 folds et en évaluant sur le fold restant, K fois de suite. Le fold d'évaluation change à chaque itération, chaque point du dataset est utilisé exactement une fois en validation.</em></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import cross_val_score, KFold, StratifiedKFold
+
+# K-fold simple : 5 folds, score moyen
+scores = cross_val_score(pipe, X_train, y_train, cv=5, scoring=&quot;accuracy&quot;)
+print(f&quot;Accuracy: {scores.mean():.3f} ± {scores.std():.3f}&quot;)
+# Exemple: Accuracy: 0.842 ± 0.015
+# Le ± donne l&#x27;incertitude sur l&#x27;estimation du score
+
+# StratifiedKFold pour la classification (préserve les proportions)
+cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+scores = cross_val_score(pipe, X_train, y_train, cv=cv, scoring=&quot;f1&quot;)</code></pre></div>
+
+
+<p><strong>Exemple chiffré</strong> : avec 1000 lignes et 5-fold CV, chaque fold contient ~200 lignes, le modèle est entraîné 5 fois sur ~800 lignes. Si les 5 scores sont [0.82, 0.85, 0.81, 0.84, 0.83], la moyenne 0.83 est bien plus fiable que n'importe quel score individuel.</p>
+
+<p>Variantes selon le contexte :</p>
+
+<ul>
+<li><strong><code>KFold</code></strong> : généraliste, pour la régression</li>
+<li><strong><code>StratifiedKFold</code></strong> : pour la classification, préserve les proportions de classes</li>
+<li><strong><code>TimeSeriesSplit</code></strong> : pour les séries temporelles, n'utilise jamais le futur pour entraîner</li>
+<li><strong><code>GroupKFold</code></strong> : quand des lignes appartiennent au même groupe (un patient avec plusieurs visites), évite de splitter dans un groupe</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : faire un seul train/test split, c'est juger un étudiant sur un seul examen. Faire une 5-fold CV, c'est le juger sur 5 examens et moyenner. La moyenne est plus représentative, et l'écart-type vous dit si l'étudiant est régulier ou erratique. Sur un petit dataset (< 1000 lignes), la CV est indispensable pour ne pas avoir un score à la merci du tirage du split.</p></div></div>
+
+<h3 id="syn-hyperparameter-tuning-avec-gridsearchcv">Hyperparameter tuning avec GridSearchCV</h3>
+
+<p>Quand vous voulez tester plusieurs combinaisons d'hyperparamètres :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import GridSearchCV
+
+param_grid = {
+    &quot;model__C&quot;: [0.01, 0.1, 1, 10],              # régularisation
+    &quot;model__penalty&quot;: [&quot;l1&quot;, &quot;l2&quot;],               # type de régu
+    &quot;preprocess__num__imputer__strategy&quot;: [&quot;mean&quot;, &quot;median&quot;],  # imputation
+}
+# Note : le &quot;__&quot; navigue dans le pipeline : step__subparam
+
+grid = GridSearchCV(
+    pipe,
+    param_grid,
+    cv=5,
+    scoring=&quot;f1&quot;,
+    n_jobs=-1                                     # utilise tous les CPU
+)
+grid.fit(X_train, y_train)
+
+print(grid.best_params_)                          # meilleure combinaison
+print(grid.best_score_)                           # meilleur score CV
+best_model = grid.best_estimator_                 # pipeline avec les meilleurs params</code></pre></div>
+
+
+<p>Lecture : <em>GridSearch teste toutes les combinaisons possibles dans le dictionnaire (produit cartésien). Avec 4 valeurs de C × 2 penalty × 2 imputation = 16 combinaisons × 5 folds = 80 fits.</em> Peut vite devenir coûteux, d'où <code>n_jobs=-1</code> pour paralléliser.</p>
+
+<p>Pour explorer un grand espace d'hyperparamètres : <code>RandomizedSearchCV</code> (échantillonne N combinaisons aléatoires) ou <code>BayesSearchCV</code> de scikit-optimize (plus intelligent).</p>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-custom-transformers">Custom transformers</h3>
+
+<p>Quand sklearn n'a pas le transformer dont vous avez besoin, écrivez le vôtre. Trois méthodes à implémenter : <code>fit</code>, <code>transform</code>, et <code>__init__</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.base import BaseEstimator, TransformerMixin
+
+class LogTransformer(BaseEstimator, TransformerMixin):
+    def __init__(self, columns=None, offset=1.0):
+        # Paramètres du transformer (utilisés par GridSearchCV)
+        self.columns = columns
+        self.offset = offset
+
+    def fit(self, X, y=None):
+        # Pas de paramètres à apprendre ici (transformation stateless)
+        # Pour un scaler, on calculerait mean/std ici
+        return self
+
+    def transform(self, X):
+        X = X.copy()                              # ne jamais modifier l&#x27;entrée en place
+        cols = self.columns or X.columns
+        X[cols] = np.log(X[cols] + self.offset)   # log(x + 1) gère les zéros
+        return X
+
+# Utilisable dans un Pipeline comme n&#x27;importe quel transformer sklearn
+pipe = Pipeline([
+    (&quot;log&quot;, LogTransformer(columns=[&quot;price&quot;, &quot;area&quot;])),
+    (&quot;scaler&quot;, StandardScaler()),
+    (&quot;model&quot;, LinearRegression()),
+])</code></pre></div>
+
+
+<p>Hériter de <code>BaseEstimator</code> apporte gratuitement <code>get_params</code> et <code>set_params</code> (utilisés par GridSearchCV). Hériter de <code>TransformerMixin</code> apporte <code>fit_transform</code>. Avec ces deux mixins, votre classe est 100% sklearn-compatible et utilisable dans n'importe quel Pipeline ou ColumnTransformer.</p>
+
+<h3 id="syn-pipelines-imbriqués-et-stacking">Pipelines imbriqués et stacking</h3>
+
+<p>Pour des modèles plus avancés, vous pouvez <strong>empiler</strong> plusieurs estimateurs.</p>
+
+<p><strong>VotingClassifier</strong> : combine plusieurs modèles par vote majoritaire (hard) ou moyenne des probabilités (soft).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import VotingClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+
+voting = VotingClassifier([
+    (&quot;lr&quot;, LogisticRegression()),
+    (&quot;rf&quot;, RandomForestClassifier()),
+    (&quot;svc&quot;, SVC(probability=True)),       # probability=True requis pour soft voting
+], voting=&quot;soft&quot;)                          # moyenne des probas plutôt que vote majoritaire</code></pre></div>
+
+
+<p><strong>StackingClassifier</strong> : entraîne un méta-modèle qui combine les prédictions des modèles de base.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import StackingClassifier
+
+stacking = StackingClassifier([
+    (&quot;lr&quot;, LogisticRegression()),
+    (&quot;rf&quot;, RandomForestClassifier()),
+    (&quot;xgb&quot;, XGBClassifier()),
+], final_estimator=LogisticRegression())  # méta-modèle qui combine les 3
+# Processus interne : chaque base learner produit des prédictions en out-of-fold,
+# puis le méta-modèle est entraîné sur ces prédictions comme features</code></pre></div>
+
+
+<p>Le stacking est plus puissant que le voting parce que le méta-modèle apprend <strong>comment</strong> combiner les prédictions de chaque base learner (peut donner plus de poids à RF sur certains exemples et plus à XGBoost sur d'autres). C'est l'arme secrète des compétitions Kaggle.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège</strong> : un stacking de 3 modèles complexes a 4 modèles à entraîner et stocker. Votre temps d'inférence est multiplié par 4, et la mémoire idem. En production, le gain de quelques pourcents d'accuracy ne justifie souvent pas ce coût (latency SLA, coût infra). Stacking en compétition, modèle simple en prod.</p></div></div>
+
+<h3 id="syn-sérialisation-et-déploiement">Sérialisation et déploiement</h3>
+
+<p>Pour utiliser votre pipeline en production, sauvegardez-le :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import joblib
+
+# Sauvegarde (un seul fichier pour tout le pipeline)
+joblib.dump(pipe, &quot;model.pkl&quot;)
+
+# Chargement (dans un autre script ou serveur de prédiction)
+pipe = joblib.load(&quot;model.pkl&quot;)
+y_pred = pipe.predict(new_data)           # applique preprocessing + modèle</code></pre></div>
+
+
+<p><code>joblib</code> est plus efficace que <code>pickle</code> pour les gros tableaux NumPy (compression, memmap). Trois précautions :</p>
+
+<ol>
+<li><strong>Versions</strong> : le pickle est sensible aux versions de Python, sklearn, et NumPy. Sauvegardez ces versions dans un <code>requirements.txt</code> et utilisez le <strong>même environnement</strong> pour entraîner et prédire. Un pickle sklearn 1.0 ne se charge pas forcément sur sklearn 1.3.</li>
+</ol>
+
+<ol>
+<li><strong>Sécurité</strong> : ne <strong>jamais</strong> charger un pickle d'une source non fiable. Pickle peut exécuter du code arbitraire à la désérialisation (risque RCE).</li>
+</ol>
+
+<ol>
+<li><strong>Format alternatif</strong> : <code>ONNX</code> permet d'exporter un modèle dans un format portable (Python → C++ → mobile → JavaScript). Plus complexe à mettre en place mais découple modèle et runtime.</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Pour un déploiement plus robuste : ONNX
+from skl2onnx import convert_sklearn
+from skl2onnx.common.data_types import FloatTensorType
+
+initial_type = [(&quot;float_input&quot;, FloatTensorType([None, X.shape[1]]))]
+onnx_model = convert_sklearn(pipe, initial_types=initial_type)
+with open(&quot;model.onnx&quot;, &quot;wb&quot;) as f:
+    f.write(onnx_model.SerializeToString())
+# Avantage : le modèle ONNX peut être chargé sans Python (C++, Rust, JS...)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : versionnez vos modèles avec MLflow, Weights & Biases ou DVC. Chaque version doit avoir : (1) le pickle/onnx, (2) les versions des libs, (3) les métriques de validation, (4) les hyperparamètres, (5) un hash des données d'entraînement. Sans ce niveau de discipline, vous ne pourrez pas reproduire ou rollback un modèle qui dégrade en prod.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Vous fittez <code>StandardScaler</code> sur tout votre dataset puis splittez en train/test. Pourquoi est-ce du data leakage et comment réparer ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Moyenne globale qui inclut le test.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Le scaler fitté sur le dataset complet calcule la moyenne et l'écart-type sur <strong>toutes les lignes</strong>, y compris celles du futur test. Cette information du test fuite donc dans le train. Symptôme : votre score sur le test est artificiellement optimisé, et votre modèle en prod sera moins bon que prévu.</p>
+
+<p><strong>Exemple concret</strong> : imaginez que votre train a des revenus entre 30k et 80k, et votre test inclut des outliers à 500k. Si vous fittez le scaler globalement, la moyenne et le std "savent" que des valeurs à 500k existent. Votre modèle n'est pas "surpris" par ces outliers au test time.</p>
+
+<p><strong>Réparation triviale avec un Pipeline</strong> : tout le preprocessing va dans le pipeline, et <code>pipe.fit(X_train, y_train)</code> ne touche jamais au test.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Bon : Pipeline qui isole le scaler
+pipe = Pipeline([
+    (&quot;scaler&quot;, StandardScaler()),
+    (&quot;model&quot;, LogisticRegression()),
+])
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+pipe.fit(X_train, y_train)            # scaler voit UNIQUEMENT X_train
+pipe.score(X_test, y_test)            # scaler transform X_test avec les stats train</code></pre></div>
+
+
+<p>À la main, vous pouvez aussi splitter d'abord, fitter le scaler sur <code>X_train</code> uniquement, puis transformer <code>X_train</code> ET <code>X_test</code> séparément. Mais c'est verbeux et bug-prone — d'où l'intérêt obsessionnel des Pipelines.</p>
+
+<p>C'est exactement la même règle pour : imputers, encoders, PCA, feature selection, et même les target encoders. Règle générale : <strong>tout ce qui a un <code>fit()</code> doit être dans le Pipeline</strong>.</p>
+
+</details>
+
+<p><strong>Q2 : Vous avez 1000 lignes. Vous faites un train/test split 80/20 puis vous voulez tester 5 modèles. Quelle est la meilleure stratégie ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Cross-validation pour la sélection, test set pour l'évaluation finale.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Avec seulement 800 lignes en train, un seul split train/val (80/20 sur le train, donc 640/160) donne une estimation très bruitée. La bonne stratégie :</p>
+
+<p><strong>5-fold cross-validation sur le train set</strong>, en utilisant <code>cross_val_score</code> ou <code>GridSearchCV</code>. Chaque modèle est entraîné 5 fois, sur 640 lignes en moyenne, et évalué sur 160. La moyenne des 5 scores est beaucoup plus stable qu'un seul split.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import cross_val_score
+
+models = {
+    &quot;logreg&quot;: LogisticRegression(),
+    &quot;rf&quot;: RandomForestClassifier(),
+    &quot;svc&quot;: SVC(),
+    &quot;xgb&quot;: XGBClassifier(),
+    &quot;knn&quot;: KNeighborsClassifier(),
+}
+
+results = {}
+for name, model in models.items():
+    pipe = Pipeline([(&quot;scaler&quot;, StandardScaler()), (&quot;model&quot;, model)])
+    scores = cross_val_score(pipe, X_train, y_train, cv=5, scoring=&quot;f1&quot;)
+    results[name] = (scores.mean(), scores.std())
+    print(f&quot;{name}: {scores.mean():.3f} ± {scores.std():.3f}&quot;)
+
+# Sélection du meilleur
+best_name = max(results, key=lambda k: results[k][0])</code></pre></div>
+
+
+<p>Vous gardez le test set (200 lignes) intact pour l'évaluation finale <strong>du meilleur modèle</strong>, <strong>une seule fois</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Évaluation finale une seule fois sur le test
+best_pipe = Pipeline([(&quot;scaler&quot;, StandardScaler()), (&quot;model&quot;, models[best_name])])
+best_pipe.fit(X_train, y_train)       # fit sur tout le train (pas seulement un fold)
+final_score = best_pipe.score(X_test, y_test)
+print(f&quot;Final test score: {final_score}&quot;)</code></pre></div>
+
+
+<p><strong>Bonus pro</strong> : si vous faites de l'hyperparameter search avec CV, vous avez besoin d'une <strong>CV imbriquée</strong> (nested CV) pour estimer le score final sans biais — extérieure pour l'évaluation, intérieure pour le tuning. C'est rarement fait en pratique parce que c'est coûteux, mais c'est la méthode rigoureuse quand le budget compute le permet.</p>
+
+</details>
+
+<p><strong>Q3 : Vous voulez utiliser un encoder différent pour deux groupes de colonnes catégorielles dans le même dataset. Comment structurer votre Pipeline ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>ColumnTransformer.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Utilisez un <code>ColumnTransformer</code> avec deux transformers indépendants, chacun appliqué à un sous-ensemble de colonnes. Exemple : OneHotEncoder pour les low-cardinality (<code>city</code>, <code>dept</code>) et TargetEncoder pour les high-cardinality (<code>zip_code</code>, <code>product_id</code>).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from category_encoders import TargetEncoder
+
+low_card = [&quot;city&quot;, &quot;dept&quot;]              # cardinalité &lt; 50
+high_card = [&quot;zip_code&quot;, &quot;product_id&quot;]   # cardinalité &gt; 100
+numeric = [&quot;age&quot;, &quot;income&quot;]
+
+preprocessor = ColumnTransformer([
+    # OneHot pour les low cardinality (quelques colonnes ajoutées)
+    (&quot;low_card&quot;, OneHotEncoder(handle_unknown=&quot;ignore&quot;), low_card),
+
+    # TargetEncoder pour les high cardinality (compresse en 1 col par feature)
+    (&quot;high_card&quot;, TargetEncoder(), high_card),
+
+    # StandardScaler pour le numérique
+    (&quot;num&quot;, StandardScaler(), numeric),
+])
+
+pipe = Pipeline([
+    (&quot;prep&quot;, preprocessor),
+    (&quot;model&quot;, LogisticRegression()),
+])
+
+pipe.fit(X_train, y_train)
+# Chaque colonne reçoit le bon traitement automatiquement</code></pre></div>
+
+
+<p><strong>Avantages</strong> :</p>
+
+<ol>
+<li>Chaque colonne reçoit le bon traitement adapté à sa cardinalité</li>
+<li>Tout est encapsulé dans un seul objet sérialisable</li>
+<li>Le ColumnTransformer gère lui-même le <code>fit</code>/<code>transform</code> cohérent train/test</li>
+<li><code>GridSearchCV</code> peut tuner les hyperparamètres de n'importe quelle étape en navigant avec <code>__</code> (ex: <code>prep__high_card__smoothing</code>)</li>
+</ol>
+
+<p>Le <code>handle_unknown=&quot;ignore&quot;</code> évite les erreurs sur des catégories de test absentes du train (OneHotEncoder les encode comme des zéros partout).</p>
+
+<p>Question d'entretien : "Comment encoder une colonne avec 1000 valeurs uniques ?" — réponse : ne pas faire OneHot, utiliser TargetEncoder ou Embedding, et le mettre dans un ColumnTransformer pour ne pas l'appliquer aux autres colonnes.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://scikit-learn.org/stable/modules/compose.html" target="_blank" rel="noopener">scikit-learn Pipeline documentation</a></li>
+<li><em>Hands-On Machine Learning</em> (Aurélien Géron, 3rd ed.) — chapitre 2 sur les pipelines</li>
+<li><em>The Hundred-Page Machine Learning Book</em> (Andriy Burkov)</li>
+<li><a href="https://www.kaggle.com/learn/intermediate-machine-learning" target="_blank" rel="noopener">Kaggle — Intermediate ML</a> — pipelines et CV</li>
+<li><a href="https://mlflow.org/docs/latest/index.html" target="_blank" rel="noopener">MLflow documentation</a> — pour le versioning de modèles</li>
+<li><a href="https://scikit-learn.org/stable/modules/cross_validation.html" target="_blank" rel="noopener">scikit-learn User Guide — Cross validation</a></li>
+<li><a href="https://onnx.ai/onnx/intro/" target="_blank" rel="noopener">ONNX tutorials</a> — pour le déploiement multi-plateforme</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../data-engineering/data-viz.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Data Viz & Dashboarding</span>
+  </a>
+  <a href="../machine-learning/fundamentals-ml.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Fundamentals of ML →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>leWagonDataScience — Cours & synthèses enrichies</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">leWagonDataScience</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">leWagonDataScience</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+
+      <div class="nav-category">
+        <div class="nav-category-title">Notes perso</div>
+        <ul class="nav-links">
+          <li><a href="pages/notes-perso/terminal.html">Terminal</a></li>
+          <li><a href="pages/notes-perso/note-diverses.html">Notes diverses</a></li>
+          <li><a href="pages/notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+          <li><a href="pages/notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+          <li><a href="pages/notes-perso/git.html">Git push & commit</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-category">
+        <div class="nav-category-title">Python & SQL Week</div>
+        <ul class="nav-links">
+          <li><a href="pages/python-sql/python-101.html">Python 101</a></li>
+          <li><a href="pages/python-sql/list-and-loops.html">Lists & loops</a></li>
+          <li><a href="pages/python-sql/dictionaries.html">Dictionaries</a></li>
+          <li><a href="pages/python-sql/classes.html">Classes</a></li>
+          <li><a href="pages/python-sql/sql-intro.html">SQL (intro)</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-category">
+        <div class="nav-category-title">Data Toolkit</div>
+        <ul class="nav-links">
+          <li><a href="pages/data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+          <li><a href="pages/data-toolkit/data-analysis.html">Data Analysis</a></li>
+          <li><a href="pages/data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+          <li><a href="pages/data-toolkit/scraping.html">Web Scraping</a></li>
+          <li><a href="pages/data-toolkit/coding-properly.html">Coding Properly</a></li>
+          <li><a href="pages/data-toolkit/python-reboot.html">Python Reboot</a></li>
+          <li><a href="pages/data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-category">
+        <div class="nav-category-title">Maths & Statistiques</div>
+        <ul class="nav-links">
+          <li><a href="pages/mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+          <li><a href="pages/mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+          <li><a href="pages/mathematiques/statistical-inference.html">Statistical Inference</a></li>
+          <li><a href="pages/mathematiques/under-the-hood.html">Under the Hood</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-category">
+        <div class="nav-category-title">SQL avancé</div>
+        <ul class="nav-links">
+          <li><a href="pages/sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-category">
+        <div class="nav-category-title">Data Engineering</div>
+        <ul class="nav-links">
+          <li><a href="pages/data-engineering/data-preparation.html">Data Preparation</a></li>
+          <li><a href="pages/data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+          <li><a href="pages/data-engineering/ml-workflow.html">ML Workflow</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-category">
+        <div class="nav-category-title">Machine Learning</div>
+        <ul class="nav-links">
+          <li><a href="pages/machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+          <li><a href="pages/machine-learning/linear-regression.html">Linear Regression</a></li>
+          <li><a href="pages/machine-learning/logistic-regression.html">Logistic Regression</a></li>
+          <li><a href="pages/machine-learning/performance-metrics.html">Performance Metrics</a></li>
+          <li><a href="pages/machine-learning/model-tuning.html">Model Tuning</a></li>
+          <li><a href="pages/machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+          <li><a href="pages/machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-category">
+        <div class="nav-category-title">Deep Learning</div>
+        <ul class="nav-links">
+          <li><a href="pages/deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+          <li><a href="pages/deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+          <li><a href="pages/deep-learning/cnn.html">CNN</a></li>
+          <li><a href="pages/deep-learning/rnn.html">RNN</a></li>
+          <li><a href="pages/deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-category">
+        <div class="nav-category-title">NLP & LLM</div>
+        <ul class="nav-links">
+          <li><a href="pages/nlp-llm/nlp.html">Natural Language Processing</a></li>
+          <li><a href="pages/nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+          <li><a href="pages/nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+          <li><a href="pages/nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-category">
+        <div class="nav-category-title">Domaines spécialisés</div>
+        <ul class="nav-links">
+          <li><a href="pages/specialise/time-series.html">Time Series</a></li>
+          <li><a href="pages/specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+          <li><a href="pages/specialise/explainable-ai.html">Explainable AI</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-category">
+        <div class="nav-category-title">MLOps & Production</div>
+        <ul class="nav-links">
+          <li><a href="pages/mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+          <li><a href="pages/mlops/ml-ops.html">ML Ops</a></li>
+          <li><a href="pages/mlops/training-cloud.html">Training in the Cloud</a></li>
+          <li><a href="pages/mlops/predict-production.html">Predict in Production</a></li>
+          <li><a href="pages/mlops/ci-cd.html">CI / CD</a></li>
+          <li><a href="pages/mlops/coding-team.html">Coding as a Team</a></li>
+          <li><a href="pages/mlops/user-interface.html">User Interface</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-category">
+        <div class="nav-category-title">Synthèses & Cheatsheets</div>
+        <ul class="nav-links">
+          <li><a href="pages/synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+          <li><a href="pages/synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+          <li><a href="pages/synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+          <li><a href="pages/synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper content-wrapper--wide">
+
+      <div class="page-header">
+        <h1>leWagonDataScience</h1>
+        <p class="page-objective">
+          Cours complets du bootcamp Le Wagon Data Science enrichis d'une <strong>synthèse experte</strong>
+          par page (préparation entretien data scientist / ML engineer).
+          55 fiches couvrant Python, SQL, statistiques, machine learning, deep learning,
+          NLP, LLM et MLOps. Sur chaque page, basculez entre l'onglet
+          <span style="white-space:nowrap;">📘 Cours</span> et
+          <span style="white-space:nowrap;">✨ Synthèse enrichie</span>.
+        </p>
+      </div>
+
+      <div class="index-search" style="max-width:100%; margin-bottom: var(--space-2xl);">
+        <span class="index-search-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+          </svg>
+        </span>
+        <input type="text" placeholder="Rechercher un cours..." autocomplete="off">
+      </div>
+
+      <div class="content-body">
+        <div class="index-grid">
+
+          <div class="index-card">
+            <div class="index-card-header">
+              <span class="index-card-title">Notes perso</span>
+              <span class="index-card-count">5</span>
+            </div>
+            <ul class="index-card-links">
+              <li><a href="pages/notes-perso/terminal.html">Terminal</a></li>
+              <li><a href="pages/notes-perso/note-diverses.html">Notes diverses</a></li>
+              <li><a href="pages/notes-perso/methodes-fonctions.html">Méthodes & fonctions classiques</a></li>
+              <li><a href="pages/notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+              <li><a href="pages/notes-perso/git.html">Git push & commit</a></li>
+            </ul>
+          </div>
+
+          <div class="index-card">
+            <div class="index-card-header">
+              <span class="index-card-title">Python & SQL Week</span>
+              <span class="index-card-count">5</span>
+            </div>
+            <ul class="index-card-links">
+              <li><a href="pages/python-sql/python-101.html">Python 101</a></li>
+              <li><a href="pages/python-sql/list-and-loops.html">Lists & loops</a></li>
+              <li><a href="pages/python-sql/dictionaries.html">Dictionaries</a></li>
+              <li><a href="pages/python-sql/classes.html">Classes</a></li>
+              <li><a href="pages/python-sql/sql-intro.html">SQL (intro)</a></li>
+            </ul>
+          </div>
+
+          <div class="index-card">
+            <div class="index-card-header">
+              <span class="index-card-title">Data Toolkit</span>
+              <span class="index-card-count">7</span>
+            </div>
+            <ul class="index-card-links">
+              <li><a href="pages/data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+              <li><a href="pages/data-toolkit/data-analysis.html">Data Analysis</a></li>
+              <li><a href="pages/data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+              <li><a href="pages/data-toolkit/scraping.html">Web Scraping</a></li>
+              <li><a href="pages/data-toolkit/coding-properly.html">Coding Properly</a></li>
+              <li><a href="pages/data-toolkit/python-reboot.html">Python Reboot</a></li>
+              <li><a href="pages/data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+            </ul>
+          </div>
+
+          <div class="index-card">
+            <div class="index-card-header">
+              <span class="index-card-title">Maths & Statistiques</span>
+              <span class="index-card-count">4</span>
+            </div>
+            <ul class="index-card-links">
+              <li><a href="pages/mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+              <li><a href="pages/mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+              <li><a href="pages/mathematiques/statistical-inference.html">Statistical Inference</a></li>
+              <li><a href="pages/mathematiques/under-the-hood.html">Under the Hood</a></li>
+            </ul>
+          </div>
+
+          <div class="index-card">
+            <div class="index-card-header">
+              <span class="index-card-title">SQL avancé</span>
+              <span class="index-card-count">1</span>
+            </div>
+            <ul class="index-card-links">
+              <li><a href="pages/sql-avance/sql-advanced.html">SQL — Joins, fenêtres, perfs</a></li>
+            </ul>
+          </div>
+
+          <div class="index-card">
+            <div class="index-card-header">
+              <span class="index-card-title">Data Engineering</span>
+              <span class="index-card-count">3</span>
+            </div>
+            <ul class="index-card-links">
+              <li><a href="pages/data-engineering/data-preparation.html">Data Preparation</a></li>
+              <li><a href="pages/data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+              <li><a href="pages/data-engineering/ml-workflow.html">ML Workflow (Pipelines)</a></li>
+            </ul>
+          </div>
+
+          <div class="index-card">
+            <div class="index-card-header">
+              <span class="index-card-title">Machine Learning</span>
+              <span class="index-card-count">7</span>
+            </div>
+            <ul class="index-card-links">
+              <li><a href="pages/machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+              <li><a href="pages/machine-learning/linear-regression.html">Linear Regression</a></li>
+              <li><a href="pages/machine-learning/logistic-regression.html">Logistic Regression</a></li>
+              <li><a href="pages/machine-learning/performance-metrics.html">Performance Metrics</a></li>
+              <li><a href="pages/machine-learning/model-tuning.html">Model Tuning</a></li>
+              <li><a href="pages/machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+              <li><a href="pages/machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+            </ul>
+          </div>
+
+          <div class="index-card">
+            <div class="index-card-header">
+              <span class="index-card-title">Deep Learning</span>
+              <span class="index-card-count">5</span>
+            </div>
+            <ul class="index-card-links">
+              <li><a href="pages/deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+              <li><a href="pages/deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+              <li><a href="pages/deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+              <li><a href="pages/deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+              <li><a href="pages/deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+            </ul>
+          </div>
+
+          <div class="index-card">
+            <div class="index-card-header">
+              <span class="index-card-title">NLP & LLM</span>
+              <span class="index-card-count">4</span>
+            </div>
+            <ul class="index-card-links">
+              <li><a href="pages/nlp-llm/nlp.html">Natural Language Processing</a></li>
+              <li><a href="pages/nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+              <li><a href="pages/nlp-llm/transformers-advanced.html">Transformers — Compléments avancés</a></li>
+              <li><a href="pages/nlp-llm/gen-ai-rag-agents.html">GenAI, APIs, RAG & Agents</a></li>
+            </ul>
+          </div>
+
+          <div class="index-card">
+            <div class="index-card-header">
+              <span class="index-card-title">Domaines spécialisés</span>
+              <span class="index-card-count">3</span>
+            </div>
+            <ul class="index-card-links">
+              <li><a href="pages/specialise/time-series.html">Time Series</a></li>
+              <li><a href="pages/specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+              <li><a href="pages/specialise/explainable-ai.html">Explainable AI</a></li>
+            </ul>
+          </div>
+
+          <div class="index-card">
+            <div class="index-card-header">
+              <span class="index-card-title">MLOps & Production</span>
+              <span class="index-card-count">7</span>
+            </div>
+            <ul class="index-card-links">
+              <li><a href="pages/mlops/automate-lifecycle.html">Automate Model Lifecycle (MLflow)</a></li>
+              <li><a href="pages/mlops/ml-ops.html">ML Ops — Packaging & Docker</a></li>
+              <li><a href="pages/mlops/training-cloud.html">Training in the Cloud (GCP)</a></li>
+              <li><a href="pages/mlops/predict-production.html">Predict in Production</a></li>
+              <li><a href="pages/mlops/ci-cd.html">Continuous Dev & Integration</a></li>
+              <li><a href="pages/mlops/coding-team.html">Coding as a Team</a></li>
+              <li><a href="pages/mlops/user-interface.html">User Interface (Streamlit)</a></li>
+            </ul>
+          </div>
+
+          <div class="index-card">
+            <div class="index-card-header">
+              <span class="index-card-title">Synthèses & Cheatsheets</span>
+              <span class="index-card-count">4</span>
+            </div>
+            <ul class="index-card-links">
+              <li><a href="pages/synthese/synthese-ml.html">Synthèse ML — De la collecte au tuning</a></li>
+              <li><a href="pages/synthese/mega-tableau-modeles.html">Méga-tableau des modèles ML</a></li>
+              <li><a href="pages/synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML End-to-End</a></li>
+              <li><a href="pages/synthese/arbre-decision.html">Arbre de décision — Choix du modèle</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="assets/js/nav.js"></script>
+</body>
+</html>

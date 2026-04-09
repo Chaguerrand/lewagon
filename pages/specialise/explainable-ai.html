@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explainable AI — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Explainable AI</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html" class="active">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Domaines spécialisés</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Explainable AI</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Explainable AI</h1>
+        <p class="page-objective">Comprendre les techniques d'explicabilité des modèles ML — interprétabilité vs explicabilité, Shapley values, package SHAP — pour expliquer les prédictions localement et globalement, y compris sur des images.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Feature importance</div>
+        <div class="key-concept-def">Score qui mesure la contribution d&#x27;une feature à la prédiction.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">SHAP</div>
+        <div class="key-concept-def">Valeurs de Shapley : décomposition équitable de la prédiction par feature.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">LIME</div>
+        <div class="key-concept-def">Approxime localement le modèle par un modèle linéaire simple.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Global vs local</div>
+        <div class="key-concept-def">Expliquer le comportement moyen vs une prédiction individuelle.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-explainable-ai-shap">Cheatsheet — Explainable AI (SHAP)</a><ol><li><a href="#shap-explicabilité-locale-une-prédiction">SHAP — Explicabilité locale (une prédiction)</a></li><li><a href="#shap-explicabilité-globale-tout-le-dataset">SHAP — Explicabilité globale (tout le dataset)</a></li><li><a href="#shap-images-deep-learning">SHAP — Images (Deep Learning)</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-pourquoi-lexplainable-ai">1) Pourquoi l'Explainable AI ?</a><ol><li><a href="#11-le-problème">1.1 Le problème</a></li><li><a href="#12-cas-dusage">1.2 Cas d'usage</a></li><li><a href="#13-interprétabilité-vs-explicabilité">1.3 Interprétabilité vs Explicabilité</a></li></ol></li><li><a href="#2-intégration-dans-le-workflow-ml">2) Intégration dans le workflow ML</a><ol><li><a href="#21-approches">2.1 Approches</a></li><li><a href="#22-local-vs-global">2.2 Local vs Global</a></li></ol></li><li><a href="#3-shapley-values-intuition">3) Shapley Values — Intuition</a><ol><li><a href="#31-fondements-en-théorie-des-jeux">3.1 Fondements en théorie des jeux</a></li><li><a href="#32-définition">3.2 Définition</a></li><li><a href="#33-calcul-intuitif">3.3 Calcul intuitif</a></li></ol></li><li><a href="#4-shap-en-pratique">4) SHAP en pratique</a><ol><li><a href="#41-installation-et-setup">4.1 Installation et setup</a></li><li><a href="#42-entraîner-un-modèle">4.2 Entraîner un modèle</a></li></ol></li><li><a href="#5-explicabilité-locale-une-prédiction">5) Explicabilité locale — Une prédiction</a><ol><li><a href="#visualisations-locales">Visualisations locales</a></li></ol></li><li><a href="#6-explicabilité-globale-tout-le-dataset">6) Explicabilité globale — Tout le dataset</a><li><a href="#7-expliquer-la-classification-dimages">7) Expliquer la classification d'images</a><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-explainable-ai-shap">📋 Cheatsheet — Explainable AI (SHAP)</h2>
+
+<h3 id="shap-explicabilité-locale-une-prédiction">SHAP — Explicabilité locale (une prédiction)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## pip install shap xgboost
+import shap
+import xgboost
+
+## 1. Entraîner un modèle
+model = xgboost.XGBRegressor(n_estimators=100, max_depth=2)
+model.fit(X_train, y_train)
+
+## 2. Créer l&#x27;explainer SHAP
+explainer = shap.Explainer(model)
+
+## 3. Calculer les SHAP values pour UNE instance
+row = X_test.iloc[[24]]                           # une seule ligne
+shap_values = explainer(row)
+
+## 4. Vérification : base_value + sum(SHAP) = prediction
+print(shap_values.base_values[0])                  # moyenne des prédictions (baseline)
+print(shap_values.values.sum())                    # contribution totale des features
+print(model.predict(row)[0])                       # = base_value + sum(SHAP)
+
+## 5. Visualisations locales
+shap.plots.bar(shap_values[0])                     # barplot des contributions
+shap.plots.waterfall(shap_values[0])               # cascade : base → prediction
+shap.plots.force(shap_values[0])                   # diagramme de force</code></pre></div>
+
+
+<h3 id="shap-explicabilité-globale-tout-le-dataset">SHAP — Explicabilité globale (tout le dataset)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Calculer les SHAP values pour tout le test set
+shap_values = explainer(X_test)
+
+## Visualisations globales
+shap.plots.bar(shap_values)                        # importance moyenne des features
+shap.plots.beeswarm(shap_values)                   # distribution des contributions par feature</code></pre></div>
+
+
+<h3 id="shap-images-deep-learning">SHAP — Images (Deep Learning)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.applications.resnet50 import ResNet50
+
+model_deep = ResNet50(weights=&#x27;imagenet&#x27;)
+
+def predict_fn(X):
+    return model_deep(preprocess_input(X.copy()))
+
+masker = shap.maskers.Image(&quot;blur(128,128)&quot;, X[0].shape)
+explainer = shap.Explainer(predict_fn, masker, output_names=class_names)
+shap_values = explainer(X[1:5], max_evals=500, batch_size=50)
+shap.image_plot(shap_values, pixel_values=X[1:5])  # zones rouges = contribuent positivement</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre interprétabilité et explicabilité</strong></p>
+<p>L'interprétabilité = comprendre le mécanisme interne du modèle (possible pour linéaire, arbre). L'explicabilité = expliquer le comportement en termes humains (nécessaire pour les boîtes noires).</p>
+<p>❌ Dire "mon Random Forest est interprétable parce que j'ai les feature importances"</p>
+<p>✅ Les feature importances sont une forme d'<strong>explicabilité</strong> — le modèle reste une boîte noire</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre explicabilité locale et globale</strong></p>
+<p>Les SHAP values d'une instance expliquent <strong>cette prédiction</strong> — pas le modèle en général.</p>
+<p>❌ "La feature X est la plus importante" en regardant une seule instance</p>
+<p>✅ Local = une prédiction (<code>shap_values[0]</code>). Global = tout le dataset (<code>shap_values</code> sur X_test)</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Interpréter les Shapley values comme des coefficients de régression</strong></p>
+<p>Un Shapley value mesure la <strong>contribution marginale</strong> d'une feature pour une instance, pas un effet fixe.</p>
+<p>❌ "SHAP = 0.5 pour income → chaque dollar de revenu ajoute 0.5 au prix"</p>
+<p>✅ "Pour <strong>cette</strong> instance, la valeur d'income a poussé la prédiction de 0.5 au-dessus de la baseline"</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Calculer les SHAP values sur le train set au lieu du test set</strong></p>
+<p>Les explications doivent porter sur des données que le modèle n'a pas vues pendant l'entraînement.</p>
+<p>❌ <code>explainer(X_train)</code> → le modèle peut avoir mémorisé ces données</p>
+<p>✅ <code>explainer(X_test)</code> → explications sur des données non vues</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser SHAP comme mesure de causalité</strong></p>
+<p>SHAP mesure la contribution à la prédiction, pas la relation causale entre les variables.</p>
+<p>❌ "SHAP montre que la taille de la maison <strong>cause</strong> un prix plus élevé"</p>
+<p>✅ "SHAP montre que la taille de la maison <strong>contribue positivement</strong> à la prédiction du prix"</p></div></div>
+
+<hr>
+
+<h2 id="1-pourquoi-lexplainable-ai">1) Pourquoi l'Explainable AI ?</h2>
+
+<h3 id="11-le-problème">1.1 Le problème</h3>
+
+<p>Les modèles complexes (Random Forest, Deep Learning) sont des <strong>boîtes noires</strong> — ils font de bonnes prédictions mais personne ne comprend pourquoi.</p>
+
+<h3 id="12-cas-dusage">1.2 Cas d'usage</h3>
+
+<ul>
+<li><strong>Validation de modèle</strong> : vérifier que le modèle apprend les bons signaux (pas le fond de l'image !)</li>
+<li><strong>Debugging</strong> : comprendre pourquoi le modèle se trompe sur certains cas</li>
+<li><strong>Découverte de connaissances</strong> : identifier les facteurs clés d'un phénomène</li>
+<li><strong>Conformité légale</strong> : le RGPD 🇪🇺 limite les décisions automatisées sans explication humaine</li>
+</ul>
+
+<h3 id="13-interprétabilité-vs-explicabilité">1.3 Interprétabilité vs Explicabilité</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Interprétabilité</th><th>Explicabilité</th></tr></thead><tbody><tr><td><strong>Définition</strong></td><td>Comprendre le mécanisme interne</td><td>Expliquer le comportement en termes humains</td></tr><tr><td><strong>Modèles</strong></td><td>Régression linéaire, arbre de décision, KNN</td><td>Random Forest, XGBoost, Deep Learning</td></tr><tr><td><strong>Méthode</strong></td><td>Observer les paramètres du modèle</td><td>Techniques post-hoc (SHAP, LIME…)</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="2-intégration-dans-le-workflow-ml">2) Intégration dans le workflow ML</h2>
+
+<h3 id="21-approches">2.1 Approches</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Approche</th><th>Principe</th><th>Exemples</th></tr></thead><tbody><tr><td><strong>Intrinsèque</strong></td><td>Les paramètres du modèle expliquent directement</td><td>Régression linéaire (coefficients), arbre (splits)</td></tr><tr><td><strong>Agnostique</strong></td><td>Boîte noire — ne dépend que des inputs/outputs</td><td>SHAP, LIME</td></tr><tr><td><strong>Dépendant du modèle</strong></td><td>Optimise l'approche agnostique pour un type de modèle</td><td>TreeSHAP (optimisé pour les arbres)</td></tr></tbody></table></div>
+<h3 id="22-local-vs-global">2.2 Local vs Global</h3>
+
+<ul>
+<li><strong>Local</strong> : pourquoi le modèle a prédit <strong>cette valeur</strong> pour <strong>cette instance</strong></li>
+<li><strong>Global</strong> : quelles features sont importantes <strong>en général</strong> pour le modèle</li>
+</ul>
+
+<hr>
+
+<h2 id="3-shapley-values-intuition">3) Shapley Values — Intuition</h2>
+
+<h3 id="31-fondements-en-théorie-des-jeux">3.1 Fondements en théorie des jeux</h3>
+
+<p>[Untitled](Explainable%20AI/Untitled%2033c4e4108246806b877ac4de12089d6b.csv)</p>
+
+<p>En théorie des jeux, les Shapley values mesurent la <strong>contribution marginale</strong> de chaque joueur à un jeu coopératif. En ML, chaque <strong>feature</strong> est un joueur et la <strong>prédiction</strong> est le gain.</p>
+
+<h3 id="32-définition">3.2 Définition</h3>
+
+<p>Pour une instance donnée :</p>
+
+<p>$\text{Prediction} = \text{Average prediction (baseline)} + \sum_{j=1}^{n} \phi_j$</p>
+
+<p>Où $\phi_j$ = Shapley value de la feature j = sa contribution à l'écart entre la prédiction et la baseline.</p>
+
+<h3 id="33-calcul-intuitif">3.3 Calcul intuitif</h3>
+
+<p>Pour calculer $\phi_j$ :</p>
+
+<ol>
+<li>Construire toutes les <strong>coalitions</strong> de features (avec et sans la feature j)</li>
+<li>Pour chaque coalition, comparer la prédiction avec et sans j</li>
+<li>Moyenner les différences → Shapley value</li>
+</ol>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>On ne peut pas simplement "retirer" une feature du modèle — on simule son absence en remplaçant sa valeur par des valeurs tirées aléatoirement du dataset.</p></div></div>
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le calcul exact est exponentiel en nombre de features. Le package SHAP utilise des approximations efficaces (TreeSHAP pour les arbres, KernelSHAP pour les modèles agnostiques).</p></div></div>
+
+<hr>
+
+<h2 id="4-shap-en-pratique">4) SHAP en pratique</h2>
+
+<h3 id="41-installation-et-setup">4.1 Installation et setup</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## pip install shap xgboost
+import shap
+import xgboost
+from sklearn.model_selection import train_test_split
+
+shap.initjs()                                      # nécessaire pour certaines visualisations</code></pre></div>
+
+
+<h3 id="42-entraîner-un-modèle">4.2 Entraîner un modèle</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">X, y = shap.datasets.california()                  # prix des maisons en Californie (×$100K)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=13)
+
+model = xgboost.XGBRegressor(n_estimators=100, max_depth=2)
+model.fit(X_train, y_train)</code></pre></div>
+
+
+<hr>
+
+<h2 id="5-explicabilité-locale-une-prédiction">5) Explicabilité locale — Une prédiction</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Sélectionner une instance
+row = X_test.iloc[[24]]
+prediction = model.predict(row)[0]                 # → 1.558
+
+## Calculer les SHAP values
+explainer = shap.Explainer(model)
+shap_values = explainer(row)
+
+## Vérification : baseline + contributions = prediction
+print(f&quot;Base value:      {shap_values.base_values[0]:.3f}&quot;)   # 2.067
+print(f&quot;Sum SHAP values: {shap_values.values.sum():.3f}&quot;)     # -0.509
+print(f&quot;Prediction:      {prediction:.3f}&quot;)                    # 1.558</code></pre></div>
+
+
+<h3 id="visualisations-locales">Visualisations locales</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">shap.plots.bar(shap_values[0])                     # barplot des contributions par feature
+shap.plots.waterfall(shap_values[0])               # cascade de la baseline à la prédiction
+shap.plots.force(shap_values[0])                   # diagramme de force interactif</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Le waterfall plot montre comment chaque feature pousse la prédiction au-dessus ou en dessous de la baseline (moyenne). Les features rouges augmentent la prédiction, les bleues la diminuent.</p></div></div>
+
+<hr>
+
+<h2 id="6-explicabilité-globale-tout-le-dataset">6) Explicabilité globale — Tout le dataset</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">shap_values = explainer(X_test)                    # SHAP values pour tout le test set
+
+shap.plots.bar(shap_values)                        # importance moyenne de chaque feature
+shap.plots.beeswarm(shap_values)                   # distribution : chaque point = une instance</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le <strong>beeswarm plot</strong> montre pour chaque feature : la distribution des SHAP values (axe X) colorée par la valeur de la feature (rouge = haute, bleu = basse). On voit d'un coup quelles features sont importantes et dans quel sens elles influencent.</p></div></div>
+
+<p>👉 <a href="https://shap.readthedocs.io/en/latest/api_examples.html#plots" target="_blank" rel="noopener">Plus de visualisations SHAP</a></p>
+
+<hr>
+
+<h2 id="7-expliquer-la-classification-dimages">7) Expliquer la classification d'images</h2>
+
+<p>SHAP fonctionne aussi sur les modèles de Deep Learning et les images — il identifie les <strong>régions</strong> de l'image qui contribuent le plus à la prédiction.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
+
+model_deep = ResNet50(weights=&#x27;imagenet&#x27;)
+
+def predict_fn(X):
+    return model_deep(preprocess_input(X.copy()))
+
+masker = shap.maskers.Image(&quot;blur(128,128)&quot;, X[0].shape)
+explainer = shap.Explainer(predict_fn, masker, output_names=class_names)
+shap_values = explainer(X[1:5], max_evals=500, batch_size=50)
+shap.image_plot(shap_values, pixel_values=X[1:5])</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>L'explication d'images est plus lente (500+ évaluations par image). Réduire <code>max_evals</code> pour le prototypage.</p></div></div>
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://shap.readthedocs.io/en/latest/" target="_blank" rel="noopener">SHAP documentation</a></li>
+<li>👉 <a href="https://christophm.github.io/interpretable-ml-book/" target="_blank" rel="noopener">Interpretable ML Book — Christoph Molnar</a> (gratuit en ligne)</li>
+<li>👉 <a href="https://link.springer.com/book/10.1007/978-3-030-68640-6" target="_blank" rel="noopener">Explainable AI with Python — Gianfagna & Di Cecco</a></li>
+<li>👉 <a href="https://christophm.github.io/interpretable-ml-book/shapley.html" target="_blank" rel="noopener">Shapley values expliquées</a></li>
+<li>👉 <a href="https://docs.aws.amazon.com/whitepapers/latest/model-explainability-aws-ai-ml/interpretability-versus-explainability.html" target="_blank" rel="noopener">Interpretability vs Explainability — AWS</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">🚀 Challenges</h2>
+
+<ul>
+<li>Entraîner un modèle XGBoost et calculer les SHAP values locales et globales</li>
+<li>Comparer les feature importances classiques (Gini) avec les SHAP values globales</li>
+<li>Expliquer les prédictions d'un modèle de classification d'images avec SHAP</li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-analogie-fil-rouge-la-boîte-noire">Analogie fil rouge — La boîte noire</a></li><li><a href="#ref-à-retenir-absolument">À retenir absolument</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-pourquoi-lexplainable-ai">1. Pourquoi l'Explainable AI ?</a><ol><li><a href="#ref-11-le-problème-des-boîtes-noires">1.1 Le problème des boîtes noires</a></li><li><a href="#ref-12-pourquoi-cest-important-en-pratique">1.2 Pourquoi c'est important en pratique</a></li></ol></li><li><a href="#ref-2-interprétabilité-vs-explicabilité">2. Interprétabilité vs Explicabilité</a><ol><li><a href="#ref-21-les-modèles-interprétables">2.1 Les modèles interprétables</a></li><li><a href="#ref-22-les-modèles-explicables-mais-pas-interprétables">2.2 Les modèles explicables (mais pas interprétables)</a></li><li><a href="#ref-23-tableau-récapitulatif">2.3 Tableau récapitulatif</a></li></ol></li><li><a href="#ref-3-approches-dexplicabilité">3. Approches d'explicabilité</a><ol><li><a href="#ref-31-intrinsèque-vs-agnostique-vs-dépendant-du-modèle">3.1 Intrinsèque vs Agnostique vs Dépendant du modèle</a></li><li><a href="#ref-32-local-vs-global">3.2 Local vs Global</a></li></ol></li><li><a href="#ref-4-shapley-values-lintuition-mathématique">4. Shapley Values — L'intuition mathématique</a><ol><li><a href="#ref-41-lanalogie-du-jeu-coopératif">4.1 L'analogie du jeu coopératif</a></li><li><a href="#ref-42-la-formule">4.2 La formule</a></li><li><a href="#ref-43-comment-ça-se-calcule">4.3 Comment ça se calcule ?</a></li></ol></li><li><a href="#ref-5-shap-en-pratique-installation-et-setup">5. SHAP en pratique — Installation et setup</a><ol><li><a href="#ref-charger-un-dataset-et-entraîner-un-modèle">Charger un dataset et entraîner un modèle</a></li></ol></li><li><a href="#ref-6-explicabilité-locale-comprendre-une-seule-prédiction">6. Explicabilité locale — Comprendre une seule prédiction</a><ol><li><a href="#ref-61-calculer-les-shap-values-dune-instance">6.1 Calculer les SHAP values d'une instance</a></li><li><a href="#ref-62-visualiser-les-contributions-locales">6.2 Visualiser les contributions locales</a></li></ol></li><li><a href="#ref-7-explicabilité-globale-comprendre-le-modèle-en-général">7. Explicabilité globale — Comprendre le modèle en général</a><ol><li><a href="#ref-lire-un-beeswarm-plot">Lire un beeswarm plot</a></li></ol></li><li><a href="#ref-8-shap-sur-des-images-bonus-deep-learning">8. SHAP sur des images — Bonus Deep Learning</a><ol><li><a href="#ref-principe">Principe</a></li></ol></li><li><a href="#ref-9-les-pièges-classiques-à-éviter">9. Les pièges classiques à éviter</a><ol><li><a href="#ref-piège-1-confondre-interprétabilité-et-explicabilité">Piège 1 — Confondre interprétabilité et explicabilité</a></li><li><a href="#ref-piège-2-confondre-local-et-global">Piège 2 — Confondre local et global</a></li><li><a href="#ref-piège-3-lire-les-shap-values-comme-des-coefficients-de-régression">Piège 3 — Lire les SHAP values comme des coefficients de régression</a></li><li><a href="#ref-piège-4-calculer-les-shap-values-sur-le-train-set">Piège 4 — Calculer les SHAP values sur le train set</a></li><li><a href="#ref-piège-5-confondre-contribution-et-causalité">Piège 5 — Confondre contribution et causalité</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Tu as passé des heures à entraîner un modèle de Machine Learning. Il prédit avec 95 % de précision. Mais si quelqu'un te demande <strong>pourquoi</strong> il a prédit "refus de crédit" pour ce client précis… tu ne sais pas quoi répondre. C'est exactement le problème que résout l'<strong>Explainable AI (XAI)</strong>.</p>
+
+<h3 id="ref-analogie-fil-rouge-la-boîte-noire">Analogie fil rouge — La boîte noire</h3>
+
+<p>Imagine un <strong>oracle dans une boîte noire</strong> : tu lui donnes des informations sur une maison (surface, quartier, étage…) et il te crache un prix. L'oracle est précis, mais tu ne sais pas comment il raisonne à l'intérieur. L'Explainable AI, c'est l'ensemble des outils qui permettent d'ouvrir cette boîte — ou du moins, d'interroger l'oracle de l'extérieur pour comprendre ses choix.</p>
+
+<h3 id="ref-à-retenir-absolument">À retenir absolument</h3>
+
+<ul>
+<li>Un modèle complexe (Random Forest, réseau de neurones) est une <strong>boîte noire</strong> : il prédit bien, mais on ne sait pas pourquoi.</li>
+<li><strong>Interprétabilité</strong> = comprendre les mécanismes internes du modèle (possible seulement pour les modèles simples).</li>
+<li><strong>Explicabilité</strong> = expliquer le comportement du modèle en termes compréhensibles, depuis l'extérieur.</li>
+<li><strong>SHAP</strong> est la bibliothèque de référence pour l'explicabilité : elle dit combien chaque variable a "poussé" la prédiction vers le haut ou vers le bas.</li>
+<li>Une explication peut être <strong>locale</strong> (pour une seule prédiction) ou <strong>globale</strong> (pour l'ensemble du dataset).</li>
+</ul>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li>Pourquoi l'Explainable AI existe et à quoi ça sert</li>
+<li>Interprétabilité vs Explicabilité : la distinction clé</li>
+<li>Les Shapley Values : l'intuition mathématique</li>
+<li>SHAP en pratique : code pas à pas</li>
+<li>Explication locale d'une prédiction</li>
+<li>Explication globale sur tout le dataset</li>
+<li>Bonus : expliquer la classification d'images</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-pourquoi-lexplainable-ai">1. Pourquoi l'Explainable AI ?</h2>
+
+<h3 id="ref-11-le-problème-des-boîtes-noires">1.1 Le problème des boîtes noires</h3>
+
+<p>Un modèle de régression linéaire est simple : tu peux lire ses coefficients et comprendre immédiatement l'effet de chaque variable. Mais un Random Forest avec 500 arbres, ou un réseau de neurones profond ? Impossible de lire les paramètres directement — il y en a des millions.</p>
+
+<p>Pourtant ces modèles complexes sont souvent <strong>bien plus performants</strong>. Alors on les utilise… et on perd la compréhension.</p>
+
+<h3 id="ref-12-pourquoi-cest-important-en-pratique">1.2 Pourquoi c'est important en pratique</h3>
+
+<p><strong>Exemple concret :</strong> Une banque utilise un modèle ML pour décider d'accorder ou refuser un crédit. Le modèle refuse. Le client demande : "Pourquoi ?". Sans Explainable AI, la banque ne peut pas répondre. En Europe, le <strong>RGPD</strong> impose d'ailleurs le droit à une explication pour toute décision automatisée.</p>
+
+<p>Autres cas d'usage :</p>
+
+<ul>
+<li><strong>Validation</strong> : vérifier que le modèle apprend les bons signaux. Exemple : un modèle de détection de tumeur qui apprend à reconnaître... les règles d'image de l'hôpital plutôt que la tumeur elle-même.</li>
+<li><strong>Debugging</strong> : comprendre pourquoi le modèle se trompe sur certains cas.</li>
+<li><strong>Découverte de connaissances</strong> : identifier quelles variables sont vraiment importantes pour un phénomène.</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>L'Explainable AI ne remplace pas un bon modèle — elle permet de l'<strong>auditer</strong>, de le <strong>corriger</strong> et de le <strong>justifier</strong>.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-interprétabilité-vs-explicabilité">2. Interprétabilité vs Explicabilité</h2>
+
+<p>C'est une distinction subtile mais fondamentale.</p>
+
+<h3 id="ref-21-les-modèles-interprétables">2.1 Les modèles interprétables</h3>
+
+<p>Certains modèles sont <strong>interprétables par nature</strong> : leurs paramètres internes ont un sens direct.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Modèle</th><th>Comment on l'interprète</th></tr></thead><tbody><tr><td>Régression linéaire</td><td>Les coefficients — chaque coefficient = l'effet d'une variable</td></tr><tr><td>Arbre de décision</td><td>Les règles de décision — si age > 30 et revenu > 2000 alors...</td></tr><tr><td>KNN</td><td>La logique de voisinage — cette observation ressemble aux k plus proches</td></tr></tbody></table></div>
+<p><strong>Exemple :</strong> En régression linéaire <code>prix = 3.2 × surface + 150 × étage - 20000</code>, le coefficient 3.2 signifie "chaque m² supplémentaire ajoute 3.2 au prix". C'est de l'<strong>interprétabilité directe</strong>.</p>
+
+<h3 id="ref-22-les-modèles-explicables-mais-pas-interprétables">2.2 Les modèles explicables (mais pas interprétables)</h3>
+
+<p>Les modèles complexes (Random Forest, XGBoost, réseaux de neurones) sont des boîtes noires. On ne peut pas lire leurs paramètres. Mais on peut les <strong>expliquer de l'extérieur</strong> avec des techniques post-hoc comme SHAP ou LIME.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Attention à la confusion fréquente : les "feature importances" d'un Random Forest (score Gini) ne rendent <strong>pas</strong> le modèle interprétable — c'est une forme d'explicabilité globale. Le modèle reste une boîte noire.</p></div></div>
+
+<h3 id="ref-23-tableau-récapitulatif">2.3 Tableau récapitulatif</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Interprétabilité</th><th>Explicabilité</th></tr></thead><tbody><tr><td><strong>Quoi</strong></td><td>Comprendre les mécanismes internes</td><td>Expliquer le comportement depuis l'extérieur</td></tr><tr><td><strong>Quand</strong></td><td>Modèles simples</td><td>Modèles complexes (boîtes noires)</td></tr><tr><td><strong>Comment</strong></td><td>Lire les paramètres</td><td>Techniques post-hoc : SHAP, LIME…</td></tr><tr><td><strong>Exemple</strong></td><td>Coefficients d'une régression</td><td>SHAP values d'un XGBoost</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="ref-3-approches-dexplicabilité">3. Approches d'explicabilité</h2>
+
+<h3 id="ref-31-intrinsèque-vs-agnostique-vs-dépendant-du-modèle">3.1 Intrinsèque vs Agnostique vs Dépendant du modèle</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Approche</th><th>Principe</th><th>Exemples</th></tr></thead><tbody><tr><td><strong>Intrinsèque</strong></td><td>Le modèle est lisible par nature</td><td>Régression linéaire, arbre de décision</td></tr><tr><td><strong>Agnostique</strong></td><td>Fonctionne sur n'importe quelle boîte noire (on ne regarde que les inputs/outputs)</td><td>SHAP (KernelSHAP), LIME</td></tr><tr><td><strong>Dépendant du modèle</strong></td><td>Optimisé pour un type de modèle spécifique</td><td>TreeSHAP (optimisé pour les arbres de décision)</td></tr></tbody></table></div>
+<h3 id="ref-32-local-vs-global">3.2 Local vs Global</h3>
+
+<p>C'est une autre dimension clé :</p>
+
+<ul>
+<li><strong>Local</strong> : expliquer <strong>une seule prédiction</strong>. Exemple — "Pourquoi le modèle a-t-il prédit un prix de 250 000 € pour <em>cette</em> maison ?"</li>
+<li><strong>Global</strong> : comprendre le comportement <strong>général</strong> du modèle. Exemple — "Quelles variables sont les plus importantes pour le modèle sur l'ensemble des données ?"</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>On peut agréger des explications locales pour obtenir une vue globale — c'est exactement ce que fait SHAP.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-shapley-values-lintuition-mathématique">4. Shapley Values — L'intuition mathématique</h2>
+
+<p>C'est le coeur conceptuel du cours. Accroches-toi — l'intuition est belle.</p>
+
+<h3 id="ref-41-lanalogie-du-jeu-coopératif">4.1 L'analogie du jeu coopératif</h3>
+
+<p>Imagine une équipe de foot qui marque 3 buts. Chaque joueur a contribué à la victoire. Mais comment répartir équitablement le mérite entre les 11 joueurs ? C'est exactement la question que pose la <strong>théorie des jeux coopératifs</strong> — et Lloyd Shapley y a répondu en 1953.</p>
+
+<p>En Machine Learning, on adapte cette idée :</p>
+<ul>
+<li>Les <strong>joueurs</strong> = les variables (features) du modèle</li>
+<li>Le <strong>gain</strong> = la prédiction du modèle</li>
+<li>La <strong>valeur Shapley</strong> d'une feature = sa contribution marginale à la prédiction</li>
+</ul>
+
+<h3 id="ref-42-la-formule">4.2 La formule</h3>
+
+<p>Pour une prédiction donnée, la Shapley value $\phi_j$ d'une feature $j$ vérifie :</p>
+
+<div class="katex-display">$$\text{Prédiction} = \underbrace{\bar{y}}_{\text{baseline}} + \sum_{j=1}^{n} \phi_j$$</div>
+
+<p>Où :</p>
+<ul>
+<li>$\bar{y}$ = la <strong>baseline</strong> = la prédiction moyenne du modèle sur tout le dataset (le point de départ)</li>
+<li>$\phi_j$ = la <strong>contribution</strong> de la feature $j$ pour cette instance précise (positive ou négative)</li>
+<li>$n$ = le nombre de features</li>
+</ul>
+
+<p><strong>Exemple numérique concret :</strong></p>
+
+<p>Ton modèle prédit le prix d'une maison. La prédiction moyenne (baseline) est $\bar{y} = 206\,700$ €. Pour une maison précise, le modèle prédit 155 800 €. L'écart est $-50\,900$ €. Les Shapley values expliquent comment chaque variable contribue à cet écart :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>Valeur pour cette maison</th><th>Shapley value $\phi_j$</th></tr></thead><tbody><tr><td>Surface</td><td>45 m² (petite)</td><td>$-35\,000$ €</td></tr><tr><td>Quartier</td><td>Centre-ville</td><td>$+12\,000$ €</td></tr><tr><td>Étage</td><td>0 (rez-de-chaussée)</td><td>$-18\,000$ €</td></tr><tr><td>Nb. pièces</td><td>2</td><td>$-9\,900$ €</td></tr><tr><td><strong>Total</strong></td><td></td><td>$-50\,900$ €</td></tr></tbody></table></div>
+<p>$155\,800 = 206\,700 + (-35\,000) + 12\,000 + (-18\,000) + (-9\,900)$ ✓</p>
+
+<h3 id="ref-43-comment-ça-se-calcule">4.3 Comment ça se calcule ?</h3>
+
+<p>L'idée : on "enlève" une feature et on regarde comment la prédiction change. Mais on ne peut pas vraiment "enlever" une variable du modèle — il a été entraîné avec toutes. On <strong>simule son absence</strong> en remplaçant sa valeur par des valeurs tirées aléatoirement du dataset.</p>
+
+<p>Le calcul exhaustif consiste à tester toutes les <strong>coalitions</strong> possibles de features (avec et sans la feature $j$) et à moyenner les différences. Si on a $n$ features, il y a $2^n$ coalitions — c'est exponentiel !</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Avec 20 features, il y a $2^{20} = 1\,048\,576$ coalitions. Le calcul exact est impossible. SHAP utilise des <strong>approximations efficaces</strong> : TreeSHAP pour les modèles à base d'arbres, KernelSHAP pour les autres.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-shap-en-pratique-installation-et-setup">5. SHAP en pratique — Installation et setup</h2>
+
+<p><code>shap</code> est une bibliothèque Python qui implémente les Shapley values de façon efficace.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Installation (une seule fois)
+# pip install shap xgboost
+
+import shap
+import xgboost
+from sklearn.model_selection import train_test_split
+
+# Initialise les visualisations interactives dans un notebook
+shap.initjs()</code></pre></div>
+
+
+<h3 id="ref-charger-un-dataset-et-entraîner-un-modèle">Charger un dataset et entraîner un modèle</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Dataset intégré à shap : prix des maisons en Californie (en centaines de milliers de $)
+X, y = shap.datasets.california()
+
+# Découper en train / test (bonne pratique : toujours expliquer sur le test set)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=13
+)
+
+# Entraîner un XGBoost (modèle boîte noire très performant)
+model = xgboost.XGBRegressor(n_estimators=100, max_depth=2)
+model.fit(X_train, y_train)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>On utilise XGBoost car SHAP dispose d'une implémentation ultra-rapide pour ce type de modèle (TreeSHAP). Mais SHAP fonctionne avec <strong>n'importe quel modèle</strong> scikit-learn, keras, etc.</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-explicabilité-locale-comprendre-une-seule-prédiction">6. Explicabilité locale — Comprendre une seule prédiction</h2>
+
+<h3 id="ref-61-calculer-les-shap-values-dune-instance">6.1 Calculer les SHAP values d'une instance</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Sélectionner une instance précise (la ligne 24 du test set)
+row = X_test.iloc[[24]]                           # double crochet pour garder un DataFrame
+
+# Faire la prédiction
+prediction = model.predict(row)[0]                # → 1.558 (soit ~155 800 $)
+
+# Créer l&#x27;explainer SHAP (il analyse le modèle)
+explainer = shap.Explainer(model)
+
+# Calculer les SHAP values pour cette instance
+shap_values = explainer(row)
+
+# Vérification : baseline + somme des contributions = prédiction
+print(f&quot;Baseline (prédiction moyenne) : {shap_values.base_values[0]:.3f}&quot;)  # → 2.067
+print(f&quot;Somme des SHAP values :         {shap_values.values.sum():.3f}&quot;)    # → -0.509
+print(f&quot;Prédiction :                    {prediction:.3f}&quot;)                  # → 1.558
+# 2.067 + (-0.509) = 1.558 ✓</code></pre></div>
+
+
+<p>La vérification montre que la formule tient bien :</p>
+
+<div class="katex-display">$$1.558 = \underbrace{2.067}_{\text{baseline}} + \underbrace{(-0.509)}_{\sum \phi_j}$$</div>
+
+<h3 id="ref-62-visualiser-les-contributions-locales">6.2 Visualiser les contributions locales</h3>
+
+<p>Trois types de graphiques pour explorer une prédiction individuelle :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># --- Barplot : importance de chaque feature pour cette instance ---
+shap.plots.bar(shap_values[0])
+# Affiche les contributions en valeur absolue, triées par importance
+# Les barres rouges = contributions positives (poussent la prédiction vers le haut)
+# Les barres bleues = contributions négatives (tirent la prédiction vers le bas)
+
+# --- Waterfall : cascade de la baseline à la prédiction ---
+shap.plots.waterfall(shap_values[0])
+# Montre pas à pas comment chaque feature déplace la prédiction
+# Depuis la baseline (2.067) jusqu&#x27;à la prédiction finale (1.558)
+
+# --- Force plot : diagramme de forces ---
+shap.plots.force(shap_values[0])
+# Vue compacte : les features rouges &quot;poussent&quot; vers la droite (hausse)
+# Les features bleues &quot;poussent&quot; vers la gauche (baisse)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le <strong>waterfall plot</strong> est souvent le plus pédagogique pour expliquer une décision à quelqu'un : "La superficie du logement a fait baisser la prédiction de X, mais la localisation a compensé de Y…"</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-explicabilité-globale-comprendre-le-modèle-en-général">7. Explicabilité globale — Comprendre le modèle en général</h2>
+
+<p>Une fois les SHAP values calculées sur <strong>tout le test set</strong>, on obtient une vue globale du comportement du modèle.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Calculer les SHAP values pour TOUTES les observations du test set
+# (peut prendre quelques secondes selon la taille)
+shap_values = explainer(X_test)           # shape : (n_samples, n_features)
+
+# --- Barplot global : importance moyenne de chaque feature ---
+shap.plots.bar(shap_values)
+# Chaque barre = la moyenne des |SHAP values| de cette feature sur tout le dataset
+# C&#x27;est l&#x27;importance globale de la variable pour le modèle
+
+# --- Beeswarm plot : distribution des contributions ---
+shap.plots.beeswarm(shap_values)
+# Chaque point = une observation
+# Position sur l&#x27;axe X = valeur de la SHAP value (contribution)
+# Couleur du point = valeur de la feature (rouge = haute, bleu = basse)</code></pre></div>
+
+
+<h3 id="ref-lire-un-beeswarm-plot">Lire un beeswarm plot</h3>
+
+<p>Le beeswarm est l'outil le plus riche pour l'analyse globale. Voici comment l'interpréter :</p>
+
+<ul>
+<li><strong>Chaque ligne</strong> = une feature, triée par ordre d'importance (la plus importante en haut)</li>
+<li><strong>Chaque point</strong> = une observation du dataset</li>
+<li><strong>Position horizontale</strong> = la SHAP value (à droite = contribution positive au prix, à gauche = négative)</li>
+<li><strong>Couleur</strong> = valeur brute de la feature (rouge = grande valeur, bleu = petite valeur)</li>
+</ul>
+
+<p><strong>Exemple de lecture :</strong> Si pour la feature "surface", les points rouges (grande surface) sont à droite (SHAP positif) → les grandes surfaces <strong>augmentent</strong> la prédiction de prix. C'est logique !</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Le beeswarm permet de voir d'un coup d'œil : quelles features comptent le plus, et dans <strong>quel sens</strong> elles influencent la prédiction (relation positive ou négative).</p></div></div>
+
+<hr>
+
+<h2 id="ref-8-shap-sur-des-images-bonus-deep-learning">8. SHAP sur des images — Bonus Deep Learning</h2>
+
+<p>SHAP ne se limite pas aux données tabulaires. Sur les images, il identifie les <strong>régions</strong> qui contribuent le plus à la prédiction d'un réseau de neurones.</p>
+
+<h3 id="ref-principe">Principe</h3>
+
+<p>Au lieu de "retirer" une feature, on <strong>floute</strong> des régions de l'image pour simuler leur absence, puis on observe comment la prédiction change.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
+
+# Charger ResNet50 pré-entraîné sur ImageNet
+model_deep = ResNet50(weights=&#x27;imagenet&#x27;)
+
+# Fonction de prédiction compatible SHAP
+def predict_fn(X):
+    return model_deep(preprocess_input(X.copy()))   # prétraitement obligatoire pour ResNet50
+
+# Masker : simule l&#x27;absence d&#x27;une région en la floutant (128x128 de flou gaussien)
+masker = shap.maskers.Image(&quot;blur(128,128)&quot;, X[0].shape)
+
+# Créer l&#x27;explainer pour images
+explainer = shap.Explainer(predict_fn, masker, output_names=class_names)
+
+# Calculer les SHAP values pour 4 images (500 évaluations chacune)
+shap_values = explainer(X[1:5], max_evals=500, batch_size=50)
+
+# Visualiser : zones rouges = contribuent positivement à la classe prédite
+shap.image_plot(shap_values, pixel_values=X[1:5])</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>L'explication d'images est <strong>beaucoup plus lente</strong> que pour les données tabulaires : 500 évaluations par image, c'est 500 passages dans le réseau de neurones. En prototypage, réduire <code>max_evals</code> à 100-200 pour aller plus vite.</p></div></div>
+
+<hr>
+
+<h2 id="ref-9-les-pièges-classiques-à-éviter">9. Les pièges classiques à éviter</h2>
+
+<h3 id="ref-piège-1-confondre-interprétabilité-et-explicabilité">Piège 1 — Confondre interprétabilité et explicabilité</h3>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>"Mon Random Forest est interprétable parce que j'ai les feature importances" est <strong>faux</strong>. Les feature importances sont une forme d'explicabilité — le modèle reste une boîte noire.</p></div></div>
+
+<h3 id="ref-piège-2-confondre-local-et-global">Piège 2 — Confondre local et global</h3>
+
+<p>Une SHAP value calculée sur <strong>une seule instance</strong> n'est pas représentative du comportement général. Elle dit uniquement : "Pour <em>cette</em> observation, la feature X a contribué de +0.3". Pour conclure sur l'importance globale d'une feature, il faut agréger sur tout le dataset.</p>
+
+<h3 id="ref-piège-3-lire-les-shap-values-comme-des-coefficients-de-régression">Piège 3 — Lire les SHAP values comme des coefficients de régression</h3>
+
+<p>Un coefficient de régression est <strong>fixe</strong> : "chaque euro de revenu ajoute 0.5 au score, toujours". Une SHAP value est <strong>locale</strong> : "pour <em>cette</em> instance, le revenu a contribué de +0.5 — mais pour une autre instance, ce sera différent".</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">❌ &quot;SHAP = 0.5 pour income → chaque euro de revenu ajoute 0.5&quot;
+✅ &quot;Pour cette instance, la valeur d&#x27;income a poussé la prédiction de +0.5 au-dessus de la baseline&quot;</code></pre></div>
+
+
+<h3 id="ref-piège-4-calculer-les-shap-values-sur-le-train-set">Piège 4 — Calculer les SHAP values sur le train set</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">❌ explainer(X_train)    # le modèle a mémorisé ces données → explications biaisées
+✅ explainer(X_test)     # explications sur des données non vues = plus honnêtes</code></pre></div>
+
+
+<h3 id="ref-piège-5-confondre-contribution-et-causalité">Piège 5 — Confondre contribution et causalité</h3>
+
+<p>SHAP mesure la <strong>contribution à la prédiction</strong> du modèle, pas une relation causale dans le monde réel.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">❌ &quot;SHAP montre que la taille de la maison CAUSE un prix plus élevé&quot;
+✅ &quot;SHAP montre que la taille de la maison CONTRIBUE positivement à la prédiction du prix&quot;</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>La causalité est une question de philosophie et de design expérimental — pas de statistiques seules. SHAP explique le modèle, pas le monde.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1.</strong> Un collègue te dit : "Mon arbre de décision est une boîte noire, j'ai besoin de SHAP pour l'expliquer." Est-ce correct ? Justifie ta réponse en utilisant la distinction interprétabilité / explicabilité.</p>
+
+<p><strong>Question 2.</strong> Tu calcules les SHAP values d'une observation et tu obtiens : <code>base_value = 2.1</code>, <code>shap_values = [0.3, -0.8, 0.5, -0.2]</code>. Quelle est la prédiction du modèle pour cette observation ? Montre le calcul.</p>
+
+<p><strong>Question 3.</strong> Sur un beeswarm plot, tu observes que pour la feature "distance_au_centre", les points bleus (faible distance) sont massivement à droite (SHAP positif). Qu'est-ce que cela signifie en langage courant ?</p>
+
+<p><strong>Question 4.</strong> Pourquoi faut-il calculer les SHAP values sur le <strong>test set</strong> et non sur le train set ?</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Les modèles complexes (Random Forest, XGBoost, Deep Learning) sont des <strong>boîtes noires</strong> : très performants, mais incompréhensibles sans outils dédiés.</li>
+<li><strong>Interprétabilité</strong> = lire les paramètres internes (possible pour régression linéaire, arbres simples). <strong>Explicabilité</strong> = expliquer le comportement depuis l'extérieur (technique post-hoc, nécessaire pour les boîtes noires).</li>
+<li>Les <strong>Shapley values</strong> mesurent la contribution de chaque feature à l'écart entre une prédiction et la prédiction moyenne : $\text{Prédiction} = \bar{y} + \sum \phi_j$.</li>
+<li><strong>SHAP</strong> est la bibliothèque Python de référence : <code>shap.Explainer(model)</code> puis <code>explainer(X_test)</code>.</li>
+<li><strong>Locale</strong> = expliquer une seule prédiction (<code>shap_values[0]</code>, waterfall/force plot). <strong>Globale</strong> = comprendre le modèle en général (<code>shap_values</code> sur tout le test set, beeswarm/barplot).</li>
+<li>Toujours calculer les SHAP values sur le <strong>test set</strong>.</li>
+<li>SHAP ≠ causalité : il explique le modèle, pas les relations réelles entre les variables.</li>
+<li>SHAP fonctionne aussi sur les <strong>images</strong> en floutant des régions pour simuler leur absence.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-pourquoi-expliquer-un-modèle">Pourquoi expliquer un modèle</a></li><li><a href="#syn-modèles-intrinsèquement-interprétables">Modèles intrinsèquement interprétables</a></li><li><a href="#syn-feature-importance">Feature importance</a></li><li><a href="#syn-shap-values">SHAP values</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-lime">LIME</a></li><li><a href="#syn-partial-dependence-plots">Partial dependence plots</a></li><li><a href="#syn-counterfactual-explanations">Counterfactual explanations</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-pourquoi-expliquer-un-modèle">Pourquoi expliquer un modèle</h3>
+
+<p>Quatre raisons pour lesquelles l'interprétabilité est devenue critique en data science.</p>
+
+<p><strong>1. Confiance</strong> : un médecin ne va pas suivre une recommandation de modèle "boîte noire" sans comprendre pourquoi. Idem pour un juge, un banquier, un recruteur.</p>
+
+<p><strong>2. Conformité réglementaire</strong> : le RGPD donne le <strong>droit à l'explication</strong> pour toute décision automatisée. Un modèle qui refuse un crédit doit pouvoir expliquer pourquoi. L'AI Act européen (2024) impose des obligations encore plus strictes pour les systèmes "à haut risque".</p>
+
+<p><strong>3. Debug</strong> : un modèle qui se trompe doit être analysable. Si vous ne savez pas <strong>pourquoi</strong> votre modèle prédit "cancer", vous ne pouvez pas savoir s'il a appris des features pertinentes ou des artefacts dans les données.</p>
+
+<p><strong>4. Découverte de biais</strong> : un modèle peut être très précis tout en discriminant illégalement. Sans interprétabilité, ces biais restent invisibles jusqu'au procès.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Cas célèbre</strong> : le modèle de recidive criminelle COMPAS, utilisé aux US, présentait un taux de faux positifs deux fois plus élevé pour les Afro-Américains que pour les Blancs, à risque réel équivalent. Sans audit explicite, ce biais structurel avait passé le filtre du déploiement. C'est exactement le genre de problème que l'XAI cherche à éviter.</p></div></div>
+
+<h3 id="syn-modèles-intrinsèquement-interprétables">Modèles intrinsèquement interprétables</h3>
+
+<p>Certains modèles sont <strong>interprétables par construction</strong> — pas besoin de techniques d'explication post-hoc.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Modèle</th><th>Interprétation</th></tr></thead><tbody><tr><td><strong>Régression linéaire/logistique</strong></td><td>Coefficient × feature → contribution directe</td></tr><tr><td><strong>Decision Tree (peu profond)</strong></td><td>Chemin de décision visible</td></tr><tr><td><strong>Régression à coefficients sparses</strong> (Lasso)</td><td>Seules quelques features comptent</td></tr><tr><td><strong>Generalized Additive Models</strong> (GAMs)</td><td>Une fonction par feature, somme</td></tr><tr><td><strong>Rule-based</strong></td><td>Règles explicites (si X > 5 alors Y)</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Régression linéaire interprétable
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression()
+model.fit(X, y)
+print(dict(zip(X.columns, model.coef_[0])))
+# {&#x27;age&#x27;: 0.05, &#x27;income&#x27;: 0.0001, &#x27;has_default&#x27;: -2.3, ...}</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : pour les domaines régulés (médical, finance, justice), <strong>commencer par un modèle interprétable</strong> comme baseline. Souvent, il atteint déjà 95% de la performance d'un modèle complexe — et il est validable, défendable, déployable. Le gain marginal d'un XGBoost peut ne pas justifier sa complexité légale.</p></div></div>
+
+<h3 id="syn-feature-importance">Feature importance</h3>
+
+<p>Pour les modèles ensemble (Random Forest, XGBoost), trois mesures de l'importance des features :</p>
+
+<p><strong>1. Mean Decrease Impurity (MDI)</strong> : moyenne de la diminution d'impureté due à chaque feature, sur tous les splits.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">importances = model.feature_importances_</code></pre></div>
+
+
+<p>Avantages : gratuit, calculé pendant <code>fit</code>.</p>
+<p>Inconvénients : biaisé envers les features avec beaucoup de valeurs uniques (cardinalité élevée).</p>
+
+<p><strong>2. Permutation Importance</strong> : on permute aléatoirement une feature et on mesure la chute de performance.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.inspection import permutation_importance
+
+result = permutation_importance(
+    model, X_test, y_test,
+    n_repeats=10, random_state=42, n_jobs=-1,
+)
+
+importances = pd.DataFrame({
+    &quot;feature&quot;: X.columns,
+    &quot;importance&quot;: result.importances_mean,
+}).sort_values(&quot;importance&quot;, ascending=False)</code></pre></div>
+
+
+<p>Avantages : agnostique au modèle, plus fiable que MDI.</p>
+<p>Inconvénients : plus lent (1 fit par feature × n_repeats), peut être trompeur si les features sont corrélées.</p>
+
+<p><strong>3. SHAP values</strong> : la méthode moderne (cf. section suivante).</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège classique</strong> : MDI biaisée envers les features à haute cardinalité. Une colonne "ID utilisateur" peut apparaître la plus importante alors qu'elle ne contient aucune information utile. <strong>Toujours</strong> vérifier avec permutation_importance ou SHAP avant de tirer des conclusions sur les features importantes.</p></div></div>
+
+<h3 id="syn-shap-values">SHAP values</h3>
+
+<p><strong>SHAP</strong> (SHapley Additive exPlanations, Lundberg & Lee, 2017) est devenu le standard de l'XAI moderne. Il décompose chaque prédiction en <strong>contributions</strong> par feature, basées sur la théorie des jeux coopératifs (Shapley values).</p>
+
+<p>Idée : pour chaque feature, on calcule "combien cette feature a contribué à la prédiction par rapport à la moyenne des prédictions". La somme des contributions est exactement la différence entre la prédiction et la baseline.</p>
+
+<div class="katex-display">$$\hat{y}(x) = \phi_0 + \sum_{i=1}^{p} \phi_i(x)$$</div>
+
+<p>où $\phi_0$ est la valeur moyenne des prédictions (baseline) et $\phi_i(x)$ est la contribution de la feature $i$ pour cet exemple $x$.</p>
+
+<p><strong>Exemple chiffré — décision de crédit</strong> : un modèle prédit une probabilité de défaut de 0.72 pour un client. La moyenne sur tout le portefeuille est 0.15.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>Valeur du client</th><th>Contribution SHAP ($\phi_i$)</th></tr></thead><tbody><tr><td>(baseline $\phi_0$)</td><td>—</td><td><strong>+0.15</strong></td></tr><tr><td>credit_score</td><td>520</td><td>+0.35</td></tr><tr><td>income</td><td>22 000 €</td><td>+0.12</td></tr><tr><td>debt_ratio</td><td>0.68</td><td>+0.18</td></tr><tr><td>age</td><td>45</td><td>-0.05</td></tr><tr><td>years_employed</td><td>2</td><td>+0.03</td></tr><tr><td><strong>Total prédiction</strong></td><td></td><td><strong>= 0.78</strong></td></tr></tbody></table></div>
+<p>Note : en pratique SHAP travaille dans l'espace des log-odds, on retrouve 0.72 en probabilité après transformation logistique. L'idée clé : la somme des contributions + la baseline donne exactement la prédiction. Le client a un score explicitement décomposé : "c'est surtout votre credit_score faible (+0.35) et votre debt_ratio (+0.18) qui font augmenter votre risque".</p>
+
+<p>Propriétés :</p>
+
+<ul>
+<li><strong>Local accuracy</strong> : la somme des SHAP values reproduit exactement la prédiction</li>
+<li><strong>Consistency</strong> : si une feature contribue plus dans un modèle, sa SHAP value augmente</li>
+<li><strong>Symétrie</strong> : deux features avec la même contribution ont la même SHAP value</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import shap
+
+# TreeExplainer : algorithme optimisé pour arbres, O(TLD^2) au lieu de O(2^M)
+# Compatible XGBoost, LightGBM, RandomForest, sklearn GradientBoosting
+explainer = shap.TreeExplainer(model)
+
+# shap_values : matrice (n_samples, n_features) de contributions
+# expected_value : la baseline phi_0 (moyenne des prédictions)
+shap_values = explainer.shap_values(X_test)
+
+# Visualisations classiques
+shap.summary_plot(shap_values, X_test)              # beeswarm : importance ET direction
+shap.summary_plot(shap_values, X_test, plot_type=&quot;bar&quot;)  # bar chart classique des |SHAP|
+shap.dependence_plot(&quot;age&quot;, shap_values, X_test)    # effet marginal de age + interactions
+shap.force_plot(explainer.expected_value, shap_values[0], X_test.iloc[0])  # 1 prédiction
+shap.waterfall_plot(shap.Explanation(                # décomposition claire d&#x27;une instance
+    values=shap_values[0],
+    base_values=explainer.expected_value,
+    data=X_test.iloc[0],
+))</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : SHAP, c'est comme un audit comptable d'une décision. Pour chaque "décision" (prédiction) du modèle, vous obtenez un grand-livre où chaque feature a apporté X € (positif ou négatif) au résultat final. La somme balance exactement. C'est rigoureux, défendable en audit, et intuitif pour les non-statisticiens.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-lime">LIME</h3>
+
+<p><strong>LIME</strong> (Local Interpretable Model-agnostic Explanations, Ribeiro et al., 2016) est l'autre méthode classique d'XAI.</p>
+
+<p>Idée : pour expliquer une prédiction spécifique, on <strong>approxime localement</strong> le modèle complexe par un modèle simple (régression linéaire). On perturbe l'instance, on récupère les prédictions du modèle complexe sur ces variations, et on entraîne un linéaire dessus.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import lime
+import lime.lime_tabular
+
+explainer = lime.lime_tabular.LimeTabularExplainer(
+    X_train.values,
+    feature_names=X.columns,
+    class_names=[&quot;No&quot;, &quot;Yes&quot;],
+    discretize_continuous=True,
+)
+
+explanation = explainer.explain_instance(
+    X_test.iloc[0].values,
+    model.predict_proba,
+    num_features=10,
+)
+explanation.show_in_notebook(show_table=True)</code></pre></div>
+
+
+<p>LIME vs SHAP :</p>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>LIME</th><th>SHAP</th></tr></thead><tbody><tr><td>Théorie</td><td>Approximation locale</td><td>Shapley values (théorie des jeux)</td></tr><tr><td>Garantie</td><td>Aucune</td><td>Local accuracy, consistency</td></tr><tr><td>Vitesse</td><td>Lent</td><td>Très rapide pour les arbres (TreeExplainer)</td></tr><tr><td>Stabilité</td><td>Variable selon les perturbations</td><td>Déterministe</td></tr><tr><td>Standard 2025</td><td>Moins utilisé</td><td>Standard de facto</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Recommandation</strong> : utilisez SHAP pour la production et la communication. LIME a une valeur historique et reste utile pour des cas spécifiques (texte, images), mais SHAP est plus rigoureux et plus rapide.</p></div></div>
+
+<h3 id="syn-partial-dependence-plots">Partial dependence plots</h3>
+
+<p>Un <strong>PDP</strong> montre l'effet moyen d'une feature sur la prédiction, en marginalisant les autres.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.inspection import PartialDependenceDisplay
+
+PartialDependenceDisplay.from_estimator(
+    model,
+    X_train,
+    features=[&quot;age&quot;, &quot;income&quot;, (&quot;age&quot;, &quot;income&quot;)],   # 1D et 2D
+    grid_resolution=50,
+)</code></pre></div>
+
+
+<p>Pour 1 feature : courbe "valeur de la feature → prédiction moyenne". Pour 2 features : heatmap qui montre les interactions.</p>
+
+<p>Limite : suppose que les features sont indépendantes. Si "age" et "income" sont fortement corrélés, fixer "age" à 70 tout en gardant "income" à 100k$ crée une combinaison irréaliste qui fausse le PDP.</p>
+
+<p><strong>ICE plots</strong> (Individual Conditional Expectation) sont une variante qui trace une courbe par instance plutôt que la moyenne — révèle les hétérogénéités cachées par le PDP.</p>
+
+<h3 id="syn-counterfactual-explanations">Counterfactual explanations</h3>
+
+<p>Plutôt que d'expliquer "pourquoi cette prédiction", expliquer "que faut-il changer pour avoir une prédiction différente".</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Exemple : &quot;Pourquoi ce crédit a-t-il été refusé ? Que faire pour qu&#x27;il soit accepté ?&quot;
+from dice_ml import Dice
+
+d = Dice(data, model, method=&quot;random&quot;)
+counterfactuals = d.generate_counterfactuals(query_instance, total_CFs=5, desired_class=1)
+counterfactuals.visualize_as_dataframe()</code></pre></div>
+
+
+<p>Output type : "Si vous augmentez votre revenu de 20k€ et votre score de crédit de 50 points, votre demande aurait été acceptée". Beaucoup plus actionnable pour l'utilisateur final qu'une SHAP value.</p>
+
+<p>C'est la forme d'explication la plus appréciée des utilisateurs non techniques, mais la plus difficile à générer correctement (il faut des contrefactuels <strong>réalistes</strong> : pas "augmente ton âge de -10 ans").</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : SHAP vous dit "voici les raisons de cette décision". Counterfactual vous dit "voici comment changer cette décision". Pour un utilisateur, le counterfactual est souvent plus actionnable. Pour un audit légal, SHAP est plus rigoureux. Les deux sont complémentaires.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi la <code>feature_importances_</code> d'un Random Forest peut-elle être trompeuse, et que faire à la place ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>MDI bias.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><code>feature_importances_</code> utilise le <strong>Mean Decrease Impurity</strong> (MDI), qui est <strong>biaisé</strong> en faveur des features avec beaucoup de valeurs uniques (haute cardinalité). Une colonne "ID utilisateur" ou "code postal" peut apparaître très importante simplement parce qu'elle offre plus d'opportunités de splits, sans contenir d'information utile pour la généralisation. Solutions : (1) <strong>Permutation importance</strong> (<code>sklearn.inspection.permutation_importance</code>) : agnostique au modèle, plus fiable. Permute aléatoirement une feature et mesure la chute de performance. (2) <strong>SHAP values</strong> : encore mieux, donne aussi des explications par instance et capture les interactions. (3) <strong>Drop-column importance</strong> : retirer la feature et réentraîner le modèle, mesurer la chute. Le plus rigoureux mais le plus coûteux. <strong>Bonne pratique</strong> : croiser au moins deux méthodes. Si MDI dit que "user_id" est important mais que SHAP et permutation_importance ne le voient pas, c'est du bias MDI. Question d'entretien data science classique pour vérifier qu'un candidat sait les pièges.</p>
+
+</details>
+
+<p><strong>Q2 : Vous voulez expliquer une décision de crédit refusée à un client. SHAP, LIME, ou counterfactual ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>actionnabilité.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Counterfactual</strong> est probablement le meilleur choix pour cet usage. SHAP et LIME diraient quelque chose comme : "Votre demande a été refusée principalement à cause de votre score de crédit (-2.3) et de votre revenu insuffisant (-0.8)". Informatif mais frustrant pour le client : qu'est-ce qu'il peut <strong>faire</strong> ? Counterfactual répond directement : "Si vous augmentez votre score de crédit de 580 à 650 ET votre revenu de 30k€ à 38k€, votre demande sera acceptée". C'est actionnable. <strong>En pratique</strong>, on combine les trois : (1) counterfactual pour la communication client, (2) SHAP pour l'audit interne et la documentation réglementaire, (3) LIME ou plot global de SHAP pour la documentation de modèle. <strong>Précaution éthique</strong> : les counterfactuals doivent être <strong>réalistes</strong> (pas "diminuez votre âge de 10 ans") et <strong>non discriminatoires</strong> (pas basés sur le genre, l'ethnie, etc.). Question d'entretien XAI moderne : la réponse révèle si le candidat pense aux besoins de l'utilisateur final.</p>
+
+</details>
+
+<p><strong>Q3 : Vous avez un modèle XGBoost à 95% d'accuracy en classification médicale. Le médecin demande "pourquoi ?". Quelle approche d'explication choisir et pourquoi ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>SHAP global et local.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Approche en deux étapes. <strong>Étape 1 — explication globale (SHAP summary plot)</strong> : montrer au médecin quelles sont les features les plus importantes en moyenne sur l'ensemble du dataset, ainsi que la direction de leur effet. Cela répond à la question "comment ce modèle pense en général ?" et permet au médecin de vérifier que les features prises en compte sont <strong>médicalement pertinentes</strong>. Si le modèle accorde un poids majeur à "ID patient" ou "date d'admission", c'est un red flag. <strong>Étape 2 — explication locale (SHAP waterfall ou force plot)</strong> : pour chaque prédiction individuelle, montrer la décomposition exacte des features qui ont contribué à cette décision. "Le modèle a prédit cancer parce que : âge = +1.2, marqueur K-67 élevé = +0.8, antécédents familiaux = +0.4". Cela permet au médecin de <strong>valider</strong> la décision avec son expertise clinique : si les features pointées sont les bonnes, il fait confiance. <strong>Étape 3 — counterfactual</strong> (optionnel mais utile) : "qu'est-ce qui aurait fait basculer le diagnostic dans l'autre sens ?". Cela aide à quantifier la marge de la décision. <strong>Pourquoi SHAP plutôt que LIME</strong> : SHAP est plus rigoureux (théorie des jeux), plus rapide pour les arbres (TreeExplainer en O(secondes)), et est devenu le standard de la documentation médicale. Question d'entretien XAI dans un contexte régulé : la réponse exhaustive parle de transparence, validation clinique, et des trois niveaux d'explication.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Interpretable Machine Learning</em> (Christoph Molnar, gratuit en ligne) — la référence du domaine</li>
+<li><a href="https://shap.readthedocs.io/" target="_blank" rel="noopener">SHAP documentation</a> — avec exemples et visualisations</li>
+<li><em>A Unified Approach to Interpreting Model Predictions</em> (Lundberg & Lee, 2017) — papier SHAP</li>
+<li><em>Why Should I Trust You? Explaining the Predictions of Any Classifier</em> (Ribeiro et al., 2016) — papier LIME</li>
+<li><a href="https://captum.ai/" target="_blank" rel="noopener">Captum (PyTorch)</a> — pour expliquer les modèles deep learning</li>
+<li><em>DiCE</em> (Microsoft) — counterfactual explanations</li>
+<li><em>Ethics of AI</em> — discussion sur l'XAI et l'AI Act européen</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../specialise/reinforcement-learning.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Reinforcement Learning</span>
+  </a>
+  <a href="../mlops/automate-lifecycle.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Automate Model Lifecycle →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

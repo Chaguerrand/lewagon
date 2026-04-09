@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion des erreurs — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Gestion des erreurs</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html" class="active">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Notes perso</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Gestion des erreurs</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Gestion des erreurs</h1>
+        <p class="page-objective"></p>
+      </div>
+
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#gestion-du-flux-et-des-erreurs-en-python">Gestion du flux et des erreurs en Python</a><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#cheatsheet-gestion-des-erreurs-flux">Cheatsheet — Gestion des erreurs & flux</a><ol><li><a href="#try-except-gérer-les-erreurs">`try` / `except` — gérer les erreurs</a></li><li><a href="#structure-complète-try-except-else-finally">Structure complète : `try` / `except` / `else` / `finally`</a></li><li><a href="#capturer-plusieurs-erreurs">Capturer plusieurs erreurs</a></li><li><a href="#erreurs-courantes-à-connaître">Erreurs courantes à connaître</a></li><li><a href="#raise-déclencher-une-erreur-manuellement">`raise` — déclencher une erreur manuellement</a></li><li><a href="#pass-ne-rien-faire">`pass` — ne rien faire</a></li><li><a href="#break-quitter-une-boucle">`break` — quitter une boucle</a></li><li><a href="#continue-sauter-une-itération">`continue` — sauter une itération</a></li><li><a href="#return-sortir-dune-fonction">`return` — sortir d'une fonction</a></li><li><a href="#assert-vérifier-une-condition-debug">`assert` — vérifier une condition (debug)</a></li><li><a href="#récap-visuel">Récap visuel</a></li><li><a href="#exemple-combiné">Exemple combiné</a></li></ol></li></ol></div>
+<h2 id="gestion-du-flux-et-des-erreurs-en-python">Gestion du flux et des erreurs en Python</h2>
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<h2 id="cheatsheet-gestion-des-erreurs-flux">📋 Cheatsheet — Gestion des erreurs & flux</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## ── TRY / EXCEPT ─────────────────────────────────────
+try:
+    résultat = 10 / x
+except ZeroDivisionError:
+    print(&quot;Division par zéro&quot;)
+except ValueError as e:
+    print(f&quot;Valeur invalide : {e}&quot;)
+except Exception as e:          # filet de sécurité (toujours en dernier)
+    print(f&quot;Erreur inattendue : {e}&quot;)
+else:
+    print(&quot;Aucune erreur !&quot;)    # exécuté si PAS d&#x27;erreur
+finally:
+    print(&quot;Toujours exécuté&quot;)   # nettoyage, fermeture de fichier...
+
+## ── ERREURS COURANTES ────────────────────────────────
+## ValueError        → int(&quot;abc&quot;)
+## TypeError         → &quot;a&quot; + 1
+## KeyError          → dict[&quot;clé_absente&quot;]
+## IndexError        → liste[99]
+## ZeroDivisionError → 10 / 0
+## FileNotFoundError → open(&quot;inexistant.txt&quot;)
+## AttributeError    → 42.upper()
+
+## ── RAISE ────────────────────────────────────────────
+raise ValueError(&quot;Message explicite obligatoire&quot;)
+
+## ── CONTRÔLE DE FLUX ─────────────────────────────────
+## break     → quitte la boucle immédiatement
+for i in range(10):
+    if i == 5:
+        break           # sort à i=5
+
+## continue  → saute au tour suivant
+for i in range(6):
+    if i == 3:
+        continue        # ignore i=3, continue avec i=4
+
+## pass      → placeholder (ne fait rien)
+def a_implementer():
+    pass
+
+## return    → quitte la fonction et retourne une valeur
+def f(x):
+    if x &lt; 0:
+        return None     # sortie anticipée
+    return x * 2
+
+## assert    → vérifie une hypothèse (debug)
+assert age &gt;= 0, &quot;L&#x27;âge ne peut pas être négatif&quot;</code></pre></div>
+
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Attraper <code>Exception</code> en premier (trop large)</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">try:
+    x = int(input())
+except Exception:       # ❌ attrape tout, masque les vraies causes
+    print(&quot;Erreur&quot;)
+except ValueError:      # ❌ jamais atteint
+    print(&quot;Pas un entier&quot;)
+
+## ✅ Toujours du plus spécifique au plus général
+except ValueError:
+    ...
+except Exception as e:
+    ...</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser <code>pass</code> dans un <code>except</code> sans logique</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">try:
+    risque()
+except Exception:
+    pass  # ❌ l&#x27;erreur est silencieusement ignorée — très difficile à déboguer</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre <code>break</code> et <code>continue</code></strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for i in range(5):
+    if i == 3:
+        break      # ❌ si tu voulais juste sauter 3 → sort de la boucle entièrement
+        continue   # ✅ saute l&#x27;itération 3 et continue avec 4</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier que <code>finally</code> s'exécute même après un <code>return</code></strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def f():
+    try:
+        return &quot;résultat&quot;
+    finally:
+        print(&quot;finally s&#x27;exécute quand même !&quot;)  # ✅ toujours affiché</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong><code>raise</code> sans message explicite</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">raise ValueError()              # ❌ pas d&#x27;info pour déboguer
+raise ValueError(&quot;Le diviseur ne peut pas être zéro !&quot;)  # ✅</code></pre></div></div></div>
+
+<hr>
+
+<h3 id="try-except-gérer-les-erreurs"><code>try</code> / <code>except</code> — gérer les erreurs</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">try:
+    resultat = 10 / 0      # code risqué
+except ZeroDivisionError:
+    print(&quot;Division par zéro !&quot;)</code></pre></div>
+
+
+<p>Sans <code>try</code>, le programme <strong>plante</strong>. Avec <code>try</code>, on <strong>intercepte</strong> l'erreur et on choisit quoi faire.</p>
+
+<hr>
+
+<h3 id="structure-complète-try-except-else-finally">Structure complète : <code>try</code> / <code>except</code> / <code>else</code> / <code>finally</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">try:
+    nombre = int(input(&quot;Entrez un nombre : &quot;))
+except ValueError:
+    print(&quot;Ce n&#x27;est pas un nombre !&quot;)
+else:
+    print(f&quot;Vous avez entré : {nombre}&quot;)  # exécuté si PAS d&#x27;erreur
+finally:
+    print(&quot;Fin du programme.&quot;)            # exécuté TOUJOURS</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Bloc</th><th>Quand s'exécute-t-il ?</th></tr></thead><tbody><tr><td><code>try</code></td><td>toujours (code à risque)</td></tr><tr><td><code>except</code></td><td>si une erreur survient</td></tr><tr><td><code>else</code></td><td>si <strong>aucune</strong> erreur</td></tr><tr><td><code>finally</code></td><td><strong>toujours</strong>, erreur ou non</td></tr></tbody></table></div>
+<hr>
+
+<h3 id="capturer-plusieurs-erreurs">Capturer plusieurs erreurs</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">try:
+    x = int(input())
+    print(10 / x)
+except ValueError:
+    print(&quot;Pas un nombre&quot;)
+except ZeroDivisionError:
+    print(&quot;Division par zéro&quot;)
+except Exception as e:        # attrape tout le reste
+    print(f&quot;Erreur inattendue : {e}&quot;)</code></pre></div>
+
+
+<blockquote><p><code>Exception</code> est la "filet de sécurité" qui attrape toutes les erreurs non prévues.<br></p></blockquote>
+
+<hr>
+
+<h3 id="erreurs-courantes-à-connaître">Erreurs courantes à connaître</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Erreur</th><th>Cause</th></tr></thead><tbody><tr><td><code>ValueError</code></td><td>mauvais type de valeur (<code>int(&quot;abc&quot;)</code>)</td></tr><tr><td><code>TypeError</code></td><td>mauvaise opération (<code>&quot;a&quot; + 1</code>)</td></tr><tr><td><code>KeyError</code></td><td>clé absente dans un dict</td></tr><tr><td><code>IndexError</code></td><td>index hors limites dans une liste</td></tr><tr><td><code>ZeroDivisionError</code></td><td>division par zéro</td></tr><tr><td><code>FileNotFoundError</code></td><td>fichier introuvable</td></tr><tr><td><code>AttributeError</code></td><td>attribut inexistant sur un objet</td></tr></tbody></table></div>
+<hr>
+
+<h3 id="raise-déclencher-une-erreur-manuellement"><code>raise</code> — déclencher une erreur manuellement</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def diviser(a, b):
+    if b == 0:
+        raise ValueError(&quot;Le diviseur ne peut pas être zéro !&quot;)
+    return a / b
+
+diviser(10, 0)  # ValueError: Le diviseur ne peut pas être zéro !</code></pre></div>
+
+
+<p>Utile pour <strong>valider des données</strong> et signaler un problème explicitement.</p>
+
+<hr>
+
+<h3 id="pass-ne-rien-faire"><code>pass</code> — ne rien faire</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for i in range(5):
+    if i == 3:
+        pass    # on ignore, on continue normalement
+    print(i)    # affiche 0, 1, 2, 3, 4</code></pre></div>
+
+
+<p><code>pass</code> est un <strong>placeholder</strong> — il dit à Python "ici il n'y a rien à faire" sans provoquer d'erreur. Utile aussi pour les fonctions/classes vides :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def fonction_a_implementer():
+    pass   # pas encore codée, mais le programme ne plante pas</code></pre></div>
+
+
+<hr>
+
+<h3 id="break-quitter-une-boucle"><code>break</code> — quitter une boucle</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for i in range(10):
+    if i == 5:
+        break       # sort de la boucle immédiatement
+    print(i)        # 0, 1, 2, 3, 4</code></pre></div>
+
+
+<hr>
+
+<h3 id="continue-sauter-une-itération"><code>continue</code> — sauter une itération</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for i in range(6):
+    if i == 3:
+        continue    # saute le reste, passe au tour suivant
+    print(i)        # 0, 1, 2, 4, 5</code></pre></div>
+
+
+<hr>
+
+<h3 id="return-sortir-dune-fonction"><code>return</code> — sortir d'une fonction</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def premier_positif(liste):
+    for n in liste:
+        if n &gt; 0:
+            return n    # sort de la fonction immédiatement
+    return None         # si aucun positif trouvé</code></pre></div>
+
+
+<ul>
+<li>Retourne une valeur et <strong>stoppe</strong> la fonction</li>
+<li>Sans <code>return</code>, la fonction retourne <code>None</code> automatiquement</li>
+</ul>
+
+<hr>
+
+<h3 id="assert-vérifier-une-condition-debug"><code>assert</code> — vérifier une condition (debug)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">age = -5
+assert age &gt;= 0, &quot;L&#x27;âge ne peut pas être négatif !&quot;
+## AssertionError: L&#x27;âge ne peut pas être négatif !</code></pre></div>
+
+
+<p>Utilisé pour <strong>tester des hypothèses</strong> pendant le développement. Peut être désactivé en production.</p>
+
+<hr>
+
+<h3 id="récap-visuel">Récap visuel</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">try / except  → intercepter et gérer les erreurs
+else          → si aucune erreur dans le try
+finally       → s&#x27;exécute toujours (nettoyage)
+raise         → déclencher une erreur manuellement
+pass          → ne rien faire (placeholder)
+break         → quitter une boucle
+continue      → sauter au tour suivant
+return        → quitter une fonction (+ retourner une valeur)
+assert        → vérifier une condition (debug)</code></pre></div>
+
+
+<hr>
+
+<h3 id="exemple-combiné">Exemple combiné</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def lire_entier(texte):
+    while True:
+        try:
+            valeur = int(input(texte))
+            assert valeur &gt; 0, &quot;Doit être positif&quot;
+            return valeur                       # succès → on sort
+        except ValueError:
+            print(&quot;Ce n&#x27;est pas un entier !&quot;)
+        except AssertionError as e:
+            print(e)
+        finally:
+            print(&quot;--- tentative terminée ---&quot;)</code></pre></div>
+
+
+<blockquote><p>Cette fonction redemande un nombre jusqu'à obtenir un entier positif valide — un pattern très utilisé en pratique.<br></p></blockquote>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><li><a href="#ref-try-except-intercepter-une-erreur">`try` / `except` — Intercepter une erreur</a><ol><li><a href="#ref-le-problème-sans-try">Le problème sans `try`</a></li><li><a href="#ref-la-solution-avec-try-except">La solution avec `try / except`</a></li></ol></li><li><a href="#ref-structure-complète-try-except-else-finally">Structure complète : `try` / `except` / `else` / `finally`</a><li><a href="#ref-gérer-plusieurs-types-derreurs">Gérer plusieurs types d'erreurs</a><li><a href="#ref-les-erreurs-courantes-à-connaître">Les erreurs courantes à connaître</a><li><a href="#ref-raise-déclencher-une-erreur-manuellement">`raise` — Déclencher une erreur manuellement</a><li><a href="#ref-contrôle-de-flux-pass-break-continue-return-assert">Contrôle de flux : `pass`, `break`, `continue`, `return`, `assert`</a><ol><li><a href="#ref-pass-ne-rien-faire">`pass` — Ne rien faire</a></li><li><a href="#ref-break-quitter-une-boucle-immédiatement">`break` — Quitter une boucle immédiatement</a></li><li><a href="#ref-continue-sauter-au-tour-suivant">`continue` — Sauter au tour suivant</a></li><li><a href="#ref-return-quitter-une-fonction-et-retourner-une-valeur">`return` — Quitter une fonction (et retourner une valeur)</a></li><li><a href="#ref-assert-vérifier-une-hypothèse-outil-de-debug">`assert` — Vérifier une hypothèse (outil de debug)</a></li></ol></li><li><a href="#ref-récapitulatif-des-mots-clés">Récapitulatif des mots-clés</a><li><a href="#ref-exemple-combiné-tout-ensemble">Exemple combiné — Tout ensemble</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Quand on écrit du code, les choses ne se passent pas toujours comme prévu. L'utilisateur tape une lettre là où on attendait un chiffre, un fichier est introuvable, on divise par zéro... Sans outil pour gérer ça, le programme <strong>plante brutalement</strong>. Python offre une boîte à outils complète pour anticiper ces situations et y réagir proprement.</p>
+
+<p><strong>À retenir avant de commencer :</strong></p>
+
+<ul>
+<li>Une <strong>erreur</strong> (aussi appelée "exception") en Python n'est pas une catastrophe — c'est un signal qu'on peut intercepter.</li>
+<li>Le bloc <code>try / except</code> est le mécanisme central pour gérer les erreurs.</li>
+<li><code>raise</code> permet de déclencher une erreur soi-même, quand on veut signaler un problème explicitement.</li>
+<li><code>break</code>, <code>continue</code>, <code>return</code> et <code>pass</code> permettent de contrôler le <strong>flux</strong> d'exécution d'une boucle ou d'une fonction.</li>
+<li><code>assert</code> est un outil de vérification utile pendant le développement.</li>
+</ul>
+
+<p><strong>Analogie fil rouge :</strong> Imagine que ton programme est un cuisinier qui suit une recette. Si un ingrédient manque, il ne jette pas tout — il note le problème, utilise un substitut ou prévient poliment. C'est exactement ce que fait la gestion des erreurs en Python.</p>
+
+<p><strong>Mini-plan du cours :</strong></p>
+<ol>
+<li><code>try / except</code> — intercepter les erreurs</li>
+<li>Structure complète : <code>else</code> et <code>finally</code></li>
+<li>Gérer plusieurs types d'erreurs</li>
+<li>Les erreurs courantes à connaître</li>
+<li><code>raise</code> — déclencher une erreur manuellement</li>
+<li><code>pass</code>, <code>break</code>, <code>continue</code>, <code>return</code>, <code>assert</code> — contrôle de flux</li>
+<li>Exemple combiné</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-try-except-intercepter-une-erreur"><code>try</code> / <code>except</code> — Intercepter une erreur</h2>
+
+<h3 id="ref-le-problème-sans-try">Le problème sans <code>try</code></h3>
+
+<p>Sans protection, une erreur arrête tout le programme d'un coup :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">resultat = 10 / 0   # ZeroDivisionError: division by zero
+print(&quot;Cette ligne ne s&#x27;affiche jamais.&quot;)</code></pre></div>
+
+
+<h3 id="ref-la-solution-avec-try-except">La solution avec <code>try / except</code></h3>
+
+<p>Le bloc <code>try</code> dit à Python : "essaie ce code, et si ça plante, voici quoi faire à la place."</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">try:
+    resultat = 10 / 0      # on essaie ce code risqué
+except ZeroDivisionError:  # si CETTE erreur précise survient...
+    print(&quot;Division par zéro !&quot;)  # ...on affiche ce message au lieu de planter</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le programme ne plante plus — il intercepte l'erreur et continue proprement. C'est comme attraper une balle avant qu'elle casse une vitre.</p></div></div>
+
+<hr>
+
+<h2 id="ref-structure-complète-try-except-else-finally">Structure complète : <code>try</code> / <code>except</code> / <code>else</code> / <code>finally</code></h2>
+
+<p>Python propose quatre blocs complémentaires pour couvrir tous les cas de figure :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">try:
+    nombre = int(input(&quot;Entrez un nombre : &quot;))  # code risqué : l&#x27;utilisateur peut taper n&#x27;importe quoi
+except ValueError:
+    print(&quot;Ce n&#x27;est pas un nombre !&quot;)           # exécuté si int() échoue (ex: l&#x27;user tape &quot;abc&quot;)
+else:
+    print(f&quot;Vous avez entré : {nombre}&quot;)        # exécuté UNIQUEMENT si aucune erreur n&#x27;a eu lieu dans try
+finally:
+    print(&quot;Fin du programme.&quot;)                  # exécuté TOUJOURS, qu&#x27;il y ait eu une erreur ou non</code></pre></div>
+
+
+<p><strong>Récapitulatif des quatre blocs :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Bloc</th><th>Quand s'exécute-t-il ?</th></tr></thead><tbody><tr><td><code>try</code></td><td>Toujours — c'est là qu'on met le code à risque</td></tr><tr><td><code>except</code></td><td>Seulement si une erreur survient dans <code>try</code></td></tr><tr><td><code>else</code></td><td>Seulement si <strong>aucune</strong> erreur n'a eu lieu</td></tr><tr><td><code>finally</code></td><td><strong>Toujours</strong>, erreur ou pas — idéal pour le nettoyage</td></tr></tbody></table></div>
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>finally</code> s'exécute même si tu utilises <code>return</code> à l'intérieur du <code>try</code>. C'est un comportement surprenant pour les débutants — garde-le en tête !</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def f():
+    try:
+        return &quot;résultat&quot;          # on retourne ici...
+    finally:
+        print(&quot;finally s&#x27;exécute quand même !&quot;)  # ...mais finally passe QUAND MÊME avant</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-gérer-plusieurs-types-derreurs">Gérer plusieurs types d'erreurs</h2>
+
+<p>On peut empiler plusieurs blocs <code>except</code> pour réagir différemment selon l'erreur :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">try:
+    x = int(input(&quot;Entrez un nombre : &quot;))   # risque 1 : l&#x27;user tape une lettre → ValueError
+    print(10 / x)                           # risque 2 : l&#x27;user tape 0 → ZeroDivisionError
+except ValueError:                          # cas : mauvais type de valeur
+    print(&quot;Pas un nombre&quot;)
+except ZeroDivisionError:                   # cas : division par zéro
+    print(&quot;Division par zéro&quot;)
+except Exception as e:                      # filet de sécurité : attrape tout le reste
+    print(f&quot;Erreur inattendue : {e}&quot;)       # &quot;e&quot; contient le message d&#x27;erreur détaillé</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>L'ordre des <code>except</code> est crucial : toujours mettre les erreurs <strong>les plus spécifiques en premier</strong>, et <code>Exception</code> (le filet) <strong>en dernier</strong>. Si tu mets <code>Exception</code> en premier, il attrape tout et les blocs suivants ne sont jamais atteints.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Mauvais ordre — NE PAS FAIRE :
+except Exception:       # attrape tout, masque les vraies causes
+    print(&quot;Erreur&quot;)
+except ValueError:      # cette ligne n&#x27;est jamais atteinte !
+    print(&quot;Pas un entier&quot;)
+
+# Bon ordre :
+except ValueError:      # d&#x27;abord le plus spécifique
+    print(&quot;Pas un entier&quot;)
+except Exception as e:  # ensuite le filet de sécurité
+    print(f&quot;Erreur inattendue : {e}&quot;)</code></pre></div>
+
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Ne jamais faire <code>except Exception: pass</code></strong> — cela "avale" l'erreur en silence. Le programme continue comme si de rien n'était, mais le problème est toujours là. Impossible à déboguer ensuite.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">try:
+    risque()
+except Exception:
+    pass  # l&#x27;erreur est ignorée silencieusement — très difficile à déboguer</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-les-erreurs-courantes-à-connaître">Les erreurs courantes à connaître</h2>
+
+<p>Python a des noms précis pour chaque type d'erreur. Voici celles que tu rencontreras le plus souvent :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Erreur</th><th>Ce qui la provoque</th><th>Exemple</th></tr></thead><tbody><tr><td><code>ValueError</code></td><td>Valeur de mauvais type</td><td><code>int(&quot;abc&quot;)</code></td></tr><tr><td><code>TypeError</code></td><td>Opération impossible entre deux types</td><td><code>&quot;a&quot; + 1</code></td></tr><tr><td><code>KeyError</code></td><td>Clé absente dans un dictionnaire</td><td><code>mon_dict[&quot;clé_absente&quot;]</code></td></tr><tr><td><code>IndexError</code></td><td>Index hors limites dans une liste</td><td><code>ma_liste[99]</code> sur une liste de 3 éléments</td></tr><tr><td><code>ZeroDivisionError</code></td><td>Division par zéro</td><td><code>10 / 0</code></td></tr><tr><td><code>FileNotFoundError</code></td><td>Fichier introuvable</td><td><code>open(&quot;inexistant.txt&quot;)</code></td></tr><tr><td><code>AttributeError</code></td><td>Méthode ou attribut inexistant sur un objet</td><td><code>(42).upper()</code></td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Quand Python affiche une erreur, il te dit <strong>exactement son type</strong> sur la dernière ligne du message. Apprendre à lire ces noms te permettra de trouver la solution beaucoup plus vite — c'est comme lire les codes d'erreur d'une machine.</p></div></div>
+
+<hr>
+
+<h2 id="ref-raise-déclencher-une-erreur-manuellement"><code>raise</code> — Déclencher une erreur manuellement</h2>
+
+<p>Parfois, tu veux toi-même signaler qu'un problème a eu lieu — par exemple pour valider des données en entrée :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def diviser(a, b):
+    if b == 0:                                          # on vérifie la condition problématique
+        raise ValueError(&quot;Le diviseur ne peut pas être zéro !&quot;)  # on déclenche une erreur avec un message clair
+    return a / b                                        # si tout va bien, on calcule normalement
+
+diviser(10, 0)  # → ValueError: Le diviseur ne peut pas être zéro !</code></pre></div>
+
+
+<p><code>raise</code> interrompt la fonction et envoie l'erreur vers le code qui a appelé la fonction. Si personne ne l'attrape avec un <code>except</code>, le programme plante avec ton message.</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Toujours inclure un message explicite dans ton <code>raise</code> — c'est ce message que lira la personne qui débogue le code (peut-être toi dans 3 semaines) !</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">raise ValueError()                                   # message vide — inutile pour déboguer
+raise ValueError(&quot;Le diviseur ne peut pas être zéro !&quot;)  # message clair — excellent</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-contrôle-de-flux-pass-break-continue-return-assert">Contrôle de flux : <code>pass</code>, <code>break</code>, <code>continue</code>, <code>return</code>, <code>assert</code></h2>
+
+<p>Ces mots-clés ne gèrent pas les erreurs au sens strict, mais ils contrôlent <strong>comment Python avance</strong> dans le code.</p>
+
+<h3 id="ref-pass-ne-rien-faire"><code>pass</code> — Ne rien faire</h3>
+
+<p><code>pass</code> est un placeholder : il dit à Python "ici, intentionnellement, il n'y a rien à faire". Utile pour les blocs vides temporaires :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for i in range(5):
+    if i == 3:
+        pass         # on ne fait rien de spécial pour i=3, on continue normalement
+    print(i)         # affiche 0, 1, 2, 3, 4 — le 3 est bien affiché aussi</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def fonction_a_implementer():
+    pass   # la fonction existe déjà dans le code mais n&#x27;est pas encore codée — pas d&#x27;erreur</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>pass</code> est différent de <code>continue</code> : avec <code>pass</code>, le reste du bloc s'exécute quand même (ici, <code>print(i)</code> affiche aussi le 3). Avec <code>continue</code>, on saute directement au tour suivant.</p></div></div>
+
+<h3 id="ref-break-quitter-une-boucle-immédiatement"><code>break</code> — Quitter une boucle immédiatement</h3>
+
+<p><code>break</code> sort complètement de la boucle, peu importe combien de tours il reste :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for i in range(10):    # boucle prévue de 0 à 9
+    if i == 5:
+        break          # on sort immédiatement quand i vaut 5
+    print(i)           # affiche 0, 1, 2, 3, 4 — on ne verra jamais 5, 6, 7, 8, 9</code></pre></div>
+
+
+<p><strong>Analogie :</strong> <code>break</code>, c'est comme appuyer sur le bouton "STOP" d'un tapis roulant — tout s'arrête là.</p>
+
+<h3 id="ref-continue-sauter-au-tour-suivant"><code>continue</code> — Sauter au tour suivant</h3>
+
+<p><code>continue</code> ignore le reste du code du tour actuel et passe directement à l'itération suivante :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for i in range(6):     # boucle de 0 à 5
+    if i == 3:
+        continue       # quand i vaut 3, on saute le print et on passe à i=4
+    print(i)           # affiche 0, 1, 2, 4, 5 — le 3 est absent</code></pre></div>
+
+
+<p><strong>Analogie :</strong> <code>continue</code>, c'est comme passer son tour dans un jeu — on revient au prochain tour normalement.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Confusion fréquente — retiens bien la différence :</p>
+<p>- <code>break</code> → <strong>quitte la boucle</strong> complètement</p>
+<p>- <code>continue</code> → <strong>saute l'itération courante</strong> et continue la boucle</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Exemple pour visualiser la différence :
+for i in range(5):
+    if i == 3:
+        break      # résultat : 0, 1, 2 — la boucle s&#x27;arrête à 3
+        continue   # résultat si on remplaçait break : 0, 1, 2, 4 — la boucle continue après 3</code></pre></div>
+
+
+<h3 id="ref-return-quitter-une-fonction-et-retourner-une-valeur"><code>return</code> — Quitter une fonction (et retourner une valeur)</h3>
+
+<p><code>return</code> sort immédiatement d'une fonction et renvoie optionnellement une valeur :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def premier_positif(liste):
+    for n in liste:              # on parcourt la liste
+        if n &gt; 0:
+            return n             # dès qu&#x27;on trouve un positif, on sort de la fonction avec cette valeur
+    return None                  # si on arrive ici, c&#x27;est qu&#x27;il n&#x27;y avait aucun positif</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Sans <code>return</code> explicite, Python retourne automatiquement <code>None</code>. C'est parfois source de bugs — si tu récupères la valeur d'une fonction qui ne contient pas de <code>return</code>, tu obtiendras <code>None</code> sans erreur visible.</p></div></div>
+
+<h3 id="ref-assert-vérifier-une-hypothèse-outil-de-debug"><code>assert</code> — Vérifier une hypothèse (outil de debug)</h3>
+
+<p><code>assert</code> permet de vérifier qu'une condition est vraie pendant le développement. Si elle est fausse, une <code>AssertionError</code> est levée :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">age = -5
+assert age &gt;= 0, &quot;L&#x27;âge ne peut pas être négatif !&quot;
+# → AssertionError: L&#x27;âge ne peut pas être négatif !</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Syntaxe générale :
+assert condition, &quot;Message affiché si la condition est fausse&quot;</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>assert</code> est surtout utile pour <strong>déboguer</strong> : tu t'assures qu'une variable a bien la valeur attendue à un moment donné. En production, les assertions peuvent être désactivées — ne les utilise pas pour valider des données utilisateur (préfère <code>raise</code> pour ça).</p></div></div>
+
+<hr>
+
+<h2 id="ref-récapitulatif-des-mots-clés">Récapitulatif des mots-clés</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">try / except  → intercepter et gérer les erreurs
+else          → si aucune erreur dans le try
+finally       → s&#x27;exécute toujours (nettoyage, fermeture de fichier...)
+raise         → déclencher une erreur manuellement
+pass          → ne rien faire (placeholder)
+break         → quitter une boucle immédiatement
+continue      → sauter au tour suivant dans une boucle
+return        → quitter une fonction et retourner une valeur
+assert        → vérifier une condition pendant le développement (debug)</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-exemple-combiné-tout-ensemble">Exemple combiné — Tout ensemble</h2>
+
+<p>Voici une fonction qui utilise presque tous ces outils à la fois. Elle demande un entier positif à l'utilisateur et recommence jusqu'à en obtenir un valide :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def lire_entier(texte):
+    while True:                                    # boucle infinie — on ne sort que via return
+        try:
+            valeur = int(input(texte))             # risque : l&#x27;user peut taper une lettre → ValueError
+            assert valeur &gt; 0, &quot;Doit être positif&quot; # on vérifie que c&#x27;est bien positif
+            return valeur                          # succès : on sort de la fonction avec la valeur
+        except ValueError:
+            print(&quot;Ce n&#x27;est pas un entier !&quot;)      # l&#x27;user a tapé une lettre → on demande à nouveau
+        except AssertionError as e:
+            print(e)                               # l&#x27;user a tapé 0 ou négatif → on affiche le message
+        finally:
+            print(&quot;--- tentative terminée ---&quot;)    # affiché après chaque essai, réussi ou non</code></pre></div>
+
+
+<p><strong>Comment ça marche :</strong></p>
+<ol>
+<li>On entre dans la boucle et on essaie de lire un entier.</li>
+<li>Si l'utilisateur tape "abc" → <code>ValueError</code> → on affiche le message et <code>finally</code> s'exécute → nouvelle tentative.</li>
+<li>Si l'utilisateur tape <code>-3</code> → <code>AssertionError</code> → on affiche "Doit être positif" et <code>finally</code> s'exécute → nouvelle tentative.</li>
+<li>Si l'utilisateur tape <code>7</code> → pas d'erreur → <code>return 7</code> → <code>finally</code> s'exécute quand même → la fonction se termine.</li>
+</ol>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Ce pattern "boucle + try/except + return" est très utilisé en pratique pour s'assurer qu'une entrée utilisateur est valide avant de continuer.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<ol>
+<li><strong>Quelle est la différence entre <code>break</code> et <code>continue</code> dans une boucle <code>for</code> ?</strong> Donne un exemple de résultat différent avec la même boucle.</li>
+</ol>
+
+<ol>
+<li><strong>Dans quel ordre faut-il écrire plusieurs blocs <code>except</code> ?</strong> Pourquoi est-ce important ? Que se passe-t-il si on met <code>except Exception</code> en premier ?</li>
+</ol>
+
+<ol>
+<li><strong>À quoi sert le bloc <code>finally</code> ?</strong> Est-ce qu'il s'exécute si on met un <code>return</code> à l'intérieur du <code>try</code> ?</li>
+</ol>
+
+<ol>
+<li><strong>Quelle est la différence entre <code>raise</code> et <code>assert</code> ?</strong> Dans quel cas utiliserais-tu l'un plutôt que l'autre ?</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li><code>try / except</code> intercepte les erreurs sans planter le programme — le code risqué va dans <code>try</code>, la réaction dans <code>except</code>.</li>
+<li><code>else</code> s'exécute si aucune erreur n'a eu lieu ; <code>finally</code> s'exécute toujours (même après un <code>return</code>).</li>
+<li>Toujours ordonner les <code>except</code> du plus spécifique au plus général — <code>Exception</code> en dernier comme filet de sécurité.</li>
+<li>Ne jamais faire <code>except Exception: pass</code> — cela cache les erreurs silencieusement.</li>
+<li><code>raise ValueError(&quot;message clair&quot;)</code> déclenche une erreur manuellement avec un message utile.</li>
+<li><code>break</code> quitte la boucle entièrement ; <code>continue</code> saute juste l'itération courante.</li>
+<li><code>pass</code> est un placeholder qui ne fait rien ; <code>return</code> quitte la fonction et renvoie une valeur.</li>
+<li><code>assert condition, &quot;message&quot;</code> vérifie une hypothèse en développement — ne pas utiliser en production pour valider des données.</li>
+<li>Les erreurs les plus fréquentes : <code>ValueError</code>, <code>TypeError</code>, <code>KeyError</code>, <code>IndexError</code>, <code>ZeroDivisionError</code>.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-exceptions-vs-valeurs-de-retour">Exceptions vs valeurs de retour</a></li><li><a href="#syn-try-except-else-finally">`try / except / else / finally`</a></li><li><a href="#syn-hiérarchie-des-exceptions">Hiérarchie des exceptions</a></li><li><a href="#syn-exceptions-custom">Exceptions custom</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-context-managers-et-with">Context managers et `with`</a></li><li><a href="#syn-logging-vs-print">Logging vs print</a></li><li><a href="#syn-stratégies-de-retry-et-backoff">Stratégies de retry et backoff</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-exceptions-vs-valeurs-de-retour">Exceptions vs valeurs de retour</h3>
+
+<p>Deux philosophies coexistent dans les langages de programmation :</p>
+
+<ul>
+<li><strong>Go</strong> renvoie un tuple <code>(result, err)</code> à chaque appel et force l'utilisateur à tester explicitement.</li>
+<li><strong>Python</strong> (et Java, Ruby) utilise les <strong>exceptions</strong> : la fonction renvoie le résultat normal, et en cas d'erreur, elle <strong>lève</strong> une exception qui remonte la pile d'appels jusqu'à un <code>try / except</code>.</li>
+</ul>
+
+<p>Cette approche s'appelle <strong>EAFP</strong> : <em>Easier to Ask Forgiveness than Permission</em>. Plutôt que de tester chaque condition possible avant d'agir (LBYL — <em>Look Before You Leap</em>), on tente l'opération et on rattrape l'échec.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># LBYL — verbeux ET race-conditioné
+if os.path.exists(&quot;data.csv&quot;):
+    with open(&quot;data.csv&quot;) as f:
+        data = f.read()
+# ↑ Entre path.exists et open(), un autre processus peut supprimer le fichier !
+
+# EAFP — pythonique ET atomique
+try:
+    with open(&quot;data.csv&quot;) as f:
+        data = f.read()
+except FileNotFoundError:
+    data = &quot;&quot;</code></pre></div>
+
+
+<p><strong>Pourquoi LBYL est piégeux</strong> : entre <code>os.path.exists</code> et <code>open</code>, un autre processus pourrait supprimer le fichier. C'est une <strong>race condition</strong>. EAFP fait l'opération atomiquement — soit elle réussit, soit elle lève <code>FileNotFoundError</code>, mais il n'y a pas de fenêtre temporelle entre les deux.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : LBYL c'est vérifier qu'il pleut avant de prendre son parapluie. EAFP c'est prendre son parapluie et accepter qu'il sera inutile s'il fait beau. Dans un monde où le temps change pendant que vous regardez par la fenêtre, EAFP est plus fiable.</p></div></div>
+
+<h3 id="syn-try-except-else-finally"><code>try / except / else / finally</code></h3>
+
+<p>La syntaxe complète :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">try:
+    result = risky_operation()
+except ValueError as e:
+    # Capturé : ValueError uniquement
+    log.error(f&quot;Bad value: {e}&quot;)
+    result = None
+except (KeyError, IndexError) as e:
+    # Plusieurs types dans un même except
+    log.error(f&quot;Missing data: {e}&quot;)
+    result = None
+except Exception as e:
+    # Catch-all — à éviter sauf cas exceptionnel
+    log.exception(&quot;Unexpected error&quot;)
+    raise                               # Re-raise pour ne pas masquer
+else:
+    # Exécuté SEULEMENT si aucune exception n&#x27;a été levée
+    log.info(f&quot;Success: {result}&quot;)
+finally:
+    # TOUJOURS exécuté, exception ou pas
+    cleanup_resources()</code></pre></div>
+
+
+<p><strong>Rôle de chaque clause</strong> :</p>
+
+<ul>
+<li><strong><code>try</code></strong> : le code potentiellement faillible.</li>
+<li><strong><code>except Type as e</code></strong> : capture du type spécifique. On peut avoir plusieurs <code>except</code>.</li>
+<li><strong><code>else</code></strong> : exécuté si <strong>aucune</strong> exception n'est levée dans le try. Utile pour séparer le code à risque du code post-traitement.</li>
+<li><strong><code>finally</code></strong> : <strong>toujours</strong> exécuté, même si on fait <code>return</code> dans le try. Parfait pour libérer des ressources (fichier, connexion, lock).</li>
+</ul>
+
+<p><strong>Quatre règles</strong> :</p>
+
+<ol>
+<li><strong>Capturer le type le plus spécifique possible</strong>. <code>except FileNotFoundError</code> est mieux que <code>except OSError</code> qui est mieux que <code>except Exception</code>. Un <code>except:</code> nu est <strong>presque toujours un bug</strong> : il capture aussi <code>KeyboardInterrupt</code> et <code>SystemExit</code>, ce qui rend votre programme inarrêtable au Ctrl+C.</li>
+</ol>
+
+<ol>
+<li><strong>Le <code>else</code></strong> sert à séparer le code à risque du code qui dépend du succès. Évite de capturer accidentellement des exceptions qui viendraient du code post-traitement.</li>
+</ol>
+
+<ol>
+<li><strong>Le <code>finally</code></strong> est l'endroit pour libérer une ressource (fichier, connexion DB, lock). Il s'exécute même si vous faites <code>return</code> dans le <code>try</code> ou le <code>except</code>.</li>
+</ol>
+
+<ol>
+<li><strong><code>raise</code></strong> sans argument relance l'exception courante en <strong>préservant le traceback</strong> complet. C'est crucial pour ne pas masquer un bug.</li>
+</ol>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Anti-pattern toxique</strong> : <code>except: pass</code>. Cela cache toutes les erreurs, y compris les bugs de programmation, et rend l'application impossible à débugger. Si vous trouvez ce pattern dans une code review, c'est un <strong>red flag majeur</strong>.</p></div></div>
+
+<h3 id="syn-hiérarchie-des-exceptions">Hiérarchie des exceptions</h3>
+
+<p>Les exceptions Python sont organisées en <strong>arbre</strong>. Comprendre cette hiérarchie permet de capturer plusieurs types proches en une seule clause.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">BaseException
+ ├─ SystemExit
+ ├─ KeyboardInterrupt
+ └─ Exception             ← presque toutes les exceptions héritent d&#x27;ici
+     ├─ ArithmeticError
+     │   ├─ ZeroDivisionError
+     │   └─ FloatingPointError
+     ├─ LookupError
+     │   ├─ KeyError
+     │   └─ IndexError
+     ├─ ValueError
+     ├─ TypeError
+     ├─ OSError (alias IOError)
+     │   ├─ FileNotFoundError
+     │   ├─ PermissionError
+     │   └─ ConnectionError
+     │       ├─ ConnectionRefusedError
+     │       └─ ConnectionResetError
+     └─ RuntimeError
+         └─ RecursionError</code></pre></div>
+
+
+<p><code>except Exception</code> capture tout ce qui hérite de <code>Exception</code> mais <strong>pas</strong> <code>KeyboardInterrupt</code> ni <code>SystemExit</code> — c'est pourquoi c'est moins dangereux que <code>except:</code>.</p>
+
+<h3 id="syn-exceptions-custom">Exceptions custom</h3>
+
+<p>Pour signaler une condition métier spécifique, créez vos propres classes d'exception :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class DataValidationError(Exception):
+    &quot;&quot;&quot;Base class pour toutes les erreurs de validation de données.&quot;&quot;&quot;
+    pass
+
+class InsufficientDataError(DataValidationError):
+    &quot;&quot;&quot;Raised when fewer than 100 samples are available.&quot;&quot;&quot;
+    pass
+
+def train(X, y):
+    if len(X) &lt; 100:
+        raise InsufficientDataError(
+            f&quot;Need at least 100 samples, got {len(X)}&quot;
+        )
+    if X.isnull().any().any():
+        raise DataValidationError(&quot;X contains NaN values&quot;)
+    # ...</code></pre></div>
+
+
+<p>L'appelant peut alors capturer finement ou largement :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">try:
+    train(X, y)
+except InsufficientDataError:
+    # Cas spécifique : on peut collecter plus de données
+    collect_more_data()
+except DataValidationError:
+    # Cas général : on nettoie et on réessaye
+    clean_and_retry()</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : héritez vos exceptions custom d'une <strong>classe parent commune</strong> (ici <code>DataValidationError</code>) pour permettre une capture groupée. C'est le pattern qu'utilisent toutes les bibliothèques sérieuses : <code>requests</code> a <code>requests.exceptions.RequestException</code> parent de <code>ConnectionError</code>, <code>Timeout</code>, <code>HTTPError</code>, etc.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-context-managers-et-with">Context managers et <code>with</code></h3>
+
+<p>L'instruction <strong><code>with</code></strong> garantit qu'une ressource est <strong>libérée</strong> même en cas d'exception. Le pattern le plus connu :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">with open(&quot;data.csv&quot;) as f:
+    data = f.read()
+# f est automatiquement fermé ici, MÊME si read() lève une exception</code></pre></div>
+
+
+<p>C'est strictement équivalent à :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">f = open(&quot;data.csv&quot;)
+try:
+    data = f.read()
+finally:
+    f.close()</code></pre></div>
+
+
+<p>Le <code>with</code> est plus court et plus safe : impossible d'oublier le <code>close()</code>.</p>
+
+<p><strong>Créer son propre context manager</strong>, deux options :</p>
+
+<p><strong>Option 1 — classe avec <code>__enter__</code> / <code>__exit__</code></strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class DatabaseConnection:
+    def __enter__(self):
+        self.conn = psycopg2.connect(...)
+        return self.conn                       # Valeur renvoyée par `as`
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.conn.close()
+        return False                           # False = ne pas supprimer l&#x27;exception
+
+with DatabaseConnection() as conn:
+    conn.execute(&quot;SELECT 1&quot;)
+# conn est fermée ici, automatiquement</code></pre></div>
+
+
+<p><strong>Option 2 — décorateur <code>@contextmanager</code></strong> (plus simple) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from contextlib import contextmanager
+
+@contextmanager
+def timer(name):
+    import time
+    t0 = time.perf_counter()
+    yield                                      # ↑ code avant = setup, ↓ code après = cleanup
+    print(f&quot;{name}: {time.perf_counter() - t0:.2f}s&quot;)
+
+with timer(&quot;training&quot;):
+    model.fit(X, y)
+# Affiche : &quot;training: 12.34s&quot;</code></pre></div>
+
+
+<h3 id="syn-logging-vs-print">Logging vs print</h3>
+
+<p><strong><code>print()</code> est interdit en production</strong>. Pourquoi ?</p>
+
+<ul>
+<li>Pas de niveau de sévérité</li>
+<li>Pas de timestamp</li>
+<li>Va dans stdout (pollue la sortie du programme)</li>
+<li>Non configurable à distance</li>
+</ul>
+
+<p>Le module <strong><code>logging</code></strong> corrige tout cela :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format=&quot;%(asctime)s [%(levelname)s] %(name)s: %(message)s&quot;,
+    handlers=[
+        logging.FileHandler(&quot;app.log&quot;),        # Fichier
+        logging.StreamHandler(),               # Console
+    ],
+)
+log = logging.getLogger(__name__)              # Logger local au module
+
+log.debug(&quot;Variable detail: %s&quot;, x)            # Caché par défaut (level=INFO)
+log.info(&quot;Training started&quot;)
+log.warning(&quot;Deprecated parameter used&quot;)
+log.error(&quot;Failed to load model&quot;)
+log.critical(&quot;Database is down&quot;)
+
+try:
+    risky()
+except Exception:
+    log.exception(&quot;Operation failed&quot;)          # Log + traceback complet</code></pre></div>
+
+
+<p><strong>Cinq niveaux de sévérité</strong> — DEBUG < INFO < WARNING < ERROR < CRITICAL — vous permettent de filtrer selon l'environnement (DEBUG en dev, WARNING en prod).</p>
+
+<p><strong>Règle importante</strong> : n'utilisez <strong>jamais de f-strings dans les arguments du logger</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">log.info(f&quot;x={x}&quot;)          # ❌ Formate IMMÉDIATEMENT, même si le niveau est désactivé
+log.info(&quot;x=%s&quot;, x)         # ✓ Formate PARESSEUSEMENT, seulement si le niveau est actif</code></pre></div>
+
+
+<h3 id="syn-stratégies-de-retry-et-backoff">Stratégies de retry et backoff</h3>
+
+<p>Quand une opération est intrinsèquement <strong>faillible</strong> (appel API, requête réseau, lecture de fichier sur NFS), il faut <strong>réessayer</strong>. Mais réessayer immédiatement spamme le service et n'aide pas. La stratégie canonique est l'<strong>exponential backoff with jitter</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import time, random
+
+def retry_with_backoff(func, max_attempts=5, base_delay=1.0, max_delay=60.0):
+    for attempt in range(max_attempts):
+        try:
+            return func()
+        except Exception as e:
+            if attempt == max_attempts - 1:
+                raise                                    # Dernier essai : propager
+            delay = min(base_delay * (2 ** attempt), max_delay)
+            jitter = random.uniform(0, delay * 0.1)     # ±10% de hasard
+            time.sleep(delay + jitter)
+            log.warning(f&quot;Attempt {attempt+1} failed: {e}. Retry in {delay:.1f}s&quot;)</code></pre></div>
+
+
+<p><strong>Décomposition</strong> :</p>
+
+<ul>
+<li><code>base_delay * (2 ** attempt)</code> : 1s, 2s, 4s, 8s, 16s → croissance exponentielle.</li>
+<li><code>min(..., max_delay)</code> : plafond pour ne pas attendre des heures.</li>
+<li><code>jitter</code> : ±10% de hasard pour éviter les "thundering herds" (1000 clients qui retentent au même instant).</li>
+</ul>
+
+<p>Bibliothèque battle-tested : <strong><code>tenacity</code></strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tenacity import retry, stop_after_attempt, wait_exponential
+
+@retry(stop=stop_after_attempt(5), wait=wait_exponential(multiplier=1, max=60))
+def fetch_from_api(url):
+    return requests.get(url, timeout=10).json()</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège</strong> : ne pas confondre erreurs <strong>transitoires</strong> (timeout réseau, 503 Service Unavailable) qui méritent un retry, et erreurs <strong>permanentes</strong> (404 Not Found, 401 Unauthorized, validation) qui n'en méritent pas. Réessayer une 401 n'a aucune chance de réussir et fait gaspiller du temps. <strong>Distinguez les deux explicitement</strong> dans votre code.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi <code>try: ... except Exception: pass</code> est-il considéré comme un anti-pattern majeur, et dans quels cas exceptionnels est-il acceptable ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Observabilité et debug.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>C'est un anti-pattern parce qu'il <strong>avale silencieusement toutes les erreurs</strong>, y compris celles qui révèlent un bug de programmation (<code>NameError</code>, <code>TypeError</code>, etc.). Le programme continue à tourner dans un état incohérent et vous ne saurez jamais qu'il y a un problème — jusqu'à ce que les données en sortie soient fausses, au moment où il est trop tard pour corriger.</p>
+
+<p><strong>Cas exceptionnel acceptable</strong> : quand vous nettoyez des ressources dans un <code>finally</code> et que vous devez vous assurer que l'erreur de cleanup ne masque pas l'erreur originale. Mais <strong>même là</strong>, on log l'erreur avalée :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">try:
+    main_operation()
+finally:
+    try:
+        cleanup()
+    except Exception as e:
+        log.exception(&quot;Cleanup failed, ignoring&quot;)    # ✓ On log au moins</code></pre></div>
+
+
+<p><strong>La règle</strong> : si vous ne pouvez pas expliquer pourquoi une exception devrait être ignorée, vous ne devez pas l'ignorer. Et si vous l'ignorez vraiment, loggez-la.</p>
+
+</details>
+
+<p><strong>Q2 : Quelle est la différence sémantique entre <code>raise NewError(&quot;msg&quot;)</code>, <code>raise NewError(&quot;msg&quot;) from original_error</code>, et <code>raise NewError(&quot;msg&quot;) from None</code> ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Exception chaining.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Python 3 chaîne automatiquement les exceptions : si une exception est levée pendant la gestion d'une autre, le traceback affiche les deux séparées par <em>"During handling of the above exception, another exception occurred"</em>.</p>
+
+<ul>
+<li><strong><code>raise NewError(&quot;msg&quot;)</code></strong> : chaînage implicite. Le traceback affiche les deux exceptions dans l'ordre.</li>
+</ul>
+
+<ul>
+<li><strong><code>raise NewError(&quot;msg&quot;) from original_error</code></strong> : chaînage <strong>explicite</strong> avec le message <em>"The above exception was the direct cause of the following exception"</em>. Utile pour signaler que vous transformez intentionnellement une exception bas niveau en exception métier :</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">  try:
+      data = json.loads(raw)
+  except json.JSONDecodeError as e:
+      raise DataValidationError(&quot;Invalid JSON in config&quot;) from e</code></pre></div>
+
+
+<ul>
+<li><strong><code>raise NewError(&quot;msg&quot;) from None</code></strong> : <strong>supprime</strong> complètement le contexte, masquant l'exception d'origine. Utile pour des messages d'erreur publics qui ne doivent pas exposer la stack interne (par exemple dans une API publique, pour ne pas révéler la structure de votre code).</li>
+</ul>
+
+<p>En entretien backend, cette nuance révèle un dev qui maîtrise vraiment l'observabilité.</p>
+
+</details>
+
+<p><strong>Q3 : Vous appelez une API qui renvoie parfois une 503 (service unavailable). Vous mettez un retry avec exponential backoff. Pourquoi ajoute-t-on systématiquement du jitter, et que se passe-t-il sans lui ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>1000 clients qui retentent au même instant.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Sans jitter</strong>, tous les clients qui ont reçu une 503 au même instant attendront exactement le même délai (1 s, 2 s, 4 s, 8 s…) et tenteront leur retry <strong>exactement en même temps</strong> — ce qu'on appelle un <strong>thundering herd</strong>. Le service à peine remis va recevoir un déluge de requêtes simultanées et planter à nouveau.</p>
+
+<p>Le <strong>jitter</strong> (un petit délai aléatoire ajouté) désynchronise les retries et lisse la charge. C'est exactement ce que font DynamoDB et la plupart des AWS SDK en interne.</p>
+
+<p><strong>Règle empirique</strong> : ajoutez un jitter de <strong>±10-25%</strong> du délai calculé.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Sans jitter : tous les clients retentent à t=1s, t=2s, t=4s...
+delay = base_delay * (2 ** attempt)
+
+# Avec jitter : chaque client retente à t=1s±0.1s, t=2s±0.2s...
+delay = base_delay * (2 ** attempt)
+jitter = random.uniform(-delay * 0.25, delay * 0.25)
+time.sleep(delay + jitter)</code></pre></div>
+
+
+<p>Sans cette mécanique, votre retry rend la situation <strong>pire</strong> au lieu de la résoudre. C'est pourquoi <code>tenacity</code> et les SDKs cloud ajoutent le jitter par défaut.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://peps.python.org/pep-3134/" target="_blank" rel="noopener">PEP 3134 — Exception Chaining</a> — la spec de <code>raise from</code></li>
+<li><a href="https://12factor.net/logs" target="_blank" rel="noopener">The Twelve-Factor App — Logs</a> — pourquoi traiter les logs comme des flux d'événements</li>
+<li><a href="https://tenacity.readthedocs.io/" target="_blank" rel="noopener">tenacity</a> — bibliothèque de retry idiomatique</li>
+<li><a href="https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/" target="_blank" rel="noopener">AWS Architecture Blog — Exponential Backoff and Jitter</a> — explication canonique du jitter</li>
+<li><em>Designing Data-Intensive Applications</em> (Martin Kleppmann), chapitre 8 sur les pannes</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../notes-perso/methodes-fonctions.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Méthodes & fonctions</span>
+  </a>
+  <a href="../notes-perso/git.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Git push & commit →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

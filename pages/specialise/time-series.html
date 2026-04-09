@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Series — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Time Series</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html" class="active">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Domaines spécialisés</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Time Series</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Time Series</h1>
+        <p class="page-objective">Maîtriser l'analyse et la prévision de séries temporelles — décomposition, stationnarité, autocorrélation, et modèles AR, MA, ARMA, ARIMA et SARIMA.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Stationnarité</div>
+        <div class="key-concept-def">Statistiques (moyenne, variance) constantes dans le temps.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">ACF / PACF</div>
+        <div class="key-concept-def">Autocorrélation totale et partielle ; lecture des lags significatifs.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">ARIMA</div>
+        <div class="key-concept-def">AutoRegressive Integrated Moving Average : modèle linéaire séquentiel classique.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Saisonnalité</div>
+        <div class="key-concept-def">Motif périodique qui se répète (jour, semaine, an).</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ce-quil-faut-comprendre-et-ce-quil-faut-retenir">🎯 Ce qu'il faut comprendre et ce qu'il faut retenir</a><ol><li><a href="#ce-quil-faut-comprendre">Ce qu'il faut comprendre</a></li><li><a href="#ce-quil-faut-retenir">Ce qu'il faut retenir</a></li></ol></li><li><a href="#cheatsheet-time-series">Cheatsheet — Time Series</a><ol><li><a href="#préparation-des-données">Préparation des données</a></li><li><a href="#décomposition">Décomposition</a></li><li><a href="#stationnarité">Stationnarité</a></li><li><a href="#acf-pacf">ACF / PACF</a></li><li><a href="#arima">ARIMA</a></li><li><a href="#auto-arima-gridsearch">Auto-ARIMA (GridSearch)</a></li><li><a href="#sarima">SARIMA</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-introduction-quest-ce-quune-série-temporelle">1) Introduction — Qu'est-ce qu'une série temporelle ?</a><ol><li><a href="#11-objectifs">1.1 Objectifs</a></li><li><a href="#12-dataset-dexemple">1.2 Dataset d'exemple</a></li></ol></li><li><a href="#2-approche-ml-classique-pour-les-time-series">2) Approche ML classique pour les Time Series</a><ol><li><a href="#21-construction-du-dataset-x-y">2.1 Construction du dataset (X, y)</a></li><li><a href="#22-traintest-split-obligatoirement-contigu">2.2 Train/Test split obligatoirement contigu</a></li><li><a href="#23-baseline-prédire-la-valeur-précédente">2.3 Baseline — Prédire la valeur précédente</a></li><li><a href="#24-modèle-linéaire-avec-12-features-autorégressives">2.4 Modèle linéaire avec 12 features autorégressives</a></li><li><a href="#25-prédire-sur-un-horizon-plus-long">2.5 Prédire sur un horizon plus long</a></li></ol></li><li><a href="#3-décomposition">3) Décomposition</a><li><a href="#4-stationnarité">4) Stationnarité</a><ol><li><a href="#41-définition">4.1 Définition</a></li><li><a href="#42-tester-la-stationnarité">4.2 Tester la stationnarité</a></li><li><a href="#43-comment-rendre-une-série-stationnaire">4.3 Comment rendre une série stationnaire ?</a></li></ol></li><li><a href="#5-autocorrélation">5) Autocorrélation</a><ol><li><a href="#51-fonction-dautocorrélation-acf">5.1 Fonction d'autocorrélation (ACF)</a></li><li><a href="#52-attention-corrélation-directe-vs-indirecte">5.2 Attention — Corrélation directe vs indirecte</a></li></ol></li><li><a href="#6-ar-processus-autorégressifs">6) AR — Processus autorégressifs</a><ol><li><a href="#61-pacf-partial-autocorrelation-function">6.1 PACF — Partial Autocorrelation Function</a></li><li><a href="#62-intuition-analogie-des-étudiants">6.2 Intuition — Analogie des étudiants</a></li><li><a href="#63-propriétés-dun-processus-ar">6.3 Propriétés d'un processus AR</a></li></ol></li><li><a href="#7-ma-processus-moving-average">7) MA — Processus Moving Average</a><ol><li><a href="#71-propriétés-dun-processus-ma">7.1 Propriétés d'un processus MA</a></li><li><a href="#72-exemple-système-de-chauffage-central">7.2 Exemple — Système de chauffage central</a></li></ol></li><li><a href="#8-arma-auto-regressive-moving-average">8) ARMA — Auto Regressive Moving Average</a><ol><li><a href="#81-choisir-les-hyperparamètres-p-et-q">8.1 Choisir les hyperparamètres p et q</a></li></ol></li><li><a href="#9-arima-auto-regressive-integrated-moving-average">9) ARIMA — Auto Regressive Integrated Moving Average</a><ol><li><a href="#91-le-i-differencing">9.1 Le "I" = Differencing</a></li><li><a href="#92-formule-arima">9.2 Formule ARIMA</a></li><li><a href="#93-workflow-complet-appliquer-arima">9.3 Workflow complet — Appliquer ARIMA</a></li><li><a href="#94-évaluer-les-performances">9.4 Évaluer les performances</a></li><li><a href="#95-recomposer-la-série-originale">9.5 Recomposer la série originale</a></li><li><a href="#96-vérifier-les-résidus">9.6 Vérifier les résidus</a></li><li><a href="#97-méthode-de-box-jenkins-workflow-complet">9.7 Méthode de Box-Jenkins (workflow complet)</a></li><li><a href="#98-critère-aic-akaike-information-criterion">9.8 Critère AIC (Akaike Information Criterion)</a></li></ol></li><li><a href="#10-sarima-seasonal-arima-optionnel">10) SARIMA — Seasonal ARIMA (optionnel)</a><ol><li><a href="#101-différenciation-saisonnière">10.1 Différenciation saisonnière</a></li><li><a href="#102-les-7-hyperparamètres">10.2 Les 7 hyperparamètres</a></li><li><a href="#103-implémentation">10.3 Implémentation</a></li></ol></li><li><a href="#11-autres-modèles-de-time-series">11) Autres modèles de Time Series</a><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">🏋️ Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="ce-quil-faut-comprendre-et-ce-quil-faut-retenir">🎯 Ce qu'il faut comprendre et ce qu'il faut retenir</h2>
+
+<h3 id="ce-quil-faut-comprendre">Ce qu'il faut comprendre</h3>
+
+<blockquote><p><strong>Une série temporelle n'est pas un dataset classique</strong> — il n'y a pas de features X indépendantes. Les seules features disponibles sont les <strong>valeurs passées</strong> de la variable elle-même. L'ordre temporel est fondamental et ne doit jamais être mélangé.<br></p></blockquote>
+
+<blockquote><p><strong>La stationnarité est la condition sine qua non</strong> — tous les modèles statistiques de TS (ARMA, ARIMA, SARIMA) supposent que la série est stationnaire (moyenne, variance et autocorrélation constantes dans le temps). Avant de modéliser, il faut <strong>toujours</strong> vérifier et obtenir la stationnarité via décomposition, differencing ou transformations.<br></p></blockquote>
+
+<blockquote><p><strong>ACF et PACF sont les deux outils de diagnostic clés</strong> — l'ACF mesure la corrélation totale (directe + indirecte) entre un point et ses lags, tandis que la PACF isole la corrélation directe. Ensemble, elles permettent de choisir les ordres p (AR) et q (MA) du modèle.<br></p></blockquote>
+
+<blockquote><p><strong>AR et MA capturent des dynamiques différentes</strong> — un processus AR propage les chocs loin dans le futur (mémoire longue), tandis qu'un processus MA absorbe les chocs rapidement (mémoire courte). La plupart des séries réelles sont un mélange des deux → ARMA.<br></p></blockquote>
+
+<blockquote><p><strong>Le workflow Box-Jenkins est itératif</strong> — il n'existe pas de recette unique. On transforme, on différencie, on lit les graphes ACF/PACF, on fit, on inspecte les résidus, et on recommence si nécessaire. L'AIC aide à comparer les modèles, et en cas de doute, on choisit le plus simple.<br></p></blockquote>
+
+<h3 id="ce-quil-faut-retenir">Ce qu'il faut retenir</h3>
+
+<ul>
+<li><strong>Train/Test split</strong> : toujours <strong>contigu</strong> dans le temps (jamais de shuffle)</li>
+<li><strong>Stationnarité</strong> : tester avec le <strong>test ADF</strong> (p < 0.05 → stationnaire)</li>
+<li><strong>Differencing</strong> : <code>df[&#x27;value&#x27;].diff(1)</code> — en général <code>d=1</code> suffit</li>
+<li><strong>ACF → q</strong> (ordre MA) et <strong>PACF → p</strong> (ordre AR) : compter les lags hors du cône de confiance</li>
+<li><strong>ARIMA(p, d, q)</strong> : combiner AR + differencing + MA sur une série dé-saisonnalisée</li>
+<li><strong>SARIMA(p, d, q)(P, D, Q)[S]</strong> : ARIMA + composante saisonnière (S=12 pour annuel)</li>
+<li><strong><code>auto_arima</code></strong> : GridSearch automatique des hyperparamètres via <code>pmdarima</code></li>
+<li><strong>Recomposer</strong> : après prédiction, inverser toutes les transformations (exp, saisonnalité…)</li>
+<li><strong>Résidus</strong> : vérifier qu'ils sont homoscédastiques et normaux → valide les intervalles de confiance</li>
+<li><strong>En cas d'AIC similaires</strong> → choisir le modèle le <strong>plus simple</strong> (moins de paramètres)</li>
+</ul>
+
+<hr>
+
+<h2 id="cheatsheet-time-series">📋 Cheatsheet — Time Series</h2>
+
+<h3 id="préparation-des-données">Préparation des données</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+import numpy as np
+
+## Lecture et formatage d&#x27;une série temporelle
+df = pd.read_csv(&#x27;data.csv&#x27;)                          # charge les données
+df[&#x27;date&#x27;] = pd.to_datetime(df[&#x27;date&#x27;])                # convertit en datetime
+df.set_index(&#x27;date&#x27;, inplace=True)                     # date en index (obligatoire pour TS)
+
+## Train/Test split contigu (⚠️ pas de shuffle !)
+train_size = 0.6
+index = round(train_size * df.shape[0])
+df_train = df.iloc[:index]                             # 60% premiers → train
+df_test = df.iloc[index:]                              # 40% derniers → test</code></pre></div>
+
+
+<h3 id="décomposition">Décomposition</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.tsa.seasonal import seasonal_decompose
+
+## Décomposition additive : y = Trend + Seasonal + Residuals
+result_add = seasonal_decompose(df[&#x27;value&#x27;], model=&#x27;additive&#x27;)
+
+## Décomposition multiplicative : y = Trend × Seasonal × Residuals
+result_mul = seasonal_decompose(df[&#x27;value&#x27;], model=&#x27;multiplicative&#x27;)
+
+result_mul.plot()                                      # affiche trend, seasonal, residuals
+result_mul.trend                                       # composante tendance
+result_mul.seasonal                                    # composante saisonnière
+result_mul.resid                                       # résidus</code></pre></div>
+
+
+<h3 id="stationnarité">Stationnarité</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.tsa.stattools import adfuller
+
+## Test ADF : H0 = la série n&#x27;est PAS stationnaire
+p_value = adfuller(df[&#x27;value&#x27;])[1]                     # p &lt; 0.05 → stationnaire
+
+## Differencing pour rendre stationnaire
+y_diff = df[&#x27;value&#x27;].diff(1)                           # différenciation d&#x27;ordre 1
+y_diff_diff = df[&#x27;value&#x27;].diff(1).diff(1)              # différenciation d&#x27;ordre 2
+
+## Estimation automatique de l&#x27;ordre de différenciation
+from pmdarima.arima.utils import ndiffs
+d = ndiffs(df[&#x27;value&#x27;])                                # retourne l&#x27;ordre d optimal</code></pre></div>
+
+
+<h3 id="acf-pacf">ACF / PACF</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+
+plot_acf(y_diff, lags=50)                              # ACF → détermine q (ordre MA)
+plot_pacf(y_diff, lags=50)                             # PACF → détermine p (ordre AR)</code></pre></div>
+
+
+<h3 id="arima">ARIMA</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.tsa.arima.model import ARIMA
+
+arima = ARIMA(train, order=(p, d, q), trend=&#x27;t&#x27;)       # p=AR, d=diff, q=MA
+arima = arima.fit()                                     # entraîne le modèle
+
+arima.summary()                                         # résumé avec AIC, coefficients, tests
+arima.forecast(steps)                                   # prédictions sur &#x27;steps&#x27; pas
+results = arima.get_forecast(steps, alpha=0.05)         # prédictions + intervalles de confiance
+results.predicted_mean                                  # valeurs prédites
+results.conf_int()                                      # bornes de l&#x27;intervalle à 95%</code></pre></div>
+
+
+<h3 id="auto-arima-gridsearch">Auto-ARIMA (GridSearch)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pmdarima as pm
+
+model = pm.auto_arima(train,
+                      start_p=1, max_p=2,
+                      start_q=1, max_q=2,
+                      trend=&#x27;t&#x27;,
+                      seasonal=False,                   # True pour SARIMA
+                      trace=True)                       # affiche les AIC de chaque modèle</code></pre></div>
+
+
+<h3 id="sarima">SARIMA</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.tsa.statespace.sarimax import SARIMAX
+
+sarima = SARIMAX(train,
+                 order=(p, d, q),                       # composantes non-saisonnières
+                 seasonal_order=(P, D, Q, S))           # composantes saisonnières (S=12 pour annuel)
+sarima = sarima.fit()
+forecast = sarima.get_forecast(steps).predicted_mean    # prédictions</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser <code>train_test_split</code> classique sur une série temporelle</strong></p>
+<p>Le split aléatoire cause du data leakage : on utiliserait des valeurs futures pour prédire le passé.</p>
+<p>❌ <code>train_test_split(X, y, test_size=0.2, random_state=42)</code></p>
+<p>✅ Split contigu : <code>df_train = df.iloc[:index]</code> et <code>df_test = df.iloc[index:]</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Appliquer ARIMA sur une série non-stationnaire</strong></p>
+<p>Les modèles ARMA/ARIMA supposent que la série (après différenciation) est stationnaire. Appliquer le modèle sur des données avec trend et saisonnalité donne des prédictions erronées.</p>
+<p>❌ <code>ARIMA(df[&#x27;value&#x27;], order=(2,1,1))</code> sur données brutes avec saisonnalité</p>
+<p>✅ Dé-saisonnaliser d'abord, ou utiliser SARIMA avec composante saisonnière</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre ACF et PACF pour le choix de p et q</strong></p>
+<p>L'ACF sert à déterminer l'ordre MA (q), et la PACF sert à déterminer l'ordre AR (p). Les inverser fausse le modèle.</p>
+<p>❌ Lire <code>p</code> sur l'ACF et <code>q</code> sur la PACF</p>
+<p>✅ <code>p</code> = nombre de lags significatifs sur la <strong>PACF</strong>, <code>q</code> = nombre de lags significatifs sur l'<strong>ACF</strong></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Sur-différencier la série</strong></p>
+<p>Trop de différenciation ajoute du bruit et dégrade les performances. Généralement <code>d=1</code> suffit.</p>
+<p>❌ <code>df[&#x27;value&#x27;].diff(1).diff(1).diff(1)</code> sans vérifier la stationnarité</p>
+<p>✅ Tester avec ADF après chaque ordre : <code>adfuller(y_diff)[1] &lt; 0.05</code> → stop</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier de recomposer la série après prédiction</strong></p>
+<p>Si on a dé-saisonnalisé ou appliqué un log avant le modèle, il faut inverser ces transformations sur les prédictions.</p>
+<p>❌ Présenter directement les prédictions du modèle comme valeurs finales</p>
+<p>✅ <code>forecast_recons = np.exp(forecast) * result_mul.seasonal[150:]</code></p></div></div>
+
+<hr>
+
+<h2 id="1-introduction-quest-ce-quune-série-temporelle">1) Introduction — Qu'est-ce qu'une série temporelle ?</h2>
+
+<figure><img src="../../assets/images/time-series-01-37a50058.png" alt="" loading="lazy"></figure>
+
+<p>Une série temporelle (Time Series) est une suite d'observations prises à <strong>intervalles réguliers</strong> dans le temps.</p>
+
+<figure><img src="../../assets/images/time-series-02-42fc0ba8.png" alt="" loading="lazy"></figure>
+
+<p>Exemples : cours de bourse 💹, météo ☁️, ventes 💰, données de capteurs 🏗️, activité utilisateur 👤.</p>
+
+<h3 id="11-objectifs">1.1 Objectifs</h3>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Comprendre</strong> une TS = décomposer</p></div></div>
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Prévoir (forecast)</strong> = prédire des valeurs futures</p></div></div>
+
+<h3 id="12-dataset-dexemple">1.2 Dataset d'exemple</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df = pd.read_csv(&#x27;data/drugs.csv&#x27;)                     # ventes mensuelles de médicaments
+df[&#x27;date&#x27;] = pd.to_datetime(df[&#x27;date&#x27;])                 # conversion en datetime
+df.set_index(&#x27;date&#x27;, inplace=True)                      # date en index
+## → 204 lignes, de juillet 1991 à juin 2008</code></pre></div>
+
+
+<hr>
+
+<h2 id="2-approche-ml-classique-pour-les-time-series">2) Approche ML classique pour les Time Series</h2>
+
+<h3 id="21-construction-du-dataset-x-y">2.1 Construction du dataset (X, y)</h3>
+
+<p>En Time Series, il n'y a pas de features externes : <code>X</code> est construit à partir des <strong>valeurs passées</strong> de <code>y</code>.</p>
+
+<ul>
+<li><code>y[t]</code> = valeur à prédire</li>
+<li><code>X[t] = [y[t-1], y[t-2], ..., y[t-k]]</code> = features autorégressives</li>
+</ul>
+
+<figure><img src="../../assets/images/time-series-03-cca0928c.png" alt="" loading="lazy"></figure>
+
+<h3 id="22-traintest-split-obligatoirement-contigu">2.2 Train/Test split obligatoirement contigu</h3>
+
+<figure><img src="../../assets/images/time-series-04-aefb2222.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Un <code>train_test_split</code> aléatoire causerait du <strong>data leakage</strong></p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">train_size = 0.6
+index = round(train_size * df.shape[0])
+df_train = df.iloc[:index]                              # 60% premiers
+df_test = df.iloc[index:]                               # 40% derniers</code></pre></div>
+
+
+<h3 id="23-baseline-prédire-la-valeur-précédente">2.3 Baseline — Prédire la valeur précédente</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">y_pred = df_test.shift(1).dropna()                      # prédit y[t] = y[t-1]
+y_true = df_test[1:]
+r2_score(y_true, y_pred)                                # R² ≈ 0.51</code></pre></div>
+
+
+<h3 id="24-modèle-linéaire-avec-12-features-autorégressives">2.4 Modèle linéaire avec 12 features autorégressives</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for i in range(1, 13):
+    df_train[f&#x27;t - {i}&#x27;] = df_train[&#x27;value&#x27;].shift(i)   # crée 12 lags comme features
+
+model = LinearRegression().fit(X_train, y_train)
+r2_score(y_test, model.predict(X_test))                  # R² ≈ 0.86</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Seul le 12ᵉ coefficient est vraiment informatif</p></div></div>
+
+<h3 id="25-prédire-sur-un-horizon-plus-long">2.5 Prédire sur un horizon plus long</h3>
+
+<p>Pour prédire à horizon H, il faut entraîner <strong>un modèle par horizon</strong> — ce qui est coûteux et perd en performance à mesure que H augmente.</p>
+
+<figure><img src="../../assets/images/time-series-05-9e4b0736.png" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/time-series-06-c45f8aa9.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Les performances se dégradent rapidement avec l'horizon</p></div></div>
+
+<hr>
+
+<h2 id="3-décomposition">3) Décomposition</h2>
+
+<p>La plupart des séries temporelles se décomposent en trois composantes :</p>
+
+<ol>
+<li><strong>Tendance (Trend)</strong> — direction générale à long terme</li>
+<li><strong>Saisonnalité (Seasonal)</strong> — patterns récurrents (calendaires ou non)</li>
+<li><strong>Résidus (Irregularities)</strong> — bruit restant</li>
+</ol>
+
+<p>Ces composantes peuvent être <strong>additives</strong> ($y = T + S + R$) ou <strong>multiplicatives</strong> ($y = T times S times R$).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.tsa.seasonal import seasonal_decompose
+
+## Additive
+result_add = seasonal_decompose(df[&#x27;value&#x27;], model=&#x27;additive&#x27;)
+result_add.plot()
+
+## Multiplicative
+result_mul = seasonal_decompose(df[&#x27;value&#x27;], model=&#x27;multiplicative&#x27;)
+result_mul.plot()</code></pre></div>
+
+
+<p><strong>Comment choisir entre additif et multiplicatif ?</strong> On compare les résidus : ceux qui montrent le <strong>moins de structure temporelle</strong> indiquent le meilleur modèle.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">f, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 3))
+ax1.plot(result_add.resid); ax1.set_title(&quot;Additive Residuals&quot;)
+ax2.plot(result_mul.resid); ax2.set_title(&quot;Multiplicative Residuals&quot;)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Les résidus multiplicatifs ont souvent moins de "notion de temps"</p></div></div>
+
+<hr>
+
+<h2 id="4-stationnarité">4) Stationnarité</h2>
+
+<h3 id="41-définition">4.1 Définition</h3>
+
+<p>Une série est <strong>stationnaire</strong> quand ses propriétés statistiques (moyenne, variance, autocorrélation) ne changent pas avec le temps.</p>
+
+<figure><img src="../../assets/images/time-series-07-cefb4b36.png" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/time-series-08-c2e280d9.png" alt="Stationarity" loading="lazy"></figure>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Une série stationnaire contient encore beaucoup d'information !</p></div></div>
+
+<figure><img src="../../assets/images/time-series-09-51648dd0.png" alt="" loading="lazy"></figure>
+
+<h3 id="42-tester-la-stationnarité">4.2 Tester la stationnarité</h3>
+
+<p>Trois méthodes :</p>
+
+<ol>
+<li><strong>Visuellement</strong> — observer si la moyenne/variance semble constante</li>
+<li><strong>Calcul</strong> — mesurer moyenne, variance et autocorrélation sur différents intervalles</li>
+<li><strong>Test ADF (Augmented Dickey-Fuller)</strong> — test statistique formel</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.tsa.stattools import adfuller
+
+adfuller(df[&#x27;value&#x27;])[1]                                # p-value → 1.0 = non stationnaire
+adfuller(result_mul.resid.dropna())[1]                  # p-value → 1.7e-07 = stationnaire ✅</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Le test ADF a pour <strong>H0 : la série n'est pas stationnaire</strong>.</p></div></div>
+
+<h3 id="43-comment-rendre-une-série-stationnaire">4.3 Comment rendre une série stationnaire ?</h3>
+
+<p>Trois approches (combinables) :</p>
+
+<ul>
+<li><strong>Décomposition</strong> — extraire $Y_{resid}$ et modéliser les résidus</li>
+<li><strong>Différenciation (differencing)</strong> — $Y_{diff} = Y_t - Y_{t-1}$</li>
+<li><strong>Transformations</strong> — log, exp, etc.</li>
+</ul>
+
+<hr>
+
+<h2 id="5-autocorrélation">5) Autocorrélation</h2>
+
+<p>L'autocorrélation mesure la corrélation entre une série $Y(t)$ et une version décalée d'elle-même $Y(t-k)$.</p>
+
+<figure><img src="../../assets/images/time-series-10-e2814a7d.png" alt="" loading="lazy"></figure>
+
+<h3 id="51-fonction-dautocorrélation-acf">5.1 Fonction d'autocorrélation (ACF)</h3>
+
+<p>$ACF(k) = \frac{\sum_{t=k+1}^{n}(X_t - \bar{X})(X_{t-k} - \bar{X})}{\sum_{t=1}^{n}(X_t - \bar{X})^2}$</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.graphics.tsaplots import plot_acf
+plot_acf(df[&#x27;value&#x27;], lags=50)                          # graphe ACF</code></pre></div>
+
+
+<p>Le cône bleu représente l'intervalle de confiance à 95%. Les pics hors du cône sont <strong>statistiquement significatifs</strong>.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Les pics tous les 12 mois confirment la <strong>saisonnalité annuelle</strong></p></div></div>
+
+<h3 id="52-attention-corrélation-directe-vs-indirecte">5.2 Attention — Corrélation directe vs indirecte</h3>
+
+<figure><img src="../../assets/images/time-series-11-4e21aaa6.png" alt="" loading="lazy"></figure>
+
+<p>L'ACF mesure la corrélation <strong>totale</strong> (directe + indirecte). Si $X(t)$ est corrélé avec $X(t-1)$, il est automatiquement corrélé avec $X(t-2)$ par transitivité.</p>
+
+<figure><img src="../../assets/images/time-series-12-11cdbb5d.png" alt="" loading="lazy"></figure>
+
+<p>Pour isoler l'influence <strong>directe</strong> d'un lag spécifique, on utilise la <strong>PACF</strong> (Partial ACF) via un processus autorégressif (AR).</p>
+
+<hr>
+
+<h2 id="6-ar-processus-autorégressifs">6) AR — Processus autorégressifs</h2>
+
+<p>$Y_t = \alpha + \beta_1 Y_{t-1} + \beta_2 Y_{t-2} + \cdots + \beta_p Y_{t-p} + \epsilon_t$</p>
+
+<p>C'est une <strong>régression linéaire multiple</strong> où les features sont les valeurs passées de Y. Les coefficients partiels $\beta_i$ isolent l'influence <strong>directe</strong> de chaque lag.</p>
+
+<h3 id="61-pacf-partial-autocorrelation-function">6.1 PACF — Partial Autocorrelation Function</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.graphics.tsaplots import plot_pacf
+plot_pacf(df[&#x27;value&#x27;], lags=50, c=&#x27;r&#x27;)                  # graphe PACF</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>La PACF donne l'influence <strong>directe</strong> de chaque lag</p></div></div>
+
+<h3 id="62-intuition-analogie-des-étudiants">6.2 Intuition — Analogie des étudiants</h3>
+
+<figure><img src="../../assets/images/time-series-13-0ab519f6.png" alt="" loading="lazy"></figure>
+
+<p><strong>ACF</strong> = les étudiants trichent en copiant sur leur voisin → les notes déclinent lentement (corrélation indirecte propagée).</p>
+
+<figure><img src="../../assets/images/time-series-14-ba1b0c95.png" alt="" loading="lazy"></figure>
+
+<p><strong>PACF</strong> = triche interdite → on voit ce que chaque étudiant sait <strong>vraiment</strong> (corrélation directe uniquement).</p>
+
+<h3 id="63-propriétés-dun-processus-ar">6.3 Propriétés d'un processus AR</h3>
+
+<ul>
+<li>Un <strong>choc</strong> ($epsilon$) se propage <strong>loin dans le futur</strong> (effet persistant)</li>
+<li>Le processus est "collant" (sticky) — plus qu'un bruit blanc</li>
+<li>Pas nécessairement stationnaire</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Exemple : le réchauffement climatique modélisé comme AR(1).</p></div></div>
+
+<figure><img src="../../assets/images/time-series-15-d36fad84.png" alt="" loading="lazy"></figure>
+
+<p>👉 <a href="https://www.youtube.com/watch?v=AN0a58F6cxA" target="_blank" rel="noopener">Vidéo explicative AR — 5 min</a></p>
+
+<hr>
+
+<h2 id="7-ma-processus-moving-average">7) MA — Processus Moving Average</h2>
+
+<p>$Y_t = \alpha + \epsilon_t + \phi_1 \epsilon_{t-1} + \phi_2 \epsilon_{t-2} + \cdots + \phi_q \epsilon_{t-q}$</p>
+
+<p>avec $\epsilon \overset{iid}{\sim} \mathcal{N}(0, \sigma)$</p>
+
+<p>Contrairement à AR, MA ne dépend <strong>pas des valeurs passées de Y</strong>, mais d'une combinaison linéaire de <strong>chocs aléatoires passés</strong>.</p>
+
+<h3 id="71-propriétés-dun-processus-ma">7.1 Propriétés d'un processus MA</h3>
+
+<ul>
+<li>Tout choc a un effet <strong>limité</strong> de durée <code>q</code> (pas de propagation longue)</li>
+<li>Le processus tend à rester autour de la moyenne $\alpha$</li>
+<li><strong>Toujours stationnaire</strong></li>
+<li>L'<strong>ordre q</strong> se lit sur le nombre de coefficients significatifs dans l'<strong>ACF</strong></li>
+</ul>
+
+<h3 id="72-exemple-système-de-chauffage-central">7.2 Exemple — Système de chauffage central</h3>
+
+<p>Un système garanti pour absorber un choc en 2 minutes : $\Delta°C_t = \epsilon_t + 0.5 \epsilon_{t-1}$</p>
+
+<p>Si quelqu'un ouvre la porte à la minute 1 ($epsilon_1 = -5°C$) :</p>
+
+<ul>
+<li>Minute 1 : $\Delta°C = -5$ (le froid entre)</li>
+<li>Minute 2 : $\Delta°C = 0.5 \times (-5) = -2.5$ (le système chauffe)</li>
+<li>Minute 3 : $\Delta°C = 0$ (retour à la normale — pas de propagation)</li>
+</ul>
+
+<p>👉 <a href="https://www.youtube.com/watch?v=lUhtcP2SUsg" target="_blank" rel="noopener">Vidéo : Lemonade demand 🍋 — 5 min</a></p>
+
+<hr>
+
+<h2 id="8-arma-auto-regressive-moving-average">8) ARMA — Auto Regressive Moving Average</h2>
+
+<p>La plupart des séries réelles combinent les deux processus :</p>
+
+<p>$ARMA(p,q) : Y_t = \alpha + \beta_1 Y_{t-1} + \cdots + \beta_p Y_{t-p} + \phi_1 \epsilon_{t-1} + \cdots + \phi_q \epsilon_{t-q}$</p>
+
+<h3 id="81-choisir-les-hyperparamètres-p-et-q">8.1 Choisir les hyperparamètres p et q</h3>
+
+<p>On compte le nombre de lags significatifs (hors du cône de confiance, en excluant le lag 0) :</p>
+
+<ul>
+<li><strong>p</strong> = lags significatifs sur la <strong>PACF</strong> → composante AR</li>
+<li><strong>q</strong> = lags significatifs sur l'<strong>ACF</strong> → composante MA</li>
+</ul>
+
+<figure><img src="../../assets/images/time-series-16-b7961995.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Pourquoi q sur l'ACF ?</strong></p></div></div>
+
+<hr>
+
+<h2 id="9-arima-auto-regressive-integrated-moving-average">9) ARIMA — Auto Regressive Integrated Moving Average</h2>
+
+<h3 id="91-le-i-differencing">9.1 Le "I" = Differencing</h3>
+
+<p>Pour rendre une série stationnaire, on peut la <strong>différencier</strong> :</p>
+
+<ul>
+<li>Ordre 1 : $Y^{(1)}_t = Y_t - Y_{t-1}$ (ex : croissance du PIB)</li>
+<li>Ordre 2 : $Y^{(2)}_t = Y^{(1)}_t - Y^{(1)}_{t-1}$ (ex : accélération du PIB)</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">y_diff = df[&#x27;value&#x27;].diff(1)                            # différenciation d&#x27;ordre 1
+y_diff_diff = df[&#x27;value&#x27;].diff(1).diff(1)               # ordre 2
+
+## Estimation automatique de d
+from pmdarima.arima.utils import ndiffs
+ndiffs(df[&#x27;linearized&#x27;])                                # retourne 1 → d=1 suffit</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>En général, <code>d=1</code> suffit.</p></div></div>
+
+<figure><img src="../../assets/images/time-series-17-59161b30.png" alt="" loading="lazy"></figure>
+
+<h3 id="92-formule-arima">9.2 Formule ARIMA</h3>
+
+<p>$Y^{(d)}_t = \alpha + \beta_1 Y^{(d)}_{t-1} + \cdots + \beta_p Y^{(d)}_{t-p} + \phi_1 \epsilon_{t-1} + \cdots + \phi_q \epsilon_{t-q}$</p>
+
+<div class="table-wrapper"><table><thead><tr><th><strong>Composante</strong></th><th><strong>Rôle</strong></th><th><strong>Propriété clé</strong></th></tr></thead><tbody><tr><td><strong>AR(p)</strong></td><td>Combinaison linéaire de p lags de Y</td><td>Un choc se propage loin dans le futur</td></tr><tr><td><strong>I(d)</strong></td><td>Différenciation d'ordre d</td><td>Rend la série stationnaire</td></tr><tr><td><strong>MA(q)</strong></td><td>Combinaison linéaire de q chocs aléatoires</td><td>Effet limité dans le temps, toujours stationnaire</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La différenciation tend à transformer les processus AR en processus MA.</p></div></div>
+
+<h3 id="93-workflow-complet-appliquer-arima">9.3 Workflow complet — Appliquer ARIMA</h3>
+
+<p><strong>Étape 1 — Dé-saisonnaliser et linéariser</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Retirer la saisonnalité (division par composante saisonnière multiplicative)
+df[&#x27;deseasonalized&#x27;] = df[&#x27;value&#x27;].values / result_mul.seasonal
+
+## Retirer la tendance exponentielle (log)
+df[&#x27;linearized&#x27;] = np.log(df[&#x27;deseasonalized&#x27;])</code></pre></div>
+
+
+<p><strong>Étape 2 — Vérifier la stationnarité après différenciation</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">print(&#x27;p-value zero-diff: &#x27;, adfuller(df[&#x27;linearized&#x27;])[1])         # 0.71 → non stationnaire
+print(&#x27;p-value first-diff: &#x27;, adfuller(df[&#x27;linearized&#x27;].diff().dropna())[1])  # 1e-09 → stationnaire ✅
+## → d = 1</code></pre></div>
+
+
+<p><strong>Étape 3 — Déterminer p et q via ACF/PACF</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">y_diff = df[&#x27;linearized&#x27;].diff().dropna()
+fig, axes = plt.subplots(1, 3, figsize=(16, 2.5))
+axes[0].plot(y_diff); axes[0].set_title(&#x27;1st Order Differencing&#x27;)
+plot_acf(y_diff, ax=axes[1])                            # → q = 1
+plot_pacf(y_diff, ax=axes[2], c=&#x27;r&#x27;)                    # → p = 2</code></pre></div>
+
+
+<p><strong>Étape 4 — Fit ARIMA</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.tsa.arima.model import ARIMA
+
+arima = ARIMA(df[&#x27;linearized&#x27;], order=(2, 1, 1), trend=&#x27;t&#x27;)
+arima = arima.fit()
+arima.summary()                                         # AIC = -572.65</code></pre></div>
+
+
+<p><strong>Étape 5 — GridSearch avec auto_arima</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pmdarima as pm
+
+smodel = pm.auto_arima(df[&#x27;linearized&#x27;],
+                       start_p=1, max_p=2,
+                       start_q=1, max_q=2,
+                       trend=&#x27;t&#x27;, seasonal=False,
+                       trace=True)
+## Best model: ARIMA(2,1,0) — AIC ≈ -562.7</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Quand plusieurs modèles ont des AIC similaires, choisir le <strong>plus simple</strong></p></div></div>
+
+<h3 id="94-évaluer-les-performances">9.4 Évaluer les performances</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Train/Test
+train = df[&#x27;linearized&#x27;][0:150]
+test = df[&#x27;linearized&#x27;][150:]
+
+arima = ARIMA(train, order=(2, 1, 0), trend=&#x27;t&#x27;).fit()
+
+## Forecast avec intervalles de confiance
+results = arima.get_forecast(len(test), alpha=0.05)
+forecast = results.predicted_mean
+confidence_int = results.conf_int().values</code></pre></div>
+
+
+<h3 id="95-recomposer-la-série-originale">9.5 Recomposer la série originale</h3>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>⚠️ Les prédictions sont dans l'espace transformé (linearisé). Il faut <strong>inverser les transformations</strong> (exp + saisonnalité).</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">forecast_recons = np.exp(forecast) * result_mul.seasonal[150:]        # inverse log + remet la saisonnalité
+train_recons = np.exp(train) * result_mul.seasonal[0:150]
+test_recons = np.exp(test) * result_mul.seasonal[150:]</code></pre></div>
+
+
+<figure><img src="../../assets/images/time-series-18-3521b53c.png" alt="" loading="lazy"></figure>
+
+<h3 id="96-vérifier-les-résidus">9.6 Vérifier les résidus</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">residuals = pd.DataFrame(arima.resid)
+residuals.plot(title=&quot;Residuals&quot;)                       # variance constante → homoscédastique ✅
+residuals.plot(kind=&#x27;kde&#x27;, title=&#x27;Density&#x27;)             # distribution ~ normale ✅</code></pre></div>
+
+
+<p>Si les résidus sont homoscédastiques et normaux → on peut faire confiance aux intervalles de confiance.</p>
+
+<h3 id="97-méthode-de-box-jenkins-workflow-complet">9.7 Méthode de Box-Jenkins (workflow complet)</h3>
+
+<ol>
+<li>Appliquer des transformations pour rendre la série stationnaire (dé-trending, log, differencing)</li>
+<li>Garder trace de l'ordre <code>d</code> de différenciation — ne pas sur-différencier</li>
+<li>Confirmer la stationnarité (visuellement, ACF, test ADF)</li>
+<li>Lire <code>p</code> sur la PACF et <code>q</code> sur l'ACF</li>
+<li>Fit les données originales (non-différenciées) avec ARIMA(p, d, q)</li>
+<li>Tester quelques variantes autour de ces ordres</li>
+<li>Si AIC similaires → choisir le modèle le plus simple</li>
+<li>Inspecter les résidus : si bruit blanc → terminé</li>
+<li>Sinon → itérer (autres transformations, ajuster d, p, q)</li>
+<li>Comparer avec <code>auto_arima</code></li>
+</ol>
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>Règles détaillées : [Box-Jenkins rules (1)]</p></div></div>
+
+<h3 id="98-critère-aic-akaike-information-criterion">9.8 Critère AIC (Akaike Information Criterion)</h3>
+
+<figure><img src="../../assets/images/time-series-19-6c00fd07.png" alt="" loading="lazy"></figure>
+
+<p>L'AIC pénalise la complexité du modèle : plus l'AIC est bas, meilleur est le compromis entre fit et simplicité. C'est la métrique principale pour comparer des modèles ARIMA.</p>
+
+<hr>
+
+<h2 id="10-sarima-seasonal-arima-optionnel">10) SARIMA — Seasonal ARIMA (optionnel)</h2>
+
+<p>SARIMA étend ARIMA en modélisant explicitement la <strong>saisonnalité</strong>, ce qui évite de dé-saisonnaliser manuellement.</p>
+
+<h3 id="101-différenciation-saisonnière">10.1 Différenciation saisonnière</h3>
+
+<figure><img src="../../assets/images/time-series-20-22a450bb.png" alt="" loading="lazy"></figure>
+
+<p>On applique la différenciation à deux niveaux :</p>
+
+<ul>
+<li><strong>Normal</strong> : $Y_{diff} = Y_t - Y_{t-1}$ (lag individuel)</li>
+<li><strong>Saisonnier</strong> : $Y_{sdiff} = Y_t - Y_{t-m}$ avec $m = 12$ (lag annuel)</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df[&#x27;log&#x27;] = np.log(df[&#x27;value&#x27;])
+
+df[&#x27;log&#x27;].diff(1)                                       # différenciation normale
+df[&#x27;log&#x27;].diff(12)                                      # différenciation saisonnière (période 12)
+df[&#x27;log&#x27;].diff(12).diff(1)                              # les deux combinées</code></pre></div>
+
+
+<h3 id="102-les-7-hyperparamètres">10.2 Les 7 hyperparamètres</h3>
+
+<p><code>SARIMA(p, d, q)(P, D, Q)[S]</code></p>
+
+<div class="table-wrapper"><table><thead><tr><th><strong>Paramètre</strong></th><th><strong>Niveau</strong></th><th><strong>Rôle</strong></th></tr></thead><tbody><tr><td>p, d, q</td><td>Lag individuel</td><td>AR, Integration, MA classiques</td></tr><tr><td>P, D, Q</td><td>Lag saisonnier</td><td>AR, Integration, MA saisonniers</td></tr><tr><td>S</td><td>Période</td><td>Taille de la fenêtre saisonnière (ex : 12 pour annuel)</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Seul <strong>S</strong> doit être choisi manuellement.</p></div></div>
+
+<h3 id="103-implémentation">10.3 Implémentation</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pmdarima as pm
+
+smodel = pm.auto_arima(train, seasonal=True, m=12,
+                       start_p=0, max_p=1, max_d=1, start_q=0, max_q=1,
+                       start_P=0, max_P=2, max_D=1, start_Q=0, max_Q=2,
+                       trace=True)
+## Best model: ARIMA(0,1,1)(1,0,2)[12]</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.tsa.statespace.sarimax import SARIMAX
+
+sarima = SARIMAX(train, order=(0, 1, 1), seasonal_order=(2, 0, 2, 12))
+sarima = sarima.fit()
+
+results = sarima.get_forecast(len(test), alpha=0.05)
+forecast = results.predicted_mean
+confidence_int = results.conf_int()</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Recomposer (inverse du log)
+forecast_recons = pd.Series(np.exp(forecast), index=test.index)</code></pre></div>
+
+
+<p>👉 <a href="https://web.archive.org/web/20210924121131/https://www.datasciencecentral.com/profiles/blogs/tutorial-forecasting-with-seasonal-arima" target="_blank" rel="noopener">Blog post sur les hyperparamètres SARIMA</a></p>
+
+<hr>
+
+<h2 id="11-autres-modèles-de-time-series">11) Autres modèles de Time Series</h2>
+
+<ul>
+<li><strong>SARIMAX</strong> — comme SARIMA mais avec des <strong>variables exogènes</strong> (ex : prévisions météo pour prédire les prix de l'énergie)</li>
+<li><strong>Facebook Prophet</strong> — modèle additif développé par Meta, facile à utiliser</li>
+<li><strong>Exponential Smoothing (ETS)</strong> — moyenne mobile avec mémoire exponentiellement décroissante</li>
+<li><strong>Holt's Trend-Corrected</strong> — ETS avec correction de tendance linéaire</li>
+<li><strong>Holt-Winter's</strong> — ajoute la saisonnalité à Holt</li>
+</ul>
+
+<p>👉 <a href="https://otexts.com/fpp2/index.html" target="_blank" rel="noopener">Forecasting: Principles and Practice — Hyndman & Athanasopoulos</a></p>
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://online.stat.psu.edu/stat510/lesson/2/2.1" target="_blank" rel="noopener">Academic slides — Penn State</a></li>
+<li>👉 <a href="https://www.youtube.com/watch?v=AN0a58F6cxA" target="_blank" rel="noopener">Chaîne YouTube TS — ritvikmath</a></li>
+<li>👉 <a href="https://www.machinelearningplus.com/time-series/time-series-analysis-python/" target="_blank" rel="noopener">Time Series Analysis Blog 1/2 — Concepts</a></li>
+<li>👉 <a href="https://www.machinelearningplus.com/time-series/arima-model-time-series-forecasting-python/" target="_blank" rel="noopener">Time Series Analysis Blog 2/2 — ARIMA</a></li>
+<li>👉 <a href="https://www.youtube.com/watch?v=PFyp4t16_xk" target="_blank" rel="noopener">Yule-Walker equations — Advanced</a></li>
+<li>📚 <a href="http://people.duke.edu/~rnau/arimrule.htm" target="_blank" rel="noopener">Box-Jenkins rules (1)</a> et <a href="https://people.duke.edu/~rnau/411arim3.htm" target="_blank" rel="noopener">(2)</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">🏋️ Challenges</h2>
+
+<p>Appliquer le workflow Box-Jenkins complet sur un dataset réel : décomposition, stationnarisation, choix de p/d/q via ACF/PACF, fit ARIMA/SARIMA, évaluation et recomposition.</p>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-a-retenir-absolument">A retenir absolument</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-approche-ml-classique-pour-les-séries-temporelles">1. Approche ML classique pour les séries temporelles</a><ol><li><a href="#ref-11-construire-un-dataset-x-y-depuis-une-série">1.1 Construire un dataset (X, y) depuis une série</a></li><li><a href="#ref-12-le-traintest-split-jamais-de-shuffle">1.2 Le Train/Test split : JAMAIS de shuffle</a></li><li><a href="#ref-13-baseline-simple-prédire-la-valeur-dhier">1.3 Baseline simple : prédire la valeur d'hier</a></li><li><a href="#ref-14-prédire-sur-plusieurs-pas-dans-le-futur">1.4 Prédire sur plusieurs pas dans le futur</a></li></ol></li><li><a href="#ref-2-décomposition">2. Décomposition</a><ol><li><a href="#ref-21-les-trois-composantes-dune-série-temporelle">2.1 Les trois composantes d'une série temporelle</a></li><li><a href="#ref-22-modèle-additif-vs-multiplicatif">2.2 Modèle additif vs multiplicatif</a></li></ol></li><li><a href="#ref-3-stationnarité">3. Stationnarité</a><ol><li><a href="#ref-31-cest-quoi-une-série-stationnaire">3.1 C'est quoi une série stationnaire ?</a></li><li><a href="#ref-32-comment-tester-la-stationnarité">3.2 Comment tester la stationnarité</a></li><li><a href="#ref-33-comment-rendre-une-série-stationnaire">3.3 Comment rendre une série stationnaire</a></li></ol></li><li><a href="#ref-4-autocorrélation">4. Autocorrélation</a><ol><li><a href="#ref-41-lidée-de-base">4.1 L'idée de base</a></li><li><a href="#ref-42-la-formule-acf">4.2 La formule ACF</a></li><li><a href="#ref-43-le-problème-de-la-corrélation-indirecte">4.3 Le problème de la corrélation indirecte</a></li><li><a href="#ref-44-la-pacf-partial-acf">4.4 La PACF — Partial ACF</a></li></ol></li><li><a href="#ref-5-ar-processus-autorégressif">5. AR — Processus Autorégressif</a><ol><li><a href="#ref-51-la-formule">5.1 La formule</a></li><li><a href="#ref-52-propriétés-dun-processus-ar">5.2 Propriétés d'un processus AR</a></li></ol></li><li><a href="#ref-6-ma-processus-moving-average">6. MA — Processus Moving Average</a><ol><li><a href="#ref-61-la-formule">6.1 La formule</a></li><li><a href="#ref-62-différence-fondamentale-avec-ar">6.2 Différence fondamentale avec AR</a></li><li><a href="#ref-63-exemple-concret-système-de-chauffage">6.3 Exemple concret — Système de chauffage</a></li><li><a href="#ref-64-propriétés-dun-processus-ma">6.4 Propriétés d'un processus MA</a></li></ol></li><li><a href="#ref-7-arma-combinaison-ar-ma">7. ARMA — Combinaison AR + MA</a><ol><li><a href="#ref-71-la-formule">7.1 La formule</a></li><li><a href="#ref-72-choisir-p-et-q">7.2 Choisir p et q</a></li></ol></li><li><a href="#ref-8-arima-ar-integrated-ma">8. ARIMA — AR Integrated MA</a><ol><li><a href="#ref-81-le-i-integrated-différenciation">8.1 Le "I" = Integrated = Différenciation</a></li><li><a href="#ref-82-la-formule-arimap-d-q">8.2 La formule ARIMA(p, d, q)</a></li><li><a href="#ref-83-workflow-complet-pour-appliquer-arima">8.3 Workflow complet pour appliquer ARIMA</a></li><li><a href="#ref-84-le-critère-aic-comment-comparer-les-modèles">8.4 Le critère AIC — comment comparer les modèles</a></li><li><a href="#ref-85-faire-des-prédictions-et-évaluer">8.5 Faire des prédictions et évaluer</a></li><li><a href="#ref-86-recomposer-la-série-originale">8.6 Recomposer la série originale</a></li><li><a href="#ref-87-vérifier-les-résidus">8.7 Vérifier les résidus</a></li><li><a href="#ref-88-le-workflow-box-jenkins-vue-densemble">8.8 Le workflow Box-Jenkins — vue d'ensemble</a></li></ol></li><li><a href="#ref-9-sarima-arima-avec-saisonnalité">9. SARIMA — ARIMA avec Saisonnalité</a><ol><li><a href="#ref-91-pourquoi-sarima">9.1 Pourquoi SARIMA ?</a></li><li><a href="#ref-92-la-différenciation-saisonnière">9.2 La différenciation saisonnière</a></li><li><a href="#ref-93-les-7-paramètres-de-sarima">9.3 Les 7 paramètres de SARIMA</a></li><li><a href="#ref-94-implémentation-avec-auto_arima-puis-sarimax">9.4 Implémentation avec auto_arima puis SARIMAX</a></li></ol></li><li><a href="#ref-10-autres-modèles-de-séries-temporelles">10. Autres modèles de séries temporelles</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Une <strong>série temporelle</strong> (time series), c'est simplement une liste de valeurs mesurées régulièrement dans le temps. Pas tous les jours, pas au hasard — à intervalles <strong>fixes</strong> : toutes les heures, tous les mois, tous les ans.</p>
+
+<p>Exemples concrets : le prix du pétrole chaque jour, le nombre de passagers aériens chaque mois, la température quotidienne relevée par une station météo.</p>
+
+<p><strong>Notre analogie fil rouge tout au long du cours :</strong> imagine que tu relèves la température extérieure chaque jour pendant un an. Tu obtiens 365 valeurs dans l'ordre. Pas question de les mélanger — le 15 janvier vient avant le 16 janvier, et le mois d'été est toujours plus chaud. C'est ça, une série temporelle.</p>
+
+<h3 id="ref-a-retenir-absolument">A retenir absolument</h3>
+
+<ol>
+<li><strong>L'ordre du temps est sacré</strong> — ne jamais mélanger les données (pas de shuffle).</li>
+<li><strong>La stationnarité est la condition de base</strong> — la plupart des modèles exigent que la série soit "stable" dans le temps (moyenne et variance constantes). Il faut la transformer si ce n'est pas le cas.</li>
+<li><strong>ACF et PACF sont tes deux outils de diagnostic</strong> — ils permettent de lire les paramètres du modèle directement sur un graphe.</li>
+<li><strong>AR = mémoire longue, MA = mémoire courte</strong> — deux façons différentes de capturer l'histoire d'une série.</li>
+<li><strong>ARIMA = AR + différenciation + MA</strong> — le modèle classique qui combine tout.</li>
+</ol>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li>Approche ML classique pour les séries temporelles</li>
+<li>Décomposition (tendance + saisonnalité + résidus)</li>
+<li>Stationnarité et comment l'obtenir</li>
+<li>Autocorrélation (ACF et PACF)</li>
+<li>Modèles AR, MA, ARMA</li>
+<li>ARIMA — le modèle complet</li>
+<li>SARIMA — ARIMA avec saisonnalité</li>
+<li>Autres modèles (Prophet, ETS…)</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-approche-ml-classique-pour-les-séries-temporelles">1. Approche ML classique pour les séries temporelles</h2>
+
+<h3 id="ref-11-construire-un-dataset-x-y-depuis-une-série">1.1 Construire un dataset (X, y) depuis une série</h3>
+
+<p>En machine learning classique, tu as des colonnes features (X) et une cible (y). Mais dans une série temporelle, tu n'as qu'une seule colonne de valeurs. Alors comment créer X ?</p>
+
+<p>La réponse : on utilise les <strong>valeurs passées</strong> comme features. On appelle ça des <strong>lags</strong>.</p>
+
+<div class="katex-display">$$y[t] \text{ est la valeur à prédire}$$</div>
+<div class="katex-display">$$X[t] = [y[t-1],\ y[t-2],\ \ldots,\ y[t-k]] \text{ sont les features}$$</div>
+
+<p><strong>Exemple avec la température :</strong> pour prédire la température du jour J, on utilise les températures des jours J-1, J-2, J-3… comme variables explicatives.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+
+# On crée 12 features &quot;lag&quot; : la valeur d&#x27;hier, d&#x27;avant-hier, etc.
+for i in range(1, 13):
+    df_train[f&#x27;t - {i}&#x27;] = df_train[&#x27;value&#x27;].shift(i)  # décale la série de i pas
+
+# On obtient 12 nouvelles colonnes : &quot;t - 1&quot;, &quot;t - 2&quot;, ..., &quot;t - 12&quot;</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Avec des ventes de médicaments, le lag 12 (valeur du même mois l'an dernier) est souvent le plus informatif — la saisonnalité annuelle domine.</p></div></div>
+
+<h3 id="ref-12-le-traintest-split-jamais-de-shuffle">1.2 Le Train/Test split : JAMAIS de shuffle</h3>
+
+<p>C'est la règle numéro 1, et c'est une différence fondamentale avec le ML classique.</p>
+
+<p><strong>Pourquoi ?</strong> Si tu mélanges les données et que tu mets des valeurs de décembre dans ton train set pour prédire octobre, tu "regardes dans le futur". C'est du <strong>data leakage</strong> — le modèle triche sans que tu le saches.</p>
+
+<p>La règle : le train set = les <strong>premières</strong> observations dans le temps. Le test set = les <strong>dernières</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">train_size = 0.6
+index = round(train_size * df.shape[0])  # on calcule l&#x27;index de coupure
+
+df_train = df.iloc[:index]   # 60% des premières données → train
+df_test  = df.iloc[index:]   # 40% des dernières données → test
+# ⚠️ Jamais de train_test_split(shuffle=True) ici !</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais utiliser <code>train_test_split</code> de sklearn avec ses paramètres par défaut sur une série temporelle. C'est l'erreur la plus fréquente et elle fausse complètement les résultats.</p></div></div>
+
+<h3 id="ref-13-baseline-simple-prédire-la-valeur-dhier">1.3 Baseline simple : prédire la valeur d'hier</h3>
+
+<p>Avant tout modèle sophistiqué, on commence par une baseline naïve : "la valeur de demain = la valeur d'aujourd'hui".</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">y_pred = df_test.shift(1).dropna()   # prédit y[t] = y[t-1]
+y_true = df_test[1:]
+from sklearn.metrics import r2_score
+r2_score(y_true, y_pred)             # donne R² ≈ 0.51 → pas terrible</code></pre></div>
+
+
+<p>Un bon modèle doit faire <strong>mieux</strong> que cette baseline.</p>
+
+<h3 id="ref-14-prédire-sur-plusieurs-pas-dans-le-futur">1.4 Prédire sur plusieurs pas dans le futur</h3>
+
+<p>Si tu veux prédire H pas dans le futur (pas juste J+1 mais J+H), il faut entraîner <strong>un modèle différent par horizon</strong>. C'est coûteux et les performances se dégradent rapidement plus H est grand.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>C'est une limite importante de l'approche ML classique sur les séries temporelles — les modèles statistiques comme ARIMA gèrent mieux les horizons longs.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-décomposition">2. Décomposition</h2>
+
+<h3 id="ref-21-les-trois-composantes-dune-série-temporelle">2.1 Les trois composantes d'une série temporelle</h3>
+
+<p>Toute série temporelle peut se décomposer en trois couches :</p>
+
+<ol>
+<li><strong>Tendance (Trend)</strong> — la direction générale sur le long terme. Exemple : les ventes augmentent chaque année.</li>
+<li><strong>Saisonnalité (Seasonal)</strong> — des patterns qui se répètent régulièrement. Exemple : il fait toujours plus chaud en été.</li>
+<li><strong>Résidus (Residuals)</strong> — ce qui reste une fois qu'on a enlevé la tendance et la saisonnalité. C'est le "bruit".</li>
+</ol>
+
+<h3 id="ref-22-modèle-additif-vs-multiplicatif">2.2 Modèle additif vs multiplicatif</h3>
+
+<p>Il y a deux façons de combiner ces trois composantes :</p>
+
+<p><strong>Modèle additif</strong> — les composantes s'ajoutent :</p>
+<div class="katex-display">$$y = T + S + R$$</div>
+
+<p><strong>Modèle multiplicatif</strong> — les composantes se multiplient :</p>
+<div class="katex-display">$$y = T \times S \times R$$</div>
+
+<p><strong>Comment choisir ?</strong> Regarde si l'amplitude des oscillations saisonnières augmente avec le niveau général de la série. Si oui (ex : les ventes d'été sont 2× les ventes d'hiver, et cet écart grandit avec les années), utilise le modèle multiplicatif.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.tsa.seasonal import seasonal_decompose
+
+# Décomposition additive
+result_add = seasonal_decompose(df[&#x27;value&#x27;], model=&#x27;additive&#x27;)
+
+# Décomposition multiplicative
+result_mul = seasonal_decompose(df[&#x27;value&#x27;], model=&#x27;multiplicative&#x27;)
+result_mul.plot()            # affiche les 4 graphes : série, tendance, saisonnalité, résidus
+
+# Accéder aux composantes
+result_mul.trend             # la tendance extraite
+result_mul.seasonal          # la composante saisonnière
+result_mul.resid             # les résidus (ce qui reste)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Astuce pour choisir : compare les résidus des deux modèles. Celui dont les résidus ressemblent le moins à une série temporelle (moins de structure visible) est le meilleur.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-stationnarité">3. Stationnarité</h2>
+
+<h3 id="ref-31-cest-quoi-une-série-stationnaire">3.1 C'est quoi une série stationnaire ?</h3>
+
+<p>Une série est <strong>stationnaire</strong> quand ses propriétés statistiques ne changent pas avec le temps :</p>
+<ul>
+<li>Sa <strong>moyenne</strong> est constante (pas de tendance haussière ou baissière)</li>
+<li>Sa <strong>variance</strong> est constante (les oscillations restent de même amplitude)</li>
+<li>Son <strong>autocorrélation</strong> (lien entre valeurs proches) ne dépend que de l'écart de temps, pas du moment</li>
+</ul>
+
+<p><strong>Exemple avec notre thermomètre :</strong> la température moyenne de janvier est toujours autour de 5°C, et de juillet toujours autour de 25°C. Cette série n'est <strong>pas</strong> stationnaire car la moyenne varie selon la saison.</p>
+
+<p>Par contre, les résidus après avoir enlevé la saisonnalité (les petites variations autour de la normale saisonnière) sont souvent stationnaires.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Tous les modèles ARMA/ARIMA supposent que la série est stationnaire. Si elle ne l'est pas, le modèle donnera des résultats faux.</p></div></div>
+
+<h3 id="ref-32-comment-tester-la-stationnarité">3.2 Comment tester la stationnarité</h3>
+
+<p><strong>Trois méthodes, de la plus simple à la plus rigoureuse :</strong></p>
+
+<p><strong>1. Visuellement</strong> — la moyenne et la variance semblent-elles constantes sur tout le graphe ?</p>
+
+<p><strong>2. Par calcul</strong> — divise la série en plusieurs fenêtres et compare la moyenne et la variance de chaque fenêtre.</p>
+
+<p><strong>3. Test ADF (Augmented Dickey-Fuller)</strong> — test statistique formel.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.tsa.stattools import adfuller
+
+p_value = adfuller(df[&#x27;value&#x27;])[1]  # on récupère la p-value (2e élément)
+print(p_value)
+# Si p_value &lt; 0.05 → stationnaire ✅
+# Si p_value &gt;= 0.05 → non stationnaire ❌</code></pre></div>
+
+
+<p><strong>Logique du test ADF :</strong></p>
+<ul>
+<li>$H_0$ (hypothèse nulle) : la série <strong>n'est pas</strong> stationnaire</li>
+<li>Si $p < 0.05$, on rejette $H_0$ → la série <strong>est</strong> stationnaire</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>C'est contre-intuitif : une p-value faible est une bonne nouvelle ici. p < 0.05 signifie qu'on peut rejeter l'hypothèse "pas stationnaire", donc la série est stationnaire.</p></div></div>
+
+<h3 id="ref-33-comment-rendre-une-série-stationnaire">3.3 Comment rendre une série stationnaire</h3>
+
+<p><strong>Trois approches (qu'on peut combiner) :</strong></p>
+
+<p><strong>1. Décomposition</strong> — extraire les résidus et ne modéliser que $R$ (les résidus sont souvent stationnaires).</p>
+
+<p><strong>2. Différenciation (differencing)</strong> — calculer la différence entre chaque valeur et la précédente :</p>
+
+<div class="katex-display">$$Y^{(1)}_t = Y_t - Y_{t-1}$$</div>
+
+<p>Avec notre température : au lieu de la température brute (5°C, 6°C, 4°C, 7°C), on calcule la variation quotidienne (+1°C, -2°C, +3°C). Cette série de variations est souvent stationnaire.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">y_diff = df[&#x27;value&#x27;].diff(1)          # différenciation d&#x27;ordre 1 : Y[t] - Y[t-1]
+y_diff2 = df[&#x27;value&#x27;].diff(1).diff(1) # différenciation d&#x27;ordre 2 (rarement nécessaire)
+
+# Trouver automatiquement l&#x27;ordre optimal
+from pmdarima.arima.utils import ndiffs
+d = ndiffs(df[&#x27;value&#x27;])               # retourne 1 → une seule différenciation suffit</code></pre></div>
+
+
+<p><strong>3. Transformation log</strong> — si la série a une tendance exponentielle, appliquer $\log$ la linéarise.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+df[&#x27;log_value&#x27;] = np.log(df[&#x27;value&#x27;])  # transforme une croissance exponentielle en linéaire</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>En pratique, d=1 (une seule différenciation) suffit dans la grande majorité des cas. Ne pas sur-différencier — cela ajoute du bruit inutile.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-autocorrélation">4. Autocorrélation</h2>
+
+<h3 id="ref-41-lidée-de-base">4.1 L'idée de base</h3>
+
+<p>L'autocorrélation mesure à quel point une valeur de la série est corrélée avec une valeur passée d'elle-même. Le "lag k" désigne un décalage de k pas dans le temps.</p>
+
+<p><strong>Exemple concret :</strong> est-ce que la température d'aujourd'hui ressemble à celle d'hier (lag 1) ? D'il y a une semaine (lag 7) ? D'il y a un an (lag 365) ?</p>
+
+<h3 id="ref-42-la-formule-acf">4.2 La formule ACF</h3>
+
+<p>La fonction d'autocorrélation (ACF) au lag $k$ est :</p>
+
+<div class="katex-display">$$ACF(k) = \frac{\sum_{t=k+1}^{n}(X_t - \bar{X})(X_{t-k} - \bar{X})}{\sum_{t=1}^{n}(X_t - \bar{X})^2}$$</div>
+
+<p>C'est exactement la formule de corrélation de Pearson, mais appliquée entre la série et elle-même décalée de $k$ pas.</p>
+
+<p><strong>Valeurs possibles :</strong> entre -1 et +1. 0 = pas de lien, 1 = lien parfait positif.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.graphics.tsaplots import plot_acf
+
+plot_acf(df[&#x27;value&#x27;], lags=50)   # affiche la corrélation pour les 50 premiers lags
+# La zone bleue = intervalle de confiance à 95%
+# Un pic hors de la zone bleue = corrélation statistiquement significative</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Sur un graphe ACF des ventes mensuelles, des pics tous les 12 lags confirment la saisonnalité annuelle. La température en juillet ressemble à celle de juillet de l'an dernier.</p></div></div>
+
+<h3 id="ref-43-le-problème-de-la-corrélation-indirecte">4.3 Le problème de la corrélation indirecte</h3>
+
+<p>L'ACF a un défaut : elle capture les corrélations <strong>totales</strong>, y compris les corrélations <strong>indirectes</strong>.</p>
+
+<p><strong>Analogie de la salle de classe :</strong> imagine 30 étudiants en rang. Chaque étudiant copie discrètement sur son voisin de gauche. Si tu regardes les notes : l'étudiant en position 1 et l'étudiant en position 5 ont des notes similaires. Mais est-ce parce qu'ils se copient directement ? Non — c'est parce que 1 copie sur 2, qui copie sur 3, qui copie sur 4, qui copie sur 5.</p>
+
+<p>L'ACF détecte cette ressemblance indirecte et la signale, même si le lien est transitif.</p>
+
+<p><strong>Exemple numérique :</strong> si la corrélation au lag 1 est 0.8, alors forcément, par transitivité, la corrélation au lag 2 sera non nulle (≈ 0.64), même si la valeur d'avant-hier n'influence pas directement aujourd'hui.</p>
+
+<h3 id="ref-44-la-pacf-partial-acf">4.4 La PACF — Partial ACF</h3>
+
+<p>La <strong>PACF</strong> (Partial Autocorrelation Function) résout ce problème. Elle mesure uniquement la corrélation <strong>directe</strong> du lag k, en retirant l'effet des lags intermédiaires.</p>
+
+<p><strong>Analogie suite :</strong> si on interdit la triche dans la salle de classe, chaque étudiant répond uniquement avec ce qu'il sait vraiment. C'est la PACF.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.graphics.tsaplots import plot_pacf
+
+plot_pacf(df[&#x27;value&#x27;], lags=50, c=&#x27;r&#x27;)  # affiche la corrélation directe de chaque lag</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>ACF = corrélation totale (directe + indirecte). PACF = corrélation directe uniquement. Cette distinction est cruciale pour choisir les paramètres du modèle.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-ar-processus-autorégressif">5. AR — Processus Autorégressif</h2>
+
+<h3 id="ref-51-la-formule">5.1 La formule</h3>
+
+<p>Un processus <strong>AR(p)</strong> (AutoRégression d'ordre p) dit que la valeur actuelle est une combinaison linéaire des $p$ valeurs passées, plus un bruit aléatoire $\epsilon_t$ :</p>
+
+<div class="katex-display">$$Y_t = \alpha + \beta_1 Y_{t-1} + \beta_2 Y_{t-2} + \cdots + \beta_p Y_{t-p} + \epsilon_t$$</div>
+
+<p><strong>Traduction des symboles :</strong></p>
+<ul>
+<li>$Y_t$ : la valeur actuelle (ex : température aujourd'hui)</li>
+<li>$\alpha$ : une constante (la moyenne de long terme)</li>
+<li>$\beta_i$ : le coefficient du lag $i$ (son influence directe)</li>
+<li>$p$ : l'ordre — combien de valeurs passées on utilise</li>
+<li>$\epsilon_t$ : le choc aléatoire du moment (bruit blanc)</li>
+</ul>
+
+<p><strong>Exemple numérique AR(1) :</strong> supposons que la température suit :</p>
+<div class="katex-display">$$T_t = 15 + 0.7 \times T_{t-1} + \epsilon_t$$</div>
+
+<p>Si hier il faisait 20°C et le bruit d'aujourd'hui est +1°C :</p>
+<div class="katex-display">$$T_{aujourd'hui} = 15 + 0.7 \times 20 + 1 = 15 + 14 + 1 = 30°C$$</div>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Un AR, c'est exactement une régression linéaire multiple, mais où les features sont les valeurs passées de Y lui-même.</p></div></div>
+
+<h3 id="ref-52-propriétés-dun-processus-ar">5.2 Propriétés d'un processus AR</h3>
+
+<p><strong>Un choc se propage loin dans le futur.</strong> Si un événement exceptionnel se produit (vague de froid inattendue), son effet se dissipe lentement, lag après lag. C'est une série avec <strong>mémoire longue</strong>.</p>
+
+<p><strong>Comment lire le paramètre p :</strong> le nombre de lags significatifs (hors du cône de confiance) sur la <strong>PACF</strong> donne $p$.</p>
+
+<hr>
+
+<h2 id="ref-6-ma-processus-moving-average">6. MA — Processus Moving Average</h2>
+
+<h3 id="ref-61-la-formule">6.1 La formule</h3>
+
+<p>Un processus <strong>MA(q)</strong> (Moving Average d'ordre q) dit que la valeur actuelle est une combinaison linéaire des $q$ <strong>chocs passés</strong> (pas des valeurs passées) :</p>
+
+<div class="katex-display">$$Y_t = \alpha + \epsilon_t + \phi_1 \epsilon_{t-1} + \phi_2 \epsilon_{t-2} + \cdots + \phi_q \epsilon_{t-q}$$</div>
+
+<div class="katex-display">$$\epsilon \overset{iid}{\sim} \mathcal{N}(0, \sigma)$$</div>
+
+<p><strong>Traduction des symboles :</strong></p>
+<ul>
+<li>$Y_t$ : la valeur actuelle</li>
+<li>$\alpha$ : la moyenne de long terme</li>
+<li>$\epsilon_t$ : le choc aléatoire <strong>d'aujourd'hui</strong></li>
+<li>$\epsilon_{t-k}$ : le choc qui s'est produit il y a $k$ pas</li>
+<li>$\phi_k$ : le poids donné au choc passé</li>
+<li>$q$ : l'ordre — combien de chocs passés on retient</li>
+</ul>
+
+<h3 id="ref-62-différence-fondamentale-avec-ar">6.2 Différence fondamentale avec AR</h3>
+
+<p>Dans AR, la valeur dépend des <strong>valeurs passées de Y</strong>. Dans MA, la valeur dépend des <strong>chocs passés</strong> (erreurs aléatoires passées).</p>
+
+<p><strong>Conséquence clé :</strong> dans un MA(q), un choc a un effet <strong>limité dans le temps</strong>, qui dure exactement $q$ pas. Après, il disparaît complètement. C'est une série avec <strong>mémoire courte</strong>.</p>
+
+<h3 id="ref-63-exemple-concret-système-de-chauffage">6.3 Exemple concret — Système de chauffage</h3>
+
+<p>Un système de chauffage est conçu pour absorber tout choc en 2 minutes. La variation de température suit :</p>
+<div class="katex-display">$$\Delta T_t = \epsilon_t + 0.5 \cdot \epsilon_{t-1}$$</div>
+
+<p>Quelqu'un ouvre la porte à la minute 1, laissant entrer un courant froid ($\epsilon_1 = -5°C$) :</p>
+
+<ul>
+<li><strong>Minute 1 :</strong> $\Delta T = -5 + 0 = -5°C$ (le froid entre brutalement)</li>
+<li><strong>Minute 2 :</strong> $\Delta T = 0 + 0.5 \times (-5) = -2.5°C$ (le système compense partiellement)</li>
+<li><strong>Minute 3 :</strong> $\Delta T = 0 + 0.5 \times 0 = 0°C$ (retour à la normale — effet terminé)</li>
+</ul>
+
+<p>Le choc a duré exactement $q = 1$ pas après son apparition, puis s'est effacé.</p>
+
+<h3 id="ref-64-propriétés-dun-processus-ma">6.4 Propriétés d'un processus MA</h3>
+
+<ul>
+<li>Un MA est <strong>toujours stationnaire</strong> (propriété mathématique garantie)</li>
+<li><strong>Comment lire le paramètre q :</strong> le nombre de lags significatifs sur l'<strong>ACF</strong> donne $q$</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Résumé : AR = mémoire longue (choc se propage), MA = mémoire courte (choc disparaît vite). La plupart des séries réelles sont un mélange des deux → ARMA.</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-arma-combinaison-ar-ma">7. ARMA — Combinaison AR + MA</h2>
+
+<h3 id="ref-71-la-formule">7.1 La formule</h3>
+
+<p>Le modèle <strong>ARMA(p, q)</strong> combine les deux :</p>
+
+<div class="katex-display">$$Y_t = \alpha + \underbrace{\beta_1 Y_{t-1} + \cdots + \beta_p Y_{t-p}}_{\text{partie AR}} + \underbrace{\phi_1 \epsilon_{t-1} + \cdots + \phi_q \epsilon_{t-q}}_{\text{partie MA}} + \epsilon_t$$</div>
+
+<h3 id="ref-72-choisir-p-et-q">7.2 Choisir p et q</h3>
+
+<p>On lit les deux paramètres sur les graphes ACF et PACF, après avoir rendu la série stationnaire :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Graphe</th><th>Paramètre</th><th>Explication</th></tr></thead><tbody><tr><td><strong>PACF</strong></td><td><strong>p</strong> (ordre AR)</td><td>Compte les lags hors du cône — ce sont des influences directes</td></tr><tr><td><strong>ACF</strong></td><td><strong>q</strong> (ordre MA)</td><td>Compte les lags hors du cône — ce sont des chocs persistants</td></tr></tbody></table></div>
+<p><strong>Règle pratique :</strong> on exclut toujours le lag 0 (qui est toujours 1 par définition).</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Erreur classique : inverser ACF et PACF. ACF → q (MA), PACF → p (AR). Retiens : PACF → P pour p.</p></div></div>
+
+<hr>
+
+<h2 id="ref-8-arima-ar-integrated-ma">8. ARIMA — AR Integrated MA</h2>
+
+<h3 id="ref-81-le-i-integrated-différenciation">8.1 Le "I" = Integrated = Différenciation</h3>
+
+<p>ARIMA ajoute un "I" à ARMA. Ce "I" signifie <strong>Integrated</strong> et correspond à la <strong>différenciation</strong> — l'opération qui rend la série stationnaire.</p>
+
+<p><strong>Rappel — la différenciation d'ordre 1 :</strong></p>
+<div class="katex-display">$$Y^{(1)}_t = Y_t - Y_{t-1}$$</div>
+
+<p><strong>D'ordre 2 (rarement nécessaire) :</strong></p>
+<div class="katex-display">$$Y^{(2)}_t = Y^{(1)}_t - Y^{(1)}_{t-1}$$</div>
+
+<p>Le paramètre $d$ indique combien de fois on différencie.</p>
+
+<h3 id="ref-82-la-formule-arimap-d-q">8.2 La formule ARIMA(p, d, q)</h3>
+
+<div class="katex-display">$$Y^{(d)}_t = \alpha + \beta_1 Y^{(d)}_{t-1} + \cdots + \beta_p Y^{(d)}_{t-p} + \phi_1 \epsilon_{t-1} + \cdots + \phi_q \epsilon_{t-q} + \epsilon_t$$</div>
+
+<p>On applique un ARMA(p, q) sur la série <strong>différenciée $d$ fois</strong> $Y^{(d)}$.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Composante</th><th>Paramètre</th><th>Rôle</th></tr></thead><tbody><tr><td><strong>AR(p)</strong></td><td>$p$</td><td>Mémoire longue — combien de lags directs</td></tr><tr><td><strong>I(d)</strong></td><td>$d$</td><td>Rend la série stationnaire — combien de différenciations</td></tr><tr><td><strong>MA(q)</strong></td><td>$q$</td><td>Mémoire courte — combien de chocs passés</td></tr></tbody></table></div>
+<h3 id="ref-83-workflow-complet-pour-appliquer-arima">8.3 Workflow complet pour appliquer ARIMA</h3>
+
+<p>Voici les étapes dans l'ordre, de A à Z.</p>
+
+<h4 id="ref-etape-1-dé-saisonnaliser-et-linéariser">Etape 1 — Dé-saisonnaliser et linéariser</h4>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># On retire la saisonnalité en divisant par la composante saisonnière
+df[&#x27;deseasonalized&#x27;] = df[&#x27;value&#x27;].values / result_mul.seasonal
+
+# On retire la tendance exponentielle avec un log
+import numpy as np
+df[&#x27;linearized&#x27;] = np.log(df[&#x27;deseasonalized&#x27;])</code></pre></div>
+
+
+<h4 id="ref-etape-2-trouver-d-combien-de-différenciations">Etape 2 — Trouver d : combien de différenciations ?</h4>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.tsa.stattools import adfuller
+
+# Sans différenciation
+p0 = adfuller(df[&#x27;linearized&#x27;])[1]
+print(&#x27;p-value sans diff:&#x27;, p0)           # ex: 0.71 → non stationnaire ❌
+
+# Après une différenciation
+p1 = adfuller(df[&#x27;linearized&#x27;].diff().dropna())[1]
+print(&#x27;p-value après diff(1):&#x27;, p1)       # ex: 1e-09 → stationnaire ✅
+# → d = 1 suffit
+
+# Ou automatiquement avec pmdarima
+from pmdarima.arima.utils import ndiffs
+d = ndiffs(df[&#x27;linearized&#x27;])              # retourne directement l&#x27;ordre optimal</code></pre></div>
+
+
+<h4 id="ref-etape-3-lire-p-et-q-sur-acfpacf">Etape 3 — Lire p et q sur ACF/PACF</h4>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import matplotlib.pyplot as plt
+from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+
+y_diff = df[&#x27;linearized&#x27;].diff().dropna()  # série différenciée une fois
+
+fig, axes = plt.subplots(1, 3, figsize=(16, 2.5))
+axes[0].plot(y_diff); axes[0].set_title(&#x27;Série différenciée&#x27;)
+plot_acf(y_diff, ax=axes[1])               # → q = nombre de lags significatifs (ex: 1)
+plot_pacf(y_diff, ax=axes[2], c=&#x27;r&#x27;)       # → p = nombre de lags significatifs (ex: 2)
+plt.show()</code></pre></div>
+
+
+<h4 id="ref-etape-4-entraîner-le-modèle-arima">Etape 4 — Entraîner le modèle ARIMA</h4>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.tsa.arima.model import ARIMA
+
+# On entraîne sur les données NON différenciées (ARIMA s&#x27;en charge lui-même)
+arima = ARIMA(df[&#x27;linearized&#x27;], order=(2, 1, 1), trend=&#x27;t&#x27;)  # p=2, d=1, q=1
+arima = arima.fit()
+
+arima.summary()    # affiche les coefficients, AIC, tests statistiques</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Remarque importante : on passe à ARIMA les données <strong>brutes</strong> (avant différenciation), pas les données différenciées. ARIMA applique lui-même les d différenciations en interne.</p></div></div>
+
+<h4 id="ref-etape-5-chercher-les-meilleurs-paramètres-automatiquement">Etape 5 — Chercher les meilleurs paramètres automatiquement</h4>
+
+<p>Plutôt que de lire manuellement les graphes ACF/PACF, <code>auto_arima</code> fait une recherche automatique (grid search sur p, d, q) en minimisant l'AIC.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pmdarima as pm
+
+model = pm.auto_arima(df[&#x27;linearized&#x27;],
+                      start_p=1, max_p=2,    # plage de recherche pour p
+                      start_q=1, max_q=2,    # plage de recherche pour q
+                      trend=&#x27;t&#x27;,
+                      seasonal=False,        # pas de composante saisonnière ici
+                      trace=True)            # affiche chaque modèle testé et son AIC
+
+# Affiche par exemple :
+# ARIMA(1,1,1) → AIC=-558.4
+# ARIMA(2,1,0) → AIC=-562.7  ← meilleur
+# ARIMA(2,1,1) → AIC=-572.6  ← encore mieux</code></pre></div>
+
+
+<h3 id="ref-84-le-critère-aic-comment-comparer-les-modèles">8.4 Le critère AIC — comment comparer les modèles</h3>
+
+<p>L'AIC (Akaike Information Criterion) pénalise les modèles trop complexes :</p>
+
+<div class="katex-display">$$AIC = 2k - 2\ln(\hat{L})$$</div>
+
+<ul>
+<li>$k$ : nombre de paramètres du modèle</li>
+<li>$\hat{L}$ : vraisemblance du modèle (à quel point il "fit" les données)</li>
+</ul>
+
+<p><strong>Règle :</strong> plus l'AIC est <strong>bas</strong>, mieux c'est. L'AIC récompense les modèles qui expliquent bien les données tout en restant simples.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Quand deux modèles ont des AIC proches (différence < 2), choisis le plus simple (moins de paramètres). Un modèle plus simple est plus robuste et moins sujet à l'overfitting.</p></div></div>
+
+<h3 id="ref-85-faire-des-prédictions-et-évaluer">8.5 Faire des prédictions et évaluer</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Diviser en train/test
+train = df[&#x27;linearized&#x27;][0:150]
+test  = df[&#x27;linearized&#x27;][150:]
+
+# Entraîner sur le train
+arima = ARIMA(train, order=(2, 1, 0), trend=&#x27;t&#x27;).fit()
+
+# Prédire sur le test avec intervalles de confiance à 95%
+results      = arima.get_forecast(len(test), alpha=0.05)
+forecast     = results.predicted_mean      # valeurs prédites
+conf_int     = results.conf_int().values   # bornes basse et haute de l&#x27;intervalle</code></pre></div>
+
+
+<h3 id="ref-86-recomposer-la-série-originale">8.6 Recomposer la série originale</h3>
+
+<p>Attention : nos prédictions sont dans l'<strong>espace transformé</strong> (après log et dé-saisonnalisation). Il faut <strong>inverser les transformations</strong> pour obtenir des prédictions dans l'espace original.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Inverse du log → exp
+# Remise de la saisonnalité → multiplication par la composante saisonnière
+forecast_recons = np.exp(forecast) * result_mul.seasonal[150:]  # prédictions reconstruites
+train_recons    = np.exp(train) * result_mul.seasonal[0:150]     # train reconstruit
+test_recons     = np.exp(test) * result_mul.seasonal[150:]       # test reconstruit</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Oublier de recomposer est une erreur très fréquente. Si tu as appliqué log + dé-saisonnalisation avant le modèle, tu dois appliquer exp + re-saisonnalisation après. C'est symétrique.</p></div></div>
+
+<h3 id="ref-87-vérifier-les-résidus">8.7 Vérifier les résidus</h3>
+
+<p>Les résidus (différence entre les vraies valeurs et les prédictions sur le train set) doivent ressembler à du bruit blanc :</p>
+<ul>
+<li><strong>Homoscédastiques</strong> : variance constante dans le temps</li>
+<li><strong>Distribution normale</strong> : centrés sur zéro</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">residuals = pd.DataFrame(arima.resid)
+
+residuals.plot(title=&quot;Résidus&quot;)                    # variance constante ? ✅
+residuals.plot(kind=&#x27;kde&#x27;, title=&#x27;Distribution&#x27;)   # forme de cloche ? ✅</code></pre></div>
+
+
+<p>Si les résidus sont bien du bruit blanc, les intervalles de confiance de tes prédictions sont fiables.</p>
+
+<h3 id="ref-88-le-workflow-box-jenkins-vue-densemble">8.8 Le workflow Box-Jenkins — vue d'ensemble</h3>
+
+<p>Le workflow complet pour appliquer ARIMA, étape par étape :</p>
+
+<ol>
+<li>Appliquer des transformations pour rendre la série stationnaire (log, dé-saisonnalisation, différenciation)</li>
+<li>Noter l'ordre $d$ de différenciation utilisé — ne pas sur-différencier</li>
+<li>Confirmer la stationnarité : visuellement + test ADF ($p < 0.05$)</li>
+<li>Lire $p$ sur la PACF et $q$ sur l'ACF (après différenciation)</li>
+<li>Entraîner ARIMA(p, d, q) sur les données <strong>non différenciées</strong></li>
+<li>Tester quelques variantes (p±1, q±1)</li>
+<li>Si AIC similaires → prendre le plus simple</li>
+<li>Inspecter les résidus : ressemblent-ils à du bruit blanc ?</li>
+<li>Si non → itérer (ajuster les transformations, p, d, q)</li>
+<li>Comparer avec <code>auto_arima</code> pour valider</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-9-sarima-arima-avec-saisonnalité">9. SARIMA — ARIMA avec Saisonnalité</h2>
+
+<h3 id="ref-91-pourquoi-sarima">9.1 Pourquoi SARIMA ?</h3>
+
+<p>Dans le workflow ARIMA, on a dû dé-saisonnaliser manuellement les données avant de modéliser. C'est contraignant. <strong>SARIMA</strong> (Seasonal ARIMA) intègre directement la saisonnalité dans le modèle — plus besoin de la retirer à la main.</p>
+
+<h3 id="ref-92-la-différenciation-saisonnière">9.2 La différenciation saisonnière</h3>
+
+<p>En plus de la différenciation classique (lag 1), on ajoute une différenciation saisonnière (lag $m$, avec $m$ = période saisonnière) :</p>
+
+<div class="katex-display">$$Y_{sdiff} = Y_t - Y_{t-m}$$</div>
+
+<p>Avec $m = 12$ pour des données mensuelles avec saisonnalité annuelle.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+df[&#x27;log&#x27;] = np.log(df[&#x27;value&#x27;])
+
+df[&#x27;log&#x27;].diff(1)       # différenciation classique : Y[t] - Y[t-1]
+df[&#x27;log&#x27;].diff(12)      # différenciation saisonnière : Y[t] - Y[t-12]
+df[&#x27;log&#x27;].diff(12).diff(1)  # les deux combinées (souvent la plus efficace)</code></pre></div>
+
+
+<h3 id="ref-93-les-7-paramètres-de-sarima">9.3 Les 7 paramètres de SARIMA</h3>
+
+<p><code>SARIMA(p, d, q)(P, D, Q)[S]</code></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Paramètre</th><th>Niveau</th><th>Rôle</th></tr></thead><tbody><tr><td>$p$</td><td>Individuel</td><td>Ordre AR classique</td></tr><tr><td>$d$</td><td>Individuel</td><td>Ordre de différenciation classique</td></tr><tr><td>$q$</td><td>Individuel</td><td>Ordre MA classique</td></tr><tr><td>$P$</td><td>Saisonnier</td><td>Ordre AR saisonnier</td></tr><tr><td>$D$</td><td>Saisonnier</td><td>Ordre de différenciation saisonnière</td></tr><tr><td>$Q$</td><td>Saisonnier</td><td>Ordre MA saisonnier</td></tr><tr><td>$S$</td><td>—</td><td>Taille de la période saisonnière (ex : 12)</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Seul $S$ doit être choisi manuellement (c'est la période de ta saisonnalité). Les 6 autres peuvent être trouvés automatiquement avec <code>auto_arima(seasonal=True, m=S)</code>.</p></div></div>
+
+<h3 id="ref-94-implémentation-avec-auto_arima-puis-sarimax">9.4 Implémentation avec auto_arima puis SARIMAX</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pmdarima as pm
+
+# Recherche automatique des paramètres saisonniers
+smodel = pm.auto_arima(train,
+                       seasonal=True,        # activer la composante saisonnière
+                       m=12,                 # période = 12 mois (saisonnalité annuelle)
+                       start_p=0, max_p=1,
+                       max_d=1,
+                       start_q=0, max_q=1,
+                       start_P=0, max_P=2,
+                       max_D=1,
+                       start_Q=0, max_Q=2,
+                       trace=True)           # affiche les modèles testés
+# → Trouve par exemple ARIMA(0,1,1)(1,0,2)[12]</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.tsa.statespace.sarimax import SARIMAX
+
+# Entraînement avec les paramètres trouvés
+sarima = SARIMAX(train,
+                 order=(0, 1, 1),              # p, d, q non-saisonniers
+                 seasonal_order=(2, 0, 2, 12)) # P, D, Q saisonniers + S=12
+sarima = sarima.fit()
+
+# Prédictions
+results   = sarima.get_forecast(len(test), alpha=0.05)
+forecast  = results.predicted_mean
+conf_int  = results.conf_int()</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Recomposer (si on avait appliqué un log avant)
+import pandas as pd
+forecast_recons = pd.Series(np.exp(forecast), index=test.index)</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-10-autres-modèles-de-séries-temporelles">10. Autres modèles de séries temporelles</h2>
+
+<p>Une fois ARIMA/SARIMA maîtrisés, il existe d'autres approches :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Modèle</th><th>Description</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td><strong>SARIMAX</strong></td><td>SARIMA + variables exogènes</td><td>Quand tu as des données externes utiles (ex : météo pour prédire la consommation d'énergie)</td></tr><tr><td><strong>Facebook Prophet</strong></td><td>Modèle additif développé par Meta</td><td>Facile à utiliser, gère bien les jours fériés et les ruptures</td></tr><tr><td><strong>ETS (Exponential Smoothing)</strong></td><td>Moyenne pondérée avec poids décroissants</td><td>Séries simples sans structure complexe</td></tr><tr><td><strong>Holt-Winters</strong></td><td>ETS + tendance + saisonnalité</td><td>Bonne alternative à SARIMA, plus simple à configurer</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>En pratique, commence toujours par une baseline naïve, puis ARIMA, puis compare avec Prophet. Plus un modèle est simple, plus il est interprétable et robuste.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Q1.</strong> Tu as un dataset de ventes mensuelles de 2010 à 2024 (168 observations). Comment coupes-tu en train/test ? Pourquoi ne peux-tu pas utiliser <code>train_test_split</code> de sklearn ?</p>
+
+<p><strong>Q2.</strong> Tu lances <code>adfuller(df[&#x27;value&#x27;])[1]</code> et obtiens <code>p_value = 0.42</code>. Que cela signifie-t-il ? Que fais-tu ensuite pour rendre la série apte à être modélisée avec ARIMA ?</p>
+
+<p><strong>Q3.</strong> Sur le graphe PACF de ta série différenciée, les lags 1 et 2 dépassent le cône de confiance, mais pas le lag 3. Sur le graphe ACF, seul le lag 1 dépasse le cône. Quel modèle ARIMA(p, d, q) proposes-tu (en supposant d=1) ?</p>
+
+<p><strong>Q4.</strong> Ton modèle ARIMA prédit des valeurs, mais les résidus montrent une variance qui augmente avec le temps (hétéroscédasticité). Que cela signifie-t-il pour tes intervalles de confiance ?</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Une <strong>série temporelle</strong> est une suite de valeurs ordonnées dans le temps — l'ordre est sacré, pas de shuffle.</li>
+<li>Le <strong>Train/Test split</strong> est toujours contigu : les premières observations en train, les dernières en test.</li>
+<li>La <strong>décomposition</strong> révèle trois couches : Tendance + Saisonnalité + Résidus (additif ou multiplicatif).</li>
+<li>La <strong>stationnarité</strong> (moyenne et variance constantes) est requise par ARIMA — tester avec <code>adfuller()</code>, corriger avec <code>.diff()</code> ou <code>np.log()</code>.</li>
+<li>L'<strong>ACF</strong> mesure la corrélation totale (directe + indirecte) → donne $q$ (ordre MA).</li>
+<li>La <strong>PACF</strong> mesure la corrélation directe uniquement → donne $p$ (ordre AR).</li>
+<li><strong>AR(p)</strong> = mémoire longue (choc se propage), <strong>MA(q)</strong> = mémoire courte (choc s'efface après $q$ pas).</li>
+<li><strong>ARIMA(p, d, q)</strong> = AR + différenciation + MA — modèle standard pour séries non saisonnières.</li>
+<li><strong>SARIMA(p,d,q)(P,D,Q)[S]</strong> = ARIMA avec saisonnalité intégrée, évite la dé-saisonnalisation manuelle.</li>
+<li>Toujours <strong>recomposer</strong> après prédiction : inverser toutes les transformations appliquées (exp, saisonnalité…).</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-spécificités-des-séries-temporelles">Spécificités des séries temporelles</a></li><li><a href="#syn-décomposition-tendancesaisonnalitérésidu">Décomposition tendance/saisonnalité/résidu</a></li><li><a href="#syn-stationnarité-et-acfpacf">Stationnarité et ACF/PACF</a></li><li><a href="#syn-arima-et-sarima">ARIMA et SARIMA</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-prophet-et-neuralprophet">Prophet et NeuralProphet</a></li><li><a href="#syn-deep-learning-lstm-tft-n-beats">Deep learning : LSTM, TFT, N-BEATS</a></li><li><a href="#syn-cross-validation-temporelle">Cross-validation temporelle</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-spécificités-des-séries-temporelles">Spécificités des séries temporelles</h3>
+
+<p>Une série temporelle est une suite d'observations indexées dans le temps : prix d'une action minute par minute, ventes mensuelles, température horaire. Quatre caractéristiques qui la distinguent du ML "classique" :</p>
+
+<ol>
+<li><strong>Ordre temporel</strong> : on ne peut pas mélanger les observations comme on le ferait pour du tabulaire i.i.d. Le futur dépend du passé.</li>
+<li><strong>Auto-corrélation</strong> : la valeur d'aujourd'hui est corrélée à celle d'hier, pas indépendante.</li>
+<li><strong>Tendance</strong> : croissance ou décroissance long terme (ex : ventes en hausse depuis 5 ans).</li>
+<li><strong>Saisonnalité</strong> : motifs périodiques (jour/semaine/mois/an).</li>
+</ol>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur fondamentale à ne JAMAIS faire</strong> : utiliser un <code>train_test_split</code> aléatoire sur des données temporelles. Cela mélange passé et futur — vous testez sur des dates antérieures à votre train. Le score est artificiellement bon, mais le modèle ne peut pas être déployé. <strong>Toujours splitter chronologiquement</strong> : train sur 2020-2023, validation sur 2024, test sur 2025. C'est non négociable.</p></div></div>
+
+<h3 id="syn-décomposition-tendancesaisonnalitérésidu">Décomposition tendance/saisonnalité/résidu</h3>
+
+<p>Une série peut souvent s'écrire comme la somme (ou le produit) de trois composantes :</p>
+
+<div class="katex-display">$$y_t = T_t + S_t + R_t$$</div>
+
+<ul>
+<li>$T_t$ : tendance (lente, monotone)</li>
+<li>$S_t$ : saisonnalité (périodique)</li>
+<li>$R_t$ : résidu (bruit)</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.tsa.seasonal import seasonal_decompose  # outil de décomposition
+import matplotlib.pyplot as plt
+
+# model=&quot;additive&quot; : on suppose y = T + S + R (variations de taille stable)
+# model=&quot;multiplicative&quot; : on suppose y = T * S * R (variations qui grandissent avec le niveau)
+# period=12 : la saisonnalité se répète tous les 12 points (mensuel si données mensuelles)
+result = seasonal_decompose(series, model=&quot;additive&quot;, period=12)
+result.plot()   # 4 sous-plots : observed, trend, seasonal, residual
+plt.show()</code></pre></div>
+
+
+<p>Cette décomposition est l'<strong>EDA fondamental</strong> d'une série temporelle. Elle révèle :</p>
+
+<ul>
+<li>Y a-t-il une vraie tendance ou juste du bruit ?</li>
+<li>Y a-t-il une saisonnalité ? Mensuelle, hebdomadaire ?</li>
+<li>Le résidu est-il "blanc" (sans pattern) ou y a-t-il encore de la structure ?</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : décomposer une série temporelle, c'est comme analyser un signal audio en harmoniques. Vous séparez la note principale (tendance), les harmoniques périodiques (saisonnalité), et le bruit de fond (résidu). Une fois séparés, vous pouvez modéliser chaque composant indépendamment.</p></div></div>
+
+<h3 id="syn-stationnarité-et-acfpacf">Stationnarité et ACF/PACF</h3>
+
+<p>Une série est <strong>stationnaire</strong> si ses statistiques (moyenne, variance) ne changent pas dans le temps. C'est une hypothèse cruciale pour ARIMA.</p>
+
+<p>Tests de stationnarité :</p>
+
+<ul>
+<li><strong>ADF</strong> (Augmented Dickey-Fuller) : H₀ = non stationnaire. p < 0.05 → stationnaire.</li>
+<li><strong>KPSS</strong> : H₀ = stationnaire. p < 0.05 → non stationnaire.</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.tsa.stattools import adfuller, kpss
+
+result = adfuller(series)
+print(f&quot;ADF p-value: {result[1]:.4f}&quot;)</code></pre></div>
+
+
+<p>Si la série n'est pas stationnaire, on la <strong>différencie</strong> : $y'_t = y_t - y_{t-1}$. Cela enlève souvent la tendance. On peut différencier plusieurs fois si nécessaire.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">series_diff = series.diff().dropna()</code></pre></div>
+
+
+<p><strong>ACF</strong> (Autocorrelation Function) : corrélation entre $y_t$ et $y_{t-k}$ pour différents $k$.</p>
+
+<p><strong>PACF</strong> (Partial ACF) : corrélation entre $y_t$ et $y_{t-k}$ après avoir contrôlé pour $y_{t-1}, ..., y_{t-k+1}$.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+plot_acf(series, lags=40)
+plot_pacf(series, lags=40)</code></pre></div>
+
+
+<p>L'ACF/PACF révèlent la structure temporelle : lags significatifs, périodicité, ordre de l'ARIMA à choisir.</p>
+
+<h3 id="syn-arima-et-sarima">ARIMA et SARIMA</h3>
+
+<p><strong>ARIMA(p, d, q)</strong> combine trois composants :</p>
+
+<ul>
+<li><strong>AR(p)</strong> : autorégressif d'ordre $p$ → $y_t$ dépend de $y_{t-1}, \ldots, y_{t-p}$</li>
+<li><strong>I(d)</strong> : différenciation d'ordre $d$ pour rendre stationnaire</li>
+<li><strong>MA(q)</strong> : moyenne mobile d'ordre $q$ → dépend des erreurs $\epsilon_{t-1}, \ldots, \epsilon_{t-q}$</li>
+</ul>
+
+<div class="katex-display">$$y_t = \mu + \sum_{i=1}^p \phi_i y_{t-i} + \epsilon_t + \sum_{j=1}^q \theta_j \epsilon_{t-j}$$</div>
+
+<p><strong>Que veut dire chaque terme en français ?</strong></p>
+
+<ul>
+<li>$y_t$ : la valeur à prédire à l'instant $t$ (ex : ventes du mois de mars)</li>
+<li>$\mu$ : une constante, le niveau moyen de la série</li>
+<li>$\phi_i$ : les coefficients autorégressifs. $\phi_1 = 0.7$ signifie "la valeur d'hier compte pour 70% dans celle d'aujourd'hui"</li>
+<li>$y_{t-i}$ : les valeurs passées (1 jour avant, 2 jours avant, ..., p jours avant)</li>
+<li>$\epsilon_t$ : le bruit résiduel à l'instant $t$ — ce que le modèle n'explique pas</li>
+<li>$\theta_j$ : les coefficients MA qui corrigent les erreurs passées</li>
+<li>$\epsilon_{t-j}$ : les erreurs de prédiction des instants précédents</li>
+</ul>
+
+<p>Intuitivement : ARIMA dit "la valeur de demain est une combinaison pondérée du passé récent + une correction basée sur mes erreurs récentes". AR capte l'inertie, MA capte la mémoire du bruit.</p>
+
+<p><strong>SARIMA(p,d,q)(P,D,Q,s)</strong> ajoute une composante saisonnière de période $s$ (12 pour mensuel, 52 pour hebdomadaire). (P,D,Q) sont les ordres saisonniers appliqués aux lags espacés de $s$ — par exemple une valeur du mois d'avril est liée à celle d'avril de l'année précédente.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.tsa.arima.model import ARIMA
+from statsmodels.tsa.statespace.sarimax import SARIMAX
+
+# ARIMA(p=2, d=1, q=1) :
+#   p=2 : on regarde les 2 derniers points (autorégressif)
+#   d=1 : on différencie une fois pour rendre stationnaire
+#   q=1 : on utilise la dernière erreur (moyenne mobile)
+model = ARIMA(series, order=(2, 1, 1))
+result = model.fit()                  # estime les coefficients par max-vraisemblance
+forecast = result.forecast(steps=12)  # prédit les 12 prochains pas de temps
+
+# SARIMA mensuel : composante non-saisonnière (1,1,1) + saisonnière (1,1,1,12)
+# Le dernier &quot;12&quot; = période saisonnière (12 mois = 1 an)
+model = SARIMAX(series, order=(1, 1, 1), seasonal_order=(1, 1, 1, 12))
+result = model.fit()</code></pre></div>
+
+
+<p>Pour choisir les bons paramètres : <code>auto_arima</code> de la librairie <code>pmdarima</code> les sélectionne automatiquement par AIC.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : commencez <strong>toujours</strong> par une baseline naïve (<code>y_pred[t] = y[t-1]</code> ou la moyenne saisonnière). Beaucoup de modèles complexes échouent à battre cette baseline triviale, surtout sur des séries financières.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-prophet-et-neuralprophet">Prophet et NeuralProphet</h3>
+
+<p><strong>Prophet</strong> (Facebook, 2017) : une approche moderne de forecast qui décompose la série en :</p>
+
+<div class="katex-display">$$y_t = g(t) + s(t) + h(t) + \epsilon_t$$</div>
+
+<ul>
+<li>$g(t)$ : tendance (logistique ou linéaire)</li>
+<li>$s(t)$ : saisonnalité (Fourier)</li>
+<li>$h(t)$ : effets de jours fériés</li>
+<li>$\epsilon_t$ : bruit</li>
+</ul>
+
+<p>Forces :</p>
+
+<ul>
+<li><strong>Robuste</strong> aux outliers et aux valeurs manquantes</li>
+<li><strong>Auto-tuning</strong> : marche bien out-of-the-box</li>
+<li><strong>Holidays</strong> : intègre facilement les jours spéciaux</li>
+<li><strong>Intervalles de confiance</strong> par défaut</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from prophet import Prophet
+import pandas as pd
+
+# Prophet impose deux colonnes : &quot;ds&quot; = datestamp, &quot;y&quot; = valeur
+df = pd.DataFrame({&quot;ds&quot;: dates, &quot;y&quot;: values})
+
+# Active automatiquement l&#x27;ajustement Fourier pour les saisonnalités annuelle et hebdomadaire
+model = Prophet(yearly_seasonality=True, weekly_seasonality=True)
+model.add_country_holidays(country_name=&quot;FR&quot;)  # ajoute Noël, 14 juillet, etc.
+model.fit(df)                                    # entraînement (~quelques secondes)
+
+# Crée un dataframe futur avec 90 jours supplémentaires à prédire
+future = model.make_future_dataframe(periods=90)
+forecast = model.predict(future)                 # yhat, yhat_lower, yhat_upper
+model.plot(forecast)                             # visu avec intervalles de confiance</code></pre></div>
+
+
+<p><strong>NeuralProphet</strong> : version 2024 qui ajoute des composants neuraux pour capturer des patterns non linéaires.</p>
+
+<h3 id="syn-deep-learning-lstm-tft-n-beats">Deep learning : LSTM, TFT, N-BEATS</h3>
+
+<p>Pour des séries complexes (multi-variées, longues, non linéaires), le DL peut battre ARIMA et Prophet.</p>
+
+<p><strong>LSTM</strong> : la baseline DL classique. Marche raisonnablement mais nécessite beaucoup de données.</p>
+
+<p><strong>N-BEATS</strong> (ElementAI, 2019) : architecture pure feed-forward, basée sur des blocs résiduels. Performante et interprétable, sans recurrence.</p>
+
+<p><strong>Temporal Fusion Transformer (TFT)</strong> (Lim et al., 2019) : transformer spécialisé pour le forecasting multi-variées avec features connues du futur (jours fériés, promotions). State-of-the-art sur de nombreux benchmarks.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Avec darts (lib forecasting moderne)
+from darts import TimeSeries
+from darts.models import TFTModel
+
+train = TimeSeries.from_dataframe(df, &quot;date&quot;, &quot;value&quot;)
+model = TFTModel(input_chunk_length=24, output_chunk_length=12)
+model.fit(train)
+forecast = model.predict(n=12)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Recommandation pratique</strong> : pour 80% des problèmes de forecast en entreprise, <strong>Prophet ou XGBoost suffisent</strong>. Le DL n'apporte un gain significatif que sur des séries multi-variées avec beaucoup d'historique (10k+ points) et des dépendances complexes. Avant de sortir un Transformer, essayez les baselines.</p></div></div>
+
+<h3 id="syn-cross-validation-temporelle">Cross-validation temporelle</h3>
+
+<p>On ne peut pas faire de KFold standard sur du temporel. La méthode correcte est le <strong>walk-forward</strong> (ou expanding window) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Fold 1: train [2020-2021], test [2022 Q1]
+Fold 2: train [2020-2022 Q1], test [2022 Q2]
+Fold 3: train [2020-2022 Q2], test [2022 Q3]
+...</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import TimeSeriesSplit
+
+# n_splits=5 : on fait 5 folds chronologiques successifs
+# À chaque fold, le train contient TOUT le passé accumulé
+tscv = TimeSeriesSplit(n_splits=5)
+for train_idx, test_idx in tscv.split(X):
+    X_train, X_test = X[train_idx], X[test_idx]   # train = passé, test = futur immédiat
+    y_train, y_test = y[train_idx], y[test_idx]
+    model.fit(X_train, y_train)
+    score = model.score(X_test, y_test)
+    # Astuce : logguer le score par fold pour voir si le modèle se dégrade avec le temps</code></pre></div>
+
+
+<p>Cette méthode reproduit fidèlement la situation réelle de prod : on entraîne sur le passé, on prédit le futur immédiat.</p>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi <code>train_test_split</code> aléatoire est-il un anti-pattern absolu sur des séries temporelles ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>leakage temporel.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Parce qu'il <strong>mélange passé et futur</strong>. Vous pouvez vous retrouver à entraîner sur des données de janvier 2024 et tester sur des données de décembre 2023, ce qui revient à "tricher" en regardant le futur pour prédire le passé. Le score sera artificiellement bon, mais en production le modèle ne peut pas voir le futur. La conséquence : votre modèle marche en validation et échoue immédiatement en prod. <strong>Toujours splitter chronologiquement</strong> : <code>X_train = X[X[&#x27;date&#x27;] &lt; &#x27;2024-01-01&#x27;]</code> et <code>X_test = X[X[&#x27;date&#x27;] &gt;= &#x27;2024-01-01&#x27;]</code>. Pour la cross-validation, utiliser <code>TimeSeriesSplit</code> qui fait du walk-forward. C'est la première chose vérifiée par un reviewer technique sur tout projet time series. Question d'entretien data science fondamentale pour les rôles forecasting.</p>
+
+</details>
+
+<p><strong>Q2 : Vous avez une série journalière avec une forte saisonnalité hebdomadaire ET annuelle. Quel modèle choisir et avec quels paramètres ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>SARIMA ou Prophet.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Deux bonnes options. <strong>Option 1 — SARIMA</strong> : utiliser SARIMAX avec deux composants saisonniers est techniquement possible mais lourd. Il faut soit faire deux modèles séparés (différencier annuellement puis modéliser), soit utiliser une période principale (52 semaines = annuelle) et inclure le jour de la semaine en feature exogène. Compliqué à tuner. <strong>Option 2 — Prophet</strong> : conçu exactement pour ça. Activer <code>weekly_seasonality=True</code> et <code>yearly_seasonality=True</code>, et Prophet décompose automatiquement les deux. C'est en général la meilleure option pour des séries avec multiple saisonnalités. <strong>Option 3 — XGBoost avec features</strong> : créer des features <code>day_of_week</code>, <code>month</code>, <code>day_of_year</code>, <code>is_holiday</code>, et entraîner XGBoost dessus. Souvent compétitif avec Prophet et plus facile à intégrer dans un pipeline existant. <strong>Recommandation</strong> : commencer par Prophet pour une baseline rapide, puis comparer avec XGBoost + features. Si les deux échouent, passer aux modèles deep learning (TFT). Question d'entretien forecasting moderne.</p>
+
+</details>
+
+<p><strong>Q3 : Vous comparez ARIMA, Prophet, et un LSTM sur la même série. ARIMA gagne. Quelle peut être l'explication ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>taille de dataset.</p>
+
+</details>
+
+<details><summary>Suite de la réponse</summary>
+
+<p>Plusieurs raisons possibles. (1) <strong>Petit dataset</strong> : si vous avez < 1000 observations, ARIMA est souvent le meilleur. LSTM et Prophet ont besoin de plus de données pour briller. (2) <strong>Série très linéaire et stationnaire</strong> : ARIMA est conçu pour ces cas et n'a pas de paramètres surperflus à ajuster. LSTM apprendrait essentiellement le même modèle mais avec plus de paramètres et risquerait d'overfitter. (3) <strong>Pas de saisonnalité ou patterns simples</strong> : Prophet ajoute des composants (Fourier, holidays) qui peuvent introduire du bruit si la série n'a pas vraiment ces patterns. (4) <strong>Features exogènes absentes</strong> : LSTM et TFT brillent quand vous avez des features supplémentaires (météo, promotions, événements). Sans elles, ils n'ont pas d'avantage. (5) <strong>Hyperparamètres mal réglés</strong> : LSTM est sensible au tuning ; ARIMA a peu de paramètres et plus simple à régler. <strong>Leçon</strong> : le "meilleur modèle" dépend du contexte. Toujours commencer par une baseline naïve, puis ARIMA, puis Prophet, puis DL — et arrêter dès qu'on bat la baseline d'un facteur acceptable. Question d'entretien forecasting pratique : un candidat qui dit toujours "LSTM" ou "Transformer" sans contexte n'a pas l'expérience terrain.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Forecasting: Principles and Practice</em> (Rob Hyndman, gratuit en HTML) — la bible</li>
+<li><a href="https://facebook.github.io/prophet/" target="_blank" rel="noopener">Prophet documentation</a></li>
+<li><a href="https://www.statsmodels.org/stable/tsa.html" target="_blank" rel="noopener">statsmodels — Time Series Analysis</a></li>
+<li><a href="https://github.com/unit8co/darts" target="_blank" rel="noopener">darts</a> — librairie moderne pour le forecasting (ARIMA, Prophet, DL)</li>
+<li><em>Time Series Analysis</em> (James Hamilton) — référence académique</li>
+<li><a href="https://www.kaggle.com/learn/time-series" target="_blank" rel="noopener">Kaggle — Time Series Course</a></li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../nlp-llm/gen-ai-rag-agents.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← GenAI, RAG & Agents</span>
+  </a>
+  <a href="../specialise/reinforcement-learning.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Reinforcement Learning →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

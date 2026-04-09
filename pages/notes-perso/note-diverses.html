@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes diverses — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Notes diverses</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html" class="active">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Notes perso</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Notes diverses</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Notes diverses</h1>
+        <p class="page-objective"><aside></p>
+      </div>
+
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#1-supprimer-des-éléments-pop-remove-et-del">1) Supprimer des éléments : `pop`, `remove` et `del`</a><ol><li><a href="#11-pop-supprimer-par-index-et-récupérer-la-valeur">1.1 `pop` — supprimer par **index** et **récupérer la valeur**</a></li><li><a href="#12-remove-supprimer-par-valeur">1.2 `remove` — supprimer par **valeur**</a></li><li><a href="#13-del-supprimer-par-index-ou-slice-mot-clé">1.3 `del` — supprimer par **index** ou **slice** (mot-clé)</a></li><li><a href="#14-résumé">1.4 Résumé</a></li></ol></li><li><a href="#2-dictionnaires-get">2) Dictionnaires : `.get()`</a><ol><li><a href="#21-le-problème-sans-get">2.1 Le problème sans `.get()`</a></li><li><a href="#22-get-accès-sans-risque-de-keyerror">2.2 `.get()` — accès **sans risque de KeyError**</a></li><li><a href="#23-avec-une-valeur-par-défaut">2.3 Avec une **valeur par défaut**</a></li><li><a href="#24-cas-dusage-typiques">2.4 Cas d'usage typiques</a></li><li><a href="#25-résumé">2.5 Résumé</a></li></ol></li><li><a href="#3-structures-de-contrôle-en-python">3) Structures de contrôle en Python</a><ol><li><a href="#31-opérateurs-logiques">3.1 Opérateurs logiques</a></li><li><a href="#32-if-elif-else">3.2 `if` / `elif` / `else`</a></li><li><a href="#33-while-répéter-tant-que-une-condition-est-vraie">3.3 `while` — répéter **tant que** une condition est vraie</a></li><li><a href="#34-for-répéter-pour-chaque-élément">3.4 `for` — répéter **pour chaque élément**</a></li><li><a href="#35-range-générer-une-séquence-de-nombres">3.5 `range()` — générer une séquence de nombres</a></li><li><a href="#47-break-quitter-une-boucle">4.7 `break` — quitter une boucle</a></li><li><a href="#411-récap-visuel">4.11 Récap visuel</a></li><li><a href="#412-exemple-combiné">4.12 Exemple combiné</a></li></ol></li><li><a href="#4-gestion-du-flux-et-des-erreurs-en-python">4) Gestion du flux et des erreurs en Python</a><ol><li><a href="#41-try-except-gérer-les-erreurs">4.1 `try` / `except` — gérer les erreurs</a></li></ol></li></ol></div>
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p><strong>Objectif :</strong> mémoriser rapidement quelques notions Python utiles, avec exemples et résumés.</p>
+<hr>
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+<h2 id="cheatsheet-notes-diverses">📋 Cheatsheet — Notes diverses</h2>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## ── SUPPRIMER DES ÉLÉMENTS ───────────────────────────
+lst.pop(i)          # par index → retourne la valeur
+lst.remove(val)     # par valeur → 1ère occurrence, retourne None
+del lst[i]          # par index → ne retourne rien
+del lst[1:3]        # par slice
+
+## ── DICT .get() ──────────────────────────────────────
+d[&quot;clé&quot;]                     # KeyError si absent
+d.get(&quot;clé&quot;)                 # None si absent
+d.get(&quot;clé&quot;, &quot;défaut&quot;)       # valeur par défaut si absent
+
+## ── OPÉRATEURS LOGIQUES ──────────────────────────────
+and   # les deux doivent être vrais
+or    # au moins un vrai
+not   # inverse
+
+## ── BOUCLES ──────────────────────────────────────────
+while condition:
+    ...                      # répète TANT QUE
+
+for item in iterable:
+    ...                      # répète POUR CHAQUE
+
+for i in range(start, stop, step):
+    ...
+
+break       # quitte la boucle
+continue    # saute au tour suivant
+
+## ── IF / ELIF / ELSE ─────────────────────────────────
+if condition:
+    ...
+elif autre:
+    ...
+else:
+    ...
+
+## ── TRY / EXCEPT (rappel) ────────────────────────────
+try:
+    code_risqué()
+except TypeError:
+    ...
+except ValueError:
+    ...
+except Exception as e:
+    print(e)
+else:
+    ...          # si aucune erreur
+finally:
+    ...          # toujours
+
+## ── FIZZBUZZ (pattern classique) ─────────────────────
+for i in range(1, 21):
+    if i % 15 == 0:      # tester le plus spécifique en PREMIER
+        print(&quot;FizzBuzz&quot;)
+    elif i % 3 == 0:
+        print(&quot;Fizz&quot;)
+    elif i % 5 == 0:
+        print(&quot;Buzz&quot;)
+    else:
+        print(i)</code></pre></div>
+<aside>
+<p>❌</p>
+<p><strong>Confondre <code>pop</code> (index) et <code>remove</code> (valeur)</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">lst = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
+lst.pop(&quot;b&quot;)     # ❌ TypeError : pop attend un index entier
+lst.remove(&quot;b&quot;)  # ✅ supprime par valeur
+lst.pop(1)       # ✅ supprime par index</code></pre></div></div></div>
+
+</aside>
+
+<p>:::</p>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser <code>del</code> sur une variable puis y accéder</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">del fruits
+print(fruits)  # ❌ NameError: name &#x27;fruits&#x27; is not defined</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier que <code>while</code> peut boucler infiniment</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">compteur = 0
+while compteur &lt; 5:
+    print(compteur)
+    # ❌ oubli de compteur += 1 → boucle infinie</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Accéder à une clé de dict sans <code>.get()</code> dans un contexte incertain</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">config = {&quot;host&quot;: &quot;localhost&quot;}
+port = config[&quot;port&quot;]          # ❌ KeyError si &quot;port&quot; absent
+port = config.get(&quot;port&quot;, 8080)  # ✅ valeur par défaut</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>FizzBuzz : tester les multiples dans le mauvais ordre</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">if i % 3 == 0:
+    print(&quot;Fizz&quot;)
+elif i % 5 == 0:
+    print(&quot;Buzz&quot;)
+elif i % 15 == 0:   # ❌ jamais atteint : 15 est déjà capturé par 3
+    print(&quot;FizzBuzz&quot;)
+
+## ✅ tester le cas le plus spécifique en premier
+if i % 15 == 0:
+    print(&quot;FizzBuzz&quot;)</code></pre></div></div></div>
+
+<p>:::</p>
+
+<hr>
+
+<h2 id="1-supprimer-des-éléments-pop-remove-et-del">1) Supprimer des éléments : <code>pop</code>, <code>remove</code> et <code>del</code></h2>
+
+<p>Ces trois outils suppriment des éléments, mais de manières différentes.</p>
+
+<h3 id="11-pop-supprimer-par-index-et-récupérer-la-valeur">1.1 <code>pop</code> — supprimer par <strong>index</strong> et <strong>récupérer la valeur</strong></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fruits = [&quot;pomme&quot;, &quot;banane&quot;, &quot;cerise&quot;]
+x = fruits.pop(1)   # supprime l&#x27;index 1
+print(x)            # &quot;banane&quot;
+print(fruits)       # [&quot;pomme&quot;, &quot;cerise&quot;]
+
+fruits.pop()        # sans argument → supprime le dernier élément</code></pre></div>
+
+
+<ul>
+<li>Retourne l'élément supprimé</li>
+<li>Fonctionne sur les <strong>listes</strong></li>
+<li>Existe aussi sur les <strong>dicts</strong> : <code>d.pop(&quot;clé&quot;)</code></li>
+</ul>
+
+<h3 id="12-remove-supprimer-par-valeur">1.2 <code>remove</code> — supprimer par <strong>valeur</strong></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fruits = [&quot;pomme&quot;, &quot;banane&quot;, &quot;cerise&quot;]
+fruits.remove(&quot;banane&quot;)   # cherche et supprime la 1ère occurrence
+print(fruits)              # [&quot;pomme&quot;, &quot;cerise&quot;]</code></pre></div>
+
+
+<ul>
+<li>Ne retourne rien (<code>None</code>)</li>
+<li>Lève une <code>ValueError</code> si la valeur n'existe pas</li>
+<li>Supprime uniquement la <strong>première occurrence</strong></li>
+</ul>
+
+<h3 id="13-del-supprimer-par-index-ou-slice-mot-clé">1.3 <code>del</code> — supprimer par <strong>index</strong> ou <strong>slice</strong> (mot-clé)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fruits = [&quot;pomme&quot;, &quot;banane&quot;, &quot;cerise&quot;, &quot;datte&quot;]
+del fruits[1]       # supprime l&#x27;index 1
+print(fruits)       # [&quot;pomme&quot;, &quot;cerise&quot;, &quot;datte&quot;]
+
+del fruits[1:3]     # supprime un slice
+print(fruits)       # [&quot;pomme&quot;]
+
+del fruits          # supprime carrément la variable</code></pre></div>
+
+
+<ul>
+<li>Ne retourne rien</li>
+<li>Peut supprimer des <strong>slices</strong>, des <strong>variables</strong>, des <strong>clés de dict</strong></li>
+<li>C'est un mot-clé Python, pas une méthode</li>
+</ul>
+
+<h3 id="14-résumé">1.4 Résumé</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th><code>pop</code></th><th><code>remove</code></th><th><code>del</code></th></tr></thead><tbody><tr><td>Cible</td><td>index</td><td>valeur</td><td>index / slice</td></tr><tr><td>Retourne</td><td>la valeur</td><td><code>None</code></td><td>—</td></tr><tr><td>Type</td><td>méthode</td><td>méthode</td><td>mot-clé</td></tr><tr><td>Cas d'usage</td><td>récupérer + supprimer</td><td>supprimer par valeur</td><td>suppression rapide / slice</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="2-dictionnaires-get">2) Dictionnaires : <code>.get()</code></h2>
+
+<h3 id="21-le-problème-sans-get">2.1 Le problème sans <code>.get()</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">personne = {&quot;nom&quot;: &quot;Alice&quot;, &quot;age&quot;: 30}
+
+print(personne[&quot;ville&quot;])  # KeyError : la clé n&#x27;existe pas</code></pre></div>
+
+
+<h3 id="22-get-accès-sans-risque-de-keyerror">2.2 <code>.get()</code> — accès <strong>sans risque de KeyError</strong></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">personne = {&quot;nom&quot;: &quot;Alice&quot;, &quot;age&quot;: 30}
+
+print(personne.get(&quot;nom&quot;))    # &quot;Alice&quot;
+print(personne.get(&quot;ville&quot;))  # None (pas d&#x27;erreur)</code></pre></div>
+
+
+<h3 id="23-avec-une-valeur-par-défaut">2.3 Avec une <strong>valeur par défaut</strong></h3>
+
+<p>Le 2ème argument définit ce que <code>.get()</code> retourne si la clé est absente.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">print(personne.get(&quot;ville&quot;, &quot;inconnue&quot;))   # &quot;inconnue&quot;
+print(personne.get(&quot;age&quot;, 0))               # 30 (la clé existe)</code></pre></div>
+
+
+<h3 id="24-cas-dusage-typiques">2.4 Cas d'usage typiques</h3>
+
+<p><strong>Compter des occurrences</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">texte = [&quot;chat&quot;, &quot;chien&quot;, &quot;chat&quot;, &quot;oiseau&quot;, &quot;chat&quot;]
+compteur = {}
+
+for animal in texte:
+    compteur[animal] = compteur.get(animal, 0) + 1
+
+print(compteur)  # {&quot;chat&quot;: 3, &quot;chien&quot;: 1, &quot;oiseau&quot;: 1}</code></pre></div>
+
+
+<p><strong>Éviter un <code>if/else</code> verbeux</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Sans .get()
+if &quot;ville&quot; in personne:
+    ville = personne[&quot;ville&quot;]
+else:
+    ville = &quot;inconnue&quot;
+
+## Avec .get() : une seule ligne
+ville = personne.get(&quot;ville&quot;, &quot;inconnue&quot;)</code></pre></div>
+
+
+<h3 id="25-résumé">2.5 Résumé</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th><code>dict[clé]</code></th><th><code>dict.get(clé)</code></th><th><code>dict.get(clé, défaut)</code></th></tr></thead><tbody><tr><td>Clé existante</td><td>✅ valeur</td><td>✅ valeur</td><td>✅ valeur</td></tr><tr><td>Clé absente</td><td>❌ KeyError</td><td><code>None</code></td><td>valeur par défaut</td></tr></tbody></table></div>
+<blockquote><p><strong>Règle simple :</strong> si tu n'es pas sûr qu'une clé existe, utilise <code>.get()</code>.<br></p></blockquote>
+
+<hr>
+
+<h2 id="3-structures-de-contrôle-en-python">3) Structures de contrôle en Python</h2>
+
+<h3 id="31-opérateurs-logiques">3.1 Opérateurs logiques</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## and : les deux conditions doivent être vraies
+if age &gt;= 18 and pays == &quot;France&quot;:
+    print(&quot;Majeur en France&quot;)
+
+## or : au moins une condition vraie
+if jour == &quot;samedi&quot; or jour == &quot;dimanche&quot;:
+    print(&quot;Week-end !&quot;)
+
+## not : inverse la condition
+if not connecte:
+    print(&quot;Veuillez vous connecter&quot;)</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Opérateur</th><th>Vrai si...</th></tr></thead><tbody><tr><td><code>and</code></td><td>les <strong>deux</strong> sont vrais</td></tr><tr><td><code>or</code></td><td><strong>au moins un</strong> est vrai</td></tr><tr><td><code>not</code></td><td>la condition est <strong>fausse</strong></td></tr></tbody></table></div>
+<h3 id="32-if-elif-else">3.2 <code>if</code> / <code>elif</code> / <code>else</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">note = 75
+
+if note &gt;= 90:
+    print(&quot;Excellent&quot;)
+elif note &gt;= 70:        # sinon, si...
+    print(&quot;Bien&quot;)
+elif note &gt;= 50:
+    print(&quot;Passable&quot;)
+else:                   # sinon (aucune condition remplie)
+    print(&quot;Insuffisant&quot;)</code></pre></div>
+
+
+<ul>
+<li>Un seul <code>if</code> et un seul <code>else</code> par bloc</li>
+<li>Autant de <code>elif</code> que nécessaire</li>
+<li>Le premier bloc <strong>vrai</strong> est exécuté, les autres sont ignorés</li>
+</ul>
+
+<h3 id="33-while-répéter-tant-que-une-condition-est-vraie">3.3 <code>while</code> — répéter <strong>tant que</strong> une condition est vraie</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">compteur = 0
+
+while compteur &lt; 5:
+    print(compteur)
+    compteur += 1
+## Affiche : 0, 1, 2, 3, 4</code></pre></div>
+
+
+<p>⚠️ Ne pas oublier de modifier la variable, sinon tu risques une <strong>boucle infinie</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Exemple interactif
+reponse = &quot;&quot;
+while reponse != &quot;quitter&quot;:
+    reponse = input(&quot;Commande : &quot;)</code></pre></div>
+
+
+<h3 id="34-for-répéter-pour-chaque-élément">3.4 <code>for</code> — répéter <strong>pour chaque élément</strong></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fruits = [&quot;pomme&quot;, &quot;banane&quot;, &quot;cerise&quot;]
+
+for fruit in fruits:
+    print(fruit)
+## Affiche : pomme, banane, cerise</code></pre></div>
+
+
+<p>Fonctionne sur tout ce qui est <strong>itérable</strong> : listes, chaînes, dicts...</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for lettre in &quot;Bonjour&quot;:
+    print(lettre)   # B, o, n, j, o, u, r
+
+for cle, valeur in {&quot;a&quot;: 1, &quot;b&quot;: 2}.items():
+    print(cle, valeur)  # a 1 / b 2</code></pre></div>
+
+
+<h3 id="35-range-générer-une-séquence-de-nombres">3.5 <code>range()</code> — générer une séquence de nombres</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">range(5)        # 0, 1, 2, 3, 4
+range(2, 8)     # 2, 3, 4, 5, 6, 7
+range(0, 10, 2) # 0, 2, 4, 6, 8
+range(5, 0, -1) # 5, 4, 3, 2, 1</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for i in range(3):
+    print(i)   # 0, 1, 2
+
+## Répéter N fois sans utiliser i
+for _ in range(5):
+    print(&quot;Hello&quot;)</code></pre></div>
+
+
+<h3 id="47-break-quitter-une-boucle">4.7 <code>break</code> — quitter une boucle</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## break : quitte la boucle immédiatement
+for i in range(10):
+    if i == 5:
+        break
+    print(i)   # 0, 1, 2, 3, 4
+
+## continue : passe à l&#x27;itération suivante
+for i in range(6):
+    if i == 3:
+        continue
+    print(i)   # 0, 1, 2, 4, 5</code></pre></div>
+
+
+<h3 id="411-récap-visuel">4.11 Récap visuel</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">if       → teste une condition une fois
+elif     → condition alternative
+else     → si rien d&#x27;autre n&#x27;est vrai
+while    → répète TANT QUE une condition est vraie
+for      → répète POUR CHAQUE élément
+range()  → génère une suite de nombres
+break    → sort de la boucle
+continue → saute au tour suivant</code></pre></div>
+
+
+<h3 id="412-exemple-combiné">4.12 Exemple combiné</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for i in range(1, 21):
+    if i % 15 == 0:
+        print(&quot;FizzBuzz&quot;)
+    elif i % 3 == 0:
+        print(&quot;Fizz&quot;)
+    elif i % 5 == 0:
+        print(&quot;Buzz&quot;)
+    else:
+        print(i)</code></pre></div>
+
+
+<blockquote><p>Le classique <strong>FizzBuzz</strong> — souvent donné en exercice d'entretien.<br></p></blockquote>
+
+<hr>
+
+<h2 id="4-gestion-du-flux-et-des-erreurs-en-python">4) Gestion du flux et des erreurs en Python</h2>
+
+<h3 id="41-try-except-gérer-les-erreurs">4.1 <code>try</code> / <code>except</code> — gérer les erreurs</h3>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><li><a href="#ref-supprimer-des-éléments-pop-remove-et-del">🗑️ Supprimer des éléments : `pop`, `remove` et `del`</a><ol><li><a href="#ref-le-contexte">Le contexte</a></li><li><a href="#ref-pop-supprimer-par-position-et-récupérer-la-valeur">`pop` — supprimer par position et récupérer la valeur</a></li><li><a href="#ref-remove-supprimer-par-valeur">`remove` — supprimer par valeur</a></li><li><a href="#ref-del-supprimer-par-index-slice-ou-même-une-variable-entière">`del` — supprimer par index, slice, ou même une variable entière</a></li><li><a href="#ref-tableau-récapitulatif">Tableau récapitulatif</a></li></ol></li><li><a href="#ref-dictionnaires-et-get">📖 Dictionnaires et `.get()`</a><ol><li><a href="#ref-le-problème-la-keyerror">Le problème : la KeyError</a></li><li><a href="#ref-get-accès-sécurisé-sans-risque-derreur">`.get()` — accès sécurisé sans risque d'erreur</a></li><li><a href="#ref-get-avec-une-valeur-par-défaut">`.get()` avec une valeur par défaut</a></li><li><a href="#ref-cas-pratique-compter-des-occurrences">Cas pratique : compter des occurrences</a></li><li><a href="#ref-tableau-récapitulatif-des-accès-dictionnaire">Tableau récapitulatif des accès dictionnaire</a></li></ol></li><li><a href="#ref-structures-de-contrôle">🔀 Structures de contrôle</a><ol><li><a href="#ref-opérateurs-logiques-and-or-not">Opérateurs logiques : `and`, `or`, `not`</a></li><li><a href="#ref-if-elif-else-choisir-selon-une-condition">`if` / `elif` / `else` — choisir selon une condition</a></li><li><a href="#ref-while-répéter-tant-quune-condition-est-vraie">`while` — répéter tant qu'une condition est vraie</a></li><li><a href="#ref-for-répéter-pour-chaque-élément">`for` — répéter pour chaque élément</a></li><li><a href="#ref-range-générer-une-séquence-de-nombres">`range()` — générer une séquence de nombres</a></li><li><a href="#ref-break-et-continue-contrôler-le-déroulement-de-la-boucle">`break` et `continue` — contrôler le déroulement de la boucle</a></li></ol></li><li><a href="#ref-gestion-des-erreurs-avec-try-except">🛡️ Gestion des erreurs avec `try` / `except`</a><ol><li><a href="#ref-pourquoi-gérer-les-erreurs">Pourquoi gérer les erreurs ?</a></li><li><a href="#ref-structure-de-base">Structure de base</a></li><li><a href="#ref-attraper-plusieurs-types-derreurs">Attraper plusieurs types d'erreurs</a></li><li><a href="#ref-else-et-finally">`else` et `finally`</a></li></ol></li><li><a href="#ref-fizzbuzz-exemple-qui-combine-tout">🎲 FizzBuzz — Exemple qui combine tout</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Ce cours regroupe un ensemble de <strong>petites notions Python très pratiques</strong> que l'on utilise constamment. Ce ne sont pas des concepts théoriques abstraits — ce sont des outils concrets, du quotidien du développeur.</p>
+
+<p>Quand tu débutes, tu passes beaucoup de temps à te demander : "Comment je supprime cet élément ?", "Pourquoi Python me crie dessus avec une KeyError ?", "Comment je fais répéter ce morceau de code ?". Ce cours répond à exactement ces questions.</p>
+
+<p><strong>À retenir avant de commencer :</strong></p>
+
+<ul>
+<li><code>pop</code>, <code>remove</code> et <code>del</code> font tous les trois "supprimer", mais de façons très différentes — les confondre génère des bugs.</li>
+<li><code>.get()</code> sur un dictionnaire est une bouée de sauvetage : il évite les erreurs quand une clé n'existe pas.</li>
+<li><code>while</code> et <code>for</code> sont les deux façons de faire tourner du code en boucle — chacune a son domaine.</li>
+<li>Les opérateurs <code>and</code>, <code>or</code>, <code>not</code> permettent de combiner des conditions logiques comme en langage naturel.</li>
+<li><code>try/except</code> est le filet de sécurité du code : il attrape les erreurs avant qu'elles ne fassent planter ton programme.</li>
+</ul>
+
+<p><strong>Analogie fil rouge :</strong> Imagine que Python est un assistant de cuisine. Tu lui donnes des instructions : "Tant que le four n'est pas chaud, attends", "Pour chaque légume, coupe-le", "Si c'est une tomate, fais ça, sinon fais autre chose". Les structures de ce cours, c'est exactement ce vocabulaire d'instructions.</p>
+
+<p><strong>Dans ce cours reformulé, nous allons :</strong></p>
+<ol>
+<li>Apprendre les trois façons de supprimer des éléments d'une liste</li>
+<li>Découvrir <code>.get()</code> pour lire un dictionnaire en toute sécurité</li>
+<li>Maîtriser les structures de contrôle : conditions, boucles, <code>break</code>, <code>continue</code></li>
+<li>Comprendre <code>try/except</code> pour gérer les erreurs sans faire planter le programme</li>
+<li>Voir le classique FizzBuzz qui combine tout ça</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-supprimer-des-éléments-pop-remove-et-del">🗑️ Supprimer des éléments : <code>pop</code>, <code>remove</code> et <code>del</code></h2>
+
+<h3 id="ref-le-contexte">Le contexte</h3>
+
+<p>Tu as une liste d'éléments et tu veux en enlever un. Python te propose trois outils. Ils font tous "supprimer", mais leur fonctionnement est différent. Choisir le mauvais provoque une erreur.</p>
+
+<h3 id="ref-pop-supprimer-par-position-et-récupérer-la-valeur"><code>pop</code> — supprimer par position et récupérer la valeur</h3>
+
+<p><code>pop</code> supprime un élément selon son <strong>numéro de position</strong> (son index), et en plus il te <strong>renvoie</strong> l'élément supprimé pour que tu puisses l'utiliser.</p>
+
+<p>Explication : on a une liste de trois fruits. On demande à Python de retirer celui à la position 1 (le deuxième, car on commence à compter à 0), et on récupère ce qui a été retiré dans la variable <code>x</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fruits = [&quot;pomme&quot;, &quot;banane&quot;, &quot;cerise&quot;]  # liste de départ
+
+x = fruits.pop(1)   # supprime l&#x27;élément à l&#x27;index 1 (&quot;banane&quot;)
+                    # et stocke &quot;banane&quot; dans x
+
+print(x)            # affiche : banane
+print(fruits)       # affiche : [&quot;pomme&quot;, &quot;cerise&quot;]
+
+fruits.pop()        # sans argument → supprime le DERNIER élément</code></pre></div>
+
+
+<p><code>pop</code> retire l'élément ET te le donne en retour. Utile quand tu veux récupérer la valeur avant de la supprimer.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>pop</code> fonctionne aussi sur les dictionnaires : <code>mon_dict.pop(&quot;cle&quot;)</code> supprime la clé et retourne sa valeur.</p></div></div>
+
+<h3 id="ref-remove-supprimer-par-valeur"><code>remove</code> — supprimer par valeur</h3>
+
+<p><code>remove</code> cherche dans la liste la <strong>valeur</strong> que tu lui donnes, et supprime la première fois qu'elle la trouve. Il ne retourne rien.</p>
+
+<p>Explication : au lieu de dire "retire le deuxième", on dit "retire 'banane'". Python cherche dans la liste et supprime la première occurrence qu'il trouve.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fruits = [&quot;pomme&quot;, &quot;banane&quot;, &quot;cerise&quot;]  # liste de départ
+
+fruits.remove(&quot;banane&quot;)  # cherche &quot;banane&quot; et supprime la 1ère occurrence
+                         # ne retourne rien (None)
+
+print(fruits)            # affiche : [&quot;pomme&quot;, &quot;cerise&quot;]</code></pre></div>
+
+
+<p>Après le code : <code>remove</code> est simple mais attention — si la valeur n'existe pas dans la liste, Python lève une <code>ValueError</code>. Et s'il y a plusieurs "banane", seule la première est supprimée.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Si tu essaies <code>lst.remove(&quot;valeur_inexistante&quot;)</code>, Python te retourne une erreur <code>ValueError</code>. Vérifie que la valeur existe avant d'appeler <code>remove</code>, ou utilise un <code>if</code> de garde.</p></div></div>
+
+<h3 id="ref-del-supprimer-par-index-slice-ou-même-une-variable-entière"><code>del</code> — supprimer par index, slice, ou même une variable entière</h3>
+
+<p><code>del</code> est un <strong>mot-clé Python</strong> (pas une méthode). Il peut supprimer un élément à un index donné, une tranche entière de liste (un "slice"), ou même une variable complète.</p>
+
+<p>Explication : <code>del</code> est le plus radical des trois. Il peut supprimer plusieurs éléments d'un coup grâce aux slices, ou même effacer complètement une variable.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fruits = [&quot;pomme&quot;, &quot;banane&quot;, &quot;cerise&quot;, &quot;datte&quot;]  # liste de départ
+
+del fruits[1]       # supprime l&#x27;élément à l&#x27;index 1 (&quot;banane&quot;)
+print(fruits)       # affiche : [&quot;pomme&quot;, &quot;cerise&quot;, &quot;datte&quot;]
+
+del fruits[1:3]     # supprime les éléments aux index 1 et 2 (slice)
+print(fruits)       # affiche : [&quot;pomme&quot;]
+
+del fruits          # supprime carrément la variable &quot;fruits&quot;
+# print(fruits)     # ← provoquerait une NameError : fruits n&#x27;existe plus</code></pre></div>
+
+
+<p><code>del</code> ne retourne rien. C'est un outil de "suppression pure", sans récupération.</p>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p>Après <code>del fruits</code>, la variable n'existe plus. Toute tentative d'y accéder provoque <code>NameError: name &#x27;fruits&#x27; is not defined</code>.</p></div></div>
+
+<h3 id="ref-tableau-récapitulatif">Tableau récapitulatif</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Outil</th><th>On cible par…</th><th>Retourne</th><th>Type</th></tr></thead><tbody><tr><td><code>pop(index)</code></td><td>index</td><td>la valeur supprimée</td><td>méthode</td></tr><tr><td><code>remove(valeur)</code></td><td>valeur</td><td><code>None</code></td><td>méthode</td></tr><tr><td><code>del lst[index]</code></td><td>index ou slice</td><td>rien</td><td>mot-clé</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="ref-dictionnaires-et-get">📖 Dictionnaires et <code>.get()</code></h2>
+
+<h3 id="ref-le-problème-la-keyerror">Le problème : la KeyError</h3>
+
+<p>Un dictionnaire, c'est comme un carnet d'adresses : tu donnes un nom (la clé), tu récupères un numéro (la valeur). Mais si le nom n'est pas dans le carnet et que tu accèdes directement avec <code>[]</code>, Python plante avec une <code>KeyError</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">personne = {&quot;nom&quot;: &quot;Alice&quot;, &quot;age&quot;: 30}  # dictionnaire avec 2 clés
+
+print(personne[&quot;nom&quot;])    # ✅ affiche : Alice
+print(personne[&quot;ville&quot;])  # ❌ KeyError : la clé &quot;ville&quot; n&#x27;existe pas</code></pre></div>
+
+
+<h3 id="ref-get-accès-sécurisé-sans-risque-derreur"><code>.get()</code> — accès sécurisé sans risque d'erreur</h3>
+
+<p><code>.get()</code> fait la même chose que <code>[]</code>, mais au lieu de planter si la clé manque, il retourne <code>None</code> (ou une valeur par défaut que tu choisis).</p>
+
+<p>Explication : on essaie de lire "ville" qui n'existe pas. Avec <code>.get()</code>, pas d'erreur — on obtient juste <code>None</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">personne = {&quot;nom&quot;: &quot;Alice&quot;, &quot;age&quot;: 30}
+
+print(personne.get(&quot;nom&quot;))    # affiche : Alice  (clé existante → valeur normale)
+print(personne.get(&quot;ville&quot;))  # affiche : None   (clé absente → None, pas d&#x27;erreur)</code></pre></div>
+
+
+<h3 id="ref-get-avec-une-valeur-par-défaut"><code>.get()</code> avec une valeur par défaut</h3>
+
+<p>En passant un deuxième argument, tu décides ce que <code>.get()</code> renvoie si la clé n'existe pas.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">personne = {&quot;nom&quot;: &quot;Alice&quot;, &quot;age&quot;: 30}
+
+print(personne.get(&quot;ville&quot;, &quot;inconnue&quot;))  # affiche : inconnue  (valeur par défaut)
+print(personne.get(&quot;age&quot;, 0))             # affiche : 30  (clé existe → valeur réelle)</code></pre></div>
+
+
+<p>La valeur par défaut n'est utilisée QUE si la clé est absente.</p>
+
+<h3 id="ref-cas-pratique-compter-des-occurrences">Cas pratique : compter des occurrences</h3>
+
+<p>C'est un usage très fréquent. On veut compter combien de fois chaque mot apparaît dans une liste.</p>
+
+<p>Explication : pour chaque animal, on lit le compteur actuel avec <code>.get(animal, 0)</code> — si l'animal n'a jamais été vu, <code>.get</code> retourne 0. On ajoute 1 et on enregistre.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">texte = [&quot;chat&quot;, &quot;chien&quot;, &quot;chat&quot;, &quot;oiseau&quot;, &quot;chat&quot;]  # liste d&#x27;animaux
+compteur = {}                                          # dictionnaire vide pour compter
+
+for animal in texte:                                   # on parcourt chaque animal
+    compteur[animal] = compteur.get(animal, 0) + 1    # on incrémente son compteur
+    # Si &quot;chat&quot; n&#x27;a pas encore de clé → .get retourne 0, puis on fait 0+1=1
+    # Si &quot;chat&quot; existe déjà → .get retourne la valeur actuelle, puis on ajoute 1
+
+print(compteur)  # affiche : {&quot;chat&quot;: 3, &quot;chien&quot;: 1, &quot;oiseau&quot;: 1}</code></pre></div>
+
+
+<p>Résultat : un compteur d'occurrences construit en 3 lignes, sans aucun <code>if</code> compliqué.</p>
+
+<h3 id="ref-tableau-récapitulatif-des-accès-dictionnaire">Tableau récapitulatif des accès dictionnaire</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Syntaxe</th><th>Clé existante</th><th>Clé absente</th></tr></thead><tbody><tr><td><code>dict[&quot;clé&quot;]</code></td><td>retourne la valeur</td><td>❌ <code>KeyError</code></td></tr><tr><td><code>dict.get(&quot;clé&quot;)</code></td><td>retourne la valeur</td><td>retourne <code>None</code></td></tr><tr><td><code>dict.get(&quot;clé&quot;, &quot;défaut&quot;)</code></td><td>retourne la valeur</td><td>retourne <code>&quot;défaut&quot;</code></td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Règle simple : si tu n'es pas certain qu'une clé existe dans ton dictionnaire, utilise toujours <code>.get()</code> plutôt que <code>[]</code>.</p></div></div>
+
+<hr>
+
+<h2 id="ref-structures-de-contrôle">🔀 Structures de contrôle</h2>
+
+<p>Les structures de contrôle, c'est le "cerveau" du programme : elles décident quoi faire, quand le faire, et combien de fois.</p>
+
+<h3 id="ref-opérateurs-logiques-and-or-not">Opérateurs logiques : <code>and</code>, <code>or</code>, <code>not</code></h3>
+
+<p>Ces opérateurs permettent de <strong>combiner</strong> plusieurs conditions dans un <code>if</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">age = 20
+pays = &quot;France&quot;
+connecte = False
+
+# and : les DEUX conditions doivent être vraies
+if age &gt;= 18 and pays == &quot;France&quot;:          # &quot;majeur&quot; ET &quot;en France&quot;
+    print(&quot;Majeur en France&quot;)               # s&#x27;exécute seulement si les deux sont vrais
+
+# or : AU MOINS UNE condition vraie suffit
+if age == 20 or age == 21:                  # &quot;20 ans&quot; OU &quot;21 ans&quot;
+    print(&quot;Tu as 20 ou 21 ans&quot;)
+
+# not : INVERSE la condition
+if not connecte:                            # si connecte est False → not False = True
+    print(&quot;Veuillez vous connecter&quot;)</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Opérateur</th><th>Résultat vrai quand…</th></tr></thead><tbody><tr><td><code>and</code></td><td>les <strong>deux</strong> conditions sont vraies</td></tr><tr><td><code>or</code></td><td><strong>au moins une</strong> condition est vraie</td></tr><tr><td><code>not</code></td><td>la condition de départ est <strong>fausse</strong></td></tr></tbody></table></div>
+<h3 id="ref-if-elif-else-choisir-selon-une-condition"><code>if</code> / <code>elif</code> / <code>else</code> — choisir selon une condition</h3>
+
+<p>C'est le "si... sinon si... sinon" du langage naturel, traduit en Python.</p>
+
+<p>Explication : Python teste les conditions de haut en bas et s'arrête dès qu'une est vraie.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">note = 75
+
+if note &gt;= 90:          # si la note est 90 ou plus
+    print(&quot;Excellent&quot;)
+elif note &gt;= 70:        # sinon, si la note est 70 ou plus
+    print(&quot;Bien&quot;)       # ← cette branche est exécutée pour note=75
+elif note &gt;= 50:        # sinon, si la note est 50 ou plus
+    print(&quot;Passable&quot;)
+else:                   # sinon (aucune condition précédente n&#x27;était vraie)
+    print(&quot;Insuffisant&quot;)</code></pre></div>
+
+
+<p>Résultat : Python affiche "Bien" car <code>75 &gt;= 70</code> est vrai et c'est la première condition satisfaite.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Un seul bloc <code>if</code> et un seul <code>else</code> par structure, mais autant de <code>elif</code> que tu veux. Dès qu'une branche est vraie, les suivantes sont ignorées.</p></div></div>
+
+<h3 id="ref-while-répéter-tant-quune-condition-est-vraie"><code>while</code> — répéter tant qu'une condition est vraie</h3>
+
+<p><code>while</code> continue à tourner aussi longtemps que sa condition est vraie. C'est la boucle "tant que".</p>
+
+<p>Explication : on veut compter de 0 à 4. La boucle tourne tant que <code>compteur &lt; 5</code>. À chaque tour, on affiche la valeur puis on l'incrémente.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">compteur = 0          # initialisation : on part de 0
+
+while compteur &lt; 5:   # condition : on continue TANT QUE compteur est inférieur à 5
+    print(compteur)   # affiche la valeur actuelle
+    compteur += 1     # CRUCIAL : on incrémente, sinon boucle infinie !
+
+# Affiche : 0, 1, 2, 3, 4</code></pre></div>
+
+
+<p>Après le code : sans <code>compteur += 1</code>, la condition <code>compteur &lt; 5</code> resterait toujours vraie et le programme tournerait indéfiniment. C'est une <strong>boucle infinie</strong> — à éviter absolument.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>La boucle infinie est le piège classique de <code>while</code>. Assure-toi toujours que quelque chose dans ta boucle modifie la condition pour qu'elle devienne fausse à un moment.</p></div></div>
+
+<h3 id="ref-for-répéter-pour-chaque-élément"><code>for</code> — répéter pour chaque élément</h3>
+
+<p><code>for</code> parcourt une collection (liste, chaîne, dictionnaire…) et exécute le code pour chaque élément. Pas besoin de gérer un compteur manuellement.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fruits = [&quot;pomme&quot;, &quot;banane&quot;, &quot;cerise&quot;]   # liste de 3 fruits
+
+for fruit in fruits:    # pour chaque élément de fruits, on l&#x27;appelle &quot;fruit&quot;
+    print(fruit)        # affiche l&#x27;élément courant
+
+# Affiche : pomme / banane / cerise (un par ligne)</code></pre></div>
+
+
+<p><code>for</code> fonctionne sur tout ce qui est "itérable" : listes, chaînes de caractères, dictionnaires...</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for lettre in &quot;Bonjour&quot;:              # on parcourt chaque caractère de la chaîne
+    print(lettre)                     # B, o, n, j, o, u, r
+
+for cle, valeur in {&quot;a&quot;: 1, &quot;b&quot;: 2}.items():  # on parcourt les paires clé/valeur
+    print(cle, valeur)                # a 1  /  b 2</code></pre></div>
+
+
+<h3 id="ref-range-générer-une-séquence-de-nombres"><code>range()</code> — générer une séquence de nombres</h3>
+
+<p><code>range()</code> crée une suite de nombres, très souvent utilisée avec <code>for</code> pour répéter quelque chose N fois.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># range(stop)           → de 0 à stop-1
+# range(start, stop)    → de start à stop-1
+# range(start, stop, step) → de start à stop-1, par pas de step
+
+for i in range(5):          # i prend les valeurs 0, 1, 2, 3, 4
+    print(i)
+
+for i in range(2, 8):       # i prend les valeurs 2, 3, 4, 5, 6, 7
+    print(i)
+
+for i in range(0, 10, 2):   # i prend les valeurs 0, 2, 4, 6, 8 (pas de 2)
+    print(i)
+
+for _ in range(5):          # _ signifie &quot;je n&#x27;utilise pas le compteur&quot;
+    print(&quot;Hello&quot;)          # affiche &quot;Hello&quot; 5 fois</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le <code>_</code> dans <code>for _ in range(5)</code> est une convention Python : ça dit "je veux répéter 5 fois, mais je n'ai pas besoin du numéro du tour".</p></div></div>
+
+<h3 id="ref-break-et-continue-contrôler-le-déroulement-de-la-boucle"><code>break</code> et <code>continue</code> — contrôler le déroulement de la boucle</h3>
+
+<p>Ces deux mots-clés modifient le comportement d'une boucle en cours d'exécution.</p>
+
+<p>Explication : <code>break</code> sort complètement de la boucle, <code>continue</code> passe directement au tour suivant en sautant le reste du code du tour actuel.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># break : quitte la boucle immédiatement quand i vaut 5
+for i in range(10):         # i va de 0 à 9
+    if i == 5:
+        break               # on sort de la boucle, on n&#x27;affiche pas 5, 6, 7, 8, 9
+    print(i)                # affiche : 0, 1, 2, 3, 4
+
+# continue : saute le tour actuel quand i vaut 3
+for i in range(6):          # i va de 0 à 5
+    if i == 3:
+        continue            # on saute ce tour, on n&#x27;affiche pas 3
+    print(i)                # affiche : 0, 1, 2, 4, 5</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Mot-clé</th><th>Effet</th></tr></thead><tbody><tr><td><code>break</code></td><td>sort complètement de la boucle</td></tr><tr><td><code>continue</code></td><td>passe au tour suivant (ignore le reste du tour)</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="ref-gestion-des-erreurs-avec-try-except">🛡️ Gestion des erreurs avec <code>try</code> / <code>except</code></h2>
+
+<h3 id="ref-pourquoi-gérer-les-erreurs">Pourquoi gérer les erreurs ?</h3>
+
+<p>Quand Python rencontre une erreur (diviser par zéro, lire un fichier qui n'existe pas, convertir du texte en nombre), il "lève une exception" et le programme s'arrête brutalement. <code>try/except</code> permet d'<strong>attraper</strong> ces erreurs et de décider quoi faire au lieu de laisser planter.</p>
+
+<p>C'est comme le filet sous un trapéziste : il n'empêche pas la chute, mais il évite la catastrophe.</p>
+
+<h3 id="ref-structure-de-base">Structure de base</h3>
+
+<p>Explication : le code "à risque" va dans le bloc <code>try</code>. Si une erreur survient, Python saute dans le bloc <code>except</code> correspondant au lieu de planter.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">try:
+    resultat = 10 / 0           # ← code risqué : division par zéro !
+except ZeroDivisionError:       # on attrape ce type d&#x27;erreur spécifique
+    print(&quot;Impossible de diviser par zéro&quot;)  # on gère proprement</code></pre></div>
+
+
+<p>Résultat : au lieu d'un crash, le programme affiche le message et continue.</p>
+
+<h3 id="ref-attraper-plusieurs-types-derreurs">Attraper plusieurs types d'erreurs</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">try:
+    valeur = int(&quot;abc&quot;)         # essaie de convertir &quot;abc&quot; en entier → ValueError
+    resultat = 10 / valeur      # si valeur vaut 0 → ZeroDivisionError
+except TypeError:               # si le type est incorrect
+    print(&quot;Mauvais type de données&quot;)
+except ValueError:              # si la valeur est incorrecte (ex: &quot;abc&quot; → int)
+    print(&quot;Valeur invalide&quot;)
+except ZeroDivisionError:       # si on divise par zéro
+    print(&quot;Division par zéro impossible&quot;)
+except Exception as e:          # filet général : attrape tout le reste
+    print(f&quot;Erreur inattendue : {e}&quot;)  # e contient le message d&#x27;erreur</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><code>except Exception as e</code> est le "attrape-tout". Utile comme filet de sécurité, mais préfère toujours attraper des erreurs spécifiques en premier — c'est plus lisible et plus précis.</p></div></div>
+
+<h3 id="ref-else-et-finally"><code>else</code> et <code>finally</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">try:
+    resultat = 10 / 2           # pas d&#x27;erreur ici
+except ZeroDivisionError:
+    print(&quot;Division par zéro&quot;)
+else:
+    print(&quot;Succès :&quot;, resultat) # ← s&#x27;exécute SEULEMENT si aucune erreur n&#x27;a eu lieu
+finally:
+    print(&quot;Fin du bloc try&quot;)    # ← s&#x27;exécute TOUJOURS, erreur ou pas</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Bloc</th><th>S'exécute quand…</th></tr></thead><tbody><tr><td><code>try</code></td><td>toujours (c'est le code à protéger)</td></tr><tr><td><code>except</code></td><td>seulement si une erreur du bon type survient</td></tr><tr><td><code>else</code></td><td>seulement si aucune erreur n'a eu lieu</td></tr><tr><td><code>finally</code></td><td>toujours, erreur ou pas (utile pour fermer un fichier, par exemple)</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="ref-fizzbuzz-exemple-qui-combine-tout">🎲 FizzBuzz — Exemple qui combine tout</h2>
+
+<p>FizzBuzz est un exercice classique : pour chaque nombre de 1 à 20, on affiche "FizzBuzz" s'il est divisible par 15, "Fizz" s'il est divisible par 3, "Buzz" s'il est divisible par 5, sinon le nombre lui-même.</p>
+
+<p>Le piège est l'<strong>ordre des conditions</strong>. Si on teste <code>i % 3 == 0</code> en premier, les multiples de 15 (qui sont aussi multiples de 3) seront capturés par la première condition et n'afficheront jamais "FizzBuzz".</p>
+
+<p>Explication : il faut toujours tester le cas <strong>le plus spécifique</strong> (multiple de 15) en premier, puis les cas plus généraux.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for i in range(1, 21):          # on parcourt les nombres de 1 à 20 inclus
+    if i % 15 == 0:             # cas le plus spécifique EN PREMIER : divisible par 3 ET par 5
+        print(&quot;FizzBuzz&quot;)
+    elif i % 3 == 0:            # sinon : divisible par 3 seulement
+        print(&quot;Fizz&quot;)
+    elif i % 5 == 0:            # sinon : divisible par 5 seulement
+        print(&quot;Buzz&quot;)
+    else:                       # sinon : aucun des cas précédents
+        print(i)</code></pre></div>
+
+
+<p>L'opérateur <code>%</code> (modulo) donne le <strong>reste de la division</strong>. <code>15 % 3 == 0</code> signifie que 15 est divisible par 3 sans reste.</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>FizzBuzz combine <code>for</code>, <code>range()</code>, <code>if/elif/else</code> et l'opérateur modulo <code>%</code>. C'est un excellent exercice de consolidation et il est souvent posé en entretien technique.</p></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p>Erreur classique de FizzBuzz : tester <code>i % 3 == 0</code> avant <code>i % 15 == 0</code>. Le nombre 15 est divisible par 3, donc la première condition serait vraie et Python n'irait jamais vérifier <code>i % 15 == 0</code>.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<ol>
+<li>Quelle est la différence entre <code>lst.pop(2)</code> et <code>lst.remove(&quot;banane&quot;)</code> ? Dans quel cas utiliser l'un plutôt que l'autre ?</li>
+</ol>
+
+<ol>
+<li>Que se passe-t-il si tu utilises <code>dict[&quot;cle&quot;]</code> avec une clé absente ? Comment <code>.get()</code> résout-il ce problème ?</li>
+</ol>
+
+<ol>
+<li>Explique en une phrase la différence entre <code>while</code> et <code>for</code>. Donne un exemple de situation où tu choisirais <code>while</code> plutôt que <code>for</code>.</li>
+</ol>
+
+<ol>
+<li>Dans FizzBuzz, pourquoi est-il crucial de tester <code>i % 15 == 0</code> avant <code>i % 3 == 0</code> ? Que se passerait-il sinon ?</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li><code>pop(index)</code> supprime et <strong>retourne</strong> l'élément à un index donné ; <code>remove(valeur)</code> supprime la première occurrence d'une valeur (sans retour) ; <code>del</code> est un mot-clé qui supprime par index, slice, ou même une variable entière.</li>
+<li><code>.get(&quot;clé&quot;)</code> lit un dictionnaire sans risque de <code>KeyError</code> ; <code>.get(&quot;clé&quot;, &quot;défaut&quot;)</code> renvoie une valeur par défaut si la clé est absente.</li>
+<li><code>and</code>, <code>or</code>, <code>not</code> permettent de combiner des conditions logiques.</li>
+<li><code>while</code> tourne tant qu'une condition est vraie — ne pas oublier de modifier la condition sinon boucle infinie.</li>
+<li><code>for ... in ...</code> parcourt chaque élément d'une liste, chaîne ou dictionnaire.</li>
+<li><code>range(start, stop, step)</code> génère une suite de nombres utilisable avec <code>for</code>.</li>
+<li><code>break</code> sort d'une boucle immédiatement ; <code>continue</code> passe au tour suivant.</li>
+<li><code>try/except</code> capture les erreurs et évite les plantages ; <code>else</code> s'exécute si tout s'est bien passé ; <code>finally</code> s'exécute toujours.</li>
+<li>Dans FizzBuzz, tester toujours le cas le plus spécifique (<code>% 15</code>) <strong>avant</strong> les cas généraux (<code>% 3</code>, <code>% 5</code>).</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-le-bon-usage-de-la-documentation">Le bon usage de la documentation</a></li><li><a href="#syn-lire-un-traceback-python">Lire un traceback Python</a></li><li><a href="#syn-conventions-de-nommage">Conventions de nommage</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-profilage-rapide-dun-script-lent">Profilage rapide d'un script lent</a></li><li><a href="#syn-gérer-les-imports-proprement">Gérer les imports proprement</a></li><li><a href="#syn-mode-interactif-et-repl-ipdb">Mode interactif et REPL ipdb</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-le-bon-usage-de-la-documentation">Le bon usage de la documentation</h3>
+
+<p>La compétence numéro un d'un développeur, c'est de savoir lire la <strong>documentation officielle</strong>. Pas Stack Overflow, pas un blog tutoriel : la doc officielle.</p>
+
+<p>Pourquoi ? Parce qu'elle est :</p>
+
+<ul>
+<li><strong>Exhaustive</strong> — tous les paramètres sont listés</li>
+<li><strong>À jour</strong> — elle reflète la version actuelle de la lib</li>
+<li><strong>Précise</strong> — elle décrit exactement le comportement, pas une approximation</li>
+</ul>
+
+<p>Stack Overflow contient souvent des réponses obsolètes (Python 2 vs 3, sklearn 0.18 vs 1.4) qui « marchent presque » et qui vous coûteront trois heures de debug.</p>
+
+<p><strong>Trois sources canoniques</strong> pour Python data science :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># 1. help() : docstring dans le REPL
+help(pd.DataFrame.merge)
+
+# 2. Version courte IPython/Jupyter (affiche la signature + docstring)
+pd.DataFrame.merge?
+
+# 3. Inclut le code source de la fonction
+pd.DataFrame.merge??</code></pre></div>
+
+
+<p><strong>Exemple concret</strong> : vous cherchez comment faire un <code>left join</code> avec pandas.</p>
+
+<ul>
+<li><strong>Mauvais réflexe</strong> : googler "pandas left join" → arriver sur une réponse Stack Overflow de 2015 qui utilise <code>ignore_index=True</code> (obsolète).</li>
+<li><strong>Bon réflexe</strong> : <code>pd.DataFrame.merge?</code> → voir <code>how=&#x27;left&#x27;</code> et comprendre les 4 options en une phrase.</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : Stack Overflow est à la doc officielle ce qu'est une discussion de comptoir au manuel d'un médicament. Les deux ont leur place, mais avant de prendre un risque, on lit la notice. En data science, la "prise de risque" c'est lancer un entraînement de 8 h basé sur une mauvaise compréhension d'un paramètre.</p></div></div>
+
+<h3 id="syn-lire-un-traceback-python">Lire un traceback Python</h3>
+
+<p>Quand un script plante, Python affiche un <strong>traceback</strong> : la pile d'appels qui a mené à l'erreur. Un débutant lit la dernière ligne (le type d'erreur) et tente une correction au hasard. Un pro lit le traceback <strong>de bas en haut</strong> :</p>
+
+<ol>
+<li>La <strong>toute dernière ligne</strong> donne le <strong>type</strong> d'erreur (<code>KeyError</code>, <code>ValueError</code>, <code>TypeError</code>) et son message.</li>
+<li>La ligne juste au-dessus indique le <strong>fichier</strong> et la <strong>ligne</strong> où ça plante.</li>
+<li>Au-dessus encore, on <strong>remonte la chaîne d'appels</strong> jusqu'à VOTRE code (souvent enfoui sous des frames de bibliothèques).</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Traceback (most recent call last):
+  File &quot;train.py&quot;, line 42, in &lt;module&gt;
+    model.fit(X_train, y_train)
+  File &quot;.../sklearn/linear_model/_base.py&quot;, line 651, in fit
+    X, y = self._validate_data(X, y, ...)
+ValueError: could not convert string to float: &#x27;unknown&#x27;</code></pre></div>
+
+
+<p><strong>Diagnostic</strong> :</p>
+
+<ul>
+<li><strong>Type</strong> : <code>ValueError</code> — conversion impossible.</li>
+<li><strong>Message</strong> : <code>could not convert string to float: &#x27;unknown&#x27;</code> — quelque part, la chaîne <code>&#x27;unknown&#x27;</code> devait être un nombre.</li>
+<li><strong>Où</strong> : <code>sklearn/.../_base.py</code> ligne 651 — c'est sklearn qui plante, mais le VRAI bug est dans VOS données.</li>
+<li><strong>Action</strong> : retourner à <code>train.py</code> ligne 42, inspecter <code>X_train</code>. Probablement une colonne catégorielle mal encodée.</li>
+</ul>
+
+<p>Le diagnostic n'est PAS « il y a un bug dans sklearn », c'est : <strong>X_train contient une chaîne <code>&#x27;unknown&#x27;</code> quelque part</strong>. Le fix est dans votre preprocessing, pas dans le modèle.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Avant de relancer, investiguer :
+print(X_train.dtypes)         # Quelle colonne est &#x27;object&#x27; alors qu&#x27;elle devrait être numérique ?
+print(X_train.isin([&#x27;unknown&#x27;]).any())  # Quelle colonne contient &#x27;unknown&#x27; ?</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège fréquent</strong> : <code>KeyError: &#x27;date&#x27;</code> ne signifie pas toujours que la clé <code>&#x27;date&#x27;</code> manque. Si vous faites <code>df[&#x27;date&#x27;]</code> après un <code>df.groupby(&#x27;date&#x27;).sum()</code>, la colonne <code>date</code> est devenue l'<strong>index</strong> et n'est plus une colonne. Solution : <code>df.reset_index()</code> ou utiliser <code>df.index</code> directement.</p></div></div>
+
+<h3 id="syn-conventions-de-nommage">Conventions de nommage</h3>
+
+<p>Python a des conventions <strong>PEP 8</strong> strictes que les recruteurs scrutent :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Type</th><th>Convention</th><th>Exemple</th></tr></thead><tbody><tr><td>Variable / fonction</td><td><code>snake_case</code></td><td><code>train_score</code>, <code>compute_loss()</code></td></tr><tr><td>Constante</td><td><code>UPPER_SNAKE</code></td><td><code>MAX_EPOCHS = 100</code></td></tr><tr><td>Classe</td><td><code>PascalCase</code></td><td><code>class RandomForestClassifier:</code></td></tr><tr><td>Privé</td><td>préfixe <code>_</code></td><td><code>_internal_state</code>, <code>_helper()</code></td></tr><tr><td>Nom "magique"</td><td><code>__double_underscore__</code></td><td><code>__init__</code>, <code>__repr__</code></td></tr></tbody></table></div>
+<p>Les noms doivent être <strong>explicites</strong> mais pas verbeux. <code>df_clean</code> est meilleur que <code>df1</code> ou <code>data_after_cleaning_step_2</code>. La règle de Kent Beck : « plus la portée d'une variable est large, plus son nom doit être long ».</p>
+
+<p><strong>Exemples</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ❌ Trop court, portée large, on ne sait pas ce que c&#x27;est
+def process(d):
+    for i in d:
+        ...
+
+# ✓ Explicite
+def clean_transactions(transactions):
+    for transaction in transactions:
+        ...
+
+# ✓ Court OK pour une variable locale à portée minimale
+for i in range(10):     # i = indice de boucle, convention universelle
+    print(i)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : aucune variable d'une seule lettre sauf dans les boucles (<code>for i in range(n)</code>) et les contextes mathématiques où la lettre est canonique (<code>X</code>, <code>y</code>, <code>theta</code>, <code>alpha</code>). Pour <code>for x in df</code>, préférez <code>for row in df</code> — c'est plus parlant et évite la confusion avec un <code>X</code> matriciel.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-profilage-rapide-dun-script-lent">Profilage rapide d'un script lent</h3>
+
+<p>Avant d'optimiser, <strong>mesurez</strong>. La règle d'Amdahl : « optimisez d'abord ce qui prend le plus de temps ».</p>
+
+<p><strong>Niveau 1 — timing manuel</strong> (pour une mesure ponctuelle) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import time
+t0 = time.perf_counter()   # perf_counter : horloge monotone haute précision
+# ... votre code ...
+print(f&quot;Took {time.perf_counter() - t0:.2f}s&quot;)
+# Result: Took 3.42s</code></pre></div>
+
+
+<p><strong>Niveau 2 — découpage par fonction</strong> (cProfile) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import cProfile, pstats
+
+profiler = cProfile.Profile()
+profiler.enable()
+main()                                                      # votre fonction principale
+profiler.disable()
+pstats.Stats(profiler).sort_stats(&#x27;cumulative&#x27;).print_stats(20)
+# Affiche les 20 appels les plus coûteux (en temps cumulatif)</code></pre></div>
+
+
+<p><strong>Niveau 3 — magic commands Jupyter</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">%timeit my_function(x)         # Mesure répétée + statistiques (moyenne, écart-type)
+%prun -l 10 my_function(x)     # Profilage avec top 10</code></pre></div>
+
+
+<p><strong>Niveau 4 — profilage mémoire</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from memory_profiler import profile
+
+@profile
+def heavy_function():
+    data = [i * 2 for i in range(10**7)]
+    return sum(data)
+# Lancer avec : python -m memory_profiler script.py
+# Affiche la mémoire allouée ligne par ligne</code></pre></div>
+
+
+<h3 id="syn-gérer-les-imports-proprement">Gérer les imports proprement</h3>
+
+<p>PEP 8 impose un <strong>ordre strict</strong> des imports :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># 1. Bibliothèque standard
+import os
+import sys
+from pathlib import Path
+
+# 2. Bibliothèques tierces
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+
+# 3. Modules locaux (votre projet)
+from src.preprocessing import clean_data
+from src.models import build_model</code></pre></div>
+
+
+<p><strong>Trois règles</strong> à mémoriser :</p>
+
+<ol>
+<li><strong>Pas d'<code>import *</code></strong> — pollue le namespace, casse les linters, l'IDE n'autocomplète plus.</li>
+<li><strong>Pas d'imports dans les fonctions</strong> (sauf cas exceptionnels : import lent, dépendance optionnelle).</li>
+<li><strong>Trier alphabétiquement</strong> dans chaque groupe. <code>isort</code> le fait automatiquement.</li>
+</ol>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège</strong> : faire <code>from numpy import *</code> puis utiliser <code>min(x)</code> retourne en fait <code>numpy.min</code>, qui se comporte différemment du builtin Python sur les listes vides ou les générateurs. Bug invisible jusqu'au jour où ça plante en production avec un message incompréhensible.</p></div></div>
+
+<h3 id="syn-mode-interactif-et-repl-ipdb">Mode interactif et REPL ipdb</h3>
+
+<p><code>pdb</code> (le debugger Python) est un <strong>super-pouvoir sous-estimé</strong>. Au lieu d'ajouter dix <code>print()</code> puis de les enlever, posez un breakpoint :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def compute_score(y_true, y_pred):
+    breakpoint()              # Python 3.7+, équivaut à import pdb; pdb.set_trace()
+    return f1_score(y_true, y_pred)</code></pre></div>
+
+
+<p>Quand le code atteint cette ligne, vous tombez dans un REPL interactif où vous pouvez inspecter toutes les variables, exécuter du code arbitraire, et avancer pas à pas.</p>
+
+<p><strong>Commandes essentielles</strong> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Commande</th><th>Action</th></tr></thead><tbody><tr><td><code>n</code> (next)</td><td>Exécute la ligne courante (reste dans la même fonction)</td></tr><tr><td><code>s</code> (step)</td><td>Entre dans la fonction appelée</td></tr><tr><td><code>c</code> (continue)</td><td>Reprend l'exécution jusqu'au prochain breakpoint</td></tr><tr><td><code>l</code> (list)</td><td>Affiche le contexte de code</td></tr><tr><td><code>p var</code></td><td>Imprime la variable</td></tr><tr><td><code>pp var</code></td><td>Pretty-print (utile pour les dicts/listes imbriqués)</td></tr><tr><td><code>q</code> (quit)</td><td>Quitte le debugger (et le programme)</td></tr></tbody></table></div>
+<p><code>ipdb</code> est la version améliorée avec coloration syntaxique et autocomplétion : <code>pip install ipdb</code> puis <code>import ipdb; ipdb.set_trace()</code>.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : <code>print()</code> c'est observer un poisson dans son aquarium depuis l'extérieur. <code>pdb</code> c'est mettre une combinaison de plongée et nager avec lui. Pour des bugs subtils (mauvaise valeur, état imprévu), pdb vous fera économiser des heures.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Vous avez une erreur <code>ImportError: No module named &#x27;sklearn&#x27;</code> mais vous avez pourtant fait <code>pip install scikit-learn</code>. Quelle est probablement la cause ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Environnements multiples Python.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Le <code>pip</code> que vous appelez <strong>n'est pas associé au <code>python</code> qui exécute votre script</strong>. C'est le piège le plus classique : vous avez plusieurs Python installés (system, brew, pyenv, conda, venv) et <code>pip install</code> a installé dans l'un, tandis que votre script s'exécute dans un autre.</p>
+
+<p><strong>Diagnostic</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">which python3   # Ex: /Users/alice/.pyenv/shims/python3
+which pip3      # Ex: /usr/local/bin/pip3     ← DIFFÉRENT !</code></pre></div>
+
+
+<p><strong>Solution canonique</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">python3 -m pip install scikit-learn
+# Le -m garantit que c&#x27;est CE python3 qui installe,
+# donc l&#x27;install va dans le bon site-packages</code></pre></div>
+
+
+<p>Pour <strong>éviter complètement</strong> ce problème, <strong>toujours</strong> travailler dans un environnement virtuel dédié au projet :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">python3 -m venv .venv         # Crée un venv local au projet
+source .venv/bin/activate     # Active (modifie PATH)
+pip install scikit-learn      # Installe dans le venv local</code></pre></div>
+
+
+<p>Désormais <code>python</code> et <code>pip</code> sont garantis d'être alignés.</p>
+
+</details>
+
+<p><strong>Q2 : Quelle est la différence entre <code>is</code> et <code>==</code> en Python, et pourquoi <code>a = 256; b = 256; a is b</code> retourne <code>True</code> mais <code>a = 257; b = 257; a is b</code> retourne souvent <code>False</code> ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Interning des petits entiers.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<ul>
+<li><strong><code>==</code></strong> compare les <strong>valeurs</strong> (appelle <code>__eq__</code>).</li>
+<li><strong><code>is</code></strong> compare les <strong>identités</strong> — même objet en mémoire, c'est-à-dire <code>id(a) == id(b)</code>.</li>
+</ul>
+
+<p>Pour les petits entiers (<strong>-5 à 256</strong>), CPython les <strong>pré-alloue au démarrage et les réutilise</strong> — c'est l'<strong>interning</strong>. Donc <code>a = 256</code> et <code>b = 256</code> pointent vers le <strong>même</strong> objet en mémoire. Pour 257, chacun crée son propre <code>int</code> distinct.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">a = 256; b = 256
+a is b   # True (interning)
+
+a = 257; b = 257
+a is b   # False dans un script, parfois True dans un REPL (optimisation de compilation)</code></pre></div>
+
+
+<p><strong>Règle absolue</strong> : utilisez <code>is</code> uniquement pour comparer à <code>None</code>, <code>True</code>, <code>False</code> ou pour vérifier l'identité d'objets (rare). Pour comparer des valeurs, <strong>toujours <code>==</code></strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">if x is None:     # ✓ Convention Python
+if x == None:     # ❌ Fonctionne mais non idiomatique, plus lent
+
+if user.id == 42: # ✓ Comparaison de valeur
+if user.id is 42: # ❌ Peut marcher par hasard via interning, bug invisible</code></pre></div>
+
+
+<p>C'est une question piège classique en entretien Python pour éliminer ceux qui ont survolé la doc.</p>
+
+</details>
+
+<p><strong>Q3 : Vous lancez un script qui marche sur 1000 lignes mais consomme 8 Go quand vous le lancez sur 1 million de lignes. Avant tout refactoring, quelle est la première mesure à prendre ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Ne pas optimiser à l'aveugle — profiler d'abord.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Mesurer où la mémoire est consommée</strong>. <code>tracemalloc</code> (stdlib) ou <code>memory_profiler</code> (avec <code>@profile</code>) vous diront <strong>ligne par ligne</strong> quelle allocation explose.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import tracemalloc
+
+tracemalloc.start()
+main()
+current, peak = tracemalloc.get_traced_memory()
+print(f&quot;Current: {current / 1e9:.2f} GB, Peak: {peak / 1e9:.2f} GB&quot;)
+tracemalloc.stop()</code></pre></div>
+
+
+<p>La cause est presque toujours l'une de trois :</p>
+
+<ol>
+<li><strong><code>df.copy()</code> implicite</strong> à chaque opération qui duplique le DataFrame. Chaque <code>df[df.x &gt; 0]</code> peut copier le df entier selon Pandas.</li>
+<li><strong>Concaténation dans une boucle</strong> : <code>pd.concat([df, new_row])</code> à chaque itération est <strong>O(n²)</strong> en mémoire et en temps. Solution : accumuler dans une liste puis <code>pd.concat</code> une seule fois à la fin.</li>
+<li><strong>Lecture intégrale</strong> au lieu d'un streaming par chunks : <code>pd.read_csv(..., chunksize=10000)</code> au lieu de tout charger.</li>
+</ol>
+
+<p>Le <strong>mauvais réflexe</strong> est de jeter le code et de tout réécrire en Polars/Dask. Le <strong>bon réflexe</strong> est d'identifier la ligne problématique et de la corriger avec une opération in-place ou un chunking. Règle : <strong>profiler, comprendre, corriger localement</strong>, dans cet ordre.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://peps.python.org/pep-0008/" target="_blank" rel="noopener">PEP 8 — Style Guide for Python Code</a> — la référence officielle</li>
+<li><a href="https://pythontutor.com/" target="_blank" rel="noopener">Python tutor</a> — visualise pas à pas l'exécution d'un script (parfait pour comprendre <code>is</code> vs <code>==</code>)</li>
+<li><em>Effective Python</em> (Brett Slatkin) — 90 règles pour écrire du code Python idiomatique</li>
+<li><em>Fluent Python</em> (Luciano Ramalho) — pour aller au-delà des bases : data model, descriptors, asyncio</li>
+<li><a href="https://realpython.com/" target="_blank" rel="noopener">Real Python</a> — tutoriels solides et à jour, alternative fiable à Stack Overflow</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../notes-perso/terminal.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Terminal</span>
+  </a>
+  <a href="../notes-perso/methodes-fonctions.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Méthodes & fonctions →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

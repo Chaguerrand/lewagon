@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Sourcing — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Data Sourcing</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html" class="active">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Data Toolkit</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Data Sourcing</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Data Sourcing</h1>
+        <p class="page-objective">Collecter des données depuis différentes sources (CSV, API, scraping) et les combiner dans un DataFrame Pandas enrichi pour l'analyse.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">API REST</div>
+        <div class="key-concept-def">Service web qui répond en JSON aux requêtes HTTP.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">CSV vs JSON vs Parquet</div>
+        <div class="key-concept-def">Texte ligne-par-ligne vs structure imbriquée vs colonne compressé.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Encoding</div>
+        <div class="key-concept-def">Façon dont les caractères sont stockés en bytes (UTF-8, latin-1).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Rate limit</div>
+        <div class="key-concept-def">Nombre maximal de requêtes par minute autorisées par une API.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-data-sourcing">Cheatsheet — Data Sourcing</a><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-les-sources-de-données">1) Les sources de données</a><ol><li><a href="#11-quatre-grandes-familles">1.1 Quatre grandes familles</a></li><li><a href="#12-notre-mission">1.2 Notre mission 🎯</a></li></ol></li><li><a href="#2-csv">2) 📃 CSV</a><ol><li><a href="#21-lire-un-csv-avec-pandas">2.1 Lire un CSV avec Pandas</a></li><li><a href="#22-formats-variés">2.2 Formats variés</a></li><li><a href="#23-enrichir-le-dataframe">2.3 Enrichir le DataFrame</a></li><li><a href="#24-merger-les-dataframes">2.4 Merger les DataFrames</a></li></ol></li><li><a href="#3-api">3) `{}` API</a><ol><li><a href="#31-http-request-response">3.1 HTTP — request / response</a></li><li><a href="#32-la-librairie-requests">3.2 La librairie `requests`</a></li><li><a href="#33-appel-à-lapi-world-bank">3.3 Appel à l'API World Bank</a></li><li><a href="#34-refactoriser-en-fonction-réutilisable">3.4 Refactoriser en fonction réutilisable</a></li><li><a href="#35-appliquer-sur-tout-le-dataframe">3.5 Appliquer sur tout le DataFrame</a></li></ol></li><li><a href="#4-web-scraping">4) 🌐 Web Scraping</a><li><a href="#5-sauvegarder-les-données-collectées">5) 💾 Sauvegarder les données collectées</a><ol><li><a href="#51-sauvegarder-en-csv">5.1 Sauvegarder en CSV</a></li><li><a href="#52-formats-alternatifs">5.2 Formats alternatifs</a></li><li><a href="#53-sauvegarde-intermédiaire-bonne-pratique">5.3 Sauvegarde intermédiaire (bonne pratique)</a></li></ol></li><li><a href="#6-analyser-les-données">6) 📊 Analyser les données</a><ol><li><a href="#61-visualiser-avec-pandas">6.1 Visualiser avec Pandas</a></li></ol></li><li><a href="#annexe-api-paginée-requête-en-bulk">Annexe — API paginée (requête en bulk)</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-data-sourcing">📋 Cheatsheet — Data Sourcing</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## ── CSV ──────────────────────────────────────────────
+import pandas as pd
+
+df = pd.read_csv(&#x27;data/file.csv&#x27;)                   # lecture simple
+df = pd.read_csv(&#x27;file.csv&#x27;, decimal=&#x27;,&#x27;)           # séparateur décimal européen
+df = pd.read_csv(&#x27;file.csv&#x27;, sep=&#x27;;&#x27;)               # séparateur point-virgule
+df = pd.read_csv(&#x27;file.csv&#x27;, na_filter=False)       # désactive la détection de NaN (ex: code &quot;NA&quot;)
+
+df.to_csv(&#x27;data/output.csv&#x27;, index=False)           # sauvegarde sans colonne d&#x27;index
+
+## ── API (requests) ───────────────────────────────────
+import requests
+
+response = requests.get(url)                        # requête GET simple
+response = requests.get(url, params={&#x27;key&#x27;: &#x27;val&#x27;}) # avec query parameters
+response.status_code                                # 200 = OK, 4xx = erreur client, 5xx = erreur serveur
+data = response.json()                              # parse le JSON en dict Python
+
+## ── MERGE DE DATAFRAMES ──────────────────────────────
+merged = df1.merge(df2, left_on=&#x27;col_df1&#x27;, right_on=&#x27;col_df2&#x27;)  # jointure sur colonnes différentes
+df = df.drop(columns=[&#x27;col_inutile&#x27;])               # supprimer une colonne après merge
+
+## ── SCRAPING (BeautifulSoup) ──────────────────────────
+from bs4 import BeautifulSoup
+
+response = requests.get(url, headers={&quot;User-Agent&quot;: &quot;Mon app&quot;})
+soup = BeautifulSoup(response.content, &quot;html.parser&quot;)  # parser le HTML
+
+soup.find(&#x27;h1&#x27;)                        # premier élément &lt;h1&gt;
+soup.find_all(&#x27;article&#x27;)               # tous les &lt;article&gt;
+soup.find(class_=&quot;infobox-data&quot;)       # par classe CSS (class_ pour éviter conflit Python)
+soup.find(id=&quot;author&quot;).text            # par id, extrait le texte
+
+## ── SAUVEGARDE INTERMÉDIAIRE ─────────────────────────
+import csv
+
+with open(&#x27;data/tmp.csv&#x27;, &#x27;a&#x27;) as f:   # ouvre en mode append
+    writer = csv.writer(f)
+    writer.writerow([country, region]) # écrit une ligne à chaque itération</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier <code>na_filter=False</code> avec des codes pays</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">iso_df = pd.read_csv(&#x27;iso2.csv&#x27;)                  # ❌ &quot;NA&quot; (Namibie) → NaN
+iso_df = pd.read_csv(&#x27;iso2.csv&#x27;, na_filter=False) # ✅ &quot;NA&quot; reste &quot;NA&quot;</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Ne pas vérifier le status code avant de parser la réponse</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data = requests.get(url).json()                   # ❌ plante si l&#x27;API retourne une erreur
+response = requests.get(url)
+if response.status_code == 200:                   # ✅
+    data = response.json()</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Faire une requête API par ligne de DataFrame au lieu d'une requête en bulk</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for index, row in df.iterrows():
+    fetch_population(row[&#x27;Code&#x27;], 2022)           # ❌ lent — une requête par pays
+## ✅ Utiliser l&#x27;endpoint &quot;all&quot; de l&#x27;API si disponible — une seule requête pour tous</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser <code>try/except</code> trop tôt pendant le développement</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def scrape(country):
+    try:
+        ...                  # ❌ masque toutes les erreurs → impossible de débugger
+    except:
+        return None
+## ✅ N&#x27;ajouter try/except qu&#x27;une fois que le code fonctionne sur un cas simple</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Ne pas sauvegarder les données collectées avant de les manipuler</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## ❌ relancer tout le scraping/les appels API à chaque session
+df.to_csv(&#x27;data/output.csv&#x27;, index=False)         # ✅ sauvegarder après collecte</code></pre></div></div></div>
+
+<hr>
+
+<h2 id="1-les-sources-de-données">1) Les sources de données</h2>
+
+<h3 id="11-quatre-grandes-familles">1.1 Quatre grandes familles</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Source</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td>📃 <strong>CSV</strong></td><td>Export depuis une application, dataset déjà prêt</td></tr><tr><td>🗄️ <strong>SQL</strong></td><td>Données dans une base relationnelle</td></tr><tr><td><code>{}</code> <strong>API</strong></td><td>Service web qui expose ses données</td></tr><tr><td>🌐 <strong>Scraping</strong></td><td>Données visibles sur un site web, aucune autre option</td></tr></tbody></table></div>
+<h3 id="12-notre-mission">1.2 Notre mission 🎯</h3>
+
+<p>Visualiser les <strong>émissions de CO2 par continent</strong> en combinant 3 sources :</p>
+
+<ol>
+<li><strong>CSV</strong> — Émissions CO2 par habitant par pays (Gapminder)</li>
+<li><strong>API</strong> — Données de population (World Bank Open Data)</li>
+<li><strong>Scraping</strong> — Données géographiques (Wikipedia)</li>
+</ol>
+
+<hr>
+
+<h2 id="2-csv">2) 📃 CSV</h2>
+
+<blockquote><p>Un fichier <strong>CSV</strong> (comma-separated values) est un fichier texte qui stocke des données tabulaires. Chaque ligne est un enregistrement, chaque champ est séparé par une virgule.<br></p></blockquote>
+
+<h3 id="21-lire-un-csv-avec-pandas">2.1 Lire un CSV avec Pandas</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+
+emissions_df = pd.read_csv(&#x27;data/co2_pcap_cons.csv&#x27;)
+emissions_df.head()</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p><strong><code>pandas.read_csv</code> a de nombreux paramètres utiles</strong></p>
+<p>👉 <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html" target="_blank" rel="noopener">Documentation officielle</a></p></div></div>
+
+<h3 id="22-formats-variés">2.2 Formats variés</h3>
+
+<p>Les CSV peuvent avoir des formats très différents :</p>
+
+<ul>
+<li>Séparateurs : <code>,</code> <code>;</code> <code>|</code> <code>\t</code></li>
+<li>Avec ou sans ligne d'en-tête</li>
+<li>Avec ou sans colonne d'index</li>
+<li>Formats de date variés (<code>DD/MM/YYYY</code>, <code>MM-DD-YYYY</code>…)</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df = pd.read_csv(&#x27;file.csv&#x27;, sep=&#x27;;&#x27;)             # séparateur point-virgule
+df = pd.read_csv(&#x27;file.csv&#x27;, decimal=&#x27;,&#x27;)         # virgule comme séparateur décimal
+df = pd.read_csv(&#x27;file.csv&#x27;, na_filter=False)     # désactive la détection automatique de NaN</code></pre></div>
+
+
+<h3 id="23-enrichir-le-dataframe">2.3 Enrichir le DataFrame</h3>
+
+<p>Le CSV contient des noms de pays, mais les noms peuvent varier (ex: "UAE" vs "United Arab Emirates"). On charge un fichier de référence ISO pour harmoniser :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">curl -s https://wagon-public-datasets.s3.amazonaws.com/02-Data-Toolkit/02-Data-Sourcing/iso2_with_region.csv &gt; data/iso2_with_region.csv</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">iso_df = pd.read_csv(&#x27;data/iso2_with_region.csv&#x27;, na_filter=False)
+iso_df.head()</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le code ISO de la Namibie est <strong>"NA"</strong>. Sans <code>na_filter=False</code>, Pandas l'interprète comme <code>NaN</code>.</p></div></div>
+
+<h3 id="24-merger-les-dataframes">2.4 Merger les DataFrames</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">emissions_df = emissions_df.merge(iso_df, left_on=&#x27;country&#x27;, right_on=&#x27;Name&#x27;)
+emissions_df = emissions_df.drop(columns=[&#x27;country&#x27;])  # supprimer la colonne redondante</code></pre></div>
+
+
+<hr>
+
+<h2 id="3-api">3) <code>{}</code> API</h2>
+
+<blockquote><p>Une <strong>API</strong> (Application Programming Interface) est un protocole de communication entre un client et un serveur. Elle définit un "contrat" : quelles données peuvent être demandées, et sous quel format.<br></p></blockquote>
+
+<h3 id="31-http-request-response">3.1 HTTP — request / response</h3>
+
+<p>Le protocole HTTP repose sur un cycle <strong>requête / réponse</strong> :</p>
+
+<figure><img src="../../assets/images/data-sourcing-01-9fcf3ce7.png" alt="" loading="lazy"></figure>
+
+<p><strong>Verbes HTTP :</strong></p>
+
+<ul>
+<li><code>GET</code> — lire (paramètres dans l'URL)</li>
+<li><code>POST</code> — créer (paramètres dans le body)</li>
+<li><code>PUT</code> / <code>PATCH</code> — mettre à jour</li>
+<li><code>DELETE</code> — supprimer</li>
+</ul>
+
+<p><strong>Codes de statut :</strong></p>
+
+<ul>
+<li><code>2xx</code> — succès</li>
+<li><code>3xx</code> — redirection</li>
+<li><code>4xx</code> — erreur côté client</li>
+<li><code>5xx</code> — erreur côté serveur</li>
+</ul>
+
+<h3 id="32-la-librairie-requests">3.2 La librairie <code>requests</code></h3>
+
+<p>👉 <a href="https://requests.readthedocs.io/" target="_blank" rel="noopener">Documentation requests</a></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import requests
+
+url = &#x27;https://api.github.com/users/ssaunier&#x27;
+response = requests.get(url).json()   # requête GET + parse JSON
+
+print(response[&#x27;name&#x27;])               # &quot;Sébastien Saunier&quot;</code></pre></div>
+
+
+<h3 id="33-appel-à-lapi-world-bank">3.3 Appel à l'API World Bank</h3>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import requests
+
+country = &#x27;BE&#x27;
+year = 2023
+
+url = f&quot;https://api.worldbank.org/v2/country/{country}/indicator/SP.POP.TOTL&quot;
+
+params = {
+    &#x27;format&#x27;: &#x27;json&#x27;,   # format de la réponse
+    &#x27;date&#x27;: year        # année souhaitée
+}
+
+response = requests.get(url=url, params=params)
+result = response.json()
+
+print(result[1][0][&#x27;value&#x27;])          # 11787423</code></pre></div>
+
+
+<h3 id="34-refactoriser-en-fonction-réutilisable">3.4 Refactoriser en fonction réutilisable</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def fetch_population(country, year):
+    url = f&quot;https://api.worldbank.org/v2/country/{country}/indicator/SP.POP.TOTL&quot;
+
+    params = {
+        &#x27;format&#x27;: &#x27;json&#x27;,
+        &#x27;date&#x27;: year
+    }
+
+    response = requests.get(url=url, params=params)
+
+    if response.status_code != 200:              # vérifier le succès de la requête
+        print(f&quot;Error for {country} - {year}: status code {response.status_code}&quot;)
+        return None
+
+    result = response.json()
+
+    if len(result) == 1 or not result[1]:        # vérifier que la réponse contient des données
+        print(f&quot;Error for {country} - {year}: {result}&quot;)
+        return None
+
+    return result[1][0][&#x27;value&#x27;]                 # retourne la valeur de population</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fetch_population(&#x27;BE&#x27;, 2023)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+11787423</code></pre></div>
+
+
+<h3 id="35-appliquer-sur-tout-le-dataframe">3.5 Appliquer sur tout le DataFrame</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for index, row in emissions_df.iterrows():
+    print(f&quot;Fetching population for {row[&#x27;Name&#x27;]} - {row[&#x27;Code&#x27;]}&quot;)
+    population = fetch_population(row[&#x27;Code&#x27;], 2022)
+    emissions_df.loc[index, &#x27;Population&#x27;] = population   # ajoute la valeur dans la colonne</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Requête en bulk — bien plus rapide</strong></p>
+<p>L'API World Bank permet de demander tous les pays en une seule requête avec <code>/country/all/</code>. Voir la section Annexe pour l'implémentation avec pagination.</p></div></div>
+
+<hr>
+
+<h2 id="4-web-scraping">4) 🌐 Web Scraping</h2>
+
+<blockquote><p>Le scraping est le processus automatisé d'extraction de données structurées depuis des sites web, via des scripts qui parcourent le HTML.<br></p></blockquote>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>À utiliser en dernier recours</strong> — préférer toujours un CSV, une base SQL ou une API quand c'est disponible.</p></div></div>
+
+<p><strong>Limites du scraping :</strong></p>
+
+<ul>
+<li>Les structures HTML changent et peuvent casser ton code</li>
+<li>Certains sites l'interdisent dans leurs CGU</li>
+<li>Des mécanismes anti-scraping peuvent te bloquer</li>
+</ul>
+
+<p>👉 Pour la mise en pratique, voir la page <strong>Scraping</strong> de ce module.</p>
+
+<hr>
+
+<h2 id="5-sauvegarder-les-données-collectées">5) 💾 Sauvegarder les données collectées</h2>
+
+<p>Il est essentiel de sauvegarder après chaque phase de collecte — les appels API coûtent du temps (et parfois de l'argent).</p>
+
+<h3 id="51-sauvegarder-en-csv">5.1 Sauvegarder en CSV</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">emissions_df.to_csv(&quot;data/emissions_enriched.csv&quot;, index=False)  # index=False pour ne pas sauvegarder l&#x27;index Pandas</code></pre></div>
+
+
+<h3 id="52-formats-alternatifs">5.2 Formats alternatifs</h3>
+
+<p>Le CSV est pratique mais inefficace : il convertit tout en texte.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df.to_parquet(&#x27;data/output.parquet&#x27;)   # format binaire Parquet — beaucoup plus compact
+df = pd.read_parquet(&#x27;data/output.parquet&#x27;)</code></pre></div>
+
+
+<p>👉 <a href="https://pandas.pydata.org/docs/reference/io.html" target="_blank" rel="noopener">Formats supportés par Pandas (liste complète)</a></p>
+
+<h3 id="53-sauvegarde-intermédiaire-bonne-pratique">5.3 Sauvegarde intermédiaire (bonne pratique)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import csv
+
+tmp_file_path = &quot;data/regions_tmp.csv&quot;
+start_index = 0   # reprendre depuis ce point si interruption
+
+with open(tmp_file_path, &#x27;a&#x27;) as tmp_file:   # mode &#x27;a&#x27; = append (ne pas écraser)
+    csv_writer = csv.writer(tmp_file)
+    for country in iso_df[&#x27;Full Name&#x27;][start_index:]:
+        region = region_scraper(country)
+        csv_writer.writerow([country, region])   # écriture ligne par ligne</code></pre></div>
+
+
+<hr>
+
+<h2 id="6-analyser-les-données">6) 📊 Analyser les données</h2>
+
+<p>Une fois les données collectées et enrichies, on peut créer le DataFrame final :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Garder les colonnes pertinentes uniquement
+emissions_2022 = emissions_df[[&#x27;Full Name&#x27;, &#x27;Region&#x27;, &#x27;2022&#x27;, &#x27;Population&#x27;]].copy()
+
+## Calculer les émissions totales = émissions par habitant × population
+emissions_2022[&quot;Total Emissions&quot;] = emissions_2022[&quot;2022&quot;] * emissions_2022[&quot;Population&quot;]
+
+## Renommer la colonne de l&#x27;année
+emissions_2022 = emissions_2022.rename(columns={&#x27;2022&#x27;: &#x27;Emissions Per Capita&#x27;})</code></pre></div>
+
+
+<h3 id="61-visualiser-avec-pandas">6.1 Visualiser avec Pandas</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">%matplotlib inline
+
+## Émissions totales par région
+emissions_2022.groupby(&quot;Region&quot;)[&quot;Total Emissions&quot;].sum().plot(kind=&#x27;bar&#x27;)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Scatter plot — population vs émissions totales
+emissions_2022.plot.scatter(&quot;Population&quot;, &quot;Total Emissions&quot;)</code></pre></div>
+
+
+<hr>
+
+<h2 id="annexe-api-paginée-requête-en-bulk">Annexe — API paginée (requête en bulk)</h2>
+
+<p>Plutôt que de faire une requête par pays, l'API World Bank permet de tout récupérer en quelques pages :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">country_codes = []
+country_names = []
+populations = []
+
+page = 1
+while True:
+    url = &quot;https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL&quot;
+
+    params = {
+        &#x27;format&#x27;: &#x27;json&#x27;,
+        &#x27;date&#x27;: year,
+        &#x27;page&#x27;: page          # numéro de page courante
+    }
+
+    response = requests.get(url=url, params=params).json()
+
+    # Extraire les données de la page courante
+    country_codes.extend([result[&#x27;country&#x27;][&#x27;id&#x27;] for result in response[1]])
+    country_names.extend([result[&#x27;country&#x27;][&#x27;value&#x27;] for result in response[1]])
+    populations.extend(result[&#x27;value&#x27;] for result in response[1])
+
+    if page == response[0][&#x27;pages&#x27;]:   # sortir si c&#x27;est la dernière page
+        break
+    page += 1                          # passer à la page suivante
+
+## Mettre les résultats dans un DataFrame
+population_df = pd.DataFrame({
+    &#x27;Code&#x27;: country_codes,
+    &#x27;Name&#x27;: country_names,
+    &#x27;Population&#x27;: populations
+})</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Bonus — convertir un cURL en Python</strong></p>
+<p>Inspecte une requête dans ton navigateur (clic droit → Inspecter → Réseau → clic droit sur la requête → "Copy as cURL"), puis convertis-la en code Python Requests avec 👉 <a href="https://sqqihao.github.io/trillworks.html" target="_blank" rel="noopener">ce convertisseur</a></p></div></div>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-les-3-grandes-sources-que-tu-vas-apprendre-à-utiliser">Les 3 grandes sources que tu vas apprendre à utiliser</a></li><li><a href="#ref-5-choses-essentielles-à-retenir">5 choses essentielles à retenir</a></li><li><a href="#ref-lanalogie-fil-rouge-monter-un-dossier-sur-les-émissions-de-co2">L'analogie fil rouge : monter un dossier sur les émissions de CO2</a></li><li><a href="#ref-plan-du-cours">Plan du cours</a></li></ol></li><li><a href="#ref-1-lire-des-données-depuis-un-csv">1. 📃 Lire des données depuis un CSV</a><ol><li><a href="#ref-cest-quoi-un-csv">C'est quoi un CSV ?</a></li><li><a href="#ref-lire-un-csv-en-une-ligne">Lire un CSV en une ligne</a></li><li><a href="#ref-les-pièges-du-format-csv">Les pièges du format CSV</a></li><li><a href="#ref-récap-section-csv">Récap section CSV</a></li></ol></li><li><a href="#ref-2-enrichir-un-dataframe-avec-un-merge-jointure">2. 🔗 Enrichir un DataFrame avec un merge (jointure)</a><ol><li><a href="#ref-le-problème-des-noms-qui-ne-correspondent-pas">Le problème : des noms qui ne correspondent pas</a></li><li><a href="#ref-joindre-deux-dataframes-avec-merge">Joindre deux DataFrames avec `.merge()`</a></li><li><a href="#ref-récap-section-merge">Récap section Merge</a></li></ol></li><li><a href="#ref-3-interroger-une-api">3. 🌐 Interroger une API</a><ol><li><a href="#ref-cest-quoi-une-api">C'est quoi une API ?</a></li><li><a href="#ref-le-cycle-requête-réponse">Le cycle requête / réponse</a></li><li><a href="#ref-la-librairie-requests">La librairie `requests`</a></li><li><a href="#ref-appel-à-lapi-world-bank-exemple-complet">Appel à l'API World Bank (exemple complet)</a></li><li><a href="#ref-transformer-lappel-en-fonction-réutilisable">Transformer l'appel en fonction réutilisable</a></li><li><a href="#ref-appliquer-la-fonction-sur-tout-le-dataframe">Appliquer la fonction sur tout le DataFrame</a></li><li><a href="#ref-récap-section-api">Récap section API</a></li></ol></li><li><a href="#ref-4-web-scraping-notions-de-base">4. 🕷️ Web Scraping (notions de base)</a><ol><li><a href="#ref-cest-quoi-le-scraping">C'est quoi le scraping ?</a></li><li><a href="#ref-les-limites-à-connaître">Les limites à connaître</a></li><li><a href="#ref-la-librairie-beautifulsoup">La librairie BeautifulSoup</a></li></ol></li><li><a href="#ref-5-sauvegarder-les-données-collectées">5. 💾 Sauvegarder les données collectées</a><ol><li><a href="#ref-pourquoi-cest-indispensable">Pourquoi c'est indispensable</a></li><li><a href="#ref-sauvegarder-un-dataframe-en-csv">Sauvegarder un DataFrame en CSV</a></li><li><a href="#ref-le-format-parquet-plus-compact-que-csv">Le format Parquet : plus compact que CSV</a></li><li><a href="#ref-sauvegarde-intermédiaire-ligne-par-ligne">Sauvegarde intermédiaire ligne par ligne</a></li><li><a href="#ref-récap-section-sauvegarde">Récap section Sauvegarde</a></li></ol></li><li><a href="#ref-6-analyser-et-visualiser-le-résultat">6. 📊 Analyser et visualiser le résultat</a><ol><li><a href="#ref-construire-le-dataframe-final">Construire le DataFrame final</a></li><li><a href="#ref-visualiser-avec-pandas">Visualiser avec Pandas</a></li></ol></li><li><a href="#ref-annexe-api-paginée-récupérer-tous-les-pays-en-bulk">Annexe — API paginée : récupérer tous les pays en bulk</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Quand on veut analyser des données, il faut d'abord les trouver et les récupérer. C'est ça, le <strong>Data Sourcing</strong> : savoir où chercher, comment télécharger, et comment assembler des données venant de sources différentes.</p>
+
+<p>En Data Science, les données arrivent rarement dans un seul endroit propre et prêt à l'emploi. Il faut souvent combiner plusieurs sources pour construire une vue complète.</p>
+
+<h3 id="ref-les-3-grandes-sources-que-tu-vas-apprendre-à-utiliser">Les 3 grandes sources que tu vas apprendre à utiliser</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Source</th><th>C'est quoi ?</th><th>Exemple concret</th></tr></thead><tbody><tr><td><strong>CSV</strong></td><td>Un fichier texte avec des données en colonnes</td><td>Un tableau Excel exporté</td></tr><tr><td><strong>API</strong></td><td>Un service web qui fournit des données à la demande</td><td>La météo en temps réel</td></tr><tr><td><strong>Scraping</strong></td><td>Extraire des données depuis une page web</td><td>Récupérer un tableau Wikipedia</td></tr></tbody></table></div>
+<h3 id="ref-5-choses-essentielles-à-retenir">5 choses essentielles à retenir</h3>
+
+<ol>
+<li>Un <strong>CSV</strong> se lit en une ligne avec <code>pd.read_csv()</code>, mais attention aux formats variés (virgule vs point-virgule, etc.)</li>
+<li>Une <strong>API</strong> répond à des requêtes HTTP — tu demandes, elle te donne de la donnée en JSON</li>
+<li>Le code de retour HTTP <strong>200</strong> signifie "tout va bien", <strong>4xx</strong> = ton erreur, <strong>5xx</strong> = erreur du serveur</li>
+<li>Toujours <strong>sauvegarder</strong> ses données après collecte — les appels API prennent du temps (et parfois de l'argent)</li>
+<li>Le <strong>scraping</strong> est le dernier recours : fragile, parfois interdit, à éviter si une API ou un CSV existe</li>
+</ol>
+
+<h3 id="ref-lanalogie-fil-rouge-monter-un-dossier-sur-les-émissions-de-co2">L'analogie fil rouge : monter un dossier sur les émissions de CO2</h3>
+
+<p>Imagine que tu veux créer un graphique des émissions de CO2 <strong>par continent</strong>. Pour ça, tu as besoin de trois informations :</p>
+<ul>
+<li>Les <strong>émissions par pays</strong> → un fichier CSV (Gapminder)</li>
+<li>La <strong>population de chaque pays</strong> → une API (Banque Mondiale)</li>
+<li>La <strong>région/continent de chaque pays</strong> → une page Wikipedia à scraper</li>
+</ul>
+
+<p>Ce cours te montre comment récupérer chacune de ces pièces, puis les assembler dans un seul DataFrame Pandas.</p>
+
+<h3 id="ref-plan-du-cours">Plan du cours</h3>
+<ol>
+<li>Lire un CSV avec Pandas</li>
+<li>Enrichir un DataFrame via une jointure (merge)</li>
+<li>Interroger une API avec la librairie <code>requests</code></li>
+<li>Notions de base du web scraping</li>
+<li>Sauvegarder les données collectées</li>
+<li>Analyser et visualiser le résultat</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-lire-des-données-depuis-un-csv">1. 📃 Lire des données depuis un CSV</h2>
+
+<h3 id="ref-cest-quoi-un-csv">C'est quoi un CSV ?</h3>
+
+<p>Un fichier <strong>CSV</strong> (Comma-Separated Values, "valeurs séparées par des virgules") est un simple fichier texte. Chaque ligne représente une ligne de tableau, et les colonnes sont séparées par un délimiteur (souvent une virgule ou un point-virgule).</p>
+
+<p>Exemple de fichier CSV brut :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">country,2020,2021,2022
+France,5.1,5.3,5.2
+Germany,7.8,8.0,7.9</code></pre></div>
+
+
+<h3 id="ref-lire-un-csv-en-une-ligne">Lire un CSV en une ligne</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd  # on importe Pandas, la librairie de tableaux de données
+
+# pd.read_csv() lit le fichier et crée automatiquement un DataFrame
+emissions_df = pd.read_csv(&#x27;data/co2_pcap_cons.csv&#x27;)
+
+emissions_df.head()  # affiche les 5 premières lignes pour vérifier</code></pre></div>
+
+
+<p><code>emissions_df</code> est maintenant un tableau Pandas (un DataFrame) avec toutes les données du fichier.</p>
+
+<h3 id="ref-les-pièges-du-format-csv">Les pièges du format CSV</h3>
+
+<p>Les CSV viennent de partout et ne sont pas tous identiques. Voici les variantes les plus courantes et comment les gérer :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Cas 1 : séparateur point-virgule (courant en Europe)
+df = pd.read_csv(&#x27;fichier.csv&#x27;, sep=&#x27;;&#x27;)
+# → Par défaut, Pandas attend une virgule. Si le fichier utilise &quot;;&quot;, il faut le préciser.
+
+# Cas 2 : virgule comme séparateur décimal (notation européenne : 3,14 au lieu de 3.14)
+df = pd.read_csv(&#x27;fichier.csv&#x27;, decimal=&#x27;,&#x27;)
+# → Sans ça, &quot;3,14&quot; serait lu comme du texte, pas comme un nombre.
+
+# Cas 3 : désactiver la détection automatique de NaN (valeurs manquantes)
+df = pd.read_csv(&#x27;fichier.csv&#x27;, na_filter=False)
+# → Pandas transforme automatiquement certaines valeurs en NaN (vide)
+# → Problème : le code ISO de la Namibie est &quot;NA&quot; → sans na_filter=False, il devient NaN !</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Piège classique pour les codes pays : le code ISO de la Namibie est <strong>"NA"</strong>. Par défaut, Pandas l'interprète comme une valeur manquante (<code>NaN</code>). Toujours utiliser <code>na_filter=False</code> quand tu lis des codes pays ou d'autres abréviations en deux lettres.</p></div></div>
+
+<h3 id="ref-récap-section-csv">Récap section CSV</h3>
+
+<ul>
+<li><code>pd.read_csv(&#x27;fichier.csv&#x27;)</code> → lecture de base</li>
+<li><code>sep=&#x27;;&#x27;</code> → si le fichier utilise des points-virgules</li>
+<li><code>decimal=&#x27;,&#x27;</code> → si les décimales sont avec des virgules</li>
+<li><code>na_filter=False</code> → pour éviter de perdre des valeurs comme "NA"</li>
+</ul>
+
+<hr>
+
+<h2 id="ref-2-enrichir-un-dataframe-avec-un-merge-jointure">2. 🔗 Enrichir un DataFrame avec un merge (jointure)</h2>
+
+<h3 id="ref-le-problème-des-noms-qui-ne-correspondent-pas">Le problème : des noms qui ne correspondent pas</h3>
+
+<p>Ton fichier CSV des émissions contient des noms de pays en toutes lettres ("France", "Germany"...). Mais une API peut utiliser des codes ISO à 2 lettres ("FR", "DE"...). Pour relier les deux, tu as besoin d'un <strong>fichier de référence</strong> qui fait le lien entre le nom et le code.</p>
+
+<p>Tu peux le télécharger depuis le terminal :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># curl télécharge un fichier depuis une URL et &gt; le sauvegarde en local
+curl -s https://wagon-public-datasets.s3.amazonaws.com/02-Data-Toolkit/02-Data-Sourcing/iso2_with_region.csv &gt; data/iso2_with_region.csv</code></pre></div>
+
+
+<p>Puis le charger dans Python :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># na_filter=False est OBLIGATOIRE ici à cause du code &quot;NA&quot; (Namibie)
+iso_df = pd.read_csv(&#x27;data/iso2_with_region.csv&#x27;, na_filter=False)
+
+iso_df.head()  # vérifie que le fichier contient bien les colonnes Name, Code, Region...</code></pre></div>
+
+
+<h3 id="ref-joindre-deux-dataframes-avec-merge">Joindre deux DataFrames avec <code>.merge()</code></h3>
+
+<p>Le <strong>merge</strong> est l'équivalent d'un <code>JOIN</code> en SQL : il assemble deux tableaux en faisant correspondre des colonnes.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># On joint emissions_df et iso_df en faisant correspondre :
+# - la colonne &#x27;country&#x27; de emissions_df
+# - avec la colonne &#x27;Name&#x27; de iso_df
+emissions_df = emissions_df.merge(
+    iso_df,
+    left_on=&#x27;country&#x27;,   # colonne de gauche (emissions_df)
+    right_on=&#x27;Name&#x27;      # colonne de droite (iso_df)
+)
+
+# Après le merge, les deux colonnes &#x27;country&#x27; et &#x27;Name&#x27; existent —
+# elles disent la même chose, on en supprime une
+emissions_df = emissions_df.drop(columns=[&#x27;country&#x27;])</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Pense au merge comme à un VLOOKUP dans Excel, mais en beaucoup plus puissant. Il aligne les lignes des deux tableaux là où les valeurs des colonnes choisies se correspondent.</p></div></div>
+
+<h3 id="ref-récap-section-merge">Récap section Merge</h3>
+
+<ul>
+<li><code>.merge(df2, left_on=&#x27;col1&#x27;, right_on=&#x27;col2&#x27;)</code> → jointure sur des colonnes de noms différents</li>
+<li><code>.drop(columns=[&#x27;col&#x27;])</code> → supprimer une colonne devenue redondante</li>
+<li>Toujours vérifier le résultat avec <code>.head()</code> et <code>.shape</code> après un merge</li>
+</ul>
+
+<hr>
+
+<h2 id="ref-3-interroger-une-api">3. 🌐 Interroger une API</h2>
+
+<h3 id="ref-cest-quoi-une-api">C'est quoi une API ?</h3>
+
+<p>Une <strong>API</strong> (Application Programming Interface) est un service web auquel tu envoies des requêtes et qui te répond avec des données. C'est comme un serveur de restaurant : tu commandes quelque chose, il te l'apporte dans le format convenu.</p>
+
+<p>La communication se fait via le protocole <strong>HTTP</strong>, le même que ton navigateur utilise.</p>
+
+<h3 id="ref-le-cycle-requête-réponse">Le cycle requête / réponse</h3>
+
+<p>Quand tu appelles une API, voilà ce qui se passe :</p>
+
+<ol>
+<li>Ton script envoie une <strong>requête</strong> (une sorte de message) vers une URL</li>
+<li>Le serveur de l'API reçoit la demande et prépare les données</li>
+<li>Le serveur renvoie une <strong>réponse</strong> contenant les données (souvent en JSON)</li>
+</ol>
+
+<p>Les <strong>verbes HTTP</strong> les plus courants :</p>
+<ul>
+<li><code>GET</code> → lire des données (le plus utilisé en data)</li>
+<li><code>POST</code> → envoyer/créer des données</li>
+<li><code>PUT</code> / <code>PATCH</code> → modifier des données</li>
+<li><code>DELETE</code> → supprimer des données</li>
+</ul>
+
+<p>Les <strong>codes de statut</strong> HTTP :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Code</th><th>Signification</th></tr></thead><tbody><tr><td><code>200</code></td><td>Succès — tout va bien</td></tr><tr><td><code>404</code></td><td>Ressource introuvable</td></tr><tr><td><code>401</code></td><td>Non autorisé (problème d'authentification)</td></tr><tr><td><code>429</code></td><td>Trop de requêtes (rate limit)</td></tr><tr><td><code>500</code></td><td>Erreur interne du serveur</td></tr></tbody></table></div>
+<h3 id="ref-la-librairie-requests">La librairie <code>requests</code></h3>
+
+<p>Python dispose d'une librairie appelée <code>requests</code> pour faire des appels HTTP simplement.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import requests  # librairie pour faire des requêtes HTTP
+
+url = &#x27;https://api.github.com/users/ssaunier&#x27;  # URL de l&#x27;API GitHub
+
+response = requests.get(url)          # envoie une requête GET à cette URL
+data = response.json()                # transforme la réponse JSON en dictionnaire Python
+
+print(data[&#x27;name&#x27;])                   # affiche le nom → &quot;Sébastien Saunier&quot;</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>JSON (JavaScript Object Notation) est le format de données le plus courant des APIs. Une fois parsé avec <code>.json()</code>, c'est un dictionnaire Python normal que tu manipules avec <code>data[&#x27;clé&#x27;]</code>.</p></div></div>
+
+<h3 id="ref-appel-à-lapi-world-bank-exemple-complet">Appel à l'API World Bank (exemple complet)</h3>
+
+<p>On veut récupérer la population de la Belgique en 2023.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import requests  # pour faire les requêtes HTTP
+
+country = &#x27;BE&#x27;   # code ISO 2 lettres de la Belgique
+year = 2023      # année souhaitée
+
+# L&#x27;URL de l&#x27;API : on insère le code pays directement dans l&#x27;adresse
+url = f&quot;https://api.worldbank.org/v2/country/{country}/indicator/SP.POP.TOTL&quot;
+
+# Les paramètres passés dans l&#x27;URL (après le ?)
+params = {
+    &#x27;format&#x27;: &#x27;json&#x27;,  # on veut la réponse en JSON
+    &#x27;date&#x27;: year       # on filtre sur l&#x27;année
+}
+
+response = requests.get(url=url, params=params)  # envoi de la requête
+
+result = response.json()  # parsing de la réponse JSON → liste Python
+
+print(result[1][0][&#x27;value&#x27;])  # la valeur de population est imbriquée dans la réponse
+# → 11787423</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Pourquoi <code>result[1][0][&#x27;value&#x27;]</code> ? L'API World Bank renvoie une liste à deux éléments : <code>result[0]</code> contient des métadonnées (nombre de pages, etc.), et <code>result[1]</code> contient les données. Chaque données est un dictionnaire avec une clé <code>&#x27;value&#x27;</code>.</p></div></div>
+
+<h3 id="ref-transformer-lappel-en-fonction-réutilisable">Transformer l'appel en fonction réutilisable</h3>
+
+<p>Plutôt que de réécrire ce code pour chaque pays, on crée une <strong>fonction</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def fetch_population(country, year):
+    &quot;&quot;&quot;Récupère la population d&#x27;un pays pour une année donnée via l&#x27;API World Bank.&quot;&quot;&quot;
+
+    # Construction de l&#x27;URL avec le code pays
+    url = f&quot;https://api.worldbank.org/v2/country/{country}/indicator/SP.POP.TOTL&quot;
+
+    params = {
+        &#x27;format&#x27;: &#x27;json&#x27;,   # format de réponse souhaité
+        &#x27;date&#x27;: year        # filtre sur l&#x27;année
+    }
+
+    response = requests.get(url=url, params=params)  # on envoie la requête
+
+    # Vérification 1 : est-ce que la requête a réussi ?
+    if response.status_code != 200:
+        print(f&quot;Erreur pour {country} - {year} : code {response.status_code}&quot;)
+        return None  # on retourne None pour signaler l&#x27;échec
+
+    result = response.json()  # parsing de la réponse
+
+    # Vérification 2 : est-ce que la réponse contient bien des données ?
+    if len(result) == 1 or not result[1]:
+        print(f&quot;Pas de données pour {country} - {year}&quot;)
+        return None
+
+    return result[1][0][&#x27;value&#x27;]  # retourne la population (un nombre entier)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Utilisation de la fonction
+fetch_population(&#x27;BE&#x27;, 2023)
+# → 11787423</code></pre></div>
+
+
+<h3 id="ref-appliquer-la-fonction-sur-tout-le-dataframe">Appliquer la fonction sur tout le DataFrame</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># On parcourt chaque ligne du DataFrame
+for index, row in emissions_df.iterrows():
+    print(f&quot;Récupération : {row[&#x27;Name&#x27;]} ({row[&#x27;Code&#x27;]})&quot;)
+
+    # On appelle notre fonction avec le code pays et l&#x27;année
+    population = fetch_population(row[&#x27;Code&#x27;], 2022)
+
+    # On ajoute la valeur dans une nouvelle colonne &#x27;Population&#x27;
+    emissions_df.loc[index, &#x27;Population&#x27;] = population</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Appeler une API dans une boucle <code>for</code> fonctionne mais peut être <strong>très lent</strong> si tu as des centaines de pays. Certaines APIs (comme la World Bank) offrent un endpoint "bulk" pour tout récupérer en une seule requête. Voir la section Annexe.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais utiliser <code>try/except</code> pendant le développement : il masque toutes les erreurs et rend le débogage impossible. N'ajouter <code>try/except</code> qu'une fois que la fonction fonctionne correctement sur un cas simple.</p></div></div>
+
+<h3 id="ref-récap-section-api">Récap section API</h3>
+
+<ul>
+<li><code>requests.get(url)</code> → envoi d'une requête GET</li>
+<li><code>requests.get(url, params={...})</code> → avec des paramètres dans l'URL</li>
+<li><code>response.status_code</code> → vérifier le succès avant de parser</li>
+<li><code>response.json()</code> → transformer la réponse en dictionnaire Python</li>
+<li>Toujours vérifier le code de statut ET la présence de données avant d'utiliser la réponse</li>
+</ul>
+
+<hr>
+
+<h2 id="ref-4-web-scraping-notions-de-base">4. 🕷️ Web Scraping (notions de base)</h2>
+
+<h3 id="ref-cest-quoi-le-scraping">C'est quoi le scraping ?</h3>
+
+<p>Le <strong>scraping</strong> consiste à extraire automatiquement des données visibles sur une page web, en analysant le code HTML de cette page. C'est utile quand les données existent sur un site mais ne sont pas disponibles autrement (pas de CSV, pas d'API).</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le scraping est toujours le <strong>dernier recours</strong>. Préfère toujours un CSV, une base de données ou une API si c'est disponible. Le scraping est fragile (le site peut changer), parfois interdit (lire les CGU), et peut te faire bloquer par le site.</p></div></div>
+
+<h3 id="ref-les-limites-à-connaître">Les limites à connaître</h3>
+
+<ul>
+<li>Un changement de design du site peut casser ton code du jour au lendemain</li>
+<li>Certains sites interdisent le scraping dans leurs conditions d'utilisation</li>
+<li>Des mécanismes anti-bot peuvent bloquer ton script (captcha, ban d'IP...)</li>
+</ul>
+
+<h3 id="ref-la-librairie-beautifulsoup">La librairie BeautifulSoup</h3>
+
+<p>BeautifulSoup permet de naviguer dans le HTML d'une page comme dans une structure d'arbre.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import requests                         # pour télécharger la page
+from bs4 import BeautifulSoup           # pour analyser le HTML
+
+# On télécharge la page (le header User-Agent évite certains blocages)
+response = requests.get(url, headers={&quot;User-Agent&quot;: &quot;Mon application&quot;})
+
+# On &quot;parse&quot; (analyse) le HTML téléchargé
+soup = BeautifulSoup(response.content, &quot;html.parser&quot;)
+
+# Chercher des éléments dans le HTML :
+soup.find(&#x27;h1&#x27;)                         # premier élément &lt;h1&gt; trouvé
+soup.find_all(&#x27;article&#x27;)                # liste de tous les &lt;article&gt;
+soup.find(class_=&quot;infobox-data&quot;)        # par classe CSS (class_ avec _ car &#x27;class&#x27; est un mot réservé Python)
+soup.find(id=&quot;author&quot;).text             # par attribut id, et .text extrait le contenu texte</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le HTML est une structure en arbre : chaque balise peut contenir d'autres balises. BeautifulSoup te permet de naviguer dans cet arbre et d'extraire les éléments qui t'intéressent.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-sauvegarder-les-données-collectées">5. 💾 Sauvegarder les données collectées</h2>
+
+<h3 id="ref-pourquoi-cest-indispensable">Pourquoi c'est indispensable</h3>
+
+<p>Collecter des données depuis une API ou en scraping prend du temps. Si ton script plante au milieu, ou si ton ordinateur s'éteint, tu perds tout. La règle d'or : <strong>sauvegarder dès que la collecte est terminée</strong>.</p>
+
+<h3 id="ref-sauvegarder-un-dataframe-en-csv">Sauvegarder un DataFrame en CSV</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># to_csv() écrit le DataFrame dans un fichier CSV
+# index=False → on n&#x27;écrit PAS la colonne d&#x27;index Pandas (les numéros 0, 1, 2...)
+# car ce n&#x27;est pas une vraie colonne de données
+emissions_df.to_csv(&quot;data/emissions_enriched.csv&quot;, index=False)</code></pre></div>
+
+
+<h3 id="ref-le-format-parquet-plus-compact-que-csv">Le format Parquet : plus compact que CSV</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Parquet est un format binaire (pas du texte) — beaucoup plus efficace pour les gros volumes
+df.to_parquet(&#x27;data/output.parquet&#x27;)    # sauvegarde en Parquet
+
+df = pd.read_parquet(&#x27;data/output.parquet&#x27;)  # lecture depuis Parquet</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>CSV = texte lisible par un humain, facile à partager, mais lourd. Parquet = binaire non lisible directement, mais 5 à 10 fois plus compact et bien plus rapide à lire/écrire.</p></div></div>
+
+<h3 id="ref-sauvegarde-intermédiaire-ligne-par-ligne">Sauvegarde intermédiaire ligne par ligne</h3>
+
+<p>Quand un scraping prend beaucoup de temps, il est prudent de sauvegarder <strong>au fur et à mesure</strong>, ligne par ligne. Si le script s'arrête, tu peux reprendre depuis où tu t'es arrêté.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import csv  # module de la librairie standard Python pour écrire des CSV
+
+tmp_file_path = &quot;data/regions_tmp.csv&quot;  # chemin du fichier temporaire
+start_index = 0                          # si on reprend après un crash, changer cette valeur
+
+# &#x27;a&#x27; = mode &quot;append&quot; (ajout) → on ajoute des lignes sans écraser le début
+with open(tmp_file_path, &#x27;a&#x27;) as tmp_file:
+    csv_writer = csv.writer(tmp_file)       # crée un objet &quot;écrivain&quot; de CSV
+
+    for country in iso_df[&#x27;Full Name&#x27;][start_index:]:  # boucle sur les pays
+        region = region_scraper(country)               # appel à la fonction de scraping
+        csv_writer.writerow([country, region])         # écrit la ligne immédiatement
+        # → même si le script plante après, les lignes précédentes sont déjà sauvegardées</code></pre></div>
+
+
+<h3 id="ref-récap-section-sauvegarde">Récap section Sauvegarde</h3>
+
+<ul>
+<li><code>df.to_csv(&#x27;fichier.csv&#x27;, index=False)</code> → sauvegarde classique</li>
+<li><code>df.to_parquet(&#x27;fichier.parquet&#x27;)</code> → format plus compact</li>
+<li>Sauvegarde intermédiaire avec <code>csv.writer</code> et mode <code>&#x27;a&#x27;</code> (append) pour les collectes longues</li>
+</ul>
+
+<hr>
+
+<h2 id="ref-6-analyser-et-visualiser-le-résultat">6. 📊 Analyser et visualiser le résultat</h2>
+
+<h3 id="ref-construire-le-dataframe-final">Construire le DataFrame final</h3>
+
+<p>Une fois toutes les données collectées et sauvegardées, on prépare un DataFrame propre pour l'analyse :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># On ne garde que les colonnes utiles et on en fait une copie propre
+emissions_2022 = emissions_df[[&#x27;Full Name&#x27;, &#x27;Region&#x27;, &#x27;2022&#x27;, &#x27;Population&#x27;]].copy()
+
+# On calcule les émissions totales = émissions par habitant × population du pays
+emissions_2022[&quot;Total Emissions&quot;] = emissions_2022[&quot;2022&quot;] * emissions_2022[&quot;Population&quot;]
+
+# On renomme la colonne &#x27;2022&#x27; pour qu&#x27;elle soit plus explicite
+emissions_2022 = emissions_2022.rename(columns={&#x27;2022&#x27;: &#x27;Emissions Per Capita&#x27;})</code></pre></div>
+
+
+<h3 id="ref-visualiser-avec-pandas">Visualiser avec Pandas</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">%matplotlib inline  # nécessaire dans un notebook Jupyter pour afficher les graphes
+
+# Graphique à barres : émissions totales groupées par région/continent
+emissions_2022.groupby(&quot;Region&quot;)[&quot;Total Emissions&quot;].sum().plot(kind=&#x27;bar&#x27;)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Nuage de points : population en X, émissions totales en Y
+emissions_2022.plot.scatter(&quot;Population&quot;, &quot;Total Emissions&quot;)</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>En deux lignes de code, on peut déjà répondre à la question : "Quels continents émettent le plus de CO2 ?" — c'est la puissance de combiner plusieurs sources de données dans un seul DataFrame propre.</p></div></div>
+
+<hr>
+
+<h2 id="ref-annexe-api-paginée-récupérer-tous-les-pays-en-bulk">Annexe — API paginée : récupérer tous les pays en bulk</h2>
+
+<p>Au lieu de faire une requête par pays (lent), l'API World Bank permet de tout récupérer en quelques pages :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">country_codes = []   # liste pour stocker les codes pays
+country_names = []   # liste pour stocker les noms
+populations = []     # liste pour stocker les populations
+
+page = 1             # on commence à la page 1
+while True:          # boucle infinie qu&#x27;on cassera manuellement
+
+    url = &quot;https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL&quot;
+    # &#x27;all&#x27; = demande tous les pays en une seule requête
+
+    params = {
+        &#x27;format&#x27;: &#x27;json&#x27;,   # réponse en JSON
+        &#x27;date&#x27;: year,       # année souhaitée
+        &#x27;page&#x27;: page        # numéro de la page courante
+    }
+
+    response = requests.get(url=url, params=params).json()  # requête + parsing
+
+    # On récupère les données de la page courante et on les ajoute aux listes
+    country_codes.extend([result[&#x27;country&#x27;][&#x27;id&#x27;] for result in response[1]])
+    country_names.extend([result[&#x27;country&#x27;][&#x27;value&#x27;] for result in response[1]])
+    populations.extend(result[&#x27;value&#x27;] for result in response[1])
+
+    if page == response[0][&#x27;pages&#x27;]:  # si on est sur la dernière page → on arrête
+        break
+
+    page += 1  # sinon on passe à la page suivante
+
+# On assemble les listes dans un DataFrame
+population_df = pd.DataFrame({
+    &#x27;Code&#x27;: country_codes,
+    &#x27;Name&#x27;: country_names,
+    &#x27;Population&#x27;: populations
+})</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Cette approche "pagination" est beaucoup plus rapide : au lieu de 200+ requêtes (une par pays), on en fait une poignée (une par page de résultats). Toujours privilégier les endpoints "bulk" quand ils existent.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1</strong> — Tu télécharges un CSV qui contient des codes pays ISO à 2 lettres. Après <code>pd.read_csv()</code>, tu remarques que la Namibie a disparu de ton DataFrame. Quelle est la cause probable et comment la corriger ?</p>
+
+<blockquote><p>La Namibie a le code ISO "NA", que Pandas interprète automatiquement comme une valeur manquante (<code>NaN</code>). Solution : ajouter <code>na_filter=False</code> dans <code>pd.read_csv()</code>.</p></blockquote>
+
+<p><strong>Question 2</strong> — Quelle est la différence entre un code de statut HTTP <code>404</code> et <code>500</code> ? Lequel indique que c'est ton script qui a un problème ?</p>
+
+<blockquote><p><code>404</code> = la ressource demandée n'existe pas (ton URL est peut-être incorrecte) → c'est une erreur côté client. <code>500</code> = erreur interne du serveur → c'est le serveur de l'API qui a un problème. Le <code>404</code> indique plutôt un problème côté script.</p></blockquote>
+
+<p><strong>Question 3</strong> — Tu veux récupérer la population de 180 pays via une API. Quelle approche est préférable : une boucle <code>for</code> avec une requête par pays, ou une requête en bulk ? Pourquoi ?</p>
+
+<blockquote><p>La requête en bulk est bien meilleure : elle envoie une seule requête (ou quelques pages) au lieu de 180. C'est beaucoup plus rapide, moins susceptible d'être bloqué par des limites de taux (rate limits), et plus robuste.</p></blockquote>
+
+<p><strong>Question 4</strong> — Pourquoi est-il important de sauvegarder le DataFrame après une phase de collecte via API, avant de continuer les traitements ?</p>
+
+<blockquote><p>Parce que refaire tous les appels API coûte du temps (parfois de l'argent si l'API est payante), et que le DataFrame en mémoire est perdu si le script plante ou si le kernel redémarre. On sauvegarde avec <code>df.to_csv(&#x27;fichier.csv&#x27;, index=False)</code>.</p></blockquote>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Le <strong>Data Sourcing</strong> consiste à collecter des données depuis plusieurs sources (CSV, API, scraping) et à les assembler dans un seul DataFrame Pandas.</li>
+<li><code>pd.read_csv()</code> lit un CSV ; utiliser <code>sep</code>, <code>decimal</code>, <code>na_filter=False</code> selon le format du fichier.</li>
+<li><code>.merge()</code> joint deux DataFrames comme un JOIN SQL ; toujours supprimer les colonnes redondantes avec <code>.drop()</code>.</li>
+<li>Une API se requête avec <code>requests.get(url, params={...})</code> ; toujours vérifier <code>response.status_code == 200</code> avant d'utiliser <code>response.json()</code>.</li>
+<li>Le scraping (BeautifulSoup) est le dernier recours : fragile, potentiellement interdit, à n'utiliser que quand aucune autre option n'existe.</li>
+<li>Toujours sauvegarder après la collecte : <code>df.to_csv(&#x27;fichier.csv&#x27;, index=False)</code> — ou en format Parquet pour les gros volumes.</li>
+<li>Éviter les boucles avec une requête API par ligne : préférer les endpoints "bulk" quand ils existent.</li>
+<li>Ne pas mettre <code>try/except</code> pendant le développement : il cache les erreurs et empêche le débogage.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-les-sources-de-données-du-data-scientist">Les sources de données du data scientist</a></li><li><a href="#syn-lire-un-csv-proprement">Lire un CSV proprement</a></li><li><a href="#syn-appeler-une-api-rest">Appeler une API REST</a></li><li><a href="#syn-se-connecter-à-une-base-de-données">Se connecter à une base de données</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-authentification-tokens-clés-oauth">Authentification : tokens, clés, OAuth</a></li><li><a href="#syn-pagination-rate-limiting-retries">Pagination, rate limiting, retries</a></li><li><a href="#syn-formats-de-fichiers-csv-vs-parquet-vs-arrow">Formats de fichiers : CSV vs Parquet vs Arrow</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-les-sources-de-données-du-data-scientist">Les sources de données du data scientist</h3>
+
+<p><strong>90% du temps en début de projet</strong> est passé à <strong>trouver, extraire et nettoyer</strong> les données. Les sources typiques :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Source</th><th>Format</th><th>Outil Python</th></tr></thead><tbody><tr><td>Fichier local CSV/Excel</td><td>Texte / binaire</td><td><code>pd.read_csv</code>, <code>pd.read_excel</code></td></tr><tr><td>Base de données SQL</td><td>Tables</td><td><code>pd.read_sql</code>, <code>sqlalchemy</code></td></tr><tr><td>API REST</td><td>JSON</td><td><code>requests</code>, <code>httpx</code></td></tr><tr><td>Site web sans API</td><td>HTML</td><td><code>BeautifulSoup</code>, <code>scrapy</code></td></tr><tr><td>Fichier sur cloud</td><td>Parquet, JSON, CSV</td><td><code>s3fs</code>, <code>gcsfs</code>, <code>pyarrow</code></td></tr><tr><td>Stream temps réel</td><td>Kafka, Webhooks</td><td><code>kafka-python</code>, <code>fastapi</code></td></tr><tr><td>Open data</td><td>Variés</td><td><code>requests</code> + parsing custom</td></tr></tbody></table></div>
+<p><strong>Le bon réflexe</strong> : toujours <strong>préférer une source structurée et maintenue</strong>. Récupérer une donnée par scraping est faisable mais <strong>fragile</strong> (le site change, vous cassez votre pipeline). Si une API existe, utilisez-la même si elle est limitée.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : trouver une bonne source de données, c'est comme choisir un fournisseur. Le pas cher (scraping) coûte cher en maintenance. Le payant (API officielle) coûte un peu mais vous garantit la fiabilité. Pour un projet long terme, l'API officielle est presque toujours plus économique.</p></div></div>
+
+<h3 id="syn-lire-un-csv-proprement">Lire un CSV proprement</h3>
+
+<p>Le format CSV est trompeusement simple. Les pièges abondent :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+
+df = pd.read_csv(
+    &quot;data.csv&quot;,
+    sep=&quot;,&quot;,                         # Séparateur (parfois ; en Europe, \t en TSV)
+    encoding=&quot;utf-8&quot;,                # Crucial pour les accents (utf-8 ou latin-1)
+    header=0,                        # La 1ère ligne est l&#x27;en-tête
+    parse_dates=[&quot;created_at&quot;],      # Conversion auto en datetime
+    dtype={&quot;id&quot;: &quot;int32&quot;, &quot;category&quot;: &quot;category&quot;},  # Types explicites
+    na_values=[&quot;&quot;, &quot;NA&quot;, &quot;null&quot;, &quot;?&quot;],  # Marqueurs de valeurs manquantes
+    skiprows=2,                      # Ignorer les 2 premières lignes (commentaires)
+    nrows=10000,                     # Lire seulement 10000 lignes (debug rapide)
+)</code></pre></div>
+
+
+<p><strong>Cinq pièges classiques</strong> :</p>
+
+<ol>
+<li><strong>Encoding</strong> : un fichier exporté d'Excel sous Windows est souvent en <code>cp1252</code> ou <code>latin-1</code>, pas UTF-8. Symptôme : <code>UnicodeDecodeError</code>. Test rapide : <code>chardet</code> ou <code>file --mime-encoding fichier.csv</code>.</li>
+</ol>
+
+<ol>
+<li><strong>Séparateur régional</strong> : en France, certains CSV utilisent <code>;</code> parce que la virgule est le séparateur décimal. Spécifier <code>sep=&quot;;&quot;, decimal=&quot;,&quot;</code> pour ces fichiers.</li>
+</ol>
+
+<ol>
+<li><strong>Quotation</strong> : un champ contient une virgule (<code>&quot;Smith, John&quot;, 30, ...</code>). Pandas gère ça par défaut, mais si le CSV est mal formé (guillemets non balancés), <code>read_csv</code> plante.</li>
+</ol>
+
+<ol>
+<li><strong>Dtype guessing</strong> : Pandas tente d'inférer le type. Une colonne d'IDs avec un seul <code>null</code> devient <code>float64</code> (parce que NaN n'existe pas en int). Solution : <code>dtype={&quot;id&quot;: &quot;Int64&quot;}</code> (la version nullable).</li>
+</ol>
+
+<ol>
+<li><strong>Lignes corrompues</strong> : <code>on_bad_lines=&#x27;skip&#x27;</code> ignore les lignes mal formées. À utiliser avec précaution — log d'abord pour comprendre pourquoi elles sont mal formées.</li>
+</ol>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Anti-pattern</strong> : <code>pd.read_csv(&quot;data.csv&quot;)</code> sans paramètres sur un CSV inconnu. Vous obtenez ce qui passe, sans contrôle. <strong>Toujours commencer par regarder les premières lignes</strong> (<code>head data.csv</code> au shell), choisir les paramètres, puis lire.</p></div></div>
+
+<h3 id="syn-appeler-une-api-rest">Appeler une API REST</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import requests
+
+response = requests.get(
+    &quot;https://api.example.com/users&quot;,
+    params={&quot;page&quot;: 1, &quot;limit&quot;: 100},           # → ?page=1&amp;limit=100
+    headers={&quot;Authorization&quot;: f&quot;Bearer {API_TOKEN}&quot;},
+    timeout=10,                                  # ← TOUJOURS un timeout
+)
+
+response.raise_for_status()     # Lève une exception si statut HTTP 4xx/5xx
+data = response.json()           # Parse la réponse JSON
+df = pd.DataFrame(data[&quot;results&quot;])</code></pre></div>
+
+
+<p><strong>Décomposition ligne par ligne</strong> :</p>
+
+<ul>
+<li><code>params={...}</code> : Python construit <code>?page=1&amp;limit=100</code> automatiquement (plus safe que concat).</li>
+<li><code>headers={...}</code> : authentification + Content-Type.</li>
+<li><code>timeout=10</code> : <strong>TOUJOURS</strong> spécifier un timeout. Sinon votre script peut bloquer indéfiniment si l'API ne répond pas.</li>
+<li><code>raise_for_status()</code> : transforme les codes 4xx/5xx en exceptions Python — vous évitez d'avoir un dict d'erreur en pensant que c'est une réponse valide.</li>
+</ul>
+
+<p><strong>Méthodes HTTP courantes</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">requests.get(url)                     # Lire
+requests.post(url, json=payload)      # Créer / soumettre
+requests.put(url, json=payload)       # Mettre à jour (replacement complet)
+requests.patch(url, json=payload)     # Mettre à jour partiellement
+requests.delete(url)                  # Supprimer</code></pre></div>
+
+
+<h3 id="syn-se-connecter-à-une-base-de-données">Se connecter à une base de données</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+from sqlalchemy import create_engine
+
+engine = create_engine(
+    &quot;postgresql://user:password@host:5432/database&quot;
+)
+df = pd.read_sql(
+    &quot;SELECT * FROM users WHERE created_at &gt; &#x27;2024-01-01&#x27;&quot;,
+    engine,
+)</code></pre></div>
+
+
+<p><strong>Pour des bases courantes</strong> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>BDD</th><th>URL</th></tr></thead><tbody><tr><td>PostgreSQL</td><td><code>postgresql://user:pass@host:5432/db</code></td></tr><tr><td>MySQL</td><td><code>mysql+pymysql://user:pass@host:3306/db</code></td></tr><tr><td>SQLite</td><td><code>sqlite:///chemin/vers/fichier.db</code></td></tr><tr><td>Snowflake</td><td><code>snowflake://user:pass@account/db/schema</code></td></tr><tr><td>BigQuery</td><td>via <code>google-cloud-bigquery</code> ou <code>pandas-gbq</code></td></tr></tbody></table></div>
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Sécurité</strong> : ne <strong>jamais</strong> mettre les credentials dans le code. Stockez-les dans <code>.env</code> chargé via <code>python-dotenv</code>, ou dans un gestionnaire de secrets cloud (AWS Secrets Manager, GCP Secret Manager). Une connection string committée sur GitHub <strong>fuite en quelques minutes</strong> — c'est exactement comme une clé API.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-authentification-tokens-clés-oauth">Authentification : tokens, clés, OAuth</h3>
+
+<p><strong>Trois mécanismes principaux</strong> :</p>
+
+<p><strong>1. API Key</strong> : un identifiant secret passé dans un header ou query string. Simple, parfait pour des APIs internes ou peu sensibles.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">requests.get(url, headers={&quot;X-API-Key&quot;: API_KEY})
+requests.get(url, params={&quot;api_key&quot;: API_KEY})  # Moins sécurisé : visible dans les logs</code></pre></div>
+
+
+<p><strong>2. Bearer Token</strong> : un token (souvent JWT) passé dans le header <code>Authorization</code>. Utilisé par 80% des APIs modernes.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">requests.get(url, headers={&quot;Authorization&quot;: f&quot;Bearer {TOKEN}&quot;})</code></pre></div>
+
+
+<p><strong>3. OAuth 2.0</strong> : le standard d'authentification avec consentement utilisateur (login Google, GitHub, Facebook…). Trois flows principaux :</p>
+
+<ul>
+<li><strong>Authorization Code</strong> : le plus utilisé en web (votre app redirige vers Google, l'utilisateur consent, Google redirige vers vous avec un code, vous échangez le code contre un token).</li>
+<li><strong>Client Credentials</strong> : pour des machines (votre serveur s'authentifie auprès d'une API sans utilisateur).</li>
+<li><strong>Refresh Token</strong> : token longue durée utilisé pour obtenir de nouveaux access tokens.</li>
+</ul>
+
+<p>Pour les APIs OAuth, utilisez <code>requests_oauthlib</code> ou la SDK officielle (Google, AWS…) plutôt que d'implémenter à la main.</p>
+
+<h3 id="syn-pagination-rate-limiting-retries">Pagination, rate limiting, retries</h3>
+
+<p>Une API ne renvoie <strong>jamais</strong> 1 million de résultats d'un coup. <strong>Trois patterns</strong> de pagination :</p>
+
+<p><strong>Offset-based</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">GET /users?page=1&amp;per_page=100
+GET /users?page=2&amp;per_page=100</code></pre></div>
+
+
+<p><strong>Cursor-based</strong> (plus moderne, plus robuste) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">GET /users?limit=100
+# → { &quot;data&quot;: [...], &quot;next_cursor&quot;: &quot;abc123&quot; }
+GET /users?limit=100&amp;cursor=abc123</code></pre></div>
+
+
+<p><strong>Boucle générique</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def fetch_all(url, headers):
+    &quot;&quot;&quot;Récupère toutes les pages d&#x27;une API cursor-based.&quot;&quot;&quot;
+    results = []
+    cursor = None
+    while True:
+        params = {&quot;limit&quot;: 100}
+        if cursor:
+            params[&quot;cursor&quot;] = cursor
+        r = requests.get(url, headers=headers, params=params, timeout=10)
+        r.raise_for_status()
+        data = r.json()
+        results.extend(data[&quot;data&quot;])          # Accumule les résultats
+        cursor = data.get(&quot;next_cursor&quot;)      # Récupère le curseur suivant
+        if not cursor:
+            break                              # Plus de pages
+    return results</code></pre></div>
+
+
+<p>Le <strong>rate limiting</strong> est l'autre contrainte majeure : la plupart des APIs limitent le nombre de requêtes par minute. Quand vous dépassez, vous recevez <strong><code>429 Too Many Requests</code></strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import time
+from tenacity import retry, retry_if_exception_type, wait_exponential, stop_after_attempt
+
+@retry(
+    wait=wait_exponential(multiplier=1, max=60),
+    retry=retry_if_exception_type(requests.exceptions.HTTPError),
+    stop=stop_after_attempt(5),
+)
+def safe_fetch(url):
+    r = requests.get(url, timeout=10)
+    r.raise_for_status()
+    return r.json()</code></pre></div>
+
+
+<p><strong>Les bonnes APIs</strong> renvoient des headers <code>X-RateLimit-Remaining</code> et <code>Retry-After</code> que vous pouvez utiliser pour tempérer.</p>
+
+<h3 id="syn-formats-de-fichiers-csv-vs-parquet-vs-arrow">Formats de fichiers : CSV vs Parquet vs Arrow</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Format</th><th>Type</th><th>Compression</th><th>Vitesse lecture</th><th>Cas d'usage</th></tr></thead><tbody><tr><td><strong>CSV</strong></td><td>Texte</td><td>Aucune (gzip externe)</td><td>Lente</td><td>Échange interopérable, dataset < 100 MB</td></tr><tr><td><strong>JSON</strong></td><td>Texte</td><td>Aucune</td><td>Lente</td><td>Données semi-structurées, APIs</td></tr><tr><td><strong>Parquet</strong></td><td>Binaire colonnaire</td><td>Snappy/gzip</td><td>Rapide</td><td>Dataset > 100 MB, lecture sélective</td></tr><tr><td><strong>Arrow</strong></td><td>Binaire en mémoire</td><td>N/A</td><td>Instantanée</td><td>IPC entre processus, zero-copy</td></tr><tr><td><strong>Feather</strong></td><td>Arrow sur disque</td><td>Optionnelle</td><td>Très rapide</td><td>Cache local, prototypage</td></tr><tr><td><strong>HDF5</strong></td><td>Binaire scientifique</td><td>Oui</td><td>Rapide</td><td>Datasets scientifiques, séries temporelles</td></tr></tbody></table></div>
+<p><strong>Conversion de CSV vers Parquet</strong> en une ligne :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df = pd.read_csv(&quot;data.csv&quot;)
+df.to_parquet(&quot;data.parquet&quot;)
+# 5-10x plus petit, 5-30x plus rapide à relire</code></pre></div>
+
+
+<p><strong>Et avec DuckDB</strong>, vous pouvez requêter directement un Parquet sans le charger en RAM :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import duckdb
+duckdb.sql(&quot;SELECT city, AVG(price) FROM &#x27;data.parquet&#x27; GROUP BY city&quot;).df()</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : pour tout dataset > 100 Mo que vous lisez plus d'une fois, convertissez en <strong>Parquet</strong> une fois pour toutes. C'est l'optimisation gratuite la plus rentable de toute la data engineering. Sur 1 Go de CSV, vous passez de 30 secondes de lecture à 1 seconde, et le fichier passe de 1 Go à 200 Mo.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Vous appelez une API et obtenez un <code>requests.exceptions.SSLError: certificate verify failed</code>. Que faut-il faire ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Ne pas désactiver la vérification.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Vous allez être tenté de faire <code>requests.get(url, verify=False)</code> pour faire taire l'erreur. <strong>Ne le faites pas en production</strong>. Désactiver la vérification SSL ouvre la porte aux attaques <strong>man-in-the-middle</strong> : un attaquant peut intercepter et modifier les données entre vous et le serveur.</p>
+
+<p><strong>Diagnostiquez d'abord</strong> :</p>
+
+<ol>
+<li>Le certificat est-il vraiment invalide, ou est-ce votre stockage de certificats local qui est obsolète ? <code>pip install --upgrade certifi</code> règle souvent le problème sur Mac.</li>
+</ol>
+
+<ol>
+<li>Si l'API utilise un certificat auto-signé interne, fournissez le <strong>bundle de certificats</strong> :</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">   requests.get(url, verify=&quot;/path/to/cert.pem&quot;)</code></pre></div>
+
+
+<ol>
+<li>Pour des tests rapides en dev sur des APIs internes, <code>verify=False</code> est <strong>tolérable</strong>, mais ajoutez un <code>urllib3.disable_warnings()</code> ET un commentaire <code># TODO: replace with proper cert before prod</code>.</li>
+</ol>
+
+<p><strong>Question d'entretien sécurité</strong> : <em>"Pourquoi <code>verify=False</code> est dangereux ?"</em> — réponse : <strong>MitM</strong>.</p>
+
+</details>
+
+<p><strong>Q2 : Vous lisez un CSV avec <code>pd.read_csv</code> et la colonne <code>phone_number</code> perd ses zéros initiaux (<code>0123456789</code> devient <code>123456789</code>). Pourquoi et comment réparer ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Type inference.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Pandas voit</strong> que toute la colonne ressemble à des nombres et la convertit en <code>int64</code>. Or les entiers ne stockent pas les zéros initiaux (<code>123 = 0123 = 00123</code>).</p>
+
+<p><strong>Fix</strong> : forcer le type au moment de la lecture.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">pd.read_csv(&quot;data.csv&quot;, dtype={&quot;phone_number&quot;: str})</code></pre></div>
+
+
+<p>C'est la <strong>même règle</strong> pour :</p>
+
+<ul>
+<li><strong>Codes postaux français</strong> (<code>75001</code> → <code>75001</code> reste OK, mais <code>01001</code> → <code>1001</code>)</li>
+<li><strong>Codes-barres</strong></li>
+<li><strong>Numéros de sécurité sociale</strong></li>
+<li>N'importe quel "nombre" qui est en fait un <strong>identifiant</strong></li>
+</ul>
+
+<p><strong>Règle générale</strong> : si vous ne faites <strong>jamais</strong> d'arithmétique sur une colonne, elle devrait être <code>str</code> ou <code>category</code>, pas un nombre. Cette question revient en entretien data engineering parce qu'elle révèle une compréhension fine du distinction <strong>donnée vs représentation</strong>.</p>
+
+</details>
+
+<p><strong>Q3 : Une API vous limite à 100 requêtes par minute. Vous devez en faire 10 000. Comment structurer le pipeline pour respecter la limite sans tout tomber en cas de plantage à mi-course ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Throttling + checkpointing.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Trois ingrédients</strong> :</p>
+
+<p><strong>1. Throttling</strong> : <code>time.sleep(0.6)</code> entre chaque requête (60 s / 100 = 0.6 s) — ou mieux, utilisez <code>ratelimit</code> qui gère le décompte automatiquement.</p>
+
+<p><strong>2. Retry avec backoff</strong> : si l'API renvoie 429 ou 5xx, attendez et réessayez (cf. <code>tenacity</code>).</p>
+
+<p><strong>3. Checkpointing</strong> : sauvegardez le résultat sur disque tous les N items (par exemple tous les 100), avec un fichier de progression qui mémorise jusqu'où vous êtes allé. Si le script plante, vous reprenez là où vous en étiez au lieu de tout recommencer.</p>
+
+<p><strong>Pattern type</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import os, json, time
+
+# Reprise : lire le dernier checkpoint
+progress_file = &quot;progress.txt&quot;
+START = int(open(progress_file).read()) if os.path.exists(progress_file) else 0
+
+for i in range(START, 10000, 100):
+    batch = [fetch(j) for j in range(i, i+100)]
+    json.dump(batch, open(f&quot;batch_{i}.json&quot;, &quot;w&quot;))   # Sauvegarde batch
+    open(progress_file, &quot;w&quot;).write(str(i+100))       # Met à jour progression
+    time.sleep(60)                                    # Throttling entre batches</code></pre></div>
+
+
+<p>Sur 10 000 requêtes, ça prend <strong>~100 minutes</strong>, et la moindre interruption ne perd rien. Cette discipline est ce qui distingue un <strong>script jetable</strong> d'un <strong>pipeline de production</strong>.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://requests.readthedocs.io/" target="_blank" rel="noopener">requests documentation</a> — la bible HTTP en Python</li>
+<li><a href="https://httpie.io/" target="_blank" rel="noopener">HTTPie</a> — CLI pour tester des APIs sans écrire de Python</li>
+<li><a href="https://www.postman.com/" target="_blank" rel="noopener">Postman</a> — IDE graphique pour explorer une API</li>
+<li><em>Web Scraping with Python</em> (Ryan Mitchell) — couvre aussi les APIs</li>
+<li><a href="https://jsonapi.org/" target="_blank" rel="noopener">JSON:API spec</a> — convention pour des APIs REST bien conçues</li>
+<li><a href="https://restfulapi.net/" target="_blank" rel="noopener">REST API Tutorial</a> — pour comprendre les conventions REST</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../data-toolkit/data-analysis.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Data Analysis</span>
+  </a>
+  <a href="../data-toolkit/scraping.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Web Scraping →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

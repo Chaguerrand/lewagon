@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Model Tuning — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Model Tuning</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html" class="active">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Machine Learning</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Model Tuning</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Model Tuning</h1>
+        <p class="page-objective">Comprendre la complexité des modèles, lutter contre l'overfitting grâce à la régularisation, tuner les hyperparamètres avec Grid Search et Random Search, et maîtriser les Support Vector Machines (SVM) avec les Kernel Tricks.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Hyperparamètre</div>
+        <div class="key-concept-def">Paramètre fixé avant l&#x27;entraînement (ex : `max_depth`, `C`).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">GridSearch / RandomSearch</div>
+        <div class="key-concept-def">Recherche exhaustive ou aléatoire sur une grille d&#x27;hyperparamètres.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Régularisation L1 / L2</div>
+        <div class="key-concept-def">Pénalise les poids pour limiter l&#x27;overfitting (Lasso vs Ridge).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Early stopping</div>
+        <div class="key-concept-def">Arrêter l&#x27;entraînement quand la validation cesse de progresser.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-model-tuning">Cheatsheet — Model Tuning</a><ol><li><a href="#régularisation">Régularisation</a></li><li><a href="#gridsearchcv">GridSearchCV</a></li><li><a href="#randomizedsearchcv">RandomizedSearchCV</a></li><li><a href="#distributions-scipy-pour-randomizedsearch">Distributions scipy pour RandomizedSearch</a></li><li><a href="#svm-classification-et-régression">SVM — Classification et Régression</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-complexité-du-modèle">1) Complexité du modèle</a><ol><li><a href="#11-rappel-paramètres-vs-hyperparamètres">1.1 Rappel — Paramètres vs Hyperparamètres</a></li><li><a href="#12-overfitting-et-underfitting">1.2 Overfitting et Underfitting</a></li><li><a href="#13-tradeoff-biaisvariance">1.3 Tradeoff Biais–Variance</a></li><li><a href="#14-courbes-dapprentissage-pour-diagnostiquer">1.4 Courbes d'apprentissage pour diagnostiquer</a></li><li><a href="#15-solutions-à-loverfitting">1.5 Solutions à l'overfitting</a></li></ol></li><li><a href="#2-régularisation">2) Régularisation</a><ol><li><a href="#21-ridge-l2">2.1 Ridge (L2)</a></li><li><a href="#22-lasso-l1">2.2 Lasso (L1)</a></li><li><a href="#23-elasticnet-l1-l2">2.3 ElasticNet (L1 + L2)</a></li><li><a href="#24-comparaison-ridge-vs-lasso-en-pratique">2.4 Comparaison Ridge vs Lasso en pratique</a></li><li><a href="#25-p-values-et-régularisation">2.5 P-values et régularisation</a></li></ol></li><li><a href="#3-model-tuning-grid-search-random-search">3) Model Tuning — Grid Search & Random Search</a><ol><li><a href="#31-grid-search-manuel">3.1 Grid Search manuel</a></li><li><a href="#32-gridsearchcv">3.2 GridSearchCV</a></li><li><a href="#33-randomizedsearchcv">3.3 RandomizedSearchCV</a></li><li><a href="#34-choisir-la-bonne-distribution-scipy">3.4 Choisir la bonne distribution scipy</a></li><li><a href="#35-grid-search-vs-random-search">3.5 Grid Search vs Random Search</a></li></ol></li><li><a href="#4-support-vector-machines-svm">4) Support Vector Machines (SVM)</a><ol><li><a href="#41-frontière-de-décision-optimale">4.1 Frontière de décision optimale</a></li><li><a href="#42-soft-margin-classifier">4.2 Soft Margin Classifier</a></li><li><a href="#43-hyperparamètre-c">4.3 Hyperparamètre `C`</a></li><li><a href="#44-svm-régresseur-bonus">4.4 SVM Régresseur (bonus)</a></li></ol></li><li><a href="#5-kernel-tricks">5) Kernel Tricks</a><ol><li><a href="#51-problème-données-non-linéairement-séparables">5.1 Problème : données non-linéairement séparables</a></li><li><a href="#52-le-kernel-trick">5.2 Le Kernel Trick</a></li><li><a href="#53-kernels-disponibles">5.3 Kernels disponibles</a></li><li><a href="#54-hyperparamètre-gamma-rbf">5.4 Hyperparamètre `gamma` (RBF)</a></li></ol></li><li><a href="#bibliographie">Bibliographie</a></ol></div>
+<p>Comprendre la complexité des modèles, lutter contre l'overfitting grâce à la régularisation, tuner les hyperparamètres avec Grid Search et Random Search, et maîtriser les Support Vector Machines (SVM) avec les Kernel Tricks.</p>
+
+<hr>
+
+<h2 id="cheatsheet-model-tuning">📋 Cheatsheet — Model Tuning</h2>
+
+<h3 id="régularisation">Régularisation</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import Ridge, Lasso, ElasticNet
+
+## Ridge (L2) : réduit les coefficients vers 0, ne les annule pas
+ridge = Ridge(alpha=0.2).fit(X_train, y_train)        # alpha = force de régularisation
+ridge.coef_                                            # coefficients réduits mais non nuls
+
+## Lasso (L1) : annule certains coefficients → sélection de features
+lasso = Lasso(alpha=0.2).fit(X_train, y_train)        # coefficients non-significatifs → 0
+
+## ElasticNet (L1 + L2) : combine Ridge et Lasso
+elastic = ElasticNet(alpha=1, l1_ratio=0.2)            # l1_ratio=0 → Ridge, l1_ratio=1 → Lasso
+elastic.fit(X_train, y_train)</code></pre></div>
+
+
+<h3 id="gridsearchcv">GridSearchCV</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import GridSearchCV, train_test_split
+from sklearn.linear_model import ElasticNet
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+
+model = ElasticNet()
+
+## Grille d&#x27;hyperparamètres à tester (toutes les combinaisons)
+grid = {
+    &#x27;alpha&#x27;:    [0.01, 0.1, 1],       # 3 valeurs
+    &#x27;l1_ratio&#x27;: [0.2, 0.5, 0.8]       # 3 valeurs → 3×3 = 9 combinaisons testées
+}
+
+search = GridSearchCV(
+    model,
+    grid,
+    scoring=&#x27;r2&#x27;,     # métrique de performance à optimiser
+    cv=5,             # 5-fold cross-validation par combinaison
+    n_jobs=-1         # parallélise sur tous les cœurs disponibles
+)
+search.fit(X_train, y_train)
+
+search.best_score_       # meilleur score CV → 0.441
+search.best_params_      # meilleurs hyperparamètres → {&#x27;alpha&#x27;: 0.01, &#x27;l1_ratio&#x27;: 0.8}
+search.best_estimator_   # modèle entraîné avec les meilleurs params</code></pre></div>
+
+
+<h3 id="randomizedsearchcv">RandomizedSearchCV</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import RandomizedSearchCV
+from scipy import stats
+
+model = ElasticNet()
+
+## Espace de recherche : distributions de probabilité
+grid = {
+    &#x27;alpha&#x27;:    [0.001, 0.01, 0.1, 1],  # liste fixe
+    &#x27;l1_ratio&#x27;: stats.uniform(0, 1)      # distribution continue entre 0 et 1
+}
+
+search = RandomizedSearchCV(
+    model,
+    grid,
+    scoring=&#x27;r2&#x27;,
+    n_iter=100,   # nombre de combinaisons testées (pas toutes, contrairement à GridSearch)
+    cv=5,
+    n_jobs=-1
+)
+search.fit(X_train, y_train)
+search.best_estimator_   # → ElasticNet(alpha=0.001, l1_ratio=0.71)</code></pre></div>
+
+
+<h3 id="distributions-scipy-pour-randomizedsearch">Distributions scipy pour RandomizedSearch</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from scipy import stats
+
+stats.norm(10, 2)          # distribution normale centrée en 10 (meilleure supposition connue)
+stats.randint(1, 100)      # distribution uniforme discrète [1, 100[ (pas d&#x27;idée a priori)
+stats.uniform(1, 100)      # distribution uniforme continue [1, 101[
+stats.loguniform(0.01, 1)  # échelle log → idéal pour explorer plusieurs ordres de grandeur
+## ex : loguniform(0.01, 1) explore [10⁻², 10⁻¹, 10⁰]</code></pre></div>
+
+
+<h3 id="svm-classification-et-régression">SVM — Classification et Régression</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.svm import SVC, SVR
+
+## Classification SVM (Soft Margin)
+svc = SVC(kernel=&#x27;linear&#x27;, C=10)   # C élevé → marge stricte (moins régularisé)
+svc = SVC(kernel=&#x27;rbf&#x27;, C=1, gamma=0.1)  # RBF kernel (non-linéaire)
+svc = SVC(kernel=&#x27;poly&#x27;, degree=2, C=1)  # kernel polynomial degré 2
+
+## Équivalent SGD
+from sklearn.linear_model import SGDClassifier
+svc_sgd = SGDClassifier(loss=&#x27;hinge&#x27;, penalty=&#x27;l2&#x27;, alpha=1/10)  # C=10 ↔ alpha=0.1
+
+## Régression SVM
+svr = SVR(epsilon=0.1, C=1, kernel=&#x27;rbf&#x27;)   # epsilon = largeur du tube</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Tuner les hyperparamètres sur le test set</strong></p>
+<p>❌ Évaluer plusieurs valeurs d'<code>alpha</code> sur le test set et choisir la meilleure → le test set est "contaminé"</p>
+<p>✅ Utiliser <code>GridSearchCV</code> avec cross-validation sur le train set uniquement ; garder le test set pour l'évaluation finale</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier de scaler avant Ridge, Lasso ou SVM</strong></p>
+<p>❌ Régulariser des features non-scalées → les features avec de grandes valeurs sont disproportionnellement pénalisées</p>
+<p>✅ Toujours appliquer <code>StandardScaler</code> avant régularisation ou SVM pour traiter équitablement chaque $\beta_i$</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre le paramètre C du SVM et alpha de Ridge</strong></p>
+<p>❌ Augmenter <code>C</code> pensant que ça régularise davantage → c'est l'inverse : <code>C</code> élevé = marge stricte = moins régularisé</p>
+<p>✅ <code>C</code> du SVM est analogue à <code>1/alpha</code> de Ridge : petit <code>C</code> = forte régularisation (marge souple)</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser une grille trop fine dès le début</strong></p>
+<p>❌ <code>alpha = [0.001, 0.002, 0.003, ..., 0.999]</code> sur 1000 valeurs → coûteux, risque d'overfitting des hyperparamètres</p>
+<p>✅ Commencer par une recherche grossière sur plusieurs ordres de grandeur (<code>loguniform(0.001, 10)</code>), puis affiner</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Augmenter gamma du RBF sans limiter l'overfitting</strong></p>
+<p>❌ <code>SVC(kernel=&#x27;rbf&#x27;, gamma=100)</code> → le modèle mémorise le train set, frontière très irrégulière</p>
+<p>✅ Tuner <code>gamma</code> et <code>C</code> conjointement avec <code>GridSearchCV</code> ; <code>gamma</code> élevé = overfitting</p></div></div>
+
+<hr>
+
+<h2 id="1-complexité-du-modèle">1) Complexité du modèle</h2>
+
+<h3 id="11-rappel-paramètres-vs-hyperparamètres">1.1 Rappel — Paramètres vs Hyperparamètres</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Définition</th><th>Exemples</th><th>Déterminé par</th></tr></thead><tbody><tr><td><strong>Paramètres</strong> $\beta$</td><td>Coefficients du modèle</td><td>$\beta_0, \beta_1, \dots$</td><td><code>.fit()</code> automatiquement</td></tr><tr><td><strong>Hyperparamètres</strong></td><td>Choix de configuration</td><td><code>alpha</code>, <code>C</code>, <code>kernel</code>, <code>n_neighbors</code></td><td>Manuellement</td></tr></tbody></table></div>
+<h3 id="12-overfitting-et-underfitting">1.2 Overfitting et Underfitting</h3>
+
+<figure><img src="../../assets/images/model-tuning-01-4c364ffa.png" alt="" loading="lazy"></figure>
+
+<ul>
+<li><strong>Underfitting (fort biais)</strong> : le modèle ne capture pas toute l'information utile</li>
+<li><strong>Overfitting (forte variance)</strong> : le modèle mémorise le bruit, ne généralise pas</li>
+</ul>
+
+<h3 id="13-tradeoff-biaisvariance">1.3 Tradeoff Biais–Variance</h3>
+
+<p>$\text{Total Error} = \text{Bias}^2 + \text{Variance} + \text{Irreducible Error}$</p>
+
+<figure><img src="../../assets/images/model-tuning-02-6d29f86e.png" alt="" loading="lazy"></figure>
+
+<p>L'objectif est de <strong>minimiser l'erreur sur le test set</strong> → trouver la complexité optimale du modèle.</p>
+
+<p>👉 <a href="http://scott.fortmann-roe.com/docs/BiasVariance.html" target="_blank" rel="noopener">Great read — Bias-Variance Tradeoff</a></p>
+
+<h3 id="14-courbes-dapprentissage-pour-diagnostiquer">1.4 Courbes d'apprentissage pour diagnostiquer</h3>
+
+<figure><img src="../../assets/images/model-tuning-03-c70e6d6d.png" alt="" loading="lazy"></figure>
+
+<h3 id="15-solutions-à-loverfitting">1.5 Solutions à l'overfitting</h3>
+
+<ul>
+<li>Collecter plus d'observations</li>
+<li>Sélection de features (manuelle ou <a href="https://scikit-learn.org/stable/modules/feature_selection.html" target="_blank" rel="noopener">automatisée</a>)</li>
+<li>Réduction de dimensionnalité (Unsupervised Learning)</li>
+<li>Early stopping (Deep Learning)</li>
+<li><strong>Régularisation</strong> de la Loss Function</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Toujours diagnostiquer avec un <strong>validation set</strong> (ou cross-validation) — jamais avec le test set.</p></div></div>
+
+<hr>
+
+<h2 id="2-régularisation">2) Régularisation</h2>
+
+<p>La régularisation ajoute un <strong>terme de pénalité</strong> à la Loss qui augmente avec $|\beta|$ → force le modèle à réduire ses coefficients.</p>
+
+<p>$\text{Regularized Loss} = \underbrace{L(X, y, \beta)}_{\text{Loss}} + \underbrace{\text{Penalty}(\beta)}_{\text{régularisation}}$</p>
+
+<ul>
+<li>Pénalise les grandes valeurs de $\beta_i$</li>
+<li>Force le modèle à sélectionner moins de features ou à réduire leur impact</li>
+<li>Prévient l'overfitting</li>
+</ul>
+
+<h3 id="21-ridge-l2">2.1 Ridge (L2)</h3>
+
+<p>$\text{Ridge}(X, y, \beta) = \sum_{i=0}^{n-1}(y_i - \hat{y}_i)^2 + \alpha \sum_{j=1}^{p} \beta_j^2$</p>
+
+<ul>
+<li>Réduit tous les coefficients <strong>vers 0</strong> sans jamais les annuler complètement</li>
+<li>Utile quand on pense que toutes les features ont un impact</li>
+</ul>
+
+<h3 id="22-lasso-l1">2.2 Lasso (L1)</h3>
+
+<p>$\text{Lasso}(X, y, \beta) = \sum_{i=0}^{n-1}(y_i - \hat{y}_i)^2 + \alpha \sum_{j=1}^{p} |\beta_j|$</p>
+
+<ul>
+<li>Peut annuler certains coefficients <strong>exactement à 0</strong> → sélection naturelle de features</li>
+<li>Idéal pour l'interprétabilité</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Important</strong> : on régularise $\beta_1, \dots, \beta_p$ mais <strong>jamais</strong> $\beta_0$ (l'intercept n'est associé à aucune feature).</p></div></div>
+
+<h3 id="23-elasticnet-l1-l2">2.3 ElasticNet (L1 + L2)</h3>
+
+<p>$L = \|y - \hat{y}\|^2 + \alpha\left(\lambda|\beta| + (1-\lambda)\|\beta\|^2\right)$</p>
+
+<p>Deux hyperparamètres : <code>alpha</code> (force totale) et <code>l1_ratio</code> (équilibre L1/L2).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import ElasticNet
+model = ElasticNet(alpha=1, l1_ratio=0.2)   # l1_ratio=0 → Ridge pur, l1_ratio=1 → Lasso pur</code></pre></div>
+
+
+<h3 id="24-comparaison-ridge-vs-lasso-en-pratique">2.4 Comparaison Ridge vs Lasso en pratique</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import Ridge, Lasso, LinearRegression
+
+linreg = LinearRegression().fit(X, y)       # OLS sans régularisation
+ridge  = Ridge(alpha=0.2).fit(X, y)        # réduit tous les coefs
+lasso  = Lasso(alpha=0.2).fit(X, y)        # annule les coefs non-significatifs
+
+## Comparer les coefficients
+coefs = pd.DataFrame({
+    &quot;coef_linreg&quot;: pd.Series(linreg.coef_, index=X.columns),
+    &quot;coef_ridge&quot;:  pd.Series(ridge.coef_,  index=X.columns),
+    &quot;coef_lasso&quot;:  pd.Series(lasso.coef_,  index=X.columns)
+})</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output (entiers) — les 0 sont en rouge dans Lasso
+##              coef_linreg  coef_ridge  coef_lasso
+## age                  -10           7           0   ← Lasso → 0 (p-value 86%)
+## bmi                  519         457         511   ← gardé (significatif)
+## s1                  -792         -48           0   ← Lasso → 0 (p-value 5%)</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Ridge</th><th>Lasso</th></tr></thead><tbody><tr><td>Effet de $\alpha$ croissant</td><td>Réduit vers 0</td><td>Annule à 0 (feature selection)</td></tr><tr><td>Interprétabilité</td><td>Moins bonne</td><td>Meilleure</td></tr><tr><td>Colinéarité</td><td>Gère bien</td><td>Garde 1 feature parmi colinéaires</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Quand régulariser ?</strong></p>
+<p>- <strong>Ridge</strong> → quand toutes les features ont potentiellement un impact</p>
+<p>- <strong>Lasso</strong> → quand on veut de la sélection de features et de l'interprétabilité</p>
+<p>- Régularisation presque <strong>toujours</strong> bénéfique — Ridge est souvent activé par défaut dans sklearn</p></div></div>
+
+<h3 id="25-p-values-et-régularisation">2.5 P-values et régularisation</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import statsmodels.api as sm
+
+ols = sm.OLS(y, sm.add_constant(X)).fit()
+ols.summary()   # P&gt;|t| → features avec p-value élevée seront pénalisées par Lasso</code></pre></div>
+
+
+<p>La régularisation tend à pénaliser les features <strong>statistiquement non significatives</strong> (p-value élevée).</p>
+
+<hr>
+
+<h2 id="3-model-tuning-grid-search-random-search">3) Model Tuning — Grid Search & Random Search</h2>
+
+<figure><img src="../../assets/images/model-tuning-04-ac689d00.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Distinction fondamentale :</strong></p>
+<p>- <strong>FIT</strong> = trouver les meilleurs <strong>PARAMÈTRES</strong> qui minimisent la <strong>LOSS</strong></p>
+<p>- <strong>FINE-TUNE</strong> = trouver les meilleurs <strong>HYPERPARAMÈTRES</strong> qui maximisent les <strong>MÉTRIQUES DE PERFORMANCE</strong></p></div></div>
+
+<h3 id="31-grid-search-manuel">3.1 Grid Search manuel</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import itertools
+from sklearn.model_selection import cross_val_score
+from sklearn.linear_model import ElasticNet
+
+alphas    = [0.01, 0.1, 1]
+l1_ratios = [0.2, 0.5, 0.8]
+
+for alpha, l1_ratio in itertools.product(alphas, l1_ratios):   # toutes les combinaisons
+    model = ElasticNet(alpha=alpha, l1_ratio=l1_ratio)
+    r2 = cross_val_score(model, X_train, y_train, cv=5).mean()
+    print(f&quot;alpha: {alpha}, l1_ratio: {l1_ratio}, r2: {r2:.3f}&quot;)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+## alpha: 0.01, l1_ratio: 0.2,  r2: 0.310
+## alpha: 0.01, l1_ratio: 0.8,  r2: 0.442  ← meilleur
+## alpha: 1,    l1_ratio: 0.2,  r2: -0.021</code></pre></div>
+
+
+<h3 id="32-gridsearchcv">3.2 GridSearchCV</h3>
+
+<figure><img src="../../assets/images/model-tuning-05-8620d760.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import GridSearchCV
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+
+model = ElasticNet()
+grid  = {&#x27;alpha&#x27;: [0.01, 0.1, 1], &#x27;l1_ratio&#x27;: [0.2, 0.5, 0.8]}
+
+search = GridSearchCV(
+    model,
+    grid,
+    scoring=&#x27;r2&#x27;,   # métrique à maximiser
+    cv=5,           # k-fold CV pour chaque combinaison
+    n_jobs=-1       # parallélisation sur tous les cœurs
+)
+search.fit(X_train, y_train)
+
+search.best_score_      # → 0.441
+search.best_params_     # → {&#x27;alpha&#x27;: 0.01, &#x27;l1_ratio&#x27;: 0.8}
+search.best_estimator_  # → ElasticNet(alpha=0.01, l1_ratio=0.8)</code></pre></div>
+
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html" target="_blank" rel="noopener">sklearn.model_selection.GridSearchCV</a></p>
+
+<p><strong>Limites du Grid Search :</strong></p>
+
+<ul>
+<li>Coûteux computationnellement (toutes les combinaisons)</li>
+<li>Peut rater la valeur optimale si la grille est trop grossière</li>
+<li>Risque d'overfitting des hyperparamètres sur un petit dataset</li>
+</ul>
+
+<h3 id="33-randomizedsearchcv">3.3 RandomizedSearchCV</h3>
+
+<figure><img src="../../assets/images/model-tuning-06-3b9dabc2.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import RandomizedSearchCV
+from scipy import stats
+
+model = ElasticNet()
+grid  = {
+    &#x27;alpha&#x27;:    [0.001, 0.01, 0.1, 1],   # liste discrète
+    &#x27;l1_ratio&#x27;: stats.uniform(0, 1)       # distribution continue → échantillonnage aléatoire
+}
+
+search = RandomizedSearchCV(
+    model,
+    grid,
+    scoring=&#x27;r2&#x27;,
+    n_iter=100,   # nombre de combinaisons à tester (pas toutes)
+    cv=5,
+    n_jobs=-1
+)
+search.fit(X_train, y_train)
+search.best_estimator_   # → ElasticNet(alpha=0.001, l1_ratio=0.710)</code></pre></div>
+
+
+<h3 id="34-choisir-la-bonne-distribution-scipy">3.4 Choisir la bonne distribution scipy</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from scipy import stats
+
+stats.norm(10, 2)           # distribution normale — si on a une supposition a priori (centre=10)
+stats.randint(1, 100)       # uniforme discrète — aucune idée, valeurs entières
+stats.uniform(1, 100)       # uniforme continue — aucune idée, valeurs continues
+stats.loguniform(0.01, 1)   # log-uniforme — exploration sur plusieurs ordres de grandeur
+## loguniform(0.01, 1) → explore [10⁻², 10⁻¹, 10⁰]
+
+r = stats.loguniform(0.01, 1).rvs(size=1000)   # tire 1000 valeurs aléatoires</code></pre></div>
+
+
+<p>[Untitled](Model%20Tuning/Untitled%2032d4e41082468053ad5aee8830064ed4.csv)</p>
+
+<h3 id="35-grid-search-vs-random-search">3.5 Grid Search vs Random Search</h3>
+
+<figure><img src="../../assets/images/model-tuning-07-65bf1998.png" alt="" loading="lazy"></figure>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Grid Search</th><th>Random Search</th></tr></thead><tbody><tr><td>Combinaisons testées</td><td>Toutes</td><td>Échantillon aléatoire (<code>n_iter</code>)</td></tr><tr><td>Coût</td><td>Élevé si grille grande</td><td>Contrôlé par <code>n_iter</code></td></tr><tr><td>Avantage</td><td>Exhaustif</td><td>Utile quand certains hyperparamètres sont moins importants</td></tr><tr><td>Syntaxe</td><td>Plus verbeuse</td><td>Plus flexible (distributions continues)</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Bonne pratique</strong> : toujours commencer par une recherche grossière (<code>loguniform</code>, large plage), puis affiner autour des meilleures valeurs trouvées.</p></div></div>
+
+<hr>
+
+<h2 id="4-support-vector-machines-svm">4) Support Vector Machines (SVM)</h2>
+
+<h3 id="41-frontière-de-décision-optimale">4.1 Frontière de décision optimale</h3>
+
+<figure><img src="../../assets/images/model-tuning-08-2d43ff67.png" alt="decision boundary" loading="lazy"></figure>
+
+<p>Il existe une infinité de frontières de décision qui séparent les classes. Le SVM choisit celle qui <strong>maximise la marge</strong> entre les classes.</p>
+
+<figure><img src="../../assets/images/model-tuning-09-07801b6b.png" alt="margin" loading="lazy"></figure>
+
+<ul>
+<li>Les points sur la frontière de la marge sont les <strong>support vectors</strong></li>
+<li>La frontière qui maximise la marge est le <strong>Maximum Margin Classifier</strong></li>
+<li>Problème d'optimisation convexe → solution unique garantie</li>
+</ul>
+
+<h3 id="42-soft-margin-classifier">4.2 Soft Margin Classifier</h3>
+
+<p>Le Maximum Margin pur est très sensible aux outliers. Pour mieux généraliser, on autorise quelques points à être <strong>à l'intérieur</strong> ou <strong>du mauvais côté</strong> de la marge, avec une pénalité.</p>
+
+<p>La <strong>Hinge Loss</strong> pénalise chaque point mal classé proportionnellement à sa distance dans la marge (pénalité linéaire, comme MAE).</p>
+
+<p>[Untitled](Model%20Tuning/Untitled%2032d4e410824680ffb16de302705a2f69.csv)</p>
+
+<h3 id="43-hyperparamètre-c">4.3 Hyperparamètre <code>C</code></h3>
+
+<p><code>C</code> contrôle la <strong>force de la pénalité</strong> appliquée aux points mal classés.</p>
+
+<div class="table-wrapper"><table><thead><tr><th><code>C</code></th><th>Effet</th><th>Analogie Ridge</th></tr></thead><tbody><tr><td>Élevé ($C to infty$)</td><td>Marge stricte, Maximum Margin</td><td>Petit <code>alpha</code> (peu régularisé)</td></tr><tr><td>Faible</td><td>Marge souple, tolérant aux erreurs</td><td>Grand <code>alpha</code> (très régularisé)</td></tr></tbody></table></div>
+<figure><img src="../../assets/images/model-tuning-10-3751978e.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.svm import SVC
+
+svc = SVC(kernel=&#x27;linear&#x27;, C=10)   # C=10 → marge stricte
+
+## Équivalent avec SGDClassifier (solver SGD)
+from sklearn.linear_model import SGDClassifier
+svc_sgd = SGDClassifier(loss=&#x27;hinge&#x27;, penalty=&#x27;l2&#x27;, alpha=1/10)  # alpha = 1/C</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Toujours scaler</strong> les features avant d'utiliser un SVM — le modèle est basé sur les distances.</p></div></div>
+
+<figure><img src="../../assets/images/model-tuning-11-4035cb66.png" alt="" loading="lazy"></figure>
+
+<h3 id="44-svm-régresseur-bonus">4.4 SVM Régresseur (bonus)</h3>
+
+<p>Le SVR inverse l'objectif : au lieu de séparer deux classes, il cherche à faire passer <strong>autant de points que possible à l'intérieur du tube</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.svm import SVR
+
+regressor = SVR(
+    epsilon=0.1,    # demi-largeur du tube (points dans le tube ne génèrent pas de pénalité)
+    C=1,            # force de régularisation
+    kernel=&#x27;linear&#x27; # ou &#x27;rbf&#x27;, &#x27;poly&#x27;
+)</code></pre></div>
+
+
+<figure><img src="../../assets/images/model-tuning-12-38bcb2d3.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="5-kernel-tricks">5) Kernel Tricks</h2>
+
+<h3 id="51-problème-données-non-linéairement-séparables">5.1 Problème : données non-linéairement séparables</h3>
+
+<figure><img src="../../assets/images/model-tuning-13-5cf7feca.png" alt="" loading="lazy"></figure>
+
+<p>Solution : ajouter une feature transformée pour rendre les données linéairement séparables dans un espace de dimension supérieure.</p>
+
+<p>$\phi\left(\begin{bmatrix}x_1 \\ x_2\end{bmatrix}\right) = \begin{bmatrix}x_1 \\ x_2 \\ x_1^2 + x_2^2\end{bmatrix}$</p>
+
+<figure><img src="../../assets/images/model-tuning-14-97bee2a5.webp" alt="" loading="lazy"></figure>
+
+<p><strong>Problème</strong> : augmenter la dimensionnalité est computationnellement très coûteux.</p>
+
+<h3 id="52-le-kernel-trick">5.2 Le Kernel Trick</h3>
+
+<p>Plutôt que de créer explicitement les nouvelles features, le Kernel Trick calcule une <strong>similarité</strong> $K(a, b)$ entre paires de points pour <strong>simuler</strong> le feature mapping — sans jamais calculer $\phi(x)$ explicitement.</p>
+
+<p>$\text{Deux points très similaires} \Rightarrow \text{classés pareillement}$</p>
+
+<p>👉 <a href="https://xavierbourretsicotte.github.io/Kernel_feature_map.html" target="_blank" rel="noopener">Kernels expliqués (avec les maths)</a></p>
+
+<h3 id="53-kernels-disponibles">5.3 Kernels disponibles</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">SVC(kernel=&#x27;linear&#x27;)              # frontière linéaire — K(a,b) = aᵀb
+SVC(kernel=&#x27;poly&#x27;, degree=2, C=1) # frontière polynomiale — K(a,b) = (aᵀb + c)^d
+SVC(kernel=&#x27;rbf&#x27;,  gamma=0.1, C=1)# Gaussian RBF — K(a,b) = exp(-γ||a-b||²)
+SVC(kernel=&#x27;sigmoid&#x27;, gamma=0.1)  # sigmoïde</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Kernel</th><th>Formule</th><th>Cas d'usage</th></tr></thead><tbody><tr><td><code>linear</code></td><td>$K(a,b) = a^Tb$</td><td>Données linéairement séparables</td></tr><tr><td><code>poly</code> (degré $d$)</td><td>$K(a,b) = (a^Tb + c)^d$</td><td>Relations polynomiales</td></tr><tr><td><code>rbf</code> (Gaussian)</td><td>$K(a,b) = e^{-gamma\</td><td>a-b\</td></tr><tr><td><code>sigmoid</code></td><td>similaire à réseau de neurones</td><td>Moins courant</td></tr></tbody></table></div>
+<h3 id="54-hyperparamètre-gamma-rbf">5.4 Hyperparamètre <code>gamma</code> (RBF)</h3>
+
+<p>$\gamma$ contrôle le <strong>rayon d'influence</strong> de chaque point :</p>
+
+<ul>
+<li><strong>Petit</strong> $\gamma$ → chaque point influence une large zone → frontière lisse → risque d'underfitting</li>
+<li><strong>Grand</strong> $\gamma$ → chaque point n'influence que son voisinage immédiat → frontière très irrégulière → risque d'overfitting</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Toujours tuner <code>C</code> et <code>gamma</code> <strong>ensemble</strong> via <code>GridSearchCV</code> pour le kernel RBF.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">search = GridSearchCV(
+    SVC(kernel=&#x27;rbf&#x27;),
+    {&#x27;C&#x27;: [0.1, 1, 10, 100], &#x27;gamma&#x27;: [0.001, 0.01, 0.1, 1]},
+    scoring=&#x27;accuracy&#x27;, cv=5
+)</code></pre></div>
+
+
+<p><strong>Régression polynomiale avec SVR :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">regressor = SVR(epsilon=0.1, C=1, kernel=&#x27;poly&#x27;, degree=2)</code></pre></div>
+
+
+<figure><img src="../../assets/images/model-tuning-15-53c2d514.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html" target="_blank" rel="noopener">sklearn.linear_model.Ridge</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html" target="_blank" rel="noopener">sklearn.linear_model.Lasso</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html" target="_blank" rel="noopener">sklearn.linear_model.ElasticNet</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html" target="_blank" rel="noopener">sklearn.model_selection.GridSearchCV</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html" target="_blank" rel="noopener">sklearn.model_selection.RandomizedSearchCV</a></p>
+
+<p>👉 <a href="https://docs.scipy.org/doc/scipy/reference/stats.html" target="_blank" rel="noopener">scipy.stats.distributions</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html" target="_blank" rel="noopener">sklearn.svm.SVC</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html" target="_blank" rel="noopener">sklearn.svm.SVR</a></p>
+
+<p>👉 <a href="https://xavierbourretsicotte.github.io/Kernel_feature_map.html" target="_blank" rel="noopener">Kernels explained —</a> <a href="http://xavierbourretsicotte.github.io" target="_blank" rel="noopener">xavierbourretsicotte.github.io</a></p>
+
+<p>👉 <a href="http://www.cs.toronto.edu/~kswersky/wp-content/uploads/svm_vs_lr.pdf" target="_blank" rel="noopener">SVM vs Logistic Regression (math)</a></p>
+
+<p>👉 <a href="http://scott.fortmann-roe.com/docs/BiasVariance.html" target="_blank" rel="noopener">Bias-Variance Tradeoff —</a> <a href="http://fortmann-roe.com" target="_blank" rel="noopener">fortmann-roe.com</a></p>
+
+<p>👉 <a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/" target="_blank" rel="noopener">Hands-on ML with Sklearn — Chapter 5 (SVM)</a></p>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-a-retenir">A retenir</a></li><li><a href="#ref-lanalogie-fil-rouge-régler-une-radio">L'analogie fil rouge : régler une radio</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-complexité-du-modèle">1. Complexité du modèle</a><ol><li><a href="#ref-paramètres-vs-hyperparamètres">Paramètres vs Hyperparamètres</a></li><li><a href="#ref-overfitting-et-underfitting">Overfitting et Underfitting</a></li><li><a href="#ref-le-tradeoff-biaisvariance">Le tradeoff Biais–Variance</a></li><li><a href="#ref-diagnostiquer-avec-les-courbes-dapprentissage">Diagnostiquer avec les courbes d'apprentissage</a></li><li><a href="#ref-solutions-à-loverfitting">Solutions à l'overfitting</a></li></ol></li><li><a href="#ref-2-régularisation">2. Régularisation</a><ol><li><a href="#ref-le-principe-général">Le principe général</a></li><li><a href="#ref-ridge-régularisation-l2">Ridge — Régularisation L2</a></li><li><a href="#ref-lasso-régularisation-l1">Lasso — Régularisation L1</a></li><li><a href="#ref-comparaison-ridge-vs-lasso">Comparaison Ridge vs Lasso</a></li><li><a href="#ref-elasticnet-le-meilleur-des-deux-mondes-l1-l2">ElasticNet — Le meilleur des deux mondes (L1 + L2)</a></li><li><a href="#ref-p-values-et-régularisation-un-lien-intuitif">P-values et régularisation : un lien intuitif</a></li></ol></li><li><a href="#ref-3-tuning-des-hyperparamètres">3. Tuning des Hyperparamètres</a><ol><li><a href="#ref-la-distinction-fondamentale">La distinction fondamentale</a></li><li><a href="#ref-grid-search-manuel-pour-comprendre-le-principe">Grid Search manuel — pour comprendre le principe</a></li><li><a href="#ref-gridsearchcv-la-version-automatique-et-optimisée">GridSearchCV — La version automatique et optimisée</a></li><li><a href="#ref-randomizedsearchcv-quand-la-grille-est-trop-grande">RandomizedSearchCV — Quand la grille est trop grande</a></li><li><a href="#ref-choisir-la-bonne-distribution-scipy">Choisir la bonne distribution scipy</a></li><li><a href="#ref-grid-search-vs-random-search-le-résumé">Grid Search vs Random Search : le résumé</a></li></ol></li><li><a href="#ref-4-support-vector-machines-svm">4. Support Vector Machines (SVM)</a><ol><li><a href="#ref-lidée-centrale-maximiser-la-marge">L'idée centrale : maximiser la marge</a></li><li><a href="#ref-soft-margin-classifier-accepter-quelques-erreurs">Soft Margin Classifier — Accepter quelques erreurs</a></li><li><a href="#ref-lhyperparamètre-c-la-tolérance-aux-erreurs">L'hyperparamètre C : la tolérance aux erreurs</a></li><li><a href="#ref-svm-pour-la-régression-svr">SVM pour la régression (SVR)</a></li></ol></li><li><a href="#ref-5-kernel-tricks">5. Kernel Tricks</a><ol><li><a href="#ref-le-problème-données-non-linéairement-séparables">Le problème : données non linéairement séparables</a></li><li><a href="#ref-le-kernel-trick-lastuce-mathématique">Le Kernel Trick — L'astuce mathématique</a></li><li><a href="#ref-les-kernels-disponibles">Les kernels disponibles</a></li><li><a href="#ref-lhyperparamètre-gamma-kernel-rbf">L'hyperparamètre gamma (kernel RBF)</a></li></ol></li><li><a href="#ref-erreurs-classiques-à-éviter">️ Erreurs classiques à éviter</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Quand on construit un modèle de machine learning, on ajuste deux types de choses bien distinctes :</p>
+
+<ul>
+<li>Les <strong>paramètres</strong> (les coefficients $\beta$) : le modèle les trouve tout seul pendant <code>.fit()</code>.</li>
+<li>Les <strong>hyperparamètres</strong> : ce sont des réglages manuels qu'on choisit <em>avant</em> l'entraînement — comme la puissance de la régularisation ou le type de noyau d'un SVM.</li>
+</ul>
+
+<p>Ce cours couvre quatre grandes idées :</p>
+
+<ol>
+<li><strong>Overfitting / Underfitting</strong> — pourquoi un modèle peut trop bien apprendre... et du coup mal généraliser.</li>
+<li><strong>Régularisation L1 / L2</strong> — un mécanisme pour "freiner" les modèles trop gourmands.</li>
+<li><strong>Grid Search / Random Search</strong> — des méthodes automatiques pour trouver les meilleurs hyperparamètres.</li>
+<li><strong>Support Vector Machines (SVM)</strong> — un autre type de modèle qui maximise la "marge" entre les classes.</li>
+</ol>
+
+<h3 id="ref-a-retenir">A retenir</h3>
+
+<ul>
+<li>Un modèle qui performe très bien sur le train set mais mal sur le test set souffre d'<strong>overfitting</strong>.</li>
+<li>La régularisation ajoute une <strong>pénalité</strong> sur les grands coefficients pour éviter l'overfitting.</li>
+<li><strong>Ridge (L2)</strong> réduit les coefficients sans jamais les annuler. <strong>Lasso (L1)</strong> peut les mettre à zéro.</li>
+<li><code>GridSearchCV</code> teste toutes les combinaisons d'hyperparamètres. <code>RandomizedSearchCV</code> en teste un sous-ensemble aléatoire, plus rapide.</li>
+<li><strong>Toujours scaler</strong> les données avant Ridge, Lasso ou SVM.</li>
+</ul>
+
+<h3 id="ref-lanalogie-fil-rouge-régler-une-radio">L'analogie fil rouge : régler une radio</h3>
+
+<p>Imaginez un poste de radio analogique. Vous avez une <strong>molette de fréquence</strong> (le paramètre principal) que la radio règle automatiquement pour capter le signal. Mais vous avez aussi des <strong>réglages manuels</strong> — basses, aigus, volume — que <em>vous</em> devez choisir. Si vous poussez trop les basses, le son est distordu (overfitting). Si vous les coupez trop, vous perdez de la profondeur (underfitting). La régularisation, c'est apprendre à trouver le bon équilibre. Et Grid Search, c'est comme tester toutes les combinaisons de basses/aigus/volume pour trouver le son parfait.</p>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li>Complexité du modèle : biais, variance, overfitting</li>
+<li>Régularisation : Ridge, Lasso, ElasticNet</li>
+<li>Tuning des hyperparamètres : GridSearchCV, RandomizedSearchCV</li>
+<li>Support Vector Machines (SVM)</li>
+<li>Kernel Tricks</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-complexité-du-modèle">1. Complexité du modèle</h2>
+
+<h3 id="ref-paramètres-vs-hyperparamètres">Paramètres vs Hyperparamètres</h3>
+
+<p>Avant tout, clarifieons deux mots qui se ressemblent mais ne jouent pas le même rôle.</p>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Définition</th><th>Exemples</th><th>Qui les fixe ?</th></tr></thead><tbody><tr><td><strong>Paramètres</strong> $\beta$</td><td>Les coefficients appris par le modèle</td><td>$\beta_0, \beta_1, \dots$</td><td><code>.fit()</code> automatiquement</td></tr><tr><td><strong>Hyperparamètres</strong></td><td>Les réglages de configuration</td><td><code>alpha</code>, <code>C</code>, <code>kernel</code>, <code>n_neighbors</code></td><td>Vous, manuellement</td></tr></tbody></table></div>
+<p><strong>Exemple concret :</strong> dans une régression linéaire, les coefficients (pente, intercept) sont des paramètres. Mais si vous utilisez Ridge, le paramètre <code>alpha</code> qui contrôle la force de la régularisation est un <em>hyperparamètre</em> — vous devez le choisir vous-même.</p>
+
+<h3 id="ref-overfitting-et-underfitting">Overfitting et Underfitting</h3>
+
+<p><strong>Underfitting (fort biais)</strong> : le modèle est trop simple. Il ne capte pas les relations importantes dans les données. Il se trompe autant sur le train set que sur le test set.</p>
+
+<p><strong>Overfitting (forte variance)</strong> : le modèle est trop complexe. Il a "mémorisé" les données d'entraînement, y compris le bruit. Il performe très bien sur le train set, mais échoue sur de nouvelles données.</p>
+
+<p><strong>Analogie :</strong> un élève qui révise trop mécaniquement les questions d'entraînement sans comprendre le fond — il réussit les exercices connus mais plante à l'examen si les questions changent un peu.</p>
+
+<h3 id="ref-le-tradeoff-biaisvariance">Le tradeoff Biais–Variance</h3>
+
+<p>L'erreur totale d'un modèle se décompose ainsi :</p>
+
+<div class="katex-display">$$\text{Erreur totale} = \text{Biais}^2 + \text{Variance} + \text{Erreur irréductible}$$</div>
+
+<ul>
+<li><strong>Biais</strong> : erreur due à des hypothèses trop simplistes (underfitting).</li>
+<li><strong>Variance</strong> : erreur due à une trop grande sensibilité aux fluctuations du train set (overfitting).</li>
+<li><strong>Erreur irréductible</strong> : bruit fondamental des données, qu'aucun modèle ne peut éliminer.</li>
+</ul>
+
+<p>L'objectif est de <strong>minimiser l'erreur sur le test set</strong> — c'est-à-dire trouver la complexité optimale qui équilibre biais et variance.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Plus on augmente la complexité d'un modèle (plus de features, plus de degrés), on réduit le biais mais on augmente la variance. Il faut trouver le juste milieu.</p></div></div>
+
+<h3 id="ref-diagnostiquer-avec-les-courbes-dapprentissage">Diagnostiquer avec les courbes d'apprentissage</h3>
+
+<p>Pour savoir si votre modèle souffre d'overfitting ou d'underfitting, on trace les scores sur le train set et le validation set en fonction de la taille des données ou de la complexité du modèle.</p>
+
+<ul>
+<li>Si les deux courbes convergent à un score bas → <strong>underfitting</strong> → modèle trop simple.</li>
+<li>Si la courbe du train set est bien au-dessus de celle du validation set → <strong>overfitting</strong> → modèle trop complexe.</li>
+</ul>
+
+<h3 id="ref-solutions-à-loverfitting">Solutions à l'overfitting</h3>
+
+<ul>
+<li>Collecter plus de données</li>
+<li>Réduire le nombre de features</li>
+<li>Utiliser la <strong>régularisation</strong> (technique principale couverte dans ce cours)</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Diagnostiquez toujours l'overfitting avec un <strong>validation set</strong> (ou la cross-validation), jamais avec le test set. Le test set est sacré — il sert uniquement à l'évaluation finale.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-régularisation">2. Régularisation</h2>
+
+<h3 id="ref-le-principe-général">Le principe général</h3>
+
+<p>La régularisation consiste à ajouter un <strong>terme de pénalité</strong> à la fonction de coût (la Loss). Ce terme punit les modèles qui ont de grands coefficients.</p>
+
+<div class="katex-display">$$\text{Loss régularisée} = \underbrace{L(X, y, \beta)}_{\text{Loss normale}} + \underbrace{\text{Pénalité}(\beta)}_{\text{régularisation}}$$</div>
+
+<p><strong>Pourquoi ça marche ?</strong> Si les coefficients sont trop grands, le modèle sur-réagit à chaque feature. En ajoutant une pénalité sur leur taille, on force le modèle à rester "sobre" — à ne garder que ce qui est vraiment utile.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>On ne régularise <strong>jamais</strong> l'intercept $\beta_0$, car il n'est associé à aucune feature. Seuls $\beta_1, \beta_2, \dots, \beta_p$ sont pénalisés.</p></div></div>
+
+<h3 id="ref-ridge-régularisation-l2">Ridge — Régularisation L2</h3>
+
+<p>Ridge ajoute la somme des <strong>carrés</strong> des coefficients à la Loss :</p>
+
+<div class="katex-display">$$\text{Ridge}(X, y, \beta) = \sum_{i=0}^{n-1}(y_i - \hat{y}_i)^2 + \alpha \sum_{j=1}^{p} \beta_j^2$$</div>
+
+<p><strong>Traduction mot à mot :</strong></p>
+<ul>
+<li>$\sum_{i=0}^{n-1}(y_i - \hat{y}_i)^2$ : la Loss habituelle (MSE) — on mesure l'erreur de prédiction.</li>
+<li>$\alpha$ : la <strong>force</strong> de la régularisation — plus $\alpha$ est grand, plus on pénalise les gros coefficients.</li>
+<li>$\sum_{j=1}^{p} \beta_j^2$ : la somme des carrés des coefficients — la "taille" du modèle.</li>
+</ul>
+
+<p><strong>Intuition :</strong> pénaliser $\beta_j^2$ plutôt que $|\beta_j|$ signifie que les très grands coefficients sont punis <em>de manière disproportionnée</em> (un coefficient de 10 est pénalisé 100 fois, pas 10 fois). Ridge pousse tous les coefficients <strong>vers 0</strong> mais ne les annule jamais complètement.</p>
+
+<p><strong>Exemple numérique :</strong> sans Ridge, un modèle peut avoir $\beta_1 = 500$. Avec Ridge ($\alpha = 0.2$), ce coefficient pourrait descendre à $\beta_1 = 457$ — réduit mais pas nul.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import Ridge
+
+# alpha contrôle la force de la pénalité
+# plus alpha est grand, plus les coefficients sont réduits
+ridge = Ridge(alpha=0.2).fit(X_train, y_train)
+
+# Les coefficients sont réduits mais jamais exactement à 0
+print(ridge.coef_)</code></pre></div>
+
+
+<h3 id="ref-lasso-régularisation-l1">Lasso — Régularisation L1</h3>
+
+<p>Lasso ajoute la somme des <strong>valeurs absolues</strong> des coefficients :</p>
+
+<div class="katex-display">$$\text{Lasso}(X, y, \beta) = \sum_{i=0}^{n-1}(y_i - \hat{y}_i)^2 + \alpha \sum_{j=1}^{p} |\beta_j|$$</div>
+
+<p><strong>Différence clé avec Ridge :</strong> Lasso peut annuler certains coefficients <strong>exactement à 0</strong>. C'est une forme de <strong>sélection automatique de features</strong> : les variables peu importantes disparaissent du modèle.</p>
+
+<p><strong>Pourquoi les coefficients tombent à 0 avec L1 et pas L2 ?</strong> La pénalité L1 (valeur absolue) crée géométriquement des "coins" dans l'espace d'optimisation — et les solutions optimales tombent souvent dans ces coins, où les coefficients sont nuls. L2 (carré) crée une ellipse lisse sans coins, donc les coefficients ne s'annulent jamais exactement.</p>
+
+<p><strong>Exemple numérique :</strong> reprenons le même modèle. Avec Lasso ($\alpha = 0.2$) :</p>
+<ul>
+<li><code>age</code> ($\beta = -10$ sans régularisation, p-value de 86%) → Lasso le met <strong>à 0</strong> (la feature est éliminée)</li>
+<li><code>bmi</code> ($\beta = 519$, très significatif) → Lasso le garde à $511$ (légèrement réduit)</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import Lasso
+
+# alpha : force de la pénalité L1
+lasso = Lasso(alpha=0.2).fit(X_train, y_train)
+
+# Certains coefficients sont exactement 0 → feature éliminée
+print(lasso.coef_)
+# Exemple de sortie :
+# age: 0.0   ← éliminé par Lasso
+# bmi: 511   ← gardé (feature importante)
+# s1:  0.0   ← éliminé par Lasso</code></pre></div>
+
+
+<h3 id="ref-comparaison-ridge-vs-lasso">Comparaison Ridge vs Lasso</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import Ridge, Lasso, LinearRegression
+import pandas as pd
+
+# Trois modèles pour comparer les effets
+linreg = LinearRegression().fit(X, y)   # sans régularisation
+ridge  = Ridge(alpha=0.2).fit(X, y)    # L2 : réduit sans annuler
+lasso  = Lasso(alpha=0.2).fit(X, y)    # L1 : peut annuler à 0
+
+# Tableau comparatif des coefficients
+coefs = pd.DataFrame({
+    &quot;coef_linreg&quot;: pd.Series(linreg.coef_, index=X.columns),  # valeurs de référence
+    &quot;coef_ridge&quot;:  pd.Series(ridge.coef_,  index=X.columns),  # réduits vers 0
+    &quot;coef_lasso&quot;:  pd.Series(lasso.coef_,  index=X.columns)   # certains à 0
+})
+print(coefs)
+# Exemple de sortie :
+#          coef_linreg  coef_ridge  coef_lasso
+# age              -10           7           0   ← Lasso annule (p-value 86%)
+# bmi             519         457         511   ← gardé (très significatif)
+# s1             -792         -48           0   ← Lasso annule (p-value 5%)</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Ridge</th><th>Lasso</th></tr></thead><tbody><tr><td>Effet quand $\alpha$ augmente</td><td>Réduit les coefficients vers 0</td><td>Annule certains coefficients à 0</td></tr><tr><td>Sélection de features</td><td>Non</td><td>Oui (automatique)</td></tr><tr><td>Interprétabilité</td><td>Moins bonne</td><td>Meilleure</td></tr><tr><td>Gestion des variables corrélées</td><td>Distribue l'effet</td><td>Garde une seule variable</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><strong>Quand utiliser lequel ?</strong></p>
+<p>- <strong>Ridge</strong> → quand vous pensez que toutes vos features ont un impact, même petit.</p>
+<p>- <strong>Lasso</strong> → quand vous avez beaucoup de features et voulez ne garder que les importantes.</p>
+<p>- En cas de doute : essayez les deux et comparez avec cross-validation.</p></div></div>
+
+<h3 id="ref-elasticnet-le-meilleur-des-deux-mondes-l1-l2">ElasticNet — Le meilleur des deux mondes (L1 + L2)</h3>
+
+<p>ElasticNet combine Ridge et Lasso. Sa Loss est :</p>
+
+<div class="katex-display">$$L = \|y - \hat{y}\|^2 + \alpha\left(\lambda|\beta| + (1-\lambda)\|\beta\|^2\right)$$</div>
+
+<p><strong>Deux hyperparamètres à régler :</strong></p>
+<ul>
+<li><code>alpha</code> : la force totale de la régularisation.</li>
+<li><code>l1_ratio</code> ($\lambda$) : l'équilibre entre L1 et L2. <code>l1_ratio=0</code> → pur Ridge, <code>l1_ratio=1</code> → pur Lasso.</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import ElasticNet
+
+# l1_ratio=0.2 : 20% Lasso, 80% Ridge
+# alpha=1 : régularisation forte
+elastic = ElasticNet(alpha=1, l1_ratio=0.2)
+elastic.fit(X_train, y_train)</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>ElasticNet est souvent un bon choix par défaut quand on ne sait pas si Ridge ou Lasso est plus adapté. On règle ensuite <code>alpha</code> et <code>l1_ratio</code> via GridSearch.</p></div></div>
+
+<h3 id="ref-p-values-et-régularisation-un-lien-intuitif">P-values et régularisation : un lien intuitif</h3>
+
+<p>Les features avec des <strong>p-values élevées</strong> (statistiquement non significatives) ont tendance à être pénalisées davantage par la régularisation — Lasso les annule, Ridge les réduit fortement. La régularisation fait donc quelque chose de similaire aux tests statistiques, mais de manière automatique.</p>
+
+<hr>
+
+<h2 id="ref-3-tuning-des-hyperparamètres">3. Tuning des Hyperparamètres</h2>
+
+<h3 id="ref-la-distinction-fondamentale">La distinction fondamentale</h3>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>- <strong>FIT</strong> = trouver les meilleurs <strong>PARAMÈTRES</strong> $\beta$ qui minimisent la <strong>LOSS</strong> → c'est <code>.fit()</code>.</p>
+<p>- <strong>FINE-TUNE</strong> = trouver les meilleurs <strong>HYPERPARAMÈTRES</strong> qui maximisent une <strong>MÉTRIQUE</strong> (R², accuracy…) → c'est le grid search.</p></div></div>
+
+<p><strong>Règle d'or :</strong> on ne touche jamais au test set pour choisir les hyperparamètres. On utilise la <strong>cross-validation</strong> sur le train set uniquement.</p>
+
+<p><strong>Analogie :</strong> vous préparez un plat pour un jury. Vous goûtez et ajustez la recette (hyperparamètres) avec vos propres tests (validation set). Vous ne servez le jury (test set) qu'une seule fois, à la fin. Si vous goûtez en regardant la réaction du jury à chaque ajustement, votre évaluation finale n'est plus fiable.</p>
+
+<h3 id="ref-grid-search-manuel-pour-comprendre-le-principe">Grid Search manuel — pour comprendre le principe</h3>
+
+<p>Avant d'utiliser la fonction automatique, voici ce que fait un grid search "à la main" :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import itertools
+from sklearn.model_selection import cross_val_score
+from sklearn.linear_model import ElasticNet
+
+# On définit les valeurs à tester pour chaque hyperparamètre
+alphas    = [0.01, 0.1, 1]
+l1_ratios = [0.2, 0.5, 0.8]
+
+# itertools.product génère TOUTES les combinaisons possibles : 3×3 = 9
+for alpha, l1_ratio in itertools.product(alphas, l1_ratios):
+    model = ElasticNet(alpha=alpha, l1_ratio=l1_ratio)
+    # cross_val_score évalue chaque combinaison sur 5 folds
+    r2 = cross_val_score(model, X_train, y_train, cv=5).mean()
+    print(f&quot;alpha: {alpha}, l1_ratio: {l1_ratio}, r2: {r2:.3f}&quot;)
+
+# Sortie (exemple) :
+# alpha: 0.01, l1_ratio: 0.2,  r2: 0.310
+# alpha: 0.01, l1_ratio: 0.8,  r2: 0.442  ← meilleure combinaison
+# alpha: 1,    l1_ratio: 0.2,  r2: -0.021</code></pre></div>
+
+
+<p>Ce code fonctionne, mais il faut gérer manuellement le suivi des résultats. C'est pour ça que sklearn offre <code>GridSearchCV</code>.</p>
+
+<h3 id="ref-gridsearchcv-la-version-automatique-et-optimisée">GridSearchCV — La version automatique et optimisée</h3>
+
+<p><code>GridSearchCV</code> fait exactement la même chose que la boucle ci-dessus, mais :</p>
+<ul>
+<li>Gère automatiquement tous les résultats</li>
+<li>Parallélise les calculs (<code>n_jobs=-1</code>)</li>
+<li>Expose directement les meilleurs paramètres et le meilleur modèle</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import GridSearchCV, train_test_split
+from sklearn.linear_model import ElasticNet
+
+# Séparation train/test — on ne touche à X_test qu&#x27;à la toute fin
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+
+model = ElasticNet()
+
+# Dictionnaire des hyperparamètres à tester
+# GridSearch va tester TOUTES les combinaisons : 3×3 = 9
+grid = {
+    &#x27;alpha&#x27;:    [0.01, 0.1, 1],       # 3 valeurs pour alpha
+    &#x27;l1_ratio&#x27;: [0.2, 0.5, 0.8]       # 3 valeurs pour l1_ratio
+}
+
+search = GridSearchCV(
+    model,           # le modèle à optimiser
+    grid,            # la grille d&#x27;hyperparamètres
+    scoring=&#x27;r2&#x27;,    # la métrique à maximiser
+    cv=5,            # 5-fold cross-validation pour chaque combinaison
+    n_jobs=-1        # utilise tous les cœurs disponibles en parallèle
+)
+
+# On entraîne uniquement sur X_train
+search.fit(X_train, y_train)
+
+# Résultats
+print(search.best_score_)      # meilleur score CV moyen → ex : 0.441
+print(search.best_params_)     # {&#x27;alpha&#x27;: 0.01, &#x27;l1_ratio&#x27;: 0.8}
+print(search.best_estimator_)  # le modèle déjà entraîné avec les meilleurs params</code></pre></div>
+
+
+<p><strong>Ce que fait GridSearchCV en détail :</strong></p>
+<p>Pour chaque combinaison (ici 9), il entraîne le modèle 5 fois (cv=5) sur des folds différents et calcule le score moyen. Il choisit la combinaison avec le meilleur score moyen.</p>
+
+<p>9 combinaisons × 5 folds = <strong>45 entraînements</strong> au total.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>search.best_score_</code> est le score moyen sur la cross-validation, pas sur le test set. C'est normal : le test set ne sert qu'à l'évaluation finale, après avoir choisi les hyperparamètres.</p></div></div>
+
+<p><strong>Limites du Grid Search :</strong></p>
+<ul>
+<li>Si on a beaucoup d'hyperparamètres et beaucoup de valeurs, le nombre de combinaisons explose (3 hyperparamètres avec 10 valeurs chacun = 1 000 combinaisons × 5 folds = 5 000 entraînements).</li>
+<li>On peut "suroptimiser" les hyperparamètres si le dataset est petit.</li>
+</ul>
+
+<h3 id="ref-randomizedsearchcv-quand-la-grille-est-trop-grande">RandomizedSearchCV — Quand la grille est trop grande</h3>
+
+<p>Au lieu de tester toutes les combinaisons, <code>RandomizedSearchCV</code> en tire un nombre fixé (<code>n_iter</code>) au hasard. C'est souvent suffisant pour trouver de bonnes valeurs, et beaucoup plus rapide.</p>
+
+<p><strong>Avantage supplémentaire :</strong> on peut utiliser des <strong>distributions continues</strong> (pas seulement des listes discrètes) pour explorer l'espace des hyperparamètres de manière plus fine.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import RandomizedSearchCV
+from scipy import stats
+
+model = ElasticNet()
+
+grid = {
+    &#x27;alpha&#x27;:    [0.001, 0.01, 0.1, 1],  # liste discrète de 4 valeurs
+    &#x27;l1_ratio&#x27;: stats.uniform(0, 1)      # distribution continue : n&#x27;importe quelle valeur entre 0 et 1
+}
+
+search = RandomizedSearchCV(
+    model,
+    grid,
+    scoring=&#x27;r2&#x27;,
+    n_iter=100,   # on teste seulement 100 combinaisons (choisies aléatoirement)
+    cv=5,
+    n_jobs=-1
+)
+search.fit(X_train, y_train)
+
+# Le modèle optimal trouvé parmi les 100 combinaisons testées
+print(search.best_estimator_)
+# → ElasticNet(alpha=0.001, l1_ratio=0.710)</code></pre></div>
+
+
+<h3 id="ref-choisir-la-bonne-distribution-scipy">Choisir la bonne distribution scipy</h3>
+
+<p>La distribution qu'on donne à <code>RandomizedSearchCV</code> pour chaque hyperparamètre détermine comment les valeurs sont échantillonnées :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from scipy import stats
+
+# Distribution normale — si vous avez une bonne intuition de la valeur centrale
+# Ex : &quot;je pense que alpha est autour de 10&quot;
+stats.norm(10, 2)
+
+# Uniforme discrète — aucune idée a priori, valeurs entières
+# Ex : &quot;n_neighbors entre 1 et 100&quot;
+stats.randint(1, 100)
+
+# Uniforme continue — aucune idée a priori, valeurs continues
+stats.uniform(1, 100)
+
+# Log-uniforme — pour explorer plusieurs ordres de grandeur en même temps
+# loguniform(0.01, 1) explore à la fois 0.01, 0.1 et 1 de façon équilibrée
+# Idéal pour alpha ou C qui peuvent varier de 0.001 à 1000
+stats.loguniform(0.01, 1)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><strong>Pourquoi log-uniforme ?</strong> Pour un hyperparamètre comme <code>alpha</code> qui peut valoir 0.001, 0.01, 0.1 ou 1, une distribution uniforme entre 0.001 et 1 échantillonnerait presque uniquement des valeurs proches de 1. La distribution log-uniforme équilibre l'exploration entre les ordres de grandeur.</p></div></div>
+
+<h3 id="ref-grid-search-vs-random-search-le-résumé">Grid Search vs Random Search : le résumé</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Grid Search</th><th>Random Search</th></tr></thead><tbody><tr><td>Combinaisons testées</td><td>Toutes (exhaustif)</td><td>Sous-ensemble aléatoire (<code>n_iter</code>)</td></tr><tr><td>Coût computationnel</td><td>Élevé si grille grande</td><td>Contrôlable via <code>n_iter</code></td></tr><tr><td>Distributions continues</td><td>Non (listes uniquement)</td><td>Oui (distributions scipy)</td></tr><tr><td>Quand l'utiliser</td><td>Petite grille, peu d'hyperparamètres</td><td>Grande grille, hyperparamètres continus</td></tr></tbody></table></div>
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p><strong>Bonne pratique :</strong> commencez par une recherche grossière sur de grandes plages (ex : <code>loguniform(0.001, 100)</code>), puis affinez autour des meilleures valeurs trouvées. Ne commencez pas avec une grille très fine dès le départ.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-support-vector-machines-svm">4. Support Vector Machines (SVM)</h2>
+
+<h3 id="ref-lidée-centrale-maximiser-la-marge">L'idée centrale : maximiser la marge</h3>
+
+<p>Un SVM est un modèle de classification qui cherche à trouver la <strong>meilleure frontière de décision</strong> entre deux classes. "Meilleure" signifie : celle qui <strong>maximise la marge</strong> — la distance entre la frontière et les points les plus proches de chaque classe.</p>
+
+<p><strong>Analogie :</strong> si vous devez tracer une ligne entre deux groupes de points sur une feuille, vous allez instinctivement la placer le plus loin possible des deux groupes, pour avoir une "marge de sécurité". C'est exactement ce que fait le SVM.</p>
+
+<p>Les points situés exactement sur le bord de la marge s'appellent les <strong>support vectors</strong> — ce sont les seuls points qui "comptent" pour définir la frontière.</p>
+
+<p><strong>Propriété importante :</strong> le problème de maximisation de la marge est un problème d'optimisation convexe → il a une <strong>solution unique et garantie</strong>.</p>
+
+<h3 id="ref-soft-margin-classifier-accepter-quelques-erreurs">Soft Margin Classifier — Accepter quelques erreurs</h3>
+
+<p>Dans la vraie vie, les données ne sont pas parfaitement séparables. Le SVM "marge stricte" est trop sensible aux outliers. La solution : le <strong>Soft Margin Classifier</strong> autorise quelques points à être du mauvais côté de la marge, avec une <strong>pénalité</strong>.</p>
+
+<p>La pénalité utilisée est la <strong>Hinge Loss</strong> : chaque point mal classé est pénalisé proportionnellement à sa distance dans la marge (pénalité linéaire, comme le MAE).</p>
+
+<h3 id="ref-lhyperparamètre-c-la-tolérance-aux-erreurs">L'hyperparamètre C : la tolérance aux erreurs</h3>
+
+<p><code>C</code> contrôle à quel point on pénalise les points mal classés.</p>
+
+<div class="table-wrapper"><table><thead><tr><th><code>C</code></th><th>Effet</th><th>Analogie</th></tr></thead><tbody><tr><td>Grand $C$ (vers $\infty$)</td><td>Marge stricte, peu d'erreurs tolérées</td><td>Peu régularisé, risque d'overfitting</td></tr><tr><td>Petit $C$</td><td>Marge souple, plus d'erreurs tolérées</td><td>Fortement régularisé</td></tr></tbody></table></div>
+<p><strong>Important :</strong> <code>C</code> est l'inverse d'<code>alpha</code> dans Ridge. Grand <code>C</code> = peu de régularisation. Petit <code>C</code> = beaucoup de régularisation.</p>
+
+<div class="katex-display">$$C_{\text{SVM}} \approx \frac{1}{\alpha_{\text{Ridge}}}$$</div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.svm import SVC
+
+# C=10 : marge stricte, peu de tolérance aux erreurs → risque d&#x27;overfitting
+svc = SVC(kernel=&#x27;linear&#x27;, C=10)
+
+# Équivalent avec SGDClassifier (même problème, résolu différemment)
+from sklearn.linear_model import SGDClassifier
+# alpha de SGD = 1/C du SVM
+svc_sgd = SGDClassifier(loss=&#x27;hinge&#x27;, penalty=&#x27;l2&#x27;, alpha=1/10)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Toujours scaler</strong> avant d'utiliser un SVM. Le SVM mesure des distances entre les points, donc si une feature a des valeurs entre 0 et 1 et une autre entre 0 et 10 000, la seconde va dominer complètement. Utilisez <code>StandardScaler</code> systématiquement.</p></div></div>
+
+<h3 id="ref-svm-pour-la-régression-svr">SVM pour la régression (SVR)</h3>
+
+<p>Le SVR inverse le principe : au lieu de séparer deux classes, il cherche à faire passer <strong>autant de points que possible à l'intérieur d'un tube</strong> de demi-largeur $\epsilon$.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.svm import SVR
+
+regressor = SVR(
+    epsilon=0.1,    # demi-largeur du tube — les points dans le tube ne génèrent aucune pénalité
+    C=1,            # force de régularisation (même logique que SVC)
+    kernel=&#x27;rbf&#x27;    # type de frontière (voir section suivante)
+)</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-5-kernel-tricks">5. Kernel Tricks</h2>
+
+<h3 id="ref-le-problème-données-non-linéairement-séparables">Le problème : données non linéairement séparables</h3>
+
+<p>Parfois, aucune ligne droite ne peut séparer les deux classes. Par exemple, une classe forme un cercle à l'intérieur de l'autre.</p>
+
+<p><strong>Solution naïve :</strong> ajouter de nouvelles features construites à partir des features existantes pour rendre les données séparables dans un espace de dimension supérieure.</p>
+
+<p><strong>Exemple :</strong> si les deux classes ne sont pas séparables dans l'espace $(x_1, x_2)$, on peut ajouter la feature $x_1^2 + x_2^2$ (distance à l'origine). Dans le nouvel espace 3D, les classes deviennent linéairement séparables.</p>
+
+<div class="katex-display">$$\phi\left(\begin{bmatrix}x_1 \\ x_2\end{bmatrix}\right) = \begin{bmatrix}x_1 \\ x_2 \\ x_1^2 + x_2^2\end{bmatrix}$$</div>
+
+<p><strong>Problème :</strong> créer explicitement toutes ces nouvelles features devient très coûteux quand la dimensionnalité augmente.</p>
+
+<h3 id="ref-le-kernel-trick-lastuce-mathématique">Le Kernel Trick — L'astuce mathématique</h3>
+
+<p>Plutôt que de calculer explicitement les nouvelles features $\phi(x)$, le Kernel Trick utilise une <strong>fonction de similarité</strong> $K(a, b)$ entre paires de points qui <em>simule</em> ce que serait le produit scalaire dans l'espace transformé — sans jamais calculer la transformation elle-même.</p>
+
+<p><strong>Intuition :</strong> deux points très similaires (proches dans l'espace transformé) reçoivent un score élevé → ils seront classifiés pareil.</p>
+
+<h3 id="ref-les-kernels-disponibles">Les kernels disponibles</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.svm import SVC
+
+# Kernel linéaire : frontière droite (espace d&#x27;origine)
+SVC(kernel=&#x27;linear&#x27;, C=1)
+
+# Kernel polynomial : frontière courbe de degré d
+SVC(kernel=&#x27;poly&#x27;, degree=2, C=1)
+
+# Kernel RBF (Radial Basis Function) : le plus courant
+# gamma contrôle le &quot;rayon d&#x27;influence&quot; de chaque point
+SVC(kernel=&#x27;rbf&#x27;, C=1, gamma=0.1)
+
+# Kernel sigmoïde : similaire à un réseau de neurones (moins utilisé)
+SVC(kernel=&#x27;sigmoid&#x27;, gamma=0.1)</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Kernel</th><th>Formule</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td><code>linear</code></td><td>$K(a,b) = a^Tb$</td><td>Données linéairement séparables</td></tr><tr><td><code>poly</code> (degré $d$)</td><td>$K(a,b) = (a^Tb + c)^d$</td><td>Relations polynomiales connues</td></tr><tr><td><code>rbf</code> (Gaussian)</td><td>$K(a,b) = e^{-\gamma\</td><td>a-b\</td><td>^2}$</td><td>Cas général, souvent le meilleur</td></tr><tr><td><code>sigmoid</code></td><td>—</td><td>Rarement utilisé</td></tr></tbody></table></div>
+<h3 id="ref-lhyperparamètre-gamma-kernel-rbf">L'hyperparamètre gamma (kernel RBF)</h3>
+
+<p>$\gamma$ contrôle le <strong>rayon d'influence</strong> de chaque point d'entraînement :</p>
+
+<ul>
+<li><strong>Petit $\gamma$</strong> → chaque point influence une large zone → frontière lisse → risque d'underfitting.</li>
+<li><strong>Grand $\gamma$</strong> → chaque point n'influence que son voisinage immédiat → frontière très irrégulière, collée aux données → risque d'overfitting.</li>
+</ul>
+
+<p><strong>Analogie :</strong> imaginez chaque point d'entraînement comme une lampe. Avec un grand $\gamma$, les lampes éclairent peu (faible portée), créant des zones d'ombre complexes. Avec un petit $\gamma$, chaque lampe éclaire loin, et la frontière entre lumière et ombre est simple.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Toujours tuner <code>C</code> et <code>gamma</code> <strong>ensemble</strong> pour le kernel RBF — ils interagissent fortement. Un grand <code>gamma</code> nécessite souvent un petit <code>C</code> (plus de régularisation) pour éviter l'overfitting.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import GridSearchCV
+from sklearn.svm import SVC
+
+# On teste toutes les combinaisons de C et gamma ensemble
+search = GridSearchCV(
+    SVC(kernel=&#x27;rbf&#x27;),
+    {&#x27;C&#x27;: [0.1, 1, 10, 100], &#x27;gamma&#x27;: [0.001, 0.01, 0.1, 1]},  # 4×4 = 16 combinaisons
+    scoring=&#x27;accuracy&#x27;,
+    cv=5
+)
+search.fit(X_train, y_train)
+print(search.best_params_)  # ex : {&#x27;C&#x27;: 10, &#x27;gamma&#x27;: 0.01}</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-erreurs-classiques-à-éviter">⚠️ Erreurs classiques à éviter</h2>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Tuner les hyperparamètres sur le test set</strong></p>
+<p>Évaluer plusieurs valeurs d'<code>alpha</code> directement sur le test set pour choisir la meilleure = contamination du test set. Celui-ci ne peut plus servir d'évaluation fiable.</p>
+<p>Solution : utiliser <code>GridSearchCV</code> avec cross-validation sur le train set uniquement.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Oublier de scaler avant Ridge, Lasso ou SVM</strong></p>
+<p>Sans scaling, les features avec de grandes valeurs numériques seront disproportionnellement pénalisées. Utilisez <code>StandardScaler</code> systématiquement avant toute régularisation ou SVM.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Confondre C du SVM et alpha de Ridge</strong></p>
+<p>Augmenter <code>C</code> ne régularise <em>pas</em> davantage — c'est l'inverse ! Grand <code>C</code> = moins de régularisation. La relation est : $C \approx 1/\alpha$.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Commencer avec une grille trop fine</strong></p>
+<p>Tester <code>alpha = [0.001, 0.002, 0.003, ..., 0.999]</code> sur 1 000 valeurs est coûteux et risque de sur-ajuster les hyperparamètres. Commencez large (<code>loguniform(0.001, 10)</code>), puis affinez.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>1.</strong> Vous entraînez un modèle Ridge avec <code>alpha=0.0001</code> et obtenez un R² de 0.95 sur le train set et 0.42 sur le test set. Quel est le problème ? Que feriez-vous pour le corriger ?</p>
+
+<p><strong>2.</strong> Quelle est la différence concrète entre un coefficient Ridge et un coefficient Lasso quand <code>alpha</code> est grand ? Donnez un exemple avec des valeurs numériques.</p>
+
+<p><strong>3.</strong> Vous utilisez <code>GridSearchCV</code> avec 4 valeurs pour <code>alpha</code>, 3 pour <code>l1_ratio</code>, et <code>cv=5</code>. Combien d'entraînements de modèle seront effectués au total ?</p>
+
+<p><strong>4.</strong> Dans un SVM avec kernel RBF, vous observez que le modèle performe parfaitement sur le train set mais très mal sur le validation set. Quels hyperparamètres soupçonnez-vous ? Dans quelle direction les modifier ?</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li><strong>Overfitting</strong> = modèle trop complexe qui mémorise le bruit → mauvaise généralisation. Solution principale : la <strong>régularisation</strong>.</li>
+<li><strong>Ridge (L2)</strong> pénalise les $\beta^2$ → réduit tous les coefficients vers 0, sans jamais les annuler.</li>
+<li><strong>Lasso (L1)</strong> pénalise les $|\beta|$ → peut annuler exactement des coefficients à 0 → sélection automatique de features.</li>
+<li><strong>ElasticNet</strong> combine L1 et L2 via <code>alpha</code> (force) et <code>l1_ratio</code> (équilibre).</li>
+<li><strong>Ne jamais</strong> utiliser le test set pour choisir les hyperparamètres. Utiliser la cross-validation sur le train set.</li>
+<li><code>GridSearchCV</code> teste toutes les combinaisons d'hyperparamètres. <code>RandomizedSearchCV</code> teste un sous-ensemble aléatoire — plus rapide, surtout avec des distributions continues via <code>scipy.stats</code>.</li>
+<li>Pour <code>alpha</code> et <code>C</code>, préférer <code>loguniform</code> pour explorer plusieurs ordres de grandeur.</li>
+<li>Le <strong>SVM</strong> cherche la frontière qui maximise la marge entre les classes. <code>C</code> contrôle la tolérance aux erreurs (grand <code>C</code> = peu régularisé).</li>
+<li>Le <strong>Kernel Trick</strong> permet au SVM de tracer des frontières non linéaires sans jamais calculer explicitement les nouvelles features.</li>
+<li><strong>Toujours scaler</strong> avant Ridge, Lasso, ElasticNet et SVM.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-hyperparamètres-vs-paramètres">Hyperparamètres vs paramètres</a></li><li><a href="#syn-régularisation-l1-l2-elasticnet">Régularisation L1, L2, ElasticNet</a></li><li><a href="#syn-gridsearchcv">GridSearchCV</a></li><li><a href="#syn-randomizedsearchcv">RandomizedSearchCV</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-optimisation-bayésienne">Optimisation bayésienne</a></li><li><a href="#syn-early-stopping">Early stopping</a></li><li><a href="#syn-pratiques-dindustrie">Pratiques d'industrie</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-hyperparamètres-vs-paramètres">Hyperparamètres vs paramètres</h3>
+
+<p>Distinction fondamentale :</p>
+
+<ul>
+<li><strong>Paramètres</strong> : appris par l'algorithme pendant <code>fit</code> (poids d'une régression, splits d'un arbre, embeddings d'un réseau).</li>
+<li><strong>Hyperparamètres</strong> : fixés <strong>avant</strong> l'entraînement et contrôlent <strong>comment</strong> l'algorithme apprend (learning rate, profondeur d'arbre, $C$ d'une régression, $k$ de KNN).</li>
+</ul>
+
+<p>Le <strong>tuning</strong> consiste à trouver les hyperparamètres qui minimisent l'erreur sur la <strong>validation</strong> (jamais sur le test).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Exemples d&#x27;hyperparamètres pour différents modèles
+LogisticRegression(C=1.0, penalty=&quot;l2&quot;, solver=&quot;lbfgs&quot;)                     # C = 1/λ
+RandomForestClassifier(n_estimators=100, max_depth=10, min_samples_split=5)
+XGBClassifier(n_estimators=200, learning_rate=0.1, max_depth=6, subsample=0.8)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : les paramètres sont les notes que joue un musicien (apprises pendant les répétitions). Les hyperparamètres sont les boutons de réglage de son instrument (accordage, volume, sustain) — qu'il configure avant de jouer. Mauvais réglages = mêmes notes, mais sonorité catastrophique.</p></div></div>
+
+<h3 id="syn-régularisation-l1-l2-elasticnet">Régularisation L1, L2, ElasticNet</h3>
+
+<p>La régularisation ajoute un terme de pénalité à la fonction de coût pour <strong>décourager les gros coefficients</strong>, source d'overfitting. La fonction de coût régularisée s'écrit :</p>
+
+<div class="katex-display">$$\mathcal{L}_{\text{reg}}(\mathbf{w}) = \mathcal{L}(\mathbf{w}) + \lambda R(\mathbf{w})$$</div>
+
+<p>Lecture : <em>la loss totale est la loss d'apprentissage (MSE, log-loss…) plus un terme $\lambda R(\mathbf{w})$ qui pénalise la taille des poids</em>. Le coefficient $\lambda \geq 0$ (aussi noté $\alpha$ dans sklearn, ou $1/C$) contrôle la force de la pénalité :</p>
+<ul>
+<li>$\lambda = 0$ → aucune régularisation, risque d'overfit</li>
+<li>$\lambda$ grand → poids forcés à zéro, risque d'underfit</li>
+<li>Valeur optimale trouvée par validation croisée</li>
+</ul>
+
+<p><strong>Régularisation L2 (Ridge)</strong> :</p>
+
+<div class="katex-display">$$R_{L2}(\mathbf{w}) = \sum_{j=1}^{p} w_j^2 = \|\mathbf{w}\|_2^2$$</div>
+
+<p>Lecture : <em>on somme les carrés des coefficients</em>. C'est une sphère dans l'espace des poids. Effet : les poids sont <strong>tous tirés vers zéro</strong> de manière lisse, mais restent non nuls. Solution stable et unique.</p>
+
+<p><strong>Régularisation L1 (Lasso)</strong> :</p>
+
+<div class="katex-display">$$R_{L1}(\mathbf{w}) = \sum_{j=1}^{p} |w_j| = \|\mathbf{w}\|_1$$</div>
+
+<p>Lecture : <em>on somme les valeurs absolues des coefficients</em>. C'est un losange (diamant) dans l'espace des poids. Les "coins" du losange se trouvent sur les axes, ce qui fait qu'à l'optimum certains $w_j$ deviennent <strong>exactement zéro</strong> → sélection de features automatique.</p>
+
+<p><strong>Géométrie L1 vs L2</strong> : imaginez les courbes de niveau de la loss d'apprentissage (ellipses) et la contrainte de régularisation (cercle pour L2, losange pour L1). L'optimum est au point de contact. Un losange a des coins aux axes → il y a une forte probabilité que le contact se fasse sur un coin, donc avec $w_j = 0$. Un cercle est lisse → le contact a lieu n'importe où, tous les $w_j$ restent non nuls.</p>
+
+<p><strong>ElasticNet</strong> : combinaison convexe des deux.</p>
+
+<div class="katex-display">$$R_{\text{EN}}(\mathbf{w}) = \alpha \|\mathbf{w}\|_1 + (1 - \alpha) \|\mathbf{w}\|_2^2$$</div>
+
+<div class="table-wrapper"><table><thead><tr><th>Régularisation</th><th>Pénalité</th><th>Effet sur les poids</th><th>Propriété</th></tr></thead><tbody><tr><td><strong>L2 (Ridge)</strong></td><td>$\sum w_j^2$</td><td>Petits, non nuls</td><td>Lisse, unique</td></tr><tr><td><strong>L1 (Lasso)</strong></td><td>$\sum</td><td>w_j</td><td>$</td><td>Certains exactement zéro</td><td>Sélection de features</td></tr><tr><td><strong>ElasticNet</strong></td><td>$\alpha L_1 + (1-\alpha) L_2$</td><td>Hybride</td><td>Compromis</td></tr></tbody></table></div>
+<p><strong>Exemple chiffré</strong> : sur un problème à 100 features dont seulement 10 sont vraiment informatives :</p>
+<ul>
+<li>OLS donne des coefficients de l'ordre de $10^3$, très instables (R² test = 0.45)</li>
+<li>Ridge ($\alpha = 1$) donne des coefficients de l'ordre de 0.5, tous non nuls (R² test = 0.78)</li>
+<li>Lasso ($\alpha = 0.1$) met 90 coefficients à exactement 0 et garde les 10 utiles (R² test = 0.82)</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
+
+# C = 1/λ : plus C est petit, plus la régularisation est forte
+pipe = make_pipeline(
+    StandardScaler(),                                         # indispensable !
+    LogisticRegression(penalty=&quot;l2&quot;, C=0.1, max_iter=1000)    # régularisation forte
+)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège majeur</strong> : oublier de standardiser les features avant la régularisation. La pénalité dépend de la taille des poids, qui dépend elle-même de l'échelle des features. Sans <code>StandardScaler</code>, une feature en millions aura un poids minuscule et échappera à la régularisation, alors qu'une feature en pourcentage sera écrasée. <strong>Toujours</strong> scaler en amont. C'est THE question d'entretien sur la régularisation.</p></div></div>
+
+<h3 id="syn-gridsearchcv">GridSearchCV</h3>
+
+<p>Test exhaustif de combinaisons d'hyperparamètres avec cross-validation.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import GridSearchCV
+
+param_grid = {
+    &quot;model__C&quot;: [0.001, 0.01, 0.1, 1, 10, 100],    # 6 valeurs
+    &quot;model__penalty&quot;: [&quot;l1&quot;, &quot;l2&quot;],                 # 2 valeurs
+}
+
+grid = GridSearchCV(
+    estimator=pipe,
+    param_grid=param_grid,
+    cv=5,                        # 5-fold CV
+    scoring=&quot;f1&quot;,
+    n_jobs=-1,                   # parallélisme
+    verbose=1,
+)
+grid.fit(X_train, y_train)       # 6 * 2 * 5 = 60 entraînements
+
+print(&quot;Best params:&quot;, grid.best_params_)
+print(&quot;Best CV score:&quot;, grid.best_score_)
+print(&quot;Test score:&quot;, grid.score(X_test, y_test))</code></pre></div>
+
+
+<p>Trois précautions :</p>
+
+<ol>
+<li><strong>Coût combinatoire</strong> : 6 valeurs de C × 2 penalties × 5 folds = 60 entraînements. Sur 10 hyperparamètres avec 5 valeurs chacun = $5^{10} \times 5 \approx 50$ millions d'entraînements. Inutilisable.</li>
+<li><strong>Grille adaptative</strong> : commencez large (<code>[0.001, 0.1, 10]</code>), zoomez autour du meilleur (<code>[1, 5, 10, 50, 100]</code>).</li>
+<li><strong>Sample-efficient</strong> : utilisez RandomizedSearch ou Bayesian quand la grille est grande.</li>
+</ol>
+
+<h3 id="syn-randomizedsearchcv">RandomizedSearchCV</h3>
+
+<p>Au lieu d'essayer toutes les combinaisons, on en tire $N$ aléatoirement.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import RandomizedSearchCV
+from scipy.stats import loguniform
+
+param_dist = {
+    &quot;model__C&quot;: loguniform(1e-3, 1e3),          # distribution log-uniforme
+    &quot;model__penalty&quot;: [&quot;l1&quot;, &quot;l2&quot;],
+}
+
+random_search = RandomizedSearchCV(
+    estimator=pipe,
+    param_distributions=param_dist,
+    n_iter=50,                   # 50 tirages aléatoires
+    cv=5,
+    scoring=&quot;f1&quot;,
+    random_state=42,
+    n_jobs=-1,
+)
+random_search.fit(X_train, y_train)</code></pre></div>
+
+
+<p>Pourquoi le random est souvent meilleur que la grille (Bergstra & Bengio, 2012) :</p>
+
+<ul>
+<li>Sur 10 hyperparamètres, certains sont <strong>importants</strong>, d'autres non. Une grille teste $5^{10}$ combinaisons mais seulement 5 valeurs sur les hyperparamètres importants. Un random teste $N$ valeurs <strong>différentes</strong> sur chaque hyperparamètre.</li>
+<li>Random est plus efficace si seulement 2-3 hyperparamètres comptent vraiment.</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : préférez <code>loguniform</code> à <code>uniform</code> pour des hyperparamètres comme $C$, $\alpha$, learning rate, qui s'expriment naturellement en échelle logarithmique. Tester $C \in \{0.1, 0.2, 0.3\}$ est beaucoup moins informatif que $C \in \{0.01, 0.1, 1\}$ — on couvre 2 ordres de grandeur au lieu de 2×.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-optimisation-bayésienne">Optimisation bayésienne</h3>
+
+<p>GridSearch et RandomSearch sont <strong>uninformés</strong> : chaque essai est indépendant des précédents. L'<strong>optimisation bayésienne</strong> apprend de l'historique des essais pour proposer le prochain hyperparamètre le plus prometteur.</p>
+
+<p>L'idée : modéliser la fonction "hyperparamètres → score" avec un <strong>processus gaussien</strong> (ou un Tree-structured Parzen Estimator), puis choisir le prochain point qui maximise une <strong>fonction d'acquisition</strong> (généralement Expected Improvement ou Upper Confidence Bound).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import optuna
+
+def objective(trial):
+    # Optuna propose intelligemment la prochaine combinaison
+    C = trial.suggest_float(&quot;C&quot;, 1e-3, 1e3, log=True)
+    penalty = trial.suggest_categorical(&quot;penalty&quot;, [&quot;l1&quot;, &quot;l2&quot;])
+
+    model = make_pipeline(
+        StandardScaler(),
+        LogisticRegression(C=C, penalty=penalty, solver=&quot;liblinear&quot;, max_iter=1000)
+    )
+    return cross_val_score(model, X_train, y_train, cv=5, scoring=&quot;f1&quot;).mean()
+
+study = optuna.create_study(direction=&quot;maximize&quot;)
+study.optimize(objective, n_trials=100)      # 100 essais guidés
+
+print(&quot;Best params:&quot;, study.best_params)
+print(&quot;Best score:&quot;, study.best_value)</code></pre></div>
+
+
+<p>Pour le même budget de 100 essais, l'optimisation bayésienne trouve typiquement de meilleurs hyperparamètres que random search, surtout sur des espaces de plus de 5 dimensions.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : grid search, c'est tester systématiquement chaque combinaison d'ingrédients d'une recette. Random, c'est lancer les dés. Bayésien, c'est un chef expérimenté qui ajuste à chaque essai en fonction de ce qu'il a goûté la fois précédente. Sur 100 essais, le chef gagne presque toujours.</p></div></div>
+
+<h3 id="syn-early-stopping">Early stopping</h3>
+
+<p>Pour les modèles itératifs (XGBoost, LightGBM, neural nets), l'<strong>early stopping</strong> arrête l'entraînement quand la métrique de validation cesse de progresser. Énorme gain de temps + protection contre l'overfit.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from xgboost import XGBClassifier
+
+model = XGBClassifier(
+    n_estimators=10000,            # limite haute volontaire
+    learning_rate=0.05,
+    early_stopping_rounds=50,      # arrête après 50 rounds sans amélioration
+    eval_metric=&quot;auc&quot;,
+)
+model.fit(
+    X_train, y_train,
+    eval_set=[(X_val, y_val)],
+    verbose=100,
+)
+print(f&quot;Best iteration: {model.best_iteration}&quot;)  # ex: 347 sur 10000 possibles</code></pre></div>
+
+
+<p>C'est l'outil le plus efficace pour ne <strong>pas</strong> avoir à tuner <code>n_estimators</code> manuellement : on en met beaucoup et on laisse l'early stopping trouver le bon nombre.</p>
+
+<h3 id="syn-pratiques-dindustrie">Pratiques d'industrie</h3>
+
+<p>Cinq disciplines à connaître pour passer du Kaggle à la prod :</p>
+
+<ol>
+<li><strong>Hyperparamètres en config externe</strong> : ne pas hardcoder dans le script Python. Utiliser YAML, JSON, ou un store comme Hydra.</li>
+<li><strong>Versionning des expériences</strong> : MLflow, Weights & Biases, Neptune. Chaque run est tracée avec code, données, hyperparamètres, métriques, artefacts.</li>
+<li><strong>Reproductibilité totale</strong> : random seed partout, lock des versions de libs, hash des données d'entraînement.</li>
+<li><strong>Budget de tuning explicite</strong> : "tu as 4 h de GPU pour tuner ce modèle, après on déploie". Sans budget, on peut tuner indéfiniment pour 0.001% d'amélioration.</li>
+<li><strong>Distribution du tuning</strong> : Optuna avec storage SQL permet de paralléliser les trials sur plusieurs machines. Ray Tune à plus grande échelle.</li>
+</ol>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Anti-pattern industriel</strong> : passer 2 semaines à gagner 1% de F1, alors qu'un meilleur feature engineering aurait apporté 10%. La règle de Pareto : 80% des gains viennent de 20% du travail. En général, cet investissement de 20% est : (1) données plus propres, (2) meilleur feature engineering, (3) bonne baseline. Le tuning fin n'est qu'à la quatrième place.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Vous lancez un GridSearchCV avec 5 hyperparamètres et 4 valeurs chacun. Combien de fits sklearn fera-t-il (avec CV=5) ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Combinatoire.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<div class="katex-display">$$4^5 \times 5 = 1024 \times 5 = 5120 \text{ fits}$$</div>
+
+<p>Lecture : <em>$4^5 = 1024$ combinaisons d'hyperparamètres, multiplié par 5 folds de cross-validation</em>. Si chaque fit prend 1 minute, c'est ~85 heures. Pour XGBoost sur 100k lignes, ça peut prendre plusieurs jours.</p>
+
+<p>Solutions pour réduire :</p>
+
+<ol>
+<li><strong>RandomizedSearch</strong> avec 100 essais : gain de 50× avec perte minimale</li>
+<li><strong>Bayesian optimization</strong> (Optuna) avec 100 essais : trouve typiquement de meilleurs résultats que les 5120 de la grille</li>
+<li><strong>Réduire le CV</strong> à 3 ou utiliser un seul split train/val pour le tuning, puis CV final</li>
+<li><strong>HalvingGridSearchCV</strong> : élimine progressivement les mauvaises combinaisons en augmentant les ressources</li>
+</ol>
+
+</details>
+
+<p><strong>Q2 : Vous avez tuné un modèle avec GridSearchCV et obtenu un score de validation de 0.92. Vous lancez le test set et obtenez 0.78. Pourquoi cet écart, et que faire ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Overfit du tuning.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>C'est l'<strong>overfit du tuning</strong> (ou "validation overfitting"). En testant des centaines de combinaisons d'hyperparamètres, vous trouvez forcément une combinaison qui donne un bon score sur la validation <strong>par chance</strong> — pas parce qu'elle est meilleure en général, mais parce qu'elle correspond aux particularités du split de validation.</p>
+
+<p>Ce phénomène est aggravé par : trop d'hyperparamètres, validation set trop petit, trop de trials.</p>
+
+<p>Solutions :</p>
+
+<ol>
+<li><strong>Cross-validation imbriquée (nested CV)</strong> : un CV externe pour évaluer, un CV interne pour tuner. Validation et tuning sont strictement séparés.</li>
+<li><strong>Hold-out test set vraiment intouchable</strong> : ne le voir qu'une fois. Si le test révèle un overfit, vous n'avez <strong>pas</strong> le droit de re-tuner — le modèle final reste celui choisi sur la validation.</li>
+<li><strong>Régularisation plus forte</strong> : restreint l'espace d'hyperparamètres exploré.</li>
+<li><strong>Plus de données</strong> : la solution la plus efficace en pratique.</li>
+</ol>
+
+</details>
+
+<p><strong>Q3 : Vous tunez une LogisticRegression avec $C \in \{0.001, 0.01, 0.1, 1, 10, 100\}$. Le meilleur score est obtenu avec $C = 100$. Que faire ensuite ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Extrémité de la grille.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Quand le meilleur hyperparamètre est à l'<strong>extrémité</strong> de votre grille, c'est un signal que vous n'avez pas exploré assez loin. Action : <strong>étendre la grille</strong> vers les valeurs encore plus grandes : $C \in \{100, 500, 1000, 5000, 10000\}$.</p>
+
+<p>Si $C = 1000$ devient le meilleur, étendez encore. Vous pouvez vous arrêter quand le score plateaue ou diminue, ce qui indique que vous avez atteint la zone optimale.</p>
+
+<p>Pour $C$ très grand, attention : la régularisation devient quasi nulle, vous risquez d'overfitter. Ce comportement vous dit que vos features sont bien informatives et que la régularisation L2 ne vous aide pas — ou que vous devriez essayer L1 (qui fait de la sélection de features).</p>
+
+<p>Question piège classique en interview : un candidat qui voit "best = 100" et conclut "c'est optimal" rate le signal. Un candidat qui dit "il faut étendre la grille" montre une vraie expérience.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://scikit-learn.org/stable/modules/grid_search.html" target="_blank" rel="noopener">scikit-learn Hyperparameter Tuning</a></li>
+<li><a href="https://optuna.readthedocs.io/" target="_blank" rel="noopener">Optuna documentation</a> — la référence moderne</li>
+<li><a href="https://docs.ray.io/en/latest/tune/index.html" target="_blank" rel="noopener">Ray Tune</a> — pour la distribution</li>
+<li><em>Random Search for Hyper-Parameter Optimization</em> (Bergstra & Bengio, 2012) — papier fondateur</li>
+<li><a href="https://docs.wandb.ai/guides/sweeps" target="_blank" rel="noopener">Weights & Biases — Sweeps</a> — alternative à Optuna avec visualisations</li>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.HalvingGridSearchCV.html" target="_blank" rel="noopener">HalvingGridSearchCV</a> — successive halving</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../machine-learning/performance-metrics.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Performance Metrics</span>
+  </a>
+  <a href="../machine-learning/ensemble-methods.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Ensemble Methods →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

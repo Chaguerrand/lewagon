@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Viz &amp; Dashboarding — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Data Viz &amp; Dashboarding</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html" class="active">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Data Engineering</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Data Viz &amp; Dashboarding</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Data Viz &amp; Dashboarding</h1>
+        <p class="page-objective">Maîtriser les principes de la visualisation de données — choisir le bon type de graphique, utiliser pandas, matplotlib, seaborn et plotly selon les besoins — puis construire des dashboards interactifs avec Plotly Dash en Python.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Encoding visuel</div>
+        <div class="key-concept-def">Mapping entre une variable et un attribut graphique (couleur, taille, position).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Small multiples</div>
+        <div class="key-concept-def">Plusieurs petits graphiques côte à côte pour comparer des sous-groupes.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Échelle log</div>
+        <div class="key-concept-def">Compresse les ordres de grandeur pour visualiser des distributions très étalées.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Chartjunk</div>
+        <div class="key-concept-def">Décor inutile qui distrait du message principal d&#x27;un graphique.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-data-viz-dashboarding">Cheatsheet — Data Viz & Dashboarding</a><ol><li><a href="#choisir-le-bon-graphique">Choisir le bon graphique</a></li><li><a href="#pandas-exploration-rapide">Pandas — exploration rapide</a></li><li><a href="#matplotlib-contrôle-total">Matplotlib — contrôle total</a></li><li><a href="#seaborn-visualisation-statistique">Seaborn — visualisation statistique</a></li><li><a href="#plotly-express-interactivité">Plotly Express — interactivité</a></li><li><a href="#dash-structure-dune-app-minimale">Dash — structure d'une app minimale</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-pourquoi-visualiser-les-données">1) Pourquoi visualiser les données ?</a><li><a href="#2-quel-graphique-choisir">2) Quel graphique choisir ?</a><ol><li><a href="#21-évolution-dans-le-temps-lineplot">2.1 Évolution dans le temps → lineplot</a></li><li><a href="#22-comparaison-par-catégorie-barplot">2.2 Comparaison par catégorie → barplot</a></li><li><a href="#23-distribution-histogram-ou-density-plot">2.3 Distribution → histogram ou density plot</a></li><li><a href="#24-comparer-des-distributions-boxplot-ou-violinplot">2.4 Comparer des distributions → boxplot ou violinplot</a></li><li><a href="#25-relation-entre-variables-numériques-scatterplot">2.5 Relation entre variables numériques → scatterplot</a></li></ol></li><li><a href="#3-exploration-rapide-avec-pandas">3) Exploration rapide avec pandas</a><ol><li><a href="#31-charger-les-données">3.1 Charger les données</a></li><li><a href="#32-graphiques-pandas">3.2 Graphiques pandas</a></li></ol></li><li><a href="#4-matplotlib-contrôle-complet">4) Matplotlib — contrôle complet</a><ol><li><a href="#41-tracer-une-courbe-simple">4.1 Tracer une courbe simple</a></li><li><a href="#42-subplots-figure-et-axes">4.2 Subplots — Figure et Axes</a></li></ol></li><li><a href="#5-seaborn-visualisation-statistique">5) Seaborn — visualisation statistique</a><ol><li><a href="#51-présentation">5.1 Présentation</a></li><li><a href="#52-histogramme-et-distribution">5.2 Histogramme et distribution</a></li><li><a href="#53-variables-catégorielles">5.3 Variables catégorielles</a></li><li><a href="#54-distributions-par-catégorie">5.4 Distributions par catégorie</a></li><li><a href="#55-relation-entre-variables-numériques">5.5 Relation entre variables numériques</a></li></ol></li><li><a href="#6-plotly-express-graphiques-interactifs">6) Plotly Express — graphiques interactifs</a><ol><li><a href="#61-présentation">6.1 Présentation</a></li><li><a href="#62-exemples">6.2 Exemples</a></li></ol></li><li><a href="#7-dashboarding-principes">7) Dashboarding — Principes</a><ol><li><a href="#71-définition">7.1 Définition</a></li><li><a href="#72-bonnes-pratiques">7.2 Bonnes pratiques</a></li><li><a href="#73-accessibilité-wcag">7.3 Accessibilité — WCAG</a></li></ol></li><li><a href="#8-construire-un-dashboard-avec-plotly-dash">8) Construire un dashboard avec Plotly Dash</a><ol><li><a href="#81-installation-et-structure-minimale">8.1 Installation et structure minimale</a></li><li><a href="#82-ajouter-un-header-html">8.2 Ajouter un header HTML</a></li><li><a href="#83-layout-en-colonnes-avec-bootstrap">8.3 Layout en colonnes avec Bootstrap</a></li><li><a href="#84-ajouter-de-linteractivité-callbacks">8.4 Ajouter de l'interactivité — Callbacks</a></li><li><a href="#85-app-multi-pages">8.5 App multi-pages</a></li></ol></li><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-data-viz-dashboarding">📋 Cheatsheet — Data Viz & Dashboarding</h2>
+
+<h3 id="choisir-le-bon-graphique">Choisir le bon graphique</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Type de données</th><th>Question</th><th>Graphique recommandé</th></tr></thead><tbody><tr><td>Numérique continue</td><td>Distribution</td><td><code>histplot</code>, <code>kdeplot</code></td></tr><tr><td>Numérique continue</td><td>Comparer des distributions</td><td><code>boxplot</code>, <code>violinplot</code></td></tr><tr><td>Numérique continue</td><td>Évolution dans le temps</td><td><code>lineplot</code></td></tr><tr><td>Deux variables numériques</td><td>Relation / corrélation</td><td><code>scatterplot</code>, <code>regplot</code></td></tr><tr><td>Catégorielle</td><td>Comptage / proportion</td><td><code>countplot</code>, <code>barplot</code></td></tr><tr><td>Catégorielle × numérique</td><td>Distribution par groupe</td><td><code>boxplot</code>, <code>violinplot</code></td></tr></tbody></table></div>
+<h3 id="pandas-exploration-rapide">Pandas — exploration rapide</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">france_df[&#x27;oil_co2&#x27;].plot()                                  # lineplot rapide depuis une Series
+france_df[[&#x27;oil_co2&#x27;, &#x27;gas_co2&#x27;]].plot()                     # plusieurs colonnes sur le même axe
+france_df[[&#x27;oil_co2&#x27;, &#x27;gas_co2&#x27;]].sum().plot(kind=&#x27;bar&#x27;)     # barplot des totaux
+emissions_df.loc[2022].plot(kind=&#x27;scatter&#x27;, x=&#x27;gdp&#x27;, y=&#x27;co2&#x27;) # scatterplot sur une année</code></pre></div>
+
+
+<h3 id="matplotlib-contrôle-total">Matplotlib — contrôle total</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import matplotlib.pyplot as plt
+
+## Tracer une ligne
+plt.plot(france_df.index, france_df[&#x27;co2&#x27;])                  # lineplot simple
+plt.plot(france_df.index, france_df[&#x27;oil_co2&#x27;], label=&#x27;oil&#x27;) # avec légende
+plt.plot(france_df.index, france_df[&#x27;gas_co2&#x27;], label=&#x27;gas&#x27;)
+plt.legend()                                                 # affiche la légende
+plt.show()
+
+## Subplots — approche state-based
+fig = plt.figure(figsize=(10, 3))
+plt.subplot(1, 2, 1)                                         # grille 1×2, position 1
+plt.plot(france_df.index, france_df[&#x27;oil_co2&#x27;])
+plt.title(&#x27;oil_co2&#x27;)
+plt.subplot(1, 2, 2)                                         # grille 1×2, position 2
+plt.plot(france_df.index, france_df[&#x27;gas_co2&#x27;])
+plt.title(&#x27;gas_co2&#x27;)
+
+## Subplots — approche orientée objet (recommandée)
+fig, axs = plt.subplots(1, 2, figsize=(10, 3))               # retourne fig + tableau d&#x27;axes
+axs[0].plot(france_df.index, france_df[&#x27;oil_co2&#x27;])           # accès par index
+axs[0].set_title(&#x27;oil_co2&#x27;)
+axs[1].plot(france_df.index, france_df[&#x27;gas_co2&#x27;])
+axs[1].set_title(&#x27;gas_co2&#x27;)</code></pre></div>
+
+
+<h3 id="seaborn-visualisation-statistique">Seaborn — visualisation statistique</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import seaborn as sns
+
+tips_df = sns.load_dataset(&#x27;tips&#x27;)
+
+## Distribution
+sns.histplot(tips_df[&#x27;total_bill&#x27;], kde=True)                # histogramme + courbe KDE
+sns.boxplot(data=tips_df, x=&#x27;day&#x27;, y=&#x27;total_bill&#x27;, hue=&#x27;day&#x27;) # boxplot par catégorie
+sns.violinplot(data=tips_df, x=&#x27;day&#x27;, y=&#x27;total_bill&#x27;)        # violinplot (distribution complète)
+
+## Relation numérique
+sns.scatterplot(data=tips_df, x=&#x27;total_bill&#x27;, y=&#x27;tip&#x27;, hue=&#x27;smoker&#x27;) # nuage de points coloré
+sns.regplot(data=tips_df, x=&#x27;total_bill&#x27;, y=&#x27;tip&#x27;)           # avec droite de régression
+
+## Catégorielle
+sns.countplot(data=tips_df, x=&#x27;smoker&#x27;)                      # comptage absolu
+sns.countplot(data=tips_df, x=&#x27;time&#x27;, hue=&#x27;smoker&#x27;, stat=&#x27;percent&#x27;) # pourcentage</code></pre></div>
+
+
+<h3 id="plotly-express-interactivité">Plotly Express — interactivité</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import plotly.express as px
+
+px.line(france_df, x=france_df.index, y=&#x27;co2&#x27;)                        # lineplot interactif
+px.line(france_df, x=france_df.index, y=[&#x27;oil_co2&#x27;, &#x27;gas_co2&#x27;])       # plusieurs séries
+px.scatter(emissions_df.query(&quot;year == 2022&quot;),
+           x=&#x27;population&#x27;, y=&#x27;co2&#x27;, hover_name=&#x27;country&#x27;)             # hover avec nom du pays
+px.scatter(tips_df, x=&#x27;total_bill&#x27;, y=&#x27;tip&#x27;, color=&#x27;smoker&#x27;,
+           marginal_x=&#x27;histogram&#x27;, marginal_y=&#x27;box&#x27;, trendline=&#x27;ols&#x27;) # graphique enrichi</code></pre></div>
+
+
+<h3 id="dash-structure-dune-app-minimale">Dash — structure d'une app minimale</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from dash import Dash, html, dcc, callback, Input, Output
+import dash_bootstrap_components as dbc
+import plotly.express as px
+import pandas as pd
+
+app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])      # init avec Bootstrap
+
+## Composants
+header = html.H1(&quot;Dashboard&quot;, style={&quot;textAlign&quot;: &quot;center&quot;}) # titre centré
+graph  = dcc.Graph(id=&quot;my_graph&quot;)                            # graphique (figure = via callback)
+dropdown = dcc.Dropdown(id=&quot;my_dropdown&quot;,
+    options=[{&quot;label&quot;: c, &quot;value&quot;: c} for c in df[&quot;country&quot;].unique()],
+    value=&quot;France&quot;)                                          # dropdown avec valeur par défaut
+
+## Callback : lie le dropdown au graphique
+@callback(Output(&quot;my_graph&quot;, &quot;figure&quot;), Input(&quot;my_dropdown&quot;, &quot;value&quot;))
+def update_graph(country):
+    filtered = df[df[&quot;country&quot;] == country]
+    return px.line(filtered, x=&quot;year&quot;, y=&quot;co2&quot;, title=f&quot;CO2 — {country}&quot;)
+
+## Layout
+app.layout = [
+    dbc.Row([dbc.Col(header, width=8), dbc.Col(dropdown, width=4)]),
+    dbc.Row([dbc.Col(graph, width=12)])
+]
+
+if __name__ == &#x27;__main__&#x27;:
+    app.run(debug=True)                                      # debug=True = rechargement auto</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser un pie chart ou doughnut chart</strong></p>
+<p>❌ <code>px.pie(...)</code> — les angles sont difficiles à comparer visuellement</p>
+<p>✅ Remplacer par un <code>barplot</code> ou un <code>100% stacked barplot</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Choisir un graphique "fancy" plutôt qu'adapté</strong></p>
+<p>❌ Varier les types de graphiques pour "faire beau" sans raison</p>
+<p>✅ Toujours se demander : <em>Quel est l'objectif ? Quelle relation je veux montrer ?</em> Puis consulter 👉 <a href="http://data-to-viz.com" target="_blank" rel="noopener">data-to-viz.com</a></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier les arguments obligatoires de seaborn</strong></p>
+<p>❌ <code>sns.scatterplot(&#x27;total_bill&#x27;, &#x27;tip&#x27;)</code> — syntaxe invalide</p>
+<p>✅ Toujours passer <code>data=</code>, <code>x=</code>, <code>y=</code> explicitement : <code>sns.scatterplot(data=df, x=&#x27;total_bill&#x27;, y=&#x27;tip&#x27;)</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre <code>plt.subplot()</code> et <code>plt.subplots()</code></strong></p>
+<p>❌ <code>plt.subplot(1, 2, 1)</code> crée un subplot dans la figure courante (state-based, fragile)</p>
+<p>✅ <code>fig, axs = plt.subplots(1, 2)</code> retourne un tableau d'axes — méthode orientée objet, recommandée</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Spécifier <code>figure=</code> dans <code>dcc.Graph</code> quand un callback gère déjà ce graphique</strong></p>
+<p>❌ <code>dcc.Graph(id=&quot;my_graph&quot;, figure=my_fig)</code> + un <code>@callback</code> qui retourne aussi une figure → conflit</p>
+<p>✅ Si un callback gère le graphique, ne mettre que <code>dcc.Graph(id=&quot;my_graph&quot;)</code> sans <code>figure=</code></p></div></div>
+
+<hr>
+
+<h2 id="1-pourquoi-visualiser-les-données">1) Pourquoi visualiser les données ?</h2>
+
+<p>Les tableaux bruts sont difficiles à lire. Un bon graphique permet de répondre immédiatement à des questions comme :</p>
+
+<ul>
+<li>Quel état a le revenu le plus élevé ?</li>
+<li>Y a-t-il une relation entre revenu et éducation ?</li>
+<li>Y a-t-il des outliers ?</li>
+</ul>
+
+<figure><img src="../../assets/images/data-viz-01-51dd5bbf.png" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/data-viz-02-961a1696.png" alt="" loading="lazy"></figure>
+
+<p><strong>La partie la plus difficile n'est pas le code, c'est de savoir quoi montrer et comment.</strong></p>
+
+<p>Avant de construire un graphique, se poser ces questions :</p>
+
+<ul>
+<li>Quel est l'<strong>objectif</strong> ? Qu'essaie-t-on de montrer ?</li>
+<li>Combien de dimensions ?</li>
+<li>La donnée est-elle continue ou discrète ?</li>
+<li>Est-ce facilement lisible ?</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Un bon graphique est <strong>significatif et accessible</strong>. S'il a besoin d'une légende complexe pour être compris, il n'est probablement pas bon.</p></div></div>
+
+<hr>
+
+<h2 id="2-quel-graphique-choisir">2) Quel graphique choisir ?</h2>
+
+<p>👉 <a href="https://www.data-to-viz.com/" target="_blank" rel="noopener">From Data-to-viz</a> — arbre de décision interactif</p>
+
+<figure><img src="../../assets/images/data-viz-03-9b81c625.png" alt="" loading="lazy"></figure>
+
+<h3 id="21-évolution-dans-le-temps-lineplot">2.1 Évolution dans le temps → lineplot</h3>
+
+<p>Idéal pour montrer une tendance ou une progression.</p>
+
+<h3 id="22-comparaison-par-catégorie-barplot">2.2 Comparaison par catégorie → barplot</h3>
+
+<p>Variations : stacked barplot (composition), 100% stacked (proportions), horizontal (labels longs).</p>
+
+<h3 id="23-distribution-histogram-ou-density-plot">2.3 Distribution → histogram ou density plot</h3>
+
+<p>Pour visualiser comment les valeurs se répartissent sur une variable continue.</p>
+
+<h3 id="24-comparer-des-distributions-boxplot-ou-violinplot">2.4 Comparer des distributions → boxplot ou violinplot</h3>
+
+<p>Pour comparer plusieurs groupes sur une même variable numérique.</p>
+
+<h3 id="25-relation-entre-variables-numériques-scatterplot">2.5 Relation entre variables numériques → scatterplot</h3>
+
+<p>Pour visualiser une corrélation ou identifier des outliers.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Pie chart / Doughnut chart : à éviter.</strong> Les angles sont très difficiles à comparer visuellement. Préférer un barplot ou un 100% stacked barplot.</p></div></div>
+
+<hr>
+
+<h2 id="3-exploration-rapide-avec-pandas">3) Exploration rapide avec pandas</h2>
+
+<h3 id="31-charger-les-données">3.1 Charger les données</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+
+## Télécharger le dataset CO2 (Our World in Data)
+## !curl -s https://raw.githubusercontent.com/owid/co2-data/refs/heads/master/owid-co2-data.csv &gt; emissions.csv
+
+emissions_df = pd.read_csv(&quot;emissions.csv&quot;)
+emissions_df = emissions_df.query(&quot;year &gt;= 1950&quot;)     # filtrer depuis 1950
+emissions_df = emissions_df.set_index(&#x27;year&#x27;)         # year comme index
+
+france_df = emissions_df.query(&quot;country == &#x27;France&#x27;&quot;) # filtrer sur la France
+france_df.head()</code></pre></div>
+
+
+<h3 id="32-graphiques-pandas">3.2 Graphiques pandas</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">france_df[&#x27;oil_co2&#x27;].plot()                                   # lineplot d&#x27;une colonne
+france_df[[&#x27;oil_co2&#x27;, &#x27;gas_co2&#x27;]].plot()                      # deux colonnes superposées
+
+france_df[[&#x27;oil_co2&#x27;, &#x27;gas_co2&#x27;]].sum()
+## oil_co2    15437.942
+## gas_co2     3806.681
+
+france_df[[&#x27;oil_co2&#x27;, &#x27;gas_co2&#x27;]].sum().plot(kind=&#x27;bar&#x27;)      # barplot des totaux
+
+emissions_df.loc[2022].plot(kind=&#x27;scatter&#x27;, x=&#x27;population&#x27;, y=&#x27;co2&#x27;) # scatterplot 2022
+emissions_df.loc[2022].plot(kind=&#x27;scatter&#x27;, x=&#x27;gdp&#x27;, y=&#x27;co2&#x27;)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>df.plot()</code> est un wrapper sur matplotlib — pratique pour l'exploration rapide, mais limité pour la personnalisation.</p></div></div>
+
+<hr>
+
+<h2 id="4-matplotlib-contrôle-complet">4) Matplotlib — contrôle complet</h2>
+
+<h3 id="41-tracer-une-courbe-simple">4.1 Tracer une courbe simple</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import matplotlib.pyplot as plt
+
+plt.plot(france_df.index, france_df[&#x27;co2&#x27;])                   # une courbe
+plt.plot(france_df.index, france_df[&#x27;oil_co2&#x27;], label=&#x27;oil_co2&#x27;)
+plt.plot(france_df.index, france_df[&#x27;gas_co2&#x27;], label=&#x27;gas_co2&#x27;)
+plt.legend()                                                  # ⚠️ ne s&#x27;affiche pas sans legend()
+plt.show()</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Avec matplotlib, <strong>tout doit être configuré manuellement</strong> : titre, labels, légende, taille. C'est puissant mais verbeux.</p></div></div>
+
+<h3 id="42-subplots-figure-et-axes">4.2 Subplots — Figure et Axes</h3>
+
+<p>Une <strong>Figure</strong> = la fenêtre entière. Elle contient un ou plusieurs <strong>Axes</strong> (sous-graphiques), arrangés en grille (nrow × ncol).</p>
+
+<figure><img src="../../assets/images/data-viz-04-924c0bee.png" alt="" loading="lazy"></figure>
+
+<p><strong>Approche state-based</strong> (séquentielle) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fig = plt.figure(figsize=(10, 3))          # crée la figure (canvas)
+
+plt.subplot(1, 2, 1)                       # grille 1×2, 1er subplot
+plt.plot(france_df.index, france_df[&#x27;oil_co2&#x27;])
+plt.title(&#x27;oil_co2&#x27;)
+
+plt.subplot(1, 2, 2)                       # grille 1×2, 2ème subplot
+plt.plot(france_df.index, france_df[&#x27;gas_co2&#x27;])
+plt.title(&#x27;gas_co2&#x27;)</code></pre></div>
+
+
+<p><strong>Approche orientée objet</strong> (recommandée) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fig, axs = plt.subplots(1, 2, figsize=(10, 3))  # retourne figure + tableau d&#x27;axes
+
+axs[0].plot(france_df.index, france_df[&#x27;oil_co2&#x27;])
+axs[0].set_title(&#x27;oil_co2&#x27;)
+
+axs[1].plot(france_df.index, france_df[&#x27;gas_co2&#x27;])
+axs[1].set_title(&#x27;gas_co2&#x27;)</code></pre></div>
+
+
+<hr>
+
+<h2 id="5-seaborn-visualisation-statistique">5) Seaborn — visualisation statistique</h2>
+
+<h3 id="51-présentation">5.1 Présentation</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import seaborn as sns
+
+tips_df = sns.load_dataset(&#x27;tips&#x27;)   # dataset restaurant : total_bill, tip, sex, smoker, day...</code></pre></div>
+
+
+<p>Seaborn est construit au-dessus de matplotlib. Il fournit une interface <strong>haut niveau</strong> pour les graphiques statistiques. Syntaxe standard : <code>data=</code>, <code>x=</code>, <code>y=</code>, <code>hue=</code> (optionnel pour colorer par catégorie).</p>
+
+<h3 id="52-histogramme-et-distribution">5.2 Histogramme et distribution</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Matplotlib vs Seaborn — comparaison
+plt.figure(figsize=(10, 3))
+
+plt.subplot(1, 2, 1)
+plt.title(&#x27;Matplotlib&#x27;)
+plt.hist(tips_df[&#x27;total_bill&#x27;])               # histogramme basique
+
+plt.subplot(1, 2, 2)
+plt.title(&#x27;Seaborn&#x27;)
+sns.histplot(tips_df[&#x27;total_bill&#x27;], kde=True)  # histogramme + courbe de densité KDE</code></pre></div>
+
+
+<h3 id="53-variables-catégorielles">5.3 Variables catégorielles</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Comptage simple
+sns.countplot(data=tips_df, x=&quot;smoker&quot;)                         # nb de patrons fumeurs/non-fumeurs
+
+## Comptage croisé (hue)
+sns.countplot(data=tips_df, x=&quot;time&quot;, hue=&quot;smoker&quot;)             # fumeurs le midi vs le soir ?
+
+## Pourcentage
+sns.countplot(data=tips_df, x=&quot;smoker&quot;, hue=&quot;smoker&quot;, stat=&quot;percent&quot;) # en %</code></pre></div>
+
+
+<h3 id="54-distributions-par-catégorie">5.4 Distributions par catégorie</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fig, axs = plt.subplots(2, 2, figsize=(10, 4))
+
+sns.boxplot(data=tips_df, x=&#x27;day&#x27;, y=&#x27;total_bill&#x27;, hue=&#x27;day&#x27;, ax=axs[0, 0])    # IQR + outliers
+sns.boxenplot(data=tips_df, x=&#x27;day&#x27;, y=&#x27;total_bill&#x27;, hue=&#x27;day&#x27;, ax=axs[0, 1])  # boxplot amélioré
+sns.stripplot(data=tips_df, x=&#x27;day&#x27;, y=&#x27;total_bill&#x27;, hue=&#x27;day&#x27;, ax=axs[1, 0])  # points individuels
+sns.violinplot(data=tips_df, x=&#x27;day&#x27;, y=&#x27;total_bill&#x27;, hue=&#x27;day&#x27;, ax=axs[1, 1]) # distribution complète</code></pre></div>
+
+
+<h3 id="55-relation-entre-variables-numériques">5.5 Relation entre variables numériques</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">sns.scatterplot(data=tips_df, x=&quot;total_bill&quot;, y=&quot;tip&quot;, hue=&#x27;smoker&#x27;) # nuage de points coloré</code></pre></div>
+
+
+<hr>
+
+<h2 id="6-plotly-express-graphiques-interactifs">6) Plotly Express — graphiques interactifs</h2>
+
+<h3 id="61-présentation">6.1 Présentation</h3>
+
+<p>Plotly propose deux API :</p>
+
+<ul>
+<li><strong>Plotly Graph Objects (<code>go</code>)</strong> : bas niveau, très personnalisable</li>
+<li><strong>Plotly Express (<code>px</code>)</strong> : haut niveau, rapide et intuitif ← à utiliser en priorité</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import plotly.express as px</code></pre></div>
+
+
+<h3 id="62-exemples">6.2 Exemples</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Lineplot interactif (hover, zoom, export)
+px.line(france_df, x=france_df.index, y=&#x27;co2&#x27;)
+
+## Plusieurs séries
+px.line(france_df, x=france_df.index, y=[&#x27;oil_co2&#x27;, &#x27;gas_co2&#x27;])
+
+## Scatterplot avec hover_name (identifie les pays au survol)
+px.scatter(emissions_df.query(&quot;year == 2022&quot;),
+           x=&#x27;population&#x27;, y=&#x27;co2&#x27;, hover_name=&#x27;country&#x27;)
+
+## Scatterplot enrichi : distribution marginale + régression OLS
+px.scatter(tips_df, x=&#x27;total_bill&#x27;, y=&#x27;tip&#x27;, color=&#x27;smoker&#x27;,
+           marginal_x=&#x27;histogram&#x27;, marginal_y=&#x27;box&#x27;, trendline=&#x27;ols&#x27;)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La syntaxe Plotly Express est très proche de Seaborn (<code>data=</code>, <code>x=</code>, <code>y=</code>, <code>color=</code>). La différence majeure : les graphiques Plotly sont <strong>interactifs</strong> (zoom, hover, export PNG).</p></div></div>
+
+<hr>
+
+<h2 id="7-dashboarding-principes">7) Dashboarding — Principes</h2>
+
+<h3 id="71-définition">7.1 Définition</h3>
+
+<p>Un dashboard est un <strong>affichage visuel interactif</strong> de KPIs et métriques consolidés, conçu pour le monitoring et la prise de décision.</p>
+
+<h3 id="72-bonnes-pratiques">7.2 Bonnes pratiques</h3>
+
+<figure><img src="../../assets/images/data-viz-05-75f05241.png" alt="6 best practices" loading="lazy"></figure>
+
+<p><strong>Avant de coder :</strong></p>
+
+<ul>
+<li>Quel <strong>type de dashboard</strong> ? C-level (synthèse), Opérationnel (suivi temps réel), Analytique (exploration)</li>
+<li>Qui est l'<strong>audience</strong> ? Quelles métriques les aident à décider ?</li>
+</ul>
+
+<p><strong>Principes de design :</strong></p>
+
+<ul>
+<li><strong>One-Screen storytelling</strong> : éviter le scroll, limiter à 8 visuels max</li>
+<li><strong>Pixel Real Estate</strong> : les zones top-gauche captent l'attention en premier (lecture en "Z") → y mettre les KPIs clés</li>
+<li><strong>Visuels appropriés</strong> vs "fancy" : choisir selon l'objectif, pas pour varier</li>
+<li><strong>Design consistant</strong> : palette, typographie, formats uniformes</li>
+<li><strong>Ink for data</strong> : éviter les fonds colorés, animations décoratives, styles superflus</li>
+</ul>
+
+<h3 id="73-accessibilité-wcag">7.3 Accessibilité — WCAG</h3>
+
+<p>👉 <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener">Web Content Accessibility Guidelines</a></p>
+
+<p>Les principes <strong>POUR</strong> :</p>
+
+<ul>
+<li><strong>P</strong>erceivable — contraste couleur ≥ 4.5:1, ne pas transmettre d'info par la couleur seule</li>
+<li><strong>O</strong>perable — navigable au clavier</li>
+<li><strong>U</strong>nderstandable — labels clairs, navigation cohérente, pas de jargon</li>
+<li><strong>R</strong>obust — compatible avec les technologies d'assistance (lecteurs d'écran…)</li>
+</ul>
+
+<p><strong>Quick wins :</strong></p>
+
+<ul>
+<li>✅ Contraste élevé et daltonisme : 👉 <a href="https://yellowchalk.com/blog/designing-for-color-blindness/" target="_blank" rel="noopener">guide couleurs accessibles</a></li>
+<li>✅ Texte suffisamment grand avec espacement adéquat</li>
+<li>✅ Titres descriptifs pour chaque graphique</li>
+<li>✅ Résumés textuels des insights visuels</li>
+</ul>
+
+<hr>
+
+<h2 id="8-construire-un-dashboard-avec-plotly-dash">8) Construire un dashboard avec Plotly Dash</h2>
+
+<h3 id="81-installation-et-structure-minimale">8.1 Installation et structure minimale</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install dash dash-bootstrap-components   # installation des packages
+mkdir ~/code/dash-project &amp;&amp; cd $_           # création du dossier projet
+curl https://raw.githubusercontent.com/owid/co2-data/refs/heads/master/owid-co2-data.csv &gt; emissions.csv</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## minimal.py — squelette d&#x27;une app Dash
+from dash import Dash, html, dcc
+import plotly.express as px
+import pandas as pd
+
+app = Dash()          # initialise l&#x27;application
+
+## Charger les données
+emissions_df = pd.read_csv(&quot;emissions.csv&quot;)
+emissions_df = emissions_df.query(&quot;year &gt;= 1950&quot;)
+country_df = emissions_df.query(&quot;country == &#x27;France&#x27;&quot;)
+
+## Définir le layout (liste de composants)
+app.layout = [
+    dcc.Graph(
+        id=&quot;country_co2&quot;,
+        figure=px.line(country_df, x=&quot;year&quot;, y=&quot;co2&quot;, title=&quot;CO2 emissions in France&quot;)
+    )
+]
+
+if __name__ == &#x27;__main__&#x27;:
+    app.run(debug=True)   # debug=True = rechargement automatique à chaque sauvegarde</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">python minimal.py         # lancer l&#x27;app
+## → ouvrir http://127.0.0.1:8050/ dans le navigateur</code></pre></div>
+
+
+<h3 id="82-ajouter-un-header-html">8.2 Ajouter un header HTML</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from dash import html
+
+app.layout = [
+    html.H1(&quot;CO2 emissions Dashboard&quot;, style={&quot;textAlign&quot;: &quot;center&quot;}),  # titre centré
+    dcc.Graph(id=&quot;country_co2&quot;, figure=...)
+    # html.H2, html.P, html.Div... → wrappers Python autour des balises HTML
+]</code></pre></div>
+
+
+<h3 id="83-layout-en-colonnes-avec-bootstrap">8.3 Layout en colonnes avec Bootstrap</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import dash_bootstrap_components as dbc
+
+app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])  # Bootstrap = grille 12 colonnes
+
+## Définir les composants séparément
+header = html.H1(&quot;CO2 emissions Dashboard&quot;, style={&quot;textAlign&quot;: &quot;center&quot;})
+
+country_co2 = px.line(country_df, x=&quot;year&quot;, y=&quot;co2&quot;, title=&quot;CO2 emissions in France&quot;)
+country_co2_split = px.line(country_df, x=&quot;year&quot;,
+                             y=[&quot;oil_co2&quot;, &quot;gas_co2&quot;, &quot;coal_co2&quot;],
+                             title=&quot;CO2 by source in France&quot;)
+
+## Layout avec ligne et colonnes (total = 12)
+app.layout = [
+    header,
+    dbc.Row(children=[
+        dbc.Col(dcc.Graph(id=&#x27;country_co2&#x27;,       figure=country_co2),       width=8),  # 8/12 de large
+        dbc.Col(dcc.Graph(id=&#x27;country_co2_split&#x27;, figure=country_co2_split), width=4)   # 4/12 de large
+    ])
+]</code></pre></div>
+
+
+<h3 id="84-ajouter-de-linteractivité-callbacks">8.4 Ajouter de l'interactivité — Callbacks</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from dash import callback, Input, Output
+
+## Dropdown de sélection de pays
+country_dropdown = dcc.Dropdown(
+    id=&quot;country_dropdown&quot;,
+    options=[{&quot;label&quot;: c, &quot;value&quot;: c} for c in emissions_df[&quot;country&quot;].unique()],
+    value=&quot;France&quot;    # valeur par défaut
+)
+
+## Callback : relie le dropdown au graphique
+@callback(
+    Output(&quot;country_co2&quot;, &quot;figure&quot;),    # ce que la fonction retourne → propriété &quot;figure&quot; du Graph
+    Input(&quot;country_dropdown&quot;, &quot;value&quot;)  # paramètre de la fonction ← propriété &quot;value&quot; du Dropdown
+)
+def update_country_df(country):         # country = valeur sélectionnée dans le dropdown
+    country_df = emissions_df[emissions_df[&quot;country&quot;] == country]
+    fig = px.line(country_df, x=&quot;year&quot;, y=&quot;co2&quot;, title=f&quot;CO2 emissions in {country}&quot;)
+    return fig                          # retourné vers l&#x27;Output → mis à jour dans le Graph
+
+## Layout : ne pas passer figure= si un callback gère le graphique
+app.layout = [
+    dbc.Row([dbc.Col(header, width=8), dbc.Col(country_dropdown, width=4)]),
+    dbc.Row([dbc.Col(dcc.Graph(id=&quot;country_co2&quot;), width=12)])   # pas de figure= ici !
+]</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Le décorateur <code>@callback</code></strong> fait le lien entre composants. <code>Input</code> = ce qui déclenche la mise à jour (valeur du dropdown). <code>Output</code> = ce qui est mis à jour (figure du Graph). La fonction reçoit les valeurs des Inputs et retourne les valeurs des Outputs.</p></div></div>
+
+<h3 id="85-app-multi-pages">8.5 App multi-pages</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Structure du projet :
+## ├── main.py
+## └── pages/
+##     ├── home.py
+##     └── analysis.py
+
+## Dans chaque page (ex: pages/home.py) :
+import dash
+dash.register_page(__name__)     # remplace app = Dash()
+layout = [html.H1(&quot;Home&quot;)]       # remplace app.layout = ...
+## (pas de if __name__ == &#x27;__main__&#x27;)
+
+## Dans main.py :
+import dash
+from dash import Dash, html, dcc
+import dash_bootstrap_components as dbc
+
+app = Dash(use_pages=True, external_stylesheets=[dbc.themes.BOOTSTRAP])
+
+app.layout = html.Div([
+    html.H1(&#x27;Multi-page app with Dash Pages&#x27;),
+    html.Div([
+        dcc.Link(f&quot;{page[&#x27;name&#x27;]}&quot;, href=page[&quot;relative_path&quot;])
+        for page in dash.page_registry.values()
+    ]),
+    dash.page_container    # zone où s&#x27;affiche la page active
+])
+
+if __name__ == &#x27;__main__&#x27;:
+    app.run(debug=True)</code></pre></div>
+
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<p><strong>Visualisation de données — général</strong></p>
+
+<ul>
+<li>👉 <a href="https://clauswilke.com/dataviz/" target="_blank" rel="noopener">Fundamentals of Data Visualization — Claus O. Wilke</a> (livre en ligne)</li>
+<li>👉 <a href="https://www.data-to-viz.com/" target="_blank" rel="noopener">From Data to Viz — Yan Holtz</a> (site + arbre de décision)</li>
+<li>👉 <a href="https://www.data-to-viz.com/caveats.html" target="_blank" rel="noopener">Caveats — pièges courants en dataviz</a></li>
+<li>👉 <a href="https://www.kdnuggets.com/2021/02/telling-great-data-story-visualization-decision-tree.html" target="_blank" rel="noopener">How to tell a great story with Data Viz</a></li>
+<li>👉 <a href="https://callingbull.org/" target="_blank" rel="noopener">Calling Bull — Carl Bergstrom & Jevin West</a> (livre et site)</li>
+</ul>
+
+<p><strong>Références techniques</strong></p>
+
+<ul>
+<li>👉 <a href="https://matplotlib.org/cheatsheets/cheatsheets.pdf" target="_blank" rel="noopener">Matplotlib cheatsheet (PDF)</a></li>
+<li>👉 <a href="https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_Seaborn_Cheat_Sheet.pdf" target="_blank" rel="noopener">Seaborn cheatsheet (PDF)</a></li>
+<li>👉 <a href="https://medium.com/towards-data-science/the-many-ways-to-call-axes-in-matplotlib-2667a7b06e06" target="_blank" rel="noopener">The many ways to call axes in Matplotlib</a></li>
+<li>👉 <a href="https://matplotlib.org/gallery/index.html" target="_blank" rel="noopener">Matplotlib gallery</a></li>
+<li>👉 <a href="https://seaborn.pydata.org/examples/index.html" target="_blank" rel="noopener">Seaborn gallery</a></li>
+<li>👉 <a href="https://plotly.com/python/" target="_blank" rel="noopener">Plotly Python gallery</a></li>
+<li>👉 <a href="https://dash.plotly.com/" target="_blank" rel="noopener">Dash documentation</a></li>
+<li>👉 <a href="https://plotly.com/examples/" target="_blank" rel="noopener">Dash example gallery</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">🚀 Challenges</h2>
+
+<ul>
+<li><strong>Challenge</strong> : Transformer le notebook d'exploration CO2 en dashboard interactif avec Dash — dropdown de pays, layout en colonnes, callback pour mettre à jour les graphiques dynamiquement.</li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-a-retenir-choisir-le-bon-graphique">A retenir — Choisir le bon graphique</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-pourquoi-visualiser-les-données">1. Pourquoi visualiser les données ?</a><li><a href="#ref-2-quel-graphique-choisir">2. Quel graphique choisir ?</a><ol><li><a href="#ref-21-lineplot-levolution-dans-le-temps">2.1 Lineplot — l'evolution dans le temps</a></li><li><a href="#ref-22-barplot-comparer-des-catégories">2.2 Barplot — comparer des catégories</a></li><li><a href="#ref-23-histogramme-distribution-dune-variable">2.3 Histogramme — distribution d'une variable</a></li><li><a href="#ref-24-boxplot-violinplot-comparer-des-distributions">2.4 Boxplot / Violinplot — comparer des distributions</a></li><li><a href="#ref-25-scatterplot-relation-entre-deux-variables">2.5 Scatterplot — relation entre deux variables</a></li></ol></li><li><a href="#ref-3-exploration-rapide-avec-pandas">3. Exploration rapide avec pandas</a><ol><li><a href="#ref-31-charger-les-données">3.1 Charger les données</a></li><li><a href="#ref-32-tracer-des-graphiques-avec-pandas">3.2 Tracer des graphiques avec pandas</a></li></ol></li><li><a href="#ref-4-matplotlib-controle-total">4. Matplotlib — controle total</a><ol><li><a href="#ref-41-tracer-une-courbe-simple">4.1 Tracer une courbe simple</a></li><li><a href="#ref-42-subplots-plusieurs-graphiques-côte-a-côte">4.2 Subplots — plusieurs graphiques côte a côte</a></li></ol></li><li><a href="#ref-5-seaborn-visualisation-statistique">5. Seaborn — visualisation statistique</a><ol><li><a href="#ref-51-histogramme-distribution-dune-variable">5.1 Histogramme — distribution d'une variable</a></li><li><a href="#ref-52-countplot-compter-des-catégories">5.2 Countplot — compter des catégories</a></li><li><a href="#ref-53-boxplot-violinplot-comparer-des-distributions-par-groupe">5.3 Boxplot, Violinplot — comparer des distributions par groupe</a></li><li><a href="#ref-54-scatterplot-relation-entre-deux-variables-numériques">5.4 Scatterplot — relation entre deux variables numériques</a></li></ol></li><li><a href="#ref-6-plotly-express-graphiques-interactifs">6. Plotly Express — graphiques interactifs</a><ol><li><a href="#ref-61-lineplot-interactif">6.1 Lineplot interactif</a></li><li><a href="#ref-62-scatterplot-avec-hover">6.2 Scatterplot avec hover</a></li><li><a href="#ref-63-scatterplot-enrichi">6.3 Scatterplot enrichi</a></li></ol></li><li><a href="#ref-7-principes-de-dashboarding">7. Principes de Dashboarding</a><ol><li><a href="#ref-71-trois-types-de-dashboards">7.1 Trois types de dashboards</a></li><li><a href="#ref-72-bonnes-pratiques-de-design">7.2 Bonnes pratiques de design</a></li><li><a href="#ref-73-accessibilité">7.3 Accessibilité</a></li></ol></li><li><a href="#ref-8-construire-un-dashboard-avec-plotly-dash">8. Construire un dashboard avec Plotly Dash</a><ol><li><a href="#ref-81-app-minimale-le-squelette">8.1 App minimale — le squelette</a></li><li><a href="#ref-82-ajouter-du-html-et-un-titre">8.2 Ajouter du HTML et un titre</a></li><li><a href="#ref-83-layout-en-colonnes-avec-bootstrap">8.3 Layout en colonnes avec Bootstrap</a></li><li><a href="#ref-84-interactivité-avec-les-callbacks">8.4 Interactivité avec les Callbacks</a></li><li><a href="#ref-85-app-multi-pages">8.5 App multi-pages</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>La <strong>visualisation de données</strong> (ou "dataviz"), c'est l'art de transformer un tableau plein de chiffres en un graphique que n'importe qui peut comprendre en quelques secondes. C'est une compétence centrale en data science : on peut avoir le meilleur modèle du monde, si on ne sait pas le montrer, personne ne le comprend.</p>
+
+<p>Dans ce cours, on va utiliser quatre outils Python complémentaires :</p>
+
+<ul>
+<li><strong>pandas</strong> — pour tracer des graphiques rapides directement depuis un DataFrame, sans effort</li>
+<li><strong>matplotlib</strong> — pour contrôler chaque détail d'un graphique (la "brique de base")</li>
+<li><strong>seaborn</strong> — pour faire de beaux graphiques statistiques avec peu de code</li>
+<li><strong>plotly + Dash</strong> — pour des graphiques interactifs et des dashboards qu'on peut partager</li>
+</ul>
+
+<p><strong>Analogie fil rouge :</strong> Imagine que tu es journaliste de données. Tu as un gros tableau Excel avec les émissions de CO2 de tous les pays depuis 1950. Ton objectif : raconter une histoire avec ces chiffres. Chaque outil que tu vas apprendre est un type d'appareil photo différent — du polaroid instantané (pandas) au reflex professionnel (matplotlib), jusqu'au studio photo interactif (Dash).</p>
+
+<h3 id="ref-a-retenir-choisir-le-bon-graphique">A retenir — Choisir le bon graphique</h3>
+
+<ol>
+<li><strong>Evolution dans le temps</strong> → lineplot (courbe)</li>
+<li><strong>Comparer des catégories</strong> → barplot (barres)</li>
+<li><strong>Voir comment une variable se distribue</strong> → histogramme ou boxplot</li>
+<li><strong>Chercher une relation entre deux variables numériques</strong> → scatterplot (nuage de points)</li>
+<li><strong>Ne jamais utiliser un pie chart (camembert)</strong> — les angles sont très difficiles à comparer visuellement, préfère toujours un barplot</li>
+</ol>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li>Pourquoi visualiser ?</li>
+<li>Comment choisir le bon graphique ?</li>
+<li>Exploration rapide avec pandas</li>
+<li>Controle total avec matplotlib</li>
+<li>Graphiques statistiques avec seaborn</li>
+<li>Graphiques interactifs avec plotly</li>
+<li>Principes de dashboarding</li>
+<li>Construire un dashboard avec Dash</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-pourquoi-visualiser-les-données">1. Pourquoi visualiser les données ?</h2>
+
+<p>Regarde ce problème concret : tu as un tableau avec 50 pays et leur revenu moyen. Tu veux savoir quel pays est le plus riche. Face au tableau brut, tu dois lire ligne par ligne. Avec un barplot trié, la réponse saute aux yeux en une seconde.</p>
+
+<p>Un bon graphique permet de répondre immédiatement à des questions comme :</p>
+<ul>
+<li>Quel pays a les emissions de CO2 les plus élevées ?</li>
+<li>Y a-t-il une relation entre le PIB d'un pays et ses emissions ?</li>
+<li>Y a-t-il des valeurs aberrantes (outliers) ?</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La partie la plus difficile n'est pas d'écrire le code. C'est de savoir <strong>quoi montrer</strong> et <strong>comment le montrer</strong>. Avant de coder, pose-toi toujours ces questions : Quel est mon objectif ? Combien de variables je veux montrer ? Ma donnée est-elle continue (ex: temperature) ou discrète (ex: nombre de pays) ?</p></div></div>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Un bon graphique est <strong>significatif et accessible</strong>. S'il a besoin d'une légende de trois paragraphes pour être compris, c'est qu'il n'est probablement pas bon.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-quel-graphique-choisir">2. Quel graphique choisir ?</h2>
+
+<p>C'est la question la plus importante. Voici le guide de survie :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Ce que tu veux montrer</th><th>Type de donnée</th><th>Graphique recommandé</th></tr></thead><tbody><tr><td>Evolution dans le temps</td><td>Numérique continue</td><td><code>lineplot</code> (courbe)</td></tr><tr><td>Comparer des totaux par catégorie</td><td>Catégorielle</td><td><code>barplot</code> (barres)</td></tr><tr><td>Comment les valeurs se répartissent</td><td>Numérique continue</td><td><code>histplot</code> ou <code>kdeplot</code></td></tr><tr><td>Comparer des distributions entre groupes</td><td>Catégorielle x numérique</td><td><code>boxplot</code> ou <code>violinplot</code></td></tr><tr><td>Relation entre deux variables numériques</td><td>Deux numériques</td><td><code>scatterplot</code></td></tr><tr><td>Compter des occurrences par catégorie</td><td>Catégorielle</td><td><code>countplot</code></td></tr></tbody></table></div>
+<h3 id="ref-21-lineplot-levolution-dans-le-temps">2.1 Lineplot — l'evolution dans le temps</h3>
+
+<p>Parfait quand l'axe X est une date ou une année. On voit immédiatement les tendances, les pics, les chutes.</p>
+
+<p>Exemple concret : les emissions de CO2 de la France de 1950 a 2022. On trace une courbe — on voit tout de suite que les emissions ont monte jusqu'aux années 70, puis ont lentement diminué.</p>
+
+<h3 id="ref-22-barplot-comparer-des-catégories">2.2 Barplot — comparer des catégories</h3>
+
+<p>Idéal pour comparer des valeurs entre plusieurs groupes. On peut aussi le faire en horizontal (pratique quand les labels sont longs), ou en "stacked" (barres empilées) pour montrer des compositions.</p>
+
+<h3 id="ref-23-histogramme-distribution-dune-variable">2.3 Histogramme — distribution d'une variable</h3>
+
+<p>Permet de voir comment les valeurs se répartissent. Est-ce que la plupart des restaurants ont des additions entre 10 et 20 euros, ou entre 30 et 50 euros ?</p>
+
+<h3 id="ref-24-boxplot-violinplot-comparer-des-distributions">2.4 Boxplot / Violinplot — comparer des distributions</h3>
+
+<p>Le boxplot montre la médiane, les quartiles et les outliers. Le violinplot montre en plus la forme complète de la distribution (comme un histogramme rotatif).</p>
+
+<h3 id="ref-25-scatterplot-relation-entre-deux-variables">2.5 Scatterplot — relation entre deux variables</h3>
+
+<p>Nuage de points. Chaque point = une observation. On cherche une tendance : est-ce que les pays plus riches emettent plus de CO2 ?</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Pie chart et doughnut chart : à éviter.</strong> Notre cerveau est très mauvais pour comparer des angles. Est-ce que 30° vaut plus que 25° ? Difficile a dire. Avec des barres, la comparaison est immédiate. Remplace toujours un camembert par un barplot.</p></div></div>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Ressource utile : le site <strong>data-to-viz.com</strong> propose un arbre de décision interactif. Tu lui dis combien de variables tu as et leur type, il te dit quel graphique utiliser.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-exploration-rapide-avec-pandas">3. Exploration rapide avec pandas</h2>
+
+<p>pandas n'est pas une bibliothèque de visualisation, mais il offre une methode <code>.plot()</code> qui permet de tracer des graphiques basiques directement depuis un DataFrame. C'est le "polaroid" : rapide, pratique pour explorer, mais peu personnalisable.</p>
+
+<h3 id="ref-31-charger-les-données">3.1 Charger les données</h3>
+
+<p>On va utiliser le dataset CO2 de "Our World in Data" qui contient les emissions de CO2 de tous les pays depuis 1900.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+
+# Charger le fichier CSV dans un DataFrame
+emissions_df = pd.read_csv(&quot;emissions.csv&quot;)
+
+# Ne garder que les données depuis 1950
+emissions_df = emissions_df.query(&quot;year &gt;= 1950&quot;)
+
+# Définir la colonne &quot;year&quot; comme index (l&#x27;axe X par défaut des graphiques)
+emissions_df = emissions_df.set_index(&#x27;year&#x27;)
+
+# Filtrer uniquement la France
+france_df = emissions_df.query(&quot;country == &#x27;France&#x27;&quot;)
+
+france_df.head()  # affiche les 5 premières lignes pour vérifier</code></pre></div>
+
+
+<p>Apres ce code, <code>france_df</code> est un DataFrame dont l'index est l'année (1950, 1951, ..., 2022) et les colonnes sont des variables comme <code>co2</code>, <code>oil_co2</code>, <code>gas_co2</code>, etc.</p>
+
+<h3 id="ref-32-tracer-des-graphiques-avec-pandas">3.2 Tracer des graphiques avec pandas</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Graphique 1 : lineplot de l&#x27;emission CO2 de l&#x27;huile en France
+france_df[&#x27;oil_co2&#x27;].plot()
+# Resultat attendu : une courbe qui monte de 1950 jusqu&#x27;aux annees 70,
+# puis redescend progressivement jusqu&#x27;en 2022
+
+# Graphique 2 : deux courbes superposées sur le même axe
+france_df[[&#x27;oil_co2&#x27;, &#x27;gas_co2&#x27;]].plot()
+# Resultat attendu : deux courbes de couleurs différentes sur le même graphique,
+# avec une légende automatique
+
+# Graphique 3 : barplot des totaux cumulés
+france_df[[&#x27;oil_co2&#x27;, &#x27;gas_co2&#x27;]].sum().plot(kind=&#x27;bar&#x27;)
+# .sum() calcule d&#x27;abord la somme sur toutes les années pour chaque colonne
+# Resultat attendu : deux barres, une pour oil_co2 (~15 000 Mt) et une pour gas_co2 (~3 800 Mt)
+# On voit immédiatement que le pétrole represente bien plus d&#x27;emissions que le gaz
+
+# Graphique 4 : scatterplot population vs CO2 pour toutes les lignes de l&#x27;année 2022
+emissions_df.loc[2022].plot(kind=&#x27;scatter&#x27;, x=&#x27;population&#x27;, y=&#x27;co2&#x27;)
+# .loc[2022] selectionne toutes les lignes dont l&#x27;index (year) vaut 2022
+# Resultat attendu : un nuage de points avec un pays très a droite (forte population)
+# qui est probablement la Chine ou l&#x27;Inde</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>df.plot()</code> est un raccourci pratique pour l'exploration rapide. En arrière-plan, il utilise matplotlib. Mais pour personnaliser (titres, couleurs, tailles), il faut passer a matplotlib ou seaborn directement.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-matplotlib-controle-total">4. Matplotlib — controle total</h2>
+
+<p>matplotlib est la bibliothèque de référence pour la visualisation en Python. Presque tout ce qu'on utilisera par la suite (seaborn, pandas plot) est construit au-dessus. Elle est puissante mais plus verbeuse : <strong>tout doit être configuré manuellement</strong>.</p>
+
+<h3 id="ref-41-tracer-une-courbe-simple">4.1 Tracer une courbe simple</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import matplotlib.pyplot as plt
+
+# Tracer une seule courbe
+plt.plot(france_df.index, france_df[&#x27;co2&#x27;])
+# france_df.index = les années (axe X)
+# france_df[&#x27;co2&#x27;] = les valeurs (axe Y)
+plt.show()
+# Resultat attendu : une courbe simple, sans titre ni légende
+
+# Tracer deux courbes sur le même graphique avec légendes
+plt.plot(france_df.index, france_df[&#x27;oil_co2&#x27;], label=&#x27;oil_co2&#x27;)  # 1ère courbe, étiquette &quot;oil_co2&quot;
+plt.plot(france_df.index, france_df[&#x27;gas_co2&#x27;], label=&#x27;gas_co2&#x27;)  # 2ème courbe, étiquette &quot;gas_co2&quot;
+plt.legend()  # affiche la légende — OBLIGATOIRE, sinon rien n&#x27;apparait
+plt.show()
+# Resultat attendu : deux courbes de couleurs différentes (bleu et orange par défaut),
+# avec une petite boîte de légende dans un coin</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Avec matplotlib, <strong>rien n'apparait automatiquement</strong> : ni titre, ni légende, ni labels sur les axes. Il faut tout demander explicitement avec <code>plt.title()</code>, <code>plt.xlabel()</code>, <code>plt.ylabel()</code>, <code>plt.legend()</code>.</p></div></div>
+
+<h3 id="ref-42-subplots-plusieurs-graphiques-côte-a-côte">4.2 Subplots — plusieurs graphiques côte a côte</h3>
+
+<p>Parfois on veut afficher plusieurs graphiques cote a cote pour comparer. C'est ce qu'on appelle des "subplots".</p>
+
+<p><strong>Concept clé :</strong> une <strong>Figure</strong> = la fenetre entière (le "canvas"). Elle peut contenir un ou plusieurs <strong>Axes</strong> (chaque "sous-graphique"). On définit une grille nlignes × ncolonnes.</p>
+
+<p>Il y a deux façons de faire des subplots avec matplotlib.</p>
+
+<p><strong>Méthode 1 — state-based (séquentielle) :</strong> on "navigue" de subplot en subplot. C'est plus simple a lire au debut, mais fragile dans les scripts complexes.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fig = plt.figure(figsize=(10, 3))  # crée la figure, taille 10 pouces de large × 3 de haut
+
+plt.subplot(1, 2, 1)               # grille 1 ligne × 2 colonnes, on active le subplot n°1
+plt.plot(france_df.index, france_df[&#x27;oil_co2&#x27;])  # trace dans le subplot actif
+plt.title(&#x27;oil_co2&#x27;)               # titre du subplot actif
+
+plt.subplot(1, 2, 2)               # on active le subplot n°2 (a droite)
+plt.plot(france_df.index, france_df[&#x27;gas_co2&#x27;])  # trace dans ce subplot
+plt.title(&#x27;gas_co2&#x27;)               # titre de ce subplot
+# Resultat attendu : deux courbes côte a côte dans la même fenetre</code></pre></div>
+
+
+<p><strong>Méthode 2 — orientée objet (recommandée) :</strong> on récupère un tableau d'axes et on travaille directement dessus. C'est plus explicite et plus robuste.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fig, axs = plt.subplots(1, 2, figsize=(10, 3))
+# plt.subplots() retourne DEUX choses : la figure et un tableau d&#x27;axes
+# axs[0] = subplot de gauche, axs[1] = subplot de droite
+
+axs[0].plot(france_df.index, france_df[&#x27;oil_co2&#x27;])  # trace dans le subplot 0 (gauche)
+axs[0].set_title(&#x27;oil_co2&#x27;)                          # titre du subplot 0
+
+axs[1].plot(france_df.index, france_df[&#x27;gas_co2&#x27;])  # trace dans le subplot 1 (droite)
+axs[1].set_title(&#x27;gas_co2&#x27;)                          # titre du subplot 1
+# Resultat attendu : identique a la methode 1, mais le code est plus clair et moins sujet aux bugs</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Attention a la confusion <code>subplot</code> vs <code>subplots</code> :</strong> <code>plt.subplot(1, 2, 1)</code> (sans s) active un subplot dans la figure courante. <code>fig, axs = plt.subplots(1, 2)</code> (avec s) crée une figure ET retourne un tableau d'axes. Prefere toujours la version avec s, orientée objet.</p></div></div>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>La notation <code>axs[0].set_title(...)</code> utilise un point <code>.</code> apres <code>axs[0]</code>. C'est parce qu'on appelle une <strong>méthode</strong> sur un objet Axes. Les méthodes sur un Axes commencent toujours par <code>set_</code> (ex: <code>set_title</code>, <code>set_xlabel</code>, <code>set_ylabel</code>).</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-seaborn-visualisation-statistique">5. Seaborn — visualisation statistique</h2>
+
+<p>seaborn est une bibliothèque construite <strong>au-dessus de matplotlib</strong>. Elle offre une interface plus simple pour faire des graphiques statistiques élégants. Moins de code, plus beau résultat.</p>
+
+<p>La syntaxe de seaborn est très régulière : on passe toujours <code>data=</code>, <code>x=</code>, <code>y=</code> (et optionnellement <code>hue=</code> pour colorer par catégorie).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import seaborn as sns
+
+# Charger le dataset &quot;tips&quot; : données d&#x27;un restaurant (addition, pourboire, jour, fumeur...)
+tips_df = sns.load_dataset(&#x27;tips&#x27;)
+tips_df.head()
+# Colonnes : total_bill (addition), tip (pourboire), sex, smoker, day, time, size</code></pre></div>
+
+
+<h3 id="ref-51-histogramme-distribution-dune-variable">5.1 Histogramme — distribution d'une variable</h3>
+
+<p>Comparons matplotlib et seaborn pour faire un histogramme de la même donnée.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import matplotlib.pyplot as plt
+import seaborn as sns
+
+fig, axs = plt.subplots(1, 2, figsize=(10, 3))  # 2 subplots côte a côte
+
+# Subplot gauche : histogramme matplotlib
+axs[0].set_title(&#x27;Matplotlib&#x27;)
+axs[0].hist(tips_df[&#x27;total_bill&#x27;])              # histogramme brut, couleur grise par défaut
+
+# Subplot droite : histogramme seaborn
+axs[1].set_title(&#x27;Seaborn&#x27;)
+sns.histplot(
+    tips_df[&#x27;total_bill&#x27;],   # la colonne a visualiser
+    kde=True,                # kde=True ajoute une courbe de densité lissée par-dessus
+    ax=axs[1]                # ax= précise dans quel subplot tracer (sinon seaborn trace ailleurs)
+)
+# Resultat attendu : le subplot seaborn est plus beau (couleur bleue, bordures claires,
+# courbe en cloche par-dessus), avec la méme distribution visible dans les deux.
+# La courbe KDE montre que la plupart des additions sont entre 10 et 20 dollars.</code></pre></div>
+
+
+<h3 id="ref-52-countplot-compter-des-catégories">5.2 Countplot — compter des catégories</h3>
+
+<p>On veut savoir combien de clients fumeurs vs non-fumeurs il y a dans le dataset.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Comptage simple
+sns.countplot(data=tips_df, x=&quot;smoker&quot;)
+# Resultat attendu : deux barres, &quot;Yes&quot; et &quot;No&quot;, montrant qu&#x27;il y a plus de non-fumeurs
+
+# Comptage croisé avec hue — fumeurs vs non-fumeurs, séparés par moment de la journée
+sns.countplot(data=tips_df, x=&quot;time&quot;, hue=&quot;smoker&quot;)
+# x=&quot;time&quot; : axe X = Lunch ou Dinner
+# hue=&quot;smoker&quot; : chaque barre est subdivisée en 2 couleurs (Yes/No pour smoker)
+# Resultat attendu : 4 barres (Lunch Yes, Lunch No, Dinner Yes, Dinner No),
+# montrant qu&#x27;il y a plus de fumeurs le soir que le midi (proportionnellement)
+
+# En pourcentage plutot qu&#x27;en valeur absolue
+sns.countplot(data=tips_df, x=&quot;smoker&quot;, hue=&quot;smoker&quot;, stat=&quot;percent&quot;)
+# stat=&quot;percent&quot; remplace les comptages bruts par des pourcentages</code></pre></div>
+
+
+<h3 id="ref-53-boxplot-violinplot-comparer-des-distributions-par-groupe">5.3 Boxplot, Violinplot — comparer des distributions par groupe</h3>
+
+<p>On veut savoir si les additions varient selon le jour de la semaine.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fig, axs = plt.subplots(2, 2, figsize=(10, 8))  # grille 2 lignes × 2 colonnes
+
+sns.boxplot(
+    data=tips_df,
+    x=&#x27;day&#x27;,           # axe X : les jours (Thur, Fri, Sat, Sun)
+    y=&#x27;total_bill&#x27;,    # axe Y : le montant de l&#x27;addition
+    hue=&#x27;day&#x27;,         # colorier les boîtes par jour (juste pour la couleur)
+    ax=axs[0, 0]       # placer dans la case [ligne 0, colonne 0]
+)
+# Resultat attendu : 4 boîtes côte a côte. Chaque boîte montre :
+# - la ligne du milieu = médiane de l&#x27;addition ce jour-là
+# - la boîte = 50% des valeurs les plus &quot;centrales&quot; (interquartile)
+# - les traits = étendue totale
+# - les points isolés = outliers (additions anormalement hautes)
+
+sns.violinplot(
+    data=tips_df,
+    x=&#x27;day&#x27;,
+    y=&#x27;total_bill&#x27;,
+    hue=&#x27;day&#x27;,
+    ax=axs[1, 1]       # placer dans la case [ligne 1, colonne 1]
+)
+# Resultat attendu : des &quot;violons&quot; dont la largeur varie selon la densité.
+# Plus le violon est large a un endroit, plus les valeurs se concentrent la.
+# C&#x27;est comme un histogramme qu&#x27;on a &quot;couché&quot; et rendu symétrique.</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><code>axs[0, 0]</code> ou <code>axs[1, 1]</code> c'est la notation pour accéder a une case dans une grille 2D. <code>axs[ligne, colonne]</code> — comme les indices d'une matrice.</p></div></div>
+
+<h3 id="ref-54-scatterplot-relation-entre-deux-variables-numériques">5.4 Scatterplot — relation entre deux variables numériques</h3>
+
+<p>On veut voir si le montant de l'addition prédit le pourboire, et si les fumeurs se comportent différemment.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">sns.scatterplot(
+    data=tips_df,
+    x=&quot;total_bill&quot;,    # axe X : montant de l&#x27;addition
+    y=&quot;tip&quot;,           # axe Y : pourboire
+    hue=&#x27;smoker&#x27;       # couleur des points : bleu = non-fumeur, orange = fumeur
+)
+# Resultat attendu : un nuage de points avec une tendance générale a la hausse
+# (plus l&#x27;addition est grande, plus le pourboire est grand).
+# Les points bleus et orange sont mélangés — les fumeurs ne semblent pas plus généreux.</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur classique avec seaborn :</strong> ne jamais écrire <code>sns.scatterplot(&#x27;total_bill&#x27;, &#x27;tip&#x27;)</code>. seaborn exige des arguments nommés. Toujours écrire <code>data=</code>, <code>x=</code>, <code>y=</code> explicitement.</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-plotly-express-graphiques-interactifs">6. Plotly Express — graphiques interactifs</h2>
+
+<p>Jusqu'ici, tous nos graphiques étaient statiques. Avec <strong>Plotly</strong>, les graphiques deviennent <strong>interactifs</strong> : on peut zoomer, déplacer la vue, survoler les points pour voir les détails, et exporter en PNG.</p>
+
+<p>Il existe deux niveaux d'API dans Plotly :</p>
+<ul>
+<li><strong>Plotly Graph Objects (<code>go</code>)</strong> : bas niveau, très personnalisable mais verbeux</li>
+<li><strong>Plotly Express (<code>px</code>)</strong> : haut niveau, simple et rapide — c'est celui qu'on utilise</li>
+</ul>
+
+<p>La syntaxe de <code>px</code> est très proche de seaborn (<code>x=</code>, <code>y=</code>, <code>color=</code> au lieu de <code>hue=</code>).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import plotly.express as px</code></pre></div>
+
+
+<h3 id="ref-61-lineplot-interactif">6.1 Lineplot interactif</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Lineplot de base — interactif
+fig = px.line(france_df, x=france_df.index, y=&#x27;co2&#x27;)
+fig.show()
+# Resultat attendu : une courbe interactive. On peut zoomer en sélectionnant une zone,
+# double-cliquer pour revenir a la vue initiale, survoler un point pour voir l&#x27;année et la valeur exacte.
+
+# Plusieurs séries sur le même graphique
+fig = px.line(france_df, x=france_df.index, y=[&#x27;oil_co2&#x27;, &#x27;gas_co2&#x27;])
+fig.show()
+# Resultat attendu : deux courbes de couleurs différentes avec une légende interactive.
+# On peut cliquer sur un item de la légende pour masquer/afficher une courbe.</code></pre></div>
+
+
+<h3 id="ref-62-scatterplot-avec-hover">6.2 Scatterplot avec hover</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fig = px.scatter(
+    emissions_df.query(&quot;year == 2022&quot;),  # filtrer sur l&#x27;année 2022 seulement
+    x=&#x27;population&#x27;,                       # axe X : population du pays
+    y=&#x27;co2&#x27;,                              # axe Y : emissions CO2
+    hover_name=&#x27;country&#x27;                  # au survol d&#x27;un point, afficher le nom du pays
+)
+fig.show()
+# Resultat attendu : un nuage de points. En survolant chaque point,
+# on voit apparaître le nom du pays. On identifie facilement la Chine
+# (tres a droite et tres en haut), les USA (haut, moins a droite), etc.</code></pre></div>
+
+
+<h3 id="ref-63-scatterplot-enrichi">6.3 Scatterplot enrichi</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fig = px.scatter(
+    tips_df,
+    x=&#x27;total_bill&#x27;,              # axe X : addition
+    y=&#x27;tip&#x27;,                     # axe Y : pourboire
+    color=&#x27;smoker&#x27;,              # couleur par fumeur/non-fumeur
+    marginal_x=&#x27;histogram&#x27;,      # ajoute un histogramme de x en haut du graphique
+    marginal_y=&#x27;box&#x27;,            # ajoute un boxplot de y sur le cote droit
+    trendline=&#x27;ols&#x27;              # ajoute une droite de régression (tendance linéaire)
+)
+fig.show()
+# Resultat attendu : un graphique &quot;enrichi&quot; avec 3 zones :
+# - au centre : le scatterplot principal
+# - en haut : deux histogrammes (un par groupe fumeur/non-fumeur) montrant la distribution des additions
+# - a droite : deux boxplots montrant la distribution des pourboires par groupe
+# - sur le scatterplot : deux droites de régression, une par groupe</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La syntaxe Plotly Express est tres proche de seaborn. La principale difference : les graphiques Plotly sont <strong>interactifs</strong> (zoom, hover, export). Pour des notebooks ou des présentations, c'est souvent plus impressionnant et plus utile.</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-principes-de-dashboarding">7. Principes de Dashboarding</h2>
+
+<p>Un <strong>dashboard</strong> est une page (ou application) qui regroupe plusieurs graphiques et indicateurs pour permettre a un utilisateur de surveiller une situation ou d'explorer des données. Pense a un tableau de bord de voiture : tout ce dont tu as besoin est visible d'un coup d'oeil.</p>
+
+<h3 id="ref-71-trois-types-de-dashboards">7.1 Trois types de dashboards</h3>
+
+<ul>
+<li><strong>C-level (stratégique)</strong> : synthèse pour les dirigeants. Peu de chiffres, très clairs, vision globale.</li>
+<li><strong>Opérationnel</strong> : suivi en temps réel. Alertes, métriques de performance, pour les équipes terrain.</li>
+<li><strong>Analytique</strong> : exploration. Pour les analystes qui veulent creuser dans les données.</li>
+</ul>
+
+<h3 id="ref-72-bonnes-pratiques-de-design">7.2 Bonnes pratiques de design</h3>
+
+<p>Avant de coder quoi que ce soit, réponds a ces deux questions :</p>
+<ol>
+<li><strong>Quel type de dashboard ?</strong> (voir ci-dessus)</li>
+<li><strong>Qui est l'audience ?</strong> Quelles décisions dois-je l'aider a prendre ?</li>
+</ol>
+
+<p><strong>Principes clés :</strong></p>
+
+<ul>
+<li><strong>One-screen storytelling</strong> : tout doit tenir sur un écran, sans scroll. Limiter a 8 visuels maximum.</li>
+<li><strong>Pixel Real Estate</strong> : l'oeil humain lit en "Z" — il commence en haut a gauche. Mets tes indicateurs les plus importants en haut a gauche.</li>
+<li><strong>Visuels appropriés</strong> : choisis le graphique selon l'objectif, pas pour "varier" ou "faire beau".</li>
+<li><strong>Design consistant</strong> : meme palette de couleurs, meme typographie partout.</li>
+<li><strong>Ink for data</strong> : chaque element visuel doit servir a quelque chose. Pas de fonds colorés décoratifs, pas d'animations inutiles.</li>
+</ul>
+
+<h3 id="ref-73-accessibilité">7.3 Accessibilité</h3>
+
+<p>Un bon dashboard doit être utilisable par tout le monde, y compris les personnes malvoyantes ou daltoniennes.</p>
+
+<ul>
+<li><strong>Contraste</strong> : ratio de contraste ≥ 4.5:1 entre texte et fond</li>
+<li><strong>Ne pas transmettre d'info uniquement par la couleur</strong> : ajouter des formes ou des labels</li>
+<li><strong>Texte suffisamment grand</strong> avec un espacement adéquat</li>
+<li><strong>Titres descriptifs</strong> pour chaque graphique (pas juste "Graphique 1")</li>
+<li><strong>Navigation au clavier</strong> possible</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le daltonisme touche environ 8% des hommes. Si ton dashboard utilise rouge/vert pour signifier "mauvais/bon", une partie de ton audience ne verra pas la différence. Utilise plutot des formes, des textes, ou une palette conçue pour les daltoniens.</p></div></div>
+
+<hr>
+
+<h2 id="ref-8-construire-un-dashboard-avec-plotly-dash">8. Construire un dashboard avec Plotly Dash</h2>
+
+<p><strong>Dash</strong> est un framework Python qui permet de créer des applications web interactives avec des graphiques Plotly, sans écrire une seule ligne de HTML ou de JavaScript. Tout se fait en Python.</p>
+
+<p>L'installation :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Dans le terminal :
+# pip install dash dash-bootstrap-components</code></pre></div>
+
+
+<h3 id="ref-81-app-minimale-le-squelette">8.1 App minimale — le squelette</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># fichier : minimal.py
+from dash import Dash, html, dcc   # on importe les briques de base
+import plotly.express as px
+import pandas as pd
+
+app = Dash()   # crée l&#x27;application Dash
+
+# Charger et préparer les données
+emissions_df = pd.read_csv(&quot;emissions.csv&quot;)
+emissions_df = emissions_df.query(&quot;year &gt;= 1950&quot;)
+country_df = emissions_df.query(&quot;country == &#x27;France&#x27;&quot;)  # filtrer sur la France
+
+# Définir le layout : la liste des composants qui s&#x27;affichent sur la page
+app.layout = [
+    dcc.Graph(                                                       # un composant graphique interactif
+        id=&quot;country_co2&quot;,                                            # identifiant unique (important pour les callbacks)
+        figure=px.line(country_df, x=&quot;year&quot;, y=&quot;co2&quot;,               # la figure Plotly a afficher
+                       title=&quot;CO2 emissions in France&quot;)
+    )
+]
+
+if __name__ == &#x27;__main__&#x27;:
+    app.run(debug=True)   # debug=True : l&#x27;app se recharge automatiquement a chaque sauvegarde</code></pre></div>
+
+
+<p>Pour lancer l'app : <code>python minimal.py</code> puis ouvrir <code>http://127.0.0.1:8050/</code> dans le navigateur.</p>
+
+<p>Resultat attendu : une page blanche avec un seul graphique interactif — la courbe des emissions de CO2 en France depuis 1950.</p>
+
+<h3 id="ref-82-ajouter-du-html-et-un-titre">8.2 Ajouter du HTML et un titre</h3>
+
+<p>Dans Dash, on n'écrit pas de HTML directement. On utilise des composants Python du module <code>html</code> qui correspondent aux balises HTML standard.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from dash import html
+
+app.layout = [
+    html.H1(                                          # balise &lt;h1&gt; = titre principal
+        &quot;CO2 emissions Dashboard&quot;,
+        style={&quot;textAlign&quot;: &quot;center&quot;}                 # style CSS en dictionnaire Python
+    ),
+    html.P(&quot;Données : Our World in Data (1950-2022)&quot;),  # balise &lt;p&gt; = paragraphe
+    dcc.Graph(id=&quot;country_co2&quot;, figure=...)
+]
+# html.H1, html.H2, html.P, html.Div... correspondent aux balises HTML habituelles</code></pre></div>
+
+
+<h3 id="ref-83-layout-en-colonnes-avec-bootstrap">8.3 Layout en colonnes avec Bootstrap</h3>
+
+<p>Pour organiser plusieurs graphiques côte a côte, on utilise <code>dash-bootstrap-components</code> qui fournit une grille de 12 colonnes (comme dans les sites web modernes).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import dash_bootstrap_components as dbc
+from dash import Dash, html, dcc
+import plotly.express as px
+
+app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])  # activer Bootstrap
+
+# Préparer deux figures
+fig1 = px.line(country_df, x=&quot;year&quot;, y=&quot;co2&quot;, title=&quot;CO2 total en France&quot;)
+fig2 = px.line(country_df, x=&quot;year&quot;, y=[&quot;oil_co2&quot;, &quot;gas_co2&quot;, &quot;coal_co2&quot;],
+               title=&quot;CO2 par source en France&quot;)
+
+app.layout = [
+    html.H1(&quot;CO2 Dashboard&quot;, style={&quot;textAlign&quot;: &quot;center&quot;}),
+    dbc.Row(children=[                                    # Row = une ligne dans la grille
+        dbc.Col(                                          # Col = une colonne
+            dcc.Graph(id=&#x27;fig1&#x27;, figure=fig1),
+            width=8                                       # 8 colonnes sur 12 = 66% de large
+        ),
+        dbc.Col(
+            dcc.Graph(id=&#x27;fig2&#x27;, figure=fig2),
+            width=4                                       # 4 colonnes sur 12 = 33% de large
+        )
+    ])
+]
+# Resultat attendu : un titre centré en haut, puis deux graphiques côte a côte.
+# Le premier (fig1) occupe 2/3 de la largeur, le second (fig2) occupe 1/3.</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La grille Bootstrap fait toujours 12 colonnes au total. <code>width=8</code> + <code>width=4</code> = 12. Tu peux faire <code>6</code> + <code>6</code> pour deux moitiés égales, ou <code>4</code> + <code>4</code> + <code>4</code> pour trois tiers.</p></div></div>
+
+<h3 id="ref-84-interactivité-avec-les-callbacks">8.4 Interactivité avec les Callbacks</h3>
+
+<p>Jusqu'ici, le dashboard est statique : la figure est calculée une fois au chargement. Pour le rendre <strong>interactif</strong> (ex: choisir un pays dans un menu déroulant et mettre a jour le graphique), on utilise les <strong>callbacks</strong>.</p>
+
+<p>Un callback, c'est une fonction Python décorée avec <code>@callback</code> qui définit :</p>
+<ul>
+<li>un <strong>Input</strong> : "quand ceci change..."</li>
+<li>un <strong>Output</strong> : "...met a jour cela"</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from dash import Dash, html, dcc, callback, Input, Output
+import dash_bootstrap_components as dbc
+import plotly.express as px
+import pandas as pd
+
+app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
+
+emissions_df = pd.read_csv(&quot;emissions.csv&quot;)
+emissions_df = emissions_df.query(&quot;year &gt;= 1950&quot;)
+
+# Composant 1 : un titre
+header = html.H1(&quot;CO2 Dashboard&quot;, style={&quot;textAlign&quot;: &quot;center&quot;})
+
+# Composant 2 : un menu déroulant (dropdown) pour choisir le pays
+country_dropdown = dcc.Dropdown(
+    id=&quot;country_dropdown&quot;,                                        # identifiant pour le callback
+    options=[                                                     # liste des options
+        {&quot;label&quot;: c, &quot;value&quot;: c}                                  # label = texte affiché, value = valeur interne
+        for c in emissions_df[&quot;country&quot;].unique()                 # une option par pays unique
+    ],
+    value=&quot;France&quot;                                                # valeur sélectionnée par défaut
+)
+
+# Composant 3 : un graphique (sans figure= car un callback va la gérer)
+graph = dcc.Graph(id=&quot;country_co2&quot;)    # PAS de figure= ici !
+
+# Le callback : lie le dropdown au graphique
+@callback(
+    Output(&quot;country_co2&quot;, &quot;figure&quot;),   # SORTIE : met a jour la propriété &quot;figure&quot; du composant &quot;country_co2&quot;
+    Input(&quot;country_dropdown&quot;, &quot;value&quot;) # ENTRÉE : quand la propriété &quot;value&quot; de &quot;country_dropdown&quot; change
+)
+def update_graph(country):             # la fonction reçoit la valeur du dropdown en paramètre
+    filtered = emissions_df[emissions_df[&quot;country&quot;] == country]  # filtrer sur le pays choisi
+    fig = px.line(filtered, x=&quot;year&quot;, y=&quot;co2&quot;,
+                  title=f&quot;CO2 emissions in {country}&quot;)           # créer la figure pour ce pays
+    return fig                         # retourner la figure → elle sera envoyée a l&#x27;Output
+
+# Layout : assembler les composants
+app.layout = [
+    dbc.Row([
+        dbc.Col(header,           width=8),   # titre a gauche (8/12)
+        dbc.Col(country_dropdown, width=4)    # dropdown a droite (4/12)
+    ]),
+    dbc.Row([
+        dbc.Col(graph, width=12)              # graphique sur toute la largeur
+    ])
+]
+
+if __name__ == &#x27;__main__&#x27;:
+    app.run(debug=True)</code></pre></div>
+
+
+<p>Resultat attendu : une page avec un titre centré, un menu déroulant a droite, et un grand graphique en dessous. Quand on change le pays dans le menu, le graphique se met a jour instantanément avec les données du nouveau pays sélectionné, sans recharger la page.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur classique :</strong> mettre a la fois <code>figure=ma_figure</code> dans <code>dcc.Graph(...)</code> ET un <code>@callback</code> qui retourne aussi une figure pour ce même composant. Les deux entrent en conflit. Règle simple : <strong>si un callback gère un graphique, ne mets PAS <code>figure=</code> dans <code>dcc.Graph()</code>.</strong></p></div></div>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le décorateur <code>@callback</code> fonctionne comme un "abonnement". Dash surveille en permanence la valeur du dropdown. Des qu'elle change, il appelle automatiquement <code>update_graph()</code> avec la nouvelle valeur, récupère ce qu'elle retourne, et met a jour le graphique. Tout ça sans que tu aies a gérer des evenements manuellement.</p></div></div>
+
+<h3 id="ref-85-app-multi-pages">8.5 App multi-pages</h3>
+
+<p>Quand le dashboard grandit, on peut le découper en plusieurs pages. Chaque page est un fichier Python séparé dans un dossier <code>pages/</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Structure du projet :
+# ├── main.py          ← point d&#x27;entrée
+# └── pages/
+#     ├── home.py      ← page d&#x27;accueil
+#     └── analysis.py  ← page d&#x27;analyse
+
+# Dans chaque page, ex: pages/home.py
+import dash
+from dash import html
+
+dash.register_page(__name__)    # enregistre ce fichier comme une page Dash
+                                # __name__ donne automatiquement le nom du fichier
+
+layout = [                      # remplace app.layout
+    html.H1(&quot;Page d&#x27;accueil&quot;),
+    html.P(&quot;Bienvenue sur le dashboard CO2&quot;)
+]
+# Pas de app = Dash() ni de if __name__ == &#x27;__main__&#x27; dans les pages !</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Dans main.py : le point d&#x27;entrée qui orchestre tout
+import dash
+from dash import Dash, html, dcc
+import dash_bootstrap_components as dbc
+
+app = Dash(
+    use_pages=True,                                    # activer le système multi-pages
+    external_stylesheets=[dbc.themes.BOOTSTRAP]
+)
+
+app.layout = html.Div([
+    html.H1(&#x27;Dashboard CO2 — Multi-pages&#x27;),
+    html.Div([
+        dcc.Link(f&quot;{page[&#x27;name&#x27;]}&quot;, href=page[&quot;relative_path&quot;])  # un lien par page enregistrée
+        for page in dash.page_registry.values()                   # page_registry = toutes les pages trouvées
+    ]),
+    dash.page_container    # zone dans laquelle s&#x27;affiche le contenu de la page active
+])
+
+if __name__ == &#x27;__main__&#x27;:
+    app.run(debug=True)</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<ol>
+<li><strong>Tu as une colonne <code>temperature</code> mesurée chaque jour pendant 2 ans. Quel graphique utilises-tu pour voir l'évolution dans le temps, et quel graphique pour voir comment les températures se distribuent ?</strong></li>
+</ol>
+<p>Réfléchis avant de lire la réponse : évolution dans le temps → lineplot. Distribution → histogramme ou <code>sns.histplot()</code>.</p>
+
+<ol>
+<li><strong>Quelle est la différence entre <code>plt.subplot(1, 2, 1)</code> et <code>fig, axs = plt.subplots(1, 2)</code> ? Laquelle est recommandée et pourquoi ?</strong></li>
+</ol>
+<p><code>plt.subplot()</code> (sans s) navigue dans la figure courante de façon séquentielle — c'est fragile. <code>plt.subplots()</code> (avec s) retourne un tableau d'axes que tu manipules directement par index — c'est la méthode orientée objet, recommandée car plus explicite et moins sujette aux erreurs.</p>
+
+<ol>
+<li><strong>Dans une app Dash, tu veux qu'un dropdown permette de changer le pays affiché dans un graphique. Que mets-tu dans <code>Input</code>, dans <code>Output</code>, et que fait la fonction du callback ?</strong></li>
+</ol>
+<p><code>Input</code> = la propriété <code>value</code> du dropdown. <code>Output</code> = la propriété <code>figure</code> du composant <code>dcc.Graph</code>. La fonction reçoit la valeur sélectionnée dans le dropdown, filtre les données, crée une figure Plotly et la retourne.</p>
+
+<ol>
+<li><strong>Pourquoi faut-il éviter les pie charts (camemberts) en dataviz ?</strong></li>
+</ol>
+<p>Parce que le cerveau humain est très mauvais pour comparer des angles. Il est très difficile de dire si un secteur de 30° est plus grand qu'un de 25°. Avec un barplot, la comparaison est immédiate (longueur de barre). Exception très limitée : montrer 2 ou 3 parts très différentes (ex: 80% vs 20%) où la difference est évidente.</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li><strong>Choisir le bon graphique d'abord</strong> : lineplot pour le temps, barplot pour les catégories, histogramme pour les distributions, boxplot pour comparer des groupes, scatterplot pour les corrélations. Eviter les camemberts.</li>
+<li><strong>pandas <code>.plot()</code></strong> = exploration rapide, peu personnalisable.</li>
+<li><strong>matplotlib</strong> = controle total mais verbeux ; préférer l'approche orientée objet avec <code>fig, axs = plt.subplots()</code>.</li>
+<li><strong>seaborn</strong> = graphiques statistiques élégants en peu de code ; syntaxe <code>data=</code>, <code>x=</code>, <code>y=</code>, <code>hue=</code> toujours explicite.</li>
+<li><strong>Plotly Express</strong> = meme syntaxe que seaborn mais graphiques interactifs (zoom, hover, export).</li>
+<li><strong>Dash</strong> = framework pour créer des dashboards Python interactifs ; trois briques : <code>html</code> (mise en page), <code>dcc</code> (composants interactifs), <code>@callback</code> (réactivité).</li>
+<li><strong>Callback</strong> = la magie de Dash : <code>Input</code> déclenche, <code>Output</code> est mis a jour, la fonction fait la logique.</li>
+<li><strong>Dashboarding</strong> = penser audience avant code ; one-screen, layout en Z, visuels appropriés pas "fancy".</li>
+<li><strong>Accessibilité</strong> : contraste suffisant, ne pas transmettre d'info uniquement par la couleur, titres descriptifs.</li>
+<li><strong>Ressource clé</strong> : data-to-viz.com pour choisir le bon graphique face a n'importe quel jeu de données.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-pourquoi-visualiser">Pourquoi visualiser</a></li><li><a href="#syn-choisir-le-bon-type-de-graphique">Choisir le bon type de graphique</a></li><li><a href="#syn-matplotlib-seaborn-plotly">Matplotlib, Seaborn, Plotly</a></li><li><a href="#syn-anatomie-dune-figure-publication-ready">Anatomie d'une figure publication-ready</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-encoding-visuel-et-perception">Encoding visuel et perception</a></li><li><a href="#syn-dashboarding-streamlit-dash-tableau">Dashboarding : Streamlit, Dash, Tableau</a></li><li><a href="#syn-storytelling-avec-les-données">Storytelling avec les données</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-pourquoi-visualiser">Pourquoi visualiser</h3>
+
+<p>La visualisation a deux objectifs distincts qui ne devraient pas être confondus :</p>
+
+<p><strong>1. Exploration (vous, en EDA)</strong> : visualisations rapides, sales, jetables. L'objectif est de <strong>comprendre</strong> votre dataset. Vous tracez 50 graphiques, vous en gardez 3 dans votre tête. Pas de titre, pas de légende polie, pas de palette soignée — juste <code>plt.plot()</code>.</p>
+
+<p><strong>2. Communication (vous → votre audience)</strong> : visualisations soignées, légendées, polished. L'objectif est de <strong>convaincre</strong> ou <strong>informer</strong>. Vous tracez 1 graphique mais vous y passez du temps : titre explicite, annotations, palette accessible, légende lisible.</p>
+
+<p>Un graphique bien conçu montre instantanément ce qu'un tableau de chiffres prend des minutes à expliquer. C'est un raccourci cognitif puissant — mais aussi un piège : un graphique mal conçu trompe instantanément et la confiance perdue est difficile à regagner.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie célèbre — le quartet d'Anscombe</strong> : quatre datasets ayant exactement la même moyenne, variance, corrélation et droite de régression — mais des formes radicalement différentes (linéaire, courbe, outlier dominant, vertical). Sans visualisation, vous concluriez qu'ils sont identiques. Avec visualisation, vous voyez immédiatement qu'ils racontent quatre histoires différentes. C'est exactement pourquoi <code>df.describe()</code> ne suffit jamais — il faut tracer.</p></div></div>
+
+<h3 id="syn-choisir-le-bon-type-de-graphique">Choisir le bon type de graphique</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Question</th><th>Graphique adapté</th></tr></thead><tbody><tr><td>Distribution d'une variable</td><td>Histogramme, KDE, boxplot</td></tr><tr><td>Comparer plusieurs distributions</td><td>Boxplot multiple, violin plot, ridgeline</td></tr><tr><td>Relation entre 2 variables continues</td><td>Scatter plot</td></tr><tr><td>Évolution dans le temps</td><td>Line plot</td></tr><tr><td>Comparer des catégories</td><td>Bar chart</td></tr><tr><td>Composition (parties d'un tout)</td><td>Bar empilé > pie chart</td></tr><tr><td>Corrélations multiples</td><td>Heatmap, pair plot</td></tr><tr><td>Données géographiques</td><td>Carte (folium, plotly_geo)</td></tr></tbody></table></div>
+<p><strong>Règle rapide</strong> : <em>une variable ? Distribution. Deux continues ? Scatter. Deux mixtes (une catégorielle) ? Boxplot/bar. Trois+ ? Couleur, taille, facet.</em></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Distribution d&#x27;une variable numérique
+sns.histplot(df[&quot;price&quot;], bins=30, kde=True)
+
+# Comparer la distribution par groupe
+sns.boxplot(data=df, x=&quot;city&quot;, y=&quot;price&quot;)
+
+# Relation entre deux variables + 3e en couleur
+sns.scatterplot(data=df, x=&quot;area&quot;, y=&quot;price&quot;, hue=&quot;city&quot;, alpha=0.5)
+
+# Évolution temporelle
+sns.lineplot(data=df, x=&quot;date&quot;, y=&quot;revenue&quot;)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>À bannir</strong> : (1) <strong>Pie charts</strong> dès qu'il y a plus de 4-5 catégories — l'œil humain est mauvais pour comparer des angles. (2) <strong>3D charts</strong> sauf cas exceptionnel — la perspective fausse les comparaisons. (3) <strong>Doubles axes Y</strong> — induisent en erreur sur les corrélations. Préférez deux graphiques côte à côte. (4) <strong>Couleurs arc-en-ciel / jet</strong> — utilisez des palettes accessibles (<code>viridis</code>, <code>colorblind</code>) compatibles avec les daltoniens.</p></div></div>
+
+<h3 id="syn-matplotlib-seaborn-plotly">Matplotlib, Seaborn, Plotly</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Bibliothèque</th><th>Force</th><th>Cas d'usage</th></tr></thead><tbody><tr><td><strong>Matplotlib</strong></td><td>Contrôle absolu, basse couche</td><td>Graphiques publication, custom</td></tr><tr><td><strong>Seaborn</strong></td><td>API haut niveau, beau par défaut</td><td>EDA, statistiques</td></tr><tr><td><strong>Plotly</strong></td><td>Interactif, web</td><td>Dashboards, présentations</td></tr><tr><td><strong>Plotnine</strong></td><td>Grammar of Graphics (ggplot2)</td><td>Si vous venez de R</td></tr><tr><td><strong>Altair</strong></td><td>Vega-Lite, déclaratif</td><td>Notebooks et publication</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Matplotlib pur : verbeux mais contrôle total
+fig, ax = plt.subplots(figsize=(8, 5))        # figure 8×5 pouces
+ax.scatter(df[&quot;x&quot;], df[&quot;y&quot;], alpha=0.5)       # alpha = transparence
+ax.set_xlabel(&quot;X&quot;)
+ax.set_ylabel(&quot;Y&quot;)
+ax.set_title(&quot;Title&quot;)
+plt.tight_layout()                             # évite les labels coupés
+plt.show()
+
+# Seaborn — plus court et plus joli
+sns.scatterplot(data=df, x=&quot;x&quot;, y=&quot;y&quot;, hue=&quot;category&quot;)
+# Une ligne pour le graphique + la légende + la palette de couleurs
+plt.show()</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : utilisez Seaborn pour 80% de vos graphes (EDA). Quand vous avez besoin d'un graphique précis pour une publication, descendez à Matplotlib pour le polish (Seaborn s'appuie dessus, donc les objets <code>ax</code> sont compatibles). Plotly seulement si vous avez besoin d'interactivité (zoom, tooltip, filtre).</p></div></div>
+
+<h3 id="syn-anatomie-dune-figure-publication-ready">Anatomie d'une figure publication-ready</h3>
+
+<p>Une figure professionnelle a 6 éléments soignés :</p>
+
+<ol>
+<li><strong>Titre</strong> : explicite, idéalement la conclusion ("Les ventes ont triplé en 2024", pas "Ventes mensuelles")</li>
+<li><strong>Axes labellisés</strong> avec unités ("Revenue ($M)", "Time (months)")</li>
+<li><strong>Légende</strong> lisible, positionnée intelligemment</li>
+<li><strong>Source</strong> des données en bas (data: kaggle.com/...)</li>
+<li><strong>Annotations</strong> pour pointer les points clés</li>
+<li><strong>Couleurs</strong> professionnelles et accessibles</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import matplotlib.pyplot as plt
+plt.style.use(&quot;seaborn-v0_8-whitegrid&quot;)       # style propre et neutre
+
+fig, ax = plt.subplots(figsize=(10, 6), dpi=150)        # dpi élevé = haute résolution
+ax.plot(df[&quot;month&quot;], df[&quot;revenue&quot;],
+        color=&quot;#2E86AB&quot;,                                 # bleu professionnel
+        linewidth=2.5,
+        marker=&quot;o&quot;)                                      # marque les points
+
+# Titre : la CONCLUSION, pas juste le sujet
+ax.set_title(&quot;Revenue tripled in 2024 after product redesign&quot;,
+             fontsize=14, fontweight=&quot;bold&quot;, loc=&quot;left&quot;)
+ax.set_xlabel(&quot;Month&quot;, fontsize=11)
+ax.set_ylabel(&quot;Revenue ($M)&quot;, fontsize=11)
+
+# Retirer les bordures inutiles (chartjunk minimaliste)
+ax.spines[&quot;top&quot;].set_visible(False)
+ax.spines[&quot;right&quot;].set_visible(False)
+
+# Annotation pour le moment clé
+ax.annotate(&quot;Redesign launch&quot;,
+            xy=(&quot;2024-03&quot;, 5), xytext=(&quot;2024-01&quot;, 8),
+            arrowprops=dict(arrowstyle=&quot;-&gt;&quot;, color=&quot;gray&quot;))
+
+# Source en bas à droite
+fig.text(0.95, 0.02, &quot;Source: internal analytics&quot;,
+         fontsize=8, ha=&quot;right&quot;, color=&quot;gray&quot;)
+
+plt.tight_layout()
+plt.savefig(&quot;revenue.png&quot;, dpi=300, bbox_inches=&quot;tight&quot;)</code></pre></div>
+
+
+<p><strong>Résultat attendu</strong> : un slide exec-ready en 1 image, 5 secondes de lecture, titre qui dit la conclusion.</p>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-encoding-visuel-et-perception">Encoding visuel et perception</h3>
+
+<p>Cleveland & McGill (1984) ont mesuré expérimentalement la précision avec laquelle l'œil humain compare différents encodages visuels. Le classement, du plus précis au moins précis :</p>
+
+<ol>
+<li><strong>Position sur une échelle commune</strong> (le scatter plot, le bar chart)</li>
+<li><strong>Position sur des échelles non alignées</strong></li>
+<li><strong>Longueur</strong></li>
+<li><strong>Direction / angle</strong></li>
+<li><strong>Aire</strong></li>
+<li><strong>Volume</strong></li>
+<li><strong>Couleur (saturation, teinte)</strong></li>
+</ol>
+
+<p>Lecture : <em>plus on descend dans la liste, plus l'œil humain est imprécis. Un humain distingue 2% de différence en position, 10% en longueur, 25% en couleur. Pour comparer précisément, utilisez les encodages du haut de la liste.</em></p>
+
+<p>Conséquence : pour faire comparer <strong>précisément</strong> deux valeurs, utilisez la position (bar chart) plutôt que l'aire (pie chart) ou la couleur (heatmap). Les heatmaps sont efficaces pour repérer des <strong>patterns globaux</strong>, pas pour comparer des valeurs individuelles.</p>
+
+<p><strong>Exemple chiffré</strong> : sur un pie chart avec 3 parts de 32%, 33% et 35%, l'œil ne les distingue quasiment pas (angles de 115°, 119°, 126°). Sur un bar chart, ces 3 valeurs se distinguent immédiatement par la longueur des barres.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : votre cerveau est un compresseur de données visuel avec des biais. Il repère immédiatement les positions et longueurs, mais peine sur les angles et les aires. Quand vous concevez un graphique, choisissez l'encodage qui correspond à l'importance de la précision attendue. Pour de l'exploration rapide, une heatmap est suffisante. Pour un slide qui décide d'un budget, un bar chart est plus honnête.</p></div></div>
+
+<p><strong>Palettes de couleurs</strong> :</p>
+
+<ul>
+<li><strong>Séquentielle</strong> : <code>viridis</code>, <code>plasma</code>, <code>magma</code> — pour des données ordonnées de petit à grand</li>
+<li><strong>Divergente</strong> : <code>coolwarm</code>, <code>RdBu</code> — pour des valeurs centrées (corrélations entre -1 et 1)</li>
+<li><strong>Catégorielle</strong> : <code>tab10</code>, <code>Set2</code> — pour des classes discrètes sans ordre</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Sélection idiomatique
+sns.heatmap(corr_matrix, cmap=&quot;RdBu_r&quot;, center=0, vmin=-1, vmax=1)  # divergente, centrée sur 0
+sns.scatterplot(data=df, x=&quot;x&quot;, y=&quot;y&quot;, hue=&quot;time&quot;, palette=&quot;viridis&quot;)  # séquentielle
+sns.barplot(data=df, x=&quot;category&quot;, y=&quot;value&quot;, palette=&quot;tab10&quot;)      # catégorielle</code></pre></div>
+
+
+<p><code>viridis</code> est devenu le standard parce qu'il est lisible en niveaux de gris, accessible aux daltoniens, et perceptuellement uniforme (deux points également distants en valeur sont également distants visuellement).</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège couleur</strong> : la palette <code>jet</code> (arc-en-ciel) est encore le défaut de beaucoup de tutoriels mais elle est trompeuse : elle a des sauts perceptuels non uniformes (le jaune central apparaît plus lumineux que le vert), illisible en niveaux de gris, et pas accessible aux daltoniens. À bannir définitivement.</p></div></div>
+
+<h3 id="syn-dashboarding-streamlit-dash-tableau">Dashboarding : Streamlit, Dash, Tableau</h3>
+
+<p>Quand vos analyses doivent être consultées par d'autres en autonomie, vous passez de "graphique statique" à "dashboard interactif".</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Outil</th><th>Type</th><th>Cas d'usage</th><th>Coût</th></tr></thead><tbody><tr><td><strong>Streamlit</strong></td><td>Code Python pur</td><td>Prototypes ML, démos rapides</td><td>Gratuit, OSS</td></tr><tr><td><strong>Dash (Plotly)</strong></td><td>Code Python</td><td>Dashboards complexes, customisables</td><td>Gratuit (version OSS)</td></tr><tr><td><strong>Gradio</strong></td><td>Code Python ML-first</td><td>Démos modèles, interfaces UI</td><td>Gratuit, OSS</td></tr><tr><td><strong>Tableau</strong></td><td>No-code</td><td>BI corporate, exec dashboards</td><td>Payant</td></tr><tr><td><strong>Power BI</strong></td><td>No-code Microsoft</td><td>Idem, écosystème MS</td><td>Payant</td></tr><tr><td><strong>Metabase</strong></td><td>No-code self-hosted</td><td>Dashboards SQL, équipes data</td><td>Gratuit (OSS)</td></tr><tr><td><strong>Looker</strong></td><td>SQL-first</td><td>Analytics avancée, modélisation</td><td>Payant</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Streamlit — du Python qui devient une app web
+import streamlit as st
+import pandas as pd
+
+st.title(&quot;Sales Dashboard&quot;)                   # titre de la page
+
+df = pd.read_csv(&quot;sales.csv&quot;)
+
+# Widget interactif : dropdown de sélection
+city = st.selectbox(&quot;City&quot;, df[&quot;city&quot;].unique())
+
+# Filtrage dynamique selon la sélection
+filtered = df[df[&quot;city&quot;] == city]
+
+# KPI : gros chiffre bien visible
+st.metric(&quot;Total revenue&quot;, f&quot;${filtered[&#x27;revenue&#x27;].sum():,.0f}&quot;)
+
+# Graphique : une ligne de code pour un line chart interactif
+st.line_chart(filtered.set_index(&quot;date&quot;)[&quot;revenue&quot;])</code></pre></div>
+
+
+<p>Lancement : <code>streamlit run app.py</code>. Vous obtenez une app web en local sur <code>http://localhost:8501</code>. Avantage massif : pas besoin de connaître HTML/CSS/JS — tout est en Python.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Recommandation</strong> : pour un prototype ML en équipe data, <strong>Streamlit</strong> est imbattable (1 fichier Python, 100 lignes). Pour un dashboard exec qui doit être pixel-perfect et survivre à un changement d'analyste, <strong>Tableau ou Power BI</strong>. Pour des analyses ad-hoc en équipe data, <strong>Metabase</strong>. Le mauvais réflexe : tout dashboarder dans un notebook Jupyter exporté en HTML — ça ne tient pas en production (pas de filtres interactifs, pas d'auth, pas de refresh).</p></div></div>
+
+<h3 id="syn-storytelling-avec-les-données">Storytelling avec les données</h3>
+
+<p>Un dashboard ou un slide n'est pas une décharge de chiffres. C'est une <strong>histoire</strong> structurée selon le pattern suivant :</p>
+
+<ol>
+<li><strong>Hook</strong> : un chiffre frappant ou une question</li>
+<li><strong>Contexte</strong> : pourquoi c'est important</li>
+<li><strong>Tension</strong> : un problème, une anomalie</li>
+<li><strong>Résolution</strong> : ce qu'il faut faire / ce qu'on a appris</li>
+<li><strong>Call to action</strong> : décision attendue</li>
+</ol>
+
+<p>Cole Nussbaumer Knaflic (<em>Storytelling with Data</em>, 2015) résume en une phrase : "Show the data that matters". Une slide doit avoir <strong>une seule conclusion</strong> et tout supprimer ce qui ne la soutient pas.</p>
+
+<p><strong>Principe du pre-attentive attribute</strong> : avant même que vous ne lisiez consciemment le graphique, votre œil repère ce qui est visuellement saillant. Utilisez la couleur pour pointer le message : grisez tout ce qui est contexte, mettez en couleur vive la donnée qui raconte l'histoire.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Pattern &quot;highlight one bar&quot;
+colors = [&quot;#cccccc&quot;] * len(df)        # gris par défaut
+colors[df[&quot;month&quot;].tolist().index(&quot;2024-12&quot;)] = &quot;#2E86AB&quot;  # bleu pour le mois clé
+plt.bar(df[&quot;month&quot;], df[&quot;revenue&quot;], color=colors)
+plt.title(&quot;December 2024 broke all records after v3 launch&quot;)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Anti-pattern</strong> : la "slide-graveyard" — 8 graphiques sur une slide, 14 KPIs, légendes minuscules, palette arc-en-ciel. L'audience décroche en 5 secondes. Préférez 1 graphique par slide, gros, lisible, avec une phrase de titre qui dit la conclusion. Si vous avez 8 graphiques à montrer, faites 8 slides.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi le pie chart est-il déconseillé pour comparer plus de 4 catégories ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Perception des angles.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Parce que l'œil humain est mauvais pour comparer des <strong>angles</strong>. Sur le ranking de Cleveland & McGill, l'angle est en 4e position (sur 7) — bien moins précis que la position ou la longueur.</p>
+
+<p>Avec 4 catégories, on distingue encore facilement les proportions. Avec 8, vous ne savez plus si la part bleue (15%) est plus grande ou plus petite que la verte (17%). Pire, l'œil sous-estime systématiquement les angles obtus, et la perception varie selon l'orientation (un même angle paraît différent s'il est "debout" ou couché).</p>
+
+<p><strong>Solutions</strong> :</p>
+
+<ol>
+<li><strong>Bar chart trié par taille décroissante</strong> — comparaison instantanée par longueur, idéal.</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df.sort_values(&quot;value&quot;, ascending=False).plot.barh(x=&quot;category&quot;, y=&quot;value&quot;)</code></pre></div>
+
+
+<ol>
+<li><strong>Bar chart empilé horizontal à 100%</strong> si vous voulez vraiment montrer "parts d'un tout".</li>
+</ol>
+
+<ol>
+<li><strong>Treemap</strong> si vous avez beaucoup de catégories ET une hiérarchie (squarify ou plotly).</li>
+</ol>
+
+<p>La règle de Cole Nussbaumer : "Just say no to pie charts". Question d'entretien data analyst : "Quand utiliser un pie chart ?" — réponse correcte : "rarement, et seulement avec ≤4 catégories qu'on veut comparer à une vue globale. Et encore, un bar chart fera souvent mieux."</p>
+
+</details>
+
+<p><strong>Q2 : Vous avez un dataset de 1 million de points et le scatter plot est juste un gros blob noir illisible. Comment réparer ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Overplotting : densité au lieu de points.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>C'est l'<strong>overplotting</strong>. Quatre solutions selon ce que vous voulez voir :</p>
+
+<p><strong>(1) Transparence (alpha=0.05)</strong> : les zones denses deviennent foncées, les zones rares restent visibles. Le plus simple, marche bien jusqu'à ~100k points.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">plt.scatter(x, y, alpha=0.05, s=2)  # très transparent, petits points</code></pre></div>
+
+
+<p><strong>(2) Hexbin</strong> : <code>plt.hexbin(x, y)</code> — divise le plan en hexagones et colore par densité. Marche jusqu'à 10M points.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">plt.hexbin(x, y, gridsize=50, cmap=&quot;viridis&quot;)
+plt.colorbar(label=&quot;count&quot;)</code></pre></div>
+
+
+<p><strong>(3) 2D KDE / contour</strong> : <code>sns.kdeplot(x=, y=)</code> — affiche une carte de densité lisse. Plus joli pour la communication.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">sns.kdeplot(data=df, x=&quot;x&quot;, y=&quot;y&quot;, fill=True, cmap=&quot;viridis&quot;)</code></pre></div>
+
+
+<p><strong>(4) Échantillonner</strong> : tracer 10 000 points aléatoires — perd des outliers mais donne une intuition rapide.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">sample = df.sample(10_000, random_state=42)
+sns.scatterplot(data=sample, x=&quot;x&quot;, y=&quot;y&quot;, alpha=0.3)</code></pre></div>
+
+
+<p><strong>(5) Datashader</strong> (Bokeh/HoloViews) : rendu basé sur l'agrégation, gère des milliards de points. Pour un dashboard interactif à gros volumétrie, c'est l'option pro.</p>
+
+<p>Le mauvais réflexe : tracer le scatter direct et espérer que ce soit lisible. Toujours tester sur un échantillon de votre dataset à pleine taille, et choisir la méthode selon la densité et l'objectif (exploration vs communication).</p>
+
+</details>
+
+<p><strong>Q3 : Vous présentez à un exec un graphique "ventes par mois sur 3 ans". Vous avez 36 barres. Comment simplifier ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Agrégation et hiérarchie visuelle.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Trois améliorations cumulables.</p>
+
+<p><strong>(1) Agréger</strong> : 36 barres mensuelles → 12 barres trimestrielles ou 3 barres annuelles. Vous perdez du détail mais vous gagnez en lisibilité. Si vous avez vraiment besoin du détail, faites un line plot continu (qui supporte mieux les hautes densités qu'un bar chart).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Aggregation mensuelle → trimestrielle
+df[&quot;quarter&quot;] = df[&quot;date&quot;].dt.to_period(&quot;Q&quot;)
+quarterly = df.groupby(&quot;quarter&quot;)[&quot;revenue&quot;].sum()
+quarterly.plot.bar()    # 12 barres au lieu de 36</code></pre></div>
+
+
+<p><strong>(2) Annoter les inflexions</strong> : entourer les pics et chutes avec des annotations textuelles ("Lancement v2", "COVID lockdown"). L'exec ne lira pas tous les chiffres mais retiendra les événements.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">ax.annotate(&quot;v3 launch&quot;, xy=(24, 1.5e6), xytext=(20, 2e6),
+            arrowprops=dict(arrowstyle=&quot;-&gt;&quot;))</code></pre></div>
+
+
+<p><strong>(3) Mettre en évidence le message</strong> : utiliser une couleur saillante pour la barre/période la plus importante (la conclusion) et grisé pour les autres. Le titre dit la conclusion : "Q4 2024 a battu tous les records après le lancement de la v3".</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Gris par défaut, rouge pour le trimestre clé
+colors = [&quot;#cccccc&quot;] * len(quarterly)
+colors[-1] = &quot;#E63946&quot;  # dernier trimestre en rouge saillant
+quarterly.plot.bar(color=colors)
+plt.title(&quot;Q4 2024 a battu tous les records après le lancement v3&quot;)</code></pre></div>
+
+
+<p><strong>Règle</strong> : un graphique exec doit être compris en 5 secondes. S'il faut plus, c'est qu'il est trop chargé. Question d'entretien data BI : "Comment designer une slide qui passe en revue les ventes ?" — la bonne réponse parle de hiérarchie visuelle (gris vs saillant), d'annotation et de titre-conclusion, pas de bibliothèque de viz.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Storytelling with Data</em> (Cole Nussbaumer Knaflic) — la référence pour data viz business</li>
+<li><em>The Visual Display of Quantitative Information</em> (Edward Tufte) — la bible historique</li>
+<li><a href="https://python-graph-gallery.com/" target="_blank" rel="noopener">The Python Graph Gallery</a> — exemples avec code, classés par type</li>
+<li><a href="https://www.data-to-viz.com/" target="_blank" rel="noopener">From Data to Viz</a> — arbre de décision pour choisir le bon graphique</li>
+<li><a href="https://seaborn.pydata.org/examples/" target="_blank" rel="noopener">Seaborn examples</a> — à parcourir pour s'inspirer</li>
+<li><a href="https://plotly.com/python/" target="_blank" rel="noopener">Plotly Python</a> — pour les dashboards interactifs</li>
+<li><a href="https://colorbrewer2.org/" target="_blank" rel="noopener">colorbrewer2.org</a> — palettes de couleurs scientifiques</li>
+<li><a href="https://docs.streamlit.io/" target="_blank" rel="noopener">Streamlit docs</a> — pour prototyper un dashboard en Python</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../data-engineering/data-preparation.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Data Preparation</span>
+  </a>
+  <a href="../data-engineering/ml-workflow.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">ML Workflow →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

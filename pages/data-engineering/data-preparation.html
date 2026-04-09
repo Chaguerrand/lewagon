@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Preparation — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Data Preparation</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html" class="active">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Data Engineering</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Data Preparation</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Data Preparation</h1>
+        <p class="page-objective">Maîtriser les étapes de préparation d'un dataset avant de l'alimenter à un modèle de Machine Learning : doublons, valeurs manquantes, outliers, scaling, encodage, équilibrage des classes et sélection de features.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Missing value</div>
+        <div class="key-concept-def">Donnée absente — à imputer (médiane, KNN…) ou à supprimer.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Scaling</div>
+        <div class="key-concept-def">Mettre toutes les features sur une échelle comparable (Standard, MinMax).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Encoding</div>
+        <div class="key-concept-def">Transformer les variables catégorielles en nombres (OneHot, Ordinal, Target).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Class imbalance</div>
+        <div class="key-concept-def">Quand une classe est très minoritaire ; SMOTE / class_weight aident.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-data-preparation">Cheatsheet — Data Preparation</a><ol><li><a href="#doublons">Doublons</a></li><li><a href="#valeurs-manquantes">Valeurs manquantes</a></li><li><a href="#outliers">Outliers</a></li><li><a href="#feature-scaling">Feature Scaling</a></li><li><a href="#encodage-catégoriel">Encodage catégoriel</a></li><li><a href="#discrétisation">Discrétisation</a></li><li><a href="#corrélation-feature-selection">Corrélation & Feature Selection</a></li><li><a href="#feature-permutation">Feature Permutation</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-rappels-fondamentaux-ml">1) Rappels — Fondamentaux ML</a><ol><li><a href="#11-régression-vs-classification">1.1 Régression vs Classification</a></li><li><a href="#12-workflow-sklearn">1.2 Workflow sklearn</a></li><li><a href="#13-holdout-method">1.3 Holdout Method</a></li><li><a href="#14-k-fold-cross-validation">1.4 K-Fold Cross Validation</a></li><li><a href="#15-biais-variance">1.5 Biais / Variance</a></li></ol></li><li><a href="#2-plan-de-la-lecture-étapes-de-préparation">2) Plan de la lecture — Étapes de préparation</a><li><a href="#3-pourquoi-préprocesser">3) Pourquoi préprocesser ?</a><li><a href="#4-1-doublons">4) (1) 👥 Doublons</a><li><a href="#5-2-valeurs-manquantes">5) (2) 🔮 Valeurs manquantes</a><ol><li><a href="#51-causes-fréquentes">5.1 Causes fréquentes</a></li><li><a href="#52-représentations-courantes">5.2 Représentations courantes</a></li><li><a href="#53-détection">5.3 Détection</a></li><li><a href="#54-stratégies-selon-le-taux-de-nan">5.4 Stratégies selon le taux de NaN</a></li><li><a href="#55-simpleimputer-sklearn">5.5 SimpleImputer (sklearn)</a></li></ol></li><li><a href="#6-3-outliers">6) (3) 🐳 Outliers</a><ol><li><a href="#61-causes-fréquentes">6.1 Causes fréquentes</a></li><li><a href="#62-impact-des-outliers">6.2 Impact des outliers</a></li><li><a href="#63-détection-boxplot">6.3 Détection — Boxplot</a></li><li><a href="#64-suppression-des-outliers">6.4 Suppression des outliers</a></li></ol></li><li><a href="#7-4-feature-scaling">7) (4) 🔢 Feature Scaling</a><ol><li><a href="#71-pourquoi-scaler">7.1 Pourquoi scaler ?</a></li><li><a href="#72-les-trois-principaux-scalers">7.2 Les trois principaux scalers</a></li><li><a href="#73-standardscaler">7.3 StandardScaler</a></li><li><a href="#74-minmaxscaler">7.4 MinMaxScaler</a></li><li><a href="#75-robustscaler">7.5 RobustScaler</a></li><li><a href="#76-application-pratique">7.6 Application pratique</a></li><li><a href="#77-règles-dusage">7.7 Règles d'usage</a></li></ol></li><li><a href="#8-5-équilibrage-du-dataset">8) (5) ⚖️ Équilibrage du dataset</a><ol><li><a href="#81-exemples-de-déséquilibre">8.1 Exemples de déséquilibre</a></li><li><a href="#82-stratégies">8.2 Stratégies</a></li><li><a href="#83-smote-synthetic-minority-oversampling-technique">8.3 SMOTE — Synthetic Minority Oversampling Technique</a></li></ol></li><li><a href="#9-6-encodage">9) (6) 🔠 Encodage</a><ol><li><a href="#91-ordinalencoder-catégories-ordonnées">9.1 OrdinalEncoder — catégories ordonnées</a></li><li><a href="#92-onehotencoder-catégories-non-ordonnées">9.2 OneHotEncoder — catégories non-ordonnées</a></li><li><a href="#93-labelencoder-encoder-les-targets">9.3 LabelEncoder — encoder les targets</a></li></ol></li><li><a href="#10-7-discrétisation">10) (7) 🟨 Discrétisation</a><li><a href="#11-8-création-de-features">11) (8) 🟨 Création de features</a><ol><li><a href="#111-exemples">11.1 Exemples</a></li></ol></li><li><a href="#12-9-feature-selection-permutation">12) (9) 🤖 Feature Selection & Permutation</a><ol><li><a href="#121-pourquoi-sélectionner-les-features">12.1 Pourquoi sélectionner les features ?</a></li><li><a href="#122-corrélation-entre-features">12.2 Corrélation entre features</a></li><li><a href="#123-feature-permutation">12.3 Feature Permutation</a></li><li><a href="#124-modélisation-finale">12.4 Modélisation finale</a></li></ol></li><li><a href="#13-wrap-up-règles-dor">13) Wrap-up — Règles d'or</a><li><a href="#ressources">Ressources</a></ol></div>
+<p>Maîtriser les étapes de préparation d'un dataset avant de l'alimenter à un modèle de Machine Learning : doublons, valeurs manquantes, outliers, scaling, encodage, équilibrage des classes et sélection de features.</p>
+
+<hr>
+
+<h2 id="cheatsheet-data-preparation">📋 Cheatsheet — Data Preparation</h2>
+
+<h3 id="doublons">Doublons</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data.duplicated().sum()          # nombre de lignes dupliquées
+data = data.drop_duplicates()    # supprime les doublons (inplace possible)</code></pre></div>
+
+
+<h3 id="valeurs-manquantes">Valeurs manquantes</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data.isnull().sum()                              # nombre de NaN par colonne
+data.isnull().sum() / len(data)                  # pourcentage de NaN par colonne
+data = data.drop(columns=&#x27;col&#x27;)                  # supprime la colonne (trop de NaN)
+data.dropna(subset=[&#x27;col&#x27;])                      # supprime les lignes où col est NaN
+data[&#x27;col&#x27;].replace(np.nan, &#x27;valeur&#x27;)            # remplace NaN par une valeur métier
+
+from sklearn.impute import SimpleImputer
+imputer = SimpleImputer(strategy=&quot;mean&quot;)         # stratégie : mean, median, most_frequent
+imputer.fit(data[[&#x27;col&#x27;]])                       # apprend la valeur sur le train
+data[&#x27;col&#x27;] = imputer.transform(data[[&#x27;col&#x27;]])   # applique la transformation
+imputer.statistics_                              # valeur apprise (ex: [3608796.2])</code></pre></div>
+
+
+<h3 id="outliers">Outliers</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data[[&#x27;col&#x27;]].boxplot()                          # visualise les outliers
+data[&#x27;col&#x27;].min()                                # vérifie les valeurs aberrantes
+boolean_mask = (data[&#x27;col&#x27;] &gt; 0) &amp; (data[&#x27;col&#x27;] &lt; 5000)  # masque booléen
+data = data[boolean_mask].reset_index(drop=True) # applique le filtre et réindexe</code></pre></div>
+
+
+<h3 id="feature-scaling">Feature Scaling</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler
+
+## StandardScaler : centre à 0, std=1
+scaler = StandardScaler()
+scaler.fit(X_train[[&#x27;col&#x27;]])                     # apprend mean et std sur le train
+X_train[&#x27;col&#x27;] = scaler.transform(X_train[[&#x27;col&#x27;]])
+X_test[&#x27;col&#x27;] = scaler.transform(X_test[[&#x27;col&#x27;]]) # même scaler sur le test !
+
+## MinMaxScaler : compresse dans [0, 1]
+mm_scaler = MinMaxScaler()
+mm_scaler.fit(X_train[[&#x27;col&#x27;]])
+X_train[&#x27;col&#x27;] = mm_scaler.transform(X_train[[&#x27;col&#x27;]])
+
+## RobustScaler : utilise median et IQR, robuste aux outliers
+rb_scaler = RobustScaler()
+rb_scaler.fit(data[[&#x27;GrLivArea&#x27;]])               # apprend median et IQR
+data[&#x27;GrLivArea&#x27;] = rb_scaler.transform(data[[&#x27;GrLivArea&#x27;]])  # applique la transformation</code></pre></div>
+
+
+<h3 id="encodage-catégoriel">Encodage catégoriel</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import OrdinalEncoder, OneHotEncoder, LabelEncoder
+
+## OrdinalEncoder : catégories ordonnées → entier
+ordinal_encoder = OrdinalEncoder(categories=[[&quot;bad&quot;,&quot;average&quot;,&quot;good&quot;]])
+ordinal_encoder.fit(df[[&#x27;classes&#x27;]])             # apprend les catégories
+df[&#x27;encoded&#x27;] = ordinal_encoder.transform(df[[&#x27;classes&#x27;]])  # bad=0, average=1, good=2
+
+## OneHotEncoder : catégories non-ordonnées → colonnes binaires
+ohe = OneHotEncoder(sparse_output=False)
+ohe.fit(data[[&#x27;Alley&#x27;]])
+data[ohe.get_feature_names_out()] = ohe.transform(data[[&#x27;Alley&#x27;]])  # crée Alley_Grvl, Alley_Pave...
+data = data.drop(columns=[&#x27;Alley&#x27;])              # supprime la colonne originale
+
+## OneHotEncoder binaire (drop si seulement 2 catégories)
+ohe_bin = OneHotEncoder(sparse_output=False, drop=&quot;if_binary&quot;)
+ohe_bin.fit(data[[&#x27;Street&#x27;]])                    # si 2 valeurs → 1 seule colonne
+
+## LabelEncoder : encode les targets (classification)
+label_encoder = LabelEncoder()
+label_encoder.fit(y)                             # apprend les classes
+y_encoded = label_encoder.transform(y)           # Adelie=0, Chinstrap=1, Gentoo=2
+y_original = label_encoder.inverse_transform(y_encoded)  # décode vers les noms</code></pre></div>
+
+
+<h3 id="discrétisation">Discrétisation</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data[&#x27;SalePriceBinary&#x27;] = pd.cut(
+    x=data[&#x27;SalePrice&#x27;],
+    bins=[data[&#x27;SalePrice&#x27;].min()-1, data[&#x27;SalePrice&#x27;].mean(), data[&#x27;SalePrice&#x27;].max()+1],
+    labels=[&#x27;cheap&#x27;, &#x27;expensive&#x27;]
+)  # convertit une variable continue en catégories</code></pre></div>
+
+
+<h3 id="corrélation-feature-selection">Corrélation & Feature Selection</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">correlation_matrix = data.select_dtypes(&#x27;number&#x27;).corr()  # matrice de corrélation Pearson
+## Empiler et filtrer les paires les plus corrélées
+corr_df = correlation_matrix.stack().reset_index()
+corr_df.columns = [&#x27;feature_1&#x27;, &#x27;feature_2&#x27;, &#x27;correlation&#x27;]
+corr_df[&#x27;absolute_correlation&#x27;] = np.abs(corr_df[&#x27;correlation&#x27;])
+corr_df.sort_values(by=&quot;absolute_correlation&quot;, ascending=False).head(10)  # top paires
+
+data = data.drop(columns=[&#x27;Pesos&#x27;])              # supprime la feature trop corrélée au target</code></pre></div>
+
+
+<h3 id="feature-permutation">Feature Permutation</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.inspection import permutation_importance
+
+log_model = LogisticRegression().fit(X, y)       # entraîne le modèle de base
+permutation_score = permutation_importance(log_model, X, y, n_repeats=10)  # permute chaque feature
+importance_df = pd.DataFrame(np.vstack((X.columns, permutation_score.importances_mean)).T)
+importance_df.columns = [&#x27;feature&#x27;, &#x27;score decrease&#x27;]
+importance_df.sort_values(by=&quot;score decrease&quot;, ascending=False)  # features les + importantes en haut</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Fitter scaler/encoder sur le test set</strong></p>
+<p>❌ <code>scaler.fit(X_test)</code> puis <code>scaler.transform(X_test)</code> — le scaler "voit" les données de test</p>
+<p>✅ <code>scaler.fit(X_train)</code> → <code>scaler.transform(X_train)</code> et <code>scaler.transform(X_test)</code> — même scaler appris sur le train uniquement</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oversampler avant le train/test split</strong></p>
+<p>❌ Oversampler tout le dataset, puis splitter → des exemples synthétiques du train se retrouvent dans le test</p>
+<p>✅ Splitter d'abord, puis oversampler uniquement le train set</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Supprimer des NaN sans analyser leur signification métier</strong></p>
+<p>❌ <code>data.dropna()</code> sur toutes les colonnes sans vérification → perte d'information précieuse (ex: NaN = "pas d'allée")</p>
+<p>✅ Analyser la cause des NaN, remplacer par une valeur métier ou utiliser <code>SimpleImputer</code> selon le contexte</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser OrdinalEncoder sur des catégories non-ordonnées</strong></p>
+<p>❌ Encoder <code>[&#x27;Chêne&#x27;, &#x27;Bouleau&#x27;, &#x27;Sapin&#x27;]</code> avec <code>OrdinalEncoder</code> → crée une relation ordinale artificielle entre les espèces</p>
+<p>✅ Utiliser <code>OneHotEncoder</code> pour les catégories sans ordre naturel</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Scaler avant le cross-validation → Data Leakage</strong></p>
+<p>❌ <code>scaler.fit_transform(X)</code> sur tout le dataset, puis <code>cross_val_score</code> → chaque fold de validation a "vu" les données de tous les autres folds via le scaler</p>
+<p>✅ Utiliser un <code>Pipeline</code> sklearn ou fitter le scaler manuellement à l'intérieur de chaque fold</p></div></div>
+
+<hr>
+
+<h2 id="1-rappels-fondamentaux-ml">1) Rappels — Fondamentaux ML</h2>
+
+<h3 id="11-régression-vs-classification">1.1 Régression vs Classification</h3>
+
+<figure><img src="../../assets/images/data-preparation-01-5c92630b.png" alt="" loading="lazy"></figure>
+
+<h3 id="12-workflow-sklearn">1.2 Workflow sklearn</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.some_module import SomeModel  # importe le modèle
+
+model = SomeModel()                        # instancie le modèle
+model.fit(X_train, y_train)                # entraîne sur le train set
+model.score(X_test, y_test)               # évalue sur le test set
+model.predict(X_new)                      # prédit sur de nouvelles données</code></pre></div>
+
+
+<h3 id="13-holdout-method">1.3 Holdout Method</h3>
+
+<figure><img src="../../assets/images/data-preparation-02-5c79ebc4.png" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/data-preparation-03-416c4c0f.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y,
+    test_size=0.3,      # 30% pour le test
+    random_state=88     # reproductibilité
+)</code></pre></div>
+
+
+<h3 id="14-k-fold-cross-validation">1.4 K-Fold Cross Validation</h3>
+
+<figure><img src="../../assets/images/data-preparation-04-26400f11.png" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/data-preparation-05-6db59694.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import cross_validate
+
+cross_validate(model, X, y, cv=5)
+## retourne : test_score, fit_time, score_time pour chaque fold</code></pre></div>
+
+
+<h3 id="15-biais-variance">1.5 Biais / Variance</h3>
+
+<figure><img src="../../assets/images/data-preparation-06-bb14b438.png" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/data-preparation-07-b61e0bb5.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="2-plan-de-la-lecture-étapes-de-préparation">2) Plan de la lecture — Étapes de préparation</h2>
+
+<figure><img src="../../assets/images/data-preparation-08-d6e4584f.png" alt="" loading="lazy"></figure>
+
+<div class="table-wrapper"><table><thead><tr><th>#</th><th>Catégorie</th><th>Étape</th></tr></thead><tbody><tr><td>1</td><td>Prérequis généraux</td><td>👥 Doublons</td></tr><tr><td>2</td><td>Prérequis généraux</td><td>🔮 Valeurs manquantes</td></tr><tr><td>3</td><td>Prérequis généraux</td><td>🐳 Outliers</td></tr><tr><td>4</td><td>Colonnes numériques</td><td>🔢 Scaling</td></tr><tr><td>5</td><td>Équilibrage</td><td>⚖️ Balancing</td></tr><tr><td>6</td><td>Colonnes catégorielles</td><td>🔠 Encodage</td></tr><tr><td>7</td><td>Colonnes catégorielles</td><td>🟨 Discrétisation</td></tr><tr><td>8</td><td>Nouvelles features</td><td>🟨 Feature creation</td></tr><tr><td>9</td><td>Sélection de features</td><td>🤖 Feature selection & Permutation</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Dataset utilisé</strong> : Houses dataset — 👉 <a href="https://wagon-public-datasets.s3.amazonaws.com/Machine%20Learning%20Datasets/ML_Houses_dataset.csv" target="_blank" rel="noopener">Télécharger le CSV</a> — 👉 <a href="https://wagon-public-datasets.s3.amazonaws.com/Machine%20Learning%20Datasets/ML_Houses_dataset_description.txt" target="_blank" rel="noopener">Description des features</a></p></div></div>
+
+<hr>
+
+<h2 id="3-pourquoi-préprocesser">3) Pourquoi préprocesser ?</h2>
+
+<ul>
+<li>Les données brutes sont souvent <strong>sales</strong> (doublons, NaN, outliers)</li>
+<li>Les algorithmes ML ont des contraintes sur le format des données d'entrée</li>
+<li>Les transformations peuvent <strong>améliorer les performances</strong> du modèle</li>
+</ul>
+
+<figure><img src="../../assets/images/data-preparation-09-ec5496f6.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="4-1-doublons">4) (1) 👥 Doublons</h2>
+
+<p>Des observations dupliquées présentes à la fois dans le train et le test set provoquent du <strong>data leakage</strong> et faussent l'évaluation des performances.</p>
+
+<figure><img src="../../assets/images/data-preparation-10-15c45581.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">len(data)                       # nombre de lignes avant suppression → 1760
+data.duplicated().sum()         # nombre de lignes dupliquées → 303
+data = data.drop_duplicates()   # supprime les doublons
+len(data)                       # nombre de lignes après suppression → 1457</code></pre></div>
+
+
+<hr>
+
+<h2 id="5-2-valeurs-manquantes">5) (2) 🔮 Valeurs manquantes</h2>
+
+<h3 id="51-causes-fréquentes">5.1 Causes fréquentes</h3>
+
+<ul>
+<li>Erreur de programmation</li>
+<li>Échec de mesure (ex: patient absent lors d'une visite clinique)</li>
+<li>Événement aléatoire (ex: capteur météo à court de batterie)</li>
+<li>Saisie incorrecte</li>
+</ul>
+
+<h3 id="52-représentations-courantes">5.2 Représentations courantes</h3>
+
+<p><code>NaN</code>, <code>999</code>, <code>?</code>, <code>±∞</code>, <code>&quot;&quot;</code></p>
+
+<h3 id="53-détection">5.3 Détection</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data.isnull().sum().sort_values(ascending=False)         # nombre de NaN par colonne
+data.isnull().sum() / len(data)                          # pourcentage de NaN par colonne</code></pre></div>
+
+
+<h3 id="54-stratégies-selon-le-taux-de-nan">5.4 Stratégies selon le taux de NaN</h3>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Règle empirique</strong> :</p>
+<p>- <strong>> 30% de NaN</strong> → envisager de supprimer la feature ou la ligne</p>
+<p>- <strong>< 30% de NaN</strong> → imputer avec une stratégie adaptée</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Cas 1 : trop de NaN (~99%) → on drop la colonne
+data = data.drop(columns=&#x27;WallMat&#x27;)
+
+## Cas 2 : NaN = information métier (pas d&#x27;allée)
+data.Alley = data.Alley.replace(np.nan, &quot;NoAlley&quot;)
+
+## Cas 3 : peu de NaN sur une variable numérique
+## Option A : supprimer les lignes concernées
+data.dropna(subset=[&#x27;Pesos&#x27;])
+
+## Option B : remplacer par la moyenne
+data.Pesos.replace(np.nan, data.Pesos.mean())</code></pre></div>
+
+
+<h3 id="55-simpleimputer-sklearn">5.5 SimpleImputer (sklearn)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.impute import SimpleImputer
+
+## Instancie l&#x27;imputer avec la stratégie choisie
+imputer = SimpleImputer(strategy=&quot;mean&quot;)  # mean | median | most_frequent | constant
+
+## Fit sur les données (apprend la valeur de remplacement)
+imputer.fit(data[[&#x27;Pesos&#x27;]])
+
+## Transform (remplace les NaN par la valeur apprise)
+data[&#x27;Pesos&#x27;] = imputer.transform(data[[&#x27;Pesos&#x27;]])
+
+## Valeur apprise stockée dans l&#x27;attribut statistics_
+imputer.statistics_  # → array([3608796.22])</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Les <strong>transformers sklearn</strong> fonctionnent toujours en deux étapes :</p>
+<p>- <code>.fit()</code> : apprend et stocke les constantes (ex: la moyenne)</p>
+<p>- <code>.transform()</code> : applique la transformation avec les constantes apprises</p></div></div>
+
+<hr>
+
+<h2 id="6-3-outliers">6) (3) 🐳 Outliers</h2>
+
+<p>Les outliers sont des points de données qui s'écartent fortement du reste des données.</p>
+
+<figure><img src="../../assets/images/data-preparation-11-886dbdd0.png" alt="" loading="lazy"></figure>
+
+<h3 id="61-causes-fréquentes">6.1 Causes fréquentes</h3>
+
+<ul>
+<li>Erreur de saisie</li>
+<li>Erreur de mesure</li>
+<li>Erreur de preprocessing</li>
+<li>Nouveauté (pas une erreur)</li>
+</ul>
+
+<h3 id="62-impact-des-outliers">6.2 Impact des outliers</h3>
+
+<ul>
+<li>Distorsion des distributions</li>
+<li>Biais sur les métriques de tendance centrale (moyenne, écart-type)</li>
+<li>Dégradation des performances ML</li>
+</ul>
+
+<h3 id="63-détection-boxplot">6.3 Détection — Boxplot</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data[[&#x27;GrLivArea&#x27;]].boxplot()   # visualise les outliers via la règle IQR
+
+## Références documentation :
+## 👉 pandas.DataFrame.boxplot
+## 👉 matplotlib.pyplot.boxplot
+## 👉 seaborn.boxplot</code></pre></div>
+
+
+<h3 id="64-suppression-des-outliers">6.4 Suppression des outliers</h3>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Un outlier peut être une <strong>nouveauté</strong> et non une erreur. Bien comprendre la signification métier avant de supprimer.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Masque booléen : exclut les valeurs absurdes et les grandes propriétés
+boolean_mask = (data[&#x27;GrLivArea&#x27;] &gt; 0) &amp; (data[&#x27;GrLivArea&#x27;] &lt; 5000)
+
+## Applique le filtre et réinitialise l&#x27;index
+data = data[boolean_mask].reset_index(drop=True)</code></pre></div>
+
+
+<hr>
+
+<h2 id="7-4-feature-scaling">7) (4) 🔢 Feature Scaling</h2>
+
+<p>Le scaling transforme les features numériques vers une plage de valeurs commune et réduite.</p>
+
+<h3 id="71-pourquoi-scaler">7.1 Pourquoi scaler ?</h3>
+
+<ul>
+<li>Des features avec de grandes magnitudes peuvent <strong>dominer</strong> les autres de façon artificielle</li>
+<li>Améliore l'efficacité computationnelle</li>
+<li>Améliore l'interprétabilité de l'impact de chaque feature</li>
+</ul>
+
+<h3 id="72-les-trois-principaux-scalers">7.2 Les trois principaux scalers</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Scaler</th><th>Formule</th><th>Avantages</th><th>Limites</th></tr></thead><tbody><tr><td><code>StandardScaler</code></td><td>$z = \frac{x - \mu}{\sigma}$</td><td>Efficace sur distribution normale</td><td>Sensible aux outliers</td></tr><tr><td><code>MinMaxScaler</code></td><td>$X' = \frac{X - X_{min}}{X_{max} - X_{min}}$</td><td>Plage fixe $[0, 1]$, préserve la sparsité</td><td>Très sensible aux outliers</td></tr><tr><td><code>RobustScaler</code></td><td>$X' = \frac{x - \text{median}}{IQR}$</td><td>Robuste aux outliers (median + IQR)</td><td>Plage non garantie</td></tr></tbody></table></div>
+<h3 id="73-standardscaler">7.3 StandardScaler</h3>
+
+<p>$z = \frac{x - \mu}{\sigma}$</p>
+
+<p>La distribution devient centrée en 0 avec un écart-type de 1. 99% des valeurs d'une distribution gaussienne se situent dans $[\mu - 3\sigma, \mu + 3\sigma] = [-3, +3]$ après standardisation.</p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html" target="_blank" rel="noopener">sklearn.preprocessing.StandardScaler</a></p>
+
+<figure><img src="../../assets/images/data-preparation-12-f80fe2bc.png" alt="" loading="lazy"></figure>
+
+<h3 id="74-minmaxscaler">7.4 MinMaxScaler</h3>
+
+<p>$X' = \frac{X - X_{min}}{X_{max} - X_{min}}$</p>
+
+<p>Les valeurs sont compressées dans $[0, 1]$. Recommandé pour les features ordinales, les matrices positives/sparses, et l'algorithme KNN.</p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html" target="_blank" rel="noopener">sklearn.preprocessing.MinMaxScaler</a></p>
+
+<figure><img src="../../assets/images/data-preparation-13-37ee8529.png" alt="" loading="lazy"></figure>
+
+<h3 id="75-robustscaler">7.5 RobustScaler</h3>
+
+<p>$X' = \frac{x - \text{median}}{IQR}$</p>
+
+<p>Utilise la médiane et l'IQR ($Q3 - Q1$), moins sensibles aux outliers que la moyenne et l'écart-type.</p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.RobustScaler.html" target="_blank" rel="noopener">sklearn.preprocessing.RobustScaler</a></p>
+
+<h3 id="76-application-pratique">7.6 Application pratique</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import RobustScaler
+
+## Étape 0 : instancier le scaler
+rb_scaler = RobustScaler()
+
+## Étape 1 : fitter sur les données (apprend median et IQR)
+rb_scaler.fit(data[[&#x27;GrLivArea&#x27;]])
+
+## Étape 2 : transformer (applique (valeur - median) / IQR)
+data[&#x27;GrLivArea&#x27;] = rb_scaler.transform(data[[&#x27;GrLivArea&#x27;]])</code></pre></div>
+
+
+<h3 id="77-règles-dusage">7.7 Règles d'usage</h3>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>- Feature très skewed → <strong>Feature Engineering</strong> d'abord (ex: <code>log(feature)</code>)</p>
+<p>- Feature skewed avec outliers → <strong>RobustScaler</strong></p>
+<p>- Sinon → <strong>StandardScaler</strong> (valeur par défaut sûre)</p>
+<p>- Matrice positive ou sparse (ex: pixels RGB) → <strong>MinMaxScaler</strong></p></div></div>
+
+<hr>
+
+<h2 id="8-5-équilibrage-du-dataset">8) (5) ⚖️ Équilibrage du dataset</h2>
+
+<p>Un déséquilibre de classes (ex: 70/30) peut amener le modèle à <strong>mal prédire la classe minoritaire</strong>.</p>
+
+<h3 id="81-exemples-de-déséquilibre">8.1 Exemples de déséquilibre</h3>
+
+<ul>
+<li>🦠 Prévalence d'une maladie</li>
+<li>💳 Détection de fraude bancaire</li>
+<li>🛍️ Taux de conversion e-commerce</li>
+</ul>
+
+<h3 id="82-stratégies">8.2 Stratégies</h3>
+
+<ul>
+<li><strong>Oversampling</strong> : dupliquer les instances de la classe minoritaire</li>
+<li><strong>Undersampling</strong> : sous-échantillonner la classe majoritaire</li>
+<li><strong>SMOTE</strong> : générer de nouvelles instances synthétiques</li>
+</ul>
+
+<figure><img src="../../assets/images/data-preparation-14-98f3d2d3.png" alt="" loading="lazy"></figure>
+
+<h3 id="83-smote-synthetic-minority-oversampling-technique">8.3 SMOTE — Synthetic Minority Oversampling Technique</h3>
+
+<p>SMOTE génère de nouvelles instances minoritaires par combinaisons linéaires de points existants.</p>
+
+<figure><img src="../../assets/images/data-preparation-15-db9fa3de.png" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/data-preparation-16-6c79e340.png" alt="" loading="lazy"></figure>
+
+<p>👉 <a href="https://imbalanced-learn.org/stable/over_sampling.html#over-sampling" target="_blank" rel="noopener">Documentation imbalanced-learn SMOTE</a></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install imbalanced-learn</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Ordre correct</strong> : 1) Train/test split → 2) Oversampler uniquement le train → 3) Évaluer sur le test sans oversampling</p></div></div>
+
+<hr>
+
+<h2 id="9-6-encodage">9) (6) 🔠 Encodage</h2>
+
+<p>L'encodage transforme des données non-numériques en forme numérique equivalente.</p>
+
+<h3 id="91-ordinalencoder-catégories-ordonnées">9.1 OrdinalEncoder — catégories ordonnées</h3>
+
+<p>Assigne un entier à chaque catégorie. À utiliser <strong>uniquement si les catégories ont un ordre naturel</strong>.</p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html" target="_blank" rel="noopener">sklearn.preprocessing.OrdinalEncoder</a></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import OrdinalEncoder
+
+## Spécifier l&#x27;ordre des catégories explicitement
+ordinal_encoder = OrdinalEncoder(categories=[[&quot;bad&quot;, &quot;average&quot;, &quot;good&quot;]])
+ordinal_encoder.fit(example[[&quot;classes&quot;]])
+
+## Afficher les catégories apprises
+ordinal_encoder.categories_     # → [array([&#x27;bad&#x27;, &#x27;average&#x27;, &#x27;good&#x27;])]
+
+## Transformer : bad=0, average=1, good=2
+example[&quot;encoded_classes&quot;] = ordinal_encoder.transform(example[[&quot;classes&quot;]])</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne pas utiliser OrdinalEncoder pour des catégories sans ordre (ex: types d'arbres) : cela crée une fausse relation ordinale.</p></div></div>
+
+<h3 id="92-onehotencoder-catégories-non-ordonnées">9.2 OneHotEncoder — catégories non-ordonnées</h3>
+
+<p>Crée une colonne binaire pour chaque catégorie possible.</p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html" target="_blank" rel="noopener">sklearn.preprocessing.OneHotEncoder</a></p>
+
+<figure><img src="../../assets/images/data-preparation-17-7d7af6db.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import OneHotEncoder
+
+## Encodage multi-classes (3 valeurs → 3 colonnes)
+ohe = OneHotEncoder(sparse_output=False)
+ohe.fit(data[[&#x27;Alley&#x27;]])
+ohe.categories_                                  # → [array([&#x27;Grvl&#x27;, &#x27;NoAlley&#x27;, &#x27;Pave&#x27;])]
+ohe.get_feature_names_out()                      # → [&#x27;Alley_Grvl&#x27;, &#x27;Alley_NoAlley&#x27;, &#x27;Alley_Pave&#x27;]
+data[ohe.get_feature_names_out()] = ohe.transform(data[[&#x27;Alley&#x27;]])
+data = data.drop(columns=[&quot;Alley&quot;])              # supprime la colonne originale
+
+## Encodage binaire (2 valeurs → 1 seule colonne avec drop=&quot;if_binary&quot;)
+ohe_bin = OneHotEncoder(sparse_output=False, drop=&quot;if_binary&quot;)
+ohe_bin.fit(data[[&#x27;Street&#x27;]])
+data[ohe_bin.get_feature_names_out()] = ohe_bin.transform(data[[&#x27;Street&#x27;]])
+data = data.drop(columns=[&quot;Street&quot;])</code></pre></div>
+
+
+<h3 id="93-labelencoder-encoder-les-targets">9.3 LabelEncoder — encoder les targets</h3>
+
+<p>Pour les <strong>tâches de classification</strong> où le target est catégoriel.</p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html" target="_blank" rel="noopener">sklearn.preprocessing.LabelEncoder</a></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import LabelEncoder
+
+label_encoder = LabelEncoder()
+label_encoder.fit(target)                        # apprend les classes
+label_encoder.classes_                           # → [&#x27;Adelie&#x27;, &#x27;Chinstrap&#x27;, &#x27;Gentoo&#x27;]
+encoded_target = label_encoder.transform(target) # Adelie=0, Chinstrap=1, Gentoo=2
+original_target = label_encoder.inverse_transform(encoded_target)  # décode</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La plupart des modèles sklearn gèrent nativement les targets non-encodés. Vérifier d'abord si l'encodage est réellement nécessaire avant de l'appliquer.</p></div></div>
+
+<hr>
+
+<h2 id="10-7-discrétisation">10) (7) 🟨 Discrétisation</h2>
+
+<p>La discrétisation transforme une variable continue en variable discrète via des intervalles (bins). Elle permet de transformer une tâche de régression en classification.</p>
+
+<p>👉 <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.cut.html" target="_blank" rel="noopener">pandas.cut() documentation</a></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Séparer les maisons en &quot;cheap&quot; / &quot;expensive&quot; selon le prix moyen
+data[&#x27;SalePriceBinary&#x27;] = pd.cut(
+    x=data[&#x27;SalePrice&#x27;],
+    bins=[
+        data[&#x27;SalePrice&#x27;].min() - 1,   # borne inférieure
+        data[&#x27;SalePrice&#x27;].mean(),       # seuil de séparation = prix moyen
+        data[&#x27;SalePrice&#x27;].max() + 1    # borne supérieure
+    ],
+    labels=[&#x27;cheap&#x27;, &#x27;expensive&#x27;]
+)</code></pre></div>
+
+
+<hr>
+
+<h2 id="11-8-création-de-features">11) (8) 🟨 Création de features</h2>
+
+<p>Introduire de la connaissance métier pour créer de nouveaux signaux utiles au modèle.</p>
+
+<h3 id="111-exemples">11.1 Exemples</h3>
+
+<ul>
+<li><code>bedroom_totalroom_ratio</code> = ratio chambres / total pièces</li>
+<li>$BMI = \frac{weight}{height^2}$</li>
+<li><code>delivered_date - dispatch_date</code> = délai de livraison</li>
+<li>Catégoriser une <code>date</code> en <code>weekday</code> ou <code>weekend</code></li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>L'encodage, la discrétisation et la création de features font partie du <strong>Feature Engineering</strong>. 👉 <a href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.preprocessing" target="_blank" rel="noopener">sklearn.preprocessing — toutes les options</a></p></div></div>
+
+<hr>
+
+<h2 id="12-9-feature-selection-permutation">12) (9) 🤖 Feature Selection & Permutation</h2>
+
+<figure><img src="../../assets/images/data-preparation-18-ec5496f6.png" alt="" loading="lazy"></figure>
+
+<p>La sélection de features élimine les features non-informatives pour réduire la complexité du modèle.</p>
+
+<h3 id="121-pourquoi-sélectionner-les-features">12.1 Pourquoi sélectionner les features ?</h3>
+
+<ul>
+<li>🚮 <strong>Garbage in → garbage out</strong> : des features de mauvaise qualité génèrent du bruit</li>
+<li>💥 <strong>Malédiction de la dimensionnalité</strong> : le volume de données nécessaire croît exponentiellement avec le nombre de features</li>
+<li>🤯 <strong>Réduction de complexité</strong> : modèle plus interprétable, plus rapide, plus facile à maintenir</li>
+</ul>
+
+<figure><img src="../../assets/images/data-preparation-19-5fef0553.png" alt="" loading="lazy"></figure>
+
+<h3 id="122-corrélation-entre-features">12.2 Corrélation entre features</h3>
+
+<p>Les features très corrélées entre elles sont <strong>redondantes</strong> → supprimer l'une des deux.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import seaborn as sns
+
+## Heatmap des corrélations Pearson
+correlation_matrix = data.select_dtypes(&#x27;number&#x27;).corr()
+sns.heatmap(correlation_matrix, cmap=&quot;bwr&quot;)  # rouge = corrélation positive, bleu = négative
+
+## Identifier les paires les plus corrélées
+corr_df = correlation_matrix.stack().reset_index()
+corr_df.columns = [&#x27;feature_1&#x27;, &#x27;feature_2&#x27;, &#x27;correlation&#x27;]
+corr_df = corr_df[corr_df[&#x27;feature_1&#x27;] != corr_df[&#x27;feature_2&#x27;]]  # exclut auto-corrélation
+corr_df[&#x27;absolute_correlation&#x27;] = np.abs(corr_df[&#x27;correlation&#x27;])
+corr_df.sort_values(by=&quot;absolute_correlation&quot;, ascending=False).head(10)
+
+## Supprimer la feature redondante (ex: Pesos ≈ SalePrice)
+data = data.drop(columns=[&#x27;Pesos&#x27;])</code></pre></div>
+
+
+<h3 id="123-feature-permutation">12.3 Feature Permutation</h3>
+
+<p>L'algorithme évalue l'importance de chaque feature en mesurant la chute de score lorsqu'on la mélange aléatoirement.</p>
+
+<p><strong>Fonctionnement :</strong></p>
+
+<ol>
+<li>Entraîne un modèle de base, enregistre le score</li>
+<li>Mélange aléatoirement une feature dans le test set</li>
+<li>Enregistre le nouveau score</li>
+<li>Si le score chute → la feature est importante</li>
+<li>Répète pour chaque feature</li>
+</ol>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.inspection.permutation_importance.html" target="_blank" rel="noopener">sklearn.inspection.permutation_importance</a></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.inspection import permutation_importance
+
+## Entraîne le modèle
+log_model = LogisticRegression().fit(X, y)
+
+## Calcule l&#x27;importance par permutation
+permutation_score = permutation_importance(log_model, X, y, n_repeats=10)
+
+## Affiche les résultats sous forme de DataFrame
+importance_df = pd.DataFrame(
+    np.vstack((X.columns, permutation_score.importances_mean)).T
+)
+importance_df.columns = [&#x27;feature&#x27;, &#x27;score decrease&#x27;]
+importance_df.sort_values(by=&quot;score decrease&quot;, ascending=False)  # top features</code></pre></div>
+
+
+<h3 id="124-modélisation-finale">12.4 Modélisation finale</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import LabelEncoder, MinMaxScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import cross_val_score
+
+## Encoder le target
+target_encoder = LabelEncoder().fit(data[&#x27;SalePriceBinary&#x27;])
+y = target_encoder.transform(data[&#x27;SalePriceBinary&#x27;])
+
+## Définir les features
+X = data.drop(columns=[&#x27;SalePrice&#x27;, &#x27;SalePriceBinary&#x27;])
+
+## Scaler les features numériques restantes
+minmax_scaler = MinMaxScaler()
+X[[&quot;BedroomAbvGr&quot;, &quot;KitchenAbvGr&quot;, &quot;OverallCond&quot;]] = minmax_scaler.fit_transform(
+    X[[&quot;BedroomAbvGr&quot;, &quot;KitchenAbvGr&quot;, &quot;OverallCond&quot;]]
+)
+
+## Évaluer en cross-validation
+log_reg = LogisticRegression(max_iter=1000)
+scores = cross_val_score(log_reg, X, y, cv=10)
+scores.mean()  # → ~0.83</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Data Leakage via le scaling</strong> : scaler sur tout le dataset avant la cross-validation revient à faire "fuiter" l'information des folds de validation dans les folds d'entraînement. Solution : utiliser un <code>Pipeline</code> sklearn.</p></div></div>
+
+<hr>
+
+<h2 id="13-wrap-up-règles-dor">13) Wrap-up — Règles d'or</h2>
+
+<figure><img src="../../assets/images/data-preparation-20-ec5496f6.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Toutes les transformations appliquées au train set doivent être <strong>exactement reproduites</strong> sur le test set (et les nouvelles données).</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Pattern correct pour scaler/encoder
+transformer = Transformer()
+transformer.fit(X_train)                          # fit uniquement sur le train
+X_train_transformed = transformer.transform(X_train)  # transforme le train
+X_test_transformed = transformer.transform(X_test)    # même transformer sur le test</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais appeler <code>.fit()</code> sur le test set — utiliser uniquement <code>.transform()</code> avec le transformer appris sur le train.</p></div></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Loi de Pareto</strong> : 20% des features expliquent souvent 80% de la performance. Réduire le nombre de features rend le modèle plus interprétable, plus rapide et plus facile à maintenir en production.</p></div></div>
+
+<hr>
+
+<h2 id="ressources">📚 Ressources</h2>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html" target="_blank" rel="noopener">sklearn.impute.SimpleImputer</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html" target="_blank" rel="noopener">sklearn.preprocessing.StandardScaler</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html" target="_blank" rel="noopener">sklearn.preprocessing.MinMaxScaler</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.RobustScaler.html" target="_blank" rel="noopener">sklearn.preprocessing.RobustScaler</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html" target="_blank" rel="noopener">sklearn.preprocessing.OrdinalEncoder</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html" target="_blank" rel="noopener">sklearn.preprocessing.OneHotEncoder</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html" target="_blank" rel="noopener">sklearn.preprocessing.LabelEncoder</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.inspection.permutation_importance.html" target="_blank" rel="noopener">sklearn.inspection.permutation_importance</a></p>
+
+<p>👉 <a href="https://imbalanced-learn.org/stable/over_sampling.html#over-sampling" target="_blank" rel="noopener">imbalanced-learn SMOTE</a></p>
+
+<p>👉 <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.cut.html" target="_blank" rel="noopener">pandas.cut()</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.preprocessing" target="_blank" rel="noopener">sklearn.preprocessing — toutes les classes</a></p>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><li><a href="#ref-1-pourquoi-préparer-les-données">1. Pourquoi préparer les données ?</a><li><a href="#ref-2-doublons">2. Doublons</a><ol><li><a href="#ref-quest-ce-quun-doublon">Qu'est-ce qu'un doublon ?</a></li><li><a href="#ref-comment-les-gérer">Comment les gérer ?</a></li></ol></li><li><a href="#ref-3-valeurs-manquantes">3. Valeurs manquantes</a><ol><li><a href="#ref-quest-ce-quune-valeur-manquante">Qu'est-ce qu'une valeur manquante ?</a></li><li><a href="#ref-détection">Détection</a></li><li><a href="#ref-stratégies-de-traitement">Stratégies de traitement</a></li><li><a href="#ref-simpleimputer-la-méthode-sklearn">SimpleImputer — la méthode sklearn</a></li></ol></li><li><a href="#ref-4-outliers-valeurs-aberrantes">4. Outliers (valeurs aberrantes)</a><ol><li><a href="#ref-quest-ce-quun-outlier">Qu'est-ce qu'un outlier ?</a></li><li><a href="#ref-détecter-les-outliers-avec-un-boxplot">Détecter les outliers avec un boxplot</a></li><li><a href="#ref-supprimer-les-outliers">Supprimer les outliers</a></li></ol></li><li><a href="#ref-5-feature-scaling-mise-à-léchelle">5. Feature Scaling (mise à l'échelle)</a><ol><li><a href="#ref-pourquoi-mettre-à-léchelle">Pourquoi mettre à l'échelle ?</a></li><li><a href="#ref-les-trois-scalers-principaux">Les trois scalers principaux</a></li><li><a href="#ref-standardscaler-standardisation">StandardScaler — standardisation</a></li><li><a href="#ref-minmaxscaler-normalisation-min-max">MinMaxScaler — normalisation min-max</a></li><li><a href="#ref-robustscaler-résistant-aux-outliers">RobustScaler — résistant aux outliers</a></li><li><a href="#ref-application-pratique">Application pratique</a></li></ol></li><li><a href="#ref-6-equilibrage-des-classes">6. Equilibrage des classes</a><ol><li><a href="#ref-quest-ce-quun-déséquilibre-de-classes">Qu'est-ce qu'un déséquilibre de classes ?</a></li><li><a href="#ref-stratégies-déquilibrage">Stratégies d'équilibrage</a></li></ol></li><li><a href="#ref-7-encodage-catégoriel">7. Encodage catégoriel</a><ol><li><a href="#ref-pourquoi-encoder">Pourquoi encoder ?</a></li><li><a href="#ref-ordinalencoder-catégories-ordonnées">OrdinalEncoder — catégories ordonnées</a></li><li><a href="#ref-onehotencoder-catégories-sans-ordre">OneHotEncoder — catégories sans ordre</a></li><li><a href="#ref-labelencoder-encoder-la-cible-y">LabelEncoder — encoder la cible (y)</a></li></ol></li><li><a href="#ref-8-discretisation">8. Discretisation</a><ol><li><a href="#ref-transformer-une-variable-continue-en-catégories">Transformer une variable continue en catégories</a></li></ol></li><li><a href="#ref-9-creation-de-features">9. Creation de features</a><ol><li><a href="#ref-apporter-de-la-connaissance-métier">Apporter de la connaissance métier</a></li></ol></li><li><a href="#ref-10-sélection-de-features">10. Sélection de features</a><ol><li><a href="#ref-pourquoi-supprimer-des-features">Pourquoi supprimer des features ?</a></li><li><a href="#ref-corrélation-entre-features">Corrélation entre features</a></li><li><a href="#ref-feature-permutation-mesurer-limportance-réelle">Feature Permutation — mesurer l'importance réelle</a></li></ol></li><li><a href="#ref-11-récapitulatif-les-erreurs-classiques-à-ne-jamais-faire">11. Récapitulatif — Les erreurs classiques à ne jamais faire</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Avant de donner des données à un modèle de Machine Learning, il faut les <strong>préparer</strong>. Les données brutes du monde réel sont rarement propres : il y a des lignes en double, des valeurs manquantes, des chiffres aberrants, des textes là où le modèle attend des nombres...</p>
+
+<p>C'est exactement comme préparer des légumes avant de cuisiner : on lave, on épluche, on coupe, on retire les parties abimées — et seulement ensuite on fait cuire. Si on met des légumes pourris dans la casserole, le plat sera raté, peu importe la qualité de la recette.</p>
+
+<p><strong>A retenir :</strong></p>
+
+<ul>
+<li>Un modèle ML n'accepte que des <strong>nombres</strong> en entrée — les textes et les catégories doivent être convertis.</li>
+<li>Des données mal nettoyées produisent de mauvaises prédictions : "Garbage in, garbage out".</li>
+<li>On <strong>apprend toujours les transformations sur le train set</strong> et on les applique ensuite au test set — jamais l'inverse.</li>
+<li>Il y a un ordre logique : d'abord nettoyer (doublons, valeurs manquantes, outliers), puis transformer (scaling, encodage).</li>
+<li>La sélection de features à la fin permet d'alléger le modèle en supprimant ce qui ne sert à rien.</li>
+</ul>
+
+<p><strong>Mini-plan du cours :</strong></p>
+
+<ol>
+<li>Doublons</li>
+<li>Valeurs manquantes</li>
+<li>Outliers (valeurs aberrantes)</li>
+<li>Feature Scaling (mise à l'échelle)</li>
+<li>Equilibrage des classes</li>
+<li>Encodage (transformer du texte en nombres)</li>
+<li>Discretisation</li>
+<li>Creation de features</li>
+<li>Sélection de features</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-pourquoi-préparer-les-données">1. Pourquoi préparer les données ?</h2>
+
+<p>Les données brutes posent trois problèmes majeurs :</p>
+
+<ul>
+<li>Elles sont <strong>sales</strong> : doublons, valeurs manquantes, valeurs aberrantes.</li>
+<li>Elles ont des <strong>formats incompatibles</strong> : les algorithmes ML ne comprennent pas les mots comme "rouge" ou "bon" — il faut les convertir en chiffres.</li>
+<li>Certaines transformations <strong>améliorent les performances</strong> du modèle : par exemple, remettre toutes les colonnes sur la même échelle évite qu'une colonne avec de grands chiffres "écrase" les autres.</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le preprocessing, c'est le travail invisible qui fait la différence entre un bon et un mauvais modèle. En pratique, il représente souvent 70 à 80 % du temps d'un data scientist.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-doublons">2. Doublons</h2>
+
+<h3 id="ref-quest-ce-quun-doublon">Qu'est-ce qu'un doublon ?</h3>
+
+<p>Un doublon, c'est une ligne qui apparait plusieurs fois dans le dataset. Par exemple, si la même maison est enregistrée deux fois avec exactement les mêmes informations.</p>
+
+<p><strong>Pourquoi c'est un problème ?</strong> Si cette ligne se retrouve à la fois dans le train set et dans le test set, le modèle "voit" la réponse pendant l'entrainement. On appelle ça du <strong>data leakage</strong> (fuite de données) — les performances semblent bonnes, mais elles sont truquées.</p>
+
+<h3 id="ref-comment-les-gérer">Comment les gérer ?</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Compter le nombre de lignes au départ
+len(data)                       # exemple : 1760 lignes
+
+# Compter combien de lignes sont dupliquées
+data.duplicated().sum()         # exemple : 303 doublons
+
+# Supprimer les doublons (garde la première occurrence)
+data = data.drop_duplicates()
+
+# Vérifier le résultat
+len(data)                       # exemple : 1457 lignes restantes</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Toujours commencer par cette étape — c'est rapide et ça peut éviter de grosses erreurs d'évaluation.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-valeurs-manquantes">3. Valeurs manquantes</h2>
+
+<h3 id="ref-quest-ce-quune-valeur-manquante">Qu'est-ce qu'une valeur manquante ?</h3>
+
+<p>C'est une case vide dans le tableau. En Python/pandas, elle est représentée par <code>NaN</code> (Not a Number). Elle peut aussi se cacher sous des formes comme <code>999</code>, <code>?</code>, ou une chaine vide <code>&quot;&quot;</code>.</p>
+
+<p><strong>Pourquoi des valeurs manquent ?</strong></p>
+
+<ul>
+<li>Un capteur est tombé en panne.</li>
+<li>Un patient n'est pas venu à sa visite médicale.</li>
+<li>Quelqu'un a oublié de remplir un champ de formulaire.</li>
+<li>La valeur n'a pas de sens (ex : pas d'allée = la colonne "type d'allée" est vide).</li>
+</ul>
+
+<h3 id="ref-détection">Détection</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Compter les NaN dans chaque colonne
+data.isnull().sum().sort_values(ascending=False)
+
+# Calculer le pourcentage de NaN par colonne
+data.isnull().sum() / len(data)</code></pre></div>
+
+
+<h3 id="ref-stratégies-de-traitement">Stratégies de traitement</h3>
+
+<p>Il n'y a pas une seule bonne réponse — ça dépend du contexte :</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Règle empirique : si une colonne a plus de 30 % de valeurs manquantes, envisager de la supprimer entièrement. En dessous de 30 %, on peut imputer (remplacer par une valeur calculée).</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+# Cas 1 : la colonne est presque vide (99 % de NaN) → on la supprime
+data = data.drop(columns=&#x27;WallMat&#x27;)
+
+# Cas 2 : NaN signifie quelque chose (ex: pas d&#x27;allée) → valeur métier
+data[&#x27;Alley&#x27;] = data[&#x27;Alley&#x27;].replace(np.nan, &quot;NoAlley&quot;)
+
+# Cas 3 : peu de NaN sur une colonne numérique
+# Option A : supprimer les lignes concernées
+data = data.dropna(subset=[&#x27;Pesos&#x27;])
+
+# Option B : remplacer par la moyenne
+data[&#x27;Pesos&#x27;] = data[&#x27;Pesos&#x27;].replace(np.nan, data[&#x27;Pesos&#x27;].mean())</code></pre></div>
+
+
+<h3 id="ref-simpleimputer-la-méthode-sklearn">SimpleImputer — la méthode sklearn</h3>
+
+<p>Sklearn propose un outil dédié appelé <code>SimpleImputer</code>. Il suit la logique <code>.fit()</code> puis <code>.transform()</code> commune à tous les transformers sklearn :</p>
+
+<ul>
+<li><code>.fit()</code> : il <strong>apprend</strong> la valeur de remplacement (ex : calcule la moyenne sur le train set).</li>
+<li><code>.transform()</code> : il <strong>remplace</strong> les NaN par la valeur apprise.</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.impute import SimpleImputer
+
+# Créer l&#x27;imputer — stratégie possible : &quot;mean&quot;, &quot;median&quot;, &quot;most_frequent&quot;, &quot;constant&quot;
+imputer = SimpleImputer(strategy=&quot;mean&quot;)     # on remplacera par la moyenne
+
+# Fit : l&#x27;imputer calcule la moyenne de la colonne &#x27;Pesos&#x27; sur les données d&#x27;entrainement
+imputer.fit(data[[&#x27;Pesos&#x27;]])
+
+# Transform : remplace les NaN par la moyenne calculée
+data[&#x27;Pesos&#x27;] = imputer.transform(data[[&#x27;Pesos&#x27;]])
+
+# Vérifier la valeur apprise (stockée dans l&#x27;attribut statistics_)
+imputer.statistics_     # → array([3608796.22]) — c&#x27;est la moyenne calculée</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>On fit toujours l'imputer sur le train set uniquement. Ensuite on utilise ce même imputer (sans refaire de fit) pour transformer le test set. Si on re-fittait sur le test set, on calculerait une moyenne différente — ce serait du data leakage.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-outliers-valeurs-aberrantes">4. Outliers (valeurs aberrantes)</h2>
+
+<h3 id="ref-quest-ce-quun-outlier">Qu'est-ce qu'un outlier ?</h3>
+
+<p>Un outlier est une valeur qui s'écarte fortement des autres. Par exemple, dans une colonne "surface habitable", une valeur de 50 000 m² serait aberrante pour une maison individuelle.</p>
+
+<p><strong>Causes fréquentes :</strong></p>
+
+<ul>
+<li>Erreur de saisie (ex : taper 10000 au lieu de 100).</li>
+<li>Erreur de mesure (capteur défaillant).</li>
+<li>Cas réel mais exceptionnel (une vraie immense villa — ce n'est pas une erreur, mais c'est rare).</li>
+</ul>
+
+<p><strong>Pourquoi c'est un problème ?</strong></p>
+
+<p>Un outlier fausse les statistiques (il tire la moyenne vers lui) et peut dégrader les performances du modèle.</p>
+
+<h3 id="ref-détecter-les-outliers-avec-un-boxplot">Détecter les outliers avec un boxplot</h3>
+
+<p>Le boxplot est un graphique qui affiche visuellement les valeurs "en dehors des moustaches" — ce sont les outliers selon la règle de l'IQR.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Afficher un boxplot pour la colonne GrLivArea (surface habitable)
+data[[&#x27;GrLivArea&#x27;]].boxplot()    # les points isolés en dehors des moustaches = outliers</code></pre></div>
+
+
+<h3 id="ref-supprimer-les-outliers">Supprimer les outliers</h3>
+
+<p>On utilise un <strong>masque booléen</strong> : on définit une condition qui garde uniquement les valeurs raisonnables.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Définir le masque : garder seulement les surfaces entre 0 et 5000 m²
+boolean_mask = (data[&#x27;GrLivArea&#x27;] &gt; 0) &amp; (data[&#x27;GrLivArea&#x27;] &lt; 5000)
+
+# Appliquer le filtre et réinitialiser l&#x27;index (les numéros de lignes)
+data = data[boolean_mask].reset_index(drop=True)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Avant de supprimer un outlier, réfléchir à ce qu'il signifie. Une grande villa est un cas réel — si on la supprime, le modèle ne saura pas gérer ce type de maison. Ne supprimer que ce qui ressemble à une erreur.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-feature-scaling-mise-à-léchelle">5. Feature Scaling (mise à l'échelle)</h2>
+
+<h3 id="ref-pourquoi-mettre-à-léchelle">Pourquoi mettre à l'échelle ?</h3>
+
+<p>Imagine deux colonnes dans ton dataset :</p>
+
+<ul>
+<li><code>nb_chambres</code> : entre 1 et 10.</li>
+<li><code>prix</code> : entre 50 000 et 1 000 000.</li>
+</ul>
+
+<p>Sans mise à l'échelle, la colonne <code>prix</code> "écrase" la colonne <code>nb_chambres</code> dans les calculs du modèle — juste parce qu'elle a des valeurs plus grandes. Pourtant, les deux informations peuvent être tout aussi importantes.</p>
+
+<p>Le scaling remet toutes les colonnes sur une plage comparable.</p>
+
+<h3 id="ref-les-trois-scalers-principaux">Les trois scalers principaux</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Scaler</th><th>Ce qu'il fait</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td><code>StandardScaler</code></td><td>Centre à 0, écart-type = 1</td><td>Distribution normale, cas général</td></tr><tr><td><code>MinMaxScaler</code></td><td>Compresse dans [0, 1]</td><td>Données positives, images (pixels), KNN</td></tr><tr><td><code>RobustScaler</code></td><td>Utilise médiane et IQR</td><td>Quand il y a des outliers</td></tr></tbody></table></div>
+<h3 id="ref-standardscaler-standardisation">StandardScaler — standardisation</h3>
+
+<p>La formule de la standardisation (z-score) :</p>
+
+<div class="katex-display">$$z = \frac{x - \mu}{\sigma}$$</div>
+
+<p>Ou $\mu$ est la <strong>moyenne</strong> de la colonne et $\sigma$ est l'<strong>ecart-type</strong>.</p>
+
+<p><strong>Exemple numérique :</strong> Si une colonne a une moyenne $\mu = 100$ et un écart-type $\sigma = 20$ :</p>
+<ul>
+<li>La valeur 120 devient : $z = \frac{120 - 100}{20} = 1.0$</li>
+<li>La valeur 60 devient : $z = \frac{60 - 100}{20} = -2.0$</li>
+</ul>
+
+<p>Après transformation, 99 % des valeurs se situent entre -3 et +3.</p>
+
+<h3 id="ref-minmaxscaler-normalisation-min-max">MinMaxScaler — normalisation min-max</h3>
+
+<p>La formule du min-max scaling :</p>
+
+<div class="katex-display">$$X' = \frac{X - X_{min}}{X_{max} - X_{min}}$$</div>
+
+<p><strong>Exemple numérique :</strong> Si $X_{min} = 0$ et $X_{max} = 200$ :</p>
+<ul>
+<li>La valeur 50 devient : $X' = \frac{50 - 0}{200 - 0} = 0.25$</li>
+<li>La valeur 200 devient : $X' = \frac{200 - 0}{200 - 0} = 1.0$</li>
+</ul>
+
+<h3 id="ref-robustscaler-résistant-aux-outliers">RobustScaler — résistant aux outliers</h3>
+
+<p>La formule du RobustScaler :</p>
+
+<div class="katex-display">$$X' = \frac{x - \text{médiane}}{IQR}$$</div>
+
+<p>Ou $IQR = Q3 - Q1$ est l'écart interquartile. Il utilise la médiane (moins sensible aux outliers que la moyenne) et l'IQR (moins sensible que l'écart-type).</p>
+
+<h3 id="ref-application-pratique">Application pratique</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import RobustScaler
+
+# Etape 1 : créer le scaler
+rb_scaler = RobustScaler()
+
+# Etape 2 : fit sur le TRAIN set (apprend la médiane et l&#x27;IQR)
+rb_scaler.fit(X_train[[&#x27;GrLivArea&#x27;]])
+
+# Etape 3 : transformer le train set
+X_train[&#x27;GrLivArea&#x27;] = rb_scaler.transform(X_train[[&#x27;GrLivArea&#x27;]])
+
+# Etape 4 : transformer le test set avec LE MEME scaler (pas de re-fit !)
+X_test[&#x27;GrLivArea&#x27;] = rb_scaler.transform(X_test[[&#x27;GrLivArea&#x27;]])</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>La règle d'or : on ne fait JAMAIS .fit() sur le test set. On apprend la transformation sur le train, puis on l'applique mécaniquement au test. Si on fittait sur le test set, le modèle "verrait" les données de test pendant l'entrainement — c'est du data leakage.</p></div></div>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Comment choisir son scaler ?</p>
+<p>- Distribution très asymétrique (skewed) avec outliers → RobustScaler</p>
+<p>- Images, pixels, matrices positives → MinMaxScaler</p>
+<p>- Distribution normale, cas général → StandardScaler (choix par défaut sûr)</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-equilibrage-des-classes">6. Equilibrage des classes</h2>
+
+<h3 id="ref-quest-ce-quun-déséquilibre-de-classes">Qu'est-ce qu'un déséquilibre de classes ?</h3>
+
+<p>En classification, quand une catégorie est beaucoup plus représentée que l'autre, on parle de <strong>déséquilibre de classes</strong>.</p>
+
+<p><strong>Exemples concrets :</strong></p>
+
+<ul>
+<li>Détection de fraude bancaire : 99,9 % des transactions sont légitimes, 0,1 % sont frauduleuses.</li>
+<li>Diagnostic médical : 95 % de patients sains, 5 % malades.</li>
+</ul>
+
+<p><strong>Pourquoi c'est un problème ?</strong> Le modèle peut apprendre à toujours prédire "pas de fraude" et obtenir 99,9 % de précision — mais rater toutes les vraies fraudes. C'est inutile en pratique.</p>
+
+<h3 id="ref-stratégies-déquilibrage">Stratégies d'équilibrage</h3>
+
+<ul>
+<li><strong>Oversampling</strong> : dupliquer des exemples de la classe minoritaire.</li>
+<li><strong>Undersampling</strong> : réduire la classe majoritaire.</li>
+<li><strong>SMOTE</strong> : créer de nouveaux exemples synthétiques (artificiels mais plausibles) de la classe minoritaire en interpolant entre des exemples existants.</li>
+</ul>
+
+<p>SMOTE (Synthetic Minority Oversampling Technique) est la méthode la plus sophistiquée : au lieu de juste copier des lignes, il crée de nouvelles lignes en "mélangeant" deux exemples voisins de la classe minoritaire.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Installer la librairie imbalanced-learn
+pip install imbalanced-learn</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ordre critique à respecter :</p>
+<p>1. Faire le train/test split EN PREMIER.</p>
+<p>2. Appliquer le rééquilibrage (SMOTE, oversampling) UNIQUEMENT sur le train set.</p>
+<p>3. Evaluer sur le test set SANS rééquilibrage.</p>
+<p>Si on fait l'inverse (rééquilibrer d'abord, splitter ensuite), des exemples synthétiques du train se retrouvent dans le test set — l'évaluation serait faussée.</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-encodage-catégoriel">7. Encodage catégoriel</h2>
+
+<h3 id="ref-pourquoi-encoder">Pourquoi encoder ?</h3>
+
+<p>Les modèles ML ne comprennent que les nombres. Les colonnes texte comme "bon", "mauvais", "Gravier", "Pavé" doivent être converties en chiffres.</p>
+
+<p>Il y a deux cas très différents :</p>
+
+<ul>
+<li>Les catégories ont un <strong>ordre naturel</strong> (ex : mauvais < moyen < bon) → OrdinalEncoder.</li>
+<li>Les catégories n'ont <strong>pas d'ordre</strong> (ex : types de revêtement de route) → OneHotEncoder.</li>
+</ul>
+
+<h3 id="ref-ordinalencoder-catégories-ordonnées">OrdinalEncoder — catégories ordonnées</h3>
+
+<p>Assigne un entier à chaque catégorie <strong>en respectant l'ordre</strong> que tu spécifies.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import OrdinalEncoder
+
+# Créer l&#x27;encoder en précisant l&#x27;ordre des catégories (du plus petit au plus grand)
+ordinal_encoder = OrdinalEncoder(categories=[[&quot;bad&quot;, &quot;average&quot;, &quot;good&quot;]])
+
+# Fit : l&#x27;encoder apprend les catégories
+ordinal_encoder.fit(example[[&quot;classes&quot;]])
+
+# Vérifier les catégories apprises
+ordinal_encoder.categories_     # → [array([&#x27;bad&#x27;, &#x27;average&#x27;, &#x27;good&#x27;])]
+
+# Transform : bad → 0, average → 1, good → 2
+example[&quot;encoded_classes&quot;] = ordinal_encoder.transform(example[[&quot;classes&quot;]])</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais utiliser OrdinalEncoder pour des catégories sans ordre naturel. Par exemple, encoder "Chêne", "Bouleau", "Sapin" en 0, 1, 2 dirait implicitement au modèle que "Sapin > Bouleau > Chêne", ce qui est faux. Utiliser OneHotEncoder dans ce cas.</p></div></div>
+
+<h3 id="ref-onehotencoder-catégories-sans-ordre">OneHotEncoder — catégories sans ordre</h3>
+
+<p>Crée une <strong>nouvelle colonne binaire (0 ou 1) pour chaque catégorie possible</strong>. Si la colonne "Allée" peut valoir "Gravier", "Pavé" ou "Pas d'allée", on crée trois nouvelles colonnes :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Allée_Gravier</th><th>Allée_Pavé</th><th>Allée_PasDAllée</th></tr></thead><tbody><tr><td>1</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td></tr><tr><td>0</td><td>0</td><td>1</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import OneHotEncoder
+
+# Créer l&#x27;encoder (sparse_output=False pour obtenir un tableau classique)
+ohe = OneHotEncoder(sparse_output=False)
+
+# Fit : apprend les catégories présentes dans la colonne &#x27;Alley&#x27;
+ohe.fit(data[[&#x27;Alley&#x27;]])
+
+# Voir les catégories trouvées
+ohe.categories_                  # → [array([&#x27;Grvl&#x27;, &#x27;NoAlley&#x27;, &#x27;Pave&#x27;])]
+
+# Voir les noms des nouvelles colonnes
+ohe.get_feature_names_out()      # → [&#x27;Alley_Grvl&#x27;, &#x27;Alley_NoAlley&#x27;, &#x27;Alley_Pave&#x27;]
+
+# Ajouter les nouvelles colonnes au DataFrame
+data[ohe.get_feature_names_out()] = ohe.transform(data[[&#x27;Alley&#x27;]])
+
+# Supprimer la colonne originale (devenue inutile)
+data = data.drop(columns=[&quot;Alley&quot;])</code></pre></div>
+
+
+<p><strong>Cas spécial : colonne binaire (seulement 2 valeurs)</strong></p>
+
+<p>Si la colonne n'a que 2 valeurs possibles, une seule nouvelle colonne suffit (la seconde serait redondante — si ce n'est pas 0, c'est forcément 1).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># drop=&quot;if_binary&quot; : crée 1 seule colonne au lieu de 2 quand il y a exactement 2 valeurs
+ohe_bin = OneHotEncoder(sparse_output=False, drop=&quot;if_binary&quot;)
+ohe_bin.fit(data[[&#x27;Street&#x27;]])                       # 2 valeurs : Grvl et Pave
+data[ohe_bin.get_feature_names_out()] = ohe_bin.transform(data[[&#x27;Street&#x27;]])
+data = data.drop(columns=[&quot;Street&quot;])</code></pre></div>
+
+
+<h3 id="ref-labelencoder-encoder-la-cible-y">LabelEncoder — encoder la cible (y)</h3>
+
+<p>Quand la variable cible (celle qu'on veut prédire) est textuelle, on utilise le <code>LabelEncoder</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import LabelEncoder
+
+label_encoder = LabelEncoder()
+
+# Fit : apprend les noms de classes
+label_encoder.fit(target)
+label_encoder.classes_                              # → [&#x27;Adelie&#x27;, &#x27;Chinstrap&#x27;, &#x27;Gentoo&#x27;]
+
+# Transform : Adelie → 0, Chinstrap → 1, Gentoo → 2
+encoded_target = label_encoder.transform(target)
+
+# Inverse transform : retrouver les noms originaux depuis les chiffres
+original_target = label_encoder.inverse_transform(encoded_target)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Beaucoup de modèles sklearn acceptent directement les targets textuels sans avoir besoin de LabelEncoder. Vérifier la documentation du modèle avant d'encoder — si ce n'est pas nécessaire, ne pas le faire.</p></div></div>
+
+<hr>
+
+<h2 id="ref-8-discretisation">8. Discretisation</h2>
+
+<h3 id="ref-transformer-une-variable-continue-en-catégories">Transformer une variable continue en catégories</h3>
+
+<p>La discretisation consiste à découper une variable continue (comme un prix) en intervalles, et à attribuer une étiquette à chaque intervalle. Cela permet de transformer un problème de régression en classification.</p>
+
+<p><strong>Exemple :</strong> On veut prédire si une maison est "cheap" (bon marché) ou "expensive" (chère). On utilise le prix moyen comme seuil.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># pd.cut() découpe la colonne SalePrice en intervalles et leur attribue un label
+data[&#x27;SalePriceBinary&#x27;] = pd.cut(
+    x=data[&#x27;SalePrice&#x27;],                        # la colonne à découper
+    bins=[
+        data[&#x27;SalePrice&#x27;].min() - 1,            # borne inférieure (en dessous du min)
+        data[&#x27;SalePrice&#x27;].mean(),               # seuil de coupure = prix moyen
+        data[&#x27;SalePrice&#x27;].max() + 1             # borne supérieure (au dessus du max)
+    ],
+    labels=[&#x27;cheap&#x27;, &#x27;expensive&#x27;]               # étiquette pour chaque intervalle
+)</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-9-creation-de-features">9. Creation de features</h2>
+
+<h3 id="ref-apporter-de-la-connaissance-métier">Apporter de la connaissance métier</h3>
+
+<p>Parfois, les colonnes brutes ne sont pas les meilleures entrées pour le modèle. On peut <strong>créer de nouvelles colonnes</strong> à partir des existantes, en apportant de la connaissance sur le problème.</p>
+
+<p><strong>Exemples de features créées :</strong></p>
+
+<ul>
+<li><code>bedroom_totalroom_ratio</code> = nombre de chambres / nombre total de pièces (donne une idée de la configuration de la maison).</li>
+<li>$BMI = \frac{poids}{taille^2}$ (indice de masse corporelle — plus utile que poids et taille séparément).</li>
+<li><code>delai_livraison</code> = date de livraison - date d'expédition.</li>
+<li>Catégoriser une date en "semaine" ou "week-end".</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>L'encodage, la discretisation et la creation de features font tous partie du Feature Engineering — l'art de transformer les données brutes en signaux utiles pour le modèle. C'est souvent ici que se fait la vraie différence entre un bon et un excellent modèle.</p></div></div>
+
+<hr>
+
+<h2 id="ref-10-sélection-de-features">10. Sélection de features</h2>
+
+<h3 id="ref-pourquoi-supprimer-des-features">Pourquoi supprimer des features ?</h3>
+
+<p>Plus on a de features, plus le modèle a de "bruit" à gérer. Deux problèmes principaux :</p>
+
+<ul>
+<li><strong>Features redondantes</strong> : si deux colonnes sont très corrélées (ex : "surface totale" et "surface habitable"), l'une d'elles n'apporte rien de plus. On peut en supprimer une.</li>
+<li><strong>Malédiction de la dimensionnalité</strong> : avec trop de features, le modèle a besoin de beaucoup plus de données pour apprendre correctement, et devient plus lent et moins interprétable.</li>
+</ul>
+
+<h3 id="ref-corrélation-entre-features">Corrélation entre features</h3>
+
+<p>On calcule la <strong>matrice de corrélation</strong> — un tableau qui mesure à quel point chaque paire de colonnes varie ensemble.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import seaborn as sns
+import numpy as np
+
+# Calculer la matrice de corrélation de Pearson (uniquement les colonnes numériques)
+correlation_matrix = data.select_dtypes(&#x27;number&#x27;).corr()
+
+# Afficher sous forme de heatmap (rouge = corrélation positive, bleu = négative)
+sns.heatmap(correlation_matrix, cmap=&quot;bwr&quot;)
+
+# Mettre la matrice sous forme de paires pour identifier les plus corrélées
+corr_df = correlation_matrix.stack().reset_index()   # transformer en lignes
+corr_df.columns = [&#x27;feature_1&#x27;, &#x27;feature_2&#x27;, &#x27;correlation&#x27;]
+
+# Exclure les auto-corrélations (une feature avec elle-même = 1.0)
+corr_df = corr_df[corr_df[&#x27;feature_1&#x27;] != corr_df[&#x27;feature_2&#x27;]]
+
+# Ajouter la valeur absolue (une corrélation de -0.9 est aussi forte que +0.9)
+corr_df[&#x27;absolute_correlation&#x27;] = np.abs(corr_df[&#x27;correlation&#x27;])
+
+# Afficher les 10 paires les plus corrélées
+corr_df.sort_values(by=&quot;absolute_correlation&quot;, ascending=False).head(10)
+
+# Si &#x27;Pesos&#x27; est presque identique à &#x27;SalePrice&#x27; → la supprimer (redondante)
+data = data.drop(columns=[&#x27;Pesos&#x27;])</code></pre></div>
+
+
+<h3 id="ref-feature-permutation-mesurer-limportance-réelle">Feature Permutation — mesurer l'importance réelle</h3>
+
+<p>L'idée est simple : si on mélange aléatoirement les valeurs d'une colonne et que le score du modèle chute beaucoup, c'est que cette colonne était importante. Si le score ne change presque pas, la colonne est peu utile.</p>
+
+<p><strong>Fonctionnement pas à pas :</strong></p>
+
+<ol>
+<li>Entrainer un modèle et noter son score.</li>
+<li>Prendre une feature, mélanger aléatoirement ses valeurs (les relier au hasard avec d'autres lignes).</li>
+<li>Calculer le nouveau score — la chute = l'importance de la feature.</li>
+<li>Répéter pour chaque feature.</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.inspection import permutation_importance
+from sklearn.linear_model import LogisticRegression
+import pandas as pd
+import numpy as np
+
+# Entrainer un modèle de base
+log_model = LogisticRegression().fit(X, y)      # modèle de régression logistique
+
+# Calculer l&#x27;importance par permutation (n_repeats = répéter 10 fois pour plus de stabilité)
+permutation_score = permutation_importance(log_model, X, y, n_repeats=10)
+
+# Créer un DataFrame lisible avec les résultats
+importance_df = pd.DataFrame(
+    np.vstack((X.columns, permutation_score.importances_mean)).T  # empiler colonnes et scores
+)
+importance_df.columns = [&#x27;feature&#x27;, &#x27;score decrease&#x27;]            # nommer les colonnes
+
+# Afficher les features les plus importantes en premier
+importance_df.sort_values(by=&quot;score decrease&quot;, ascending=False)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Data Leakage via le scaling : si on scale tout le dataset AVANT de faire la cross-validation, chaque fold de validation "voit" les statistiques des autres folds via le scaler — c'est du leakage. La solution propre est d'utiliser un Pipeline sklearn, qui applique le scaling à l'intérieur de chaque fold.</p></div></div>
+
+<hr>
+
+<h2 id="ref-11-récapitulatif-les-erreurs-classiques-à-ne-jamais-faire">11. Récapitulatif — Les erreurs classiques à ne jamais faire</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Erreur</th><th>Problème</th><th>Solution</th></tr></thead><tbody><tr><td><code>.fit()</code> du scaler/encoder sur le test set</td><td>Data leakage</td><td>Fit sur train uniquement, transform sur train et test</td></tr><tr><td>Oversampler AVANT le train/test split</td><td>Des exemples synthétiques du train passent dans le test</td><td>Splitter d'abord, oversampler ensuite uniquement sur le train</td></tr><tr><td><code>dropna()</code> sans analyser le sens des NaN</td><td>Perte d'information (ex: NaN = "pas d'allée")</td><td>Analyser la cause, remplacer par une valeur métier si nécessaire</td></tr><tr><td>OrdinalEncoder sur des catégories sans ordre</td><td>Fausse relation ordinale créée</td><td>Utiliser OneHotEncoder pour les catégories non-ordonnées</td></tr><tr><td>Scaler avant la cross-validation</td><td>Data leakage entre les folds</td><td>Utiliser un Pipeline sklearn</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Le pattern correct pour tout transformer (scaler, encoder, imputer) :
+transformer = Transformer()                                  # créer le transformer
+
+transformer.fit(X_train)                                     # apprendre sur le train UNIQUEMENT
+
+X_train_transformed = transformer.transform(X_train)        # transformer le train
+X_test_transformed = transformer.transform(X_test)          # même transformer sur le test (pas de fit !)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Loi de Pareto appliquée aux features : souvent, 20 % des features expliquent 80 % de la performance. Réduire le nombre de features rend le modèle plus rapide, plus interprétable, et plus facile à maintenir.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>1. Pourquoi ne faut-il jamais appeler <code>.fit()</code> sur le test set ?</strong></p>
+
+<p>Parce que <code>.fit()</code> apprend des statistiques (moyenne, écart-type, min, max...) à partir des données. Si on fit sur le test set, le modèle "voit" les données de test pendant la préparation — c'est du data leakage. Le test set doit rester totalement invisible jusqu'à l'évaluation finale.</p>
+
+<p><strong>2. Quelle est la différence entre OrdinalEncoder et OneHotEncoder ?</strong></p>
+
+<p>OrdinalEncoder transforme les catégories en entiers en respectant un ordre (bad=0, average=1, good=2) — à utiliser seulement quand les catégories ont un ordre naturel. OneHotEncoder crée une colonne binaire par catégorie — à utiliser quand les catégories sont sans ordre (types de matériaux, noms de villes, etc.).</p>
+
+<p><strong>3. Pourquoi faut-il faire le train/test split AVANT l'oversampling ?</strong></p>
+
+<p>Si on oversample d'abord, des exemples synthétiques créés à partir de vraies données du train se retrouvent dans le test set. L'évaluation serait faussée car le modèle évalue sur des données "dérivées" de ses données d'entrainement.</p>
+
+<p><strong>4. Quand utiliser RobustScaler plutôt que StandardScaler ?</strong></p>
+
+<p>Quand la colonne contient des outliers. StandardScaler utilise la moyenne et l'écart-type, qui sont sensibles aux valeurs extrêmes. RobustScaler utilise la médiane et l'IQR, qui sont beaucoup moins affectés par les outliers.</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>La <strong>préparation des données</strong> est indispensable avant tout modèle ML : données brutes = données sales.</li>
+<li><strong>Doublons</strong> : les supprimer pour éviter le data leakage entre train et test.</li>
+<li><strong>Valeurs manquantes</strong> : analyser leur sens avant de les traiter — supprimer la colonne (trop de NaN), remplacer par une valeur métier, ou imputer avec <code>SimpleImputer</code>.</li>
+<li><strong>Outliers</strong> : les détecter au boxplot, les supprimer avec un masque booléen — mais seulement si ce sont de vraies erreurs.</li>
+<li><strong>Feature Scaling</strong> : remettre toutes les colonnes sur la même echelle — <code>StandardScaler</code> (cas général), <code>MinMaxScaler</code> (données positives), <code>RobustScaler</code> (outliers présents).</li>
+<li><strong>Encodage</strong> : <code>OrdinalEncoder</code> pour les catégories ordonnées, <code>OneHotEncoder</code> pour les catégories sans ordre, <code>LabelEncoder</code> pour la variable cible.</li>
+<li><strong>Règle d'or absolue</strong> : toujours <code>.fit()</code> sur le train set uniquement, puis <code>.transform()</code> sur train ET test avec le même transformer.</li>
+<li><strong>Sélection de features</strong> : supprimer les colonnes redondantes (corrélation) et peu informatives (permutation importance) pour alléger le modèle.</li>
+<li>Les étapes dans le bon ordre : doublons → valeurs manquantes → outliers → scaling → encodage → sélection de features.</li>
+<li>Garbage in, garbage out : la qualité des données détermine le plafond de performance du modèle.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-le-cycle-de-la-data-preparation">Le cycle de la data preparation</a></li><li><a href="#syn-missing-values">Missing values</a></li><li><a href="#syn-outliers">Outliers</a></li><li><a href="#syn-scaling-et-normalisation">Scaling et normalisation</a></li><li><a href="#syn-encoding-des-variables-catégorielles">Encoding des variables catégorielles</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-feature-engineering">Feature engineering</a></li><li><a href="#syn-class-imbalance">Class imbalance</a></li><li><a href="#syn-data-leakage-le-bug-invisible">Data leakage : le bug invisible</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-le-cycle-de-la-data-preparation">Le cycle de la data preparation</h3>
+
+<p>70-80% du temps d'un data scientist est passé à préparer les données — pas à entraîner des modèles. Cette préparation suit un cycle bien établi :</p>
+
+<ol>
+<li><strong>Inspection</strong> : <code>info()</code>, <code>describe()</code>, <code>head()</code>, <code>isnull().sum()</code> pour comprendre shape, types et qualité</li>
+<li><strong>Cleaning</strong> : doublons, valeurs manquantes, outliers, types incorrects</li>
+<li><strong>Transformation</strong> : scaling, encoding, log/sqrt</li>
+<li><strong>Feature engineering</strong> : nouvelles variables dérivées</li>
+<li><strong>Splitting</strong> : train/validation/test</li>
+<li><strong>Validation</strong> : sanity check du dataset final</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Toolkit d&#x27;inspection initiale (à faire systématiquement)
+df.shape                          # (n_rows, n_cols)
+df.info()                         # types, non-nulls par colonne
+df.describe(include=&#x27;all&#x27;)        # stats numériques + top/freq catégoriel
+df.isnull().mean() * 100          # % de NaN par colonne
+df.duplicated().sum()             # nb de doublons exacts
+df.nunique()                      # cardinalité par colonne
+df.sample(5)                      # aperçu aléatoire (mieux que head())</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : la data preparation est à la modélisation ce que la mise en place est à la cuisine. Un cuisinier qui passe 80% de son temps à éplucher, couper, doser ses ingrédients prépare le terrain pour cuire en quelques minutes. Un data scientist qui sous-investit en data prep produit un modèle médiocre quel que soit l'algorithme.</p></div></div>
+
+<h3 id="syn-missing-values">Missing values</h3>
+
+<p>Trois questions à se poser sur chaque NaN :</p>
+
+<ol>
+<li><strong>Combien y en a-t-il ?</strong> <code>df.isnull().mean() * 100</code> donne le pourcentage par colonne.</li>
+<li><strong>Sont-ils aléatoires (MCAR), conditionnels (MAR), ou systématiques (MNAR) ?</strong></li>
+<li><strong>Quelle stratégie d'imputation est appropriée ?</strong></li>
+</ol>
+
+<div class="table-wrapper"><table><thead><tr><th>Type</th><th>Définition</th><th>Exemple</th></tr></thead><tbody><tr><td><strong>MCAR</strong> (Missing Completely At Random)</td><td>NaN indépendant de tout</td><td>Erreur de saisie aléatoire</td></tr><tr><td><strong>MAR</strong> (Missing At Random)</td><td>NaN dépend d'autres variables observées</td><td>Hommes plus susceptibles de ne pas répondre à "âge"</td></tr><tr><td><strong>MNAR</strong> (Missing Not At Random)</td><td>NaN dépend de la valeur manquante elle-même</td><td>Hauts revenus refusent de déclarer leur revenu</td></tr></tbody></table></div>
+<p>Formellement, pour MCAR : $P(\text{missing} \mid X, Y) = P(\text{missing})$.</p>
+
+<p>Lecture : <em>la probabilité qu'une valeur soit manquante est indépendante de toute autre variable, c'est purement aléatoire</em>. C'est le cas le plus simple et le plus rare. Pour MAR, la probabilité de manque dépend des variables observées ; pour MNAR, elle dépend de la valeur manquante elle-même (impossible à détecter directement).</p>
+
+<p>Stratégies d'imputation :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.impute import SimpleImputer, KNNImputer, IterativeImputer
+
+# Stratégies simples
+SimpleImputer(strategy=&#x27;mean&#x27;)      # Moyenne — sensible aux outliers
+SimpleImputer(strategy=&#x27;median&#x27;)    # Médiane — robuste, recommandé pour le numérique
+SimpleImputer(strategy=&#x27;most_frequent&#x27;)  # Mode — pour le catégoriel
+SimpleImputer(strategy=&#x27;constant&#x27;, fill_value=&#x27;unknown&#x27;)  # Marquer explicitement
+
+# Stratégies avancées (utilisent les autres colonnes)
+KNNImputer(n_neighbors=5)           # Moyenne des k voisins les plus proches
+IterativeImputer()                  # Régression pour prédire chaque colonne manquante</code></pre></div>
+
+
+<p><strong>Exemple chiffré</strong> : sur une colonne <code>income</code> avec des outliers (quelques revenus à 1M€ parmi des salariés moyens), la moyenne est à 65 000€ mais la médiane à 42 000€. Imputer avec la moyenne biaise fortement la distribution vers le haut — la médiane est bien plus représentative.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Anti-pattern fréquent</strong> : imputer avec la moyenne sur tout le dataset puis splitter en train/test. C'est du <strong>data leakage</strong> — la moyenne du test set fuite dans le train. Toujours <code>fit</code> l'imputer sur le train, puis <code>transform</code> sur train et test séparément. C'est exactement pour ça que sklearn force ce pattern via les Pipelines.</p></div></div>
+
+<h3 id="syn-outliers">Outliers</h3>
+
+<p>Trois méthodes de détection :</p>
+
+<ul>
+<li><strong>IQR</strong> : $|x - \text{median}| > 1.5 \cdot \text{IQR}$, où $\text{IQR} = Q_3 - Q_1$</li>
+</ul>
+
+<p>Lecture : <em>une valeur est outlier si elle est à plus de 1.5 fois l'écart interquartile de la médiane. Cette règle est robuste car elle utilise la médiane et les quartiles, pas la moyenne et l'écart-type (qui sont eux-mêmes affectés par les outliers).</em></p>
+
+<ul>
+<li><strong>Z-score</strong> : $|z| > 3$ avec $z = \frac{x - \mu}{\sigma}$ (suppose normalité)</li>
+</ul>
+
+<p>Lecture : <em>le z-score mesure combien d'écarts-types sépare $x$ de la moyenne. Sous l'hypothèse de normalité, 99.7% des points ont $|z| < 3$.</em></p>
+
+<ul>
+<li><strong>Isolation Forest</strong> : modèle ML, multivarié, détecte les points "isolables" rapidement par des splits aléatoires</li>
+</ul>
+
+<p>Trois stratégies de traitement :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Stratégie</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td><strong>Supprimer</strong></td><td>Erreur de saisie évidente, peu d'outliers</td></tr><tr><td><strong>Capper (winsorisation)</strong></td><td>Valeurs extrêmes mais pas absurdes</td></tr><tr><td><strong>Transformer</strong></td><td>Distribution très asymétrique (log, sqrt, Box-Cox)</td></tr><tr><td><strong>Garder</strong></td><td>Si les outliers sont le signal recherché (fraude !)</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Winsorisation : remplacer les outliers par les 5e/95e percentiles
+def winsorize(s, lower=0.05, upper=0.95):
+    q_low = s.quantile(lower)            # 5e percentile
+    q_high = s.quantile(upper)           # 95e percentile
+    return s.clip(q_low, q_high)         # tout ce qui dépasse est ramené au percentile
+
+df[&quot;price&quot;] = winsorize(df[&quot;price&quot;])
+# Avant : prix entre 0 et 1M. Après : prix entre 50 et 200 000 (par exemple)
+
+# Transformation log pour réduire l&#x27;asymétrie
+df[&quot;price_log&quot;] = np.log1p(df[&quot;price&quot;])  # log(1 + x), gère les zéros
+# Avant : distribution à queue longue. Après : quasi-normale.</code></pre></div>
+
+
+<p><strong>Exemple chiffré</strong> : colonne prix immobiliers avec min=50k, max=50M (château). Un modèle linéaire va être dominé par ce château. Après <code>log1p</code>, min=10.8, max=17.7 — échelle comparable, le modèle n'est plus dominé par un seul outlier.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : avant de traiter un outlier, posez-vous "est-ce une erreur ou un signal ?". Un revenu de 10M€ pour un employé est probablement un vrai millionnaire (signal). Un âge de 999 ans est une erreur (sentinel value). Le traitement diffère radicalement.</p></div></div>
+
+<h3 id="syn-scaling-et-normalisation">Scaling et normalisation</h3>
+
+<p>Beaucoup de modèles sont sensibles à l'<strong>échelle</strong> des features. Si une feature varie entre 0 et 1 et une autre entre 0 et 10⁶, la seconde domine la première dans tous les calculs de distance ou les gradients.</p>
+
+<p><strong>Modèles sensibles à l'échelle</strong> : KNN, K-means, SVM, régression régularisée (Ridge/Lasso), neural networks, PCA, tout ce qui utilise une distance euclidienne ou un gradient.</p>
+
+<p><strong>Modèles insensibles</strong> : arbres de décision, Random Forest, XGBoost, LightGBM (ils splittent sur des seuils, l'échelle n'a pas d'importance).</p>
+
+<p><strong>Standard Scaling</strong> : $z = \frac{x - \mu}{\sigma}$.</p>
+
+<p>Lecture : <em>on soustrait la moyenne (centrage) et on divise par l'écart-type (réduction). Résultat : moyenne 0, écart-type 1, indépendamment de l'unité d'origine</em>.</p>
+
+<p><strong>Min-Max Scaling</strong> : $x' = \frac{x - x_{\min}}{x_{\max} - x_{\min}}$.</p>
+
+<p>Lecture : <em>on ramène linéairement l'intervalle $[x_{\min}, x_{\max}]$ vers $[0, 1]$</em>. Tous les points entre 0 et 1, avec 0 pour le minimum et 1 pour le maximum du train set.</p>
+
+<p><strong>Robust Scaling</strong> : $x' = \frac{x - \text{median}}{IQR}$.</p>
+
+<p>Lecture : <em>comme le StandardScaler mais avec médiane et IQR à la place de moyenne et std. Résistant aux outliers qui ne biaisent pas la médiane</em>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler
+
+# Standard Scaling : (x - mean) / std → moyenne 0, écart-type 1
+StandardScaler()
+
+# Min-Max Scaling : (x - min) / (max - min) → entre 0 et 1
+MinMaxScaler()
+
+# Robust Scaling : (x - median) / IQR → résistant aux outliers
+RobustScaler()</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Scaler</th><th>Sortie</th><th>Avantages</th><th>Inconvénients</th></tr></thead><tbody><tr><td><strong>StandardScaler</strong></td><td>Moyenne 0, std 1</td><td>Bien adapté aux distributions ~normales</td><td>Sensible aux outliers</td></tr><tr><td><strong>MinMaxScaler</strong></td><td>[0, 1]</td><td>Borné, utile pour réseaux de neurones</td><td>Très sensible aux outliers</td></tr><tr><td><strong>RobustScaler</strong></td><td>Médiane 0</td><td>Résistant aux outliers</td><td>Moins standard</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : par défaut, utilisez <code>StandardScaler</code> pour la régression linéaire / logistique / SVM / KNN. Utilisez <code>MinMaxScaler</code> pour les réseaux de neurones avec activation sigmoïde. N'utilisez <strong>jamais</strong> de scaling pour les modèles à arbres — c'est inutile et ça obscurcit l'interprétation.</p></div></div>
+
+<h3 id="syn-encoding-des-variables-catégorielles">Encoding des variables catégorielles</h3>
+
+<p>Les modèles ML ne comprennent que des nombres. Il faut convertir les colonnes texte en numérique :</p>
+
+<p><strong>One-Hot Encoding</strong> : une colonne binaire par catégorie.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df = pd.DataFrame({&quot;city&quot;: [&quot;Paris&quot;, &quot;Lyon&quot;, &quot;Paris&quot;, &quot;Marseille&quot;]})
+pd.get_dummies(df, columns=[&quot;city&quot;])
+#    city_Lyon  city_Marseille  city_Paris
+# 0          0               0           1
+# 1          1               0           0
+# 2          0               0           1
+# 3          0               1           0
+# Chaque catégorie devient une colonne binaire indépendante</code></pre></div>
+
+
+<p>Inconvénient : explose si la cardinalité est élevée. 1000 villes → 1000 colonnes → matrice sparse massive.</p>
+
+<p><strong>Ordinal Encoding</strong> : assigne un entier par catégorie.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import OrdinalEncoder
+OrdinalEncoder().fit_transform(df[[&quot;city&quot;]])
+# array([[2.], [0.], [2.], [1.]])
+# Lyon=0, Marseille=1, Paris=2 (ordre alphabétique par défaut)</code></pre></div>
+
+
+<p>À utiliser <strong>uniquement</strong> si l'ordre a un sens (XS < S < M < L < XL). Sinon vous induisez une fausse hiérarchie (Marseille "entre" Lyon et Paris) qui trompe les modèles linéaires.</p>
+
+<p><strong>Target Encoding</strong> : remplacer chaque catégorie par la moyenne de la cible pour cette catégorie.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Pour chaque ville, la moyenne des salaires
+city_means = df.groupby(&quot;city&quot;)[&quot;salary&quot;].mean()
+df[&quot;city_encoded&quot;] = df[&quot;city&quot;].map(city_means)
+# Paris → 45000 (moyenne des salaires parisiens)
+# Lyon → 38000
+# Marseille → 35000</code></pre></div>
+
+
+<p>Très efficace pour les hautes cardinalités, mais <strong>risque de leakage</strong> si calculé sur le train+test ensemble. Toujours splitter avant, ou utiliser <code>category_encoders.TargetEncoder</code> qui le fait proprement avec cross-validation interne.</p>
+
+<p><strong>Exemple chiffré</strong> : colonne <code>zipcode</code> avec 5 000 codes postaux uniques.</p>
+
+<ul>
+<li>OneHot : 5 000 colonnes, la plupart sparses, modèle linéaire tremblant</li>
+<li>Target encoding : 1 colonne dense avec le revenu moyen du zipcode, capture l'essentiel</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Question d'entretien classique</strong> : "Comment encoder une colonne 'pays' avec 200 valeurs uniques ?" Réponses possibles : (1) Target Encoding — efficace mais nécessite une cross-validation pour éviter le leakage. (2) Frequency Encoding — remplacer chaque pays par sa fréquence dans le dataset. (3) Embedding Layer (deep learning) — apprend une représentation dense optimale. (4) Regrouper les pays rares en "Other" puis One-Hot. Mauvaise réponse : "OneHot direct" — explose la dimension.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-feature-engineering">Feature engineering</h3>
+
+<p>C'est l'art de <strong>créer</strong> de nouvelles colonnes qui capturent mieux le signal. Beaucoup de problèmes ML se résolvent en faisant le bon feature engineering plutôt qu'en changeant d'algorithme.</p>
+
+<p>Patterns courants :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Date → composantes utiles
+df[&quot;year&quot;] = df[&quot;date&quot;].dt.year
+df[&quot;month&quot;] = df[&quot;date&quot;].dt.month
+df[&quot;day_of_week&quot;] = df[&quot;date&quot;].dt.dayofweek            # 0 = lundi
+df[&quot;is_weekend&quot;] = df[&quot;day_of_week&quot;].isin([5, 6]).astype(int)
+df[&quot;hour&quot;] = df[&quot;date&quot;].dt.hour
+# Transforme une seule colonne date en 5+ features exploitables
+
+# Ratios (souvent plus informatifs que les valeurs brutes)
+df[&quot;price_per_m2&quot;] = df[&quot;price&quot;] / df[&quot;area&quot;]          # normalise par taille
+df[&quot;debt_to_income&quot;] = df[&quot;debt&quot;] / df[&quot;income&quot;]       # score de risque crédit
+
+# Agrégats par groupe (enrichit chaque ligne avec une stat du groupe)
+df[&quot;user_avg_purchase&quot;] = df.groupby(&quot;user_id&quot;)[&quot;amount&quot;].transform(&quot;mean&quot;)
+df[&quot;category_max_price&quot;] = df.groupby(&quot;category&quot;)[&quot;price&quot;].transform(&quot;max&quot;)
+
+# Distance / différence
+df[&quot;days_since_last_login&quot;] = (now - df[&quot;last_login&quot;]).dt.days
+
+# Interactions
+df[&quot;age_x_income&quot;] = df[&quot;age&quot;] * df[&quot;income&quot;]          # capture effet multiplicatif
+
+# Polynômes (features d&#x27;ordre 2)
+from sklearn.preprocessing import PolynomialFeatures
+poly = PolynomialFeatures(degree=2, interaction_only=True)
+# (x, y) → (x, y, x*y)</code></pre></div>
+
+
+<p><strong>Exemple chiffré</strong> : pour prédire le prix d'un appartement à partir de <code>area</code> (m²) et <code>rooms</code>, créer <code>price_per_room = price / rooms</code> et <code>density = area / rooms</code> améliore souvent le R² de 0.75 à 0.88. Même modèle, meilleures features.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : feature engineering, c'est comme expliquer une recette à un nouveau cuisinier. Si vous lui donnez "farine, eau, levure" il fera peut-être un pain. Si vous lui donnez "pâte préparée", il a juste à mettre au four. Plus vous fabriquez de features intelligentes, moins votre modèle a de travail à faire — et donc moins il peut se tromper.</p></div></div>
+
+<h3 id="syn-class-imbalance">Class imbalance</h3>
+
+<p>Quand une classe est minoritaire (fraude : 0.1%, churn : 5%), un classifieur naïf peut atteindre 99.9% d'accuracy en prédisant toujours "non" — sans détecter aucun vrai cas. Trois familles de solutions :</p>
+
+<p><strong>1. Resampling</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from imblearn.over_sampling import SMOTE, RandomOverSampler
+from imblearn.under_sampling import RandomUnderSampler
+
+# Sur-échantillonnage : dupliquer ou interpoler la classe minoritaire
+SMOTE(random_state=42).fit_resample(X_train, y_train)
+# SMOTE crée des synthèses : pour chaque minoritaire, prend un voisin k-NN
+# et interpole linéairement pour créer un nouveau point
+
+RandomOverSampler().fit_resample(X_train, y_train)
+# Duplication brute des minoritaires (plus simple mais risque d&#x27;overfit)
+
+# Sous-échantillonnage : réduire la classe majoritaire
+RandomUnderSampler().fit_resample(X_train, y_train)
+# Perd de l&#x27;information mais plus rapide, et utile si gros dataset</code></pre></div>
+
+
+<p><strong>SMOTE</strong> crée des exemples synthétiques en interpolant entre voisins de la classe minoritaire. Formellement, pour un point minoritaire $x$ et un voisin $x'$ : $x_{new} = x + \lambda (x' - x)$ avec $\lambda \in [0, 1]$ aléatoire.</p>
+
+<p>Lecture : <em>on génère un point n'importe où sur le segment reliant $x$ à l'un de ses plus proches voisins. Cela augmente la densité de la classe minoritaire sans dupliquer exactement</em>.</p>
+
+<p><strong>2. Class weights</strong> : pondérer la loss pour que les erreurs sur la classe rare comptent plus.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import LogisticRegression
+LogisticRegression(class_weight=&quot;balanced&quot;)
+# Poids = n_samples / (n_classes * n_samples_per_class)
+# Classe rare à 5% : poids ~10× plus grand que la classe majoritaire
+
+# Ou explicitement :
+LogisticRegression(class_weight={0: 1, 1: 100})
+# Une erreur sur la classe 1 compte 100× plus qu&#x27;une erreur sur la classe 0</code></pre></div>
+
+
+<p><strong>3. Changer la métrique</strong> : accuracy n'est pas adaptée. Préférez :</p>
+
+<ul>
+<li><strong>F1-score</strong> : moyenne harmonique précision/recall, $F_1 = 2 \cdot \frac{P \cdot R}{P + R}$</li>
+</ul>
+
+<p>Lecture : <em>la moyenne harmonique est "punitive" : si $P$ ou $R$ est proche de 0, le $F_1$ est aussi proche de 0. Elle force un équilibre entre précision et rappel.</em></p>
+
+<ul>
+<li><strong>ROC-AUC</strong> : invariant au seuil, mesure la capacité à ranger les classes</li>
+<li><strong>PR-AUC</strong> : meilleur que ROC-AUC pour les classes très déséquilibrées</li>
+<li><strong>Matthews correlation coefficient</strong> : équilibre les 4 quadrants de la confusion matrix</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Anti-pattern</strong> : appliquer SMOTE sur le dataset complet avant le split. Vous créez des doublons qui contaminent le test set, gonflant artificiellement les scores. Toujours splitter d'abord, puis appliquer SMOTE <strong>uniquement sur le train</strong>. C'est exactement le rôle des Pipelines sklearn-imblearn.</p></div></div>
+
+<h3 id="syn-data-leakage-le-bug-invisible">Data leakage : le bug invisible</h3>
+
+<p>Le data leakage se produit quand des informations du test set (ou du futur, en time series) <strong>fuient</strong> dans l'entraînement. Symptôme : votre modèle a un score parfait en validation et flop en production.</p>
+
+<p>Cinq causes courantes :</p>
+
+<ol>
+<li><strong>Imputer/scaler fitté sur train+test</strong> : la moyenne globale connaît les valeurs du test. Solution : Pipeline sklearn qui isole.</li>
+</ol>
+
+<ol>
+<li><strong>Target encoding fait avant le split</strong> : la moyenne par catégorie inclut les targets du test. Solution : faire le target encoding dans une CV interne.</li>
+</ol>
+
+<ol>
+<li><strong>Features dérivées du futur</strong> : "nombre de commandes des 30 prochains jours" est un cheat évident — mais "moyenne des achats" calculée sur tout le dataset (incluant le futur) l'est aussi de manière plus subtile.</li>
+</ol>
+
+<ol>
+<li><strong>Split aléatoire sur des données temporelles</strong> : si vous mélangez avant de splitter, vous testez sur le passé en vous entraînant sur le futur. Solution : split chronologique (<code>TimeSeriesSplit</code>).</li>
+</ol>
+
+<ol>
+<li><strong>Duplicates entre train et test</strong> : des lignes identiques (ou quasi-identiques) dans les deux sets gonflent l'accuracy. Vérifiez <code>df.duplicated().sum()</code> et dédupliquez avant de splitter.</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Vérification anti-leakage systématique après split
+assert set(train_ids).isdisjoint(test_ids)            # aucun id en commun
+assert df_train.index.max() &lt; df_test.index.min()     # chronologique si time-series
+assert df[&#x27;user_id&#x27;].duplicated().sum() == 0 or ...    # groupes disjoints si groupé</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : le data leakage, c'est comme si un étudiant trichait pendant un examen en regardant les réponses du voisin. Sa note est excellente — mais il n'a rien appris, et il échouera à l'examen suivant. C'est pourquoi un "score trop beau pour être vrai" doit déclencher une enquête sur le pipeline avant d'être célébré.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Vous appliquez <code>StandardScaler().fit_transform(X)</code> puis vous splittez en train/test. Pourquoi est-ce une erreur ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Leakage par fuite des stats globales.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Parce que la moyenne et l'écart-type calculés par <code>fit</code> portent sur <strong>l'ensemble</strong> des données, y compris le test. Le scaler "connaît" donc partiellement le test set. Quand vous évaluez votre modèle sur ce test, le score est artificiellement optimiste.</p>
+
+<p>La bonne séquence :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># (1) split d&#x27;abord
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# (2) fit sur train uniquement
+scaler = StandardScaler()
+scaler.fit(X_train)                                   # stats calculées sur train seul
+
+# (3) transform sur train ET test avec les MÊMES stats du train
+X_train_scaled = scaler.transform(X_train)
+X_test_scaled = scaler.transform(X_test)              # PAS de re-fit</code></pre></div>
+
+
+<p>C'est exactement pour automatiser cette discipline qu'on utilise des <strong>Pipelines sklearn</strong> : ils encapsulent le scaler et le modèle, et <code>fit_transform</code> n'est appelé que sur le train lors de <code>pipe.fit(X_train, y_train)</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Version sans piège avec Pipeline
+from sklearn.pipeline import Pipeline
+pipe = Pipeline([
+    (&quot;scaler&quot;, StandardScaler()),
+    (&quot;model&quot;, LogisticRegression()),
+])
+pipe.fit(X_train, y_train)        # fit scaler + model sur train uniquement
+pipe.score(X_test, y_test)        # scaler appliqué automatiquement au test</code></pre></div>
+
+
+<p>La même règle vaut pour TOUT preprocessing avec apprentissage : imputer, encoder, PCA, feature selection. Question d'entretien data science classique pour vérifier qu'un candidat évite le leakage.</p>
+
+</details>
+
+<p><strong>Q2 : Vous avez 95% d'accuracy sur un problème de détection de fraude (1% de fraudes dans le dataset). Le modèle est-il bon ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Baseline triviale à calculer.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Très probablement non. Un classifieur trivial qui prédit toujours "non-fraude" obtient déjà <strong>99% d'accuracy</strong> parce que 99% des transactions sont légitimes. Votre modèle à 95% est donc <em>moins bon</em> que la baseline triviale.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Baseline triviale à toujours calculer en premier
+from sklearn.dummy import DummyClassifier
+baseline = DummyClassifier(strategy=&quot;most_frequent&quot;)
+baseline.fit(X_train, y_train)
+print(baseline.score(X_test, y_test))    # 0.99 sur un dataset 1% de fraudes</code></pre></div>
+
+
+<p>Pour évaluer correctement, regardez :</p>
+
+<ol>
+<li><strong>Recall</strong> sur la classe positive : combien de vraies fraudes vous détectez. $R = \frac{TP}{TP + FN}$</li>
+</ol>
+
+<p>Lecture : <em>parmi toutes les fraudes réelles, combien ai-je détectées ? 0 faux négatif = recall 1.</em></p>
+
+<ol>
+<li><strong>Precision</strong> : combien de vos alertes sont de vraies fraudes. $P = \frac{TP}{TP + FP}$</li>
+</ol>
+
+<p>Lecture : <em>parmi toutes mes alertes, combien sont réellement des fraudes ? 0 faux positif = precision 1.</em></p>
+
+<ol>
+<li><strong>F1-score</strong> ou <strong>PR-AUC</strong> qui combinent les deux</li>
+<li><strong>Confusion matrix</strong> : combien de vrais/faux positifs/négatifs en absolu</li>
+</ol>
+
+<p>Pour des problèmes très déséquilibrés, la PR-AUC (Precision-Recall AUC) est strictement supérieure à la ROC-AUC parce qu'elle ne se laisse pas berner par le grand nombre de vrais négatifs (qui gonflent le dénominateur du ROC).</p>
+
+<p><strong>Règle d'or</strong> : sur un dataset déséquilibré, ne JAMAIS rapporter l'accuracy seule. C'est le premier réflexe à acquérir en entretien.</p>
+
+</details>
+
+<p><strong>Q3 : Vous voulez encoder une colonne <code>country</code> avec 200 valeurs uniques. OneHot crée 200 colonnes. Quelles sont trois alternatives plus économes ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Target et agrégation.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>(1) Target encoding</strong> : remplacer chaque pays par la moyenne de la cible pour ce pays. Cela compresse 200 colonnes en une seule. Attention au leakage : faire le target encoding dans une cross-validation interne (<code>category_encoders.TargetEncoder</code> le fait correctement).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from category_encoders import TargetEncoder
+te = TargetEncoder(cols=[&quot;country&quot;], smoothing=10)
+X_train_enc = te.fit_transform(X_train, y_train)
+X_test_enc = te.transform(X_test)
+# 1 colonne au lieu de 200, capture le &quot;signal&quot; de chaque pays</code></pre></div>
+
+
+<p><strong>(2) Frequency encoding</strong> : remplacer chaque pays par sa fréquence dans le dataset. Trivial, sans leakage, capture l'information "pays courant vs rare".</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">freq = df[&quot;country&quot;].value_counts(normalize=True)
+df[&quot;country_freq&quot;] = df[&quot;country&quot;].map(freq)
+# France → 0.25, Germany → 0.15, ..., Tuvalu → 0.0001</code></pre></div>
+
+
+<p><strong>(3) Regroupement</strong> : garder les top 20 pays en One-Hot et regrouper les 180 autres en "Other". Compromis simple et lisible.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">top_20 = df[&quot;country&quot;].value_counts().head(20).index
+df[&quot;country_grouped&quot;] = df[&quot;country&quot;].where(df[&quot;country&quot;].isin(top_20), &quot;Other&quot;)
+# → 21 catégories au lieu de 200, puis OneHot classique</code></pre></div>
+
+
+<p><strong>(4) Embedding</strong> : pour les modèles deep learning, apprendre un vecteur dense de dimension 8-32 par pays directement dans le réseau (<code>nn.Embedding</code>). C'est la solution la plus puissante mais nécessite un réseau de neurones.</p>
+
+<p>Le choix dépend du modèle et du dataset : Random Forest avec target encoding marche très bien, deep learning avec embedding est state-of-the-art pour les très hautes cardinalités (IDs produits, etc.).</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Feature Engineering for Machine Learning</em> (Alice Zheng & Amanda Casari) — référence</li>
+<li><a href="https://scikit-learn.org/stable/modules/preprocessing.html" target="_blank" rel="noopener">scikit-learn — Preprocessing</a></li>
+<li><a href="https://imbalanced-learn.org/" target="_blank" rel="noopener">imbalanced-learn</a> — boîte à outils SMOTE et Co</li>
+<li><a href="https://contrib.scikit-learn.org/category_encoders/" target="_blank" rel="noopener">category_encoders</a> — au-delà du OneHot</li>
+<li><em>The Hundred-Page Machine Learning Book</em> (Andriy Burkov) — chapitre 5 sur le preprocessing</li>
+<li><a href="https://www.kaggle.com/learn/data-cleaning" target="_blank" rel="noopener">Kaggle — Data Cleaning</a></li>
+<li><a href="https://www.kaggle.com/learn/feature-engineering" target="_blank" rel="noopener">Kaggle — Feature Engineering</a></li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../sql-avance/sql-advanced.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← SQL (avancé)</span>
+  </a>
+  <a href="../data-engineering/data-viz.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Data Viz & Dashboarding →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logistic Regression — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Logistic Regression</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html" class="active">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Machine Learning</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Logistic Regression</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Logistic Regression</h1>
+        <p class="page-objective">Comprendre la régression logistique pour prédire des outcomes binaires — modéliser une probabilité via la fonction sigmoïde, interpréter les coefficients en log-odds et odds, évaluer la performance avec le pseudo R², et détecter la multicolinéarité avec le VIF.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Sigmoïde</div>
+        <div class="key-concept-def">Fonction $\sigma(z) = 1 / (1+e^{-z})$ qui mappe $\mathbb{R}$ vers $(0,1)$.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Log-odds</div>
+        <div class="key-concept-def">Logarithme du rapport $p/(1-p)$ ; linéaire en les features.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Log-loss</div>
+        <div class="key-concept-def">Fonction de coût utilisée pour entraîner la régression logistique.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Decision threshold</div>
+        <div class="key-concept-def">Seuil sur la probabilité prédite pour décider de la classe.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-logistic-regression">Cheatsheet — Logistic Regression</a><ol><li><a href="#fonctions-mathématiques-clés">Fonctions mathématiques clés</a></li><li><a href="#modèle-logistique-avec-statsmodels">Modèle logistique avec statsmodels</a></li><li><a href="#interpréter-les-coefficients">Interpréter les coefficients</a></li><li><a href="#évaluation-du-modèle">Évaluation du modèle</a></li><li><a href="#détecter-la-multicolinéarité-vif">Détecter la multicolinéarité — VIF</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-rappels-mathématiques-logarithmes-et-probabilités">1) Rappels mathématiques — Logarithmes et probabilités</a><ol><li><a href="#11-logarithmes-essentiels">1.1 Logarithmes essentiels</a></li><li><a href="#12-probabilité-odds-et-log-odds">1.2 Probabilité, Odds et Log-Odds</a></li><li><a href="#13-problème-à-résoudre">1.3 Problème à résoudre</a></li></ol></li><li><a href="#2-la-régression-logistique-fondements">2) La régression logistique — Fondements</a><ol><li><a href="#21-du-problème-aux-log-odds">2.1 Du problème aux log-odds</a></li><li><a href="#22-comment-trouver-les-meilleurs-β-maximum-de-vraisemblance">2.2 Comment trouver les meilleurs β ? — Maximum de Vraisemblance</a></li><li><a href="#23-calibration">2.3 Calibration</a></li></ol></li><li><a href="#3-interpréter-les-coefficients-dataset-titanic">3) Interpréter les coefficients — Dataset Titanic</a><ol><li><a href="#31-sans-feature-intercept-seul">3.1 Sans feature — intercept seul</a></li><li><a href="#32-avec-une-feature-continue-fare">3.2 Avec une feature continue (fare)</a></li><li><a href="#33-avec-une-feature-catégorielle-pclass">3.3 Avec une feature catégorielle (pclass)</a></li><li><a href="#34-avec-plusieurs-features">3.4 Avec plusieurs features</a></li></ol></li><li><a href="#4-évaluer-la-performance">4) Évaluer la performance</a><ol><li><a href="#41-inférence-statistique">4.1 Inférence statistique</a></li><li><a href="#42-goodness-of-fit-pseudo-r²">4.2 Goodness-of-fit — Pseudo R²</a></li></ol></li><li><a href="#5-multicolinéarité-dans-les-modèles-linéaireslogistiques">5) Multicolinéarité dans les modèles linéaires/logistiques</a><ol><li><a href="#51-multicolinéarité-stricte">5.1 Multicolinéarité stricte</a></li><li><a href="#52-multicolinéarité-forte-non-stricte">5.2 Multicolinéarité forte (non stricte)</a></li><li><a href="#53-détecter-la-multicolinéarité-vif">5.3 Détecter la multicolinéarité — VIF</a></li></ol></li><li><a href="#6-récapitulatif-comparaison-ols-vs-logit">6) Récapitulatif — Comparaison OLS vs Logit</a><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-logistic-regression">📋 Cheatsheet — Logistic Regression</h2>
+
+<h3 id="fonctions-mathématiques-clés">Fonctions mathématiques clés</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+## Fonction logistique (sigmoid) : transforme un score en probabilité ∈ [0, 1]
+def sigmoid(x): return 1 / (1 + np.exp(-x))
+
+## Logit (inverse du sigmoid) : transforme une probabilité en log-odds ∈ [-∞, +∞]
+def logit(p): return np.log(p / (1 - p))
+
+## Conversion probabilité → odds → log-odds
+p = 0.9
+odds = p / (1 - p)          # odds = 9 (pour 90%)
+log_odds = np.log(odds)      # log-odds = 2.197
+
+## Conversion log-odds → probabilité
+log_odd = -0.47
+odds = np.exp(log_odd)       # odds = 0.62
+p = odds / (1 + odds)        # p = 0.38 → 38% de chances</code></pre></div>
+
+
+<h3 id="modèle-logistique-avec-statsmodels">Modèle logistique avec statsmodels</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import statsmodels.formula.api as smf
+import seaborn as sns
+
+titanic = sns.load_dataset(&quot;titanic&quot;)    # charge le dataset Titanic
+
+## Sans feature : juste l&#x27;intercept (= log-odds de la moyenne)
+model1 = smf.logit(formula=&#x27;survived ~ 1&#x27;, data=titanic).fit()
+
+## Avec une feature continue
+model2 = smf.logit(formula=&#x27;survived ~ fare&#x27;, data=titanic).fit()
+
+## Avec une feature catégorielle (C() encode en dummies automatiquement)
+model3 = smf.logit(formula=&#x27;survived ~ C(pclass)&#x27;, data=titanic).fit()
+
+## Avec plusieurs features mixtes
+model4 = smf.logit(formula=&#x27;survived ~ fare + C(sex) + age&#x27;, data=titanic).fit()
+
+model4.params      # coefficients β (en log-odds)
+model4.summary()   # tableau complet : coefs, std err, z, p-value, IC 95%</code></pre></div>
+
+
+<h3 id="interpréter-les-coefficients">Interpréter les coefficients</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Coefficient β → log-odds
+## exp(β) → odds ratio (multiplicateur d&#x27;odds)
+
+coef = model2.params[&#x27;fare&#x27;]         # β = 0.015 (log-odds)
+odds_ratio = np.exp(coef)            # exp(0.015) = 1.015 → +1.5% d&#x27;odds par dollar supplémentaire
+
+## Intercept seul (sans feature)
+beta0 = model1.params[&#x27;Intercept&#x27;]   # = log-odds global (ex: -0.47)
+odds = np.exp(beta0)                 # = 0.62
+p = odds / (1 + odds)                # = 38% → taux de survie moyen</code></pre></div>
+
+
+<h3 id="évaluation-du-modèle">Évaluation du modèle</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model4.llf          # log-likelihood : ∈ (-∞, 0], plus proche de 0 = meilleur
+model4.llnull       # log-likelihood du modèle nul (prédit juste la moyenne)
+model4.prsquared    # pseudo R² de McFadden : 1 - LL(model) / LL(null) ∈ [0, 1]</code></pre></div>
+
+
+<h3 id="détecter-la-multicolinéarité-vif">Détecter la multicolinéarité — VIF</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.stats.outliers_influence import variance_inflation_factor as vif
+
+## Toujours scaler les données avant de calculer le VIF
+mpg_scaled = (mpg - mpg.mean()) / mpg.std()   # standardisation z-score
+
+## Calculer le VIF pour chaque feature
+df_vif = pd.DataFrame()
+df_vif[&quot;features&quot;] = mpg_scaled.columns
+df_vif[&quot;vif_index&quot;] = [vif(mpg_scaled.values, i) for i in range(mpg_scaled.shape[1])]
+
+## Règle de décision : VIF ≥ 10 → multicolinéarité préoccupante
+## Vérifier aussi le rang de la matrice
+np.linalg.matrix_rank(X)   # doit = nombre de features</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Interpréter les coefficients comme des probabilités directes</strong></p>
+<p>❌ β = 0.015 → "fare augmente la probabilité de survie de 1.5%"</p>
+<p>✅ β = 0.015 → "fare augmente les <strong>log-odds</strong> de 0.015" — exp(0.015) = 1.015 → odds multipliés par 1.015</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre log-odds, odds et probabilité</strong></p>
+<p>❌ Intercept = -0.47 → "38% de chance de survie" (raccourci incorrect)</p>
+<p>✅ log-odds = -0.47 → odds = exp(-0.47) = 0.62 → p = 0.62 / 1.62 = <strong>38%</strong> (conversion en 2 étapes)</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser R² classique pour évaluer une régression logistique</strong></p>
+<p>❌ Regarder le R² comme en régression linéaire</p>
+<p>✅ Utiliser le <strong>pseudo R²</strong> : <code>model.prsquared</code> — valeur ∈ [0, 1], utile pour comparer des modèles sur les mêmes données</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Ne pas détecter la multicolinéarité avec la matrice de corrélation seule</strong></p>
+<p>❌ Regarder uniquement les paires de corrélation pour détecter la multicolinéarité</p>
+<p>✅ La corrélation ne détecte que la colinéarité <strong>bivariée</strong> — utiliser le <strong>VIF</strong> pour la multicolinéarité multiple</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier de scaler les features avant de calculer le VIF</strong></p>
+<p>❌ <code>vif(mpg.values, i)</code> sur données brutes → résultats biaisés</p>
+<p>✅ Toujours standardiser : <code>mpg_scaled = (mpg - mpg.mean()) / mpg.std()</code> avant le calcul du VIF</p></div></div>
+
+<hr>
+
+<h2 id="1-rappels-mathématiques-logarithmes-et-probabilités">1) Rappels mathématiques — Logarithmes et probabilités</h2>
+
+<h3 id="11-logarithmes-essentiels">1.1 Logarithmes essentiels</h3>
+
+<div class="katex-display">$$log_2(8) = 3 qquad log_2!left(tfrac{1}{2}right) = -1 qquad ln(5) = log_e(5) approx 1.6 qquad e^0 = 2^0 = 1$$</div>
+
+<h3 id="12-probabilité-odds-et-log-odds">1.2 Probabilité, Odds et Log-Odds</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Formule</th><th>Exemple (p = 0.9)</th></tr></thead><tbody><tr><td>Probabilité</td><td>p ∈ [0, 1]</td><td>0.9</td></tr><tr><td>Odds</td><td>p / (1 − p)</td><td>0.9 / 0.1 = <strong>9</strong></td></tr><tr><td>Log-Odds (logit)</td><td>log(p / (1 − p))</td><td>log(9) ≈ <strong>2.197</strong></td></tr></tbody></table></div>
+<p>La fonction <strong>Logit</strong> fait le lien entre probabilité et log-odds :</p>
+
+<div class="katex-display">$$text{logit}(p) = log!left(frac{p}{1-p}right) in (-infty, +infty)$$</div>
+
+<h3 id="13-problème-à-résoudre">1.3 Problème à résoudre</h3>
+
+<p>Prédire un <strong>outcome binaire</strong> (0 ou 1) :</p>
+
+<ul>
+<li>Win / Loss, Succès / Échec, <code>dim_is_one_star</code> ou non</li>
+</ul>
+
+<p>Plutôt que de fitter une droite <code>linreg(x) = β₀ + β₁X</code> (valeurs non bornées), on cherche à fitter la meilleure <strong>fonction sigmoïde</strong> :</p>
+
+<div class="katex-display">$$hat{y} = text{sigmoid}(x) = frac{1}{1 + e^{-(beta_0 + beta_1 x)}} in [0, 1]$$</div>
+
+<figure><img src="../../assets/images/logistic-regression-01-b0129a92.png" alt="" loading="lazy"></figure>
+
+<p>Ensuite on fixe un <strong>seuil de classification</strong> (par défaut 50%) :</p>
+
+<ul>
+<li>🔴 ŷ > 0.5 → classé <strong>1</strong></li>
+<li>🔵 ŷ < 0.5 → classé <strong>0</strong></li>
+</ul>
+
+<hr>
+
+<h2 id="2-la-régression-logistique-fondements">2) La régression logistique — Fondements</h2>
+
+<h3 id="21-du-problème-aux-log-odds">2.1 Du problème aux log-odds</h3>
+
+<p>Exemple : Barcelone Women's Football Team. On a les probabilités de victoire pour chaque match, les odds correspondants, puis les <strong>log-odds</strong>.</p>
+
+<p>La régression logistique modélise directement les <strong>log-odds</strong> comme une fonction linéaire de X :</p>
+
+<div class="katex-display">$$log!left(frac{p}{1-p}right) = beta_0 + beta_1 X$$</div>
+
+<p>Ce qui donne en probability space (en appliquant le sigmoid) :</p>
+
+<div class="katex-display">$$hat{p} = frac{1}{1 + e^{-(beta_0 + beta_1 X)}}$$</div>
+
+<figure><img src="../../assets/images/logistic-regression-02-3273be69.png" alt="" loading="lazy"></figure>
+
+<h3 id="22-comment-trouver-les-meilleurs-β-maximum-de-vraisemblance">2.2 Comment trouver les meilleurs β ? — Maximum de Vraisemblance</h3>
+
+<p>On ne peut pas minimiser les SSR comme en OLS (pas de résidus gaussiens). On cherche plutôt les β qui <strong>maximisent la vraisemblance</strong> (<em>likelihood</em>) d'observer les données.</p>
+
+<p><strong>La vraisemblance</strong> = probabilité combinée d'observer tous les résultats yᵢ :</p>
+
+<div class="katex-display">$$L(beta) = prod_{i=1}^{n} hat{y}_i^{y_i} cdot (1 - hat{y}_i)^{1 - y_i}$$</div>
+
+<p>Exemple pour y = [1, 0, 1, 0, 1, 1] et ŷ = [0.99, 0.02, 0.97, 0.04, 0.91, 0.89] :</p>
+
+<div class="katex-display">$$L(beta) = 0.99 times (1 - 0.02) times 0.97 times (1 - 0.04) times 0.91 times 0.89$$</div>
+
+<ul>
+<li>L(β) ∈ [0, 1] — plus proche de 1 = meilleur modèle</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>En pratique, on <strong>maximise le log-likelihood</strong> (même optimum, mais convexe et numériquement stable) :</p>
+<p><div class="katex-display">$$ell(beta) = sum_{i} left[ y_i log(hat{y}_i) + (1-y_i)log(1-hat{y}_i) right] in (-infty, 0]$$</div></p></div></div>
+
+<p>👉 <a href="https://github.com/lewagon/data-images/blob/master/decision-science/likelihood-logisitc.png?raw=true" target="_blank" rel="noopener">Explication visuelle likelihood logistique</a></p>
+
+<h3 id="23-calibration">2.3 Calibration</h3>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Les classifieurs logistiques sont des classifieurs <strong>calibrés</strong> : pour 100 observations prédites à ŷ ≈ 0.95, ~95 auront effectivement y = 1. La probabilité prédite a un sens réel.</p></div></div>
+
+<hr>
+
+<h2 id="3-interpréter-les-coefficients-dataset-titanic">3) Interpréter les coefficients — Dataset Titanic</h2>
+
+<h3 id="31-sans-feature-intercept-seul">3.1 Sans feature — intercept seul</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">titanic = sns.load_dataset(&quot;titanic&quot;)
+
+## Modèle intercept uniquement : log-odds = β₀
+model1 = smf.logit(formula=&#x27;survived ~ 1&#x27;, data=titanic).fit()
+model1.params</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+Intercept   -0.473288
+dtype: float64</code></pre></div>
+
+
+<p>Conversion log-odds → probabilité :</p>
+
+<div class="katex-display">$$text{log-odds} = log!left(frac{p}{1-p}right) = -0.47 implies text{odds} = e^{-0.47} = 0.62 implies p = frac{0.62}{1+0.62} = 38%$$</div>
+
+<p>→ Taux de survie moyen = <strong>38%</strong> ✓</p>
+
+<h3 id="32-avec-une-feature-continue-fare">3.2 Avec une feature continue (fare)</h3>
+
+<div class="katex-display">$$text{survived} sim beta_0 + beta_{text{fare}} cdot text{fare}$$</div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model2 = smf.logit(formula=&#x27;survived ~ fare&#x27;, data=titanic).fit()
+model2.params</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+Intercept   -0.941330
+fare         0.015197
+dtype: float64</code></pre></div>
+
+
+<p><strong>Interprétation β_fare = 0.015 :</strong></p>
+
+<div class="katex-display">$$e^{0.015} = 1.015 implies text{"Chaque dollar supplémentaire de fare multiplie les odds de survie par 1.015 (+1.5%)"}$$</div>
+
+<h3 id="33-avec-une-feature-catégorielle-pclass">3.3 Avec une feature catégorielle (pclass)</h3>
+
+<div class="katex-display">$$text{survived} sim beta_0 + beta_{text{pclass}} cdot text{pclass}$$</div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model3 = smf.logit(formula=&#x27;survived ~ C(pclass)&#x27;, data=titanic).fit()
+model3.params</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+Intercept         0.530628     # log-odds de survie en 1ère classe (référence)
+C(pclass)[T.2]   -0.639431     # différence de log-odds 2ème vs 1ère classe
+C(pclass)[T.3]   -1.670399     # différence de log-odds 3ème vs 1ère classe
+dtype: float64</code></pre></div>
+
+
+<p><strong>Interprétation C(pclass)[T.2] = -0.63 :</strong></p>
+
+<div class="katex-display">$$log(text{odds}_2) - log(text{odds}_1) = -0.63 implies frac{text{odds}_1}{text{odds}_2} = e^{0.63} = 1.87$$</div>
+
+<p>→ Les odds de survie en 2ème classe sont <strong>divisés par 1.87</strong> par rapport à la 1ère classe.</p>
+
+<h3 id="34-avec-plusieurs-features">3.4 Avec plusieurs features</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model4 = smf.logit(formula=&#x27;survived ~ fare + C(sex) + age&#x27;, data=titanic).fit()
+model4.params</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+Intercept         0.934841
+C(sex)[T.male]   -2.347599    # être homme réduit les log-odds de 2.35 vs femme
+fare              0.012773     # chaque dollar de fare augmente les log-odds de 0.013
+age              -0.010570     # chaque année d&#x27;âge réduit les log-odds de 0.011
+dtype: float64</code></pre></div>
+
+
+<p>→ exp(-2.35) = 0.095 : <strong>les odds de survie d'un homme sont ~10 fois inférieures</strong> à celles d'une femme, toutes choses égales.</p>
+
+<hr>
+
+<h2 id="4-évaluer-la-performance">4) Évaluer la performance</h2>
+
+<h3 id="41-inférence-statistique">4.1 Inférence statistique</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model4.summary()   # tableau complet incluant z-score et p-values</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Métrique</th><th>OLS (linéaire)</th><th>Logit</th></tr></thead><tbody><tr><td>Test</td><td>t-score</td><td><strong>z-score</strong></td></tr><tr><td>Pourquoi ?</td><td>Variance estimée</td><td>Variance connue : σ² = p(1−p)</td></tr><tr><td>p-value</td><td>idem</td><td>idem</td></tr><tr><td>IC 95%</td><td>idem</td><td>idem</td></tr></tbody></table></div>
+<p><strong>Conditions d'inférence pour la logistique — moins strictes qu'OLS :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Condition</th><th>Requise ?</th></tr></thead><tbody><tr><td>Échantillonnage aléatoire</td><td>✅ Oui</td></tr><tr><td>Échantillonnage indépendant</td><td>✅ Oui</td></tr><tr><td>Résidus normaux et homoscédastiques</td><td>❌ Non requis</td></tr></tbody></table></div>
+<h3 id="42-goodness-of-fit-pseudo-r²">4.2 Goodness-of-fit — Pseudo R²</h3>
+
+<p>Le <strong>log-likelihood</strong> joue le même rôle que la SSR en régression linéaire :</p>
+
+<div class="katex-display">$$ell(beta) = log!left(prod_i hat{y}_i^{y_i}(1-hat{y}_i)^{1-y_i}right) in (-infty, 0] quad text{(plus proche de 0 = meilleur)}$$</div>
+
+<p>Le <strong>Pseudo R² de McFadden</strong> est l'analogue du R² :</p>
+
+<div class="katex-display">$$text{Pseudo } R^2 = 1 - frac{ell(text{modèle})}{ell(text{modèle nul})} in [0, 1]$$</div>
+
+<figure><img src="../../assets/images/logistic-regression-03-7e59a9ac.png" alt="Log likelihood calculation" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model4.prsquared    # → 0.2576 : le modèle explique 25.8% de la log-vraisemblance
+model4.llf          # log-likelihood du modèle : -358.04
+model4.llnull       # log-likelihood nul : -482.26</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le Pseudo R² est utile pour <strong>comparer des modèles sur les mêmes données</strong>, mais moins interprétable que le R² linéaire. Deux prédictions proches (0.49 vs 0.51) donnent des classifications opposées !</p></div></div>
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>Les métriques de classification avancées (accuracy, precision, recall, f1_score, AUC-ROC...) seront vues pendant le module Machine Learning.</p></div></div>
+
+<hr>
+
+<h2 id="5-multicolinéarité-dans-les-modèles-linéaireslogistiques">5) Multicolinéarité dans les modèles linéaires/logistiques</h2>
+
+<h3 id="51-multicolinéarité-stricte">5.1 Multicolinéarité stricte</h3>
+
+<p>Si une feature Xₖ est une combinaison linéaire exacte d'autres features (ex: X₃ = X₁ + X₂), la <strong>matrice X n'est pas de rang plein</strong> → impossible d'inverser X'X → pas de solution unique.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">A = np.array([[1., 0., 1.], [0., 1., 1.], [0., 0., 0.]])
+B = np.array([[1., 0., 0.], [0., 1., 0.], [0., 0., 1.]])
+
+np.linalg.matrix_rank(A)   # → 2 (C3 = C1 + C2 → non plein rang !)
+np.linalg.matrix_rank(B)   # → 3 (plein rang ✓)</code></pre></div>
+
+
+<p><strong>Conséquence pratique : les coefficients explosent à la moindre variation des données :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Feature artificielle : combinaison linéaire exacte de cylinders et horsepower
+mpg[&#x27;lin_comb&#x27;] = 10 * mpg[&#x27;cylinders&#x27;] - 0.3 * mpg[&#x27;horsepower&#x27;]
+
+model = smf.ols(formula=&#x27;weight ~ cylinders + horsepower + lin_comb&#x27;, data=mpg).fit()
+## → coefficients normaux en apparence : [3.4, 16.8, 28.7]
+
+## Modifier un seul point de 1% sur horsepower...
+mpg.loc[0, &#x27;horsepower&#x27;] = mpg.loc[0, &#x27;horsepower&#x27;] * 1.01
+
+model = smf.ols(formula=&#x27;weight ~ cylinders + horsepower + lin_comb&#x27;, data=mpg).fit()
+## → coefficients explosent : [11398, -325, -1110] !!</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>statsmodels signale la multicolinéarité avec <code>Cond. No. = 5.84e+04</code> dans le summary → toujours vérifier ce nombre.</p></div></div>
+
+<h3 id="52-multicolinéarité-forte-non-stricte">5.2 Multicolinéarité forte (non stricte)</h3>
+
+<p>Même si le rang est plein, une forte corrélation entre features rend les coefficients instables :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Ajouter un peu de bruit pour casser la colinéarité stricte
+mpg[&#x27;lin_comb&#x27;] = mpg[&#x27;lin_comb&#x27;] + 0.05 * np.random.rand(mpg.shape[0])
+np.linalg.matrix_rank(mpg)   # → 7 (plein rang)
+
+## Mais les coefficients restent très sensibles aux données !</code></pre></div>
+
+
+<h3 id="53-détecter-la-multicolinéarité-vif">5.3 Détecter la multicolinéarité — VIF</h3>
+
+<p><strong>La matrice de corrélation ne suffit pas</strong> : elle ne détecte que la colinéarité <strong>bivariée</strong> entre 2 features.</p>
+
+<p>Le <strong>VIF (Variance Inflation Factor)</strong> mesure à quel point chaque feature est expliquée par les autres :</p>
+
+<div class="katex-display">$$text{VIF}(X_k) = frac{1}{1 - R^2_k}$$</div>
+
+<p>où R²ₖ = R² de la régression de Xₖ sur toutes les autres features.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.stats.outliers_influence import variance_inflation_factor as vif
+
+## ⚠️ Toujours scaler avant de calculer le VIF
+mpg_scaled = (mpg - mpg.mean()) / mpg.std()   # standardisation z-score
+
+## Calculer le VIF pour chaque feature
+df_vif = pd.DataFrame()
+df_vif[&quot;features&quot;] = mpg_scaled.columns
+df_vif[&quot;vif_index&quot;] = [vif(mpg_scaled.values, i) for i in range(mpg_scaled.shape[1])]
+df_vif.sort_values(&quot;vif_index&quot;, ascending=False)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output (exemple avec lin_comb = combinaison de cylinders + horsepower)
+##    features    vif_index
+## 1  cylinders   2091.85   ← très élevé → multicolinéarité !
+## 2  horsepower   943.73   ← très élevé
+## 6  lin_comb     668.13   ← très élevé
+## 3  weight        11.25   ← préoccupant
+## 0  mpg            5.24   ← acceptable
+## 4  acceleration   2.61   ← OK
+## 5  model_year     1.90   ← OK</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Règle de décision</strong> : VIF ≥ 10 → multicolinéarité préoccupante, envisager de supprimer ou transformer la feature.</p></div></div>
+
+<p><strong>Impact de la multicolinéarité :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Métrique</th><th>Impact</th></tr></thead><tbody><tr><td>Coefficients partiels des features colinéaires</td><td>⚠️ Instables et non fiables</td></tr><tr><td>p-values des features colinéaires</td><td>⚠️ Non fiables</td></tr><tr><td>R² global</td><td>✅ Pas d'impact</td></tr><tr><td>Coefficients des features non colinéaires</td><td>✅ Pas d'impact</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="6-récapitulatif-comparaison-ols-vs-logit">6) Récapitulatif — Comparaison OLS vs Logit</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Vérification</th><th>Description</th><th>OLS</th><th>Logit</th></tr></thead><tbody><tr><td>Goodness-of-fit</td><td>Qualité des prédictions</td><td>R²</td><td>Pseudo R²</td></tr><tr><td>Significativité statistique</td><td>Coefficients fiables ?</td><td>p-values + t-tests</td><td>p-values + z-tests</td></tr><tr><td>Conditions d'inférence</td><td>Peut-on faire confiance aux p-values ?</td><td>Graphiques des résidus</td><td>❌ Non requis</td></tr><tr><td>Multicolinéarité</td><td>Indépendance des features</td><td>VIF</td><td>VIF</td></tr></tbody></table></div>
+<p>👉 <a href="https://wagon-public-datasets.s3.amazonaws.com/data-science-images/lectures/decision-science/LogReg/log_reg_cheatsheet.png" target="_blank" rel="noopener">Summary logistique annoté complet</a></p>
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://www.youtube.com/playlist?list=PLblh5JKOoLUKxzEP5HA2d-Li7IJkHfXSe" target="_blank" rel="noopener">StatsQuest — Logistic Regression</a> (vidéos YouTube, très intuitif)</li>
+<li>👉 <a href="https://medium.com/towards-data-science/why-not-mse-as-a-loss-function-for-logistic-regression-589816b5e03c" target="_blank" rel="noopener">Why not MSE as loss for logistic regression?</a></li>
+<li>👉 <a href="https://github.com/lewagon/data-lecture-starters/blob/main/starters/04-Decision-Science_04-Logistic-Regression.ipynb" target="_blank" rel="noopener">Lecture notebook</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">🚀 Challenges</h2>
+
+<ul>
+<li><strong>Challenge 01</strong> : Appliquer la régression logistique sur les données Olist</li>
+<li><strong>Challenge 02</strong> : Répondre à la demande du CEO en 1.5 jours — analyser les notebooks, logiques et modèles construits jusqu'ici</li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-contexte-classer-pas-prédire-un-nombre">Contexte : classer, pas prédire un nombre</a></li><li><a href="#ref-lanalogie-fil-rouge-linterrupteur-flou">L'analogie fil rouge — l'interrupteur flou</a></li><li><a href="#ref-a-retenir">A retenir</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-probabilité-odds-et-log-odds">1. Probabilité, odds et log-odds</a><ol><li><a href="#ref-trois-façons-de-dire-la-même-chose">Trois façons de dire la même chose</a></li><li><a href="#ref-exemple-numérique-complet">Exemple numérique complet</a></li></ol></li><li><a href="#ref-2-la-fonction-sigmoïde-le-coeur-du-modèle">2. La fonction sigmoïde — le coeur du modèle</a><ol><li><a href="#ref-pourquoi-pas-une-droite-ordinaire">Pourquoi pas une droite ordinaire ?</a></li><li><a href="#ref-la-sigmoïde">La sigmoïde</a></li><li><a href="#ref-le-modèle-logistique-complet">Le modèle logistique complet</a></li><li><a href="#ref-le-seuil-de-classification">Le seuil de classification</a></li></ol></li><li><a href="#ref-3-comment-le-modèle-apprend-la-vraisemblance">3. Comment le modèle apprend — la vraisemblance</a><ol><li><a href="#ref-pas-de-résidus-comme-en-régression-linéaire">Pas de résidus comme en régression linéaire</a></li><li><a href="#ref-la-vraisemblance-intuition">La vraisemblance — intuition</a></li><li><a href="#ref-exemple-numérique">Exemple numérique</a></li><li><a href="#ref-en-pratique-le-log-likelihood">En pratique : le log-likelihood</a></li></ol></li><li><a href="#ref-4-interpréter-les-coefficients-dataset-titanic">4. Interpréter les coefficients — Dataset Titanic</a><ol><li><a href="#ref-41-modèle-intercept-seul-la-moyenne-de-base">4.1 Modèle intercept seul — la moyenne de base</a></li><li><a href="#ref-42-avec-une-variable-continue-le-prix-du-billet-fare">4.2 Avec une variable continue — le prix du billet (fare)</a></li><li><a href="#ref-43-avec-une-variable-catégorielle-la-classe-du-billet-pclass">4.3 Avec une variable catégorielle — la classe du billet (pclass)</a></li><li><a href="#ref-44-avec-plusieurs-variables-modèle-complet">4.4 Avec plusieurs variables — modèle complet</a></li></ol></li><li><a href="#ref-5-évaluer-la-performance-du-modèle">5. Évaluer la performance du modèle</a><ol><li><a href="#ref-51-inférence-statistique-z-scores-et-p-values">5.1 Inférence statistique — z-scores et p-values</a></li><li><a href="#ref-52-pseudo-r²-de-mcfadden-mesurer-la-qualité-globale">5.2 Pseudo R² de McFadden — mesurer la qualité globale</a></li></ol></li><li><a href="#ref-6-multicolinéarité-quand-les-variables-se-marchent-dessus">6. Multicolinéarité — quand les variables se marchent dessus</a><ol><li><a href="#ref-61-cest-quoi-le-problème">6.1 C'est quoi le problème ?</a></li><li><a href="#ref-62-multicolinéarité-stricte-la-matrice-non-inversible">6.2 Multicolinéarité stricte — la matrice non inversible</a></li><li><a href="#ref-63-pourquoi-la-matrice-de-corrélation-ne-suffit-pas">6.3 Pourquoi la matrice de corrélation ne suffit pas</a></li><li><a href="#ref-64-le-vif-détecter-la-multicolinéarité-multiple">6.4 Le VIF — détecter la multicolinéarité multiple</a></li><li><a href="#ref-65-ce-que-la-multicolinéarité-affecte-ou-pas">6.5 Ce que la multicolinéarité affecte (ou pas)</a></li></ol></li><li><a href="#ref-7-récapitulatif-ols-vs-logit">7. Récapitulatif — OLS vs Logit</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<h3 id="ref-contexte-classer-pas-prédire-un-nombre">Contexte : classer, pas prédire un nombre</h3>
+
+<p>Jusqu'ici, la régression linéaire te permettait de <strong>prédire un nombre</strong> : un prix, une température, une durée. Mais parfois la question n'est pas "combien ?" — c'est <strong>"oui ou non ?"</strong> :</p>
+
+<ul>
+<li>Ce mail est-il un <strong>spam</strong> ou non ?</li>
+<li>Ce patient est-il <strong>malade</strong> ou sain ?</li>
+<li>Ce passager du Titanic a-t-il <strong>survécu</strong> ou non ?</li>
+</ul>
+
+<p>C'est ce qu'on appelle la <strong>classification binaire</strong> : la sortie prend exactement deux valeurs, 0 ou 1. La régression logistique est l'un des algorithmes de base pour résoudre ce type de problème.</p>
+
+<h3 id="ref-lanalogie-fil-rouge-linterrupteur-flou">L'analogie fil rouge — l'interrupteur flou</h3>
+
+<p>Imagine un interrupteur : soit éteint (0), soit allumé (1). Mais en vrai, on ne te donne pas directement l'état final — on te donne une <strong>probabilité</strong> entre 0 et 1 : "il y a 80 % de chances que ce mail soit un spam". Tu décides ensuite de basculer l'interrupteur selon ce score.</p>
+
+<p>La régression logistique, c'est exactement ça : elle calcule une probabilité, et tu l'utilises pour décider.</p>
+
+<h3 id="ref-a-retenir">A retenir</h3>
+
+<ul>
+<li>La régression logistique prédit une <strong>probabilité</strong> entre 0 et 1, pas une valeur brute.</li>
+<li>Elle s'appuie sur la <strong>fonction sigmoïde</strong> pour "comprimer" n'importe quel score réel dans $[0, 1]$.</li>
+<li>Les coefficients du modèle s'interprètent en <strong>log-odds</strong>, pas directement en probabilité.</li>
+<li>La performance se mesure avec le <strong>pseudo $R^2$</strong> (et non le $R^2$ classique).</li>
+<li>La <strong>multicolinéarité</strong> entre variables peut rendre les coefficients inutilisables — on la détecte avec le <strong>VIF</strong>.</li>
+</ul>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li>Probabilité, odds, log-odds — les trois concepts fondamentaux</li>
+<li>La fonction sigmoïde — le coeur du modèle</li>
+<li>Comment le modèle apprend — la vraisemblance</li>
+<li>Interpréter les coefficients sur le Titanic</li>
+<li>Évaluer la performance — le pseudo $R^2$</li>
+<li>Détecter la multicolinéarité — le VIF</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-probabilité-odds-et-log-odds">1. Probabilité, odds et log-odds</h2>
+
+<h3 id="ref-trois-façons-de-dire-la-même-chose">Trois façons de dire la même chose</h3>
+
+<p>Supposons qu'un mail a <strong>90 %</strong> de chances d'être un spam.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Formule</th><th>Résultat pour $p = 0{,}9$</th></tr></thead><tbody><tr><td>Probabilité</td><td>$p \in [0, 1]$</td><td>$0{,}9$</td></tr><tr><td>Odds (cote)</td><td>$\dfrac{p}{1 - p}$</td><td>$\dfrac{0{,}9}{0{,}1} = 9$</td></tr><tr><td>Log-odds (logit)</td><td>$\log\!\left(\dfrac{p}{1-p}\right)$</td><td>$\log(9) \approx 2{,}197$</td></tr></tbody></table></div>
+<p><strong>Les odds</strong> expriment un rapport : "pour 9 mails spam, il y en a 1 non-spam". C'est le même principe que les cotes sportives.</p>
+
+<p><strong>Les log-odds</strong> (ou logit) prennent le logarithme de ces cotes. L'avantage : ils vont de $-\infty$ à $+\infty$, ce qui permet de les modéliser avec une droite linéaire.</p>
+
+<p>La fonction <strong>logit</strong> est la transformation officielle probabilité → log-odds :</p>
+
+<div class="katex-display">$$\text{logit}(p) = \log\!\left(\frac{p}{1-p}\right) \in (-\infty, +\infty)$$</div>
+
+<h3 id="ref-exemple-numérique-complet">Exemple numérique complet</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+p = 0.9                       # probabilité : 90 %
+odds = p / (1 - p)            # odds = 9.0
+log_odds = np.log(odds)       # log-odds ≈ 2.197
+
+print(odds)      # 9.0
+print(log_odds)  # 2.197</code></pre></div>
+
+
+<p>Et dans l'autre sens (log-odds → probabilité) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">log_odd = -0.47               # on part d&#x27;un log-odds négatif
+odds = np.exp(log_odd)        # odds = 0.624
+p = odds / (1 + odds)         # p ≈ 0.38 → 38 % de chances
+
+print(p)  # 0.384</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Retenir la chaîne de conversion : probabilité ↔ odds ↔ log-odds. On passe toujours par ces deux étapes pour interpréter les résultats du modèle.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-la-fonction-sigmoïde-le-coeur-du-modèle">2. La fonction sigmoïde — le coeur du modèle</h2>
+
+<h3 id="ref-pourquoi-pas-une-droite-ordinaire">Pourquoi pas une droite ordinaire ?</h3>
+
+<p>En régression linéaire, on modélise $\hat{y} = \beta_0 + \beta_1 X$. Si on applique ça directement à un problème de classification, rien n'empêche $\hat{y}$ de valoir $-5$ ou $200$ — ce n'est pas une probabilité !</p>
+
+<p>On a besoin d'une fonction qui <strong>comprime</strong> n'importe quel score réel dans l'intervalle $[0, 1]$.</p>
+
+<h3 id="ref-la-sigmoïde">La sigmoïde</h3>
+
+<div class="katex-display">$$\hat{p} = \text{sigmoid}(x) = \frac{1}{1 + e^{-x}}$$</div>
+
+<ul>
+<li>Si $x$ est très grand positif : $\hat{p} \to 1$</li>
+<li>Si $x$ est très grand négatif : $\hat{p} \to 0$</li>
+<li>Si $x = 0$ : $\hat{p} = 0{,}5$</li>
+</ul>
+
+<p>En Python :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def sigmoid(x):
+    return 1 / (1 + np.exp(-x))  # comprime x dans [0, 1]
+
+sigmoid(0)    # → 0.5
+sigmoid(3)    # → 0.952
+sigmoid(-3)   # → 0.047</code></pre></div>
+
+
+<h3 id="ref-le-modèle-logistique-complet">Le modèle logistique complet</h3>
+
+<p>La régression logistique remplace $x$ par la combinaison linéaire de tes variables :</p>
+
+<div class="katex-display">$$\hat{p} = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X)}}$$</div>
+
+<p>Ce qui est équivalent à dire :</p>
+
+<div class="katex-display">$$\log\!\left(\frac{\hat{p}}{1-\hat{p}}\right) = \beta_0 + \beta_1 X$$</div>
+
+<p>Autrement dit : <strong>les log-odds sont une fonction linéaire de $X$</strong>. La sigmoïde fait juste la conversion finale en probabilité.</p>
+
+<h3 id="ref-le-seuil-de-classification">Le seuil de classification</h3>
+
+<p>Une fois $\hat{p}$ calculé, on applique un seuil (par défaut 50 %) :</p>
+
+<ul>
+<li>$\hat{p} > 0{,}5$ → classé <strong>1</strong> (spam, malade, survécu...)</li>
+<li>$\hat{p} \leq 0{,}5$ → classé <strong>0</strong> (non-spam, sain, décédé...)</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le seuil de 50 % est une convention, pas une règle absolue. Dans certains problèmes (détection de cancer, fraude), on peut préférer un seuil plus bas pour "attraper" plus de cas positifs.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-comment-le-modèle-apprend-la-vraisemblance">3. Comment le modèle apprend — la vraisemblance</h2>
+
+<h3 id="ref-pas-de-résidus-comme-en-régression-linéaire">Pas de résidus comme en régression linéaire</h3>
+
+<p>En régression linéaire, on minimise la somme des carrés des résidus (SSR). En régression logistique, il n'y a pas de résidus continus — les $y$ valent 0 ou 1. On utilise une autre approche : la <strong>maximisation de vraisemblance</strong>.</p>
+
+<h3 id="ref-la-vraisemblance-intuition">La vraisemblance — intuition</h3>
+
+<p><strong>Idée</strong> : parmi tous les jeux de paramètres $\beta$ possibles, lequel rend mes observations les plus probables ?</p>
+
+<p>Si pour un passager qui a survécu ($y = 1$), mon modèle prédit $\hat{p} = 0{,}99$ — c'est un bon modèle. S'il prédit $\hat{p} = 0{,}02$ — c'est très mauvais.</p>
+
+<p>La <strong>vraisemblance</strong> est le produit des probabilités prédites pour chaque observation :</p>
+
+<div class="katex-display">$$L(\beta) = \prod_{i=1}^{n} \hat{y}_i^{y_i} \cdot (1 - \hat{y}_i)^{1 - y_i}$$</div>
+
+<p><strong>Décryptage</strong> : pour chaque observation $i$ —</p>
+<ul>
+<li>si $y_i = 1$ : on contribue $\hat{y}_i$ (la probabilité prédite d'être 1)</li>
+<li>si $y_i = 0$ : on contribue $1 - \hat{y}_i$ (la probabilité prédite d'être 0)</li>
+</ul>
+
+<h3 id="ref-exemple-numérique">Exemple numérique</h3>
+
+<p>Prenons 6 observations : $y = [1, 0, 1, 0, 1, 1]$ et les prédictions $\hat{y} = [0{,}99, 0{,}02, 0{,}97, 0{,}04, 0{,}91, 0{,}89]$.</p>
+
+<div class="katex-display">$$L(\beta) = 0{,}99 \times (1 - 0{,}02) \times 0{,}97 \times (1 - 0{,}04) \times 0{,}91 \times 0{,}89$$</div>
+
+<div class="katex-display">$$L(\beta) = 0{,}99 \times 0{,}98 \times 0{,}97 \times 0{,}96 \times 0{,}91 \times 0{,}89 \approx 0{,}733$$</div>
+
+<p>$L(\beta) \in [0, 1]$ — plus proche de 1, meilleur est le modèle.</p>
+
+<h3 id="ref-en-pratique-le-log-likelihood">En pratique : le log-likelihood</h3>
+
+<p>Les produits de petits nombres causent des problèmes numériques (dépassement de précision). On prend donc le <strong>logarithme</strong> de la vraisemblance :</p>
+
+<div class="katex-display">$$\ell(\beta) = \sum_{i} \left[ y_i \log(\hat{y}_i) + (1-y_i)\log(1-\hat{y}_i) \right] \in (-\infty, 0]$$</div>
+
+<p>Le logarithme transforme le produit en somme — beaucoup plus stable. Et comme $\log$ est croissant, maximiser $\ell(\beta)$ revient à maximiser $L(\beta)$.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le log-likelihood $\ell(\beta)$ joue le même rôle que la SSR en régression linéaire : c'est la "boussole" qui guide l'algorithme pour trouver les meilleurs paramètres $\beta$.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-interpréter-les-coefficients-dataset-titanic">4. Interpréter les coefficients — Dataset Titanic</h2>
+
+<p>On va utiliser les données du Titanic pour illustrer chaque cas. La variable à prédire est <code>survived</code> (1 = survécu, 0 = décédé).</p>
+
+<h3 id="ref-41-modèle-intercept-seul-la-moyenne-de-base">4.1 Modèle intercept seul — la moyenne de base</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import statsmodels.formula.api as smf
+import seaborn as sns
+
+titanic = sns.load_dataset(&quot;titanic&quot;)  # charge les données du Titanic
+
+# Modèle sans aucune variable : juste l&#x27;intercept
+# C&#x27;est le &quot;modèle nul&quot; — il prédit juste le taux de survie moyen
+model1 = smf.logit(formula=&#x27;survived ~ 1&#x27;, data=titanic).fit()
+model1.params</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Intercept   -0.473288
+dtype: float64</code></pre></div>
+
+
+<p>L'intercept $\beta_0 = -0{,}47$ est exprimé en <strong>log-odds</strong>. Pour retrouver la probabilité :</p>
+
+<div class="katex-display">$$\text{log-odds} = -0{,}47 \implies \text{odds} = e^{-0{,}47} = 0{,}624 \implies p = \frac{0{,}624}{1 + 0{,}624} = 38\%$$</div>
+
+<p>Le taux de survie moyen dans le dataset est bien <strong>38 %</strong>. L'intercept seul capture cette information.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La conversion se fait TOUJOURS en deux étapes : log-odds → odds (via exponentielle) → probabilité (via odds / (1 + odds)).</p></div></div>
+
+<h3 id="ref-42-avec-une-variable-continue-le-prix-du-billet-fare">4.2 Avec une variable continue — le prix du billet (fare)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Modèle avec une variable numérique continue
+model2 = smf.logit(formula=&#x27;survived ~ fare&#x27;, data=titanic).fit()
+model2.params</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Intercept   -0.941330
+fare         0.015197
+dtype: float64</code></pre></div>
+
+
+<p><strong>Comment interpréter $\beta_{\text{fare}} = 0{,}015$ ?</strong></p>
+
+<p>Ce coefficient est en log-odds. On prend son exponentielle pour obtenir un <strong>odds ratio</strong> :</p>
+
+<div class="katex-display">$$e^{0{,}015} = 1{,}015$$</div>
+
+<p>Lecture : "Chaque dollar supplémentaire dans le prix du billet <strong>multiplie les odds de survie par 1,015</strong> (+1,5 % par dollar)."</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>PIEGE CLASSIQUE : $\beta = 0{,}015$ ne signifie PAS "le prix augmente la probabilité de survie de 1,5 %". C'est l'effet sur les LOG-ODDS, pas sur la probabilité directement.</p></div></div>
+
+<h3 id="ref-43-avec-une-variable-catégorielle-la-classe-du-billet-pclass">4.3 Avec une variable catégorielle — la classe du billet (pclass)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># C() encode automatiquement la variable en variables indicatrices (dummies)
+# La 1ère classe (pclass=1) devient la référence
+model3 = smf.logit(formula=&#x27;survived ~ C(pclass)&#x27;, data=titanic).fit()
+model3.params</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Intercept         0.530628   # log-odds de survie en 1ère classe (référence)
+C(pclass)[T.2]   -0.639431   # DIFFÉRENCE de log-odds entre 2ème et 1ère classe
+C(pclass)[T.3]   -1.670399   # DIFFÉRENCE de log-odds entre 3ème et 1ère classe
+dtype: float64</code></pre></div>
+
+
+<p><strong>Interpréter <code>C(pclass)[T.2] = -0,63</code> :</strong></p>
+
+<div class="katex-display">$$\log(\text{odds}_2) - \log(\text{odds}_1) = -0{,}63 \implies \frac{\text{odds}_1}{\text{odds}_2} = e^{0{,}63} = 1{,}87$$</div>
+
+<p>Lecture : "Les odds de survie en 2ème classe sont <strong>divisées par 1,87</strong> par rapport à la 1ère classe."</p>
+
+<h3 id="ref-44-avec-plusieurs-variables-modèle-complet">4.4 Avec plusieurs variables — modèle complet</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Modèle avec fare (continue), sex (catégorielle), age (continue)
+model4 = smf.logit(formula=&#x27;survived ~ fare + C(sex) + age&#x27;, data=titanic).fit()
+model4.params</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Intercept         0.934841
+C(sex)[T.male]   -2.347599   # être homme réduit les log-odds de 2,35 vs femme
+fare              0.012773   # chaque dollar de fare augmente les log-odds de 0,013
+age              -0.010570   # chaque année d&#x27;âge réduit les log-odds de 0,011
+dtype: float64</code></pre></div>
+
+
+<p><strong>Interpréter <code>C(sex)[T.male] = -2,35</code> :</strong></p>
+
+<div class="katex-display">$$e^{-2{,}35} = 0{,}095$$</div>
+
+<p>Lecture : "Les odds de survie d'un homme sont <strong>10 fois inférieures</strong> à celles d'une femme (toutes choses égales par ailleurs)."</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>BONNE PRATIQUE : pour chaque coefficient, faire la conversion exp(β) → odds ratio → lire comme un multiplicateur des odds. Si exp(β) > 1 : effet positif. Si exp(β) < 1 : effet négatif.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-évaluer-la-performance-du-modèle">5. Évaluer la performance du modèle</h2>
+
+<h3 id="ref-51-inférence-statistique-z-scores-et-p-values">5.1 Inférence statistique — z-scores et p-values</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model4.summary()  # affiche le tableau complet des résultats</code></pre></div>
+
+
+<p>Pour chaque coefficient, le summary donne un <strong>z-score</strong> (et non un t-score comme en régression linéaire). La logique est la même :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Métrique</th><th>Régression linéaire (OLS)</th><th>Régression logistique</th></tr></thead><tbody><tr><td>Test de significativité</td><td>t-score</td><td><strong>z-score</strong></td></tr><tr><td>Pourquoi différent ?</td><td>Variance estimée</td><td>Variance connue : $\sigma^2 = p(1-p)$</td></tr><tr><td>P-value</td><td>identique</td><td>identique</td></tr><tr><td>Intervalle de confiance 95 %</td><td>identique</td><td>identique</td></tr></tbody></table></div>
+<p>Bonne nouvelle : la régression logistique a des <strong>conditions d'inférence moins strictes</strong> que l'OLS. On n'a pas besoin que les résidus soient normaux ou homoscédastiques.</p>
+
+<h3 id="ref-52-pseudo-r²-de-mcfadden-mesurer-la-qualité-globale">5.2 Pseudo R² de McFadden — mesurer la qualité globale</h3>
+
+<p>En régression linéaire, on utilisait le $R^2$ pour mesurer "quelle part de variance le modèle explique". En logistique, on n'a pas de variance à expliquer — on utilise le <strong>pseudo $R^2$ de McFadden</strong> :</p>
+
+<div class="katex-display">$$\text{Pseudo } R^2 = 1 - \frac{\ell(\text{modèle})}{\ell(\text{modèle nul})} \in [0, 1]$$</div>
+
+<ul>
+<li>$\ell(\text{modèle})$ : log-likelihood du modèle avec tes variables</li>
+<li>$\ell(\text{modèle nul})$ : log-likelihood d'un modèle sans aucune variable (juste la moyenne)</li>
+<li>Plus la valeur est proche de 1, mieux le modèle colle aux données</li>
+</ul>
+
+<p><strong>Intuition</strong> : si le modèle n'apporte rien, son log-likelihood = celui du modèle nul → pseudo $R^2 = 0$. S'il est parfait, $\ell(\text{modèle}) \to 0$ → pseudo $R^2 \to 1$.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model4.prsquared   # → 0.2576 : le modèle &quot;explique&quot; 25,8 % de la log-vraisemblance
+model4.llf         # log-likelihood du modèle  : -358.04
+model4.llnull      # log-likelihood nul         : -482.26</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le pseudo R² sert surtout à <strong>comparer deux modèles sur les mêmes données</strong>, pas à être interprété seul. Une valeur de 0.25 ne signifie pas "25 % de bonnes prédictions" — la logique n'est pas la même qu'en OLS.</p></div></div>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Des métriques comme l'accuracy, la précision, le recall ou l'AUC-ROC sont encore plus informatives pour évaluer un classifieur — elles seront abordées dans le module Machine Learning.</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-multicolinéarité-quand-les-variables-se-marchent-dessus">6. Multicolinéarité — quand les variables se marchent dessus</h2>
+
+<h3 id="ref-61-cest-quoi-le-problème">6.1 C'est quoi le problème ?</h3>
+
+<p>Si deux (ou plusieurs) variables explicatives sont très fortement liées entre elles, le modèle ne sait plus "à qui attribuer" l'effet. Les coefficients deviennent <strong>instables</strong> : ils changent énormément dès qu'on modifie légèrement les données.</p>
+
+<p><strong>Exemple concret</strong> : imagine que tu as dans ton dataset "température en Celsius" et "température en Fahrenheit". Ces deux colonnes contiennent exactement la même information — le modèle ne peut pas les distinguer.</p>
+
+<h3 id="ref-62-multicolinéarité-stricte-la-matrice-non-inversible">6.2 Multicolinéarité stricte — la matrice non inversible</h3>
+
+<p>Si une variable est une <strong>combinaison linéaire exacte</strong> d'autres variables, la matrice $X$ n'est pas de rang plein : il est mathématiquement impossible d'inverser $X^T X$ et donc d'obtenir une solution unique.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+import pandas as pd
+
+# Créer une variable qui est exactement 10 * cylinders - 0.3 * horsepower
+mpg[&#x27;lin_comb&#x27;] = 10 * mpg[&#x27;cylinders&#x27;] - 0.3 * mpg[&#x27;horsepower&#x27;]
+
+model = smf.ols(formula=&#x27;weight ~ cylinders + horsepower + lin_comb&#x27;, data=mpg).fit()
+# Les coefficients semblent normaux : [3.4, 16.8, 28.7]
+
+# Mais si on modifie UN SEUL point de 1 %...
+mpg.loc[0, &#x27;horsepower&#x27;] = mpg.loc[0, &#x27;horsepower&#x27;] * 1.01
+
+model = smf.ols(formula=&#x27;weight ~ cylinders + horsepower + lin_comb&#x27;, data=mpg).fit()
+# Les coefficients explosent : [11398, -325, -1110] !!</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>statsmodels te prévient avec <code>Cond. No. = 5.84e+04</code> dans le summary. Un grand "condition number" est un signal d'alarme de multicolinéarité.</p></div></div>
+
+<h3 id="ref-63-pourquoi-la-matrice-de-corrélation-ne-suffit-pas">6.3 Pourquoi la matrice de corrélation ne suffit pas</h3>
+
+<p>La matrice de corrélation ne regarde que les relations <strong>entre deux variables à la fois</strong> (corrélation bivariée). Mais la multicolinéarité peut impliquer <strong>trois variables ou plus</strong> ensemble — sans qu'aucune paire ne soit fortement corrélée.</p>
+
+<p><strong>Solution : le VIF (Variance Inflation Factor)</strong></p>
+
+<h3 id="ref-64-le-vif-détecter-la-multicolinéarité-multiple">6.4 Le VIF — détecter la multicolinéarité multiple</h3>
+
+<p>Le VIF mesure à quel point la variable $X_k$ est expliquée par toutes les autres variables :</p>
+
+<div class="katex-display">$$\text{VIF}(X_k) = \frac{1}{1 - R^2_k}$$</div>
+
+<p>où $R^2_k$ est le $R^2$ obtenu en régressant $X_k$ sur <strong>toutes les autres variables</strong>.</p>
+
+<ul>
+<li>Si $R^2_k = 0$ (aucune relation) : $\text{VIF} = 1$ — parfait</li>
+<li>Si $R^2_k = 0{,}9$ (très lié aux autres) : $\text{VIF} = \frac{1}{1-0{,}9} = 10$ — préoccupant</li>
+<li>Si $R^2_k \to 1$ : $\text{VIF} \to \infty$ — catastrophique</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.stats.outliers_influence import variance_inflation_factor as vif
+
+# IMPORTANT : toujours standardiser les données avant de calculer le VIF
+# (sinon l&#x27;intercept fausse les résultats)
+mpg_scaled = (mpg - mpg.mean()) / mpg.std()  # z-score : moyenne=0, std=1
+
+# Calculer le VIF pour chaque colonne
+df_vif = pd.DataFrame()
+df_vif[&quot;features&quot;] = mpg_scaled.columns                                  # noms des variables
+df_vif[&quot;vif_index&quot;] = [vif(mpg_scaled.values, i)                         # calcul du VIF
+                       for i in range(mpg_scaled.shape[1])]
+df_vif.sort_values(&quot;vif_index&quot;, ascending=False)  # trier du plus au moins élevé</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">#    features    vif_index
+# 1  cylinders   2091.85   ← multicolinéarité sévère !
+# 2  horsepower   943.73   ← multicolinéarité sévère !
+# 6  lin_comb     668.13   ← multicolinéarité sévère !
+# 3  weight        11.25   ← préoccupant (≥ 10)
+# 0  mpg            5.24   ← acceptable
+# 4  acceleration   2.61   ← OK
+# 5  model_year     1.90   ← OK</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>RÈGLE : VIF ≥ 10 → multicolinéarité préoccupante. Envisage de supprimer ou transformer la variable concernée.</p></div></div>
+
+<h3 id="ref-65-ce-que-la-multicolinéarité-affecte-ou-pas">6.5 Ce que la multicolinéarité affecte (ou pas)</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Élément</th><th>Impact de la multicolinéarité</th></tr></thead><tbody><tr><td>Coefficients des variables colinéaires</td><td>Instables et non fiables</td></tr><tr><td>P-values des variables colinéaires</td><td>Non fiables</td></tr><tr><td>$R^2$ global du modèle</td><td>Pas d'impact</td></tr><tr><td>Coefficients des variables non colinéaires</td><td>Pas d'impact</td></tr></tbody></table></div>
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Le $R^2$ global reste correct même si les variables sont colinéaires. Mais tu ne peux plus interpréter les coefficients individuels — supprime ou fusionne les variables problématiques.</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-récapitulatif-ols-vs-logit">7. Récapitulatif — OLS vs Logit</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Étape</th><th>OLS (régression linéaire)</th><th>Logit (régression logistique)</th></tr></thead><tbody><tr><td>Variable cible</td><td>Continue (ex: prix)</td><td>Binaire (0 ou 1)</td></tr><tr><td>Fonction prédite</td><td>$\hat{y} = \beta_0 + \beta_1 X$</td><td>$\hat{p} = \text{sigmoid}(\beta_0 + \beta_1 X)$</td></tr><tr><td>Optimisation</td><td>Minimise la SSR</td><td>Maximise le log-likelihood</td></tr><tr><td>Qualité du modèle</td><td>$R^2$</td><td>Pseudo $R^2$</td></tr><tr><td>Test des coefficients</td><td>t-score</td><td>z-score</td></tr><tr><td>Conditions d'inférence</td><td>Résidus normaux, homoscédastiques</td><td>Aucune condition sur les résidus</td></tr><tr><td>Multicolinéarité</td><td>Détectée par VIF</td><td>Détectée par VIF</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>1. Un modèle logistique donne pour une observation $\hat{p} = 0{,}72$. Quelle est la décision de classification avec un seuil à 50 % ? Et les log-odds correspondants ?</strong></p>
+
+<p><em>Réponse attendue : classe 1 (car 0,72 > 0,5). Log-odds = log(0,72 / 0,28) ≈ 0,944.</em></p>
+
+<p><strong>2. Un coefficient $\beta_{\text{age}} = -0{,}05$ dans un modèle logistique signifie-t-il que "l'âge réduit la probabilité de survie de 5 % par an" ? Pourquoi ?</strong></p>
+
+<p><em>Réponse attendue : Non. $\beta = -0{,}05$ représente l'effet sur les log-odds. L'effet réel sur la probabilité dépend de la valeur de départ. On calcule $e^{-0{,}05} = 0{,}951$ : chaque année supplémentaire divise les odds de survie par 1,051 (-4,9 % sur les odds, pas sur la probabilité).</em></p>
+
+<p><strong>3. Deux variables dans ton dataset ont une corrélation de 0,3 (faible). Est-ce que cela suffit à conclure qu'il n'y a pas de multicolinéarité ?</strong></p>
+
+<p><em>Réponse attendue : Non. La corrélation bivariée ne détecte pas la multicolinéarité multiple (impliquant 3 variables ou plus). Il faut calculer le VIF.</em></p>
+
+<p><strong>4. Ton modèle logistique a un pseudo $R^2 = 0{,}08$. Est-ce nécessairement un mauvais modèle ?</strong></p>
+
+<p><em>Réponse attendue : Pas forcément — le pseudo $R^2$ est difficile à interpréter isolément. Il est surtout utile pour comparer deux modèles sur les mêmes données. Des métriques comme l'AUC-ROC ou l'accuracy donnent une meilleure image de la performance réelle.</em></p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>La <strong>régression logistique</strong> prédit une <strong>probabilité</strong> (entre 0 et 1) pour des problèmes de classification binaire (spam/non-spam, malade/sain...).</li>
+<li>Elle utilise la <strong>fonction sigmoïde</strong> $\hat{p} = \frac{1}{1+e^{-(\beta_0+\beta_1 X)}}$ pour convertir un score linéaire en probabilité.</li>
+<li>Les coefficients $\beta$ s'expriment en <strong>log-odds</strong> : pour interpréter, calculer $e^\beta$ (odds ratio) et lire comme un multiplicateur des odds.</li>
+<li>Le modèle est ajusté par <strong>maximisation du log-likelihood</strong> $\ell(\beta)$ — l'équivalent logistique de la minimisation SSR.</li>
+<li>La qualité du modèle se mesure avec le <strong>pseudo $R^2$ de McFadden</strong> : $1 - \ell(\text{modèle}) / \ell(\text{nul})$.</li>
+<li>Ne jamais interpréter $\beta$ directement comme un effet sur la probabilité — toujours passer par $e^\beta$ → odds ratio.</li>
+<li>La <strong>multicolinéarité</strong> (variables trop liées) rend les coefficients instables : la détecter avec le <strong>VIF</strong> (seuil d'alerte : VIF ≥ 10), après standardisation des données.</li>
+<li>La matrice de corrélation ne suffit pas pour détecter la multicolinéarité multiple — utiliser le VIF.</li>
+<li>Les p-values et z-scores permettent de tester la significativité de chaque coefficient, sans condition sur les résidus (contrairement à l'OLS).</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-du-linéaire-à-la-classification">Du linéaire à la classification</a></li><li><a href="#syn-la-fonction-sigmoïde">La fonction sigmoïde</a></li><li><a href="#syn-log-loss-et-entraînement">Log-loss et entraînement</a></li><li><a href="#syn-interprétation-odds-ratios">Interprétation : odds ratios</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-multinomial-softmax-regression">Multinomial : softmax regression</a></li><li><a href="#syn-frontière-de-décision-et-seuil">Frontière de décision et seuil</a></li><li><a href="#syn-calibration-des-probabilités">Calibration des probabilités</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-du-linéaire-à-la-classification">Du linéaire à la classification</h3>
+
+<p>La régression linéaire prédit n'importe quelle valeur réelle dans $\mathbb{R}$. Mais pour de la <strong>classification binaire</strong>, on veut prédire une <strong>probabilité</strong> — un nombre dans $[0, 1]$. Si on essaie d'utiliser directement une régression linéaire :</p>
+
+<div class="katex-display">$$P(y=1|\mathbf{x}) \;\stackrel{?}{=}\; \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots$$</div>
+
+<p>Lecture : <em>on interprète la sortie linéaire comme une probabilité</em>. Problème : pour des valeurs extrêmes de $\mathbf{x}$, cette "probabilité" peut être négative ou supérieure à 1, ce qui n'a aucun sens. Il faut donc une fonction qui <strong>compresse</strong> la sortie linéaire dans l'intervalle $[0, 1]$ sans jamais en sortir.</p>
+
+<p>Solution : la <strong>fonction sigmoïde</strong>.</p>
+
+<h3 id="syn-la-fonction-sigmoïde">La fonction sigmoïde</h3>
+
+<div class="katex-display">$$\sigma(z) = \frac{1}{1 + e^{-z}}$$</div>
+
+<p>Lecture : <em>pour une entrée $z$ quelconque (réel), on calcule $e^{-z}$, on ajoute 1, et on prend l'inverse</em>. Pour $z$ très grand, $e^{-z}$ tend vers 0, donc $\sigma(z)$ tend vers $1/1 = 1$. Pour $z$ très négatif, $e^{-z}$ explose, donc $\sigma(z)$ tend vers 0. Pour $z = 0$, $e^0 = 1$ et $\sigma(0) = 1/2 = 0.5$ — la frontière de décision.</p>
+
+<p>Propriétés clés :</p>
+<ul>
+<li>$\sigma(0) = 0.5$ (point central)</li>
+<li>$\sigma(z) \to 1$ quand $z \to +\infty$</li>
+<li>$\sigma(z) \to 0$ quand $z \to -\infty$</li>
+<li><strong>Symétrique</strong> : $\sigma(-z) = 1 - \sigma(z)$</li>
+<li><strong>Lisse, dérivable partout</strong> — essentiel pour la descente de gradient</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">       1.0 |         _____________
+           |       /
+       0.5 |----/---------
+           |  /
+       0.0 |/___________________
+              -5    0    +5    z</code></pre></div>
+
+
+<p>Le modèle complet de la régression logistique combine linéaire + sigmoïde :</p>
+
+<div class="katex-display">$$P(y=1 \mid \mathbf{x}) = \sigma(\mathbf{w}^T \mathbf{x} + b) = \frac{1}{1 + e^{-(\mathbf{w}^T \mathbf{x} + b)}}$$</div>
+
+<p>Lecture pas à pas :</p>
+<ol>
+<li>On calcule le <strong>score linéaire</strong> $z = \mathbf{w}^T \mathbf{x} + b = w_1 x_1 + w_2 x_2 + \cdots + w_p x_p + b$</li>
+<li>On applique la <strong>sigmoïde</strong> à $z$ pour obtenir une probabilité dans $[0, 1]$</li>
+<li>Si la probabilité est $> 0.5$, on prédit la classe 1 ; sinon la classe 0</li>
+</ol>
+
+<p><strong>Exemple chiffré</strong> : avec 2 features, si $\mathbf{w} = (0.8, -0.3)$, $b = -1$, et $\mathbf{x} = (3, 2)$, alors $z = 0.8 \cdot 3 - 0.3 \cdot 2 - 1 = 2.4 - 0.6 - 1 = 0.8$. La probabilité est $\sigma(0.8) = 1/(1+e^{-0.8}) \approx 0.69$ → classe 1 avec 69% de confiance.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : la sigmoïde est un thermostat. Vous lui donnez une valeur quelconque (la sortie linéaire), elle vous renvoie une valeur lissée entre 0 et 1 (la probabilité). Plus l'entrée est grande, plus la sortie est proche de 1 ; plus elle est négative, plus elle approche 0. Le "0" en entrée donne exactement 0.5 — la frontière naturelle entre les deux classes.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+def sigmoid(z):
+    return 1 / (1 + np.exp(-z))
+
+sigmoid(0)      # 0.5
+sigmoid(2)      # 0.881
+sigmoid(-2)     # 0.119
+sigmoid(10)     # ~1.0  (saturation)</code></pre></div>
+
+
+<h3 id="syn-log-loss-et-entraînement">Log-loss et entraînement</h3>
+
+<p>Pour entraîner le modèle, il faut une <strong>fonction de coût</strong> à minimiser. En classification binaire avec sortie probabiliste, on utilise la <strong>log-loss</strong> (ou <strong>binary cross-entropy</strong>) :</p>
+
+<div class="katex-display">$$\mathcal{L}(\mathbf{w}, b) = -\frac{1}{n} \sum_{i=1}^{n} \left[ y_i \log(p_i) + (1 - y_i) \log(1 - p_i) \right]$$</div>
+
+<p>où $p_i = \sigma(\mathbf{w}^T \mathbf{x}_i + b)$ est la probabilité prédite pour l'observation $i$.</p>
+
+<p>Lecture pas à pas :</p>
+<ul>
+<li>Pour chaque observation $i$, on regarde sa vraie classe $y_i \in \{0, 1\}$ et la probabilité prédite $p_i$</li>
+<li>Si $y_i = 1$, seul le terme $\log(p_i)$ compte (car $1 - y_i = 0$ annule le second terme). On veut que $p_i$ soit grand (proche de 1), donc $\log(p_i)$ proche de 0 (petit en valeur absolue)</li>
+<li>Si $y_i = 0$, seul $\log(1 - p_i)$ compte. On veut que $p_i$ soit petit, donc $1 - p_i$ grand, donc $\log(1 - p_i)$ proche de 0</li>
+<li>On somme sur toutes les observations, on divise par $n$ (moyenne), et on met un signe moins pour avoir une quantité positive à <strong>minimiser</strong></li>
+</ul>
+
+<p><strong>Exemple chiffré</strong> : vraie classe $y = 1$, prédiction $p = 0.99$ → perte $-\log(0.99) \approx 0.010$ (excellente). Même vraie classe, prédiction $p = 0.01$ → perte $-\log(0.01) \approx 4.605$ (catastrophique). La log-loss <strong>explose</strong> quand le modèle fait une prédiction très confiante et fausse. C'est ce qui force le modèle à être <strong>bien calibré</strong> sur ses prédictions confiantes.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import LogisticRegression
+
+# C = 1/λ : plus C est petit, plus la régularisation est forte
+model = LogisticRegression(C=1.0, penalty=&quot;l2&quot;, max_iter=1000)
+model.fit(X_train, y_train)                        # optimise la log-loss
+proba = model.predict_proba(X_test)[:, 1]          # proba de la classe 1
+pred  = model.predict(X_test)                      # 0 ou 1 (seuil 0.5)</code></pre></div>
+
+
+<p>L'optimisation se fait par <strong>descente de gradient</strong> (pas de solution analytique comme pour OLS). Heureusement, la log-loss combinée à la sigmoïde donne une fonction <strong>convexe</strong> → un unique minimum global garanti, peu importe l'initialisation.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Question d'entretien</strong> : "Pourquoi utilise-t-on la log-loss et pas la MSE pour la régression logistique ?" Réponses : (1) <strong>Mathématiquement</strong>, la MSE combinée à la sigmoïde donne une fonction <strong>non convexe</strong> avec des minima locaux. La log-loss avec sigmoïde est convexe → optimisation garantie. (2) <strong>Statistiquement</strong>, la log-loss est l'équivalent du MLE pour une Bernoulli, donc l'estimateur "naturel". (3) <strong>Pratiquement</strong>, la log-loss pénalise très durement les prédictions confiantes et fausses, ce qui produit des modèles mieux calibrés.</p></div></div>
+
+<h3 id="syn-interprétation-odds-ratios">Interprétation : odds ratios</h3>
+
+<p>Le coefficient $w_j$ ne s'interprète <strong>pas</strong> directement comme en régression linéaire. Le bon concept est l'<strong>odds ratio</strong>.</p>
+
+<p>Les <strong>odds</strong> (cotes en français) sont le ratio $P/(1-P)$. Par exemple :</p>
+<ul>
+<li>$P = 0.5$ → odds = 1 ("50-50")</li>
+<li>$P = 0.75$ → odds = 3 ("3 contre 1")</li>
+<li>$P = 0.9$ → odds = 9 ("9 contre 1")</li>
+</ul>
+
+<p>Le modèle logistique est en fait <strong>linéaire dans les log-odds</strong> (le logit) :</p>
+
+<div class="katex-display">$$\log\left(\frac{P}{1-P}\right) = w_0 + w_1 x_1 + w_2 x_2 + \cdots + w_p x_p$$</div>
+
+<p>Lecture : <em>le logarithme du rapport de cotes est une combinaison linéaire des features</em>. C'est pourquoi la régression logistique est classée parmi les <strong>modèles linéaires</strong> : elle est linéaire dans l'espace des log-odds, même si elle devient non linéaire (en forme de S) dans l'espace des probabilités.</p>
+
+<p>Conséquence : $e^{w_j}$ est le <strong>facteur multiplicateur des odds</strong> quand $x_j$ augmente d'une unité, toutes choses égales par ailleurs.</p>
+
+<p><strong>Exemple chiffré</strong> : pour prédire un défaut de paiement, supposons $w_{\text{age}} = 0.05$. Alors $e^{0.05} \approx 1.051$. Chaque année supplémentaire multiplie les <strong>odds</strong> de défaut par 1.051, soit environ +5%. Si $w_{\text{revenu}} = -0.8$ (revenu en unité de 10k€), alors $e^{-0.8} \approx 0.449$ — chaque tranche de 10k€ de revenu supplémentaire <strong>divise</strong> les odds de défaut par ~2.2.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+# Récupération des coefs et transformation en odds ratios
+print(&quot;Coefficients (log-odds):&quot;, model.coef_[0])
+print(&quot;Odds ratios (e^w):&quot;, np.exp(model.coef_[0]))
+# OR &gt; 1 → feature qui augmente la proba de classe 1
+# OR &lt; 1 → feature qui diminue la proba de classe 1
+# OR = 1 → feature sans effet</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : pour communiquer un modèle de régression logistique à un non-statisticien, <strong>toujours</strong> convertir en odds ratios. "Augmentation de 1 an d'âge → +5% de risque de défaut" est instantanément compréhensible. "$w = 0.05$" ne dit rien à personne.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-multinomial-softmax-regression">Multinomial : softmax regression</h3>
+
+<p>Pour la classification à $K$ classes ($K > 2$), on généralise la sigmoïde par la <strong>softmax</strong> :</p>
+
+<div class="katex-display">$$P(y = k \mid \mathbf{x}) = \frac{e^{\mathbf{w}_k^T \mathbf{x}}}{\sum_{j=1}^{K} e^{\mathbf{w}_j^T \mathbf{x}}}$$</div>
+
+<p>Lecture : <em>pour chaque classe $k$, on calcule le score linéaire $\mathbf{w}_k^T \mathbf{x}$ (avec son propre vecteur de poids), on l'exponentie, puis on normalise en divisant par la somme des exponentielles sur toutes les classes</em>. La softmax garantit que les sorties sont (1) toutes positives (exponentielle) et (2) somment à 1 (division par la somme) — donc une distribution de probabilité valide.</p>
+
+<p><strong>Exemple chiffré</strong> : avec 3 classes et des scores bruts $(\mathbf{w}_1^T\mathbf{x}, \mathbf{w}_2^T\mathbf{x}, \mathbf{w}_3^T\mathbf{x}) = (2, 1, 0.1)$, les exponentielles sont $(e^2, e^1, e^{0.1}) = (7.39, 2.72, 1.11)$, somme = 11.22. Probabilités : $(0.659, 0.242, 0.099)$. Classe 1 prédite avec 66% de confiance.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># sklearn gère automatiquement le multi-classes
+LogisticRegression(multi_class=&quot;multinomial&quot;, solver=&quot;lbfgs&quot;).fit(X, y)</code></pre></div>
+
+
+<p>C'est exactement la même formule que la <strong>dernière couche</strong> de tous les classifieurs deep learning multi-classes.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : sigmoïde, c'est binaire — un thermostat. Softmax, c'est multi-classes — un égaliseur de fréquences : chaque canal a son volume, mais la somme totale reste constante. Si vous augmentez le grave, l'aigu doit baisser proportionnellement.</p></div></div>
+
+<h3 id="syn-frontière-de-décision-et-seuil">Frontière de décision et seuil</h3>
+
+<p>La régression logistique trace une <strong>frontière linéaire</strong> dans l'espace des features. Le seuil par défaut est $P = 0.5$, ce qui correspond à $\mathbf{w}^T \mathbf{x} + b = 0$ — un hyperplan.</p>
+
+<p>Mais le seuil 0.5 n'est pas sacré. Vous pouvez l'ajuster selon le <strong>contexte business</strong> :</p>
+
+<ul>
+<li><strong>Diminuer le seuil (vers 0.3)</strong> : plus de positifs prédits → plus de <strong>recall</strong>, moins de <strong>precision</strong>. Utile quand un faux négatif est très coûteux (rater un cancer).</li>
+<li><strong>Augmenter le seuil (vers 0.7)</strong> : moins de positifs → plus de <strong>precision</strong>, moins de <strong>recall</strong>. Utile quand un faux positif est coûteux (alerte de fraude qui bloque un client légitime).</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">proba = model.predict_proba(X_test)[:, 1]   # proba de la classe positive
+
+# Seuil personnalisé
+threshold = 0.3
+pred = (proba &gt;= threshold).astype(int)     # plus sensible, plus de faux positifs</code></pre></div>
+
+
+<p>Pour choisir le seuil optimal, on regarde la <strong>courbe ROC</strong> ou <strong>PR-curve</strong> et on choisit le point qui maximise la métrique business.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Anti-pattern</strong> : appliquer aveuglément le seuil 0.5 sans réfléchir au contexte. C'est comme dire "le rouge devient vert à exactement 50% de l'orange" — c'est arbitraire. Votre métier dicte le seuil, pas le mathématicien.</p></div></div>
+
+<h3 id="syn-calibration-des-probabilités">Calibration des probabilités</h3>
+
+<p>Une probabilité est <strong>bien calibrée</strong> si, parmi toutes les prédictions à 70%, environ 70% sont effectivement positives. Pour vérifier :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.calibration import calibration_curve
+import matplotlib.pyplot as plt
+
+prob_true, prob_pred = calibration_curve(y_test, proba, n_bins=10)
+plt.plot(prob_pred, prob_true, &quot;o-&quot;, label=&quot;modèle&quot;)
+plt.plot([0, 1], [0, 1], &quot;k--&quot;, label=&quot;parfait&quot;)  # ligne y=x
+plt.xlabel(&quot;Probabilité prédite&quot;)
+plt.ylabel(&quot;Fréquence réelle&quot;)
+plt.legend()</code></pre></div>
+
+
+<p>Lecture : si la courbe du modèle est <strong>sur</strong> la diagonale, il est calibré. Si elle est <strong>en dessous</strong>, il est sur-confiant (prédit 0.9 mais seulement 70% sont positifs). Si elle est <strong>au-dessus</strong>, il est sous-confiant.</p>
+
+<p>La régression logistique est généralement bien calibrée par construction (parce que la log-loss force la calibration). Mais d'autres modèles non :</p>
+
+<ul>
+<li><strong>Random Forest</strong> : sur-confiant sur les extrêmes (les probas restent autour de 0.5 trop souvent)</li>
+<li><strong>SVM</strong> : pas de probas natives, il faut calibrer</li>
+<li><strong>Naive Bayes</strong> : très mal calibré (sorties souvent 0 ou 1)</li>
+</ul>
+
+<p>Si vos probabilités ne sont pas calibrées, utilisez <code>CalibratedClassifierCV</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.calibration import CalibratedClassifierCV
+calibrated = CalibratedClassifierCV(rf_model, cv=5, method=&quot;isotonic&quot;)
+calibrated.fit(X_train, y_train)</code></pre></div>
+
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi la régression logistique est-elle considérée comme un modèle "linéaire" alors qu'elle utilise une sigmoïde non linéaire ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Log-odds.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Parce qu'elle est <strong>linéaire dans les log-odds</strong> :</p>
+
+<div class="katex-display">$$\log\left(\frac{P}{1-P}\right) = \mathbf{w}^T\mathbf{x} + b$$</div>
+
+<p>La sigmoïde ne fait que transformer cette combinaison linéaire en probabilité, mais la <strong>frontière de décision</strong> ($P = 0.5$ ⟺ $\mathbf{w}^T\mathbf{x} + b = 0$) est un hyperplan linéaire dans l'espace des features.</p>
+
+<p>C'est pourquoi la régression logistique est dans la même famille que la régression linéaire et le SVM linéaire — on les regroupe sous "modèles linéaires" même quand la fonction de sortie est non linéaire.</p>
+
+<p>Conséquence pratique : la régression logistique ne peut pas apprendre une frontière courbe ou un XOR. Pour cela, il faut soit ajouter des features non linéaires (interactions, polynômes), soit passer à un modèle non linéaire (RF, NN).</p>
+
+</details>
+
+<p><strong>Q2 : Vous obtenez 99% d'accuracy avec LogisticRegression sur un dataset où 99% des exemples sont "non-fraude". Quel est le problème et que faire ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Déséquilibre.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Le problème : votre modèle a probablement appris à prédire <strong>toujours "non-fraude"</strong>. Il atteint 99% d'accuracy mais 0% de recall sur la classe "fraude" — il ne détecte aucune vraie fraude. C'est le piège classique des datasets déséquilibrés.</p>
+
+<p>Solutions :</p>
+
+<ol>
+<li><strong>Changer la métrique</strong> : F1, PR-AUC, ou recall sur la classe positive — ne JAMAIS utiliser l'accuracy seule.</li>
+<li><strong>Class weights</strong> : <code>LogisticRegression(class_weight=&quot;balanced&quot;)</code> pénalise les erreurs sur la classe rare proportionnellement à son inverse-fréquence.</li>
+<li><strong>Resampling</strong> : SMOTE pour augmenter la classe minoritaire, ou random undersampling pour réduire la majorité.</li>
+<li><strong>Ajuster le seuil</strong> : par défaut 0.5, mais avec des classes très déséquilibrées, le modèle prédit rarement $> 0.5$. Abaisser le seuil à 0.1 ou 0.2 augmente le recall.</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">LogisticRegression(class_weight=&quot;balanced&quot;).fit(X_train, y_train)</code></pre></div>
+
+
+</details>
+
+<p><strong>Q3 : Vous voulez prédire la probabilité qu'un client churne. Le modèle vous donne 70% pour Alice. Pouvez-vous dire que "70% d'Alice va churner" ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Calibration fréquentiste.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Non. Cela ne signifie <strong>pas</strong> que "70% d'Alice va churner" (Alice est une seule personne, soit elle churne soit non). Cela signifie que <strong>parmi tous les clients à qui le modèle prédit 70%, environ 70% churnent effectivement</strong>.</p>
+
+<p>C'est une probabilité fréquentiste, interprétable seulement sur un grand échantillon. Pour que cette interprétation soit correcte, il faut que le modèle soit <strong>bien calibré</strong>. La régression logistique l'est généralement, mais vérifiez avec une calibration curve.</p>
+
+<p>Pour Alice individuellement, vous pouvez juste dire : "Alice est dans le top X% des clients à risque" et agir en conséquence (campagne de rétention, etc.).</p>
+
+<p>Mauvaise interprétation : "Alice a 70% de chances de partir, on peut donc parier qu'elle reste" — c'est un raisonnement naïf qui ignore la diversité des situations individuelles.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>An Introduction to Statistical Learning</em> (James et al.) — chapitre 4</li>
+<li><em>The Elements of Statistical Learning</em> (Hastie et al.) — chapitre 4</li>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" target="_blank" rel="noopener">scikit-learn LogisticRegression</a></li>
+<li><a href="https://machinelearningmastery.com/logistic-regression-tutorial-for-machine-learning/" target="_blank" rel="noopener">Machine Learning Mastery — Logistic Regression</a></li>
+<li><a href="https://www.youtube.com/watch?v=yIYKR4sgzI8" target="_blank" rel="noopener">StatQuest — Logistic Regression</a> — excellente intuition visuelle</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../machine-learning/linear-regression.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Linear Regression</span>
+  </a>
+  <a href="../machine-learning/performance-metrics.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Performance Metrics →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

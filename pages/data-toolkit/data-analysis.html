@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Analysis — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Data Analysis</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html" class="active">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Data Toolkit</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Data Analysis</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Data Analysis</h1>
+        <p class="page-objective">Comprendre les outils fondamentaux de l'analyse de données en Python : Jupyter, NumPy et Pandas.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">EDA</div>
+        <div class="key-concept-def">Exploratory Data Analysis : explorer un jeu de données avant toute modélisation.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">`groupby`</div>
+        <div class="key-concept-def">Split-apply-combine sur des sous-groupes d&#x27;un DataFrame.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">`merge` / `join`</div>
+        <div class="key-concept-def">Combine deux DataFrames sur une clé commune (équivalent SQL JOIN).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">`pivot_table`</div>
+        <div class="key-concept-def">Réorganise les données pour résumer une variable selon deux axes.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-data-analysis-numpy-pandas">Cheatsheet — Data Analysis (NumPy & Pandas)</a><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#plan-du-module">Plan du module</a><li><a href="#1-jupyter">1) Jupyter</a><li><a href="#2-numpy">2) NumPy</a><ol><li><a href="#21-import-canonique">2.1 Import canonique</a></li><li><a href="#22-créer-un-ndarray">2.2 Créer un ndarray</a></li><li><a href="#23-attributs-clés-dun-ndarray">2.3 Attributs clés d'un ndarray</a></li><li><a href="#24-sélection-de-données">2.4 Sélection de données 😎</a></li><li><a href="#25-syntaxe-générale-du-slicing">2.5 Syntaxe générale du slicing</a></li><li><a href="#26-opérations-vectorisées">2.6 Opérations vectorisées ⚡️</a></li><li><a href="#27-axes">2.7 Axes 🤯</a></li><li><a href="#28-comparaison-de-performance">2.8 Comparaison de performance ⚡️</a></li><li><a href="#29-boolean-indexing">2.9 Boolean Indexing 🔥</a></li><li><a href="#210-limites-de-numpy">2.10 Limites de NumPy</a></li></ol></li><li><a href="#3-introduction-à-pandas">3) Introduction à Pandas</a><ol><li><a href="#31-pandas-series">3.1 Pandas Series</a></li><li><a href="#32-pandas-dataframes">3.2 Pandas DataFrames</a></li><li><a href="#33-un-dataframe-est-un-dictionnaire-de-series">3.3 Un DataFrame est un dictionnaire de Series</a></li></ol></li><li><a href="#4-exploratory-data-analysis-eda">4) Exploratory Data Analysis (EDA)</a><ol><li><a href="#41-superpouvoirs-du-notebook">4.1 Superpouvoirs du notebook</a></li><li><a href="#42-explorer-rapidement-les-données">4.2 Explorer rapidement les données</a></li><li><a href="#43-même-logique-que-sql">4.3 Même logique que SQL !</a></li></ol></li><li><a href="#5-boolean-indexing-avec-pandas">5) Boolean Indexing avec Pandas</a><li><a href="#6-re-indexing">6) Re-Indexing</a><li><a href="#7-sorting">7) Sorting</a><li><a href="#8-grouping">8) Grouping</a><li><a href="#9-plotting">9) Plotting</a><li><a href="#10-testing-dans-les-notebooks">10) Testing dans les notebooks</a><li><a href="#bibliographie">Bibliographie</a><li><a href="#à-toi-de-jouer">À toi de jouer ! 🚀</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-data-analysis-numpy-pandas">📋 Cheatsheet — Data Analysis (NumPy & Pandas)</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+import pandas as pd
+
+## ── NUMPY ────────────────────────────────────────────
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+arr.shape          # (2, 3) — dimensions du tableau
+arr.ndim           # 2 — nombre de dimensions
+arr.dtype          # int64 — type des éléments
+
+## Slicing
+arr[0, 1]          # ligne 0, colonne 1  → 2
+arr[1, :]          # toute la ligne 1
+arr[:, 0]          # toute la colonne 0
+arr[0, 1:3]        # ligne 0, colonnes 1 à 2
+
+## Opérations vectorisées (pas de boucle nécessaire)
+arr * 2            # multiplie chaque élément par 2
+arr + arr          # addition élément par élément
+np.sum(arr, axis=0)  # somme par colonne (descend les lignes)
+np.sum(arr, axis=1)  # somme par ligne (parcourt les colonnes)
+
+## Boolean indexing
+arr[arr &gt; 3]       # array([4, 5, 6]) — éléments supérieurs à 3
+
+## ── PANDAS — CRÉER ───────────────────────────────────
+df = pd.read_csv(&quot;fichier.csv&quot;, decimal=&quot;,&quot;)          # depuis un CSV
+df = pd.DataFrame({&quot;col_a&quot;: [1,2], &quot;col_b&quot;: [3,4]})  # depuis un dict
+
+## ── PANDAS — EXPLORER ────────────────────────────────
+df.shape           # (lignes, colonnes)
+df.dtypes          # types par colonne
+df.info()          # résumé complet (types + valeurs non-nulles)
+df.describe()      # stats descriptives (count, mean, std, min, max...)
+df.head(5)         # 5 premières lignes
+df.tail(5)         # 5 dernières lignes
+df.isnull().sum()  # nombre de valeurs manquantes par colonne
+
+## ── PANDAS — SÉLECTION ───────────────────────────────
+df[&quot;col&quot;]                          # Series (1 colonne)
+df[[&quot;col1&quot;, &quot;col2&quot;]]               # DataFrame (n colonnes) — double crochets
+df.loc[0:5, [&quot;col1&quot;, &quot;col2&quot;]]      # par label (index inclus)
+df.iloc[0:5, 0:2]                  # par position entière (index exclu)
+
+## ── PANDAS — BOOLEAN INDEXING ────────────────────────
+df[df[&quot;Pop&quot;] &gt; 1_000_000]                            # condition simple
+df[(df[&quot;Pop&quot;] &gt; 1_000_000) &amp; (df[&quot;Region&quot;] == &quot;EU&quot;)] # ET → &amp; (pas and)
+df[~df[&quot;Region&quot;].isin([&quot;EU&quot;, &quot;NA&quot;])]                 # NOT → ~ (négation)
+df[df[&quot;col&quot;].str.contains(&quot;AMER&quot;)]                   # filtre texte
+
+## ── PANDAS — NETTOYAGE ───────────────────────────────
+df[&quot;col&quot;] = df[&quot;col&quot;].str.strip()          # supprimer les espaces cachés
+df.set_index(&quot;Country&quot;, inplace=True)      # définir une colonne comme index
+
+## ── PANDAS — TRIER ───────────────────────────────────
+df.sort_index(ascending=False)                      # tri par index décroissant
+df.sort_values(by=&quot;Pop&quot;, ascending=False)           # tri par colonne
+df.sort_values(by=&quot;GDP&quot;, na_position=&quot;first&quot;)       # NaN en premier
+
+## ── PANDAS — GROUPBY ─────────────────────────────────
+g = df.groupby(&quot;Region&quot;)                              # grouper par colonne
+g[[&quot;Pop&quot;, &quot;Area&quot;]].sum()                              # somme par groupe
+g[[&quot;Pop&quot;]].sum().sort_values(&quot;Pop&quot;, ascending=False)  # trier les résultats
+
+## ── PANDAS — PLOT ────────────────────────────────────
+%matplotlib inline                        # affiche les graphes dans le notebook
+df[[&quot;col&quot;]].head(10).plot(kind=&quot;bar&quot;)     # graphique en barres</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier l'import canonique de NumPy ou Pandas</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">array([1, 2, 3])         # ❌ NameError : np non importé
+import numpy as np
+np.array([1, 2, 3])      # ✅</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre sélection d'une colonne (Series) et d'un DataFrame</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df[&quot;Country&quot;]         # retourne une Series (1 crochet)
+df[[&quot;Country&quot;]]       # retourne un DataFrame (double crochets)
+## ❌ passer une Series à une fonction qui attend un DataFrame</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser l'opérateur <code>and</code> au lieu de <code>&amp;</code> pour le Boolean Indexing</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df[df[&quot;Pop&quot;] &gt; 1e9 and df[&quot;Region&quot;] == &quot;ASIA&quot;]   # ❌ ValueError
+df[(df[&quot;Pop&quot;] &gt; 1e9) &amp; (df[&quot;Region&quot;] == &quot;ASIA&quot;)]  # ✅</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier <code>.str.strip()</code> avant de filtrer sur des colonnes texte</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df[df[&quot;Region&quot;] == &quot;WESTERN EUROPE&quot;]  # ❌ peut retourner 0 résultats (espaces cachés)
+df[&quot;Region&quot;] = df[&quot;Region&quot;].str.strip()
+df[df[&quot;Region&quot;] == &quot;WESTERN EUROPE&quot;]  # ✅</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre <code>axis=0</code> (colonnes) et <code>axis=1</code> (lignes) dans NumPy/Pandas</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df.sum(axis=0)  # somme par colonne (résultat : une ligne)
+df.sum(axis=1)  # somme par ligne (résultat : une colonne)
+## ✅ Moyen mnémotechnique : axis=0 → on &quot;descend&quot; les lignes → résultat par colonne</code></pre></div></div></div>
+
+<hr>
+
+<h2 id="plan-du-module">Plan du module</h2>
+
+<ol>
+<li>Data Analysis</li>
+<li>Data Sourcing</li>
+<li>Data Visualization</li>
+</ol>
+
+<p><strong>Contenu de cette session :</strong></p>
+
+<ul>
+<li>Jupyter (10 min)</li>
+<li>NumPy (30 min)</li>
+<li>Pandas (50 min)</li>
+</ul>
+
+<hr>
+
+<h2 id="1-jupyter">1) Jupyter</h2>
+
+<blockquote><p>Jupyter est une application web open-source qui permet de créer et partager des documents contenant du <strong>code live</strong>, des équations, des visualisations et du texte narratif. Usages : <strong>nettoyage de données</strong>, simulation numérique, modélisation statistique, <strong>visualisation</strong>, machine learning, et bien plus.<br></p></blockquote>
+
+<p>👉 <a href="http://Jupyter.org" target="_blank" rel="noopener">Jupyter.org</a></p>
+
+<p>Pour lancer Jupyter, ouvre ton Terminal :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">cd ~/some/where
+jupyter notebook</code></pre></div>
+
+
+<hr>
+
+<h2 id="2-numpy">2) NumPy</h2>
+
+<blockquote><p>Package fondamental pour la manipulation de données haute performance avec Python.<br></p></blockquote>
+
+<p>👉 <a href="http://NumPy.org" target="_blank" rel="noopener">NumPy.org</a></p>
+
+<p>👉 <a href="https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Numpy_Python_Cheat_Sheet.pdf" target="_blank" rel="noopener">NumPy Cheat Sheet</a></p>
+
+<p>Le concept clé introduit par NumPy est le <strong>tableau N-dimensionnel</strong> (<code>ndarray</code>).</p>
+
+<p><strong>Caractéristiques du <code>ndarray</code> :</strong></p>
+
+<ul>
+<li><strong>Multidimensionnel</strong></li>
+<li>Données <strong>homogènes</strong> (un seul type)</li>
+<li><strong>Taille fixe</strong> définie à la création</li>
+</ul>
+
+<figure><img src="../../assets/images/data-analysis-01-00c400f8.png" alt="" loading="lazy"></figure>
+
+<h3 id="21-import-canonique">2.1 Import canonique</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np</code></pre></div>
+
+
+<h3 id="22-créer-un-ndarray">2.2 Créer un ndarray</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">my_list = [[1, 2, 3], [4, 5, 6]]
+print(type(my_list))
+my_list  # list of lists</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+&lt;class &#x27;list&#x27;&gt;
+[[1, 2, 3], [4, 5, 6]]</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">my_array = np.array([[1, 2, 3], [4, 5, 6]])
+print(type(my_array))
+my_array  # ndarray</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+&lt;class &#x27;numpy.ndarray&#x27;&gt;
+array([[1, 2, 3],
+       [4, 5, 6]])</code></pre></div>
+
+
+<h3 id="23-attributs-clés-dun-ndarray">2.3 Attributs clés d'un ndarray</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">print(&#x27;my_array.ndim: &#x27;, my_array.ndim)
+print(&#x27;my_array.shape:&#x27;, my_array.shape)
+print(&#x27;my_array.size: &#x27;, my_array.size)
+print(&#x27;my_array.dtype:&#x27;, my_array.dtype)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+my_array.ndim:  2
+my_array.shape: (2, 3)
+my_array.size:  6
+my_array.dtype: int64</code></pre></div>
+
+
+<h3 id="24-sélection-de-données">2.4 Sélection de données 😎</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Construire un tableau 2D depuis une liste de listes
+data_list = [
+    [ 0,  1,  2,  3,  4],
+    [10, 11, 12, 13, 14],
+    [20, 21, 22, 23, 24],
+    [30, 31, 32, 33, 34],
+    [40, 41, 42, 43, 44],
+]
+
+data_np = np.array(data_list)
+data_np</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+array([[ 0,  1,  2,  3,  4],
+       [10, 11, 12, 13, 14],
+       [20, 21, 22, 23, 24],
+       [30, 31, 32, 33, 34],
+       [40, 41, 42, 43, 44]])</code></pre></div>
+
+
+<figure><img src="../../assets/images/data-analysis-02-d5982f4d.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Pure Python
+data_list[2][1:4]</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+[21, 22, 23]</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## NumPy
+data_np[2, 1:4]  # data_np[ligne(s), colonne(s)]</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+array([21, 22, 23])</code></pre></div>
+
+
+<figure><img src="../../assets/images/data-analysis-03-c44bbe6e.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Pure Python
+selection = []
+
+for index, row in enumerate(data_list):
+    if index &gt; 0:
+        selection.append(row[4])
+
+selection  # on aurait pu aussi utiliser une list comprehension</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+[14, 24, 34, 44]</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## NumPy
+data_np[1:, 4]  # &#x27;1:&#x27; = de la ligne 1 jusqu&#x27;à la fin</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+array([14, 24, 34, 44])</code></pre></div>
+
+
+<h3 id="25-syntaxe-générale-du-slicing">2.5 Syntaxe générale du slicing</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">ndarray[start:stop:step]</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">array = np.arange(0, 10)
+array</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">array[1:7:2]</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+array([1, 3, 5])</code></pre></div>
+
+
+<h3 id="26-opérations-vectorisées">2.6 Opérations vectorisées ⚡️</h3>
+
+<p>Calculer la somme ligne par ligne (8 additions) pour créer un vecteur 1D :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">my_list = [
+    [6, 5],
+    [1, 3],
+    [5, 6],
+    [1, 4],
+    [3, 7],
+    [5, 8],
+    [3, 5],
+    [8, 4],
+]</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Python classique
+sums = []
+
+for row in my_list:
+    sums.append(row[0] + row[1])  # opérateur &quot;+&quot; standard
+
+sums</code></pre></div>
+
+
+<p><strong>La façon NumPy :</strong></p>
+
+<figure><img src="../../assets/images/data-analysis-04-5d3baee2.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">my_array = np.array(my_list)
+
+my_sum = my_array[:, 0] + my_array[:, 1]  # opérateur &quot;+&quot; vectoriel
+my_sum</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+array([11,  4, 11,  5, 10, 13,  8, 12])</code></pre></div>
+
+
+<h3 id="27-axes">2.7 Axes 🤯</h3>
+
+<figure><img src="../../assets/images/data-analysis-05-bf1dbf7a.png" alt="" loading="lazy"></figure>
+
+<p><strong>Exemple 2D :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">an_array.sum(axis=0)  # équiv. à A[0,:] + A[1,:] + A[2,:] + ...
+an_array.sum(axis=1)  # équiv. à A[:,0] + A[:,1] + A[:,2] + ...</code></pre></div>
+
+
+<figure><img src="../../assets/images/data-analysis-06-c81e8c58.png" alt="" loading="lazy"></figure>
+
+<p>Les deux formes suivantes sont équivalentes :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">an_array.sum(axis=0)
+np.sum(an_array, axis=0)</code></pre></div>
+
+
+<h3 id="28-comparaison-de-performance">2.8 Comparaison de performance ⚡️</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Tableau 2D de forme (10 000, 10 000) avec des floats aléatoires — soit 100M de nombres !
+my_array = np.random.rand(10000, 10000)
+array_list = my_array.tolist()</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">%%time
+total = 0
+
+for row in array_list:
+    for number in row:
+        total += number
+
+round(total, 2)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+CPU times: user 3.84 s, sys: 146 ms, total: 3.99 s
+Wall time: 4.01 s
+50003977.92</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">%%time
+round(np.sum(my_array), 2)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+CPU times: user 26.7 ms, sys: 1.5 ms, total: 28.2 ms
+Wall time: 27.4 ms
+50003977.92</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>NumPy est <strong>deux ordres de grandeur</strong> (100x) plus rapide que Python pur !</p></div></div>
+
+<h3 id="29-boolean-indexing">2.9 Boolean Indexing 🔥</h3>
+
+<p>Construire un <strong>masque booléen</strong> depuis un ndarray :</p>
+
+<figure><img src="../../assets/images/data-analysis-07-03f32263.png" alt="" loading="lazy"></figure>
+
+<h3 id="210-limites-de-numpy">2.10 Limites de NumPy</h3>
+
+<ul>
+<li>Pas de support pour les <strong>noms de colonnes</strong></li>
+<li><strong>Un seul</strong> type de données par ndarray</li>
+<li>Certaines méthodes utiles de traitement sont absentes</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Pandas</strong> s'appuie sur NumPy pour résoudre ces problèmes.</p></div></div>
+
+<hr>
+
+<h2 id="3-introduction-à-pandas">3) Introduction à Pandas</h2>
+
+<blockquote><p>Pandas est une bibliothèque open source offrant des structures de données et des outils d'analyse hautes performances, faciles à utiliser, pour Python.<br></p></blockquote>
+
+<p>👉 <a href="http://Pandas.pydata.org" target="_blank" rel="noopener">Pandas.pydata.org</a></p>
+
+<p>👉 <a href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf" target="_blank" rel="noopener">Pandas Cheat Sheet</a></p>
+
+<h3 id="31-pandas-series">3.1 Pandas Series</h3>
+
+<ul>
+<li>Équivalent Pandas du <strong>tableau 1D</strong> de NumPy (mêmes méthodes disponibles)</li>
+<li>Possède un <strong>index</strong> supplémentaire</li>
+<li>Supporte <strong>plusieurs types</strong> de données</li>
+</ul>
+
+<p>👉 <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html" target="_blank" rel="noopener">pandas.Series</a></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd  # import canonique
+
+my_series = pd.Series(data=[1, 2, &#x27;three&#x27;], index=[&#x27;id1&#x27;, &#x27;id2&#x27;, &#x27;id3&#x27;])
+my_series = pd.Series({&#x27;id1&#x27;: 1, &#x27;id2&#x27;: 2, &#x27;id3&#x27;: &#x27;three&#x27;})
+
+my_series</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+id1        1
+id2        2
+id3    three
+dtype: object</code></pre></div>
+
+
+<h3 id="32-pandas-dataframes">3.2 Pandas DataFrames</h3>
+
+<ul>
+<li>Équivalent Pandas d'un <strong>tableau 2D</strong> NumPy</li>
+<li>Labels sur les deux axes (lignes et colonnes)</li>
+<li>Supporte plusieurs types de données</li>
+</ul>
+
+<p>👉 <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html" target="_blank" rel="noopener">pandas.DataFrame</a></p>
+
+<figure><img src="../../assets/images/data-analysis-08-9a8b67c8.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+
+df = pd.DataFrame(
+    [[4, 7, 10],
+    [5, 8, 11],
+    [6, 9, 12]],
+    index=[&#x27;row_1&#x27;, &#x27;row_2&#x27;, &#x27;row_3&#x27;],
+    columns=[&#x27;col_a&#x27;, &#x27;col_b&#x27;, &#x27;col_c&#x27;]
+)
+
+df</code></pre></div>
+
+
+<h3 id="33-un-dataframe-est-un-dictionnaire-de-series">3.3 Un DataFrame est un dictionnaire de Series</h3>
+
+<figure><img src="../../assets/images/data-analysis-09-7fb94a51.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">apples  = pd.Series(data=[1, 2, 3], index=[&#x27;id1&#x27;, &#x27;id2&#x27;, &#x27;id3&#x27;])
+oranges = pd.Series(data=[4, 5, 6], index=[&#x27;id1&#x27;, &#x27;id2&#x27;, &#x27;id3&#x27;])
+
+dict_of_series = {
+    &#x27;apples&#x27;: apples,
+    &#x27;oranges&#x27;: oranges,
+}
+
+pd.DataFrame(dict_of_series)</code></pre></div>
+
+
+<hr>
+
+<h2 id="4-exploratory-data-analysis-eda">4) Exploratory Data Analysis (EDA)</h2>
+
+<p>On va travailler sur ce dataset : 👉 <a href="https://www.kaggle.com/fernandol/countries-of-the-world" target="_blank" rel="noopener">Countries of the World</a>.</p>
+
+<p>Consulte-le <a href="https://gist.github.com/ssaunier/fcf6e1c9485f2d64607a093795372339" target="_blank" rel="noopener">dans ce Gist</a> et télécharge-le avec :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">curl -s -L https://wagon-public-datasets.s3.amazonaws.com/02-Data-Toolkit/01-Data-Analysis/countries.csv &gt; countries.csv
+head -n 3 countries.csv</code></pre></div>
+
+
+<p>Un notebook commence typiquement ainsi :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+import pandas as pd</code></pre></div>
+
+
+<h3 id="41-superpouvoirs-du-notebook">4.1 Superpouvoirs du notebook</h3>
+
+<p>Dans une nouvelle cellule, utilise l'autocomplétion :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">pd.read&lt;TAB&gt;
+pd.read_csv&lt;SHIFT+TAB&gt;  # jusqu&#x27;à 4 fois pour plus d&#x27;infos</code></pre></div>
+
+
+<p>Charge le CSV dans un DataFrame <code>countries_df</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">file = &#x27;countries.csv&#x27;  # chemin relatif au notebook
+countries_df = pd.read_csv(file, decimal=&#x27;,&#x27;)</code></pre></div>
+
+
+<h3 id="42-explorer-rapidement-les-données">4.2 Explorer rapidement les données</h3>
+
+<p>Méthodes utiles à appeler sur un nouveau DataFrame :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df.shape       # Tuple représentant la dimensionnalité du DataFrame
+countries_df.dtypes      # types de chaque colonne
+countries_df.info()      # résumé complet
+countries_df.describe()  # stats descriptives
+countries_df.isnull().sum()  # valeurs manquantes par colonne</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df.head()   # 5 premières lignes
+countries_df.tail()   # 5 dernières lignes</code></pre></div>
+
+
+<h3 id="43-même-logique-que-sql">4.3 Même logique que SQL !</h3>
+
+<p>👉 <a href="https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sql.html" target="_blank" rel="noopener">Pandas : comparaison avec SQL</a></p>
+
+<p><strong>Lire des colonnes</strong> — utilise la syntaxe <code>[]</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df[&#x27;Country&#x27;]
+type(countries_df[&#x27;Country&#x27;])  # pandas.core.series.Series</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df[[&#x27;Country&#x27;, &#x27;Region&#x27;]]
+type(countries_df[[&#x27;Country&#x27;]])  # pandas.core.frame.DataFrame</code></pre></div>
+
+
+<p><strong>Groupe de lignes/colonnes :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df.loc[0:5, [&#x27;Country&#x27;, &#x27;Region&#x27;]]  # de l&#x27;index 0 à 5 inclus</code></pre></div>
+
+
+<p>👉 <a href="https://stackoverflow.com/questions/48409128/what-is-the-difference-between-using-loc-and-using-just-square-brackets-to-filte/48411543#48411543" target="_blank" rel="noopener">Thread Stackoverflow — loc vs brackets</a></p>
+
+<hr>
+
+<h2 id="5-boolean-indexing-avec-pandas">5) Boolean Indexing avec Pandas</h2>
+
+<p>🤔 Quels pays ont <strong>plus d'un milliard</strong> d'habitants ?</p>
+
+<p>Implémentation naïve en Python pur :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">big_countries = []
+
+for index, country in countries_df.iterrows():
+    if country[&#x27;Population&#x27;] &gt; 1_000_000_000:
+        big_countries.append(country)
+
+pd.DataFrame(big_countries)</code></pre></div>
+
+
+<p>Avec Pandas, c'est un <strong>one-liner</strong> grâce au <strong>Boolean Indexing</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df[countries_df[&#x27;Population&#x27;] &gt; 1_000_000_000]</code></pre></div>
+
+
+<p>🤔 Quels pays du continent <strong>américain</strong> ?</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">american = countries_df[&#x27;Region&#x27;].str.contains(&#x27;AMER&#x27;)
+countries_df[american]</code></pre></div>
+
+
+<p>🤔 Quels pays d'<strong>Europe</strong> ?</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df[countries_df[&#x27;Region&#x27;].isin([&#x27;WESTERN EUROPE&#x27;, &#x27;EASTERN EUROPE&#x27;])]</code></pre></div>
+
+
+<p>Pas de résultats ? Il faut <strong>nettoyer</strong> d'abord :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df[&#x27;Region&#x27;].unique()
+
+countries_df[&#x27;Region&#x27;] = countries_df[&#x27;Region&#x27;].str.strip()</code></pre></div>
+
+
+<p>Pour la <strong>question inverse</strong>, utilise l'opérateur bit à bit <code>~</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df[~countries_df[&#x27;Region&#x27;].isin([&#x27;WESTERN EUROPE&#x27;, &#x27;EASTERN EUROPE&#x27;])]</code></pre></div>
+
+
+<hr>
+
+<h2 id="6-re-indexing">6) Re-Indexing</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df[&#x27;Country&#x27;] = countries_df[&#x27;Country&#x27;].map(str.strip)
+countries_df.set_index(&#x27;Country&#x27;, inplace=True)</code></pre></div>
+
+
+<p>L'index n'est plus une séquence d'entiers, mais le nom des pays ! On peut alors faire :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Obtenir la région et la population de France à Germany
+countries_df.loc[&#x27;France&#x27;:&#x27;Germany&#x27;, [&#x27;Region&#x27;, &#x27;Population&#x27;]]</code></pre></div>
+
+
+<hr>
+
+<h2 id="7-sorting">7) Sorting</h2>
+
+<p>Tri par index :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df.sort_index(ascending=False)</code></pre></div>
+
+
+<p>Tri par colonnes :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df.sort_values(by=&#x27;Population&#x27;, ascending=False)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Affiche les NaN en premier
+countries_df.sort_values(by=&#x27;GDP ($ per capita)&#x27;, na_position=&#x27;first&#x27;)</code></pre></div>
+
+
+<hr>
+
+<h2 id="8-grouping">8) Grouping</h2>
+
+<p>Proche du <a href="https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sql.html#group-by" target="_blank" rel="noopener"><code>GROUP BY</code> SQL</a> — processus en 3 étapes :</p>
+
+<ol>
+<li><strong>Split</strong> : le DataFrame est divisé en groupes selon une clé</li>
+<li><strong>Apply</strong> : une <strong>fonction d'agrégation</strong> (<code>sum</code>, <code>mean</code>, etc.) est appliquée à chaque groupe</li>
+<li><strong>Combine</strong> : les résultats sont fusionnés en un nouveau DataFrame</li>
+</ol>
+
+<p>🤔 Quelle région du monde est la plus peuplée ?</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">regions = countries_df.groupby(&#x27;Region&#x27;)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">regions[[&#x27;Population&#x27;, &#x27;Area (sq. mi.)&#x27;]].sum()</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">regions[[&#x27;Population&#x27;, &#x27;Area (sq. mi.)&#x27;]].sum() \
+    .sort_values(&#x27;Population&#x27;, ascending=False)</code></pre></div>
+
+
+<hr>
+
+<h2 id="9-plotting">9) Plotting</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">%matplotlib inline
+import matplotlib</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">gdp = &#x27;GDP ($ per capita)&#x27;
+
+top_ten_countries_df = countries_df[[gdp]] \
+    .sort_values(gdp, ascending=False) \
+    .head(10)
+
+top_ten_countries_df</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">top_ten_countries_df.plot(kind=&quot;bar&quot;)</code></pre></div>
+
+
+<hr>
+
+<h2 id="10-testing-dans-les-notebooks">10) Testing dans les notebooks</h2>
+
+<p>Le testing en notebook fonctionne différemment des fichiers Python classiques.</p>
+
+<p>💻 Regarde le <strong>premier challenge</strong> pour voir comment vérifier tes résultats directement dans le notebook !</p>
+
+<hr>
+
+<h2 id="bibliographie">Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://towardsdatascience.com/here-are-30-ways-that-will-make-you-a-pro-at-creating-numpy-arrays-932b77d9a1eb" target="_blank" rel="noopener">Master NumPy arrays</a></li>
+</ul>
+
+<hr>
+
+<h2 id="à-toi-de-jouer">À toi de jouer ! 🚀</h2>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><li><a href="#ref-1-jupyter-ton-environnement-de-travail">1) Jupyter — Ton environnement de travail</a><ol><li><a href="#ref-quest-ce-que-jupyter">Qu'est-ce que Jupyter ?</a></li><li><a href="#ref-comment-lancer-jupyter">Comment lancer Jupyter ?</a></li></ol></li><li><a href="#ref-2-numpy-tableaux-rapides">2) NumPy — Tableaux rapides</a><ol><li><a href="#ref-quest-ce-que-numpy">Qu'est-ce que NumPy ?</a></li><li><a href="#ref-21-import-canonique">2.1 Import canonique</a></li><li><a href="#ref-22-créer-un-ndarray">2.2 Créer un ndarray</a></li><li><a href="#ref-23-attributs-clés">2.3 Attributs clés</a></li><li><a href="#ref-24-sélection-de-données-slicing">2.4 Sélection de données (Slicing)</a></li><li><a href="#ref-25-opérations-vectorisées">2.5 Opérations vectorisées</a></li><li><a href="#ref-26-les-axes-axis">2.6 Les axes (axis)</a></li><li><a href="#ref-27-boolean-indexing">2.7 Boolean Indexing</a></li><li><a href="#ref-28-limites-de-numpy">2.8 Limites de NumPy</a></li></ol></li><li><a href="#ref-3-pandas-loutil-central-de-lanalyse-de-données">3) Pandas — L'outil central de l'analyse de données</a><ol><li><a href="#ref-quest-ce-que-pandas">Qu'est-ce que Pandas ?</a></li><li><a href="#ref-31-la-series-une-colonne-avec-un-index">3.1 La Series — une colonne avec un index</a></li><li><a href="#ref-32-le-dataframe-un-tableau-2d-avec-étiquettes">3.2 Le DataFrame — un tableau 2D avec étiquettes</a></li></ol></li><li><a href="#ref-4-analyse-exploratoire-des-données-eda">4) Analyse Exploratoire des Données (EDA)</a><ol><li><a href="#ref-41-charger-les-données">4.1 Charger les données</a></li><li><a href="#ref-42-explorer-rapidement-les-données">4.2 Explorer rapidement les données</a></li><li><a href="#ref-43-sélectionner-des-colonnes">4.3 Sélectionner des colonnes</a></li></ol></li><li><a href="#ref-5-boolean-indexing-avec-pandas">5) Boolean Indexing avec Pandas</a><ol><li><a href="#ref-problème-filtrer-sans-boolean-indexing-à-ne-pas-faire">Problème : filtrer sans Boolean Indexing (à ne pas faire)</a></li><li><a href="#ref-solution-boolean-indexing-la-bonne-façon">Solution : Boolean Indexing (la bonne façon)</a></li><li><a href="#ref-filtrer-sur-du-texte-avec-strcontains">Filtrer sur du texte avec `.str.contains()`</a></li><li><a href="#ref-filtrer-avec-isin-plusieurs-valeurs">Filtrer avec `.isin()` — plusieurs valeurs</a></li><li><a href="#ref-combiner-des-conditions-avec-et-et-not">Combiner des conditions avec `&` (ET) et `~` (NOT)</a></li></ol></li><li><a href="#ref-6-re-indexing-choisir-son-index">6) Re-indexing — Choisir son index</a><li><a href="#ref-7-tri-des-données">7) Tri des données</a><ol><li><a href="#ref-tri-par-index">Tri par index</a></li><li><a href="#ref-tri-par-valeur-de-colonne">Tri par valeur de colonne</a></li></ol></li><li><a href="#ref-8-groupement-de-données-groupby">8) Groupement de données (GroupBy)</a><li><a href="#ref-9-visualisation-rapide-avec-pandas">9) Visualisation rapide avec Pandas</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>L'analyse de données avec Python repose sur trois outils qui fonctionnent ensemble : <strong>Jupyter</strong> pour écrire et exécuter du code de façon interactive, <strong>NumPy</strong> pour manipuler des tableaux de chiffres très rapidement, et <strong>Pandas</strong> pour travailler avec des tableaux structurés (colonnes nommées, types mixtes) comme on le ferait avec Excel ou SQL — mais en code.</p>
+
+<p><strong>À retenir avant de commencer :</strong></p>
+
+<ol>
+<li>Jupyter est un "carnet interactif" : tu écris du code dans des cellules, tu l'exécutes et tu vois le résultat immédiatement dessous.</li>
+<li>NumPy introduit le concept de <strong>tableau N-dimensionnel</strong> (<code>ndarray</code>) : une grille de nombres, ultra-rapide car optimisée en C.</li>
+<li>Pandas est bâti sur NumPy. Il ajoute les <strong>noms de colonnes</strong>, les <strong>index</strong>, et le support de plusieurs types à la fois.</li>
+<li>Le filtrage de données avec Pandas (Boolean Indexing) remplace des boucles entières par une seule ligne de code.</li>
+<li><code>groupby</code> dans Pandas est l'équivalent du <code>GROUP BY</code> de SQL : on regroupe, on agrège, on trie.</li>
+</ol>
+
+<p><strong>Analogie fil rouge :</strong> imagine un tableau Excel avec des données sur tous les pays du monde (population, superficie, PIB…). Jupyter est ton écran, NumPy est le moteur qui calcule vite, et Pandas est la surcouche qui te donne accès aux colonnes par nom, qui filtre en une ligne, qui groupe par région. C'est cet outil que tu vas utiliser à chaque session d'analyse.</p>
+
+<p><strong>Mini-plan de ce cours :</strong></p>
+<ol>
+<li>Jupyter — l'environnement de travail</li>
+<li>NumPy — tableaux rapides et opérations vectorisées</li>
+<li>Pandas — Series, DataFrames, exploration, filtrage, tri, groupement, visualisation</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-jupyter-ton-environnement-de-travail">1) Jupyter — Ton environnement de travail</h2>
+
+<h3 id="ref-quest-ce-que-jupyter">Qu'est-ce que Jupyter ?</h3>
+
+<p>Jupyter est une application web qui tourne en local sur ton ordinateur. Elle te permet d'écrire du code Python dans des <strong>cellules</strong>, de l'exécuter, et de voir le résultat juste en dessous. Tu peux aussi écrire du texte, des équations, afficher des graphiques — tout dans le même document.</p>
+
+<p>C'est l'outil standard dans le monde de la data science.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Jupyter s'appelle "notebook" (carnet) parce que c'est à la fois un espace de code ET un espace de notes. Tu peux raconter ton analyse au fil de l'eau.</p></div></div>
+
+<h3 id="ref-comment-lancer-jupyter">Comment lancer Jupyter ?</h3>
+
+<p>Ouvre ton Terminal (macOS/Linux) ou PowerShell (Windows), navigue dans le dossier de ton projet, puis lance Jupyter :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">cd ~/mes-projets/data-analysis   # se placer dans le bon dossier
+jupyter notebook                  # lance le serveur local, ouvre le navigateur</code></pre></div>
+
+
+<p>Une page s'ouvre dans ton navigateur avec la liste de tes fichiers. Crée un nouveau notebook en cliquant sur "New > Python 3".</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Les raccourcis clés utiles dans Jupyter :</p>
+<p>- <code>Shift+Entrée</code> : exécuter la cellule et passer à la suivante</p>
+<p>- <code>TAB</code> après avoir tapé quelques lettres : autocomplétion</p>
+<p>- <code>Shift+TAB</code> après un nom de fonction : affiche la documentation</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-numpy-tableaux-rapides">2) NumPy — Tableaux rapides</h2>
+
+<h3 id="ref-quest-ce-que-numpy">Qu'est-ce que NumPy ?</h3>
+
+<p>NumPy (Numerical Python) est la bibliothèque fondamentale pour le calcul scientifique en Python. Son apport principal : le <strong><code>ndarray</code></strong> (N-dimensional array), un tableau de nombres multidimensionnel, homogène, et ultra-rapide.</p>
+
+<p><strong>Trois caractéristiques clés du <code>ndarray</code> :</strong></p>
+<ul>
+<li><strong>Multidimensionnel</strong> : 1D (vecteur), 2D (matrice), 3D (cube), etc.</li>
+<li><strong>Homogène</strong> : tous les éléments ont le même type (ex : tous des <code>int64</code>)</li>
+<li><strong>Taille fixe</strong> : définie à la création, ne peut pas changer</li>
+</ul>
+
+<h3 id="ref-21-import-canonique">2.1 Import canonique</h3>
+
+<p>La convention universelle est d'importer NumPy avec l'alias <code>np</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np  # convention universelle — TOUJOURS utiliser cet alias</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Si tu oublies cet import, Python ne reconnaîtra pas <code>np.array(...)</code> et tu auras une <code>NameError</code>. C'est l'erreur la plus fréquente des débutants.</p></div></div>
+
+<h3 id="ref-22-créer-un-ndarray">2.2 Créer un ndarray</h3>
+
+<p>Voici la différence entre une liste Python classique et un tableau NumPy. On part des mêmes données :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Une liste de listes Python classique
+my_list = [[1, 2, 3], [4, 5, 6]]
+print(type(my_list))   # &lt;class &#x27;list&#x27;&gt;
+my_list                # [[1, 2, 3], [4, 5, 6]]</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Conversion en tableau NumPy avec np.array()
+my_array = np.array([[1, 2, 3], [4, 5, 6]])  # passer la liste à np.array()
+print(type(my_array))                          # &lt;class &#x27;numpy.ndarray&#x27;&gt;
+my_array
+# array([[1, 2, 3],
+#        [4, 5, 6]])</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Visuellement, un tableau 2D NumPy ressemble à une grille : des lignes (axis 0) et des colonnes (axis 1). Retiens cette image, elle revient constamment.</p></div></div>
+
+<h3 id="ref-23-attributs-clés">2.3 Attributs clés</h3>
+
+<p>Un <code>ndarray</code> expose des attributs qui décrivent sa forme et son contenu :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">my_array = np.array([[1, 2, 3], [4, 5, 6]])
+
+print(my_array.ndim)   # 2      — nombre de dimensions (2D = matrice)
+print(my_array.shape)  # (2, 3) — 2 lignes, 3 colonnes
+print(my_array.size)   # 6      — nombre total d&#x27;éléments (2 × 3)
+print(my_array.dtype)  # int64  — type des éléments</code></pre></div>
+
+
+<p><strong>Exemple numérique :</strong> notre tableau a <code>shape = (2, 3)</code>. Cela signifie 2 lignes et 3 colonnes, donc $2 \times 3 = 6$ éléments au total (<code>size = 6</code>).</p>
+
+<h3 id="ref-24-sélection-de-données-slicing">2.4 Sélection de données (Slicing)</h3>
+
+<p>Le slicing NumPy utilise la syntaxe <code>[lignes, colonnes]</code>. C'est beaucoup plus lisible que les boucles Python classiques.</p>
+
+<p>Prenons ce tableau de référence :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data_np = np.array([
+    [ 0,  1,  2,  3,  4],   # ligne 0
+    [10, 11, 12, 13, 14],   # ligne 1
+    [20, 21, 22, 23, 24],   # ligne 2
+    [30, 31, 32, 33, 34],   # ligne 3
+    [40, 41, 42, 43, 44],   # ligne 4
+])</code></pre></div>
+
+
+<p><strong>Exemple 1 : sélectionner 3 éléments sur la ligne 2</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Python classique (verbeux)
+data_list[2][1:4]  # accède à la liste interne d&#x27;index 2, puis coupe
+# → [21, 22, 23]
+
+# NumPy (concis)
+data_np[2, 1:4]    # ligne 2, colonnes de l&#x27;index 1 à 3 (4 exclu)
+# → array([21, 22, 23])</code></pre></div>
+
+
+<p><strong>Exemple 2 : sélectionner la dernière colonne, toutes lignes sauf la première</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Python classique (boucle nécessaire)
+selection = []
+for index, row in enumerate(data_list):
+    if index &gt; 0:
+        selection.append(row[4])
+# → [14, 24, 34, 44]
+
+# NumPy (une ligne)
+data_np[1:, 4]     # lignes de 1 jusqu&#x27;à la fin (1: = &quot;à partir de la ligne 1&quot;), colonne 4
+# → array([14, 24, 34, 44])</code></pre></div>
+
+
+<p><strong>Syntaxe générale du slicing :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">ndarray[start:stop:step]   # start inclus, stop exclu, step = pas
+
+array = np.arange(0, 10)   # crée [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+array[1:7:2]               # de l&#x27;index 1 à 6 (7 exclu), de 2 en 2
+# → array([1, 3, 5])</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La règle du stop exclu (<code>stop</code> non inclus) est identique aux listes Python et aux ranges. <code>[1:7]</code> donne les indices 1, 2, 3, 4, 5, 6.</p></div></div>
+
+<h3 id="ref-25-opérations-vectorisées">2.5 Opérations vectorisées</h3>
+
+<p>C'est le super-pouvoir de NumPy : appliquer une opération sur <strong>tous les éléments à la fois</strong>, sans écrire de boucle.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">my_list = [[6, 5], [1, 3], [5, 6], [1, 4], [3, 7], [5, 8], [3, 5], [8, 4]]
+
+# Python classique : boucle explicite
+sums = []
+for row in my_list:
+    sums.append(row[0] + row[1])  # addition élément par élément
+# → [11, 4, 11, 5, 10, 13, 8, 12]
+
+# NumPy : opération vectorisée
+my_array = np.array(my_list)
+my_sum = my_array[:, 0] + my_array[:, 1]  # addition colonne 0 + colonne 1, pour TOUTES les lignes
+# → array([11,  4, 11,  5, 10, 13,  8, 12])</code></pre></div>
+
+
+<p>Les deux donnent le même résultat, mais NumPy est <strong>100x plus rapide</strong> sur de gros volumes de données.</p>
+
+<p><strong>Preuve de performance :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Tableau 100 millions de nombres (10 000 × 10 000)
+my_array = np.random.rand(10000, 10000)
+array_list = my_array.tolist()  # conversion en liste Python pour comparer
+
+# Boucle Python classique
+%%time
+total = 0
+for row in array_list:
+    for number in row:
+        total += number
+# CPU times: ~4 secondes
+
+# NumPy vectorisé
+%%time
+np.sum(my_array)
+# CPU times: ~27 millisecondes</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>NumPy est environ <strong>150 fois plus rapide</strong> que Python pur sur cet exemple. Sur des millions de lignes de données réelles, la différence est décisive.</p></div></div>
+
+<h3 id="ref-26-les-axes-axis">2.6 Les axes (axis)</h3>
+
+<p>La notion d'axe revient souvent dans NumPy et Pandas. Pour un tableau 2D :</p>
+
+<ul>
+<li><code>axis=0</code> : on <strong>descend</strong> le long des lignes (on "traverse" les lignes) → résultat par colonne</li>
+<li><code>axis=1</code> : on <strong>traverse</strong> les colonnes → résultat par ligne</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Exemple concret
+an_array = np.array([[1, 2, 3],
+                     [4, 5, 6]])
+
+an_array.sum(axis=0)   # additionne chaque colonne en descendant les lignes
+# → array([5, 7, 9])   # 1+4=5, 2+5=7, 3+6=9
+
+an_array.sum(axis=1)   # additionne chaque ligne en traversant les colonnes
+# → array([6, 15])     # 1+2+3=6, 4+5+6=15</code></pre></div>
+
+
+<p><strong>Formule mathématique :</strong> pour <code>axis=0</code> on calcule $\sum_i A_{i,j}$ pour chaque colonne $j$. Pour <code>axis=1</code> on calcule $\sum_j A_{i,j}$ pour chaque ligne $i$.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Moyen mnémotechnique : <code>axis=0</code> "descend" les lignes (comme si tu regardais vers le bas). Le résultat est <strong>par colonne</strong>. <code>axis=1</code> "traverse" les colonnes. Le résultat est <strong>par ligne</strong>.</p></div></div>
+
+<h3 id="ref-27-boolean-indexing">2.7 Boolean Indexing</h3>
+
+<p>Le Boolean Indexing permet de filtrer un tableau en appliquant une condition logique. NumPy crée un <strong>masque booléen</strong> (un tableau de <code>True</code>/<code>False</code>) et ne retourne que les éléments où la valeur est <code>True</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">arr = np.array([[1, 2, 3], [4, 5, 6]])
+
+masque = arr &gt; 3          # crée un tableau booléen de même forme
+# → array([[False, False, False],
+#          [ True,  True,  True]])
+
+arr[arr &gt; 3]              # applique le masque, retourne un tableau 1D
+# → array([4, 5, 6])</code></pre></div>
+
+
+<h3 id="ref-28-limites-de-numpy">2.8 Limites de NumPy</h3>
+
+<p>NumPy est puissant mais présente des limites pratiques :</p>
+
+<ul>
+<li>Pas de <strong>noms de colonnes</strong> : on accède aux données par position numérique uniquement</li>
+<li><strong>Un seul type</strong> par tableau : impossible de mélanger des entiers et des textes</li>
+<li>Certaines opérations utiles (tri, groupement, jointure) sont absentes</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>C'est exactement pour résoudre ces limitations que <strong>Pandas</strong> a été créé. Pandas s'appuie sur NumPy tout en ajoutant une couche de confort pour l'analyse de données.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-pandas-loutil-central-de-lanalyse-de-données">3) Pandas — L'outil central de l'analyse de données</h2>
+
+<h3 id="ref-quest-ce-que-pandas">Qu'est-ce que Pandas ?</h3>
+
+<p>Pandas est la bibliothèque Python de référence pour l'analyse de données tabulaires. Elle fournit deux structures principales : la <strong>Series</strong> (colonne) et le <strong>DataFrame</strong> (tableau 2D). Elle est bâtie sur NumPy et hérite de ses performances.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd  # convention universelle — alias pd</code></pre></div>
+
+
+<h3 id="ref-31-la-series-une-colonne-avec-un-index">3.1 La Series — une colonne avec un index</h3>
+
+<p>Une Series est un tableau 1D avec un <strong>index</strong> (des étiquettes pour chaque ligne). Elle supporte plusieurs types de données.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+
+# Créer une Series depuis une liste + index séparé
+my_series = pd.Series(data=[1, 2, &#x27;three&#x27;], index=[&#x27;id1&#x27;, &#x27;id2&#x27;, &#x27;id3&#x27;])
+
+# Ou plus simplement depuis un dictionnaire
+my_series = pd.Series({&#x27;id1&#x27;: 1, &#x27;id2&#x27;: 2, &#x27;id3&#x27;: &#x27;three&#x27;})
+
+my_series
+# id1        1
+# id2        2
+# id3    three
+# dtype: object</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La Series ressemble à la colonne d'un tableau Excel : chaque valeur a une étiquette de ligne (l'index). <code>dtype: object</code> signifie que les valeurs sont de types mixtes (ici int et str).</p></div></div>
+
+<h3 id="ref-32-le-dataframe-un-tableau-2d-avec-étiquettes">3.2 Le DataFrame — un tableau 2D avec étiquettes</h3>
+
+<p>Un DataFrame est un tableau 2D avec des <strong>noms de colonnes</strong> et un <strong>index de lignes</strong>. C'est l'objet central de Pandas.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df = pd.DataFrame(
+    [[4, 7, 10],
+     [5, 8, 11],
+     [6, 9, 12]],
+    index=[&#x27;row_1&#x27;, &#x27;row_2&#x27;, &#x27;row_3&#x27;],      # étiquettes des lignes
+    columns=[&#x27;col_a&#x27;, &#x27;col_b&#x27;, &#x27;col_c&#x27;]     # noms des colonnes
+)</code></pre></div>
+
+
+<p><strong>Un DataFrame est en réalité un dictionnaire de Series.</strong> Chaque colonne est une Series, et le DataFrame les assemble :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">apples  = pd.Series(data=[1, 2, 3], index=[&#x27;id1&#x27;, &#x27;id2&#x27;, &#x27;id3&#x27;])   # colonne &quot;apples&quot;
+oranges = pd.Series(data=[4, 5, 6], index=[&#x27;id1&#x27;, &#x27;id2&#x27;, &#x27;id3&#x27;])   # colonne &quot;oranges&quot;
+
+# On passe un dictionnaire {nom_colonne: Series} à pd.DataFrame()
+df_fruits = pd.DataFrame({&#x27;apples&#x27;: apples, &#x27;oranges&#x27;: oranges})
+#      apples  oranges
+# id1       1        4
+# id2       2        5
+# id3       3        6</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Retiens : <strong>DataFrame = dictionnaire de Series</strong>. Chaque clé est un nom de colonne, chaque valeur est une Series (la colonne elle-même). Cette image mentale t'aidera à comprendre comment sélectionner et manipuler les données.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-analyse-exploratoire-des-données-eda">4) Analyse Exploratoire des Données (EDA)</h2>
+
+<p>L'EDA (Exploratory Data Analysis) est la première étape de tout projet data : charger les données, les observer, comprendre leur structure, repérer les anomalies.</p>
+
+<p>On va travailler sur un vrai jeu de données : <strong>les pays du monde</strong> (population, superficie, PIB, région…).</p>
+
+<h3 id="ref-41-charger-les-données">4.1 Charger les données</h3>
+
+<p>D'abord, télécharge le fichier CSV depuis le terminal :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">curl -s -L https://wagon-public-datasets.s3.amazonaws.com/02-Data-Toolkit/01-Data-Analysis/countries.csv &gt; countries.csv</code></pre></div>
+
+
+<p>Puis dans ton notebook Jupyter, commence toujours par les imports :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np   # importé en premier — convention
+import pandas as pd  # importé en second — convention</code></pre></div>
+
+
+<p>Ensuite, charge le CSV dans un DataFrame :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># pd.read_csv() lit un fichier CSV et le transforme en DataFrame
+# decimal=&#x27;,&#x27; indique que les décimales utilisent la virgule (format européen)
+countries_df = pd.read_csv(&#x27;countries.csv&#x27;, decimal=&#x27;,&#x27;)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le paramètre <code>decimal=&#x27;,&#x27;</code> est important pour les datasets européens. Sans lui, <code>1,5</code> serait lu comme du texte au lieu du nombre <code>1.5</code>.</p></div></div>
+
+<h3 id="ref-42-explorer-rapidement-les-données">4.2 Explorer rapidement les données</h3>
+
+<p>Voici les méthodes essentielles à appeler sur tout nouveau DataFrame :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df.shape          # (246, 20) — 246 lignes, 20 colonnes
+countries_df.dtypes         # type de chaque colonne (int64, float64, object...)
+countries_df.info()         # résumé complet : types + nombre de valeurs non-nulles
+countries_df.describe()     # statistiques descriptives : mean, std, min, max, quartiles
+countries_df.isnull().sum() # nombre de valeurs manquantes par colonne
+
+countries_df.head()         # 5 premières lignes (ou head(10) pour 10)
+countries_df.tail()         # 5 dernières lignes</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Commence <strong>toujours</strong> par <code>.info()</code> sur un nouveau dataset. Cela te donne en un coup d'oeil la taille, les types, et les valeurs manquantes — les trois premières questions de tout analyste.</p></div></div>
+
+<h3 id="ref-43-sélectionner-des-colonnes">4.3 Sélectionner des colonnes</h3>
+
+<p><strong>Une colonne → Series (crochets simples) :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df[&#x27;Country&#x27;]              # retourne une Series (tableau 1D)
+type(countries_df[&#x27;Country&#x27;])        # pandas.core.series.Series</code></pre></div>
+
+
+<p><strong>Plusieurs colonnes → DataFrame (double crochets) :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df[[&#x27;Country&#x27;, &#x27;Region&#x27;]]        # retourne un DataFrame (tableau 2D)
+type(countries_df[[&#x27;Country&#x27;]])            # pandas.core.frame.DataFrame</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>C'est l'une des erreurs les plus fréquentes : <code>df[&#x27;col&#x27;]</code> retourne une <strong>Series</strong>, <code>df[[&#x27;col&#x27;]]</code> retourne un <strong>DataFrame</strong>. La différence ? Un simple versus double crochets. Si une fonction attend un DataFrame et que tu lui passes une Series, tu auras une erreur.</p></div></div>
+
+<p><strong>Sélection par label avec <code>.loc</code> :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># .loc[lignes, colonnes] — les deux bornes sont INCLUSES
+countries_df.loc[0:5, [&#x27;Country&#x27;, &#x27;Region&#x27;]]   # lignes 0 à 5 inclus, colonnes Country et Region</code></pre></div>
+
+
+<p><strong>Sélection par position avec <code>.iloc</code> :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># .iloc[lignes, colonnes] — syntaxe Python standard : borne droite EXCLUE
+countries_df.iloc[0:5, 0:2]    # lignes 0 à 4 (5 exclu), colonnes 0 et 1 (2 exclu)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><code>.loc</code> utilise les <strong>étiquettes</strong> (noms de colonnes, valeurs d'index) et inclut les deux bornes. <code>.iloc</code> utilise les <strong>positions entières</strong> (0, 1, 2…) comme Python standard avec borne droite exclue.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-boolean-indexing-avec-pandas">5) Boolean Indexing avec Pandas</h2>
+
+<p>Le Boolean Indexing est la façon idiomatique de <strong>filtrer des lignes</strong> dans Pandas. On crée une condition, Pandas produit un masque booléen, on l'applique au DataFrame.</p>
+
+<h3 id="ref-problème-filtrer-sans-boolean-indexing-à-ne-pas-faire">Problème : filtrer sans Boolean Indexing (à ne pas faire)</h3>
+
+<p>Quels pays ont plus d'un milliard d'habitants ?</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Approche naïve : boucle explicite — verbose et lente
+big_countries = []
+for index, country in countries_df.iterrows():    # itération ligne par ligne
+    if country[&#x27;Population&#x27;] &gt; 1_000_000_000:     # condition sur chaque ligne
+        big_countries.append(country)
+
+pd.DataFrame(big_countries)   # reconstruit un DataFrame depuis la liste</code></pre></div>
+
+
+<h3 id="ref-solution-boolean-indexing-la-bonne-façon">Solution : Boolean Indexing (la bonne façon)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Une seule ligne !
+countries_df[countries_df[&#x27;Population&#x27;] &gt; 1_000_000_000]
+# countries_df[&#x27;Population&#x27;] &gt; 1_000_000_000  → Series de True/False
+# countries_df[...]                            → ne garde que les lignes True</code></pre></div>
+
+
+<h3 id="ref-filtrer-sur-du-texte-avec-strcontains">Filtrer sur du texte avec <code>.str.contains()</code></h3>
+
+<p>Quels pays du continent américain ?</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">american = countries_df[&#x27;Region&#x27;].str.contains(&#x27;AMER&#x27;)  # True si &#x27;AMER&#x27; est dans la chaîne
+countries_df[american]                                    # filtre le DataFrame</code></pre></div>
+
+
+<h3 id="ref-filtrer-avec-isin-plusieurs-valeurs">Filtrer avec <code>.isin()</code> — plusieurs valeurs</h3>
+
+<p>Quels pays d'Europe ?</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df[countries_df[&#x27;Region&#x27;].isin([&#x27;WESTERN EUROPE&#x27;, &#x27;EASTERN EUROPE&#x27;])]</code></pre></div>
+
+
+<p>Si ça retourne 0 résultats, c'est probablement un problème d'<strong>espaces cachés</strong> dans les données :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df[&#x27;Region&#x27;].unique()                  # voir toutes les valeurs uniques
+countries_df[&#x27;Region&#x27;] = countries_df[&#x27;Region&#x27;].str.strip()   # supprimer les espaces en début/fin
+countries_df[countries_df[&#x27;Region&#x27;].isin([&#x27;WESTERN EUROPE&#x27;, &#x27;EASTERN EUROPE&#x27;])]  # ça marche !</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Les espaces cachés sont un piège classique ! <code>&quot;WESTERN EUROPE&quot;</code> et <code>&quot; WESTERN EUROPE&quot;</code> sont différents pour Python. Toujours faire <code>.str.strip()</code> sur les colonnes texte avant de filtrer.</p></div></div>
+
+<h3 id="ref-combiner-des-conditions-avec-et-et-not">Combiner des conditions avec <code>&amp;</code> (ET) et <code>~</code> (NOT)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ET logique : utiliser &amp; avec des parenthèses autour de chaque condition
+countries_df[(countries_df[&#x27;Population&#x27;] &gt; 1e9) &amp; (countries_df[&#x27;Region&#x27;] == &#x27;ASIA&#x27;)]
+
+# NOT logique : utiliser ~ (tilde) pour inverser
+countries_df[~countries_df[&#x27;Region&#x27;].isin([&#x27;WESTERN EUROPE&#x27;, &#x27;EASTERN EUROPE&#x27;])]
+# retourne tous les pays QUI NE SONT PAS en Europe</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>N'utilise <strong>jamais</strong> <code>and</code> ou <code>or</code> Python avec le Boolean Indexing Pandas. Tu dois utiliser <code>&amp;</code> (ET), <code>|</code> (OU), et <code>~</code> (NON). Et toujours mettre des <strong>parenthèses</strong> autour de chaque condition individuelle.</p></div></div>
+
+<p><strong>Pourquoi pas <code>and</code> ?</strong> Parce que <code>and</code> opère sur des valeurs scalaires (True/False uniques), alors que le Boolean Indexing produit une <strong>Series</strong> de True/False. L'opérateur <code>&amp;</code> sait opérer élément par élément sur une Series.</p>
+
+<hr>
+
+<h2 id="ref-6-re-indexing-choisir-son-index">6) Re-indexing — Choisir son index</h2>
+
+<p>Par défaut, l'index est une séquence d'entiers 0, 1, 2… On peut le remplacer par une colonne plus significative.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># D&#x27;abord, nettoyer les espaces dans la colonne Country
+countries_df[&#x27;Country&#x27;] = countries_df[&#x27;Country&#x27;].map(str.strip)   # strip sur toutes les valeurs
+
+# Puis définir Country comme index
+countries_df.set_index(&#x27;Country&#x27;, inplace=True)   # inplace=True modifie le DataFrame en place</code></pre></div>
+
+
+<p>Maintenant l'index est le nom des pays. On peut utiliser <code>.loc</code> avec des noms :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Sélectionner les lignes de France à Germany (ordre alphabétique)
+# et uniquement les colonnes Region et Population
+countries_df.loc[&#x27;France&#x27;:&#x27;Germany&#x27;, [&#x27;Region&#x27;, &#x27;Population&#x27;]]</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>inplace=True</code> modifie le DataFrame directement sans avoir besoin de faire <code>countries_df = countries_df.set_index(...)</code>. C'est équivalent, juste plus court.</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-tri-des-données">7) Tri des données</h2>
+
+<h3 id="ref-tri-par-index">Tri par index</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df.sort_index(ascending=False)   # tri alphabétique inverse (Z → A)
+countries_df.sort_index(ascending=True)    # tri alphabétique normal (A → Z) — par défaut</code></pre></div>
+
+
+<h3 id="ref-tri-par-valeur-de-colonne">Tri par valeur de colonne</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df.sort_values(by=&#x27;Population&#x27;, ascending=False)   # tri par population décroissante
+
+# Gestion des valeurs manquantes (NaN) : les mettre en premier
+countries_df.sort_values(by=&#x27;GDP ($ per capita)&#x27;, na_position=&#x27;first&#x27;)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Par défaut, Pandas place les <code>NaN</code> (valeurs manquantes) en <strong>dernier</strong> lors d'un tri. Utilise <code>na_position=&#x27;first&#x27;</code> pour les voir en tête — utile pour repérer les données incomplètes.</p></div></div>
+
+<hr>
+
+<h2 id="ref-8-groupement-de-données-groupby">8) Groupement de données (GroupBy)</h2>
+
+<p>Le <code>groupby</code> de Pandas fonctionne exactement comme le <code>GROUP BY</code> de SQL. Il suit un processus en 3 étapes :</p>
+
+<ol>
+<li><strong>Split</strong> : le DataFrame est divisé en groupes selon une clé (ex : une colonne "Region")</li>
+<li><strong>Apply</strong> : une fonction d'agrégation est appliquée à chaque groupe (<code>sum</code>, <code>mean</code>, <code>count</code>…)</li>
+<li><strong>Combine</strong> : les résultats sont fusionnés en un nouveau DataFrame</li>
+</ol>
+
+<p><strong>Exemple : quelle région du monde est la plus peuplée ?</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Étape 1 — Split : grouper par région
+regions = countries_df.groupby(&#x27;Region&#x27;)   # crée un objet GroupBy (pas encore de calcul)
+
+# Étape 2 &amp; 3 — Apply + Combine : somme de Population et Area par région
+regions[[&#x27;Population&#x27;, &#x27;Area (sq. mi.)&#x27;]].sum()
+# retourne un DataFrame avec une ligne par région</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Enchaîner avec un tri pour trouver la région la plus peuplée
+regions[[&#x27;Population&#x27;, &#x27;Area (sq. mi.)&#x27;]].sum() \
+    .sort_values(&#x27;Population&#x27;, ascending=False)   # \ permet de continuer sur la ligne suivante</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le <code>\</code> en fin de ligne permet de <strong>continuer une expression Python sur la ligne suivante</strong> sans erreur de syntaxe. On l'utilise souvent pour chaîner des opérations Pandas lisiblement.</p></div></div>
+
+<p><strong>Équivalent SQL de cet exemple :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT Region, SUM(Population), SUM(Area)
+FROM countries
+GROUP BY Region
+ORDER BY SUM(Population) DESC;</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-9-visualisation-rapide-avec-pandas">9) Visualisation rapide avec Pandas</h2>
+
+<p>Pandas intègre une interface de visualisation directe (basée sur Matplotlib) : tu peux tracer un graphique en une ligne.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">%matplotlib inline    # commande Jupyter : affiche les graphiques dans le notebook (pas de fenêtre externe)
+import matplotlib     # importe Matplotlib (nécessaire même si on l&#x27;utilise via Pandas)</code></pre></div>
+
+
+<p><strong>Exemple : les 10 pays avec le PIB par habitant le plus élevé</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">gdp = &#x27;GDP ($ per capita)&#x27;   # nom de la colonne (stocké dans une variable pour éviter les répétitions)
+
+# Chaîne d&#x27;opérations :
+top_ten_countries_df = countries_df[[gdp]] \   # sélectionner uniquement la colonne PIB
+    .sort_values(gdp, ascending=False) \        # trier par PIB décroissant
+    .head(10)                                   # garder les 10 premiers
+
+# Tracer un graphique en barres
+top_ten_countries_df.plot(kind=&quot;bar&quot;)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>.plot(kind=&quot;bar&quot;)</code> est le point d'entrée le plus simple. D'autres valeurs : <code>kind=&quot;line&quot;</code> (courbe), <code>kind=&quot;hist&quot;</code> (histogramme), <code>kind=&quot;scatter&quot;</code> (nuage de points). On approfondira la visualisation dans le module suivant.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1 — NumPy :</strong></p>
+<p>Qu'est-ce que <code>axis=0</code> signifie quand on fait <code>my_array.sum(axis=0)</code> sur un tableau 2D ? Quel est le résultat : une valeur par ligne ou une valeur par colonne ?</p>
+
+<p><strong>Question 2 — Pandas sélection :</strong></p>
+<p>Quelle est la différence entre <code>df[&#x27;Country&#x27;]</code> et <code>df[[&#x27;Country&#x27;]]</code> ? Quel type retourne chacun ?</p>
+
+<p><strong>Question 3 — Boolean Indexing :</strong></p>
+<p>Pourquoi ce code provoque une erreur ?</p>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df[df[&#x27;Pop&#x27;] &gt; 1e9 and df[&#x27;Region&#x27;] == &#x27;ASIA&#x27;]</code></pre></div>
+
+<p>Et comment le corriger ?</p>
+
+<p><strong>Question 4 — GroupBy :</strong></p>
+<p>Que fait ce code, étape par étape ?</p>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">countries_df.groupby(&#x27;Region&#x27;)[[&#x27;Population&#x27;]].sum().sort_values(&#x27;Population&#x27;, ascending=False)</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li><strong>Jupyter</strong> est un notebook interactif : tu écris du code dans des cellules et tu vois le résultat immédiatement.</li>
+<li><strong>NumPy</strong> introduit le <code>ndarray</code> : un tableau multidimensionnel homogène, 100x plus rapide que les listes Python pour les calculs numériques.</li>
+<li>Le <strong>slicing NumPy</strong> <code>arr[lignes, colonnes]</code> remplace des boucles entières par une expression concise.</li>
+<li><code>axis=0</code> opère en "descendant" les lignes (résultat par colonne) ; <code>axis=1</code> en "traversant" les colonnes (résultat par ligne).</li>
+<li><strong>Pandas</strong> ajoute noms de colonnes, index, et types mixtes au-dessus de NumPy. Le DataFrame est un dictionnaire de Series.</li>
+<li><code>.info()</code>, <code>.describe()</code>, <code>.head()</code>, <code>.isnull().sum()</code> sont les réflexes d'exploration à avoir sur tout nouveau dataset.</li>
+<li>Le <strong>Boolean Indexing</strong> (<code>df[df[&#x27;col&#x27;] &gt; valeur]</code>) filtre les lignes en une ligne de code, sans boucle.</li>
+<li>Utilise <code>&amp;</code> (ET), <code>|</code> (OU), <code>~</code> (NON) — jamais <code>and</code>/<code>or</code> — avec des parenthèses autour de chaque condition.</li>
+<li><code>.str.strip()</code> est indispensable avant de filtrer sur du texte : les espaces cachés rendent les comparaisons fausses.</li>
+<li><code>groupby().sum().sort_values()</code> est le pattern standard pour répondre à "quel groupe est le plus grand ?".</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-le-workflow-eda">Le workflow EDA</a></li><li><a href="#syn-statistiques-descriptives">Statistiques descriptives</a></li><li><a href="#syn-groupby-split-apply-combine">`groupby` : split-apply-combine</a></li><li><a href="#syn-pivot-stack-melt">Pivot, stack, melt</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-détecter-les-outliers-proprement">Détecter les outliers proprement</a></li><li><a href="#syn-corrélation-causalité-et-leur-écart">Corrélation, causalité, et leur écart</a></li><li><a href="#syn-profiling-automatique">Profiling automatique</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-le-workflow-eda">Le workflow EDA</h3>
+
+<p>L'<strong>Exploratory Data Analysis</strong> (Tukey, 1977) est la première étape de tout projet data. Avant de modéliser, avant de présenter, avant même de poser une hypothèse, vous devez <strong>comprendre la donnée</strong> que vous avez sous les yeux. L'EDA répond à <strong>six questions</strong> :</p>
+
+<ol>
+<li>Quelle est la <strong>shape</strong> ? Combien de lignes, combien de colonnes, quels types ?</li>
+<li>Y a-t-il des <strong>valeurs manquantes</strong> ? Combien ? Concentrées ou réparties ?</li>
+<li>Quelle est la <strong>distribution</strong> de chaque variable ? Normal, asymétrique, multimodal ?</li>
+<li>Y a-t-il des <strong>outliers</strong> ? Sont-ils des erreurs ou des phénomènes réels ?</li>
+<li>Quelles <strong>corrélations</strong> entre variables ?</li>
+<li>Y a-t-il des <strong>patterns temporels</strong> ou des sous-groupes ?</li>
+</ol>
+
+<p><strong>Workflow type sur un nouveau dataset</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+import numpy as np
+
+df = pd.read_csv(&quot;data.csv&quot;)
+
+df.shape                          # (n_rows, n_cols)
+df.head()                         # Visualiser les premières lignes
+df.dtypes                         # Types de chaque colonne
+df.info()                         # Aperçu types + nulls
+df.describe()                     # Stats numériques
+df.describe(include=&#x27;object&#x27;)     # Stats catégorielles
+df.isnull().sum()                 # Comptage des NaN par colonne
+df.isnull().mean()                # Pourcentage de NaN (entre 0 et 1)
+df.nunique()                      # Cardinalité de chaque colonne
+df.duplicated().sum()             # Doublons exacts</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : sauter l'EDA pour modéliser tout de suite, c'est comme partir en voyage sans regarder la carte. Vous arriverez peut-être à destination, mais vous aurez fait beaucoup de détours, et vous aurez raté toutes les surprises du chemin. Les data scientists juniors veulent toujours « commencer à coder le modèle » ; les seniors passent 60% de leur temps en EDA.</p></div></div>
+
+<h3 id="syn-statistiques-descriptives">Statistiques descriptives</h3>
+
+<p>Pour chaque variable numérique, il faut connaître <strong>cinq nombres</strong> au minimum :</p>
+
+<ul>
+<li><strong>min</strong> : valeur la plus basse</li>
+<li><strong>q1</strong> (25e percentile) : un quart des valeurs sont en dessous</li>
+<li><strong>médiane</strong> (50e percentile) : la valeur centrale</li>
+<li><strong>q3</strong> (75e percentile) : trois quarts des valeurs en dessous</li>
+<li><strong>max</strong> : valeur la plus haute</li>
+</ul>
+
+<p>Plus la <strong>moyenne</strong> et l'<strong>écart-type</strong>. La <strong>moyenne</strong> et la <strong>médiane</strong> racontent des histoires différentes :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Distribution</th><th>Moyenne vs Médiane</th></tr></thead><tbody><tr><td>Symétrique (normale)</td><td>Égales</td></tr><tr><td>Asymétrique à droite (revenus)</td><td>Moyenne >> Médiane</td></tr><tr><td>Asymétrique à gauche (notes d'examen)</td><td>Moyenne << Médiane</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df[&quot;salary&quot;].describe()
+# count    1000
+# mean     58000    ← gonflé par les hauts salaires
+# std      45000
+# min      18000
+# 25%      32000
+# 50%      45000    ← bien plus représentatif
+# 75%      68000
+# max      750000</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Question d'entretien classique</strong> : <em>"Pour décrire le salaire d'un pays, faut-il citer la moyenne ou la médiane ?"</em> Réponse : la <strong>médiane</strong>, parce que la distribution des revenus est très asymétrique à droite (quelques milliardaires faussent la moyenne). C'est exactement pourquoi l'INSEE publie le <strong>revenu médian</strong> pour les statistiques sociales. Si vous citez la moyenne, vous induisez en erreur.</p></div></div>
+
+<h3 id="syn-groupby-split-apply-combine"><code>groupby</code> : split-apply-combine</h3>
+
+<p>Le pattern le plus puissant de Pandas, hérité directement de SQL :</p>
+
+<ol>
+<li><strong>Split</strong> : on découpe le DataFrame en sous-groupes selon une ou plusieurs colonnes.</li>
+<li><strong>Apply</strong> : on applique une fonction (agrégation, transformation, filtrage) à chaque groupe.</li>
+<li><strong>Combine</strong> : on recolle les résultats en un seul DataFrame.</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Agrégation : moyenne de l&#x27;âge par ville
+df.groupby(&quot;city&quot;)[&quot;age&quot;].mean()
+# city
+# Berlin    32.5
+# London    28.7
+# Paris     31.2
+
+# Plusieurs agrégations en une fois
+df.groupby(&quot;city&quot;).agg(
+    avg_age=(&quot;age&quot;, &quot;mean&quot;),
+    max_salary=(&quot;salary&quot;, &quot;max&quot;),
+    n_users=(&quot;id&quot;, &quot;count&quot;),
+)
+
+# Group par plusieurs colonnes
+df.groupby([&quot;city&quot;, &quot;department&quot;])[&quot;salary&quot;].sum()
+
+# Transformation (préserve la shape originale)
+df[&quot;salary_normalized&quot;] = df.groupby(&quot;dept&quot;)[&quot;salary&quot;].transform(
+    lambda x: (x - x.mean()) / x.std()
+)</code></pre></div>
+
+
+<p><strong>Trois variantes</strong> selon ce que vous voulez :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Méthode</th><th>Output</th><th>Cas d'usage</th></tr></thead><tbody><tr><td><code>agg()</code></td><td>Une ligne par groupe</td><td>Reporting, dashboard</td></tr><tr><td><code>transform()</code></td><td>Même shape que l'input</td><td>Normalisation par groupe</td></tr><tr><td><code>apply()</code></td><td>Flexible (peut tout renvoyer)</td><td>Quand <code>agg</code>/<code>transform</code> ne suffisent pas</td></tr></tbody></table></div>
+<h3 id="syn-pivot-stack-melt">Pivot, stack, melt</h3>
+
+<p>Le passage entre <strong>format long</strong> (une ligne par observation) et <strong>format large</strong> (une ligne par entité, une colonne par variable) est crucial pour la viz et le ML.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Long format
+df_long = pd.DataFrame({
+    &quot;year&quot;: [2020, 2020, 2021, 2021],
+    &quot;city&quot;: [&quot;Paris&quot;, &quot;Lyon&quot;, &quot;Paris&quot;, &quot;Lyon&quot;],
+    &quot;sales&quot;: [100, 80, 120, 95],
+})
+
+# Pivot vers wide
+df_wide = df_long.pivot(index=&quot;year&quot;, columns=&quot;city&quot;, values=&quot;sales&quot;)
+#       Lyon  Paris
+# 2020    80    100
+# 2021    95    120
+
+# Melt vers long (inverse du pivot)
+df_long_again = df_wide.reset_index().melt(
+    id_vars=&quot;year&quot;, var_name=&quot;city&quot;, value_name=&quot;sales&quot;
+)</code></pre></div>
+
+
+<p><strong><code>pivot_table</code></strong> est une version plus puissante qui gère les agrégations et les doublons :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df.pivot_table(
+    index=&quot;dept&quot;,
+    columns=&quot;year&quot;,
+    values=&quot;salary&quot;,
+    aggfunc=&quot;mean&quot;,
+    fill_value=0,
+)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : pour le ML et les visualisations avec seaborn, le <strong>format long</strong> (tidy data) est souvent plus pratique. Une colonne par variable, une ligne par observation. Cette discipline simplifie tout en aval.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-détecter-les-outliers-proprement">Détecter les outliers proprement</h3>
+
+<p><strong>Trois approches</strong> courantes, du plus simple au plus robuste :</p>
+
+<p><strong>Méthode 1 — IQR</strong> : un point est un outlier s'il est en dehors de $[Q_1 - 1.5 \cdot \text{IQR},\ Q_3 + 1.5 \cdot \text{IQR}]$ où $\text{IQR} = Q_3 - Q_1$.</p>
+
+<p><strong>Explication en français</strong> : l'IQR (interquartile range) représente l'étalement "central" des données. On considère qu'un point à plus de 1.5 IQR du Q1 ou Q3 est "inhabituellement loin".</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">Q1 = df[&quot;price&quot;].quantile(0.25)
+Q3 = df[&quot;price&quot;].quantile(0.75)
+IQR = Q3 - Q1
+outliers = df[(df[&quot;price&quot;] &lt; Q1 - 1.5*IQR) | (df[&quot;price&quot;] &gt; Q3 + 1.5*IQR)]</code></pre></div>
+
+
+<p>C'est la définition utilisée dans les <strong>boxplots</strong>. Avantage : non paramétrique. Inconvénient : ne tient pas compte de la forme de la distribution.</p>
+
+<p><strong>Méthode 2 — Z-score</strong> : un point est un outlier si $|z| > 3$ où $z = (x - \mu)/\sigma$.</p>
+
+<p><strong>Explication</strong> : le z-score mesure combien d'écarts-types un point est de la moyenne. Sous une loi normale, 99.7% des points sont dans $[\mu - 3\sigma, \mu + 3\sigma]$.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from scipy import stats
+df[&quot;z&quot;] = stats.zscore(df[&quot;price&quot;])
+outliers = df[df[&quot;z&quot;].abs() &gt; 3]</code></pre></div>
+
+
+<p><strong>Limitation</strong> : suppose une distribution normale. À éviter sur des distributions très asymétriques (revenus, prix de maisons).</p>
+
+<p><strong>Méthode 3 — Isolation Forest</strong> : modèle ML qui isole les points "anormaux" en moyenne avec <strong>moins de splits</strong> dans un arbre aléatoire.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import IsolationForest
+iso = IsolationForest(contamination=0.05, random_state=42)
+df[&quot;is_outlier&quot;] = iso.fit_predict(df[[&quot;price&quot;, &quot;rooms&quot;, &quot;area&quot;]]) == -1</code></pre></div>
+
+
+<p>Robuste, multivarié, ne suppose aucune distribution.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège fondamental</strong> : avant de supprimer un outlier, demandez <strong>pourquoi</strong> il existe. Un salaire de 500k€ dans un dataset peut être : (1) une erreur de saisie (à corriger), (2) un cadre dirigeant légitime (à garder), ou (3) un cas rare qu'on veut justement étudier (à conserver et flagger). Supprimer aveuglément des outliers fait perdre du signal. La règle : <strong>investiguer d'abord, agir ensuite</strong>.</p></div></div>
+
+<h3 id="syn-corrélation-causalité-et-leur-écart">Corrélation, causalité, et leur écart</h3>
+
+<p><code>df.corr()</code> calcule la matrice de corrélation de <strong>Pearson</strong> — une mesure linéaire entre -1 et 1. <strong>Trois pièges</strong> :</p>
+
+<p><strong>1. Corrélation ≠ causalité</strong>. Le nombre de noyés à la piscine et la consommation de glace sont fortement corrélés. La <strong>cause commune</strong> est : il fait chaud.</p>
+
+<p><strong>2. Pearson ne capture que le linéaire</strong>. $y = x^2$ a une corrélation Pearson nulle entre $-1$ et $+1$ malgré une relation <strong>parfaite</strong>. Pour des relations monotones non linéaires, utilisez <strong>Spearman</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df.corr(method=&#x27;spearman&#x27;)   # Corrélation des rangs, capture les monotones</code></pre></div>
+
+
+<p><strong>3. Outliers peuvent inverser le signe</strong>. Un seul point extrême peut transformer une corrélation -0.8 en +0.5. <strong>Toujours regarder le scatter plot</strong>, jamais juste le coefficient.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import seaborn as sns
+sns.heatmap(df.corr(), annot=True, cmap=&quot;coolwarm&quot;, center=0)</code></pre></div>
+
+
+<p><strong>Pour identifier rapidement</strong> les variables les plus corrélées avec une cible :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df.corr()[&quot;target&quot;].abs().sort_values(ascending=False)</code></pre></div>
+
+
+<h3 id="syn-profiling-automatique">Profiling automatique</h3>
+
+<p>Pour les <strong>premières minutes</strong> sur un nouveau dataset, des outils génèrent un rapport HTML complet en une ligne :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ydata-profiling (ex-pandas-profiling)
+from ydata_profiling import ProfileReport
+ProfileReport(df, title=&quot;EDA&quot;).to_file(&quot;eda.html&quot;)
+
+# Sweetviz
+import sweetviz
+sweetviz.analyze(df).show_html(&quot;eda.html&quot;)</code></pre></div>
+
+
+<p>Vous obtenez : distributions, corrélations, missing values, top valeurs, alertes (skew, cardinalité élevée, doublons), et même des recommandations.</p>
+
+<p><strong>Important</strong> : c'est un <strong>point de départ</strong>, pas un point d'arrivée. Lisez le rapport, identifiez les questions à creuser, puis explorez manuellement.</p>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Quelle est la différence entre <code>df.groupby(&#x27;city&#x27;).sum()</code> et <code>df.groupby(&#x27;city&#x27;)[&#x27;amount&#x27;].sum()</code> ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Ce qui est sommé.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<ul>
+<li><strong><code>df.groupby(&#x27;city&#x27;).sum()</code></strong> somme <strong>toutes</strong> les colonnes numériques, ce qui peut produire des sommes <strong>absurdes</strong> (sommer des âges, des prix et des notes en même temps).</li>
+<li><strong><code>df.groupby(&#x27;city&#x27;)[&#x27;amount&#x27;].sum()</code></strong> ne somme <strong>que</strong> la colonne <code>amount</code>, ce qui est presque toujours ce que vous voulez.</li>
+</ul>
+
+<p><strong>En pratique</strong>, depuis Pandas 2.0, <code>groupby().sum()</code> ignore automatiquement les colonnes non-numériques (avant, ça plantait sur les strings), mais reste <strong>casse-figure</strong> car vous obtenez des résultats sur des colonnes auxquelles vous n'aviez pas pensé.</p>
+
+<p><strong>Toujours sélectionner explicitement</strong> la ou les colonnes à agréger :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df.groupby(&#x27;city&#x27;)[[&#x27;amount&#x27;, &#x27;qty&#x27;]].sum()</code></pre></div>
+
+
+<p>C'est plus rapide aussi (Pandas ne calcule que ce qu'on demande).</p>
+
+</details>
+
+<p><strong>Q2 : Vous voulez calculer le percentile 90 par groupe. Comment écrire <code>df.groupby(&#x27;city&#x27;)[&#x27;salary&#x27;].agg(...)</code> ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Lambda ou fonction nommée.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Option 1 : lambda
+df.groupby(&#x27;city&#x27;)[&#x27;salary&#x27;].agg(lambda x: x.quantile(0.9))
+
+# Option 2 : méthode native (plus rapide et plus lisible)
+df.groupby(&#x27;city&#x27;)[&#x27;salary&#x27;].quantile(0.9)</code></pre></div>
+
+
+<p><strong>Pour plusieurs percentiles</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df.groupby(&#x27;city&#x27;)[&#x27;salary&#x27;].quantile([0.5, 0.9, 0.99]).unstack()</code></pre></div>
+
+
+<p>Les méthodes natives (<code>mean</code>, <code>quantile</code>, <code>nlargest</code>, etc.) sont <strong>toujours plus rapides</strong> qu'un lambda parce qu'elles tournent en code Cython.</p>
+
+<p>Le lambda est nécessaire <strong>seulement</strong> pour des calculs custom comme :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Proportion au-dessus d&#x27;un seuil
+df.groupby(&#x27;city&#x27;)[&#x27;salary&#x27;].agg(lambda x: (x &gt; 100_000).sum() / len(x))</code></pre></div>
+
+
+<p>Question d'entretien Pandas : <em>"Comment calculer le 95e percentile par catégorie en évitant un lambda ?"</em> — la réponse <code>quantile(0.95)</code> montre que vous connaissez l'API.</p>
+
+</details>
+
+<p><strong>Q3 : Vous calculez <code>df.corr()</code> et la matrice est pleine de NaN. Pourquoi, et comment réparer ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Missing values.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><code>df.corr()</code> <strong>ignore les paires de lignes</strong> contenant des NaN dans l'une ou l'autre colonne (méthode "pairwise"). Si les NaN sont nombreux ou répartis aléatoirement, la corrélation calculée se fait sur un <strong>sous-échantillon réduit</strong>, ce qui peut donner des NaN si le sous-échantillon est trop petit ou totalement vide.</p>
+
+<p><strong>Solutions</strong> :</p>
+
+<ol>
+<li><strong>Imputer les NaN avant</strong> <code>corr()</code> :</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">   df_filled = df.fillna(df.median())
+   df_filled.corr()</code></pre></div>
+
+
+<ol>
+<li><strong>Filtrer les colonnes</strong> ayant trop de NaN :</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">   df_clean = df.dropna(axis=1, thresh=0.9 * len(df))
+   # Garde seulement les colonnes avec au moins 90% de valeurs non-NaN</code></pre></div>
+
+
+<ol>
+<li><strong>Utiliser <code>min_periods</code></strong> qui force un nombre minimum d'observations :</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">   df.corr(min_periods=100)
+   # NaN si moins de 100 observations non-NaN dans la paire</code></pre></div>
+
+
+<p><strong>L'approche correcte</strong> dépend du diagnostic : si les NaN sont <strong>systématiques</strong>, ne calculez pas de corrélation sur ces colonnes. Le pire serait d'<strong>imputer aveuglément</strong> avec la moyenne et de prétendre que la corrélation est valide.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Python for Data Analysis</em> (Wes McKinney) — chapitres 9-11 sur l'EDA</li>
+<li><a href="https://vita.had.co.nz/papers/tidy-data.pdf" target="_blank" rel="noopener">Tidy Data</a> (Hadley Wickham) — papier fondateur sur les formats long/wide</li>
+<li><a href="https://pandas.pydata.org/docs/user_guide/cookbook.html" target="_blank" rel="noopener">Pandas tips and tricks</a> — recettes officielles</li>
+<li><a href="https://www.kaggle.com/learn/data-cleaning" target="_blank" rel="noopener">Kaggle Learn — Data Cleaning</a> — cours interactif</li>
+<li><em>Storytelling with Data</em> (Cole Nussbaumer Knaflic) — pour passer de l'EDA à la communication</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../data-toolkit/python-for-data-science.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Python for Data Science</span>
+  </a>
+  <a href="../data-toolkit/data-sourcing.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Data Sourcing →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

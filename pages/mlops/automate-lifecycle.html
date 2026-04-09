@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automate Model Lifecycle — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Automate Model Lifecycle</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html" class="active">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">MLOps & Production</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Automate Model Lifecycle</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Automate Model Lifecycle</h1>
+        <p class="page-objective">Mettre en place un cycle de vie ML robuste — tracker les expériences (paramètres, métriques, modèles) avec MLflow, puis automatiser le workflow d'entraînement et de déploiement avec Prefect.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">MLflow</div>
+        <div class="key-concept-def">Tracking des experiments : params, metrics, artefacts, versions de modèles.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Run</div>
+        <div class="key-concept-def">Une exécution d&#x27;entraînement loggée avec ses paramètres et résultats.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Registry</div>
+        <div class="key-concept-def">Catalogue versionné des modèles déployables (Staging, Production).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Orchestrateur</div>
+        <div class="key-concept-def">Outil (Prefect, Airflow) qui enchaîne et planifie des pipelines de données.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-automate-model-lifecycle">Cheatsheet — Automate Model Lifecycle</a><ol><li><a href="#mlflow-experiment-tracking">MLflow — Experiment Tracking</a></li><li><a href="#prefect-workflow-automation">Prefect — Workflow Automation</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-objectif-cycle-de-vie-ml-robuste">1) Objectif — Cycle de vie ML robuste</a><ol><li><a href="#11-problèmes-sans-automatisation">1.1 Problèmes sans automatisation</a></li><li><a href="#12-ce-quon-veut">1.2 Ce qu'on veut</a></li></ol></li><li><a href="#2-experiment-tracking-avec-mlflow">2) Experiment Tracking avec MLflow</a><ol><li><a href="#21-quoi-tracker">2.1 Quoi tracker ?</a></li><li><a href="#22-architecture-mlflow">2.2 Architecture MLflow</a></li><li><a href="#23-logger-une-expérience">2.3 Logger une expérience</a></li><li><a href="#24-charger-un-modèle-versionné">2.4 Charger un modèle versionné</a></li></ol></li><li><a href="#3-automatiser-le-lifecycle-avec-prefect">3) Automatiser le Lifecycle avec Prefect</a><ol><li><a href="#31-workflow-du-modèle">3.1 Workflow du modèle</a></li><li><a href="#32-prefect-composants">3.2 Prefect — Composants</a></li><li><a href="#33-code-prefect">3.3 Code Prefect</a></li><li><a href="#34-déploiement-prefect">3.4 Déploiement Prefect</a></li><li><a href="#35-agents-et-queues">3.5 Agents et queues</a></li></ol></li><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-automate-model-lifecycle">📋 Cheatsheet — Automate Model Lifecycle</h2>
+
+<h3 id="mlflow-experiment-tracking">MLflow — Experiment Tracking</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import mlflow
+
+## Configurer le serveur MLflow
+mlflow.set_tracking_uri(&quot;https://mlflow.lewagon.ai&quot;)         # URL du serveur
+mlflow.set_experiment(experiment_name=&quot;wagoncab taxifare&quot;)    # nom de l&#x27;expérience
+
+## Logger une expérience
+with mlflow.start_run():
+    params = dict(batch_size=256, row_count=100_000)
+    metrics = dict(rmse=0.456)
+
+    mlflow.log_params(params)                                 # log les hyperparamètres
+    mlflow.log_metrics(metrics)                               # log les métriques
+
+    mlflow.tensorflow.log_model(
+        model=model,
+        artifact_path=&quot;model&quot;,
+        registered_model_name=&quot;taxifare_model&quot;                # enregistre le modèle
+    )
+
+## Charger un modèle depuis le registry
+model_uri = &quot;models:/taxifare_model/Production&quot;               # nom/stage
+model = mlflow.tensorflow.load_model(model_uri=model_uri)</code></pre></div>
+
+
+<h3 id="prefect-workflow-automation">Prefect — Workflow Automation</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from prefect import task, flow
+
+@task                                          # décorateur : transforme la fonction en tâche Prefect
+def preprocess():
+    pass
+
+@task
+def train():
+    pass
+
+@task
+def evaluate():
+    pass
+
+@flow                                          # décorateur : transforme la fonction en workflow
+def taxifare_lifecycle():
+    preprocess.submit()                        # soumet la tâche
+    eval_future = evaluate.submit()            # soumet en parallèle
+    train_future = train.submit(wait_for=[eval_future])  # attend evaluate avant de lancer train
+
+if __name__ == &#x27;__main__&#x27;:
+    taxifare_lifecycle()                       # lance le workflow</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## Prefect Cloud
+prefect cloud login                            # connexion au cloud
+prefect agent start -q &#x27;default&#x27;               # démarre un agent local
+
+## Prefect self-hosted
+prefect server start                           # démarre le serveur local
+prefect config set PREFECT_API_URL=http://127.0.0.1:4200/api
+prefect agent start -q &#x27;default&#x27;</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Ne pas tracker les expériences et comparer les modèles de mémoire</strong></p>
+<p>Sans tracking, il est impossible de reproduire un résultat ou de comparer objectivement deux modèles.</p>
+<p>❌ Entraîner 10 modèles et noter les résultats sur un post-it</p>
+<p>✅ Logger systématiquement params, metrics et model avec MLflow à chaque run</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier de versionner les données utilisées pour l'entraînement</strong></p>
+<p>Un modèle n'est reproductible que si on connaît les données exactes sur lesquelles il a été entraîné.</p>
+<p>❌ Entraîner sur "les données du moment" sans tracer la période ou la taille</p>
+<p>✅ Logger <code>start_date</code>, <code>end_date</code>, <code>row_count</code> dans les params MLflow (ou utiliser DVC)</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Ré-entraîner automatiquement sans évaluer le modèle existant</strong></p>
+<p>Un nouveau modèle n'est pas forcément meilleur — il faut comparer avant de remplacer.</p>
+<p>❌ Workflow : preprocess → train → deploy (sans évaluation)</p>
+<p>✅ Workflow : preprocess → evaluate ancien modèle → si dégradé : train → compare → deploy si meilleur</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre MLflow et Prefect — tracking vs orchestration</strong></p>
+<p>MLflow track les résultats d'expériences. Prefect orchestre l'exécution du workflow.</p>
+<p>❌ Utiliser MLflow pour planifier des tâches récurrentes</p>
+<p>✅ MLflow = "qu'est-ce qui s'est passé ?" | Prefect = "quand et comment ça s'exécute ?"</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Laisser un agent Prefect tourner sans monitoring</strong></p>
+<p>Un agent qui tourne en continu consomme des ressources et peut exécuter des workflows défaillants en boucle.</p>
+<p>❌ <code>prefect agent start</code> sur une VM sans alertes ni logs</p>
+<p>✅ Configurer des notifications d'échec dans Prefect et monitorer les logs de l'agent</p></div></div>
+
+<hr>
+
+<h2 id="1-objectif-cycle-de-vie-ml-robuste">1) Objectif — Cycle de vie ML robuste</h2>
+
+<h3 id="11-problèmes-sans-automatisation">1.1 Problèmes sans automatisation</h3>
+
+<ul>
+<li>Le modèle doit s'adapter en continu au marché (données qui évoluent)</li>
+<li>L'entraînement manuel ne passe pas à l'échelle</li>
+<li>Sans tracking, pas de reproductibilité ni de comparaison</li>
+</ul>
+
+<h3 id="12-ce-quon-veut">1.2 Ce qu'on veut</h3>
+
+<p>Un <strong>lifecycle</strong> automatisé et traçable :</p>
+
+<ol>
+<li><strong>Tracker</strong> les expériences (paramètres, métriques, modèle)</li>
+<li><strong>Versionner</strong> les modèles (staging, production)</li>
+<li><strong>Automatiser</strong> le workflow (preprocessing → évaluation → entraînement → déploiement)</li>
+</ol>
+
+<figure><img src="../../assets/images/automate-lifecycle-01-bc9714bd.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="2-experiment-tracking-avec-mlflow">2) Experiment Tracking avec MLflow</h2>
+
+<h3 id="21-quoi-tracker">2.1 Quoi tracker ?</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Catégorie</th><th>Exemples</th></tr></thead><tbody><tr><td><strong>Paramètres</strong></td><td>Version du code (git SHA), hyperparamètres, type de preprocessing, batch_size</td></tr><tr><td><strong>Métriques</strong></td><td>RMSE, MAE, R², accuracy, F1</td></tr><tr><td><strong>Modèle</strong></td><td>Poids entraînés, version, stage (staging/production)</td></tr><tr><td><strong>Données</strong></td><td>start_date, end_date, row_count (ou DVC pour le versioning complet)</td></tr></tbody></table></div>
+<figure><img src="../../assets/images/automate-lifecycle-02-e8d4ee20.png" alt="" loading="lazy"></figure>
+
+<h3 id="22-architecture-mlflow">2.2 Architecture MLflow</h3>
+
+<figure><img src="../../assets/images/automate-lifecycle-03-06236f5c.png" alt="" loading="lazy"></figure>
+
+<ul>
+<li><strong>MLflow Server</strong> : stocke les données de tracking (DB) et les modèles (file storage)</li>
+<li><strong>MLflow UI</strong> : interface web pour visualiser et annoter</li>
+<li><strong>MLflow Code</strong> : package Python <code>mlflow</code> pour logger depuis le code</li>
+</ul>
+
+<h3 id="23-logger-une-expérience">2.3 Logger une expérience</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import mlflow
+
+mlflow.set_tracking_uri(&quot;https://mlflow.lewagon.ai&quot;)
+mlflow.set_experiment(&quot;wagoncab taxifare&quot;)
+
+with mlflow.start_run():
+    mlflow.log_params(dict(batch_size=256, row_count=100_000))
+    mlflow.log_metrics(dict(rmse=0.456))
+    mlflow.tensorflow.log_model(
+        model=model,
+        artifact_path=&quot;model&quot;,
+        registered_model_name=&quot;taxifare_model&quot;
+    )</code></pre></div>
+
+
+<h3 id="24-charger-un-modèle-versionné">2.4 Charger un modèle versionné</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model_uri = &quot;models:/taxifare_model/Production&quot;    # stage = Production, Staging, etc.
+model = mlflow.tensorflow.load_model(model_uri=model_uri)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>MLflow supporte les <strong>model stages</strong> : un modèle peut passer de <em>Staging</em> à <em>Production</em> via l'UI ou le code, facilitant le déploiement progressif.</p></div></div>
+
+<figure><img src="../../assets/images/automate-lifecycle-04-3866c47e.png" alt="" loading="lazy"></figure>
+
+<p>👉 <a href="https://www.mlflow.org/docs/latest/tracking.html" target="_blank" rel="noopener">MLflow Tracking docs</a></p>
+
+<p>👉 <a href="https://www.mlflow.org/docs/latest/model-registry.html" target="_blank" rel="noopener">MLflow Model Registry</a></p>
+
+<hr>
+
+<h2 id="3-automatiser-le-lifecycle-avec-prefect">3) Automatiser le Lifecycle avec Prefect</h2>
+
+<h3 id="31-workflow-du-modèle">3.1 Workflow du modèle</h3>
+
+<p>Le cycle de vie d'un modèle est une séquence de tâches interdépendantes formant un <strong>DAG</strong> (Directed Acyclic Graph) :</p>
+
+<figure><img src="../../assets/images/automate-lifecycle-05-371fd052.png" alt="" loading="lazy"></figure>
+
+<ol>
+<li>Récupérer les nouvelles données</li>
+<li>Évaluer la performance du modèle actuel</li>
+<li>Si dégradée → entraîner un nouveau modèle</li>
+<li>Comparer nouveau vs ancien</li>
+<li>Si meilleur → promouvoir en production</li>
+</ol>
+
+<figure><img src="../../assets/images/automate-lifecycle-06-3ba9f2b0.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>La décision de ré-entraîner dépend du contexte métier : performance passée, coût d'entraînement, temps disponible. Certaines décisions ne peuvent pas être automatisées.</p></div></div>
+
+<h3 id="32-prefect-composants">3.2 Prefect — Composants</h3>
+
+<figure><img src="../../assets/images/automate-lifecycle-07-b76bac60.png" alt="" loading="lazy"></figure>
+
+<ul>
+<li><strong>Prefect Server</strong> : stocke les exécutions et résultats (local ou cloud)</li>
+<li><strong>Prefect UI / CLI</strong> : visualisation et paramétrage</li>
+<li><strong>Prefect Code</strong> : décorateurs <code>@task</code> et <code>@flow</code> pour définir le workflow</li>
+</ul>
+
+<h3 id="33-code-prefect">3.3 Code Prefect</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from prefect import task, flow
+
+@task
+def preprocess_new_data():
+    pass
+
+@task
+def evaluate_production_model():
+    return 0.85  # score actuel
+
+@task
+def train_new_model():
+    return 0.90  # score du nouveau modèle
+
+@flow
+def taxifare_lifecycle():
+    preprocess_new_data.submit()
+    eval_future = evaluate_production_model.submit()
+    eval_score = eval_future.result()
+
+    if eval_score &lt; 0.80:  # seuil de ré-entraînement
+        train_future = train_new_model.submit()
+        new_score = train_future.result()
+
+if __name__ == &#x27;__main__&#x27;:
+    taxifare_lifecycle()</code></pre></div>
+
+
+<h3 id="34-déploiement-prefect">3.4 Déploiement Prefect</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## Option 1 : Prefect Cloud (gratuit, limité à 7 jours d&#x27;historique)
+prefect cloud login
+prefect agent start -q &#x27;default&#x27;
+
+## Option 2 : Self-hosted
+prefect server start
+prefect config set PREFECT_API_URL=http://127.0.0.1:4200/api
+prefect agent start -q &#x27;default&#x27;</code></pre></div>
+
+
+<h3 id="35-agents-et-queues">3.5 Agents et queues</h3>
+
+<figure><img src="../../assets/images/automate-lifecycle-08-9d42a294.png" alt="" loading="lazy"></figure>
+
+<p>Les agents tirent les tâches depuis des <strong>queues</strong> — on peut diriger les tâches GPU vers une queue dédiée et les tâches légères vers une autre.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Prefect gère les échecs (retry), les notifications, l'exécution parallèle et distribuée. Courbe d'apprentissage plus rapide qu'Airflow. 👉 <a href="https://docs.prefect.io/core/about_prefect/why-not-airflow.html" target="_blank" rel="noopener">Prefect vs Airflow</a></p></div></div>
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://www.mlflow.org/docs/latest/tracking.html" target="_blank" rel="noopener">MLflow Tracking documentation</a></li>
+<li>👉 <a href="https://www.mlflow.org/docs/latest/model-registry.html" target="_blank" rel="noopener">MLflow Model Registry</a></li>
+<li>👉 <a href="https://dvc.org/" target="_blank" rel="noopener">DVC — Data Version Control</a></li>
+<li>👉 <a href="https://docs.prefect.io/" target="_blank" rel="noopener">Prefect documentation</a></li>
+<li>👉 <a href="https://app.prefect.cloud/" target="_blank" rel="noopener">Prefect Cloud</a></li>
+<li>👉 <a href="https://docs.prefect.io/core/about_prefect/why-not-airflow.html" target="_blank" rel="noopener">Prefect vs Airflow</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">🚀 Challenges</h2>
+
+<ul>
+<li>Tracker les paramètres, métriques et modèles avec MLflow sur le serveur Le Wagon</li>
+<li>Formaliser le workflow de lifecycle du modèle TaxiFare en tâches Prefect</li>
+<li>Automatiser l'exécution du workflow avec un agent Prefect</li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-contexte-pourquoi-automatiser-le-cycle-de-vie-dun-modèle">Contexte : pourquoi automatiser le cycle de vie d'un modèle ?</a></li><li><a href="#ref-5-points-à-retenir-avant-de-commencer">5 points à retenir avant de commencer</a></li><li><a href="#ref-analogie-fil-rouge-lusine-automatisée">Analogie fil rouge : l'usine automatisée</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-pourquoi-le-cycle-de-vie-ml-est-un-problème">1. Pourquoi le cycle de vie ML est un problème</a><ol><li><a href="#ref-11-les-problèmes-sans-automatisation">1.1 Les problèmes sans automatisation</a></li><li><a href="#ref-12-ce-quon-veut-construire">1.2 Ce qu'on veut construire</a></li></ol></li><li><a href="#ref-2-tracker-les-expériences-avec-mlflow">2. Tracker les expériences avec MLflow</a><ol><li><a href="#ref-21-quest-ce-que-tracker-une-expérience">2.1 Qu'est-ce que "tracker une expérience" ?</a></li><li><a href="#ref-22-architecture-mlflow-comment-ça-sorganise">2.2 Architecture MLflow : comment ça s'organise ?</a></li><li><a href="#ref-23-logger-une-expérience-le-code-pas-à-pas">2.3 Logger une expérience : le code pas à pas</a></li><li><a href="#ref-24-charger-un-modèle-versionné">2.4 Charger un modèle versionné</a></li></ol></li><li><a href="#ref-3-versionner-les-modèles-avec-le-model-registry">3. Versionner les modèles avec le Model Registry</a><ol><li><a href="#ref-31-quest-ce-que-le-model-registry">3.1 Qu'est-ce que le Model Registry ?</a></li><li><a href="#ref-32-transition-entre-les-stages">3.2 Transition entre les stages</a></li></ol></li><li><a href="#ref-4-automatiser-le-workflow-avec-prefect">4. Automatiser le workflow avec Prefect</a><ol><li><a href="#ref-41-le-problème-que-prefect-résout">4.1 Le problème que Prefect résout</a></li><li><a href="#ref-42-les-composants-de-prefect">4.2 Les composants de Prefect</a></li><li><a href="#ref-43-les-décorateurs-task-et-flow">4.3 Les décorateurs @task et @flow</a></li><li><a href="#ref-44-déployer-prefect-cloud-ou-self-hosted">4.4 Déployer Prefect : Cloud ou self-hosted ?</a></li><li><a href="#ref-45-mlflow-vs-prefect-quelle-différence">4.5 MLflow vs Prefect : quelle différence ?</a></li></ol></li><li><a href="#ref-5-erreurs-classiques-à-éviter">5. Erreurs classiques à éviter</a><ol><li><a href="#ref-ne-pas-tracker-les-expériences">Ne pas tracker les expériences</a></li><li><a href="#ref-oublier-de-versionner-les-données">Oublier de versionner les données</a></li><li><a href="#ref-déployer-sans-comparer">Déployer sans comparer</a></li><li><a href="#ref-confondre-mlflow-et-prefect">Confondre MLflow et Prefect</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<h3 id="ref-contexte-pourquoi-automatiser-le-cycle-de-vie-dun-modèle">Contexte : pourquoi automatiser le cycle de vie d'un modèle ?</h3>
+
+<p>Imaginer qu'on entraîne un modèle de Machine Learning aujourd'hui pour prédire le prix d'une course de taxi. Ce modèle fonctionne bien. Mais dans six mois, les habitudes changent, les prix augmentent, de nouvelles zones apparaissent. Le modèle se dégrade — et si personne ne s'en aperçoit, c'est silencieusement que les prédictions deviennent mauvaises.</p>
+
+<p>Le <strong>cycle de vie d'un modèle ML</strong> (ou "model lifecycle") désigne tout ce qui entoure un modèle : son entraînement, son évaluation, son versioning, son déploiement, sa surveillance, et sa mise à jour. Sans automatisation, tout cela se fait à la main — ce qui est lent, non reproductible, et sujet aux erreurs.</p>
+
+<p>Deux outils permettent de structurer ce cycle :</p>
+<ul>
+<li><strong>MLflow</strong> : pour <strong>tracker</strong> les expériences (sauvegarder les paramètres, les métriques, les modèles) et <strong>versionner</strong> les modèles.</li>
+<li><strong>Prefect</strong> : pour <strong>orchestrer</strong> le workflow d'entraînement (définir les étapes, les enchaîner, les automatiser).</li>
+</ul>
+
+<h3 id="ref-5-points-à-retenir-avant-de-commencer">5 points à retenir avant de commencer</h3>
+
+<ol>
+<li>Un modèle ML a besoin d'être <strong>mis à jour régulièrement</strong> — les données du monde réel évoluent.</li>
+<li>Sans tracking, il est <strong>impossible de reproduire</strong> un résultat ou de comparer deux modèles objectivement.</li>
+<li>MLflow et Prefect ont des rôles <strong>distincts et complémentaires</strong> : l'un archive, l'autre orchestre.</li>
+<li>Le versioning des modèles permet de passer d'un modèle en "test" à un modèle "en production" de façon contrôlée.</li>
+<li>Automatiser ne veut pas dire "sans réflexion" — certaines décisions (ré-entraîner ou pas) dépendent du contexte métier.</li>
+</ol>
+
+<h3 id="ref-analogie-fil-rouge-lusine-automatisée">Analogie fil rouge : l'usine automatisée</h3>
+
+<p>Imaginer une usine qui fabrique des voitures. Chaque voiture sortante est inspectée, ses données de production sont enregistrées (temps, matériaux, défauts), et si la qualité baisse, la chaîne de montage est ajustée automatiquement.</p>
+
+<p>Dans notre contexte ML :</p>
+<ul>
+<li><strong>MLflow</strong> = le cahier de bord de l'usine (on note tout ce qui se passe à chaque fabrication)</li>
+<li><strong>Le model registry</strong> = le catalogue officiel des versions de voitures approuvées (staging, production)</li>
+<li><strong>Prefect</strong> = la chaîne de montage automatisée (les étapes s'enchaînent sans intervention humaine)</li>
+</ul>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li>Pourquoi le cycle de vie ML est un problème</li>
+<li>Tracker les expériences avec MLflow</li>
+<li>Versionner les modèles avec le Model Registry</li>
+<li>Automatiser le workflow avec Prefect</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-pourquoi-le-cycle-de-vie-ml-est-un-problème">1. Pourquoi le cycle de vie ML est un problème</h2>
+
+<h3 id="ref-11-les-problèmes-sans-automatisation">1.1 Les problèmes sans automatisation</h3>
+
+<p>Sans outils dédiés, voici ce qui arrive concrètement :</p>
+
+<ul>
+<li>On entraîne 10 variantes d'un modèle en changeant des paramètres. On note les résultats dans un fichier texte ou sur un post-it. Une semaine plus tard, on ne sait plus quelle configuration donnait quel résultat.</li>
+<li>On déploie un modèle en production. Trois mois plus tard, les performances se dégradent. On n'a aucun historique pour comprendre ce qui a changé.</li>
+<li>On veut ré-entraîner le modèle sur de nouvelles données. On ne sait plus exactement sur quelles données l'ancien modèle a été entraîné.</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Sans tracking, il est impossible de reproduire un résultat ou de comparer deux modèles de façon objective. C'est comme faire des expériences scientifiques sans noter ses résultats.</p></div></div>
+
+<h3 id="ref-12-ce-quon-veut-construire">1.2 Ce qu'on veut construire</h3>
+
+<p>Un cycle de vie <strong>automatisé et traçable</strong> en 3 étapes :</p>
+
+<ol>
+<li><strong>Tracker</strong> — enregistrer tout ce qui se passe lors de chaque entraînement (paramètres, métriques, modèle)</li>
+<li><strong>Versionner</strong> — gérer les modèles comme du code : staging, production, rollback possible</li>
+<li><strong>Automatiser</strong> — enchaîner les étapes sans intervention manuelle</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-2-tracker-les-expériences-avec-mlflow">2. Tracker les expériences avec MLflow</h2>
+
+<h3 id="ref-21-quest-ce-que-tracker-une-expérience">2.1 Qu'est-ce que "tracker une expérience" ?</h3>
+
+<p>Chaque fois qu'on entraîne un modèle, on effectue une <strong>expérience</strong>. MLflow permet d'enregistrer automatiquement tout ce qui caractérise cette expérience.</p>
+
+<p>Il y a 4 types de données à logger :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Catégorie</th><th>Ce que c'est</th><th>Exemples concrets</th></tr></thead><tbody><tr><td><strong>Paramètres</strong></td><td>Les réglages choisis avant l'entraînement</td><td><code>batch_size=256</code>, <code>learning_rate=0.01</code>, type de preprocessing</td></tr><tr><td><strong>Métriques</strong></td><td>Les scores obtenus après l'entraînement</td><td><code>rmse=0.456</code>, <code>accuracy=0.91</code>, <code>f1=0.88</code></td></tr><tr><td><strong>Modèle</strong></td><td>Le fichier du modèle entraîné</td><td>Les poids du réseau de neurones, la version du modèle</td></tr><tr><td><strong>Données</strong></td><td>La description des données utilisées</td><td><code>start_date</code>, <code>end_date</code>, <code>row_count=100_000</code></td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Penser à une recette de cuisine : les paramètres sont les ingrédients et les dosages, les métriques sont la note du plat, et le modèle est le plat fini. MLflow garde une trace de chaque tentative.</p></div></div>
+
+<h3 id="ref-22-architecture-mlflow-comment-ça-sorganise">2.2 Architecture MLflow : comment ça s'organise ?</h3>
+
+<p>MLflow fonctionne avec 3 composants :</p>
+
+<ul>
+<li><strong>MLflow Server</strong> : un serveur distant qui stocke toutes les données de tracking dans une base de données, et les fichiers de modèles dans un stockage dédié. Le Wagon met à disposition un serveur commun à <code>https://mlflow.lewagon.ai</code>.</li>
+<li><strong>MLflow UI</strong> : une interface web pour visualiser toutes les expériences, comparer les runs, et changer le stage d'un modèle.</li>
+<li><strong>Package Python <code>mlflow</code></strong> : ce qu'on appelle depuis le code pour logger les données.</li>
+</ul>
+
+<h3 id="ref-23-logger-une-expérience-le-code-pas-à-pas">2.3 Logger une expérience : le code pas à pas</h3>
+
+<p>Voici comment enregistrer une expérience complète avec MLflow.</p>
+
+<p><strong>Explication avant le code :</strong> on configure d'abord l'URL du serveur et le nom de l'expérience, puis on ouvre un "run" (une session d'enregistrement), dans lequel on logue tout ce qu'on veut.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import mlflow
+
+# Etape 1 : dire à MLflow où envoyer les données (l&#x27;URL du serveur)
+mlflow.set_tracking_uri(&quot;https://mlflow.lewagon.ai&quot;)
+
+# Etape 2 : nommer l&#x27;expérience (groupe de runs liés au même projet)
+mlflow.set_experiment(&quot;wagoncab taxifare&quot;)
+
+# Etape 3 : ouvrir un run (une &quot;session de logging&quot;)
+with mlflow.start_run():
+
+    # Logger les paramètres d&#x27;entraînement (réglages choisis)
+    mlflow.log_params(dict(batch_size=256, row_count=100_000))
+
+    # Logger les métriques (résultats obtenus)
+    mlflow.log_metrics(dict(rmse=0.456))
+
+    # Logger le modèle (fichier du modèle entraîné)
+    # registered_model_name : nom sous lequel le modèle sera versionnée
+    mlflow.tensorflow.log_model(
+        model=model,
+        artifact_path=&quot;model&quot;,
+        registered_model_name=&quot;taxifare_model&quot;
+    )</code></pre></div>
+
+
+<p><strong>Ce que ce code fait concrètement :</strong> à chaque fois qu'on lance un entraînement, MLflow envoie au serveur les paramètres, les métriques et le modèle. Tout est horodaté, indexé, et accessible depuis l'UI.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le bloc <code>with mlflow.start_run():</code> garantit que le run est bien fermé à la fin, même si une erreur survient. C'est l'équivalent d'un <code>with open(...)</code> pour les fichiers.</p></div></div>
+
+<h3 id="ref-24-charger-un-modèle-versionné">2.4 Charger un modèle versionné</h3>
+
+<p>Une fois que des modèles sont enregistrés dans le registry, on peut les charger directement depuis l'URI MLflow :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Format de l&#x27;URI : &quot;models:/&lt;nom_du_modele&gt;/&lt;stage&gt;&quot;
+# Stages possibles : Staging, Production, Archived
+model_uri = &quot;models:/taxifare_model/Production&quot;
+
+# Charger le modèle depuis le registry (pas besoin de fichier local)
+model = mlflow.tensorflow.load_model(model_uri=model_uri)</code></pre></div>
+
+
+<p><strong>Ce que ce code fait :</strong> il se connecte au serveur MLflow, récupère la version du modèle marquée "Production", et la charge en mémoire. Si on passe un modèle de "Staging" à "Production" dans l'UI, le prochain chargement récupèrera automatiquement la nouvelle version.</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>C'est un point fort du model registry : le code de production n'a pas besoin de changer quand on met à jour le modèle. On change juste le stage dans l'UI MLflow.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-versionner-les-modèles-avec-le-model-registry">3. Versionner les modèles avec le Model Registry</h2>
+
+<h3 id="ref-31-quest-ce-que-le-model-registry">3.1 Qu'est-ce que le Model Registry ?</h3>
+
+<p>Le <strong>Model Registry</strong> de MLflow est un catalogue des modèles entraînés. Chaque modèle enregistré avec <code>registered_model_name</code> y apparaît avec :</p>
+
+<ul>
+<li>Un numéro de version automatique (1, 2, 3...)</li>
+<li>Un <strong>stage</strong> (l'état courant du modèle)</li>
+</ul>
+
+<p>Les stages permettent de gérer le cycle de vie du modèle de façon contrôlée :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Stage</th><th>Signification</th></tr></thead><tbody><tr><td><strong>None</strong></td><td>Version fraîchement enregistrée, pas encore testée</td></tr><tr><td><strong>Staging</strong></td><td>Version en cours de test (comme un environnement de recette)</td></tr><tr><td><strong>Production</strong></td><td>Version déployée, utilisée par l'application</td></tr><tr><td><strong>Archived</strong></td><td>Version obsolète, conservée pour l'historique</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>C'est exactement le même principe que le versioning de code avec Git : on ne pousse pas directement en production, on passe par des étapes de validation.</p></div></div>
+
+<h3 id="ref-32-transition-entre-les-stages">3.2 Transition entre les stages</h3>
+
+<p>La transition se fait soit depuis l'UI MLflow (en quelques clics), soit depuis le code Python. Exemple : après avoir entraîné un nouveau modèle et vérifié qu'il est meilleur, on le passe de Staging à Production.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from mlflow.tracking import MlflowClient
+
+client = MlflowClient()
+
+# Passer la version 3 du modèle &quot;taxifare_model&quot; en Production
+client.transition_model_version_stage(
+    name=&quot;taxifare_model&quot;,
+    version=3,
+    stage=&quot;Production&quot;
+)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Attention : on peut avoir plusieurs versions d'un même modèle en Production simultanément si on ne fait pas attention. Penser à archiver l'ancienne version avant de promouvoir la nouvelle.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-automatiser-le-workflow-avec-prefect">4. Automatiser le workflow avec Prefect</h2>
+
+<h3 id="ref-41-le-problème-que-prefect-résout">4.1 Le problème que Prefect résout</h3>
+
+<p>MLflow archive ce qui se passe. Mais qui décide <strong>quand</strong> lancer l'entraînement ? Qui enchaîne les étapes ? Qui relance en cas d'erreur ?</p>
+
+<p>C'est le rôle de <strong>Prefect</strong> : orchestrer l'exécution du workflow ML de A à Z.</p>
+
+<p>Le workflow typique d'un cycle de vie ressemble à ceci :</p>
+
+<ol>
+<li>Récupérer les nouvelles données</li>
+<li>Évaluer la performance du modèle actuellement en production</li>
+<li>Si la performance est dégradée → entraîner un nouveau modèle</li>
+<li>Comparer nouveau modèle vs ancien modèle</li>
+<li>Si le nouveau est meilleur → le promouvoir en production</li>
+</ol>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Ce type de workflow s'appelle un DAG (Directed Acyclic Graph — graphe orienté acyclique). C'est un enchaînement de tâches où certaines dépendent des résultats des précédentes, et où on ne peut pas "revenir en arrière".</p></div></div>
+
+<h3 id="ref-42-les-composants-de-prefect">4.2 Les composants de Prefect</h3>
+
+<p>Prefect fonctionne avec 3 éléments :</p>
+
+<ul>
+<li><strong>Prefect Server</strong> (ou Prefect Cloud) : stocke l'historique des exécutions, l'état des tâches, les logs. Accessible via une UI web.</li>
+<li><strong>Agent Prefect</strong> : un processus qui tourne en continu (sur un serveur ou une VM), qui surveille une file d'attente et exécute les flows quand ils sont déclenchés.</li>
+<li><strong>Code Python avec <code>@task</code> et <code>@flow</code></strong> : les décorateurs qui transforment des fonctions ordinaires en tâches orchestrées.</li>
+</ul>
+
+<h3 id="ref-43-les-décorateurs-task-et-flow">4.3 Les décorateurs @task et @flow</h3>
+
+<p><strong>Explication avant le code :</strong> un décorateur Python (<code>@quelquechose</code>) est une instruction qu'on place au-dessus d'une fonction pour lui ajouter des comportements. Ici :</p>
+<ul>
+<li><code>@task</code> dit à Prefect "cette fonction est une étape du workflow, surveille-la, relance-la en cas d'erreur, log son résultat"</li>
+<li><code>@flow</code> dit à Prefect "cette fonction est le workflow principal, elle orchestre les tâches"</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from prefect import task, flow
+
+# @task : cette fonction devient une tâche Prefect
+# Prefect va suivre son exécution, gérer les erreurs, etc.
+@task
+def preprocess_new_data():
+    # ici : récupérer et préparer les nouvelles données
+    pass
+
+@task
+def evaluate_production_model():
+    # ici : charger le modèle en production depuis MLflow et l&#x27;évaluer
+    return 0.85  # score actuel (RMSE par exemple)
+
+@task
+def train_new_model():
+    # ici : entraîner un nouveau modèle avec les nouvelles données
+    return 0.90  # score du nouveau modèle
+
+# @flow : cette fonction est le workflow principal
+@flow
+def taxifare_lifecycle():
+
+    # Etape 1 : préparer les données (soumis en arrière-plan)
+    preprocess_new_data.submit()
+
+    # Etape 2 : évaluer le modèle actuel (soumis en arrière-plan)
+    eval_future = evaluate_production_model.submit()
+
+    # .result() bloque jusqu&#x27;à obtenir le résultat de la tâche
+    eval_score = eval_future.result()
+
+    # Etape 3 : si le score est dégradé, ré-entraîner
+    if eval_score &lt; 0.80:  # seuil à définir selon le contexte métier
+        train_future = train_new_model.submit()
+        new_score = train_future.result()
+        print(f&quot;Nouveau modèle entraîné avec score : {new_score}&quot;)
+
+# Point d&#x27;entrée : lancer le workflow manuellement
+if __name__ == &#x27;__main__&#x27;:
+    taxifare_lifecycle()</code></pre></div>
+
+
+<p><strong>Ce que ce code fait :</strong> en lançant ce script, Prefect exécute les tâches dans le bon ordre, en gérant les dépendances. Si une tâche échoue, Prefect peut la relancer automatiquement. Tout est loggué dans l'UI Prefect.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>.submit()</code> lance la tâche en arrière-plan (asynchrone). <code>.result()</code> attend que la tâche soit terminée avant de continuer. C'est comme envoyer un email et attendre la réponse avant d'agir.</p></div></div>
+
+<h3 id="ref-44-déployer-prefect-cloud-ou-self-hosted">4.4 Déployer Prefect : Cloud ou self-hosted ?</h3>
+
+<p>Il y a deux façons de faire tourner Prefect :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># --- Option 1 : Prefect Cloud (recommandé pour débuter) ---
+# Gratuit avec 7 jours d&#x27;historique, hébergé par Prefect
+
+# Se connecter à son compte Prefect Cloud
+prefect cloud login
+
+# Démarrer un agent qui va surveiller la queue &quot;default&quot;
+# Cet agent tourne en continu et attend des workflows à exécuter
+prefect agent start -q &#x27;default&#x27;
+
+
+# --- Option 2 : Self-hosted (serveur local ou VM perso) ---
+
+# Démarrer le serveur Prefect en local
+prefect server start
+
+# Pointer le client vers le serveur local (et non vers le cloud)
+prefect config set PREFECT_API_URL=http://127.0.0.1:4200/api
+
+# Démarrer un agent local
+prefect agent start -q &#x27;default&#x27;</code></pre></div>
+
+
+<p><strong>Ce que ces commandes font :</strong> dans les deux cas, un <strong>agent</strong> tourne en permanence. Il surveille une file d'attente (queue). Quand un workflow est déclenché (manuellement, par un schedule, ou par un event), l'agent le récupère et l'exécute.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Une "queue" (file d'attente) Prefect, c'est comme une boîte aux lettres. L'agent vérifie régulièrement si un nouveau workflow y est déposé, et l'exécute. On peut avoir plusieurs queues (une pour les tâches lourdes sur GPU, une pour les tâches légères) et plusieurs agents spécialisés.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais laisser un agent Prefect tourner sans surveillance. S'il exécute un workflow défaillant en boucle, il peut consommer des ressources indéfiniment. Toujours configurer des alertes d'échec dans l'UI Prefect.</p></div></div>
+
+<h3 id="ref-45-mlflow-vs-prefect-quelle-différence">4.5 MLflow vs Prefect : quelle différence ?</h3>
+
+<p>C'est une source de confusion fréquente. Voici le tableau de démarcation :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Question</th><th>Outil responsable</th></tr></thead><tbody><tr><td>Quels paramètres ai-je utilisés pour ce run ?</td><td><strong>MLflow</strong></td></tr><tr><td>Quel score a obtenu ce modèle ?</td><td><strong>MLflow</strong></td></tr><tr><td>Quelle version du modèle est en production ?</td><td><strong>MLflow</strong> (Model Registry)</td></tr><tr><td>Quand est-ce que l'entraînement a été lancé ?</td><td><strong>Prefect</strong></td></tr><tr><td>Dans quel ordre les étapes se sont-elles exécutées ?</td><td><strong>Prefect</strong></td></tr><tr><td>Pourquoi la tâche 3 a échoué hier à 2h du matin ?</td><td><strong>Prefect</strong></td></tr></tbody></table></div>
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Résumé en une phrase : MLflow répond à "qu'est-ce qui s'est passé dans le modèle ?", Prefect répond à "quand et comment le workflow s'est-il exécuté ?"</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-erreurs-classiques-à-éviter">5. Erreurs classiques à éviter</h2>
+
+<h3 id="ref-ne-pas-tracker-les-expériences">Ne pas tracker les expériences</h3>
+
+<p>Entraîner 10 modèles et noter les résultats "de tête" ou sur un fichier texte non structuré rend toute comparaison impossible. Logger systématiquement avec MLflow dès le premier run.</p>
+
+<h3 id="ref-oublier-de-versionner-les-données">Oublier de versionner les données</h3>
+
+<p>Un modèle n'est reproductible que si on sait exactement sur quelles données il a été entraîné. Logger <code>start_date</code>, <code>end_date</code> et <code>row_count</code> dans les params MLflow au minimum. Pour aller plus loin, utiliser DVC (Data Version Control).</p>
+
+<h3 id="ref-déployer-sans-comparer">Déployer sans comparer</h3>
+
+<p>Un nouveau modèle n'est pas forcément meilleur. Le bon workflow est :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">preprocess → évaluer l&#x27;ancien modèle → si dégradé : entraîner → comparer → déployer si meilleur</code></pre></div>
+
+
+<p>Et non pas :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">preprocess → entraîner → déployer (sans évaluation)</code></pre></div>
+
+
+<h3 id="ref-confondre-mlflow-et-prefect">Confondre MLflow et Prefect</h3>
+
+<p>MLflow n'est pas un orchestrateur de tâches. Prefect n'est pas un outil de tracking. Ils sont complémentaires, pas interchangeables.</p>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1 — Compréhension des rôles</strong></p>
+<p>On veut programmer le ré-entraînement automatique du modèle chaque lundi à 3h du matin. Quel outil utilise-t-on : MLflow ou Prefect ? Pourquoi ?</p>
+
+<p><strong>Question 2 — Stages MLflow</strong></p>
+<p>Un modèle est en stage "Staging". Que signifie ce stage, et que doit-on vérifier avant de le passer en "Production" ?</p>
+
+<p><strong>Question 3 — Code Prefect</strong></p>
+<p>Dans ce code, pourquoi utilise-t-on <code>.submit()</code> plutôt que d'appeler directement <code>evaluate_production_model()</code> ? Quelle est la différence entre <code>.submit()</code> et <code>.result()</code> ?</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">eval_future = evaluate_production_model.submit()
+eval_score = eval_future.result()</code></pre></div>
+
+
+<p><strong>Question 4 — Bonnes pratiques</strong></p>
+<p>On entraîne un modèle sur les données de janvier 2024. Six mois plus tard, on veut reproduire exactement cet entraînement. Quels éléments auraient dû être loggés dans MLflow pour que ce soit possible ?</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Le <strong>cycle de vie ML</strong> (model lifecycle) couvre tout ce qui va de l'entraînement au déploiement et à la mise à jour d'un modèle.</li>
+<li><strong>MLflow</strong> sert à tracker les expériences (params, métriques, modèles) et à versionner les modèles via le Model Registry (stages : Staging, Production, Archived).</li>
+<li><strong>Prefect</strong> sert à orchestrer le workflow ML : définir les tâches avec <code>@task</code>, les enchaîner avec <code>@flow</code>, et les automatiser via un agent.</li>
+<li>Les deux outils sont <strong>complémentaires</strong> : MLflow archive les résultats, Prefect pilote l'exécution.</li>
+<li>Un bon workflow ne déploie jamais un nouveau modèle sans l'<strong>évaluer et le comparer</strong> à l'ancien.</li>
+<li>Un <strong>agent Prefect</strong> tourne en permanence, surveille une file d'attente, et exécute les flows déclenchés.</li>
+<li>Le <strong>Model Registry</strong> MLflow permet de changer de version de modèle en production sans toucher au code de l'application.</li>
+<li>Logger les données d'entraînement (<code>start_date</code>, <code>end_date</code>, <code>row_count</code>) est indispensable pour la reproductibilité.</li>
+<li>Prefect gère les <strong>retry automatiques</strong>, les notifications d'échec, et l'exécution parallèle.</li>
+<li>Automatiser ne supprime pas la réflexion : la décision de ré-entraîner dépend du contexte métier.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-le-cycle-de-vie-dun-modèle-ml">Le cycle de vie d'un modèle ML</a></li><li><a href="#syn-mlflow-tracking">MLflow Tracking</a></li><li><a href="#syn-model-registry">Model Registry</a></li><li><a href="#syn-orchestration-prefect-airflow">Orchestration : Prefect, Airflow</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-versionning-de-données-dvc">Versionning de données : DVC</a></li><li><a href="#syn-reproducibilité-totale">Reproducibilité totale</a></li><li><a href="#syn-monitoring-de-drift">Monitoring de drift</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-le-cycle-de-vie-dun-modèle-ml">Le cycle de vie d'un modèle ML</h3>
+
+<p>Un modèle ne vit pas que dans un notebook. Son cycle complet en production passe par :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Données brutes → Cleaning → Features → Train → Eval → Deploy → Monitor → Retrain
+       ↑                                                            |
+       └────────────────────────────────────────────────────────────┘</code></pre></div>
+
+
+<p>Sept étapes, et chacune doit être :</p>
+
+<ol>
+<li><strong>Reproductible</strong> : même input → même output</li>
+<li><strong>Versionnée</strong> : on doit pouvoir revenir en arrière</li>
+<li><strong>Tracée</strong> : on sait ce qui a été fait et par qui</li>
+<li><strong>Automatisée</strong> : pas de bouton à cliquer manuellement</li>
+<li><strong>Monitorée</strong> : on détecte les problèmes en prod</li>
+</ol>
+
+<p>C'est exactement le rôle du MLOps. Sans cette discipline, vous avez un "modèle qui marche dans un notebook" qui devient impossible à déployer ou à maintenir.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : un notebook Jupyter est à un modèle de production ce qu'un repas chez vous est à un restaurant gastronomique. Vous pouvez réussir une fois sans recette précise. Mais pour servir 1000 clients par jour avec une qualité constante, il vous faut : recettes écrites, mises en place, hygiène, traçabilité, sourcing fiable. Le MLOps, c'est cette industrialisation.</p></div></div>
+
+<h3 id="syn-mlflow-tracking">MLflow Tracking</h3>
+
+<p><strong>MLflow</strong> (Databricks, 2018) est l'outil open source standard pour tracer les expériences ML.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import mlflow
+
+# Regroupe toutes les runs sous un même nom d&#x27;expérience
+mlflow.set_experiment(&quot;churn_prediction&quot;)
+
+# Un &quot;run&quot; = une tentative d&#x27;entraînement. Le with garantit que la run est bien fermée
+with mlflow.start_run(run_name=&quot;rf_v3&quot;):
+    # --- Params : configuration fixe avant le train ---
+    mlflow.log_param(&quot;n_estimators&quot;, 100)     # string ou number, immuable
+    mlflow.log_param(&quot;max_depth&quot;, 10)
+
+    # --- Entraînement ---
+    model = RandomForestClassifier(n_estimators=100, max_depth=10)
+    model.fit(X_train, y_train)
+
+    # --- Metrics : valeurs numériques traçables dans le temps ---
+    train_score = model.score(X_train, y_train)
+    val_score = model.score(X_val, y_val)
+    mlflow.log_metric(&quot;train_accuracy&quot;, train_score)   # auto-timestampée
+    mlflow.log_metric(&quot;val_accuracy&quot;, val_score)
+    # Pour des courbes, on peut répéter : mlflow.log_metric(&quot;loss&quot;, l, step=epoch)
+
+    # --- Artefacts : fichiers arbitraires (modèle sérialisé, plots, csv...) ---
+    mlflow.sklearn.log_model(model, &quot;model&quot;)           # sérialise + enregistre les conda/req
+    mlflow.log_artifact(&quot;confusion_matrix.png&quot;)         # upload d&#x27;un fichier local</code></pre></div>
+
+
+<p>Quatre éléments tracés à chaque run :</p>
+
+<ul>
+<li><strong>Params</strong> : hyperparamètres et configuration</li>
+<li><strong>Metrics</strong> : scores, temps d'entraînement, etc.</li>
+<li><strong>Tags</strong> : métadonnées (version du dataset, branche git, etc.)</li>
+<li><strong>Artifacts</strong> : modèles, plots, fichiers de données</li>
+</ul>
+
+<p>L'UI de MLflow (<code>mlflow ui</code>) permet de comparer visuellement des centaines de runs, trier par métrique, et reproduire n'importe lequel.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : intégrez MLflow <strong>dès le premier jour</strong> d'un projet, même pour des expériences "rapides". Le coût marginal est nul (3 lignes de code) et le bénéfice est énorme : dans 6 mois quand quelqu'un demande "comment as-tu obtenu ce score ?", vous avez la réponse exacte.</p></div></div>
+
+<h3 id="syn-model-registry">Model Registry</h3>
+
+<p>Le <strong>Model Registry</strong> de MLflow gère les versions de modèles déployables :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Enregistrer un modèle depuis un run (abc123 = run_id)
+mlflow.register_model(&quot;runs:/abc123/model&quot;, &quot;churn_predictor&quot;)
+
+# Promouvoir une version vers Staging puis Production
+client = mlflow.tracking.MlflowClient()
+client.transition_model_version_stage(
+    name=&quot;churn_predictor&quot;,
+    version=3,                # version à promouvoir
+    stage=&quot;Production&quot;,       # &quot;Staging&quot; | &quot;Production&quot; | &quot;Archived&quot;
+)
+
+# Charger le modèle marqué Production (sans connaître le run_id)
+# Permet de rollback en changeant juste la version active
+model = mlflow.sklearn.load_model(&quot;models:/churn_predictor/Production&quot;)</code></pre></div>
+
+
+<p>Le registry sépare les <strong>stages</strong> : <code>None</code> → <code>Staging</code> → <code>Production</code> → <code>Archived</code>. Chaque version est tracée avec les métriques de validation, l'historique de déploiement, et un rollback rapide si une nouvelle version dégrade en prod.</p>
+
+<h3 id="syn-orchestration-prefect-airflow">Orchestration : Prefect, Airflow</h3>
+
+<p>Les pipelines ML ont des étapes qui doivent s'exécuter dans un ordre précis, avec des dépendances. C'est le rôle d'un <strong>orchestrateur</strong>.</p>
+
+<p><strong>Apache Airflow</strong> (Airbnb, 2014) : le standard historique. Définit les workflows comme des DAGs (Directed Acyclic Graphs) en Python.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from airflow import DAG
+from airflow.operators.python import PythonOperator
+from datetime import datetime
+
+with DAG(&quot;ml_training&quot;, start_date=datetime(2024, 1, 1), schedule=&quot;@daily&quot;) as dag:
+    extract = PythonOperator(task_id=&quot;extract&quot;, python_callable=extract_data)
+    transform = PythonOperator(task_id=&quot;transform&quot;, python_callable=transform_data)
+    train = PythonOperator(task_id=&quot;train&quot;, python_callable=train_model)
+    extract &gt;&gt; transform &gt;&gt; train</code></pre></div>
+
+
+<p><strong>Prefect</strong> (2018) : alternative moderne, plus pythonique, plus flexible. C'est le standard 2025 pour les nouveaux projets.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from prefect import flow, task
+
+@task
+def extract():
+    return load_data()
+
+@task
+def transform(data):
+    return clean_and_encode(data)
+
+@task
+def train(X, y):
+    return fit_model(X, y)
+
+@flow
+def training_pipeline():
+    data = extract()
+    X, y = transform(data)
+    model = train(X, y)
+    return model</code></pre></div>
+
+
+<p>Prefect (et Dagster, autre alternative moderne) ajoute :</p>
+
+<ul>
+<li>Retries automatiques sur erreur</li>
+<li>Caching des étapes coûteuses</li>
+<li>Observabilité native</li>
+<li>Intégration cloud (Prefect Cloud)</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Recommandation 2025</strong> : pour un nouveau projet, utilisez <strong>Prefect</strong> ou <strong>Dagster</strong>. Airflow reste pertinent si vous êtes dans un écosystème établi (beaucoup d'entreprises l'utilisent), mais sa courbe d'apprentissage est plus raide et son DX (developer experience) moins agréable.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-versionning-de-données-dvc">Versionning de données : DVC</h3>
+
+<p>Git est mauvais pour les fichiers binaires lourds (modèles, datasets). <strong>DVC</strong> (Data Version Control) ajoute le versionning de gros fichiers à git.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Tracker un dataset
+dvc add data/raw/dataset.csv
+git add data/raw/dataset.csv.dvc
+git commit -m &quot;Track raw dataset v1&quot;
+
+# Stocker le fichier réel sur S3/GCS
+dvc remote add -d storage s3://my-bucket/dvc-storage
+dvc push
+
+# Pour un collègue qui clone le repo
+git clone repo
+dvc pull   # Récupère les fichiers depuis S3</code></pre></div>
+
+
+<p>DVC permet de :</p>
+
+<ul>
+<li>Stocker datasets et modèles dans un cloud storage</li>
+<li>Versionner les changements (sans gonfler git)</li>
+<li>Reproduire exactement un état antérieur (<code>git checkout</code> + <code>dvc checkout</code>)</li>
+<li>Définir des pipelines (<code>dvc.yaml</code>) qui re-exécutent automatiquement les étapes nécessaires</li>
+</ul>
+
+<h3 id="syn-reproducibilité-totale">Reproducibilité totale</h3>
+
+<p>Cinq ingrédients pour qu'une expérience ML soit <strong>reproductible</strong> par un collègue dans 6 mois :</p>
+
+<ol>
+<li><strong>Code versionné</strong> : git, idéalement avec un tag par release</li>
+<li><strong>Données versionnées</strong> : DVC, ou un dataset immutable (S3 path avec hash)</li>
+<li><strong>Environnement versionné</strong> : <code>requirements.txt</code> figé OU image Docker</li>
+<li><strong>Random seeds fixées</strong> : <code>np.random.seed(42)</code>, <code>tf.random.set_seed(42)</code>, <code>torch.manual_seed(42)</code>, <code>random.seed(42)</code></li>
+<li><strong>Configuration externe</strong> : pas de magic numbers dans le code, tout dans un YAML</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># config.yaml
+model:
+  name: random_forest
+  n_estimators: 100
+  max_depth: 10
+  random_state: 42
+data:
+  source: s3://data/v3/train.parquet
+  target: churn
+
+# train.py
+import yaml
+config = yaml.safe_load(open(&quot;config.yaml&quot;))
+mlflow.log_dict(config, &quot;config.yaml&quot;)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Test ultime</strong> : effacez votre dossier local, clonez le repo dans un nouveau dossier, et essayez de reproduire les résultats. Si ça ne marche pas en moins de 30 minutes, votre setup n'est pas reproductible.</p></div></div>
+
+<h3 id="syn-monitoring-de-drift">Monitoring de drift</h3>
+
+<p>Un modèle déployé n'est pas un projet "fini". Les données en prod <strong>dérivent</strong> dans le temps : nouveaux comportements clients, changements saisonniers, événements imprévus. Le modèle se dégrade silencieusement.</p>
+
+<p><strong>Trois types de drift à monitorer</strong> :</p>
+
+<ol>
+<li><strong>Data drift</strong> : la distribution des features change (les utilisateurs sont plus jeunes qu'avant)</li>
+<li><strong>Concept drift</strong> : la relation entre features et cible change (le sens du mot "spam" évolue)</li>
+<li><strong>Prediction drift</strong> : la distribution des prédictions change (le modèle prédit plus de fraudes qu'avant)</li>
+</ol>
+
+<p>Tests statistiques pour détecter le drift :</p>
+
+<ul>
+<li><strong>PSI</strong> (Population Stability Index) : compare deux distributions catégorielles</li>
+<li><strong>KS test</strong> (Kolmogorov-Smirnov) : compare deux distributions continues</li>
+<li><strong>Chi²</strong> : pour des distributions catégorielles</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from scipy.stats import ks_2samp
+
+# Comparer la distribution actuelle à la baseline
+statistic, p_value = ks_2samp(X_train[&quot;age&quot;], X_prod[&quot;age&quot;])
+if p_value &lt; 0.05:
+    alert(&quot;Drift détecté sur &#x27;age&#x27;&quot;)</code></pre></div>
+
+
+<p>Outils dédiés : <strong>Evidently AI</strong>, <strong>WhyLabs</strong>, <strong>Arize AI</strong>, <strong>Fiddler</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from evidently import ColumnMapping
+from evidently.report import Report
+from evidently.metric_preset import DataDriftPreset
+
+report = Report(metrics=[DataDriftPreset()])
+report.run(reference_data=X_train, current_data=X_prod)
+report.show()</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Règle de prod</strong> : tout modèle en production doit avoir un dashboard de monitoring qui suit les métriques de drift et d'accuracy. Sinon, vous découvrirez les problèmes par les plaintes des utilisateurs au lieu d'un dashboard. Question d'entretien MLOps classique : "Comment garantir qu'un modèle reste performant en production ?" — la réponse exhaustive parle de monitoring continu, alertes, et reentraînement automatique.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Quelle est la différence entre <code>mlflow.log_metric</code> et <code>mlflow.log_param</code>, et quand utiliser l'un ou l'autre ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>variabilité.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong><code>log_param</code></strong> : pour les <strong>hyperparamètres</strong> et configurations qui sont <strong>fixés au début</strong> de l'entraînement et ne changent pas. Exemples : <code>learning_rate</code>, <code>batch_size</code>, <code>n_estimators</code>. Ils servent à reproduire ou comparer des runs. <strong><code>log_metric</code></strong> : pour les <strong>mesures</strong> qui peuvent évoluer pendant et après l'entraînement. Exemples : <code>train_loss</code> à chaque epoch, <code>val_accuracy</code>, <code>inference_time</code>. MLflow stocke les métriques avec un timestamp, ce qui permet de tracer leur évolution dans le temps. Pourquoi cette distinction : (1) un param est immuable pour un run donné, une métrique peut avoir une série de valeurs. (2) Dans l'UI MLflow, vous filtrez par params (chercher les runs avec <code>lr=0.001</code>) et triez par metrics (le meilleur val_accuracy). (3) Comparer des params entre runs n'a pas le même sens que comparer des courbes de loss. Les confondre rend le tracking inutilisable. Question d'entretien MLOps de base.</p>
+
+</details>
+
+<p><strong>Q2 : Vous avez un modèle en production qui dégrade depuis 2 semaines. Quelles sont les premières choses à investiguer ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>drift et changements.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Cinq investigations dans cet ordre. (1) <strong>Métriques de production</strong> : le score s'est-il vraiment dégradé ? Vérifier sur le dashboard, comparer avec les baselines. Parfois, c'est un bug de mesure et non du modèle. (2) <strong>Data drift</strong> : la distribution des features d'entrée a-t-elle changé ? Lancer un PSI ou KS test entre les données du training set original et les données récentes. Si oui, identifier quelles features ont dérivé. (3) <strong>Bug de pipeline</strong> : a-t-il y eu un changement dans le code de feature engineering ? Une mise à jour de la base de données ? Un changement de format CSV ? Souvent c'est un détail trivial qui casse tout. (4) <strong>Concept drift</strong> : la relation features → cible a-t-elle changé ? Plus subtil à détecter, peut nécessiter de réétiqueter quelques exemples récents. Exemple typique : COVID a complètement cassé tous les modèles de demande qui prédisaient à partir de patterns pré-2020. (5) <strong>Source externe</strong> : un changement dans une API tierce, un nouveau type d'utilisateur, un événement saisonnier inattendu. <strong>Action immédiate</strong> : si la dégradation est significative, <strong>rollback</strong> vers la version précédente du modèle (Model Registry permet ça en une commande), puis investigate à froid. <strong>Action long terme</strong> : reentraîner sur les nouvelles données et déployer une v+1. Question d'entretien MLOps : "Que faire quand un modèle se dégrade en prod ?" — la réponse complète parle de monitoring, rollback, et reentraînement.</p>
+
+</details>
+
+<p><strong>Q3 : Pourquoi tracker une expérience avec MLflow plutôt qu'un fichier <code>results.json</code> à la main ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>passage à l'échelle.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Cinq raisons. (1) <strong>Comparaison</strong> : MLflow donne une UI qui compare des centaines de runs visuellement (courbes de loss, scatter plots de hyperparam vs métrique, parallel coordinates plot). Avec un JSON manuel, vous coderez ça vous-même chaque fois. (2) <strong>Reproductibilité</strong> : MLflow capture automatiquement l'environnement (versions des libs), la commande, l'utilisateur, l'heure. Avec JSON manuel, vous oublierez la moitié. (3) <strong>Artefacts</strong> : MLflow stocke les modèles, plots, datasets de validation. Vous pouvez retrouver le pickle du modèle de la run #347 en un clic. (4) <strong>Collaboration</strong> : avec un serveur MLflow partagé, toute l'équipe voit toutes les expériences sans se passer des fichiers. (5) <strong>Intégrations</strong> : MLflow s'intègre nativement avec les principaux frameworks (sklearn, PyTorch, TF, XGBoost) et déploiement (Databricks, Sagemaker, Docker). Le seuil de décision : si vous lancez plus de 10 expériences sur un projet, ne le faites jamais sans tracker. C'est un investissement de 5 minutes qui économise des heures de "comment j'ai obtenu ce score il y a 2 mois ?". Question d'entretien data engineer : "Comment gérez-vous les expériences ML ?" — répondre "MLflow" ou "Weights & Biases" est un pré-requis.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://mlflow.org/docs/latest/index.html" target="_blank" rel="noopener">MLflow documentation</a></li>
+<li><em>Designing Machine Learning Systems</em> (Chip Huyen) — chapitre 6 sur le model development</li>
+<li><a href="https://docs.prefect.io/" target="_blank" rel="noopener">Prefect documentation</a></li>
+<li><a href="https://dvc.org/doc" target="_blank" rel="noopener">DVC documentation</a></li>
+<li><a href="https://docs.evidentlyai.com/" target="_blank" rel="noopener">Evidently AI</a> — pour le monitoring de drift</li>
+<li><em>Machine Learning Engineering for Production</em> (Andrew Ng, Coursera) — cours fondamental</li>
+<li><a href="https://12factor.net/" target="_blank" rel="noopener">The Twelve-Factor App</a> — principes intemporels pour le SaaS</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../specialise/explainable-ai.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Explainable AI</span>
+  </a>
+  <a href="../mlops/ml-ops.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">ML Ops →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

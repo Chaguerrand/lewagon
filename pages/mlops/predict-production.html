@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Predict in Production — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Predict in Production</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html" class="active">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">MLOps & Production</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Predict in Production</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Predict in Production</h1>
+        <p class="page-objective">Exposer un modèle ML au monde via une API REST avec FastAPI, le containeriser avec Docker, et le déployer en production sur Google Cloud Run via Artifact Registry.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">API REST</div>
+        <div class="key-concept-def">Endpoint HTTP qui reçoit des features et renvoie une prédiction (FastAPI).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Latence vs throughput</div>
+        <div class="key-concept-def">Temps de réponse par requête vs nombre de requêtes par seconde.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Canary deploy</div>
+        <div class="key-concept-def">Déployer la nouvelle version sur un petit pourcentage du trafic d&#x27;abord.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Monitoring</div>
+        <div class="key-concept-def">Observer en continu performance, drift, erreurs en production.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><ol><li><a href="#fastapi-créer-une-api">FastAPI — Créer une API</a></li><li><a href="#docker-containeriser">Docker — Containeriser</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-web-101-comment-fonctionne-une-api">1) Web 101 — Comment fonctionne une API</a><li><a href="#2-fastapi-créer-lapi-de-prédiction">2) FastAPI — Créer l'API de prédiction</a><ol><li><a href="#21-présentation">2.1 Présentation</a></li><li><a href="#22-endpoint-racine">2.2 Endpoint racine</a></li><li><a href="#23-endpoint-de-prédiction-avec-query-params">2.3 Endpoint de prédiction avec query params</a></li></ol></li><li><a href="#3-docker-containeriser-lapplication">3) Docker — Containeriser l'application</a><ol><li><a href="#31-pourquoi-docker">3.1 Pourquoi Docker ?</a></li><li><a href="#32-dockerfile-image-container">3.2 Dockerfile → Image → Container</a></li></ol></li><li><a href="#4-déployer-sur-google-cloud">4) Déployer sur Google Cloud</a><ol><li><a href="#41-artifact-registry-stocker-limage">4.1 Artifact Registry — Stocker l'image</a></li><li><a href="#42-cloud-run-servir-lapi">4.2 Cloud Run — Servir l'API</a></li></ol></li><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">gcloud run deploy \
+    --image $GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$DOCKER_REPO_NAME/$DOCKER_IMAGE_NAME:0.1 \
+    --region $GCP_REGION</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">docker build -t api .                              # build l&#x27;image
+docker run -e PORT=8000 -p 8080:8000 api           # run le container
+## -e PORT=8000 : variable d&#x27;env pour Uvicorn
+## -p 8080:8000 : mappe port 8080 (host) → 8000 (container)
+
+docker ps                                          # containers actifs
+docker stop &lt;ID&gt;                                   # arrêter
+docker images                                      # lister les images
+docker run -it api sh                              # shell interactif dans le container</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">FROM python:3.10.6-buster
+COPY api /api
+COPY requirements.txt /requirements.txt
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+CMD uvicorn api.simple:app --host 0.0.0.0 --port $PORT</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Instruction</th><th>Rôle</th><th>Exemple</th></tr></thead><tbody><tr><td><code>FROM</code></td><td>Image de base</td><td><code>FROM python:3.10.6-buster</code></td></tr><tr><td><code>COPY</code></td><td>Copie des fichiers dans l'image</td><td><code>COPY api /api</code></td></tr><tr><td><code>RUN</code></td><td>Exécute une commande pendant le build</td><td><code>RUN pip install -r requirements.txt</code></td></tr><tr><td><code>CMD</code></td><td>Commande lancée au démarrage du container</td><td><code>CMD uvicorn api:app --host 0.0.0.0</code></td></tr></tbody></table></div>- <strong>Image</strong> = moule (fichiers prêts à être instanciés)
+
+<figure><img src="../../assets/images/predict-production-01-9526df00.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## Build
+docker build -t api .                              # construit l&#x27;image
+
+## Run en local
+docker run -e PORT=8000 -p 8080:8000 api           # -p host:container
+## → http://localhost:8080
+
+## Gestion
+docker ps                                          # liste les containers actifs
+docker stop &lt;CONTAINER_ID&gt;                         # arrête un container
+docker images                                      # liste les images</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get(&#x27;/&#x27;)                                      # endpoint racine
+def index():
+    return {&#x27;ok&#x27;: True}
+
+@app.get(&#x27;/predict&#x27;)                               # endpoint de prédiction
+def predict(day_of_week: int, time: str):          # query params typés
+    prediction = compute_prediction(day_of_week, time)
+    return {&#x27;wait&#x27;: prediction}</code></pre></div>
+
+
+<hr>
+
+<hr>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get(&#x27;/&#x27;)                                              # endpoint racine
+def index():
+    return {&#x27;ok&#x27;: True}
+
+@app.get(&#x27;/predict&#x27;)                                       # endpoint de prédiction
+def predict(day_of_week: int, time: str):                  # query params typés
+    # Charger le modèle et prédire
+    prediction = model.predict(...)
+    return {&#x27;wait&#x27;: prediction}                            # réponse JSON</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install fastapi uvicorn
+uvicorn app.simple:app --reload                            # lance le serveur (hot-reload)
+## → http://localhost:8000                                  # API
+## → http://localhost:8000/docs                             # Swagger UI (tests interactifs)</code></pre></div>
+
+
+<h3 id="fastapi-créer-une-api">FastAPI — Créer une API</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">FROM python:3.10.6-buster                                  # image de base
+
+COPY app /app                                              # copie le code
+COPY requirements.txt /requirements.txt                    # copie les dépendances
+
+RUN pip install --upgrade pip                               # installe pip
+RUN pip install -r requirements.txt                         # installe les packages
+
+CMD uvicorn app.simple:app --host 0.0.0.0 --port $PORT     # commande de démarrage
+## --host 0.0.0.0 : écoute toutes les connexions réseau du container
+## --port $PORT   : port défini par Cloud Run</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## Build
+docker build -t api .                                      # construit l&#x27;image
+docker build --platform linux/amd64 -t api .               # pour M1/M2 → déploiement GCP
+
+## Run localement
+docker run -e PORT=8000 -p 8080:8000 api                   # -p host:container
+## → http://localhost:8080
+
+## Gestion
+docker ps                                                   # liste les containers actifs
+docker stop &lt;CONTAINER_ID&gt;                                  # arrête un container</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install fastapi uvicorn
+uvicorn simple:app --reload                        # lance le serveur (hot-reload)
+## → http://localhost:8000                           # API
+## → http://localhost:8000/docs                      # Swagger UI (test interactif)</code></pre></div>
+
+
+<h3 id="docker-containeriser">Docker — Containeriser</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## Authentification (une seule fois)
+gcloud auth configure-docker $GCP_REGION-docker.pkg.dev
+
+## Créer un repository
+gcloud artifacts repositories create $DOCKER_REPO_NAME \
+    --repository-format=docker \
+    --location=$GCP_REGION
+
+## Build avec tag complet
+docker build -t $GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$DOCKER_REPO_NAME/$DOCKER_IMAGE_NAME:0.1 .
+
+## Push
+docker push $GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$DOCKER_REPO_NAME/$DOCKER_IMAGE_NAME:0.1</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">FROM python:3.10.6-buster                          # image de base avec Python
+
+COPY api /api                                      # copie le code de l&#x27;API
+COPY requirements.txt /requirements.txt            # copie les dépendances
+
+RUN pip install --upgrade pip                      # met à jour pip
+RUN pip install -r requirements.txt                # installe les dépendances
+
+CMD uvicorn api.simple:app --host 0.0.0.0 --port $PORT  # lance le serveur</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">gcloud run deploy \
+    --image $GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$DOCKER_REPO_NAME/$DOCKER_IMAGE_NAME:0.1 \
+    --region $GCP_REGION
+## → URL publique de l&#x27;API déployée</code></pre></div>
+
+
+<hr>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## Variables
+GCP_PROJECT_ID=&quot;my-project&quot;
+GCP_REGION=&quot;europe-west1&quot;
+DOCKER_REPO_NAME=&quot;my-repo&quot;
+DOCKER_IMAGE_NAME=&quot;taxifare-api&quot;
+
+## 1. Configurer l&#x27;authentification Docker (une seule fois)
+gcloud auth configure-docker $GCP_REGION-docker.pkg.dev
+
+## 2. Créer un repo sur Artifact Registry
+gcloud artifacts repositories create $DOCKER_REPO_NAME \
+    --repository-format=docker --location=$GCP_REGION
+
+## 3. Build l&#x27;image pour le cloud (amd64 pour M1/M2)
+docker build --platform linux/amd64 \
+    -t $GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$DOCKER_REPO_NAME/$DOCKER_IMAGE_NAME:0.1 .
+
+## 4. Push vers Artifact Registry
+docker push $GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$DOCKER_REPO_NAME/$DOCKER_IMAGE_NAME:0.1
+
+## 5. Déployer sur Cloud Run
+gcloud run deploy \
+    --image $GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$DOCKER_REPO_NAME/$DOCKER_IMAGE_NAME:0.1 \
+    --region $GCP_REGION</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier <code>--host 0.0.0.0</code> dans la commande Uvicorn du Dockerfile</strong></p>
+<p>Par défaut, Uvicorn écoute sur <code>127.0.0.1</code> (<a href="http://localhost" target="_blank" rel="noopener">localhost</a> uniquement) — inaccessible depuis l'extérieur du container.</p>
+<p>❌ <code>CMD uvicorn api:app</code> → l'API tourne mais personne ne peut y accéder</p>
+<p>✅ <code>CMD uvicorn api:app --host 0.0.0.0 --port $PORT</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Ne pas utiliser <code>$PORT</code> pour Cloud Run</strong></p>
+<p>Cloud Run assigne dynamiquement un port via la variable d'environnement <code>$PORT</code> — Uvicorn doit écouter dessus.</p>
+<p>❌ <code>CMD uvicorn api:app --host 0.0.0.0 --port 8000</code> → Cloud Run ne trouve pas le serveur</p>
+<p>✅ <code>CMD uvicorn api:app --host 0.0.0.0 --port $PORT</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Construire une image ARM sur Mac M1/M2 et la déployer sur GCP</strong></p>
+<p>Docker sur Mac ARM construit des images <code>linux/arm64</code> par défaut — GCP utilise <code>linux/amd64</code>.</p>
+<p>❌ <code>docker build -t api .</code> sur Mac M1 → crash sur Cloud Run</p>
+<p>✅ <code>docker build --platform linux/amd64 -t api .</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier que les query params FastAPI sont des strings</strong></p>
+<p>Tous les paramètres de query string arrivent comme <code>str</code> — il faut les convertir manuellement.</p>
+<p>❌ <code>def predict(passengers): return passengers + 1</code> → TypeError (str + int)</p>
+<p>✅ Typer les paramètres : <code>def predict(passengers: int)</code> ou convertir explicitement</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Inclure les données d'entraînement dans l'image Docker</strong></p>
+<p>L'image doit être légère — seuls le code, les dépendances et éventuellement le modèle doivent y figurer.</p>
+<p>❌ <code>COPY data/ /data/</code> avec 10 Go de CSV → image énorme, push interminable</p></div></div>
+
+<hr>
+
+<figure><img src="../../assets/images/predict-production-02-9fcf3ce7.png" alt="" loading="lazy"></figure>
+
+<h2 id="1-web-101-comment-fonctionne-une-api">1) Web 101 — Comment fonctionne une API</h2>
+
+<figure><img src="../../assets/images/predict-production-03-9526df00.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<hr>
+
+<h2 id="2-fastapi-créer-lapi-de-prédiction">2) FastAPI — Créer l'API de prédiction</h2>
+
+<h3 id="21-présentation">2.1 Présentation</h3>
+
+<figure><img src="../../assets/images/predict-production-04-9b298c29.png" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/predict-production-05-9b298c29.png" alt="" loading="lazy"></figure>
+
+<p>FastAPI est un framework Python haute performance pour construire des APIs REST. Il génère automatiquement une documentation Swagger testable.</p>
+
+<h3 id="22-endpoint-racine">2.2 Endpoint racine</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get(&#x27;/&#x27;)
+def index():
+    return {&#x27;ok&#x27;: True}</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get(&#x27;/&#x27;)
+def index():
+    return {&#x27;ok&#x27;: True}</code></pre></div>
+
+
+<h3 id="23-endpoint-de-prédiction-avec-query-params">2.3 Endpoint de prédiction avec query params</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">@app.get(&#x27;/predict&#x27;)
+def predict(day_of_week: int, time: str):
+    # Le client appelle : /predict?day_of_week=0&amp;time=14:00
+    prediction = compute_prediction(day_of_week, time)
+    return {&#x27;wait&#x27;: prediction}</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">@app.get(&#x27;/predict&#x27;)
+def predict(day_of_week: int, time: str):
+    prediction = model.predict(day_of_week, time)
+    return {&#x27;wait&#x27;: prediction}</code></pre></div>
+
+
+<p>Requête : <code>http://localhost:8000/predict?day_of_week=0&amp;time=14:00</code></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">uvicorn app.simple:app --reload                # filename:variable
+## → http://localhost:8000                      # API
+## → http://localhost:8000/docs                 # Swagger (tests interactifs)
+## → http://localhost:8000/redoc                # ReDoc (documentation)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">uvicorn simple:app --reload                        # filename:variable
+## → http://localhost:8000       API
+## → http://localhost:8000/docs  Swagger (test interactif)
+## → http://localhost:8000/redoc Documentation</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le <code>/docs</code> Swagger permet de tester chaque endpoint directement dans le navigateur — très utile pour le debugging et pour les développeurs qui intègrent l'API.</p></div></div>
+
+<p>👉 <a href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">FastAPI documentation</a></p>
+
+<hr>
+
+<hr>
+
+<h2 id="3-docker-containeriser-lapplication">3) Docker — Containeriser l'application</h2>
+
+<h3 id="31-pourquoi-docker">3.1 Pourquoi Docker ?</h3>
+
+<p>On veut la flexibilité d'une VM (IaaS) sans la complexité de configuration. Un <strong>container</strong> encapsule le code, l'environnement et l'OS dans un package portable et reproductible.</p>
+
+<h3 id="32-dockerfile-image-container">3.2 Dockerfile → Image → Container</h3>
+
+<figure><img src="../../assets/images/predict-production-06-192eb910.png" alt="caption" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/predict-production-07-1a5eaf21.png" alt="caption" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/predict-production-08-3e554d03.png" alt="caption" loading="lazy"></figure>
+
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Analogie</th><th>Rôle</th></tr></thead><tbody><tr><td><strong>Dockerfile</strong></td><td>Recette du gâteau</td><td>Liste les instructions pour construire l'image</td></tr><tr><td><strong>Image</strong></td><td>Moule à gâteau</td><td>Template immuable contenant code + env + OS</td></tr><tr><td><strong>Container</strong></td><td>Le gâteau</td><td>Instance en cours d'exécution de l'image</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">FROM python:3.10.6-buster          # 1. Image de base (OS + Python)
+COPY app /app                       # 2. Copier le code dans l&#x27;image
+COPY requirements.txt /requirements.txt
+RUN pip install -r requirements.txt # 3. Installer les dépendances
+CMD uvicorn app.simple:app --host 0.0.0.0 --port $PORT  # 4. Commande au démarrage</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">docker build -t api .                          # build l&#x27;image (nommée &quot;api&quot;)
+docker run -e PORT=8000 -p 8080:8000 api       # run le container
+docker ps                                       # liste les containers actifs
+docker stop &lt;ID&gt;                                # arrête un container
+docker run -it api sh                           # shell interactif dans le container</code></pre></div>
+
+
+<hr>
+
+<hr>
+
+<h2 id="4-déployer-sur-google-cloud">4) Déployer sur Google Cloud</h2>
+
+<h3 id="41-artifact-registry-stocker-limage">4.1 Artifact Registry — Stocker l'image</h3>
+
+<figure><img src="../../assets/images/predict-production-09-4dee4f98.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## Config (une seule fois)
+gcloud auth configure-docker $GCP_REGION-docker.pkg.dev
+gcloud artifacts repositories create $DOCKER_REPO_NAME \
+    --repository-format=docker --location=$GCP_REGION
+
+## Build + Push
+docker build --platform linux/amd64 \
+    -t $GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$DOCKER_REPO_NAME/$DOCKER_IMAGE_NAME:0.1 .
+docker push $GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$DOCKER_REPO_NAME/$DOCKER_IMAGE_NAME:0.1</code></pre></div>
+
+
+<p>Google Artifact Registry stocke les images Docker dans le cloud — Cloud Run les récupère pour les déployer.</p>
+
+<figure><img src="../../assets/images/predict-production-10-cdd50026.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## Authentification (une seule fois)
+gcloud auth configure-docker $GCP_REGION-docker.pkg.dev
+
+## Créer un repo
+gcloud artifacts repositories create $DOCKER_REPO_NAME \
+    --repository-format=docker --location=$GCP_REGION
+
+## Build pour le cloud (--platform pour Mac M1/M2)
+docker build --platform linux/amd64 \
+    -t $GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$DOCKER_REPO_NAME/$DOCKER_IMAGE_NAME:0.1 .
+
+## Push
+docker push $GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$DOCKER_REPO_NAME/$DOCKER_IMAGE_NAME:0.1</code></pre></div>
+
+
+<h3 id="42-cloud-run-servir-lapi">4.2 Cloud Run — Servir l'API</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">gcloud run deploy \
+    --image $GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$DOCKER_REPO_NAME/$DOCKER_IMAGE_NAME:0.1 \
+    --region $GCP_REGION</code></pre></div>
+
+
+<figure><img src="../../assets/images/predict-production-11-cdd50026.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">FastAPI documentation</a></li>
+<li>👉 <a href="https://www.uvicorn.org/" target="_blank" rel="noopener">Uvicorn documentation</a></li>
+<li>👉 <a href="https://cloud.google.com/artifact-registry/docs" target="_blank" rel="noopener">Google Artifact Registry docs</a></li>
+<li>👉 <a href="https://hub.docker.com/" target="_blank" rel="noopener">Docker Hub — Images de base</a></li>
+<li>👉 <a href="https://cloud.google.com/artifact-registry" target="_blank" rel="noopener">Google Artifact Registry</a></li>
+<li>👉 <a href="https://cloud.google.com/run" target="_blank" rel="noopener">Google Cloud Run</a></li>
+<li>👉 <a href="https://docs.pydantic.dev/" target="_blank" rel="noopener">Pydantic — Validation des query params</a></li>
+</ul>
+
+<hr>
+
+<hr>
+
+<h2 id="challenges">🚀 Challenges</h2>
+
+<ul>
+<li>Créer une API FastAPI qui expose le modèle TaxiFare via un endpoint <code>/predict</code></li>
+<li>Containeriser l'API avec Docker et tester en local</li>
+<li>Pousser l'image sur Artifact Registry et déployer sur Cloud Run</li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-a-retenir">A retenir</a></li><li><a href="#ref-mini-plan">Mini-plan</a></li></ol></li><li><a href="#ref-1-web-101-comment-fonctionne-une-api">1) Web 101 — Comment fonctionne une API</a><ol><li><a href="#ref-le-principe-de-la-requête-réponse">Le principe de la requête / réponse</a></li><li><a href="#ref-les-méthodes-http-les-plus-courantes">Les méthodes HTTP les plus courantes</a></li></ol></li><li><a href="#ref-2-fastapi-créer-lapi-de-prédiction">2) FastAPI — Créer l'API de prédiction</a><ol><li><a href="#ref-21-présentation-de-fastapi">2.1 Présentation de FastAPI</a></li><li><a href="#ref-22-un-premier-endpoint-racine">2.2 Un premier endpoint racine</a></li><li><a href="#ref-23-lendpoint-de-prédiction-avec-query-params">2.3 L'endpoint de prédiction avec query params</a></li></ol></li><li><a href="#ref-3-docker-containeriser-lapplication">3) Docker — Containeriser l'application</a><ol><li><a href="#ref-31-pourquoi-docker">3.1 Pourquoi Docker ?</a></li><li><a href="#ref-32-les-trois-concepts-clés-dockerfile-image-container">3.2 Les trois concepts clés : Dockerfile, Image, Container</a></li><li><a href="#ref-33-écrire-un-dockerfile">3.3 Écrire un Dockerfile</a></li><li><a href="#ref-34-construire-et-lancer-limage-en-local">3.4 Construire et lancer l'image en local</a></li></ol></li><li><a href="#ref-4-déployer-sur-google-cloud">4) Déployer sur Google Cloud</a><ol><li><a href="#ref-41-vue-densemble-le-pipeline-de-déploiement">4.1 Vue d'ensemble : le pipeline de déploiement</a></li><li><a href="#ref-42-artifact-registry-stocker-limage-dans-le-cloud">4.2 Artifact Registry — Stocker l'image dans le cloud</a></li><li><a href="#ref-43-cloud-run-déployer-et-servir-lapi">4.3 Cloud Run — Déployer et servir l'API</a></li><li><a href="#ref-44-récapitulatif-complet-du-pipeline-en-une-fois">4.4 Récapitulatif complet du pipeline en une fois</a></li></ol></li><li><a href="#ref-5-les-erreurs-classiques-à-ne-pas-faire">5) Les erreurs classiques à ne pas faire</a><ol><li><a href="#ref-erreur-1-oublier-host-0000-dans-le-dockerfile">Erreur 1 — Oublier `--host 0.0.0.0` dans le Dockerfile</a></li><li><a href="#ref-erreur-2-coder-le-port-en-dur-au-lieu-dutiliser-port">Erreur 2 — Coder le port en dur au lieu d'utiliser `$PORT`</a></li><li><a href="#ref-erreur-3-builder-sans-platform-sur-mac-m1m2">Erreur 3 — Builder sans `--platform` sur Mac M1/M2</a></li><li><a href="#ref-erreur-4-oublier-de-typer-les-query-params">Erreur 4 — Oublier de typer les query params</a></li><li><a href="#ref-erreur-5-copier-les-données-dentraînement-dans-limage">Erreur 5 — Copier les données d'entraînement dans l'image</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Jusqu'ici, tu as entraîné des modèles sur ton ordinateur. C'est bien, mais ça ne sert à rien si personne d'autre ne peut s'en servir. Ce cours t'explique comment <strong>rendre un modèle accessible à tout le monde via Internet</strong>, sous la forme d'une API web.</p>
+
+<p>L'idée fil rouge est simple : imagine que ton modèle est un cuisinier enfermé dans ta cuisine. Pour que des clients puissent commander ses plats, tu dois d'abord ouvrir un restaurant (une API), puis installer ce restaurant dans un immeuble (Docker), puis donner l'adresse à tout le monde (déploiement sur le cloud).</p>
+
+<h3 id="ref-a-retenir">A retenir</h3>
+
+<ul>
+<li><strong>FastAPI</strong> est le framework Python qui te permet de créer une API REST en quelques lignes.</li>
+<li><strong>Docker</strong> emballe ton code + ses dépendances dans une boîte portable qu'on appelle un container.</li>
+<li><strong>Google Artifact Registry</strong> est un entrepôt dans le cloud qui stocke tes images Docker.</li>
+<li><strong>Google Cloud Run</strong> lit l'image depuis l'entrepôt et la fait tourner en production, accessible via une URL publique.</li>
+<li>Le chemin complet est toujours : <strong>Code Python → API FastAPI → Image Docker → Push vers le cloud → Déploiement Cloud Run</strong>.</li>
+</ul>
+
+<h3 id="ref-mini-plan">Mini-plan</h3>
+
+<ol>
+<li>Web 101 — comment fonctionne une requête HTTP</li>
+<li>FastAPI — créer une API de prédiction</li>
+<li>Docker — containeriser l'application</li>
+<li>Google Cloud — stocker et déployer</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-web-101-comment-fonctionne-une-api">1) Web 101 — Comment fonctionne une API</h2>
+
+<h3 id="ref-le-principe-de-la-requête-réponse">Le principe de la requête / réponse</h3>
+
+<p>Quand tu tapes une URL dans ton navigateur, tu envoies une <strong>requête HTTP</strong> à un serveur. Le serveur reçoit la demande, fait un traitement, et te renvoie une <strong>réponse</strong> (souvent en JSON pour les APIs).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Client (navigateur, Python…)  ──→  Requête HTTP GET /predict?passengers=3
+                               ←──  Réponse JSON {&quot;wait&quot;: 12.4}
+Serveur (ton API FastAPI)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Une <strong>API REST</strong> est juste un serveur qui répond à des requêtes HTTP avec des données structurées (JSON). Pas de magie — c'est le même mécanisme que quand tu charges une page web.</p></div></div>
+
+<h3 id="ref-les-méthodes-http-les-plus-courantes">Les méthodes HTTP les plus courantes</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Méthode</th><th>Usage typique</th></tr></thead><tbody><tr><td><code>GET</code></td><td>Lire des données (ex : demander une prédiction)</td></tr><tr><td><code>POST</code></td><td>Envoyer des données (ex : soumettre un formulaire)</td></tr></tbody></table></div>
+<p>Pour ce cours, on utilisera presque exclusivement <code>GET</code> : le client envoie ses paramètres dans l'URL, le serveur répond avec la prédiction.</p>
+
+<hr>
+
+<h2 id="ref-2-fastapi-créer-lapi-de-prédiction">2) FastAPI — Créer l'API de prédiction</h2>
+
+<h3 id="ref-21-présentation-de-fastapi">2.1 Présentation de FastAPI</h3>
+
+<p>FastAPI est un framework Python moderne et très rapide pour construire des APIs. Ses avantages pour un débutant :</p>
+
+<ul>
+<li>Syntaxe simple, proche de Flask si tu connais.</li>
+<li>Il génère <strong>automatiquement une documentation interactive</strong> (Swagger UI) — tu peux tester tes endpoints directement dans le navigateur.</li>
+<li>Il valide les types des paramètres d'entrée automatiquement.</li>
+</ul>
+
+<p>Installation :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install fastapi uvicorn</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Uvicorn</strong> est le serveur web qui fait "tourner" ton application FastAPI. FastAPI définit l'application, Uvicorn la sert sur le réseau. C'est la même distinction qu'entre une recette et un four.</p></div></div>
+
+<h3 id="ref-22-un-premier-endpoint-racine">2.2 Un premier endpoint racine</h3>
+
+<p>Crée un fichier <code>simple.py</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from fastapi import FastAPI          # on importe FastAPI
+
+app = FastAPI()                      # on crée l&#x27;application
+
+@app.get(&#x27;/&#x27;)                        # décorateur : cette fonction répond aux GET sur &quot;/&quot;
+def index():
+    return {&#x27;ok&#x27;: True}              # FastAPI convertit le dict en JSON automatiquement</code></pre></div>
+
+
+<p>Lance le serveur :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">uvicorn simple:app --reload          # &quot;simple&quot; = nom du fichier, &quot;app&quot; = nom de la variable
+# --reload : redémarre automatiquement à chaque modification du code (pratique en dev)</code></pre></div>
+
+
+<p>Tu peux maintenant ouvrir ton navigateur sur :</p>
+<ul>
+<li><code>http://localhost:8000</code> → répond <code>{&quot;ok&quot;: true}</code></li>
+<li><code>http://localhost:8000/docs</code> → interface Swagger pour tester visuellement</li>
+</ul>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Le <code>/docs</code> Swagger est ton meilleur ami en développement. Il liste tous tes endpoints, te permet de les tester sans écrire une ligne de code supplémentaire, et documente les paramètres attendus.</p></div></div>
+
+<h3 id="ref-23-lendpoint-de-prédiction-avec-query-params">2.3 L'endpoint de prédiction avec query params</h3>
+
+<p>Les <strong>query params</strong> sont les paramètres passés dans l'URL après le <code>?</code>. Exemple :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">/predict?day_of_week=0&amp;time=14:00
+         ^^^^^^^^^^^^^  ^^^^^^^^^^
+         param 1        param 2</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">@app.get(&#x27;/predict&#x27;)                              # endpoint accessible via GET /predict
+def predict(day_of_week: int, time: str):         # FastAPI lit ces paramètres depuis l&#x27;URL
+    # day_of_week et time sont remplis automatiquement depuis la query string
+    prediction = compute_prediction(day_of_week, time)  # appel à ton modèle
+    return {&#x27;wait&#x27;: prediction}                   # réponse JSON renvoyée au client</code></pre></div>
+
+
+<p>Exemple d'appel complet depuis un navigateur ou Python :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">http://localhost:8000/predict?day_of_week=0&amp;time=14:00</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Attention aux types !</strong> Tous les paramètres d'URL sont des strings par défaut. Si tu déclares <code>day_of_week: int</code>, FastAPI convertit automatiquement. Mais si tu oublies le typage, tu auras des erreurs en faisant des calculs : <code>&quot;0&quot; + 1</code> lève une <code>TypeError</code> en Python.</p></div></div>
+
+<p>Récapitulatif de ce qu'on a vu avec FastAPI :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Élément</th><th>Rôle</th></tr></thead><tbody><tr><td><code>app = FastAPI()</code></td><td>Crée l'application</td></tr><tr><td><code>@app.get(&#x27;/route&#x27;)</code></td><td>Définit un endpoint GET</td></tr><tr><td>Paramètres typés</td><td>Convertis et validés automatiquement</td></tr><tr><td><code>/docs</code></td><td>Documentation Swagger auto-générée</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="ref-3-docker-containeriser-lapplication">3) Docker — Containeriser l'application</h2>
+
+<h3 id="ref-31-pourquoi-docker">3.1 Pourquoi Docker ?</h3>
+
+<p>Problème classique : ton code tourne parfaitement sur ta machine, mais plante sur le serveur de production parce que les versions de Python ou des librairies sont différentes.</p>
+
+<p>Docker résout ce problème en créant une <strong>boîte autonome</strong> — le container — qui contient <strong>ton code + toutes ses dépendances + l'OS minimal</strong> pour le faire tourner. Cette boîte est identique partout où elle s'exécute.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><strong>Analogie cuisine</strong> : Docker, c'est comme livrer à un restaurant non pas juste la recette, mais toute la cuisine équipée avec les bons ustensiles et les bons ingrédients. Le résultat sera identique peu importe où la cuisine atterrit.</p></div></div>
+
+<h3 id="ref-32-les-trois-concepts-clés-dockerfile-image-container">3.2 Les trois concepts clés : Dockerfile, Image, Container</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Analogie</th><th>Rôle</th></tr></thead><tbody><tr><td><strong>Dockerfile</strong></td><td>Recette de cuisine</td><td>Fichier texte qui décrit comment construire l'image</td></tr><tr><td><strong>Image</strong></td><td>Moule à gâteau</td><td>Template immuable et portable (code + env + OS)</td></tr><tr><td><strong>Container</strong></td><td>Le gâteau fini</td><td>Instance en cours d'exécution de l'image</td></tr></tbody></table></div>
+<p>Le flux est toujours dans ce sens :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Dockerfile  →  docker build  →  Image  →  docker run  →  Container (en cours d&#x27;exécution)</code></pre></div>
+
+
+<h3 id="ref-33-écrire-un-dockerfile">3.3 Écrire un Dockerfile</h3>
+
+<p>Le <code>Dockerfile</code> est un fichier texte à la racine de ton projet, sans extension. Voici le Dockerfile type pour une API FastAPI :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">FROM python:3.10.6-buster                                   # 1. Image de base : OS Debian + Python 3.10
+
+COPY api /api                                               # 2. Copie ton dossier &quot;api&quot; dans l&#x27;image
+COPY requirements.txt /requirements.txt                     # 2. Copie les dépendances
+
+RUN pip install --upgrade pip                               # 3. Met à jour pip (bonne pratique)
+RUN pip install -r requirements.txt                         # 3. Installe toutes les dépendances
+
+CMD uvicorn api.simple:app --host 0.0.0.0 --port $PORT      # 4. Commande lancée au démarrage du container
+# --host 0.0.0.0 : écoute toutes les connexions (pas seulement localhost)
+# --port $PORT   : port fourni par l&#x27;environnement (Cloud Run impose le sien)</code></pre></div>
+
+
+<p>Détail des instructions Dockerfile :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Instruction</th><th>Rôle</th><th>Exemple</th></tr></thead><tbody><tr><td><code>FROM</code></td><td>Image de base (OS + runtime)</td><td><code>FROM python:3.10.6-buster</code></td></tr><tr><td><code>COPY</code></td><td>Copie des fichiers locaux dans l'image</td><td><code>COPY api /api</code></td></tr><tr><td><code>RUN</code></td><td>Exécute une commande lors du build</td><td><code>RUN pip install -r requirements.txt</code></td></tr><tr><td><code>CMD</code></td><td>Commande lancée quand le container démarre</td><td><code>CMD uvicorn api.simple:app ...</code></td></tr></tbody></table></div>
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège classique n°1</strong> : oublier <code>--host 0.0.0.0</code>. Par défaut, Uvicorn n'écoute que sur <code>127.0.0.1</code> (localhost), ce qui est inaccessible depuis l'extérieur du container. Sans ce flag, ton API tourne mais aucun client ne peut la joindre.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège classique n°2</strong> : utiliser <code>--port 8000</code> en dur au lieu de <code>--port $PORT</code>. Cloud Run assigne dynamiquement un numéro de port via la variable d'environnement <code>$PORT</code>. Si tu codes le port en dur, Cloud Run ne trouvera pas ton serveur.</p></div></div>
+
+<h3 id="ref-34-construire-et-lancer-limage-en-local">3.4 Construire et lancer l'image en local</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Construire l&#x27;image Docker (le &quot;.&quot; désigne le dossier courant où se trouve le Dockerfile)
+docker build -t api .
+# -t api : donne le nom &quot;api&quot; à l&#x27;image
+
+# Sur Mac M1/M2 : il FAUT préciser la plateforme pour la compatibilité avec GCP
+docker build --platform linux/amd64 -t api .
+
+# Lancer un container depuis l&#x27;image
+docker run -e PORT=8000 -p 8080:8000 api
+# -e PORT=8000 : crée la variable d&#x27;environnement $PORT à l&#x27;intérieur du container
+# -p 8080:8000 : connecte le port 8080 de ta machine au port 8000 du container
+# → L&#x27;API est accessible sur http://localhost:8080</code></pre></div>
+
+
+<p>Commandes utiles pour gérer tes containers :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">docker ps                          # liste les containers en cours d&#x27;exécution
+docker stop &lt;CONTAINER_ID&gt;         # arrête proprement un container
+docker images                      # liste toutes les images téléchargées ou buildées
+docker run -it api sh              # ouvre un shell interactif dans le container (pour débugger)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Pourquoi le port 8080 et pas 8000 directement ?</strong> La commande <code>-p 8080:8000</code> crée un pont : tu accèdes à <code>localhost:8080</code> sur ta machine, et Docker redirige vers le port 8000 à l'intérieur du container. Tu peux choisir n'importe quel port côté machine.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège classique n°3</strong> : construire une image ARM sur Mac M1/M2 sans <code>--platform linux/amd64</code>. GCP tourne sur des serveurs Intel/AMD. Si tu oublies ce flag, ton image plantée en production avec une erreur obscure.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-déployer-sur-google-cloud">4) Déployer sur Google Cloud</h2>
+
+<h3 id="ref-41-vue-densemble-le-pipeline-de-déploiement">4.1 Vue d'ensemble : le pipeline de déploiement</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Dockerfile  →  Image Docker  →  Artifact Registry  →  Cloud Run  →  URL publique
+               (en local)       (entrepôt GCP)        (serveur)</code></pre></div>
+
+
+<p>Deux services Google entrent en jeu :</p>
+<ul>
+<li><strong>Artifact Registry</strong> : entrepôt cloud pour stocker tes images Docker (comme un Docker Hub privé dans ton projet GCP).</li>
+<li><strong>Cloud Run</strong> : service serverless qui prend une image Docker et la rend accessible via une URL publique HTTPS. Tu ne gères aucun serveur.</li>
+</ul>
+
+<h3 id="ref-42-artifact-registry-stocker-limage-dans-le-cloud">4.2 Artifact Registry — Stocker l'image dans le cloud</h3>
+
+<p>Avant de déployer, ton image doit être uploadée ("pushée") vers Google Artifact Registry. Voici le workflow complet :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Variables d&#x27;environnement à définir une fois dans ton terminal (ou .env)
+GCP_PROJECT_ID=&quot;my-project&quot;         # ton ID de projet GCP
+GCP_REGION=&quot;europe-west1&quot;           # la région GCP choisie
+DOCKER_REPO_NAME=&quot;my-repo&quot;          # nom du repo Artifact Registry
+DOCKER_IMAGE_NAME=&quot;taxifare-api&quot;    # nom de ton image
+
+# Étape 1 : Autoriser Docker à pousser vers GCP (une seule fois par machine)
+gcloud auth configure-docker $GCP_REGION-docker.pkg.dev
+
+# Étape 2 : Créer le repo dans Artifact Registry (une seule fois par projet)
+gcloud artifacts repositories create $DOCKER_REPO_NAME \
+    --repository-format=docker \
+    --location=$GCP_REGION
+
+# Étape 3 : Builder l&#x27;image avec son tag complet GCP (le nom comprend l&#x27;adresse du repo)
+docker build --platform linux/amd64 \
+    -t $GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$DOCKER_REPO_NAME/$DOCKER_IMAGE_NAME:0.1 .
+# :0.1 → numéro de version de l&#x27;image (tag)
+
+# Étape 4 : Pousser l&#x27;image vers Artifact Registry
+docker push $GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$DOCKER_REPO_NAME/$DOCKER_IMAGE_NAME:0.1</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le nom complet de l'image suit ce format : <code>REGION-docker.pkg.dev/PROJECT/REPO/IMAGE:TAG</code>. C'est long, mais ça encode exactement où l'image est stockée dans l'infrastructure Google.</p></div></div>
+
+<h3 id="ref-43-cloud-run-déployer-et-servir-lapi">4.3 Cloud Run — Déployer et servir l'API</h3>
+
+<p>Une seule commande suffit pour déployer :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">gcloud run deploy \
+    --image $GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$DOCKER_REPO_NAME/$DOCKER_IMAGE_NAME:0.1 \
+    --region $GCP_REGION
+# → Cloud Run récupère l&#x27;image, la lance et te donne une URL HTTPS publique</code></pre></div>
+
+
+<p>Cloud Run gère automatiquement :</p>
+<ul>
+<li>Le démarrage et l'arrêt des containers selon la charge.</li>
+<li>Les certificats HTTPS.</li>
+<li>La mise à l'échelle (scaling) si beaucoup de requêtes arrivent.</li>
+</ul>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Cloud Run est dit <strong>serverless</strong> : tu ne paies que quand ton API reçoit des requêtes. Si personne ne l'appelle, aucun coût. C'est idéal pour des projets pédagogiques ou des APIs à trafic variable.</p></div></div>
+
+<h3 id="ref-44-récapitulatif-complet-du-pipeline-en-une-fois">4.4 Récapitulatif complet du pipeline en une fois</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># --- Variables ---
+GCP_PROJECT_ID=&quot;my-project&quot;
+GCP_REGION=&quot;europe-west1&quot;
+DOCKER_REPO_NAME=&quot;my-repo&quot;
+DOCKER_IMAGE_NAME=&quot;taxifare-api&quot;
+
+# --- 1. Auth Docker vers GCP (une seule fois) ---
+gcloud auth configure-docker $GCP_REGION-docker.pkg.dev
+
+# --- 2. Créer le repo Artifact Registry (une seule fois) ---
+gcloud artifacts repositories create $DOCKER_REPO_NAME \
+    --repository-format=docker --location=$GCP_REGION
+
+# --- 3. Builder pour linux/amd64 (obligatoire sur Mac M1/M2) ---
+docker build --platform linux/amd64 \
+    -t $GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$DOCKER_REPO_NAME/$DOCKER_IMAGE_NAME:0.1 .
+
+# --- 4. Pousser vers Artifact Registry ---
+docker push $GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$DOCKER_REPO_NAME/$DOCKER_IMAGE_NAME:0.1
+
+# --- 5. Déployer sur Cloud Run ---
+gcloud run deploy \
+    --image $GCP_REGION-docker.pkg.dev/$GCP_PROJECT_ID/$DOCKER_REPO_NAME/$DOCKER_IMAGE_NAME:0.1 \
+    --region $GCP_REGION</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-5-les-erreurs-classiques-à-ne-pas-faire">5) Les erreurs classiques à ne pas faire</h2>
+
+<p>Cette section résume les cinq pièges les plus fréquents chez les débutants.</p>
+
+<h3 id="ref-erreur-1-oublier-host-0000-dans-le-dockerfile">Erreur 1 — Oublier <code>--host 0.0.0.0</code> dans le Dockerfile</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># MAUVAIS : Uvicorn écoute seulement localhost, inaccessible depuis l&#x27;extérieur du container
+CMD uvicorn api.simple:app
+
+# BON : écoute sur toutes les interfaces réseau
+CMD uvicorn api.simple:app --host 0.0.0.0 --port $PORT</code></pre></div>
+
+
+<h3 id="ref-erreur-2-coder-le-port-en-dur-au-lieu-dutiliser-port">Erreur 2 — Coder le port en dur au lieu d'utiliser <code>$PORT</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># MAUVAIS : Cloud Run impose son propre port via $PORT, il ne trouvera pas ton serveur
+CMD uvicorn api.simple:app --host 0.0.0.0 --port 8000
+
+# BON : utilise la variable d&#x27;environnement fournie par Cloud Run
+CMD uvicorn api.simple:app --host 0.0.0.0 --port $PORT</code></pre></div>
+
+
+<h3 id="ref-erreur-3-builder-sans-platform-sur-mac-m1m2">Erreur 3 — Builder sans <code>--platform</code> sur Mac M1/M2</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># MAUVAIS : produit une image ARM incompatible avec les serveurs GCP (Intel/AMD)
+docker build -t api .
+
+# BON : force l&#x27;architecture amd64 pour la compatibilité GCP
+docker build --platform linux/amd64 -t api .</code></pre></div>
+
+
+<h3 id="ref-erreur-4-oublier-de-typer-les-query-params">Erreur 4 — Oublier de typer les query params</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># MAUVAIS : passengers est une string, &quot;3&quot; + 1 lève une TypeError
+@app.get(&#x27;/predict&#x27;)
+def predict(passengers):
+    return passengers + 1
+
+# BON : FastAPI convertit automatiquement grâce au typage
+@app.get(&#x27;/predict&#x27;)
+def predict(passengers: int):
+    return passengers + 1</code></pre></div>
+
+
+<h3 id="ref-erreur-5-copier-les-données-dentraînement-dans-limage">Erreur 5 — Copier les données d'entraînement dans l'image</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># MAUVAIS : 10 Go de CSV dans l&#x27;image → push de 10 minutes, image inutilisable
+COPY data/ /data/
+
+# BON : l&#x27;image ne contient que le code, les dépendances et éventuellement le modèle sérialisé
+COPY api /api
+COPY requirements.txt /requirements.txt</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Une image Docker doit rester légère. Elle ne doit contenir que ce qui est strictement nécessaire à l'exécution : le code, les dépendances Python, et éventuellement le fichier <code>.pkl</code> du modèle. Jamais les données brutes d'entraînement.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>1. Quelle est la différence entre une image Docker et un container Docker ?</strong></p>
+
+<p>L'image est le template immuable (le moule) construit à partir du Dockerfile. Le container est une instance en cours d'exécution de cette image (le gâteau). On peut lancer plusieurs containers depuis la même image.</p>
+
+<p><strong>2. Pourquoi doit-on écrire <code>--host 0.0.0.0</code> dans la commande Uvicorn du Dockerfile, alors qu'en développement local on ne le met pas ?</strong></p>
+
+<p>En local, Uvicorn écoute sur <code>127.0.0.1</code> (ta machine uniquement), ce qui suffit. Dans un container Docker, le réseau est isolé : sans <code>0.0.0.0</code>, Uvicorn écoute à l'intérieur du container mais aucune requête externe (venant de ta machine ou d'Internet) ne peut l'atteindre.</p>
+
+<p><strong>3. Quel est le rôle de <code>-p 8080:8000</code> dans la commande <code>docker run</code> ?</strong></p>
+
+<p>Ce flag crée un "pont" entre le port <code>8080</code> de ta machine (hôte) et le port <code>8000</code> à l'intérieur du container. Tu accèdes à <code>localhost:8080</code>, Docker redirige vers <code>8000</code> dans le container. Sans ce pont, le container tourne mais est injoignable depuis ta machine.</p>
+
+<p><strong>4. Pourquoi Cloud Run est-il considéré comme "serverless" et quel est son avantage concret ?</strong></p>
+
+<p>Serverless signifie que tu ne gères aucun serveur. Cloud Run démarre des containers à la demande quand des requêtes arrivent et les éteint quand il n'y a pas de trafic. L'avantage concret : tu ne paies que pour le temps de calcul réellement utilisé, et tu n'as rien à configurer en termes d'infrastructure.</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li><strong>FastAPI</strong> permet de créer une API REST en Python en quelques lignes : tu définis des fonctions Python décorées avec <code>@app.get(&#x27;/route&#x27;)</code> et elles deviennent des endpoints accessibles via HTTP.</li>
+<li>Les <strong>query params</strong> sont les paramètres passés dans l'URL (<code>/predict?x=1&amp;y=2</code>) ; FastAPI les injecte automatiquement dans la fonction et les convertit si tu les types.</li>
+<li><strong>Docker</strong> emballe ton application (code + dépendances + OS) dans une image portable. Un container est une instance en cours d'exécution de cette image.</li>
+<li>Le <strong>Dockerfile</strong> décrit la recette de construction de l'image avec quatre instructions clés : <code>FROM</code>, <code>COPY</code>, <code>RUN</code>, <code>CMD</code>.</li>
+<li>Sur <strong>Mac M1/M2</strong>, toujours builder avec <code>--platform linux/amd64</code> pour la compatibilité avec GCP.</li>
+<li>Le pipeline de déploiement : <code>docker build</code> → <code>docker push</code> vers Artifact Registry → <code>gcloud run deploy</code> sur Cloud Run.</li>
+<li><strong>Cloud Run</strong> prend ton image, la sert sur Internet via HTTPS, et scale automatiquement selon le trafic.</li>
+<li>Les deux erreurs Dockerfile à ne jamais faire : oublier <code>--host 0.0.0.0</code> (API inaccessible) et coder le port en dur au lieu de <code>$PORT</code> (Cloud Run ne trouve pas le serveur).</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-api-rest-avec-fastapi">API REST avec FastAPI</a></li><li><a href="#syn-sérialisation-et-chargement-de-modèles">Sérialisation et chargement de modèles</a></li><li><a href="#syn-containerisation-et-déploiement">Containerisation et déploiement</a></li><li><a href="#syn-batch-vs-real-time">Batch vs real-time</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-latence-et-throughput">Latence et throughput</a></li><li><a href="#syn-canary-deployment-et-ab-testing">Canary deployment et A/B testing</a></li><li><a href="#syn-monitoring-de-production">Monitoring de production</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-api-rest-avec-fastapi">API REST avec FastAPI</h3>
+
+<p><strong>FastAPI</strong> (2018) est devenu le framework Python standard pour servir des modèles ML en API. Plus rapide et plus moderne que Flask, avec validation Pydantic native et docs OpenAPI auto-générées.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from fastapi import FastAPI
+from pydantic import BaseModel
+import joblib
+import numpy as np
+
+# App FastAPI — le &quot;title&quot; apparaît dans /docs (Swagger UI auto)
+app = FastAPI(title=&quot;Churn Predictor&quot;)
+
+# Chargé UNE SEULE FOIS au démarrage (pas à chaque requête !)
+model = joblib.load(&quot;models/churn_v3.pkl&quot;)
+
+# --- Schéma d&#x27;entrée Pydantic : valide automatiquement le JSON reçu ---
+class CustomerInput(BaseModel):
+    age: int                  # rejette &quot;trente&quot; ou 25.5 automatiquement
+    tenure: int
+    monthly_charges: float
+    total_charges: float
+    # On pourrait ajouter des contraintes : age: int = Field(ge=0, le=120)
+
+# --- Schéma de sortie : documente le contrat de l&#x27;API ---
+class PredictionOutput(BaseModel):
+    churn_probability: float
+    will_churn: bool
+
+# POST /predict — response_model active la validation de sortie + doc OpenAPI
+@app.post(&quot;/predict&quot;, response_model=PredictionOutput)
+def predict(customer: CustomerInput):
+    # Conversion dict Pydantic → array numpy (ordre des features crucial !)
+    features = np.array([[
+        customer.age, customer.tenure,
+        customer.monthly_charges, customer.total_charges,
+    ]])
+    # predict_proba renvoie [[p_class0, p_class1]], on prend p_class1
+    proba = model.predict_proba(features)[0, 1]
+    return PredictionOutput(
+        churn_probability=float(proba),    # cast float pour sérialisation JSON
+        will_churn=proba &gt; 0.5,
+    )
+
+# Endpoint de santé — utilisé par les load balancers / Kubernetes
+@app.get(&quot;/health&quot;)
+def health():
+    return {&quot;status&quot;: &quot;ok&quot;, &quot;model_version&quot;: &quot;v3&quot;}</code></pre></div>
+
+
+<p>Lancement :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># main = fichier main.py, app = instance FastAPI définie dedans
+# --workers 4 : 4 process parallèles (util pour gérer plusieurs requêtes en même temps)
+uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4</code></pre></div>
+
+
+<p>Ce que vous gagnez gratuitement :</p>
+
+<ul>
+<li><strong>Validation</strong> : un utilisateur qui envoie <code>age: &quot;trente&quot;</code> reçoit immédiatement une erreur 422 explicite</li>
+<li><strong>Documentation</strong> : <code>http://localhost:8000/docs</code> affiche une UI interactive Swagger</li>
+<li><strong>Type safety</strong> : votre IDE auto-complète les attributs de <code>customer</code></li>
+<li><strong>Performance</strong> : FastAPI est 2-3x plus rapide que Flask grâce à Starlette et async</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : Flask, c'est une voiture des années 2010 — elle marche, elle est fiable, mais elle n'a ni GPS, ni caméra de recul, ni régulateur. FastAPI, c'est une voiture moderne — tout est intégré, vous gagnez en productivité et en sécurité sans effort.</p></div></div>
+
+<h3 id="syn-sérialisation-et-chargement-de-modèles">Sérialisation et chargement de modèles</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import joblib
+
+# Sauvegarde
+joblib.dump(model, &quot;model.pkl&quot;)
+
+# Chargement
+model = joblib.load(&quot;model.pkl&quot;)</code></pre></div>
+
+
+<p><code>joblib</code> est plus efficace que <code>pickle</code> pour les gros tableaux NumPy. Trois précautions essentielles :</p>
+
+<ol>
+<li><strong>Versions</strong> : le pickle est sensible aux versions de Python et des libs. Sauvegardez <code>requirements.txt</code> avec le modèle. Chargez avec exactement le même environnement.</li>
+</ol>
+
+<ol>
+<li><strong>Sécurité</strong> : un pickle peut exécuter du code arbitraire à <code>load</code>. <strong>Jamais</strong> charger un pickle depuis une source non fiable.</li>
+</ol>
+
+<ol>
+<li><strong>Format alternatif</strong> :</li>
+</ol>
+
+<div class="table-wrapper"><table><thead><tr><th>Format</th><th>Avantage</th><th>Inconvénient</th></tr></thead><tbody><tr><td><code>pickle/joblib</code></td><td>Standard Python</td><td>Sensible aux versions</td></tr><tr><td><strong>ONNX</strong></td><td>Portable (Python → C++ → mobile)</td><td>Mise en place plus complexe</td></tr><tr><td><strong>TensorFlow SavedModel</strong></td><td>Standard TF</td><td>Lié à TF</td></tr><tr><td><strong>TorchScript</strong></td><td>Pour PyTorch</td><td>Lié à PyTorch</td></tr><tr><td><strong>Hugging Face safetensors</strong></td><td>Sûr, rapide, multi-framework</td><td>Pour transformers principalement</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Exemple ONNX
+from skl2onnx import convert_sklearn
+from skl2onnx.common.data_types import FloatTensorType
+
+initial_type = [(&quot;input&quot;, FloatTensorType([None, n_features]))]
+onnx_model = convert_sklearn(model, initial_types=initial_type)
+with open(&quot;model.onnx&quot;, &quot;wb&quot;) as f:
+    f.write(onnx_model.SerializeToString())</code></pre></div>
+
+
+<p>ONNX permet ensuite de servir le modèle en C++, JavaScript (ONNX.js), mobile (Core ML, TensorFlow Lite). Découplage runtime / training.</p>
+
+<h3 id="syn-containerisation-et-déploiement">Containerisation et déploiement</h3>
+
+<p>(Cf. ML Ops pour les détails Docker.)</p>
+
+<p>Pour servir une API en production, vous packagez en image Docker et déployez sur :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Plateforme</th><th>Type</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td><strong>AWS Lambda</strong> / <strong>GCP Cloud Functions</strong></td><td>Serverless</td><td>Faible volume, auto-scale, pay-per-use</td></tr><tr><td><strong>AWS ECS / Cloud Run / Azure Container Instances</strong></td><td>Container managé</td><td>Volume modéré, simple à mettre en place</td></tr><tr><td><strong>Kubernetes (EKS, GKE, AKS)</strong></td><td>Orchestration</td><td>Volume élevé, multi-services, complexe</td></tr><tr><td><strong>AWS SageMaker / Vertex AI</strong></td><td>ML managé</td><td>Pour ne pas gérer l'infra</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Cloud Run (GCP) — la solution la plus simple
+gcloud run deploy churn-api \
+    --source . \
+    --region us-central1 \
+    --allow-unauthenticated</code></pre></div>
+
+
+<p>Cloud Run construit l'image Docker, la déploie, vous donne une URL HTTPS publique en 2 minutes. Auto-scale de 0 à N instances selon le trafic. Coût : ~$0 si pas de trafic.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Recommandation 2025</strong> : pour démarrer un déploiement ML, commencez par <strong>Cloud Run</strong> ou <strong>Modal</strong> (Modal est encore plus simple, conçu pour les workloads ML). Évitez Kubernetes tant que vous n'en avez pas besoin — c'est de la complexité opérationnelle qui ne se justifie qu'à grande échelle.</p></div></div>
+
+<h3 id="syn-batch-vs-real-time">Batch vs real-time</h3>
+
+<p>Deux modes radicalement différents de servir un modèle.</p>
+
+<p><strong>Real-time (online)</strong> : une requête arrive, vous renvoyez une prédiction en quelques millisecondes/secondes. C'est ce qui se passe quand vous utilisez ChatGPT, Netflix, ou un site avec recommandations.</p>
+
+<p><strong>Batch (offline)</strong> : périodiquement (toutes les heures, tous les jours), vous traitez un grand nombre d'inputs en bloc et écrivez les résultats dans une base de données. C'est ce qui se passe pour les emails marketing, les scoring de crédit nightly, les rapports analytiques.</p>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Real-time</th><th>Batch</th></tr></thead><tbody><tr><td>Latence</td><td>Critique (<1s)</td><td>Pas critique</td></tr><tr><td>Throughput</td><td>Modéré</td><td>Très élevé</td></tr><tr><td>Architecture</td><td>API REST + container</td><td>Job Spark/Dask + scheduler</td></tr><tr><td>Coût</td><td>Plus cher (instance toujours up)</td><td>Moins cher (instance ponctuelle)</td></tr><tr><td>Complexité</td><td>Plus complexe (monitoring, scaling)</td><td>Plus simple</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Batch typique avec Spark
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.appName(&quot;daily_scoring&quot;).getOrCreate()
+
+users = spark.read.parquet(&quot;s3://data/users.parquet&quot;)
+features = users.transform(extract_features)
+predictions = features.withColumn(&quot;churn_score&quot;, predict_udf(struct(*features.columns)))
+predictions.write.parquet(&quot;s3://output/scores/2024-04-08.parquet&quot;)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Choix selon le besoin</strong> : si l'utilisateur a besoin d'une prédiction "maintenant" (chat, recommendation in-page), c'est real-time. Si le résultat peut être pré-calculé pendant la nuit, c'est batch. Beaucoup de systèmes utilisent les deux : batch pour précalculer, real-time pour servir les résultats déjà calculés. C'est moins cher qu'un real-time pur.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-latence-et-throughput">Latence et throughput</h3>
+
+<p>Deux métriques distinctes en production :</p>
+
+<ul>
+<li><strong>Latence</strong> : temps pour traiter UNE requête (de l'arrivée à la réponse)</li>
+<li><strong>Throughput</strong> : nombre de requêtes par seconde que le système peut absorber</li>
+</ul>
+
+<p>Souvent en tension : optimiser la latence (1 requête à la fois) limite le throughput. Optimiser le throughput (batching) augmente la latence.</p>
+
+<p><strong>Optimisations courantes</strong> :</p>
+
+<ol>
+<li><strong>Batching dynamique</strong> : agréger plusieurs requêtes proches et les passer en un seul forward pass au modèle (très efficace pour GPU).</li>
+</ol>
+
+<ol>
+<li><strong>Caching</strong> : pour des prédictions répétitives, mémoriser les résultats. Redis ou Memcached, ou même un dict LRU en mémoire.</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from functools import lru_cache
+
+@lru_cache(maxsize=10000)
+def cached_predict(features_tuple):
+    return model.predict([list(features_tuple)])[0]</code></pre></div>
+
+
+<ol>
+<li><strong>Quantization</strong> : réduire la précision des poids (FP32 → INT8) pour accélérer l'inférence 2-4x sur CPU.</li>
+</ol>
+
+<ol>
+<li><strong>Distillation</strong> : entraîner un modèle plus petit qui imite un modèle plus gros. DistilBERT vs BERT.</li>
+</ol>
+
+<ol>
+<li><strong>Model serving optimisé</strong> : <code>TensorRT</code> (NVIDIA), <code>vLLM</code> (pour LLMs), <code>Triton Inference Server</code> (NVIDIA).</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Mesure de latence
+import time
+
+start = time.perf_counter()
+pred = model.predict(X)
+latency_ms = (time.perf_counter() - start) * 1000
+print(f&quot;Latency: {latency_ms:.2f} ms&quot;)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Bonne pratique</strong> : monitorer non seulement la <strong>moyenne</strong> mais aussi les <strong>percentiles</strong> (p50, p95, p99) de latence. Une moyenne à 50ms peut cacher des p99 à 3000ms — 1% des utilisateurs ont une expérience catastrophique. Les SLA professionnels sont définis sur p95 ou p99, pas sur la moyenne.</p></div></div>
+
+<h3 id="syn-canary-deployment-et-ab-testing">Canary deployment et A/B testing</h3>
+
+<p>Quand vous déployez une nouvelle version d'un modèle, vous ne voulez pas remplacer 100% du trafic d'un coup. Si la nouvelle version a un bug, vous cassez tout.</p>
+
+<p><strong>Canary deployment</strong> : router 1-5% du trafic vers la nouvelle version, monitorer les métriques techniques (latence, erreurs), augmenter progressivement si tout va bien.</p>
+
+<p><strong>A/B testing</strong> : router 50% du trafic vers v1, 50% vers v2, comparer les métriques business (conversion, revenu, satisfaction). C'est l'expérimentation contrôlée.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># Exemple Kubernetes avec Istio (service mesh)
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+spec:
+  http:
+  - route:
+    - destination:
+        host: churn-api
+        subset: v3
+      weight: 90
+    - destination:
+        host: churn-api
+        subset: v4
+      weight: 10</code></pre></div>
+
+
+<p>Sans Kubernetes, vous pouvez faire du canary plus simplement : déployer deux versions sur Cloud Run, un load balancer qui répartit selon un pourcentage.</p>
+
+<h3 id="syn-monitoring-de-production">Monitoring de production</h3>
+
+<p>Quatre dimensions à monitorer :</p>
+
+<p><strong>1. Métriques techniques</strong> : latence, throughput, taux d'erreurs HTTP, CPU/RAM, GPU usage.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Avec Prometheus + Grafana
+from prometheus_client import Counter, Histogram
+
+predictions_total = Counter(&quot;predictions_total&quot;, &quot;Total predictions&quot;)
+prediction_latency = Histogram(&quot;prediction_latency_seconds&quot;, &quot;Latency&quot;)
+
+@app.post(&quot;/predict&quot;)
+@prediction_latency.time()
+def predict(input: Input):
+    predictions_total.inc()
+    return model.predict(input)</code></pre></div>
+
+
+<p><strong>2. Métriques de modèle</strong> : distribution des prédictions, confiance moyenne, ratio classes prédites.</p>
+
+<p><strong>3. Drift</strong> : comparer la distribution des inputs récents à celle du training set (PSI, KS test).</p>
+
+<p><strong>4. Métriques business</strong> : conversion, revenue, NPS — couplées au modèle pour mesurer l'impact réel.</p>
+
+<p>Outils :</p>
+
+<ul>
+<li><strong>Prometheus + Grafana</strong> : standard open source pour le monitoring</li>
+<li><strong>Datadog, New Relic</strong> : SaaS commerciaux</li>
+<li><strong>Sentry</strong> : capture d'erreurs Python</li>
+<li><strong>Evidently AI, WhyLabs, Arize, Fiddler</strong> : monitoring spécialisé ML</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : configurer des <strong>alertes</strong> sur les métriques critiques. Latence p95 > 500ms ? Slack notification. Erreurs > 1% ? PagerDuty. Drift PSI > 0.2 ? Email à l'équipe ML. Sans alertes, vous découvrez les problèmes par les plaintes utilisateur — trop tard.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi sérialiser un modèle avec <code>joblib</code> ou <code>pickle</code> est-il dangereux pour le déploiement, et quelles sont les alternatives ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>versions et sécurité.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Trois dangers majeurs. (1) <strong>Versions des libs</strong> : le pickle dépend de la version de scikit-learn (et numpy, scipy, etc.) au moment de la sauvegarde. Si vous chargez avec une version différente, ça peut crasher silencieusement ou produire des prédictions incorrectes. <strong>Mitigation</strong> : figer les versions dans <code>requirements.txt</code> et utiliser exactement la même image Docker pour entraîner et servir. (2) <strong>Code execution arbitraire</strong> : <code>pickle.load</code> peut exécuter du code arbitraire pendant la désérialisation. Si quelqu'un upload un pickle malicieux à votre serveur, il peut prendre le contrôle. <strong>Mitigation</strong> : ne jamais charger de pickle d'une source non fiable, signer cryptographiquement vos artefacts. (3) <strong>Pas portable</strong> : un pickle est spécifique à Python. Impossible de servir le modèle en C++, JavaScript, ou mobile sans réimplémentation. <strong>Alternatives</strong> : (a) <strong>ONNX</strong> — format portable, multi-framework, multi-langage. (b) <strong>TensorFlow SavedModel</strong> ou <strong>TorchScript</strong> — formats natifs, plus portables que pickle. (c) <strong>safetensors</strong> — format Hugging Face, sûr (pas d'exécution de code) et rapide. (d) <strong>Re-entraînement déclaratif</strong> : sauvegarder juste les hyperparamètres et données, ré-entraîner à la volée. Pour 95% des projets data science, joblib + Docker bien versionné est OK. Pour des projets critiques ou multi-plateformes, ONNX est la voie. Question d'entretien MLOps : "Comment déployez-vous un modèle ?" — un candidat qui mentionne ONNX et la sécurité du pickle a de l'expérience.</p>
+
+</details>
+
+<p><strong>Q2 : Vous avez un modèle qui prend 200 ms à prédire en local. Votre API en production a une latence p99 de 3 secondes. Quelles peuvent être les causes ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>layers entre l'utilisateur et le modèle.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Cinq causes possibles, à investiguer dans cet ordre. (1) <strong>Cold start</strong> : si vous utilisez Cloud Run / Lambda en serverless, la première requête après une période d'inactivité doit charger le container et le modèle (~1-3s). Solution : <code>min_instances=1</code> pour garder une instance toujours warm, ou utiliser un service avec instances dédiées. (2) <strong>Sérialisation/deserialization</strong> : si vous transformez l'input en JSON puis en tenseur à chaque requête, ça prend du temps. Optimisez avec Pydantic + des types simples. (3) <strong>Concurrence et GIL</strong> : si plusieurs requêtes arrivent en même temps et que votre serveur tourne en single thread, elles s'attendent. Solution : <code>uvicorn --workers 4</code> ou plus. (4) <strong>Network</strong> : la requête doit traverser plusieurs hops (load balancer, ingress, service, container). Chaque hop ajoute 5-50ms. (5) <strong>Chargement de features depuis une DB</strong> : si votre prédiction nécessite de récupérer des features depuis Postgres ou Redis, la requête DB peut dominer. Cachez ou pré-calculez. <strong>Diagnostic</strong> : ajouter du logging temporel à chaque étape : <code>log.info(f&quot;DB query: {t1-t0:.3f}s, model: {t2-t1:.3f}s, total: {t2-t0:.3f}s&quot;)</code>. Vous verrez immédiatement où le temps est passé. Question d'entretien production ML : "Comment debugger une latence en production ?" — la réponse exhaustive parle de monitoring distribué et d'investigation par étapes.</p>
+
+</details>
+
+<p><strong>Q3 : Vous voulez déployer une nouvelle version d'un modèle en production sans risquer de casser le service pour tous les utilisateurs. Quelle stratégie ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>canary.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Canary deployment</strong> : déployer la nouvelle version à côté de l'ancienne, router 1-5% du trafic vers la nouvelle, monitorer les métriques pendant quelques heures, augmenter progressivement (10%, 25%, 50%, 100%). Si à n'importe quelle étape les métriques (latence, erreurs, satisfaction client) se dégradent, <strong>rollback immédiat</strong> vers l'ancienne version. <strong>Étapes pratiques</strong> : (1) Déployer la v2 avec un nouveau tag (<code>api:v2</code>) sans toucher à <code>api:v1</code>. (2) Configurer le load balancer pour router 5% vers v2. (3) Monitorer pendant 1-2h les métriques techniques (latence p95, taux d'erreurs HTTP) et business (conversion, accuracy si labels disponibles). (4) Si OK, passer à 25%, 50%, 100%. (5) Si KO, router 0% vers v2 — rollback instantané. <strong>Outils</strong> : Kubernetes + Istio (le standard), AWS App Mesh, Cloud Run avec traffic splitting (<code>gcloud run services update-traffic --to-revisions=v2=10</code>). <strong>Pour aller plus loin — A/B testing</strong> : au lieu d'un canary, on garde 50/50 plus longtemps pour collecter assez de data et conclure statistiquement laquelle est meilleure. Mais c'est plus lent à itérer. <strong>Règle d'or</strong> : aucune mise en prod sans rollback disponible et plan de canary. Question d'entretien production ML : "Comment déployez-vous une nouvelle version sans casser ?" — la réponse exhaustive parle de canary, monitoring, et rollback automatique.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">FastAPI documentation</a> — la référence</li>
+<li><em>Designing Machine Learning Systems</em> (Chip Huyen) — chapitres 7-8 sur le déploiement</li>
+<li><em>Building Machine Learning Powered Applications</em> (Emmanuel Ameisen)</li>
+<li><a href="https://modal.com/" target="_blank" rel="noopener">Modal documentation</a> — déploiement ML simplifié</li>
+<li><a href="https://cloud.google.com/run/docs" target="_blank" rel="noopener">Cloud Run documentation</a></li>
+<li><em>Site Reliability Engineering</em> (Google, gratuit) — les principes de prod modernes</li>
+<li><a href="https://github.com/visenger/awesome-mlops" target="_blank" rel="noopener">Awesome MLOps</a> — outils et ressources</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../mlops/training-cloud.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Training in the Cloud</span>
+  </a>
+  <a href="../mlops/ci-cd.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">CI / CD →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

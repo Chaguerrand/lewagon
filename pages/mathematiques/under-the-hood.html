@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Under the Hood — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Under the Hood</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html" class="active">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Maths & Statistiques</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Under the Hood</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Under the Hood</h1>
+        <p class="page-objective">Comprendre ce qui se passe à l'intérieur de `.fit()` : la descente de gradient, les différents solvers, et les fonctions de perte utilisées en régression et en classification.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Norme L1 / L2</div>
+        <div class="key-concept-def">Somme des valeurs absolues vs racine de la somme des carrés.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Convexité</div>
+        <div class="key-concept-def">Une fonction convexe a un unique minimum global, accessible par descente.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Espérance</div>
+        <div class="key-concept-def">Moyenne pondérée d&#x27;une variable aléatoire selon sa distribution.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Information mutuelle</div>
+        <div class="key-concept-def">Quantité d&#x27;info qu&#x27;une variable apporte sur une autre.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-under-the-hood">Cheatsheet — Under the Hood</a><ol><li><a href="#modèle-linéaire-et-paramètres">Modèle linéaire et paramètres</a></li><li><a href="#gradient-descent-implémentation-manuelle-1d">Gradient Descent — implémentation manuelle (1D)</a></li><li><a href="#sgd-stochastic-gradient-descent-1-point-à-la-fois">SGD (Stochastic Gradient Descent) — 1 point à la fois</a></li><li><a href="#sgdregressor-et-sgdclassifier-sklearn">SGDRegressor et SGDClassifier sklearn</a></li><li><a href="#fonctions-de-perte-régression">Fonctions de perte — Régression</a></li><li><a href="#fonctions-de-perte-classification">Fonctions de perte — Classification</a></li><li><a href="#comparaison-de-vitesse-linearregression-vs-sgdregressor">Comparaison de vitesse : LinearRegression vs SGDRegressor</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-ce-qui-se-passe-derrière-fit">1) Ce qui se passe derrière `.fit()`</a><ol><li><a href="#11-le-modèle-comme-hypothèse">1.1 Le modèle comme hypothèse</a></li><li><a href="#12-la-loss-function">1.2 La Loss Function</a></li><li><a href="#13-intuition-géométrique">1.3 Intuition géométrique</a></li></ol></li><li><a href="#2-gradient-descent">2) Gradient Descent</a><ol><li><a href="#21-descente-1d-pas-à-pas">2.1 Descente 1D — Pas à pas</a></li><li><a href="#22-implémentation-manuelle-1d">2.2 Implémentation manuelle (1D)</a></li><li><a href="#23-descente-2d-co-optimiser-beta_0-et-beta_1">2.3 Descente 2D — Co-optimiser $\beta_0$ et $\beta_1$</a></li><li><a href="#24-gradient-analytique-pour-ols">2.4 Gradient analytique pour OLS</a></li><li><a href="#25-effet-du-learning-rate-eta">2.5 Effet du Learning Rate $\eta$</a></li></ol></li><li><a href="#3-variantes-de-gradient-descent-autres-solvers">3) Variantes de Gradient Descent & Autres Solvers</a><ol><li><a href="#31-gradient-descent-complet-vs-mini-batch-vs-sgd">3.1 Gradient Descent complet vs Mini-Batch vs SGD</a></li><li><a href="#32-sgdregressor-et-sgdclassifier-sklearn">3.2 SGDRegressor et SGDClassifier sklearn</a></li><li><a href="#33-solvers-avancés">3.3 Solvers avancés</a></li></ol></li><li><a href="#4-fonctions-de-perte">4) Fonctions de Perte</a><ol><li><a href="#41-losses-de-régression">4.1 Losses de régression</a></li><li><a href="#42-losses-de-classification">4.2 Losses de classification</a></li></ol></li><li><a href="#5-récapitulatif-vocabulaire-ml">5) Récapitulatif — Vocabulaire ML</a><ol><li><a href="#51-paramètres-vs-hyperparamètres">5.1 Paramètres vs Hyperparamètres</a></li><li><a href="#52-les-composantes-dun-modèle">5.2 Les composantes d'un modèle</a></li><li><a href="#53-modèles-sklearn">5.3 Modèles sklearn</a></li><li><a href="#54-fine-tuning-des-hyperparamètres">5.4 Fine-tuning des hyperparamètres</a></li></ol></li><li><a href="#bibliographie">Bibliographie</a></ol></div>
+<p>Comprendre ce qui se passe à l'intérieur de <code>.fit()</code> : la descente de gradient, les différents solvers, et les fonctions de perte utilisées en régression et en classification.</p>
+
+<hr>
+
+<h2 id="cheatsheet-under-the-hood">📋 Cheatsheet — Under the Hood</h2>
+
+<h3 id="modèle-linéaire-et-paramètres">Modèle linéaire et paramètres</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+model.fit(X_train, y_train)      # minimise la loss OLS → trouve beta_0 et beta_1
+model.intercept_                 # beta_0 (biais)
+model.coef_[0]                   # beta_1 (pente)</code></pre></div>
+
+
+<h3 id="gradient-descent-implémentation-manuelle-1d">Gradient Descent — implémentation manuelle (1D)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+b0 = 0        # initialisation aléatoire de l&#x27;intercept
+b1 = 0.64     # pente connue (simplification)
+eta = 0.1     # learning rate
+
+def h(x, b0):
+    return b0 + b1 * x           # hypothèse : prédiction ŷ
+
+## Une epoch = un passage sur toutes les données
+for epoch in range(100):
+    derivative = np.sum(-2 * (y - h(X, b0)))  # dérivée partielle de SSR par rapport à b0
+    b0 = b0 - eta * derivative                 # mise à jour : b0 ← b0 - η * ∂L/∂b0</code></pre></div>
+
+
+<h3 id="sgd-stochastic-gradient-descent-1-point-à-la-fois">SGD (Stochastic Gradient Descent) — 1 point à la fois</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">b0 = 0
+eta = 0.1
+n_epoch = 5
+
+for epoch in range(n_epoch):
+    for i in np.random.permutation(len(X)):    # ordre aléatoire des observations
+        X_mini = X[i]                          # 1 seul point (mini-batch de taille 1)
+        y_pred = h(X_mini, b0)
+        y_true = y[i]
+        derivative = -2 * (y_true - y_pred)   # gradient sur 1 point
+        b0 = b0 - eta * derivative            # mise à jour plus fréquente mais bruitée</code></pre></div>
+
+
+<h3 id="sgdregressor-et-sgdclassifier-sklearn">SGDRegressor et SGDClassifier sklearn</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import SGDRegressor, SGDClassifier, LinearRegression
+
+LinearRegression()                          # OLS résolu par inversion matricielle (SVD)
+SGDRegressor(loss=&#x27;squared_error&#x27;)          # OLS résolu par SGD
+SGDRegressor(loss=&#x27;huber&#x27;)                  # régression linéaire robuste aux outliers
+
+SGDClassifier(loss=&#x27;log_loss&#x27;)              # équivalent LogisticRegression (log-loss)
+SGDClassifier(loss=&#x27;hinge&#x27;)                 # équivalent SVC (hinge loss)</code></pre></div>
+
+
+<h3 id="fonctions-de-perte-régression">Fonctions de perte — Régression</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">SGDRegressor(loss=&#x27;squared_error&#x27;)          # L2 = MSE : pénalise fortement les grandes erreurs
+SGDRegressor(loss=&#x27;absolute_error&#x27;)         # L1 = MAE : robuste aux outliers
+SGDRegressor(loss=&#x27;huber&#x27;, epsilon=0.1)     # mix L1/L2 : MSE si erreur &lt; epsilon, MAE sinon</code></pre></div>
+
+
+<h3 id="fonctions-de-perte-classification">Fonctions de perte — Classification</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">SGDClassifier(loss=&#x27;log_loss&#x27;)              # Log-Loss (Cross-Entropy) : pour classifieurs logistiques
+SGDClassifier(loss=&#x27;hinge&#x27;)                 # Hinge Loss : pour SVM (Support Vector Machine)</code></pre></div>
+
+
+<h3 id="comparaison-de-vitesse-linearregression-vs-sgdregressor">Comparaison de vitesse : LinearRegression vs SGDRegressor</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.datasets import make_regression
+
+X, y = make_regression(n_samples=10000, n_features=1000)  # grand dataset
+
+LinearRegression().fit(X, y)   # → ~2.07s (inversion matricielle = O(p³))
+SGDRegressor().fit(X, y)       # → ~0.19s (SGD = bien plus rapide sur grands p et n)</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre Loss Function et métrique de performance</strong></p>
+<p>❌ Utiliser l'accuracy comme loss pour entraîner un modèle → impossible, non dérivable</p>
+<p>✅ La loss sert à <strong>fitter</strong> le modèle (doit être différentiable) ; les métriques (accuracy, R²) servent à <strong>évaluer</strong> après le fit</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Choisir un learning rate trop grand ou trop petit</strong></p>
+<p>❌ <code>eta = 10</code> → le modèle diverge et n'atteint jamais le minimum</p>
+<p>✅ <code>eta = 0.01</code> à <code>0.1</code> pour commencer ; surveiller la courbe de loss par epoch</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier de scaler les features avant le Gradient Descent</strong></p>
+<p>❌ Features non-scalées → paysage de loss très allongé → convergence très lente</p>
+<p>✅ Toujours standardiser avant d'utiliser SGD : le GD converge beaucoup plus vite sur des features à échelles comparables</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser LinearRegression sur un très grand dataset (n et p élevés)</strong></p>
+<p>❌ <code>LinearRegression()</code> sur 10 000 observations × 1 000 features → 8+ secondes (inversion matricielle = O(p³))</p>
+<p>✅ <code>SGDRegressor()</code> sur le même dataset → ~0.19s : toujours préférer SGD quand n ou p est grand</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Arrêter le SGD trop tôt ou trop tard</strong></p>
+<p>❌ Trop tôt → le modèle n'a pas convergé ; trop tard → overfitting ou temps perdu</p>
+<p>✅ Utiliser <code>max_iter</code> et <code>tol</code> de sklearn, ou surveiller la perte par epoch manuellement</p></div></div>
+
+<hr>
+
+<h2 id="1-ce-qui-se-passe-derrière-fit">1) Ce qui se passe derrière <code>.fit()</code></h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+model.fit(data[[&#x27;weight&#x27;]], data[&#x27;height&#x27;])
+
+print(&#x27;beta_0 (intercept) =&#x27;, model.intercept_)   # → 0.9434
+print(&#x27;beta_1 (slope) =&#x27;,     model.coef_[0])     # → 0.6220</code></pre></div>
+
+
+<figure><img src="../../assets/images/under-the-hood-01-8861c770.png" alt="" loading="lazy"></figure>
+
+<h3 id="11-le-modèle-comme-hypothèse">1.1 Le modèle comme hypothèse</h3>
+
+<p>Tout modèle ML peut s'écrire :</p>
+
+<p>$y = h(X, \beta) + \text{error}$</p>
+
+<ul>
+<li>$h$ est la <strong>fonction d'hypothèse</strong> (ex: régression linéaire, sigmoïde…)</li>
+<li>$h(X, \beta) = \hat{y}$ est la <strong>prédiction</strong></li>
+<li>Pour la régression linéaire : $h(X, \beta) = \beta_0 + \beta_1 X_1$</li>
+</ul>
+
+<p><code>.fit()</code> trouve les paramètres $\beta_0$ et $\beta_1$ qui <strong>minimisent</strong> la loss function.</p>
+
+<h3 id="12-la-loss-function">1.2 La Loss Function</h3>
+
+<p>$\beta = \arg\min_{\beta} \ L(\beta, X, y, h)$</p>
+
+<p>Pour OLS (Ordinary Least Squares) :</p>
+
+<p>$L_{OLS} = \|\text{error}\|^2 = \|y - \beta_0 - \beta_1 X_1\|^2$</p>
+
+<h3 id="13-intuition-géométrique">1.3 Intuition géométrique</h3>
+
+<figure><img src="../../assets/images/under-the-hood-02-2c30b24b.png" alt="" loading="lazy"></figure>
+
+<p>La loss function a une forme <strong>convexe</strong> — il existe un minimum global unique pour les modèles linéaires.</p>
+
+<figure><img src="../../assets/images/under-the-hood-03-13467928.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="2-gradient-descent">2) Gradient Descent</h2>
+
+<h3 id="21-descente-1d-pas-à-pas">2.1 Descente 1D — Pas à pas</h3>
+
+<p>La <strong>descente de gradient</strong> utilise la pente (dérivée) de la loss comme indicateur de direction.</p>
+
+<p>$\frac{\partial \text{Loss}}{\partial \text{paramètre}}$</p>
+
+<p>Plus la pente est proche de zéro, plus on est proche du minimum.</p>
+
+<figure><img src="../../assets/images/under-the-hood-04-b233bd4c.png" alt="" loading="lazy"></figure>
+
+<p><strong>Algorithme — 1 paramètre :</strong></p>
+
+<p>$\beta_0^{(k+1)} = \beta_0^{(k)} - \eta \frac{\partial L}{\partial \beta_0}\left(\beta_0^{(k)}\right)$</p>
+
+<ol>
+<li>Initialiser $\beta_0^{(0)}$ aléatoirement (ex: 0)</li>
+<li>Calculer la dérivée de la loss en ce point</li>
+<li>Mettre à jour $\beta_0$ selon le learning rate $\eta$</li>
+<li>Répéter jusqu'au critère d'arrêt</li>
+</ol>
+
+<p><strong>Critères d'arrêt :</strong> taille de pas minimum (ex: 0.001) ou nombre max d'epochs (ex: 1000)</p>
+
+<h3 id="22-implémentation-manuelle-1d">2.2 Implémentation manuelle (1D)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">X = data[&#x27;weight&#x27;]
+y = data[&#x27;height&#x27;]
+
+b1 = 0.64    # pente supposée connue
+eta = 0.1    # learning rate
+
+def h(x, b0):
+    return b0 + b1 * x      # hypothèse linéaire
+
+b0 = 0       # initialisation de l&#x27;intercept
+
+## Epoch 0
+loss_0 = np.sum((y - h(X, b0)) ** 2)       # SSR = 3.159
+derivative = np.sum(-2 * (y - h(X, b0)))   # ∂SSR/∂b0 = 5.448
+b0 = b0 - eta * derivative                 # b0 → 0.545</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Epoch 1
+derivative = np.sum(-2 * (y - h(X, b0)))   # nouvelle dérivée (plus petite)
+b0 = b0 - eta * derivative                 # b0 → 0.763
+## Répéter jusqu&#x27;à convergence...</code></pre></div>
+
+
+<figure><img src="../../assets/images/under-the-hood-05-2a3a6cd0.png" alt="" loading="lazy"></figure>
+
+<h3 id="23-descente-2d-co-optimiser-beta_0-et-beta_1">2.3 Descente 2D — Co-optimiser $\beta_0$ et $\beta_1$</h3>
+
+<figure><img src="../../assets/images/under-the-hood-06-46086320.jpg" alt="" loading="lazy"></figure>
+
+<p><strong>Formulation vectorielle (N dimensions) :</strong></p>
+
+<p>$\beta^{(k+1)} = \beta^{(k)} - \eta \nabla L\left(\beta^{(k)}\right)$</p>
+
+<p>Le <strong>vecteur gradient</strong> $\nabla L$ contient toutes les dérivées partielles :</p>
+
+<p>$\nabla L(\beta) = \begin{bmatrix} \frac{\partial L}{\partial \beta_0}(\beta) \\ \vdots \\ \frac{\partial L}{\partial \beta_p}(\beta) \end{bmatrix}$</p>
+
+<figure><img src="../../assets/images/under-the-hood-07-14616831.png" alt="" loading="lazy"></figure>
+
+<h3 id="24-gradient-analytique-pour-ols">2.4 Gradient analytique pour OLS</h3>
+
+<p>$\frac{\partial SSR}{\partial \beta_0} = \sum_{i=1}^{n} -2(y_i - \hat{y}_i)$</p>
+
+<p>$\frac{\partial SSR}{\partial \beta_1} = \sum_{i=1}^{n} -2 X_1^{(i)}(y_i - \hat{y}_i)$</p>
+
+<p>En forme vectorielle :</p>
+
+<p>$\nabla SSR(\beta) = -2 X^T (y - \hat{y})$</p>
+
+<h3 id="25-effet-du-learning-rate-eta">2.5 Effet du Learning Rate $\eta$</h3>
+
+<figure><img src="../../assets/images/under-the-hood-08-9c960dd4.png" alt="" loading="lazy"></figure>
+
+<div class="table-wrapper"><table><thead><tr><th>Learning Rate</th><th>Avantages</th><th>Inconvénients</th></tr></thead><tbody><tr><td><strong>Faible</strong></td><td>Chemin plus court vers le minimum</td><td>Plus d'epochs, risque de minima locaux</td></tr><tr><td><strong>Élevé</strong></td><td>Moins d'epochs</td><td>Peut ne jamais converger</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le Gradient Descent converge <strong>beaucoup plus vite</strong> quand les features sont scalées — un paysage de loss isotrope permet des pas uniformes dans toutes les directions.</p></div></div>
+
+<hr>
+
+<h2 id="3-variantes-de-gradient-descent-autres-solvers">3) Variantes de Gradient Descent & Autres Solvers</h2>
+
+<h3 id="31-gradient-descent-complet-vs-mini-batch-vs-sgd">3.1 Gradient Descent complet vs Mini-Batch vs SGD</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Méthode</th><th>Observations utilisées par step</th><th>Stabilité</th><th>Vitesse</th></tr></thead><tbody><tr><td><strong>Full Gradient Descent</strong></td><td>Toutes ($n$)</td><td>Très stable</td><td>Lent sur grands $n$</td></tr><tr><td><strong>Mini-Batch GD</strong></td><td>Un sous-ensemble (ex: 16)</td><td>Bon compromis</td><td>Bon compromis</td></tr><tr><td><strong>SGD</strong></td><td>1 seule</td><td>Bruitée</td><td>Très rapide</td></tr></tbody></table></div>
+<p><strong>Mini-Batch Gradient Descent :</strong></p>
+
+<ul>
+<li>Choisir une taille de batch (ex: 16)</li>
+<li>Calculer le gradient $\nabla L_{mini}$ sur ce batch</li>
+<li>Mettre à jour $\beta^{(k+1)} = \beta^{(k)} - \eta \nabla L_{mini}(\beta^{(k)})$</li>
+<li>Passer au batch suivant, répéter par epoch</li>
+</ul>
+
+<p><strong>Stochastic Gradient Descent (SGD) = Mini-Batch de taille 1 :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">b0 = 0
+eta = 0.1
+n_epoch = 5
+
+for epoch in range(n_epoch):
+    for i in np.random.permutation(3):         # ordre aléatoire des observations
+        X_mini = X[i]                          # 1 seul point
+        y_pred = h(X_mini, b0)
+        y_true = y[i]
+        derivative = -2 * (y_true - y_pred)   # gradient sur 1 point
+        b0 = b0 - eta * derivative
+        print(f&#x27;b0 epoch {epoch}:&#x27;, b0)</code></pre></div>
+
+
+<figure><img src="../../assets/images/under-the-hood-09-2e89bbec.png" alt="" loading="lazy"></figure>
+
+<p><strong>Avantages de SGD :</strong></p>
+
+<ul>
+<li>Plus rapide sur très grands datasets</li>
+<li>Peut sortir des minima locaux grâce au bruit</li>
+<li>Réduit considérablement la charge RAM (utile en Deep Learning)</li>
+</ul>
+
+<p><strong>Inconvénients :</strong></p>
+
+<ul>
+<li>Nécessite plus d'itérations</li>
+<li>Ne converge jamais exactement</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Utiliser SGD quand n ≥ 100 000 observations, pour sortir d'un minimum local, ou par défaut en Deep Learning.</p></div></div>
+
+<h3 id="32-sgdregressor-et-sgdclassifier-sklearn">3.2 SGDRegressor et SGDClassifier sklearn</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import SGDRegressor, SGDClassifier, LinearRegression
+
+LinearRegression()                          # OLS → inversion matricielle (SVD)
+SGDRegressor(loss=&#x27;squared_error&#x27;)          # OLS → résolu par SGD
+
+SGDClassifier(loss=&#x27;log_loss&#x27;)              # équivalent LogisticRegression
+SGDClassifier(loss=&#x27;hinge&#x27;)                 # équivalent SVC</code></pre></div>
+
+
+<p><strong>Comparaison de vitesse sur grand dataset :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.datasets import make_regression
+
+X, y = make_regression(n_samples=10000, n_features=1000)
+
+LinearRegression().fit(X, y)   # → Wall time: 2.07s  (inversion O(p³))
+SGDRegressor().fit(X, y)       # → Wall time: 0.189s (SGD scale bien)</code></pre></div>
+
+
+<h3 id="33-solvers-avancés">3.3 Solvers avancés</h3>
+
+<p><strong>Descentes de gradient améliorées :</strong></p>
+
+<ul>
+<li><strong>Gradient</strong> : descente classique</li>
+<li><strong>Momentum</strong> : ajoute de l'inertie — évite les oscillations</li>
+<li><strong>AdaGrad</strong> : learning rate adaptatif par feature — priorité aux paramètres peu mis à jour</li>
+<li><strong>RMSProp</strong> : ajoute un decay — seul le gradient récent compte</li>
+<li><strong>Adam</strong> : combine tout — le plus utilisé en Deep Learning</li>
+</ul>
+
+<p>👉 <a href="https://medium.com/towards-data-science/a-visual-explanation-of-gradient-descent-methods-momentum-adagrad-rmsprop-adam-f898b102325c" target="_blank" rel="noopener">Visualisation des optimiseurs</a></p>
+
+<p><strong>Méthodes de second ordre (Matrice Hessienne) :</strong></p>
+
+<ul>
+<li><strong>Newton's Method</strong>, <strong>L-BFGS</strong> : approximent la courbure locale</li>
+<li>Avantages : convergence en beaucoup moins d'epochs</li>
+<li>Inconvénients : coûteux en calcul</li>
+<li>Utilisé par défaut dans <code>LogisticRegression</code> sklearn (<code>solver=&#x27;lbfgs&#x27;</code>)</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">LogisticRegression(solver=&#x27;newton-cg&#x27;)   # solver de second ordre
+LogisticRegression(solver=&#x27;lbfgs&#x27;)       # L-BFGS (défaut sklearn)</code></pre></div>
+
+
+<hr>
+
+<h2 id="4-fonctions-de-perte">4) Fonctions de Perte</h2>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Loss ≠ Métrique de performance</strong> : la loss sert à <strong>fitter</strong> le modèle (calculée pendant <code>.fit()</code>). Les métriques (MSE, R², accuracy) servent à <strong>évaluer</strong> après le fit. La loss doit être (sub)différentiable — l'accuracy ne peut jamais être une loss.</p></div></div>
+
+<h3 id="41-losses-de-régression">4.1 Losses de régression</h3>
+
+<p><strong>L2 — MSE (Mean Squared Error) :</strong></p>
+
+<p>$L_2 = MSE = \frac{1}{n}\sum_{i=1}^{n}(\hat{y}_i - y_i)^2$</p>
+
+<ul>
+<li>Très sensible aux outliers (pénalité quadratique)</li>
+<li>Gradient simple : $\nabla MSE = -\frac{2}{n} X^T(y - \hat{y})$</li>
+</ul>
+
+<p><strong>L1 — MAE (Mean Absolute Error) :</strong></p>
+
+<p>$L_1 = MAE = \frac{1}{n}\sum_{i=1}^{n}|\hat{y}_i - y_i|$</p>
+
+<ul>
+<li>Robuste aux outliers</li>
+<li>Nécessite un learning rate décroissant (non différentiable en 0)</li>
+</ul>
+
+<p><strong>Huber Loss (mix L1/L2) :</strong></p>
+
+<p>$L_\delta = \begin{cases} \frac{1}{2}(y - \hat{y})^2 & \text{si } |y - \hat{y}| < \delta \\ \delta(|y - \hat{y}| - \frac{1}{2}\delta) & \text{sinon} \end{cases}$</p>
+
+<ul>
+<li>Se comporte comme MSE pour les petites erreurs, MAE pour les grandes</li>
+<li>Réglable via l'hyperparamètre <code>epsilon</code></li>
+</ul>
+
+<figure><img src="../../assets/images/under-the-hood-10-995d2d6d.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">SGDRegressor(loss=&#x27;squared_error&#x27;)          # L2 = MSE
+SGDRegressor(loss=&#x27;absolute_error&#x27;)         # L1 = MAE
+SGDRegressor(loss=&#x27;huber&#x27;, epsilon=0.1)     # Huber : seuil ε ajustable</code></pre></div>
+
+
+<figure><img src="../../assets/images/under-the-hood-11-be32ccff.png" alt="" loading="lazy"></figure>
+
+<h3 id="42-losses-de-classification">4.2 Losses de classification</h3>
+
+<p><strong>Log-Loss (Cross-Entropy Loss) :</strong></p>
+
+<p>$\text{Log Loss} = -\frac{1}{n}\sum_{i=0}^{n} y_i \log(\hat{y}_i) + (1 - y_i)\log(1 - \hat{y}_i)$</p>
+
+<ul>
+<li>$y = 1 \Rightarrow \text{Log Loss} = -\log(\hat{y})$</li>
+<li>$y = 0 \Rightarrow \text{Log Loss} = -\log(1 - \hat{y})$</li>
+<li>Pénalise infiniment les prédictions totalement fausses</li>
+<li>Gradient de la log-loss appliquée à la sigmoïde :</li>
+</ul>
+
+<p>$\nabla \text{LogLoss}_{\text{sigmoid}} = -\frac{1}{n} X^T(y - \hat{y})$</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le gradient de la log-loss (sigmoïde) et du MSE (linéaire) ont <strong>la même forme vectorielle</strong> $-\frac{C}{n}X^T(y-\hat{y})$ — seule la prédiction $\hat{y}$ diffère ($hat{y} = Xbeta$ vs $hat{y} = sigma(Xbeta)$).</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">SGDClassifier(loss=&#x27;log_loss&#x27;)   # Log-Loss → classifieur logistique
+SGDClassifier(loss=&#x27;hinge&#x27;)      # Hinge Loss → SVM</code></pre></div>
+
+
+<hr>
+
+<h2 id="5-récapitulatif-vocabulaire-ml">5) Récapitulatif — Vocabulaire ML</h2>
+
+<h3 id="51-paramètres-vs-hyperparamètres">5.1 Paramètres vs Hyperparamètres</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Définition</th><th>Exemples</th><th>Qui les détermine ?</th></tr></thead><tbody><tr><td><strong>Paramètres</strong> $\beta$</td><td>Coefficients du modèle</td><td>$\beta_0, \beta_1, \dots$</td><td><code>.fit()</code> automatiquement</td></tr><tr><td><strong>Hyperparamètres</strong></td><td>Choix de configuration</td><td><code>eta</code>, <code>loss</code>, <code>solver</code>, <code>n_neighbors</code></td><td>Manuellement</td></tr></tbody></table></div>
+<h3 id="52-les-composantes-dun-modèle">5.2 Les composantes d'un modèle</h3>
+
+<ul>
+<li><strong>Hypothèse</strong> $h(X, \beta)$ : fonction de prédiction (linéaire, sigmoïde, réseau de neurones…)</li>
+<li><strong>Loss</strong> $L$ : fonction à minimiser pendant <code>.fit()</code> (MSE, MAE, Log-Loss…)</li>
+<li><strong>Solver</strong> : méthode pour minimiser $L$ (GD, SGD, newton, lbfgs…)</li>
+</ul>
+
+<h3 id="53-modèles-sklearn">5.3 Modèles sklearn</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Régresseurs
+LinearRegression()           # régression OLS
+KNeighborsRegressor()        # KNN régression
+SVR()                        # Support Vector Regressor
+
+## Classifieurs
+LogisticRegression()         # régression logistique
+KNeighborsClassifier()       # KNN classification
+SVC()                        # Support Vector Classifier
+
+## SGD (hypothèse linéaire, solver SGD — loss au choix)
+SGDRegressor(loss=&#x27;squared_error&#x27;)   # = OLS
+SGDRegressor(loss=&#x27;huber&#x27;)           # régression linéaire robuste
+
+SGDClassifier(loss=&#x27;log_loss&#x27;)       # = LogisticRegression
+SGDClassifier(loss=&#x27;hinge&#x27;)          # = SVC</code></pre></div>
+
+
+<h3 id="54-fine-tuning-des-hyperparamètres">5.4 Fine-tuning des hyperparamètres</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">SGDRegressor(loss=&#x27;squared_error&#x27;, learning_rate=&#x27;constant&#x27;, eta0=0.01)
+KNeighborsRegressor(n_neighbors=5)
+LogisticRegression(solver=&#x27;newton-cg&#x27;, max_iter=1000)</code></pre></div>
+
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<p>👉 <a href="https://www.youtube.com/watch?v=sDv4f4s2SB8" target="_blank" rel="noopener">StatsQuest — Gradient Descent (vidéo)</a></p>
+
+<p>👉 <a href="https://github.com/yanshengjia/ml-road/blob/master/resources/Hands%20On%20Machine%20Learning%20with%20Scikit%20Learn%20and%20TensorFlow.pdf" target="_blank" rel="noopener">Hands-On ML with SKLearn — Chapter 4</a></p>
+
+<p>👉 <a href="https://cs229.stanford.edu/main_notes.pdf" target="_blank" rel="noopener">Andrew NG — Linear Models CS229 Notes</a></p>
+
+<p>👉 <a href="https://medium.com/analytics-vidhya/derivative-of-log-loss-function-for-logistic-regression-9b832f025c2d" target="_blank" rel="noopener">Derivative of log-loss function</a></p>
+
+<p>👉 <a href="https://distill.pub/2017/momentum/" target="_blank" rel="noopener">Distill — Momentum & Optimizers</a></p>
+
+<p>👉 <a href="https://medium.com/towards-data-science/a-visual-explanation-of-gradient-descent-methods-momentum-adagrad-rmsprop-adam-f898b102325c" target="_blank" rel="noopener">Visualisation des optimiseurs (Adam, RMSProp…)</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDRegressor.html" target="_blank" rel="noopener">sklearn.linear_model.SGDRegressor</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html" target="_blank" rel="noopener">sklearn.linear_model.SGDClassifier</a></p>
+
+<p>👉 <a href="https://sthalles.github.io/svd-for-regression/" target="_blank" rel="noopener">SVD pour régression linéaire</a></p>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-a-retenir-absolument">A retenir absolument</a></li><li><a href="#ref-lanalogie-fil-rouge-le-randonneur-dans-le-brouillard">L'analogie fil rouge : le randonneur dans le brouillard</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-ce-qui-se-passe-derrière-fit">1. Ce qui se passe derrière `.fit()`</a><ol><li><a href="#ref-11-le-modèle-comme-hypothèse">1.1 Le modèle comme hypothèse</a></li><li><a href="#ref-12-la-loss-function-fonction-de-perte">1.2 La Loss Function (fonction de perte)</a></li><li><a href="#ref-13-la-forme-de-la-loss-intuition-géométrique">1.3 La forme de la loss — intuition géométrique</a></li></ol></li><li><a href="#ref-2-la-descente-de-gradient">2. La Descente de Gradient</a><ol><li><a href="#ref-21-lidée-centrale">2.1 L'idée centrale</a></li><li><a href="#ref-22-lalgorithme-en-1d-formule-de-mise-à-jour">2.2 L'algorithme en 1D — formule de mise à jour</a></li><li><a href="#ref-23-implémentation-manuelle-exemple-complet">2.3 Implémentation manuelle — exemple complet</a></li><li><a href="#ref-24-descente-en-2d-co-optimiser-plusieurs-paramètres">2.4 Descente en 2D — co-optimiser plusieurs paramètres</a></li><li><a href="#ref-25-leffet-du-learning-rate-eta">2.5 L'effet du learning rate $\eta$</a></li></ol></li><li><a href="#ref-3-les-variantes-de-gradient-descent">3. Les Variantes de Gradient Descent</a><ol><li><a href="#ref-31-full-gd-mini-batch-et-sgd">3.1 Full GD, Mini-Batch et SGD</a></li><li><a href="#ref-32-sgdregressor-et-sgdclassifier-en-sklearn">3.2 SGDRegressor et SGDClassifier en sklearn</a></li><li><a href="#ref-33-les-solvers-avancés">3.3 Les solvers avancés</a></li></ol></li><li><a href="#ref-4-les-fonctions-de-perte">4. Les Fonctions de Perte</a><ol><li><a href="#ref-41-les-losses-de-régression">4.1 Les losses de régression</a></li><li><a href="#ref-42-les-losses-de-classification">4.2 Les losses de classification</a></li></ol></li><li><a href="#ref-5-vocabulaire-final">5. Vocabulaire Final</a><ol><li><a href="#ref-51-paramètres-vs-hyperparamètres">5.1 Paramètres vs Hyperparamètres</a></li><li><a href="#ref-52-les-trois-composantes-dun-modèle">5.2 Les trois composantes d'un modèle</a></li><li><a href="#ref-53-réglage-des-hyperparamètres">5.3 Réglage des hyperparamètres</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Quand tu appelles <code>.fit()</code> sur un modèle scikit-learn, il ne se passe pas de magie. Le modèle cherche les meilleurs réglages internes (ses <strong>paramètres</strong>) pour coller au mieux à tes données. Pour cela, il utilise des techniques mathématiques précises : une <strong>fonction de perte</strong> qui mesure les erreurs, et un <strong>algorithme d'optimisation</strong> qui les réduit pas à pas.</p>
+
+<p>Ce cours ouvre le capot. Tu vas comprendre ce qui tourne vraiment sous <code>.fit()</code>.</p>
+
+<h3 id="ref-a-retenir-absolument">A retenir absolument</h3>
+
+<ul>
+<li>Un modèle ML, c'est une <strong>hypothèse</strong> (une formule) + un <strong>critère d'erreur</strong> (la loss) + une <strong>méthode pour minimiser l'erreur</strong> (le solver).</li>
+<li>La <strong>descente de gradient</strong> est la méthode la plus courante : on avance dans la direction qui fait descendre l'erreur.</li>
+<li>Le <strong>learning rate</strong> contrôle la taille des pas — ni trop grand, ni trop petit.</li>
+<li><strong>Loss function ≠ métrique</strong> : la loss sert à entraîner, la métrique sert à évaluer.</li>
+<li>Toujours <strong>normaliser ses features</strong> avant d'utiliser la descente de gradient.</li>
+</ul>
+
+<h3 id="ref-lanalogie-fil-rouge-le-randonneur-dans-le-brouillard">L'analogie fil rouge : le randonneur dans le brouillard</h3>
+
+<p>Imagine un randonneur posé quelque part dans la montagne, par nuit de brouillard. Son objectif : atteindre le point le plus bas de la vallée. Il ne voit pas la carte entière. Il tâte le sol autour de lui pour sentir la pente, puis avance d'un pas dans la direction qui descend. Il recommence encore et encore, jusqu'à ce que le sol soit plat.</p>
+
+<p>C'est exactement ce que fait la descente de gradient :</p>
+<ul>
+<li>La montagne = la <strong>fonction de perte</strong> (l'erreur du modèle)</li>
+<li>La position du randonneur = les <strong>paramètres</strong> du modèle ($\beta_0$, $\beta_1$, ...)</li>
+<li>La pente ressentie = le <strong>gradient</strong> (la dérivée)</li>
+<li>La taille du pas = le <strong>learning rate</strong> $\eta$</li>
+<li>Le fond de la vallée = le <strong>minimum de la loss</strong> (le meilleur modèle)</li>
+</ul>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li>Ce qui se passe derrière <code>.fit()</code> — le modèle comme hypothèse</li>
+<li>La descente de gradient — algorithme pas à pas</li>
+<li>Les variantes : Batch, Mini-Batch, SGD</li>
+<li>Les fonctions de perte — régression et classification</li>
+<li>Vocabulaire final : paramètres, hyperparamètres, solvers</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-ce-qui-se-passe-derrière-fit">1. Ce qui se passe derrière <code>.fit()</code></h2>
+
+<h3 id="ref-11-le-modèle-comme-hypothèse">1.1 Le modèle comme hypothèse</h3>
+
+<p>Quand tu entraînes une régression linéaire, tu cherches une droite qui colle à tes données. Cette droite est décrite par une équation qu'on appelle <strong>hypothèse</strong> :</p>
+
+<div class="katex-display">$$\hat{y} = h(X, \beta) = \beta_0 + \beta_1 \cdot X_1$$</div>
+
+<p><strong>Traduction des symboles :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Symbole</th><th>Signification</th><th>Exemple concret</th></tr></thead><tbody><tr><td>$\hat{y}$</td><td>La valeur prédite par le modèle</td><td>taille prédite d'une personne</td></tr><tr><td>$h$</td><td>La fonction d'hypothèse</td><td>la formule de la droite</td></tr><tr><td>$X$</td><td>Les données d'entrée</td><td>le poids de la personne</td></tr><tr><td>$\beta_0$</td><td>L'ordonnée à l'origine (intercept)</td><td>taille quand poids = 0 (point de départ de la droite)</td></tr><tr><td>$\beta_1$</td><td>La pente (slope)</td><td>de combien la taille augmente par kg de poids</td></tr></tbody></table></div>
+<p><strong>Exemple chiffré :</strong> si le modèle trouve $\beta_0 = 0.94$ et $\beta_1 = 0.62$, alors pour quelqu'un pesant 70 kg :</p>
+
+<div class="katex-display">$$\hat{y} = 0.94 + 0.62 \times 70 = 44.34$$</div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+model.fit(data[[&#x27;weight&#x27;]], data[&#x27;height&#x27;])  # .fit() cherche les meilleurs beta
+
+print(&#x27;beta_0 (intercept) =&#x27;, model.intercept_)  # → 0.9434
+print(&#x27;beta_1 (pente)     =&#x27;, model.coef_[0])    # → 0.6220</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>.fit()</code> fait tout le travail : il cherche les valeurs de $\beta_0$ et $\beta_1$ qui minimisent l'erreur. Toi, tu n'as rien à calculer à la main.</p></div></div>
+
+<h3 id="ref-12-la-loss-function-fonction-de-perte">1.2 La Loss Function (fonction de perte)</h3>
+
+<p>La <strong>loss function</strong> est la boussole du modèle : elle mesure à quel point les prédictions sont mauvaises. Plus la loss est élevée, plus le modèle se trompe.</p>
+
+<p>L'objectif de <code>.fit()</code> est de trouver les paramètres $\beta$ qui rendent la loss <strong>la plus petite possible</strong> :</p>
+
+<div class="katex-display">$$\beta = \underset{\beta}{\arg\min} \ L(\beta, X, y, h)$$</div>
+
+<p><strong>Traduction :</strong></p>
+<ul>
+<li>$\arg\min_\beta$ signifie "trouve la valeur de $\beta$ qui minimise ce qui suit"</li>
+<li>$L$ est la loss function</li>
+<li>On cherche le $\beta$ qui donne la plus petite erreur possible</li>
+</ul>
+
+<p><strong>Pour la régression linéaire classique (OLS — Ordinary Least Squares) :</strong></p>
+
+<div class="katex-display">$$L_{\text{OLS}} = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = \|y - \beta_0 - \beta_1 X_1\|^2$$</div>
+
+<p><strong>Traduction :</strong></p>
+<ul>
+<li>$y_i$ = vraie valeur pour l'observation $i$</li>
+<li>$\hat{y}_i$ = valeur prédite pour l'observation $i$</li>
+<li>$(y_i - \hat{y}_i)^2$ = erreur au carré pour l'observation $i$</li>
+<li>$\sum_{i=1}^{n}$ = on additionne pour toutes les $n$ observations</li>
+</ul>
+
+<p><strong>Exemple chiffré :</strong> 3 observations avec erreurs de 2, -1, 3 :</p>
+
+<div class="katex-display">$$L = 2^2 + (-1)^2 + 3^2 = 4 + 1 + 9 = 14$$</div>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Pourquoi mettre au carré les erreurs ? Pour deux raisons : 1) une erreur négative devient positive (on ne veut pas qu'elles s'annulent), et 2) les grandes erreurs sont pénalisées beaucoup plus fort que les petites.</p></div></div>
+
+<h3 id="ref-13-la-forme-de-la-loss-intuition-géométrique">1.3 La forme de la loss — intuition géométrique</h3>
+
+<p>Pour un modèle linéaire, la loss function en fonction des paramètres a une forme de <strong>bol</strong> (convexe). Il n'y a qu'un seul minimum — le fond du bol. C'est là qu'on veut aller.</p>
+
+<p>Si on a deux paramètres ($\beta_0$ et $\beta_1$), la loss forme une surface 3D en forme de vallée. La descente de gradient fait descendre un point sur cette surface jusqu'au fond.</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>La convexité garantit qu'il n'y a pas de "faux fond" : le minimum qu'on trouve est toujours le vrai minimum global (pour les modèles linéaires).</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-la-descente-de-gradient">2. La Descente de Gradient</h2>
+
+<h3 id="ref-21-lidée-centrale">2.1 L'idée centrale</h3>
+
+<p>La <strong>descente de gradient</strong> répond à la question : dans quelle direction dois-je modifier $\beta$ pour que la loss diminue ?</p>
+
+<p>La réponse : dans la direction opposée au <strong>gradient</strong> (la pente).</p>
+
+<p>Le gradient d'une loss par rapport à un paramètre, c'est la dérivée partielle :</p>
+
+<div class="katex-display">$$\frac{\partial L}{\partial \beta_0}$$</div>
+
+<p><strong>Traduction :</strong> "de combien change la loss $L$ si je fais varier $\beta_0$ d'un tout petit peu ?"</p>
+
+<ul>
+<li>Si cette valeur est <strong>positive</strong> : augmenter $\beta_0$ ferait monter la loss → il faut <strong>diminuer</strong> $\beta_0$</li>
+<li>Si cette valeur est <strong>négative</strong> : augmenter $\beta_0$ ferait descendre la loss → il faut <strong>augmenter</strong> $\beta_0$</li>
+<li>Si cette valeur est <strong>nulle</strong> : on est au minimum !</li>
+</ul>
+
+<h3 id="ref-22-lalgorithme-en-1d-formule-de-mise-à-jour">2.2 L'algorithme en 1D — formule de mise à jour</h3>
+
+<div class="katex-display">$$\beta_0^{(k+1)} = \beta_0^{(k)} - \eta \cdot \frac{\partial L}{\partial \beta_0}\!\left(\beta_0^{(k)}\right)$$</div>
+
+<p><strong>Traduction symbole par symbole :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Symbole</th><th>Signification</th></tr></thead><tbody><tr><td>$\beta_0^{(k)}$</td><td>Valeur actuelle de $\beta_0$ à l'étape $k$</td></tr><tr><td>$\beta_0^{(k+1)}$</td><td>Nouvelle valeur de $\beta_0$ après la mise à jour</td></tr><tr><td>$\eta$ (eta)</td><td>Le learning rate — la taille du pas</td></tr><tr><td>$\frac{\partial L}{\partial \beta_0}$</td><td>La pente de la loss par rapport à $\beta_0$ (le gradient)</td></tr></tbody></table></div>
+<p><strong>En français :</strong> "la nouvelle valeur = ancienne valeur <strong>moins</strong> (taille du pas × pente actuelle)"</p>
+
+<p><strong>Exemple numérique :</strong> $\beta_0 = 0$, gradient = $5.45$, $\eta = 0.1$</p>
+
+<div class="katex-display">$$\beta_0^{(1)} = 0 - 0.1 \times 5.45 = -0.545$$</div>
+
+<p>On se déplace de 0 vers -0.545, dans la direction qui fait descendre la loss.</p>
+
+<p><strong>Les 4 étapes de l'algorithme :</strong></p>
+
+<ol>
+<li>Initialiser $\beta_0$ (souvent à 0)</li>
+<li>Calculer la dérivée de la loss en ce point</li>
+<li>Mettre à jour $\beta_0$ avec la formule ci-dessus</li>
+<li>Répéter jusqu'au <strong>critère d'arrêt</strong> (taille de pas < 0.001, ou max 1000 epochs)</li>
+</ol>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Une <strong>epoch</strong> = un passage complet sur toutes les données. Après 100 epochs, le modèle a regardé les données 100 fois de suite.</p></div></div>
+
+<h3 id="ref-23-implémentation-manuelle-exemple-complet">2.3 Implémentation manuelle — exemple complet</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+X = data[&#x27;weight&#x27;]   # données d&#x27;entrée (poids)
+y = data[&#x27;height&#x27;]   # vraies valeurs (taille)
+
+b1 = 0.64   # on suppose la pente connue pour simplifier
+eta = 0.1   # learning rate : taille du pas
+
+def h(x, b0):
+    return b0 + b1 * x   # hypothèse : prédiction ŷ
+
+b0 = 0   # on initialise l&#x27;intercept à 0
+
+# --- Epoch 0 ---
+# Calcul de la loss (SSR = somme des résidus au carré)
+loss_0 = np.sum((y - h(X, b0)) ** 2)        # → 3.159
+# Calcul du gradient (dérivée de SSR par rapport à b0)
+derivative = np.sum(-2 * (y - h(X, b0)))    # → 5.448
+# Mise à jour de b0
+b0 = b0 - eta * derivative                  # → 0 - 0.1 * 5.448 = -0.545
+
+# --- Epoch 1 ---
+derivative = np.sum(-2 * (y - h(X, b0)))    # gradient plus petit (on descend)
+b0 = b0 - eta * derivative                  # b0 → -0.763
+# On répète jusqu&#x27;à convergence...</code></pre></div>
+
+
+<p><strong>Récap du code :</strong> à chaque epoch, on calcule la pente de la courbe d'erreur à l'endroit où on se trouve, et on fait un petit pas dans la direction opposée. La loss diminue progressivement.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Pourquoi la formule du gradient est $-2(y - \hat{y})$ ? Parce qu'on dérive $\sum (y - \hat{y})^2$ par rapport à $\beta_0$. La règle de dérivation donne le facteur $-2$, et la somme des résidus $(y - \hat{y})$.</p></div></div>
+
+<h3 id="ref-24-descente-en-2d-co-optimiser-plusieurs-paramètres">2.4 Descente en 2D — co-optimiser plusieurs paramètres</h3>
+
+<p>Quand on a deux paramètres ($\beta_0$ et $\beta_1$), on les met à jour <strong>simultanément</strong> à chaque étape. La formule vectorielle généralise à $n$ paramètres :</p>
+
+<div class="katex-display">$$\beta^{(k+1)} = \beta^{(k)} - \eta \cdot \nabla L\!\left(\beta^{(k)}\right)$$</div>
+
+<p>Le <strong>vecteur gradient</strong> $\nabla L$ (nabla L) contient toutes les dérivées partielles regroupées :</p>
+
+<div class="katex-display">$$\nabla L(\beta) = \begin{bmatrix} \dfrac{\partial L}{\partial \beta_0}(\beta) \\ \vdots \\ \dfrac{\partial L}{\partial \beta_p}(\beta) \end{bmatrix}$$</div>
+
+<p><strong>Traduction :</strong> c'est un vecteur qui indique la "pente" de la loss dans chaque direction (une direction par paramètre). On se déplace dans la direction exactement opposée à ce vecteur.</p>
+
+<p><strong>Gradient analytique pour OLS :</strong></p>
+
+<div class="katex-display">$$\frac{\partial \text{SSR}}{\partial \beta_0} = \sum_{i=1}^{n} -2(y_i - \hat{y}_i)$$</div>
+
+<div class="katex-display">$$\frac{\partial \text{SSR}}{\partial \beta_1} = \sum_{i=1}^{n} -2 \cdot X_1^{(i)} \cdot (y_i - \hat{y}_i)$$</div>
+
+<p>En forme compacte (vectorielle) :</p>
+
+<div class="katex-display">$$\nabla \text{SSR}(\beta) = -2 \cdot X^T (y - \hat{y})$$</div>
+
+<p><strong>Traduction :</strong> $X^T$ est la transposée de la matrice des features, et $(y - \hat{y})$ est le vecteur des résidus (erreurs). Le produit matriciel calcule efficacement toutes les dérivées en une seule ligne.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La forme vectorielle est plus compacte et s'exécute beaucoup plus vite en Python grâce à NumPy. C'est pourquoi on l'utilise en pratique plutôt que d'écrire une boucle.</p></div></div>
+
+<h3 id="ref-25-leffet-du-learning-rate-eta">2.5 L'effet du learning rate $\eta$</h3>
+
+<p>Le learning rate est l'un des réglages les plus importants :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Situation</th><th>Ce qui se passe</th></tr></thead><tbody><tr><td>$\eta$ <strong>trop petit</strong> (ex: 0.0001)</td><td>Convergence très lente, beaucoup d'epochs nécessaires</td></tr><tr><td>$\eta$ <strong>bien choisi</strong> (ex: 0.01)</td><td>Descente régulière et efficace</td></tr><tr><td>$\eta$ <strong>trop grand</strong> (ex: 10)</td><td>Le modèle "saute" par-dessus le minimum et diverge</td></tr></tbody></table></div>
+<p><strong>Analogie :</strong> si le randonneur fait des pas de 1 cm, il arrivera au fond mais mettra très longtemps. S'il fait des pas de 10 km, il va rebondir d'un versant à l'autre sans jamais descendre.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Un learning rate trop grand fait <strong>diverger</strong> le modèle : la loss monte au lieu de descendre. Commence toujours entre 0.01 et 0.1, puis ajuste.</p></div></div>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Toujours <strong>standardiser (scaler) les features</strong> avant la descente de gradient. Sans ça, la "vallée" de la loss est très allongée dans certaines directions, et le gradient descent zigzague au lieu de descendre droit.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-les-variantes-de-gradient-descent">3. Les Variantes de Gradient Descent</h2>
+
+<h3 id="ref-31-full-gd-mini-batch-et-sgd">3.1 Full GD, Mini-Batch et SGD</h3>
+
+<p>La descente de gradient classique calcule le gradient sur <strong>toutes les données</strong> à chaque étape. C'est précis mais lent sur de grands datasets. Il existe trois variantes :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Méthode</th><th>Observations par étape</th><th>Stabilité</th><th>Vitesse</th></tr></thead><tbody><tr><td><strong>Full Gradient Descent</strong></td><td>Toutes ($n$)</td><td>Très stable, trajectoire lisse</td><td>Lent sur grands $n$</td></tr><tr><td><strong>Mini-Batch GD</strong></td><td>Un sous-ensemble (ex: 16)</td><td>Bon compromis</td><td>Bon compromis</td></tr><tr><td><strong>SGD (Stochastic GD)</strong></td><td>1 seule</td><td>Bruitée, trajectoire en zigzag</td><td>Très rapide</td></tr></tbody></table></div>
+<p><strong>Mini-Batch :</strong> on coupe les données en petits paquets (batches). À chaque étape, on calcule le gradient sur un seul batch. Quand on a parcouru tous les batches, c'est une epoch.</p>
+
+<div class="katex-display">$$\beta^{(k+1)} = \beta^{(k)} - \eta \cdot \nabla L_{\text{mini}}\!\left(\beta^{(k)}\right)$$</div>
+
+<p><strong>Traduction :</strong> même formule qu'avant, mais $\nabla L_{\text{mini}}$ est calculé sur un petit sous-ensemble des données, pas sur toutes.</p>
+
+<p><strong>SGD (Stochastic Gradient Descent) = Mini-Batch de taille 1 :</strong></p>
+
+<p>À chaque étape, on tire <strong>une seule observation</strong> au hasard et on met à jour les paramètres immédiatement.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">b0 = 0      # intercept initialisé à 0
+eta = 0.1   # learning rate
+n_epoch = 5 # nombre de passes sur les données
+
+for epoch in range(n_epoch):
+    # On parcourt les observations dans un ordre aléatoire
+    for i in np.random.permutation(len(X)):
+        X_mini = X[i]                            # 1 seul point
+        y_pred = h(X_mini, b0)                   # prédiction sur ce point
+        y_true = y[i]                            # vraie valeur
+        derivative = -2 * (y_true - y_pred)      # gradient sur 1 point
+        b0 = b0 - eta * derivative               # mise à jour immédiate</code></pre></div>
+
+
+<p><strong>Récap :</strong> la boucle extérieure = les epochs. La boucle intérieure = on parcourt chaque observation une par une, dans un ordre mélangé. Après chaque observation, on met à jour $b0$ directement.</p>
+
+<p><strong>Avantages de SGD :</strong></p>
+<ul>
+<li>Beaucoup plus rapide sur de très grands datasets</li>
+<li>Le bruit des mises à jour peut <strong>sortir d'un minimum local</strong> (utile pour les réseaux de neurones)</li>
+<li>Utilise très peu de RAM (on ne charge qu'un point à la fois)</li>
+</ul>
+
+<p><strong>Inconvénients :</strong></p>
+<ul>
+<li>Nécessite plus d'itérations pour converger</li>
+<li>Ne converge jamais exactement au minimum (oscille autour)</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>En Deep Learning, on utilise <strong>toujours</strong> SGD (ou une variante). Les réseaux de neurones ont des milliards de paramètres et des millions d'exemples : impossible de tout charger en mémoire.</p></div></div>
+
+<h3 id="ref-32-sgdregressor-et-sgdclassifier-en-sklearn">3.2 SGDRegressor et SGDClassifier en sklearn</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import SGDRegressor, SGDClassifier, LinearRegression
+
+# Régression
+LinearRegression()                     # OLS résolu par inversion matricielle (méthode SVD)
+SGDRegressor(loss=&#x27;squared_error&#x27;)     # OLS résolu par SGD — même résultat, méthode différente
+SGDRegressor(loss=&#x27;huber&#x27;)             # Régression linéaire robuste aux valeurs aberrantes
+
+# Classification
+SGDClassifier(loss=&#x27;log_loss&#x27;)         # Équivalent à LogisticRegression
+SGDClassifier(loss=&#x27;hinge&#x27;)            # Équivalent à SVC (Support Vector Classifier)</code></pre></div>
+
+
+<p><strong>Comparaison de vitesse sur un grand dataset :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.datasets import make_regression
+
+# Création d&#x27;un grand dataset : 10 000 observations, 1 000 features
+X, y = make_regression(n_samples=10000, n_features=1000)
+
+LinearRegression().fit(X, y)   # → ~2.07 secondes  (inversion matricielle en O(p³))
+SGDRegressor().fit(X, y)       # → ~0.19 secondes  (SGD, beaucoup plus rapide)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Pourquoi <code>LinearRegression</code> est si lent sur de nombreuses features ? Parce qu'il résout le problème exactement par inversion de matrice, une opération dont le coût est en $O(p^3)$ — si $p$ double, le temps est multiplié par 8. SGD évite complètement cette inversion.</p></div></div>
+
+<h3 id="ref-33-les-solvers-avancés">3.3 Les solvers avancés</h3>
+
+<p>Au-delà de SGD, il existe des algorithmes plus sophistiqués, surtout utilisés en Deep Learning :</p>
+
+<p><strong>Variantes basées sur le gradient :</strong></p>
+
+<ul>
+<li><strong>Gradient classique</strong> : le randonneur basique</li>
+<li><strong>Momentum</strong> : le randonneur acquiert de l'élan — il oscille moins et passe les "petites bosses"</li>
+<li><strong>AdaGrad</strong> : chaque paramètre a son propre learning rate — les paramètres peu mis à jour reçoivent un plus grand pas</li>
+<li><strong>RMSProp</strong> : comme AdaGrad mais avec une "mémoire courte" — seuls les gradients récents comptent</li>
+<li><strong>Adam</strong> : combine Momentum + RMSProp — le plus utilisé en Deep Learning aujourd'hui</li>
+</ul>
+
+<p><strong>Méthodes de second ordre (utilisant la matrice Hessienne) :</strong></p>
+
+<p>La Hessienne est la matrice des dérivées secondes — elle mesure la <strong>courbure</strong> de la loss, pas juste la pente. Connaître la courbure permet de faire des pas beaucoup plus intelligents.</p>
+
+<ul>
+<li><strong>Newton's Method</strong>, <strong>L-BFGS</strong> : approximent la courbure locale</li>
+<li>Convergent en beaucoup moins d'epochs</li>
+<li>Mais coûteux à calculer (matrice de taille $p \times p$)</li>
+<li>Utilisé par défaut dans <code>LogisticRegression</code> de sklearn</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import LogisticRegression
+
+LogisticRegression(solver=&#x27;lbfgs&#x27;)       # L-BFGS : défaut sklearn — méthode de second ordre
+LogisticRegression(solver=&#x27;newton-cg&#x27;)   # Newton conjugate gradient — autre méthode de second ordre</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Les méthodes de second ordre (L-BFGS, Newton) sont excellentes pour les petits datasets avec peu de features, mais deviennent impraticables en Deep Learning (trop de paramètres pour calculer la Hessienne).</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-les-fonctions-de-perte">4. Les Fonctions de Perte</h2>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Loss function ≠ métrique de performance.</strong> La loss sert à <strong>entraîner</strong> le modèle (calculée pendant <code>.fit()</code>). Les métriques (MSE, R², accuracy) servent à <strong>évaluer</strong> après le fit. Différence clé : la loss doit être différentiable (on a besoin de sa dérivée pour la descente de gradient). L'accuracy ne l'est pas — impossible de l'utiliser comme loss.</p></div></div>
+
+<h3 id="ref-41-les-losses-de-régression">4.1 Les losses de régression</h3>
+
+<h4 id="ref-l2-mse-mean-squared-error-erreur-quadratique-moyenne">L2 — MSE (Mean Squared Error, erreur quadratique moyenne)</h4>
+
+<div class="katex-display">$$L_2 = MSE = \frac{1}{n}\sum_{i=1}^{n}(\hat{y}_i - y_i)^2$$</div>
+
+<p><strong>Traduction :</strong> on calcule l'erreur $(\hat{y}_i - y_i)$ pour chaque observation, on la met au carré, et on fait la moyenne sur les $n$ observations.</p>
+
+<p><strong>Exemple chiffré :</strong> 4 observations, erreurs = [1, -2, 0, 3]</p>
+
+<div class="katex-display">$$MSE = \frac{1^2 + (-2)^2 + 0^2 + 3^2}{4} = \frac{1 + 4 + 0 + 9}{4} = \frac{14}{4} = 3.5$$</div>
+
+<p><strong>Son gradient :</strong></p>
+
+<div class="katex-display">$$\nabla MSE = -\frac{2}{n} \cdot X^T(y - \hat{y})$$</div>
+
+<p><strong>Traduction :</strong> on multiplie la transposée de la matrice des features par le vecteur des résidus (erreurs). Ce calcul donne la direction de descente pour chaque paramètre.</p>
+
+<p><strong>Caractéristiques :</strong></p>
+<ul>
+<li>Très sensible aux <strong>outliers</strong> (valeurs aberrantes) : une erreur de 10 pèse autant que 100 erreurs de 1 ($10^2 = 100$)</li>
+<li>Gradient simple à calculer</li>
+</ul>
+
+<h4 id="ref-l1-mae-mean-absolute-error-erreur-absolue-moyenne">L1 — MAE (Mean Absolute Error, erreur absolue moyenne)</h4>
+
+<div class="katex-display">$$L_1 = MAE = \frac{1}{n}\sum_{i=1}^{n}|\hat{y}_i - y_i|$$</div>
+
+<p><strong>Traduction :</strong> même principe que MSE, mais on prend la valeur absolue de l'erreur au lieu de la mettre au carré.</p>
+
+<p><strong>Exemple chiffré :</strong> mêmes erreurs = [1, -2, 0, 3]</p>
+
+<div class="katex-display">$$MAE = \frac{|1| + |-2| + |0| + |3|}{4} = \frac{1 + 2 + 0 + 3}{4} = \frac{6}{4} = 1.5$$</div>
+
+<p><strong>Caractéristiques :</strong></p>
+<ul>
+<li><strong>Robuste aux outliers</strong> : une erreur de 10 pèse exactement 10 fois plus qu'une erreur de 1 (pas 100 fois)</li>
+<li>Non différentiable en 0 (la valeur absolue a une "pointe") → nécessite un learning rate décroissant</li>
+</ul>
+
+<h4 id="ref-huber-loss-le-meilleur-des-deux-mondes">Huber Loss — le meilleur des deux mondes</h4>
+
+<div class="katex-display">$$L_\delta = \begin{cases} \dfrac{1}{2}(y - \hat{y})^2 & \text{si } |y - \hat{y}| < \delta \\ \delta\!\left(|y - \hat{y}| - \dfrac{1}{2}\delta\right) & \text{sinon} \end{cases}$$</div>
+
+<p><strong>Traduction :</strong></p>
+<ul>
+<li>$\delta$ (delta) est un seuil réglable (l'hyperparamètre <code>epsilon</code> dans sklearn)</li>
+<li>Si l'erreur est <strong>petite</strong> (en dessous du seuil) : on utilise MSE — descente lisse et précise</li>
+<li>Si l'erreur est <strong>grande</strong> (outlier potentiel) : on utilise MAE — on limite la pénalité</li>
+</ul>
+
+<p><strong>Exemple chiffré</strong> avec $\delta = 1$ :</p>
+<ul>
+<li>Erreur de 0.5 (petite) : $L = \frac{1}{2} \times 0.5^2 = 0.125$ (comportement MSE)</li>
+<li>Erreur de 5 (grande) : $L = 1 \times (5 - 0.5) = 4.5$ (comportement MAE)</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import SGDRegressor
+
+SGDRegressor(loss=&#x27;squared_error&#x27;)       # L2 = MSE : pénalise fortement les grandes erreurs
+SGDRegressor(loss=&#x27;absolute_error&#x27;)      # L1 = MAE : robuste aux valeurs aberrantes
+SGDRegressor(loss=&#x27;huber&#x27;, epsilon=0.1)  # Huber : seuil delta ajustable via epsilon</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p><strong>Quand utiliser quoi ?</strong> MSE par défaut. MAE ou Huber si tu soupçonnes des outliers dans tes données (mesures erronées, valeurs extrêmes).</p></div></div>
+
+<h3 id="ref-42-les-losses-de-classification">4.2 Les losses de classification</h3>
+
+<h4 id="ref-log-loss-cross-entropy-loss">Log-Loss (Cross-Entropy Loss)</h4>
+
+<div class="katex-display">$$\text{Log Loss} = -\frac{1}{n}\sum_{i=1}^{n} \left[ y_i \log(\hat{y}_i) + (1 - y_i)\log(1 - \hat{y}_i) \right]$$</div>
+
+<p><strong>Traduction symbole par symbole :</strong></p>
+<ul>
+<li>$y_i$ = vraie classe (0 ou 1)</li>
+<li>$\hat{y}_i$ = probabilité prédite d'appartenir à la classe 1 (entre 0 et 1)</li>
+<li>$\log$ = logarithme naturel</li>
+</ul>
+
+<p><strong>Ce que ça fait dans les deux cas :</strong></p>
+<ul>
+<li>Si $y_i = 1$ : la loss est $-\log(\hat{y}_i)$. Si le modèle prédit une proba de 0.9 (bien), $-\log(0.9) \approx 0.1$ (petite perte). Si le modèle prédit 0.1 (mal), $-\log(0.1) \approx 2.3$ (grande perte).</li>
+<li>Si $y_i = 0$ : la loss est $-\log(1 - \hat{y}_i)$. Même logique : pénalise si le modèle a affirmé à tort que c'était la classe 1.</li>
+</ul>
+
+<p><strong>Exemple chiffré :</strong> une seule observation, $y = 1$, $\hat{y} = 0.7$</p>
+
+<div class="katex-display">$$\text{Loss} = -\log(0.7) \approx 0.357$$</div>
+
+<p>Si au lieu de 0.7 le modèle avait prédit 0.01 (très faux) :</p>
+
+<div class="katex-display">$$\text{Loss} = -\log(0.01) \approx 4.6 \quad \text{(pénalité énorme !)}$$</div>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>La log-loss pénalise <strong>infiniment</strong> une prédiction totalement fausse : si tu es sûr à 100% d'une mauvaise réponse, la pénalité tend vers l'infini. Ça force le modèle à toujours rester un peu incertain.</p></div></div>
+
+<p><strong>Le gradient de la log-loss (avec sigmoïde) a la même forme qu'en régression :</strong></p>
+
+<div class="katex-display">$$\nabla \text{LogLoss}_{\text{sigmoïde}} = -\frac{1}{n} \cdot X^T(y - \hat{y})$$</div>
+
+<p><strong>Traduction :</strong> formule identique à MSE ! Seul $\hat{y}$ diffère — en classification, $\hat{y} = \sigma(X\beta)$ (la sigmoïde), pas $\hat{y} = X\beta$.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>C'est une belle symétrie mathématique : les algorithmes d'optimisation (SGD, etc.) fonctionnent de façon quasi-identique pour la régression et la classification, parce que leurs gradients ont la même forme.</p></div></div>
+
+<h4 id="ref-hinge-loss-pour-les-svm">Hinge Loss (pour les SVM)</h4>
+
+<p>La hinge loss est utilisée par les <strong>Support Vector Machines</strong> (SVM). Elle ne prédit pas une probabilité mais cherche une <strong>marge</strong> maximale entre les classes. On ne la détaille pas ici, mais voici comment l'utiliser :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import SGDClassifier
+
+SGDClassifier(loss=&#x27;log_loss&#x27;)   # Log-Loss → classifieur logistique (comme LogisticRegression)
+SGDClassifier(loss=&#x27;hinge&#x27;)      # Hinge Loss → SVM (comme SVC)</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-5-vocabulaire-final">5. Vocabulaire Final</h2>
+
+<h3 id="ref-51-paramètres-vs-hyperparamètres">5.1 Paramètres vs Hyperparamètres</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Définition</th><th>Exemples</th><th>Qui les détermine ?</th></tr></thead><tbody><tr><td><strong>Paramètres</strong> $\beta$</td><td>Réglages internes appris par le modèle</td><td>$\beta_0, \beta_1, \ldots$</td><td><code>.fit()</code> automatiquement</td></tr><tr><td><strong>Hyperparamètres</strong></td><td>Choix de configuration faits avant l'entraînement</td><td><code>eta</code>, <code>loss</code>, <code>solver</code>, <code>n_neighbors</code></td><td>Toi, manuellement</td></tr></tbody></table></div>
+<p><strong>Analogie :</strong> les paramètres, c'est comme la recette que le chef invente en cuisinant. Les hyperparamètres, c'est le four que tu lui fournis (température, type de cuisson) — il ne peut pas les modifier lui-même.</p>
+
+<h3 id="ref-52-les-trois-composantes-dun-modèle">5.2 Les trois composantes d'un modèle</h3>
+
+<p>Tout modèle ML se définit par trois éléments :</p>
+
+<ol>
+<li><strong>L'hypothèse</strong> $h(X, \beta)$ : la formule de prédiction (droite, sigmoïde, réseau de neurones...)</li>
+<li><strong>La loss</strong> $L$ : la fonction qu'on minimise pendant <code>.fit()</code> (MSE, MAE, Log-Loss...)</li>
+<li><strong>Le solver</strong> : la méthode pour minimiser $L$ (GD, SGD, L-BFGS...)</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Exemples : les 3 composantes de chaque modèle
+
+# LinearRegression : hypothèse linéaire + MSE + inversion matricielle (SVD)
+LinearRegression()
+
+# SGDRegressor : hypothèse linéaire + MSE + SGD
+SGDRegressor(loss=&#x27;squared_error&#x27;)
+
+# LogisticRegression : hypothèse sigmoïde + Log-Loss + L-BFGS (défaut)
+LogisticRegression()
+
+# SGDClassifier : hypothèse linéaire + Log-Loss + SGD
+SGDClassifier(loss=&#x27;log_loss&#x27;)</code></pre></div>
+
+
+<h3 id="ref-53-réglage-des-hyperparamètres">5.3 Réglage des hyperparamètres</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Contrôle fin du learning rate et du solver
+SGDRegressor(loss=&#x27;squared_error&#x27;, learning_rate=&#x27;constant&#x27;, eta0=0.01)
+
+# KNN : l&#x27;hyperparamètre est le nombre de voisins
+KNeighborsRegressor(n_neighbors=5)
+
+# LogisticRegression : choix du solver et nombre d&#x27;itérations max
+LogisticRegression(solver=&#x27;newton-cg&#x27;, max_iter=1000)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreurs fréquentes à éviter :</strong></p>
+<p>- Learning rate trop grand (<code>eta=10</code>) → le modèle diverge</p>
+<p>- Oublier de scaler les features avant SGD → convergence très lente</p>
+<p>- Utiliser <code>LinearRegression</code> sur un très grand dataset → trop lent (préférer <code>SGDRegressor</code>)</p>
+<p>- Arrêter l'entraînement trop tôt → modèle pas encore convergé</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1.</strong> Tu entraînes un modèle <code>SGDRegressor</code> et tu vois que la loss augmente à chaque epoch au lieu de diminuer. Quelle est la cause la plus probable, et comment la corriger ?</p>
+
+<p><strong>Question 2.</strong> Quelle est la différence entre une <strong>loss function</strong> et une <strong>métrique de performance</strong> ? Pourquoi ne peut-on pas utiliser l'accuracy comme loss ?</p>
+
+<p><strong>Question 3.</strong> Dans la formule $\beta_0^{(k+1)} = \beta_0^{(k)} - \eta \cdot \frac{\partial L}{\partial \beta_0}$, que se passe-t-il si le gradient $\frac{\partial L}{\partial \beta_0}$ est <strong>négatif</strong> ? Dans quelle direction se déplace-t-on ?</p>
+
+<p><strong>Question 4.</strong> Tu travailles sur un dataset de 500 000 observations avec 800 features. Dois-tu utiliser <code>LinearRegression</code> ou <code>SGDRegressor</code> ? Justifie en termes de complexité algorithmique.</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li><code>.fit()</code> cherche les <strong>paramètres</strong> $\beta$ qui minimisent la <strong>loss function</strong> (l'erreur du modèle).</li>
+<li>La <strong>descente de gradient</strong> est l'algorithme principal : à chaque étape, on calcule la pente (gradient) de la loss et on se déplace dans la direction opposée.</li>
+<li>La formule de mise à jour est $\beta^{(k+1)} = \beta^{(k)} - \eta \cdot \nabla L(\beta^{(k)})$ : nouvelle valeur = ancienne valeur moins (learning rate × gradient).</li>
+<li>Le <strong>learning rate</strong> $\eta$ contrôle la taille des pas : trop grand → divergence, trop petit → lenteur.</li>
+<li><strong>SGD</strong> (Stochastic Gradient Descent) met à jour les paramètres après chaque observation : plus rapide, plus bruité, indispensable sur les grands datasets et en Deep Learning.</li>
+<li>En <strong>régression</strong>, les losses principales sont MSE (sensible aux outliers), MAE (robuste) et Huber (compromis).</li>
+<li>En <strong>classification</strong>, la <strong>Log-Loss</strong> pénalise les prédictions fausses faites avec beaucoup de confiance.</li>
+<li><strong>Loss ≠ métrique</strong> : la loss guide l'entraînement (doit être dérivable), la métrique évalue le modèle final.</li>
+<li>Toujours <strong>scaler les features</strong> avant SGD pour que la descente converge efficacement.</li>
+<li>Sur les grands datasets ($n$ ou $p$ élevés), <code>SGDRegressor</code> est bien plus rapide que <code>LinearRegression</code> (évite l'inversion matricielle en $O(p^3)$).</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-la-fonction-de-coût-comme-paysage">La fonction de coût comme paysage</a></li><li><a href="#syn-convexité-et-minima-globaux">Convexité et minima globaux</a></li><li><a href="#syn-descente-de-gradient">Descente de gradient</a></li><li><a href="#syn-régularisation-l1-et-l2">Régularisation L1 et L2</a></li><li><a href="#syn-bias-variance-trade-off">Bias-variance trade-off</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-maximum-de-vraisemblance-mle">Maximum de vraisemblance (MLE)</a></li><li><a href="#syn-information-mutuelle-et-entropie">Information mutuelle et entropie</a></li><li><a href="#syn-inégalité-de-jensen-et-conséquences">Inégalité de Jensen et conséquences</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-la-fonction-de-coût-comme-paysage">La fonction de coût comme paysage</h3>
+
+<p>Quand vous entraînez un modèle, vous cherchez les paramètres $\mathbf{w}$ qui <strong>minimisent</strong> une fonction de coût $\mathcal{L}(\mathbf{w})$. Cette fonction mesure "à quel point mon modèle se trompe sur le dataset". Elle est définie sur l'espace des paramètres : si votre modèle a 1000 poids, $\mathcal{L}$ est une fonction de $\mathbb{R}^{1000} \to \mathbb{R}$ (elle prend un vecteur de 1000 nombres et retourne un seul nombre, l'erreur).</p>
+
+<div class="katex-display">$$\mathcal{L} : \mathbb{R}^d \to \mathbb{R}, \quad \mathbf{w} \mapsto \mathcal{L}(\mathbf{w})$$</div>
+
+<p>Lecture : <em>la loss prend en entrée un vecteur de paramètres $\mathbf{w}$ de dimension $d$ (nombre de poids du modèle), et renvoie un seul nombre (l'erreur totale). Plus ce nombre est petit, mieux votre modèle fit les données.</em></p>
+
+<p>Visualisation simplifiée en 2D :</p>
+
+<ul>
+<li><strong>Axes X et Y</strong> : deux paramètres du modèle (ex : pente $a$ et ordonnée $b$ d'une droite $y = ax + b$)</li>
+<li><strong>Axe Z</strong> : valeur de la loss correspondante</li>
+<li>Le paysage qui en résulte ressemble à des montagnes et des vallées</li>
+</ul>
+
+<p><strong>Exemple chiffré</strong> : pour une régression linéaire $y = w_1 x + w_0$ avec les points $(1, 2), (2, 4), (3, 6)$, la MSE est $\mathcal{L}(w_0, w_1) = \frac{1}{3}\sum_i (w_0 + w_1 x_i - y_i)^2$. Le minimum est à $(w_0, w_1) = (0, 2)$ avec $\mathcal{L} = 0$.</p>
+
+<p>Votre objectif est de descendre dans une vallée. Trois types de vallées :</p>
+
+<ol>
+<li><strong>Minimum global</strong> : la vallée la plus basse de tout le paysage. Idéal.</li>
+<li><strong>Minimum local</strong> : une vallée plus haute que la globale, mais entourée de pics. Vous pouvez vous y retrouver coincé.</li>
+<li><strong>Plateau / saddle point (point-selle)</strong> : une zone plate où le gradient ≈ 0, mais ce n'est pas un minimum. Encore plus piégeux car la descente s'arrête naturellement sans qu'on s'en aperçoive.</li>
+</ol>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : imaginez un randonneur les yeux bandés qui veut atteindre le point le plus bas d'une vallée. Il sent la pente sous ses pieds et descend dans la direction la plus raide. Stratégie raisonnable, mais s'il y a plusieurs vallées, il finit dans la plus proche, pas forcément la plus basse. C'est exactement la descente de gradient.</p></div></div>
+
+<h3 id="syn-convexité-et-minima-globaux">Convexité et minima globaux</h3>
+
+<p>Une fonction est <strong>convexe</strong> si pour tous $\mathbf{x}_1, \mathbf{x}_2$ et $t \in [0, 1]$ :</p>
+
+<div class="katex-display">$$f(t\mathbf{x}_1 + (1-t)\mathbf{x}_2) \leq tf(\mathbf{x}_1) + (1-t)f(\mathbf{x}_2)$$</div>
+
+<p>Lecture : <em>si vous prenez deux points quelconques sur le graphe de la fonction et que vous tracez la corde qui les relie, la fonction reste toujours en dessous (ou sur) cette corde. Pas de "bosses" qui dépassent.</em> Le membre de gauche évalue la fonction en un point intermédiaire ; le membre de droite est l'interpolation linéaire entre les deux valeurs. Convexe ⇔ la fonction est plus basse que la ligne droite.</p>
+
+<p>Géométriquement : tout segment reliant deux points du graphe reste <strong>au-dessus</strong> du graphe. Cette propriété entraîne une <strong>garantie magique</strong> :</p>
+
+<blockquote><p>Une fonction convexe a <strong>un seul minimum</strong> (qui est donc global).</p></blockquote>
+
+<p>Conséquence : pour un problème convexe, la descente de gradient converge <strong>toujours</strong> vers la solution optimale, quel que soit le point de départ.</p>
+
+<p>Modèles aux loss convexes :</p>
+
+<ul>
+<li><strong>Régression linéaire</strong> (MSE) → convexe</li>
+<li><strong>Régression logistique</strong> (log-loss) → convexe</li>
+<li><strong>SVM linéaire</strong> (hinge loss) → convexe</li>
+<li><strong>Lasso, Ridge, ElasticNet</strong> → convexes</li>
+</ul>
+
+<p>Modèles aux loss non convexes :</p>
+
+<ul>
+<li><strong>Réseaux de neurones</strong> → généralement non convexes (le grand mystère du deep learning : ça marche quand même, grâce à la sur-paramétrisation et aux bons optimizers)</li>
+<li><strong>GMM avec EM</strong> → non convexe</li>
+<li><strong>K-means</strong> → non convexe (d'où le <code>n_init=10</code> par défaut)</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Question d'entretien classique</strong> : "Pourquoi initialise-t-on aléatoirement les poids d'un réseau de neurones plusieurs fois ?" Réponse : parce que la loss est non convexe et qu'on tombe dans des minima locaux différents selon l'initialisation. On lance l'entraînement N fois avec des seeds différents et on garde le meilleur. Pour la régression linéaire, ça n'aurait aucun sens — un seul run suffit, peu importe l'initialisation.</p></div></div>
+
+<h3 id="syn-descente-de-gradient">Descente de gradient</h3>
+
+<p>L'algorithme canonique pour minimiser $\mathcal{L}$ :</p>
+
+<div class="katex-display">$$\mathbf{w}_{t+1} = \mathbf{w}_t - \eta \cdot \nabla \mathcal{L}(\mathbf{w}_t)$$</div>
+
+<p>Lecture : <em>les nouveaux poids = les anciens moins un petit pas $\eta$ (learning rate) dans la direction opposée au gradient</em>. Le gradient $\nabla \mathcal{L}$ pointe dans la direction de <strong>plus forte montée</strong> ; on va donc dans la direction opposée pour descendre.</p>
+
+<p><strong>Exemple numérique</strong> : pour $\mathcal{L}(w) = w^2$, $\nabla\mathcal{L}(w) = 2w$. Avec $w_0 = 5$, $\eta = 0.1$ :</p>
+
+<ul>
+<li>$w_1 = 5 - 0.1 \cdot 10 = 4$</li>
+<li>$w_2 = 4 - 0.1 \cdot 8 = 3.2$</li>
+<li>$w_3 = 3.2 - 0.1 \cdot 6.4 = 2.56$</li>
+<li>... converge vers 0 (le minimum)</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+def gradient_descent(grad_fn, w_init, lr=0.1, n_iter=100):
+    w = w_init                               # point de départ
+    history = [w]                             # pour tracer la trajectoire
+    for _ in range(n_iter):
+        g = grad_fn(w)                        # calcule le gradient au point courant
+        w = w - lr * g                        # fait un pas dans la direction opposée
+        history.append(w)
+    return w, history
+
+# Minimiser f(w) = w^2, dont le gradient est 2w
+w_opt, traj = gradient_descent(lambda w: 2*w, w_init=5.0)
+# w_opt ≈ 0, traj[0]=5, traj[1]=4, traj[2]=3.2, ...</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège du learning rate</strong> : trop petit → convergence lente (des milliers d'itérations). Trop grand → divergence, la loss explose. Règle de pouce : essayer $\eta \in \{10^{-1}, 10^{-2}, 10^{-3}, 10^{-4}\}$, et regarder si la loss décroît. Si elle oscille ou explose, diviser par 10.</p></div></div>
+
+<h3 id="syn-régularisation-l1-et-l2">Régularisation L1 et L2</h3>
+
+<p>La <strong>régularisation</strong> ajoute un terme de pénalité à la loss pour décourager les poids extrêmes :</p>
+
+<div class="katex-display">$$\mathcal{L}_{\text{reg}}(\mathbf{w}) = \mathcal{L}_{\text{data}}(\mathbf{w}) + \lambda \cdot R(\mathbf{w})$$</div>
+
+<p>Lecture : <em>la loss régularisée = l'erreur sur les données + un terme de pénalité qui dépend de la norme des poids</em>. Le coefficient $\lambda \geq 0$ contrôle l'intensité : $\lambda = 0$ pas de régularisation, $\lambda$ grand poids quasi-nuls.</p>
+
+<p><strong>L2 (Ridge)</strong> : $R(\mathbf{w}) = \sum_j w_j^2$ — somme des carrés.</p>
+
+<p>Lecture : <em>on pénalise le carré de chaque poids, ce qui décourage les grandes valeurs (un poids de 10 coûte 100, un poids de 1 coûte 1).</em></p>
+
+<p><strong>L1 (Lasso)</strong> : $R(\mathbf{w}) = \sum_j |w_j|$ — somme des valeurs absolues.</p>
+
+<p>Lecture : <em>on pénalise la valeur absolue de chaque poids. Contrairement à L2, la pénalité marginale est constante (1 par unité), ce qui rend "intéressant" de mettre un poids exactement à 0.</em></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Aspect</th><th>L2 (Ridge)</th><th>L1 (Lasso)</th></tr></thead><tbody><tr><td>Forme de la contrainte</td><td>Sphère</td><td>Diamant</td></tr><tr><td>Effet sur les poids</td><td>Petits mais non nuls</td><td><strong>Mise à zéro</strong> de certains</td></tr><tr><td>Solution</td><td>Unique, lisse</td><td>Sparse</td></tr><tr><td>Différentiable</td><td>Oui, partout</td><td>Non en 0 (subgradient)</td></tr><tr><td>Cas d'usage</td><td>Régularisation générale</td><td>Sélection de features</td></tr></tbody></table></div>
+<p>L1 fait de la <strong>sélection de features automatique</strong> parce que sa géométrie en diamant force certains poids à être exactement nuls quand on optimise sous contrainte.</p>
+
+<p><strong>Exemple chiffré</strong> : sur un dataset avec 100 features dont seulement 10 sont utiles, Lasso avec $\lambda$ bien choisi mettra typiquement 80-90 poids à 0, identifiant automatiquement les 10-20 features pertinentes.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import Ridge, Lasso, ElasticNet
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
+
+# Toujours standardiser AVANT régularisation (voir piège ci-dessous)
+ridge = make_pipeline(StandardScaler(), Ridge(alpha=1.0))       # alpha = lambda
+lasso = make_pipeline(StandardScaler(), Lasso(alpha=0.1))       # alpha plus petit car L1 plus agressif
+elastic = make_pipeline(StandardScaler(), ElasticNet(alpha=0.1, l1_ratio=0.5))  # 50% L1, 50% L2
+
+lasso.fit(X_train, y_train)
+# Inspecter les coefficients nuls (features éliminées par Lasso)
+n_zeros = (lasso.named_steps[&#x27;lasso&#x27;].coef_ == 0).sum()
+# typiquement 60-90 sur 100 features</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège</strong> : oublier de standardiser les features avant la régularisation. La pénalité L1/L2 dépend de l'échelle des poids, qui dépend de l'échelle des features. Sans standardisation, une feature en millions aura un poids minuscule et échappera à la régularisation, alors qu'une feature entre 0 et 1 aura un poids énorme et sera sur-pénalisée. <strong>Toujours <code>StandardScaler</code> en amont</strong> — c'est THE question d'entretien sur la régularisation.</p></div></div>
+
+<h3 id="syn-bias-variance-trade-off">Bias-variance trade-off</h3>
+
+<p>L'erreur de prédiction d'un modèle se décompose en trois termes :</p>
+
+<div class="katex-display">$$\mathbb{E}[(y - \hat{f}(x))^2] = \underbrace{\text{Bias}^2}_{\text{sous-apprentissage}} + \underbrace{\text{Variance}}_{\text{sur-apprentissage}} + \underbrace{\sigma^2}_{\text{bruit irréductible}}$$</div>
+
+<p>Lecture : <em>l'erreur quadratique moyenne attendue se décompose en trois morceaux irréductibles</em>. Le <strong>biais</strong> mesure l'erreur systématique (le modèle est trop rigide pour capturer la vraie fonction). La <strong>variance</strong> mesure la sensibilité aux données d'entraînement (le modèle change radicalement si on lui donne un autre échantillon). Le <strong>bruit</strong> $\sigma^2$ est l'incertitude intrinsèque des données (même un oracle parfait ferait cette erreur).</p>
+
+<ul>
+<li><strong>Bias élevé</strong> : le modèle est trop simple (underfit). Il rate des patterns réels. Exemple : régression linéaire sur des données circulaires.</li>
+<li><strong>Variance élevée</strong> : le modèle est trop complexe (overfit). Il colle au bruit. Exemple : arbre de décision profond sans élagage.</li>
+<li><strong>Bruit</strong> : irréductible, vient des données elles-mêmes.</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Erreur
+  ^
+  |          /\
+  |         /  \      Total
+  |        /    \
+  |       /      \
+  |      /  ---__/    Variance (sur-apprentissage)
+  |     /        \
+  |    /---___    \   Bias (sous-apprentissage)
+  +---+--------+--+---&gt;  Complexité du modèle
+              ↑
+        Sweet spot</code></pre></div>
+
+
+<p>Le sweet spot se trouve où la somme des deux est minimisée. Comment le trouver ?</p>
+
+<ul>
+<li><strong>Cross-validation</strong> : tester plusieurs niveaux de complexité, garder le meilleur</li>
+<li><strong>Régularisation</strong> : un seul hyperparamètre $\lambda$ pour bouger le long du trade-off</li>
+<li><strong>Plus de données</strong> : diminue toujours la variance, ne change pas le biais</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : un modèle à fort biais, c'est un étudiant qui a survolé le cours et donne toujours la même réponse simpliste. Un modèle à forte variance, c'est un étudiant qui mémorise tous les exemples du cours par cœur mais qui panique sur une question nouvelle. Le bon modèle, c'est celui qui a compris les principes — assez flexible pour bien généraliser, assez contraint pour ne pas halluciner sur du bruit.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-maximum-de-vraisemblance-mle">Maximum de vraisemblance (MLE)</h3>
+
+<p>Le <strong>MLE</strong> (Maximum Likelihood Estimation) est la méthode théorique qui justifie la plupart des fonctions de coût en ML.</p>
+
+<p>Étant donné un modèle paramétré $p_\theta(y | x)$ et un dataset $\{(x_i, y_i)\}_{i=1}^n$, on cherche les paramètres $\theta$ qui maximisent la <strong>vraisemblance</strong> des données observées :</p>
+
+<div class="katex-display">$$\hat{\theta}_{\text{MLE}} = \arg\max_\theta \prod_{i=1}^n p_\theta(y_i | x_i)$$</div>
+
+<p>Lecture : <em>on cherche les paramètres $\theta$ qui rendent les données observées les plus probables possibles sous le modèle</em>. Le produit vient de l'hypothèse d'indépendance des observations : la probabilité conjointe de tout le dataset est le produit des probabilités individuelles.</p>
+
+<p>En pratique, on prend le log (transformation monotone) pour transformer le produit en somme et éviter les soupasses numériques :</p>
+
+<div class="katex-display">$$\hat{\theta}_{\text{MLE}} = \arg\max_\theta \sum_{i=1}^n \log p_\theta(y_i | x_i)$$</div>
+
+<p>Lecture : <em>le log transforme un produit en somme, ce qui est numériquement plus stable (additionner des nombres entre -20 et 0 plutôt que multiplier des nombres entre 1e-10 et 1)</em>.</p>
+
+<p>Et on minimise l'<strong>opposé</strong> (négative log-likelihood) :</p>
+
+<div class="katex-display">$$\hat{\theta}_{\text{MLE}} = \arg\min_\theta -\sum_{i=1}^n \log p_\theta(y_i | x_i)$$</div>
+
+<p>Lecture : <em>minimiser l'opposé du log = maximiser le log = maximiser la vraisemblance. On préfère minimiser car tous les optimizers sont codés pour minimiser par convention.</em></p>
+
+<p>Cette dernière formulation est exactement la <strong>cross-entropy loss</strong> utilisée pour entraîner tous les classifieurs probabilistes en deep learning. Beaucoup de loss functions du ML sont en réalité des MLE déguisés :</p>
+
+<ul>
+<li><strong>MSE</strong> = MLE sous l'hypothèse que $y | x \sim \mathcal{N}(\hat{f}(x), \sigma^2)$ (bruit gaussien)</li>
+<li><strong>MAE</strong> = MLE sous une distribution de Laplace (bruit à queue lourde)</li>
+<li><strong>Cross-entropy</strong> = MLE pour des classes catégorielles</li>
+</ul>
+
+<h3 id="syn-information-mutuelle-et-entropie">Information mutuelle et entropie</h3>
+
+<p>L'<strong>entropie de Shannon</strong> mesure l'incertitude d'une variable aléatoire :</p>
+
+<div class="katex-display">$$H(X) = -\sum_x p(x) \log p(x)$$</div>
+
+<p>Lecture : <em>on somme, sur toutes les valeurs possibles de $X$, la probabilité $p(x)$ fois le log de cette probabilité, avec un signe moins pour avoir un résultat positif</em>. Concrètement : une pièce équilibrée (0.5/0.5) a une entropie de 1 bit. Une pièce biaisée (0.99/0.01) a une entropie de ~0.08 bit (très prévisible).</p>
+
+<p>Une variable très prévisible (toujours la même valeur) a une entropie nulle. Une variable uniforme a l'entropie maximale.</p>
+
+<p>L'<strong>information mutuelle</strong> mesure combien d'information $X$ apporte sur $Y$ (et vice versa) :</p>
+
+<div class="katex-display">$$I(X; Y) = H(X) + H(Y) - H(X, Y) = \sum_{x,y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)}$$</div>
+
+<p>Lecture : <em>l'information mutuelle est la différence entre "l'incertitude si on traite $X$ et $Y$ séparément" et "l'incertitude conjointe". Si $X$ et $Y$ sont indépendants, $p(x,y) = p(x)p(y)$ et le log devient 0. Sinon, le ratio diffère de 1 et l'info mutuelle est positive.</em></p>
+
+<p>Propriétés :</p>
+
+<ul>
+<li>$I(X; Y) = 0$ ⟺ $X$ et $Y$ sont indépendants</li>
+<li>$I(X; Y) > 0$ ⟺ $X$ et $Y$ partagent de l'information</li>
+</ul>
+
+<p>L'information mutuelle est plus puissante que la corrélation de Pearson parce qu'elle capture les <strong>dépendances non linéaires</strong>. Exemple : $Y = X^2$ avec $X$ centré a corrélation 0 mais information mutuelle > 0.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.feature_selection import mutual_info_regression, SelectKBest
+
+# Calculer l&#x27;info mutuelle de chaque feature avec la cible
+mi = mutual_info_regression(X, y)                 # array de longueur n_features
+# mi[i] est l&#x27;information mutuelle entre la feature i et y
+
+# Utilisation pour sélection de features
+selector = SelectKBest(mutual_info_regression, k=10)  # garde les 10 meilleures
+X_selected = selector.fit_transform(X, y)</code></pre></div>
+
+
+<p>C'est ce que sklearn utilise pour la sélection de features quand vous appelez <code>SelectKBest(mutual_info_regression, k=...)</code>.</p>
+
+<h3 id="syn-inégalité-de-jensen-et-conséquences">Inégalité de Jensen et conséquences</h3>
+
+<p>Pour une fonction convexe $f$ et une variable aléatoire $X$ :</p>
+
+<div class="katex-display">$$f(E[X]) \leq E[f(X)]$$</div>
+
+<p>Lecture : <em>la valeur de la fonction en la moyenne est inférieure à la moyenne des valeurs de la fonction</em>. Pour une fonction concave (comme $\log$), l'inégalité s'inverse : $\log E[X] \geq E[\log X]$.</p>
+
+<p><strong>Exemple chiffré</strong> : soit $X$ qui vaut 1 ou 100 avec proba 0.5 chacun. Alors $E[X] = 50.5$ et $\log E[X] \approx 3.92$. Mais $E[\log X] = 0.5 \cdot 0 + 0.5 \cdot 4.605 \approx 2.30$. On a bien $\log E[X] > E[\log X]$.</p>
+
+<p>Application : pour les fonctions concaves (comme $\log$), l'inégalité s'inverse. Conséquence pratique en ML : la cross-entropy peut être bornée par-dessous par l'ELBO, ce qui est la base du <strong>variational inference</strong> (VAE, modèles bayésiens).</p>
+
+<p>Plus simplement, Jensen explique pourquoi prendre le log de la moyenne d'une distribution n'est pas la moyenne du log :</p>
+
+<div class="katex-display">$$\log E[X] \neq E[\log X] \quad (\text{en général})$$</div>
+
+<p>Lecture : <em>intervertir "log" et "moyenne" n'est pas anodin, c'est même une source courante d'erreurs en stats appliquées</em>.</p>
+
+<p>Et c'est pourquoi en finance, le rendement moyen géométrique d'un portefeuille est différent du rendement moyen arithmétique : pertes et gains ne s'additionnent pas linéairement.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : quand vous voyez un $\log$ dans une formule de ML (log-likelihood, cross-entropy, KL-divergence), pensez Jensen. C'est la raison profonde pour laquelle on travaille en espace log plutôt qu'en probabilité brute : stabilité numérique + propriétés mathématiques agréables.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi minimiser la log-likelihood négative plutôt que maximiser la likelihood directement ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Numérique et conventions.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Trois raisons qui se combinent.</p>
+
+<p><strong>Numérique</strong> : les vraisemblances sont des produits de probabilités, qui deviennent vite minuscules (1e-300 pour un dataset de quelques milliers d'échantillons) et causent des underflows. Le log les transforme en sommes qui restent dans une plage représentable (typiquement entre -1000 et 0).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Mauvais : produit de probabilités
+likelihood = np.prod(probs)          # ≈ 0 pour n &gt; 1000, underflow
+
+# Bon : somme de log-probabilités
+log_likelihood = np.sum(np.log(probs))   # reste dans une plage utilisable</code></pre></div>
+
+
+<p><strong>Algorithmique</strong> : les optimizers (descente de gradient, Adam, L-BFGS…) sont conçus pour <strong>minimiser</strong>, pas maximiser. Donc on prend le négatif. C'est une pure convention, mais universelle.</p>
+
+<p><strong>Différentiable</strong> : log et exp sont $C^\infty$ (infiniment différentiables), donc la log-likelihood est lisse, ce qui facilite l'optimisation (gradient bien défini partout).</p>
+
+<p>Note : l'argmax est invariant par transformation monotone, donc maximiser la likelihood et minimiser la NLL donnent le même $\theta$ optimal — c'est juste plus pratique. Cette astuce est partout en ML : softmax + cross-entropy en classification, ELBO en VAE, log-prob en RL. Question d'entretien fondamentale.</p>
+
+</details>
+
+<p><strong>Q2 : Vous entraînez un modèle et obtenez 99% de train accuracy mais 60% de test accuracy. Quel est le diagnostic et trois solutions ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Variance élevée.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Diagnostic</strong> : overfitting massif. Le modèle a appris par cœur le training set (99%) mais ne généralise pas aux nouvelles données (60%). C'est une variance énorme, un écart de 39 points entre train et test est une alerte rouge.</p>
+
+<p><strong>Trois solutions par ordre de coût croissant</strong> :</p>
+
+<p><strong>(1) Régularisation</strong> : ajouter un terme L1 ou L2 à la loss, ou pour les réseaux de neurones, augmenter le <code>dropout</code>. Coût : zéro, juste un hyperparamètre à régler via cross-validation.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Augmenter la régularisation
+model = Ridge(alpha=10.0)            # au lieu de alpha=0.1
+# Pour un NN : augmenter dropout_rate de 0.2 à 0.5</code></pre></div>
+
+
+<p><strong>(2) Plus de données</strong> : si vous pouvez en collecter, c'est la solution la plus efficace en pratique. La variance décroît en $1/\sqrt{n}$ : pour diviser la variance par 2, il faut 4× plus de données. C'est lent mais fiable.</p>
+
+<p><strong>(3) Modèle plus simple</strong> : réduire le nombre de paramètres (moins de couches, moins de features, moins de profondeur d'arbres). Coût : il faut peut-être réécrire l'architecture.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Arbre trop profond → overfit
+DecisionTreeClassifier(max_depth=30)     # mauvais
+DecisionTreeClassifier(max_depth=5)      # meilleur</code></pre></div>
+
+
+<p><strong>Mauvaise solution</strong> souvent proposée par les juniors : "essayer un autre algorithme". Si votre RandomForest overfit, votre XGBoost overfittera aussi sur les mêmes données. Le problème vient du dataset/régularisation, pas du modèle. Toujours diagnostiquer avant de changer d'outil.</p>
+
+</details>
+
+<p><strong>Q3 : Quelle est la différence entre Lasso et Ridge en termes de géométrie, et pourquoi seul Lasso met-il des poids exactement à zéro ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Forme de la contrainte : sphère vs diamant.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Géométriquement, Ridge contraint $\sum w_j^2 \leq C$ — c'est une <strong>sphère</strong>, lisse. Lasso contraint $\sum |w_j| \leq C$ — c'est un <strong>diamant</strong> (losange), avec des sommets sur les axes.</p>
+
+<p>Quand on minimise la loss sous cette contrainte, on cherche le point le plus bas du paysage de la loss qui touche la contrainte. On peut visualiser cela comme les courbes de niveau elliptiques de la MSE qui "heurtent" la région de contrainte.</p>
+
+<p><strong>Pour Ridge</strong> (sphère lisse) : le point de tangence est presque jamais exactement sur un axe — donc tous les poids sont non nuls mais petits.</p>
+
+<p><strong>Pour Lasso</strong> (diamant) : les sommets du diamant sont les points "extrêmes" qui dépassent dans chaque direction. La solution est très souvent à un sommet (à cause de la géométrie anguleuse), ce qui correspond exactement à des poids nuls sur certaines coordonnées.</p>
+
+<p><strong>Exemple intuitif</strong> : imaginez une pièce elliptique (la loss) qui tombe sur un rond (Ridge) : elle va se poser où elle veut, presque jamais sur un axe. Maintenant imaginez-la tomber sur un losange (Lasso) : elle va très probablement se coincer à un sommet, et les sommets sont exactement les points où certaines coordonnées sont nulles.</p>
+
+<p>C'est pourquoi Lasso fait de la <strong>sélection de features automatique</strong> : il met à zéro les features non informatives. ElasticNet est le mélange : <code>l1_ratio</code> contrôle le pourcentage de Lasso vs Ridge.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Sélection automatique avec Lasso
+lasso = Lasso(alpha=0.1).fit(X_train_scaled, y_train)
+selected_features = X.columns[lasso.coef_ != 0]  # features retenues
+n_selected = len(selected_features)              # souvent 10-20% des features</code></pre></div>
+
+
+<p>C'est l'illustration géométrique la plus pédagogique de la régularisation et c'est testé en entretien data science.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>The Elements of Statistical Learning</em> (Hastie, Tibshirani, Friedman, gratuit en PDF) — la bible</li>
+<li><em>Pattern Recognition and Machine Learning</em> (Bishop) — perspective probabiliste</li>
+<li><a href="https://www.youtube.com/watch?v=HZGCoVF3YvM" target="_blank" rel="noopener">3Blue1Brown — Bayes theorem</a></li>
+<li><em>Deep Learning</em> (Goodfellow, Bengio, Courville, gratuit en HTML) — chapitre 5 sur les fondamentaux</li>
+<li><a href="http://scott.fortmann-roe.com/docs/BiasVariance.html" target="_blank" rel="noopener">Understanding the Bias-Variance Tradeoff</a> — excellent article de Scott Fortmann-Roe</li>
+<li><em>Information Theory, Inference, and Learning Algorithms</em> (David MacKay, gratuit) — pour entropie et MLE</li>
+<li><a href="http://cs229.stanford.edu/" target="_blank" rel="noopener">Stanford CS229 Lecture Notes</a> — notes d'Andrew Ng sur MLE et régularisation</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../mathematiques/statistical-inference.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Statistical Inference</span>
+  </a>
+  <a href="../sql-avance/sql-advanced.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">SQL (avancé) →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

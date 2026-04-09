@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transformers — Compléments — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Transformers — Compléments</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html" class="active">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">NLP & LLM</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Transformers — Compléments</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Transformers — Compléments</h1>
+        <p class="page-objective">**Ce document enrichit le cours Le Wagon avec des intuitions profondes, exemples concrets chiffrés, concepts manquants et illustrations pratiques.**</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">LoRA</div>
+        <div class="key-concept-def">Fine-tuning efficace : on n&#x27;entraîne que des matrices de basse dimension.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">RLHF</div>
+        <div class="key-concept-def">Reinforcement Learning from Human Feedback ; aligne le modèle sur les préférences humaines.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">KV cache</div>
+        <div class="key-concept-def">Mémorise clés/valeurs des tokens passés pour accélérer la génération.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Mixture of Experts</div>
+        <div class="key-concept-def">Active dynamiquement un sous-ensemble de sous-réseaux par token.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#1-attention-lintuition-qui-manque">1) Attention — L'intuition qui manque</a><ol><li><a href="#11-pourquoi-diviser-par-d_k-exemple-chiffré">1.1 Pourquoi diviser par √d_k ? Exemple chiffré</a></li><li><a href="#12-exemple-complet-dattention-avec-des-vrais-nombres">1.2 Exemple complet d'attention — avec des vrais nombres</a></li><li><a href="#13-ce-que-les-têtes-dattention-apprennent-vraiment">1.3 Ce que les têtes d'attention apprennent vraiment</a></li></ol></li><li><a href="#2-concepts-manquants-du-cours">2) Concepts manquants du cours</a><ol><li><a href="#21-tokenization-bpe-wordpiece-sentencepiece">2.1 Tokenization — BPE, WordPiece, SentencePiece</a></li><li><a href="#22-teacher-forcing-vs-autoregressive-decoding">2.2 Teacher Forcing vs Autoregressive Decoding</a></li><li><a href="#23-le-kv-cache-pourquoi-la-génération-est-lente">2.3 Le KV Cache — Pourquoi la génération est lente</a></li><li><a href="#24-fenêtre-de-contexte-context-window">2.4 Fenêtre de contexte (Context Window)</a></li><li><a href="#25-scaling-laws-pourquoi-plus-gros-meilleur-jusquà-un-point">2.5 Scaling Laws — Pourquoi plus gros = meilleur (jusqu'à un point)</a></li><li><a href="#26-lora-et-peft-fine-tuning-efficace">2.6 LoRA et PEFT — Fine-tuning efficace</a></li></ol></li><li><a href="#3-approfondissements-des-concepts-existants">3) Approfondissements des concepts existants</a><ol><li><a href="#31-temperature-visualisation-concrète">3.1 Temperature — Visualisation concrète</a></li><li><a href="#32-bleu-exemple-chiffré">3.2 BLEU — Exemple chiffré</a></li><li><a href="#33-rouge-la-différence-avec-bleu">3.3 ROUGE — La différence avec BLEU</a></li></ol></li><li><a href="#4-arbre-de-décision-comment-utiliser-un-llm-pour-sa-tâche">4) Arbre de décision — Comment utiliser un LLM pour sa tâche</a><li><a href="#5-hallucinations-le-problème-1-des-llms">5) Hallucinations — Le problème #1 des LLMs</a><li><a href="#6-lécosystème-réel-des-llms-en-2025">6) L'écosystème réel des LLMs en 2025</a><ol><li><a href="#61-modèles-propriétaires-vs-open-source">6.1 Modèles propriétaires vs Open-source</a></li><li><a href="#62-la-pile-technique-moderne">6.2 La pile technique moderne</a></li></ol></li><li><a href="#7-pour-aller-plus-loin-questions-de-compréhension">7) Pour aller plus loin — Questions de compréhension</a><li><a href="#ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<p><strong>Ce document enrichit le cours Le Wagon avec des intuitions profondes, exemples concrets chiffrés, concepts manquants et illustrations pratiques.</strong></p>
+
+<hr>
+
+<h2 id="1-attention-lintuition-qui-manque">1) Attention — L'intuition qui manque</h2>
+
+<h3 id="11-pourquoi-diviser-par-d_k-exemple-chiffré">1.1 Pourquoi diviser par √d_k ? Exemple chiffré</h3>
+
+<p>Le cours donne la formule mais n'explique pas <em>pourquoi</em> le scaling est crucial. Voici un exemple concret.</p>
+
+<p>Imaginons deux vecteurs Q et K de dimension <code>d_k = 64</code>, avec des composantes tirées d'une distribution standard (moyenne 0, variance 1). Leur produit scalaire est la somme de 64 produits de paires aléatoires.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+np.random.seed(42)
+
+d_k = 64
+Q = np.random.randn(d_k)  # un vecteur query
+K = np.random.randn(d_k)  # un vecteur key
+
+dot_product = Q @ K
+print(f&quot;Produit scalaire brut : {dot_product:.1f}&quot;)        # ex: ~8.2
+print(f&quot;Après scaling /√64 :   {dot_product / np.sqrt(d_k):.2f}&quot;)  # ex: ~1.03</code></pre></div>
+
+
+<p>Le problème : la variance du produit scalaire est proportionnelle à <code>d_k</code>. Avec <code>d_k = 64</code>, on obtient des valeurs brutes entre -15 et +15. Or le softmax est <strong>exponentiel</strong> — une différence de 10 entre deux logits donne un ratio de <code>e^10 ≈ 22 000</code> entre les poids d'attention. Le softmax sature : un token capture toute l'attention, les autres sont à zéro.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : C'est comme noter un restaurant sur une échelle de 0 à 100 au lieu de 0 à 5. Avec l'échelle 0-100, un restaurant à 82 vs un à 78 paraît très différent. En divisant par √(rapport d'échelle), on revient à des écarts interprétables.</p></div></div>
+
+<p>En divisant par <code>√d_k = 8</code>, on ramène la variance à 1 → les logits restent dans une zone où le softmax distribue l'attention de manière granulaire.</p>
+
+<h3 id="12-exemple-complet-dattention-avec-des-vrais-nombres">1.2 Exemple complet d'attention — avec des vrais nombres</h3>
+
+<p>Prenons la phrase <em>"Le chat dort"</em> (3 tokens). On simplifie avec <code>d_model = 4</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+## Embeddings (simplifiés, d_model=4)
+X = np.array([
+    [1.0, 0.2, 0.5, 0.1],   # &quot;Le&quot;
+    [0.3, 1.0, 0.8, 0.4],   # &quot;chat&quot;
+    [0.1, 0.3, 1.0, 0.9],   # &quot;dort&quot;
+])
+
+## Matrices de projection (apprises, ici d_k=4 pour simplifier)
+W_Q = np.array([[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]])  # identité pour l&#x27;exemple
+W_K = W_Q.copy()
+W_V = W_Q.copy()
+
+Q = X @ W_Q  # (3, 4)
+K = X @ W_K  # (3, 4)
+V = X @ W_V  # (3, 4)
+
+## Étape 1 : Scores = Q @ K^T
+scores = Q @ K.T
+print(&quot;Scores bruts (3×3):&quot;)
+print(scores.round(2))
+## Chaque cellule (i,j) = &quot;à quel point le token i s&#x27;intéresse au token j&quot;
+
+## Étape 2 : Scaling
+d_k = 4
+scaled = scores / np.sqrt(d_k)
+
+## Étape 3 : Softmax par ligne
+def softmax(x):
+    e = np.exp(x - x.max(axis=-1, keepdims=True))
+    return e / e.sum(axis=-1, keepdims=True)
+
+weights = softmax(scaled)
+print(&quot;\nPoids d&#x27;attention (chaque ligne somme à 1):&quot;)
+print(weights.round(3))
+
+## Étape 4 : Output = weights @ V
+output = weights @ V
+print(&quot;\nSortie (chaque token = mélange pondéré de toutes les values):&quot;)
+print(output.round(3))</code></pre></div>
+
+
+<p><strong>Ce qu'il faut voir</strong> : le token "dort" aura un poids d'attention élevé sur lui-même (car <code>Q_dort · K_dort</code> est grand) mais aussi sur "chat" (car sémantiquement lié — le sujet du verbe). Le résultat <code>output[2]</code> est un mélange qui encode : "je suis un verbe, mon sujet est chat".</p>
+
+<h3 id="13-ce-que-les-têtes-dattention-apprennent-vraiment">1.3 Ce que les têtes d'attention apprennent vraiment</h3>
+
+<p>Le cours dit "chaque tête peut se spécialiser". En pratique, les chercheurs ont observé des spécialisations concrètes dans BERT :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Tête</th><th>Spécialisation observée</th><th>Exemple</th></tr></thead><tbody><tr><td>Tête 3</td><td><strong>Coréférence</strong></td><td>"Marie aime <strong>son</strong> chat" → poids fort de "son" vers "Marie"</td></tr><tr><td>Tête 7</td><td><strong>Délimiteurs</strong></td><td>Forte attention sur [SEP] et [CLS] — tokens structurels</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Pourquoi 8 têtes et pas 1 grosse ?</strong> Même idée que les filtres en CNN : un filtre unique détecte un seul pattern. 8 têtes = 8 "regards" différents sur la même séquence. Et le coût est identique : 8 têtes × 64 dims = 1 tête × 512 dims en termes de paramètres.</p></div></div>
+
+<hr>
+
+<h2 id="2-concepts-manquants-du-cours">2) Concepts manquants du cours</h2>
+
+<h3 id="21-tokenization-bpe-wordpiece-sentencepiece">2.1 Tokenization — BPE, WordPiece, SentencePiece</h3>
+
+<p>Le cours mentionne la tokenization en sous-mots sans détailler les algorithmes. C'est important car ça impacte directement les performances.</p>
+
+<p><strong>Byte Pair Encoding (BPE)</strong> — utilisé par GPT-2/3/4 :</p>
+
+<ol>
+<li>On part du vocabulaire de caractères individuels : <code>{a, b, c, ..., z, espace}</code></li>
+<li>On compte les paires de tokens adjacentes les plus fréquentes dans le corpus</li>
+<li>On fusionne la paire la plus fréquente en un nouveau token</li>
+<li>On répète jusqu'à atteindre la taille de vocabulaire souhaitée</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Exemple BPE simplifié
+## Corpus : &quot;low lower lowest&quot;
+## Étape 0 : l o w _ l o w e r _ l o w e s t
+## Paire la plus fréquente : (l, o) → fusion en &quot;lo&quot;
+## Étape 1 : lo w _ lo w e r _ lo w e s t
+## Paire la plus fréquente : (lo, w) → fusion en &quot;low&quot;
+## Étape 2 : low _ low e r _ low e s t
+## etc.</code></pre></div>
+
+
+<p><strong>WordPiece</strong> — utilisé par BERT :</p>
+
+<ul>
+<li>Similaire à BPE mais choisit la paire qui <strong>maximise la vraisemblance</strong> du corpus (pas juste la fréquence)</li>
+<li>Préfixe les sous-mots non-initiaux par <code>##</code> : "playing" → <code>[&quot;play&quot;, &quot;##ing&quot;]</code></li>
+</ul>
+
+<p><strong>SentencePiece</strong> — utilisé par T5, LLaMA :</p>
+
+<ul>
+<li>Travaille directement sur le texte brut (pas de pré-tokenisation par espaces)</li>
+<li>Gère nativement le multilingue (crucial pour les langues sans espaces comme le japonais)</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from transformers import AutoTokenizer
+
+## Comparer les tokenizers
+for model in [&quot;bert-base-uncased&quot;, &quot;gpt2&quot;, &quot;google/flan-t5-base&quot;]:
+    tok = AutoTokenizer.from_pretrained(model)
+    tokens = tok.tokenize(&quot;unhappiness&quot;)
+    print(f&quot;{model:30s} → {tokens}&quot;)
+## bert-base-uncased   → [&#x27;un&#x27;, &#x27;##happiness&#x27;]
+## gpt2                → [&#x27;un&#x27;, &#x27;happiness&#x27;]        (BPE)
+## flan-t5-base        → [&#x27;▁un&#x27;, &#x27;happiness&#x27;]       (SentencePiece, ▁ = espace)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Impact pratique</strong> : Un mot rare comme "endomorphisme" sera découpé en beaucoup de tokens → le modèle utilise plus de sa fenêtre de contexte. Les langues comme le français/allemand utilisent ~30% plus de tokens que l'anglais pour le même contenu, à cause du vocabulaire d'entraînement anglophone.</p></div></div>
+
+<h3 id="22-teacher-forcing-vs-autoregressive-decoding">2.2 Teacher Forcing vs Autoregressive Decoding</h3>
+
+<p>C'est un concept <strong>fondamental</strong> que le cours ne mentionne pas.</p>
+
+<p><strong>Pendant l'entraînement — Teacher Forcing :</strong></p>
+
+<p>Le decoder reçoit la <strong>vraie séquence cible</strong> comme entrée (décalée d'un cran). Il n'utilise pas ses propres prédictions. C'est comme un élève qui fait un exercice avec le corrigé sous les yeux — il apprend vite, mais ne s'exerce jamais à se corriger lui-même.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Entrée encoder : &quot;The cat sat&quot;
+Entrée decoder : &lt;start&gt; Le chat est assis
+Sortie attendue :  Le   chat est assis &lt;end&gt;</code></pre></div>
+
+
+<p>À chaque position, le decoder prédit le token suivant en voyant les vrais tokens précédents (pas ses prédictions). Le masking empêche de voir les tokens futurs.</p>
+
+<p><strong>Pendant l'inférence — Autoregressive Decoding :</strong></p>
+
+<p>Pas de corrigé disponible. Le decoder utilise <strong>ses propres prédictions</strong> comme entrée pour le pas suivant :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Étape 1 : &lt;start&gt;           → prédit &quot;Le&quot;
+Étape 2 : &lt;start&gt; Le        → prédit &quot;chat&quot;
+Étape 3 : &lt;start&gt; Le chat   → prédit &quot;est&quot;
+...</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Problème d'exposition (exposure bias)</strong> : Le modèle n'a jamais vu ses propres erreurs pendant l'entraînement. Si à l'étape 2 il prédit "chien" au lieu de "chat", il n'a jamais appris à se rattraper depuis "chien". Les erreurs se propagent et s'accumulent — c'est une source d'hallucinations.</p></div></div>
+
+<h3 id="23-le-kv-cache-pourquoi-la-génération-est-lente">2.3 Le KV Cache — Pourquoi la génération est lente</h3>
+
+<p>Quand un modèle decoder-only génère token par token, il recalcule naïvement l'attention sur <strong>toute la séquence</strong> à chaque nouveau token. C'est du gaspillage : les keys et values des tokens déjà générés ne changent pas.</p>
+
+<p><strong>Le KV Cache</strong> stocke les K et V des tokens précédents et ne calcule que le Q du nouveau token :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Sans cache (naïf) :                  Avec KV cache :
+Token 1 : attention sur [1]          Token 1 : attention sur [1]          → stocke K1,V1
+Token 2 : attention sur [1,2]        Token 2 : Q2 × [K1,K2] → stocke K2,V2
+Token 3 : attention sur [1,2,3]      Token 3 : Q3 × [K1,K2,K3] (K1,K2 déjà en cache)
+...
+Token n : attention sur [1..n]       Token n : Qn × [K1..Kn] (seul Kn est nouveau)</code></pre></div>
+
+
+<p><strong>Complexité</strong> : sans cache = O(n²) par séquence complète. Avec cache = O(n) par nouveau token.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Pourquoi c'est important</strong> : Le KV cache consomme de la <strong>mémoire GPU</strong> proportionnellement à <code>batch_size × n_layers × seq_len × d_model</code>. C'est le facteur limitant pour les longues séquences. Un modèle 7B avec un contexte de 128K tokens peut consommer 30+ GB rien que pour le cache.</p></div></div>
+
+<h3 id="24-fenêtre-de-contexte-context-window">2.4 Fenêtre de contexte (Context Window)</h3>
+
+<p>La fenêtre de contexte est la <strong>longueur maximale de séquence</strong> que le modèle peut traiter en une passe. Elle est fixée par le positional encoding.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Modèle</th><th>Contexte max</th><th>Équivalent approximatif</th><th>BERT (2018)</th><th>512 tokens</th><th>~400 mots = 1 page</th></tr></thead><tbody><tr><td>GPT-3 (2020)</td><td>4 096 tokens</td><td>~3 000 mots = 6 pages</td><td>GPT-4 (2023)</td><td>128 000 tokens</td><td>~100 000 mots = un roman</td></tr><tr><td>Claude 3.5 (2024)</td><td>200 000 tokens</td><td>~150 000 mots = 2 romans</td><td>Gemini 1.5 (2024)</td><td>1 000 000 tokens</td><td>~750 000 mots = 10 romans</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Attention</strong> : "contexte max" ne signifie pas "performance uniforme". La qualité de l'attention se dégrade souvent au milieu des très longs contextes ("lost in the middle" problem). Les tokens en début et fin de prompt reçoivent plus d'attention que ceux au milieu.</p></div></div>
+
+<h3 id="25-scaling-laws-pourquoi-plus-gros-meilleur-jusquà-un-point">2.5 Scaling Laws — Pourquoi plus gros = meilleur (jusqu'à un point)</h3>
+
+<p>Les <strong>lois de scaling</strong> (Kaplan et al., 2020 ; Hoffmann et al., 2022 "Chinchilla") montrent que la performance d'un LLM suit des lois de puissance prévisibles en fonction de 3 variables :</p>
+
+<ol>
+<li><strong>N</strong> = nombre de paramètres du modèle</li>
+<li><strong>D</strong> = quantité de données d'entraînement (tokens)</li>
+<li><strong>C</strong> = budget de calcul (FLOPs)</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">L(N) ∝ N^(-0.076)    # la loss baisse comme une loi de puissance avec N
+L(D) ∝ D^(-0.095)    # la loss baisse comme une loi de puissance avec D</code></pre></div>
+
+
+<p><strong>Règle Chinchilla</strong> : Pour un budget de calcul donné, il est optimal d'avoir environ <strong>20 tokens de données par paramètre</strong>. Un modèle 7B devrait être entraîné sur ~140B tokens. GPT-3 (175B params, 300B tokens) était sous-entraîné selon ce critère.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Conséquence pratique</strong> : LLaMA 7B (entraîné sur 1T tokens, soit 140× plus que le ratio Chinchilla) bat GPT-3 175B sur de nombreux benchmarks — un modèle 25× plus petit mais correctement entraîné.</p></div></div>
+
+<h3 id="26-lora-et-peft-fine-tuning-efficace">2.6 LoRA et PEFT — Fine-tuning efficace</h3>
+
+<p>Le cours ne mentionne que le fine-tuning classique (tout geler ou tout dégeler). En 2025, personne ne fine-tune un LLM en dégelant tous les poids — c'est trop coûteux.</p>
+
+<p><strong>LoRA (Low-Rank Adaptation)</strong> est la méthode standard :</p>
+
+<ul>
+<li>Au lieu de modifier la matrice de poids W (d_model × d_model = 512×512 = 262K params), on apprend deux petites matrices : A (512×8) et B (8×512) = <strong>8K params</strong> seulement</li>
+<li>Le nouveau poids = W + A × B (W reste gelé)</li>
+<li>On réduit les paramètres entraînables de <strong>99.7%</strong></li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Fine-tuning classique : modifier 7B de paramètres → besoin de 4× GPU A100
+## LoRA rank=8 sur un modèle 7B : ~4M de paramètres entraînables → un seul GPU suffit
+
+from peft import LoraConfig, get_peft_model
+from transformers import AutoModelForCausalLM
+
+model = AutoModelForCausalLM.from_pretrained(&quot;meta-llama/Llama-2-7b&quot;)
+
+lora_config = LoraConfig(
+    r=8,                    # rang de la décomposition (8 ou 16 suffisent)
+    lora_alpha=16,          # facteur de scaling
+    target_modules=[&quot;q_proj&quot;, &quot;v_proj&quot;],  # on adapte Q et V de l&#x27;attention
+    lora_dropout=0.05,
+)
+
+model = get_peft_model(model, lora_config)
+model.print_trainable_parameters()
+## trainable params: 4,194,304 || all params: 6,742,609,920 || trainable%: 0.062</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : Imagine un peintre professionnel (le modèle pré-entraîné). Plutôt que de lui réapprendre à peindre from scratch, tu lui donnes juste quelques consignes de style (LoRA) — "plus de contraste", "palette froide". Le résultat est adapté à ton goût avec un effort minimal.</p></div></div>
+
+<hr>
+
+<h2 id="3-approfondissements-des-concepts-existants">3) Approfondissements des concepts existants</h2>
+
+<h3 id="31-temperature-visualisation-concrète">3.1 Temperature — Visualisation concrète</h3>
+
+<p>Le cours dit "T basse = déterministe, T haute = créatif". Voici ce que ça signifie <strong>exactement</strong> en termes de distribution de probabilité.</p>
+
+<p>Supposons que le modèle calcule les logits suivants pour le prochain token :</p>
+
+<p><code>logits = [5.0, 3.0, 1.0, 0.5]</code> pour les tokens <code>[&quot;Paris&quot;, &quot;Lyon&quot;, &quot;Marseille&quot;, &quot;Tokyo&quot;]</code></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+logits = np.array([5.0, 3.0, 1.0, 0.5])
+tokens = [&quot;Paris&quot;, &quot;Lyon&quot;, &quot;Marseille&quot;, &quot;Tokyo&quot;]
+
+for T in [0.1, 0.5, 1.0, 2.0]:
+    probs = np.exp(logits / T) / np.exp(logits / T).sum()
+    print(f&quot;T={T:.1f} → {dict(zip(tokens, probs.round(4)))}&quot;)
+
+## T=0.1 → Paris: 1.0000, Lyon: 0.0000, Marseille: 0.0000, Tokyo: 0.0000
+## T=0.5 → Paris: 0.9820, Lyon: 0.0179, Marseille: 0.0001, Tokyo: 0.0000
+## T=1.0 → Paris: 0.8360, Lyon: 0.1131, Marseille: 0.0153, Tokyo: 0.0093
+## T=2.0 → Paris: 0.5173, Lyon: 0.2106, Marseille: 0.0857, Tokyo: 0.0658</code></pre></div>
+
+
+<p><strong>Ce qu'on voit</strong> :</p>
+
+<ul>
+<li>T=0.1 : le modèle dit toujours "Paris" → 100%. Utile pour des réponses factuelles.</li>
+<li>T=1.0 : distribution "naturelle" du modèle. Paris reste probable mais Lyon a sa chance.</li>
+<li>T=2.0 : distribution quasi-uniforme. Même Tokyo a 6.5%. Créatif mais potentiellement incohérent.</li>
+</ul>
+
+<h3 id="32-bleu-exemple-chiffré">3.2 BLEU — Exemple chiffré</h3>
+
+<p>Le cours mentionne BLEU sans montrer comment ça se calcule.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Référence  : &quot;Le chat est assis sur le tapis&quot;
+Généré     : &quot;Le chat s&#x27;assoit sur le tapis&quot;</code></pre></div>
+
+
+<p><strong>BLEU-1</strong> (unigrams) :</p>
+
+<ul>
+<li>Tokens générés : {Le, chat, s', assoit, sur, le, tapis} = 7 tokens</li>
+<li>Tokens qui matchent la référence : {Le, chat, sur, le, tapis} = 5</li>
+<li>Precision-1 = 5/7 = 0.71</li>
+</ul>
+
+<p><strong>BLEU-2</strong> (bigrams) :</p>
+
+<ul>
+<li>Bigrams générés : {"Le chat", "chat s'", "s' assoit", "assoit sur", "sur le", "le tapis"} = 6</li>
+<li>Bigrams qui matchent : {"Le chat", "sur le", "le tapis"} = 3</li>
+<li>Precision-2 = 3/6 = 0.50</li>
+</ul>
+
+<p><strong>BLEU final</strong> = moyenne géométrique des precision 1-4, multipliée par une pénalité de brièveté si la sortie est trop courte.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Limite connue</strong> : BLEU ne capture pas la sémantique. "Le félin se repose sur la carpette" score 0 en BLEU (aucun n-gram commun) alors que c'est une traduction parfaite. D'où l'émergence de métriques basées sur les embeddings (BERTScore).</p></div></div>
+
+<h3 id="33-rouge-la-différence-avec-bleu">3.3 ROUGE — La différence avec BLEU</h3>
+
+<p>BLEU = <strong>precision</strong> ("combien de mots du texte généré sont dans la référence ?")</p>
+
+<p>ROUGE = <strong>recall</strong> ("combien de mots de la référence sont dans le texte généré ?")</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Référence  : &quot;Le changement climatique menace la biodiversité marine&quot;
+Résumé     : &quot;Le changement climatique est une menace&quot;</code></pre></div>
+
+
+<ul>
+<li><strong>BLEU-1</strong> regarde le résumé : 5 tokens sur 7 sont dans la référence → precision = 5/7 = 0.71</li>
+<li><strong>ROUGE-1</strong> regarde la référence : 4 tokens sur 7 sont dans le résumé → recall = 4/7 = 0.57</li>
+</ul>
+
+<p>Pour un résumé, le recall compte plus : a-t-on capturé l'information clé ?</p>
+
+<p><strong>ROUGE-L</strong> utilise la plus longue sous-séquence commune (LCS) — elle capture l'ordre des mots sans exiger de contiguïté.</p>
+
+<hr>
+
+<h2 id="4-arbre-de-décision-comment-utiliser-un-llm-pour-sa-tâche">4) Arbre de décision — Comment utiliser un LLM pour sa tâche</h2>
+
+<p>Le cours présente fine-tuning et prompt engineering séparément. Voici le <strong>framework décisionnel</strong> que les praticiens utilisent réellement :</p>
+
+<p><strong>Étape 1 : Essayer le prompting d'abord (coût ≈ 0)</strong></p>
+
+<ul>
+<li>Zero-shot → Few-shot → Chain-of-thought</li>
+<li>Si les performances sont suffisantes → STOP, c'est la solution la plus simple et maintenable</li>
+</ul>
+
+<p><strong>Étape 2 : RAG (Retrieval-Augmented Generation)</strong></p>
+
+<ul>
+<li>Le modèle a besoin de connaissances spécifiques (docs internes, données récentes)</li>
+<li>On récupère les passages pertinents et on les injecte dans le prompt</li>
+<li>Pas de fine-tuning nécessaire → plus flexible, données mises à jour facilement</li>
+</ul>
+
+<p><strong>Étape 3 : Fine-tuning (LoRA)</strong></p>
+
+<ul>
+<li>Le modèle doit apprendre un <em>style</em>, un <em>format</em>, ou un <em>comportement</em> spécifique que le prompting ne capture pas</li>
+<li>Exemples : un chatbot avec une personnalité précise, un extracteur de données structurées dans un format métier</li>
+<li>Nécessite des données d'entraînement (quelques centaines à milliers d'exemples)</li>
+</ul>
+
+<p><strong>Étape 4 : Pré-entraînement continu (rare)</strong></p>
+
+<ul>
+<li>Le domaine est très spécialisé et sous-représenté dans les données d'entraînement (droit français, biologie moléculaire)</li>
+<li>Coûteux : nécessite des millions de tokens de données de domaine</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Règle d'or</strong> : Ne fine-tune jamais un modèle pour lui apprendre des <em>faits</em> — utilise RAG. Le fine-tuning sert à changer le <em>comportement</em> (style, format, raisonnement), pas les <em>connaissances</em>. Un modèle fine-tuné sur des faits va halluciner avec assurance.</p></div></div>
+
+<hr>
+
+<h2 id="5-hallucinations-le-problème-1-des-llms">5) Hallucinations — Le problème #1 des LLMs</h2>
+
+<p>Concept absent du cours mais <strong>absolument central</strong> en production.</p>
+
+<p><strong>Définition</strong> : Un modèle "hallucine" quand il génère du contenu qui semble plausible et fluide mais qui est <strong>factuellement faux</strong>.</p>
+
+<p><strong>Pourquoi ça arrive</strong> :</p>
+
+<ol>
+<li><strong>Next-token prediction ≠ vérité</strong> — le modèle maximise P(token_suivant | contexte), pas P(token_vrai | contexte). Il génère ce qui est <em>statistiquement plausible</em>, pas ce qui est <em>vrai</em>.</li>
+<li><strong>Exposure bias</strong> (cf. section 2.2) — les erreurs se propagent</li>
+<li><strong>Le modèle ne sait pas ce qu'il ne sait pas</strong> — pas de mécanisme interne de "je ne suis pas sûr"</li>
+</ol>
+
+<p><strong>Exemples classiques</strong> :</p>
+
+<ul>
+<li>Inventer des citations académiques qui n'existent pas (format parfait, auteurs plausibles)</li>
+<li>Générer du code qui compile mais contient un bug logique subtil</li>
+<li>Affirmer avec assurance un fait historique faux ("Victor Hugo a écrit Germinal")</li>
+</ul>
+
+<p><strong>Stratégies de mitigation</strong> :</p>
+
+<ul>
+<li><strong>RAG</strong> : ancrer les réponses dans des documents vérifiés</li>
+<li><strong>Température basse</strong> : réduire la créativité pour les tâches factuelles</li>
+<li><strong>Chain-of-thought</strong> : forcer le raisonnement étape par étape (réduit les raccourcis)</li>
+<li><strong>Self-consistency</strong> : générer N réponses et prendre la majorité</li>
+<li><strong>Vérification par un second modèle</strong> (LLM-as-a-judge)</li>
+</ul>
+
+<hr>
+
+<h2 id="6-lécosystème-réel-des-llms-en-2025">6) L'écosystème réel des LLMs en 2025</h2>
+
+<h3 id="61-modèles-propriétaires-vs-open-source">6.1 Modèles propriétaires vs Open-source</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Catégorie</th><th>Modèles</th><th>Avantages</th><th>Inconvénients</th><th><strong>Propriétaires (API)</strong></th><th>GPT-4o, Claude 3.5/4, Gemini 1.5</th><th>Meilleure performance brute, pas d'infra à gérer</th><th>Coût par token, dépendance fournisseur, données envoyées à un tiers</th></tr></thead><tbody><tr><td><strong>Open-source (petits)</strong></td><td>LLaMA 3 8B, Mistral 7B, Phi-3</td><td>Déploiement local, fine-tuning possible, confidentialité</td><td>Performances inférieures, nécessite du GPU</td><td><strong>Open-source (gros)</strong></td><td>LLaMA 3 70B, Mixtral 8x7B, DeepSeek</td><td>Performances proches des propriétaires, contrôle total</td><td>Infra GPU coûteuse (4-8× A100)</td></tr></tbody></table></div>
+<h3 id="62-la-pile-technique-moderne">6.2 La pile technique moderne</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Pile typique pour une appli LLM en production (2025) :
+
+## 1. Modèle : API (OpenAI/Anthropic) ou self-hosted (vLLM + LLaMA)
+## 2. Orchestration : LangChain, LlamaIndex, ou code custom
+## 3. RAG : Vector DB (Pinecone, Chroma, Weaviate) + embeddings
+## 4. Évaluation : Ragas, LangSmith, Braintrust
+## 5. Monitoring : coût, latence, qualité des réponses
+## 6. Guardrails : filtrage input/output, détection d&#x27;hallucinations</code></pre></div>
+
+
+<hr>
+
+<h2 id="7-pour-aller-plus-loin-questions-de-compréhension">7) Pour aller plus loin — Questions de compréhension</h2>
+
+<ol>
+<li><strong>Pourquoi le positional encoding sinusoïdal permet-il au modèle de généraliser à des séquences plus longues que celles vues à l'entraînement ?</strong> (Indice : les fonctions sin/cos sont périodiques et la position relative peut être exprimée comme une transformation linéaire)</li>
+<li><strong>Pourquoi BERT utilise-t-il un masking aléatoire (MLM) pendant le pré-entraînement et pas un masking gauche→droite comme GPT ?</strong> (Indice : l'objectif de BERT est la compréhension bidirectionnelle, pas la génération)</li>
+<li><strong>Si on double d_model de 512 à 1024, par combien est multiplié le nombre de paramètres ?</strong> (Indice : les principaux blocs sont quadratiques en d_model)</li>
+<li><strong>Pourquoi les modèles decoder-only ont-ils dominé à partir de 2020, alors que le Transformer original était encoder-decoder ?</strong> (Indice : scaling laws + simplicité + la génération subsume la compréhension)</li>
+</ol>
+
+<hr>
+
+<h2 id="ressources-additionnelles">📚 Ressources additionnelles</h2>
+
+<ul>
+<li>👉 <a href="https://www.youtube.com/watch?v=eMlx5fFNoYc" target="_blank" rel="noopener">3Blue1Brown — Attention in Transformers</a> — la meilleure visualisation animée</li>
+<li>👉 <a href="https://lilianweng.github.io/posts/2023-01-27-the-transformer-family-v2/" target="_blank" rel="noopener">Lilian Weng — Attention Mechanisms</a> — survey exhaustif</li>
+<li>👉 <a href="https://www.youtube.com/watch?v=kCc8FmEb1nY" target="_blank" rel="noopener">Karpathy — Let's build GPT from scratch</a> — coder un Transformer en 2h</li>
+<li>👉 <a href="https://arxiv.org/abs/2203.15556" target="_blank" rel="noopener">Chinchilla paper — Training Compute-Optimal LLMs</a> — les lois de scaling</li>
+<li>👉 <a href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener">LoRA paper</a> — fine-tuning efficace</li>
+<li>👉 <a href="https://arxiv.org/abs/2307.03172" target="_blank" rel="noopener">Lost in the Middle (Liu et al.)</a> — limites des longs contextes</li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><li><a href="#ref-1-lattention-lintuition-qui-manque">1. L'attention — L'intuition qui manque</a><ol><li><a href="#ref-pourquoi-divise-t-on-par-sqrtd_k">Pourquoi divise-t-on par $\sqrt{d_k}$ ?</a></li><li><a href="#ref-exemple-complet-dattention-avec-de-vrais-nombres">Exemple complet d'attention avec de vrais nombres</a></li><li><a href="#ref-ce-que-les-têtes-dattention-apprennent-vraiment">Ce que les têtes d'attention apprennent vraiment</a></li></ol></li><li><a href="#ref-2-concepts-que-le-cours-ne-couvre-pas">2. Concepts que le cours ne couvre pas</a><ol><li><a href="#ref-21-la-tokenization-bpe-wordpiece-sentencepiece">2.1 La tokenization — BPE, WordPiece, SentencePiece</a></li><li><a href="#ref-22-teacher-forcing-vs-décodage-autorégressif">2.2 Teacher Forcing vs Décodage Autorégressif</a></li><li><a href="#ref-23-le-kv-cache-pourquoi-la-génération-est-lente-sans-lui">2.3 Le KV Cache — Pourquoi la génération est lente sans lui</a></li><li><a href="#ref-24-la-fenêtre-de-contexte">2.4 La fenêtre de contexte</a></li><li><a href="#ref-25-les-scaling-laws-pourquoi-plus-grand-nest-pas-toujours-mieux">2.5 Les Scaling Laws — Pourquoi plus grand n'est pas toujours mieux</a></li><li><a href="#ref-26-lora-le-fine-tuning-efficace">2.6 LoRA — Le fine-tuning efficace</a></li></ol></li><li><a href="#ref-3-approfondissements">3. Approfondissements</a><ol><li><a href="#ref-31-la-température-ce-que-ça-change-vraiment">3.1 La température — Ce que ça change vraiment</a></li><li><a href="#ref-32-bleu-exemple-chiffré-pas-à-pas">3.2 BLEU — Exemple chiffré pas à pas</a></li><li><a href="#ref-33-rouge-la-différence-avec-bleu">3.3 ROUGE — La différence avec BLEU</a></li></ol></li><li><a href="#ref-4-arbre-de-décision-comment-utiliser-un-llm-pour-sa-tâche">4. Arbre de décision — Comment utiliser un LLM pour sa tâche</a><li><a href="#ref-5-les-hallucinations-le-problème-n1-des-llms">5. Les hallucinations — Le problème n°1 des LLMs</a><li><a href="#ref-6-lécosystème-réel-des-llms-en-2025">6. L'écosystème réel des LLMs en 2025</a><ol><li><a href="#ref-modèles-propriétaires-vs-open-source">Modèles propriétaires vs open-source</a></li><li><a href="#ref-la-pile-technique-moderne">La pile technique moderne</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Ce cours approfondit les Transformers et les grands modèles de langage (LLM) au-delà des bases. On va explorer des mécanismes que le cours principal effleure, comprendre pourquoi certains choix techniques existent, et se doter d'un cadre pratique pour utiliser ces modèles en conditions réelles.</p>
+
+<p><strong>5 points à retenir absolument :</strong></p>
+
+<ul>
+<li>Diviser par $\sqrt{d_k}$ dans l'attention n'est pas un détail cosmétique — c'est ce qui empêche le réseau de devenir "aveugle".</li>
+<li>Les tokenizers découpent les mots différemment selon le modèle : cela change le coût et la performance.</li>
+<li>Pendant l'entraînement et pendant l'utilisation, un LLM ne fonctionne pas de la même façon (teacher forcing vs autoregressive).</li>
+<li>Plus grand n'est pas toujours meilleur : un petit modèle bien entraîné bat un gros modèle sous-entraîné.</li>
+<li>Le fine-tuning sert à changer le <em>comportement</em> d'un modèle, jamais à lui apprendre des <em>faits</em> — pour les faits, on utilise le RAG.</li>
+</ul>
+
+<p><strong>Analogie fil rouge — le traducteur expert :</strong></p>
+
+<p>Imagine un traducteur professionnel qui a lu des millions de livres. Il ne traduit pas mot à mot : il <em>comprend</em> le contexte, retient ce qui est important, ignore le superflu. Chaque concept de ce cours décrit un aspect de son fonctionnement : comment il porte son attention, comment il représente les mots, comment il se spécialise sur une nouvelle langue de travail avec un minimum d'effort.</p>
+
+<p><strong>Mini-plan :</strong></p>
+
+<ol>
+<li>L'attention en détail — le scaling, les exemples chiffrés, la multi-tête</li>
+<li>Concepts manquants — tokenization, teacher forcing, KV cache, fenêtre de contexte, scaling laws, LoRA</li>
+<li>Approfondissements — température, BLEU, ROUGE</li>
+<li>Arbre de décision pratique pour utiliser un LLM</li>
+<li>Les hallucinations — pourquoi et comment s'en protéger</li>
+<li>L'écosystème réel en 2025</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-lattention-lintuition-qui-manque">1. L'attention — L'intuition qui manque</h2>
+
+<h3 id="ref-pourquoi-divise-t-on-par-sqrtd_k">Pourquoi divise-t-on par $\sqrt{d_k}$ ?</h3>
+
+<p>Le cours donne la formule de l'attention sans expliquer pourquoi ce facteur de scaling est indispensable. Voici l'intuition.</p>
+
+<p><strong>Le problème des grands produits scalaires</strong></p>
+
+<p>Quand on calcule $Q \cdot K^T$ (le produit scalaire entre queries et keys), chaque valeur est la somme de $d_k$ multiplications. Si $d_k = 64$, on additionne 64 termes aléatoires. Statistiquement, la variance du résultat vaut $d_k$ — donc l'écart-type vaut $\sqrt{d_k} = 8$.</p>
+
+<p>Avec des vecteurs de dimension 64, les scores bruts peuvent donc valoir $-15$, $+12$, $+3$, $-8$... Ce sont de grands écarts.</p>
+
+<p><strong>Pourquoi c'est catastrophique pour le softmax</strong></p>
+
+<p>Le softmax est exponentiel. Une différence de 10 entre deux scores donne un ratio de $e^{10} \approx 22\,000$ entre les poids d'attention. Le résultat : un token capte 99.99% de l'attention, tous les autres sont à zéro. Le réseau devient aveugle.</p>
+
+<p>En divisant par $\sqrt{d_k}$, on ramène les scores à une variance de 1, et le softmax peut distribuer l'attention de façon nuancée entre plusieurs tokens.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+np.random.seed(42)
+
+d_k = 64
+Q = np.random.randn(d_k)  # vecteur query aléatoire
+K = np.random.randn(d_k)  # vecteur key aléatoire
+
+dot_product = Q @ K
+print(f&quot;Produit scalaire brut : {dot_product:.1f}&quot;)          # ex: ~8.2
+print(f&quot;Après scaling /√64  :  {dot_product / np.sqrt(d_k):.2f}&quot;)  # ex: ~1.03</code></pre></div>
+
+
+<p>Sans la division, le score reste à 8.2 et le softmax sature. Avec, il revient à 1.03 — une valeur que le softmax peut traiter normalement.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Analogie : noter des restaurants sur 0–100 au lieu de 0–5. Avec l'échelle 100, une différence de 4 points semble énorme. En la ramenant à l'échelle 5 (÷20), la différence redevient interprétable.</p></div></div>
+
+<h3 id="ref-exemple-complet-dattention-avec-de-vrais-nombres">Exemple complet d'attention avec de vrais nombres</h3>
+
+<p>Prenons la phrase <strong>"Le chat dort"</strong> (3 tokens), avec des embeddings de dimension $d_{model} = 4$.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+# Embeddings simplifiés (3 tokens, dim=4)
+X = np.array([
+    [1.0, 0.2, 0.5, 0.1],   # &quot;Le&quot;
+    [0.3, 1.0, 0.8, 0.4],   # &quot;chat&quot;
+    [0.1, 0.3, 1.0, 0.9],   # &quot;dort&quot;
+])
+
+# Matrices de projection (identité ici pour simplifier l&#x27;exemple)
+W_Q = np.eye(4)
+W_K = np.eye(4)
+W_V = np.eye(4)
+
+Q = X @ W_Q  # (3, 4)  — les &quot;questions&quot; de chaque token
+K = X @ W_K  # (3, 4)  — les &quot;étiquettes&quot; de chaque token
+V = X @ W_V  # (3, 4)  — le contenu que chaque token peut partager
+
+# Étape 1 : scores bruts = Q × K^T  (chaque case = &quot;à quel point i s&#x27;intéresse à j&quot;)
+scores = Q @ K.T
+print(&quot;Scores bruts (3×3) :&quot;)
+print(scores.round(2))
+
+# Étape 2 : on divise par √d_k pour stabiliser les valeurs
+d_k = 4
+scaled = scores / np.sqrt(d_k)
+
+# Étape 3 : softmax ligne par ligne (chaque ligne somme à 1)
+def softmax(x):
+    e = np.exp(x - x.max(axis=-1, keepdims=True))
+    return e / e.sum(axis=-1, keepdims=True)
+
+weights = softmax(scaled)
+print(&quot;\nPoids d&#x27;attention (chaque ligne somme à 1) :&quot;)
+print(weights.round(3))
+
+# Étape 4 : on mélange les values selon les poids
+output = weights @ V
+print(&quot;\nSortie enrichie (chaque token = mélange pondéré des values) :&quot;)
+print(output.round(3))</code></pre></div>
+
+
+<p><strong>Ce qu'on observe :</strong> le token "dort" a un poids d'attention élevé vers "chat" (le sujet du verbe). Sa sortie encode donc : "je suis un verbe, et mon sujet est chat". C'est précisément ce que l'attention apporte : du contexte.</p>
+
+<h3 id="ref-ce-que-les-têtes-dattention-apprennent-vraiment">Ce que les têtes d'attention apprennent vraiment</h3>
+
+<p>Le cours dit "chaque tête peut se spécialiser". Des chercheurs ont effectivement observé des spécialisations concrètes dans BERT :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Tête</th><th>Spécialisation</th><th>Exemple</th></tr></thead><tbody><tr><td>Tête 3</td><td>Coréférence</td><td>"Marie aime <strong>son</strong> chat" → poids fort de "son" vers "Marie"</td></tr><tr><td>Tête 7</td><td>Délimiteurs</td><td>Forte attention vers [SEP] et [CLS] — tokens structurels</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Pourquoi 8 têtes et pas 1 seule grosse ? Même logique que les filtres en CNN : un filtre unique détecte un seul pattern. 8 têtes = 8 "regards" différents sur la même séquence. Et le coût total est identique : 8 têtes × 64 dims = 1 tête × 512 dims en termes de paramètres.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-concepts-que-le-cours-ne-couvre-pas">2. Concepts que le cours ne couvre pas</h2>
+
+<h3 id="ref-21-la-tokenization-bpe-wordpiece-sentencepiece">2.1 La tokenization — BPE, WordPiece, SentencePiece</h3>
+
+<p>Le cours mentionne la tokenization en sous-mots sans détailler les algorithmes. C'est important : selon le tokenizer utilisé, un même texte n'a pas le même nombre de tokens — ce qui change le coût et la façon dont le modèle "lit" les mots.</p>
+
+<p><strong>Byte Pair Encoding (BPE) — utilisé par GPT-2/3/4</strong></p>
+
+<p>L'idée : on part des caractères individuels, et on fusionne les paires les plus fréquentes jusqu'à atteindre la taille de vocabulaire souhaitée.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Illustration de BPE sur &quot;low lower lowest&quot;
+#
+# Départ :  l o w _ l o w e r _ l o w e s t
+#
+# Paire la plus fréquente : (l, o) → on crée le token &quot;lo&quot;
+# Étape 1 : lo w _ lo w e r _ lo w e s t
+#
+# Paire la plus fréquente : (lo, w) → on crée le token &quot;low&quot;
+# Étape 2 : low _ low e r _ low e s t
+#
+# On continue ainsi jusqu&#x27;à atteindre la taille de vocabulaire voulue.</code></pre></div>
+
+
+<p><strong>WordPiece — utilisé par BERT</strong></p>
+
+<p>Similaire à BPE, mais la paire à fusionner est choisie pour maximiser la vraisemblance du corpus (pas juste la fréquence). Les sous-mots non-initiaux sont préfixés par <code>##</code> : "playing" → <code>[&quot;play&quot;, &quot;##ing&quot;]</code>.</p>
+
+<p><strong>SentencePiece — utilisé par T5, LLaMA</strong></p>
+
+<p>Travaille directement sur le texte brut, sans pré-découper par les espaces. Crucial pour les langues sans espaces (japonais, chinois).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from transformers import AutoTokenizer
+
+# On compare les tokenizers sur un même mot
+for model in [&quot;bert-base-uncased&quot;, &quot;gpt2&quot;, &quot;google/flan-t5-base&quot;]:
+    tok = AutoTokenizer.from_pretrained(model)
+    tokens = tok.tokenize(&quot;unhappiness&quot;)
+    print(f&quot;{model:30s} → {tokens}&quot;)
+
+# bert-base-uncased              → [&#x27;un&#x27;, &#x27;##happiness&#x27;]
+# gpt2                           → [&#x27;un&#x27;, &#x27;happiness&#x27;]        (BPE)
+# flan-t5-base                   → [&#x27;▁un&#x27;, &#x27;happiness&#x27;]       (SentencePiece, ▁ = début de mot)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Impact pratique : un mot rare comme "endomorphisme" sera découpé en beaucoup de tokens, consommant plus de la fenêtre de contexte. Le français et l'allemand utilisent ~30% plus de tokens que l'anglais pour le même contenu, car les vocabulaires sont souvent entraînés majoritairement sur de l'anglais.</p></div></div>
+
+<h3 id="ref-22-teacher-forcing-vs-décodage-autorégressif">2.2 Teacher Forcing vs Décodage Autorégressif</h3>
+
+<p>C'est un concept fondamental absent du cours.</p>
+
+<p><strong>Pendant l'entraînement : Teacher Forcing</strong></p>
+
+<p>Le decoder voit la <em>vraie</em> séquence cible (décalée d'un cran). Il n'utilise jamais ses propres prédictions — c'est comme un élève qui s'entraîne avec le corrigé sous les yeux.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Entrée encoder  : &quot;The cat sat&quot;
+Entrée decoder  : &lt;start&gt;  Le    chat  est   assis
+Sortie attendue :   Le    chat   est  assis  &lt;end&gt;</code></pre></div>
+
+
+<p>À chaque position, le modèle prédit le token suivant en voyant les vrais tokens précédents. Le masking garantit qu'il ne peut pas "tricher" en regardant les tokens futurs.</p>
+
+<p><strong>Pendant l'inférence : Décodage autorégressif</strong></p>
+
+<p>Plus de corrigé. Le modèle utilise ses propres prédictions comme entrée pour le pas suivant :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Étape 1 : &lt;start&gt;            → prédit &quot;Le&quot;
+Étape 2 : &lt;start&gt; Le         → prédit &quot;chat&quot;
+Étape 3 : &lt;start&gt; Le chat    → prédit &quot;est&quot;
+...</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Problème d'exposition (exposure bias) : le modèle n'a jamais vu ses propres erreurs pendant l'entraînement. S'il prédit "chien" au lieu de "chat" à l'étape 2, il n'a jamais appris à se rattraper depuis "chien". Les erreurs se propagent et s'accumulent — c'est une des sources d'hallucinations.</p></div></div>
+
+<h3 id="ref-23-le-kv-cache-pourquoi-la-génération-est-lente-sans-lui">2.3 Le KV Cache — Pourquoi la génération est lente sans lui</h3>
+
+<p>Quand un modèle génère token par token, il devrait recalculer l'attention sur toute la séquence à chaque nouveau token. C'est du gaspillage : les Keys et Values des tokens déjà générés ne changent pas.</p>
+
+<p><strong>Le KV Cache</strong> stocke ces $K$ et $V$ et ne calcule que le $Q$ du nouveau token :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Sans cache (naïf) :                          Avec KV cache :
+
+Token 1 : attention sur [1]                  Token 1 : calcule K1, V1 → stocke
+Token 2 : attention sur [1, 2]               Token 2 : Q2 × [K1, K2] → stocke K2, V2
+Token 3 : attention sur [1, 2, 3]            Token 3 : Q3 × [K1, K2, K3]  ← K1, K2 déjà en cache
+...
+Token n : attention sur [1..n]               Token n : Qn × [K1..Kn]  ← seul Kn est nouveau</code></pre></div>
+
+
+<p><strong>Complexité</strong> : sans cache = $O(n^2)$ par séquence. Avec cache = $O(n)$ par nouveau token.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le KV cache consomme de la mémoire GPU proportionnellement à batch_size × n_layers × seq_len × d_model. C'est le facteur limitant pour les longues séquences. Un modèle 7B avec un contexte de 128K tokens peut consommer 30+ Go rien que pour le cache.</p></div></div>
+
+<h3 id="ref-24-la-fenêtre-de-contexte">2.4 La fenêtre de contexte</h3>
+
+<p>La fenêtre de contexte est la <strong>longueur maximale de séquence</strong> que le modèle peut traiter en une seule passe — fixée par l'encodage positionnel.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Modèle</th><th>Contexte max</th><th>Équivalent approximatif</th></tr></thead><tbody><tr><td>BERT (2018)</td><td>512 tokens</td><td>~400 mots = 1 page</td></tr><tr><td>GPT-3 (2020)</td><td>4 096 tokens</td><td>~3 000 mots = 6 pages</td></tr><tr><td>GPT-4 (2023)</td><td>128 000 tokens</td><td>~100 000 mots = un roman</td></tr><tr><td>Claude 3.5 (2024)</td><td>200 000 tokens</td><td>~150 000 mots = 2 romans</td></tr><tr><td>Gemini 1.5 (2024)</td><td>1 000 000 tokens</td><td>~750 000 mots = 10 romans</td></tr></tbody></table></div>
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>"Contexte max" ne signifie pas "performance uniforme sur tout le contexte". La qualité de l'attention se dégrade souvent pour les tokens situés au milieu d'un très long contexte — c'est le problème dit "lost in the middle". Les tokens en début et fin de prompt reçoivent plus d'attention que ceux au centre.</p></div></div>
+
+<h3 id="ref-25-les-scaling-laws-pourquoi-plus-grand-nest-pas-toujours-mieux">2.5 Les Scaling Laws — Pourquoi plus grand n'est pas toujours mieux</h3>
+
+<p>Les <strong>lois de scaling</strong> (Kaplan et al., 2020 ; Hoffmann et al., 2022 — "Chinchilla") montrent que la performance d'un LLM suit des lois de puissance prévisibles en fonction de trois variables :</p>
+
+<ul>
+<li>$N$ = nombre de paramètres du modèle</li>
+<li>$D$ = quantité de données d'entraînement (en tokens)</li>
+<li>$C$ = budget de calcul (FLOPs)</li>
+</ul>
+
+<div class="katex-display">$$L(N) \propto N^{-0.076} \qquad L(D) \propto D^{-0.095}$$</div>
+
+<p>Plus $N$ et $D$ augmentent, plus la loss baisse — mais avec des rendements décroissants (loi de puissance).</p>
+
+<p><strong>La règle Chinchilla :</strong> pour un budget de calcul donné, il est optimal d'avoir environ <strong>20 tokens de données par paramètre</strong>. Un modèle de 7 milliards de paramètres devrait être entraîné sur ~140 milliards de tokens. GPT-3 (175B paramètres, 300B tokens) était sous-entraîné selon ce critère.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Conséquence pratique : LLaMA 7B, entraîné sur 1 000 milliards de tokens (soit 140× le ratio Chinchilla), bat GPT-3 175B sur de nombreux benchmarks. Un modèle 25× plus petit, mais correctement entraîné.</p></div></div>
+
+<h3 id="ref-26-lora-le-fine-tuning-efficace">2.6 LoRA — Le fine-tuning efficace</h3>
+
+<p>Le fine-tuning classique (modifier tous les poids du modèle) est trop coûteux pour un modèle de 7B+ paramètres. <strong>LoRA (Low-Rank Adaptation)</strong> est la méthode standard aujourd'hui.</p>
+
+<p><strong>L'idée :</strong></p>
+
+<p>Au lieu de modifier directement la matrice de poids $W$ (de taille $512 \times 512 = 262\,144$ paramètres), on apprend deux petites matrices $A$ et $B$ :</p>
+
+<div class="katex-display">$$W_{new} = W + A \times B$$</div>
+
+<p>avec $A$ de taille $512 \times 8$ et $B$ de taille $8 \times 512$ — soit seulement $8\,192$ paramètres. $W$ reste gelé. On réduit les paramètres entraînables de <strong>99.7%</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from peft import LoraConfig, get_peft_model
+from transformers import AutoModelForCausalLM
+
+# Charger le modèle de base (les poids restent gelés)
+model = AutoModelForCausalLM.from_pretrained(&quot;meta-llama/Llama-2-7b&quot;)
+
+lora_config = LoraConfig(
+    r=8,                               # rang de la décomposition (8 ou 16 suffisent)
+    lora_alpha=16,                     # facteur de scaling (souvent 2×r)
+    target_modules=[&quot;q_proj&quot;, &quot;v_proj&quot;],  # on adapte Q et V de l&#x27;attention
+    lora_dropout=0.05,                 # régularisation légère
+)
+
+# LoRA injecte les matrices A et B dans le modèle
+model = get_peft_model(model, lora_config)
+model.print_trainable_parameters()
+# trainable params: 4,194,304 || all params: 6,742,609,920 || trainable%: 0.062
+# → seulement 0.06% des paramètres sont entraînés !</code></pre></div>
+
+
+<p><strong>Récap :</strong> LoRA permet de fine-tuner un LLM de 7B sur un seul GPU grand public, là où le fine-tuning classique nécessitait 4 GPU A100.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Analogie : un peintre professionnel (le modèle pré-entraîné) maîtrise déjà tout. Plutôt que de lui réapprendre à peindre from scratch, tu lui donnes quelques consignes de style — "plus de contraste", "palette froide". Le résultat est adapté à ton besoin avec un effort minimal. C'est LoRA.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-approfondissements">3. Approfondissements</h2>
+
+<h3 id="ref-31-la-température-ce-que-ça-change-vraiment">3.1 La température — Ce que ça change vraiment</h3>
+
+<p>La température $T$ divise les logits avant le softmax :</p>
+
+<div class="katex-display">$$p_i = \frac{e^{z_i / T}}{\sum_j e^{z_j / T}}$$</div>
+
+<p>Prenons un exemple concret. Le modèle calcule ces logits pour le prochain mot :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+logits = np.array([5.0, 3.0, 1.0, 0.5])
+tokens = [&quot;Paris&quot;, &quot;Lyon&quot;, &quot;Marseille&quot;, &quot;Tokyo&quot;]
+
+for T in [0.1, 0.5, 1.0, 2.0]:
+    probs = np.exp(logits / T) / np.exp(logits / T).sum()
+    print(f&quot;T={T:.1f} → {dict(zip(tokens, probs.round(4)))}&quot;)
+
+# T=0.1 → Paris: 1.0000, Lyon: 0.0000, Marseille: 0.0000, Tokyo: 0.0000
+# T=0.5 → Paris: 0.9820, Lyon: 0.0179, Marseille: 0.0001, Tokyo: 0.0000
+# T=1.0 → Paris: 0.8360, Lyon: 0.1131, Marseille: 0.0153, Tokyo: 0.0093
+# T=2.0 → Paris: 0.5173, Lyon: 0.2106, Marseille: 0.0857, Tokyo: 0.0658</code></pre></div>
+
+
+<p><strong>Interprétation :</strong></p>
+
+<ul>
+<li>$T = 0.1$ : Paris à 100%. Utile pour les réponses factuelles où on veut le choix le plus probable.</li>
+<li>$T = 1.0$ : distribution "naturelle" du modèle. Paris reste dominant mais Lyon a sa chance.</li>
+<li>$T = 2.0$ : distribution quasi-uniforme. Même Tokyo a 6.5%. Créatif mais potentiellement incohérent.</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>La température ne change pas ce que le modèle <em>sait</em> — elle change seulement à quel point il est "audacieux" dans ses choix.</p></div></div>
+
+<h3 id="ref-32-bleu-exemple-chiffré-pas-à-pas">3.2 BLEU — Exemple chiffré pas à pas</h3>
+
+<p><strong>BLEU</strong> mesure la qualité d'un texte généré en le comparant à une référence. Il se base sur la <strong>précision</strong> des n-grams.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Référence  : &quot;Le chat est assis sur le tapis&quot;
+Généré     : &quot;Le chat s&#x27;assoit sur le tapis&quot;</code></pre></div>
+
+
+<p><strong>BLEU-1</strong> (unigrammes) :</p>
+
+<ul>
+<li>Tokens générés : {Le, chat, s', assoit, sur, le, tapis} = 7 tokens</li>
+<li>Tokens qui matchent la référence : {Le, chat, sur, le, tapis} = 5</li>
+<li>$\text{Précision-1} = 5/7 \approx 0.71$</li>
+</ul>
+
+<p><strong>BLEU-2</strong> (bigrammes) :</p>
+
+<ul>
+<li>Bigrammes générés : {"Le chat", "chat s'", "s' assoit", "assoit sur", "sur le", "le tapis"} = 6</li>
+<li>Bigrammes qui matchent : {"Le chat", "sur le", "le tapis"} = 3</li>
+<li>$\text{Précision-2} = 3/6 = 0.50$</li>
+</ul>
+
+<p><strong>BLEU final</strong> = moyenne géométrique des précisions 1 à 4, multipliée par une pénalité si le texte généré est trop court.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Limite connue : BLEU ne capture pas la sémantique. "Le félin se repose sur la carpette" obtient un score BLEU de 0 (aucun n-gram commun avec la référence) alors que c'est une traduction parfaite. D'où l'émergence de métriques basées sur les embeddings comme BERTScore.</p></div></div>
+
+<h3 id="ref-33-rouge-la-différence-avec-bleu">3.3 ROUGE — La différence avec BLEU</h3>
+
+<ul>
+<li><strong>BLEU</strong> = précision : "combien de mots du texte <em>généré</em> sont dans la référence ?"</li>
+<li><strong>ROUGE</strong> = rappel : "combien de mots de la <em>référence</em> sont dans le texte généré ?"</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Référence : &quot;Le changement climatique menace la biodiversité marine&quot;
+Résumé    : &quot;Le changement climatique est une menace&quot;</code></pre></div>
+
+
+<ul>
+<li><strong>BLEU-1</strong> regarde le résumé : 5 tokens sur 7 sont dans la référence → précision = $5/7 \approx 0.71$</li>
+<li><strong>ROUGE-1</strong> regarde la référence : 4 tokens sur 7 sont dans le résumé → rappel = $4/7 \approx 0.57$</li>
+</ul>
+
+<p>Pour un résumé automatique, le rappel compte plus que la précision : a-t-on capturé l'information clé de la référence ?</p>
+
+<p><strong>ROUGE-L</strong> utilise la plus longue sous-séquence commune (LCS — Longest Common Subsequence). Elle capture l'ordre des mots sans exiger de contiguïté.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Résumé des métriques :</p>
+<p>- BLEU → traduction automatique → précision</p>
+<p>- ROUGE → résumé automatique → rappel</p>
+<p>- BERTScore → tâches sémantiques → embeddings</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-arbre-de-décision-comment-utiliser-un-llm-pour-sa-tâche">4. Arbre de décision — Comment utiliser un LLM pour sa tâche</h2>
+
+<p>Le cours présente le fine-tuning et le prompt engineering séparément. Voici le <strong>framework décisionnel</strong> que les praticiens utilisent réellement.</p>
+
+<p><strong>Étape 1 : Essayer le prompting d'abord (coût ≈ 0)</strong></p>
+
+<p>Zero-shot → Few-shot → Chain-of-thought. Si les performances sont suffisantes, stop — c'est la solution la plus simple et la plus maintenable.</p>
+
+<p><strong>Étape 2 : RAG (Retrieval-Augmented Generation)</strong></p>
+
+<p>Le modèle a besoin de connaissances spécifiques (documents internes, données récentes). On récupère les passages pertinents et on les injecte dans le prompt. Pas de fine-tuning nécessaire, les données sont facilement mises à jour.</p>
+
+<p><strong>Étape 3 : Fine-tuning LoRA</strong></p>
+
+<p>Le modèle doit apprendre un <em>style</em>, un <em>format</em>, ou un <em>comportement</em> précis que le prompting ne capture pas — par exemple un chatbot avec une personnalité définie, ou un extracteur de données structurées dans un format métier. Nécessite quelques centaines à milliers d'exemples.</p>
+
+<p><strong>Étape 4 : Pré-entraînement continu (rare)</strong></p>
+
+<p>Le domaine est très spécialisé et sous-représenté dans les données d'entraînement (droit français, biologie moléculaire). Coûteux : nécessite des millions de tokens de données de domaine.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Règle d'or : ne fine-tune jamais un modèle pour lui apprendre des <em>faits</em> — utilise RAG. Le fine-tuning sert à changer le <em>comportement</em> (style, format, raisonnement), pas les <em>connaissances</em>. Un modèle fine-tuné sur des faits hallucine avec assurance.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-les-hallucinations-le-problème-n1-des-llms">5. Les hallucinations — Le problème n°1 des LLMs</h2>
+
+<p>Concept absent du cours mais central en production.</p>
+
+<p><strong>Définition :</strong> un modèle "hallucine" quand il génère du contenu qui semble plausible et fluide mais qui est factuellement faux.</p>
+
+<p><strong>Pourquoi ça arrive :</strong></p>
+
+<ol>
+<li><strong>Next-token prediction ≠ vérité</strong> — le modèle maximise $P(\text{token suivant} \mid \text{contexte})$, pas $P(\text{token vrai} \mid \text{contexte})$. Il génère ce qui est <em>statistiquement plausible</em>, pas ce qui est <em>vrai</em>.</li>
+<li><strong>Exposure bias</strong> (cf. section 2.2) — les erreurs de prédiction se propagent.</li>
+<li><strong>Le modèle ne sait pas ce qu'il ne sait pas</strong> — il n'a pas de mécanisme interne de "je ne suis pas sûr".</li>
+</ol>
+
+<p><strong>Exemples classiques :</strong></p>
+
+<ul>
+<li>Inventer des citations académiques inexistantes (format parfait, auteurs plausibles)</li>
+<li>Générer du code qui compile mais contient un bug logique subtil</li>
+<li>Affirmer avec assurance un fait historique faux ("Victor Hugo a écrit Germinal")</li>
+</ul>
+
+<p><strong>Stratégies de mitigation :</strong></p>
+
+<ul>
+<li><strong>RAG</strong> : ancrer les réponses dans des documents vérifiés</li>
+<li><strong>Température basse</strong> : réduire la créativité pour les tâches factuelles</li>
+<li><strong>Chain-of-thought</strong> : forcer le raisonnement étape par étape (réduit les raccourcis)</li>
+<li><strong>Self-consistency</strong> : générer $N$ réponses et prendre la majorité</li>
+<li><strong>Vérification par un second modèle</strong> (LLM-as-a-judge)</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>L'hallucination n'est pas un bug du modèle — c'est une conséquence directe de son objectif d'entraînement. Un modèle entraîné à prédire le token suivant n'a aucune raison intrinsèque de ne dire que des choses vraies.</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-lécosystème-réel-des-llms-en-2025">6. L'écosystème réel des LLMs en 2025</h2>
+
+<h3 id="ref-modèles-propriétaires-vs-open-source">Modèles propriétaires vs open-source</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Catégorie</th><th>Modèles</th><th>Avantages</th><th>Inconvénients</th></tr></thead><tbody><tr><td>Propriétaires (API)</td><td>GPT-4o, Claude 3.5/4, Gemini 1.5</td><td>Meilleure performance brute, zéro infra</td><td>Coût par token, dépendance fournisseur, données envoyées à un tiers</td></tr><tr><td>Open-source petits</td><td>LLaMA 3 8B, Mistral 7B, Phi-3</td><td>Déploiement local, fine-tuning possible, confidentialité</td><td>Performances inférieures</td></tr><tr><td>Open-source gros</td><td>LLaMA 3 70B, Mixtral 8x7B, DeepSeek</td><td>Performances proches des propriétaires, contrôle total</td><td>Infra GPU coûteuse (4–8× A100)</td></tr></tbody></table></div>
+<h3 id="ref-la-pile-technique-moderne">La pile technique moderne</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Pile typique pour une application LLM en production (2025)
+
+# 1. Modèle       : API (OpenAI / Anthropic) ou self-hosted (vLLM + LLaMA)
+# 2. Orchestration : LangChain, LlamaIndex, ou code custom
+# 3. RAG           : Vector DB (Pinecone, Chroma, Weaviate) + embeddings
+# 4. Évaluation    : Ragas, LangSmith, Braintrust
+# 5. Monitoring    : coût, latence, qualité des réponses
+# 6. Guardrails    : filtrage input/output, détection d&#x27;hallucinations</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Pour un premier projet : commencer avec l'API OpenAI ou Anthropic + LangChain + Chroma (vector DB locale). C'est gratuit ou quasi-gratuit pour expérimenter et ne nécessite pas de GPU.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<ol>
+<li><strong>Pourquoi divise-t-on par $\sqrt{d_k}$ dans le calcul de l'attention ?</strong> Que se passe-t-il si on ne le fait pas ?</li>
+</ol>
+
+<ol>
+<li><strong>Quelle est la différence entre l'entraînement (teacher forcing) et l'inférence (décodage autorégressif) ?</strong> Quel problème pratique cela crée-t-il ?</li>
+</ol>
+
+<ol>
+<li><strong>Tu veux qu'un LLM réponde toujours dans le même format JSON strict pour une API interne. Vaut-il mieux utiliser du prompting, du RAG ou du fine-tuning ?</strong> Pourquoi ?</li>
+</ol>
+
+<ol>
+<li><strong>Un LLM affirme avec confiance que "Marie Curie a remporté le prix Nobel de chimie en 1903". Est-ce une hallucination ?</strong> Comment le vérifier et s'en protéger en production ?</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Diviser par $\sqrt{d_k}$ dans l'attention évite la saturation du softmax : sans ce facteur, un token capte toute l'attention et les autres disparaissent.</li>
+<li>Les tokenizers (BPE, WordPiece, SentencePiece) découpent les mots différemment — cela impacte le coût, la taille du contexte consommé, et les performances selon la langue.</li>
+<li>Pendant l'entraînement, le modèle voit les vraies réponses (teacher forcing) ; pendant l'inférence, il utilise ses propres prédictions (autorégressif). Cette différence crée de l'exposure bias et des hallucinations.</li>
+<li>Le KV Cache stocke les Keys et Values déjà calculés pour éviter de les recalculer à chaque nouveau token : il accélère la génération de $O(n^2)$ à $O(n)$.</li>
+<li>Les scaling laws montrent qu'un petit modèle bien entraîné (LLaMA 7B sur 1T tokens) bat un gros modèle sous-entraîné (GPT-3 175B sur 300B tokens).</li>
+<li>LoRA permet de fine-tuner un LLM en n'entraînant que 0.06% de ses paramètres — un seul GPU suffit.</li>
+<li>Pour utiliser un LLM : essayer le prompting d'abord, puis RAG, puis fine-tuning LoRA, puis pré-entraînement. Ne jamais fine-tuner pour des <em>faits</em> — utiliser RAG.</li>
+<li>Les hallucinations sont une conséquence directe de l'objectif d'entraînement (prédire le token suivant ≠ dire la vérité). Se protéger avec RAG, température basse, et vérification externe.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-fine-tuning-vs-prompting-vs-rag">Fine-tuning vs prompting vs RAG</a></li><li><a href="#syn-lora-et-peft">LoRA et PEFT</a></li><li><a href="#syn-rlhf-et-dpo">RLHF et DPO</a></li><li><a href="#syn-quantization">Quantization</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-kv-cache-et-inférence-rapide">KV cache et inférence rapide</a></li><li><a href="#syn-flash-attention">Flash Attention</a></li><li><a href="#syn-mixture-of-experts">Mixture of Experts</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-fine-tuning-vs-prompting-vs-rag">Fine-tuning vs prompting vs RAG</h3>
+
+<p>Il existe trois grandes façons d'adapter un LLM à votre cas d'usage. Le bon choix dépend du besoin, des ressources et de la quantité de données disponibles. Comprendre le bon niveau d'intervention est souvent plus important que la maîtrise technique de chacune des méthodes.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Méthode</th><th>Quand l'utiliser</th><th>Coût</th><th>Complexité</th></tr></thead><tbody><tr><td><strong>Prompt engineering</strong></td><td>Tâche bien formulée, le comportement fait partie du general knowledge du modèle</td><td>$0</td><td>★</td></tr><tr><td><strong>Few-shot prompting</strong></td><td>Vous avez 2 à 10 exemples qui illustrent le comportement voulu</td><td>$0</td><td>★</td></tr><tr><td><strong>RAG</strong></td><td>Vous avez des connaissances spécifiques (docs internes, base de données)</td><td><div class="katex-display">$$</td><td>★★</td></tr><tr><td><strong>Fine-tuning (LoRA)</strong></td><td>Vous voulez changer le <strong>style</strong> ou enseigner une <strong>forme de réponse</strong></td><td>$$</div>$</td><td>★★★</td></tr><tr><td><strong>Full fine-tuning</strong></td><td>Vous adaptez fondamentalement le modèle à un domaine</td><td><div class="katex-display">$$$$</div></td><td>★★★★</td></tr><tr><td><strong>Pre-training from scratch</strong></td><td>Vous avez 1 000 GPU et un budget de 10 M€</td><td><div class="katex-display">$$$$</div>$</td><td>★★★★★</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : le prompting, c'est expliquer une tâche à un consultant expert déjà formé. Le RAG, c'est lui donner les documents nécessaires au moment de la question. Le fine-tuning, c'est l'envoyer en formation spécialisée pour qu'il intègre votre vocabulaire et votre style. Le pre-training, c'est former un nouveau consultant from scratch — possible mais inutile dans 99% des cas.</p></div></div>
+
+<p><strong>RAG</strong> (Retrieval-Augmented Generation) est devenu le pattern dominant pour intégrer des connaissances internes :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Pipeline RAG simplifié
+from sentence_transformers import SentenceTransformer
+import faiss
+
+# 1. Indexation (offline) : on encode les documents une fois pour toutes
+embedder = SentenceTransformer(&quot;all-MiniLM-L6-v2&quot;)
+doc_embeddings = embedder.encode(documents)
+index = faiss.IndexFlatL2(doc_embeddings.shape[1])
+index.add(doc_embeddings)
+
+# 2. Requête (runtime) : pour chaque question, on cherche les chunks pertinents
+query = &quot;Quelle est la politique de remboursement ?&quot;
+q_embedding = embedder.encode([query])
+distances, indices = index.search(q_embedding, k=3)
+relevant_docs = [documents[i] for i in indices[0]]
+
+# 3. Construction du prompt : on injecte le contexte dans la question
+context = &quot;\n&quot;.join(relevant_docs)
+prompt = f&quot;Contexte:\n{context}\n\nQuestion: {query}\nRéponse:&quot;
+
+# 4. Génération : on appelle le LLM avec le prompt enrichi
+response = llm.generate(prompt)</code></pre></div>
+
+
+<h3 id="syn-lora-et-peft">LoRA et PEFT</h3>
+
+<p><strong>LoRA</strong> (Low-Rank Adaptation, Hu et al., 2021) permet de fine-tuner un grand modèle en ne touchant qu'une <strong>fraction infime</strong> de ses paramètres, grâce à une observation expérimentale clé : la mise à jour $\Delta W$ nécessaire pour adapter un modèle pré-entraîné à une tâche spécifique est généralement de <strong>rang effectif très faible</strong>.</p>
+
+<p>L'idée : au lieu de mettre à jour la matrice de poids $W \in \mathbb{R}^{d \times d}$ dans sa totalité, on la garde gelée et on lui ajoute une correction parametrisée par <strong>deux petites matrices rectangulaires</strong> :</p>
+
+<div class="katex-display">$$W' = W + \Delta W = W + BA$$</div>
+
+<p>où $B \in \mathbb{R}^{d \times r}$, $A \in \mathbb{R}^{r \times d}$, et $r \ll d$ (typiquement $r = 8$).</p>
+
+<p><strong>Décryptage mathématique</strong> : $B$ a $d \times r$ paramètres et $A$ a $r \times d$ paramètres, donc le produit $BA$ a au plus un rang de $r$. On parametrise directement la mise à jour comme une matrice de rang faible, ce qui réduit drastiquement le nombre de paramètres entraînables.</p>
+
+<p><strong>Exemple chiffré</strong> : pour une couche avec $d = 4096$ (typique des LLaMA-7B) :</p>
+
+<ul>
+<li>Fine-tuning complet : $4096 \times 4096 = 16{,}7$ millions de paramètres par couche</li>
+<li>LoRA avec $r = 8$ : $2 \times 4096 \times 8 = 65{,}5$ mille paramètres par couche</li>
+<li><strong>Facteur 256x moins de paramètres à entraîner</strong></li>
+</ul>
+
+<p>Conséquences pratiques :</p>
+
+<ul>
+<li>$W$ original est <strong>gelé</strong> (pas de gradient calculé dessus), on n'entraîne que $A$ et $B$</li>
+<li>Plusieurs LoRAs peuvent être stockés et activés à la volée pour différentes tâches, sans dupliquer le modèle de base (100 Go → 100 Mo par LoRA)</li>
+<li>L'<strong>initialisation</strong> : $B$ est initialisé à zéro et $A$ aléatoirement, ce qui garantit $BA = 0$ au départ et que le modèle reste identique avant le début de l'entraînement</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from peft import LoraConfig, get_peft_model
+
+base_model = AutoModelForCausalLM.from_pretrained(&quot;meta-llama/Llama-2-7b-hf&quot;)
+
+lora_config = LoraConfig(
+    r=8,                                # rang de la décomposition
+    lora_alpha=16,                      # facteur de scaling (souvent 2*r)
+    target_modules=[&quot;q_proj&quot;, &quot;v_proj&quot;],  # quelles couches LoRA-fier
+    lora_dropout=0.1,
+    task_type=&quot;CAUSAL_LM&quot;,
+)
+model = get_peft_model(base_model, lora_config)
+model.print_trainable_parameters()
+# trainable params: 4,194,304 || all params: 6,742,609,920 || trainable%: 0.06%</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Recommandation 2025</strong> : pour fine-tuner un LLM sur vos données, utilisez <strong>toujours</strong> LoRA (ou QLoRA pour les modèles 30B+). Le full fine-tuning n'a presque plus de raison d'être : LoRA atteint 95-99% des performances avec 0,1% du coût et de la mémoire. Hugging Face PEFT est la lib de référence.</p></div></div>
+
+<h3 id="syn-rlhf-et-dpo">RLHF et DPO</h3>
+
+<p>Pour aligner un LLM avec les <strong>préférences humaines</strong> (aimable, utile, sûr, refusant les contenus dangereux), on utilisait historiquement le RLHF (Reinforcement Learning from Human Feedback). Pipeline classique en trois étapes :</p>
+
+<ol>
+<li><strong>SFT</strong> (Supervised Fine-Tuning) : on entraîne le modèle sur des exemples de bonnes réponses écrites par des humains</li>
+<li><strong>Reward modeling</strong> : on entraîne un modèle séparé qui, étant donné (prompt, réponse), prédit un score de qualité à partir de comparaisons humaines (réponse A > B)</li>
+<li><strong>PPO</strong> (Proximal Policy Optimization) : on optimise le LLM avec du RL en maximisant le score du reward model tout en restant proche du modèle initial (pour éviter la dérive)</li>
+</ol>
+
+<p>Ce pipeline est complexe à mettre en place, instable à entraîner, et demande beaucoup d'ingénierie.</p>
+
+<p><strong>DPO</strong> (Direct Preference Optimization, Rafailov et al., 2023) simplifie radicalement : au lieu d'entraîner un reward model puis de faire du RL, on <strong>optimise directement le LLM sur des paires (réponse préférée, réponse rejetée)</strong> avec une fonction de perte dérivée analytiquement du cadre RLHF. Plus simple, plus stable, et presque aussi performant.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from trl import DPOTrainer
+
+trainer = DPOTrainer(
+    model=model,
+    ref_model=ref_model,              # modèle de référence (avant alignment)
+    train_dataset=preference_data,    # paires (chosen, rejected)
+    beta=0.1,                         # force de la régularisation KL
+    tokenizer=tokenizer,
+)
+trainer.train()</code></pre></div>
+
+
+<p>DPO est devenu le standard 2024-2025 pour l'alignement des LLMs open source (Mistral, LLaMA, Zephyr, Mixtral).</p>
+
+<h3 id="syn-quantization">Quantization</h3>
+
+<p>La <strong>quantization</strong> réduit la précision numérique des poids du modèle pour économiser la mémoire et accélérer l'inférence. L'idée maîtresse : les poids d'un réseau neuronal ne nécessitent pas 32 bits de précision — 8 ou même 4 bits suffisent souvent pour maintenir la qualité, car le modèle est intrinsèquement <strong>tolérant au bruit</strong>.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Format</th><th>Bits</th><th>Effet sur la qualité</th></tr></thead><tbody><tr><td>FP32</td><td>32</td><td>Référence (précision pleine)</td></tr><tr><td>FP16 / BF16</td><td>16</td><td>Quasi imperceptible</td></tr><tr><td>INT8</td><td>8</td><td>Légère dégradation (~1%)</td></tr><tr><td>INT4 (NF4)</td><td>4</td><td>Dégradation modérée (~2-5%)</td></tr><tr><td>INT2</td><td>2</td><td>Souvent inutilisable</td></tr></tbody></table></div>
+<p><strong>Pourquoi ça marche</strong> : les distributions de poids dans un LLM entraîné sont très concentrées autour de zéro avec une queue gaussienne. On peut donc construire une grille de quantification optimisée pour cette distribution (par exemple <strong>NF4</strong>, "Normal Float 4", de Dettmers et al.) qui préserve l'information essentielle avec seulement 16 niveaux possibles. La perte de précision ne se propage pas en cascade destructrice parce que les calculs intermédiaires restent en FP16.</p>
+
+<p><strong>Exemple chiffré</strong> sur LLaMA-2 70B :</p>
+
+<ul>
+<li>FP16 : 140 Go (besoin de 2× A100 80GB, infrastructure datacenter)</li>
+<li>INT8 : 70 Go (besoin de 1× A100 80GB)</li>
+<li>INT4 : 35 Go (tient sur une RTX 4090 24GB avec un peu d'offload) — <strong>exécutable sur un PC gamer</strong></li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from transformers import BitsAndBytesConfig, AutoModelForCausalLM
+
+bnb_config = BitsAndBytesConfig(
+    load_in_4bit=True,                     # quantization 4 bits
+    bnb_4bit_quant_type=&quot;nf4&quot;,             # Normal Float 4 (optimal pour LLM)
+    bnb_4bit_compute_dtype=&quot;float16&quot;,      # calcul en FP16, stockage en INT4
+)
+model = AutoModelForCausalLM.from_pretrained(
+    &quot;meta-llama/Llama-2-70b-hf&quot;,
+    quantization_config=bnb_config,
+)</code></pre></div>
+
+
+<p><strong>QLoRA</strong> combine LoRA + quantization 4-bit : on charge le modèle en INT4 (poids figés), on ajoute des adapters LoRA entraînables en FP16. Permet de fine-tuner LLaMA 65B sur un seul A100 48GB avec presque aucune perte de qualité. Révolution démocratisante de 2023.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : la quantization, c'est compresser un MP3 320 kbps en 64 kbps. Vous économisez beaucoup d'espace, et la qualité reste écoutable pour la plupart des oreilles. Sur un LLM, passer de FP32 à INT4 réduit la mémoire d'un facteur 8 avec 1-3% de dégradation seulement.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-kv-cache-et-inférence-rapide">KV cache et inférence rapide</h3>
+
+<p>Pendant la génération auto-régressive, à chaque nouveau token, le modèle doit recalculer l'attention sur <strong>tous</strong> les tokens précédents. Sans optimisation, le calcul croît en $O(n^2)$ : pour générer le token 1000, on recalcule tout ce qui a déjà été vu aux tokens 1 à 999.</p>
+
+<p><strong>Observation clé</strong> : quand on génère le token $n+1$, les keys $K$ et values $V$ des tokens 1 à $n$ sont <strong>exactement les mêmes</strong> qu'à l'étape précédente (les poids sont figés, et les tokens précédents ne changent pas). On peut donc les <strong>mémoriser</strong> au lieu de les recalculer.</p>
+
+<p><strong>KV cache</strong> : on stocke en mémoire les clés et valeurs déjà calculées. Pour le token $n+1$, on calcule seulement les nouvelles $Q_{n+1}$, $K_{n+1}$, $V_{n+1}$, on ajoute $K_{n+1}$ et $V_{n+1}$ au cache, et on fait l'attention de $Q_{n+1}$ contre tout le cache. Complexité : on passe de $O(n^2)$ à $O(n)$ par token.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Sans KV cache : ~n² opérations par token
+# Avec KV cache : ~n opérations par token
+
+generation = model.generate(
+    input_ids,
+    max_new_tokens=200,
+    use_cache=True,   # activé par défaut dans HF transformers
+)</code></pre></div>
+
+
+<p><strong>Coût mémoire</strong> : le cache occupe environ $2 \times n_{\text{layers}} \times n_{\text{heads}} \times \text{seq\_len} \times d_{\text{head}} \times 2\ \text{bytes}$ (FP16). Pour LLaMA 70B avec 4 096 tokens de contexte, c'est ~10 GB de KV cache — non négligeable en production.</p>
+
+<h3 id="syn-flash-attention">Flash Attention</h3>
+
+<p>Tri Dao et al. (2022) ont observé que l'attention naïve fait des accès mémoire inefficaces : on calcule la matrice complète $n \times n$ d'attention, puis on la normalise, puis on la multiplie par $V$. Toutes ces matrices intermédiaires <strong>saturent la bande passante</strong> de la mémoire HBM du GPU, alors que les calculs sont triviaux pour les unités de calcul.</p>
+
+<p><strong>Flash Attention</strong> réorganise les calculs en <strong>tuiles</strong> pour minimiser les accès à la mémoire HBM (lente, grosse) et maximiser les accès à la SRAM on-chip (rapide, petite). Résultat : 2 à 4× plus rapide à l'entraînement, 4 à 10× plus rapide à l'inférence, <strong>sans aucune perte de précision</strong> (l'algorithme est mathématiquement équivalent).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Flash Attention 2 dans PyTorch 2.x
+import torch
+torch.backends.cuda.enable_flash_sdp(True)</code></pre></div>
+
+
+<p>Disponible dans toutes les libs modernes (transformers, vLLM, llama.cpp). C'est l'optimisation la plus universellement adoptée du domaine en 2024-2025.</p>
+
+<h3 id="syn-mixture-of-experts">Mixture of Experts</h3>
+
+<p><strong>MoE</strong> (Mixture of Experts) : au lieu d'avoir un seul gros FFN par couche, on a plusieurs "experts" spécialisés et un <strong>router</strong> qui décide quels experts activer pour chaque token. C'est un changement architectural majeur par rapport aux transformers denses.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Token → [Router] → [Expert 1, Expert 2, ..., Expert 8]
+                    activate top 2
+                       ↓
+                   weighted sum</code></pre></div>
+
+
+<p><strong>Avantages</strong> :</p>
+
+<ul>
+<li><strong>Capacité</strong> : beaucoup plus de paramètres totaux (100B+) sans alourdir l'inférence</li>
+<li><strong>Coût d'inférence</strong> : seulement quelques experts activés par token (effectivement ~10-20% des paramètres)</li>
+<li><strong>Spécialisation</strong> : chaque expert apprend une niche (langue, domaine, style)</li>
+</ul>
+
+<p><strong>Exemple</strong> : Mixtral 8×7B (Mistral AI, 2023) a 47B paramètres totaux mais n'en active que 13B par token — performance d'un modèle 47B au coût d'un modèle 13B. C'est l'architecture qui a permis aux modèles open source de rattraper GPT-4 sur de nombreux benchmarks.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Limite pratique</strong> : MoE est plus difficile à entraîner (instabilité, load balancing entre experts) et à servir en production (la mémoire totale reste grande même si l'inférence est rapide). Pour la plupart des projets, un dense model standard est plus simple et plus que suffisant.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Quelle est la différence entre RAG et fine-tuning, et dans quels cas choisir l'un ou l'autre ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>connaissance vs comportement.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>RAG</strong> ajoute des <strong>connaissances</strong> à un modèle existant : vous lui donnez des documents pertinents au moment de la requête. Le modèle ne change pas. Avantages : (1) connaissances toujours à jour (vous mettez à jour la base de documents, pas le modèle), (2) traçable (vous savez d'où vient chaque réponse), (3) bon marché. Cas d'usage : chatbot sur la doc interne d'une entreprise, Q&A sur des contrats, search avec génération. <strong>Fine-tuning</strong> modifie le <strong>comportement</strong> du modèle : vous lui apprenez un style, un format, un type de raisonnement. Cas d'usage : assistant qui répond toujours en JSON structuré, classifieur custom, modèle médical qui utilise un vocabulaire spécialisé. <strong>Règle simple</strong> : si vous voulez que le modèle "sache" quelque chose → RAG. Si vous voulez qu'il "se comporte" différemment → fine-tuning. Souvent on combine les deux : un modèle légèrement fine-tuné pour adopter un style + RAG pour les connaissances. Question d'entretien LLM applicatif moderne classique.</p>
+
+</details>
+
+<p><strong>Q2 : Vous voulez utiliser LLaMA-2 70B sur votre laptop avec une RTX 3090 24GB. Comment faire techniquement ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>quantization 4-bit + offload.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>LLaMA-2 70B en FP16 fait ~140 Go — impossible sur 24 Go de VRAM. Trois techniques cumulables. (1) <strong>Quantization 4-bit</strong> : <code>bitsandbytes</code> (NF4) ou <code>gguf</code> (Q4_K_M dans llama.cpp). Le modèle passe à ~35 Go. (2) <strong>Offload CPU/disque</strong> : les couches qui ne tiennent pas en GPU sont mises en RAM CPU (~30 Go) ou même sur disque NVMe. La librairie <code>accelerate</code> gère ça automatiquement. C'est lent à l'inférence mais ça marche. (3) <strong>llama.cpp avec GPU layers</strong> : <code>llama.cpp</code> permet de charger une partie des couches sur GPU et le reste sur CPU. Avec 24 Go de VRAM, vous chargez ~50% des couches sur GPU pour un modèle 70B en Q4. Vitesse : ~2-5 tokens/s, suffisant pour usage interactif. <strong>Solution la plus simple en 2025</strong> : utiliser <code>Ollama</code> ou <code>LM Studio</code> qui font tout cela de façon transparente. Vous installez, vous lancez <code>ollama run llama2:70b</code>, et ça marche. <strong>Alternative</strong> : des modèles plus petits — Mistral 7B ou Llama 3 8B en INT4 tiennent en 4-6 Go et donnent 80% des perfs de LLaMA 70B sur la plupart des tâches. Question d'entretien LLM applicatif moderne.</p>
+
+</details>
+
+<p><strong>Q3 : Pourquoi LoRA est-il devenu le standard pour fine-tuner les LLMs, alors qu'il met à jour seulement 0,1% des paramètres ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>structure low-rank et modularité.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Trois raisons. (1) <strong>Hypothèse intrinsèque</strong> : les modifications nécessaires pour adapter un grand modèle à une tâche spécifique sont de <strong>rang faible</strong>. Les chercheurs ont mesuré expérimentalement que la "vraie" mise à jour $\Delta W$ d'un fine-tuning complet a un rang effectif beaucoup plus faible que sa dimension nominale. LoRA exploite cette observation : on parametrise directement $\Delta W$ comme un produit de matrices low-rank ($BA$ avec $r = 8$). (2) <strong>Coût computationnel et mémoire</strong> : pour LLaMA 7B, LoRA réduit les paramètres entraînables de 6,7B à ~4M, soit 1 700× moins. La mémoire (gradients, momentum Adam) suit la même réduction. On fine-tune sur un GPU consumer au lieu d'un cluster. (3) <strong>Modularité</strong> : un modèle de base + plusieurs LoRAs petits stockés séparément. Vous pouvez activer "LoRA juridique" ou "LoRA marketing" sans redéployer 70 Go de poids — juste swap de quelques Mo. <strong>Limite</strong> : LoRA reste légèrement inférieur au full fine-tuning pour les tâches qui nécessitent vraiment de modifier le modèle en profondeur (changement de domaine radical). Pour 95% des cas, LoRA est suffisant. <strong>QLoRA</strong> combine LoRA avec quantization 4-bit, ce qui permet de fine-tuner LLaMA 65B sur un seul A100 — impensable il y a 2 ans. Question d'entretien LLM avancé.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>LoRA: Low-Rank Adaptation of Large Language Models</em> (Hu et al., 2021)</li>
+<li><em>QLoRA: Efficient Finetuning of Quantized LLMs</em> (Dettmers et al., 2023)</li>
+<li><em>Direct Preference Optimization</em> (Rafailov et al., 2023) — DPO</li>
+<li><em>FlashAttention: Fast and Memory-Efficient Exact Attention</em> (Dao et al., 2022)</li>
+<li><a href="https://huggingface.co/docs/peft" target="_blank" rel="noopener">Hugging Face PEFT documentation</a> — référence pour LoRA, prefix tuning, etc.</li>
+<li><a href="https://github.com/vllm-project/vllm" target="_blank" rel="noopener">vLLM</a> — serveur d'inférence rapide pour LLMs</li>
+<li><em>Mixtral of Experts</em> (Jiang et al., 2024) — papier Mixtral 8×7B</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../nlp-llm/transformers-llm.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Transformers & LLM</span>
+  </a>
+  <a href="../nlp-llm/gen-ai-rag-agents.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">GenAI, RAG & Agents →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

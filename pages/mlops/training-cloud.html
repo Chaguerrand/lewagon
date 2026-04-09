@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training in the Cloud — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Training in the Cloud</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html" class="active">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">MLOps & Production</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Training in the Cloud</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Training in the Cloud</h1>
+        <p class="page-objective">Découpler un projet ML de la machine locale — stocker les modèles sur Google Cloud Storage, lire les données depuis BigQuery, gérer la configuration via `.env`, et entraîner sur une VM dans le cloud avec Google Compute Engine.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">VM / GPU</div>
+        <div class="key-concept-def">Machine virtuelle équipée d&#x27;accélérateurs pour entraîner plus vite.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Bucket GCS / S3</div>
+        <div class="key-concept-def">Stockage objet où l&#x27;on lit/écrit datasets et artefacts.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Service account</div>
+        <div class="key-concept-def">Identité programmatique qui permet à un script d&#x27;agir sur le cloud.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">IAM</div>
+        <div class="key-concept-def">Identity &amp; Access Management : qui peut faire quoi sur quelles ressources.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-training-in-the-cloud">Cheatsheet — Training in the Cloud</a><ol><li><a href="#configuration-avec-env-et-direnv">Configuration avec `.env` et `direnv`</a></li><li><a href="#google-cloud-storage-gcs-stocker-les-modèles">Google Cloud Storage (GCS) — Stocker les modèles</a></li><li><a href="#google-bigquery-lireécrire-les-données">Google BigQuery — Lire/écrire les données</a></li><li><a href="#google-compute-engine-vm-dans-le-cloud">Google Compute Engine — VM dans le cloud</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-objectif-du-local-au-cloud">1) Objectif — Du local au cloud</a><ol><li><a href="#11-où-en-sommes-nous">1.1 Où en sommes-nous ?</a></li><li><a href="#12-les-trois-transitions">1.2 Les trois transitions</a></li><li><a href="#13-structure-du-package-mise-à-jour">1.3 Structure du package mise à jour</a></li></ol></li><li><a href="#2-google-cloud-platform-gcp">2) Google Cloud Platform (GCP)</a><ol><li><a href="#21-couches-de-service">2.1 Couches de service</a></li><li><a href="#22-comparaison-des-cloud-providers">2.2 Comparaison des cloud providers</a></li><li><a href="#23-interfaces-gcp">2.3 Interfaces GCP</a></li><li><a href="#24-authentification">2.4 Authentification</a></li></ol></li><li><a href="#3-configuration-avec-env">3) Configuration avec `.env`</a><ol><li><a href="#31-pourquoi">3.1 Pourquoi ?</a></li><li><a href="#32-fichier-env">3.2 Fichier `.env`</a></li><li><a href="#33-chargement-avec-direnv">3.3 Chargement avec `direnv`</a></li><li><a href="#34-utilisation-dans-le-code">3.4 Utilisation dans le code</a></li></ol></li><li><a href="#4-modèle-dans-le-cloud-google-cloud-storage">4) Modèle dans le cloud — Google Cloud Storage</a><ol><li><a href="#41-concepts">4.1 Concepts</a></li><li><a href="#42-cli-gsutil">4.2 CLI — gsutil</a></li><li><a href="#43-code-python">4.3 Code Python</a></li></ol></li><li><a href="#5-données-dans-le-cloud-google-bigquery">5) Données dans le cloud — Google BigQuery</a><ol><li><a href="#51-concepts">5.1 Concepts</a></li><li><a href="#52-lire-une-table">5.2 Lire une table</a></li><li><a href="#53-écrire-un-dataframe">5.3 Écrire un DataFrame</a></li><li><a href="#54-cli-bq">5.4 CLI — bq</a></li><li><a href="#55-coût-des-requêtes">5.5 Coût des requêtes</a></li></ol></li><li><a href="#6-entraînement-dans-le-cloud-google-compute-engine">6) Entraînement dans le cloud — Google Compute Engine</a><ol><li><a href="#61-concepts">6.1 Concepts</a></li><li><a href="#62-gestion-des-vms">6.2 Gestion des VMs</a></li><li><a href="#63-connexion-et-transfert-de-fichiers">6.3 Connexion et transfert de fichiers</a></li><li><a href="#64-workflow-complet">6.4 Workflow complet</a></li></ol></li><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-training-in-the-cloud">📋 Cheatsheet — Training in the Cloud</h2>
+
+<h3 id="configuration-avec-env-et-direnv">Configuration avec <code>.env</code> et <code>direnv</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## .env — variables d&#x27;environnement du projet
+MODEL_TARGET=gcs                       # local | gcs
+DATA_SOURCE=big_query                  # local | big_query
+BUCKET_NAME=my-bucket-name
+PROJECT=my-gcp-project
+DATASET=taxifare_dataset
+
+## .envrc — loader (à côté du .env)
+dotenv
+
+## Activer
+direnv allow .                         # charge les variables dans l&#x27;environnement
+direnv reload                          # recharge après modification
+echo $MODEL_TARGET                     # vérifie la valeur</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## params.py — charger les variables dans Python
+import os
+
+MODEL_TARGET = os.environ.get(&quot;MODEL_TARGET&quot;)    # None si absent
+BUCKET_NAME = os.environ[&quot;BUCKET_NAME&quot;]          # erreur si absent</code></pre></div>
+
+
+<h3 id="google-cloud-storage-gcs-stocker-les-modèles">Google Cloud Storage (GCS) — Stocker les modèles</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## CLI — gsutil
+gsutil ls                              # liste les buckets
+gsutil mb -l europe-west1 -p $PROJECT gs://$BUCKET  # crée un bucket
+gsutil ls gs://$BUCKET                 # liste les blobs
+gsutil cp model.joblib gs://$BUCKET/   # upload un fichier
+gsutil cp gs://$BUCKET/model.joblib .  # download un fichier</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Code Python — upload/download
+from google.cloud import storage
+
+client = storage.Client()
+bucket = client.bucket(BUCKET_NAME)
+
+## Upload
+blob = bucket.blob(&quot;models/model.joblib&quot;)
+blob.upload_from_filename(&quot;model.joblib&quot;)          # local → cloud
+
+## Download
+blob = bucket.blob(&quot;models/model.joblib&quot;)
+blob.download_to_filename(&quot;model.joblib&quot;)          # cloud → local</code></pre></div>
+
+
+<h3 id="google-bigquery-lireécrire-les-données">Google BigQuery — Lire/écrire les données</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from google.cloud import bigquery
+import pandas as pd
+
+client = bigquery.Client(project=PROJECT)
+
+## Lire une table
+query = f&quot;SELECT * FROM {PROJECT}.{DATASET}.processed_1k&quot;
+df = client.query(query).result().to_dataframe()   # résultat en DataFrame
+
+## Écrire un DataFrame
+table = f&quot;{PROJECT}.{DATASET}.lecture_data&quot;
+job_config = bigquery.LoadJobConfig(write_disposition=&quot;WRITE_TRUNCATE&quot;)  # ou WRITE_APPEND
+job = client.load_table_from_dataframe(df, table, job_config=job_config)
+job.result()                                       # attend la fin du job</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## CLI — bq
+bq ls                                 # liste les datasets
+bq ls $DATASET                        # liste les tables d&#x27;un dataset
+bq show $DATASET.$TABLE               # affiche le schéma
+bq query &quot;SELECT * FROM $DATASET.$TABLE LIMIT 5&quot;</code></pre></div>
+
+
+<h3 id="google-compute-engine-vm-dans-le-cloud">Google Compute Engine — VM dans le cloud</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## CLI — gcloud compute
+gcloud compute instances list                      # liste les VMs
+gcloud compute instances start $INSTANCE           # démarre
+gcloud compute instances stop $INSTANCE            # arrête (⚠️ penser à stopper !)
+
+## Connexion SSH
+gcloud compute ssh $INSTANCE                       # shell interactif
+gcloud compute ssh $INSTANCE --command &quot;ls -la&quot;    # commande unique
+
+## Copie de fichiers
+gcloud compute scp --recurse ./project $INSTANCE:~/  # local → VM
+gcloud compute scp --recurse $INSTANCE:~/ .          # VM → local</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Commiter le fichier <code>.env</code> dans Git</strong></p>
+<p>Le <code>.env</code> contient des credentials, des API keys et des secrets — il ne doit jamais être versionné.</p>
+<p>❌ <code>git add .env</code> → credentials exposées sur GitHub</p>
+<p>✅ Ajouter <code>.env</code> dans <code>.gitignore</code> dès la création du projet</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier d'arrêter une VM après l'entraînement</strong></p>
+<p>Les VMs facturent tant qu'elles sont allumées, même si aucun calcul ne tourne.</p>
+<p>❌ Laisser une VM GPU tourner pendant le weekend → facture de centaines de dollars</p>
+<p>✅ <code>gcloud compute instances stop $INSTANCE</code> après chaque session + configurer un auto-shutdown</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser <code>SELECT *</code> sur BigQuery sans limiter les colonnes</strong></p>
+<p>BigQuery facture par <strong>volume de données scannées</strong>, pas par nombre de lignes retournées. <code>LIMIT</code> ne réduit pas le coût.</p>
+<p>❌ <code>SELECT * FROM dataset.table LIMIT 10</code> → scanne toutes les colonnes (facturé au TB)</p>
+<p>✅ <code>SELECT col1, col2 FROM dataset.table</code> → ne scanne que les colonnes nécessaires</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Hardcoder des chemins locaux dans le code</strong></p>
+<p>Le code doit fonctionner sur n'importe quelle machine (locale, VM, CI/CD).</p>
+<p>❌ <code>model_path = &quot;/Users/jean/models/model.pkl&quot;</code> → casse sur la VM</p>
+<p>✅ Utiliser des variables d'environnement via <code>.env</code> + <code>os.environ</code> pour tous les chemins et configurations</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre <code>WRITE_TRUNCATE</code> et <code>WRITE_APPEND</code> dans BigQuery</strong></p>
+<p><code>TRUNCATE</code> écrase toute la table existante, <code>APPEND</code> ajoute à la suite.</p>
+<p>❌ <code>WRITE_TRUNCATE</code> sur une table de production → perte de toutes les données historiques</p>
+<p>✅ Toujours vérifier le <code>write_disposition</code> avant d'écrire, et utiliser <code>WRITE_APPEND</code> pour les ajouts incrémentaux</p></div></div>
+
+<hr>
+
+<h2 id="1-objectif-du-local-au-cloud">1) Objectif — Du local au cloud</h2>
+
+<h3 id="11-où-en-sommes-nous">1.1 Où en sommes-nous ?</h3>
+
+<p>Le Data Scientist a créé un modèle dans un notebook. Le ML Engineer doit maintenant le rendre opérationnel :</p>
+
+<ol>
+<li>✅ Analyser le notebook</li>
+<li>✅ Packager le code en module Python</li>
+<li>✅ Entraîner à grande échelle (incremental processing)</li>
+<li>🎯 <strong>Passer au cloud</strong> : modèle, données et entraînement</li>
+</ol>
+
+<figure><img src="../../assets/images/training-cloud-01-3eabb9e1.png" alt="" loading="lazy"></figure>
+
+<h3 id="12-les-trois-transitions">1.2 Les trois transitions</h3>
+
+<figure><img src="../../assets/images/training-cloud-02-fba51754.png" alt="" loading="lazy"></figure>
+
+<div class="table-wrapper"><table><thead><tr><th>Transition</th><th>Local</th><th>Cloud</th></tr></thead><tbody><tr><td><strong>Modèle</strong></td><td>Fichier <code>.pkl</code> sur le disque</td><td>Blob dans Google Cloud Storage</td></tr><tr><td><strong>Données</strong></td><td>CSV local</td><td>Table dans Google BigQuery</td></tr><tr><td><strong>Exécution</strong></td><td>Machine locale</td><td>VM Google Compute Engine</td></tr></tbody></table></div>
+<h3 id="13-structure-du-package-mise-à-jour">1.3 Structure du package mise à jour</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">.
+├── .env                            # variables de configuration
+├── .envrc                          # loader direnv
+├── Makefile
+├── requirements.txt
+├── setup.py
+├── taxifare/
+│   ├── __init__.py
+│   ├── interface/
+│   │   └── main.py                 # point d&#x27;entrée
+│   ├── ml_logic/
+│   │   ├── data.py                 # load/store depuis BigQuery
+│   │   ├── registry.py             # load/store modèle depuis GCS
+│   │   └── ...
+│   ├── params.py                   # charge les variables .env
+│   └── utils.py
+└── tests/</code></pre></div>
+
+
+<hr>
+
+<h2 id="2-google-cloud-platform-gcp">2) Google Cloud Platform (GCP)</h2>
+
+<h3 id="21-couches-de-service">2.1 Couches de service</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Couche</th><th>Principe</th><th>Exemple GCP</th><th>Vous gérez</th></tr></thead><tbody><tr><td><strong>On-premise</strong></td><td>Votre propre serveur</td><td>—</td><td>Tout (hardware, OS, code)</td></tr><tr><td><strong>IaaS</strong></td><td>VM dans le cloud</td><td>Compute Engine</td><td>OS + environnement</td></tr><tr><td><strong>PaaS</strong></td><td>Plateforme managée</td><td>Cloud Run</td><td>Le package uniquement</td></tr><tr><td><strong>SaaS</strong></td><td>Service prêt à l'emploi</td><td>BigQuery</td><td>Les requêtes</td></tr></tbody></table></div>
+<h3 id="22-comparaison-des-cloud-providers">2.2 Comparaison des cloud providers</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Provider</th><th>Storage</th><th>Database</th><th>Compute</th></tr></thead><tbody><tr><td><strong>Google</strong></td><td>Cloud Storage</td><td>BigQuery</td><td>Compute Engine</td></tr><tr><td><strong>AWS</strong></td><td>S3</td><td>Athena / Redshift</td><td>EC2</td></tr><tr><td><strong>Azure</strong></td><td>Blob Storage</td><td>Synapse Analytics</td><td>Virtual Machines</td></tr></tbody></table></div>
+<h3 id="23-interfaces-gcp">2.3 Interfaces GCP</h3>
+
+<ul>
+<li>🌍 <strong>Web console</strong> : exploration, opérations ponctuelles</li>
+<li>💻 <strong>CLI</strong> (<code>gcloud</code>, <code>gsutil</code>, <code>bq</code>) : plus rapide, opérations précises</li>
+<li>🧬 <strong>Code</strong> (Python SDK) : pour les comportements à automatiser</li>
+</ul>
+
+<h3 id="24-authentification">2.4 Authentification</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">gcloud init                              # setup CLI
+gcloud auth application-default login    # setup code Python
+gcloud projects list                     # liste les projets
+gcloud services list --enabled           # liste les APIs activées</code></pre></div>
+
+
+<hr>
+
+<h2 id="3-configuration-avec-env">3) Configuration avec <code>.env</code></h2>
+
+<h3 id="31-pourquoi">3.1 Pourquoi ?</h3>
+
+<p>Le comportement du package doit s'adapter au contexte d'exécution (local vs cloud, dev vs prod, collaborateurs différents) <strong>sans modifier le code</strong>.</p>
+
+<p>👉 <a href="https://12factor.net/config" target="_blank" rel="noopener">12-Factor App — Separate config from code</a></p>
+
+<h3 id="32-fichier-env">3.2 Fichier <code>.env</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## .env
+MODEL_TARGET=gcs
+DATA_SOURCE=big_query
+BUCKET_NAME=taxifare-models
+PROJECT=my-gcp-project
+DATASET=taxifare_dataset</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Ne JAMAIS commiter <code>.env</code> dans Git</strong> — il contient des credentials et des secrets. Vérifier que <code>.env</code> est dans <code>.gitignore</code>.</p></div></div>
+
+<h3 id="33-chargement-avec-direnv">3.3 Chargement avec <code>direnv</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## .envrc (à côté du .env)
+dotenv
+
+## Activer
+direnv allow .</code></pre></div>
+
+
+<h3 id="34-utilisation-dans-le-code">3.4 Utilisation dans le code</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## taxifare/params.py
+import os
+
+MODEL_TARGET = os.environ.get(&quot;MODEL_TARGET&quot;)    # retourne None si absent
+BUCKET_NAME = os.environ[&quot;BUCKET_NAME&quot;]          # lève KeyError si absent</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## taxifare/ml_logic/registry.py
+from taxifare.params import MODEL_TARGET
+
+if MODEL_TARGET == &quot;local&quot;:
+    # sauvegarder en local
+elif MODEL_TARGET == &quot;gcs&quot;:
+    # sauvegarder sur Cloud Storage</code></pre></div>
+
+
+<hr>
+
+<h2 id="4-modèle-dans-le-cloud-google-cloud-storage">4) Modèle dans le cloud — Google Cloud Storage</h2>
+
+<h3 id="41-concepts">4.1 Concepts</h3>
+
+<figure><img src="../../assets/images/training-cloud-03-4d610533.png" alt="" loading="lazy"></figure>
+
+<ul>
+<li><strong>Bucket</strong> : conteneur de blobs (nom unique mondial, pas d'arborescence réelle)</li>
+<li><strong>Blob</strong> : fichier immuable stocké dans un bucket (URI : <code>gs://bucket-name/blob/name</code>)</li>
+</ul>
+
+<figure><img src="../../assets/images/training-cloud-04-d3097eda.png" alt="" loading="lazy"></figure>
+
+<h3 id="42-cli-gsutil">4.2 CLI — gsutil</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">gsutil ls                              # liste les buckets
+gsutil mb -l europe-west1 -p $PROJECT gs://$BUCKET  # crée un bucket
+gsutil ls -r gs://$BUCKET              # liste récursive
+gsutil cp model.joblib gs://$BUCKET/   # upload
+gsutil cp gs://$BUCKET/model.joblib .  # download</code></pre></div>
+
+
+<h3 id="43-code-python">4.3 Code Python</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from google.cloud import storage
+
+BUCKET_NAME = &quot;my-bucket&quot;
+client = storage.Client()
+bucket = client.bucket(BUCKET_NAME)
+
+## Upload
+blob = bucket.blob(&quot;models/model.joblib&quot;)
+blob.upload_from_filename(&quot;model.joblib&quot;)
+
+## Download
+blob = bucket.blob(&quot;models/model.joblib&quot;)
+blob.download_to_filename(&quot;model.joblib&quot;)</code></pre></div>
+
+
+<p>👉 <a href="https://cloud.google.com/storage/docs/reference/libraries" target="_blank" rel="noopener">Cloud Storage API — Python</a></p>
+
+<hr>
+
+<h2 id="5-données-dans-le-cloud-google-bigquery">5) Données dans le cloud — Google BigQuery</h2>
+
+<h3 id="51-concepts">5.1 Concepts</h3>
+
+<figure><img src="../../assets/images/training-cloud-05-bf4de328.png" alt="" loading="lazy"></figure>
+
+<p>Data warehouse managé — gère des pétaoctets de données. Structure : <strong>Dataset</strong> (base de données) → <strong>Tables</strong>.</p>
+
+<h3 id="52-lire-une-table">5.2 Lire une table</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from google.cloud import bigquery
+
+client = bigquery.Client(project=&quot;my-project&quot;)
+query = &quot;SELECT col1, col2 FROM my-project.taxifare.processed_1k&quot;
+df = client.query(query).result().to_dataframe()</code></pre></div>
+
+
+<h3 id="53-écrire-un-dataframe">5.3 Écrire un DataFrame</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">table = &quot;my-project.taxifare.lecture_data&quot;
+job_config = bigquery.LoadJobConfig(write_disposition=&quot;WRITE_TRUNCATE&quot;)
+job = client.load_table_from_dataframe(df, table, job_config=job_config)
+job.result()</code></pre></div>
+
+
+<h3 id="54-cli-bq">5.4 CLI — bq</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">bq ls                                  # datasets
+bq ls taxifare                         # tables du dataset
+bq show taxifare.processed_1k          # schéma de la table
+bq query &quot;SELECT * FROM taxifare.processed_1k LIMIT 5&quot;</code></pre></div>
+
+
+<h3 id="55-coût-des-requêtes">5.5 Coût des requêtes</h3>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>BigQuery facture par <strong>volume de données scannées</strong>, pas par lignes retournées. <code>LIMIT</code> ne réduit pas le coût. Toujours sélectionner uniquement les colonnes nécessaires et utiliser le flag <code>--dry_run</code> pour estimer le coût avant d'exécuter.</p></div></div>
+
+<hr>
+
+<h2 id="6-entraînement-dans-le-cloud-google-compute-engine">6) Entraînement dans le cloud — Google Compute Engine</h2>
+
+<h3 id="61-concepts">6.1 Concepts</h3>
+
+<figure><img src="../../assets/images/training-cloud-06-c667be77.png" alt="" loading="lazy"></figure>
+
+<p>Une VM (Virtual Machine) est un ordinateur dans le cloud — sans écran, accessible via SSH. On choisit la région, le hardware (CPU/GPU), l'OS.</p>
+
+<h3 id="62-gestion-des-vms">6.2 Gestion des VMs</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">gcloud compute instances list                      # liste les VMs
+gcloud compute instances start $INSTANCE           # démarre
+gcloud compute instances stop $INSTANCE            # TOUJOURS arrêter après usage !</code></pre></div>
+
+
+<h3 id="63-connexion-et-transfert-de-fichiers">6.3 Connexion et transfert de fichiers</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">gcloud compute ssh $INSTANCE                       # connexion SSH interactive
+gcloud compute ssh $INSTANCE --command &quot;python -m taxifare.interface.main&quot;  # commande distante
+gcloud compute scp --recurse ./taxifare $INSTANCE:~/  # copie locale → VM</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Toujours arrêter la VM après l'entraînement</strong> — les VMs GPU coûtent plusieurs dollars/heure. Configurer un auto-shutdown si possible.</p></div></div>
+
+<h3 id="64-workflow-complet">6.4 Workflow complet</h3>
+
+<ol>
+<li>Créer une VM (web console ou CLI) avec Ubuntu + GPU si nécessaire</li>
+<li>Se connecter en SSH</li>
+<li>Transférer le code avec <code>scp</code></li>
+<li>Installer les dépendances (<code>pip install -e .</code>)</li>
+<li>Lancer l'entraînement (<code>make run_train</code>)</li>
+<li>Le modèle est automatiquement sauvé sur GCS (via <code>registry.py</code>)</li>
+<li><strong>Arrêter la VM</strong></li>
+</ol>
+
+<figure><img src="../../assets/images/training-cloud-07-74a602ee.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://cloud.google.com/free/docs/aws-azure-gcp-service-comparison" target="_blank" rel="noopener">Google Cloud — AWS — Azure comparison</a></li>
+<li>👉 <a href="https://kitt.lewagon.com/knowledge/cheatsheets/google_cloud_storage" target="_blank" rel="noopener">Cloud Storage cheatsheet</a></li>
+<li>👉 <a href="https://kitt.lewagon.com/knowledge/cheatsheets/google_big_query" target="_blank" rel="noopener">BigQuery cheatsheet</a></li>
+<li>👉 <a href="https://kitt.lewagon.com/knowledge/cheatsheets/google_compute_engine" target="_blank" rel="noopener">Compute Engine cheatsheet</a></li>
+<li>👉 <a href="https://cloud.google.com/bigquery/docs/best-practices-costs" target="_blank" rel="noopener">BigQuery cost best practices</a></li>
+<li>👉 <a href="https://12factor.net/" target="_blank" rel="noopener">12-Factor App</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">🚀 Challenges</h2>
+
+<ul>
+<li>Configurer le <code>.env</code> pour basculer entre local et cloud</li>
+<li>Sauvegarder le modèle entraîné sur Google Cloud Storage</li>
+<li>Charger les données d'entraînement depuis BigQuery</li>
+<li>Lancer l'entraînement complet sur une VM Google Compute Engine</li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-à-retenir-absolument">À retenir absolument</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-du-local-au-cloud-les-trois-transitions">1. Du local au cloud — les trois transitions</a><ol><li><a href="#ref-où-en-est-on">Où en est-on ?</a></li><li><a href="#ref-les-trois-basculements">Les trois basculements</a></li><li><a href="#ref-la-structure-du-projet">La structure du projet</a></li></ol></li><li><a href="#ref-2-google-cloud-platform-comprendre-lécosystème">2. Google Cloud Platform — comprendre l'écosystème</a><ol><li><a href="#ref-les-niveaux-de-service-cloud">Les niveaux de service cloud</a></li><li><a href="#ref-les-trois-grands-clouds">Les trois grands clouds</a></li><li><a href="#ref-trois-façons-dinteragir-avec-gcp">Trois façons d'interagir avec GCP</a></li><li><a href="#ref-authentification-se-connecter-à-gcp">Authentification — se connecter à GCP</a></li></ol></li><li><a href="#ref-3-configuration-avec-env-adapter-sans-modifier-le-code">3. Configuration avec `.env` — adapter sans modifier le code</a><ol><li><a href="#ref-pourquoi-ne-pas-hardcoder-les-valeurs">Pourquoi ne pas hardcoder les valeurs ?</a></li><li><a href="#ref-le-fichier-env">Le fichier `.env`</a></li><li><a href="#ref-direnv-charger-automatiquement-les-variables">`direnv` — charger automatiquement les variables</a></li><li><a href="#ref-lire-les-variables-en-python">Lire les variables en Python</a></li></ol></li><li><a href="#ref-4-stocker-les-modèles-google-cloud-storage-gcs">4. Stocker les modèles — Google Cloud Storage (GCS)</a><ol><li><a href="#ref-comprendre-gcs">Comprendre GCS</a></li><li><a href="#ref-gérer-gcs-avec-la-cli-gsutil">Gérer GCS avec la CLI `gsutil`</a></li><li><a href="#ref-upload-et-download-en-python">Upload et download en Python</a></li></ol></li><li><a href="#ref-5-lire-les-données-google-bigquery">5. Lire les données — Google BigQuery</a><ol><li><a href="#ref-comprendre-bigquery">Comprendre BigQuery</a></li><li><a href="#ref-lire-une-table-bigquery-en-python">Lire une table BigQuery en Python</a></li><li><a href="#ref-écrire-un-dataframe-dans-bigquery">Écrire un DataFrame dans BigQuery</a></li><li><a href="#ref-gérer-bigquery-avec-la-cli-bq">Gérer BigQuery avec la CLI `bq`</a></li><li><a href="#ref-le-coût-des-requêtes-bigquery">Le coût des requêtes BigQuery</a></li></ol></li><li><a href="#ref-6-entraîner-dans-le-cloud-google-compute-engine">6. Entraîner dans le cloud — Google Compute Engine</a><ol><li><a href="#ref-quest-ce-quune-vm">Qu'est-ce qu'une VM ?</a></li><li><a href="#ref-gérer-les-vms-avec-gcloud-compute">Gérer les VMs avec `gcloud compute`</a></li><li><a href="#ref-se-connecter-et-transférer-des-fichiers">Se connecter et transférer des fichiers</a></li><li><a href="#ref-le-workflow-complet-dentraînement-cloud">Le workflow complet d'entraînement cloud</a></li></ol></li><li><a href="#ref-7-les-erreurs-classiques-à-éviter">7. Les erreurs classiques à éviter</a><ol><li><a href="#ref-commiter-le-env-dans-git">Commiter le `.env` dans Git</a></li><li><a href="#ref-hardcoder-des-chemins-locaux">Hardcoder des chemins locaux</a></li><li><a href="#ref-laisser-une-vm-allumée">Laisser une VM allumée</a></li><li><a href="#ref-utiliser-select-dans-bigquery">Utiliser SELECT * dans BigQuery</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Jusqu'ici, tu as entraîné tes modèles sur ton ordinateur. C'est pratique pour apprendre, mais en production c'est insuffisant : ton laptop ne peut pas traiter des millions de lignes, tourne trop lentement, et s'arrête quand tu fermes le couvercle.</p>
+
+<p>La solution ? <strong>Louer un supercalculateur à l'heure dans le cloud.</strong> Tu paies uniquement quand tu l'utilises, comme une voiture en autopartage — tu la prends, tu fais ton trajet, tu la rends. Ici : tu allumes une VM (machine virtuelle), tu entraînes ton modèle, tu l'éteins.</p>
+
+<p>Ce cours explique comment basculer un projet Machine Learning du local vers le cloud avec <strong>Google Cloud Platform (GCP)</strong>, en trois étapes :</p>
+
+<ol>
+<li>Stocker ton modèle sur <strong>Google Cloud Storage (GCS)</strong></li>
+<li>Lire tes données depuis <strong>Google BigQuery</strong></li>
+<li>Lancer l'entraînement sur une <strong>VM Google Compute Engine</strong></li>
+</ol>
+
+<h3 id="ref-à-retenir-absolument">À retenir absolument</h3>
+
+<ul>
+<li>Un <strong>bucket GCS</strong> est comme un disque dur en ligne — tu y déposes et récupères des fichiers.</li>
+<li><strong>BigQuery</strong> est une base de données géante dans le cloud — elle peut gérer des téraoctets de données.</li>
+<li>Une <strong>VM (Virtual Machine)</strong> est un ordinateur qui tourne quelque part dans un datacenter Google — tu t'y connectes via le terminal.</li>
+<li>Le fichier <strong><code>.env</code></strong> stocke toutes les variables de configuration (project, bucket, etc.) sans toucher au code.</li>
+<li><strong>Toujours éteindre la VM après usage</strong> — elle coûte de l'argent tant qu'elle tourne.</li>
+</ul>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">1. Du local au cloud — les 3 transitions
+2. Google Cloud Platform — comprendre l&#x27;écosystème
+3. Configuration avec .env — adapter le code sans le modifier
+4. Google Cloud Storage — stocker les modèles
+5. Google BigQuery — lire les données
+6. Google Compute Engine — entraîner sur une VM</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-1-du-local-au-cloud-les-trois-transitions">1. Du local au cloud — les trois transitions</h2>
+
+<h3 id="ref-où-en-est-on">Où en est-on ?</h3>
+
+<p>Imagine que tu es un ML Engineer. Le Data Scientist t'a remis un notebook qui entraîne un modèle. Tu as déjà :</p>
+
+<ul>
+<li>Analysé le notebook</li>
+<li>Transformé le code en package Python propre</li>
+<li>Géré l'entraînement incrémental (sur des gros volumes)</li>
+</ul>
+
+<p>Il reste une étape : <strong>tout passer dans le cloud</strong>.</p>
+
+<h3 id="ref-les-trois-basculements">Les trois basculements</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Ce qu'on déplace</th><th>Avant (local)</th><th>Après (cloud)</th></tr></thead><tbody><tr><td>Le modèle entraîné</td><td>Fichier <code>.pkl</code> sur ton disque dur</td><td>Blob dans Google Cloud Storage</td></tr><tr><td>Les données</td><td>Fichier CSV sur ton ordinateur</td><td>Table dans Google BigQuery</td></tr><tr><td>L'exécution</td><td>Ton laptop</td><td>VM Google Compute Engine</td></tr></tbody></table></div>
+<p><strong>Analogie concrète :</strong> Avant, tu cuisinais chez toi avec tes ingrédients dans ton frigo et ton modèle de plat dans un tiroir. Maintenant, les ingrédients sont dans un entrepôt (BigQuery), la recette finale est dans un coffre-fort en ligne (GCS), et tu cuisines dans une cuisine professionnelle louée à l'heure (VM).</p>
+
+<h3 id="ref-la-structure-du-projet">La structure du projet</h3>
+
+<p>Voici comment le dossier du projet est organisé :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">.
+├── .env                      ← variables de configuration (jamais commitées)
+├── .envrc                    ← chargeur automatique des variables
+├── Makefile                  ← raccourcis de commandes
+├── requirements.txt
+├── setup.py
+├── taxifare/
+│   ├── interface/
+│   │   └── main.py           ← point d&#x27;entrée du programme
+│   ├── ml_logic/
+│   │   ├── data.py           ← lit/écrit depuis BigQuery
+│   │   └── registry.py       ← charge/sauvegarde le modèle depuis GCS
+│   └── params.py             ← lit les variables .env
+└── tests/</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le fichier <code>registry.py</code> est le "chef d'aiguillage" : selon la valeur de <code>MODEL_TARGET</code>, il sauvegarde le modèle en local ou sur GCS. Le code métier ne change pas — seule la configuration change.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-google-cloud-platform-comprendre-lécosystème">2. Google Cloud Platform — comprendre l'écosystème</h2>
+
+<h3 id="ref-les-niveaux-de-service-cloud">Les niveaux de service cloud</h3>
+
+<p>Quand tu utilises le cloud, tu peux choisir différents niveaux d'autonomie/responsabilité :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Niveau</th><th>Principe</th><th>Exemple GCP</th><th>Tu gères…</th></tr></thead><tbody><tr><td><strong>On-premise</strong></td><td>Ton propre serveur</td><td>—</td><td>Tout (matériel, OS, code)</td></tr><tr><td><strong>IaaS</strong></td><td>VM dans le cloud</td><td>Compute Engine</td><td>L'OS et l'environnement</td></tr><tr><td><strong>PaaS</strong></td><td>Plateforme managée</td><td>Cloud Run</td><td>Ton code uniquement</td></tr><tr><td><strong>SaaS</strong></td><td>Service clé en main</td><td>BigQuery</td><td>Tes requêtes uniquement</td></tr></tbody></table></div>
+<p><strong>Exemple concret :</strong> IaaS c'est louer un appartement vide (tu mets tes meubles). SaaS c'est réserver une chambre d'hôtel (tout est fourni). On utilise les deux dans ce cours.</p>
+
+<h3 id="ref-les-trois-grands-clouds">Les trois grands clouds</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Provider</th><th>Stockage fichiers</th><th>Données</th><th>Calcul</th></tr></thead><tbody><tr><td><strong>Google (GCP)</strong></td><td>Cloud Storage</td><td>BigQuery</td><td>Compute Engine</td></tr><tr><td><strong>Amazon (AWS)</strong></td><td>S3</td><td>Athena / Redshift</td><td>EC2</td></tr><tr><td><strong>Microsoft (Azure)</strong></td><td>Blob Storage</td><td>Synapse Analytics</td><td>Virtual Machines</td></tr></tbody></table></div>
+<p>Dans ce cours on utilise GCP, mais les concepts sont identiques sur AWS ou Azure.</p>
+
+<h3 id="ref-trois-façons-dinteragir-avec-gcp">Trois façons d'interagir avec GCP</h3>
+
+<ul>
+<li><strong>Console web</strong> (navigateur) : pratique pour explorer, faire des opérations ponctuelles</li>
+<li><strong>CLI</strong> (<code>gcloud</code>, <code>gsutil</code>, <code>bq</code>) : plus rapide, idéal pour des opérations précises en ligne de commande</li>
+<li><strong>SDK Python</strong> : pour automatiser dans le code</li>
+</ul>
+
+<h3 id="ref-authentification-se-connecter-à-gcp">Authentification — se connecter à GCP</h3>
+
+<p>Avant d'utiliser quoi que ce soit, tu dois t'authentifier :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Initialiser la CLI Google Cloud (à faire une fois)
+gcloud init
+
+# Autoriser le code Python à accéder à GCP
+gcloud auth application-default login
+
+# Vérifier les projets disponibles
+gcloud projects list
+
+# Voir les APIs activées sur ton projet
+gcloud services list --enabled</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><code>gcloud init</code> configure le CLI pour toi (humain). <code>gcloud auth application-default login</code> configure les identifiants pour Python (ton code). Les deux sont nécessaires.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-configuration-avec-env-adapter-sans-modifier-le-code">3. Configuration avec <code>.env</code> — adapter sans modifier le code</h2>
+
+<h3 id="ref-pourquoi-ne-pas-hardcoder-les-valeurs">Pourquoi ne pas hardcoder les valeurs ?</h3>
+
+<p>Imagine que tu écris dans ton code :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># MAUVAISE PRATIQUE — ne jamais faire ça
+model_path = &quot;/Users/jean/models/model.pkl&quot;
+project = &quot;mon-projet-gcp-123&quot;</code></pre></div>
+
+
+<p>Problèmes :</p>
+<ul>
+<li>Ce chemin ne fonctionne que sur <strong>ta</strong> machine</li>
+<li>Quand tu passes sur la VM, ça casse</li>
+<li>Si ton collègue clone le projet, ça casse aussi</li>
+<li>Si tu commites ça sur GitHub, tes credentials sont publics</li>
+</ul>
+
+<p>La bonne pratique : <strong>séparer la configuration du code</strong>.</p>
+
+<h3 id="ref-le-fichier-env">Le fichier <code>.env</code></h3>
+
+<p>Crée un fichier <code>.env</code> à la racine de ton projet :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># .env — NE JAMAIS COMMITER CE FICHIER
+MODEL_TARGET=gcs          # &quot;local&quot; ou &quot;gcs&quot; — où sauvegarder le modèle
+DATA_SOURCE=big_query     # &quot;local&quot; ou &quot;big_query&quot; — où lire les données
+BUCKET_NAME=taxifare-models
+PROJECT=mon-projet-gcp
+DATASET=taxifare_dataset</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>CRITIQUE : ne jamais ajouter <code>.env</code> à Git.</strong> Ce fichier peut contenir des clés API, des mots de passe, des identifiants. Ajoute <code>.env</code> dans ton fichier <code>.gitignore</code> dès la création du projet. Une seule fuite suffit à compromettre ton compte cloud.</p></div></div>
+
+<h3 id="ref-direnv-charger-automatiquement-les-variables"><code>direnv</code> — charger automatiquement les variables</h3>
+
+<p>Sans outil, tu devrais taper <code>export MODEL_TARGET=gcs</code> à chaque fois que tu ouvres un terminal. <code>direnv</code> fait ça automatiquement quand tu entres dans le dossier du projet.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># .envrc (fichier à côté du .env)
+dotenv     # ← cette ligne dit à direnv de charger le .env
+
+# Une fois pour autoriser direnv à lire ce dossier
+direnv allow .
+
+# Si tu modifies le .env, recharger
+direnv reload
+
+# Vérifier qu&#x27;une variable est bien chargée
+echo $MODEL_TARGET        # doit afficher &quot;gcs&quot;</code></pre></div>
+
+
+<h3 id="ref-lire-les-variables-en-python">Lire les variables en Python</h3>
+
+<p>Dans <code>params.py</code>, tu centralises la lecture de toutes les variables :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># taxifare/params.py
+import os
+
+# os.environ.get() retourne None si la variable n&#x27;existe pas (pas d&#x27;erreur)
+MODEL_TARGET = os.environ.get(&quot;MODEL_TARGET&quot;)
+
+# os.environ[] lève une erreur si la variable est absente (plus strict)
+BUCKET_NAME = os.environ[&quot;BUCKET_NAME&quot;]
+PROJECT = os.environ[&quot;PROJECT&quot;]
+DATASET = os.environ[&quot;DATASET&quot;]</code></pre></div>
+
+
+<p>Ensuite, dans <code>registry.py</code>, tu utilises <code>MODEL_TARGET</code> pour décider où sauvegarder :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># taxifare/ml_logic/registry.py
+from taxifare.params import MODEL_TARGET
+
+def save_model(model):
+    if MODEL_TARGET == &quot;local&quot;:
+        # sauvegarde en local sur le disque
+        model.save(&quot;models/model.pkl&quot;)
+
+    elif MODEL_TARGET == &quot;gcs&quot;:
+        # sauvegarde sur Google Cloud Storage
+        upload_model_to_gcs(model)</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Le bénéfice : pour passer de "local" à "cloud", il suffit de changer une ligne dans le <code>.env</code>. Le code Python ne change pas du tout.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-stocker-les-modèles-google-cloud-storage-gcs">4. Stocker les modèles — Google Cloud Storage (GCS)</h2>
+
+<h3 id="ref-comprendre-gcs">Comprendre GCS</h3>
+
+<p>Google Cloud Storage c'est comme un <strong>disque dur dans le cloud</strong>, mais avec quelques différences :</p>
+
+<ul>
+<li><strong>Bucket</strong> : le "conteneur" (pense à un dossier racine). Son nom doit être unique dans le monde entier.</li>
+<li><strong>Blob</strong> : un fichier dans le bucket (une image, un modèle <code>.joblib</code>, un CSV…). Son chemin complet ressemble à <code>gs://mon-bucket/models/v1/model.joblib</code>.</li>
+</ul>
+
+<p>Contrairement à un vrai système de fichiers, il n'y a pas vraiment de sous-dossiers — c'est une illusion créée par les <code>/</code> dans les noms de blobs.</p>
+
+<h3 id="ref-gérer-gcs-avec-la-cli-gsutil">Gérer GCS avec la CLI <code>gsutil</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Lister tous tes buckets
+gsutil ls
+
+# Créer un bucket dans la région europe-west1
+gsutil mb -l europe-west1 -p $PROJECT gs://$BUCKET_NAME
+
+# Lister le contenu d&#x27;un bucket
+gsutil ls gs://$BUCKET_NAME
+
+# Lister récursivement (tous les sous-dossiers)
+gsutil ls -r gs://$BUCKET_NAME
+
+# Uploader un fichier local vers GCS
+gsutil cp model.joblib gs://$BUCKET_NAME/models/
+
+# Télécharger un fichier depuis GCS vers le local
+gsutil cp gs://$BUCKET_NAME/models/model.joblib .</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>gsutil</code> fonctionne exactement comme la commande <code>cp</code> de Linux/Mac — <code>cp source destination</code>. Pour GCS, les chemins commencent par <code>gs://</code>.</p></div></div>
+
+<h3 id="ref-upload-et-download-en-python">Upload et download en Python</h3>
+
+<p>Pour automatiser dans le code, on utilise le SDK Python de Google Cloud :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from google.cloud import storage
+
+# Paramètres
+BUCKET_NAME = &quot;mon-bucket-taxifare&quot;
+
+# Créer un client — il utilise les credentials de gcloud auth application-default login
+client = storage.Client()
+
+# Accéder au bucket
+bucket = client.bucket(BUCKET_NAME)
+
+# --- UPLOAD : envoyer un fichier local vers GCS ---
+blob = bucket.blob(&quot;models/model.joblib&quot;)   # nom du fichier dans le bucket
+blob.upload_from_filename(&quot;model.joblib&quot;)   # chemin du fichier local
+# Résultat : gs://mon-bucket-taxifare/models/model.joblib
+
+# --- DOWNLOAD : récupérer un fichier depuis GCS ---
+blob = bucket.blob(&quot;models/model.joblib&quot;)   # fichier à récupérer dans le bucket
+blob.download_to_filename(&quot;model.joblib&quot;)   # où le sauvegarder en local</code></pre></div>
+
+
+<p><strong>Récap :</strong> <code>upload_from_filename(local)</code> pousse vers le cloud. <code>download_to_filename(local)</code> tire depuis le cloud.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Un "blob" en anglais signifie "Binary Large OBject" — c'est le terme générique pour un fichier dans un système de stockage cloud. Dans la vie de tous les jours, c'est juste un fichier.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-lire-les-données-google-bigquery">5. Lire les données — Google BigQuery</h2>
+
+<h3 id="ref-comprendre-bigquery">Comprendre BigQuery</h3>
+
+<p>BigQuery est un <strong>data warehouse</strong> (entrepôt de données) dans le cloud. Il peut gérer des pétaoctets de données et répondre à des requêtes SQL en quelques secondes.</p>
+
+<p>Structure :</p>
+<ul>
+<li><strong>Dataset</strong> : équivalent d'une "base de données" (ex: <code>taxifare_dataset</code>)</li>
+<li><strong>Table</strong> : une table SQL classique avec des lignes et des colonnes</li>
+</ul>
+
+<p><strong>Différence clé avec un CSV local :</strong> si ton CSV fait 50 Go, tu ne peux pas le charger en RAM. BigQuery lui, peut traiter 50 To sans problème — il fait les calculs côté serveur et te renvoie uniquement le résultat.</p>
+
+<h3 id="ref-lire-une-table-bigquery-en-python">Lire une table BigQuery en Python</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from google.cloud import bigquery
+
+# Créer un client BigQuery pour ton projet GCP
+client = bigquery.Client(project=&quot;mon-projet-gcp&quot;)
+
+# Écrire une requête SQL — exactement comme du SQL classique
+query = &quot;SELECT col1, col2 FROM mon-projet-gcp.taxifare_dataset.processed_1k&quot;
+
+# Exécuter la requête et récupérer un DataFrame pandas
+df = client.query(query).result().to_dataframe()
+
+# df est maintenant un DataFrame pandas ordinaire !
+print(df.head())</code></pre></div>
+
+
+<p><strong>Explication ligne par ligne :</strong></p>
+<ul>
+<li><code>client.query(query)</code> : envoie la requête à BigQuery</li>
+<li><code>.result()</code> : attend que BigQuery termine le calcul</li>
+<li><code>.to_dataframe()</code> : convertit le résultat en DataFrame pandas</li>
+</ul>
+
+<h3 id="ref-écrire-un-dataframe-dans-bigquery">Écrire un DataFrame dans BigQuery</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from google.cloud import bigquery
+
+client = bigquery.Client(project=&quot;mon-projet-gcp&quot;)
+
+# Destination : project.dataset.table
+table = &quot;mon-projet-gcp.taxifare_dataset.nouvelles_donnees&quot;
+
+# Configurer le job d&#x27;écriture
+job_config = bigquery.LoadJobConfig(
+    write_disposition=&quot;WRITE_TRUNCATE&quot;  # WRITE_TRUNCATE = écrase, WRITE_APPEND = ajoute
+)
+
+# Lancer l&#x27;écriture (asynchrone — on attend la fin avec .result())
+job = client.load_table_from_dataframe(df, table, job_config=job_config)
+job.result()  # attend que BigQuery ait terminé avant de continuer
+
+print(&quot;Données écrites avec succès !&quot;)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Attention à <code>write_disposition</code> :</strong></p>
+<p>- <code>WRITE_TRUNCATE</code> : supprime tout le contenu de la table existante, puis écrit. Si tu l'appliques sur une table de production avec des mois de données, tout est perdu.</p>
+<p>- <code>WRITE_APPEND</code> : ajoute les nouvelles lignes à la suite des existantes.</p>
+<p>Toujours vérifier avant d'exécuter !</p></div></div>
+
+<h3 id="ref-gérer-bigquery-avec-la-cli-bq">Gérer BigQuery avec la CLI <code>bq</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Lister tous les datasets de ton projet
+bq ls
+
+# Lister les tables d&#x27;un dataset
+bq ls taxifare_dataset
+
+# Afficher le schéma d&#x27;une table (colonnes et types)
+bq show taxifare_dataset.processed_1k
+
+# Exécuter une requête rapide
+bq query &quot;SELECT * FROM taxifare_dataset.processed_1k LIMIT 5&quot;</code></pre></div>
+
+
+<h3 id="ref-le-coût-des-requêtes-bigquery">Le coût des requêtes BigQuery</h3>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>BigQuery facture au volume scanné, pas au nombre de lignes retournées.</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- MAUVAIS : scanne TOUTES les colonnes de la table (facturé au téraoctet)
+SELECT * FROM taxifare_dataset.processed_1k LIMIT 10
+
+-- BON : ne scanne que les colonnes nécessaires (beaucoup moins cher)
+SELECT pickup_longitude, dropoff_longitude FROM taxifare_dataset.processed_1k LIMIT 10</code></pre></div>
+<p>Le <code>LIMIT</code> ne réduit pas le coût — BigQuery scanne d'abord toute la table, puis filtre. Pour estimer le coût avant d'exécuter une requête : <code>bq query --dry_run &quot;SELECT ...&quot;</code>. Cela affiche la quantité de données qui serait scannée, sans rien facturer.</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-entraîner-dans-le-cloud-google-compute-engine">6. Entraîner dans le cloud — Google Compute Engine</h2>
+
+<h3 id="ref-quest-ce-quune-vm">Qu'est-ce qu'une VM ?</h3>
+
+<p>Une <strong>VM (Virtual Machine)</strong> est un ordinateur qui tourne dans un datacenter Google. Elle n'a pas d'écran — tu t'y connectes via SSH (une connexion sécurisée en ligne de commande), exactement comme si tu ouvrais un terminal sur cet ordinateur distant.</p>
+
+<p>Tu choisis :</p>
+<ul>
+<li>La <strong>région</strong> (Europe, USA, Asie…)</li>
+<li>Le <strong>hardware</strong> : CPU classique, ou GPU pour accélérer l'entraînement</li>
+<li>L'<strong>OS</strong> : Ubuntu en général</li>
+</ul>
+
+<p><strong>Pourquoi une VM et pas ton laptop ?</strong></p>
+<ul>
+<li>Ton laptop a 16 Go de RAM et 8 cœurs. Une VM GPU peut avoir 80 Go de RAM, 32 cœurs et des GPU dédiés.</li>
+<li>L'entraînement tourne 24h/24 sans que tu gardes ton ordi allumé.</li>
+<li>Tu peux en créer plusieurs en parallèle.</li>
+</ul>
+
+<h3 id="ref-gérer-les-vms-avec-gcloud-compute">Gérer les VMs avec <code>gcloud compute</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Lister toutes tes VMs
+gcloud compute instances list
+
+# Démarrer une VM (elle existe déjà, on l&#x27;allume)
+gcloud compute instances start mon-instance
+
+# Arrêter une VM — TOUJOURS faire ça après l&#x27;entraînement !
+gcloud compute instances stop mon-instance</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Une VM GPU coûte entre 1 et 5 dollars PAR HEURE.</strong> Si tu oublies de l'éteindre le vendredi soir, tu te retrouves avec une facture de 240$ le lundi matin. Prends l'habitude de toujours stopper la VM à la fin de chaque session.</p></div></div>
+
+<h3 id="ref-se-connecter-et-transférer-des-fichiers">Se connecter et transférer des fichiers</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Ouvrir un terminal interactif sur la VM (comme si tu t&#x27;asseyais devant elle)
+gcloud compute ssh mon-instance
+
+# Exécuter une commande sur la VM sans ouvrir un terminal interactif
+gcloud compute ssh mon-instance --command &quot;python -m taxifare.interface.main&quot;
+
+# Copier ton code local vers la VM
+gcloud compute scp --recurse ./taxifare mon-instance:~/
+
+# Copier des fichiers de la VM vers ton local
+gcloud compute scp --recurse mon-instance:~/ .</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>scp</code> = "Secure Copy Protocol". <code>--recurse</code> signifie "copier aussi les sous-dossiers". L'adresse <code>mon-instance:~/</code> désigne le dossier home de l'utilisateur sur la VM.</p></div></div>
+
+<h3 id="ref-le-workflow-complet-dentraînement-cloud">Le workflow complet d'entraînement cloud</h3>
+
+<p>Voici les étapes dans l'ordre, du début à la fin :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Étape 1 — Créer la VM
+  → Console web GCP ou CLI : choisir région, CPU/GPU, OS Ubuntu
+
+Étape 2 — Démarrer la VM
+  → gcloud compute instances start mon-instance
+
+Étape 3 — Copier le code sur la VM
+  → gcloud compute scp --recurse ./taxifare mon-instance:~/
+
+Étape 4 — Se connecter en SSH
+  → gcloud compute ssh mon-instance
+
+Étape 5 — Installer les dépendances (sur la VM)
+  → pip install -e .
+
+Étape 6 — Lancer l&#x27;entraînement (sur la VM)
+  → make run_train
+    (ou python -m taxifare.interface.main)
+
+Étape 7 — Le modèle est sauvegardé automatiquement sur GCS
+  → registry.py détecte MODEL_TARGET=gcs et upload sur le bucket
+
+Étape 8 — ARRÊTER LA VM
+  → gcloud compute instances stop mon-instance</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Après l'entraînement, le modèle est sur GCS et les données restent dans BigQuery. La VM peut être éteinte — elle n'est plus nécessaire. Tu peux récupérer le modèle depuis n'importe quelle machine avec <code>gsutil cp gs://mon-bucket/models/model.joblib .</code></p></div></div>
+
+<hr>
+
+<h2 id="ref-7-les-erreurs-classiques-à-éviter">7. Les erreurs classiques à éviter</h2>
+
+<h3 id="ref-commiter-le-env-dans-git">Commiter le <code>.env</code> dans Git</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># DANGEREUX — expose tous tes secrets sur GitHub
+git add .env
+git commit -m &quot;ajout config&quot;   # ← NE JAMAIS FAIRE ÇA
+
+# CORRECT — s&#x27;assurer que .env est ignoré
+# Dans .gitignore :
+.env</code></pre></div>
+
+
+<h3 id="ref-hardcoder-des-chemins-locaux">Hardcoder des chemins locaux</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># MAUVAIS — casse sur la VM, casse chez les collègues
+model_path = &quot;/Users/jean/Desktop/models/model.pkl&quot;
+
+# CORRECT — fonctionne partout
+import os
+model_path = os.environ.get(&quot;MODEL_PATH&quot;, &quot;models/model.pkl&quot;)</code></pre></div>
+
+
+<h3 id="ref-laisser-une-vm-allumée">Laisser une VM allumée</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Après chaque session d&#x27;entraînement, obligatoirement :
+gcloud compute instances stop mon-instance
+
+# Vérifier l&#x27;état de ses VMs
+gcloud compute instances list   # STATUS doit afficher TERMINATED, pas RUNNING</code></pre></div>
+
+
+<h3 id="ref-utiliser-select-dans-bigquery">Utiliser SELECT * dans BigQuery</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- MAUVAIS : scanne toute la table (peut coûter cher)
+SELECT * FROM taxifare_dataset.processed_1k
+
+-- CORRECT : sélectionner uniquement les colonnes utiles
+SELECT fare_amount, trip_distance, pickup_datetime
+FROM taxifare_dataset.processed_1k</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>1. Quelle est la différence entre un bucket et un blob dans Google Cloud Storage ?</strong></p>
+
+<p>Un bucket est le conteneur racine (comme un dossier principal, avec un nom unique mondial). Un blob est un fichier stocké dans ce bucket, accessible via une URI du type <code>gs://nom-bucket/chemin/fichier</code>.</p>
+
+<p><strong>2. Pourquoi ne faut-il jamais commiter le fichier <code>.env</code> dans Git ?</strong></p>
+
+<p>Parce qu'il contient des informations sensibles (clés API, noms de projets, credentials). Si ce fichier se retrouve sur GitHub, n'importe qui peut accéder à ton compte GCP et générer des factures ou voler des données.</p>
+
+<p><strong>3. BigQuery facture-t-il par nombre de lignes retournées ou par volume scanné ?</strong></p>
+
+<p>Par volume de données <strong>scannées</strong> (en téraoctets). Un <code>LIMIT 10</code> ne réduit pas le coût car BigQuery scanne d'abord toute la table avant de filtrer. Pour réduire les coûts : sélectionner uniquement les colonnes nécessaires avec <code>SELECT col1, col2</code> plutôt que <code>SELECT *</code>.</p>
+
+<p><strong>4. Dans quel ordre se déroule un entraînement sur une VM cloud ?</strong></p>
+
+<p>Créer/démarrer la VM → copier le code (scp) → connexion SSH → installer les dépendances → lancer l'entraînement → le modèle est sauvé sur GCS → <strong>arrêter la VM</strong>.</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Un projet ML en production déplace trois choses vers le cloud : le modèle (GCS), les données (BigQuery) et l'exécution (VM Compute Engine).</li>
+<li>Le fichier <code>.env</code> stocke toutes les variables de configuration ; <code>direnv</code> les charge automatiquement dans le terminal ; <code>os.environ</code> les lit en Python.</li>
+<li><strong>Ne jamais commiter <code>.env</code></strong> dans Git — il contient des secrets.</li>
+<li><code>gsutil cp fichier gs://bucket/</code> upload un fichier sur GCS ; <code>bucket.blob(...).upload_from_filename(...)</code> fait la même chose en Python.</li>
+<li>BigQuery se requête en SQL depuis Python (<code>client.query(...).result().to_dataframe()</code>) et facture au volume scanné, pas au nombre de lignes.</li>
+<li>Une VM cloud se pilote avec <code>gcloud compute instances start/stop/ssh</code> et <code>gcloud compute scp</code> pour les transferts de fichiers.</li>
+<li><strong>Toujours éteindre la VM après l'entraînement</strong> (<code>gcloud compute instances stop nom-instance</code>) — les VMs GPU facturent plusieurs dollars par heure, même si aucun calcul ne tourne.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-pourquoi-entraîner-dans-le-cloud">Pourquoi entraîner dans le cloud</a></li><li><a href="#syn-les-trois-grands-aws-gcp-azure">Les trois grands : AWS, GCP, Azure</a></li><li><a href="#syn-compute-vms-et-gpus">Compute : VMs et GPUs</a></li><li><a href="#syn-stockage-et-data-pipelines">Stockage et data pipelines</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-distributed-training">Distributed training</a></li><li><a href="#syn-spot-instances-et-coûts">Spot instances et coûts</a></li><li><a href="#syn-vertex-ai-sagemaker-azure-ml">Vertex AI, SageMaker, Azure ML</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-pourquoi-entraîner-dans-le-cloud">Pourquoi entraîner dans le cloud</h3>
+
+<p>Trois raisons principales pour ne plus entraîner sur votre laptop.</p>
+
+<p><strong>1. Compute</strong> : un MacBook Pro tourne ~5 min par batch sur ResNet-50. Une instance avec 8 GPUs A100 le fait en 5 secondes. Pour entraîner un modèle moderne, le local est insuffisant.</p>
+
+<p><strong>2. Données</strong> : votre dataset fait 200 Go. Vous ne pouvez pas le télécharger sur votre laptop. Le cloud le stocke et le sert aux instances de compute à très haut débit.</p>
+
+<p><strong>3. Coût opex vs capex</strong> : acheter un cluster GPU coûte 100k€ et dort 90% du temps. Louer le même cluster à l'heure coûte ~$30/h et vous ne payez que ce que vous utilisez. Pour 95% des projets, c'est moins cher.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : avant le cloud, faire du ML c'était comme avoir besoin d'un avion privé pour chaque trajet — vous étiez obligé d'en acheter un. Avec le cloud, c'est comme prendre un Uber : vous payez à la course, vous n'achetez rien, et vous avez accès à n'importe quel type de véhicule à la demande (du GPU consumer à la machine spécialisée à 8 GPUs).</p></div></div>
+
+<h3 id="syn-les-trois-grands-aws-gcp-azure">Les trois grands : AWS, GCP, Azure</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>AWS</th><th>GCP</th><th>Azure</th></tr></thead><tbody><tr><td>Part de marché</td><td>~30%</td><td>~10%</td><td>~25%</td></tr><tr><td>Force</td><td>Maturité, écosystème</td><td>Data analytics, ML</td><td>Intégration MS, entreprise</td></tr><tr><td>ML spécifique</td><td>SageMaker</td><td>Vertex AI</td><td>Azure ML</td></tr><tr><td>Best for ML</td><td>Production complexe</td><td>DL et data analytics</td><td>Entreprises Microsoft</td></tr></tbody></table></div>
+<p>Les trois offrent essentiellement les mêmes briques :</p>
+
+<ul>
+<li><strong>Compute</strong> : VMs, containers, fonctions serverless</li>
+<li><strong>Storage</strong> : object storage, bases de données, file systems</li>
+<li><strong>ML services</strong> : training managé, model registry, déploiement</li>
+<li><strong>Networking</strong> : VPC, load balancers, CDN</li>
+<li><strong>IAM</strong> : gestion des identités et permissions</li>
+</ul>
+
+<p>Pour la formation Le Wagon, <strong>GCP</strong> est souvent choisi parce qu'il est généreux avec les crédits gratuits ($300 pour les nouveaux comptes) et que son offre ML (Vertex AI) est moderne et bien intégrée.</p>
+
+<h3 id="syn-compute-vms-et-gpus">Compute : VMs et GPUs</h3>
+
+<p>Une <strong>VM</strong> (Virtual Machine) est une machine virtuelle dédiée à votre usage. Sur GCP, les noms commencent par "n1", "n2", "e2"... (CPU only) ou "a2", "g2" (avec GPU).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Créer une VM GCP avec un GPU A100
+gcloud compute instances create my-train \
+    --machine-type=a2-highgpu-1g \                      # A2 = famille optimisée GPU, 1g = 1 GPU
+    --accelerator=type=nvidia-tesla-a100,count=1 \      # attache un A100 40Go
+    --image-family=common-cu118 \                       # image pré-installée avec CUDA 11.8
+    --image-project=deeplearning-platform-release \     # projet GCP qui héberge ces images
+    --zone=us-central1-a                                # Iowa, généralement le moins cher</code></pre></div>
+
+
+<p>Les <strong>types de GPU courants</strong> (du moins cher au plus cher) :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>GPU</th><th>Mémoire</th><th>Cas d'usage</th><th>Prix/h GCP (~)</th></tr></thead><tbody><tr><td><strong>T4</strong></td><td>16 Go</td><td>Inférence, petits modèles</td><td>$0.35</td></tr><tr><td><strong>L4</strong></td><td>24 Go</td><td>Inférence moderne, fine-tuning</td><td>$0.80</td></tr><tr><td><strong>V100</strong></td><td>16 Go</td><td>Deep learning standard</td><td>$2.50</td></tr><tr><td><strong>A100 40GB</strong></td><td>40 Go</td><td>LLM training, vision</td><td>$3.70</td></tr><tr><td><strong>A100 80GB</strong></td><td>80 Go</td><td>Très gros modèles</td><td>$5.00</td></tr><tr><td><strong>H100</strong></td><td>80 Go</td><td>State of the art</td><td>$10+</td></tr></tbody></table></div>
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Coût piège</strong> : oublier d'éteindre une VM avec GPU. Une A100 oubliée tournée pendant un week-end coûte 5×60 = 300$. Toujours configurer un <strong>shutdown automatique</strong> ou utiliser des <strong>preemptible/spot instances</strong> qui s'arrêtent automatiquement (cf. section avancée).</p></div></div>
+
+<h3 id="syn-stockage-et-data-pipelines">Stockage et data pipelines</h3>
+
+<p>Le <strong>bucket</strong> (S3, GCS, Azure Blob) est la base du stockage cloud :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from google.cloud import storage
+
+client = storage.Client()
+bucket = client.bucket(&quot;my-ml-bucket&quot;)
+
+# Upload
+blob = bucket.blob(&quot;data/train.parquet&quot;)
+blob.upload_from_filename(&quot;local/train.parquet&quot;)
+
+# Download
+blob.download_to_filename(&quot;local/train.parquet&quot;)
+
+# Lecture directe avec Pandas (via gcsfs)
+import pandas as pd
+df = pd.read_parquet(&quot;gs://my-ml-bucket/data/train.parquet&quot;)</code></pre></div>
+
+
+<p>Bonnes pratiques :</p>
+
+<ol>
+<li><strong>Format Parquet</strong> : 5-10x plus compact qu'un CSV, lecture sélective par colonne</li>
+<li><strong>Partitionnement</strong> : <code>gs://bucket/data/year=2024/month=01/</code> pour ne lire qu'une période</li>
+<li><strong>Lifecycle policy</strong> : supprimer automatiquement les fichiers > 90 jours</li>
+<li><strong>Versioning</strong> : activer le versioning pour rollback facile</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Créer un bucket GCS
+gsutil mb -l us-central1 gs://my-ml-bucket
+gsutil versioning set on gs://my-ml-bucket
+gsutil lifecycle set lifecycle.json gs://my-ml-bucket</code></pre></div>
+
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-distributed-training">Distributed training</h3>
+
+<p>Pour entraîner un gros modèle, on répartit le calcul sur plusieurs GPUs (et plusieurs machines). Trois stratégies :</p>
+
+<p><strong>1. Data parallelism</strong> : chaque GPU a une copie du modèle, traite un mini-batch différent, on synchronise les gradients.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># PyTorch DDP (Distributed Data Parallel)
+import torch.nn.parallel as parallel
+
+model = parallel.DistributedDataParallel(model, device_ids=[local_rank])</code></pre></div>
+
+
+<p>C'est la stratégie la plus courante. Marche bien jusqu'à ~64 GPUs.</p>
+
+<p><strong>2. Model parallelism</strong> : le modèle est trop gros pour tenir sur un GPU, donc on le découpe en couches sur plusieurs GPUs. Plus complexe.</p>
+
+<p><strong>3. Pipeline parallelism</strong> : combinaison des deux, chaque GPU traite un "stage" du modèle sur des micro-batches.</p>
+
+<p><strong>4. Tensor parallelism</strong> : un calcul matriciel est lui-même découpé sur plusieurs GPUs (utilisé pour les LLMs >70B params).</p>
+
+<p>Outils modernes : <code>DeepSpeed</code> (Microsoft), <code>FSDP</code> (Meta), <code>Accelerate</code> (Hugging Face), <code>MegatronLM</code> (NVIDIA).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Avec Hugging Face Accelerate (le plus simple)
+from accelerate import Accelerator
+
+accelerator = Accelerator()
+model, optimizer, train_loader = accelerator.prepare(model, optimizer, train_loader)
+
+for batch in train_loader:
+    outputs = model(batch)
+    loss = outputs.loss
+    accelerator.backward(loss)
+    optimizer.step()</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Quand passer au distribué</strong> : si votre training prend > 4-8 heures sur un seul GPU et que vous avez besoin d'itérer rapidement. Sinon, restez sur 1 GPU — c'est plus simple à debugger.</p></div></div>
+
+<h3 id="syn-spot-instances-et-coûts">Spot instances et coûts</h3>
+
+<p>Les <strong>spot instances</strong> (AWS) ou <strong>preemptible VMs</strong> (GCP) sont des VMs qui peuvent être <strong>interrompues à tout moment</strong> par le cloud, en échange d'un prix divisé par 3-5.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># GCP preemptible : peut être arrêtée par GCP à tout moment (max 24h)
+gcloud compute instances create my-train \
+    --preemptible \                    # flag clé : prix divisé par ~3
+    --machine-type=a2-highgpu-1g \
+    --accelerator=type=nvidia-tesla-a100,count=1 \
+    --maintenance-policy=TERMINATE     # obligatoire avec GPU</code></pre></div>
+
+
+<p>Économie massive : une A100 à $1.10/h au lieu de $3.70/h.</p>
+
+<p><strong>Calcul de coût détaillé pour un entraînement de 24h</strong> :</p>
+
+<ul>
+<li>On-demand : $3.70/h × 24h = <strong>$88.80</strong></li>
+<li>Preemptible : $1.10/h × 24h = <strong>$26.40</strong></li>
+<li>Économie : $62.40 par training (~70% de réduction)</li>
+</ul>
+
+<p><strong>Autre exemple : un étudiant Le Wagon qui fait 10 expériences de 8h chacune</strong> :</p>
+
+<ul>
+<li>On-demand : 10 × 8 × $3.70 = <strong>$296</strong> (quasi tout le crédit gratuit GCP de $300)</li>
+<li>Preemptible : 10 × 8 × $1.10 = <strong>$88</strong> (il reste $212 pour d'autres projets)</li>
+</ul>
+
+<p>Autrement dit, le simple fait de cocher <code>--preemptible</code> transforme un budget "1 projet" en budget "3 projets et demi". Pour un étudiant ou un projet à budget contraint, c'est incontournable.</p>
+
+<p><strong>Précautions</strong> :</p>
+
+<ul>
+<li><strong>Checkpointing</strong> : sauvegarder les poids tous les N steps. Si l'instance est interrompue, vous redémarrez là où vous en étiez.</li>
+<li><strong>Resilient training</strong> : utiliser un orchestrateur (Vertex AI, SageMaker) qui relance automatiquement la tâche sur une nouvelle VM.</li>
+<li><strong>Plus disponible</strong> dans certaines zones : si une zone est saturée, vous attendez parfois plusieurs heures avant qu'une instance se libère.</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : pour tout training non urgent (recherche, exploration, entraînement nocturne), <strong>toujours</strong> utiliser des spot/preemptible. Pour de l'inférence en production, jamais (vous voulez de la disponibilité).</p></div></div>
+
+<h3 id="syn-vertex-ai-sagemaker-azure-ml">Vertex AI, SageMaker, Azure ML</h3>
+
+<p>Les services de ML managés des big clouds vous évitent de gérer l'infrastructure pour des cas standards.</p>
+
+<p><strong>Vertex AI (GCP)</strong> : plateforme unifiée pour entraîner, déployer, monitorer.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from google.cloud import aiplatform
+
+aiplatform.init(project=&quot;my-project&quot;, location=&quot;us-central1&quot;)
+
+# Lancer un job de training distribué
+job = aiplatform.CustomTrainingJob(
+    display_name=&quot;train-model&quot;,
+    script_path=&quot;train.py&quot;,
+    container_uri=&quot;us-docker.pkg.dev/vertex-ai/training/pytorch-gpu.2-1:latest&quot;,
+)
+
+model = job.run(
+    machine_type=&quot;a2-highgpu-1g&quot;,
+    accelerator_type=&quot;NVIDIA_TESLA_A100&quot;,
+    accelerator_count=1,
+    args=[&quot;--epochs&quot;, &quot;10&quot;, &quot;--lr&quot;, &quot;0.001&quot;],
+)
+
+# Déployer le modèle en API
+endpoint = model.deploy(machine_type=&quot;n1-standard-4&quot;)
+prediction = endpoint.predict(instances=[my_input])</code></pre></div>
+
+
+<p><strong>SageMaker (AWS)</strong> : équivalent AWS. Plus mature mais plus complexe.</p>
+
+<p><strong>Azure ML</strong> : équivalent Azure. Bonne intégration avec l'écosystème Microsoft.</p>
+
+<p>Avantages des plateformes managées :</p>
+
+<ul>
+<li>Gestion automatique de l'infrastructure (création/destruction de VMs)</li>
+<li>Monitoring intégré</li>
+<li>Versioning de modèles natif</li>
+<li>AutoML pour les non-experts</li>
+<li>Déploiement en un clic</li>
+</ul>
+
+<p>Inconvénients :</p>
+
+<ul>
+<li><strong>Vendor lock-in</strong> : difficile de migrer vers un autre cloud</li>
+<li><strong>Coût</strong> : surcoût de ~30-50% par rapport à des VMs nues</li>
+<li><strong>Complexité d'apprentissage</strong> : chaque plateforme a son propre vocabulaire</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Recommandation pratique</strong> : pour un projet d'apprentissage ou un prototype, utilisez des <strong>VMs nues</strong> + Docker — vous comprenez ce qui se passe et c'est moins cher. Pour une équipe en production avec >10 modèles, le ML managé devient rentable. Le piège : commencer par SageMaker pour un projet simple et se retrouver à payer 3x trop pour des features inutiles.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Vous entraînez un modèle pendant 8h sur une VM GCP avec un GPU A100. Que faut-il vérifier avant de lancer pour ne pas vous ruiner ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>preemptible et arrêt automatique.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Cinq vérifications. (1) <strong>Choix de l'instance</strong> : préférez une <strong>preemptible</strong> A100 ($1.10/h) au lieu d'une on-demand ($3.70/h). Sur 8h, vous économisez ~20$. (2) <strong>Checkpointing</strong> : sauvegarder les poids tous les N steps dans GCS. Si la preemptible est interrompue, vous reprenez là où vous étiez. (3) <strong>Shutdown automatique</strong> : configurer la VM pour s'arrêter dès que le script termine, soit dans le script Python (<code>subprocess.run([&quot;sudo&quot;, &quot;poweroff&quot;])</code> à la fin), soit avec une instance scheduling. Sinon vous payez aussi le temps "idle" après l'entraînement. (4) <strong>Région</strong> : choisir une région avec des GPUs disponibles ET pas chère. <code>us-central1</code> est généralement le meilleur prix. (5) <strong>Quota check</strong> : vérifier que vous avez des quotas suffisants pour des GPUs A100 (par défaut, GCP en alloue très peu aux nouveaux comptes — il faut faire une demande explicite). <strong>Coût total optimisé</strong> : 8h × $1.10/h = ~$9 au lieu de $30. Pour un étudiant Le Wagon avec $300 de crédits, ça change tout. Question d'entretien cloud-savvy : "Comment optimiser le coût d'un training cloud ?" — la réponse révèle l'expérience pratique.</p>
+
+</details>
+
+<p><strong>Q2 : Vous avez besoin d'entraîner un LLM 70B paramètres. Comment calculer combien de GPUs il vous faut ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>mémoire.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Calcul de la mémoire requise pour 70B params en FP16 (entraînement) : (1) <strong>Poids</strong> : 70B × 2 bytes = 140 Go. (2) <strong>Gradients</strong> : 140 Go (même taille que les poids). (3) <strong>Optimizer states</strong> (Adam) : 2 × 140 Go = 280 Go pour <code>m</code> et <code>v</code>. (4) <strong>Activations</strong> : ~5 Go × batch size selon la profondeur du réseau. <strong>Total</strong> : ~580 Go pour le modèle seul + activations. Une A100 80GB ne tient pas. Sur des A100 80GB : 580 / 80 = ~8 GPUs minimum, mais en réalité avec les activations et l'overhead, <strong>16-32 A100 80GB</strong> sont nécessaires pour entraîner LLaMA 70B from scratch avec un batch size décent. Pour fine-tuner avec <strong>LoRA + 4-bit quantization</strong> : (1) Poids quantizés : 70B × 0.5 byte = 35 Go. (2) LoRA parameters : ~50 Mo. Tient sur <strong>1 seule A100 80GB</strong> ! C'est la révolution QLoRA (Dettmers et al., 2023) : fine-tuner LLaMA 65B sur un seul A100. Pour entraîner from scratch, il faut le cluster ; pour adapter, il faut juste un GPU. Question d'entretien LLM systems : "Pourquoi LoRA + quantization sont les game-changers de 2023 ?" — la réponse parle de cette mémoire concrète.</p>
+
+</details>
+
+<p><strong>Q3 : Vous travaillez avec un dataset de 500 Go stocké en S3. Comment l'utiliser efficacement pour entraîner un modèle sur une VM avec seulement 32 Go de RAM ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>streaming.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Trois stratégies cumulables. (1) <strong>Streaming ligne par ligne</strong> : ne jamais charger les 500 Go en RAM. Lire le fichier en chunks avec <code>pd.read_csv(chunksize=10000)</code> ou itérer sur un Parquet partitionné. Pour PyTorch, utiliser un <code>Dataset</code> qui lit on-demand. (2) <strong>Format colonnaire</strong> : si vous n'avez besoin que de 5 colonnes sur 50, utilisez Parquet. <code>pd.read_parquet(&quot;file.parquet&quot;, columns=[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;])</code> ne lit que les colonnes demandées, économisant 90% d'I/O et de mémoire. (3) <strong>Partitionnement</strong> : organiser le dataset par date ou région : <code>s3://bucket/year=2024/month=01/day=*</code>. Vous pouvez ne lire qu'une partition à la fois. (4) <strong>Local cache</strong> : copier seulement la partition courante sur le disque SSD local de la VM, plus rapide que S3 en accès répété. (5) <strong>WebDataset / TFRecords</strong> : pour le DL, des formats spécialisés qui streament des shards (~1 Go chacun) directement dans un DataLoader PyTorch/TF, optimisés pour le throughput. <strong>Outil moderne</strong> : <code>webdataset</code>, <code>mosaicml streaming</code>, ou <code>litdata</code>. Avec ces techniques, vous pouvez entraîner sur 500 Go avec 32 Go de RAM, à condition de bien designer le pipeline d'entrée. Question d'entretien data engineering ML : "Comment gérer un dataset plus gros que la RAM ?" — la réponse exhaustive parle de streaming, formats colonnaires, et partitionnement.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://cloud.google.com/vertex-ai/docs" target="_blank" rel="noopener">GCP ML Documentation</a></li>
+<li><a href="https://docs.aws.amazon.com/sagemaker/" target="_blank" rel="noopener">AWS SageMaker Documentation</a></li>
+<li><a href="https://pytorch.org/tutorials/intermediate/dist_tuto.html" target="_blank" rel="noopener">PyTorch Distributed</a></li>
+<li><a href="https://huggingface.co/docs/accelerate/" target="_blank" rel="noopener">Hugging Face Accelerate</a> — pour faire du distribué facilement</li>
+<li><em>Designing Machine Learning Systems</em> (Chip Huyen) — chapitres 8-9 sur le compute</li>
+<li><a href="https://www.deepspeed.ai/" target="_blank" rel="noopener">DeepSpeed documentation</a> — pour le très grand training</li>
+<li><a href="https://aws.amazon.com/ec2/spot/instance-advisor/" target="_blank" rel="noopener">Spot Instance Advisor (AWS)</a> — quelles instances ont la meilleure dispo</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../mlops/ml-ops.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← ML Ops</span>
+  </a>
+  <a href="../mlops/predict-production.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Predict in Production →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

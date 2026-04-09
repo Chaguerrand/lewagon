@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL (intro) — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">SQL (intro)</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html" class="active">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Python & SQL Week</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>SQL (intro)</span>
+      </div>
+
+      <div class="page-header">
+        <h1>SQL (intro)</h1>
+        <p class="page-objective">Comprendre les bases des bases de données relationnelles et écrire des requêtes SQL lisibles avec SQLite.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Table</div>
+        <div class="key-concept-def">Ensemble de lignes (records) partageant les mêmes colonnes.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">`SELECT`</div>
+        <div class="key-concept-def">Lit des colonnes ; `WHERE` filtre les lignes ; `ORDER BY` les trie.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">`JOIN`</div>
+        <div class="key-concept-def">Combine des lignes de plusieurs tables via une clé commune.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Clé primaire</div>
+        <div class="key-concept-def">Identifiant unique d&#x27;une ligne (souvent un id auto-incrémenté).</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-sql">Cheatsheet — SQL</a><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-types-de-bases-de-données">1) Types de bases de données</a><ol><li><a href="#sql-relationnel">SQL (relationnel)</a></li><li><a href="#nosql">NoSQL</a></li></ol></li><li><a href="#2-rappels-bases-relationnelles">2) Rappels : bases relationnelles</a><li><a href="#3-sqlite">3) SQLite</a><li><a href="#4-démarrer-sur-une-nouvelle-base">4) Démarrer sur une nouvelle base</a><ol><li><a href="#exemple-de-base">Exemple de base</a></li><li><a href="#outil-dexploration">Outil d'exploration</a></li><li><a href="#première-requête">Première requête</a></li></ol></li><li><a href="#5-projection-select">5) Projection : `SELECT`</a><li><a href="#6-sélection-where">6) Sélection : `WHERE`</a><li><a href="#7-tri-order-by">7) Tri : `ORDER BY`</a><li><a href="#8-agrégations-count-sum-avg-min-max">8) Agrégations : `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`</a><li><a href="#9-groupement-group-by-having">9) Groupement : `GROUP BY` + `HAVING`</a><ol><li><a href="#where-vs-having">`WHERE` vs `HAVING`</a></li></ol></li><li><a href="#10-joindre-plusieurs-tables-join">10) Joindre plusieurs tables : `JOIN`</a><li><a href="#11-ordre-des-clauses-sql-à-retenir">11) Ordre des clauses SQL (à retenir)</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-sql">📋 Cheatsheet — SQL</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- ── STRUCTURE COMPLÈTE (ordre obligatoire) ───────────
+SELECT col1, col2, COUNT(id) AS total   -- colonnes à afficher
+FROM &quot;Table&quot; AS t                        -- table source
+JOIN &quot;Autre&quot; AS a ON t.id = a.table_id  -- jointure
+WHERE t.colonne = &#x27;valeur&#x27;              -- filtre AVANT agrégation
+GROUP BY t.colonne                       -- regroupement
+HAVING COUNT(id) &gt; 100                  -- filtre APRÈS agrégation
+ORDER BY total DESC                      -- tri
+LIMIT 10;                               -- limitation du nombre de résultats
+
+-- ── PROJECTION ───────────────────────────────────────
+SELECT *                   -- toutes les colonnes
+SELECT col1, col2          -- colonnes spécifiques
+SELECT col1 AS alias       -- renommer une colonne
+
+-- ── FILTRES WHERE ────────────────────────────────────
+WHERE col = &#x27;valeur&#x27;               -- égalité exacte
+WHERE col != &#x27;valeur&#x27;              -- différent
+WHERE col &gt; 100                    -- comparaison numérique
+WHERE col IN (1, 2, 3)             -- parmi une liste de valeurs
+WHERE col LIKE &#x27;John %&#x27;            -- % = 0 ou plusieurs caractères
+WHERE col IS NULL                  -- valeur manquante
+WHERE col IS NOT NULL              -- valeur présente
+WHERE cond1 AND cond2              -- les deux conditions vraies
+WHERE cond1 OR cond2               -- au moins une condition vraie
+
+-- ── AGRÉGATIONS ──────────────────────────────────────
+COUNT(id)        -- nombre de lignes non nulles
+SUM(col)         -- somme des valeurs
+AVG(col)         -- moyenne des valeurs
+MIN(col)         -- valeur minimale
+MAX(col)         -- valeur maximale
+
+-- ── CASE WHEN ────────────────────────────────────────
+CASE
+    WHEN condition1 THEN &#x27;résultat1&#x27;   -- si condition1 vraie
+    WHEN condition2 THEN &#x27;résultat2&#x27;   -- sinon si condition2 vraie
+    ELSE &#x27;défaut&#x27;                      -- sinon
+END AS nom_colonne                     -- nom de la colonne calculée
+
+-- ── WHERE vs HAVING ──────────────────────────────────
+WHERE  -- filtre les lignes AVANT GROUP BY (sur données brutes)
+HAVING -- filtre les agrégats APRÈS GROUP BY (sur résultats calculés)</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Filtrer avec <code>WHERE</code> sur un agrégat au lieu de <code>HAVING</code></strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(id), country_id
+FROM &quot;Match&quot;
+GROUP BY country_id
+WHERE COUNT(id) &gt; 1000;  -- ❌ SyntaxError : WHERE s&#x27;applique avant GROUP BY
+
+HAVING COUNT(id) &gt; 1000; -- ✅</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier <code>GROUP BY</code> quand on utilise une agrégation</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT country_id, COUNT(id)
+FROM &quot;Match&quot;;  -- ❌ retourne une seule ligne incohérente
+
+SELECT country_id, COUNT(id)
+FROM &quot;Match&quot;
+GROUP BY country_id;  -- ✅</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre <code>JOIN</code> (INNER) et résultats manquants</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Un INNER JOIN exclut les lignes sans correspondance des deux côtés
+-- Si un pays n&#x27;a pas de ligue, il disparaît du résultat
+-- ✅ Utilise LEFT JOIN pour garder tous les enregistrements du côté gauche</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier <code>UPPER()</code> ou <code>LIKE</code> insensible à la casse</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">WHERE player_name LIKE &#x27;john %&#x27;              -- ❌ peut rater &quot;John&quot; ou &quot;JOHN&quot;
+WHERE UPPER(player_name) LIKE &#x27;JOHN %&#x27;       -- ✅</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser <code>=</code> au lieu de <code>LIKE</code> pour les recherches partielles</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">WHERE player_name = &#x27;John&#x27;         -- ❌ cherche exactement &quot;John&quot;
+WHERE player_name LIKE &#x27;John %&#x27;    -- ✅ cherche &quot;John ...&quot; (prénom)</code></pre></div></div></div>
+
+<hr>
+
+<h2 id="1-types-de-bases-de-données">1) Types de bases de données</h2>
+
+<h3 id="sql-relationnel">SQL (relationnel)</h3>
+
+<ul>
+<li>SQLite</li>
+<li>PostgreSQL</li>
+<li>MySQL / MariaDB</li>
+<li>Microsoft SQL Server</li>
+<li>Oracle</li>
+<li>IBM DB2</li>
+</ul>
+
+<h3 id="nosql">NoSQL</h3>
+
+<ul>
+<li>Document (CouchDB, MongoDB, etc.)</li>
+<li>Key-value (Redis, Dynamo, etc.)</li>
+<li>Graph (Neo4J, etc.)</li>
+</ul>
+
+<hr>
+
+<h2 id="2-rappels-bases-relationnelles">2) Rappels : bases relationnelles</h2>
+
+<blockquote><p>Une base relationnelle organise les données en <strong>tables</strong> (lignes et colonnes) avec une <strong>clé primaire</strong> par ligne. Les relations entre tables se font via des <strong>clés étrangères</strong>.<br></p></blockquote>
+
+<hr>
+
+<h2 id="3-sqlite">3) SQLite</h2>
+
+<p>Une base SQLite est stockée dans <strong>un seul fichier</strong>.</p>
+
+<p>👉 <a href="https://www.sqlite.org/index.html" target="_blank" rel="noopener">Site officiel SQLite</a></p>
+
+<hr>
+
+<h2 id="4-démarrer-sur-une-nouvelle-base">4) Démarrer sur une nouvelle base</h2>
+
+<h3 id="exemple-de-base">Exemple de base</h3>
+
+<p>👉 <a href="https://www.kaggle.com/hugomathien/soccer/" target="_blank" rel="noopener">European Soccer Database (Kaggle)</a></p>
+
+<h3 id="outil-dexploration">Outil d'exploration</h3>
+
+<p>👉 <a href="https://sqliteonline.com/" target="_blank" rel="noopener">SQLiteOnline</a></p>
+
+<h3 id="première-requête">Première requête</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT *
+FROM Country;</code></pre></div>
+
+
+<hr>
+
+<h2 id="5-projection-select">5) Projection : <code>SELECT</code></h2>
+
+<p>Choisir <strong>quelles colonnes</strong> retourner.</p>
+
+<p>🤔 Récupérer <code>id</code>, <code>season</code>, <code>stage</code>, <code>date</code> de tous les matchs</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT &quot;Match&quot;.id,
+	&quot;Match&quot;.season,
+	&quot;Match&quot;.stage,
+	&quot;Match&quot;.date
+FROM &quot;Match&quot;;</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Pourquoi les guillemets ?</strong></p>
+<p><code>&quot;Match&quot;</code> peut être interprété comme un mot-clé ou un identifiant sensible. Avec les guillemets, SQLite comprend que c'est le <strong>nom de la table</strong>.</p></div></div>
+
+<p>💡 Astuce : aliaser les tables pour la lisibilité</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT m.id,
+	m.season,
+	m.stage,
+	m.date
+FROM &quot;Match&quot; AS m;</code></pre></div>
+
+
+<hr>
+
+<h2 id="6-sélection-where">6) Sélection : <code>WHERE</code></h2>
+
+<p>Choisir <strong>quelles lignes</strong> inclure.</p>
+
+<p>🤔 Matchs joués en France</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT *
+FROM &quot;Match&quot; AS m
+WHERE m.country_id = 4769;</code></pre></div>
+
+
+<p>🤔 Matchs joués en Belgique <strong>ou</strong> en Angleterre</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT *
+FROM &quot;Match&quot; AS m
+WHERE m.country_id = 1
+	OR m.country_id = 1729;</code></pre></div>
+
+
+<p>Alternative avec <code>IN</code></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT *
+FROM &quot;Match&quot; AS m
+WHERE m.country_id IN (1, 1729);</code></pre></div>
+
+
+<p>🤔 Joueurs prénommés John</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT *
+FROM Player
+WHERE UPPER(Player.player_name) LIKE &#x27;JOHN %&#x27;;</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>%</code> est un wildcard qui correspond à <strong>zéro ou plusieurs</strong> caractères.</p>
+<p><code>_</code> correspond à <strong>exactement un</strong> caractère.</p></div></div>
+
+<hr>
+
+<h2 id="7-tri-order-by">7) Tri : <code>ORDER BY</code></h2>
+
+<p>Trier les résultats.</p>
+
+<p>🤔 Les 10 joueurs les plus lourds</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT *
+FROM Player
+ORDER BY Player.weight DESC
+LIMIT 10;</code></pre></div>
+
+
+<hr>
+
+<h2 id="8-agrégations-count-sum-avg-min-max">8) Agrégations : <code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, <code>MIN</code>, <code>MAX</code></h2>
+
+<p>Calculer des statistiques sur un ensemble de lignes.</p>
+
+<p>🤔 Nombre de joueurs mesurant au moins 2m</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(Player.id)
+FROM Player
+WHERE Player.height &gt;= 200;</code></pre></div>
+
+
+<p>🤔 Poids moyen des joueurs mesurant au moins 2m</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT AVG(Player.weight)
+FROM Player
+WHERE Player.height &gt;= 200;</code></pre></div>
+
+
+<p>🤔 Conversion en kilogrammes</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT AVG(Player.weight) / 2.20462
+FROM Player
+WHERE Player.height &gt;= 200;</code></pre></div>
+
+
+<hr>
+
+<h2 id="9-groupement-group-by-having">9) Groupement : <code>GROUP BY</code> + <code>HAVING</code></h2>
+
+<p>Regrouper par une colonne et filtrer les agrégats.</p>
+
+<p>🤔 Nombre de matchs par pays</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(m.id) AS match_count,
+	m.country_id
+FROM &quot;Match&quot; AS m
+GROUP BY m.country_id;</code></pre></div>
+
+
+<p>🤔 Trier les résultats</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(m.id) AS match_count,
+	m.country_id
+FROM &quot;Match&quot; AS m
+GROUP BY m.country_id
+ORDER BY match_count DESC;</code></pre></div>
+
+
+<p>🤔 Pays avec plus de 3000 matchs</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(m.id) AS match_count,
+	m.country_id
+FROM &quot;Match&quot; AS m
+GROUP BY m.country_id
+HAVING match_count &gt;= 3000
+ORDER BY match_count DESC;</code></pre></div>
+
+
+<h3 id="where-vs-having"><code>WHERE</code> vs <code>HAVING</code></h3>
+
+<ul>
+<li><code>WHERE</code> filtre les <strong>lignes avant</strong> l'agrégation.</li>
+<li><code>HAVING</code> filtre les <strong>résultats après</strong> l'agrégation.</li>
+</ul>
+
+<p>🤔 Pays avec plus de 700 matchs nuls</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(m.id) AS match_count,
+	m.country_id
+FROM &quot;Match&quot; AS m
+WHERE m.home_team_goal = m.away_team_goal
+GROUP BY m.country_id
+HAVING match_count &gt;= 700
+ORDER BY match_count DESC;</code></pre></div>
+
+
+<p>🤔 Compter les matchs par résultat (domicile, nul, extérieur)</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(m.id) AS outcome_count,
+	CASE
+		WHEN m.home_team_goal &gt; m.away_team_goal THEN &#x27;home_win&#x27;
+		WHEN m.home_team_goal = m.away_team_goal THEN &#x27;draw&#x27;
+		ELSE &#x27;away_win&#x27;
+	END AS outcome
+FROM &quot;Match&quot; AS m
+GROUP BY outcome
+ORDER BY outcome_count DESC;</code></pre></div>
+
+
+<hr>
+
+<h2 id="10-joindre-plusieurs-tables-join">10) Joindre plusieurs tables : <code>JOIN</code></h2>
+
+<p>Croiser des tables via leurs clés.</p>
+
+<p>🤔 Ligues avec le nom de leur pays</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT League.name,
+	Country.name
+FROM League
+JOIN Country
+	ON League.country_id = Country.id;</code></pre></div>
+
+
+<p>🤔 Nombre de matchs par ligue (avec pays)</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT League.id,
+	League.name AS league_name,
+	COUNT(m.id) AS match_count,
+	Country.name AS country_name
+FROM &quot;Match&quot; AS m
+JOIN League
+	ON m.league_id = League.id
+JOIN Country
+	ON League.country_id = Country.id
+GROUP BY League.id
+ORDER BY match_count DESC,
+	country_name ASC;</code></pre></div>
+
+
+<hr>
+
+<h2 id="11-ordre-des-clauses-sql-à-retenir">11) Ordre des clauses SQL (à retenir)</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT ...        -- colonnes à afficher
+FROM ...          -- table source
+JOIN ... ON ...   -- jointures
+WHERE ...         -- filtre des lignes
+GROUP BY ...      -- regroupement
+HAVING ...        -- filtre des agrégats
+ORDER BY ...      -- tri
+LIMIT ...         -- limitation</code></pre></div>
+
+
+<p>👉 <a href="https://www.sisense.com/blog/sql-query-order-of-operations/" target="_blank" rel="noopener">Pour aller plus loin — SQL Query Order of Operations</a></p>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-points-clés-à-retenir">Points clés à retenir</a></li><li><a href="#ref-analogie-une-table-une-feuille-excel">Analogie : une table = une feuille Excel</a></li><li><a href="#ref-plan-du-cours">Plan du cours</a></li></ol></li><li><a href="#ref-1-types-de-bases-de-données">1. Types de bases de données</a><ol><li><a href="#ref-bases-relationnelles-sql">Bases relationnelles (SQL)</a></li><li><a href="#ref-bases-non-relationnelles-nosql">Bases non relationnelles (NoSQL)</a></li></ol></li><li><a href="#ref-2-rappels-les-bases-relationnelles">2. Rappels : les bases relationnelles</a><li><a href="#ref-3-sqlite-une-base-de-données-dans-un-seul-fichier">3. SQLite — une base de données dans un seul fichier</a><li><a href="#ref-4-projection-choisir-ses-colonnes-avec-select">4. Projection : choisir ses colonnes avec `SELECT`</a><ol><li><a href="#ref-récupérer-toutes-les-colonnes">Récupérer toutes les colonnes</a></li><li><a href="#ref-récupérer-des-colonnes-spécifiques">Récupérer des colonnes spécifiques</a></li><li><a href="#ref-utiliser-des-alias-pour-simplifier-lécriture">Utiliser des alias pour simplifier l'écriture</a></li></ol></li><li><a href="#ref-5-sélection-filtrer-les-lignes-avec-where">5. Sélection : filtrer les lignes avec `WHERE`</a><ol><li><a href="#ref-filtrer-sur-une-valeur-exacte">Filtrer sur une valeur exacte</a></li><li><a href="#ref-combiner-plusieurs-conditions-avec-or">Combiner plusieurs conditions avec `OR`</a></li><li><a href="#ref-alternative-plus-lisible-avec-in">Alternative plus lisible avec `IN`</a></li><li><a href="#ref-recherche-partielle-avec-like">Recherche partielle avec `LIKE`</a></li><li><a href="#ref-récapitulatif-des-opérateurs-de-filtrage">Récapitulatif des opérateurs de filtrage</a></li></ol></li><li><a href="#ref-6-tri-et-limitation-order-by-et-limit">6. Tri et limitation : `ORDER BY` et `LIMIT`</a><ol><li><a href="#ref-trier-les-résultats">Trier les résultats</a></li></ol></li><li><a href="#ref-7-agrégations-calculer-des-statistiques">7. Agrégations : calculer des statistiques</a><ol><li><a href="#ref-compter-des-lignes">Compter des lignes</a></li><li><a href="#ref-calculer-une-moyenne">Calculer une moyenne</a></li><li><a href="#ref-faire-un-calcul-dans-la-requête">Faire un calcul dans la requête</a></li></ol></li><li><a href="#ref-8-groupement-group-by-et-having">8. Groupement : `GROUP BY` et `HAVING`</a><ol><li><a href="#ref-compter-par-groupe">Compter par groupe</a></li><li><a href="#ref-trier-les-groupes">Trier les groupes</a></li><li><a href="#ref-filtrer-les-groupes-avec-having">Filtrer les groupes avec `HAVING`</a></li><li><a href="#ref-where-vs-having-la-distinction-essentielle">WHERE vs HAVING — la distinction essentielle</a></li><li><a href="#ref-classer-des-résultats-avec-case-when">Classer des résultats avec `CASE WHEN`</a></li></ol></li><li><a href="#ref-9-jointures-relier-plusieurs-tables-avec-join">9. Jointures : relier plusieurs tables avec `JOIN`</a><ol><li><a href="#ref-principe-du-join">Principe du JOIN</a></li><li><a href="#ref-exemple-simple-ligues-avec-le-nom-de-leur-pays">Exemple simple : ligues avec le nom de leur pays</a></li><li><a href="#ref-exemple-avancé-plusieurs-jointures-enchaînées">Exemple avancé : plusieurs jointures enchaînées</a></li></ol></li><li><a href="#ref-10-lordre-obligatoire-des-clauses-sql">10. L'ordre obligatoire des clauses SQL</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>SQL (prononcé "S-Q-L" ou "sequel") est le langage universel pour <strong>interroger des bases de données relationnelles</strong>. Il est utilisé partout : applications web, analyses de données, data science, finance, e-commerce... Si tu travailles avec des données structurées un jour, tu auras besoin de SQL.</p>
+
+<h3 id="ref-points-clés-à-retenir">Points clés à retenir</h3>
+
+<ul>
+<li>SQL signifie <strong>Structured Query Language</strong> — c'est un langage de requête, pas un langage de programmation classique.</li>
+<li>Il permet de <strong>lire, filtrer, trier et agréger</strong> des données stockées dans des tables.</li>
+<li>Il existe plusieurs "dialectes" (SQLite, PostgreSQL, MySQL...) mais la syntaxe de base est la même.</li>
+<li>SQL est <strong>déclaratif</strong> : tu décris <strong>ce que tu veux</strong>, pas comment le calculer.</li>
+<li>Les requêtes s'écrivent dans un <strong>ordre précis</strong> et obligatoire.</li>
+</ul>
+
+<h3 id="ref-analogie-une-table-une-feuille-excel">Analogie : une table = une feuille Excel</h3>
+
+<p>Imagine que ta base de données est un <strong>classeur Excel</strong> avec plusieurs onglets. Chaque onglet est une <strong>table</strong>. Chaque colonne a un nom (ex: <code>id</code>, <code>nom</code>, <code>pays</code>), et chaque ligne est un <strong>enregistrement</strong> (une entrée de données).</p>
+
+<p>SQL te permet de poser des questions à ce classeur en langage presque humain : "Donne-moi tous les joueurs dont la taille est supérieure à 2 mètres, triés par poids."</p>
+
+<h3 id="ref-plan-du-cours">Plan du cours</h3>
+
+<ol>
+<li>Types de bases de données (SQL vs NoSQL)</li>
+<li>Structure d'une base relationnelle (tables, clés)</li>
+<li>SQLite — la base de données dans un fichier</li>
+<li>Projection avec <code>SELECT</code></li>
+<li>Filtrage avec <code>WHERE</code></li>
+<li>Tri avec <code>ORDER BY</code> et <code>LIMIT</code></li>
+<li>Agrégations (<code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, <code>MIN</code>, <code>MAX</code>)</li>
+<li>Groupement avec <code>GROUP BY</code> et <code>HAVING</code></li>
+<li>Jointures avec <code>JOIN</code></li>
+<li>Ordre obligatoire des clauses SQL</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-types-de-bases-de-données">1. Types de bases de données</h2>
+
+<p>Il existe deux grandes familles de bases de données.</p>
+
+<h3 id="ref-bases-relationnelles-sql">Bases relationnelles (SQL)</h3>
+
+<p>Les données sont organisées en <strong>tables liées entre elles</strong>. C'est le modèle le plus répandu pour les données structurées.</p>
+
+<p>Exemples : SQLite, PostgreSQL, MySQL, Microsoft SQL Server, Oracle.</p>
+
+<h3 id="ref-bases-non-relationnelles-nosql">Bases non relationnelles (NoSQL)</h3>
+
+<p>Pour des données moins structurées ou des besoins très spécifiques (performance, flexibilité).</p>
+
+<ul>
+<li><strong>Document</strong> : MongoDB, CouchDB — stocke des documents JSON</li>
+<li><strong>Clé-valeur</strong> : Redis, DynamoDB — comme un dictionnaire géant</li>
+<li><strong>Graphe</strong> : Neo4J — pour des réseaux de relations complexes</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Dans ce cours, on se concentre sur <strong>SQL</strong> avec <strong>SQLite</strong>. C'est la base idéale pour apprendre : simple, sans installation serveur, et identique dans sa syntaxe aux autres systèmes SQL.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-rappels-les-bases-relationnelles">2. Rappels : les bases relationnelles</h2>
+
+<p>Une <strong>base de données relationnelle</strong> organise les données en tables. Voici les concepts fondamentaux :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Définition simple</th></tr></thead><tbody><tr><td><strong>Table</strong></td><td>Un tableau avec des lignes et des colonnes (= une feuille Excel)</td></tr><tr><td><strong>Ligne</strong></td><td>Un enregistrement (ex: un joueur, un match)</td></tr><tr><td><strong>Colonne</strong></td><td>Un attribut (ex: <code>nom</code>, <code>poids</code>, <code>date</code>)</td></tr><tr><td><strong>Clé primaire</strong></td><td>Un identifiant unique par ligne (souvent appelé <code>id</code>)</td></tr><tr><td><strong>Clé étrangère</strong></td><td>Un <code>id</code> qui fait référence à une autre table, pour créer un lien</td></tr></tbody></table></div>
+<p><strong>Exemple concret :</strong> Dans une base de données de football, on peut avoir :</p>
+<ul>
+<li>Une table <code>Player</code> avec les colonnes <code>id</code>, <code>player_name</code>, <code>height</code>, <code>weight</code></li>
+<li>Une table <code>Match</code> avec les colonnes <code>id</code>, <code>season</code>, <code>country_id</code>, <code>home_team_goal</code>, <code>away_team_goal</code></li>
+<li>Une table <code>Country</code> avec les colonnes <code>id</code>, <code>name</code></li>
+</ul>
+
+<p>La colonne <code>country_id</code> dans <code>Match</code> est une <strong>clé étrangère</strong> qui pointe vers <code>id</code> dans <code>Country</code>. C'est ce lien qui permet de retrouver le nom du pays d'un match.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Les clés étrangères évitent la duplication : au lieu de répéter "France" dans chaque ligne de match, on stocke juste le chiffre <code>4769</code>. Le nom complet est disponible dans la table <code>Country</code>.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-sqlite-une-base-de-données-dans-un-seul-fichier">3. SQLite — une base de données dans un seul fichier</h2>
+
+<p>SQLite est une base de données <strong>ultra-légère</strong> : toute la base est stockée dans <strong>un seul fichier</strong> sur ton ordinateur (extension <code>.db</code> ou <code>.sqlite</code>).</p>
+
+<p>Avantages pour apprendre :</p>
+<ul>
+<li>Aucun serveur à installer ou configurer</li>
+<li>On peut ouvrir le fichier directement dans des outils en ligne</li>
+<li>La syntaxe SQL est identique aux autres systèmes</li>
+</ul>
+
+<p>Pour pratiquer en ligne sans rien installer, tu peux utiliser SQLiteOnline.com et y charger une base <code>.db</code>.</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Dans ce cours, on utilise la base de données "European Soccer Database" disponible sur Kaggle, qui contient des données de matchs de football européens.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-projection-choisir-ses-colonnes-avec-select">4. Projection : choisir ses colonnes avec <code>SELECT</code></h2>
+
+<p>La <strong>projection</strong> consiste à choisir <strong>quelles colonnes</strong> tu veux voir dans ton résultat. C'est le rôle de <code>SELECT</code>.</p>
+
+<h3 id="ref-récupérer-toutes-les-colonnes">Récupérer toutes les colonnes</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT *          -- l&#x27;étoile * signifie &quot;toutes les colonnes&quot;
+FROM Country;     -- depuis la table Country</code></pre></div>
+
+
+<p>Résultat : toutes les lignes de la table <code>Country</code>, avec toutes ses colonnes.</p>
+
+<h3 id="ref-récupérer-des-colonnes-spécifiques">Récupérer des colonnes spécifiques</h3>
+
+<p>On veut uniquement <code>id</code>, <code>season</code>, <code>stage</code> et <code>date</code> des matchs, pas toutes les 100 colonnes de la table.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT &quot;Match&quot;.id,       -- la colonne id de la table Match
+       &quot;Match&quot;.season,   -- la colonne season
+       &quot;Match&quot;.stage,    -- la colonne stage
+       &quot;Match&quot;.date      -- la colonne date
+FROM &quot;Match&quot;;            -- depuis la table Match</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Les guillemets doubles autour de <code>&quot;Match&quot;</code> sont nécessaires car <code>Match</code> est un mot qui pourrait être confondu avec un mot-clé SQL selon le dialecte. Par prudence, on met les guillemets pour indiquer que c'est le <strong>nom d'une table</strong>.</p></div></div>
+
+<h3 id="ref-utiliser-des-alias-pour-simplifier-lécriture">Utiliser des alias pour simplifier l'écriture</h3>
+
+<p>Répéter <code>&quot;Match&quot;.</code> devant chaque colonne est verbeux. On peut donner un <strong>alias</strong> (surnom) à la table avec <code>AS</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT m.id,       -- m est l&#x27;alias de &quot;Match&quot;
+       m.season,
+       m.stage,
+       m.date
+FROM &quot;Match&quot; AS m; -- on définit m comme alias de la table Match</code></pre></div>
+
+
+<p>C'est exactement la même requête, juste plus lisible !</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Les alias sont une bonne pratique dès que tu travailles avec plusieurs tables. <code>m</code> pour <code>Match</code>, <code>p</code> pour <code>Player</code>, <code>c</code> pour <code>Country</code>... ça rend le code beaucoup plus clair.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-sélection-filtrer-les-lignes-avec-where">5. Sélection : filtrer les lignes avec <code>WHERE</code></h2>
+
+<p><code>WHERE</code> te permet de ne garder que les lignes qui <strong>correspondent à une condition</strong>. C'est comme filtrer une feuille Excel, mais en code.</p>
+
+<h3 id="ref-filtrer-sur-une-valeur-exacte">Filtrer sur une valeur exacte</h3>
+
+<p>On veut uniquement les matchs joués en France (dont l'<code>id</code> pays est <code>4769</code>) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT *               -- toutes les colonnes
+FROM &quot;Match&quot; AS m      -- depuis la table Match (alias m)
+WHERE m.country_id = 4769;  -- ne garder que les lignes où country_id vaut 4769</code></pre></div>
+
+
+<h3 id="ref-combiner-plusieurs-conditions-avec-or">Combiner plusieurs conditions avec <code>OR</code></h3>
+
+<p>On veut les matchs de Belgique (<code>id = 1</code>) OU d'Angleterre (<code>id = 1729</code>) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT *
+FROM &quot;Match&quot; AS m
+WHERE m.country_id = 1        -- condition 1 : Belgique
+   OR m.country_id = 1729;    -- OU condition 2 : Angleterre</code></pre></div>
+
+
+<h3 id="ref-alternative-plus-lisible-avec-in">Alternative plus lisible avec <code>IN</code></h3>
+
+<p>Quand tu veux tester plusieurs valeurs pour <strong>une même colonne</strong>, <code>IN</code> est plus pratique :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT *
+FROM &quot;Match&quot; AS m
+WHERE m.country_id IN (1, 1729);  -- dans la liste (1 ou 1729)</code></pre></div>
+
+
+<p>Ce code fait exactement la même chose que le <code>OR</code> ci-dessus, mais est plus lisible.</p>
+
+<h3 id="ref-recherche-partielle-avec-like">Recherche partielle avec <code>LIKE</code></h3>
+
+<p>On veut tous les joueurs dont le <strong>prénom est John</strong> (John Smith, John Doe...) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT *
+FROM Player
+WHERE UPPER(Player.player_name) LIKE &#x27;JOHN %&#x27;;
+-- UPPER() met tout en majuscules pour éviter les problèmes de casse
+-- LIKE &#x27;JOHN %&#x27; = commence par &quot;JOHN &quot; suivi de n&#x27;importe quoi</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le <code>%</code> dans <code>LIKE</code> est un <strong>wildcard</strong> (joker) : il remplace <strong>zéro ou plusieurs caractères</strong>. Donc <code>&#x27;JOHN %&#x27;</code> correspond à "JOHN SMITH", "JOHN DOE", "JOHN A. JOHNSON", etc. Le <code>_</code> (underscore) remplace exactement <strong>un seul</strong> caractère.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais utiliser <code>=</code> pour une recherche partielle. <code>WHERE player_name = &#x27;John&#x27;</code> cherche exactement la chaîne <code>&quot;John&quot;</code> et rien d'autre. Utilise <code>LIKE</code> pour les recherches avec jokers.</p></div></div>
+
+<h3 id="ref-récapitulatif-des-opérateurs-de-filtrage">Récapitulatif des opérateurs de filtrage</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">WHERE col = &#x27;valeur&#x27;       -- égalité exacte
+WHERE col != &#x27;valeur&#x27;      -- différent de
+WHERE col &gt; 100            -- supérieur à (aussi &lt;, &gt;=, &lt;=)
+WHERE col IN (1, 2, 3)     -- appartient à une liste
+WHERE col LIKE &#x27;Jo%&#x27;       -- commence par &quot;Jo&quot; (recherche partielle)
+WHERE col IS NULL          -- valeur manquante (vide)
+WHERE col IS NOT NULL      -- valeur présente (pas vide)
+WHERE cond1 AND cond2      -- les deux conditions doivent être vraies
+WHERE cond1 OR cond2       -- au moins une condition doit être vraie</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-6-tri-et-limitation-order-by-et-limit">6. Tri et limitation : <code>ORDER BY</code> et <code>LIMIT</code></h2>
+
+<h3 id="ref-trier-les-résultats">Trier les résultats</h3>
+
+<p><code>ORDER BY</code> trie les résultats selon une colonne. <code>DESC</code> = ordre décroissant, <code>ASC</code> = ordre croissant (par défaut).</p>
+
+<p>On veut les 10 joueurs les plus lourds :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT *                         -- toutes les colonnes
+FROM Player                      -- depuis la table Player
+ORDER BY Player.weight DESC      -- trier par poids, du plus lourd au plus léger
+LIMIT 10;                        -- ne garder que les 10 premiers résultats</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>LIMIT</code> est très utile en pratique pour ne pas afficher des milliers de lignes d'un coup. C'est comme dire "montre-moi juste les 10 premiers résultats".</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-agrégations-calculer-des-statistiques">7. Agrégations : calculer des statistiques</h2>
+
+<p>Les <strong>fonctions d'agrégation</strong> permettent de calculer une valeur à partir de <strong>plusieurs lignes</strong> : compter, sommer, faire une moyenne...</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Fonction</th><th>Ce qu'elle fait</th></tr></thead><tbody><tr><td><code>COUNT(col)</code></td><td>Compte le nombre de lignes non nulles</td></tr><tr><td><code>SUM(col)</code></td><td>Additionne toutes les valeurs</td></tr><tr><td><code>AVG(col)</code></td><td>Calcule la moyenne</td></tr><tr><td><code>MIN(col)</code></td><td>Retourne la plus petite valeur</td></tr><tr><td><code>MAX(col)</code></td><td>Retourne la plus grande valeur</td></tr></tbody></table></div>
+<h3 id="ref-compter-des-lignes">Compter des lignes</h3>
+
+<p>Combien de joueurs mesurent au moins 2 mètres (200 cm) ?</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(Player.id)   -- compter le nombre de lignes (par leur id)
+FROM Player               -- depuis la table Player
+WHERE Player.height &gt;= 200;  -- en ne gardant que ceux &gt;= 200 cm</code></pre></div>
+
+
+<p>Résultat : un seul chiffre, par exemple <code>42</code>.</p>
+
+<h3 id="ref-calculer-une-moyenne">Calculer une moyenne</h3>
+
+<p>Quel est le poids moyen de ces joueurs de grande taille ?</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT AVG(Player.weight)    -- calculer la moyenne de la colonne weight
+FROM Player
+WHERE Player.height &gt;= 200;  -- uniquement les joueurs &gt;= 200 cm</code></pre></div>
+
+
+<h3 id="ref-faire-un-calcul-dans-la-requête">Faire un calcul dans la requête</h3>
+
+<p>Le poids des joueurs est stocké en <strong>livres</strong> (données américaines). On peut convertir en kilogrammes directement dans la requête :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT AVG(Player.weight) / 2.20462   -- diviser la moyenne par 2.20462 pour avoir des kg
+FROM Player
+WHERE Player.height &gt;= 200;</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>SQL peut faire des <strong>calculs mathématiques</strong> directement dans le <code>SELECT</code>. Les opérateurs <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> fonctionnent comme en arithmétique classique.</p></div></div>
+
+<hr>
+
+<h2 id="ref-8-groupement-group-by-et-having">8. Groupement : <code>GROUP BY</code> et <code>HAVING</code></h2>
+
+<p><code>GROUP BY</code> est l'outil puissant qui permet de <strong>calculer des agrégations par groupe</strong>. Par exemple : compter les matchs par pays, calculer la moyenne des buts par saison, etc.</p>
+
+<h3 id="ref-compter-par-groupe">Compter par groupe</h3>
+
+<p>Combien de matchs a-t-on par pays ?</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(m.id) AS match_count,   -- compter les matchs, nommer la colonne &quot;match_count&quot;
+       m.country_id                   -- afficher aussi l&#x27;id du pays
+FROM &quot;Match&quot; AS m                     -- depuis la table Match
+GROUP BY m.country_id;               -- créer un groupe par valeur unique de country_id</code></pre></div>
+
+
+<p>Résultat : une ligne par pays, avec le nombre de matchs associé.</p>
+
+<h3 id="ref-trier-les-groupes">Trier les groupes</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(m.id) AS match_count,
+       m.country_id
+FROM &quot;Match&quot; AS m
+GROUP BY m.country_id
+ORDER BY match_count DESC;   -- trier par nombre de matchs, du plus grand au plus petit</code></pre></div>
+
+
+<h3 id="ref-filtrer-les-groupes-avec-having">Filtrer les groupes avec <code>HAVING</code></h3>
+
+<p>On veut uniquement les pays avec <strong>plus de 3000 matchs</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(m.id) AS match_count,
+       m.country_id
+FROM &quot;Match&quot; AS m
+GROUP BY m.country_id
+HAVING match_count &gt;= 3000    -- filtrer les groupes APRÈS agrégation
+ORDER BY match_count DESC;</code></pre></div>
+
+
+<h3 id="ref-where-vs-having-la-distinction-essentielle">WHERE vs HAVING — la distinction essentielle</h3>
+
+<p>C'est l'une des confusions les plus fréquentes chez les débutants.</p>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th><code>WHERE</code></th><th><code>HAVING</code></th></tr></thead><tbody><tr><td><strong>Quand ?</strong></td><td>Avant le <code>GROUP BY</code></td><td>Après le <code>GROUP BY</code></td></tr><tr><td><strong>Sur quoi ?</strong></td><td>Sur les lignes brutes</td><td>Sur les résultats agrégés</td></tr><tr><td><strong>Exemple</strong></td><td><code>WHERE country_id = 1</code></td><td><code>HAVING COUNT(id) &gt; 1000</code></td></tr></tbody></table></div>
+<p><strong>Exemple combinant les deux :</strong> Pays avec plus de 700 matchs nuls (score identique à domicile et à l'extérieur) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(m.id) AS match_count,
+       m.country_id
+FROM &quot;Match&quot; AS m
+WHERE m.home_team_goal = m.away_team_goal  -- WHERE filtre les lignes AVANT le groupe
+GROUP BY m.country_id                       -- regrouper par pays
+HAVING match_count &gt;= 700                  -- HAVING filtre les groupes APRÈS agrégation
+ORDER BY match_count DESC;</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Erreur classique : utiliser <code>WHERE</code> sur un résultat agrégé. <code>WHERE COUNT(id) &gt; 1000</code> provoque une <strong>erreur de syntaxe</strong>. Pour filtrer sur un agrégat, c'est toujours <code>HAVING</code>.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Autre erreur classique : oublier le <code>GROUP BY</code> quand on utilise une agrégation avec une autre colonne. Si tu sélectionnes <code>country_id</code> et <code>COUNT(id)</code>, tu <strong>dois</strong> avoir un <code>GROUP BY country_id</code>, sinon SQL ne sait pas comment grouper les données.</p></div></div>
+
+<h3 id="ref-classer-des-résultats-avec-case-when">Classer des résultats avec <code>CASE WHEN</code></h3>
+
+<p><code>CASE WHEN</code> est l'équivalent SQL du <code>if/elif/else</code>. Il permet de créer une nouvelle colonne calculée selon des conditions.</p>
+
+<p>Compter les matchs par type de résultat (victoire domicile, nul, victoire extérieur) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(m.id) AS outcome_count,   -- compter le nombre de matchs par résultat
+       CASE
+           WHEN m.home_team_goal &gt; m.away_team_goal THEN &#x27;home_win&#x27;   -- victoire domicile
+           WHEN m.home_team_goal = m.away_team_goal THEN &#x27;draw&#x27;       -- match nul
+           ELSE &#x27;away_win&#x27;                                             -- victoire extérieur
+       END AS outcome                  -- nommer cette colonne calculée &quot;outcome&quot;
+FROM &quot;Match&quot; AS m
+GROUP BY outcome                       -- grouper par valeur de outcome
+ORDER BY outcome_count DESC;</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>CASE WHEN ... THEN ... ELSE ... END</code> se lit comme : "Si telle condition, alors telle valeur. Sinon si... Sinon (par défaut)..."</p></div></div>
+
+<hr>
+
+<h2 id="ref-9-jointures-relier-plusieurs-tables-avec-join">9. Jointures : relier plusieurs tables avec <code>JOIN</code></h2>
+
+<p>Dans une base de données bien conçue, les informations sont <strong>réparties entre plusieurs tables</strong>. Pour combiner ces informations, on utilise <code>JOIN</code>.</p>
+
+<h3 id="ref-principe-du-join">Principe du JOIN</h3>
+
+<p>Un <code>JOIN</code> fusionne deux tables en faisant correspondre des lignes via leurs clés. La syntaxe est :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">JOIN AutreTable ON table1.cle_etrangere = AutreTable.cle_primaire</code></pre></div>
+
+
+<h3 id="ref-exemple-simple-ligues-avec-le-nom-de-leur-pays">Exemple simple : ligues avec le nom de leur pays</h3>
+
+<p>La table <code>League</code> contient <code>country_id</code> mais pas le nom du pays. Ce nom est dans la table <code>Country</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT League.name,       -- nom de la ligue (depuis League)
+       Country.name       -- nom du pays (depuis Country)
+FROM League               -- table principale
+JOIN Country              -- table à joindre
+    ON League.country_id = Country.id;  -- lien : country_id de League = id de Country</code></pre></div>
+
+
+<p>SQL va "assembler" chaque ligne de <code>League</code> avec la ligne de <code>Country</code> dont l'<code>id</code> correspond.</p>
+
+<h3 id="ref-exemple-avancé-plusieurs-jointures-enchaînées">Exemple avancé : plusieurs jointures enchaînées</h3>
+
+<p>On veut le nombre de matchs par ligue, avec le nom de la ligue <strong>et</strong> le nom du pays :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT League.id,
+       League.name AS league_name,         -- nom de la ligue (alias)
+       COUNT(m.id) AS match_count,          -- nombre de matchs dans cette ligue
+       Country.name AS country_name         -- nom du pays (alias)
+FROM &quot;Match&quot; AS m                          -- table principale : les matchs
+JOIN League                                -- joindre la table League
+    ON m.league_id = League.id             -- via league_id
+JOIN Country                               -- joindre aussi la table Country
+    ON League.country_id = Country.id      -- via country_id
+GROUP BY League.id                         -- grouper par ligue
+ORDER BY match_count DESC,                 -- trier par nombre de matchs (décroissant)
+         country_name ASC;                 -- puis par nom de pays (alphabétique)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Un <code>JOIN</code> (aussi appelé <code>INNER JOIN</code>) <strong>exclut les lignes sans correspondance</strong> des deux côtés. Si un pays n'a pas de ligue, il disparaît du résultat. Pour garder toutes les lignes du côté gauche même sans correspondance, utilise <code>LEFT JOIN</code>.</p></div></div>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>On peut enchaîner autant de <code>JOIN</code> que nécessaire. Chaque <code>JOIN ... ON ...</code> ajoute une nouvelle table à la requête. L'important est de bien préciser la condition de jointure (<code>ON</code>) pour chaque table ajoutée.</p></div></div>
+
+<hr>
+
+<h2 id="ref-10-lordre-obligatoire-des-clauses-sql">10. L'ordre obligatoire des clauses SQL</h2>
+
+<p>En SQL, les clauses doivent être écrites dans un <strong>ordre précis</strong>. Tu ne peux pas les permuter librement.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT col1, col2, COUNT(id) AS total   -- 1. Colonnes à afficher (et agrégations)
+FROM &quot;Table&quot; AS t                        -- 2. Table source
+JOIN &quot;Autre&quot; AS a ON t.id = a.table_id  -- 3. Jointures
+WHERE t.colonne = &#x27;valeur&#x27;              -- 4. Filtres sur les lignes brutes
+GROUP BY t.colonne                       -- 5. Regroupement
+HAVING COUNT(id) &gt; 100                  -- 6. Filtres sur les agrégats
+ORDER BY total DESC                      -- 7. Tri
+LIMIT 10;                               -- 8. Limite du nombre de résultats</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Mémo pour retenir l'ordre : <strong>S</strong>elect <strong>F</strong>rom <strong>J</strong>oin <strong>W</strong>here <strong>G</strong>roup <strong>H</strong>aving <strong>O</strong>rder <strong>L</strong>imit — "<strong>SF-JW-GHOL</strong>".</p></div></div>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Important : l'ordre dans lequel SQL <strong>exécute</strong> les clauses est différent de l'ordre dans lequel on les écrit. En interne, SQL fait d'abord le <code>FROM</code> et les <code>JOIN</code>, puis le <code>WHERE</code>, puis le <code>GROUP BY</code>, puis le <code>HAVING</code>, puis le <code>SELECT</code>, et enfin le <code>ORDER BY</code> et <code>LIMIT</code>. C'est pourquoi on ne peut pas utiliser un alias défini dans <code>SELECT</code> dans un <code>WHERE</code> : le <code>WHERE</code> est exécuté avant le <code>SELECT</code> !</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>1. Quelle est la différence entre <code>WHERE</code> et <code>HAVING</code> ?</strong></p>
+<p>Essaie d'expliquer avec tes mots, et donne un exemple de requête qui utilise les deux.</p>
+
+<p><strong>2. Que retourne cette requête, et pourquoi est-elle incorrecte ?</strong></p>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT country_id, COUNT(id)
+FROM &quot;Match&quot;;</code></pre></div>
+
+
+<p><strong>3. On veut tous les joueurs dont le nom de famille est "Silva". Quelle requête écrire ? (Indice : utilise <code>LIKE</code> et <code>UPPER</code>)</strong></p>
+
+<p><strong>4. Dans quel ordre dois-tu écrire les clauses <code>GROUP BY</code>, <code>HAVING</code>, <code>WHERE</code> et <code>ORDER BY</code> dans une requête SQL ?</strong></p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>SQL est le langage pour interroger des <strong>bases de données relationnelles</strong> (tables liées entre elles par des clés).</li>
+<li><code>SELECT</code> choisit les <strong>colonnes</strong> à afficher ; <code>FROM</code> indique la <strong>table source</strong>.</li>
+<li><code>WHERE</code> filtre les <strong>lignes</strong> selon une condition (avant toute agrégation).</li>
+<li><code>ORDER BY</code> trie les résultats ; <code>LIMIT</code> en restreint le nombre.</li>
+<li><code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, <code>MIN</code>, <code>MAX</code> calculent des <strong>statistiques</strong> sur un ensemble de lignes.</li>
+<li><code>GROUP BY</code> regroupe les lignes par valeur unique d'une colonne pour appliquer des agrégations par groupe.</li>
+<li><code>HAVING</code> filtre les <strong>groupes</strong> après agrégation (l'équivalent de <code>WHERE</code> mais pour les résultats de <code>GROUP BY</code>).</li>
+<li><code>JOIN ... ON ...</code> fusionne deux tables en faisant correspondre leurs clés (clé étrangère = clé primaire).</li>
+<li>L'ordre des clauses est obligatoire : <code>SELECT</code> → <code>FROM</code> → <code>JOIN</code> → <code>WHERE</code> → <code>GROUP BY</code> → <code>HAVING</code> → <code>ORDER BY</code> → <code>LIMIT</code>.</li>
+<li>Erreur classique à éviter : utiliser <code>WHERE</code> sur un agrégat — utilise <code>HAVING</code> à la place.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-le-modèle-relationnel-en-2-minutes">Le modèle relationnel en 2 minutes</a></li><li><a href="#syn-select-where-order-by-limit">SELECT, WHERE, ORDER BY, LIMIT</a></li><li><a href="#syn-agrégations-et-group-by">Agrégations et GROUP BY</a></li><li><a href="#syn-join-entre-tables">JOIN entre tables</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-null-et-logique-trois-valuée">NULL et logique trois-valuée</a></li><li><a href="#syn-sous-requêtes-vs-cte">Sous-requêtes vs CTE</a></li><li><a href="#syn-index-pourquoi-vos-requêtes-sont-lentes">Index : pourquoi vos requêtes sont lentes</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-le-modèle-relationnel-en-2-minutes">Le modèle relationnel en 2 minutes</h3>
+
+<p>Une base relationnelle organise les données en <strong>tables</strong> (relations). Chaque table est un ensemble de <strong>lignes</strong> (tuples) qui partagent les mêmes <strong>colonnes</strong> (attributs). Une <strong>clé primaire</strong> identifie de manière unique chaque ligne. Les tables sont reliées entre elles par des <strong>clés étrangères</strong> qui pointent vers la clé primaire d'une autre table.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Table users
+| id | name    | email           |
+|----|---------|-----------------|
+| 1  | Alice   | alice@x.com     |
+| 2  | Bob     | bob@x.com       |
+
+-- Table orders
+| id | user_id | product   | amount |
+|----|---------|-----------|--------|
+| 10 | 1       | Laptop    | 1200   |
+| 11 | 1       | Mouse     | 25     |
+| 12 | 2       | Keyboard  | 80     |</code></pre></div>
+
+
+<p><code>orders.user_id</code> est une <strong>clé étrangère</strong> qui référence <code>users.id</code>. C'est cette structure qui permet d'<strong>éviter la duplication</strong> : on ne stocke pas le nom d'Alice dans chaque ligne de <code>orders</code>, juste son <code>id</code>.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : un tableur Excel avec un seul onglet est plat. Une base relationnelle est comme un tableur avec <strong>plusieurs onglets connectés par <code>VLOOKUP</code></strong> — sauf que les liens sont déclarés explicitement, vérifiés à l'écriture (contrainte d'intégrité), et optimisés à la lecture (via des index).</p></div></div>
+
+<h3 id="syn-select-where-order-by-limit">SELECT, WHERE, ORDER BY, LIMIT</h3>
+
+<p><strong>La requête fondamentale</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT name, email           -- Colonnes à renvoyer
+FROM users                   -- Table source
+WHERE name LIKE &#x27;A%&#x27;         -- Filtre sur les lignes
+ORDER BY name ASC            -- Tri du résultat
+LIMIT 10;                    -- Ne garde que les 10 premières</code></pre></div>
+
+
+<p><strong>Décryptage de l'ordre logique d'évaluation</strong> (différent de l'ordre d'écriture !) :</p>
+
+<ol>
+<li><strong><code>FROM</code></strong> : choisit la table source</li>
+<li><strong><code>WHERE</code></strong> : filtre les lignes</li>
+<li><strong><code>SELECT</code></strong> : choisit les colonnes à renvoyer</li>
+<li><strong><code>ORDER BY</code></strong> : trie le résultat</li>
+<li><strong><code>LIMIT</code></strong> : ne garde que les N premières</li>
+</ol>
+
+<p>Cet ordre est <strong>crucial</strong> à comprendre : un alias de colonne défini dans <code>SELECT</code> n'est pas accessible dans <code>WHERE</code> (parce que <code>WHERE</code> est évalué avant), mais l'est dans <code>ORDER BY</code>.</p>
+
+<p><strong>Opérateurs courants</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">WHERE age &gt; 18
+WHERE age BETWEEN 18 AND 65
+WHERE city IN (&#x27;Paris&#x27;, &#x27;London&#x27;, &#x27;Berlin&#x27;)
+WHERE name LIKE &#x27;A%&#x27;         -- commence par A
+WHERE name LIKE &#x27;%son&#x27;        -- finit par &quot;son&quot;
+WHERE name LIKE &#x27;_lice&#x27;       -- 5 caractères, finit par &quot;lice&quot; (le _ = un caractère)
+WHERE email IS NULL           -- attention : pas &#x27;=&#x27; NULL !</code></pre></div>
+
+
+<h3 id="syn-agrégations-et-group-by">Agrégations et GROUP BY</h3>
+
+<p>Les <strong>fonctions d'agrégation</strong> calculent une statistique sur un groupe de lignes :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(*) AS total,
+       AVG(amount) AS avg_order,
+       SUM(amount) AS total_revenue
+FROM orders;
+-- total=3, avg_order=435, total_revenue=1305</code></pre></div>
+
+
+<p><strong><code>GROUP BY</code></strong> divise la table en sous-groupes avant d'appliquer l'agrégation :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT user_id,
+       COUNT(*) AS num_orders,
+       SUM(amount) AS total_spent
+FROM orders
+GROUP BY user_id
+HAVING SUM(amount) &gt; 100;
+-- user_id=1 : 2 commandes, 1225€ (gardé)
+-- user_id=2 : 1 commande, 80€ (filtré car &lt; 100)</code></pre></div>
+
+
+<p><strong><code>HAVING</code></strong> filtre les <strong>groupes</strong> (après agrégation), <strong><code>WHERE</code></strong> filtre les <strong>lignes</strong> (avant). C'est une distinction qui revient à chaque entretien data.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- ❌ Mauvais (SUM dans le WHERE)
+SELECT user_id, SUM(amount)
+FROM orders
+WHERE SUM(amount) &gt; 100        -- Erreur SQL : agrégat interdit dans WHERE
+GROUP BY user_id;
+
+-- ✓ Bon
+SELECT user_id, SUM(amount)
+FROM orders
+GROUP BY user_id
+HAVING SUM(amount) &gt; 100;</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège classique</strong> : oublier <code>GROUP BY</code> quand on mélange agrégat et colonne non-agrégée. <code>SELECT user_id, COUNT(*) FROM orders;</code> plante (en SQL strict) parce que vous demandez <code>user_id</code> mais sans dire comment l'agréger. <strong>Règle</strong> : toutes les colonnes non-agrégées du <code>SELECT</code> doivent être dans le <code>GROUP BY</code>.</p></div></div>
+
+<h3 id="syn-join-entre-tables">JOIN entre tables</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- INNER JOIN : seulement les lignes qui matchent dans LES DEUX tables
+SELECT u.name, o.product, o.amount
+FROM users u
+INNER JOIN orders o ON u.id = o.user_id;
+-- Alice | Laptop    | 1200
+-- Alice | Mouse     | 25
+-- Bob   | Keyboard  | 80</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- LEFT JOIN : TOUTES les lignes de gauche + correspondances à droite
+SELECT u.name, o.product
+FROM users u
+LEFT JOIN orders o ON u.id = o.user_id;
+-- Alice | Laptop
+-- Alice | Mouse
+-- Bob   | Keyboard
+-- Charlie | NULL        -- Inclus car LEFT JOIN, même sans commande</code></pre></div>
+
+
+<p><strong>Les quatre types de jointures</strong> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Type</th><th>Garde</th><th>Cas d'usage</th></tr></thead><tbody><tr><td><code>INNER JOIN</code></td><td>Lignes qui existent dans les 2 tables</td><td>Filtrage strict</td></tr><tr><td><code>LEFT JOIN</code></td><td>Toutes les lignes de gauche + matches</td><td>"Tous les users avec leurs commandes éventuelles"</td></tr><tr><td><code>RIGHT JOIN</code></td><td>Toutes les lignes de droite + matches</td><td>Rare, on inverse plutôt l'ordre des tables</td></tr><tr><td><code>FULL OUTER JOIN</code></td><td>Toutes les lignes des deux</td><td>Comparaison complète</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : <code>INNER JOIN</code> est l'<strong>intersection</strong> (∩), <code>LEFT JOIN</code> est la table de gauche entière + ce qui matche à droite, <code>FULL OUTER JOIN</code> est l'<strong>union</strong> (∪). Si vous dessinez les diagrammes de Venn, vous ne vous tromperez plus jamais.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-null-et-logique-trois-valuée">NULL et logique trois-valuée</h3>
+
+<p><code>NULL</code> en SQL signifie <strong>"valeur inconnue ou absente"</strong>, <strong>pas</strong> "vide" ni "zéro". Conséquence : la logique booléenne devient <strong>ternaire</strong> (<code>TRUE</code>, <code>FALSE</code>, <code>UNKNOWN</code>).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT NULL = NULL;           -- NULL (pas TRUE !)
+SELECT NULL = 0;              -- NULL
+SELECT NULL &lt;&gt; NULL;          -- NULL
+SELECT NULL IS NULL;          -- TRUE — la seule façon correcte
+SELECT NULL IS NOT NULL;      -- FALSE</code></pre></div>
+
+
+<p>Cette propriété fait <strong>des ravages</strong> dans les <code>WHERE</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Compte les users dont email est différent de &#x27;admin@x.com&#x27;
+SELECT COUNT(*) FROM users WHERE email &lt;&gt; &#x27;admin@x.com&#x27;;
+-- Ce COUNT EXCLUT les users dont email IS NULL !</code></pre></div>
+
+
+<p>Pour <strong>inclure</strong> aussi les NULL :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(*) FROM users
+WHERE email &lt;&gt; &#x27;admin@x.com&#x27; OR email IS NULL;</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Question d'entretien data classique</strong> : <em>"Pourquoi <code>WHERE col != X</code> peut-il donner un résultat différent de <code>NOT (col = X)</code> en SQL ?"</em> Réponse : à cause des NULL. Les deux expressions renvoient NULL pour les lignes où <code>col</code> est NULL, et le <code>WHERE</code> <strong>exclut</strong> les lignes NULL. Conclusion : ces deux requêtes excluent silencieusement les NULL — si vous les voulez, ajoutez <code>OR col IS NULL</code>.</p></div></div>
+
+<h3 id="syn-sous-requêtes-vs-cte">Sous-requêtes vs CTE</h3>
+
+<p>Une <strong>sous-requête</strong> est une <code>SELECT</code> imbriquée dans une autre :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Top 5 users par dépenses totales
+SELECT * FROM users
+WHERE id IN (
+    SELECT user_id FROM orders
+    GROUP BY user_id
+    ORDER BY SUM(amount) DESC
+    LIMIT 5
+);</code></pre></div>
+
+
+<p>Les sous-requêtes deviennent vite <strong>illisibles</strong> dès qu'elles s'imbriquent. La <strong>CTE</strong> (Common Table Expression, syntaxe <code>WITH</code>) est plus claire :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">WITH big_spenders AS (
+    SELECT user_id, SUM(amount) AS total
+    FROM orders
+    GROUP BY user_id
+    HAVING SUM(amount) &gt; 1000
+)
+SELECT u.name, b.total
+FROM users u
+INNER JOIN big_spenders b ON u.id = b.user_id
+ORDER BY b.total DESC;</code></pre></div>
+
+
+<p><strong>Lire ça</strong> : "construis <code>big_spenders</code> (une vue temporaire), puis fais le SELECT final dessus". Cette discipline rend les requêtes complexes <strong>maintenables</strong>.</p>
+
+<h3 id="syn-index-pourquoi-vos-requêtes-sont-lentes">Index : pourquoi vos requêtes sont lentes</h3>
+
+<p>Une table <strong>sans index</strong> force la base à parcourir toutes les lignes pour filtrer (<strong>full scan</strong>). Sur 10 millions de lignes, c'est plusieurs secondes par requête.</p>
+
+<p>Un <strong>index</strong> est une structure auxiliaire (généralement un B-tree) qui maintient les valeurs d'une colonne <strong>triées</strong> avec un pointeur vers la ligne correspondante. Avec un index sur <code>users.email</code>, une requête <code>WHERE email = &#x27;alice@x.com&#x27;</code> se fait en <strong>$O(\log n)$</strong> au lieu de <strong>$O(n)$</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">CREATE INDEX idx_users_email ON users(email);
+CREATE INDEX idx_orders_user_id ON orders(user_id);</code></pre></div>
+
+
+<p><strong>Les bonnes pratiques</strong> :</p>
+
+<ul>
+<li><strong>Indexer les clés étrangères</strong> (presque toujours)</li>
+<li><strong>Indexer les colonnes utilisées dans WHERE et ORDER BY</strong> fréquents</li>
+<li><strong>Ne pas trop indexer</strong> : chaque index ralentit les <code>INSERT/UPDATE/DELETE</code></li>
+<li><strong>Index composites</strong> : <code>CREATE INDEX idx ON orders(user_id, created_at)</code> pour des requêtes qui filtrent sur les deux</li>
+</ul>
+
+<p><strong>Pour comprendre ce que la base fait</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">EXPLAIN ANALYZE
+SELECT * FROM orders WHERE user_id = 42;
+-- Cherchez &quot;Index Scan&quot; (bon) ou &quot;Seq Scan&quot; (potentiellement mauvais)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : avant d'indexer, <strong>mesurez</strong>. Avant d'optimiser, <strong>comprenez le plan d'exécution</strong>. La majorité des "requêtes lentes" en data science sont causées par UNE table mal indexée. L'ajout d'un seul index peut multiplier les perfs par 1000.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Vous voulez compter les utilisateurs uniques qui ont passé au moins une commande. Quelle est la différence entre <code>SELECT COUNT(user_id)</code>, <code>COUNT(DISTINCT user_id)</code>, et <code>COUNT(*)</code> ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>NULL et duplicates.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<ul>
+<li><strong><code>COUNT(*)</code></strong> compte <strong>toutes</strong> les lignes, y compris celles avec des NULL.</li>
+<li><strong><code>COUNT(user_id)</code></strong> compte les lignes où <code>user_id</code> <strong>n'est PAS NULL</strong> (mais compte les doublons).</li>
+<li><strong><code>COUNT(DISTINCT user_id)</code></strong> compte les valeurs <strong>uniques non-NULL</strong>.</li>
+</ul>
+
+<p><strong>Pour la question posée</strong> — "utilisateurs uniques avec au moins une commande" — c'est <strong><code>COUNT(DISTINCT user_id)</code></strong> qui est correct, parce qu'un utilisateur avec 5 commandes ne doit compter que pour 1.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(DISTINCT user_id) FROM orders;</code></pre></div>
+
+
+<p>Sur de très grandes tables, <code>COUNT(DISTINCT)</code> peut être lent ; on utilise alors <strong><code>HyperLogLog</code></strong> (approximation probabiliste) — Snowflake et BigQuery exposent <code>APPROX_COUNT_DISTINCT</code> qui est <strong>~100x plus rapide</strong> pour 0.5% d'erreur :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT APPROX_COUNT_DISTINCT(user_id) FROM orders;  -- BigQuery, Snowflake</code></pre></div>
+
+
+</details>
+
+<p><strong>Q2 : Quelle est la différence entre <code>INNER JOIN</code> et <code>LEFT JOIN</code>, et quand l'un est-il préférable à l'autre ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Sémantique vs perte de données.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<ul>
+<li><strong><code>INNER JOIN</code></strong> ne garde que les lignes qui ont une correspondance dans les <strong>deux</strong> tables. Si un utilisateur n'a aucune commande, il <strong>disparaît</strong> du résultat.</li>
+<li><strong><code>LEFT JOIN</code></strong> garde <strong>toutes</strong> les lignes de la table de gauche, et remplit avec des <code>NULL</code> quand il n'y a pas de correspondance à droite.</li>
+</ul>
+
+<p><strong>Choisissez <code>LEFT JOIN</code></strong> quand la disparition d'une ligne serait un bug métier — par exemple "<strong>liste tous les utilisateurs avec leur nombre de commandes</strong>" doit inclure les utilisateurs à 0 :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT u.name, COUNT(o.id) AS num_orders
+FROM users u
+LEFT JOIN orders o ON u.id = o.user_id
+GROUP BY u.name;
+-- Charlie | 0   ← inclus car LEFT JOIN</code></pre></div>
+
+
+<p><strong>Choisissez <code>INNER JOIN</code></strong> quand vous voulez explicitement filtrer ceux sans correspondance — par exemple "liste les commandes avec leur utilisateur connu".</p>
+
+<p><strong>Petit piège</strong> : un <code>LEFT JOIN</code> suivi d'un <code>WHERE right_table.col IS NOT NULL</code> est sémantiquement équivalent à un <code>INNER JOIN</code>, mais souvent mal optimisé par la base. Préférez <code>INNER JOIN</code> directement.</p>
+
+</details>
+
+<p><strong>Q3 : Vous avez une requête <code>SELECT * FROM logs WHERE created_at &gt; &#x27;2024-01-01&#x27;</code> qui prend 10 secondes. Comment diagnostiquer et accélérer ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>EXPLAIN ANALYZE.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Trois étapes</strong> :</p>
+
+<p><strong>Étape 1 — Diagnostiquer</strong> avec <code>EXPLAIN ANALYZE</code> qui montre le plan d'exécution réel :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">EXPLAIN ANALYZE
+SELECT * FROM logs WHERE created_at &gt; &#x27;2024-01-01&#x27;;</code></pre></div>
+
+
+<p>Si vous voyez <strong><code>Seq Scan on logs</code></strong>, la base parcourt toute la table — <strong>probable absence d'index</strong> sur <code>created_at</code>.</p>
+
+<p><strong>Étape 2 — Solution n°1</strong> : créer un index :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">CREATE INDEX idx_logs_created_at ON logs(created_at);</code></pre></div>
+
+
+<p>La requête tombe de <strong>10 secondes → quelques millisecondes</strong>.</p>
+
+<p><strong>Étape 3 — Solution n°2</strong> : si vous filtrez aussi sur d'autres colonnes (<code>WHERE created_at &gt; &#x27;2024-01-01&#x27; AND user_id = 42</code>), créer un <strong>index composite</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">CREATE INDEX idx_logs_user_date ON logs(user_id, created_at);</code></pre></div>
+
+
+<p>L'<strong>ordre</strong> des colonnes dans l'index compte : la première colonne doit être celle qui filtre le plus drastiquement.</p>
+
+<p><strong>Solution n°3 — Partitionnement</strong> : si la table est massive (> 100 M lignes) et qu'on requête souvent par date, partitionner par mois — chaque mois devient une sous-table physique. C'est ce que fait <strong>BigQuery</strong> automatiquement avec le partitionnement temporel.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://sqlbolt.com/" target="_blank" rel="noopener">SQLBolt</a> — tutorial interactif gratuit, parfait pour démarrer</li>
+<li><a href="https://mode.com/sql-tutorial/" target="_blank" rel="noopener">Mode SQL Tutorial</a> — bien fait, va de débutant à avancé</li>
+<li><em>SQL Antipatterns</em> (Bill Karwin) — toutes les erreurs classiques et leurs corrections</li>
+<li><a href="https://use-the-index-luke.com/" target="_blank" rel="noopener">Use The Index, Luke!</a> — la référence sur les index et la perf SQL</li>
+<li><a href="https://www.postgresql.org/docs/current/" target="_blank" rel="noopener">PostgreSQL official docs</a> — de loin la meilleure doc des bases relationnelles</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../python-sql/classes.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Classes</span>
+  </a>
+  <a href="../data-toolkit/python-for-data-science.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Python for Data Science →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

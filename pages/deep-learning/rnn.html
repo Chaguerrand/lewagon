@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recurrent Neural Networks — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Recurrent Neural Networks</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html" class="active">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Deep Learning</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Recurrent Neural Networks</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Recurrent Neural Networks</h1>
+        <p class="page-objective">Comprendre les Recurrent Neural Networks (RNN) — input shapes séquentielles, architecture interne (état caché, poids partagés), variantes (SimpleRNN, LSTM, GRU), stacking, padding/masking, et `return_sequences`.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">État caché</div>
+        <div class="key-concept-def">Mémoire interne mise à jour à chaque pas de temps.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">LSTM / GRU</div>
+        <div class="key-concept-def">Cellules récurrentes avec portes qui résolvent le vanishing gradient.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">BPTT</div>
+        <div class="key-concept-def">Backpropagation Through Time : déroule le réseau dans le temps pour le gradient.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Sequence-to-sequence</div>
+        <div class="key-concept-def">Encodeur lit, décodeur génère ; base de la traduction neuronale.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-recurrent-neural-networks">Cheatsheet — Recurrent Neural Networks</a><ol><li><a href="#input-shape-rnn">Input shape RNN</a></li><li><a href="#architecture-rnn-de-base">Architecture RNN de base</a></li><li><a href="#simplernn-vs-lstm-vs-gru">SimpleRNN vs LSTM vs GRU</a></li><li><a href="#return_sequences">return_sequences</a></li><li><a href="#stacking-de-rnn">Stacking de RNN</a></li><li><a href="#padding-masking-séquences-de-longueurs-différentes">Padding & Masking (séquences de longueurs différentes)</a></li><li><a href="#compter-les-paramètres-dune-couche-rnn">Compter les paramètres d'une couche RNN</a></li><li><a href="#prédire-à-partir-dune-seule-série-temporelle">Prédire à partir d'une seule série temporelle</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#0-rappels">0) Rappels</a><ol><li><a href="#cnn-transfer-learning">CNN & Transfer Learning</a></li></ol></li><li><a href="#1-introduction-aux-rnn">1) Introduction aux RNN</a><ol><li><a href="#11-applications">1.1 Applications</a></li><li><a href="#12-input-shapes">1.2 Input shapes</a></li><li><a href="#13-exemples-de-shapes-x-y">1.3 Exemples de shapes (X, y)</a></li><li><a href="#14-récap-prédictions">1.4 Récap prédictions</a></li></ol></li><li><a href="#2-architecture-rnn">2) Architecture RNN</a><ol><li><a href="#21-exemple-prédiction-de-pollution">2.1 Exemple : prédiction de pollution</a></li><li><a href="#22-fonctionnement-interne">2.2 Fonctionnement interne</a></li><li><a href="#23-compter-les-paramètres">2.3 Compter les paramètres</a></li><li><a href="#24-sortie-du-rnn">2.4 Sortie du RNN</a></li><li><a href="#25-nombre-dunités">2.5 Nombre d'unités</a></li></ol></li><li><a href="#3-prédire-une-séquence-return_sequencestrue">3) Prédire une séquence : `return_sequences=True`</a><li><a href="#4-stacking-de-rnn">4) Stacking de RNN</a><li><a href="#5-variantes-de-rnn-simplernn-lstm-gru">5) Variantes de RNN : SimpleRNN, LSTM, GRU</a><ol><li><a href="#51-le-problème-du-vanishing-gradient">5.1 Le problème du vanishing gradient</a></li><li><a href="#52-les-variantes">5.2 Les variantes</a></li></ol></li><li><a href="#6-variations-darchitecture">6) Variations d'architecture</a><li><a href="#7-padding-masking-séquences-de-longueurs-différentes">7) Padding & Masking — Séquences de longueurs différentes</a><ol><li><a href="#71-le-problème">7.1 Le problème</a></li><li><a href="#72-padding">7.2 Padding</a></li><li><a href="#73-masking">7.3 Masking</a></li></ol></li><li><a href="#8-cas-dune-seule-série-temporelle">8) Cas d'une seule série temporelle</a><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-recurrent-neural-networks">📋 Cheatsheet — Recurrent Neural Networks</h2>
+
+<h3 id="input-shape-rnn">Input shape RNN</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## X.shape = (n_sequences, n_observations, n_features)
+## Exemple : 16 villes, 100 jours, 4 features météo
+X.shape  # (16, 100, 4)
+
+## y.shape dépend de la tâche :
+## Prédire 1 valeur par séquence → (16, 1, 1)
+## Prédire une séquence de 8 jours → (16, 8, 1)</code></pre></div>
+
+
+<h3 id="architecture-rnn-de-base">Architecture RNN de base</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import Sequential, Input, layers
+
+model = Sequential()
+model.add(Input(shape=(100, 4)))                          # 100 timesteps, 4 features
+model.add(layers.SimpleRNN(units=10, activation=&#x27;tanh&#x27;))  # 10 unités mémoire
+model.add(layers.Dense(1, activation=&#x27;linear&#x27;))           # prédiction régression
+
+model.compile(loss=&#x27;mse&#x27;, optimizer=&#x27;adam&#x27;)
+model.fit(X, y, batch_size=32, epochs=100)</code></pre></div>
+
+
+<h3 id="simplernn-vs-lstm-vs-gru">SimpleRNN vs LSTM vs GRU</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.layers import SimpleRNN, LSTM, GRU
+
+layers.SimpleRNN(units=10, activation=&#x27;tanh&#x27;)   # le plus simple et rapide
+layers.LSTM(units=10, activation=&#x27;tanh&#x27;)        # mémoire longue (vanishing gradient)
+layers.GRU(units=10, activation=&#x27;tanh&#x27;)         # moins de paramètres que LSTM
+## Syntaxe identique — changer juste le type de couche</code></pre></div>
+
+
+<h3 id="return_sequences">return_sequences</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## return_sequences=False (défaut) → sort uniquement le dernier h(t)
+## Output shape : (batch_size, units)
+layers.SimpleRNN(10, return_sequences=False)
+
+## return_sequences=True → sort h(t) à CHAQUE timestep
+## Output shape : (batch_size, n_observations, units)
+layers.SimpleRNN(10, return_sequences=True)
+
+## ⚠️ Obligatoire si on empile des RNN ou si on prédit une séquence</code></pre></div>
+
+
+<h3 id="stacking-de-rnn">Stacking de RNN</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = Sequential()
+model.add(Input(shape=(100, 4)))
+model.add(layers.LSTM(32, return_sequences=True))   # ⚠️ return_sequences=True obligatoire
+model.add(layers.LSTM(16, return_sequences=False))   # dernière RNN → False
+model.add(layers.Dense(1, activation=&#x27;linear&#x27;))
+## On empile rarement plus de 3-4 couches RNN</code></pre></div>
+
+
+<h3 id="padding-masking-séquences-de-longueurs-différentes">Padding & Masking (séquences de longueurs différentes)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.layers import Masking
+
+## Padding : remplir les séquences courtes avec une valeur sentinelle
+X_pad = pad_sequences(X, dtype=&#x27;float32&#x27;, padding=&#x27;post&#x27;, value=-1000)
+## padding=&#x27;post&#x27; → remplit à la fin (recommandé)
+## value=-1000 → valeur absente du dataset
+
+## Masking : dire au réseau d&#x27;ignorer la valeur sentinelle
+model = Sequential()
+model.add(Input(shape=(max_len, n_features)))
+model.add(Masking(mask_value=-1000))           # ignore les timesteps padded
+model.add(layers.LSTM(10, activation=&#x27;tanh&#x27;))
+model.add(layers.Dense(1, activation=&#x27;linear&#x27;))</code></pre></div>
+
+
+<h3 id="compter-les-paramètres-dune-couche-rnn">Compter les paramètres d'une couche RNN</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Params SimpleRNN = n_h × (n_x + n_h + 1)
+## n_h = nombre d&#x27;unités (units)
+## n_x = nombre de features par timestep
+## Exemple : SimpleRNN(2) sur 3 features
+## → 2 × (3 + 2 + 1) = 12 paramètres
+## ⚠️ Ne dépend PAS de la longueur des séquences !</code></pre></div>
+
+
+<h3 id="prédire-à-partir-dune-seule-série-temporelle">Prédire à partir d'une seule série temporelle</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Découper la série en sous-séquences (X, y)
+## Fenêtre glissante : 100 observations → prédire la 101ème
+## X.shape = (n_windows, window_size, n_features)
+## y.shape = (n_windows, 1)</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<blockquote><p>❌ <strong>Oublier <code>return_sequences=True</code> quand on empile des RNN</strong><br></p></blockquote>
+
+<blockquote><p>❌ La 2ème couche RNN reçoit un vecteur 1D au lieu d'une séquence → erreur<br></p></blockquote>
+
+<blockquote><p><code>model.add(layers.LSTM(32))</code> → return_sequences=False par défaut<br></p></blockquote>
+
+<blockquote><p><code>model.add(layers.LSTM(16))</code> → ❌ attend une séquence en entrée !<br></p></blockquote>
+
+<blockquote><p>✅ Toujours <code>return_sequences=True</code> sauf sur la dernière couche RNN<br></p></blockquote>
+
+<blockquote><p><code>model.add(layers.LSTM(32, return_sequences=True))</code> → ✅ sort une séquence<br></p></blockquote>
+
+<blockquote><p><code>model.add(layers.LSTM(16))</code> → dernière RNN → False ok<br></p></blockquote>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Mauvais input shape : oublier la dimension temporelle</strong></p>
+<p>❌ Passer un shape 2D <code>(n_features,)</code> au lieu de 3D <code>(n_observations, n_features)</code></p>
+<p><code>model.add(Input(shape=(4,)))</code> → ❌ 2D, pas de dimension temporelle</p>
+<p>✅ Input shape = <code>(n_observations, n_features)</code> — le batch_size est implicite</p>
+<p><code>model.add(Input(shape=(100, 4)))</code> → ✅ 100 timesteps, 4 features</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Padder avec des valeurs qui existent dans le dataset</strong></p>
+<p>❌ Padder avec 0 quand il y a des vrais 0 dans les données → confusion</p>
+<p><code>pad_sequences(X, dtype=&#x27;float32&#x27;, value=0)</code> → 0 existe déjà dans les données !</p>
+<p>✅ Padder avec une valeur absente du dataset + utiliser un Masking layer</p>
+<p><code>pad_sequences(X, dtype=&#x27;float32&#x27;, padding=&#x27;post&#x27;, value=-1000)</code> puis <code>Masking(mask_value=-1000)</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser <code>relu</code> comme activation d'une couche RNN</strong></p>
+<p>❌ ReLU n'est pas bornée → l'état interne peut exploser</p>
+<p><code>layers.SimpleRNN(10, activation=&#x27;relu&#x27;)</code> → ❌ risque d'explosion des gradients</p>
+<p>✅ Utiliser <code>tanh</code> (défaut) — bornée entre -1 et 1, bonne dérivée seconde</p>
+<p><code>layers.SimpleRNN(10, activation=&#x27;tanh&#x27;)</code> → ✅ activation par défaut des RNN</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre la sortie du RNN avec la prédiction finale</strong></p>
+<p>❌ Croire que la sortie du RNN est directement la prédiction</p>
+<p><code>model.add(layers.SimpleRNN(10))</code> → sort un vecteur de taille 10, pas la prédiction !</p>
+<p>✅ La sortie RNN est l'état interne → il faut une couche Dense ensuite</p>
+<p><code>model.add(layers.SimpleRNN(10))</code> puis <code>model.add(layers.Dense(1, activation=&#x27;linear&#x27;))</code></p></div></div>
+
+<hr>
+
+<h2 id="0-rappels">0) Rappels</h2>
+
+<h3 id="cnn-transfer-learning">CNN & Transfer Learning</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## CNN classique
+model = Sequential()
+model.add(Input(shape=(32, 32, 3)))
+model.add(Conv2D(32, (5, 5), padding=&#x27;same&#x27;, activation=&#x27;relu&#x27;))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Flatten())
+model.add(Dense(10, activation=&#x27;softmax&#x27;))
+
+## Transfer Learning
+from tensorflow.keras.applications import vgg16
+pretrained = vgg16.VGG16(weights=&#x27;imagenet&#x27;, include_top=False, input_shape=(256, 256, 3))
+pretrained.trainable = False
+model = Sequential([pretrained, layers.Flatten(), layers.Dense(10, activation=&#x27;softmax&#x27;)])</code></pre></div>
+
+
+<hr>
+
+<h2 id="1-introduction-aux-rnn">1) Introduction aux RNN</h2>
+
+<p>Les <strong>Recurrent Neural Networks</strong> sont conçus pour traiter des <strong>séquences</strong> — des observations répétées dans le temps.</p>
+
+<ul>
+<li>📸 Features spatiales → <strong>CNN</strong></li>
+<li>📈 Features temporelles → <strong>RNN</strong></li>
+</ul>
+
+<h3 id="11-applications">1.1 Applications</h3>
+
+<ul>
+<li><strong>Prédiction boursière</strong> — prédire les valeurs futures à partir de l'historique</li>
+<li><strong>Prédiction vidéo</strong> — prédire la prochaine image (vidéo = séquence de frames)</li>
+<li><strong>NLP</strong> — prédire le prochain mot (phrase = séquence de mots)</li>
+</ul>
+
+<figure><img src="../../assets/images/rnn-01-ae832085.png" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/rnn-02-bef27d56.png" alt="" loading="lazy"></figure>
+
+<h3 id="12-input-shapes">1.2 Input shapes</h3>
+
+<p><strong>Shape générale :</strong></p>
+
+<p>$X.\text{shape} = (\text{n\_sequences}, \text{n\_observations}, \text{n\_features})$</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Input</th><th>Type de NN</th><th>Batch</th><th>Dimension temporelle</th><th>Features</th><th>X.shape</th></tr></thead><tbody><tr><td>📺 Vidéo</td><td>Recurrent</td><td>16</td><td>300 frames</td><td>(128, 128, 3)</td><td>(16, 300, 128, 128, 3)</td></tr><tr><td>🔢 Vecteur</td><td>Dense</td><td>16</td><td>-</td><td>7 features</td><td>(16, 7)</td></tr></tbody></table></div>
+<h3 id="13-exemples-de-shapes-x-y">1.3 Exemples de shapes (X, y)</h3>
+
+<p><strong>Univarié — prédire 1 jour de pluie</strong> :</p>
+
+<ul>
+<li><code>X.shape</code> = (16 villes, 100 jours, 1 feature)</li>
+<li><code>y.shape</code> = (16 villes, 1 jour, 1 feature)</li>
+</ul>
+
+<p><strong>Multivarié — prédire 8 jours de pluie à partir de 4 features</strong> :</p>
+
+<ul>
+<li><code>X.shape</code> = (16 villes, 100 jours, 4 features)</li>
+<li><code>y.shape</code> = (16 villes, 8 jours, 1 feature)</li>
+</ul>
+
+<p><strong>Classification — ECG → catégorie cardiaque</strong> :</p>
+
+<ul>
+<li><code>X.shape</code> = (None, 100 battements, 4 features)</li>
+<li><code>y.shape</code> = (None, 1, 1) = à risque / sain</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Les features d'entrée et de sortie <strong>ne sont pas nécessairement les mêmes</strong>. On peut prédire des avalanches à partir de données météo.</p></div></div>
+
+<h3 id="14-récap-prédictions">1.4 Récap prédictions</h3>
+
+<figure><img src="../../assets/images/rnn-03-dbadda09.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="2-architecture-rnn">2) Architecture RNN</h2>
+
+<h3 id="21-exemple-prédiction-de-pollution">2.1 Exemple : prédiction de pollution</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+## 3 villes, 4 jours, 3 features [température, vent, pollution]
+sequence_a = [[10, 25, 50], [13, 10, 70], [9, 5, 90], [7, 0, 95]]
+sequence_b = [[25, 20, 30], [26, 24, 50], [28, 20, 80], [22, 3, 110]]
+sequence_c = [[15, 10, 60], [25, 20, 65], [35, 10, 75], [36, 15, 70]]
+
+X = np.array([sequence_a, sequence_b, sequence_c]).astype(np.float32)
+y = np.expand_dims(np.array([[110], [125], [30]]).astype(np.float32), axis=-1)
+
+print(X.shape)  # (3, 4, 3) → 3 séquences, 4 observations, 3 features
+print(y.shape)  # (3, 1, 1) → 3 séquences, 1 prédiction, 1 feature</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import Sequential, Input, layers
+from tensorflow.keras.optimizers import Adam
+
+model = Sequential()
+model.add(Input(shape=(4, 3)))                                # 4 timesteps, 3 features
+model.add(layers.SimpleRNN(units=2, activation=&#x27;tanh&#x27;))       # 2 unités mémoire
+model.add(layers.Dense(1, activation=&#x27;linear&#x27;))               # prédiction pollution
+
+model.compile(loss=&#x27;mse&#x27;, optimizer=Adam(learning_rate=0.5))
+model.fit(X, y, epochs=2000, verbose=0)
+model.predict(X)                                              # 1 prédiction par ville</code></pre></div>
+
+
+<h3 id="22-fonctionnement-interne">2.2 Fonctionnement interne</h3>
+
+<p>Le RNN traite les observations <strong>une à la fois</strong> et maintient un <strong>état interne</strong> $h$ (mémoire) :</p>
+
+<p><strong>À chaque timestep</strong> $t$ :</p>
+
+<ol>
+<li>L'observation $x^{(t)}$ et l'état précédent $h^{(t-1)}$ sont concaténés</li>
+<li>Passés dans une matrice de poids $W$</li>
+<li>Produisent le nouvel état interne $h^{(t)}$</li>
+</ol>
+
+<p>$h^{(t)} = f_W(h^{(t-1)}, x^{(t)})$</p>
+
+<figure><img src="../../assets/images/rnn-04-4344b513.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Les <strong>mêmes poids</strong> $W$ sont utilisés à chaque timestep → poids <strong>partagés</strong> dans le temps. C'est ce qui rend le RNN capable de traiter des séquences de longueurs variables.</p></div></div>
+
+<figure><img src="../../assets/images/rnn-05-67c75b2b.png" alt="" loading="lazy"></figure>
+
+<h3 id="23-compter-les-paramètres">2.3 Compter les paramètres</h3>
+
+<p>$\text{Params SimpleRNN} = n_h \times (n_x + n_h + 1)$</p>
+
+<p>Où $n_h$ = nombre d'unités, $n_x$ = nombre de features par timestep.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">n_x = 3   # 3 features (température, vent, pollution)
+n_h = 2   # 2 unités mémoire
+n_h * (n_x + n_h + 1)   # 2 × (3 + 2 + 1) = 12 paramètres</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Le nombre de paramètres <strong>ne dépend PAS</strong> de la longueur des séquences — seulement du nombre d'unités et de features.</p></div></div>
+
+<h3 id="24-sortie-du-rnn">2.4 Sortie du RNN</h3>
+
+<p>La sortie d'une couche RNN est l'état interne $h$ au <strong>dernier timestep</strong> : $y_n = h_n$.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>La sortie du RNN n'est <strong>PAS</strong> la prédiction finale. C'est un vecteur de taille <code>units</code> qui est ensuite passé à une couche Dense pour la prédiction.</p></div></div>
+
+<h3 id="25-nombre-dunités">2.5 Nombre d'unités</h3>
+
+<p>Le nombre d'unités = le nombre de <strong>features temporelles</strong> que le modèle essaie de capturer (tendance, vitesse de variation, patterns auto-régressifs…).</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Avec 10 unités, le RNN capture 10 features temporelles en parallèle, puis les combine via la couche Dense pour la prédiction.</p></div></div>
+
+<hr>
+
+<h2 id="3-prédire-une-séquence-return_sequencestrue">3) Prédire une séquence : <code>return_sequences=True</code></h2>
+
+<p>Pour prédire <strong>une valeur à chaque timestep</strong> (pas juste à la fin), utiliser <code>return_sequences=True</code> :</p>
+
+<figure><img src="../../assets/images/rnn-06-242ef075.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = Sequential()
+model.add(layers.SimpleRNN(units=2, return_sequences=True, activation=&#x27;tanh&#x27;))
+model.add(layers.Dense(1, activation=&#x27;relu&#x27;))
+
+## y_train doit aussi être une séquence !
+## X.shape = (3, 4, 3)
+## y.shape = (3, 4, 1) → 1 prédiction par timestep par séquence</code></pre></div>
+
+
+<hr>
+
+<h2 id="4-stacking-de-rnn">4) Stacking de RNN</h2>
+
+<p>Empiler des couches RNN permet de capturer des <strong>features temporelles de second ordre</strong> (plus complexes).</p>
+
+<figure><img src="../../assets/images/rnn-07-8b4e0798.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = Sequential()
+model.add(Input(shape=(4, 3)))
+model.add(layers.SimpleRNN(10, return_sequences=True))    # ⚠️ return_sequences=True !
+model.add(layers.SimpleRNN(3, return_sequences=False))    # dernière couche RNN → False
+model.add(layers.Dense(1, activation=&#x27;relu&#x27;))</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>On empile rarement plus de 3-4 couches RNN. Toujours <code>return_sequences=True</code> <strong>sauf</strong> sur la dernière couche RNN.</p></div></div>
+
+<hr>
+
+<h2 id="5-variantes-de-rnn-simplernn-lstm-gru">5) Variantes de RNN : SimpleRNN, LSTM, GRU</h2>
+
+<h3 id="51-le-problème-du-vanishing-gradient">5.1 Le problème du vanishing gradient</h3>
+
+<p>Les SimpleRNN souffrent du <strong>vanishing gradient through time</strong> : le gradient s'annule en remontant dans le temps → le réseau a une <strong>mémoire courte</strong>.</p>
+
+<figure><img src="../../assets/images/rnn-08-51f7e404.png" alt="" loading="lazy"></figure>
+
+<h3 id="52-les-variantes">5.2 Les variantes</h3>
+
+<figure><img src="../../assets/images/rnn-09-1de3015d.png" alt="Architectures comparison" loading="lazy"></figure>
+
+<div class="table-wrapper"><table><thead><tr><th>Type</th><th>Caractéristique</th><th>Usage</th><th><strong>SimpleRNN</strong></th><th>Le plus simple et rapide</th><th>Séquences courtes, prototypage</th></tr></thead><tbody><tr><td><strong>LSTM</strong></td><td>Mémoire longue, résout le vanishing gradient</td><td>Séquences longues, NLP</td><td><strong>GRU</strong></td><td>Moins de paramètres que LSTM, plus rapide</td><td>Compromis performance/vitesse</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.layers import SimpleRNN, LSTM, GRU
+
+model.add(SimpleRNN(units=10, activation=&#x27;tanh&#x27;))   # simple
+model.add(LSTM(units=10, activation=&#x27;tanh&#x27;))         # long short-term memory
+model.add(GRU(units=10, activation=&#x27;tanh&#x27;))          # gated recurrent unit
+## Syntaxe identique — même interface Keras</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>tanh</code> est l'activation par défaut des RNN. Elle borne les valeurs entre -1 et 1 et sa dérivée seconde reste significative longtemps → aide contre le vanishing gradient.</p></div></div>
+
+<hr>
+
+<h2 id="6-variations-darchitecture">6) Variations d'architecture</h2>
+
+<p>Les RNN peuvent servir à de nombreuses tâches selon la structure entrée/sortie :</p>
+
+<figure><img src="../../assets/images/rnn-10-fa8e4bb4.png" alt="" loading="lazy"></figure>
+
+<ul>
+<li><strong>One-to-One</strong> : Dense classique (pas de séquence)</li>
+<li><strong>One-to-Many</strong> : génération de séquence (ex: captioning)</li>
+<li><strong>Many-to-One</strong> : classification de séquence (ex: sentiment analysis, ECG)</li>
+<li><strong>Many-to-Many</strong> : traduction, prédiction séquence-à-séquence</li>
+</ul>
+
+<hr>
+
+<h2 id="7-padding-masking-séquences-de-longueurs-différentes">7) Padding & Masking — Séquences de longueurs différentes</h2>
+
+<h3 id="71-le-problème">7.1 Le problème</h3>
+
+<p>Les tenseurs exigent que toutes les séquences aient la <strong>même longueur</strong>. Avec des séquences de tailles variables → erreur.</p>
+
+<h3 id="72-padding">7.2 Padding</h3>
+
+<p>Remplir les séquences courtes avec une <strong>valeur sentinelle</strong> absente du dataset :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+X_pad = pad_sequences(X, dtype=&#x27;float32&#x27;, padding=&#x27;post&#x27;, value=-1000)
+## padding=&#x27;post&#x27; → remplit à la fin (recommandé : n&#x27;influence pas l&#x27;état interne)
+## value=-1000 → valeur absente du dataset (pas 0 si 0 existe dans les données !)</code></pre></div>
+
+
+<h3 id="73-masking">7.3 Masking</h3>
+
+<p>Dire au réseau d'<strong>ignorer</strong> les valeurs de padding :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.layers import Masking
+
+model = Sequential()
+model.add(Input(shape=(max_len, n_features)))
+model.add(Masking(mask_value=-1000))             # ignore les timesteps = -1000
+model.add(layers.LSTM(10, activation=&#x27;tanh&#x27;))
+model.add(layers.Dense(1, activation=&#x27;linear&#x27;))</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>👉 <a href="https://www.tensorflow.org/api_docs/python/tf/keras/utils/pad_sequences" target="_blank" rel="noopener">tf.keras.utils.pad_sequences — docs</a> | 👉 <a href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Masking" target="_blank" rel="noopener">tf.keras.layers.Masking — docs</a></p></div></div>
+
+<hr>
+
+<h2 id="8-cas-dune-seule-série-temporelle">8) Cas d'une seule série temporelle</h2>
+
+<p>Si on n'a qu'<strong>une seule</strong> série temporelle (ex: météo de Paris uniquement), on la découpe en <strong>fenêtres glissantes</strong> pour créer des paires (X, y) :</p>
+
+<figure><img src="../../assets/images/rnn-11-b79f8088.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Fenêtre de 100 observations → prédire l&#x27;observation suivante
+## Séquence 1 : X = [t1..t100], y = t101
+## Séquence 2 : X = [t2..t101], y = t102
+## etc.
+## X.shape = (n_windows, 100, n_features)
+## y.shape = (n_windows, 1)</code></pre></div>
+
+
+<hr>
+
+<h2 id="bibliographie">Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-recurrent-neural-networks" target="_blank" rel="noopener">Stanford — RNN Cheat Sheet</a></li>
+<li>👉 <a href="https://medium.com/towards-data-science/illustrated-guide-to-recurrent-neural-networks-79e5eb8049c9" target="_blank" rel="noopener">Illustrated Guide to RNN</a></li>
+<li>👉 <a href="https://medium.com/towards-data-science/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21" target="_blank" rel="noopener">Illustrated Guide to LSTM and GRU</a></li>
+<li>👉 <a href="https://www.youtube.com/watch?v=UNmqTiOnRfg" target="_blank" rel="noopener">RNN explained with 3×3 matrices (21min)</a></li>
+<li>👉 <a href="https://www.youtube.com/watch?v=WCUNPb-5EYI" target="_blank" rel="noopener">RNN & LSTM explained without math (24min)</a></li>
+<li>👉 <a href="https://www.youtube.com/watch?v=6niqTuYFZLQ" target="_blank" rel="noopener">Stanford CS 231 — Lecture on RNN (1h20)</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">Challenges</h2>
+
+<p>Construire des RNN (SimpleRNN, LSTM, GRU) sur des séries temporelles, expérimenter avec <code>return_sequences</code>, le stacking, le padding/masking, et prédire à partir d'une seule série temporelle découpée en fenêtres glissantes.</p>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><li><a href="#ref-1-les-données-séquentielles">1. Les données séquentielles</a><ol><li><a href="#ref-11-pourquoi-une-dimension-en-plus">1.1 Pourquoi une dimension en plus ?</a></li><li><a href="#ref-12-la-cible-y-selon-la-tâche">1.2 La cible `y` selon la tâche</a></li></ol></li><li><a href="#ref-2-architecture-interne-du-rnn">2. Architecture interne du RNN</a><ol><li><a href="#ref-21-lidée-centrale-létat-caché">2.1 L'idée centrale : l'état caché</a></li><li><a href="#ref-22-exemple-concret-en-code">2.2 Exemple concret en code</a></li><li><a href="#ref-23-compter-les-paramètres-dun-simplernn">2.3 Compter les paramètres d'un SimpleRNN</a></li></ol></li><li><a href="#ref-3-return_sequences-prédire-à-chaque-pas-de-temps">3. `return_sequences` : prédire à chaque pas de temps</a><ol><li><a href="#ref-31-par-défaut-on-ne-garde-que-la-fin">3.1 Par défaut : on ne garde que la fin</a></li><li><a href="#ref-32-avec-return_sequencestrue-une-sortie-à-chaque-étape">3.2 Avec `return_sequences=True` : une sortie à chaque étape</a></li></ol></li><li><a href="#ref-4-stacking-empiler-plusieurs-couches-rnn">4. Stacking : empiler plusieurs couches RNN</a><ol><li><a href="#ref-41-pourquoi-empiler">4.1 Pourquoi empiler ?</a></li><li><a href="#ref-42-règle-obligatoire-return_sequencestrue-sur-toutes-les-couches-sauf-la-dernière">4.2 Règle obligatoire : `return_sequences=True` sur toutes les couches sauf la dernière</a></li></ol></li><li><a href="#ref-5-simplernn-lstm-et-gru">5. SimpleRNN, LSTM et GRU</a><ol><li><a href="#ref-51-le-problème-du-vanishing-gradient">5.1 Le problème du vanishing gradient</a></li><li><a href="#ref-52-lstm-long-short-term-memory">5.2 LSTM — Long Short-Term Memory</a></li><li><a href="#ref-53-gru-gated-recurrent-unit">5.3 GRU — Gated Recurrent Unit</a></li><li><a href="#ref-54-comparaison-des-trois-variantes">5.4 Comparaison des trois variantes</a></li></ol></li><li><a href="#ref-6-variations-darchitecture-one-to-many-many-to-many">6. Variations d'architecture : one-to-many, many-to-many…</a><li><a href="#ref-7-padding-masking-séquences-de-longueurs-différentes">7. Padding & Masking — Séquences de longueurs différentes</a><ol><li><a href="#ref-71-le-problème">7.1 Le problème</a></li><li><a href="#ref-72-étape-1-padding-uniformiser-les-longueurs">7.2 Étape 1 — Padding : uniformiser les longueurs</a></li><li><a href="#ref-73-étape-2-masking-ignorer-les-valeurs-de-remplissage">7.3 Étape 2 — Masking : ignorer les valeurs de remplissage</a></li></ol></li><li><a href="#ref-8-cas-dune-seule-série-temporelle">8. Cas d'une seule série temporelle</a><ol><li><a href="#ref-81-le-problème">8.1 Le problème</a></li><li><a href="#ref-82-la-technique-des-fenêtres-glissantes">8.2 La technique des fenêtres glissantes</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Imagine que tu lis cette phrase mot par mot. Quand tu arrives au mot "chien", tu te souviens que la phrase a commencé par "Le petit". Ce contexte mémorisé te permet de comprendre le sens global. C'est exactement ce que font les <strong>Recurrent Neural Networks (RNN)</strong> : ils lisent une séquence élément par élément, en gardant en mémoire ce qu'ils ont vu avant.</p>
+
+<p>Les réseaux de neurones classiques (Dense, CNN) ne savent pas exploiter cet ordre temporel. Ils voient chaque observation de façon isolée. Les RNN, eux, sont conçus pour traiter des <strong>données séquentielles</strong> — météo jour après jour, texte mot après mot, musique note après note.</p>
+
+<p><strong>Les grandes idées à retenir avant de commencer :</strong></p>
+
+<ol>
+<li>Un RNN traite une séquence <strong>un élément à la fois</strong> et conserve un <strong>état caché</strong> (une mémoire interne) à chaque étape.</li>
+<li>Les <strong>mêmes poids</strong> sont réutilisés à chaque étape de la séquence — c'est ce qu'on appelle le <strong>partage des poids dans le temps</strong>.</li>
+<li>Le <strong>SimpleRNN</strong> est limité : il "oublie" les informations lointaines à cause du problème du <strong>vanishing gradient</strong>.</li>
+<li>Le <strong>LSTM</strong> (Long Short-Term Memory) et le <strong>GRU</strong> (Gated Recurrent Unit) sont des variantes plus puissantes, capables de mémoriser sur de longues séquences.</li>
+<li>La forme des données d'entrée est toujours en <strong>3 dimensions</strong> : <code>(nombre de séquences, nombre d&#x27;observations, nombre de features)</code>.</li>
+</ol>
+
+<p><strong>Analogie fil rouge — lire une phrase mot par mot :</strong></p>
+<p>Imagine un lecteur qui avance dans une phrase en tenant un carnet de notes. À chaque nouveau mot, il lit le mot, consulte ses notes (mémoire), et met ses notes à jour. En fin de phrase, son carnet contient un résumé de tout ce qu'il a lu. Un RNN fait exactement pareil, mais avec des chiffres.</p>
+
+<p><strong>Mini-plan du cours :</strong></p>
+<ul>
+<li>Les données séquentielles et leur forme 3D</li>
+<li>Le fonctionnement interne du RNN (état caché, poids partagés)</li>
+<li><code>return_sequences</code> et comment prédire une séquence entière</li>
+<li>Empiler plusieurs couches RNN (stacking)</li>
+<li>SimpleRNN vs LSTM vs GRU (et le problème du vanishing gradient)</li>
+<li>Séquences de longueurs différentes : padding et masking</li>
+<li>Cas d'une seule série temporelle découpée en fenêtres</li>
+</ul>
+
+<hr>
+
+<h2 id="ref-1-les-données-séquentielles">1. Les données séquentielles</h2>
+
+<h3 id="ref-11-pourquoi-une-dimension-en-plus">1.1 Pourquoi une dimension en plus ?</h3>
+
+<p>Avec un réseau Dense classique, une observation est un vecteur plat : par exemple, 7 caractéristiques d'un appartement. Mais une <strong>séquence</strong>, c'est une série d'observations dans le temps. On a donc besoin d'une dimension supplémentaire pour représenter le temps.</p>
+
+<p><strong>La forme générale d'un jeu de données RNN :</strong></p>
+
+<div class="katex-display">$$X.\text{shape} = (\text{n\_sequences},\ \text{n\_observations},\ \text{n\_features})$$</div>
+
+<ul>
+<li><code>n_sequences</code> : le nombre d'exemples (comme le batch size, implicite dans Keras)</li>
+<li><code>n_observations</code> : le nombre de pas de temps (timesteps) dans chaque séquence</li>
+<li><code>n\_features</code> : le nombre de variables mesurées à chaque pas de temps</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Analogie météo : tu as des données pour 16 villes (n_sequences = 16), sur 100 jours (n_observations = 100), avec 4 mesures par jour — température, humidité, vent, pression (n_features = 4). Résultat : <code>X.shape = (16, 100, 4)</code>.</p></div></div>
+
+<h3 id="ref-12-la-cible-y-selon-la-tâche">1.2 La cible <code>y</code> selon la tâche</h3>
+
+<p>La forme de <code>y</code> (ce qu'on cherche à prédire) dépend de ce qu'on veut :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Tâche</th><th>Exemple</th><th><code>y.shape</code></th></tr></thead><tbody><tr><td>Prédire 1 valeur par séquence</td><td>Température du lendemain pour chaque ville</td><td><code>(16, 1, 1)</code></td></tr><tr><td>Prédire une séquence</td><td>Les 8 prochains jours pour chaque ville</td><td><code>(16, 8, 1)</code></td></tr><tr><td>Classifier une séquence</td><td>ECG normal ou pathologique</td><td><code>(None, 1)</code></td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Les features d'entrée et de sortie ne sont pas forcément les mêmes. On peut apprendre à prédire les avalanches (y = risque d'avalanche) à partir de données météo (X = température, vent, neige).</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-architecture-interne-du-rnn">2. Architecture interne du RNN</h2>
+
+<h3 id="ref-21-lidée-centrale-létat-caché">2.1 L'idée centrale : l'état caché</h3>
+
+<p>À chaque pas de temps $t$, le RNN reçoit deux informations :</p>
+<ol>
+<li>L'observation courante $x^{(t)}$ (les features de ce moment)</li>
+<li>L'état caché précédent $h^{(t-1)}$ (la mémoire de ce qui s'est passé avant)</li>
+</ol>
+
+<p>Il les combine pour produire un nouvel état caché $h^{(t)}$ :</p>
+
+<div class="katex-display">$$h^{(t)} = \tanh\!\left(W_x \cdot x^{(t)} + W_h \cdot h^{(t-1)} + b\right)$$</div>
+
+<ul>
+<li>$W_x$ : matrice de poids pour l'observation courante</li>
+<li>$W_h$ : matrice de poids pour la mémoire précédente</li>
+<li>$b$ : biais</li>
+<li>$\tanh$ : fonction d'activation qui borne la valeur entre $-1$ et $+1$</li>
+</ul>
+
+<p><strong>Exemple avec des chiffres simples :</strong></p>
+
+<p>Supposons que le RNN a 1 seule unité mémoire, et qu'à l'instant $t=1$ :</p>
+<ul>
+<li>$x^{(1)} = 0.8$ (observation : pollution élevée)</li>
+<li>$h^{(0)} = 0$ (état initial, mémoire vide)</li>
+<li>$W_x = 0.5$, $W_h = 0.7$, $b = 0.1$</li>
+</ul>
+
+<p>Alors :</p>
+<div class="katex-display">$$h^{(1)} = \tanh(0.5 \times 0.8 + 0.7 \times 0 + 0.1) = \tanh(0.5) \approx 0.46$$</div>
+
+<p>Au pas suivant $t=2$, $h^{(1)} = 0.46$ sera réinjecté comme mémoire, et ainsi de suite.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Les <strong>mêmes poids</strong> $W_x$, $W_h$ et $b$ sont utilisés à chaque pas de temps. Le réseau n'apprend pas des poids différents pour chaque moment : il apprend une règle générale pour mettre à jour la mémoire. C'est ce qui lui permet de traiter des séquences de longueur variable.</p></div></div>
+
+<h3 id="ref-22-exemple-concret-en-code">2.2 Exemple concret en code</h3>
+
+<p>Voici un RNN simple qui prédit la pollution d'une ville au jour 5, à partir des 4 jours précédents.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+from tensorflow.keras import Sequential, Input, layers
+from tensorflow.keras.optimizers import Adam
+
+# 3 villes, 4 jours d&#x27;historique, 3 features : [température, vent, pollution]
+sequence_a = [[10, 25, 50], [13, 10, 70], [9, 5, 90], [7, 0, 95]]
+sequence_b = [[25, 20, 30], [26, 24, 50], [28, 20, 80], [22, 3, 110]]
+sequence_c = [[15, 10, 60], [25, 20, 65], [35, 10, 75], [36, 15, 70]]
+
+X = np.array([sequence_a, sequence_b, sequence_c], dtype=np.float32)
+# X.shape = (3, 4, 3) → 3 séquences, 4 timesteps, 3 features
+
+y = np.array([[[110]], [[125]], [[30]]], dtype=np.float32)
+# y.shape = (3, 1, 1) → 1 valeur prédite par séquence
+
+# Construire le modèle
+model = Sequential()
+model.add(Input(shape=(4, 3)))                           # 4 timesteps, 3 features
+model.add(layers.SimpleRNN(units=2, activation=&#x27;tanh&#x27;))  # 2 unités de mémoire
+model.add(layers.Dense(1, activation=&#x27;linear&#x27;))          # prédiction finale (1 nombre)
+
+model.compile(loss=&#x27;mse&#x27;, optimizer=Adam(learning_rate=0.5))
+model.fit(X, y, epochs=2000, verbose=0)
+
+print(model.predict(X))  # prédiction pour chaque ville</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>La sortie de la couche RNN N'EST PAS la prédiction finale. C'est un vecteur de taille <code>units</code> qui encode la mémoire accumulée. Il faut toujours ajouter une couche <code>Dense</code> ensuite pour obtenir la prédiction.</p></div></div>
+
+<h3 id="ref-23-compter-les-paramètres-dun-simplernn">2.3 Compter les paramètres d'un SimpleRNN</h3>
+
+<p>La formule du nombre de paramètres est :</p>
+
+<div class="katex-display">$$\text{Params} = n_h \times (n_x + n_h + 1)$$</div>
+
+<ul>
+<li>$n_h$ = nombre d'unités (taille de la mémoire)</li>
+<li>$n_x$ = nombre de features par timestep</li>
+</ul>
+
+<p><strong>Exemple :</strong> <code>SimpleRNN(units=2)</code> avec 3 features en entrée</p>
+
+<div class="katex-display">$$\text{Params} = 2 \times (3 + 2 + 1) = 12$$</div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Vérification
+n_x = 3   # 3 features : température, vent, pollution
+n_h = 2   # 2 unités mémoire
+params = n_h * (n_x + n_h + 1)
+print(params)  # 12</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le nombre de paramètres <strong>ne dépend pas</strong> de la longueur des séquences (n_observations). Que la séquence dure 4 jours ou 1000 jours, les mêmes 12 paramètres sont utilisés. C'est l'un des grands avantages des RNN.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-return_sequences-prédire-à-chaque-pas-de-temps">3. <code>return_sequences</code> : prédire à chaque pas de temps</h2>
+
+<h3 id="ref-31-par-défaut-on-ne-garde-que-la-fin">3.1 Par défaut : on ne garde que la fin</h3>
+
+<p>Par défaut, un RNN ne renvoie que l'état caché du <strong>dernier</strong> pas de temps. C'est utile pour classifier une séquence entière ou prédire une seule valeur à la fin.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># return_sequences=False (comportement par défaut)
+# → le RNN sort uniquement h au dernier timestep
+# Output shape : (batch_size, units)
+layers.SimpleRNN(10, return_sequences=False)</code></pre></div>
+
+
+<h3 id="ref-32-avec-return_sequencestrue-une-sortie-à-chaque-étape">3.2 Avec <code>return_sequences=True</code> : une sortie à chaque étape</h3>
+
+<p>Si on veut prédire une <strong>valeur à chaque pas de temps</strong> (ex : prédire la pollution de chaque jour et pas seulement du dernier), on active <code>return_sequences=True</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># return_sequences=True
+# → le RNN sort h à CHAQUE timestep
+# Output shape : (batch_size, n_observations, units)
+layers.SimpleRNN(10, return_sequences=True)</code></pre></div>
+
+
+<p><strong>Exemple concret : prédire la pollution jour par jour</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = Sequential()
+model.add(Input(shape=(4, 3)))                                         # 4 jours, 3 features
+model.add(layers.SimpleRNN(units=2, return_sequences=True,             # une sortie par jour
+                            activation=&#x27;tanh&#x27;))
+model.add(layers.Dense(1, activation=&#x27;relu&#x27;))                          # prédiction par jour
+
+# y doit maintenant avoir la forme (3, 4, 1) : 1 valeur par jour par séquence</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Si tu utilises <code>return_sequences=True</code>, <strong>y doit aussi être une séquence</strong>. La forme de y passe de <code>(n_sequences, 1)</code> à <code>(n_sequences, n_observations, 1)</code>.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-stacking-empiler-plusieurs-couches-rnn">4. Stacking : empiler plusieurs couches RNN</h2>
+
+<h3 id="ref-41-pourquoi-empiler">4.1 Pourquoi empiler ?</h3>
+
+<p>Comme dans un réseau Dense profond, empiler des couches RNN permet au modèle d'apprendre des <strong>patterns de plus haut niveau</strong>. La première couche détecte des tendances simples (montée de température), la deuxième des tendances de tendances (accélération de la montée).</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>En pratique, on empile rarement plus de 2 à 4 couches RNN. Au-delà, les gains sont faibles et l'entraînement devient difficile.</p></div></div>
+
+<h3 id="ref-42-règle-obligatoire-return_sequencestrue-sur-toutes-les-couches-sauf-la-dernière">4.2 Règle obligatoire : <code>return_sequences=True</code> sur toutes les couches sauf la dernière</h3>
+
+<p>Pour qu'une couche RNN puisse recevoir une séquence en entrée, la couche précédente doit avoir produit une séquence. D'où la règle :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = Sequential()
+model.add(Input(shape=(4, 3)))
+model.add(layers.LSTM(32, return_sequences=True))   # ← OBLIGATOIRE : passe une séquence à la suite
+model.add(layers.LSTM(16, return_sequences=False))  # ← dernière couche RNN : on ne garde que la fin
+model.add(layers.Dense(1, activation=&#x27;linear&#x27;))     # prédiction finale</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Si tu oublies <code>return_sequences=True</code> sur une couche intermédiaire, la couche suivante reçoit un vecteur 1D au lieu d'une séquence → erreur Keras à l'exécution.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-simplernn-lstm-et-gru">5. SimpleRNN, LSTM et GRU</h2>
+
+<h3 id="ref-51-le-problème-du-vanishing-gradient">5.1 Le problème du vanishing gradient</h3>
+
+<p>Lors de l'entraînement, le réseau ajuste ses poids en <strong>rétropropageant les erreurs dans le temps</strong> (backpropagation through time). Mais à chaque pas de temps remonté, le gradient est multiplié par un nombre inférieur à 1. Après 50 ou 100 timesteps, le gradient devient si petit qu'il est pratiquement nul.</p>
+
+<p><strong>Conséquence :</strong> le SimpleRNN "oublie" ce qui s'est passé loin dans le passé. Il n'apprend pas les dépendances à long terme.</p>
+
+<div class="katex-display">$$\frac{\partial L}{\partial W} \approx \underbrace{\delta_T \cdot \delta_{T-1} \cdots \delta_1}_{\text{produit de petits nombres} \to 0}$$</div>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>C'est comme essayer de te souvenir d'une conversation en n'ayant le droit de garder qu'un seul post-it, que tu réécris à chaque nouvelle phrase. Au bout de 20 phrases, le post-it ne contient plus d'info sur le début de la conversation.</p></div></div>
+
+<h3 id="ref-52-lstm-long-short-term-memory">5.2 LSTM — Long Short-Term Memory</h3>
+
+<p>Le LSTM résout ce problème grâce à des <strong>portes</strong> (gates) qui contrôlent ce qu'on retient, ce qu'on oublie et ce qu'on laisse passer.</p>
+
+<p>Il possède <strong>deux états internes</strong> au lieu d'un :</p>
+<ul>
+<li>$h^{(t)}$ : état caché (mémoire de court terme)</li>
+<li>$c^{(t)}$ : état de cellule (mémoire de long terme)</li>
+</ul>
+
+<p><strong>Les trois portes du LSTM :</strong></p>
+
+<p><strong>Porte d'oubli</strong> $f^{(t)}$ — "Qu'est-ce qu'on efface de la mémoire longue ?"</p>
+
+<div class="katex-display">$$f^{(t)} = \sigma\!\left(W_f \cdot [h^{(t-1)},\, x^{(t)}] + b_f\right)$$</div>
+
+<p><strong>Porte d'entrée</strong> $i^{(t)}$ — "Qu'est-ce qu'on ajoute à la mémoire longue ?"</p>
+
+<div class="katex-display">$$i^{(t)} = \sigma\!\left(W_i \cdot [h^{(t-1)},\, x^{(t)}] + b_i\right)$$</div>
+
+<div class="katex-display">$$\tilde{c}^{(t)} = \tanh\!\left(W_c \cdot [h^{(t-1)},\, x^{(t)}] + b_c\right)$$</div>
+
+<p><strong>Mise à jour de la mémoire longue :</strong></p>
+
+<div class="katex-display">$$c^{(t)} = f^{(t)} \odot c^{(t-1)} + i^{(t)} \odot \tilde{c}^{(t)}$$</div>
+
+<p><strong>Porte de sortie</strong> $o^{(t)}$ — "Que sort-on vers l'extérieur ?"</p>
+
+<div class="katex-display">$$o^{(t)} = \sigma\!\left(W_o \cdot [h^{(t-1)},\, x^{(t)}] + b_o\right)$$</div>
+
+<div class="katex-display">$$h^{(t)} = o^{(t)} \odot \tanh(c^{(t)})$$</div>
+
+<p>Où $\sigma$ est la sigmoïde (valeur entre 0 et 1), $\odot$ est la multiplication élément par élément.</p>
+
+<p><strong>Intuition des portes :</strong></p>
+<ul>
+<li>$f = 0$ → on efface complètement la mémoire ancienne</li>
+<li>$f = 1$ → on garde toute la mémoire ancienne</li>
+<li>$i = 1$ → on ajoute toute la nouvelle information</li>
+<li>$o = 0.5$ → on laisse passer la moitié de la mémoire en sortie</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Analogie : imagine que tu lis un roman policier. La porte d'oubli te permet d'effacer les fausses pistes résolues. La porte d'entrée te permet d'ajouter de nouveaux indices. La porte de sortie te permet de décider ce que tu révèles à chaque chapitre.</p></div></div>
+
+<h3 id="ref-53-gru-gated-recurrent-unit">5.3 GRU — Gated Recurrent Unit</h3>
+
+<p>Le GRU est une version simplifiée du LSTM avec <strong>deux portes</strong> au lieu de trois, et un seul état interne. Il est plus rapide à entraîner et souvent aussi performant que le LSTM.</p>
+
+<h3 id="ref-54-comparaison-des-trois-variantes">5.4 Comparaison des trois variantes</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Type</th><th>Portes</th><th>Mémoire longue</th><th>Vitesse</th><th>Usage recommandé</th></tr></thead><tbody><tr><td><strong>SimpleRNN</strong></td><td>0</td><td>Non</td><td>Très rapide</td><td>Prototypage, séquences courtes</td></tr><tr><td><strong>LSTM</strong></td><td>3</td><td>Oui</td><td>Lent</td><td>Séquences longues, NLP</td></tr><tr><td><strong>GRU</strong></td><td>2</td><td>Oui</td><td>Moyen</td><td>Compromis vitesse/performance</td></tr></tbody></table></div>
+<p><strong>En Keras, la syntaxe est identique pour les trois :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.layers import SimpleRNN, LSTM, GRU
+
+# Les trois lignes ont la même interface — seul le type de couche change
+model.add(SimpleRNN(units=10, activation=&#x27;tanh&#x27;))  # simple et rapide
+model.add(LSTM(units=10, activation=&#x27;tanh&#x27;))        # mémoire longue
+model.add(GRU(units=10, activation=&#x27;tanh&#x27;))         # compromis vitesse/perf</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Par défaut, utilise <code>tanh</code> comme activation. C'est la valeur par défaut de Keras, et c'est la bonne : elle borne les valeurs entre -1 et 1, ce qui stabilise l'entraînement. N'utilise jamais <code>relu</code> sur une couche RNN — les valeurs peuvent exploser.</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-variations-darchitecture-one-to-many-many-to-many">6. Variations d'architecture : one-to-many, many-to-many…</h2>
+
+<p>Selon la structure des données (entrée et sortie), les RNN peuvent servir à des tâches très différentes :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Nom</th><th>Entrée</th><th>Sortie</th><th>Exemple</th></tr></thead><tbody><tr><td><strong>One-to-One</strong></td><td>1 vecteur</td><td>1 vecteur</td><td>Réseau Dense classique</td></tr><tr><td><strong>Many-to-One</strong></td><td>Séquence</td><td>1 valeur</td><td>Analyse de sentiment, classification ECG</td></tr><tr><td><strong>One-to-Many</strong></td><td>1 vecteur</td><td>Séquence</td><td>Génération de légende pour une image</td></tr><tr><td><strong>Many-to-Many</strong></td><td>Séquence</td><td>Séquence</td><td>Traduction automatique, prédiction de série</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le <code>return_sequences=True</code> correspond au cas <strong>Many-to-Many</strong> : on reçoit une séquence et on produit une séquence de même longueur. Le <code>return_sequences=False</code> correspond au cas <strong>Many-to-One</strong> : on reçoit une séquence et on produit une seule valeur.</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-padding-masking-séquences-de-longueurs-différentes">7. Padding & Masking — Séquences de longueurs différentes</h2>
+
+<h3 id="ref-71-le-problème">7.1 Le problème</h3>
+
+<p>Les tenseurs NumPy et TensorFlow exigent que toutes les séquences aient <strong>exactement la même longueur</strong>. Si tu as des séquences de longueurs différentes (ex : des textes de 10, 50 ou 200 mots), tu ne peux pas les mettre directement dans un tableau.</p>
+
+<p><strong>Solution en deux étapes : Padding puis Masking.</strong></p>
+
+<h3 id="ref-72-étape-1-padding-uniformiser-les-longueurs">7.2 Étape 1 — Padding : uniformiser les longueurs</h3>
+
+<p>On allonge les séquences courtes en y ajoutant une <strong>valeur sentinelle</strong> — une valeur qui n'existe pas dans les vraies données, choisie exprès pour ne pas être confondue avec une vraie observation.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+# X est une liste de séquences de longueurs différentes
+X_pad = pad_sequences(
+    X,
+    dtype=&#x27;float32&#x27;,
+    padding=&#x27;post&#x27;,   # remplit APRÈS la vraie séquence (recommandé)
+    value=-1000       # valeur sentinelle : absente du dataset réel
+)
+# Résultat : toutes les séquences ont la longueur de la plus longue</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais padder avec 0 si 0 est une valeur possible dans tes données (ex : température de 0°C, absence de vent). Le réseau ne pourrait pas distinguer "pas de données" de "vrai zéro". Utilise une valeur extrême et impossible comme -1000.</p></div></div>
+
+<h3 id="ref-73-étape-2-masking-ignorer-les-valeurs-de-remplissage">7.3 Étape 2 — Masking : ignorer les valeurs de remplissage</h3>
+
+<p>Sans masking, le réseau apprendrait aussi sur les valeurs sentinelles (-1000), ce qui fausserait l'entraînement. La couche <code>Masking</code> dit au réseau : "ignore tous les timesteps dont la valeur est -1000".</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.layers import Masking
+
+model = Sequential()
+model.add(Input(shape=(max_len, n_features)))
+model.add(Masking(mask_value=-1000))            # ignore les timesteps paddés
+model.add(layers.LSTM(10, activation=&#x27;tanh&#x27;))   # apprend seulement sur les vraies données
+model.add(layers.Dense(1, activation=&#x27;linear&#x27;))</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Résumé du workflow padding/masking :</p>
+<p>1. <code>pad_sequences(X, padding=&#x27;post&#x27;, value=-1000)</code> → toutes les séquences à la même longueur</p>
+<p>2. <code>Masking(mask_value=-1000)</code> dans le modèle → le réseau ignore les timesteps paddés</p></div></div>
+
+<hr>
+
+<h2 id="ref-8-cas-dune-seule-série-temporelle">8. Cas d'une seule série temporelle</h2>
+
+<h3 id="ref-81-le-problème">8.1 Le problème</h3>
+
+<p>Un RNN a besoin de <strong>plusieurs exemples</strong> pour apprendre (comme tout réseau de neurones). Mais si tu n'as qu'une seule série temporelle — par exemple, la température de Paris mesurée chaque jour pendant 10 ans — tu n'as techniquement qu'une seule séquence.</p>
+
+<p><strong>Solution : découper en fenêtres glissantes.</strong></p>
+
+<h3 id="ref-82-la-technique-des-fenêtres-glissantes">8.2 La technique des fenêtres glissantes</h3>
+
+<p>On fait glisser une fenêtre de taille fixe sur la série, et on crée un exemple (X, y) pour chaque position de la fenêtre.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Série complète : [t1, t2, t3, t4, t5, t6, t7, ...]
+
+Fenêtre 1 : X = [t1, t2, t3, t4]  →  y = t5
+Fenêtre 2 : X = [t2, t3, t4, t5]  →  y = t6
+Fenêtre 3 : X = [t3, t4, t5, t6]  →  y = t7
+...</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># On choisit une taille de fenêtre (ici 100 observations)
+window_size = 100
+
+# Résultat :
+# X.shape = (n_windows, 100, n_features)
+# y.shape = (n_windows, 1)
+
+# Si la série fait 1000 points, on obtient (1000 - 100) = 900 exemples d&#x27;entraînement</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Plus la fenêtre est grande, plus le modèle peut détecter des dépendances lointaines (ex : effet saisonnier sur 30 jours). Mais les fenêtres plus grandes produisent aussi moins d'exemples si la série est courte.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1.</strong> Tu as des données de 50 capteurs, chacun mesurant 5 variables toutes les heures pendant 200 heures. Tu veux prédire la valeur de la 201ème heure pour chaque capteur. Quelles sont les shapes de <code>X</code> et <code>y</code> ?</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p><code>X.shape = (50, 200, 5)</code> — 50 séquences (capteurs), 200 timesteps, 5 features. <code>y.shape = (50, 1, 1)</code> — 1 valeur prédite par capteur.</p></div></div>
+
+<p><strong>Question 2.</strong> Que se passe-t-il si tu empiles deux couches LSTM comme suit : <code>model.add(LSTM(32))</code> puis <code>model.add(LSTM(16))</code> ? Pourquoi est-ce une erreur ?</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Par défaut, <code>return_sequences=False</code>, donc la première couche LSTM retourne un vecteur de taille 32 (pas une séquence). La deuxième couche LSTM attend une séquence 3D en entrée → erreur. Il faut <code>LSTM(32, return_sequences=True)</code> sur la première couche.</p></div></div>
+
+<p><strong>Question 3.</strong> Quelle est la différence principale entre un SimpleRNN et un LSTM ? Dans quel cas choisir l'un ou l'autre ?</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Le SimpleRNN souffre du vanishing gradient : il oublie les informations lointaines. Le LSTM a des portes qui contrôlent explicitement ce qu'il retient ou oublie, permettant une mémoire longue. Utilise SimpleRNN pour prototyper ou sur des séquences courtes. Utilise LSTM (ou GRU) pour des séquences longues ou complexes (texte, musique).</p></div></div>
+
+<p><strong>Question 4.</strong> Tu veux padder tes séquences, mais certaines valeurs de ton dataset sont nulles (0.0). Quelle valeur de padding choisirais-tu ? Pourquoi ?</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Une valeur impossible à observer dans les données, par exemple -9999 ou -1000. Si tu utilisais 0, le réseau ne pourrait pas distinguer une vraie valeur nulle d'un timestep padded, ce qui fausserait l'apprentissage.</p></div></div>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Un <strong>RNN</strong> traite les données séquentielles (météo, texte, vidéo) en lisant chaque élément un par un tout en maintenant un <strong>état caché</strong> (mémoire).</li>
+<li>La forme d'entrée est toujours <strong>3D</strong> : <code>(n_sequences, n_observations, n_features)</code>.</li>
+<li>Les <strong>mêmes poids</strong> sont partagés à chaque pas de temps → le nombre de paramètres ne dépend pas de la longueur des séquences.</li>
+<li><code>return_sequences=False</code> (défaut) → une seule sortie en fin de séquence (Many-to-One). <code>return_sequences=True</code> → une sortie par pas de temps (Many-to-Many).</li>
+<li>En cas de <strong>stacking</strong>, toutes les couches RNN intermédiaires doivent avoir <code>return_sequences=True</code>.</li>
+<li>Le <strong>SimpleRNN</strong> oublie le passé lointain (vanishing gradient). Le <strong>LSTM</strong> et le <strong>GRU</strong> résolvent ce problème grâce à des portes.</li>
+<li>Pour des séquences de longueurs différentes : <strong>padder</strong> avec une valeur sentinelle absente des données, puis utiliser une couche <strong>Masking</strong> pour que le réseau ignore le padding.</li>
+<li>Pour une seule série temporelle : créer des <strong>fenêtres glissantes</strong> pour générer de nombreux exemples (X, y).</li>
+<li>Toujours utiliser <code>tanh</code> comme activation sur les couches RNN — ne jamais utiliser <code>relu</code>.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-pourquoi-des-réseaux-récurrents">Pourquoi des réseaux récurrents</a></li><li><a href="#syn-le-rnn-simple">Le RNN simple</a></li><li><a href="#syn-lstm">LSTM</a></li><li><a href="#syn-gru">GRU</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-bidirectional-rnn">Bidirectional RNN</a></li><li><a href="#syn-sequence-to-sequence">Sequence-to-sequence</a></li><li><a href="#syn-pourquoi-les-rnn-sont-remplacés-par-les-transformers">Pourquoi les RNN sont remplacés par les transformers</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-pourquoi-des-réseaux-récurrents">Pourquoi des réseaux récurrents</h3>
+
+<p>Les CNN et MLP traitent une entrée de <strong>taille fixe</strong> et indépendamment. Mais beaucoup de données sont des <strong>séquences</strong> :</p>
+
+<ul>
+<li>Texte : "Le chat mange la souris" — une suite de mots</li>
+<li>Audio : signal échantillonné dans le temps</li>
+<li>Séries temporelles : ventes mensuelles, prix d'actions</li>
+<li>Vidéo : suite d'images</li>
+<li>ADN : suite de nucléotides</li>
+</ul>
+
+<p>Caractéristiques clés des séquences :</p>
+
+<ul>
+<li><strong>Longueur variable</strong> : une phrase peut faire 5 ou 50 mots</li>
+<li><strong>Dépendances temporelles</strong> : "Marie a oublié son <strong>livre</strong>" — le mot "livre" dépend de "oublié"</li>
+<li><strong>Ordre important</strong> : "Le chat mange la souris" ≠ "La souris mange le chat"</li>
+</ul>
+
+<p>Un RNN traite la séquence <strong>élément par élément</strong>, en maintenant un <strong>état interne</strong> qui se met à jour à chaque step. C'est conceptuellement très proche de la lecture humaine.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : un MLP qui lit une phrase est comme un voyageur qui regarde tous les panneaux d'une ville en même temps, sans contexte. Un RNN est un lecteur qui parcourt la phrase mot par mot, en se rappelant ce qu'il a lu avant. Sa "mémoire" interne lui permet de faire des liens entre éléments distants.</p></div></div>
+
+<h3 id="syn-le-rnn-simple">Le RNN simple</h3>
+
+<p>Le RNN vanille met à jour son état caché $\mathbf{h}_t$ à chaque pas de temps :</p>
+
+<div class="katex-display">$$\mathbf{h}_t = \tanh(W_{hh} \mathbf{h}_{t-1} + W_{xh} \mathbf{x}_t + \mathbf{b})$$</div>
+
+<p><strong>Lecture de la formule</strong> : à l'instant $t$, on combine deux informations dans une seule transformation linéaire, puis on passe le tout dans une non-linéarité tanh.</p>
+<ul>
+<li>$W_{hh} \mathbf{h}_{t-1}$ : la mémoire précédente transformée par la matrice "hidden → hidden". C'est ce qui transporte le passé.</li>
+<li>$W_{xh} \mathbf{x}_t$ : la nouvelle entrée transformée par la matrice "input → hidden". C'est ce qui injecte l'information de l'instant courant.</li>
+<li>$\mathbf{b}$ : un biais.</li>
+<li>$\tanh$ : écrase le tout entre -1 et 1 et ajoute la non-linéarité nécessaire à l'apprentissage.</li>
+</ul>
+
+<p>Le nouvel état caché $\mathbf{h}_t$ contient un mélange du passé (via $\mathbf{h}_{t-1}$) et du présent (via $\mathbf{x}_t$). Il sera à son tour réutilisé au temps $t + 1$.</p>
+
+<p>et produit une sortie :</p>
+
+<div class="katex-display">$$\mathbf{y}_t = W_{hy} \mathbf{h}_t + \mathbf{b}_y$$</div>
+
+<p><strong>Lecture</strong> : projection linéaire de l'état caché vers l'espace de sortie. Pour de la classification on ajoute un softmax ; pour de la régression on laisse tel quel.</p>
+
+<p>Trois éléments :</p>
+
+<ul>
+<li><strong>$\mathbf{x}_t$</strong> : input à l'instant $t$ (un mot, un échantillon audio, etc.)</li>
+<li><strong>$\mathbf{h}_t$</strong> : état caché à l'instant $t$ (la "mémoire")</li>
+<li><strong>$W_{hh}, W_{xh}, W_{hy}$</strong> : matrices de poids <strong>partagées</strong> sur tous les pas de temps</li>
+</ul>
+
+<p>Le partage de poids est crucial : c'est ce qui permet au RNN de gérer des séquences de longueur arbitraire avec un nombre fixe de paramètres.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import tensorflow as tf
+from tensorflow.keras import layers, models
+
+model = models.Sequential([
+    layers.Embedding(input_dim=10000, output_dim=128),  # Vocab 10k -&gt; vecteurs 128d
+    layers.SimpleRNN(64),                                # 64 unités cachées, retourne h_T (dernier)
+    layers.Dense(1, activation=&quot;sigmoid&quot;),               # Classif binaire (sentiment)
+])</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Le problème majeur du RNN simple</strong> : le <strong>vanishing gradient</strong>. À chaque pas de temps, le gradient passe par $W_{hh}$. Pour une séquence de longueur 100, le gradient est multiplié 100 fois. Si $|W_{hh}| < 1$, il s'évanouit ; si $|W_{hh}| > 1$, il explose. Conséquence : le RNN ne peut pas apprendre de <strong>longues dépendances</strong> (au-delà de ~10 pas). C'est exactement le problème que LSTM résout.</p></div></div>
+
+<h3 id="syn-lstm">LSTM</h3>
+
+<p><strong>Long Short-Term Memory</strong> (Hochreiter & Schmidhuber, 1997) introduit deux mécanismes pour résoudre le vanishing gradient :</p>
+
+<ol>
+<li><strong>Cell state</strong> $\mathbf{c}_t$ : un "raccourci" qui transmet l'information à travers le temps avec peu de modifications, comme une autoroute pour les gradients</li>
+<li><strong>Gates</strong> : portes qui décident quoi garder, oublier, et émettre</li>
+</ol>
+
+<p>Trois gates :</p>
+
+<ul>
+<li><strong>Forget gate</strong> : "qu'est-ce que je dois oublier de ma mémoire ?"</li>
+<li><strong>Input gate</strong> : "qu'est-ce que j'ajoute à ma mémoire ?"</li>
+<li><strong>Output gate</strong> : "qu'est-ce que je communique en sortie ?"</li>
+</ul>
+
+<p>Les équations (à connaître pour les entretiens) :</p>
+
+<div class="katex-display">$$f_t = \sigma(W_f [\mathbf{h}_{t-1}, \mathbf{x}_t] + b_f)$$</div>
+
+<p><strong>Lecture (forget gate)</strong> : on concatène l'état caché précédent et l'entrée courante en un gros vecteur, on le projette avec $W_f$, on y ajoute un biais, puis on applique une sigmoïde. Résultat : un vecteur $f_t$ dont chaque composante est entre 0 et 1. Chaque composante sera ensuite multipliée élément par élément avec la cellule : si la composante vaut 1, on <strong>garde</strong> totalement l'information correspondante ; si elle vaut 0, on l'<strong>oublie</strong> complètement ; en intermédiaire, on atténue. C'est un "filtre appris" qui décide quoi garder.</p>
+
+<div class="katex-display">$$i_t = \sigma(W_i [\mathbf{h}_{t-1}, \mathbf{x}_t] + b_i)$$</div>
+
+<p><strong>Lecture (input gate)</strong> : même forme que le forget gate mais avec ses propres poids. $i_t$ décide quelles composantes de la nouvelle information candidate on va <strong>ajouter</strong> à la cellule. Valeurs entre 0 (n'ajoute rien) et 1 (ajoute tout).</p>
+
+<div class="katex-display">$$\tilde{\mathbf{c}}_t = \tanh(W_c [\mathbf{h}_{t-1}, \mathbf{x}_t] + b_c)$$</div>
+
+<p><strong>Lecture (candidat de cellule)</strong> : c'est la nouvelle information, proposée par la concaténation (état précédent + entrée courante) transformée par $W_c$ et passée dans tanh (pour rester dans $[-1, 1]$). Ce n'est pas encore ajouté à la cellule, c'est juste un "candidat" qu'on filtrera ensuite avec $i_t$.</p>
+
+<div class="katex-display">$$\mathbf{c}_t = f_t \odot \mathbf{c}_{t-1} + i_t \odot \tilde{\mathbf{c}}_t$$</div>
+
+<p><strong>Lecture (mise à jour de la cellule)</strong> — <strong>c'est le cœur du LSTM</strong>. $\odot$ est le produit élément par élément (Hadamard). Premier terme : on prend l'ancienne cellule et on multiplie par le forget gate (on oublie ce qu'il faut). Deuxième terme : on prend le candidat et on multiplie par l'input gate (on ne retient que ce qu'on veut). On additionne les deux. L'opération centrale est une <strong>addition</strong> (et non une multiplication par une matrice), ce qui est crucial : lors de la backprop, le gradient peut circuler à travers cette addition sans être amorti par des multiplications répétées. C'est exactement pour ça que les LSTM peuvent apprendre des dépendances à longue distance là où le RNN simple échoue.</p>
+
+<div class="katex-display">$$o_t = \sigma(W_o [\mathbf{h}_{t-1}, \mathbf{x}_t] + b_o)$$</div>
+
+<p><strong>Lecture (output gate)</strong> : encore une sigmoïde. $o_t$ décide quelles composantes de la cellule on va "révéler" à l'état caché (et donc à l'extérieur du LSTM).</p>
+
+<div class="katex-display">$$\mathbf{h}_t = o_t \odot \tanh(\mathbf{c}_t)$$</div>
+
+<p><strong>Lecture (nouvel état caché)</strong> : on passe la cellule dans tanh pour ramener les valeurs dans $[-1, 1]$, puis on masque avec l'output gate. Cela sépare clairement ce qui est <strong>stocké</strong> en interne (dans $\mathbf{c}_t$, potentiellement grand en valeur) de ce qui est <strong>visible</strong> à l'extérieur (dans $\mathbf{h}_t$, borné et filtré).</p>
+
+<p><strong>Résumé intuitif</strong> : la cellule $\mathbf{c}_t$ est une mémoire à long terme qu'on met à jour par additions contrôlées (forget + input). L'état caché $\mathbf{h}_t$ est une vue filtrée de cette mémoire pour le pas courant.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = models.Sequential([
+    layers.Embedding(10000, 128),                          # Vocab 10k -&gt; 128d
+    layers.LSTM(128, return_sequences=False),              # Sortie : dernier h_T (1 vecteur)
+    layers.Dense(1, activation=&quot;sigmoid&quot;),                 # Classif binaire
+])
+
+# Pour un seq2seq (traduction), on retourne TOUS les états cachés :
+layers.LSTM(128, return_sequences=True)  # Sortie : h_1, h_2, ..., h_T</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : pensez à votre mémoire à court terme quand vous lisez un roman. Quand vous lisez un nouveau chapitre, vous "oubliez" certains détails du chapitre précédent (forget gate), vous "retenez" les nouveaux personnages importants (input gate), et vous "exprimez" votre compréhension actuelle quand quelqu'un vous demande où vous en êtes (output gate). Le LSTM formalise mathématiquement ces opérations.</p></div></div>
+
+<h3 id="syn-gru">GRU</h3>
+
+<p><strong>Gated Recurrent Unit</strong> (Cho et al., 2014) : une version simplifiée du LSTM avec seulement deux gates et pas de cellule séparée.</p>
+
+<ul>
+<li><strong>Reset gate</strong> $r_t$ : combien d'historique oublier avant de calculer le nouveau candidat</li>
+<li><strong>Update gate</strong> $z_t$ : combien du nouveau mélanger avec l'ancien</li>
+</ul>
+
+<p>Les équations :</p>
+
+<div class="katex-display">$$r_t = \sigma(W_r [\mathbf{h}_{t-1}, \mathbf{x}_t])$$</div>
+<div class="katex-display">$$z_t = \sigma(W_z [\mathbf{h}_{t-1}, \mathbf{x}_t])$$</div>
+<div class="katex-display">$$\tilde{\mathbf{h}}_t = \tanh(W_h [r_t \odot \mathbf{h}_{t-1}, \mathbf{x}_t])$$</div>
+<div class="katex-display">$$\mathbf{h}_t = (1 - z_t) \odot \mathbf{h}_{t-1} + z_t \odot \tilde{\mathbf{h}}_t$$</div>
+
+<p><strong>Lecture</strong> : la dernière ligne est une <strong>interpolation linéaire</strong> entre l'ancien état et le candidat, contrôlée par $z_t$. Si $z_t = 0$, on garde l'ancien tel quel (pas de mise à jour). Si $z_t = 1$, on remplace complètement par le nouveau. Très compact et économique en paramètres.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">layers.GRU(128)   # ~25% moins de paramètres qu&#x27;un LSTM équivalent</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>LSTM</th><th>GRU</th></tr></thead><tbody><tr><td>Paramètres</td><td>Plus</td><td>~25% en moins</td></tr><tr><td>Performance</td><td>Légèrement meilleur sur de longues séquences</td><td>Équivalent sur la plupart</td></tr><tr><td>Vitesse</td><td>Plus lent</td><td>Plus rapide</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Recommandation</strong> : commencez par GRU (moins de paramètres, plus rapide à entraîner). Si la performance est insuffisante, passez au LSTM. Pour des séquences vraiment longues (transcriptions audio, génération de texte longue), passez aux Transformers.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-bidirectional-rnn">Bidirectional RNN</h3>
+
+<p>Un RNN classique ne lit la séquence que dans un sens (gauche → droite). Pour beaucoup de tâches, le contexte futur est aussi utile. Solution : un <strong>BiRNN</strong> qui combine deux RNN, un dans chaque sens.</p>
+
+<div class="katex-display">$$\overrightarrow{\mathbf{h}}_t = \text{LSTM}_{\rightarrow}(\mathbf{x}_t, \overrightarrow{\mathbf{h}}_{t-1})$$</div>
+<div class="katex-display">$$\overleftarrow{\mathbf{h}}_t = \text{LSTM}_{\leftarrow}(\mathbf{x}_t, \overleftarrow{\mathbf{h}}_{t+1})$$</div>
+<div class="katex-display">$$\mathbf{h}_t = [\overrightarrow{\mathbf{h}}_t ; \overleftarrow{\mathbf{h}}_t]$$</div>
+
+<p><strong>Lecture</strong> : on fait tourner deux LSTM indépendants, un dans le sens normal et un dans le sens inverse, puis on concatène leurs états à chaque position. À la position $t$, on a ainsi à la fois le contexte <strong>passé</strong> (via le forward) et le contexte <strong>futur</strong> (via le backward).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">layers.Bidirectional(layers.LSTM(64))  # Sortie : 128 (2 x 64 concaténés)</code></pre></div>
+
+
+<p>Cas d'usage : NER (reconnaissance d'entités nommées), POS tagging, traduction. À éviter pour la génération de texte (où vous ne pouvez pas connaître le futur).</p>
+
+<h3 id="syn-sequence-to-sequence">Sequence-to-sequence</h3>
+
+<p>L'architecture <strong>encoder-decoder</strong> sépare la lecture (encoder) de la génération (decoder). Deux RNN distincts.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Input: &quot;Bonjour le monde&quot;
+   |
+[Encoder LSTM] -&gt; context vector
+                       |
+              [Decoder LSTM] -&gt; &quot;Hello world&quot;</code></pre></div>
+
+
+<p>C'est l'architecture des premiers systèmes de traduction neuronale (Sutskever et al., 2014).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Encoder : lit la phrase source, renvoie son état final comme &quot;résumé&quot;
+encoder_inputs = layers.Input(shape=(None,))                       # Longueur variable
+encoder_emb = layers.Embedding(vocab_size, 256)(encoder_inputs)     # Mots -&gt; vecteurs
+_, state_h, state_c = layers.LSTM(256, return_state=True)(encoder_emb)  # On garde h_T, c_T
+
+# Decoder : initialisé avec l&#x27;état du encoder, génère la phrase cible
+decoder_inputs = layers.Input(shape=(None,))
+decoder_emb = layers.Embedding(vocab_size, 256)(decoder_inputs)
+decoder_outputs, _, _ = layers.LSTM(256, return_sequences=True, return_state=True)(
+    decoder_emb, initial_state=[state_h, state_c]                  # L&#x27;état du encoder = contexte
+)
+output = layers.Dense(vocab_size, activation=&quot;softmax&quot;)(decoder_outputs)  # Probas sur le vocab
+
+model = models.Model([encoder_inputs, decoder_inputs], output)</code></pre></div>
+
+
+<p>L'amélioration majeure de ce design (avant les transformers) : l'<strong>attention</strong> (Bahdanau et al., 2014). Au lieu de compresser toute la séquence d'entrée dans un seul vecteur context, le decoder regarde <strong>directement</strong> les états cachés de l'encoder à chaque pas. C'est l'idée qui a engendré les transformers.</p>
+
+<h3 id="syn-pourquoi-les-rnn-sont-remplacés-par-les-transformers">Pourquoi les RNN sont remplacés par les transformers</h3>
+
+<p>Depuis 2018, les RNN sont massivement remplacés par les <strong>transformers</strong> (BERT, GPT, T5…). Trois raisons :</p>
+
+<ol>
+<li><strong>Parallélisation</strong> : un RNN doit traiter les éléments séquentiellement (l'état $t$ dépend de $t-1$). Un transformer traite tous les éléments en parallèle, ce qui exploite mieux les GPU et permet d'entraîner sur des datasets gigantesques.</li>
+</ol>
+
+<ol>
+<li><strong>Long-range dependencies</strong> : malgré LSTM/GRU, les RNN restent limités à ~100-200 pas. Les transformers peuvent capturer des dépendances sur des milliers de tokens (et jusqu'à 1M+ pour les modèles modernes).</li>
+</ol>
+
+<ol>
+<li><strong>Performance</strong> : sur quasi toutes les benchmarks NLP, les transformers battent les RNN, parfois de plusieurs points.</li>
+</ol>
+
+<p>Résultat : les RNN restent pertinents pour des cas spécifiques (séries temporelles courtes, edge devices avec contraintes mémoire) mais pour le NLP grand public, c'est transformer 100% du temps.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Recommandation 2025</strong> : pour un nouveau projet NLP ou de séquence, <strong>commencez par un transformer pré-entraîné</strong> (BERT, RoBERTa, T5, ou un LLM via API). Les RNN sont à connaître pour la culture, à utiliser uniquement si vous avez une contrainte spécifique qui les justifie (latence, mémoire, déploiement embarqué).</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Quelle est la différence fondamentale entre un RNN simple et un LSTM, et quel problème spécifique LSTM résout-il ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>gradient.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Le RNN simple multiplie l'état caché par la même matrice $W_{hh}$ à chaque pas de temps. Sur une séquence de longueur 100, le gradient est multiplié 100 fois — il <strong>s'évanouit</strong> (si $|W| < 1$) ou <strong>explose</strong> (si $|W| > 1$). Conséquence : le RNN ne peut pas apprendre de dépendances au-delà de ~10 pas. <strong>LSTM</strong> résout cela avec deux innovations : (1) un <strong>cell state</strong> qui transporte l'information à travers le temps avec très peu de modifications (essentiellement une addition pondérée $\mathbf{c}_t = f_t \odot \mathbf{c}_{t-1} + i_t \odot \tilde{\mathbf{c}}_t$, pas une multiplication par une grande matrice). (2) Des <strong>gates</strong> apprises qui décident quand modifier le cell state. Le résultat : les gradients circulent sans s'évanouir sur 100, voire 1000 pas. C'est exactement la même idée que les <strong>skip connections</strong> des ResNet : créer un raccourci pour les gradients. Question d'entretien deep learning séquentiel classique pour vérifier qu'un candidat connaît à la fois le problème et la solution.</p>
+
+</details>
+
+<p><strong>Q2 : Vous entraînez un LSTM pour de la classification de sentiment et <code>validation_loss</code> reste élevée. Quelles sont les pistes ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>embeddings et architecture.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Cinq pistes dans cet ordre. (1) <strong>Embeddings pré-entraînés</strong> : au lieu d'apprendre les embeddings from scratch (qui nécessite beaucoup de données), utilisez Word2Vec, GloVe ou FastText pré-entraînés. Sur 5k-50k exemples, c'est typiquement +5-10% de F1. (2) <strong>Bidirectional LSTM</strong> : capture le contexte avant et après chaque mot. Souvent +2-3% sur les tâches de classification. (3) <strong>Plus de couches</strong> : <code>LSTM(128, return_sequences=True)</code> puis <code>LSTM(64)</code> empilées. Mais attention à l'overfit. (4) <strong>Dropout</strong> : <code>layers.Dropout(0.5)</code> après l'embedding ET dans le LSTM (<code>recurrent_dropout=0.2</code>). (5) <strong>Switch to transformer</strong> : si vous avez >1k exemples, fine-tuner BERT ou RoBERTa donnera presque toujours de meilleurs résultats que tout LSTM, en moins d'effort. <strong>Recommandation 2025</strong> : ne pas s'entêter sur les LSTM pour le NLP, sauf cas spécifique. Les transformers pré-entraînés sont la solution standard. Question d'entretien NLP classique.</p>
+
+</details>
+
+<p><strong>Q3 : Pourquoi un transformer est-il plus rapide à entraîner qu'un LSTM sur un GPU, alors qu'il a souvent plus de paramètres ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>parallélisation.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Parce qu'un LSTM est fondamentalement <strong>séquentiel</strong> : pour calculer l'état $\mathbf{h}_t$, vous avez besoin de $\mathbf{h}_{t-1}$, qui dépend de $\mathbf{h}_{t-2}$, etc. Sur une séquence de longueur 1000, vous devez faire 1000 opérations en série — un GPU ne peut pas paralléliser cela. Un transformer, lui, traite <strong>tous les tokens en parallèle</strong> grâce à la self-attention : la sortie pour la position $i$ est calculée en regardant directement toutes les autres positions, sans avoir besoin de calculer celles qui précèdent en premier. Sur un GPU avec 10 000 cœurs, cela tourne ~100x plus vite. C'est exactement la raison pour laquelle BERT (110M params) s'entraîne en quelques jours sur un cluster GPU, alors qu'un LSTM équivalent prendrait des semaines. La conséquence directe : l'industrie a pu entraîner des modèles 100-1000x plus grands en passant aux transformers, ce qui a déclenché la révolution des LLM. Question d'entretien architecture NLP fondamentale.</p>
+
+</details>
+
+<p><strong>Q4 : Dans les équations du LSTM, pourquoi les gates utilisent-elles une sigmoïde alors que le candidat de cellule utilise un tanh ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Rôles différents : filtre vs contenu.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Les <strong>gates</strong> (forget, input, output) ont un rôle de <strong>filtre</strong> : elles décident "combien" de chaque composante on laisse passer. Elles doivent donc produire des valeurs dans $[0, 1]$ — c'est exactement ce que fait la sigmoïde. 0 = "bloque totalement", 1 = "laisse passer totalement", intermédiaire = "laisse passer en partie". Le candidat de cellule $\tilde{\mathbf{c}}_t$, lui, représente une <strong>information</strong> qu'on va ajouter à la mémoire. Il doit pouvoir être positif ou négatif (pour pouvoir "ajouter" ou "soustraire" une composante dans $\mathbf{c}_t$), mais il doit aussi rester borné pour ne pas faire exploser la cellule. Le tanh produit des valeurs dans $[-1, 1]$ — parfait pour représenter une information signée et bornée. De même, le $\tanh(\mathbf{c}_t)$ appliqué avant l'output gate maintient $\mathbf{h}_t$ dans une échelle raisonnable même si la cellule a accumulé beaucoup d'informations. Question d'entretien LSTM qui vérifie la compréhension fine des équations, pas juste leur récitation.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Long Short-Term Memory</em> (Hochreiter & Schmidhuber, 1997) — papier original</li>
+<li><a href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank" rel="noopener">Understanding LSTM Networks</a> (Christopher Olah) — explication visuelle légendaire</li>
+<li><a href="http://web.stanford.edu/class/cs224n/" target="_blank" rel="noopener">Stanford CS224N — Recurrent Neural Networks</a> — cours de Manning</li>
+<li><em>Sequence to Sequence Learning</em> (Sutskever et al., 2014) — encoder-decoder</li>
+<li><em>Neural Machine Translation by Jointly Learning to Align and Translate</em> (Bahdanau et al., 2014) — l'attention</li>
+<li><em>Deep Learning</em> (Goodfellow et al.) — chapitre 10</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../deep-learning/cnn.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Convolutional Neural Networks</span>
+  </a>
+  <a href="../deep-learning/nlp-dl.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">NLP Deep Learning →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

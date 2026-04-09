@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ML Ops — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">ML Ops</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html" class="active">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">MLOps & Production</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>ML Ops</span>
+      </div>
+
+      <div class="page-header">
+        <h1>ML Ops</h1>
+        <p class="page-objective">Structurer un projet ML pour la production — packager du code Python avec `setup.py`, gérer les environnements virtuels, écrire des tests avec `pytest`, maîtriser son IDE et la ligne de commande, et préparer le passage à l'entraînement à grande échelle.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Packaging</div>
+        <div class="key-concept-def">Transformer le code en module installable (`setup.py`, `pyproject.toml`).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Image Docker</div>
+        <div class="key-concept-def">Snapshot reproductible d&#x27;un environnement (OS + libs + code).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Reproductibilité</div>
+        <div class="key-concept-def">Pouvoir réobtenir exactement le même résultat à partir des mêmes inputs.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Drift</div>
+        <div class="key-concept-def">Décalage entre les données d&#x27;entraînement et celles vues en production.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-ml-ops-train-at-scale">Cheatsheet — ML Ops (Train at Scale)</a><ol><li><a href="#package-python-minimal">Package Python minimal</a></li><li><a href="#setuppyhttpsetuppy">[setup.py](http://setup.py)</a></li><li><a href="#installation-et-utilisation">Installation et utilisation</a></li><li><a href="#virtual-environments-pyenv">Virtual environments (pyenv)</a></li><li><a href="#tests-avec-pytest">Tests avec pytest</a></li><li><a href="#makefile">Makefile</a></li><li><a href="#debugging-avec-ipdb">Debugging avec ipdb</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-contexte-le-rôle-du-ml-engineer">1) Contexte — Le rôle du ML Engineer</a><li><a href="#2-packaging-python">2) Packaging Python</a><ol><li><a href="#21-quest-ce-quun-package">2.1 Qu'est-ce qu'un package ?</a></li><li><a href="#22-créer-un-package-minimal">2.2 Créer un package minimal</a></li><li><a href="#23-setuppy-et-installation">2.3 `setup.py` et installation</a></li><li><a href="#24-dépendances">2.4 Dépendances</a></li><li><a href="#25-autoreload-dans-les-notebooks">2.5 Autoreload dans les notebooks</a></li></ol></li><li><a href="#3-virtual-environments">3) Virtual Environments</a><ol><li><a href="#31-pyenv-vs-venv">3.1 pyenv vs venv</a></li></ol></li><li><a href="#4-tests-avec-pytest">4) Tests avec pytest</a><ol><li><a href="#41-pourquoi-tester">4.1 Pourquoi tester ?</a></li><li><a href="#42-exemple-complet">4.2 Exemple complet</a></li></ol></li><li><a href="#5-makefile-commandes-raccourcies">5) Makefile — Commandes raccourcies</a><li><a href="#6-debugging-et-ide">6) Debugging et IDE</a><ol><li><a href="#61-lire-une-stack-trace">6.1 Lire une stack trace</a></li><li><a href="#62-ipdb-debugger-interactif">6.2 ipdb — debugger interactif</a></li><li><a href="#63-raccourcis-vs-code-essentiels">6.3 Raccourcis VS Code essentiels</a></li></ol></li><li><a href="#annexe-optimisation-mémoire">📎 Annexe — Optimisation mémoire</a><ol><li><a href="#downcasting-des-types">Downcasting des types</a></li><li><a href="#fonction-de-compression">Fonction de compression</a></li></ol></li><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-ml-ops-train-at-scale">📋 Cheatsheet — ML Ops (Train at Scale)</h2>
+
+<h3 id="package-python-minimal">Package Python minimal</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Structure d&#x27;un package minimal
+## project-toto/
+## ├── toto/
+## │   ├── __init__.py           # fait de toto/ un package (souvent vide)
+## │   └── lib.py                # module avec les fonctions
+## ├── tests/
+## │   └── test_lib.py           # tests unitaires
+## ├── setup.py                  # configuration du package
+## ├── requirements.txt          # dépendances
+## ├── Makefile                  # commandes raccourcies
+## └── README.md</code></pre></div>
+
+
+<h3 id="setuppyhttpsetuppy"><a href="http://setup.py" target="_blank" rel="noopener">setup.py</a></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from setuptools import setup, find_packages
+
+with open(&#x27;requirements.txt&#x27;) as f:
+    requirements = [x.strip() for x in f.readlines()]
+
+setup(
+    name=&#x27;toto&#x27;,                                # nom du package
+    description=&quot;package description&quot;,
+    packages=find_packages(),                   # détecte automatiquement les packages
+    install_requires=requirements               # installe les dépendances
+)</code></pre></div>
+
+
+<h3 id="installation-et-utilisation">Installation et utilisation</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install .                  # installe une COPIE dans site-packages
+pip install -e .               # installe en mode éditable (hot-reload)
+pip uninstall toto             # désinstalle
+
+## Vérifier l&#x27;installation
+pip freeze | grep toto         # vérifie que toto est installé
+
+## Exécuter un module
+python -m toto.lib             # exécute comme module
+python toto/lib.py             # exécute comme fichier</code></pre></div>
+
+
+<h3 id="virtual-environments-pyenv">Virtual environments (pyenv)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pyenv virtualenv 3.8.12 totoenv    # crée un venv nommé totoenv
+pyenv local totoenv                 # active automatiquement dans le dossier courant
+pip list                            # liste les packages installés dans le venv</code></pre></div>
+
+
+<h3 id="tests-avec-pytest">Tests avec pytest</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## tests/test_divide.py
+import math
+from toto.divide import divide_without_raising
+
+def test_has_correct_arithmetic():
+    assert divide_without_raising(2.0, 2.0) == 1.0
+
+def test_handles_divide_by_zero():
+    assert divide_without_raising(2., 0.) == float(&#x27;inf&#x27;)
+    assert divide_without_raising(-2., 0.) == -float(&#x27;inf&#x27;)
+    assert math.isnan(divide_without_raising(0., 0.))</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pytest tests -v                # lance les tests en mode verbose</code></pre></div>
+
+
+<h3 id="makefile">Makefile</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">install:
+	@pip install -e .
+
+clean:
+	@rm -Rf build */__pycache__ */*.pyc
+
+test:
+	@pytest -v tests
+
+all: install clean</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">make install                   # exécute la directive install
+make test                      # lance les tests
+make all                       # exécute install puis clean</code></pre></div>
+
+
+<h3 id="debugging-avec-ipdb">Debugging avec ipdb</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">pip install ipdb               # ne pas ajouter à requirements.txt (dev-only)
+
+## Dans le code : placer un breakpoint
+import ipdb; ipdb.set_trace()  # ou breakpoint()
+
+## Navigation ipdb :
+## s = step into | n = next | c = continue | u = up | d = down
+## l = context | ll = more context | q = quit</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Modifier le code source sans <code>pip install -e .</code> (mode éditable)</strong></p>
+<p><code>pip install .</code> crée une COPIE dans site-packages — les modifications du code source ne sont pas reflétées.</p>
+<p>❌ Modifier <code>toto/lib.py</code> après <code>pip install .</code> → les changements sont invisibles</p>
+<p>✅ Toujours utiliser <code>pip install -e .</code> pendant le développement pour le hot-reload</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier <code>__init__.py</code> dans un dossier de package</strong></p>
+<p>Sans <code>__init__.py</code>, Python ne reconnaît pas le dossier comme un package importable.</p>
+<p>❌ <code>from toto.lib import func</code> → <code>ModuleNotFoundError</code> si <code>toto/__init__.py</code> manque</p>
+<p>✅ Créer un fichier <code>__init__.py</code> (même vide) dans chaque dossier de package</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Travailler sans environnement virtuel dédié</strong></p>
+<p>Installer les dépendances dans l'environnement global crée des conflits entre projets.</p>
+<p>❌ <code>pip install pandas</code> dans le Python système → conflit de versions entre projets</p>
+<p>✅ Un venv par projet : <code>pyenv virtualenv 3.8.12 monprojet</code> + <code>pyenv local monprojet</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser des espaces au lieu de tabulations dans un Makefile</strong></p>
+<p>Le Makefile exige des tabulations pour l'indentation des commandes — les espaces provoquent une erreur silencieuse.</p>
+<p>❌ <code>install:\n    pip install -e .</code> (4 espaces) → <code>make: Nothing to be done</code></p>
+<p>✅ Toujours utiliser des tabulations réelles dans les directives Makefile</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Écrire du code ML uniquement dans des notebooks sans le packager</strong></p>
+<p>Les notebooks ne sont pas déployables, testables, ni versionnables proprement.</p>
+<p>❌ Tout le preprocessing + training dans un <code>.ipynb</code> → impossible à mettre en production</p>
+<p>✅ Packager le code en modules Python testables, utiliser les notebooks uniquement pour l'exploration</p></div></div>
+
+<hr>
+
+<h2 id="1-contexte-le-rôle-du-ml-engineer">1) Contexte — Le rôle du ML Engineer</h2>
+
+<p>Le ML Engineer met en production les modèles créés par les Data Scientists : packaging, entraînement à grande échelle, déploiement cloud, monitoring.</p>
+
+<figure><img src="https://www.oreilly.com/radar/wp-content/uploads/sites/3/2019/06/Figure2-514e275cca0a0450485a49c805aeb321.png" alt="" loading="lazy"></figure>
+
+<p>[Untitled](ML%20Ops/Untitled%2033c4e410824680448fb8f18d1b6d65ab.csv)</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le stack ML Ops moderne est très vaste. Ce cours se concentre sur les fondamentaux : packaging, testing, IDE, et préparation au cloud.</p></div></div>
+
+<hr>
+
+<h2 id="2-packaging-python">2) Packaging Python</h2>
+
+<h3 id="21-quest-ce-quun-package">2.1 Qu'est-ce qu'un package ?</h3>
+
+<p>Un package est du code réutilisable (<code>from ... import ...</code>), partageable (<code>pip install</code>), et déployable en production.</p>
+
+<figure><img src="../../assets/images/ml-ops-02-78b2af3f.png" alt="" loading="lazy"></figure>
+
+<ul>
+<li>Un <strong>module</strong> = un fichier <code>.py</code> dans un package</li>
+<li>Un <strong>package</strong> = un dossier contenant un <code>__init__.py</code> + des modules</li>
+</ul>
+
+<h3 id="22-créer-un-package-minimal">2.2 Créer un package minimal</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">mkdir project-toto &amp;&amp; cd project-toto
+mkdir toto
+touch toto/__init__.py toto/lib.py setup.py requirements.txt</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## toto/lib.py
+def who_am_i():
+    print(&quot;Hello my name is Jean&quot;)
+
+if __name__ == &#x27;__main__&#x27;:
+    who_am_i()</code></pre></div>
+
+
+<h3 id="23-setuppy-et-installation">2.3 <code>setup.py</code> et installation</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## setup.py
+from setuptools import setup, find_packages
+
+with open(&#x27;requirements.txt&#x27;) as f:
+    requirements = [x.strip() for x in f.readlines()]
+
+setup(
+    name=&#x27;toto&#x27;,
+    description=&quot;package description&quot;,
+    packages=find_packages(),
+    install_requires=requirements
+)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install -e .               # installation en mode éditable (développement)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><code>pip install .</code> copie le code dans <code>site-packages</code>. <code>pip install -e .</code> crée un lien symbolique → les modifications sont immédiatement visibles sans réinstaller.</p></div></div>
+
+<h3 id="24-dépendances">2.4 Dépendances</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">echo termcolor &gt;&gt; requirements.txt    # ajouter une dépendance
+pip install -e .                       # réinstaller pour mettre à jour le venv</code></pre></div>
+
+
+<h3 id="25-autoreload-dans-les-notebooks">2.5 Autoreload dans les notebooks</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">%load_ext autoreload
+%autoreload 2                          # recharge automatiquement les modules modifiés</code></pre></div>
+
+
+<hr>
+
+<h2 id="3-virtual-environments">3) Virtual Environments</h2>
+
+<h3 id="31-pyenv-vs-venv">3.1 pyenv vs venv</h3>
+
+<figure><img src="../../assets/images/ml-ops-03-4bd49985.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pyenv virtualenv 3.8.12 totoenv       # crée un venv basé sur Python 3.8.12
+pyenv local totoenv                    # active automatiquement dans le dossier
+pip install --upgrade pip
+pip install pandas ipython ipykernel   # packages minimaux</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Un venv par projet est une bonne pratique. Ne jamais installer de packages dans l'environnement Python global.</p></div></div>
+
+<hr>
+
+<h2 id="4-tests-avec-pytest">4) Tests avec pytest</h2>
+
+<h3 id="41-pourquoi-tester">4.1 Pourquoi tester ?</h3>
+
+<ul>
+<li>Garantit la robustesse en cas de modifications</li>
+<li>Permet le travail en équipe sans casser le code des autres</li>
+<li><strong>TDD</strong> (Test Driven Development) : écrire les tests avant le code</li>
+</ul>
+
+<h3 id="42-exemple-complet">4.2 Exemple complet</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## toto/divide.py
+def divide_without_raising(x: float, y: float) -&gt; float:
+    if y != 0.:
+        return x / y
+    elif x &gt; 0.:
+        return float(&#x27;inf&#x27;)
+    elif x &lt; 0.:
+        return -float(&#x27;inf&#x27;)
+    else:
+        return float(&#x27;nan&#x27;)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## tests/test_divide.py
+import math
+from toto.divide import divide_without_raising
+
+def test_has_correct_arithmetic():
+    assert divide_without_raising(2.0, 2.0) == 1.0
+
+def test_handles_divide_by_zero():
+    assert divide_without_raising(2., 0.) == float(&#x27;inf&#x27;)
+    assert divide_without_raising(-2., 0.) == -float(&#x27;inf&#x27;)
+    assert math.isnan(divide_without_raising(0., 0.))</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pytest tests -v                        # lance les tests</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Valeurs spéciales Python : <code>float(&#x27;inf&#x27;)</code> (infini), <code>float(&#x27;nan&#x27;)</code> (not a number). <code>nan != nan</code> est la seule float qui n'est pas égale à elle-même — utiliser <code>math.isnan()</code> pour tester.</p></div></div>
+
+<hr>
+
+<h2 id="5-makefile-commandes-raccourcies">5) Makefile — Commandes raccourcies</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">install:
+	@pip install -e .
+
+clean:
+	@rm -Rf build */__pycache__ */*.pyc
+
+test:
+	@pytest -v tests
+
+all: install clean</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">make install                           # installe le package
+make test                              # lance les tests
+make all                               # install + clean</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le Makefile est sensible : nom case-sensitive (<code>Makefile</code>), indentation obligatoirement en <strong>tabulations</strong> (pas d'espaces).</p></div></div>
+
+<hr>
+
+<h2 id="6-debugging-et-ide">6) Debugging et IDE</h2>
+
+<h3 id="61-lire-une-stack-trace">6.1 Lire une stack trace</h3>
+
+<p>Lire de <strong>bas en haut</strong> — la dernière ligne indique l'erreur, les lignes au-dessus montrent le chemin d'appel.</p>
+
+<h3 id="62-ipdb-debugger-interactif">6.2 ipdb — debugger interactif</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">pip install ipdb                       # package dev-only
+
+## Placer un breakpoint dans le code
+import ipdb; ipdb.set_trace()
+
+## Navigation : s (step into), n (next), c (continue), u (up), d (down), q (quit)</code></pre></div>
+
+
+<h3 id="63-raccourcis-vs-code-essentiels">6.3 Raccourcis VS Code essentiels</h3>
+
+<ul>
+<li><code>⌘-⇧-P</code> : Command palette</li>
+<li><code>Ctrl-Backtick</code> : Toggle terminal</li>
+<li><code>⌘-P</code> : Go to file</li>
+<li><code>⌘-⇧-F</code> : Search across files</li>
+<li><code>⌥-Click</code> : Navigate to definition</li>
+</ul>
+
+<hr>
+
+<h2 id="annexe-optimisation-mémoire">📎 Annexe — Optimisation mémoire</h2>
+
+<h3 id="downcasting-des-types">Downcasting des types</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+import numpy as np
+
+s = pd.Series([1, 2, 134])
+s_down = pd.to_numeric(s, downcast=&#x27;integer&#x27;)    # int64 → int16 automatiquement
+## float64 → float32 avec downcast=&#x27;float&#x27;</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Attention au dépassement : <code>np.int8</code> ne gère que [-128, 127]. Vérifier que les valeurs tiennent dans le type cible avant de downcaster.</p></div></div>
+
+<h3 id="fonction-de-compression">Fonction de compression</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def compress(df):
+    for dtype in [&quot;float&quot;, &quot;integer&quot;]:
+        cols = list(df.select_dtypes(include=dtype))
+        for col in cols:
+            df[col] = pd.to_numeric(df[col], downcast=dtype)
+    return df</code></pre></div>
+
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://pypi.org/" target="_blank" rel="noopener">PyPI — Python Package Index</a></li>
+<li>👉 <a href="https://docs.pytest.org/" target="_blank" rel="noopener">pytest documentation</a></li>
+<li>👉 <a href="https://direnv.net/" target="_blank" rel="noopener">direnv — environment loader</a></li>
+<li>👉 <a href="https://code.visualstudio.com/docs/python/jupyter-support-py" target="_blank" rel="noopener">VS Code Python — Jupyter code cells</a></li>
+<li>👉 <a href="https://github.com/lewagon/data-lecture-starters/tree/main/ML-Ops/project-toto" target="_blank" rel="noopener">Le Wagon — Starter notebook ML Ops</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">🚀 Challenges</h2>
+
+<ul>
+<li>Comprendre le notebook des Data Scientists et le convertir en package Python</li>
+<li>Installer et tester le package avec <code>pytest</code></li>
+<li>Entraîner le modèle à grande échelle avec des techniques de traitement incrémental</li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-quest-ce-que-le-ml-ops">Qu'est-ce que le ML Ops ?</a></li><li><a href="#ref-les-4-idées-à-retenir-avant-de-commencer">Les 4 idées à retenir avant de commencer</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-packaging-python">📦 1. Packaging Python</a><ol><li><a href="#ref-11-cest-quoi-un-package-python">1.1 C'est quoi un package Python ?</a></li><li><a href="#ref-12-la-structure-minimale-dun-package">1.2 La structure minimale d'un package</a></li><li><a href="#ref-13-créer-le-package-pas-à-pas">1.3 Créer le package pas à pas</a></li><li><a href="#ref-14-pip-install-vs-pip-install-e-la-distinction-cruciale">1.4 `pip install .` vs `pip install -e .` — la distinction cruciale</a></li><li><a href="#ref-15-ajouter-une-dépendance">1.5 Ajouter une dépendance</a></li><li><a href="#ref-16-autoreload-dans-jupyter">1.6 Autoreload dans Jupyter</a></li></ol></li><li><a href="#ref-2-environnements-virtuels">🐍 2. Environnements Virtuels</a><ol><li><a href="#ref-21-pourquoi-isoler-ses-dépendances">2.1 Pourquoi isoler ses dépendances ?</a></li><li><a href="#ref-22-créer-et-utiliser-un-venv-avec-pyenv">2.2 Créer et utiliser un venv avec pyenv</a></li></ol></li><li><a href="#ref-3-tests-avec-pytest">🧪 3. Tests avec pytest</a><ol><li><a href="#ref-31-pourquoi-écrire-des-tests">3.1 Pourquoi écrire des tests ?</a></li><li><a href="#ref-32-un-exemple-concret-de-bout-en-bout">3.2 Un exemple concret de bout en bout</a></li></ol></li><li><a href="#ref-4-makefile-automatiser-les-commandes-répétitives">🔧 4. Makefile — Automatiser les commandes répétitives</a><ol><li><a href="#ref-41-le-problème-que-ça-résout">4.1 Le problème que ça résout</a></li><li><a href="#ref-42-créer-un-makefile">4.2 Créer un Makefile</a></li></ol></li><li><a href="#ref-5-debugging-comment-trouver-et-corriger-les-bugs">🐛 5. Debugging — Comment trouver et corriger les bugs</a><ol><li><a href="#ref-51-lire-une-stack-trace">5.1 Lire une stack trace</a></li><li><a href="#ref-52-le-debugger-interactif-ipdb">5.2 Le debugger interactif ipdb</a></li><li><a href="#ref-53-raccourcis-vs-code-essentiels">5.3 Raccourcis VS Code essentiels</a></li></ol></li><li><a href="#ref-6-optimisation-mémoire-bonus">📉 6. Optimisation mémoire (bonus)</a><ol><li><a href="#ref-61-pourquoi-cest-important-en-ml">6.1 Pourquoi c'est important en ML ?</a></li><li><a href="#ref-62-fonction-de-compression-automatique-dun-dataframe">6.2 Fonction de compression automatique d'un DataFrame</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<h3 id="ref-quest-ce-que-le-ml-ops">Qu'est-ce que le ML Ops ?</h3>
+
+<p>Imagine que tu passes des mois à entraîner un superbe modèle de machine learning dans un notebook Jupyter. Il marche parfaitement sur ton ordinateur. Et puis… comment tu le mets à disposition du monde ? Comment tu t'assures qu'il continue de fonctionner dans 6 mois ? Comment une équipe de 5 personnes peut-il travailler dessus en même temps sans tout casser ?</p>
+
+<p>C'est exactement ce que résout le <strong>ML Ops</strong> (Machine Learning Operations) : c'est la discipline qui consiste à <strong>mettre en production</strong> des modèles ML, de façon fiable, reproductible et maintenable.</p>
+
+<p><strong>Analogie fil rouge — le parallèle avec le BTP :</strong></p>
+<p>Un Data Scientist qui fait du ML dans un notebook, c'est comme un architecte qui dessine des plans. C'est beau, c'est intelligent — mais ça ne suffit pas pour construire une maison. Il faut aussi des maçons (le code packagé), des contrôleurs qualité (les tests), un plan de chantier standardisé (le Makefile), et des outils partagés par toute l'équipe (l'environnement virtuel). Le ML Ops, c'est tout ce travail de chantier.</p>
+
+<h3 id="ref-les-4-idées-à-retenir-avant-de-commencer">Les 4 idées à retenir avant de commencer</h3>
+
+<ol>
+<li><strong>Un notebook, c'est bien pour explorer — pas pour déployer.</strong> Le code de production doit vivre dans des fichiers <code>.py</code> organisés en package.</li>
+<li><strong>Un environnement virtuel par projet.</strong> Sinon les dépendances de différents projets entrent en conflit.</li>
+<li><strong>On teste son code.</strong> Un test qui passe, c'est la garantie que rien n'est cassé, même après une modification.</li>
+<li><strong>Le mode éditable (<code>pip install -e .</code>) est ton meilleur ami en développement.</strong> Il permet de voir tes modifications sans réinstaller le package.</li>
+<li><strong>Lire une erreur de bas en haut.</strong> La dernière ligne d'une stack trace dit ce qui s'est passé ; les lignes au-dessus montrent comment on y est arrivé.</li>
+</ol>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li>Packaging Python — transformer son code en package réutilisable</li>
+<li>Environnements virtuels — isoler ses dépendances</li>
+<li>Tests avec pytest — garantir la robustesse du code</li>
+<li>Makefile — automatiser les commandes répétitives</li>
+<li>Debugging — lire les erreurs et utiliser un debugger interactif</li>
+<li>Optimisation mémoire — bonus pour les grands datasets</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-packaging-python">📦 1. Packaging Python</h2>
+
+<h3 id="ref-11-cest-quoi-un-package-python">1.1 C'est quoi un package Python ?</h3>
+
+<p>Quand tu fais <code>import pandas</code> ou <code>from sklearn.linear_model import LinearRegression</code>, tu utilises des <strong>packages</strong>. Un package, c'est simplement du code Python organisé dans une structure de dossiers précise, qu'on peut :</p>
+
+<ul>
+<li><strong>importer</strong> n'importe où avec <code>from mon_package import ma_fonction</code></li>
+<li><strong>installer</strong> avec <code>pip install mon_package</code></li>
+<li><strong>déployer</strong> en production sur un serveur</li>
+</ul>
+
+<p>La différence entre un simple fichier <code>.py</code> et un package :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Fichier <code>.py</code> seul</th><th>Package</th></tr></thead><tbody><tr><td>Utilisable uniquement depuis le même dossier</td><td>Importable depuis n'importe où</td></tr><tr><td>Pas de gestion des dépendances</td><td><code>requirements.txt</code> intégré</td></tr><tr><td>Difficile à partager</td><td>Déployable avec <code>pip install</code></td></tr></tbody></table></div>
+<h3 id="ref-12-la-structure-minimale-dun-package">1.2 La structure minimale d'un package</h3>
+
+<p>Voici la structure type d'un projet ML Ops. Chaque fichier a un rôle précis.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># project-toto/
+# ├── toto/               ← le package lui-même (le code métier)
+# │   ├── __init__.py     ← fichier OBLIGATOIRE qui dit &quot;ce dossier est un package&quot;
+# │   └── lib.py          ← un module (= un fichier .py avec des fonctions)
+# ├── tests/
+# │   └── test_lib.py     ← les tests unitaires
+# ├── setup.py            ← configuration du package (nom, dépendances…)
+# ├── requirements.txt    ← liste des bibliothèques nécessaires
+# ├── Makefile            ← raccourcis de commandes
+# └── README.md           ← documentation du projet</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le fichier <code>__init__.py</code> peut être totalement vide. Son seul rôle est de signaler à Python que le dossier qui le contient est un package importable. Sans lui, <code>from toto.lib import who_am_i</code> échouerait avec une <code>ModuleNotFoundError</code>.</p></div></div>
+
+<h3 id="ref-13-créer-le-package-pas-à-pas">1.3 Créer le package pas à pas</h3>
+
+<p><strong>Étape 1 — Créer la structure de dossiers</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># On crée le projet et la structure
+mkdir project-toto &amp;&amp; cd project-toto
+mkdir toto tests
+
+# On crée les fichiers vides
+touch toto/__init__.py    # obligatoire pour faire de toto/ un package
+touch toto/lib.py         # notre premier module
+touch setup.py
+touch requirements.txt</code></pre></div>
+
+
+<p><strong>Étape 2 — Écrire une première fonction dans le module</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># toto/lib.py
+
+def who_am_i():
+    &quot;&quot;&quot;Fonction d&#x27;exemple — affiche un message de bienvenue.&quot;&quot;&quot;
+    print(&quot;Hello my name is Jean&quot;)
+
+# Ce bloc s&#x27;exécute UNIQUEMENT si on lance ce fichier directement
+# (pas si on l&#x27;importe depuis un autre fichier)
+if __name__ == &#x27;__main__&#x27;:
+    who_am_i()</code></pre></div>
+
+
+<p><strong>Étape 3 — Configurer le <code>setup.py</code></strong></p>
+
+<p>Le <code>setup.py</code> est la carte d'identité du package. Il indique à Python comment l'installer.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># setup.py
+from setuptools import setup, find_packages
+
+# On lit les dépendances depuis requirements.txt
+with open(&#x27;requirements.txt&#x27;) as f:
+    requirements = [x.strip() for x in f.readlines()]  # liste propre sans espaces/retours
+
+setup(
+    name=&#x27;toto&#x27;,                      # nom du package (sera utilisé par pip)
+    description=&quot;Mon premier package ML&quot;,
+    packages=find_packages(),          # détecte automatiquement tous les dossiers avec __init__.py
+    install_requires=requirements      # installe les dépendances listées dans requirements.txt
+)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><code>find_packages()</code> parcourt automatiquement ton projet et trouve tous les dossiers qui contiennent un <code>__init__.py</code>. Tu n'as pas à lister tes packages à la main — c'est pratique quand le projet grandit.</p></div></div>
+
+<h3 id="ref-14-pip-install-vs-pip-install-e-la-distinction-cruciale">1.4 <code>pip install .</code> vs <code>pip install -e .</code> — la distinction cruciale</h3>
+
+<p>C'est l'une des confusions les plus fréquentes pour les débutants. Voici la différence :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install .      # COPIE le code dans site-packages (chemin système)
+                   # → Si tu modifies toto/lib.py, les changements sont INVISIBLES
+                   # → Il faut réinstaller à chaque modification
+
+pip install -e .   # crée un LIEN SYMBOLIQUE vers ton dossier
+                   # → Si tu modifies toto/lib.py, les changements sont IMMÉDIATEMENT visibles
+                   # → Idéal en développement (le &quot;e&quot; signifie &quot;editable&quot;)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>En développement, utilise TOUJOURS <code>pip install -e .</code>. Utiliser <code>pip install .</code> pendant le développement est une source classique de bugs inexplicables : tu modifies ton code, rien ne change, et tu passes 30 minutes à chercher pourquoi.</p></div></div>
+
+<p><strong>Vérifier que l'installation a fonctionné :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip freeze | grep toto    # affiche &quot;toto==0.0.0&quot; si installé correctement
+                          # si rien ne s&#x27;affiche, l&#x27;installation a échoué</code></pre></div>
+
+
+<h3 id="ref-15-ajouter-une-dépendance">1.5 Ajouter une dépendance</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Ajouter &quot;termcolor&quot; comme dépendance
+echo termcolor &gt;&gt; requirements.txt   # ajoute la ligne &quot;termcolor&quot; dans le fichier
+
+pip install -e .                     # réinstaller pour que la nouvelle dépendance soit prise en compte</code></pre></div>
+
+
+<h3 id="ref-16-autoreload-dans-jupyter">1.6 Autoreload dans Jupyter</h3>
+
+<p>Si tu travailles avec un notebook Jupyter qui importe ton package, active l'autoreload pour ne pas avoir à redémarrer le kernel à chaque modification :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># À mettre en première cellule du notebook
+%load_ext autoreload
+%autoreload 2    # recharge automatiquement les modules modifiés à chaque exécution de cellule</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Avec <code>%autoreload 2</code>, dès que tu modifies <code>toto/lib.py</code> et que tu exécutes une cellule dans le notebook, Python prend automatiquement en compte les changements. Plus besoin de redémarrer le kernel !</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-environnements-virtuels">🐍 2. Environnements Virtuels</h2>
+
+<h3 id="ref-21-pourquoi-isoler-ses-dépendances">2.1 Pourquoi isoler ses dépendances ?</h3>
+
+<p>Imagine deux projets :</p>
+<ul>
+<li><strong>Projet A</strong> (vieux projet client) : nécessite <code>pandas==1.0</code></li>
+<li><strong>Projet B</strong> (nouveau projet) : nécessite <code>pandas==2.0</code></li>
+</ul>
+
+<p>Sans environnements virtuels, ces deux versions ne peuvent pas coexister — installer l'une casse l'autre. Un environnement virtuel (ou <strong>venv</strong>) est une installation Python isolée, dédiée à un seul projet.</p>
+
+<p><strong>Analogie :</strong> C'est comme avoir des tableaux de bord séparés pour chaque voiture. Tu ne mélanges pas les jauges et les compteurs de plusieurs véhicules dans un seul cockpit.</p>
+
+<h3 id="ref-22-créer-et-utiliser-un-venv-avec-pyenv">2.2 Créer et utiliser un venv avec pyenv</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Créer un venv nommé &quot;totoenv&quot; basé sur Python 3.8.12
+pyenv virtualenv 3.8.12 totoenv
+
+# Activer automatiquement ce venv quand on est dans le dossier project-toto
+pyenv local totoenv
+# → crée un fichier .python-version qui dit &quot;dans ce dossier, utilise totoenv&quot;
+
+# Mettre pip à jour (bonne pratique)
+pip install --upgrade pip
+
+# Installer les packages minimaux pour travailler
+pip install pandas ipython ipykernel
+
+# Vérifier quels packages sont installés dans CE venv
+pip list</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>N'installe JAMAIS de packages directement dans le Python global de ton système. Toujours travailler dans un venv dédié. Si tu te retrouves à taper <code>pip install pandas</code> sans avoir activé un venv, arrête-toi et crée d'abord un environnement virtuel.</p></div></div>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La commande <code>pyenv local totoenv</code> crée un fichier caché <code>.python-version</code> dans le dossier. Chaque fois que ton terminal entre dans ce dossier, pyenv active automatiquement le bon environnement. Tu n'as plus besoin de penser à l'activer manuellement.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-tests-avec-pytest">🧪 3. Tests avec pytest</h2>
+
+<h3 id="ref-31-pourquoi-écrire-des-tests">3.1 Pourquoi écrire des tests ?</h3>
+
+<p>Imagine que tu travailles en équipe sur un projet. Ton collègue modifie une fonction que tu utilises ailleurs, et sans s'en rendre compte, il casse ton code. Sans tests, tu ne t'en aperçois que des jours plus tard, au pire moment.</p>
+
+<p>Les tests servent à :</p>
+<ul>
+<li><strong>Détecter les régressions</strong> : une modification qui casse quelque chose déclenche immédiatement une alerte</li>
+<li><strong>Documenter le comportement attendu</strong> : un test, c'est aussi une documentation qui dit "cette fonction doit se comporter comme ça"</li>
+<li><strong>Permettre la collaboration</strong> : si tous les tests passent après une modification, la fonctionnalité est préservée</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le <strong>TDD (Test Driven Development)</strong> est une pratique avancée qui consiste à écrire les tests AVANT d'écrire le code. On définit d'abord ce qu'on veut obtenir, puis on code pour satisfaire les tests. C'est contre-intuitif au début, mais très efficace en production.</p></div></div>
+
+<h3 id="ref-32-un-exemple-concret-de-bout-en-bout">3.2 Un exemple concret de bout en bout</h3>
+
+<p><strong>Étape 1 — La fonction à tester</strong></p>
+
+<p>On va créer une fonction de division qui gère les cas spéciaux (division par zéro) au lieu de planter avec une exception.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># toto/divide.py
+
+def divide_without_raising(x: float, y: float) -&gt; float:
+    &quot;&quot;&quot;
+    Divise x par y sans lever d&#x27;exception.
+
+    Cas spéciaux :
+      - y == 0 et x &gt; 0  → retourne +infini
+      - y == 0 et x &lt; 0  → retourne -infini
+      - y == 0 et x == 0 → retourne NaN (Not a Number)
+    &quot;&quot;&quot;
+    if y != 0.:          # cas normal : division classique
+        return x / y
+    elif x &gt; 0.:         # positif / 0 → +infini
+        return float(&#x27;inf&#x27;)
+    elif x &lt; 0.:         # négatif / 0 → -infini
+        return -float(&#x27;inf&#x27;)
+    else:                # 0 / 0 → indéterminé → NaN
+        return float(&#x27;nan&#x27;)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Valeurs spéciales Python :</strong></p>
+<p>- <code>float(&#x27;inf&#x27;)</code> : l'infini positif</p>
+<p>- <code>float(&#x27;-inf&#x27;)</code> : l'infini négatif</p>
+<p>- <code>float(&#x27;nan&#x27;)</code> : "Not a Number" — une valeur indéterminée</p>
+<p>Particularité de <code>nan</code> : <strong><code>nan != nan</code> est toujours <code>True</code></strong> ! C'est la seule valeur en Python qui n'est pas égale à elle-même. Pour tester si une valeur est NaN, il faut utiliser <code>math.isnan(valeur)</code> et non <code>valeur == float(&#x27;nan&#x27;)</code>.</p></div></div>
+
+<p><strong>Étape 2 — Écrire les tests</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># tests/test_divide.py
+import math
+from toto.divide import divide_without_raising  # on importe la fonction à tester
+
+def test_has_correct_arithmetic():
+    &quot;&quot;&quot;Vérifie que la division normale fonctionne.&quot;&quot;&quot;
+    assert divide_without_raising(2.0, 2.0) == 1.0   # 2 / 2 = 1
+
+def test_handles_divide_by_zero():
+    &quot;&quot;&quot;Vérifie tous les cas de division par zéro.&quot;&quot;&quot;
+    assert divide_without_raising(2., 0.) == float(&#x27;inf&#x27;)     # positif / 0 = +inf
+    assert divide_without_raising(-2., 0.) == -float(&#x27;inf&#x27;)   # négatif / 0 = -inf
+    assert math.isnan(divide_without_raising(0., 0.))         # 0 / 0 = NaN
+    # ATTENTION : on utilise math.isnan() et non &quot;== float(&#x27;nan&#x27;)&quot;
+    # car nan != nan est TOUJOURS True !</code></pre></div>
+
+
+<p><strong>Étape 3 — Lancer les tests</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pytest tests -v    # -v = verbose (mode bavard qui détaille chaque test)</code></pre></div>
+
+
+<p>La sortie ressemble à ça :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># PASSED en vert = test réussi
+# FAILED en rouge = test échoué (avec explication de ce qui ne correspond pas)
+
+tests/test_divide.py::test_has_correct_arithmetic PASSED
+tests/test_divide.py::test_handles_divide_by_zero PASSED
+
+2 passed in 0.12s</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>La convention de nommage de pytest est importante : les fichiers de tests doivent commencer par <code>test_</code> (ex: <code>test_divide.py</code>) et les fonctions de test aussi (ex: <code>def test_has_correct_arithmetic()</code>). Sinon pytest ne les détecte pas automatiquement.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-makefile-automatiser-les-commandes-répétitives">🔧 4. Makefile — Automatiser les commandes répétitives</h2>
+
+<h3 id="ref-41-le-problème-que-ça-résout">4.1 Le problème que ça résout</h3>
+
+<p>Quand on travaille sur un projet, on tape souvent les mêmes commandes : installer le package, lancer les tests, nettoyer les fichiers temporaires. Le <strong>Makefile</strong> permet de créer des raccourcis pour ces commandes.</p>
+
+<p>C'est comme définir des aliases dans ton terminal, mais partagés avec toute l'équipe via Git.</p>
+
+<h3 id="ref-42-créer-un-makefile">4.2 Créer un Makefile</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># Makefile (le fichier doit s&#x27;appeler exactement &quot;Makefile&quot; avec un M majuscule)
+
+install:                   # directive &quot;install&quot; : s&#x27;exécute avec &quot;make install&quot;
+	@pip install -e .      # le @ supprime l&#x27;affichage de la commande elle-même
+
+clean:                     # directive &quot;clean&quot; : supprime les fichiers générés
+	@rm -Rf build */__pycache__ */*.pyc
+
+test:                      # directive &quot;test&quot; : lance les tests
+	@pytest -v tests
+
+all: install clean         # directive &quot;all&quot; : exécute &quot;install&quot; puis &quot;clean&quot;</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">make install    # équivalent à : pip install -e .
+make test       # équivalent à : pytest -v tests
+make clean      # supprime les fichiers __pycache__ et .pyc
+make all        # installe + nettoie en une seule commande</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège classique avec le Makefile — les tabulations !</strong></p>
+<p>Le Makefile est extrêmement sensible à l'indentation. Les commandes sous chaque directive DOIVENT être indentées avec une <strong>tabulation réelle</strong> (touche Tab), pas avec des espaces.</p>
+<p>Si tu utilises des espaces, tu obtiens une erreur silencieuse ou un message <code>make: Nothing to be done for &#x27;install&#x27;</code> sans explication.</p>
+<p>Dans VS Code, tu peux vérifier en regardant la barre de statut en bas — elle indique si l'indentation est en espaces ou en tabulations.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-debugging-comment-trouver-et-corriger-les-bugs">🐛 5. Debugging — Comment trouver et corriger les bugs</h2>
+
+<h3 id="ref-51-lire-une-stack-trace">5.1 Lire une stack trace</h3>
+
+<p>Quand Python plante, il affiche une <strong>stack trace</strong> (trace d'appel). Voici comment la lire :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Traceback (most recent call last):
+  File &quot;main.py&quot;, line 10, in &lt;module&gt;    ← point d&#x27;entrée (là où ça a commencé)
+    result = calculate(x)
+  File &quot;toto/lib.py&quot;, line 5, in calculate ← chemin d&#x27;appel
+    return x / y
+ZeroDivisionError: division by zero        ← L&#x27;ERREUR (lire de BAS EN HAUT)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Astuce : lis toujours une stack trace de <strong>bas en haut</strong>. La dernière ligne dit ce qui s'est passé (le type d'erreur et le message). Les lignes au-dessus montrent le chemin pour y arriver. Commence par comprendre l'erreur en bas, puis remonte pour trouver d'où elle vient.</p></div></div>
+
+<h3 id="ref-52-le-debugger-interactif-ipdb">5.2 Le debugger interactif ipdb</h3>
+
+<p>Quand une erreur est difficile à comprendre juste en lisant le code, le <strong>debugger interactif</strong> permet de "mettre le programme en pause" et d'inspecter l'état des variables à n'importe quel endroit.</p>
+
+<p><strong>Installation :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install ipdb    # NE PAS ajouter dans requirements.txt : c&#x27;est un outil de dev personnel</code></pre></div>
+
+
+<p><strong>Utilisation — placer un breakpoint :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># toto/lib.py
+
+def ma_fonction(x, y):
+    import ipdb; ipdb.set_trace()   # le programme S&#x27;ARRÊTE ici
+    # À ce point, on est dans une console interactive Python
+    # On peut taper : x, y, type(x), x + y, etc.
+    resultat = x / y
+    return resultat</code></pre></div>
+
+
+<p><strong>Les commandes de navigation dans ipdb :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Une fois dans la console ipdb :
+# s  → step into  : entre dans la fonction appelée
+# n  → next       : exécute la ligne suivante (sans entrer dans les fonctions)
+# c  → continue   : reprend l&#x27;exécution jusqu&#x27;au prochain breakpoint ou la fin
+# u  → up         : remonte d&#x27;un niveau dans la stack trace
+# d  → down       : descend d&#x27;un niveau dans la stack trace
+# l  → list       : affiche les lignes de code autour du breakpoint
+# ll → long list  : affiche plus de contexte
+# q  → quit       : quitte le debugger (et plante le programme)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><code>ipdb</code> est une version améliorée du debugger standard <code>pdb</code> de Python. Il ajoute la coloration syntaxique et l'autocomplétion, ce qui le rend beaucoup plus agréable à utiliser. <code>breakpoint()</code> (Python 3.7+) est une alternative built-in qui utilise <code>pdb</code> par défaut mais peut être redirigée vers <code>ipdb</code>.</p></div></div>
+
+<h3 id="ref-53-raccourcis-vs-code-essentiels">5.3 Raccourcis VS Code essentiels</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Raccourci</th><th>Action</th></tr></thead><tbody><tr><td><code>Cmd + Shift + P</code></td><td>Ouvre la palette de commandes (accès à tout)</td></tr><tr><td><code>Ctrl + Backtick</code></td><td>Ouvre/ferme le terminal intégré</td></tr><tr><td><code>Cmd + P</code></td><td>Ouvre un fichier par son nom</td></tr><tr><td><code>Cmd + Shift + F</code></td><td>Recherche dans tous les fichiers du projet</td></tr><tr><td><code>Alt + Clic</code></td><td>Navigue vers la définition d'une fonction</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="ref-6-optimisation-mémoire-bonus">📉 6. Optimisation mémoire (bonus)</h2>
+
+<h3 id="ref-61-pourquoi-cest-important-en-ml">6.1 Pourquoi c'est important en ML ?</h3>
+
+<p>Un DataFrame pandas avec 10 millions de lignes peut peser plusieurs gigaoctets en mémoire. Par défaut, pandas utilise des types "larges" (<code>float64</code>, <code>int64</code>) même quand les données tiendraient dans des types plus petits. Le <strong>downcasting</strong> consiste à réduire la précision pour économiser de la mémoire.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+import numpy as np
+
+# Exemple : une série d&#x27;entiers simples
+s = pd.Series([1, 2, 134])
+print(s.dtype)           # int64 (8 octets par valeur)
+
+# Downcast automatique vers le plus petit type entier qui convient
+s_down = pd.to_numeric(s, downcast=&#x27;integer&#x27;)
+print(s_down.dtype)      # int16 (2 octets par valeur) → 4x moins de mémoire !</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Attention au dépassement de capacité !</strong></p>
+<p>Chaque type a une plage de valeurs limitée :</p>
+<p>- <code>np.int8</code> : de -128 à 127</p>
+<p>- <code>np.int16</code> : de -32 768 à 32 767</p>
+<p>- <code>np.int32</code> : de -2 147 483 648 à 2 147 483 647</p>
+<p>Si tes données contiennent des valeurs en dehors de la plage, le downcast provoquera un <strong>overflow</strong> (dépassement) silencieux — les valeurs seront corrompues sans erreur. Toujours vérifier les valeurs min/max avant de downcaster.</p></div></div>
+
+<h3 id="ref-62-fonction-de-compression-automatique-dun-dataframe">6.2 Fonction de compression automatique d'un DataFrame</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def compress(df):
+    &quot;&quot;&quot;
+    Réduit automatiquement la mémoire utilisée par un DataFrame
+    en downcastant les colonnes numériques.
+    &quot;&quot;&quot;
+    for dtype in [&quot;float&quot;, &quot;integer&quot;]:                        # on traite float et int séparément
+        cols = list(df.select_dtypes(include=dtype))          # colonnes de ce type
+        for col in cols:
+            df[col] = pd.to_numeric(df[col], downcast=dtype)  # downcast vers le plus petit type
+    return df
+
+# Utilisation
+df_compressé = compress(mon_dataframe)</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>1. Quelle est la différence entre <code>pip install .</code> et <code>pip install -e .</code> ? Dans quel cas utilise-t-on chacun ?</strong></p>
+
+<p>_Piste : pense à ce qui se passe quand tu modifies un fichier dans <code>toto/lib.py</code> après installation._</p>
+
+<p><strong>2. Pourquoi le fichier <code>__init__.py</code> est-il indispensable dans un dossier de package Python ? Que se passe-t-il si on l'oublie ?</strong></p>
+
+<p>_Piste : essaie de faire <code>from toto.lib import who_am_i</code> sans ce fichier._</p>
+
+<p><strong>3. Dans un test pytest, pourquoi ne peut-on pas écrire <code>assert divide_without_raising(0., 0.) == float(&#x27;nan&#x27;)</code> pour tester le cas NaN ?</strong></p>
+
+<p>_Piste : qu'est-ce que <code>float(&#x27;nan&#x27;) == float(&#x27;nan&#x27;)</code> renvoie en Python ?_</p>
+
+<p><strong>4. Dans un Makefile, quel caractère doit obligatoirement précéder les commandes (ex: <code>pip install -e .</code>) ? Que se passe-t-il si on utilise des espaces à la place ?</strong></p>
+
+<p>_Piste : teste avec 4 espaces et observe le message d'erreur._</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Le <strong>ML Ops</strong> consiste à transformer un code ML expérimental (notebook) en code de production fiable, testable et déployable.</li>
+<li>Un <strong>package Python</strong> est un dossier avec <code>__init__.py</code> + <code>setup.py</code>. Il s'installe avec <code>pip install -e .</code> en mode développement (éditable = hot-reload).</li>
+<li>Un <strong>environnement virtuel</strong> (venv) par projet isole les dépendances et évite les conflits. Avec pyenv : <code>pyenv virtualenv 3.8.12 monenv</code> puis <code>pyenv local monenv</code>.</li>
+<li>Les <strong>tests pytest</strong> garantissent que le code se comporte comme attendu, même après des modifications. Un fichier de test commence par <code>test_</code>, chaque fonction de test aussi.</li>
+<li>Le <strong>Makefile</strong> regroupe les commandes fréquentes (<code>make install</code>, <code>make test</code>, <code>make clean</code>) et standardise le workflow de l'équipe. Indentation obligatoire en <strong>tabulations</strong>.</li>
+<li>Pour <strong>débugger</strong>, lire la stack trace de bas en haut, et utiliser <code>ipdb</code> pour inspecter l'état du programme en pause.</li>
+<li><code>float(&#x27;nan&#x27;) != float(&#x27;nan&#x27;)</code> est une particularité Python — utiliser <code>math.isnan()</code> pour tester un NaN.</li>
+<li>Le <strong>downcasting</strong> des types numériques (<code>pd.to_numeric(..., downcast=&#x27;integer&#x27;)</code>) peut diviser par 4 la mémoire d'un DataFrame, mais attention aux dépassements de capacité.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-du-notebook-au-package-python">Du notebook au package Python</a></li><li><a href="#syn-pyprojecttoml-et-setuppy">`pyproject.toml` et `setup.py`</a></li><li><a href="#syn-docker-pour-ml">Docker pour ML</a></li><li><a href="#syn-stockage-cloud-s3-gcs">Stockage cloud : S3, GCS</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-multi-stage-dockerfile">Multi-stage Dockerfile</a></li><li><a href="#syn-variables-denvironnement-et-secrets">Variables d'environnement et secrets</a></li><li><a href="#syn-tests-de-pipeline">Tests de pipeline</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-du-notebook-au-package-python">Du notebook au package Python</h3>
+
+<p>Un notebook Jupyter est un excellent outil d'exploration. C'est un mauvais outil pour la production. Cinq problèmes :</p>
+
+<ol>
+<li><strong>Pas de tests</strong> : on ne sait pas si la fonction marche encore après modification</li>
+<li><strong>Pas de versionning</strong> propre : git affiche les diffs des cellules JSON, illisibles</li>
+<li><strong>Cellules dans le désordre</strong> : exécutées dans n'importe quel ordre, l'état est imprévisible</li>
+<li><strong>Pas de réutilisation</strong> : impossible d'importer une fonction d'un notebook dans un autre script</li>
+<li><strong>Pas de déploiement</strong> : aucun serveur ne lance un Jupyter pour servir des prédictions</li>
+</ol>
+
+<p>Solution : transformer le notebook en <strong>package Python</strong> structuré.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">my_project/
+├── pyproject.toml           # Métadonnées et dépendances
+├── README.md
+├── .gitignore
+├── src/
+│   └── my_project/
+│       ├── __init__.py
+│       ├── data.py          # Chargement et préprocessing
+│       ├── features.py      # Feature engineering
+│       ├── model.py         # Entraînement et prédiction
+│       └── cli.py           # Interface ligne de commande
+├── tests/
+│   ├── test_data.py
+│   ├── test_features.py
+│   └── test_model.py
+├── notebooks/               # Pour l&#x27;exploration uniquement
+│   └── eda.ipynb
+└── data/
+    ├── raw/
+    └── processed/</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : un notebook, c'est un cahier de brouillon. Un package, c'est un livre publié. Vous expérimentez dans le brouillon, vous publiez ce qui marche dans le livre. Mélanger les deux donne des résultats catastrophiques en production.</p></div></div>
+
+<h3 id="syn-pyprojecttoml-et-setuppy"><code>pyproject.toml</code> et <code>setup.py</code></h3>
+
+<p>Le fichier <code>pyproject.toml</code> (PEP 518/621) est le standard moderne pour décrire un package Python.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">[project]
+name = &quot;churn-predictor&quot;
+version = &quot;0.1.0&quot;
+description = &quot;Customer churn prediction&quot;
+requires-python = &quot;&gt;=3.10&quot;
+dependencies = [
+    &quot;pandas&gt;=2.0&quot;,
+    &quot;scikit-learn&gt;=1.4&quot;,
+    &quot;fastapi&gt;=0.110&quot;,
+]
+
+[project.optional-dependencies]
+dev = [
+    &quot;pytest&gt;=7.0&quot;,
+    &quot;ruff&gt;=0.5&quot;,
+    &quot;mypy&gt;=1.10&quot;,
+]
+
+[project.scripts]
+train = &quot;churn_predictor.cli:train&quot;
+predict = &quot;churn_predictor.cli:predict&quot;
+
+[build-system]
+requires = [&quot;setuptools&gt;=68&quot;]
+build-backend = &quot;setuptools.build_meta&quot;</code></pre></div>
+
+
+<p>Installation locale en mode "editable" :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install -e .                # Installe le package, modifications visibles instantanément
+pip install -e &quot;.[dev]&quot;          # Avec les deps de développement</code></pre></div>
+
+
+<p>Avantages :</p>
+
+<ul>
+<li>Vos modules s'importent depuis n'importe où : <code>from churn_predictor import model</code></li>
+<li>Vos commandes CLI sont disponibles globalement : <code>train --config config.yaml</code></li>
+<li>Les dépendances sont <strong>déclarées explicitement</strong>, plus de "ça marche chez moi"</li>
+</ul>
+
+<h3 id="syn-docker-pour-ml">Docker pour ML</h3>
+
+<p>Docker package une application + ses dépendances + le système dans une <strong>image</strong> portable. La même image tourne sur n'importe quel OS, n'importe quel cloud.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># Dockerfile commenté ligne par ligne
+FROM python:3.11-slim
+# ↑ image de base : Python 3.11 sur Debian slim (~150 Mo au lieu de 1 Go)
+
+WORKDIR /app
+# ↑ dossier de travail dans le container ; tous les COPY s&#x27;y font par défaut
+
+# Installer les dépendances en premier pour profiter du cache Docker
+# (si seul le code change, cette couche n&#x27;est pas refaite → build rapide)
+COPY pyproject.toml .
+# ↑ copie juste le fichier de métadonnées du projet (pas le code)
+
+RUN pip install --no-cache-dir -e .
+# ↑ --no-cache-dir : n&#x27;écrit pas le cache pip (gagne ~500 Mo)
+# ↑ -e . : mode editable, permet de réimporter après copie de src/
+
+# Copier le code APRÈS les deps (changements fréquents → dernière couche)
+COPY src/ src/
+COPY models/ models/
+
+# Documente le port utilisé (purement informatif)
+EXPOSE 8000
+
+# Commande par défaut lancée au démarrage du container
+# host=0.0.0.0 indispensable : sinon uvicorn n&#x27;écoute que localhost dans le container
+CMD [&quot;uvicorn&quot;, &quot;src.app:app&quot;, &quot;--host&quot;, &quot;0.0.0.0&quot;, &quot;--port&quot;, &quot;8000&quot;]</code></pre></div>
+
+
+<p>Construction et lancement :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Build : -t = tag (nom:version), &quot;.&quot; = contexte de build (dossier courant)
+docker build -t churn-api:v1 .
+
+# Run : -p 8000:8000 = mappe le port local 8000 au port container 8000
+docker run -p 8000:8000 churn-api:v1</code></pre></div>
+
+
+<p>Avantages :</p>
+
+<ul>
+<li><strong>Portabilité</strong> : "ça marche en local → ça marche en prod" garanti</li>
+<li><strong>Isolation</strong> : pas de conflit avec les autres services de la machine</li>
+<li><strong>Reproductibilité</strong> : la même image bit-à-bit s'exécute partout</li>
+<li><strong>Scalabilité</strong> : Kubernetes peut lancer 100 copies pour absorber le trafic</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : utilisez <strong><code>python:3.11-slim</code></strong> au lieu de <code>python:3.11</code> (image complète Debian de 1 Go). Slim est ~150 Mo. Encore mieux : <code>python:3.11-alpine</code> à 50 Mo, mais alpine peut poser des problèmes avec certaines libs C (numpy, pandas), donc <strong>slim</strong> est le meilleur compromis sécurité/taille pour le ML.</p></div></div>
+
+<h3 id="syn-stockage-cloud-s3-gcs">Stockage cloud : S3, GCS</h3>
+
+<p>En production, on ne stocke jamais les données et modèles dans un container Docker (ils sont éphémères). On utilise un <strong>object storage</strong> cloud :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Provider</th><th>Service</th><th>URL pattern</th></tr></thead><tbody><tr><td><strong>AWS</strong></td><td>S3</td><td><code>s3://bucket/path</code></td></tr><tr><td><strong>GCP</strong></td><td>Cloud Storage</td><td><code>gs://bucket/path</code></td></tr><tr><td><strong>Azure</strong></td><td>Blob Storage</td><td><code>wasbs://container@account.blob.core.windows.net/path</code></td></tr><tr><td><strong>Self-hosted</strong></td><td>MinIO</td><td>Compatible S3</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># AWS S3
+import boto3
+
+s3 = boto3.client(&quot;s3&quot;)
+s3.upload_file(&quot;model.pkl&quot;, &quot;my-bucket&quot;, &quot;models/v3/model.pkl&quot;)
+s3.download_file(&quot;my-bucket&quot;, &quot;models/v3/model.pkl&quot;, &quot;model.pkl&quot;)
+
+# GCP avec gcsfs (intégration pandas)
+import pandas as pd
+df = pd.read_parquet(&quot;gs://my-bucket/data/train.parquet&quot;)
+df.to_parquet(&quot;gs://my-bucket/data/processed.parquet&quot;)</code></pre></div>
+
+
+<p>Bonnes pratiques :</p>
+
+<ol>
+<li><strong>Versionner les artefacts</strong> : <code>s3://bucket/models/churn-v1.pkl</code>, jamais écraser une version</li>
+<li><strong>Activer le versioning du bucket</strong> : permet le rollback même si vous écrasez</li>
+<li><strong>Lifecycle policy</strong> : supprimer les anciens artefacts > 90 jours pour économiser</li>
+<li><strong>IAM strict</strong> : un service account ne peut accéder qu'à ses buckets</li>
+</ol>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-multi-stage-dockerfile">Multi-stage Dockerfile</h3>
+
+<p>Une image Docker contient typiquement des fichiers utiles uniquement à la <strong>construction</strong> (compilateurs, fichiers temporaires) qui n'ont rien à faire dans l'image finale. Le multi-stage build sépare les deux.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># Stage 1 : builder
+FROM python:3.11-slim as builder
+WORKDIR /app
+COPY pyproject.toml .
+RUN pip install --no-cache-dir --target=/install -e .
+
+# Stage 2 : runtime (image finale, plus légère)
+FROM python:3.11-slim
+WORKDIR /app
+COPY --from=builder /install /usr/local/lib/python3.11/site-packages/
+COPY src/ src/
+CMD [&quot;python&quot;, &quot;-m&quot;, &quot;src.main&quot;]</code></pre></div>
+
+
+<p>L'image finale ne contient que ce dont elle a besoin pour tourner — souvent 5-10x plus petite. Pour une inference Python qui démarre plusieurs centaines de fois par jour, cette différence se traduit en économies cloud significatives.</p>
+
+<h3 id="syn-variables-denvironnement-et-secrets">Variables d'environnement et secrets</h3>
+
+<p>Ne <strong>jamais</strong> mettre de secrets (clés d'API, mots de passe, tokens) dans le code ou dans une image Docker. Ils doivent venir de l'<strong>environnement</strong> au moment de l'exécution.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Charge .env en local
+
+API_KEY = os.environ[&quot;OPENAI_API_KEY&quot;]
+DB_URL = os.environ[&quot;DATABASE_URL&quot;]</code></pre></div>
+
+
+<p>Avec un <code>.env</code> (à ajouter au <code>.gitignore</code>) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">OPENAI_API_KEY=sk-...
+DATABASE_URL=postgresql://user:pass@host/db</code></pre></div>
+
+
+<p>En production, les secrets viennent d'un <strong>gestionnaire de secrets</strong> :</p>
+
+<ul>
+<li><strong>AWS Secrets Manager</strong> / <strong>AWS Parameter Store</strong></li>
+<li><strong>GCP Secret Manager</strong></li>
+<li><strong>Azure Key Vault</strong></li>
+<li><strong>HashiCorp Vault</strong> (self-hosted)</li>
+<li><strong>Kubernetes Secrets</strong> (basique mais utile)</li>
+</ul>
+
+<p>Le code ne change pas — c'est l'environnement qui injecte les valeurs.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Avec Docker
+docker run -e OPENAI_API_KEY=&quot;$OPENAI_API_KEY&quot; my-app
+
+# Avec docker-compose
+services:
+  api:
+    image: my-app
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Sécurité critique</strong> : ne <strong>jamais</strong> committer un <code>.env</code> ou un secret en clair. Les bots de scan GitHub (et autres) trouvent les clés OpenAI/AWS en quelques minutes. Si une clé est compromise, <strong>révoquez-la immédiatement</strong> chez le provider — vous payez les conséquences (minage de crypto, génération massive). Ajoutez un pre-commit hook <code>gitleaks</code> ou <code>detect-secrets</code> qui bloque les commits contenant des secrets.</p></div></div>
+
+<h3 id="syn-tests-de-pipeline">Tests de pipeline</h3>
+
+<p>Un pipeline ML mérite des tests comme tout code de production. Trois niveaux :</p>
+
+<p><strong>1. Tests unitaires</strong> : tester chaque fonction isolément.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def test_clean_data_removes_nulls():
+    df = pd.DataFrame({&quot;x&quot;: [1, 2, None]})
+    result = clean_data(df)
+    assert result.isnull().sum().sum() == 0</code></pre></div>
+
+
+<p><strong>2. Tests d'intégration</strong> : tester le pipeline complet sur un mini-dataset.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def test_train_pipeline_end_to_end():
+    df = pd.read_csv(&quot;tests/fixtures/sample.csv&quot;)  # 100 lignes
+    pipeline = build_pipeline()
+    pipeline.fit(df.drop(&quot;target&quot;, axis=1), df[&quot;target&quot;])
+    score = pipeline.score(X_test, y_test)
+    assert score &gt; 0.5  # Sanity check</code></pre></div>
+
+
+<p><strong>3. Data validation</strong> : vérifier la qualité des données en entrée.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandera as pa
+
+schema = pa.DataFrameSchema({
+    &quot;age&quot;: pa.Column(int, pa.Check.in_range(0, 120)),
+    &quot;income&quot;: pa.Column(float, pa.Check.greater_than(0)),
+    &quot;city&quot;: pa.Column(str, pa.Check.isin([&quot;Paris&quot;, &quot;Lyon&quot;, &quot;Marseille&quot;])),
+})
+schema.validate(df)  # Lève une exception si la donnée est invalide</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : pour un pipeline ML, écrivez au minimum un test "smoke test" qui exécute le pipeline complet sur 100 lignes en moins de 30 secondes. Lancez-le dans la CI à chaque push. Cela attrape 80% des bugs avant qu'ils n'arrivent en production.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi packager votre projet ML en pip-installable plutôt que d'utiliser des <code>sys.path.append(&#x27;../src&#x27;)</code> dans vos scripts ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>reproductibilité.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><code>sys.path.append</code> est un anti-pattern qui marche dans votre environnement local mais casse en production : (1) <strong>Path différents</strong> : <code>../src</code> n'existe pas dans un container Docker. (2) <strong>Imports fragiles</strong> : vos imports dépendent du dossier courant d'où vous lancez le script. (3) <strong>Pas réutilisable</strong> : impossible d'utiliser votre code depuis un autre projet sans copier-coller les fichiers. (4) <strong>Pas de versioning</strong> : vous ne pouvez pas dire "mon projet utilise <code>churn-predictor v0.3</code>". Avec un <code>pyproject.toml</code> et <code>pip install -e .</code> : (a) vos imports marchent partout (<code>from churn_predictor.model import train</code>), (b) vous pouvez publier sur PyPI ou un index privé, (c) vous pouvez verrouiller les versions dans <code>requirements.txt</code>, (d) un collègue peut faire <code>pip install your-project</code> et c'est prêt. C'est un investissement de 10 minutes qui évite des heures de debugging "ça marche chez moi". Question d'entretien data engineer : "Comment structurez-vous un projet Python ?" — répondre <code>pyproject.toml + src layout</code> est la réponse 2025.</p>
+
+</details>
+
+<p><strong>Q2 : Vous avez une image Docker de 4 Go pour une API Flask qui sert un modèle sklearn. Comment la réduire ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>multi-stage et base.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Six optimisations cumulables. (1) <strong>Image de base slim</strong> : <code>python:3.11-slim</code> (~150 Mo) au lieu de <code>python:3.11</code> (~1 Go). Pour aller plus loin, <code>python:3.11-alpine</code> (~50 Mo), mais attention aux libs C. (2) <strong>Multi-stage build</strong> : compiler les dépendances dans une étape "builder" et copier juste les fichiers utiles dans l'image finale. (3) <strong><code>--no-cache-dir</code></strong> sur les <code>pip install</code> : évite de stocker le cache pip qui peut faire 500 Mo. (4) <strong><code>.dockerignore</code></strong> : exclure <code>.git</code>, <code>__pycache__</code>, <code>tests/</code>, <code>notebooks/</code>, <code>data/</code> du contexte de build. (5) <strong>Packages minimaux</strong> : si vous n'avez pas besoin de PyTorch en runtime, ne l'installez pas. Listez explicitement : <code>scikit-learn</code>, <code>flask</code>, <code>pandas</code>, et c'est tout. (6) <strong>Squash layers</strong> : combiner les <code>RUN</code> consécutifs en un seul pour réduire le nombre de layers. Avec ces optimisations, on passe typiquement de 4 Go à 300-500 Mo. Si vous voulez aller plus loin, <strong>distroless</strong> images (Google) sont sans shell, encore plus petites et plus sûres. Question d'entretien DevOps moderne : "Comment optimiser une image Docker Python ?" — la réponse complète montre du métier réel.</p>
+
+</details>
+
+<p><strong>Q3 : Vous voulez déployer votre modèle ML en production sur AWS. Quelles sont les questions à se poser avant d'écrire la première ligne de code ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>SLA et coûts.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Sept questions à clarifier avec le PM/business avant tout code. (1) <strong>Latence requise</strong> : quelques millisecondes (real-time, ad bidding) ? Quelques secondes (chatbot) ? Quelques minutes (batch nightly) ? Détermine l'architecture (REST API vs queue vs batch). (2) <strong>Volume</strong> : 1 requête/jour ou 1000 requêtes/seconde ? Détermine la taille du déploiement (Lambda vs EC2 vs ECS vs Kubernetes). (3) <strong>Disponibilité (SLA)</strong> : 99% (downtime acceptable) ou 99.99% (multi-region, redondance) ? (4) <strong>Coût budget</strong> : "le modèle doit coûter < 100€/mois" change radicalement les choix. Lambda peut être gratuit ; un cluster Kubernetes coûte plusieurs milliers. (5) <strong>Sécurité et compliance</strong> : données médicales (HIPAA) ? Données européennes (RGPD, hébergement EU) ? Authentification des utilisateurs ? (6) <strong>Interfaces</strong> : qui appelle le modèle ? Une autre app interne (REST API) ? Un site web (frontend public, CDN) ? Un job batch (queue) ? (7) <strong>Monitoring et SLA</strong> : qui sera réveillé à 3h du matin si le modèle plante ? Quelles alertes ? <strong>Mauvaise approche</strong> : commencer par installer Kubernetes "parce que c'est moderne". Bonne approche : connaître les contraintes business avant l'architecture technique. Question d'entretien architecte data : "Comment déployeriez-vous un modèle en production ?" — la réponse exhaustive parle d'abord des contraintes, puis des solutions.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Designing Machine Learning Systems</em> (Chip Huyen) — chapitre 7 sur le déploiement</li>
+<li><a href="https://docs.docker.com/" target="_blank" rel="noopener">Docker documentation</a> — référence officielle</li>
+<li><a href="https://realpython.com/pypi-publish-python-package/" target="_blank" rel="noopener">Real Python — Packaging Python Projects</a></li>
+<li><a href="https://12factor.net/" target="_blank" rel="noopener">The Twelve-Factor App</a> — principes intemporels du SaaS</li>
+<li><a href="https://github.com/visenger/awesome-mlops" target="_blank" rel="noopener">Awesome MLOps</a> — liste curée d'outils</li>
+<li><a href="https://madewithml.com/" target="_blank" rel="noopener">Made With ML</a> — cours gratuit sur le MLOps appliqué</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../mlops/automate-lifecycle.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Automate Model Lifecycle</span>
+  </a>
+  <a href="../mlops/training-cloud.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Training in the Cloud →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI as Developer — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">AI as Developer</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html" class="active">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Data Toolkit</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>AI as Developer</span>
+      </div>
+
+      <div class="page-header">
+        <h1>AI as Developer</h1>
+        <p class="page-objective">Comprendre ce que l'IA peut faire pour un développeur, comment l'utiliser efficacement dans son apprentissage, et quelles sont ses limites.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Prompt</div>
+        <div class="key-concept-def">Instruction donnée à un LLM pour orienter sa réponse.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Hallucination</div>
+        <div class="key-concept-def">Réponse plausible mais factuellement fausse d&#x27;un LLM.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Context window</div>
+        <div class="key-concept-def">Quantité de tokens (≈ mots) que le modèle peut lire d&#x27;un coup.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Tool use</div>
+        <div class="key-concept-def">Capacité d&#x27;un LLM à appeler des fonctions externes pour agir.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-ai-as-developer">Cheatsheet — AI as Developer</a><ol><li><a href="#prompts-efficaces">Prompts efficaces</a></li><li><a href="#bonnes-pratiques-avec-copilot">Bonnes pratiques avec Copilot</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-quest-ce-que-lia">1) Qu'est-ce que l'IA ?</a><li><a href="#2-les-assistants-ia-chat">2) Les assistants IA chat</a><ol><li><a href="#21-ce-quils-font">2.1 Ce qu'ils font</a></li><li><a href="#22-instructions-personnalisées">2.2 Instructions personnalisées</a></li></ol></li><li><a href="#3-comment-prompter-un-assistant-ia">3) Comment prompter un assistant IA ?</a><ol><li><a href="#31-expliquer-un-concept-simplement">3.1 Expliquer un concept simplement</a></li><li><a href="#32-déboguer-du-code">3.2 Déboguer du code</a></li><li><a href="#33-expliquer-du-code">3.3 Expliquer du code</a></li><li><a href="#34-améliorer-du-code">3.4 Améliorer du code</a></li><li><a href="#35-comment-ne-pas-utiliser-les-assistants-ia">3.5 Comment NE PAS utiliser les assistants IA</a></li></ol></li><li><a href="#4-github-copilot">4) GitHub Copilot</a><ol><li><a href="#41-installation">4.1 Installation</a></li><li><a href="#42-utilisation">4.2 Utilisation</a></li><li><a href="#43-écrire-une-fonction">4.3 Écrire une fonction</a></li><li><a href="#44-utiliser-des-commentaires">4.4 Utiliser des commentaires</a></li><li><a href="#45-écrire-des-tests">4.5 Écrire des tests</a></li><li><a href="#46-limitations">4.6 Limitations</a></li><li><a href="#47-github-copilot-chat">4.7 GitHub Copilot Chat</a></li></ol></li><li><a href="#5-quand-utiliser-lia-dans-un-projet-data">5) Quand utiliser l'IA dans un projet data ?</a><li><a href="#6-lia-va-t-elle-remplacer-votre-travail">6) L'IA va-t-elle remplacer votre travail ?</a><li><a href="#7-comment-utiliser-lia-pendant-le-bootcamp">7) Comment utiliser l'IA pendant le bootcamp ?</a><ol><li><a href="#71-pour-déboguer-votre-code">7.1 Pour déboguer votre code</a></li><li><a href="#72-pour-comprendre-des-concepts">7.2 Pour comprendre des concepts</a></li><li><a href="#73-pour-progresser-dans-lapprentissage">7.3 Pour progresser dans l'apprentissage</a></li><li><a href="#74-règle-générale">7.4 Règle générale</a></li></ol></li><li><a href="#8-conclusion">8) Conclusion</a><li><a href="#9-prochaines-étapes">9) Prochaines étapes</a></ol></div>
+<p>Comprendre ce que l'IA peut faire pour un développeur, comment l'utiliser efficacement dans son apprentissage, et quelles sont ses limites.</p>
+
+<hr>
+
+<h2 id="cheatsheet-ai-as-developer">📋 Cheatsheet — AI as Developer</h2>
+
+<h3 id="prompts-efficaces">Prompts efficaces</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Expliquer un concept simplement
+&quot;Explain object-oriented programming to me in simple terms&quot;  # ✅ plutôt que &quot;What is OOP?&quot;
+
+## Déboguer du code
+&quot;Here is my code: [...] and the error: [...] explain what went wrong step by step&quot;  # ✅ inclure code + message d&#x27;erreur
+
+## Expliquer du code ligne par ligne
+&quot;Explain this code line by line, focus on the part starting at line X&quot;  # ✅ cibler la zone incomprise
+
+## Améliorer du code
+&quot;Is this Python code following best practices / is it pythonic?&quot;  # ✅ demander une review
+&quot;How can I make this code run faster?&quot;                            # ✅ optimisation
+&quot;Can you shorten this code?&quot;                                       # ✅ simplification</code></pre></div>
+
+
+<h3 id="bonnes-pratiques-avec-copilot">Bonnes pratiques avec Copilot</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Noms de variables et fonctions explicites → meilleur auto-complétion
+def calculate_monthly_revenue_by_category():  # ✅ descriptif
+def calc():                                    # ❌ trop vague
+
+## Ajouter un commentaire pour guider Copilot
+## Returns a list of unique emails from a dataframe column
+def get_unique_emails(df):  # Copilot comprendra ce qu&#x27;on attend
+
+## Accepter une suggestion
+## Tab → accepter | Alt/Option + [ ] → naviguer entre suggestions</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<blockquote><p>[!CAUTION]<br></p></blockquote>
+
+<blockquote><p><strong>Ne pas soumettre tout son fichier sans contexte</strong><br></p></blockquote>
+
+<blockquote><p>❌ Coller 200 lignes de code sans explication<br></p></blockquote>
+
+<blockquote><p>✅ Fournir uniquement la fonction concernée + le message d'erreur + le contexte<br></p></blockquote>
+
+<blockquote><p>[!CAUTION]<br></p></blockquote>
+
+<blockquote><p><strong>Utiliser l'IA comme seule source de vérité</strong><br></p></blockquote>
+
+<blockquote><p>❌ Faire confiance à une réponse convaincante sans vérifier<br></p></blockquote>
+
+<blockquote><p>✅ Croiser avec StackOverflow, la doc officielle ou demander à un TA<br></p></blockquote>
+
+<blockquote><p>[!CAUTION]<br></p></blockquote>
+
+<blockquote><p><strong>Faire résoudre un challenge entier par l'IA</strong><br></p></blockquote>
+
+<blockquote><p>❌ "Écris-moi la solution de ce challenge"<br></p></blockquote>
+
+<blockquote><p>✅ "Explique-moi pourquoi mon code produit cette erreur"<br></p></blockquote>
+
+<blockquote><p>[!CAUTION]<br></p></blockquote>
+
+<blockquote><p><strong>Copier du code sans le comprendre</strong><br></p></blockquote>
+
+<blockquote><p>❌ Coller la réponse de l'IA et passer au suivant<br></p></blockquote>
+
+<blockquote><p>✅ Lire chaque ligne, comprendre le raisonnement, puis adapter<br></p></blockquote>
+
+<blockquote><p>[!CAUTION]<br></p></blockquote>
+
+<blockquote><p><strong>Partager du code confidentiel</strong><br></p></blockquote>
+
+<blockquote><p>❌ Envoyer du code propriétaire ou sensible dans ChatGPT<br></p></blockquote>
+
+<blockquote><p>✅ Vérifier la politique de l'entreprise avant tout partage<br></p></blockquote>
+
+<hr>
+
+<h2 id="1-quest-ce-que-lia">1) Qu'est-ce que l'IA ?</h2>
+
+<p>L'IA désigne des systèmes capables d'effectuer des tâches qui requièrent normalement l'intelligence humaine. Le <strong>Machine Learning</strong> et le <strong>Deep Learning</strong> en sont des composantes clés.</p>
+
+<p>On distingue deux grandes catégories :</p>
+
+<ul>
+<li><strong>Narrow AI</strong> : spécialisée dans une tâche précise (filtre anti-spam, prédiction de prix, voiture autonome…)</li>
+<li><strong>General AI</strong> : capable d'opérer dans des contextes variés</li>
+</ul>
+
+<hr>
+
+<h2 id="2-les-assistants-ia-chat">2) Les assistants IA chat</h2>
+
+<figure><img src="../../assets/images/ai-as-developer-01-4039675d.png" alt="" loading="lazy"></figure>
+
+<p>La plupart proposent un tier gratuit, avec des options payantes pour les modèles avancés ou un usage soutenu.</p>
+
+<h3 id="21-ce-quils-font">2.1 Ce qu'ils font</h3>
+
+<p>Ces assistants s'appuient sur des <strong>LLMs</strong> (Large Language Models). Ils engagent des conversations en langage naturel, disposent d'une vaste base de connaissances, et peuvent répondre à des questions très variées — code, langues étrangères, cuisine, etc.</p>
+
+<blockquote><p>[!WARNING]<br></p></blockquote>
+
+<blockquote><p>Leurs réponses peuvent sembler très convaincantes tout en étant fausses. Il faut apprendre à formuler des <strong>prompts efficaces</strong> pour en tirer le meilleur parti. Pensez à eux comme des "TAs digitaux".<br></p></blockquote>
+
+<h3 id="22-instructions-personnalisées">2.2 Instructions personnalisées</h3>
+
+<figure><img src="../../assets/images/ai-as-developer-02-a7c5fd1d.png" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/ai-as-developer-03-36f049b3.png" alt="" loading="lazy"></figure>
+
+<p>Utile pour fournir systématiquement un contexte à ChatGPT (ex. : votre stack technique).</p>
+
+<hr>
+
+<h2 id="3-comment-prompter-un-assistant-ia">3) Comment prompter un assistant IA ?</h2>
+
+<h3 id="31-expliquer-un-concept-simplement">3.1 Expliquer un concept simplement</h3>
+
+<figure><img src="../../assets/images/ai-as-developer-04-8b4fc356.png" alt="" loading="lazy"></figure>
+
+<p>👉 Plutôt que "What is object-oriented programming?", préférer : <em>"Explain object-oriented programming to me in simple terms"</em></p>
+
+<h3 id="32-déboguer-du-code">3.2 Déboguer du code</h3>
+
+<figure><img src="../../assets/images/ai-as-developer-05-8663e9a2.png" alt="" loading="lazy"></figure>
+
+<ul>
+<li>Fournir le code ET le message d'erreur</li>
+<li>Préciser la ligne incriminée et son contexte</li>
+<li>Les modèles récents peuvent même partir de captures d'écran</li>
+</ul>
+
+<h3 id="33-expliquer-du-code">3.3 Expliquer du code</h3>
+
+<figure><img src="../../assets/images/ai-as-developer-06-6ad7a881.png" alt="" loading="lazy"></figure>
+
+<ul>
+<li>Fournir le code à expliquer et demander une explication <strong>ligne par ligne</strong></li>
+<li>Cibler les parties précises qui posent problème</li>
+</ul>
+
+<h3 id="34-améliorer-du-code">3.4 Améliorer du code</h3>
+
+<p>Questions utiles à poser :</p>
+
+<ul>
+<li>"How can I make this code run faster?"</li>
+<li>"Is this code following best practices in Python? Is it pythonic?"</li>
+<li>"Are my variables clearly named?"</li>
+<li>"Can you shorten this code?"</li>
+</ul>
+
+<blockquote><p>[!WARNING]<br></p></blockquote>
+
+<blockquote><p>Toujours tester le code après une suggestion d'amélioration — il arrive que l'IA casse des fonctionnalités existantes.<br></p></blockquote>
+
+<h3 id="35-comment-ne-pas-utiliser-les-assistants-ia">3.5 Comment NE PAS utiliser les assistants IA</h3>
+
+<ul>
+<li><strong>Ne pas tout dumper sans contexte</strong> 👉 Aller étape par étape, expliquer le contexte</li>
+<li><strong>Ne pas en faire sa seule source</strong> 👉 StackOverflow et un vrai humain restent souvent meilleurs</li>
+<li><strong>Ne pas lui faire résoudre un challenge complet</strong> 👉 On se prive de l'apprentissage</li>
+<li><strong>Ne pas partager de code sensible</strong> 👉 Le contenu est transféré et peut être stocké</li>
+<li><strong>Ne pas fermer les chats trop vite</strong> 👉 Le contexte de la conversation est précieux</li>
+</ul>
+
+<hr>
+
+<h2 id="4-github-copilot">4) GitHub Copilot</h2>
+
+<figure><img src="../../assets/images/ai-as-developer-07-8c4072e9.svg" alt="" loading="lazy"></figure>
+
+<p>👉 <a href="http://github.com/features/copilot" target="_blank" rel="noopener">github.com/features/copilot</a></p>
+
+<p>Entraîné sur des milliards de lignes de code GitHub. Contrairement aux assistants généraux, il est dédié au code — comme une autocomplétion surpuissante, intégrable dans VS Code.</p>
+
+<h3 id="41-installation">4.1 Installation</h3>
+
+<ol>
+<li>Souscrire un abonnement</li>
+<li>👉 <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot" target="_blank" rel="noopener">Installer l'extension VS Code</a></li>
+</ol>
+
+<h3 id="42-utilisation">4.2 Utilisation</h3>
+
+<ul>
+<li>Écrire le nom d'une fonction/méthode/variable suffit souvent à déclencher l'autocomplétion</li>
+<li><code>Tab</code> pour accepter, <code>Alt/Option + [ ]</code> pour naviguer entre les suggestions</li>
+</ul>
+
+<blockquote><p>[!TIP]<br></p></blockquote>
+
+<blockquote><p>La première suggestion n'est pas toujours la meilleure. Toujours tester le code proposé.<br></p></blockquote>
+
+<h3 id="43-écrire-une-fonction">4.3 Écrire une fonction</h3>
+
+<figure><img src="../../assets/images/ai-as-developer-08-a1a925ee.png" alt="" loading="lazy"></figure>
+
+<p>Le secret pour obtenir de bons résultats : <strong>des noms de méthodes et variables extrêmement descriptifs</strong>. C'est aussi une bonne pratique de code en général.</p>
+
+<h3 id="44-utiliser-des-commentaires">4.4 Utiliser des commentaires</h3>
+
+<figure><img src="../../assets/images/ai-as-developer-09-8e4a7e0c.png" alt="" loading="lazy"></figure>
+
+<p>Écrire un commentaire expliquant ce que le code doit faire permet à Copilot de générer une suggestion plus précise. En bonus, cela documente le code.</p>
+
+<h3 id="45-écrire-des-tests">4.5 Écrire des tests</h3>
+
+<figure><img src="../../assets/images/ai-as-developer-10-864c3599.png" alt="" loading="lazy"></figure>
+
+<p>Copilot est particulièrement efficace pour écrire des tests dans une démarche TDD.</p>
+
+<h3 id="46-limitations">4.6 Limitations</h3>
+
+<ul>
+<li>Moins utile que ChatGPT pour des questions larges ou la résolution de bugs complexes</li>
+<li>Focalisé sur les suggestions de code, pas sur la stratégie de résolution</li>
+<li>Peut suggérer du code copié d'autres repos ou utiliser des variables inexistantes</li>
+<li>Peut ne pas suivre les meilleures pratiques (il apprend aussi du mauvais code)</li>
+</ul>
+
+<h3 id="47-github-copilot-chat">4.7 GitHub Copilot Chat</h3>
+
+<p>👉 <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat" target="_blank" rel="noopener">Installer l'extension Copilot Chat</a></p>
+
+<p>Permet des conversations avec Copilot, notamment pour générer des <strong>docstrings</strong> :</p>
+
+<figure><img src="../../assets/images/ai-as-developer-11-c2d08d37.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="5-quand-utiliser-lia-dans-un-projet-data">5) Quand utiliser l'IA dans un projet data ?</h2>
+
+<p><strong>Oui ✅ :</strong></p>
+
+<ul>
+<li>Code boilerplate</li>
+<li>Comprendre des packages ou des APIs</li>
+<li>Gagner du temps sur du code répétitif</li>
+<li>Bugs difficiles à résoudre</li>
+<li>Problèmes de setup</li>
+<li>Comprendre le code d'un collègue</li>
+</ul>
+
+<p><strong>Non ❌ :</strong></p>
+
+<ul>
+<li>Copier-coller sans lire</li>
+<li>Packages ayant beaucoup évolué (l'IA aura appris sur de vieux exemples)</li>
+<li>Fonctionnalités très custom ou packages de niche</li>
+<li>Problèmes avec de bonnes réponses sur StackOverflow</li>
+</ul>
+
+<hr>
+
+<h2 id="6-lia-va-t-elle-remplacer-votre-travail">6) L'IA va-t-elle remplacer votre travail ?</h2>
+
+<p>Honnêtement, personne ne le sait encore avec certitude. Il y aura probablement des conséquences positives et négatives.</p>
+
+<p>Ce qui est sûr : l'IA peut vous rendre <strong>plus productif une fois que vous maîtrisez les bases</strong>. Elle n'est d'aucune utilité si vous n'avez pas encore appris à coder.</p>
+
+<blockquote><p>[!TIP]<br></p></blockquote>
+
+<blockquote><p>Continuez à vous challenger et à affûter vos compétences. L'IA est un "TA digital" — utile, mais pas un substitut à l'apprentissage.<br></p></blockquote>
+
+<hr>
+
+<h2 id="7-comment-utiliser-lia-pendant-le-bootcamp">7) Comment utiliser l'IA pendant le bootcamp ?</h2>
+
+<h3 id="71-pour-déboguer-votre-code">7.1 Pour déboguer votre code</h3>
+
+<ul>
+<li>❌ Ne pas lui demander de juste corriger votre code</li>
+<li>✅ Lui demander d'expliquer le message d'erreur</li>
+<li>✅ Lui demander d'expliquer étape par étape ce qui s'est mal passé</li>
+<li>✅ Lui demander comment corriger et <strong>pourquoi</strong> ça fonctionnerait</li>
+</ul>
+
+<h3 id="72-pour-comprendre-des-concepts">7.2 Pour comprendre des concepts</h3>
+
+<ul>
+<li>✅ Lui demander d'expliquer en anglais simple</li>
+<li>✅ Lui demander des analogies ou des exemples concrets</li>
+<li>✅ Générer des snippets de code illustrant un concept</li>
+<li>✅ Lui demander de reformuler une documentation complexe</li>
+</ul>
+
+<h3 id="73-pour-progresser-dans-lapprentissage">7.3 Pour progresser dans l'apprentissage</h3>
+
+<ul>
+<li>✅ Lui demander de vous interroger sur le sujet du jour</li>
+<li>✅ Lui demander des challenges supplémentaires sur vos points faibles</li>
+<li>✅ Lui demander du pseudo-code, puis le coder soi-même</li>
+<li>✅ Lui demander de relire et suggérer des améliorations</li>
+<li>✅ Lui demander d'expliquer deux approches différentes</li>
+<li>✅ Lui demander de commenter votre code (vérifier que les commentaires sont exacts)</li>
+</ul>
+
+<h3 id="74-règle-générale">7.4 Règle générale</h3>
+
+<ul>
+<li>❌ Ne pas lui faire faire votre travail</li>
+<li>❌ Jamais copier du code sans comprendre ce qu'il fait</li>
+<li>❌ Ne pas résoudre un bug sans comprendre l'erreur</li>
+<li>❌ Ne pas résoudre un bug sans savoir où trouver l'indice dans le traceback</li>
+</ul>
+
+<hr>
+
+<h2 id="8-conclusion">8) Conclusion</h2>
+
+<p>En fin de compte, c'est votre bootcamp, <strong>votre choix</strong> d'utiliser ou non les assistants IA. L'objectif du bootcamp n'est pas de passer tous les tests, c'est d'<strong>apprendre</strong>.</p>
+
+<p><strong>Notre conseil ? Ne pas utiliser l'IA pour résoudre les challenges à votre place.</strong></p>
+
+<p>Utilisez plutôt différentes sources :</p>
+
+<ul>
+<li>📽️ Les slides du cours</li>
+<li>🎯 Les challenges précédents</li>
+<li>📚 La documentation officielle</li>
+<li>🔎 Google, Stack Overflow...</li>
+</ul>
+
+<blockquote><p>[!TIP]<br></p></blockquote>
+
+<blockquote><p><strong>Pourquoi utiliser un 🤖 quand vous avez de vrais humains ? Les TAs adorent vous aider en conversation directe 💬</strong><br></p></blockquote>
+
+<hr>
+
+<h2 id="9-prochaines-étapes">9) Prochaines étapes</h2>
+
+<p>Plus tard dans le bootcamp, nous verrons :</p>
+
+<ul>
+<li>🧠 Comment fonctionnent les LLMs sous le capot</li>
+<li>🖥️ Comment utiliser les assistants IA dans le code via leurs APIs</li>
+<li>🦾 Comment construire des systèmes agentiques</li>
+</ul>
+
+<p><em>Stay tuned 🚀</em></p>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-à-retenir-absolument">À retenir absolument</a></li><li><a href="#ref-analogie-fil-rouge">Analogie fil rouge</a></li><li><a href="#ref-plan-du-cours">Plan du cours</a></li></ol></li><li><a href="#ref-1-quest-ce-que-lia">1. Qu'est-ce que l'IA ?</a><li><a href="#ref-2-les-assistants-ia-de-type-chat">2. Les assistants IA de type chat</a><ol><li><a href="#ref-21-ce-que-cest">2.1 Ce que c'est</a></li><li><a href="#ref-22-les-personnaliser">2.2 Les personnaliser</a></li></ol></li><li><a href="#ref-3-comment-bien-prompter-un-assistant-ia">3. Comment bien prompter un assistant IA ?</a><ol><li><a href="#ref-31-faire-expliquer-un-concept">3.1 Faire expliquer un concept</a></li><li><a href="#ref-32-déboguer-du-code">3.2 Déboguer du code</a></li><li><a href="#ref-33-faire-expliquer-du-code-existant">3.3 Faire expliquer du code existant</a></li><li><a href="#ref-34-améliorer-du-code">3.4 Améliorer du code</a></li><li><a href="#ref-35-ce-quil-ne-faut-pas-faire">3.5 Ce qu'il ne faut pas faire</a></li></ol></li><li><a href="#ref-4-github-copilot">4. GitHub Copilot</a><ol><li><a href="#ref-41-cest-quoi">4.1 C'est quoi ?</a></li><li><a href="#ref-42-installation">4.2 Installation</a></li><li><a href="#ref-43-comment-lutiliser-au-quotidien">4.3 Comment l'utiliser au quotidien</a></li><li><a href="#ref-44-le-secret-pour-de-bonnes-suggestions-des-noms-explicites">4.4 Le secret pour de bonnes suggestions : des noms explicites</a></li><li><a href="#ref-45-guider-copilot-avec-des-commentaires">4.5 Guider Copilot avec des commentaires</a></li><li><a href="#ref-46-écrire-des-tests-avec-copilot">4.6 Écrire des tests avec Copilot</a></li><li><a href="#ref-47-github-copilot-chat">4.7 GitHub Copilot Chat</a></li><li><a href="#ref-48-les-limites-de-copilot">4.8 Les limites de Copilot</a></li></ol></li><li><a href="#ref-5-quand-utiliser-lia-dans-un-projet-data">5. Quand utiliser l'IA dans un projet data ?</a><ol><li><a href="#ref-oui-utilise-lia-pour">Oui, utilise l'IA pour...</a></li><li><a href="#ref-non-évite-lia-pour">Non, évite l'IA pour...</a></li></ol></li><li><a href="#ref-6-lia-va-t-elle-remplacer-les-développeurs">6. L'IA va-t-elle remplacer les développeurs ?</a><li><a href="#ref-7-bonnes-pratiques-pendant-le-bootcamp">7. Bonnes pratiques pendant le bootcamp</a><ol><li><a href="#ref-71-pour-déboguer-ton-code">7.1 Pour déboguer ton code</a></li><li><a href="#ref-72-pour-comprendre-des-concepts">7.2 Pour comprendre des concepts</a></li><li><a href="#ref-73-pour-progresser-activement">7.3 Pour progresser activement</a></li><li><a href="#ref-74-les-règles-dor-du-bootcamp">7.4 Les règles d'or du bootcamp</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>L'intelligence artificielle (IA) est partout dans le monde du développement. En tant que débutant, tu vas vite te retrouver face à des outils comme ChatGPT ou GitHub Copilot. Ce cours t'explique comment les utiliser <strong>intelligemment</strong> pour apprendre — pas pour tricher.</p>
+
+<h3 id="ref-à-retenir-absolument">À retenir absolument</h3>
+
+<ul>
+<li>L'IA peut t'aider à déboguer, comprendre du code et gagner du temps sur les tâches répétitives.</li>
+<li>L'IA se trompe parfois — même avec assurance. Ne la suis pas les yeux fermés.</li>
+<li>Copier du code sans le comprendre, c'est se tirer une balle dans le pied.</li>
+<li>Bien formuler sa question (le "prompt") change tout à la qualité de la réponse.</li>
+<li>L'IA est un assistant, pas un remplaçant : c'est toi qui dois apprendre à coder.</li>
+</ul>
+
+<h3 id="ref-analogie-fil-rouge">Analogie fil rouge</h3>
+
+<p>Imagine que l'IA est un <strong>tuteur disponible 24h/24</strong>, qui connaît plein de choses mais qui peut aussi inventer des réponses. Tu ne lui ferais pas aveuglément confiance pour ton examen, mais tu lui poserais des questions pour mieux comprendre. C'est exactement la bonne posture.</p>
+
+<h3 id="ref-plan-du-cours">Plan du cours</h3>
+
+<ol>
+<li>Qu'est-ce que l'IA concrètement ?</li>
+<li>Les assistants IA de type chat (ChatGPT, etc.)</li>
+<li>Comment bien formuler ses prompts ?</li>
+<li>GitHub Copilot — l'IA intégrée dans ton éditeur</li>
+<li>Quand utiliser l'IA dans un projet data ?</li>
+<li>L'IA va-t-elle remplacer les développeurs ?</li>
+<li>Bonnes pratiques pendant le bootcamp</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-quest-ce-que-lia">1. Qu'est-ce que l'IA ?</h2>
+
+<p>L'<strong>intelligence artificielle</strong> désigne des programmes capables d'effectuer des tâches qui demandent normalement de l'intelligence humaine : reconnaître une image, traduire du texte, suggérer du code...</p>
+
+<p>Deux grandes familles existent :</p>
+
+<ul>
+<li><strong>Narrow AI</strong> (IA étroite) : spécialisée dans <strong>une seule tâche</strong>. Par exemple, le filtre anti-spam de ta boîte mail, ou un système de recommandation de films. C'est ce qu'on croise au quotidien.</li>
+<li><strong>General AI</strong> (IA générale) : capable d'opérer dans des contextes très variés, comme un humain. C'est encore un domaine de recherche.</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>ChatGPT, Copilot, les filtres Snapchat — tout ça, c'est de la Narrow AI. Chacun est très bon dans son domaine, mais ne sait pas forcément faire autre chose.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-les-assistants-ia-de-type-chat">2. Les assistants IA de type chat</h2>
+
+<h3 id="ref-21-ce-que-cest">2.1 Ce que c'est</h3>
+
+<p>Des outils comme <strong>ChatGPT</strong> (OpenAI), <strong>Claude</strong> (Anthropic) ou <strong>Gemini</strong> (Google) sont des assistants basés sur des <strong>LLMs</strong> — Large Language Models, c'est-à-dire des modèles entraînés sur des milliards de textes.</p>
+
+<p>Ils comprennent le langage naturel, répondent à des questions variées (code, langues, cuisine, maths...) et peuvent avoir une vraie conversation.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ces assistants peuvent te donner des réponses très convaincantes... qui sont fausses. C'est ce qu'on appelle les "hallucinations". Toujours vérifier les réponses importantes avec une source fiable (documentation officielle, StackOverflow, un vrai humain).</p></div></div>
+
+<h3 id="ref-22-les-personnaliser">2.2 Les personnaliser</h3>
+
+<p>Tu peux configurer ChatGPT avec des <strong>instructions personnalisées</strong> pour qu'il connaisse ton contexte à l'avance. Par exemple, tu peux lui dire que tu apprends Python, que tu es débutant, ou que tu travailles sur macOS. Ainsi, il adapte ses réponses sans que tu aies à répéter le contexte à chaque conversation.</p>
+
+<hr>
+
+<h2 id="ref-3-comment-bien-prompter-un-assistant-ia">3. Comment bien prompter un assistant IA ?</h2>
+
+<p>Le "prompt", c'est ce que tu tapes dans l'assistant. La qualité de ta question détermine directement la qualité de la réponse. Voici les cas d'usage les plus utiles.</p>
+
+<h3 id="ref-31-faire-expliquer-un-concept">3.1 Faire expliquer un concept</h3>
+
+<p>Mauvaise approche : poser une question sèche.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ❌ Prompt trop vague — réponse trop générale
+&quot;What is object-oriented programming?&quot;
+
+# ✅ Prompt avec contexte et niveau — réponse adaptée
+&quot;Explain object-oriented programming to me in simple terms, I&#x27;m a complete beginner&quot;</code></pre></div>
+
+
+<p>La deuxième formulation donne à l'IA le contexte dont elle a besoin pour calibrer son niveau d'explication.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Ajouter "in simple terms" ou "I'm a beginner" dans tes prompts change radicalement la clarté des réponses.</p></div></div>
+
+<h3 id="ref-32-déboguer-du-code">3.2 Déboguer du code</h3>
+
+<p>C'est un des usages les plus puissants. Mais attention : il faut fournir <strong>le code ET le message d'erreur</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ❌ Prompt inutile — l&#x27;IA n&#x27;a pas les infos nécessaires
+&quot;My code doesn&#x27;t work, help me&quot;
+
+# ✅ Prompt efficace — tout le contexte est présent
+&quot;Here is my Python code:
+
+def add_numbers(a, b):
+    return a + b
+
+result = add_numbers(5, &#x27;3&#x27;)
+print(result)
+
+And here is the error message:
+TypeError: unsupported operand type(s) for +: &#x27;int&#x27; and &#x27;str&#x27;
+
+Can you explain what went wrong step by step?&quot;</code></pre></div>
+
+
+<p>L'IA peut alors te donner une explication précise et pédagogique, pas juste corriger à l'aveugle.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Demande toujours à l'IA d'expliquer <strong>pourquoi</strong> il y a une erreur, pas juste de la corriger. C'est comme ça que tu progresses vraiment.</p></div></div>
+
+<h3 id="ref-33-faire-expliquer-du-code-existant">3.3 Faire expliquer du code existant</h3>
+
+<p>Quand tu tombes sur du code que tu ne comprends pas (celui d'un collègue, d'un exemple en ligne...) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ✅ Prompt pour comprendre ligne par ligne
+&quot;Explain this code line by line. Focus especially on the part starting at line 5:
+
+numbers = [1, 2, 3, 4, 5]
+squares = [x**2 for x in numbers]
+print(squares)&quot;</code></pre></div>
+
+
+<p>Ce type de prompt est excellent pour apprendre. Tu peux demander à l'IA d'expliquer la logique, de reformuler, ou de te donner un exemple plus simple.</p>
+
+<h3 id="ref-34-améliorer-du-code">3.4 Améliorer du code</h3>
+
+<p>Une fois que ton code fonctionne, tu peux demander des pistes d'amélioration :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Questions utiles pour améliorer son code
+
+# ✅ Vérifier les bonnes pratiques Python
+&quot;Is this Python code following best practices? Is it pythonic?&quot;
+
+# ✅ Optimiser la vitesse d&#x27;exécution
+&quot;How can I make this code run faster?&quot;
+
+# ✅ Rendre le code plus lisible
+&quot;Can you shorten this code without changing what it does?&quot;
+
+# ✅ Vérifier le nommage
+&quot;Are my variables clearly named? How could I improve them?&quot;</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Après une suggestion d'amélioration, <strong>teste toujours le code</strong>. L'IA peut parfois "améliorer" une chose et en casser une autre sans s'en rendre compte.</p></div></div>
+
+<h3 id="ref-35-ce-quil-ne-faut-pas-faire">3.5 Ce qu'il ne faut pas faire</h3>
+
+<p>Voici les erreurs classiques à éviter absolument :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Mauvaise pratique</th><th>Ce qu'il faut faire à la place</th></tr></thead><tbody><tr><td>Coller 200 lignes sans explication</td><td>Fournir uniquement la fonction concernée + le message d'erreur</td></tr><tr><td>"Résous ce challenge pour moi"</td><td>"Explique pourquoi mon code produit cette erreur"</td></tr><tr><td>Copier-coller la réponse sans lire</td><td>Lire chaque ligne, comprendre, puis adapter</td></tr><tr><td>Faire confiance sans vérifier</td><td>Croiser avec la doc officielle ou StackOverflow</td></tr><tr><td>Envoyer du code confidentiel</td><td>Vérifier la politique de l'entreprise avant tout partage</td></tr></tbody></table></div>
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Tout ce que tu envoies à ChatGPT ou à un assistant en ligne peut être transmis et stocké. Ne partage jamais de code propriétaire, de mots de passe ou de données sensibles.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-github-copilot">4. GitHub Copilot</h2>
+
+<h3 id="ref-41-cest-quoi">4.1 C'est quoi ?</h3>
+
+<p>GitHub Copilot est une IA <strong>intégrée directement dans ton éditeur de code</strong> (VS Code). Contrairement à ChatGPT où tu poses des questions dans une interface de chat, Copilot propose des suggestions de code en temps réel, pendant que tu écris.</p>
+
+<p>Pense-y comme une <strong>autocomplétion super intelligente</strong> : tu commences à écrire une fonction, et Copilot essaie de deviner et compléter ce que tu veux faire.</p>
+
+<p>Il a été entraîné sur des milliards de lignes de code public disponibles sur GitHub.</p>
+
+<h3 id="ref-42-installation">4.2 Installation</h3>
+
+<ol>
+<li>Souscrire un abonnement GitHub Copilot (il existe un accès gratuit pour étudiants).</li>
+<li>Installer l'extension "GitHub Copilot" dans VS Code.</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Dans le terminal VS Code, tu peux aussi vérifier que l&#x27;extension est bien active
+code --list-extensions | grep copilot
+# Doit afficher : GitHub.copilot</code></pre></div>
+
+
+<h3 id="ref-43-comment-lutiliser-au-quotidien">4.3 Comment l'utiliser au quotidien</h3>
+
+<p>Une fois installé, Copilot se déclenche automatiquement quand tu codes :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Raccourcis clavier essentiels :
+# Tab              → accepter la suggestion affichée en grisé
+# Alt + ]          → voir la suggestion suivante
+# Alt + [          → voir la suggestion précédente
+# Échap            → ignorer la suggestion</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La première suggestion n'est pas forcément la meilleure. Utilise Alt + [ ] pour naviguer entre les propositions et choisir la plus adaptée.</p></div></div>
+
+<h3 id="ref-44-le-secret-pour-de-bonnes-suggestions-des-noms-explicites">4.4 Le secret pour de bonnes suggestions : des noms explicites</h3>
+
+<p>Copilot génère ses suggestions à partir du contexte visible dans ton fichier. Plus tes noms sont <strong>descriptifs</strong>, meilleures sont les suggestions :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ❌ Nom trop vague — Copilot ne sait pas quoi suggérer
+def calc():
+    pass
+
+# ✅ Nom très descriptif — Copilot comprend l&#x27;intention et propose quelque chose d&#x27;utile
+def calculate_monthly_revenue_by_category():
+    pass
+    # Copilot va probablement suggérer quelque chose comme :
+    # return df.groupby(&#x27;category&#x27;)[&#x27;revenue&#x27;].sum() / 12</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>C'est une bonne pratique de code en général : des noms explicites rendent le code lisible pour toi, tes collègues, ET pour l'IA.</p></div></div>
+
+<h3 id="ref-45-guider-copilot-avec-des-commentaires">4.5 Guider Copilot avec des commentaires</h3>
+
+<p>Tu peux aussi écrire un commentaire avant une fonction pour décrire ce qu'elle doit faire. Copilot utilisera ce commentaire pour générer le code :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Returns a sorted list of unique email addresses from a DataFrame column
+def get_unique_emails(df):
+    # Copilot va suggérer quelque chose comme :
+    return sorted(df[&#x27;email&#x27;].dropna().unique().tolist())
+    # Le commentaire guide Copilot ET documente ton code en même temps !</code></pre></div>
+
+
+<p>Deux bénéfices en un : la suggestion est plus précise, et ton code est documenté.</p>
+
+<h3 id="ref-46-écrire-des-tests-avec-copilot">4.6 Écrire des tests avec Copilot</h3>
+
+<p>Copilot est particulièrement efficace pour <strong>générer des tests unitaires</strong>. Il suffit de nommer ton fichier de test correctement et de commencer à taper :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Dans un fichier test_calculator.py, tape juste :
+# test_calculate_monthly_revenue
+# ... et Copilot va suggérer un test complet avec des données d&#x27;exemple</code></pre></div>
+
+
+<h3 id="ref-47-github-copilot-chat">4.7 GitHub Copilot Chat</h3>
+
+<p>En plus des suggestions inline, tu peux installer l'extension <strong>Copilot Chat</strong> pour avoir une conversation directement dans VS Code — très utile pour demander la génération de <strong>docstrings</strong> (documentation de fonctions) ou expliquer un bout de code sélectionné.</p>
+
+<h3 id="ref-48-les-limites-de-copilot">4.8 Les limites de Copilot</h3>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Copilot n'est pas magique. Voici ses points faibles :</p></div></div>
+
+<ul>
+<li>Moins bon que ChatGPT pour expliquer des erreurs complexes ou répondre à des questions larges.</li>
+<li>Peut suggérer du code qui utilise des <strong>variables inexistantes</strong> dans ton contexte.</li>
+<li>Peut proposer du code issu d'autres projets, pas toujours adapté à ton cas.</li>
+<li>Apprend aussi du "mauvais code" — il peut suggérer des pratiques dépassées ou sous-optimales.</li>
+<li>Focalisé sur la <strong>génération de code</strong>, pas sur la <strong>stratégie</strong> pour résoudre un problème.</li>
+</ul>
+
+<hr>
+
+<h2 id="ref-5-quand-utiliser-lia-dans-un-projet-data">5. Quand utiliser l'IA dans un projet data ?</h2>
+
+<p>Tous les cas d'usage ne sont pas égaux. Voici un guide pratique :</p>
+
+<h3 id="ref-oui-utilise-lia-pour">Oui, utilise l'IA pour...</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ✅ Générer du code &quot;boilerplate&quot; (répétitif et structurel)
+# Exemple : créer un squelette de classe, écrire des imports standards
+
+# ✅ Comprendre un package que tu découvres
+# &quot;Explain how pandas groupby works with a concrete example&quot;
+
+# ✅ Gagner du temps sur du code répétitif
+# Exemple : reformater des données, créer des colonnes transformées
+
+# ✅ Déboguer un bug difficile
+# Exemple : coller le traceback et demander une explication étape par étape
+
+# ✅ Comprendre le code d&#x27;un collègue
+# &quot;Explain what this function does line by line&quot;</code></pre></div>
+
+
+<h3 id="ref-non-évite-lia-pour">Non, évite l'IA pour...</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ❌ Copier-coller sans lire et comprendre
+# Tu n&#x27;apprendras rien, et le code peut être faux
+
+# ❌ Des packages qui évoluent vite
+# L&#x27;IA a été entraînée à une date précise — ses connaissances peuvent être obsolètes
+# Exemple : des nouvelles versions de scikit-learn, TensorFlow, etc.
+
+# ❌ Des packages très spécifiques ou de niche
+# L&#x27;IA n&#x27;a peut-être pas vu assez d&#x27;exemples de ce package pour être fiable
+
+# ❌ Des questions bien documentées sur StackOverflow
+# La documentation officielle ou SO sont souvent plus fiables et à jour</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Règle d'or : utilise l'IA pour <strong>accélérer</strong> ce que tu saurais faire toi-même, pas pour <strong>remplacer</strong> ta réflexion.</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-lia-va-t-elle-remplacer-les-développeurs">6. L'IA va-t-elle remplacer les développeurs ?</h2>
+
+<p>Honnêtement ? Personne ne le sait encore avec certitude. Il y aura des transformations dans les métiers, c'est inévitable.</p>
+
+<p>Ce qui est sûr :</p>
+
+<ul>
+<li>L'IA rend les développeurs <strong>plus productifs</strong> une fois qu'ils maîtrisent les bases.</li>
+<li>Elle <strong>n'est d'aucune utilité</strong> si tu ne sais pas encore coder — tu ne saurais même pas si la réponse est correcte.</li>
+<li>Les gens qui savent <strong>utiliser l'IA intelligemment</strong> auront un avantage sur ceux qui l'ignorent ou qui en dépendent aveuglément.</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>La meilleure façon de te préparer à un monde avec l'IA, c'est de vraiment apprendre à coder. Comprendre les bases te permettra d'utiliser l'IA comme un levier, et non comme un fauteuil roulant.</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-bonnes-pratiques-pendant-le-bootcamp">7. Bonnes pratiques pendant le bootcamp</h2>
+
+<h3 id="ref-71-pour-déboguer-ton-code">7.1 Pour déboguer ton code</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ❌ Ce qu&#x27;il ne faut pas demander
+&quot;Fix my code&quot;   # Tu n&#x27;apprends rien
+
+# ✅ Ce qu&#x27;il faut demander à la place
+&quot;Explain what this error message means&quot;
+&quot;Walk me through what went wrong step by step&quot;
+&quot;Explain how to fix it and WHY that fix works&quot;</code></pre></div>
+
+
+<h3 id="ref-72-pour-comprendre-des-concepts">7.2 Pour comprendre des concepts</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ✅ Exemples de bons prompts pour apprendre
+&quot;Explain list comprehensions in Python in simple terms with a concrete example&quot;
+&quot;Give me an analogy to understand what a decorator is&quot;
+&quot;Show me a short code snippet that illustrates how a for loop works&quot;
+&quot;Rewrite this documentation in simpler language: [coller la doc]&quot;</code></pre></div>
+
+
+<h3 id="ref-73-pour-progresser-activement">7.3 Pour progresser activement</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ✅ Utiliser l&#x27;IA comme un partenaire d&#x27;entraînement
+&quot;Quiz me on today&#x27;s topic: Python functions&quot;
+&quot;Give me a small coding challenge on list manipulation&quot;
+&quot;Write pseudo-code for this problem, I&#x27;ll code it myself&quot;
+&quot;Review my code and suggest improvements, don&#x27;t rewrite it&quot;
+&quot;Explain two different ways to solve this problem&quot;</code></pre></div>
+
+
+<h3 id="ref-74-les-règles-dor-du-bootcamp">7.4 Les règles d'or du bootcamp</h3>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ces règles sont là pour que tu apprennes vraiment, pas juste pour "passer les tests" :</p></div></div>
+
+<ul>
+<li>Ne fais <strong>jamais</strong> faire ton travail à l'IA.</li>
+<li>Ne <strong>jamais</strong> copier du code sans comprendre chaque ligne.</li>
+<li>Ne <strong>jamais</strong> résoudre un bug sans comprendre quelle ligne cause l'erreur et pourquoi.</li>
+<li>Apprendre à lire un <strong>traceback</strong> (message d'erreur Python) est une compétence fondamentale — l'IA ne doit pas te court-circuiter sur ça.</li>
+</ul>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Les TAs (Teaching Assistants) humains sont souvent bien meilleurs que l'IA pour t'accompagner sur des problèmes spécifiques au bootcamp. N'hésite pas à les solliciter !</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1 — Compréhension des outils</strong></p>
+<p>Quelle est la différence principale entre ChatGPT et GitHub Copilot ? Dans quel contexte utiliserais-tu l'un plutôt que l'autre ?</p>
+
+<p><strong>Question 2 — Bonne pratique de prompt</strong></p>
+<p>Tu as ce code Python qui produit une erreur. Écris un prompt efficace pour demander de l'aide à un assistant IA :</p>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def divide(a, b):
+    return a / b
+
+result = divide(10, 0)</code></pre></div>
+
+<p><em>(L'erreur est : <code>ZeroDivisionError: division by zero</code>)</em></p>
+
+<p><strong>Question 3 — Esprit critique</strong></p>
+<p>L'IA te propose une correction de code qui semble logique. Quelles étapes dois-tu suivre avant de l'intégrer à ton projet ?</p>
+
+<p><strong>Question 4 — Usages appropriés</strong></p>
+<p>Donne deux situations où tu utiliserais l'IA dans un projet data, et deux situations où tu éviterais de l'utiliser. Justifie chaque choix.</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>L'IA (ChatGPT, Copilot...) est un outil puissant pour apprendre à coder, mais ce n'est pas une solution miracle.</li>
+<li>La qualité du prompt détermine la qualité de la réponse : donne toujours le contexte, le code, et le message d'erreur.</li>
+<li>GitHub Copilot s'intègre dans VS Code et propose des suggestions de code en temps réel — des noms de variables descriptifs améliorent la pertinence des suggestions.</li>
+<li>L'IA se trompe parfois avec assurance : vérifie toujours les réponses importantes auprès de sources fiables.</li>
+<li>Ne partage jamais de code confidentiel ou de données sensibles dans un assistant IA en ligne.</li>
+<li>Utilise l'IA pour <strong>comprendre et progresser</strong>, pas pour faire le travail à ta place.</li>
+<li>L'IA est utile pour le code boilerplate, déboguer, et comprendre des packages — moins fiable pour les packages très récents ou de niche.</li>
+<li>Copier du code sans le comprendre te prive de l'apprentissage et peut t'exposer à des bugs silencieux.</li>
+<li>Les TAs humains restent irremplaçables pour un accompagnement contextualisé au bootcamp.</li>
+<li>L'IA amplifie les compétences de ceux qui savent coder — raison de plus pour vraiment apprendre les bases.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-quest-ce-quun-llm-vraiment">Qu'est-ce qu'un LLM, vraiment ?</a></li><li><a href="#syn-les-bases-du-prompting">Les bases du prompting</a></li><li><a href="#syn-hallucinations-et-fact-checking">Hallucinations et fact-checking</a></li><li><a href="#syn-pair-programming-avec-un-llm">Pair programming avec un LLM</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-tool-use-et-function-calling">Tool use et function calling</a></li><li><a href="#syn-limites-du-context-window">Limites du context window</a></li><li><a href="#syn-évaluer-la-qualité-dune-réponse">Évaluer la qualité d'une réponse</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-quest-ce-quun-llm-vraiment">Qu'est-ce qu'un LLM, vraiment ?</h3>
+
+<p>Un <strong>Large Language Model</strong> (GPT-4, Claude, Gemini, Llama…) est un modèle de deep learning entraîné à <strong>prédire le mot suivant</strong> dans une phrase. Étonnamment, en faisant ça à très grande échelle (centaines de milliards de paramètres, des trilliards de tokens d'entraînement), le modèle développe des capacités <strong>émergentes</strong> : raisonnement, traduction, résumé, génération de code.</p>
+
+<p><strong>Ce qu'un LLM n'est pas</strong> :</p>
+
+<ul>
+<li>❌ Un moteur de recherche : il ne consulte pas le web en temps réel (sauf via tools)</li>
+<li>❌ Une base de données : il ne retient pas d'informations exactes après son entraînement</li>
+<li>❌ Une calculatrice : il génère des chiffres plausibles, pas vérifiés mathématiquement</li>
+<li>❌ Un oracle : il ne sait pas ce qu'il ne sait pas, et hallucine confidentement</li>
+</ul>
+
+<p><strong>Ce qu'un LLM est</strong> :</p>
+
+<ul>
+<li>✓ Un excellent générateur de texte cohérent</li>
+<li>✓ Un traducteur entre langages (humains et informatiques)</li>
+<li>✓ Un transformeur de format (markdown → JSON, prose → bullet points)</li>
+<li>✓ Un assistant de programmation capable d'écrire du code idiomatique</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : un LLM est un <strong>stagiaire extrêmement cultivé</strong> mais qui n'a aucune mémoire entre les sessions et qui parle parfois trop vite. Il connaît tous les livres mais ne peut pas vérifier ce qu'il dit. Vous lui confiez une tâche, vous <strong>vérifiez</strong> systématiquement, et il vous fait gagner un temps fou. Le confondre avec un expert autonome est l'erreur la plus coûteuse.</p></div></div>
+
+<h3 id="syn-les-bases-du-prompting">Les bases du prompting</h3>
+
+<p>Un <strong>prompt</strong> est l'instruction que vous donnez au LLM. La qualité du prompt détermine la qualité de la réponse. <strong>Cinq principes</strong> :</p>
+
+<p><strong>1. Soyez spécifique sur le contexte et la sortie attendue.</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">❌ Mauvais : &quot;Fais-moi une fonction de tri&quot;
+
+✓ Bon : &quot;Écris une fonction Python qui trie une liste de dicts
+        par leur champ &#x27;priority&#x27; (int, plus grand = plus prioritaire),
+        en cas d&#x27;égalité par &#x27;created_at&#x27; (datetime, plus ancien d&#x27;abord).
+        Retourne une nouvelle liste, sans modifier l&#x27;originale.
+        Ajoute des type hints et un docstring exemple.&quot;</code></pre></div>
+
+
+<p><strong>2. Donnez des exemples</strong> (few-shot prompting).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Convertis ces phrases en SQL :
+
+Phrase: &#x27;Combien d&#x27;utilisateurs ont commandé en 2024 ?&#x27;
+SQL: SELECT COUNT(DISTINCT user_id) FROM orders WHERE YEAR(created_at) = 2024;
+
+Phrase: &#x27;Quel est le revenu total par catégorie ?&#x27;
+SQL: SELECT category, SUM(amount) FROM orders GROUP BY category;
+
+Phrase: &#x27;Liste les 5 meilleurs clients par revenu&#x27;
+SQL:</code></pre></div>
+
+
+<p><strong>3. Décomposez les tâches complexes</strong> en étapes.</p>
+
+<p>Au lieu de "génère un pipeline ML complet", demandez successivement : "1. propose une stratégie de cleaning, 2. liste les features à créer, 3. choisis 3 modèles à comparer, 4. écris le code de chaque étape".</p>
+
+<p><strong>4. Demandez un raisonnement explicite</strong> (chain-of-thought).</p>
+
+<p>Ajouter "<strong>Explique ton raisonnement étape par étape avant la réponse finale</strong>" améliore drastiquement la qualité sur les problèmes de logique. Le modèle "réfléchit" en générant ses pensées.</p>
+
+<p><strong>5. Itérez.</strong></p>
+
+<p>Le premier prompt n'est presque jamais le bon. Lisez la réponse, identifiez ce qui ne va pas, reformulez. C'est un <strong>dialogue</strong>, pas un oracle.</p>
+
+<h3 id="syn-hallucinations-et-fact-checking">Hallucinations et fact-checking</h3>
+
+<p>Une <strong>hallucination</strong> est une réponse plausible mais factuellement fausse. Le LLM ne "ment" pas par malice — il génère le texte le plus probable selon ses patterns d'entraînement, sans capacité de vérifier la véracité.</p>
+
+<p><strong>Exemples typiques</strong> :</p>
+
+<ul>
+<li>Inventer une fonction Python qui n'existe pas (<code>pandas.DataFrame.flatten()</code>)</li>
+<li>Citer un papier scientifique avec un titre, des auteurs et une année plausibles mais 100% inventés</li>
+<li>Donner un chiffre statistique précis (PIB, population) qui est faux</li>
+<li>Affirmer qu'une bibliothèque supporte une feature qu'elle ne supporte pas</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Règle d'or</strong> : ne <strong>jamais</strong> copier-coller du code généré sans le faire tourner. Ne <strong>jamais</strong> citer un fait historique ou scientifique sans vérifier. Ne <strong>jamais</strong> appeler une API d'un fournisseur sans avoir lu sa doc officielle. Le LLM est un <strong>assistant</strong>, pas une source primaire.</p></div></div>
+
+<h3 id="syn-pair-programming-avec-un-llm">Pair programming avec un LLM</h3>
+
+<p><strong>Trois patterns</strong> d'interaction efficaces avec un assistant comme Cursor, Copilot ou Claude :</p>
+
+<p><strong>1. Génération depuis spec</strong> : vous décrivez ce que vous voulez, le LLM génère un premier jet.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">&quot;Écris une fonction Python qui prend un DataFrame de transactions
+(colonnes: user_id, amount, timestamp) et renvoie pour chaque user
+le panier moyen calculé sur les 30 derniers jours par rapport à
+maintenant. Gère le cas où un user a 0 transaction récente (NaN).&quot;</code></pre></div>
+
+
+<p><strong>2. Refactoring par exemple</strong> : vous montrez du code "avant" et demandez "après".</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">&quot;Refactor ce code pour qu&#x27;il soit plus pythonique et performant :
+
+[code à refactorer]
+
+Garde la même API publique.&quot;</code></pre></div>
+
+
+<p><strong>3. Debug interactif</strong> : vous collez un message d'erreur et demandez l'analyse.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">&quot;J&#x27;ai cette erreur :
+
+ValueError: could not convert string to float: &#x27;unknown&#x27;
+
+Sur cette ligne :
+    df[&#x27;price&#x27;] = df[&#x27;price&#x27;].astype(float)
+
+Voici les premières lignes du DataFrame :
+
+[snippet]
+
+Quelles sont les hypothèses possibles et comment investiguer ?&quot;</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : utilisez le LLM comme un <strong>canard en plastique amélioré</strong>. Le simple fait de formuler clairement votre problème pour le décrire à l'IA résout déjà 30% des bugs. Pour les 70% restants, sa réponse vous donne souvent une piste utile.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-tool-use-et-function-calling">Tool use et function calling</h3>
+
+<p>Les LLM modernes peuvent appeler des <strong>fonctions externes</strong> (calculatrice, API, base de données) au lieu de générer une réponse directement. C'est la base des <strong>agents</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># OpenAI function calling (équivalent chez Anthropic, Mistral, etc.)
+tools = [{
+    &quot;type&quot;: &quot;function&quot;,
+    &quot;function&quot;: {
+        &quot;name&quot;: &quot;get_weather&quot;,
+        &quot;description&quot;: &quot;Get current weather for a city&quot;,
+        &quot;parameters&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;city&quot;: {&quot;type&quot;: &quot;string&quot;}
+            },
+            &quot;required&quot;: [&quot;city&quot;]
+        }
+    }
+}]
+
+response = client.chat.completions.create(
+    model=&quot;gpt-4o&quot;,
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Quel temps fait-il à Paris ?&quot;}],
+    tools=tools,
+)
+# Le modèle renvoie :
+# tool_calls=[{&quot;name&quot;: &quot;get_weather&quot;, &quot;arguments&quot;: {&quot;city&quot;: &quot;Paris&quot;}}]
+# À VOUS d&#x27;exécuter la fonction et de réinjecter le résultat</code></pre></div>
+
+
+<p>L'avantage : le LLM ne "sait" pas la météo, mais il sait <strong>quand</strong> appeler une fonction qui la connaît. Ce pattern résout les hallucinations factuelles : pour tout ce qui est factuel et précis, le LLM délègue à un outil.</p>
+
+<h3 id="syn-limites-du-context-window">Limites du context window</h3>
+
+<p>Le <strong>context window</strong> est la quantité de texte que le LLM peut considérer en une fois. En tokens (≈ 0.75 mots) :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Modèle</th><th>Context window</th></tr></thead><tbody><tr><td>GPT-3.5</td><td>16k tokens</td></tr><tr><td>GPT-4o</td><td>128k tokens (~96k mots)</td></tr><tr><td>Claude 3.5 Sonnet</td><td>200k tokens</td></tr><tr><td>Claude Opus 4.6 (1M)</td><td>1M tokens</td></tr><tr><td>Gemini 1.5 Pro</td><td>1-2M tokens</td></tr></tbody></table></div>
+<p><strong>Conséquences</strong> :</p>
+
+<ol>
+<li><strong>Pour des questions sur un long document</strong>, le document doit tenir dans le context. Au-delà, on utilise du <strong>RAG</strong> (Retrieval-Augmented Generation) : on découpe en chunks, on indexe, et on injecte uniquement les chunks pertinents au prompt.</li>
+</ol>
+
+<ol>
+<li><strong>Le context inclut votre prompt système, l'historique de conversation, et la réponse à venir</strong>. Si votre conversation devient longue, le modèle "oublie" le début (les tokens les plus anciens sont coupés).</li>
+</ol>
+
+<ol>
+<li><strong>Plus le context est long, plus la latence et le coût augmentent</strong> linéairement avec le nombre de tokens.</li>
+</ol>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : le context window est la <strong>mémoire de travail</strong> du LLM. C'est comme un humain qui aurait toute la documentation du monde en bibliothèque mais qui ne pourrait poser que les livres ouverts qui tiennent sur son bureau. <strong>RAG</strong> = un assistant bibliothécaire qui sait quels livres ouvrir pour répondre à une question donnée.</p></div></div>
+
+<h3 id="syn-évaluer-la-qualité-dune-réponse">Évaluer la qualité d'une réponse</h3>
+
+<p><strong>Six critères</strong> pour juger une réponse de LLM, surtout sur du code :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Critère</th><th>Question</th></tr></thead><tbody><tr><td><strong>Correctness</strong></td><td>Le code fait-il ce qui est demandé ?</td></tr><tr><td><strong>Completeness</strong></td><td>Tous les cas (edge cases, erreurs) sont-ils gérés ?</td></tr><tr><td><strong>Idiomaticity</strong></td><td>Le code est-il pythonique ou copie de Java/JS ?</td></tr><tr><td><strong>Performance</strong></td><td>Le code passe-t-il à l'échelle, ou est-il O(n²) caché ?</td></tr><tr><td><strong>Security</strong></td><td>Y a-t-il des injections SQL, XSS, secrets en clair ?</td></tr><tr><td><strong>Testability</strong></td><td>Le code peut-il être testé sans monkey-patching extensif ?</td></tr></tbody></table></div>
+<p>Pour les réponses non-code (explications, analyses), les critères deviennent : <strong>factualité</strong> (vérifiable), <strong>exhaustivité</strong> (couvre les nuances), <strong>absence de biais</strong>.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Anti-pattern majeur</strong> : copier-coller un snippet de Stack Overflow ou de LLM dans votre code base sans le comprendre. Vous accumulez de la <strong>dette technique invisible</strong>. Avant d'intégrer du code généré, lisez-le ligne par ligne et assurez-vous que <strong>vous</strong> pourriez l'avoir écrit. Si vous ne pouvez pas l'expliquer, vous ne pouvez pas le maintenir.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi un LLM peut-il vous donner une fonction Python qui semble parfaite mais qui plante au runtime ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Pattern matching vs vérification.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Parce que le LLM génère du code par <strong>probabilité</strong>, pas par exécution. Il ne "compile" pas mentalement le code, il assemble des tokens qui ressemblent <strong>statistiquement</strong> à du code Python.</p>
+
+<p><strong>Conséquences</strong> :</p>
+
+<ol>
+<li>Il peut <strong>inventer des méthodes</strong> qui n'existent pas mais qui sonnent juste (<code>df.flatten()</code>, <code>np.argsort_descending()</code>).</li>
+<li>Il peut <strong>mélanger des syntaxes de versions différentes</strong> (utiliser une feature de Python 3.12 dans un environnement 3.8).</li>
+<li>Il peut écrire un code grammaticalement correct mais <strong>sémantiquement faux</strong> (utiliser <code>mean</code> au lieu de <code>median</code> parce que c'est plus fréquent dans son entraînement).</li>
+</ol>
+
+<p><strong>La parade</strong> :</p>
+
+<ul>
+<li><strong>Tester systématiquement</strong>, lancer le code, lire les erreurs.</li>
+<li>Utiliser un <strong>linter/IDE</strong> qui détecte les méthodes inexistantes immédiatement.</li>
+</ul>
+
+<p><strong>Cursor et Copilot</strong> ont de plus en plus d'intégrations avec des type checkers qui valident en temps réel — ça réduit drastiquement les hallucinations de code.</p>
+
+</details>
+
+<p><strong>Q2 : Quelle est la différence entre fournir des "examples" dans le prompt et faire du fine-tuning d'un modèle ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Durée et coût.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Few-shot prompting</strong> : vous donnez 2-10 exemples directement dans le prompt à chaque appel.</p>
+
+<ul>
+<li>✓ Avantages : pas de coût d'entraînement, modifications instantanées, fonctionne sur n'importe quel modèle.</li>
+<li>❌ Inconvénients : occupe de la place dans le context window, doit être répété à chaque appel, limité à quelques exemples.</li>
+</ul>
+
+<p><strong>Fine-tuning</strong> : vous entraînez le modèle sur des centaines/milliers d'exemples, ce qui <strong>modifie ses poids</strong>.</p>
+
+<ul>
+<li>✓ Avantages : pas besoin d'inclure les exemples à chaque appel, performance souvent supérieure, peut apprendre un <strong>style</strong> ou un format spécifique en profondeur.</li>
+<li>❌ Inconvénients : coûteux ($10-1000 selon la taille), prend des heures, plus complexe à itérer, ne marche pas pour tous les modèles (Claude n'expose pas le fine-tuning).</li>
+</ul>
+
+<p><strong>Règle pratique</strong> :</p>
+
+<ol>
+<li>Commencer par le <strong>few-shot</strong>.</li>
+<li>Si la qualité n'est pas suffisante après prompting soigné, passer au <strong>RAG</strong> (qui injecte du contexte pertinent).</li>
+<li>N'envisager le <strong>fine-tuning</strong> que pour des cas très spécialisés et un volume d'usage qui justifie le coût.</li>
+</ol>
+
+</details>
+
+<p><strong>Q3 : Vous utilisez Copilot/Cursor pour générer un script qui appelle une API. Le code semble bon mais vous remarquez que la clé d'API est en dur dans le fichier. Que faut-il faire et pourquoi est-ce un problème de sécurité critique ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Git history.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Trois actions immédiates</strong> :</p>
+
+<ol>
+<li><strong>Déplacer la clé hors du code</strong> dans une variable d'environnement (<code>os.getenv(&quot;API_KEY&quot;)</code>) ou un <code>.env</code> chargé via <code>python-dotenv</code>.</li>
+<li><strong>Ajouter <code>.env</code> au <code>.gitignore</code></strong> dès maintenant.</li>
+<li>Si vous avez <strong>déjà committé</strong> la clé, considérez-la <strong>compromise</strong> : elle est dans l'historique git <strong>pour toujours</strong> et sera détectée par des bots dans les heures qui suivent un push. <strong>Révoquez-la chez le fournisseur et générez-en une nouvelle</strong>.</li>
+</ol>
+
+<p><strong>Pourquoi c'est critique</strong> : un repo public avec une clé OpenAI est typiquement détecté en <strong>moins de 5 minutes</strong> par des scripts automatisés, et utilisée pour du minage de crypto ou de la génération de spam — <strong>vous payez la facture</strong>.</p>
+
+<p>Pour les repos privés c'est moins urgent mais reste un risque.</p>
+
+<p><strong>Leçon générale</strong> : les LLM génèrent souvent des exemples avec des secrets en dur parce que <strong>c'est ce qu'il y a dans leur dataset d'entraînement</strong> (Stack Overflow est plein de mauvais exemples). Vous devez <strong>toujours</strong> revoir et corriger ce pattern.</p>
+
+<p>Question d'entretien sécurité classique : <em>"Comment géreriez-vous des secrets dans une application Python ?"</em> — réponse : variables d'environnement, gestionnaires de secrets cloud, jamais en dur.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank" rel="noopener">OpenAI Prompt Engineering Guide</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener">Anthropic Prompt Engineering</a></li>
+<li><a href="https://www.promptingguide.ai/" target="_blank" rel="noopener">Prompt Engineering Guide</a> — référence open source</li>
+<li><em>AI Engineering</em> (Chip Huyen) — pour aller au-delà du prompting : RAG, fine-tuning, eval</li>
+<li><a href="https://docs.github.com/en/copilot/using-github-copilot/best-practices-for-using-github-copilot" target="_blank" rel="noopener">GitHub Copilot best practices</a></li>
+<li><a href="https://www.youtube.com/watch?v=zjkBMFhNj_g" target="_blank" rel="noopener">Karpathy: Intro to LLMs</a> — vidéo de fond pour comprendre comment ça marche</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../data-toolkit/python-reboot.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Python Reboot</span>
+  </a>
+  <a href="../mathematiques/algebra-calculus.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Algebra & Calculus →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

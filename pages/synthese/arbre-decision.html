@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arbre de décision modèles — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Arbre de décision modèles</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html" class="active">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Synthèses & Cheatsheets</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Arbre de décision modèles</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Arbre de décision modèles</h1>
+        <p class="page-objective">Guide visuel pour choisir le bon modèle sklearn selon ta situation. Lis de haut en bas, réponds aux questions, arrive au modèle.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Décision</div>
+        <div class="key-concept-def">Choisir le bon modèle selon le type de problème et de données.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Type de cible</div>
+        <div class="key-concept-def">Continue → régression ; catégorielle → classification ; aucune → clustering.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Volume de données</div>
+        <div class="key-concept-def">Petit → modèles linéaires ; gros → ensembles ou DL.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Interprétabilité</div>
+        <div class="key-concept-def">Critère parfois plus important que la performance pure.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#régression-target-continue">Régression (target continue)</a><li><a href="#classification-target-catégorielle">Classification (target catégorielle)</a><li><a href="#résumé-express">Résumé express</a></ol></div>
+<p>Guide visuel pour choisir le bon modèle sklearn selon ta situation. Lis de haut en bas, réponds aux questions, arrive au modèle.</p>
+
+<hr>
+
+<h2 id="régression-target-continue">Régression (target continue)</h2>
+
+<ul>
+<li>💡 J'ai besoin d'interpréter les coefficients</li>
+<li>✅ Le modèle linéaire ne surappend pas (train ≈ test)</li>
+</ul>
+
+<div class="callout callout-success"><div class="callout-icon">🎯</div><div class="callout-content"><p><strong>→ <code>LinearRegression()</code></strong></p>
+<p><strong>Scaling</strong> : non requis</p>
+<p><strong>Pourquoi</strong> : OLS classique, coefficients directement interprétables, p-values via statsmodels. Baseline de référence.</p>
+<p><strong>Tuning</strong> : aucun hyperparamètre.</p></div></div>
+<ul>
+<li>⚠️ Le modèle overfit (train >> test) et je veux réduire les features</li>
+</ul>
+
+<div class="callout callout-success"><div class="callout-icon">🎯</div><div class="callout-content"><p><strong>→ <code>Lasso(alpha=1.0)</code> ou <code>ElasticNet(alpha=1, l1_ratio=0.5)</code></strong></p>
+<p><strong>Scaling</strong> : OUI obligatoire</p>
+<p><strong>Pourquoi</strong> : L1 annule les coefficients non-significatifs → feature selection automatique. ElasticNet = compromis L1+L2 si features corrélées.</p>
+<p><strong>Tuning</strong> : <code>alpha</code> via GridSearch sur <code>[0.001, 0.01, 0.1, 1, 10]</code>. Pour ElasticNet, ajouter <code>l1_ratio</code> via <code>stats.uniform(0, 1)</code>.</p></div></div>
+<ul>
+<li>⚠️ Le modèle overfit mais je veux garder toutes les features</li>
+</ul>
+
+<div class="callout callout-success"><div class="callout-icon">🎯</div><div class="callout-content"><p><strong>→ <code>Ridge(alpha=1.0)</code></strong></p>
+<p><strong>Scaling</strong> : OUI obligatoire</p>
+<p><strong>Pourquoi</strong> : L2 réduit tous les coefficients vers 0 sans les annuler. Gère bien la multicolinéarité.</p>
+<p><strong>Tuning</strong> : <code>alpha</code> via GridSearch sur <code>[0.01, 0.1, 1, 10, 100]</code>.</p></div></div>
+<ul>
+<li>📈 La relation n'est pas linéaire (pattern dans les résidus)</li>
+</ul>
+
+<div class="callout callout-success"><div class="callout-icon">🎯</div><div class="callout-content"><p><strong>→ <code>make_pipeline(PolynomialFeatures(degree=2), StandardScaler(), Ridge())</code></strong></p>
+<p><strong>Scaling</strong> : OUI obligatoire</p>
+<p><strong>Pourquoi</strong> : Ajoute x² et interactions x₁·x₂ tout en gardant un modèle interprétable + régularisé.</p>
+<p><strong>Tuning</strong> : <code>degree</code> (2 max en général) + <code>alpha</code> du Ridge. Degree 3+ = explosion combinatoire → overfit.</p></div></div>
+<ul>
+<li>🚀 Je veux la meilleure performance (boîte noire OK)</li>
+<li>📊 Dataset très grand (n > 100K ou p > 1000)</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🎯</div><div class="callout-content"><p><strong>→ <code>SGDRegressor(loss=&#x27;squared_error&#x27;)</code></strong></p>
+<p><strong>Scaling</strong> : OUI obligatoire</p>
+<p><strong>Pourquoi</strong> : O(n) vs O(p³) pour LinearRegression. loss='huber' si outliers.</p>
+<p><strong>Tuning</strong> : <code>loss</code>, <code>eta0</code>, <code>penalty</code> (l1/l2/elasticnet), <code>max_iter</code>.</p></div></div>
+<ul>
+<li>📉 Relation linéaire, dataset de taille raisonnable</li>
+</ul>
+
+<div class="callout callout-success"><div class="callout-icon">🎯</div><div class="callout-content"><p><strong>→ <code>Ridge(alpha=1.0)</code></strong></p>
+<p><strong>Scaling</strong> : OUI obligatoire</p>
+<p><strong>Pourquoi</strong> : Régularisation presque toujours bénéfique même sans overfit visible.</p>
+<p><strong>Tuning</strong> : <code>alpha</code> via GridSearch.</p></div></div>
+<ul>
+<li>🌀 Relation non-linéaire + outliers ou données bruitées</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">🎯</div><div class="callout-content"><p><strong>→ <code>RandomForestRegressor(n_estimators=100, n_jobs=-1)</code></strong></p>
+<p><strong>Scaling</strong> : NON requis</p>
+<p><strong>Pourquoi</strong> : Bagging d'arbres = robuste aux outliers, réduit la variance. OOB score = validation gratuite (~37% non tirés).</p>
+<p><strong>Tuning</strong> : <code>n_estimators</code> (100+), <code>max_depth</code> (5–15), <code>min_samples_leaf</code>.</p></div></div>
+<ul>
+<li>🌀 Relation non-linéaire + données propres → performance max</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">🎯</div><div class="callout-content"><p><strong>→ <code>XGBRegressor(n_estimators=100, learning_rate=0.1, early_stopping_rounds=5)</code></strong></p>
+<p><strong>Scaling</strong> : NON requis</p>
+<p><strong>Pourquoi</strong> : Boosting séquentiel sur les résidus. Régularisation L1/L2 intégrée. Souvent le meilleur score brut.</p>
+<p><strong>Tuning</strong> : <code>learning_rate</code> (0.01–0.1), <code>n_estimators</code>, <code>max_depth</code>, <code>early_stopping_rounds</code>. Attention : sensible aux outliers.</p></div></div>
+<ul>
+<li>🌀 Relation non-linéaire + peu de features + dataset petit</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🎯</div><div class="callout-content"><p><strong>→ <code>SVR(kernel=&#x27;rbf&#x27;, C=1.0, gamma=&#x27;scale&#x27;)</code></strong></p>
+<p><strong>Scaling</strong> : OUI obligatoire</p>
+<p><strong>Pourquoi</strong> : Kernel trick = projection implicite en haute dimension. Lent si n > 10K.</p>
+<p><strong>Tuning</strong> : <code>C</code> + <code>gamma</code> toujours ensemble via GridSearch. <code>epsilon</code> = largeur du tube.</p></div></div>
+
+<hr>
+
+<h2 id="classification-target-catégorielle">Classification (target catégorielle)</h2>
+
+<ul>
+<li>💡 J'ai besoin d'interpréter les coefficients (log-odds)</li>
+</ul>
+
+<p>> <strong>→ <code>LogisticRegression(solver=&#x27;lbfgs&#x27;, max_iter=1000)</code></strong></p>
+<p>></p>
+
+<p>> <strong>Scaling</strong> : OUI obligatoire</p>
+<p>></p>
+
+<p>> <strong>Pourquoi</strong> : Classifieur calibré (predict_proba fiable). Coefficients = log-odds interprétables. Ajustement du seuil de classification possible.</p>
+<p>></p>
+
+<p>> <strong>Tuning</strong> : <code>C</code> (= 1/alpha), <code>penalty</code> (l1/l2), <code>solver</code>. Pour sélection de features : <code>penalty=&#x27;l1&#x27;, solver=&#x27;saga&#x27;</code>.</p>
+<p>></p>
+<ul>
+<li>🌲 J'ai besoin d'un arbre visualisable (stakeholder non-tech)</li>
+</ul>
+
+<p>> <strong>→ <code>DecisionTreeClassifier(max_depth=5)</code></strong></p>
+<p>></p>
+
+<p>> <strong>Scaling</strong> : NON requis</p>
+<p>></p>
+
+<p>> <strong>Pourquoi</strong> : Visualisable avec graphviz, feature_importances_ intégré. Seul : très sujet à l'overfit.</p>
+<p>></p>
+
+<p>> <strong>Tuning</strong> : <code>max_depth</code> (crucial !), <code>min_samples_split</code>, <code>min_samples_leaf</code>. Sans max_depth → R² train=1.0, test≈0.</p>
+<p>></p>
+<ul>
+<li>🚀 Je veux la meilleure performance (boîte noire OK)</li>
+<li>📊 Dataset très grand (n > 100K)</li>
+</ul>
+
+<p>> <strong>→ <code>SGDClassifier(loss=&#x27;log_loss&#x27;)</code></strong></p>
+<p>></p>
+
+<p>> <strong>Scaling</strong> : OUI obligatoire</p>
+<p>></p>
+
+<p>> <strong>Pourquoi</strong> : loss='log_loss' = LogisticRegression, loss='hinge' = SVM. Très rapide sur grands datasets.</p>
+<p>></p>
+
+<p>> <strong>Tuning</strong> : <code>loss</code>, <code>eta0</code>, <code>penalty</code>, <code>max_iter</code>.</p>
+<p>></p>
+<ul>
+<li>📏 Frontière de décision linéaire (classes bien séparées)</li>
+</ul>
+
+<p>> <strong>→ <code>SVC(kernel=&#x27;linear&#x27;, C=1.0)</code></strong></p>
+<p>></p>
+
+<p>> <strong>Scaling</strong> : OUI obligatoire</p>
+<p>></p>
+
+<p>> <strong>Pourquoi</strong> : Maximise la marge entre les classes. C élevé = marge stricte, C faible = marge souple.</p>
+<p>></p>
+
+<p>> <strong>Tuning</strong> : <code>C</code> via GridSearch sur <code>[0.01, 0.1, 1, 10, 100]</code>.</p>
+<p>></p>
+<ul>
+<li>🌀 Frontière non-linéaire + données bruitées / outliers</li>
+</ul>
+
+<p>> <strong>→ <code>RandomForestClassifier(n_estimators=100, n_jobs=-1)</code></strong></p>
+<p>></p>
+
+<p>> <strong>Scaling</strong> : NON requis</p>
+<p>></p>
+
+<p>> <strong>Pourquoi</strong> : Vote majoritaire entre arbres bootstrapés. Robuste au bruit et aux outliers. OOB score gratuit.</p>
+<p>></p>
+
+<p>> <strong>Tuning</strong> : <code>n_estimators</code> (100+), <code>max_depth</code>, <code>min_samples_leaf</code>.</p>
+<p>></p>
+<ul>
+<li>🌀 Frontière non-linéaire + données propres → performance max</li>
+</ul>
+
+<p>> <strong>→ <code>XGBClassifier(n_estimators=100, learning_rate=0.1, early_stopping_rounds=5)</code></strong></p>
+<p>></p>
+
+<p>> <strong>Scaling</strong> : NON requis</p>
+<p>></p>
+
+<p>> <strong>Pourquoi</strong> : Boosting séquentiel. Souvent le meilleur score brut. Early stopping évite l'overfit.</p>
+<p>></p>
+
+<p>> <strong>Tuning</strong> : <code>learning_rate</code> (0.01–0.1), <code>n_estimators</code>, <code>max_depth</code>, <code>early_stopping_rounds</code>.</p>
+<p>></p>
+<ul>
+<li>🌀 Frontière non-linéaire + peu de données (n < 10K)</li>
+</ul>
+
+<p>> <strong>→ <code>SVC(kernel=&#x27;rbf&#x27;, C=1.0, gamma=&#x27;scale&#x27;)</code></strong></p>
+<p>></p>
+
+<p>> <strong>Scaling</strong> : OUI obligatoire</p>
+<p>></p>
+
+<p>> <strong>Pourquoi</strong> : Kernel trick gaussien. Très efficace sur petits datasets. Lent si n > 10K.</p>
+<p>></p>
+
+<p>> <strong>Tuning</strong> : <code>C</code> + <code>gamma</code> toujours ensemble. Petit gamma = lisse (underfit), grand gamma = irrégulier (overfit).</p>
+<p>></p>
+
+<hr>
+
+<h2 id="résumé-express">Résumé express</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Modèle</th><th>Scaling</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td><code>LinearRegression</code></td><td>Non</td><td>Baseline, interprétabilité, pas d'overfit</td></tr><tr><td><code>Ridge</code></td><td>Oui</td><td>Linéaire + overfit, garder toutes les features</td></tr><tr><td><code>Lasso</code> / <code>ElasticNet</code></td><td>Oui</td><td>Linéaire + overfit, sélection de features</td></tr><tr><td><code>Poly + Ridge</code></td><td>Oui</td><td>Non-linéaire + interprétabilité</td></tr><tr><td><code>LogisticRegression</code></td><td>Oui</td><td>Classification interprétable, ajustement seuil</td></tr><tr><td><code>KNN</code></td><td>Oui</td><td>Non-linéaire simple, peu de features</td></tr><tr><td><code>SVC / SVR</code></td><td>Oui</td><td>Kernel trick, n < 10K, frontière complexe</td></tr><tr><td><code>SGDRegressor / Classifier</code></td><td>Oui</td><td>n > 100K ou p > 1000</td></tr><tr><td><code>DecisionTree</code></td><td>Non</td><td>Visualisable, explicable à un non-tech</td></tr><tr><td><code>RandomForest</code></td><td>Non</td><td>Non-linéaire + outliers + robustesse</td></tr><tr><td><code>GradientBoosting</code></td><td>Non</td><td>Performance, données propres</td></tr><tr><td><code>XGBoost</code></td><td>Non</td><td>Performance max, early stopping, Kaggle</td></tr></tbody></table></div>
+<blockquote><p><strong>Règle générale</strong> : les modèles basés sur la <strong>distance</strong> (KNN, SVM, régularisation) exigent du scaling. Les modèles basés sur des <strong>arbres</strong> (DT, RF, XGB) n'en ont pas besoin car les splits sont basés sur l'ordre, pas la magnitude.<br></p></blockquote>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-a-retenir">A retenir</a></li><li><a href="#ref-mini-plan">Mini-plan</a></li></ol></li><li><a href="#ref-partie-1-régression-la-cible-est-un-nombre-continu">📈 Partie 1 — Régression (la cible est un nombre continu)</a><ol><li><a href="#ref-branche-1-tu-as-besoin-de-comprendre-les-coefficients">🔍 Branche 1 — Tu as besoin de comprendre les coefficients</a></li><li><a href="#ref-branche-2-tu-veux-la-meilleure-performance-boîte-noire-acceptable">Branche 2 — Tu veux la meilleure performance (boîte noire acceptable)</a></li></ol></li><li><a href="#ref-partie-2-classification-la-cible-est-une-catégorie">🏷️ Partie 2 — Classification (la cible est une catégorie)</a><ol><li><a href="#ref-cas-31-tu-as-besoin-dinterpréter-les-coefficients">💡 Cas 3.1 — Tu as besoin d'interpréter les coefficients</a></li><li><a href="#ref-cas-32-tu-as-besoin-dun-arbre-visualisable-pour-un-non-technique">🌲 Cas 3.2 — Tu as besoin d'un arbre visualisable pour un non-technique</a></li><li><a href="#ref-branche-4-tu-veux-la-meilleure-performance-boîte-noire-acceptable">Branche 4 — Tu veux la meilleure performance (boîte noire acceptable)</a></li></ol></li><li><a href="#ref-résumé-des-règles-de-scaling">Résumé des règles de scaling</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Imagines-toi guide touristique. Un touriste te dit : "Je veux aller à Lyon." Tu ne lui proposes pas systématiquement le même transport. Tu lui poses des questions : c'est loin ? Il a des bagages ? Il veut aller vite ou pas cher ? Il a un budget limité ? Selon ses réponses, tu lui dis : "Prends le TGV", "Loue une voiture", "Prend le bus".</p>
+
+<p>En Machine Learning, c'est pareil. On ne choisit pas un modèle au hasard. On suit un <strong>arbre de décision</strong> : une série de questions qui nous guide vers le bon modèle selon la situation réelle.</p>
+
+<h3 id="ref-a-retenir">A retenir</h3>
+
+<ul>
+<li>Il n'existe pas un "meilleur modèle universel" — tout dépend du contexte.</li>
+<li>La première question à se poser : <strong>est-ce que je prédit un nombre ou une catégorie ?</strong> (régression vs classification)</li>
+<li>La deuxième question : <strong>est-ce que j'ai besoin de comprendre ce que fait le modèle ?</strong> (interprétabilité vs performance brute)</li>
+<li>Certains modèles exigent un <strong>scaling</strong> (mise à l'échelle des données), d'autres non.</li>
+<li>Le <strong>surapprentissage (overfit)</strong> — quand un modèle marche très bien sur les données d'entraînement mais mal sur de nouvelles données — est un signal clé pour choisir le bon modèle.</li>
+</ul>
+
+<h3 id="ref-mini-plan">Mini-plan</h3>
+
+<ol>
+<li>Régression — quand la cible est un nombre</li>
+<li>Classification — quand la cible est une catégorie</li>
+<li>Questions de vérification</li>
+<li>TL;DR</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-partie-1-régression-la-cible-est-un-nombre-continu">📈 Partie 1 — Régression (la cible est un nombre continu)</h2>
+
+<p>La régression répond à des questions du type :</p>
+<ul>
+<li>"Combien va coûter cet appartement ?"</li>
+<li>"Quelle sera la température demain ?"</li>
+<li>"Combien d'unités va-t-on vendre ce mois-ci ?"</li>
+</ul>
+
+<p>La cible (ce qu'on prédit) est un <strong>nombre</strong>, pas une catégorie.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Un nombre "continu" peut prendre n'importe quelle valeur : 42, 42.7, 42.73… C'est différent d'une classe comme "chat" ou "chien".</p></div></div>
+
+<hr>
+
+<h3 id="ref-branche-1-tu-as-besoin-de-comprendre-les-coefficients">🔍 Branche 1 — Tu as besoin de comprendre les coefficients</h3>
+
+<blockquote><p>"Je veux pouvoir expliquer à mon patron ce qui influence le prix."</p></blockquote>
+
+<p>Tu te trouves dans ce cas si tu dois <strong>justifier les résultats</strong> ou <strong>identifier quelles variables comptent le plus</strong>.</p>
+
+<hr>
+
+<h4 id="ref-cas-11-le-modèle-ne-surappend-pas-train-test">✅ Cas 1.1 — Le modèle ne surappend pas (train ≈ test)</h4>
+
+<p><strong>La situation concrète :</strong> Tu entraînes ton modèle, tu compares le score sur les données d'entraînement (train) et sur les données de test. Les deux sont proches. Tout va bien.</p>
+
+<p><strong>Exemple :</strong> Tu prédis le prix d'une maison avec 5 variables (surface, nombre de pièces, étage, ville, année). Le modèle simple marche déjà bien.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+model.fit(X_train, y_train)</code></pre></div>
+
+
+<p><strong>Pourquoi ce modèle ?</strong></p>
+<ul>
+<li>Chaque coefficient est directement lisible : "chaque m² supplémentaire ajoute 3 000 € au prix".</li>
+<li>C'est la <strong>baseline</strong> (le point de départ) : si un modèle plus complexe ne fait pas mieux, inutile de le compliquer.</li>
+<li>Pas d'hyperparamètre à régler — c'est prêt à l'emploi.</li>
+</ul>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Scaling requis : NON. La régression linéaire classique n'est pas sensible à l'échelle des variables.</p></div></div>
+
+<hr>
+
+<h4 id="ref-cas-12-le-modèle-surappend-et-tu-veux-éliminer-les-variables-inutiles">⚠️ Cas 1.2 — Le modèle surappend ET tu veux éliminer les variables inutiles</h4>
+
+<p><strong>La situation concrète :</strong> Score train = 0.95, score test = 0.60. Ton modèle a "mémorisé" les données au lieu d'apprendre. Et en plus, tu as beaucoup de variables dont certaines sont probablement sans intérêt.</p>
+
+<p><strong>Exemple :</strong> Tu prédis le salaire d'un employé avec 50 variables. Beaucoup sont redondantes ou inutiles. Tu veux que le modèle fasse lui-même le tri.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import Lasso, ElasticNet
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
+
+# Lasso : élimine les variables inutiles
+model = make_pipeline(StandardScaler(), Lasso(alpha=1.0))
+
+# ElasticNet : si les variables sont corrélées entre elles
+model = make_pipeline(StandardScaler(), ElasticNet(alpha=1.0, l1_ratio=0.5))</code></pre></div>
+
+
+<p><strong>Pourquoi ce modèle ?</strong></p>
+<ul>
+<li><strong>Lasso</strong> utilise une pénalité L1 qui force certains coefficients à tomber exactement à zéro — c'est une <strong>sélection automatique de features</strong>.</li>
+<li><strong>ElasticNet</strong> combine L1 et L2 : utile quand plusieurs variables sont corrélées (ex : taille et poids vont souvent ensemble).</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Scaling requis : OUI obligatoire. Si une variable est en euros (0–100 000) et une autre en pourcentage (0–100), la pénalité va faussement privilégier la deuxième. Le scaling met tout à la même échelle.</p></div></div>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Tuning : cherche la valeur optimale d'<code>alpha</code> avec un GridSearch sur <code>[0.001, 0.01, 0.1, 1, 10]</code>. Plus <code>alpha</code> est grand, plus les coefficients sont écrasés.</p></div></div>
+
+<hr>
+
+<h4 id="ref-cas-13-le-modèle-surappend-mais-tu-veux-garder-toutes-tes-variables">⚠️ Cas 1.3 — Le modèle surappend MAIS tu veux garder toutes tes variables</h4>
+
+<p><strong>La situation concrète :</strong> Même problème d'overfit, mais toutes tes variables sont importantes et tu ne veux pas en perdre.</p>
+
+<p><strong>Exemple :</strong> Tu analyses l'impact de 20 indicateurs économiques sur le PIB. Chacun a un sens métier, tu ne veux pas en sacrifier.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import Ridge
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
+
+model = make_pipeline(StandardScaler(), Ridge(alpha=1.0))</code></pre></div>
+
+
+<p><strong>Pourquoi ce modèle ?</strong></p>
+<ul>
+<li><strong>Ridge</strong> utilise une pénalité L2 qui réduit les coefficients vers zéro sans jamais les annuler complètement.</li>
+<li>Gère très bien la <strong>multicolinéarité</strong> (quand des variables sont corrélées).</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Scaling requis : OUI obligatoire. Même raison que pour Lasso.</p></div></div>
+
+<hr>
+
+<h4 id="ref-cas-14-la-relation-nest-pas-linéaire-il-y-a-une-courbe">📈 Cas 1.4 — La relation n'est pas linéaire (il y a une courbe)</h4>
+
+<p><strong>La situation concrète :</strong> En traçant tes résidus (erreurs de prédiction), tu vois un pattern — une courbe, des vagues. Ce n'est pas du bruit aléatoire. Le modèle linéaire est structurellement insuffisant.</p>
+
+<p><strong>Exemple :</strong> La consommation d'énergie d'une ville augmente de façon exponentielle en été (climatiseurs). Une droite ne peut pas capturer ça.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import PolynomialFeatures, StandardScaler
+from sklearn.linear_model import Ridge
+from sklearn.pipeline import make_pipeline
+
+model = make_pipeline(
+    PolynomialFeatures(degree=2),
+    StandardScaler(),
+    Ridge(alpha=1.0)
+)</code></pre></div>
+
+
+<p><strong>Pourquoi ce modèle ?</strong></p>
+<ul>
+<li><code>PolynomialFeatures</code> crée de nouvelles variables : x², x₁·x₂, etc. On garde ainsi l'interprétabilité tout en capturant des courbes.</li>
+<li><code>Ridge</code> en fin de pipeline pour éviter l'overfit qui arrive vite avec des features polynomiales.</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais dépasser <code>degree=2</code> ou <code>3</code> sans raison forte. Avec degree=4 ou plus, le nombre de variables explose et le modèle overfit massivement.</p></div></div>
+
+<hr>
+
+<h3 id="ref-branche-2-tu-veux-la-meilleure-performance-boîte-noire-acceptable">🚀 Branche 2 — Tu veux la meilleure performance (boîte noire acceptable)</h3>
+
+<blockquote><p>"Je m'en fiche de comprendre comment ça marche, je veux le meilleur score."</p></blockquote>
+
+<hr>
+
+<h4 id="ref-cas-21-dataset-très-grand-plus-de-100-000-lignes-ou-1-000-colonnes">📊 Cas 2.1 — Dataset très grand (plus de 100 000 lignes ou 1 000 colonnes)</h4>
+
+<p><strong>La situation concrète :</strong> Ton fichier est énorme. Les modèles classiques mettent des heures à s'entraîner.</p>
+
+<p><strong>Exemple :</strong> Tu analyses les transactions d'une banque — 5 millions de lignes, 200 colonnes.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import SGDRegressor
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
+
+model = make_pipeline(
+    StandardScaler(),
+    SGDRegressor(loss=&#x27;squared_error&#x27;, max_iter=1000)
+)
+# Si tu as des outliers, utilise loss=&#x27;huber&#x27;</code></pre></div>
+
+
+<p><strong>Pourquoi ce modèle ?</strong></p>
+<ul>
+<li><code>SGDRegressor</code> apprend <strong>par petits paquets</strong> (stochastic gradient descent), pas sur tout le dataset d'un coup.</li>
+<li>Complexité O(n) au lieu de O(p³) pour la régression linéaire classique — incomparablement plus rapide sur de très grands volumes.</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>SGD = Stochastic Gradient Descent. "Stochastic" = aléatoire. Au lieu de regarder toutes les données pour faire un pas, il en regarde un tout petit échantillon. C'est moins précis à chaque pas, mais beaucoup plus rapide.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Scaling requis : OUI obligatoire. SGD est particulièrement sensible à l'échelle.</p></div></div>
+
+<hr>
+
+<h4 id="ref-cas-22-relation-linéaire-dataset-de-taille-normale">📉 Cas 2.2 — Relation linéaire, dataset de taille normale</h4>
+
+<p><strong>La situation concrète :</strong> Pas besoin d'interpréter les coefficients, les données sont "normales" (quelques milliers à dizaines de milliers de lignes).</p>
+
+<p><strong>Exemple :</strong> Prédire le prix d'une voiture d'occasion à partir de 10 caractéristiques.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import Ridge
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
+
+model = make_pipeline(StandardScaler(), Ridge(alpha=1.0))</code></pre></div>
+
+
+<p><strong>Pourquoi ce modèle ?</strong></p>
+<ul>
+<li>Même sans overfit visible, une légère régularisation (Ridge) est <strong>presque toujours bénéfique</strong> — ça ne fait pas de mal et souvent ça aide un peu.</li>
+</ul>
+
+<hr>
+
+<h4 id="ref-cas-23-relation-non-linéaire-données-bruitées-ou-outliers">🌀 Cas 2.3 — Relation non-linéaire + données bruitées ou outliers</h4>
+
+<p><strong>La situation concrète :</strong> Les données ont des valeurs aberrantes (outliers), des erreurs de mesure, beaucoup de bruit. Tu veux un modèle robuste.</p>
+
+<p><strong>Exemple :</strong> Prédire la consommation électrique horaire d'un bâtiment sur un an. Il y a des pics bizarres (pannes, événements), beaucoup de variabilité.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import RandomForestRegressor
+
+model = RandomForestRegressor(n_estimators=100, n_jobs=-1)
+model.fit(X_train, y_train)</code></pre></div>
+
+
+<p><strong>Pourquoi ce modèle ?</strong></p>
+<ul>
+<li><strong>Random Forest</strong> = une "forêt" de nombreux arbres de décision. Chacun est entraîné sur un sous-échantillon aléatoire des données.</li>
+<li>Le vote (ou la moyenne) de tous ces arbres rend le modèle <strong>robuste aux outliers</strong> et réduit la variance.</li>
+<li>OOB score (Out-Of-Bag) : environ 37% des données ne sont jamais vus par chaque arbre → validation quasi-gratuite sans cross-validation séparée.</li>
+</ul>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Scaling requis : NON. Les arbres fonctionnent par seuils (splits), pas par distance. L'échelle des valeurs ne change pas l'ordre, donc ça n'a pas d'importance.</p></div></div>
+
+<hr>
+
+<h4 id="ref-cas-24-relation-non-linéaire-données-propres-performance-maximale">🌀 Cas 2.4 — Relation non-linéaire + données propres → performance maximale</h4>
+
+<p><strong>La situation concrète :</strong> Tes données sont bien préparées, pas trop d'outliers. Tu veux le meilleur score possible. On est en mode compétition.</p>
+
+<p><strong>Exemple :</strong> Kaggle. Prédire les prix des maisons (la compétition classique).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from xgboost import XGBRegressor
+
+model = XGBRegressor(
+    n_estimators=100,
+    learning_rate=0.1,
+    early_stopping_rounds=5
+)
+model.fit(X_train, y_train, eval_set=[(X_val, y_val)], verbose=False)</code></pre></div>
+
+
+<p><strong>Pourquoi ce modèle ?</strong></p>
+<ul>
+<li><strong>XGBoost</strong> = boosting séquentiel. Chaque nouvel arbre corrige les <strong>erreurs résiduelles</strong> du précédent.</li>
+<li>Régularisation L1/L2 intégrée. Early stopping = stoppe automatiquement quand ça n'améliore plus.</li>
+<li>C'est souvent le modèle qui donne le <strong>meilleur score brut</strong>.</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>XGBoost est sensible aux outliers (contrairement à Random Forest). Si tes données ont beaucoup d'aberrations, préfère Random Forest. Scaling requis : NON.</p></div></div>
+
+<hr>
+
+<h4 id="ref-cas-25-relation-non-linéaire-peu-de-features-petit-dataset">🌀 Cas 2.5 — Relation non-linéaire + peu de features + petit dataset</h4>
+
+<p><strong>La situation concrète :</strong> Tu n'as pas beaucoup de données (moins de 10 000 lignes) et peu de variables. C'est un cas souvent rencontré en sciences ou en médecine.</p>
+
+<p><strong>Exemple :</strong> Prédire la résistance d'un matériau à partir de 4 propriétés chimiques mesurées sur 500 échantillons.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.svm import SVR
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
+
+model = make_pipeline(StandardScaler(), SVR(kernel=&#x27;rbf&#x27;, C=1.0, gamma=&#x27;scale&#x27;))</code></pre></div>
+
+
+<p><strong>Pourquoi ce modèle ?</strong></p>
+<ul>
+<li>Le <strong>kernel trick</strong> du SVR projette implicitement les données dans un espace de très haute dimension où la relation devient linéaire.</li>
+<li>Très efficace sur des <strong>petits datasets bien structurés</strong>.</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>SVR devient très lent au-delà de 10 000 lignes. Si tu as plus de données, reviens au Random Forest ou XGBoost. Scaling requis : OUI obligatoire.</p></div></div>
+
+<hr>
+
+<h2 id="ref-partie-2-classification-la-cible-est-une-catégorie">🏷️ Partie 2 — Classification (la cible est une catégorie)</h2>
+
+<p>La classification répond à des questions du type :</p>
+<ul>
+<li>"Cet email est-il un spam ou non ?"</li>
+<li>"Ce client va-t-il partir (churn) ?"</li>
+<li>"Ce patient a-t-il une maladie A, B ou C ?"</li>
+</ul>
+
+<p>La cible est une <strong>étiquette</strong> (0/1, "chat"/"chien", "A"/"B"/"C"…).</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>En classification, on prédit une appartenance à une classe. En régression, on prédit une valeur. C'est la distinction fondamentale qui oriente tout le reste.</p></div></div>
+
+<hr>
+
+<h3 id="ref-cas-31-tu-as-besoin-dinterpréter-les-coefficients">💡 Cas 3.1 — Tu as besoin d'interpréter les coefficients</h3>
+
+<p><strong>La situation concrète :</strong> Tu veux comprendre comment chaque variable influence la probabilité d'appartenir à une classe.</p>
+
+<p><strong>Exemple :</strong> Prédire si un client va rembourser son crédit. Tu dois pouvoir justifier le refus auprès du régulateur ("le refus est basé sur le revenu et la durée d'emploi").</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
+
+model = make_pipeline(
+    StandardScaler(),
+    LogisticRegression(solver=&#x27;lbfgs&#x27;, max_iter=1000)
+)</code></pre></div>
+
+
+<p><strong>Pourquoi ce modèle ?</strong></p>
+<ul>
+<li><code>predict_proba()</code> donne une vraie probabilité (0.73 = "73% de chance d'être dans la classe 1").</li>
+<li>Coefficients = <strong>log-odds</strong> interprétables : "un revenu supplémentaire de 1 000 € multiplie les chances par 1.3".</li>
+<li>On peut ajuster le <strong>seuil de décision</strong> (par défaut 0.5) selon le contexte (ex : en médecine on préfère être prudent et descendre le seuil à 0.3).</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Pour la sélection de features en classification : utilise <code>penalty=&#x27;l1&#x27;, solver=&#x27;saga&#x27;</code>. C'est le Lasso de la classification.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Scaling requis : OUI obligatoire.</p></div></div>
+
+<hr>
+
+<h3 id="ref-cas-32-tu-as-besoin-dun-arbre-visualisable-pour-un-non-technique">🌲 Cas 3.2 — Tu as besoin d'un arbre visualisable pour un non-technique</h3>
+
+<p><strong>La situation concrète :</strong> Tu dois présenter ton modèle à des gens qui n'y connaissent rien en ML. Tu veux un schéma lisible que tout le monde peut suivre.</p>
+
+<p><strong>Exemple :</strong> Tu développes un outil d'aide au diagnostic pour des médecins. Ils veulent voir exactement la logique de décision : "si fièvre > 38.5 ET toux persistante → suspicion grippe".</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.tree import DecisionTreeClassifier, export_graphviz
+import graphviz
+
+model = DecisionTreeClassifier(max_depth=5)
+model.fit(X_train, y_train)
+
+# Visualisation de l&#x27;arbre
+dot_data = export_graphviz(model, feature_names=feature_names, class_names=class_names, filled=True)
+graph = graphviz.Source(dot_data)
+graph.render(&quot;arbre_decision&quot;)</code></pre></div>
+
+
+<p><strong>Pourquoi ce modèle ?</strong></p>
+<ul>
+<li>L'arbre est <strong>visuellement compréhensible</strong> : chaque nœud est une question, chaque feuille est une décision.</li>
+<li><code>feature_importances_</code> indique quelles variables comptent le plus.</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>ATTENTION : sans <code>max_depth</code>, un arbre seul va mémoriser parfaitement les données d'entraînement (score train = 1.0) mais sera nul en généralisation (score test ≈ 0). Toujours limiter la profondeur. Scaling requis : NON.</p></div></div>
+
+<hr>
+
+<h3 id="ref-branche-4-tu-veux-la-meilleure-performance-boîte-noire-acceptable">🚀 Branche 4 — Tu veux la meilleure performance (boîte noire acceptable)</h3>
+
+<hr>
+
+<h4 id="ref-cas-41-dataset-très-grand-plus-de-100-000-lignes">📊 Cas 4.1 — Dataset très grand (plus de 100 000 lignes)</h4>
+
+<p><strong>La situation concrète :</strong> Même logique que pour la régression : le volume est tel que les modèles classiques sont trop lents.</p>
+
+<p><strong>Exemple :</strong> Classer 10 millions de tweets selon leur sentiment (positif / négatif / neutre).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import SGDClassifier
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
+
+model = make_pipeline(
+    StandardScaler(),
+    SGDClassifier(loss=&#x27;log_loss&#x27;, max_iter=1000)
+)
+# loss=&#x27;log_loss&#x27; = équivalent LogisticRegression
+# loss=&#x27;hinge&#x27; = équivalent SVM linéaire</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>SGDClassifier</code> est un "couteau suisse" : en changeant juste le paramètre <code>loss</code>, tu changes complètement de modèle. C'est le même algorithme d'optimisation, appliqué à des fonctions de perte différentes.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Scaling requis : OUI obligatoire.</p></div></div>
+
+<hr>
+
+<h4 id="ref-cas-42-frontière-linéaire-les-classes-sont-bien-séparées">📏 Cas 4.2 — Frontière linéaire (les classes sont bien séparées)</h4>
+
+<p><strong>La situation concrète :</strong> En visualisant tes données, tu vois que les classes peuvent être séparées par une droite (ou un hyperplan). Les classes sont relativement bien distinctes.</p>
+
+<p><strong>Exemple :</strong> Classer des emails comme spam / non-spam à partir de mots-clés. Les emails "gagnez de l'argent" vs "réunion d'équipe" sont souvent bien séparés.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.svm import SVC
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
+
+model = make_pipeline(
+    StandardScaler(),
+    SVC(kernel=&#x27;linear&#x27;, C=1.0)
+)</code></pre></div>
+
+
+<p><strong>Pourquoi ce modèle ?</strong></p>
+<ul>
+<li>SVM linéaire <strong>maximise la marge</strong> entre les classes : il cherche la séparatrice la plus éloignée possible des deux groupes.</li>
+<li><code>C</code> élevé = marge stricte (peu d'erreurs tolérées), <code>C</code> faible = marge souple (quelques erreurs acceptées mais plus robuste).</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Scaling requis : OUI obligatoire. SVM est basé sur des distances.</p></div></div>
+
+<hr>
+
+<h4 id="ref-cas-43-frontière-non-linéaire-données-bruitées-ou-outliers">🌀 Cas 4.3 — Frontière non-linéaire + données bruitées ou outliers</h4>
+
+<p><strong>La situation concrète :</strong> La séparation entre les classes est complexe (une courbe, des zones imbriquées), et les données contiennent du bruit.</p>
+
+<p><strong>Exemple :</strong> Détecter des fraudes bancaires. Les fraudes sont rares et peuvent se cacher partout parmi des transactions normales. Plein de faux positifs et faux négatifs potentiels.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import RandomForestClassifier
+
+model = RandomForestClassifier(n_estimators=100, n_jobs=-1)
+model.fit(X_train, y_train)</code></pre></div>
+
+
+<p><strong>Pourquoi ce modèle ?</strong></p>
+<ul>
+<li>Vote majoritaire entre des centaines d'arbres → <strong>robuste au bruit</strong>.</li>
+<li>OOB score disponible gratuitement.</li>
+<li>Moins sensible aux outliers qu'XGBoost.</li>
+</ul>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Scaling requis : NON.</p></div></div>
+
+<hr>
+
+<h4 id="ref-cas-44-frontière-non-linéaire-données-propres-performance-maximale">🌀 Cas 4.4 — Frontière non-linéaire + données propres → performance maximale</h4>
+
+<p><strong>La situation concrète :</strong> Tes données sont bien nettoyées. Tu veux le meilleur score possible.</p>
+
+<p><strong>Exemple :</strong> Compétition Kaggle — classer des images de maladies des plantes (données labellisées, bien nettoyées, tu veux gagner).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from xgboost import XGBClassifier
+
+model = XGBClassifier(
+    n_estimators=100,
+    learning_rate=0.1,
+    early_stopping_rounds=5
+)
+model.fit(X_train, y_train, eval_set=[(X_val, y_val)], verbose=False)</code></pre></div>
+
+
+<p><strong>Pourquoi ce modèle ?</strong></p>
+<ul>
+<li>Même logique que XGBRegressor : boosting séquentiel sur les erreurs.</li>
+<li>Souvent le <strong>meilleur score brut</strong> sur des datasets tabulaires propres.</li>
+</ul>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Scaling requis : NON.</p></div></div>
+
+<hr>
+
+<h4 id="ref-cas-45-frontière-non-linéaire-peu-de-données-moins-de-10-000-lignes">🌀 Cas 4.5 — Frontière non-linéaire + peu de données (moins de 10 000 lignes)</h4>
+
+<p><strong>La situation concrète :</strong> Peu de données, frontière complexe.</p>
+
+<p><strong>Exemple :</strong> Classer des types de roches à partir de 5 mesures géochimiques sur 800 échantillons de terrain.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.svm import SVC
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
+
+model = make_pipeline(
+    StandardScaler(),
+    SVC(kernel=&#x27;rbf&#x27;, C=1.0, gamma=&#x27;scale&#x27;)
+)</code></pre></div>
+
+
+<p><strong>Pourquoi ce modèle ?</strong></p>
+<ul>
+<li>Le <strong>kernel RBF (gaussien)</strong> permet de séparer des classes qui ne sont pas linéairement séparables, via une transformation implicite en haute dimension.</li>
+<li>Très efficace sur de petits datasets bien structurés.</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><code>gamma</code> contrôle la "portée" de l'influence d'un point : petit gamma = influence large (frontière lisse, risque underfit), grand gamma = influence courte (frontière irrégulière, risque overfit). Toujours tuner <code>C</code> et <code>gamma</code> ensemble.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>SVC est lent sur de grands datasets (n > 10 000). Scaling requis : OUI obligatoire.</p></div></div>
+
+<hr>
+
+<h2 id="ref-résumé-des-règles-de-scaling">📋 Résumé des règles de scaling</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Type de modèle</th><th>Exemples</th><th>Scaling requis ?</th></tr></thead><tbody><tr><td>Basés sur la <strong>distance</strong> ou la <strong>magnitude</strong></td><td>SVM, SGD, LogisticRegression, Ridge, Lasso</td><td><strong>OUI</strong></td></tr><tr><td>Basés sur des <strong>arbres</strong> (splits par ordre)</td><td>DecisionTree, RandomForest, XGBoost</td><td><strong>NON</strong></td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>La règle d'or : les arbres séparent par des seuils ("est-ce que x > 5 ?"). La valeur absolue ne change pas l'ordre, donc l'échelle est sans importance. En revanche, les modèles basés sur des distances ou des gradients sont directement affectés par l'échelle des valeurs.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p>Essaie de répondre seul avant de lire la correction !</p>
+
+<hr>
+
+<p><strong>Cas 1.</strong> Tu travailles pour une agence immobilière. Tu veux prédire le prix d'une maison (en euros). Tu as 15 variables (surface, quartier, année de construction…). Ton modèle de base donne train score = 0.89, test score = 0.88. Ton patron veut comprendre l'impact de chaque variable sur le prix.</p>
+
+<blockquote><p>Quel modèle choisir ?</p></blockquote>
+
+<details>
+<summary>Correction</summary>
+
+<p><code>LinearRegression()</code>. La cible est continue (régression), le modèle ne surappend pas (train ≈ test), et on a besoin d'interpréter les coefficients. C'est exactement le cas de la baseline. Pas de scaling nécessaire.</p>
+
+</details>
+
+<hr>
+
+<p><strong>Cas 2.</strong> Tu travailles dans une startup fintech. Tu veux détecter si une transaction est frauduleuse (oui/non). Tu as 2 millions de transactions et 50 variables. Tu veux le meilleur score possible sans te soucier de l'interprétabilité.</p>
+
+<blockquote><p>Quel modèle choisir ? Faut-il scaler ?</p></blockquote>
+
+<details>
+<summary>Correction</summary>
+
+<p>Dataset > 100K lignes → <code>SGDClassifier(loss=&#x27;log_loss&#x27;)</code>. Scaling OUI obligatoire. Alternatively, si les données sont propres et tu peux te permettre un temps d'entraînement plus long, XGBClassifier (sans scaling) peut donner un meilleur score mais sera plus lent sur 2M lignes.</p>
+
+</details>
+
+<hr>
+
+<p><strong>Cas 3.</strong> Tu analyses des données médicales pour prédire si un patient a une maladie rare (classe A, B ou C). Tu n'as que 600 patients, 8 mesures biologiques. La relation entre les mesures et la maladie est complexe (non-linéaire).</p>
+
+<blockquote><p>Quel modèle choisir ? Faut-il scaler ?</p></blockquote>
+
+<details>
+<summary>Correction</summary>
+
+<p>Peu de données (n < 10K), relation non-linéaire → <code>SVC(kernel=&#x27;rbf&#x27;, C=1.0, gamma=&#x27;scale&#x27;)</code>. Scaling OUI obligatoire. Penser à tuner <code>C</code> et <code>gamma</code> ensemble via GridSearch.</p>
+
+</details>
+
+<hr>
+
+<p><strong>Cas 4.</strong> Tu dois présenter un modèle de scoring client à la direction marketing. Ils veulent voir exactement comment les décisions sont prises. Le dataset a 5 000 clients et 12 variables.</p>
+
+<blockquote><p>Quel modèle choisir ?</p></blockquote>
+
+<details>
+<summary>Correction</summary>
+
+<p>Besoin de visualisation et explicabilité pour non-technique → <code>DecisionTreeClassifier(max_depth=5)</code>. Pas de scaling nécessaire. Bien limiter <code>max_depth</code> pour éviter l'overfit. Utiliser graphviz pour générer une image de l'arbre.</p>
+
+</details>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>La première question est toujours : <strong>régression</strong> (nombre) ou <strong>classification</strong> (catégorie) ?</li>
+<li>Ensuite : as-tu besoin d'<strong>interpréter</strong> les résultats ou veux-tu la <strong>meilleure performance</strong> ?</li>
+<li>En régression interprétable : <code>LinearRegression</code> si pas d'overfit, <code>Ridge</code> pour garder toutes les features, <code>Lasso</code> pour éliminer les inutiles.</li>
+<li>En régression performance max : <code>RandomForest</code> si données bruitées, <code>XGBoost</code> si données propres, <code>SGDRegressor</code> si dataset gigantesque.</li>
+<li>En classification interprétable : <code>LogisticRegression</code>. Besoin d'un visuel pour non-tech : <code>DecisionTreeClassifier</code>.</li>
+<li>En classification performance max : <code>RandomForestClassifier</code> (robuste), <code>XGBClassifier</code> (score max), <code>SVC</code> (peu de données), <code>SGDClassifier</code> (grande échelle).</li>
+<li><strong>Règle de scaling</strong> : modèles basés sur la distance ou les gradients (SVM, SGD, régularisation) → scaler OUI. Modèles basés sur des arbres (DT, RF, XGB) → scaler NON.</li>
+<li>En cas de doute sur le modèle, commence toujours par la <strong>baseline</strong> (<code>LinearRegression</code> ou <code>LogisticRegression</code>) : si elle suffit, inutile de compliquer.</li>
+<li>L'overfit (train >> test) est un signal fort : ajoute de la régularisation (<code>Ridge</code>, <code>Lasso</code>) ou limite la complexité (<code>max_depth</code>).</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-le-bon-modèle-dépend-du-problème">Le bon modèle dépend du problème</a></li><li><a href="#syn-question-1-quel-est-le-type-de-problème">Question 1 — Quel est le type de problème ?</a></li><li><a href="#syn-question-2-quel-est-le-type-de-données">Question 2 — Quel est le type de données ?</a></li><li><a href="#syn-question-3-quelle-est-la-taille-du-dataset">Question 3 — Quelle est la taille du dataset ?</a></li><li><a href="#syn-question-4-quelles-sont-les-contraintes">Question 4 — Quelles sont les contraintes ?</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-arbre-de-décision-express-cheatsheet">Arbre de décision express — cheatsheet</a></li><li><a href="#syn-construire-votre-arbre-personnel">Construire votre arbre personnel</a></li><li><a href="#syn-cas-particuliers-et-exceptions">Cas particuliers et exceptions</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-le-bon-modèle-dépend-du-problème">Le bon modèle dépend du problème</h3>
+
+<p>Il n'y a pas de "meilleur algorithme ML". Le choix dépend de quatre dimensions fondamentales :</p>
+
+<ol>
+<li><strong>Type de problème</strong> : classification, régression, clustering, recommandation, génération</li>
+<li><strong>Type de données</strong> : tabulaire, image, texte, audio, séries temporelles, graphe</li>
+<li><strong>Taille du dataset</strong> : 100 lignes ou 100 millions ? Ce seul critère change tout</li>
+<li><strong>Contraintes</strong> : interprétabilité, latence, mémoire, budget, régulation</li>
+</ol>
+
+<p>L'arbre de décision suivant vous guide vers le bon modèle pour <strong>90% des cas</strong>. Les 10% restants demandent du jugement contextuel — mais après 5-10 projets, ce jugement devient automatique.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : choisir un modèle ML, c'est comme choisir un outil dans une boîte à outils. Vous ne plantez pas un clou avec une scie. Vous ne coupez pas une planche avec un marteau. L'arbre de décision est le mode d'emploi qui vous dit <strong>quel outil pour quel travail</strong>.</p></div></div>
+
+<h3 id="syn-question-1-quel-est-le-type-de-problème">Question 1 — Quel est le type de problème ?</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Vous voulez prédire :
+├── Un nombre continu (prix, durée, score, température)
+│   → RÉGRESSION
+├── Une catégorie discrète (spam/pas spam, A/B/C, chien/chat)
+│   → CLASSIFICATION
+├── Trouver des groupes sans labels (segmentation)
+│   → CLUSTERING
+├── Prédire ce qu&#x27;un utilisateur aimera (films, produits)
+│   → SYSTÈME DE RECOMMANDATION
+├── Détecter des points anormaux (fraude, défauts)
+│   → DÉTECTION D&#x27;ANOMALIES
+├── Générer du contenu nouveau (texte, images, audio)
+│   → MODÈLE GÉNÉRATIF (LLM, GAN, diffusion)
+└── Apprendre une stratégie d&#x27;action (jeu, robot)
+    → REINFORCEMENT LEARNING</code></pre></div>
+
+
+<p><strong>Exemples concrets par type</strong> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Type</th><th>Exemple</th><th>Métrique typique</th></tr></thead><tbody><tr><td>Régression</td><td>Prédire le prix d'un appart à Paris</td><td>RMSE, MAE</td></tr><tr><td>Classification binaire</td><td>Détecter un email de spam</td><td>F1, ROC-AUC</td></tr><tr><td>Classification multi-classe</td><td>Classer une image (10 catégories)</td><td>Accuracy, top-5 accuracy</td></tr><tr><td>Clustering</td><td>Segmenter 100k clients en personas</td><td>Silhouette score</td></tr><tr><td>Recommandation</td><td>"Ceux qui ont acheté ça ont aussi aimé..."</td><td>NDCG, Recall@K</td></tr><tr><td>Anomalies</td><td>Détecter des fraudes bancaires</td><td>Precision@top-1%</td></tr><tr><td>Génération</td><td>Créer un résumé d'article</td><td>ROUGE, BLEU, humain</td></tr></tbody></table></div>
+<h3 id="syn-question-2-quel-est-le-type-de-données">Question 2 — Quel est le type de données ?</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Vos données sont :
+├── Tabulaires (lignes × colonnes, comme un CSV)
+│   → XGBoost / LightGBM / CatBoost / Random Forest
+├── Images
+│   → CNN pré-entraîné (EfficientNet, ResNet) ou Vision Transformer
+├── Texte
+│   ├── Classification simple, dataset petit/moyen
+│   │   → TF-IDF + LogReg, ou DistilBERT fine-tuné
+│   ├── Q&amp;A, NER, classification complexe
+│   │   → BERT / RoBERTa fine-tuned
+│   └── Génération
+│       → LLM (Claude, GPT) ou T5 fine-tuné
+├── Séries temporelles
+│   ├── Univariée simple, saisonnalité claire
+│   │   → Prophet, ARIMA
+│   └── Multivariée complexe, relations non linéaires
+│       → LightGBM sur features laggées, LSTM, TFT
+├── Audio
+│   ├── Classification
+│   │   → Wav2Vec2, MFCC + CNN
+│   └── Speech-to-text
+│       → Whisper
+├── Graphes (réseaux sociaux, molécules)
+│   → Graph Neural Networks (GCN, GAT)
+└── Données mixtes (tabulaire + texte + image)
+    → Pipeline multimodal, fusion tardive (concat embeddings)</code></pre></div>
+
+
+<h3 id="syn-question-3-quelle-est-la-taille-du-dataset">Question 3 — Quelle est la taille du dataset ?</h3>
+
+<p>C'est souvent le critère le plus décisif. Les bornes ci-dessous sont des ordres de grandeur indicatifs.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Combien d&#x27;observations avez-vous :
+├── &lt; 100
+│   → Modèles très simples : régression linéaire régularisée, KNN
+│   → Vous risquez l&#x27;overfit avec n&#x27;importe quel modèle complexe
+│   → Validation : LeaveOneOut CV (LOOCV)
+│
+├── 100 – 1 000
+│   → Random Forest, régression régularisée (Ridge/Lasso), SVM
+│   → Validation : 10-fold CV stratifié
+│
+├── 1 000 – 10 000
+│   → XGBoost, LightGBM, Random Forest
+│   → Classification de texte avec TF-IDF possible
+│   → Images : transfer learning obligatoire (pas de from scratch)
+│
+├── 10 000 – 100 000
+│   → XGBoost, LightGBM dominent sur tabulaire
+│   → Fine-tuning de modèles pré-entraînés (BERT, ResNet)
+│
+├── 100 000 – 1 000 000
+│   → Tout marche, considérez la vitesse d&#x27;entraînement
+│   → Deep learning compétitif sur images, texte
+│   → Tabulaire : LightGBM reste souvent meilleur que MLP
+│
+└── &gt; 1 000 000
+    → Deep learning peut briller (images, texte)
+    → Tabulaire : LightGBM avec hist + GPU
+    → Distributed training, monitoring critique</code></pre></div>
+
+
+<p><strong>Exemples concrets par tranche</strong> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Taille</th><th>Problème</th><th>Modèle recommandé</th><th>Score typique</th></tr></thead><tbody><tr><td>80</td><td>Expériences médicales rares</td><td>Ridge + LeaveOneOut</td><td>R² ≈ 0.6, peu fiable</td></tr><tr><td>500</td><td>Dataset médical (petit hôpital)</td><td>RF + 10-fold CV</td><td>F1 ≈ 0.72</td></tr><tr><td>5 000</td><td>Projet étudiant Kaggle Titanic-like</td><td>XGBoost tuné</td><td>Accuracy ≈ 0.85</td></tr><tr><td>50 000</td><td>Churn télécom</td><td>LightGBM</td><td>F1 ≈ 0.75</td></tr><tr><td>500 000</td><td>Credit scoring</td><td>LightGBM + GPU</td><td>AUC ≈ 0.86</td></tr><tr><td>5 000 000</td><td>Recommandation e-commerce</td><td>LightGBM ou DL tabulaire</td><td>Precision@10 ≈ 0.12</td></tr></tbody></table></div>
+<h3 id="syn-question-4-quelles-sont-les-contraintes">Question 4 — Quelles sont les contraintes ?</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Vos contraintes sont :
+├── Interprétabilité critique (médical, finance, légal)
+│   → Régression linéaire/logistique, GAM, arbre simple
+│   → XGBoost + SHAP si performance insuffisante
+│
+├── Latence critique (&lt; 10 ms par requête)
+│   → Régression linéaire/logistique, LightGBM léger, modèle quantizé
+│   → Éviter : KNN, gros transformers, stacking
+│
+├── Mémoire / mobile
+│   → MobileNet, DistilBERT, modèle quantizé INT8
+│   → Éviter : modèles &gt; 1 Go
+│
+├── Coût d&#x27;inférence faible
+│   → Tout sauf LLM payant par API
+│
+├── Domaine régulé (RGPD, AI Act, FDA)
+│   → Modèles interprétables ou SHAP systématique
+│   → Documentation complète, audit trail, model card
+│
+└── Pas de contrainte particulière
+    → Choisir selon performance et simplicité</code></pre></div>
+
+
+<p><strong>Tableau des contraintes chiffrées</strong> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Contrainte</th><th>Modèle à privilégier</th><th>Modèle à exclure</th></tr></thead><tbody><tr><td>Latence < 1 ms</td><td>LogReg, arbre unique</td><td>Tout deep learning</td></tr><tr><td>Latence < 10 ms</td><td>LightGBM léger, DistilBERT quantizé</td><td>KNN, gros BERT, stacking</td></tr><tr><td>Mémoire < 100 MB</td><td>LinReg, LightGBM petit, MobileNet</td><td>RF 500 arbres, BERT full</td></tr><tr><td>RAM inférence < 500 MB</td><td>LightGBM, DistilBERT</td><td>GPT, LLaMA full</td></tr><tr><td>Interprétabilité</td><td>LogReg, GAM, arbre profond 4</td><td>Stacking, gros NN</td></tr><tr><td>Budget cloud 0€</td><td>Local avec sklearn/LightGBM</td><td>API LLM payante</td></tr></tbody></table></div>
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-arbre-de-décision-express-cheatsheet">Arbre de décision express — cheatsheet</h3>
+
+<p>Pour un projet tabulaire standard (cas le plus fréquent), voici la décision en <strong>3 questions</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">1. Combien de lignes ?
+   &lt; 1 000     → Random Forest (robuste, peu de tuning)
+   1 k – 100 k → XGBoost / LightGBM (standard)
+   100 k – 1 M → LightGBM (plus rapide que XGB)
+   &gt; 1 M       → LightGBM + GPU, ou DL tabulaire si vraiment complexe
+
+2. Interprétabilité nécessaire ?
+   Critique   → LogReg ou arbre profondeur 4
+   Importante → XGB/LightGBM + SHAP
+   Peu        → N&#x27;importe quel modèle
+
+3. Latence &lt; 10 ms ?
+   Oui → LogReg ou LightGBM léger exporté en ONNX
+   Non → Plus de liberté</code></pre></div>
+
+
+<p><strong>Exemples concrets</strong> :</p>
+
+<ul>
+<li><strong>Churn télécom, 50k lignes, pas de contrainte latence</strong> → <strong>LightGBM + SHAP</strong>. Baseline F1 ≈ 0.74.</li>
+<li><strong>Scoring de crédit, 500k lignes, régulation AI Act</strong> → <strong>LogReg</strong> + XGBoost + SHAP en challenger. Docs complètes.</li>
+<li><strong>Détection spam, 30k emails</strong> → <strong>TF-IDF + LogReg</strong>. Baseline accuracy 0.95. Pas besoin de BERT.</li>
+<li><strong>Classification défauts images, 50k photos</strong> → <strong>Transfer learning EfficientNet-B0</strong>, gel du backbone, fine-tune tête. Recall > 0.95.</li>
+<li><strong>Prédiction trafic web horaire, 2 ans de données</strong> → <strong>Prophet</strong> (saisonnalité claire) ou LightGBM avec features laggées.</li>
+<li><strong>Résumé automatique de docs juridiques</strong> → <strong>LLM via API</strong> (Claude ou GPT), prompt engineering, pas d'entraînement.</li>
+<li><strong>Segmentation clients RFM, 100k clients</strong> → <strong>K-Means k=5</strong> pour baseline, HDBSCAN si clusters non sphériques.</li>
+</ul>
+
+<h3 id="syn-construire-votre-arbre-personnel">Construire votre arbre personnel</h3>
+
+<p>L'arbre ci-dessus est un point de départ. En pratique, votre arbre dépend de votre <strong>expertise</strong>, votre <strong>infrastructure</strong>, et les <strong>patterns</strong> de votre domaine.</p>
+
+<p>Conseils pour construire le vôtre :</p>
+
+<ol>
+<li><strong>Commencez par votre baseline préférée</strong> : "pour tout problème de classification tabulaire, je commence toujours par LightGBM avec hyperparams par défaut".</li>
+</ol>
+
+<ol>
+<li><strong>Identifiez les cas où la baseline échoue</strong> : "si l'AUC est < 0.7, je passe à l'investigation des features. Si l'AUC est > 0.9, c'est probablement du leakage à vérifier".</li>
+</ol>
+
+<ol>
+<li><strong>Connaître 3-5 modèles à fond</strong> est plus utile que de connaître 30 modèles superficiellement. Pour la majorité des cas tabulaires, maîtriser LightGBM, Random Forest et la régression logistique suffit.</li>
+</ol>
+
+<ol>
+<li><strong>Documentez vos choix</strong> : pour chaque projet passé, notez le modèle final, les alternatives essayées, et pourquoi vous avez choisi celui-ci. Au bout de 10 projets, vous avez votre méta-modèle de décision.</li>
+</ol>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : un data scientist senior n'essaie pas 20 modèles à chaque projet. Il en essaie 2-3 (sa baseline + 1-2 alternatives basées sur le contexte) et passe la majorité du temps sur la qualité des données et le feature engineering. C'est ce qui différencie l'expérience.</p></div></div>
+
+<h3 id="syn-cas-particuliers-et-exceptions">Cas particuliers et exceptions</h3>
+
+<p><strong>Quand le tabulaire devient deep learning</strong> : quand vous avez > 1M lignes ET des relations très non linéaires (interactions complexes entre features), un MLP ou TabNet peut battre XGBoost. Mais c'est l'exception, pas la règle — sur 95% des benchmarks tabulaires, LightGBM gagne encore en 2025.</p>
+
+<p><strong>Quand le deep learning n'est pas optimal en NLP</strong> : pour de la classification simple sur peu de données, TF-IDF + LogReg reste compétitif et 100× plus rapide que BERT. Ne sortez pas l'artillerie pour une simple détection de spam de 1 000 emails.</p>
+
+<p><strong>Quand le clustering est inapproprié</strong> : quand vos clusters n'existent pas vraiment dans la donnée. K-means trouvera <strong>toujours</strong> K clusters, même sur du bruit pur. Vérifiez avec silhouette score : < 0.3 signifie probablement pas de structure, et aucun algorithme ne sauvera la situation.</p>
+
+<p><strong>Quand le RL est tentant mais inutile</strong> : quand vous pouvez transformer le problème en supervisé avec des labels existants, c'est presque toujours plus efficace que le RL. Le RL brille quand il y a <strong>un simulateur</strong> et <strong>pas de labels</strong> (jeux, robotique).</p>
+
+<p><strong>Quand un LLM est overkill</strong> : pour de l'extraction de données structurées simple (regex, patterns fixes), un script Python basique est meilleur qu'un LLM. Plus rapide, gratuit, déterministe. Le LLM brille uniquement quand le problème exige du raisonnement ou de la flexibilité sur des inputs variables.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Anti-pattern fréquent en 2025</strong> : "utilisons un LLM pour tout". Un LLM coûte $0.001-1 par appel, prend 1-10 secondes, et n'est pas 100% fiable. Pour la plupart des problèmes ML structurés, un classifieur sklearn coûte $0, prend 1 ms, et est 99% fiable. Le LLM est l'outil ultime, pas l'outil par défaut.</p></div></div>
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège de taille</strong> : avec < 1 000 lignes, éviter les réseaux de neurones profonds et le stacking agressif. Même si vous obtenez un super score en train, la variance est trop forte pour que ce soit fiable en prod. Sur petit dataset, la <strong>simplicité est la régularisation</strong>.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Quelqu'un vous demande "quel est le meilleur algorithme de machine learning ?". Comment répondez-vous ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Pas un nom. Une question en retour.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>La bonne réponse est <strong>"ça dépend"</strong> suivi des questions clarificatrices : (1) quel est le type de problème ? Classification, régression, clustering ? (2) Quel type de données ? Tabulaire, image, texte ? (3) Combien de données ? 100 lignes ou 100 millions ? (4) Quelles contraintes ? Latence, interprétabilité, budget ? Sans ces informations, donner un nom d'algo serait du dogmatisme. En <strong>mentionnant le théorème No-Free-Lunch</strong> (Wolpert, 1996), vous montrez que vous comprenez pourquoi : aucun algorithme n'est universellement meilleur. Pour donner une réponse pragmatique malgré tout, vous pouvez ajouter : "sur du tabulaire en 2025, <strong>LightGBM</strong> est mon point de départ. Sur des images, <strong>transfer learning EfficientNet</strong>. Sur du texte, <strong>fine-tuning DistilBERT</strong>. Mais ces choix sont contextuels, pas absolus." Question d'entretien data science classique : un candidat qui répond "deep learning" ou "XGBoost" sans nuance révèle un manque de maturité. Un candidat qui demande des précisions montre l'expérience du terrain.</p>
+
+</details>
+
+<p><strong>Q2 : Vous travaillez sur un problème de classification médicale critique. Quels modèles éliminez-vous d'office ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Interprétabilité et régulation.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Trois familles à éliminer ou justifier explicitement. (1) <strong>Modèles boîte noire profonds</strong> sans explicabilité : un grand neural network sans SHAP est inutilisable en médical, pour deux raisons : régulation (RGPD, AI Act, FDA aux US) et confiance médicale (un médecin n'utilisera pas un outil qu'il ne comprend pas). (2) <strong>Stacking de plusieurs modèles complexes</strong> : difficile à expliquer, à auditer, à débugger en cas de problème. (3) <strong>Modèles avec beaucoup de features dérivées non interprétables</strong> : embeddings, PCA très réduits — perdent la connexion avec les concepts médicaux. <strong>À privilégier en médical</strong> : (a) <strong>Régression logistique</strong> avec features cliniquement interprétables, (b) <strong>XGBoost</strong> ou <strong>LightGBM</strong> avec analyse SHAP systématique, (c) <strong>Decision Tree peu profond</strong> quand les règles doivent être directement lisibles, (d) <strong>Generalized Additive Models</strong> (GAM, EBM de InterpretML) qui combinent flexibilité et interprétabilité native. <strong>Précautions supplémentaires</strong> : (i) calibration des probabilités (pour donner une vraie probabilité, pas un score arbitraire), (ii) validation sur des données out-of-time ET out-of-hospital pour mesurer la généralisation, (iii) audit trail complet (qui a entraîné, sur quelles données, quelle version), (iv) reentraînement contrôlé. Question d'entretien data science régulé : la réponse exhaustive parle de SHAP, calibration, et compliance.</p>
+
+</details>
+
+<p><strong>Q3 : Vous avez un dataset de 50 000 images de défauts industriels (binaire : OK / défaut). Quel modèle et pourquoi ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Transfer learning.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Transfer learning sur un CNN pré-entraîné</strong> est le bon choix. Pourquoi : (1) <strong>50 000 images = "moyen"</strong> : suffisant pour fine-tuner un modèle pré-entraîné, mais insuffisant pour entraîner from scratch (qui demande des millions). (2) <strong>Domaine standard</strong> : les défauts industriels (rayures, fissures, taches) ont des features visuelles que les CNN pré-entraînés sur ImageNet capturent déjà bien (bords, textures, formes). <strong>Pipeline canonique</strong> : (a) Charger un EfficientNet-B0 ou ResNet-50 pré-entraîné. (b) Geler le base model. (c) Ajouter une nouvelle tête : <code>GlobalAveragePooling → Dropout(0.3) → Dense(2, softmax)</code> (ou Dense(1, sigmoid) pour binaire). (d) Entraîner pour 5-10 epochs avec learning rate 1e-3 et data augmentation aggressive (rotation, flip, brightness, blur). (e) Optionnel : dégeler les dernières couches et fine-tuner avec LR 1e-5 pour adapter les features. <strong>Métriques à suivre</strong> : précision, recall, et particulièrement <strong>recall</strong> sur la classe "défaut" (rater un défaut est plus grave que générer un faux positif). Probablement viser recall > 95% au prix d'une précision moindre, puis recalibrer si nécessaire. <strong>Considérations avancées</strong> : (i) data augmentation très importante pour la généralisation, (ii) class balancing si les classes sont déséquilibrées (ex : 95% OK, 5% défaut), (iii) explainability avec Grad-CAM pour montrer où le modèle "regarde" — crucial en industriel pour valider la décision. Question d'entretien vision applicative : la réponse exhaustive révèle l'expérience pratique.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html" target="_blank" rel="noopener">scikit-learn algorithm cheat sheet</a></li>
+<li><em>Hands-On Machine Learning</em> (Géron, 3rd ed.) — pour avoir une intuition de tous les algos</li>
+<li><em>No-Free-Lunch Theorems</em> (Wolpert, 1996)</li>
+<li><a href="https://www.kaggle.com/c/kaggle-survey-2022" target="_blank" rel="noopener">Kaggle Survey</a> — quels modèles sont vraiment utilisés</li>
+<li><em>The Hundred-Page Machine Learning Book</em> (Burkov)</li>
+<li><a href="https://interpret.ml/" target="_blank" rel="noopener">Microsoft InterpretML</a> — pour les EBM (Explainable Boosting Machines)</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../synthese/cheatsheet-ml-pipeline.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Cheatsheet ML E2E</span>
+  </a>
+  <div></div>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

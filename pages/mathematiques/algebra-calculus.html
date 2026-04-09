@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algebra &amp; Calculus — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Algebra &amp; Calculus</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html" class="active">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Maths & Statistiques</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Algebra &amp; Calculus</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Algebra &amp; Calculus</h1>
+        <p class="page-objective">Maîtriser les fondements mathématiques utilisés en data science — algèbre linéaire (vecteurs, matrices, produit scalaire) et calcul différentiel (dérivées, dérivées partielles, gradient, intégrales) — en les appliquant avec NumPy.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Vecteur / matrice</div>
+        <div class="key-concept-def">Objets fondamentaux de l&#x27;algèbre linéaire ; tout en ML est représenté ainsi.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Produit scalaire</div>
+        <div class="key-concept-def">Mesure de similarité directionnelle entre deux vecteurs.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Dérivée partielle</div>
+        <div class="key-concept-def">Pente d&#x27;une fonction multi-variables le long d&#x27;un seul axe.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Gradient</div>
+        <div class="key-concept-def">Vecteur des dérivées partielles ; pointe vers la plus forte croissance.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-algebra-calculus">Cheatsheet — Algebra & Calculus</a><ol><li><a href="#numpy-bases">NumPy — bases</a></li><li><a href="#vecteurs">Vecteurs</a></li><li><a href="#matrices">Matrices</a></li><li><a href="#résoudre-un-système-linéaire-ax-b">Résoudre un système linéaire Ax = b</a></li><li><a href="#fonctions-et-visualisation">Fonctions et visualisation</a></li><li><a href="#dérivées-et-gradient">Dérivées et gradient</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-recap-numpy">1) Recap NumPy</a><ol><li><a href="#11-tableaux-n-dimensionnels">1.1 Tableaux n-dimensionnels</a></li></ol></li><li><a href="#2-algèbre">2) Algèbre</a><ol><li><a href="#21-fonctions">2.1 Fonctions</a></li><li><a href="#22-équations-et-systèmes">2.2 Équations et systèmes</a></li><li><a href="#23-vecteurs">2.3 Vecteurs</a></li><li><a href="#24-matrices">2.4 Matrices</a></li><li><a href="#25-produit-matriciel-data-science">2.5 Produit matriciel × Data Science</a></li></ol></li><li><a href="#3-calcul-différentiel">3) Calcul différentiel</a><ol><li><a href="#31-dérivées">3.1 Dérivées</a></li><li><a href="#32-dérivées-partielles-et-gradient">3.2 Dérivées partielles et gradient</a></li><li><a href="#33-intégrales">3.3 Intégrales</a></li></ol></li><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-algebra-calculus">📋 Cheatsheet — Algebra & Calculus</h2>
+
+<h3 id="numpy-bases">NumPy — bases</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+A = np.array([[1, 2], [3, 4], [5, 6]])  # matrice 3×2
+
+A.shape   # → (3, 2) : (nb_lignes, nb_colonnes) — très important !
+A.size    # → 6 : nombre total d&#x27;éléments
+A.ndim    # → 2 : nombre de dimensions
+A.dtype   # → dtype(&#x27;int64&#x27;) : type des éléments
+
+A[1, 1]   # → 4 : indexing (ligne 1, colonne 1)
+A[:2, :]  # → [[1,2],[3,4]] : slicing (2 premières lignes)
+A &gt; 2     # → masque booléen (True/False par élément)
+A[A &gt; 2]  # → array([3, 4, 5, 6]) : boolean indexing</code></pre></div>
+
+
+<h3 id="vecteurs">Vecteurs</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">u = np.array([1, 2, 3])               # vecteur 1D, shape (3,)
+v = np.array([4, 5, 6])
+
+u + v                                  # → [5, 7, 9] : addition élément par élément
+2 * u                                  # → [2, 4, 6] : multiplication par scalaire
+
+## Norme L2 (distance euclidienne depuis l&#x27;origine)
+np.linalg.norm(u)                      # → √(1²+2²+3²) = 3.74
+
+## Distance L2 entre deux vecteurs
+np.sqrt(np.sum((u - v)**2))            # → ‖u - v‖₂
+
+## Produit scalaire (dot product) — retourne un scalaire
+np.dot(u, v)   # = 1*4 + 2*5 + 3*6 = 32
+u.dot(v)       # même résultat
+u @ v          # même résultat (opérateur @)</code></pre></div>
+
+
+<h3 id="matrices">Matrices</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">A = np.array([[1, 2, 3], [0, 1, 2]])   # shape (2, 3)
+B = np.array([[4, 1], [5, 0], [6, 4]]) # shape (3, 2)
+
+A.T          # transposée de A : shape (3, 2)
+A + A        # addition élément par élément (formes identiques requises)
+3 * A        # multiplication par scalaire
+
+## Produit matriciel — règle : colonnes_A = lignes_B
+np.matmul(A, B)   # → shape (2, 2)
+A @ B             # même résultat
+
+## Matrices carrées
+np.eye(3)                    # matrice identité 3×3
+np.linalg.inv(M)             # matrice inverse (M doit être carrée et inversible)
+np.linalg.det(M)             # déterminant (= 0 → non inversible)
+np.linalg.matrix_rank(M)     # rang (= nb colonnes → plein rang → inversible)</code></pre></div>
+
+
+<h3 id="résoudre-un-système-linéaire-ax-b">Résoudre un système linéaire Ax = b</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">A = np.array([[1, -1], [1, -2]])   # matrice des coefficients
+b = np.array([[22], [10]])         # vecteur des constantes
+
+## Méthode 1 : inversion de matrice
+np.linalg.inv(A) @ b              # → [[34.], [12.]]
+
+## Méthode 2 : solve (plus stable numériquement)
+np.linalg.solve(A, b)             # → même résultat</code></pre></div>
+
+
+<h3 id="fonctions-et-visualisation">Fonctions et visualisation</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import matplotlib.pyplot as plt
+
+f = lambda x: x**2 + 1            # fonction lambda
+
+x = np.linspace(-2, 2, 100)       # 100 points entre -2 et 2
+y = f(x)                           # évaluation vectorisée (pas de for loop !)
+plt.plot(x, y)                     # tracé de la courbe
+plt.show()
+
+## Fonction bivariée (surface 3D)
+import plotly.graph_objects as go
+g = lambda x, y: 2*x - 3*y + 7
+x, y = np.meshgrid(range(10), range(10))   # grille de points
+z = g(x, y)
+go.Figure(go.Surface(x=x, y=y, z=z)).show()</code></pre></div>
+
+
+<h3 id="dérivées-et-gradient">Dérivées et gradient</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Dérivée numérique approchée
+h = 1e-5
+f_prime_a = (f(a + h) - f(a)) / h   # pente locale en a ≈ f&#x27;(a)
+
+## Gradient d&#x27;une fonction multivariée → vecteur des dérivées partielles
+## ∇h(p) = [∂h/∂x₁, ∂h/∂x₂, ..., ∂h/∂xₙ]
+## Utilisé en optimisation (ex : gradient descent)</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre shape (3,) et shape (3,1) — vecteur 1D vs colonne 2D</strong></p>
+<p>❌ <code>u = np.array([1, 2, 3])</code> → shape <code>(3,)</code> : vecteur 1D plat</p>
+<p>✅ <code>u_col = np.array([[1], [2], [3]])</code> → shape <code>(3, 1)</code> : vecteur colonne — nécessaire pour certains produits matriciels</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Multiplier deux matrices avec des dimensions incompatibles</strong></p>
+<p>❌ <code>B @ A</code> avec B shape <code>(3, 4)</code> et A shape <code>(2, 3)</code> → <code>ValueError</code></p>
+<p>✅ Le produit A @ B est valide ssi <strong>colonnes(A) = lignes(B)</strong> → résultat de shape <code>(lignes(A), colonnes(B))</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser une boucle <code>for</code> là où NumPy peut vectoriser</strong></p>
+<p>❌ <code>for x in range(5): y = f(x)</code> — lent, verbeux</p>
+<p>✅ <code>x = np.arange(5); y = f(x)</code> — vectorisé, rapide, concis</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre produit scalaire et multiplication élément par élément</strong></p>
+<p>❌ <code>u * v</code> → <code>[4, 10, 18]</code> : multiplication élément par élément (Hadamard), retourne un vecteur</p>
+<p>✅ <code>u @ v</code> ou <code>np.dot(u, v)</code> → <code>32</code> : produit scalaire, retourne un scalaire</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Inverser une matrice non carrée ou de déterminant nul</strong></p>
+<p>❌ <code>np.linalg.inv(A)</code> si A n'est pas carrée ou si <code>np.linalg.det(A) == 0</code> → <code>LinAlgError</code></p>
+<p>✅ Vérifier : <code>np.linalg.matrix_rank(A)</code> doit égaler le nombre de colonnes</p></div></div>
+
+<hr>
+
+<h2 id="1-recap-numpy">1) Recap NumPy</h2>
+
+<h3 id="11-tableaux-n-dimensionnels">1.1 Tableaux n-dimensionnels</h3>
+
+<p>NumPy est centré sur les <strong>tableaux n-dimensionnels</strong> (<code>numpy.ndarray</code>).</p>
+
+<figure><img src="../../assets/images/algebra-calculus-01-b869605e.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+A = np.array([[1, 2],
+              [3, 4],
+              [5, 6]])    # matrice 3×2
+
+A.shape   # → (3, 2)
+A.size    # → 6
+A.ndim    # → 2
+A.dtype   # → dtype(&#x27;int64&#x27;)
+
+A[1, 1]      # → 4 : indexing
+A[:2, :]     # → [[1,2],[3,4]] : slicing
+A &gt; 2        # → masque booléen
+A[A &gt; 2]     # → array([3, 4, 5, 6]) : boolean indexing</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Avant d'utiliser une boucle <code>for</code>, demande-toi : <em>peut-on le faire à la NumPy ?</em> — opérations vectorisées, plus rapides et plus lisibles. La même logique s'applique à pandas.</p></div></div>
+
+<hr>
+
+<h2 id="2-algèbre">2) Algèbre</h2>
+
+<h3 id="21-fonctions">2.1 Fonctions</h3>
+
+<p>Une <strong>fonction</strong> est une application qui associe à chaque élément d'un ensemble un unique élément d'un second ensemble :</p>
+
+<p>$f : \mathbb{R} \to \mathbb{R}, \quad f(x) = x^2 + 1$</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Définition classique ou lambda
+square_plus_one = lambda x: x**2 + 1
+
+## Évaluation vectorisée (pas de for loop !)
+x = np.arange(5)          # → [0, 1, 2, 3, 4]
+y = square_plus_one(x)    # → [1, 2, 5, 10, 17]
+
+## Tracé
+x = np.linspace(-1, 2, 100)
+plt.plot(x, square_plus_one(x))
+plt.show()</code></pre></div>
+
+
+<figure><img src="../../assets/images/algebra-calculus-02-8f08a46a.svg" alt="" loading="lazy"></figure>
+
+<p><strong>Types de fonctions :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Type</th><th>Exemple</th><th>Propriété</th></tr></thead><tbody><tr><td>Identité</td><td>f(x) = x</td><td>Droite diagonale</td></tr><tr><td>Linéaire</td><td>f(x) = mx + b</td><td>Droite : m = pente, b = intercept</td></tr><tr><td>Non-linéaire</td><td>f(x) = x² + 1</td><td>Courbe</td></tr><tr><td>Inverse f⁻¹</td><td>f⁻¹(f(x)) = x</td><td>Symétrique à f par rapport à y = x</td></tr></tbody></table></div>
+<p><strong>Fonctions multivariées :</strong></p>
+
+<p>$f : \mathbb{R}^2 \to \mathbb{R}, \quad f(x_1, x_2) = 2x_1 - 3x_2 + 7$</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import plotly.graph_objects as go
+
+fun = lambda x, y: 2*x - 3*y + 7
+x, y = np.meshgrid(range(10), range(10))
+z = fun(x, y)
+go.Figure(go.Surface(x=x, y=y, z=z)).show()</code></pre></div>
+
+
+<figure><img src="../../assets/images/algebra-calculus-03-07330825.svg" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h3 id="22-équations-et-systèmes">2.2 Équations et systèmes</h3>
+
+<p><strong>Exemple : problème père/fille</strong></p>
+
+<p>$\begin{cases} y = x + 22 \\ y + 10 = 2(x + 10) \end{cases} \implies \begin{cases} y = x + 22 \\ y = 2x + 10 \end{cases}$</p>
+
+<p>Résolution graphique : l'intersection des deux droites donne la solution unique.</p>
+
+<figure><img src="../../assets/images/algebra-calculus-04-1f6d2b35.svg" alt="" loading="lazy"></figure>
+
+<p>→ x = 12 ans (fille), y = 34 ans (père)</p>
+
+<hr>
+
+<h3 id="23-vecteurs">2.3 Vecteurs</h3>
+
+<h4 id="231-définition-et-notation">2.3.1 Définition et notation</h4>
+
+<p>$\mathbf{a} = \begin{bmatrix} 1 \\ 2 \end{bmatrix} \in \mathbb{R}^2 \qquad \mathbf{u} = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} \in \mathbb{R}^3 \qquad \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix} \in \mathbb{R}^n$</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Un vecteur peut être vu <strong>à la fois</strong> comme une séquence de n nombres <strong>et</strong> comme un point dans un espace n-dimensionnel. Chaque ligne d'un DataFrame est un vecteur dans l'espace des features.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">u = np.array([1, 2, 3])               # shape (3,)
+u_row = np.array([[1, 2, 3]])          # shape (1, 3) — vecteur ligne
+u_col = np.array([[1], [2], [3]])      # shape (3, 1) — vecteur colonne
+
+u + v    # → [5, 7, 9]
+2 * u    # → [2, 4, 6]</code></pre></div>
+
+
+<h4 id="232-norme-et-distance">2.3.2 Norme et distance</h4>
+
+<p><strong>Norme L2</strong> (distance depuis l'origine) :</p>
+
+<p>$\|\mathbf{a}\|_2 = \sqrt{\sum_{i=1}^n a_i^2}$</p>
+
+<p><strong>Distance L2</strong> entre deux vecteurs :</p>
+
+<p>$\|\mathbf{b} - \mathbf{a}\|_2 = \sqrt{\sum_{i=1}^n (b_i - a_i)^2}$</p>
+
+<p><strong>Distance L1</strong> (Manhattan) :</p>
+
+<p>$\|\mathbf{b} - \mathbf{a}\|_1 = \sum_{i=1}^n |b_i - a_i|$</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">a = np.array([1, 2, 3, 4])
+b = np.array([5, 5, 5, 5])
+
+np.linalg.norm(b - a)         # → 5.477 : distance L2
+np.sqrt(np.sum((b - a)**2))   # → 5.477 : même résultat manuel</code></pre></div>
+
+
+<h4 id="233-produit-scalaire-dot-product">2.3.3 Produit scalaire (dot product)</h4>
+
+<p>$\mathbf{a} \cdot \mathbf{b} = \sum_{i=1}^n a_i b_i = \|\mathbf{a}\|_2 \times \|\mathbf{b}\|_2 \times \cos\theta$</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Cas</th><th>Valeur</th></tr></thead><tbody><tr><td>Vecteurs <strong>orthogonaux</strong></td><td>a · b = 0</td></tr><tr><td>Vecteurs <strong>parallèles</strong> (même sens)</td><td>a · b = ‖a‖ × ‖b‖ (maximum)</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">np.dot(u, v)   # → 32
+u @ v          # → 32 (opérateur @)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>cos θ</strong> (cosine similarity) est très utilisé en NLP pour mesurer la similarité entre représentations vectorielles de textes.</p></div></div>
+
+<p>👉 <a href="https://betterexplained.com/articles/vector-calculus-understanding-the-dot-product/" target="_blank" rel="noopener">Better Explained — dot product</a></p>
+
+<hr>
+
+<h3 id="24-matrices">2.4 Matrices</h3>
+
+<p>$A_{(m \times n)} = \begin{bmatrix} a_{1,1} & \cdots & a_{1,n} \\ \vdots & \ddots & \vdots \\ a_{m,1} & \cdots & a_{m,n} \end{bmatrix}$</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">A.T          # transposée
+A + B        # addition (formes identiques)
+3 * A        # scalaire × matrice
+A @ B        # produit matriciel : colonnes(A) = lignes(B) requis
+
+np.eye(3)                     # matrice identité I₃
+np.linalg.inv(M)              # inverse M⁻¹
+np.linalg.det(M)              # déterminant (= 0 → non inversible)
+np.linalg.matrix_rank(M)      # rang</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le produit matriciel n'est <strong>pas commutatif</strong> : AB ≠ BA en général.</p></div></div>
+
+<p>👉 <a href="https://www.youtube.com/watch?v=kYB8IZa5AuE&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&index=3" target="_blank" rel="noopener">3Blue1Brown — Linear transformations and matrices</a></p>
+
+<hr>
+
+<h3 id="25-produit-matriciel-data-science">2.5 Produit matriciel × Data Science</h3>
+
+<p>Estimer le prix d'<strong>un</strong> appartement :</p>
+
+<p>$y = a_1 x_1 + \cdots + a_n x_n = \mathbf{a} \cdot \mathbf{x}$</p>
+
+<p>Estimer les prix de <strong>plusieurs</strong> appartements :</p>
+
+<p>$\mathbf{y} = \mathbf{a} \cdot X$</p>
+
+<p>Effectuer <strong>plusieurs opérations</strong> sur <strong>plusieurs</strong> données :</p>
+
+<p>$Y = A \cdot X$</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>C'est pourquoi les <strong>GPUs adorent la multiplication matricielle</strong> : ils parallélisent massivement ces opérations — crucial pour le deep learning.</p></div></div>
+
+<p><strong>Résoudre Ax = b avec l'algèbre matricielle :</strong></p>
+
+<p>$\mathbf{x} = A^{-1} \cdot \mathbf{b}$</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">A = np.array([[1, -1], [1, -2]])
+b = np.array([[22], [10]])
+
+np.linalg.inv(A) @ b    # → [[34.], [12.]]</code></pre></div>
+
+
+<p><strong>Complexité computationnelle — Big O :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Complexité</th><th>Exemple</th></tr></thead><tbody><tr><td>O(1)</td><td>Accéder au premier élément d'une liste</td></tr><tr><td>O(log n)</td><td>Recherche dichotomique</td></tr><tr><td>O(n)</td><td>Boucle simple</td></tr><tr><td>O(n log n)</td><td>Tri d'une liste</td></tr><tr><td>O(n²)</td><td>Double boucle <code>for</code></td></tr><tr><td>O(n³)</td><td>Inversion de matrice naïve</td></tr><tr><td>O(2ⁿ)</td><td>Brute force</td></tr></tbody></table></div>
+<p>👉 <a href="https://medium.com/towards-data-science/understanding-time-complexity-with-python-examples-2bda6e8158a7" target="_blank" rel="noopener">Towards Data Science — Time Complexity</a></p>
+
+<p>[Untitled](Algebra%20&%20Calculus/Untitled%203274e4108246805ab32cc21d55549ba8.csv)</p>
+
+<hr>
+
+<h2 id="3-calcul-différentiel">3) Calcul différentiel</h2>
+
+<h3 id="31-dérivées">3.1 Dérivées</h3>
+
+<p>La <strong>dérivée</strong> d'une fonction en un point mesure la pente locale :</p>
+
+<p>$f'(a) = \frac{df}{dx}(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}$</p>
+
+<figure><img src="../../assets/images/algebra-calculus-05-223d7a95.gif" alt="" loading="lazy"></figure>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La dérivée est utilisée en <strong>optimisation</strong> : minimiser une fonction de coût (ex: MSE) = trouver où la dérivée est nulle.</p></div></div>
+
+<hr>
+
+<h3 id="32-dérivées-partielles-et-gradient">3.2 Dérivées partielles et gradient</h3>
+
+<p>Pour g(x, y), on fixe toutes les variables sauf une :</p>
+
+<p>$\frac{\partial g}{\partial x}(x_A, y_A) = \lim_{h \to 0} \frac{g(x_A + h, y_A) - g(x_A, y_A)}{h}$</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fun = lambda x, y: x**2 - y**2
+x, y = np.meshgrid(np.linspace(-1, 1, 100), np.linspace(-1, 1, 100))
+z = fun(x, y)
+go.Figure(go.Surface(x=x, y=y, z=z)).show()</code></pre></div>
+
+
+<p>Le <strong>vecteur gradient</strong> rassemble toutes les dérivées partielles :</p>
+
+<p>$\nabla h(\mathbf{p}) = \begin{bmatrix} \frac{\partial h}{\partial x_1}(\mathbf{p}) \\ \vdots \\ \frac{\partial h}{\partial x_n}(\mathbf{p}) \end{bmatrix}$</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le gradient pointe dans la <strong>direction de la plus forte montée</strong>. La <strong>descente de gradient</strong> (gradient descent) se déplace dans le sens opposé pour minimiser une fonction de coût — c'est le moteur de l'entraînement des modèles ML.</p></div></div>
+
+<hr>
+
+<h3 id="33-intégrales">3.3 Intégrales</h3>
+
+<p>$\int_a^b f(x)\, dx = \text{aire sous la courbe } y = f(x) \text{ entre } a \text{ et } b$</p>
+
+<figure><img src="../../assets/images/algebra-calculus-06-43b43e36.gif" alt="" loading="lazy"></figure>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>En data science, les intégrales interviennent dans les <strong>distributions de probabilité</strong> : ∫ PDF(x) dx sur un intervalle = probabilité d'observer une valeur dans cet intervalle.</p></div></div>
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://hadrienj.github.io/deep-learning-book-series-home/" target="_blank" rel="noopener">Hadrien Jean — Linear Algebra Series</a> (blog)</li>
+<li>👉 <a href="https://www.essentialmathfordatascience.com/" target="_blank" rel="noopener">Hadrien Jean — Essential Math for Data Science</a> (O'Reilly)</li>
+<li>👉 <a href="https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" target="_blank" rel="noopener">3Blue1Brown — Essence of Linear Algebra</a> (3h)</li>
+<li>👉 <a href="https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr" target="_blank" rel="noopener">3Blue1Brown — Essence of Calculus</a> (4h)</li>
+<li>👉 <a href="https://betterexplained.com/articles/vector-calculus-understanding-the-dot-product/" target="_blank" rel="noopener">Better Explained — Dot Product</a></li>
+<li>👉 <a href="https://medium.com/towards-data-science/understanding-time-complexity-with-python-examples-2bda6e8158a7" target="_blank" rel="noopener">Towards Data Science — Time Complexity</a></li>
+<li>👉 <a href="https://github.com/lewagon/data-lecture-starters/blob/main/starters/03-Math_01-Algebra-Calculus_starter.ipynb" target="_blank" rel="noopener">Lecture notebook (teachers)</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">🚀 Challenges</h2>
+
+<ul>
+<li>Implémenter les opérations vectorielles et matricielles avec NumPy</li>
+<li>Résoudre des systèmes d'équations linéaires avec l'algèbre matricielle</li>
+<li>Visualiser des fonctions en 2D et 3D avec matplotlib et plotly</li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><li><a href="#ref-1-numpy-manipuler-des-tableaux-efficacement">1. NumPy — Manipuler des tableaux efficacement</a><ol><li><a href="#ref-quest-ce-quun-tableau-numpy">Qu'est-ce qu'un tableau NumPy ?</a></li></ol></li><li><a href="#ref-2-algèbre-linéaire">2. Algèbre linéaire</a><ol><li><a href="#ref-21-fonctions-transformer-un-nombre-en-un-autre">2.1 Fonctions — transformer un nombre en un autre</a></li><li><a href="#ref-22-systèmes-déquations-linéaires">2.2 Systèmes d'équations linéaires</a></li><li><a href="#ref-23-vecteurs-des-listes-de-nombres-avec-des-propriétés-géométriques">2.3 Vecteurs — des listes de nombres avec des propriétés géométriques</a></li><li><a href="#ref-24-matrices-des-tableaux-de-vecteurs">2.4 Matrices — des tableaux de vecteurs</a></li><li><a href="#ref-25-le-produit-matriciel-au-coeur-de-la-data-science">2.5 Le produit matriciel au coeur de la data science</a></li></ol></li><li><a href="#ref-3-calcul-différentiel">3. Calcul différentiel</a><ol><li><a href="#ref-31-dérivées-mesurer-la-pente-dune-courbe">3.1 Dérivées — mesurer la pente d'une courbe</a></li><li><a href="#ref-32-dérivées-partielles-et-gradient-la-boussole-de-loptimisation">3.2 Dérivées partielles et gradient — la boussole de l'optimisation</a></li><li><a href="#ref-33-intégrales-laire-sous-la-courbe">3.3 Intégrales — l'aire sous la courbe</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>En data science, on ne travaille presque jamais sur une seule valeur isolée. On manipule des <strong>listes de nombres</strong> (des vecteurs), des <strong>tableaux de données</strong> (des matrices), et on cherche en permanence à <strong>optimiser</strong> quelque chose — réduire une erreur, maximiser une précision. C'est exactement à ça que servent l'algèbre linéaire et le calcul différentiel.</p>
+
+<p><strong>Pourquoi c'est indispensable ?</strong></p>
+
+<ul>
+<li>Un modèle de machine learning reçoit des données sous forme de matrices et produit des prédictions grâce à des multiplications matricielles.</li>
+<li>Entraîner un modèle, c'est résoudre un problème d'optimisation — et l'outil central est le <strong>gradient</strong>.</li>
+<li>Comprendre ces maths te permet de lire les formules des algorithmes, de déboguer tes modèles, et de ne pas être perdu face aux notations scientifiques.</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>À retenir absolument :</p>
+<p>1. Un <strong>vecteur</strong> = une liste ordonnée de nombres (ex : les caractéristiques d'un appartement).</p>
+<p>2. Une <strong>matrice</strong> = un tableau de vecteurs (ex : ton dataset entier).</p>
+<p>3. Le <strong>produit scalaire</strong> mesure la "ressemblance" entre deux vecteurs.</p>
+<p>4. La <strong>dérivée</strong> mesure la pente d'une courbe en un point donné.</p>
+<p>5. Le <strong>gradient</strong> est la boussole qui indique dans quelle direction une fonction monte le plus vite.</p></div></div>
+
+<p><strong>Analogie fil rouge :</strong> imagine que chaque appartement est décrit par 3 chiffres : surface, nombre de pièces, distance au métro. Cet appartement <em>est</em> un vecteur à 3 composantes. Ton dataset de 1000 appartements <em>est</em> une matrice de 1000 lignes et 3 colonnes. Toute la data science consiste à faire des opérations sur ces tableaux.</p>
+
+<p><strong>Mini-plan du cours :</strong></p>
+<ol>
+<li>NumPy — l'outil de base pour manipuler tableaux et matrices en Python</li>
+<li>Algèbre — fonctions, vecteurs, matrices, produit scalaire</li>
+<li>Calcul différentiel — dérivées, gradient, intégrales</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-numpy-manipuler-des-tableaux-efficacement">1. NumPy — Manipuler des tableaux efficacement</h2>
+
+<h3 id="ref-quest-ce-quun-tableau-numpy">Qu'est-ce qu'un tableau NumPy ?</h3>
+
+<p>NumPy est la bibliothèque Python de référence pour faire des calculs sur des tableaux de nombres. Son objet central s'appelle <code>ndarray</code> (pour "n-dimensional array" — tableau à n dimensions).</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Avant d'écrire une boucle <code>for</code> pour parcourir des données, pose-toi toujours cette question : "est-ce que NumPy peut faire ça directement ?" La réponse est souvent oui, et c'est 10 à 100 fois plus rapide.</p></div></div>
+
+<p>Le code suivant crée une matrice 3 lignes × 2 colonnes et montre comment l'inspecter :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+# Création d&#x27;une matrice 3×2 (3 lignes, 2 colonnes)
+A = np.array([[1, 2],
+              [3, 4],
+              [5, 6]])
+
+A.shape   # → (3, 2) : le &quot;format&quot; du tableau — TOUJOURS vérifier ça en premier !
+A.size    # → 6      : nombre total d&#x27;éléments (3 × 2 = 6)
+A.ndim    # → 2      : nombre de dimensions (2 = c&#x27;est une matrice)
+A.dtype   # → int64  : type des données stockées</code></pre></div>
+
+
+<p><strong>Accéder aux données — indexing et slicing :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">A[1, 1]   # → 4 : élément ligne 1, colonne 1 (les indices commencent à 0)
+A[:2, :]  # → [[1,2],[3,4]] : les 2 premières lignes, toutes les colonnes
+
+# Filtrage booléen (très utile pour sélectionner des données)
+A &gt; 2         # → matrice de True/False : True là où la valeur dépasse 2
+A[A &gt; 2]      # → array([3, 4, 5, 6]) : tous les éléments &gt; 2</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Ce slicing fonctionne exactement comme en Python classique, mais en 2D. <code>A[:2, :]</code> signifie "prends les lignes 0 et 1, et toutes les colonnes".</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-algèbre-linéaire">2. Algèbre linéaire</h2>
+
+<h3 id="ref-21-fonctions-transformer-un-nombre-en-un-autre">2.1 Fonctions — transformer un nombre en un autre</h3>
+
+<p>Une <strong>fonction</strong> prend un nombre en entrée et produit un nombre en sortie. En maths, on écrit :</p>
+
+<div class="katex-display">$$f : \mathbb{R} \to \mathbb{R}, \quad f(x) = x^2 + 1$$</div>
+
+<ul>
+<li>$f$ est le nom de la fonction</li>
+<li>$\mathbb{R}$ désigne l'ensemble des nombres réels (tous les nombres possibles)</li>
+<li>$x$ est le nombre en entrée</li>
+<li>$x^2 + 1$ est ce qu'on calcule pour obtenir la sortie</li>
+</ul>
+
+<p><strong>Exemple numérique :</strong> si $x = 3$, alors $f(3) = 3^2 + 1 = 9 + 1 = 10$.</p>
+
+<p>En Python, une fonction lambda est l'équivalent direct :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Définition de la fonction f(x) = x² + 1
+f = lambda x: x**2 + 1
+
+# Évaluation sur plusieurs valeurs d&#x27;un coup (vectorisé — pas de for loop !)
+x = np.arange(5)       # → [0, 1, 2, 3, 4]
+y = f(x)               # → [1, 2, 5, 10, 17] : f appliquée à chaque x automatiquement
+
+# Tracé de la courbe
+import matplotlib.pyplot as plt
+x = np.linspace(-2, 2, 100)   # 100 points régulièrement espacés entre -2 et 2
+plt.plot(x, f(x))              # trace la courbe
+plt.show()</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>np.linspace(-2, 2, 100)</code> crée 100 points entre -2 et 2. <code>f(x)</code> s'applique sur tout le tableau en une seule opération — NumPy "vectorise" automatiquement, inutile d'écrire une boucle.</p></div></div>
+
+<p><strong>Fonctions à deux variables :</strong> une fonction peut prendre deux entrées et produire une sortie — on obtient alors une surface en 3D :</p>
+
+<div class="katex-display">$$f : \mathbb{R}^2 \to \mathbb{R}, \quad f(x_1, x_2) = 2x_1 - 3x_2 + 7$$</div>
+
+<ul>
+<li>$\mathbb{R}^2$ signifie "deux nombres réels en entrée"</li>
+<li>$x_1$ et $x_2$ sont les deux variables d'entrée</li>
+<li>La formule $2x_1 - 3x_2 + 7$ calcule la valeur de sortie</li>
+</ul>
+
+<p><strong>Exemple numérique :</strong> si $x_1 = 4$ et $x_2 = 1$, alors $f(4, 1) = 2 \times 4 - 3 \times 1 + 7 = 8 - 3 + 7 = 12$.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import plotly.graph_objects as go
+
+# Fonction à 2 variables : une surface en 3D
+g = lambda x, y: 2*x - 3*y + 7
+
+# np.meshgrid crée une grille de points (x, y) pour couvrir tout l&#x27;espace 2D
+x, y = np.meshgrid(range(10), range(10))
+z = g(x, y)                                        # valeur z calculée sur chaque point
+
+go.Figure(go.Surface(x=x, y=y, z=z)).show()        # visualisation 3D interactive</code></pre></div>
+
+
+<hr>
+
+<h3 id="ref-22-systèmes-déquations-linéaires">2.2 Systèmes d'équations linéaires</h3>
+
+<p>Un système d'équations, c'est plusieurs équations simultanées dont on cherche la solution commune.</p>
+
+<p><strong>Exemple concret — problème père/fille :</strong></p>
+
+<blockquote><p>"La fille a 22 ans de moins que son père. Dans 10 ans, le père aura le double de l'âge de la fille."</p></blockquote>
+
+<p>On note $x$ l'âge de la fille et $y$ l'âge du père. Cela donne :</p>
+
+<div class="katex-display">$$\begin{cases} y = x + 22 \\ y + 10 = 2(x + 10) \end{cases}$$</div>
+
+<p>En simplifiant la deuxième équation : $y + 10 = 2x + 20$, donc $y = 2x + 10$. Le système devient :</p>
+
+<div class="katex-display">$$\begin{cases} y = x + 22 \\ y = 2x + 10 \end{cases}$$</div>
+
+<p>Graphiquement, c'est l'intersection de deux droites. Algébriquement : $x + 22 = 2x + 10$, donc $x = 12$ (la fille) et $y = 34$ (le père).</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>On peut résoudre ce genre de système avec NumPy en quelques lignes — on verra comment dans la section matrices ci-dessous.</p></div></div>
+
+<hr>
+
+<h3 id="ref-23-vecteurs-des-listes-de-nombres-avec-des-propriétés-géométriques">2.3 Vecteurs — des listes de nombres avec des propriétés géométriques</h3>
+
+<h4 id="ref-définition">Définition</h4>
+
+<p>Un vecteur, c'est une liste ordonnée de $n$ nombres. On le note avec une lettre en gras :</p>
+
+<div class="katex-display">$$\mathbf{u} = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} \in \mathbb{R}^3$$</div>
+
+<ul>
+<li>$\mathbf{u}$ est le nom du vecteur</li>
+<li>Les trois nombres $1$, $2$, $3$ sont ses <strong>composantes</strong></li>
+<li>$\mathbb{R}^3$ signifie "un espace à 3 dimensions" — ce vecteur a 3 composantes</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>En data science, chaque ligne de ton DataFrame est un vecteur. Si un appartement a 3 caractéristiques (surface, pièces, distance métro), il est représenté par un vecteur à 3 composantes dans un espace à 3 dimensions.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">u = np.array([1, 2, 3])          # vecteur 1D — shape (3,)
+v = np.array([4, 5, 6])
+
+# Opérations de base (composante par composante)
+u + v    # → [5, 7, 9] : addition de chaque composante
+2 * u    # → [2, 4, 6] : chaque composante multipliée par 2</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Attention à la shape ! <code>np.array([1, 2, 3])</code> donne shape <code>(3,)</code> — un vecteur 1D "plat". Pour un vecteur colonne explicite, il faut <code>np.array([[1], [2], [3]])</code> de shape <code>(3, 1)</code>. Cette différence devient critique pour certains produits matriciels.</p></div></div>
+
+<hr>
+
+<h4 id="ref-norme-dun-vecteur-mesurer-sa-longueur">Norme d'un vecteur — mesurer sa "longueur"</h4>
+
+<p>La <strong>norme L2</strong> (aussi appelée norme euclidienne) mesure la distance entre l'origine et la pointe du vecteur. C'est le théorème de Pythagore généralisé :</p>
+
+<div class="katex-display">$$\|\mathbf{a}\|_2 = \sqrt{\sum_{i=1}^n a_i^2} = \sqrt{a_1^2 + a_2^2 + \cdots + a_n^2}$$</div>
+
+<ul>
+<li>$\|\mathbf{a}\|_2$ se lit "la norme L2 de $\mathbf{a}$"</li>
+<li>$\sum_{i=1}^n a_i^2$ signifie "on additionne le carré de chaque composante, de $i=1$ jusqu'à $i=n$"</li>
+<li>On prend la racine carrée $\sqrt{\cdot}$ du tout</li>
+</ul>
+
+<p><strong>Exemple numérique :</strong> pour $\mathbf{a} = (3, 4)$, la norme vaut $\sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5$.</p>
+
+<p><strong>Distance L2 entre deux vecteurs</strong> — à quel point sont-ils "éloignés" ?</p>
+
+<div class="katex-display">$$\|\mathbf{b} - \mathbf{a}\|_2 = \sqrt{\sum_{i=1}^n (b_i - a_i)^2}$$</div>
+
+<ul>
+<li>$b_i - a_i$ est la différence de la $i$-ème composante entre les deux vecteurs</li>
+<li>On fait la somme des carrés de ces différences, puis la racine carrée</li>
+</ul>
+
+<p><strong>Distance L1</strong> (distance de Manhattan — comme marcher dans les rues d'une ville en grille) :</p>
+
+<div class="katex-display">$$\|\mathbf{b} - \mathbf{a}\|_1 = \sum_{i=1}^n |b_i - a_i|$$</div>
+
+<ul>
+<li>$|b_i - a_i|$ est la valeur absolue de la différence de chaque composante (on ignore le signe)</li>
+<li>On additionne toutes ces valeurs absolues</li>
+</ul>
+
+<p><strong>Exemple numérique :</strong> avec $\mathbf{a} = (1, 2, 3, 4)$ et $\mathbf{b} = (5, 5, 5, 5)$ :</p>
+<ul>
+<li>Différences : $(4, 3, 2, 1)$</li>
+<li>Distance L2 : $\sqrt{16 + 9 + 4 + 1} = \sqrt{30} \approx 5.48$</li>
+<li>Distance L1 : $4 + 3 + 2 + 1 = 10$</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">a = np.array([1, 2, 3, 4])
+b = np.array([5, 5, 5, 5])
+
+# Distance L2 — deux façons équivalentes
+np.linalg.norm(b - a)             # → 5.477 : version rapide NumPy
+np.sqrt(np.sum((b - a)**2))       # → 5.477 : version manuelle pour comprendre</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>La distance L2 est utilisée en KNN (k-nearest neighbors) pour trouver les "voisins les plus proches". La distance L1 est parfois préférée car elle est moins sensible aux valeurs extrêmes (outliers).</p></div></div>
+
+<hr>
+
+<h4 id="ref-produit-scalaire-mesurer-la-ressemblance-entre-deux-vecteurs">Produit scalaire — mesurer la "ressemblance" entre deux vecteurs</h4>
+
+<p>Le <strong>produit scalaire</strong> (dot product en anglais) multiplie les composantes correspondantes et additionne tout. Il retourne <strong>un seul nombre</strong> :</p>
+
+<div class="katex-display">$$\mathbf{a} \cdot \mathbf{b} = \sum_{i=1}^n a_i \times b_i = a_1 b_1 + a_2 b_2 + \cdots + a_n b_n$$</div>
+
+<ul>
+<li>$a_i$ est la $i$-ème composante de $\mathbf{a}$, $b_i$ celle de $\mathbf{b}$</li>
+<li>On multiplie chaque paire de composantes, puis on additionne</li>
+</ul>
+
+<p><strong>Exemple numérique :</strong> avec $\mathbf{u} = (1, 2, 3)$ et $\mathbf{v} = (4, 5, 6)$ :</p>
+
+<div class="katex-display">$$\mathbf{u} \cdot \mathbf{v} = 1 \times 4 + 2 \times 5 + 3 \times 6 = 4 + 10 + 18 = 32$$</div>
+
+<p>Il existe une deuxième façon de l'écrire, qui relie le produit scalaire aux normes et à l'angle $\theta$ entre les vecteurs :</p>
+
+<div class="katex-display">$$\mathbf{a} \cdot \mathbf{b} = \|\mathbf{a}\|_2 \times \|\mathbf{b}\|_2 \times \cos\theta$$</div>
+
+<ul>
+<li>$\theta$ (theta) est l'angle entre les deux vecteurs</li>
+<li>$\cos\theta$ est le cosinus de cet angle (valeur entre -1 et +1)</li>
+</ul>
+
+<p>Cette formule dit quelque chose d'intuitif :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Situation</th><th>Valeur du cosinus</th><th>Produit scalaire</th></tr></thead><tbody><tr><td>Vecteurs <strong>perpendiculaires</strong> (angle 90°)</td><td>$\cos 90° = 0$</td><td>$\mathbf{a} \cdot \mathbf{b} = 0$</td></tr><tr><td>Vecteurs <strong>dans le même sens</strong> (angle 0°)</td><td>$\cos 0° = 1$</td><td>valeur maximale</td></tr><tr><td>Vecteurs <strong>opposés</strong> (angle 180°)</td><td>$\cos 180° = -1$</td><td>valeur minimale (négative)</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">u = np.array([1, 2, 3])
+v = np.array([4, 5, 6])
+
+np.dot(u, v)   # → 32 : produit scalaire
+u @ v          # → 32 : même résultat avec l&#x27;opérateur @
+u * v          # → [4, 10, 18] : ATTENTION ! Ce n&#x27;est PAS le produit scalaire,
+               #                 c&#x27;est la multiplication élément par élément</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne pas confondre <code>u * v</code> (multiplication élément par élément, retourne un vecteur) et <code>u @ v</code> ou <code>np.dot(u, v)</code> (produit scalaire, retourne un seul nombre).</p></div></div>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>En NLP (traitement du langage naturel), la "similarité cosinus" ($\cos\theta$) est utilisée pour mesurer si deux textes parlent du même sujet. Si deux documents ont des vecteurs pointant dans la même direction, ils sont similaires.</p></div></div>
+
+<hr>
+
+<h3 id="ref-24-matrices-des-tableaux-de-vecteurs">2.4 Matrices — des tableaux de vecteurs</h3>
+
+<p>Une <strong>matrice</strong> est un tableau rectangulaire de nombres, avec $m$ lignes et $n$ colonnes :</p>
+
+<div class="katex-display">$$A_{(m \times n)} = \begin{bmatrix} a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\ a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\ \vdots & & \ddots & \vdots \\ a_{m,1} & a_{m,2} & \cdots & a_{m,n} \end{bmatrix}$$</div>
+
+<ul>
+<li>$a_{i,j}$ désigne l'élément à la ligne $i$ et la colonne $j$</li>
+<li>Une matrice $m \times n$ a $m$ lignes et $n$ colonnes</li>
+</ul>
+
+<p><strong>Exemple concret :</strong> ton DataFrame avec 1000 appartements (lignes) et 3 features (colonnes) est une matrice $1000 \times 3$.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">A = np.array([[1, 2, 3],
+              [0, 1, 2]])   # matrice 2×3
+
+B = np.array([[4, 1],
+              [5, 0],
+              [6, 4]])       # matrice 3×2
+
+# Opérations classiques
+A.T         # transposée : inverse lignes et colonnes → shape (3, 2)
+A + A       # addition élément par élément (les deux matrices doivent avoir la même shape)
+3 * A       # multiplication par un scalaire : chaque élément est multiplié par 3
+
+# Produit matriciel
+A @ B       # → shape (2, 2) — fonctionne car colonnes(A)=3 = lignes(B)=3</code></pre></div>
+
+
+<p><strong>Matrices spéciales :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">np.eye(3)              # matrice identité 3×3 : des 1 sur la diagonale, 0 ailleurs
+                       # joue le rôle du &quot;1&quot; pour la multiplication matricielle
+
+np.linalg.inv(M)       # inverse de M : M × M⁻¹ = I (la matrice identité)
+np.linalg.det(M)       # déterminant : si = 0, la matrice n&#x27;est pas inversible
+np.linalg.matrix_rank(M)  # rang : mesure l&#x27;&quot;information&quot; contenue dans la matrice</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le produit matriciel n'est <strong>pas commutatif</strong> : $A \times B \neq B \times A$ en général. L'ordre compte ! De plus, pour que $A \times B$ soit défini, il faut que le nombre de colonnes de $A$ soit égal au nombre de lignes de $B$.</p></div></div>
+
+<hr>
+
+<h3 id="ref-25-le-produit-matriciel-au-coeur-de-la-data-science">2.5 Le produit matriciel au coeur de la data science</h3>
+
+<p><strong>Estimer le prix d'un appartement</strong> à partir de $n$ caractéristiques $x_1, x_2, \ldots, x_n$ avec des poids $a_1, a_2, \ldots, a_n$ :</p>
+
+<div class="katex-display">$$y = a_1 x_1 + a_2 x_2 + \cdots + a_n x_n = \mathbf{a} \cdot \mathbf{x}$$</div>
+
+<ul>
+<li>$y$ est le prix prédit</li>
+<li>$x_i$ est la $i$-ème caractéristique (surface, nb pièces, etc.)</li>
+<li>$a_i$ est le poids associé à cette caractéristique (appris par le modèle)</li>
+<li>Le tout s'écrit comme un produit scalaire $\mathbf{a} \cdot \mathbf{x}$</li>
+</ul>
+
+<p><strong>Pour plusieurs appartements à la fois</strong> (toute la base de données) :</p>
+
+<div class="katex-display">$$\mathbf{y} = X \cdot \mathbf{a}$$</div>
+
+<ul>
+<li>$X$ est la matrice de données (chaque ligne = un appartement)</li>
+<li>$\mathbf{a}$ est le vecteur des poids</li>
+<li>$\mathbf{y}$ est le vecteur des prix prédits pour tous les appartements</li>
+</ul>
+
+<p>C'est pourquoi la multiplication matricielle est au coeur du deep learning : en une seule opération $Y = A \cdot X$, on applique plusieurs transformations à tout un dataset.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Les GPUs sont des processeurs spécialement conçus pour faire des multiplications matricielles en parallèle. Un GPU haut de gamme peut faire des milliards de telles opérations par seconde — c'est pour ça qu'ils sont indispensables pour entraîner des réseaux de neurones.</p></div></div>
+
+<p><strong>Résoudre un système linéaire $A\mathbf{x} = \mathbf{b}$ avec les matrices :</strong></p>
+
+<p>Si on a le système $A\mathbf{x} = \mathbf{b}$, alors la solution est $\mathbf{x} = A^{-1} \cdot \mathbf{b}$, où $A^{-1}$ est l'inverse de $A$.</p>
+
+<p><strong>Exemple — reprendre le problème père/fille :</strong></p>
+
+<div class="katex-display">$$\begin{cases} x - y = -22 \\ x - 2y = -10 \end{cases} \implies A = \begin{bmatrix} 1 & -1 \\ 1 & -2 \end{bmatrix}, \quad \mathbf{b} = \begin{bmatrix} -22 \\ -10 \end{bmatrix}$$</div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">A = np.array([[1, -1],
+              [1, -2]])        # matrice des coefficients
+
+b = np.array([[-22], [-10]])   # vecteur des constantes (côté droit des équations)
+
+# Méthode 1 : par inversion de matrice
+np.linalg.inv(A) @ b           # → [[34.], [12.]] : père=34, fille=12
+
+# Méthode 2 : solve (préférable — plus stable numériquement)
+np.linalg.solve(A, b)          # → même résultat, mais calcul plus fiable</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>En pratique, préférer <code>np.linalg.solve(A, b)</code> à <code>np.linalg.inv(A) @ b</code>. Le résultat est le même, mais <code>solve</code> est plus précis numériquement et plus rapide.</p></div></div>
+
+<p><strong>Note sur la complexité algorithmique :</strong> inverser une matrice $n \times n$ coûte $O(n^3)$ opérations. Si $n = 1000$, c'est $10^9$ opérations. C'est pourquoi on préfère <code>solve</code>, qui ne calcule pas vraiment l'inverse mais utilise des méthodes plus efficaces.</p>
+
+<hr>
+
+<h2 id="ref-3-calcul-différentiel">3. Calcul différentiel</h2>
+
+<h3 id="ref-31-dérivées-mesurer-la-pente-dune-courbe">3.1 Dérivées — mesurer la pente d'une courbe</h3>
+
+<p>La <strong>dérivée</strong> d'une fonction en un point $a$ mesure la pente (l'inclinaison) de la courbe à cet endroit précis. Formellement :</p>
+
+<div class="katex-display">$$f'(a) = \frac{df}{dx}(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}$$</div>
+
+<ul>
+<li>$f'(a)$ se lit "f prime de a" — c'est la dérivée de $f$ en $a$</li>
+<li>$h$ est un très petit écart (qui tend vers 0)</li>
+<li>$f(a+h) - f(a)$ est la variation de la fonction quand on avance de $h$</li>
+<li>$\frac{f(a+h) - f(a)}{h}$ est le <strong>taux de variation</strong> — si $h$ est infiniment petit, c'est la pente exacte en $a$</li>
+</ul>
+
+<p><strong>Analogie :</strong> si $f(t)$ représente ta position sur une route en fonction du temps $t$, alors $f'(t)$ est ta vitesse à l'instant $t$. La dérivée, c'est "à quelle vitesse la fonction change".</p>
+
+<p><strong>Exemple numérique :</strong> pour $f(x) = x^2$, la dérivée est $f'(x) = 2x$.</p>
+<ul>
+<li>En $x = 3$ : $f'(3) = 2 \times 3 = 6$ — la courbe monte avec une pente de 6.</li>
+<li>En $x = 0$ : $f'(0) = 0$ — la courbe est plate (c'est le minimum).</li>
+</ul>
+
+<p><strong>Approximation numérique en Python</strong> (quand on ne peut pas calculer la dérivée analytiquement) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">f = lambda x: x**2 + 1    # la fonction à dériver
+
+h = 1e-5                   # h très petit (0.00001)
+a = 3.0                    # point où on veut la dérivée
+
+# Approximation : (f(a+h) - f(a)) / h ≈ f&#x27;(a)
+f_prime_a = (f(a + h) - f(a)) / h
+# → ≈ 6.0 (la dérivée exacte de x² est 2x, donc f&#x27;(3) = 6)
+print(f_prime_a)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La dérivée est utilisée en <strong>optimisation</strong> : pour minimiser une fonction de coût (ex. : l'erreur moyenne d'un modèle), on cherche le point où la dérivée s'annule. C'est là que la courbe est plate — ni montée ni descente — donc c'est un minimum (ou un maximum).</p></div></div>
+
+<hr>
+
+<h3 id="ref-32-dérivées-partielles-et-gradient-la-boussole-de-loptimisation">3.2 Dérivées partielles et gradient — la boussole de l'optimisation</h3>
+
+<p>Quand une fonction dépend de <strong>plusieurs variables</strong> (ex. : $g(x, y) = x^2 - y^2$), on peut mesurer la pente dans chaque direction séparément. On appelle ça une <strong>dérivée partielle</strong>.</p>
+
+<p><strong>Dérivée partielle par rapport à $x$</strong> — on fait "comme si $y$ était une constante" et on dérive par rapport à $x$ seulement :</p>
+
+<div class="katex-display">$$\frac{\partial g}{\partial x}(x_A, y_A) = \lim_{h \to 0} \frac{g(x_A + h, y_A) - g(x_A, y_A)}{h}$$</div>
+
+<ul>
+<li>$\frac{\partial g}{\partial x}$ se lit "dérivée partielle de $g$ par rapport à $x$"</li>
+<li>$x_A, y_A$ est le point où on calcule la pente</li>
+<li>On ne bouge que $x$ (de $h$), $y$ reste fixé à $y_A$</li>
+</ul>
+
+<p><strong>Exemple numérique :</strong> pour $g(x, y) = x^2 - y^2$ :</p>
+<ul>
+<li>Dérivée par rapport à $x$ : $\frac{\partial g}{\partial x} = 2x$ (on traite $y^2$ comme une constante)</li>
+<li>Dérivée par rapport à $y$ : $\frac{\partial g}{\partial y} = -2y$ (on traite $x^2$ comme une constante)</li>
+<li>En $(x, y) = (3, 2)$ : $\frac{\partial g}{\partial x} = 6$ et $\frac{\partial g}{\partial y} = -4$</li>
+</ul>
+
+<p><strong>Le vecteur gradient</strong> rassemble toutes les dérivées partielles en un seul vecteur :</p>
+
+<div class="katex-display">$$\nabla h(\mathbf{p}) = \begin{bmatrix} \frac{\partial h}{\partial x_1}(\mathbf{p}) \\ \frac{\partial h}{\partial x_2}(\mathbf{p}) \\ \vdots \\ \frac{\partial h}{\partial x_n}(\mathbf{p}) \end{bmatrix}$$</div>
+
+<ul>
+<li>$\nabla$ se prononce "nabla" — c'est le symbole du gradient</li>
+<li>$\mathbf{p}$ est le point où on calcule le gradient (un vecteur de coordonnées)</li>
+<li>Chaque composante du gradient est la dérivée partielle dans une direction</li>
+</ul>
+
+<p><strong>Ce que ça signifie intuitivement :</strong> le gradient est une flèche qui pointe dans la <strong>direction de la plus forte montée</strong>. Si tu es sur une montagne et que tu calcules le gradient de ton altitude, il te montre vers quel côté tu dois aller pour monter le plus vite.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Visualisation d&#x27;une surface avec dérivées partielles non nulles
+import plotly.graph_objects as go
+
+fun = lambda x, y: x**2 - y**2   # f(x,y) = x² - y² (forme de &quot;selle de cheval&quot;)
+
+x, y = np.meshgrid(np.linspace(-1, 1, 100),
+                   np.linspace(-1, 1, 100))   # grille de points
+
+z = fun(x, y)                                  # calcul de z sur toute la grille
+
+go.Figure(go.Surface(x=x, y=y, z=z)).show()    # surface 3D interactive</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>La <strong>descente de gradient</strong> (gradient descent) est l'algorithme fondamental de l'entraînement des modèles ML. À chaque étape, on calcule le gradient de la fonction de coût, et on se déplace dans la direction <strong>opposée</strong> (descente = direction de la plus forte descente). On répète jusqu'à atteindre le minimum. C'est littéralement comment un réseau de neurones apprend.</p></div></div>
+
+<hr>
+
+<h3 id="ref-33-intégrales-laire-sous-la-courbe">3.3 Intégrales — l'aire sous la courbe</h3>
+
+<p>L'<strong>intégrale</strong> d'une fonction $f$ entre $a$ et $b$ mesure l'aire comprise entre la courbe et l'axe horizontal :</p>
+
+<div class="katex-display">$$\int_a^b f(x)\, dx = \text{aire sous la courbe } y = f(x) \text{ entre } x=a \text{ et } x=b$$</div>
+
+<ul>
+<li>$\int$ est le symbole de l'intégrale (un "S" allongé, pour "somme")</li>
+<li>$a$ et $b$ sont les bornes (le début et la fin de l'intervalle)</li>
+<li>$f(x)$ est la fonction intégrée</li>
+<li>$dx$ signifie "par rapport à $x$" — c'est la variable d'intégration</li>
+</ul>
+
+<p><strong>Intuition :</strong> imagine que tu divises l'intervalle $[a, b]$ en milliers de tranches très fines de largeur $dx$. Sur chaque tranche, la courbe a une hauteur $f(x)$. L'aire d'une tranche est $f(x) \times dx$ (hauteur × largeur d'un très petit rectangle). L'intégrale, c'est la somme de toutes ces petites aires.</p>
+
+<p><strong>Exemple numérique :</strong> pour $f(x) = x^2$ entre 0 et 3, l'intégrale vaut $\left[\frac{x^3}{3}\right]_0^3 = \frac{27}{3} - 0 = 9$. L'aire sous la parabole entre $x=0$ et $x=3$ est 9 unités carrées.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>En data science, les intégrales interviennent dans les <strong>distributions de probabilité</strong>. Si $p(x)$ est la courbe de densité d'une distribution (ex : courbe en cloche de la loi normale), alors $\int_a^b p(x)\, dx$ donne la probabilité qu'une valeur soit comprise entre $a$ et $b$. C'est l'aire sous la courbe entre ces deux bornes.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<ol>
+<li><strong>Vecteurs et normes :</strong> Tu as deux vecteurs $\mathbf{u} = (3, 4)$ et $\mathbf{v} = (0, 0)$. Quelle est la norme L2 de $\mathbf{u}$ ? Que vaut le produit scalaire $\mathbf{u} \cdot \mathbf{v}$ ? Que t'indique ce résultat sur l'angle entre les deux vecteurs ?</li>
+</ol>
+
+<ol>
+<li><strong>Produit matriciel :</strong> Une matrice $A$ a shape $(4, 3)$ et une matrice $B$ a shape $(3, 5)$. Est-ce que $A \times B$ est défini ? Quelle sera la shape du résultat ? Et $B \times A$, est-ce défini ?</li>
+</ol>
+
+<ol>
+<li><strong>Dérivée et optimisation :</strong> Pour la fonction $f(x) = x^2 - 4x + 3$, où la dérivée $f'(x) = 2x - 4$ vaut-elle zéro ? Que signifie ce point géométriquement ? Est-ce un minimum ou un maximum ?</li>
+</ol>
+
+<ol>
+<li><strong>Gradient descent :</strong> En une ou deux phrases, explique le principe de la descente de gradient. Pourquoi se déplace-t-on dans la direction <em>opposée</em> au gradient ?</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Un <strong>vecteur</strong> est une liste de $n$ nombres représentant un point dans un espace à $n$ dimensions — en data science, chaque observation (ligne de DataFrame) est un vecteur.</li>
+<li>Une <strong>matrice</strong> est un tableau de vecteurs — ton dataset entier est une matrice, et les modèles ML opèrent dessus par multiplications matricielles.</li>
+<li>La <strong>norme L2</strong> d'un vecteur $\mathbf{a}$ est $\sqrt{\sum a_i^2}$ — elle mesure la "longueur" du vecteur ou la distance entre deux points.</li>
+<li>Le <strong>produit scalaire</strong> $\mathbf{a} \cdot \mathbf{b} = \sum a_i b_i$ retourne un seul nombre et mesure la "ressemblance" entre deux vecteurs (angle = 90° → produit nul).</li>
+<li>Le <strong>produit matriciel</strong> $A \times B$ n'est défini que si le nombre de colonnes de $A$ égale le nombre de lignes de $B$ ; il n'est pas commutatif ($A \times B \neq B \times A$).</li>
+<li>La <strong>dérivée</strong> $f'(a)$ mesure la pente de la courbe au point $a$ — quand elle vaut 0, on est à un minimum ou un maximum.</li>
+<li>Le <strong>gradient</strong> $\nabla f(\mathbf{p})$ est le vecteur des dérivées partielles — il pointe vers la direction de la plus forte montée de la fonction.</li>
+<li>La <strong>descente de gradient</strong> (gradient descent) est l'algorithme central du ML : on se déplace dans la direction opposée au gradient pour minimiser la fonction de coût.</li>
+<li>NumPy vectorise toutes ces opérations — jamais de boucle <code>for</code> quand NumPy peut faire le calcul directement.</li>
+<li><code>np.linalg.solve(A, b)</code> pour résoudre $A\mathbf{x} = \mathbf{b}$, <code>np.linalg.norm(v)</code> pour la norme, <code>u @ v</code> pour le produit scalaire/matriciel.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-vecteurs-la-lingua-franca-du-ml">Vecteurs : la lingua franca du ML</a></li><li><a href="#syn-matrices-et-opérations-fondamentales">Matrices et opérations fondamentales</a></li><li><a href="#syn-dérivées-et-gradients">Dérivées et gradients</a></li><li><a href="#syn-optimisation-par-descente-de-gradient">Optimisation par descente de gradient</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-décomposition-en-valeurs-singulières-svd">Décomposition en valeurs singulières (SVD)</a></li><li><a href="#syn-hessien-et-méthodes-du-second-ordre">Hessien et méthodes du second ordre</a></li><li><a href="#syn-espaces-vectoriels-et-géométrie-haute-dimension">Espaces vectoriels et géométrie haute dimension</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-vecteurs-la-lingua-franca-du-ml">Vecteurs : la lingua franca du ML</h3>
+
+<p>Un <strong>vecteur</strong> est une liste ordonnée de nombres : $\mathbf{v} = (v_1, v_2, \ldots, v_n) \in \mathbb{R}^n$.</p>
+
+<p>En machine learning, <strong>tout est un vecteur</strong> :</p>
+
+<ul>
+<li>Une image de 224×224 pixels → vecteur de dimension 50 176 (ou 150 528 avec les 3 canaux RGB)</li>
+<li>Un mot → vecteur d'<strong>embedding</strong> de dimension 768</li>
+<li>Un utilisateur → vecteur de features (âge, revenus, clics)</li>
+<li>Un modèle linéaire → vecteur de <strong>coefficients</strong></li>
+</ul>
+
+<p><strong>Trois opérations fondamentales</strong> :</p>
+
+<p><strong>Addition</strong> (élément par élément) :</p>
+
+<div class="katex-display">$$\mathbf{u} + \mathbf{v} = (u_1+v_1, \ldots, u_n+v_n)$$</div>
+
+<p>Lecture française : <em>on additionne composante par composante</em>. Chaque élément $v_i$ s'ajoute au $u_i$ correspondant.</p>
+
+<p><strong>Multiplication scalaire</strong> :</p>
+
+<div class="katex-display">$$\alpha \mathbf{v} = (\alpha v_1, \ldots, \alpha v_n)$$</div>
+
+<p>Lecture : <em>on multiplie chaque composante par le même nombre $\alpha$</em>. Géométriquement, cela <strong>étire</strong> ou <strong>rétrécit</strong> le vecteur sans changer sa direction.</p>
+
+<p><strong>Produit scalaire (dot product)</strong> :</p>
+
+<div class="katex-display">$$\mathbf{u} \cdot \mathbf{v} = \sum_{i=1}^{n} u_i v_i$$</div>
+
+<p>Lecture : <em>on multiplie élément par élément, puis on somme tout</em>. Le résultat est <strong>un seul nombre</strong> (scalaire), pas un vecteur.</p>
+
+<p>Le produit scalaire mesure la <strong>similarité directionnelle</strong> entre deux vecteurs. Géométriquement :</p>
+
+<div class="katex-display">$$\mathbf{u} \cdot \mathbf{v} = \|\mathbf{u}\| \cdot \|\mathbf{v}\| \cdot \cos(\theta)$$</div>
+
+<p>Lecture : <em>le produit scalaire est égal au produit des normes multiplié par le cosinus de l'angle $\theta$ entre les deux vecteurs</em>. La norme $\|\mathbf{v}\| = \sqrt{\sum v_i^2}$ est la "longueur" du vecteur.</p>
+
+<ul>
+<li>Si $\cos(\theta) = 1$ (vecteurs alignés) → produit maximal</li>
+<li>Si $\cos(\theta) = 0$ (perpendiculaires) → produit nul</li>
+<li>Si $\cos(\theta) = -1$ (opposés) → produit minimal</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+u = np.array([1, 2, 3])
+v = np.array([4, 5, 6])
+
+u + v                        # array([5, 7, 9])    — addition
+3 * u                        # array([3, 6, 9])    — scalar mult
+u @ v                        # 32 (= 1*4 + 2*5 + 3*6)  — dot product
+np.dot(u, v)                 # idem
+np.linalg.norm(u)            # 3.7416... (= sqrt(1+4+9))</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : un vecteur est une flèche dans l'espace. La norme L2 est sa longueur. Le produit scalaire répond à la question "ces deux flèches pointent-elles dans la même direction ?". Si oui, $\cos(\theta) = 1$ et le produit est maximal. Si perpendiculaires, produit nul. Cette intuition est la base de la <strong>similarité cosinus</strong> utilisée pour comparer des embeddings de mots ou de documents.</p></div></div>
+
+<h3 id="syn-matrices-et-opérations-fondamentales">Matrices et opérations fondamentales</h3>
+
+<p>Une <strong>matrice</strong> est un tableau 2D de nombres : $A \in \mathbb{R}^{m \times n}$ (m lignes, n colonnes). Les datasets en ML sont des matrices : $m$ exemples × $n$ features.</p>
+
+<p><strong>Multiplication matricielle</strong> : $C = AB$ où $C \in \mathbb{R}^{m \times p}$ avec $A \in \mathbb{R}^{m \times n}$ et $B \in \mathbb{R}^{n \times p}$.</p>
+
+<div class="katex-display">$$C_{ij} = \sum_{k=1}^{n} A_{ik} B_{kj}$$</div>
+
+<p>Lecture : <em>l'élément (i,j) de C est le produit scalaire de la i-ième ligne de A avec la j-ième colonne de B</em>. Les dimensions intérieures doivent matcher ($n$ doit être identique).</p>
+
+<p>C'est <strong>non commutative</strong> ($AB \neq BA$ en général) et l'opération la plus coûteuse du ML. Une couche dense de neurones est exactement $\mathbf{z} = W\mathbf{x} + \mathbf{b}$.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6], [7, 8]])
+
+A @ B                # array([[19, 22],
+                     #        [43, 50]])
+# Calcul de C[0,0] = A[0,0]*B[0,0] + A[0,1]*B[1,0]
+#                  = 1*5 + 2*7 = 19
+np.matmul(A, B)      # idem
+A * B                # ATTENTION : produit élément par élément, PAS matriciel !
+                     # array([[ 5, 12],
+                     #        [21, 32]])</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège classique</strong> : confondre <code>A * B</code> (élément par élément, broadcasting) et <code>A @ B</code> (multiplication matricielle). Sur des shapes compatibles, les deux passent sans erreur mais donnent des résultats radicalement différents. <strong>Toujours utiliser <code>@</code> ou <code>np.matmul</code></strong> pour le produit matriciel.</p></div></div>
+
+<p><strong>Transposée</strong> : $A^T$ échange lignes et colonnes. $(A^T)_{ij} = A_{ji}$.</p>
+
+<p><strong>Identité</strong> : $I$ est la matrice avec des 1 sur la diagonale et 0 ailleurs. $AI = IA = A$.</p>
+
+<p><strong>Inverse</strong> : $A^{-1}$ telle que $AA^{-1} = I$. N'existe que si $A$ est carrée et inversible (déterminant non nul).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">A_inv = np.linalg.inv(A)       # Inverse — À ÉVITER en pratique, voir Q1
+A_T = A.T                       # Transposée
+np.linalg.solve(A, b)          # Résout Ax = b sans calculer A^-1 (plus stable)</code></pre></div>
+
+
+<h3 id="syn-dérivées-et-gradients">Dérivées et gradients</h3>
+
+<p>La <strong>dérivée</strong> de $f(x)$ en $x_0$ mesure <strong>comment $f$ change</strong> quand $x$ varie autour de $x_0$ :</p>
+
+<div class="katex-display">$$f'(x_0) = \lim_{h \to 0} \frac{f(x_0 + h) - f(x_0)}{h}$$</div>
+
+<p>Lecture : <em>on compare la valeur de $f$ en $x_0 + h$ à sa valeur en $x_0$, divisé par $h$, quand $h$ devient très petit</em>. C'est la <strong>pente</strong> de la tangente au graphe.</p>
+
+<p>Pour des fonctions multi-variables $f(\mathbf{x}) = f(x_1, x_2, \ldots, x_n)$, on calcule les <strong>dérivées partielles</strong> en variant un seul axe à la fois :</p>
+
+<div class="katex-display">$$\frac{\partial f}{\partial x_i}$$</div>
+
+<p>Lecture : <em>dérivée de $f$ par rapport à $x_i$ en considérant les autres variables comme constantes</em>.</p>
+
+<p>Le <strong>gradient</strong> est le vecteur de <strong>toutes</strong> les dérivées partielles :</p>
+
+<div class="katex-display">$$\nabla f(\mathbf{x}) = \left(\frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, \ldots, \frac{\partial f}{\partial x_n}\right)$$</div>
+
+<p>Propriété fondamentale : <strong>le gradient pointe vers la plus forte croissance locale de $f$</strong>. Et $-\nabla f$ pointe vers la plus forte <strong>décroissance</strong>.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : imaginez une fonction comme un terrain montagneux. La valeur de $f$ est l'altitude. Le gradient est <strong>une boussole qui pointe toujours vers la pente la plus raide</strong> (vers le sommet). Pour atteindre la vallée (minimum), suivez l'opposé : c'est exactement la <strong>descente de gradient</strong>.</p></div></div>
+
+<h3 id="syn-optimisation-par-descente-de-gradient">Optimisation par descente de gradient</h3>
+
+<p>Pour minimiser une fonction de coût $\mathcal{L}(\mathbf{w})$ (loss du modèle en fonction des poids) :</p>
+
+<div class="katex-display">$$\mathbf{w}_{t+1} = \mathbf{w}_t - \eta \nabla \mathcal{L}(\mathbf{w}_t)$$</div>
+
+<p>Lecture : <em>à chaque itération, on met à jour les poids en reculant d'un petit pas $\eta$ dans la direction opposée au gradient</em>. Le pas $\eta$ s'appelle le <strong>learning rate</strong>.</p>
+
+<ul>
+<li>Si $\eta$ est <strong>trop grand</strong>, on saute par-dessus le minimum et on diverge.</li>
+<li>Si $\eta$ est <strong>trop petit</strong>, on met des millénaires à converger.</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Descente de gradient à la main pour minimiser f(x) = x²
+def f(x): return x**2        # Fonction à minimiser
+def grad_f(x): return 2*x    # Dérivée : f&#x27;(x) = 2x
+
+x = 5.0                       # Point de départ
+lr = 0.1                      # Learning rate
+for i in range(20):
+    x = x - lr * grad_f(x)   # Mise à jour : x_new = x_old - lr * grad
+print(x)                      # ≈ 0.0577 — décroît exponentiellement vers 0</code></pre></div>
+
+
+<p><strong>Trois variantes</strong> selon combien d'exemples on utilise par mise à jour :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Variante</th><th>Données par update</th><th>Avantage</th><th>Inconvénient</th></tr></thead><tbody><tr><td><strong>Batch GD</strong></td><td>Tout le dataset</td><td>Gradient exact</td><td>Très lent, mémoire énorme</td></tr><tr><td><strong>Stochastic GD (SGD)</strong></td><td>Un seul exemple</td><td>Très rapide, échappe aux minima locaux</td><td>Bruité</td></tr><tr><td><strong>Mini-batch GD</strong></td><td>32-256 exemples</td><td>Bon compromis (standard)</td><td>Hyperparamètre <code>batch_size</code></td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : en deep learning, on utilise quasi-systématiquement le <strong>mini-batch GD</strong>. La taille du batch impacte la vitesse de convergence et la qualité du modèle final. Plus le batch est grand, plus le gradient est précis mais moins le modèle généralise. C'est un trade-off bien connu : <em>"small batches generalize better"</em>.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-décomposition-en-valeurs-singulières-svd">Décomposition en valeurs singulières (SVD)</h3>
+
+<p>La SVD décompose <strong>toute matrice</strong> $A \in \mathbb{R}^{m \times n}$ comme :</p>
+
+<div class="katex-display">$$A = U \Sigma V^T$$</div>
+
+<p>Lecture : <em>toute matrice peut s'écrire comme le produit de trois matrices spéciales : $U$ et $V$ orthogonales (rotations), et $\Sigma$ diagonale (étirement)</em>. Les valeurs sur la diagonale de $\Sigma$ sont les <strong>valeurs singulières</strong>, ordonnées par taille décroissante.</p>
+
+<p>C'est la décomposition fondamentale qui sous-tend :</p>
+
+<ul>
+<li><strong>PCA</strong> : projeter sur les premières directions de plus grande variance</li>
+<li><strong>Compression d'image</strong> : garder les $k$ plus grandes valeurs singulières et reconstruire</li>
+<li><strong>Recommandation</strong> : factorisation matricielle de la matrice utilisateurs × items</li>
+<li><strong>LSA / topic modeling</strong> : décomposition de la matrice documents × mots</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">U, S, Vt = np.linalg.svd(A, full_matrices=False)
+
+# Reconstruction approximative avec les k premières dimensions
+k = 10
+A_approx = U[:, :k] @ np.diag(S[:k]) @ Vt[:k, :]
+# Compression : on ne garde que k valeurs au lieu de min(m,n)</code></pre></div>
+
+
+<h3 id="syn-hessien-et-méthodes-du-second-ordre">Hessien et méthodes du second ordre</h3>
+
+<p>Le <strong>Hessien</strong> est la matrice des dérivées <strong>secondes</strong> : $H_{ij} = \frac{\partial^2 f}{\partial x_i \partial x_j}$. Il décrit la <strong>courbure</strong> de la fonction.</p>
+
+<p><strong>Méthode de Newton</strong> :</p>
+
+<div class="katex-display">$$\mathbf{w}_{t+1} = \mathbf{w}_t - H^{-1} \nabla \mathcal{L}(\mathbf{w}_t)$$</div>
+
+<p>Lecture : <em>on met à jour les poids en multipliant le gradient par l'inverse du Hessien, ce qui tient compte de la courbure locale</em>. Résultat : converge en <strong>un seul pas</strong> sur une fonction quadratique. Énormément plus rapide que le gradient simple.</p>
+
+<p><strong>Pourquoi on ne l'utilise pas en deep learning</strong> : le Hessien d'un réseau à $n$ paramètres est une matrice $n \times n$, et avec $n = 10^9$ paramètres, c'est physiquement infaisable.</p>
+
+<p><strong>Compromis</strong> : les <strong>méthodes quasi-Newton</strong> (BFGS, L-BFGS) approximent le Hessien sans le calculer. <strong>Adam</strong> est encore plus malin : il maintient des estimées par-paramètre du gradient et de sa variance, ce qui équivaut à une approximation diagonale du Hessien — fast et scalable.</p>
+
+<h3 id="syn-espaces-vectoriels-et-géométrie-haute-dimension">Espaces vectoriels et géométrie haute dimension</h3>
+
+<p>En faible dimension (2D, 3D), notre intuition fonctionne. En <strong>haute dimension</strong> (1000+, comme les embeddings), elle nous trahit. <strong>Trois phénomènes contre-intuitifs</strong> :</p>
+
+<p><strong>1. La distance entre points devient uniforme.</strong> Dans un espace à 1000D, si vous tirez 1000 points au hasard, ils sont <strong>tous quasiment à la même distance</strong> les uns des autres. Conséquence : la notion de "plus proche voisin" perd son sens — c'est la <strong>curse of dimensionality</strong>.</p>
+
+<p><strong>2. Le volume se concentre dans la "peau".</strong> Dans une boule de dimension 1000, <strong>99.9% du volume est dans le dernier 1% du rayon</strong>. Les points tirés aléatoirement sont quasiment tous sur la surface, jamais au centre.</p>
+
+<p><strong>3. Deux vecteurs aléatoires sont presque toujours orthogonaux.</strong> En haute dimension, leur produit scalaire normalisé tend vers 0. C'est ce qui rend les embeddings utiles : on peut <strong>entasser énormément de "concepts"</strong> dans un espace continu.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Conséquence pratique</strong> : KNN, k-means et tout algorithme basé sur la distance <strong>dégradent</strong> avec la dimension. C'est exactement pourquoi on fait de la <strong>réduction de dimension</strong> (PCA, t-SNE, UMAP) avant ces algorithmes. Pour les modèles paramétriques (régression, neural nets), pas de problème : ils <strong>apprennent</strong> la métrique pertinente.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi <code>np.linalg.solve(A, b)</code> est-il préférable à <code>np.linalg.inv(A) @ b</code> pour résoudre $Ax = b$ ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Stabilité numérique.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Trois raisons</strong> :</p>
+
+<p><strong>1. Stabilité numérique</strong> : calculer $A^{-1}$ explicitement est <strong>moins stable</strong> que la factorisation LU utilisée en interne par <code>solve</code>. Les erreurs d'arrondi s'accumulent davantage.</p>
+
+<p><strong>2. Performance</strong> : <code>solve</code> fait directement la décomposition LU et la substitution, là où <code>inv</code> calcule l'inverse <strong>complet</strong> (qui n'est pas demandé) puis multiplie. Pour une matrice $n \times n$, c'est <strong>~3x plus rapide</strong>.</p>
+
+<p><strong>3. Mémoire</strong> : <code>inv</code> matérialise une matrice de même taille, <code>solve</code> n'a besoin que de $b$.</p>
+
+<p><strong>Règle générale en algèbre linéaire numérique</strong> :</p>
+
+<blockquote><p><em>"N'inversez jamais une matrice si vous pouvez résoudre un système à la place."</em></p></blockquote>
+
+<p>C'est une question d'entretien data engineering classique pour vérifier qu'un candidat ne se contente pas de coder ce qui marche, mais <strong>sait pourquoi</strong> il choisit une fonction.</p>
+
+</details>
+
+<p><strong>Q2 : Vous avez une fonction de coût qui ne décroît plus malgré de nombreuses itérations de gradient descent. Quelles sont les hypothèses possibles ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Learning rate et minima.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Cinq hypothèses</strong> à vérifier dans cet ordre :</p>
+
+<ol>
+<li><strong>Learning rate trop grand</strong> : vous oscillez autour du minimum sans le toucher, ou vous divergez. Réduisez d'un facteur 10.</li>
+<li><strong>Learning rate trop petit</strong> : vous progressez si lentement que ça ressemble à une stagnation. Augmentez ou utilisez un scheduler qui décroît.</li>
+<li><strong>Minimum local ou plateau</strong> : SGD avec un peu de bruit, momentum, ou Adam aident à s'échapper.</li>
+<li><strong>Exploding/vanishing gradient</strong> dans un réseau profond : utiliser <strong>gradient clipping</strong>, <strong>batch norm</strong>, <strong>residual connections</strong>.</li>
+<li><strong>Loss mal définie</strong> : par exemple <code>log(0)</code> qui donne <code>-inf</code>, ou division par zéro masquée. Vérifier les valeurs intermédiaires.</li>
+</ol>
+
+<p><strong>La méthode systématique</strong> : tracer la loss au fil des epochs, <strong>regarder la forme</strong>.</p>
+
+<ul>
+<li>Descente puis plateau = minimum atteint ou apprentissage trop lent</li>
+<li>Oscillation = lr trop grand</li>
+<li>Explosion = lr trop grand ou gradient instable</li>
+</ul>
+
+<p>Question d'entretien deep learning classique.</p>
+
+</details>
+
+<p><strong>Q3 : Vous voulez calculer la similarité entre deux documents représentés par des vecteurs d'embeddings de dimension 768. Pourquoi utilise-t-on la similarité cosinus plutôt que la distance euclidienne ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Norme et bruit non sémantique.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Parce que la <strong>norme</strong> d'un embedding contient souvent du <strong>bruit non sémantique</strong> : un texte plus long ou plus fréquemment vu dans l'entraînement aura une norme plus grande, indépendamment de son sujet.</p>
+
+<p>La <strong>distance euclidienne</strong> est sensible à cette norme — deux textes sur le même sujet peuvent paraître éloignés simplement parce qu'ils ont des longueurs différentes.</p>
+
+<p>La <strong>similarité cosinus</strong> normalise par les normes :</p>
+
+<div class="katex-display">$$\cos(\theta) = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\| \cdot \|\mathbf{v}\|}$$</div>
+
+<p>Elle mesure <strong>uniquement la direction</strong> (le contenu sémantique) et ignore la magnitude.</p>
+
+<p>C'est pourquoi <strong>tous les moteurs de RAG, FAISS et systèmes de recommandation</strong> par embeddings utilisent cosinus par défaut.</p>
+
+<p><strong>Astuce d'optimisation</strong> : pré-normaliser tous les vecteurs (<code>v / ||v||</code>) une seule fois, puis la similarité cosinus se réduit à un simple produit scalaire — gain de 30% sur de gros corpus.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Pré-normalisation
+embeddings_normalized = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
+
+# Similarité cosinus = simple dot product
+similarities = embeddings_normalized @ query_embedding</code></pre></div>
+
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Linear Algebra Done Right</em> (Sheldon Axler) — référence rigoureuse, accessible</li>
+<li><a href="https://www.3blue1brown.com/topics/linear-algebra" target="_blank" rel="noopener">3Blue1Brown — Essence of Linear Algebra</a> — vidéos visuelles incomparables</li>
+<li><em>Mathematics for Machine Learning</em> (Deisenroth et al., gratuit en PDF) — chapitre 2-3 sur l'algèbre linéaire et le calcul</li>
+<li><a href="https://www.khanacademy.org/math/multivariable-calculus" target="_blank" rel="noopener">Khan Academy — Multivariable Calculus</a> — pour combler des lacunes sur les gradients</li>
+<li><em>Numerical Linear Algebra</em> (Trefethen & Bau) — pour aller plus loin sur la stabilité numérique</li>
+<li><a href="https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf" target="_blank" rel="noopener">Matrix Cookbook (PDF)</a> — formulaire complet à garder sous la main</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../data-toolkit/ai-as-developer.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← AI as Developer</span>
+  </a>
+  <a href="../mathematiques/statistics-probabilities.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Statistics & Probabilities →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

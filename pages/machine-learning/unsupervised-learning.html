@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unsupervised Learning — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Unsupervised Learning</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html" class="active">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Machine Learning</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Unsupervised Learning</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Unsupervised Learning</h1>
+        <p class="page-objective">Comprendre les algorithmes d'apprentissage non supervisé — réduction de dimensionnalité avec PCA et clustering avec K-Means — pour trouver des patterns dans des données sans labels.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Clustering</div>
+        <div class="key-concept-def">Regrouper des points similaires sans labels (K-means, DBSCAN, hiérarchique).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">PCA</div>
+        <div class="key-concept-def">Projection sur les axes de plus grande variance (réduction de dimension linéaire).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Inertie / silhouette</div>
+        <div class="key-concept-def">Métriques pour évaluer la qualité d&#x27;un clustering.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Curse of dimensionality</div>
+        <div class="key-concept-def">Au-delà de quelques dizaines de features, les distances perdent leur sens.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-unsupervised-learning">Cheatsheet — Unsupervised Learning</a><ol><li><a href="#pca-principal-component-analysis">PCA (Principal Component Analysis)</a></li><li><a href="#k-means-clustering">K-Means Clustering</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-vue-densemble-supervised-vs-unsupervised">1) Vue d'ensemble — Supervised vs Unsupervised</a><ol><li><a href="#11-supervised-learning-rappel">1.1 Supervised Learning (rappel)</a></li><li><a href="#12-unsupervised-learning">1.2 Unsupervised Learning</a></li></ol></li><li><a href="#2-principal-component-analysis-pca">2) Principal Component Analysis (PCA)</a><ol><li><a href="#21-rappel-combinaisons-linéaires-en-régression">2.1 Rappel — Combinaisons linéaires en régression</a></li><li><a href="#22-intuition-géométrique">2.2 Intuition géométrique</a></li><li><a href="#23-exemple-codé-dataset-wine">2.3 Exemple codé — Dataset Wine</a></li><li><a href="#24-calcul-mathématique-des-pcs">2.4 Calcul mathématique des PCs</a></li><li><a href="#25-classement-des-pcs-par-variance-expliquée">2.5 Classement des PCs par variance expliquée</a></li><li><a href="#26-pca-pour-la-réduction-de-dimensionnalité">2.6 PCA pour la réduction de dimensionnalité</a></li><li><a href="#27-limitations-de-pca">2.7 Limitations de PCA</a></li></ol></li><li><a href="#3-clustering-avec-k-means">3) Clustering avec K-Means</a><ol><li><a href="#31-algorithme-k-means">3.1 Algorithme K-Means</a></li><li><a href="#32-implémentation-avec-scikit-learn">3.2 Implémentation avec scikit-learn</a></li><li><a href="#33-fonction-de-coût-inertie">3.3 Fonction de coût — Inertie</a></li><li><a href="#34-choisir-k-méthode-du-coude">3.4 Choisir K — Méthode du coude</a></li><li><a href="#35-cas-dusage-du-clustering">3.5 Cas d'usage du clustering</a></li><li><a href="#36-autres-approches-de-clustering">3.6 Autres approches de clustering</a></li></ol></li><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-unsupervised-learning">📋 Cheatsheet — Unsupervised Learning</h2>
+
+<h3 id="pca-principal-component-analysis">PCA (Principal Component Analysis)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+
+## ⚠️ Toujours scaler AVANT PCA
+scaler = StandardScaler()                  # instancie le scaler
+X_scaled = scaler.fit_transform(X)         # centre et réduit les features
+
+## PCA complet (toutes les composantes)
+pca = PCA()                                # instancie PCA (garde toutes les PCs)
+pca.fit(X_scaled)                          # calcule les composantes principales
+
+## Projection dans le nouvel espace
+X_proj = pca.transform(X_scaled)           # projette X sur les PCs → shape (n, p)
+
+## Accéder aux composantes principales
+pca.components_                            # matrice W des PCs → shape (p, p)
+pca.explained_variance_ratio_              # % de variance expliquée par chaque PC
+
+## PCA avec réduction de dimension (garder k composantes)
+pca_k = PCA(n_components=3)                # ne garde que 3 PCs
+X_reduced = pca_k.fit_transform(X_scaled)  # fit + transform en une ligne → shape (n, 3)
+
+## Reconstruction (décompression)
+X_reconstructed = pca_k.inverse_transform(X_reduced)  # retourne dans l&#x27;espace original (approximé)
+
+## Variance cumulée (pour choisir k)
+import numpy as np
+np.cumsum(pca.explained_variance_ratio_)   # variance cumulée : [0.36, 0.55, 0.67, ...]</code></pre></div>
+
+
+<h3 id="k-means-clustering">K-Means Clustering</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.cluster import KMeans
+
+## Fit K-Means
+km = KMeans(n_clusters=3)                  # instancie avec K=3 clusters
+km.fit(X)                                  # entraîne sur les données
+
+## Résultats
+km.labels_                                 # labels assignés à chaque point → array de int
+km.cluster_centers_                        # coordonnées des centroïdes → shape (K, p)
+km.inertia_                                # inertie (WCSS) = somme des distances² intra-cluster
+
+## Prédiction sur de nouvelles données
+km.predict(new_X)                          # assigne le cluster le plus proche
+
+## Elbow method : choisir K optimal
+inertias = []
+for k in range(1, 10):
+    km_test = KMeans(n_clusters=k).fit(X)  # fit pour chaque K
+    inertias.append(km_test.inertia_)      # stocke l&#x27;inertie</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output : inertias
+## [2500.3, 1200.1, 800.5, 750.2, 720.1, ...]  → chercher le &quot;coude&quot;</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<blockquote><p>❌ <strong>Ne pas scaler les données avant PCA</strong><br></p></blockquote>
+
+<blockquote><p>PCA est basé sur la variance : si les features ne sont pas centrées-réduites, celles avec de grandes échelles dominent les composantes.<br></p></blockquote>
+
+<blockquote><p>❌ <code>pca.fit(X)</code> directement sur les données brutes<br></p></blockquote>
+
+<blockquote><p>✅ <code>X_scaled = StandardScaler().fit_transform(X)</code> puis <code>pca.fit(X_scaled)</code><br></p></blockquote>
+
+<blockquote><p>❌ <strong>Confondre le nombre de PCs avec le nombre de features à garder</strong><br></p></blockquote>
+
+<blockquote><p>PCA calcule autant de PCs que de features originales. La réduction de dimension vient du choix de garder seulement <code>k</code> PCs.<br></p></blockquote>
+
+<blockquote><p>❌ Croire que <code>PCA()</code> réduit automatiquement les dimensions<br></p></blockquote>
+
+<blockquote><p>✅ Utiliser <code>PCA(n_components=k)</code> avec <code>k</code> choisi via la méthode du coude<br></p></blockquote>
+
+<blockquote><p>❌ <strong>Oublier que les labels K-Means sont arbitraires</strong><br></p></blockquote>
+
+<blockquote><p>K-Means assigne des labels numériques (0, 1, 2…) qui ne correspondent pas forcément aux vrais labels si on en a.<br></p></blockquote>
+
+<blockquote><p>❌ <code>accuracy_score(y, km.labels_)</code> directement<br></p></blockquote>
+
+<blockquote><p>✅ Mapper manuellement les labels K-Means vers les vrais labels avant de comparer<br></p></blockquote>
+
+<blockquote><p><strong>Choisir K au hasard sans méthode</strong><br></p></blockquote>
+
+<blockquote><p>Le nombre de clusters est un hyperparamètre critique. Un mauvais K donne des groupes non pertinents.<br></p></blockquote>
+
+<blockquote><p>❌ <code>KMeans(n_clusters=5)</code> sans justification<br></p></blockquote>
+
+<blockquote><p>✅ Tracer l'inertie pour différents K et utiliser la <strong>méthode du coude</strong> (elbow method)<br></p></blockquote>
+
+<blockquote><p>❌<strong>Appliquer K-Means sur des données de très haute dimension</strong><br></p></blockquote>
+
+<blockquote><p>Les distances euclidiennes perdent leur sens en haute dimension (curse of dimensionality). K-Means fonctionne moins bien.<br></p></blockquote>
+
+<blockquote><p>❌ <code>KMeans().fit(X)</code> sur 100+ features brutes<br></p></blockquote>
+
+<blockquote><p>✅ Appliquer PCA d'abord pour réduire les dimensions, puis K-Means sur les PCs<br></p></blockquote>
+
+<hr>
+
+<h2 id="1-vue-densemble-supervised-vs-unsupervised">1) Vue d'ensemble — Supervised vs Unsupervised</h2>
+
+<figure><img src="../../assets/images/unsupervised-learning-01-d463379d.png" alt="" loading="lazy"></figure>
+
+<h3 id="11-supervised-learning-rappel">1.1 Supervised Learning (rappel)</h3>
+
+<p>En apprentissage supervisé, on dispose d'un dataset <code>(X, y)</code> où <code>X</code> est la matrice de features de shape <code>(n, p)</code> et <code>y</code> le vecteur de targets de shape <code>(n, 1)</code>. L'objectif est de trouver une fonction <code>h(X)</code> aussi proche de <code>y</code> que possible.</p>
+
+<h3 id="12-unsupervised-learning">1.2 Unsupervised Learning</h3>
+
+<p>En apprentissage non supervisé, on cherche des <strong>patterns dans X sans supervision d'un target y</strong>. Deux grandes familles :</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Réduction de dimensionnalité</strong> — Feature engineering (moins de features → moins de temps de calcul), compression (moins d'espace), meilleure visualisation</p></div></div>
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Clustering</strong> — Grouper les données par similarité : exploration, détection d'anomalies, recommandations, classification semi-supervisée</p></div></div>
+
+<hr>
+
+<h2 id="2-principal-component-analysis-pca">2) Principal Component Analysis (PCA)</h2>
+
+<p>PCA projette un dataset haute dimension dans un espace de dimension inférieure, en trouvant les <strong>meilleures combinaisons linéaires</strong> de features qui captent le maximum de variance.</p>
+
+<h3 id="21-rappel-combinaisons-linéaires-en-régression">2.1 Rappel — Combinaisons linéaires en régression</h3>
+
+<p>En régression linéaire, on utilise déjà des combinaisons de features :</p>
+
+<p>$\hat{y} = \beta_0 + \beta_1 X_1 + \beta_2 (X_2 + X_3)$</p>
+
+<p>PCA pousse ce principe plus loin en créant de nouvelles variables (les <strong>Principal Components</strong>) :</p>
+
+<p>$Z_1 = a_{11}X_1 + a_{12}X_2 + a_{13}X_3$</p>
+
+<p>$Z_2 = a_{21}X_1 + a_{22}X_2 + a_{23}X_3$</p>
+
+<p>Chaque $Z_i$ est une <strong>composante principale (PC)</strong> qui :</p>
+
+<ul>
+<li>annule <strong>toute</strong> multicolinéarité (les PCs sont orthogonales entre elles)</li>
+<li>est <strong>classée</strong> par pouvoir explicatif décroissant (mesurée par la variance)</li>
+</ul>
+
+<figure><img src="../../assets/images/unsupervised-learning-02-4f3c4fd9.png" alt="" loading="lazy"></figure>
+
+<h3 id="22-intuition-géométrique">2.2 Intuition géométrique</h3>
+
+<p>Si on ne garde qu'<strong>une seule direction</strong> pour décrire nos données, elle doit :</p>
+
+<ul>
+<li><strong>préserver</strong> le maximum de <strong>variance</strong> (dispersion des données projetées)</li>
+<li><strong>minimiser</strong> les erreurs de reconstruction (distances entre points et leur projection)</li>
+</ul>
+
+<p>👉 <a href="https://stats.stackexchange.com/a/140579/286995" target="_blank" rel="noopener">Explication visuelle sur StackExchange</a></p>
+
+<figure><img src="../../assets/images/unsupervised-learning-03-0993c0e8.gif" alt="" loading="lazy"></figure>
+
+<p>👉 <a href="http://setosa.io/ev/principal-component-analysis/" target="_blank" rel="noopener">Visualisation interactive de PCA</a></p>
+
+<p>PCA permet de réduire les dimensions tout en gardant l'essentiel de l'information :</p>
+
+<p>$(X_1, X_2, X_3) \sim (Z_1, Z_2)$</p>
+
+<figure><img src="../../assets/images/unsupervised-learning-04-0e721f02.png" alt="" loading="lazy"></figure>
+
+<h3 id="23-exemple-codé-dataset-wine">2.3 Exemple codé — Dataset Wine</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.datasets import load_wine
+from sklearn.preprocessing import StandardScaler
+import pandas as pd
+
+wine = load_wine(as_frame=True)        # charge le dataset wine
+X = wine.data                           # features (178 vins, 13 features)
+y = wine.target                         # labels (3 classes de vin)
+wine_features = X.columns               # noms des colonnes
+
+## ⚠️ Toujours centrer-réduire avant PCA
+scaler = StandardScaler()
+X = pd.DataFrame(scaler.fit_transform(X), columns=wine_features)</code></pre></div>
+
+
+<p>Avant PCA, on observe de la multicolinéarité dans la heatmap de corrélation :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">sns.heatmap(pd.DataFrame(X).corr(), cmap=&#x27;coolwarm&#x27;)  # corrélations entre features</code></pre></div>
+
+
+<p><strong>a) Calculer les composantes principales</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.decomposition import PCA
+
+pca = PCA()                             # instancie PCA (garde toutes les PCs)
+pca.fit(X)                              # calcule les 13 PCs
+
+## Accéder aux PCs (chaque PC = combinaison linéaire des features)
+W = pca.components_                     # shape (13, 13)
+W = pd.DataFrame(W.T,
+                 index=wine_features,
+                 columns=[f&#x27;PC{i}&#x27; for i in range(1, 14)])</code></pre></div>
+
+
+<p>Chaque PC est une <strong>combinaison linéaire des features originales</strong> du vin.</p>
+
+<p><strong>b) Projeter les données dans le nouvel espace</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">X_proj = pca.transform(X)              # projette les 178 vins sur les 13 PCs
+X_proj = pd.DataFrame(X_proj, columns=[f&#x27;PC{i}&#x27; for i in range(1, 14)])</code></pre></div>
+
+
+<p>Résultat : 178 vins exprimés dans l'espace des 13 composantes principales — avec <strong>zéro multicolinéarité</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">sns.heatmap(X_proj.corr(), cmap=&#x27;coolwarm&#x27;)  # → heatmap diagonale parfaite</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La projection dans l'espace PCA est une simple <strong>multiplication matricielle</strong> : <code>X_proj = X @ W</code></p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Preuve computationnelle
+W = pca.components_.T                   # matrice de passage → shape (13, 13)
+np.allclose(pca.transform(X), np.dot(X, W))  # True → c&#x27;est bien X × W</code></pre></div>
+
+
+<figure><img src="../../assets/images/unsupervised-learning-05-3de19fc3.png" alt="" loading="lazy"></figure>
+
+<h3 id="24-calcul-mathématique-des-pcs">2.4 Calcul mathématique des PCs</h3>
+
+<p>Sous le capot, PCA repose sur la décomposition en <strong>valeurs propres</strong> (eigenvalues) de la matrice de covariance $X^T X$ :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Calcul manuel avec NumPy
+eig_vals, eig_vecs = np.linalg.eig(np.dot(X.T, X))  # eigenvalues + eigenvectors
+## eig_vecs = matrice W des PCs (non triées)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>La décomposition <code>eig()</code> peut être lente</p></div></div>
+
+<p>👉 <a href="https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors" target="_blank" rel="noopener">Eigenvalues et Eigenvectors — Wikipedia</a></p>
+
+<h3 id="25-classement-des-pcs-par-variance-expliquée">2.5 Classement des PCs par variance expliquée</h3>
+
+<p>Les PCs sont classées par <strong>part de variance expliquée</strong> :</p>
+
+<p>$\text{Ratio}_i = \frac{\text{Var}(PC_i)}{\text{Var}(X)}$</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">pca.explained_variance_ratio_           # % de variance par PC
+## array([0.362, 0.192, 0.111, 0.071, ...])
+## → PC1 capture 36% de la variance totale</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">plt.plot(pca.explained_variance_ratio_)
+plt.xlabel(&#x27;Principal Component&#x27;)
+plt.ylabel(&#x27;% explained variance&#x27;)       # courbe décroissante → PCs triées</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>L'information se mesure par la <strong>variance</strong>.</p></div></div>
+
+<h3 id="26-pca-pour-la-réduction-de-dimensionnalité">2.6 PCA pour la réduction de dimensionnalité</h3>
+
+<p>Ayant calculé toutes les PCs, on ne garde que les <strong>k plus importantes</strong>. Pourquoi réduire ?</p>
+
+<ul>
+<li>Compresser les données</li>
+<li>Réduire la complexité du modèle et le temps d'entraînement</li>
+<li>Réduire l'overfitting</li>
+</ul>
+
+<p><strong>Comment choisir k ? → La méthode du coude (Elbow Method)</strong></p>
+
+<p>On trace la <strong>variance cumulée</strong> et on cherche le point d'inflexion :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">plt.plot(np.cumsum(pca.explained_variance_ratio_))  # variance cumulée
+plt.ylim(ymin=0)
+plt.xlabel(&#x27;# of principal components used&#x27;)
+plt.title(&#x27;Cumulated share of explained variance&#x27;)</code></pre></div>
+
+
+<figure><img src="../../assets/images/unsupervised-learning-06-1b336487.png" alt="" loading="lazy"></figure>
+
+<p><strong>Test de performance avec k=3</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">pca3 = PCA(n_components=3).fit(X)                    # PCA à 3 composantes
+X_proj3 = pd.DataFrame(pca3.fit_transform(X),
+                        columns=[&#x27;PC1&#x27;, &#x27;PC2&#x27;, &#x27;PC3&#x27;])  # projection 3D
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import cross_val_score
+
+print(cross_val_score(LogisticRegression(), X_proj3, y, cv=5).mean())
+## 0.961 → 96.1% accuracy avec seulement 3 features (vs 13)
+
+print(cross_val_score(LogisticRegression(), X, y, cv=5).mean())
+## 0.989 → 98.9% avec les 13 features originales</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>On passe de 13 features à 3 avec seulement ~3% de perte d'accuracy !</p></div></div>
+
+<p><strong>Reconstruction (décompression)</strong></p>
+
+<p>On ne peut pas reconstruire <code>X</code> parfaitement si on a gardé <code>k &lt; p</code> dimensions — de l'information a été perdue :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">X_reconstructed = pca3.inverse_transform(X_proj3)    # reconstruction approximée
+X_reconstructed.shape                                 # (178, 13) → retour dans l&#x27;espace original</code></pre></div>
+
+
+<h3 id="27-limitations-de-pca">2.7 Limitations de PCA</h3>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>PCA est une méthode <strong>linéaire</strong>.</p></div></div>
+
+<figure><img src="../../assets/images/unsupervised-learning-07-fcda8eb2.png" alt="" loading="lazy"></figure>
+
+<p>Alternatives pour les cas non-linéaires :</p>
+
+<ul>
+<li><strong>t-SNE (t-Distributed Stochastic Neighbor Embedding)</strong> — réduit les dimensions en gardant les points similaires proches et les dissimilaires éloignés. Excellente pour la visualisation de clusters</li>
+<li><strong>Kernel PCA</strong> — capture les patterns non-linéaires (même principe que les kernels SVM)</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Avec PCA, on perd l'<strong>interprétabilité</strong> : les PCs sont des combinaisons linéaires abstraites, plus des features nommées.</p></div></div>
+
+<hr>
+
+<h2 id="3-clustering-avec-k-means">3) Clustering avec K-Means</h2>
+
+<p>Le clustering organise les données en <strong>groupes</strong> dont les membres sont similaires, sans utiliser de labels.</p>
+
+<figure><img src="../../assets/images/unsupervised-learning-08-bb8427ec.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>K-Means fonctionne mieux sur des données déjà géométriquement groupées.</p></div></div>
+
+<h3 id="31-algorithme-k-means">3.1 Algorithme K-Means</h3>
+
+<figure><img src="../../assets/images/unsupervised-learning-09-1e598b62.png" alt="" loading="lazy"></figure>
+
+<p>L'algorithme en 5 étapes :</p>
+
+<ol>
+<li>Choisir le nombre de clusters <code>K</code></li>
+<li>Initialiser <code>K</code> <strong>centroïdes</strong> aléatoirement</li>
+<li>Calculer la <strong>distance euclidienne</strong> entre chaque point et chaque centroïde</li>
+<li>Assigner chaque point au centroïde le plus proche → un cluster est formé</li>
+<li>Recalculer la <strong>moyenne</strong> $\mu_j$ de chaque cluster → nouveau centroïde</li>
+</ol>
+
+<p>Répéter les étapes 3 à 5 jusqu'à convergence.</p>
+
+<figure><img src="../../assets/images/unsupervised-learning-10-c586b3ce.gif" alt="" loading="lazy"></figure>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>En pratique, K-Means est lancé plusieurs fois</p></div></div>
+
+<h3 id="32-implémentation-avec-scikit-learn">3.2 Implémentation avec scikit-learn</h3>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/clustering.html" target="_blank" rel="noopener">Documentation clustering scikit-learn</a></p>
+
+<div class="table-wrapper"><table><thead><tr><th><strong>Classe</strong></th><th><strong>Description</strong></th><th><strong>Usage</strong></th></tr></thead><tbody><tr><td><code>KMeans</code></td><td>K-Means standard</td><td>Datasets de taille modérée</td></tr><tr><td><code>MiniBatchKMeans</code></td><td>K-Means avec mini-batches</td><td>Gros datasets (plus rapide)</td></tr></tbody></table></div>
+<p><strong>Exemple : trouver 3 clusters dans le dataset Wine</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.cluster import KMeans
+
+## Fit K-Means sur les données projetées par PCA
+km = KMeans(n_clusters=3)               # K=3 clusters
+km.fit(X_proj)                          # entraîne sur l&#x27;espace PCA
+
+km.cluster_centers_.shape               # (3, 13) → 3 centroïdes dans l&#x27;espace des 13 PCs
+km.labels_                              # array d&#x27;int : label assigné à chaque observation</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Visualisation des clusters
+plt.scatter(X_proj.iloc[:,0], X_proj.iloc[:,1], c=km.labels_)
+plt.title(&#x27;KMeans clustering&#x27;)
+plt.xlabel(&#x27;PC 1&#x27;)
+plt.ylabel(&#x27;PC 2&#x27;)</code></pre></div>
+
+
+<p>Comparaison avec les vrais labels (quand on les connaît) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import accuracy_score
+
+## ⚠️ Les labels K-Means sont arbitraires → mapper manuellement
+y_pred = pd.Series(km.labels_).map({0:0, 1:2, 2:1})
+accuracy_score(y_pred, y)               # 0.966 → 96.6% de correspondance</code></pre></div>
+
+
+<p><strong>Prédiction sur de nouvelles données</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">new_X = pd.DataFrame(np.random.random((1,13)), columns=X_proj.columns)
+km.predict(new_X)                       # array([1]) → assigné au cluster 1</code></pre></div>
+
+
+<h3 id="33-fonction-de-coût-inertie">3.3 Fonction de coût — Inertie</h3>
+
+<p>K-Means minimise l'<strong>inertie</strong> (Within-Cluster Sum of Squares — WCSS) :</p>
+
+<p>$\text{Inertia} = L(\mu) = \sum_{j=1}^{K} \sum_{x_i \in C_j} \| x_i - \mu_j \|^2$</p>
+
+<p>C'est la somme des distances au carré entre chaque point et le centroïde de son cluster.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">km.inertia_                             # valeur de l&#x27;inertie après fit</code></pre></div>
+
+
+<h3 id="34-choisir-k-méthode-du-coude">3.4 Choisir K — Méthode du coude</h3>
+
+<p>On trace l'inertie pour différentes valeurs de K et on cherche le <strong>coude</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">inertias = []
+ks = range(1, 10)
+
+for k in ks:
+    km_test = KMeans(n_clusters=k).fit(X)  # fit pour chaque K
+    inertias.append(km_test.inertia_)      # stocke l&#x27;inertie
+
+plt.plot(ks, inertias)
+plt.xlabel(&#x27;k cluster number&#x27;)            # chercher le point d&#x27;inflexion</code></pre></div>
+
+
+<h3 id="35-cas-dusage-du-clustering">3.5 Cas d'usage du clustering</h3>
+
+<ul>
+<li><strong>Classification de documents</strong> — trouver des catégories/topics non labelisés</li>
+<li><strong>Optimisation logistique</strong> — trouver le nombre optimal de points de livraison</li>
+<li><strong>Segmentation client</strong> — classifier les clients selon leur comportement</li>
+</ul>
+
+<p>👉 <a href="https://dzone.com/articles/10-interesting-use-cases-for-the-k-means-algorithm" target="_blank" rel="noopener">10 use cases pour K-Means</a></p>
+
+<h3 id="36-autres-approches-de-clustering">3.6 Autres approches de clustering</h3>
+
+<p>K-Means n'est qu'un algorithme parmi d'autres. Scikit-learn propose de nombreuses alternatives adaptées à différentes géométries de données :</p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/clustering.html" target="_blank" rel="noopener">Comparaison des méthodes de clustering — scikit-learn</a></p>
+
+<figure><img src="../../assets/images/unsupervised-learning-11-e7232fd2.png" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/unsupervised-learning-12-d463379d.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="bibliographie">Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues" target="_blank" rel="noopener">PCA explained to your grandmother — StackExchange</a> (1700+ upvotes)</li>
+<li>👉 <a href="https://towardsdatascience.com/using-principal-component-analysis-pca-for-machine-learning-b6e803f5bf1e" target="_blank" rel="noopener">PCA for ML — Towards Data Science</a></li>
+<li>👉 <a href="https://towardsdatascience.com/k-means-clustering-explain-it-to-me-like-im-10-e0badf10734a" target="_blank" rel="noopener">KMeans explained — Towards Data Science</a></li>
+<li>📚 <a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/" target="_blank" rel="noopener">Hands-On Machine Learning — O'Reilly</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">Challenges</h2>
+
+<p>Appliquer PCA + K-Means sur des datasets réels : réduire les dimensions, choisir le bon nombre de composantes et de clusters, et évaluer la qualité du clustering.</p>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-quest-ce-que-lapprentissage-non-supervisé">Qu'est-ce que l'apprentissage non supervisé ?</a></li><li><a href="#ref-lanalogie-fil-rouge-trier-un-sac-de-pièces-de-monnaie">L'analogie fil rouge : trier un sac de pièces de monnaie</a></li><li><a href="#ref-points-à-retenir-avant-de-commencer">Points à retenir avant de commencer</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-supervisé-vs-non-supervisé-rappel-rapide">1. Supervisé vs Non supervisé — Rappel rapide</a><ol><li><a href="#ref-en-apprentissage-supervisé">En apprentissage supervisé</a></li><li><a href="#ref-en-apprentissage-non-supervisé">En apprentissage non supervisé</a></li></ol></li><li><a href="#ref-2-pca-réduire-la-dimension-sans-perdre-lessentiel">2. PCA — Réduire la dimension sans perdre l'essentiel</a><ol><li><a href="#ref-21-le-problème-trop-de-colonnes">2.1 Le problème : trop de colonnes</a></li><li><a href="#ref-22-intuition-géométrique">2.2 Intuition géométrique</a></li><li><a href="#ref-23-ce-que-sont-vraiment-les-composantes-principales">2.3 Ce que sont vraiment les composantes principales</a></li><li><a href="#ref-24-la-variance-comme-mesure-dinformation">2.4 La variance comme mesure d'information</a></li><li><a href="#ref-25-code-pca-avec-scikit-learn-dataset-wine">2.5 Code PCA avec scikit-learn — Dataset Wine</a></li><li><a href="#ref-26-choisir-combien-de-composantes-garder-la-méthode-du-coude">2.6 Choisir combien de composantes garder — La méthode du coude</a></li><li><a href="#ref-27-réduire-la-dimension-et-tester-la-performance">2.7 Réduire la dimension et tester la performance</a></li><li><a href="#ref-28-reconstruire-les-données-originales-décompression">2.8 Reconstruire les données originales (décompression)</a></li><li><a href="#ref-29-formule-mathématique-de-la-variance-expliquée">2.9 Formule mathématique de la variance expliquée</a></li><li><a href="#ref-210-limites-de-pca">2.10 Limites de PCA</a></li></ol></li><li><a href="#ref-3-k-means-regrouper-automatiquement-les-données">3. K-Means — Regrouper automatiquement les données</a><ol><li><a href="#ref-31-le-problème-trouver-des-groupes-naturels">3.1 Le problème : trouver des groupes naturels</a></li><li><a href="#ref-32-lalgorithme-k-means-expliqué-pas-à-pas">3.2 L'algorithme K-Means expliqué pas à pas</a></li><li><a href="#ref-33-la-distance-euclidienne">3.3 La distance euclidienne</a></li><li><a href="#ref-34-la-fonction-de-coût-linertie">3.4 La fonction de coût : l'inertie</a></li><li><a href="#ref-35-code-k-means-avec-scikit-learn">3.5 Code K-Means avec scikit-learn</a></li><li><a href="#ref-36-attention-les-labels-k-means-sont-arbitraires">3.6 Attention : les labels K-Means sont arbitraires</a></li><li><a href="#ref-37-choisir-k-la-méthode-du-coude">3.7 Choisir K — La méthode du coude</a></li><li><a href="#ref-38-combiner-pca-k-means">3.8 Combiner PCA + K-Means</a></li><li><a href="#ref-39-cas-dusage-réels-de-k-means">3.9 Cas d'usage réels de K-Means</a></li><li><a href="#ref-310-autres-algorithmes-de-clustering">3.10 Autres algorithmes de clustering</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<h3 id="ref-quest-ce-que-lapprentissage-non-supervisé">Qu'est-ce que l'apprentissage non supervisé ?</h3>
+
+<p>En machine learning, il existe deux grandes familles d'algorithmes. La première — l'apprentissage <strong>supervisé</strong> — utilise des données avec des réponses connues : tu montres à la machine des milliers de photos de chats et de chiens, en lui disant pour chaque photo "c'est un chat" ou "c'est un chien". La machine apprend à reconnaître.</p>
+
+<p>La seconde famille — l'apprentissage <strong>non supervisé</strong> — part de données <strong>sans étiquettes</strong>. Pas de réponses fournies. L'objectif est de découvrir des structures cachées, des groupes naturels, des patterns que l'on n'aurait pas forcément vus à l'oeil nu.</p>
+
+<h3 id="ref-lanalogie-fil-rouge-trier-un-sac-de-pièces-de-monnaie">L'analogie fil rouge : trier un sac de pièces de monnaie</h3>
+
+<p>Imagine que tu verses un sac de pièces de monnaie sur une table. Tu ne connais pas les valeurs. Mais instinctivement, tu vas commencer à <strong>trier par forme, taille, couleur</strong> : les petites pièces argentées d'un côté, les grandes dorées d'un autre, les moyennes bicolores encore ailleurs. Tu formes des <strong>tas par similarité</strong> — sans qu'on t'ait jamais dit comment faire.</p>
+
+<p>C'est exactement ce que fait l'apprentissage non supervisé : grouper les données selon leur ressemblance, sans label.</p>
+
+<h3 id="ref-points-à-retenir-avant-de-commencer">Points à retenir avant de commencer</h3>
+
+<ol>
+<li>L'apprentissage non supervisé travaille sur <code>X</code> uniquement — <strong>pas de colonne <code>y</code></strong> à prédire.</li>
+<li>Il existe deux grandes familles : le <strong>clustering</strong> (regrouper) et la <strong>réduction de dimensionnalité</strong> (simplifier).</li>
+<li><strong>K-Means</strong> est l'algorithme de clustering le plus courant : il cherche <code>K</code> groupes dans les données.</li>
+<li><strong>PCA</strong> (Principal Component Analysis) est l'algorithme de réduction de dimension le plus courant : il résume les données en moins de variables.</li>
+<li>PCA et K-Means se <strong>combinent souvent</strong> : on réduit d'abord avec PCA, puis on groupe avec K-Means.</li>
+</ol>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">1. Supervised vs Unsupervised — rappel rapide
+2. PCA — comment résumer des données en moins de dimensions
+3. K-Means — comment regrouper automatiquement des données
+4. Combiner les deux</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-1-supervisé-vs-non-supervisé-rappel-rapide">1. Supervisé vs Non supervisé — Rappel rapide</h2>
+
+<h3 id="ref-en-apprentissage-supervisé">En apprentissage supervisé</h3>
+
+<p>Tu disposes d'un tableau de données <code>X</code> (les features, les colonnes d'entrée) <strong>et</strong> d'une colonne cible <code>y</code> (la réponse). L'algorithme apprend à prédire <code>y</code> à partir de <code>X</code>.</p>
+
+<p>Exemples : prédire un prix, classer un email comme spam ou non-spam.</p>
+
+<h3 id="ref-en-apprentissage-non-supervisé">En apprentissage non supervisé</h3>
+
+<p>Tu n'as <strong>que</strong> <code>X</code>. Pas de colonne <code>y</code>. L'algorithme cherche des structures dans les données elles-mêmes.</p>
+
+<p>Deux grandes choses que l'on peut faire :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Famille</th><th>Objectif</th><th>Algorithmes vus ici</th></tr></thead><tbody><tr><td><strong>Réduction de dimensionnalité</strong></td><td>Résumer les données en moins de colonnes</td><td>PCA, t-SNE</td></tr><tr><td><strong>Clustering</strong></td><td>Regrouper les données par similarité</td><td>K-Means, DBSCAN, Hiérarchique</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La réduction de dimensionnalité sert aussi à <strong>préparer</strong> le clustering : on simplifie d'abord, on groupe ensuite.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-pca-réduire-la-dimension-sans-perdre-lessentiel">2. PCA — Réduire la dimension sans perdre l'essentiel</h2>
+
+<h3 id="ref-21-le-problème-trop-de-colonnes">2.1 Le problème : trop de colonnes</h3>
+
+<p>Imagine un tableau de 13 colonnes décrivant des vins (acidité, alcool, couleur, etc.). Certaines colonnes sont très corrélées entre elles : si l'acidité monte, le pH baisse automatiquement. Ces deux colonnes disent presque la même chose.</p>
+
+<p>PCA va <strong>résumer</strong> ces 13 colonnes en un plus petit nombre de <strong>nouvelles variables</strong> — appelées <strong>composantes principales</strong> — qui contiennent l'essentiel de l'information.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Pense à PCA comme à un photographe qui cherche <strong>le meilleur angle</strong> pour prendre une sculpture en 3D. Une seule photo ne capture pas tout, mais un bon photographe choisit l'angle qui montre le maximum de détails.</p></div></div>
+
+<h3 id="ref-22-intuition-géométrique">2.2 Intuition géométrique</h3>
+
+<p>Imagine un nuage de points dans un espace à 2 dimensions (x, y). Les points sont allongés en diagonale. PCA va trouver :</p>
+
+<ul>
+<li><strong>PC1</strong> : la direction qui capture le <strong>maximum de variance</strong> (l'axe le long duquel les points sont les plus dispersés).</li>
+<li><strong>PC2</strong> : la direction perpendiculaire à PC1, qui capture la variance restante.</li>
+</ul>
+
+<p>Si les points sont très allongés, PC1 suffit à presque tout résumer. On peut "projeter" chaque point sur cet axe et n'utiliser qu'<strong>une seule valeur</strong> au lieu de deux.</p>
+
+<h3 id="ref-23-ce-que-sont-vraiment-les-composantes-principales">2.3 Ce que sont vraiment les composantes principales</h3>
+
+<p>Chaque composante principale est une <strong>combinaison linéaire</strong> des features originales. Par exemple, avec 3 features :</p>
+
+<div class="katex-display">$$Z_1 = a_{11} \cdot X_1 + a_{12} \cdot X_2 + a_{13} \cdot X_3$$</div>
+
+<div class="katex-display">$$Z_2 = a_{21} \cdot X_1 + a_{22} \cdot X_2 + a_{23} \cdot X_3$$</div>
+
+<p>$Z_1$ et $Z_2$ sont les nouvelles variables (les PCs). Les coefficients $a_{ij}$ sont calculés automatiquement par PCA pour <strong>maximiser la variance</strong> capturée.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Les PCs sont <strong>orthogonales</strong> entre elles : elles ne se répètent pas, elles n'ont aucune corrélation. PCA élimine totalement la multicolinéarité.</p></div></div>
+
+<h3 id="ref-24-la-variance-comme-mesure-dinformation">2.4 La variance comme mesure d'information</h3>
+
+<p>PCA mesure "l'information" portée par chaque direction à travers la <strong>variance</strong> : plus les données sont dispersées dans une direction, plus cette direction est informative.</p>
+
+<p>La première PC capture toujours le plus de variance. La deuxième, un peu moins. Etc.</p>
+
+<p>Sur le dataset Wine (13 features), la répartition typique ressemble à :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">PC1 → 36% de la variance totale
+PC2 → 19% de la variance totale
+PC3 → 11% de la variance totale
+...</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>C'est comme si tu résumais un livre de 300 pages : le premier chapitre contient l'essentiel (36%), le deuxième un peu moins (19%), etc. À partir d'un certain point, les chapitres n'apportent presque rien de nouveau.</p></div></div>
+
+<h3 id="ref-25-code-pca-avec-scikit-learn-dataset-wine">2.5 Code PCA avec scikit-learn — Dataset Wine</h3>
+
+<p>Le dataset Wine contient 178 vins décrits par 13 mesures chimiques. On veut le résumer en moins de dimensions.</p>
+
+<p><strong>Etape 1 : Toujours normaliser les données avant PCA</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.datasets import load_wine
+from sklearn.preprocessing import StandardScaler
+import pandas as pd
+
+wine = load_wine(as_frame=True)   # charge le dataset Wine
+X = wine.data                      # 178 lignes × 13 colonnes de features
+y = wine.target                    # 3 classes de vin (0, 1, 2)
+wine_features = X.columns          # noms des colonnes
+
+# Normalisation OBLIGATOIRE avant PCA
+# Sans ça, les colonnes avec de grandes valeurs dominent tout
+scaler = StandardScaler()
+X_scaled = pd.DataFrame(
+    scaler.fit_transform(X),       # centre (moyenne=0) et réduit (écart-type=1)
+    columns=wine_features
+)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur classique</strong> : appliquer PCA directement sur les données brutes. PCA est basé sur la variance : si une colonne est en milliers et une autre en dixièmes, PCA "croit" que la première est plus importante. La normalisation remet tout sur un pied d'égalité.</p></div></div>
+
+<p><strong>Etape 2 : Calculer toutes les composantes principales</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.decomposition import PCA
+
+pca = PCA()              # instancie PCA — par défaut, calcule TOUTES les PCs
+pca.fit(X_scaled)        # calcule les 13 composantes principales
+
+# La &quot;matrice de passage&quot; W : shape (13, 13)
+# Chaque colonne de W est un vecteur PC
+W = pca.components_      # les coefficients de chaque PC</code></pre></div>
+
+
+<p><strong>Etape 3 : Projeter les données dans le nouvel espace</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">X_proj = pca.transform(X_scaled)   # projette les 178 vins sur les 13 PCs
+# Résultat : shape (178, 13) — mais maintenant SANS multicolinéarité</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La projection est une simple multiplication matricielle : <code>X_proj = X @ W</code>. scikit-learn le fait automatiquement avec <code>.transform()</code>.</p></div></div>
+
+<p><strong>Etape 4 : Regarder combien de variance chaque PC explique</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">pca.explained_variance_ratio_
+# array([0.362, 0.192, 0.111, 0.071, 0.065, ...])
+# PC1 → 36.2%, PC2 → 19.2%, PC3 → 11.1%, ...
+
+import numpy as np
+np.cumsum(pca.explained_variance_ratio_)
+# array([0.362, 0.554, 0.665, 0.736, ...])
+# Après 3 PCs : 66.5% de la variance totale est capturée</code></pre></div>
+
+
+<h3 id="ref-26-choisir-combien-de-composantes-garder-la-méthode-du-coude">2.6 Choisir combien de composantes garder — La méthode du coude</h3>
+
+<p>On trace la <strong>variance cumulée</strong> en fonction du nombre de PCs. On cherche le point où la courbe commence à "s'aplatir" — le coude.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import matplotlib.pyplot as plt
+
+plt.plot(np.cumsum(pca.explained_variance_ratio_))  # variance cumulée
+plt.xlabel(&#x27;Nombre de composantes principales&#x27;)
+plt.ylabel(&#x27;Variance cumulée expliquée&#x27;)
+plt.title(&#x27;Méthode du coude — Choisir k&#x27;)
+plt.axhline(y=0.80, color=&#x27;red&#x27;, linestyle=&#x27;--&#x27;)    # ligne à 80% comme guide
+plt.show()
+# → La courbe monte vite puis s&#x27;aplatit → choisir k au niveau du coude</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Règle empirique : choisir <code>k</code> pour capter au moins <strong>80%</strong> de la variance. Souvent, 3 à 5 PCs suffisent pour des datasets à des dizaines de colonnes.</p></div></div>
+
+<p><strong>Exemple numérique concret</strong> : supposons les valeurs suivantes.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>k (nb de PCs)</th><th>Variance cumulée</th></tr></thead><tbody><tr><td>1</td><td>36%</td></tr><tr><td>2</td><td>55%</td></tr><tr><td>3</td><td>66%</td></tr><tr><td>4</td><td>74%</td></tr><tr><td>5</td><td>80%</td></tr></tbody></table></div>
+<p>Avec $k = 5$, on capture <strong>80% de l'information</strong> en n'utilisant que <strong>5 colonnes au lieu de 13</strong>. On réduit de 62% le nombre de variables.</p>
+
+<h3 id="ref-27-réduire-la-dimension-et-tester-la-performance">2.7 Réduire la dimension et tester la performance</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># PCA avec seulement 3 composantes
+pca3 = PCA(n_components=3)              # garde uniquement les 3 premières PCs
+X_reduit = pca3.fit_transform(X_scaled) # shape (178, 3) — de 13 à 3 colonnes
+
+# Test avec une régression logistique
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import cross_val_score
+
+score_reduit = cross_val_score(LogisticRegression(), X_reduit, y, cv=5).mean()
+score_complet = cross_val_score(LogisticRegression(), X_scaled, y, cv=5).mean()
+
+print(f&quot;Avec 3 PCs  : {score_reduit:.1%}&quot;)   # ~96.1%
+print(f&quot;Avec 13 features : {score_complet:.1%}&quot;)  # ~98.9%
+# → On perd seulement ~3% de précision en utilisant 3 colonnes au lieu de 13</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Passer de 13 features à 3 avec seulement ~3% de perte de précision : c'est la puissance de PCA. Moins de données à traiter, moins de risque de surapprentissage (overfitting).</p></div></div>
+
+<h3 id="ref-28-reconstruire-les-données-originales-décompression">2.8 Reconstruire les données originales (décompression)</h3>
+
+<p>Une fois les données compressées, on peut tenter de <strong>reconstruire</strong> les données originales. Mais si on a jeté des PCs, la reconstruction est <strong>approximative</strong> — on a perdu une partie de l'information.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Reconstruction à partir des 3 PCs
+X_reconstruit = pca3.inverse_transform(X_reduit)  # retour vers les 13 features
+# shape (178, 13) — retrouve la forme d&#x27;origine, mais avec une légère perte d&#x27;info</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>inverse_transform</code> ne récupère pas exactement les données d'origine. C'est une approximation — l'information "perdue" lors de la réduction n'est pas récupérable.</p></div></div>
+
+<h3 id="ref-29-formule-mathématique-de-la-variance-expliquée">2.9 Formule mathématique de la variance expliquée</h3>
+
+<p>Pour chaque composante principale $PC_i$, le <strong>ratio de variance expliquée</strong> est :</p>
+
+<div class="katex-display">$$\text{Ratio}_i = \frac{\text{Var}(PC_i)}{\sum_{j=1}^{p} \text{Var}(PC_j)}$$</div>
+
+<p>Où $p$ est le nombre total de features. La somme de tous les ratios vaut toujours 1 (100%).</p>
+
+<p><strong>Exemple numérique</strong> : imaginons un dataset à 3 features. Après PCA :</p>
+<ul>
+<li>$\text{Var}(PC_1) = 4.5$</li>
+<li>$\text{Var}(PC_2) = 2.0$</li>
+<li>$\text{Var}(PC_3) = 0.5$</li>
+<li>Total : $4.5 + 2.0 + 0.5 = 7.0$</li>
+</ul>
+
+<p>Donc :</p>
+<div class="katex-display">$$\text{Ratio}_1 = \frac{4.5}{7.0} \approx 64\% \quad \text{Ratio}_2 = \frac{2.0}{7.0} \approx 29\% \quad \text{Ratio}_3 = \frac{0.5}{7.0} \approx 7\%$$</div>
+
+<p>Avec seulement $PC_1$ et $PC_2$, on capture $64\% + 29\% = 93\%$ de l'information. On peut se passer de $PC_3$.</p>
+
+<h3 id="ref-210-limites-de-pca">2.10 Limites de PCA</h3>
+
+<p>PCA ne cherche que des <strong>directions linéaires</strong> dans les données. Si les données ont une structure courbe ou en spirale, PCA ne la détectera pas bien.</p>
+
+<p>Pour ces cas, il existe des alternatives :</p>
+
+<ul>
+<li><strong>t-SNE</strong> (t-Distributed Stochastic Neighbor Embedding) : excellent pour <strong>visualiser</strong> des clusters en 2D, mais uniquement pour la visualisation (pas pour préparer un modèle).</li>
+<li><strong>Kernel PCA</strong> : étend PCA aux structures non-linéaires, comme les kernels du SVM.</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Après PCA, les nouvelles colonnes (PC1, PC2, PC3...) <strong>n'ont plus de nom interprétable</strong>. "PC1" ne veut rien dire en soi — c'est une combinaison abstraite de toutes les features originales. On perd l'interprétabilité.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-k-means-regrouper-automatiquement-les-données">3. K-Means — Regrouper automatiquement les données</h2>
+
+<h3 id="ref-31-le-problème-trouver-des-groupes-naturels">3.1 Le problème : trouver des groupes naturels</h3>
+
+<p>Imagine 200 clients d'un e-commerce, chacun décrit par son âge et son panier moyen. Quand tu traces ces points sur un graphe, tu remarques naturellement 3 groupes : les jeunes gros acheteurs, les seniors économes, les adultes modérés. Mais à grande échelle (des milliers de clients, des dizaines de colonnes), l'oeil humain ne peut plus faire ce travail.</p>
+
+<p><strong>K-Means</strong> le fait automatiquement.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>K-Means est supervisé dans son <em>paramétrage</em> (tu choisis <code>K</code>) mais non supervisé dans son <em>fonctionnement</em> (il n'utilise pas de labels <code>y</code> pour apprendre).</p></div></div>
+
+<h3 id="ref-32-lalgorithme-k-means-expliqué-pas-à-pas">3.2 L'algorithme K-Means expliqué pas à pas</h3>
+
+<p>Voici comment K-Means fonctionne, avec K=3 :</p>
+
+<p><strong>Etape 1 : Choisir K</strong></p>
+<p>On décide qu'on veut 3 groupes.</p>
+
+<p><strong>Etape 2 : Placer 3 centroïdes au hasard</strong></p>
+<p>Un centroïde est le "centre" d'un groupe. Au début, ils sont placés aléatoirement dans l'espace des données.</p>
+
+<p><strong>Etape 3 : Assigner chaque point au centroïde le plus proche</strong></p>
+<p>Pour chaque point, on calcule sa distance à chacun des 3 centroïdes. On l'assigne au plus proche. Chaque point appartient maintenant à un cluster.</p>
+
+<p><strong>Etape 4 : Recalculer les centroïdes</strong></p>
+<p>Pour chaque groupe, on calcule la <strong>moyenne</strong> de toutes les coordonnées des points qui le composent. Ce point moyen devient le nouveau centroïde.</p>
+
+<p><strong>Etape 5 : Répéter les étapes 3 et 4</strong></p>
+<p>On re-assigne tous les points aux nouveaux centroïdes, puis on recalcule les centroïdes, etc. On continue jusqu'à ce que les attributions ne changent plus : c'est la <strong>convergence</strong>.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Analogie : imagine que tu veuilles ouvrir 3 pizzerias dans une ville pour minimiser les distances de livraison. Tu places d'abord les 3 restaurants au hasard, tu assignes chaque quartier au restaurant le plus proche, puis tu déplaces chaque restaurant au centre géographique des quartiers qui lui sont assignés. Tu répètes jusqu'à trouver les meilleurs emplacements. C'est exactement K-Means.</p></div></div>
+
+<h3 id="ref-33-la-distance-euclidienne">3.3 La distance euclidienne</h3>
+
+<p>K-Means mesure la <strong>distance euclidienne</strong> entre un point $x_i$ et un centroïde $\mu_j$ :</p>
+
+<div class="katex-display">$$d(x_i, \mu_j) = \sqrt{\sum_{k=1}^{p} (x_{ik} - \mu_{jk})^2}$$</div>
+
+<p>Où $p$ est le nombre de features (colonnes).</p>
+
+<p><strong>Exemple numérique</strong> avec 2 features (âge et panier) :</p>
+<ul>
+<li>Point client : $x = (25, 80)$ — 25 ans, panier de 80€</li>
+<li>Centroïde 1 : $\mu_1 = (22, 75)$</li>
+<li>Centroïde 2 : $\mu_2 = (50, 30)$</li>
+</ul>
+
+<div class="katex-display">$$d(x, \mu_1) = \sqrt{(25-22)^2 + (80-75)^2} = \sqrt{9 + 25} = \sqrt{34} \approx 5.8$$</div>
+
+<div class="katex-display">$$d(x, \mu_2) = \sqrt{(25-50)^2 + (80-30)^2} = \sqrt{625 + 2500} = \sqrt{3125} \approx 55.9$$</div>
+
+<p>Le client est assigné au <strong>centroïde 1</strong> car $5.8 < 55.9$.</p>
+
+<h3 id="ref-34-la-fonction-de-coût-linertie">3.4 La fonction de coût : l'inertie</h3>
+
+<p>K-Means cherche à <strong>minimiser l'inertie</strong> (aussi appelée WCSS — Within-Cluster Sum of Squares). C'est la somme des carrés des distances entre chaque point et le centroïde de son cluster :</p>
+
+<div class="katex-display">$$\text{Inertie} = \sum_{j=1}^{K} \sum_{x_i \in C_j} \| x_i - \mu_j \|^2$$</div>
+
+<p>Où :</p>
+<ul>
+<li>$K$ est le nombre de clusters</li>
+<li>$C_j$ est l'ensemble des points dans le cluster $j$</li>
+<li>$\mu_j$ est le centroïde du cluster $j$</li>
+<li>$\| x_i - \mu_j \|^2$ est le carré de la distance euclidienne</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>L'inertie mesure à quel point les clusters sont "compacts". Une inertie faible signifie que les points sont proches de leur centroïde — les groupes sont bien définis.</p></div></div>
+
+<h3 id="ref-35-code-k-means-avec-scikit-learn">3.5 Code K-Means avec scikit-learn</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.cluster import KMeans
+import pandas as pd
+
+# On suppose qu&#x27;on a X_proj : les données projetées par PCA (voir partie 2)
+
+# Instancier et entraîner K-Means avec K=3 clusters
+km = KMeans(n_clusters=3)    # K=3 : on cherche 3 groupes dans les données
+km.fit(X_proj)               # entraîne l&#x27;algorithme → trouve les 3 centroïdes
+
+# Résultats
+km.labels_                   # array d&#x27;entiers : label de chaque point → [0, 2, 1, 0, ...]
+km.cluster_centers_          # coordonnées des centroïdes → shape (3, nb_features)
+km.inertia_                  # valeur de l&#x27;inertie finale → plus c&#x27;est bas, mieux c&#x27;est</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Visualiser les clusters sur les 2 premières PCs
+import matplotlib.pyplot as plt
+
+plt.scatter(
+    X_proj.iloc[:, 0],   # axe x = PC1
+    X_proj.iloc[:, 1],   # axe y = PC2
+    c=km.labels_,        # couleur selon le cluster assigné
+    cmap=&#x27;viridis&#x27;
+)
+plt.xlabel(&#x27;PC 1&#x27;)
+plt.ylabel(&#x27;PC 2&#x27;)
+plt.title(&#x27;Clustering K-Means (K=3)&#x27;)
+plt.show()</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Prédire le cluster d&#x27;un nouveau point
+import numpy as np
+
+nouveau_vin = pd.DataFrame(
+    np.random.random((1, 13)),
+    columns=X_proj.columns
+)
+km.predict(nouveau_vin)  # retourne [1] → ce vin appartient au cluster 1</code></pre></div>
+
+
+<h3 id="ref-36-attention-les-labels-k-means-sont-arbitraires">3.6 Attention : les labels K-Means sont arbitraires</h3>
+
+<p>K-Means assigne des numéros 0, 1, 2... à ses clusters, mais ces numéros ne correspondent pas forcément aux vraies classes si on les connaît.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import accuracy_score
+
+# Comparaison avec les vrais labels du dataset Wine
+# ⚠️ Les labels K-Means peuvent être dans un ordre différent des vrais labels
+# Il faut mapper manuellement : cluster 0 → classe 0, cluster 1 → classe 2, etc.
+
+y_pred_mappe = pd.Series(km.labels_).map({0: 0, 1: 2, 2: 1})  # mapping manuel
+accuracy_score(y_pred_mappe, y)   # 0.966 → 96.6% de correspondance avec les vrais labels</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais utiliser <code>accuracy_score(y, km.labels_)</code> directement sans avoir mappé les labels. K-Means ne connaît pas le "sens" de ses clusters — il invente juste des numéros.</p></div></div>
+
+<h3 id="ref-37-choisir-k-la-méthode-du-coude">3.7 Choisir K — La méthode du coude</h3>
+
+<p>K (le nombre de clusters) est un <strong>hyperparamètre</strong> : tu dois le fixer toi-même. Comment choisir la bonne valeur ?</p>
+
+<p>On entraîne K-Means pour plusieurs valeurs de K (de 1 à 9, par exemple) et on trace l'inertie. Elle <strong>décroît toujours</strong> quand K augmente — car avec plus de clusters, les points sont toujours plus proches de leur centroïde. Mais à partir d'un certain K, le gain devient marginal.</p>
+
+<p>On cherche le <strong>coude</strong> de la courbe — le point où la diminution de l'inertie ralentit nettement.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">inertias = []           # liste pour stocker l&#x27;inertie à chaque K
+ks = range(1, 10)       # on teste K de 1 à 9
+
+for k in ks:
+    km_test = KMeans(n_clusters=k)   # instancie K-Means avec le K courant
+    km_test.fit(X_proj)              # entraîne sur les données
+    inertias.append(km_test.inertia_) # stocke l&#x27;inertie
+
+# Tracer la courbe
+plt.plot(ks, inertias, marker=&#x27;o&#x27;)
+plt.xlabel(&#x27;Nombre de clusters K&#x27;)
+plt.ylabel(&#x27;Inertie (WCSS)&#x27;)
+plt.title(&#x27;Méthode du coude — Choisir K&#x27;)
+plt.show()
+# → Chercher le &quot;coude&quot; : là où la courbe change de pente brusquement</code></pre></div>
+
+
+<p><strong>Exemple de valeurs d'inertie :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>K</th><th>Inertie</th></tr></thead><tbody><tr><td>1</td><td>2500</td></tr><tr><td>2</td><td>1200</td></tr><tr><td>3</td><td>750</td></tr><tr><td>4</td><td>720</td></tr><tr><td>5</td><td>710</td></tr></tbody></table></div>
+<p>Le coude est à <strong>K=3</strong> : entre K=2 et K=3, l'inertie chute de 1200 à 750 (−38%). Entre K=3 et K=4, elle ne chute que de 750 à 720 (−4%). K=3 est le bon choix.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La méthode du coude n'est pas toujours évidente. Parfois la courbe est lisse et le coude peu marqué. C'est normal — dans ce cas, il faut aussi utiliser son jugement métier : combien de groupes "ont du sens" ?</p></div></div>
+
+<h3 id="ref-38-combiner-pca-k-means">3.8 Combiner PCA + K-Means</h3>
+
+<p>En haute dimension (beaucoup de colonnes), les <strong>distances euclidiennes perdent leur sens</strong>. C'est la "malédiction de la dimensionnalité" : dans un espace à 100 dimensions, tous les points sont presque à la même distance les uns des autres. K-Means ne fonctionne plus bien.</p>
+
+<p>La solution : <strong>appliquer PCA d'abord</strong>, puis K-Means sur les composantes principales réduites.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Workflow complet : PCA → K-Means
+
+# Etape 1 : Normaliser
+from sklearn.preprocessing import StandardScaler
+X_scaled = StandardScaler().fit_transform(X)  # normalise les données
+
+# Etape 2 : Réduire avec PCA
+from sklearn.decomposition import PCA
+pca = PCA(n_components=5)                     # garde les 5 premières PCs
+X_reduit = pca.fit_transform(X_scaled)        # shape (n, 5)
+
+# Etape 3 : Clustériser avec K-Means
+from sklearn.cluster import KMeans
+km = KMeans(n_clusters=3)   # K=3 clusters
+km.fit(X_reduit)             # entraîne sur les 5 PCs
+labels = km.labels_          # clusters assignés à chaque point</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Ce workflow PCA → K-Means est une bonne pratique recommandée pour tout dataset avec de nombreuses features. Il améliore la qualité du clustering et accélère les calculs.</p></div></div>
+
+<h3 id="ref-39-cas-dusage-réels-de-k-means">3.9 Cas d'usage réels de K-Means</h3>
+
+<ul>
+<li><strong>Segmentation client</strong> : regrouper les clients d'un site e-commerce selon leur comportement d'achat pour personnaliser les offres.</li>
+<li><strong>Optimisation logistique</strong> : trouver le nombre optimal de dépôts pour minimiser les distances de livraison.</li>
+<li><strong>Classification de documents</strong> : regrouper des articles de presse par thèmes, sans avoir défini les thèmes à l'avance.</li>
+<li><strong>Détection d'anomalies</strong> : les points qui n'appartiennent clairement à aucun cluster sont souvent des anomalies.</li>
+</ul>
+
+<h3 id="ref-310-autres-algorithmes-de-clustering">3.10 Autres algorithmes de clustering</h3>
+
+<p>K-Means n'est pas adapté à toutes les géométries de données. Il suppose des clusters sphériques et de taille similaire.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Algorithme</th><th>Points forts</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td><strong>K-Means</strong></td><td>Rapide, simple</td><td>Clusters sphériques, taille similaire</td></tr><tr><td><strong>DBSCAN</strong></td><td>Trouve des clusters de formes arbitraires, détecte les outliers</td><td>Données avec bruit, formes complexes</td></tr><tr><td><strong>Clustering hiérarchique</strong></td><td>Produit un dendrogramme (arbre de clusters)</td><td>Quand on ne sait pas combien de clusters il y a</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>DBSCAN (Density-Based Spatial Clustering) regroupe les points selon leur densité locale, pas selon leur distance à un centroïde. Il peut trouver des clusters en forme de croissant ou de spirale — impossible pour K-Means.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1</strong> — Pourquoi est-il obligatoire de normaliser les données avant d'appliquer PCA ?</p>
+
+<details>
+<summary>Réponse</summary>
+<p>PCA mesure la variance de chaque direction. Si une colonne a des valeurs en milliers (ex : salaire) et une autre en dizièmes (ex : note sur 10), la colonne "salaire" domine artificiellement la variance. La normalisation (StandardScaler) met toutes les colonnes sur la même échelle — moyenne 0, écart-type 1 — pour que PCA traite toutes les features équitablement.</p>
+</details>
+
+<hr>
+
+<p><strong>Question 2</strong> — Dans K-Means, qu'est-ce que l'inertie et pourquoi cherche-t-on à la minimiser ?</p>
+
+<details>
+<summary>Réponse</summary>
+<p>L'inertie (WCSS) est la somme des carrés des distances entre chaque point et le centroïde de son cluster. Elle mesure à quel point les clusters sont "compacts". En la minimisant, K-Means cherche des groupes où les membres se ressemblent le plus possible (proches du centroïde). Plus l'inertie est faible, plus les clusters sont cohérents.</p>
+</details>
+
+<hr>
+
+<p><strong>Question 3</strong> — Tu appliques K-Means sur un dataset et obtiens <code>km.labels_ = [0, 1, 2, 0, 1, ...]</code>. Les vrais labels sont <code>y = [1, 0, 2, 1, 0, ...]</code>. Peux-tu faire <code>accuracy_score(y, km.labels_)</code> directement ? Pourquoi ?</p>
+
+<details>
+<summary>Réponse</summary>
+<p>Non. Les labels K-Means sont arbitraires — le numéro 0 chez K-Means peut correspondre à la classe 1 dans les vrais labels. Il faut d'abord mapper manuellement les labels K-Means vers les vrais labels, puis calculer l'accuracy. Sinon, le score sera faux même si le clustering est parfait.</p>
+</details>
+
+<hr>
+
+<p><strong>Question 4</strong> — Tu as un dataset à 50 features. Tu appliques PCA et constates que les 6 premières PCs expliquent 82% de la variance. Que fais-tu ensuite ?</p>
+
+<details>
+<summary>Réponse</summary>
+<p>Tu appliques <code>PCA(n_components=6)</code> pour réduire de 50 à 6 dimensions (en capturant 82% de l'information). Ensuite, tu peux entraîner tes modèles sur ces 6 PCs — le modèle sera plus rapide, moins susceptible de surapprentissage, et les distances seront plus significatives (pratique si tu veux faire du K-Means ensuite).</p>
+</details>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>L'<strong>apprentissage non supervisé</strong> cherche des structures dans <code>X</code> sans utiliser de labels <code>y</code>.</li>
+<li><strong>PCA</strong> réduit le nombre de colonnes en créant des <strong>composantes principales</strong> (combinaisons linéaires des features originales), classées par variance décroissante.</li>
+<li>Toujours <strong>normaliser</strong> les données avant PCA — sinon les colonnes à grandes valeurs dominent tout.</li>
+<li>La <strong>méthode du coude</strong> (variance cumulée) permet de choisir combien de PCs garder : on cherche le point où la courbe s'aplatit.</li>
+<li><strong>K-Means</strong> regroupe les données en <code>K</code> clusters en minimisant l'<strong>inertie</strong> (distances au carré vers les centroïdes).</li>
+<li>La <strong>méthode du coude</strong> s'applique aussi à K-Means : on trace l'inertie en fonction de <code>K</code> et on cherche le point d'inflexion.</li>
+<li>Les <strong>labels K-Means sont arbitraires</strong> : le numéro 0 ne correspond pas forcément à la classe 0 — mapper manuellement avant tout calcul d'accuracy.</li>
+<li>En haute dimension, <strong>PCA avant K-Means</strong> est une bonne pratique : les distances euclidiennes perdent leur sens dans des espaces à trop de dimensions.</li>
+<li>PCA est <strong>linéaire</strong> — pour des structures complexes, t-SNE (visualisation) ou Kernel PCA sont des alternatives.</li>
+<li>Le workflow recommandé : <strong>StandardScaler → PCA → KMeans</strong>.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-quest-ce-que-lapprentissage-non-supervisé">Qu'est-ce que l'apprentissage non supervisé</a></li><li><a href="#syn-k-means-clustering">K-means clustering</a></li><li><a href="#syn-hierarchical-clustering">Hierarchical clustering</a></li><li><a href="#syn-pca-principal-component-analysis">PCA (Principal Component Analysis)</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-dbscan-et-hdbscan">DBSCAN et HDBSCAN</a></li><li><a href="#syn-t-sne-et-umap">t-SNE et UMAP</a></li><li><a href="#syn-détection-danomalies">Détection d'anomalies</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-quest-ce-que-lapprentissage-non-supervisé">Qu'est-ce que l'apprentissage non supervisé</h3>
+
+<p>Contrairement au supervisé, vous n'avez <strong>pas de labels</strong> : juste un ensemble de points $X$ et l'objectif de <strong>découvrir une structure</strong>. Trois grandes tâches :</p>
+
+<ol>
+<li><strong>Clustering</strong> : regrouper les points similaires (segmentation client, topic modeling)</li>
+<li><strong>Réduction de dimension</strong> : projeter dans un espace plus petit (PCA, UMAP)</li>
+<li><strong>Détection d'anomalies</strong> : identifier les points "anormaux" (fraude, défauts)</li>
+</ol>
+
+<p>Difficulté principale : <strong>pas de vérité terrain</strong>. Comment juger qu'un clustering est "bon" ? Pas d'accuracy, pas de F1. On utilise des métriques <strong>internes</strong> (silhouette, inertie) ou <strong>externes</strong> (si on a un label de validation).</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : imaginez qu'on vous donne 10 000 livres dans une langue inconnue, sans étiquette. Le supervisé serait : "voici 1000 livres déjà classés en 'romans' et 'manuels', classe les 9000 autres". Le non supervisé serait : "trouve toi-même les groupes naturels". Vous pourriez en trouver 3 (par taille), 10 (par sujet), ou 50 (par style). Le "bon" nombre dépend de ce que vous voulez en faire.</p></div></div>
+
+<h3 id="syn-k-means-clustering">K-means clustering</h3>
+
+<p>L'algorithme de clustering le plus simple et le plus utilisé.</p>
+
+<p><strong>Objectif</strong> : trouver $K$ centres $\{c_1, \ldots, c_K\}$ qui minimisent la <strong>somme des distances carrées</strong> des points à leur centre le plus proche. Cette quantité s'appelle l'<strong>inertie</strong> :</p>
+
+<div class="katex-display">$$\text{Inertie} = \sum_{i=1}^{n} \min_{k \in \{1,\ldots,K\}} \|\mathbf{x}_i - \mathbf{c}_k\|^2$$</div>
+
+<p>Lecture : <em>pour chaque point $\mathbf{x}_i$, on calcule sa distance euclidienne au carré au centre le plus proche $\mathbf{c}_k$, puis on somme sur tous les points</em>. Plus l'inertie est faible, plus les clusters sont "compacts" autour de leurs centres. L'inertie diminue mécaniquement quand $K$ augmente (plus de centres → chaque point est plus proche d'un centre).</p>
+
+<p><strong>Algorithme</strong> (itératif, aussi appelé algorithme de Lloyd) :</p>
+
+<ol>
+<li>Choisir $K$ centres initiaux au hasard (ou par k-means++)</li>
+<li><strong>Assignment</strong> : affecter chaque point au centre le plus proche</li>
+<li><strong>Update</strong> : recalculer chaque centre comme la moyenne des points qui lui sont assignés</li>
+<li>Répéter jusqu'à convergence (aucun point ne change de cluster)</li>
+</ol>
+
+<p><strong>Exemple chiffré</strong> : avec 4 points en 1D ($x = 1, 2, 9, 10$) et $K=2$. Init : $c_1 = 1$, $c_2 = 9$. Assignment : $\{1, 2\} \to c_1$, $\{9, 10\} \to c_2$. Update : $c_1 = 1.5$, $c_2 = 9.5$. Inertie = $0.5 + 0.5 + 0.5 + 0.5 = 2.0$. Convergé en une itération.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)                   # indispensable
+
+kmeans = KMeans(n_clusters=5, random_state=42, n_init=10)
+labels = kmeans.fit_predict(X_scaled)                # assigne un cluster à chaque point
+print(kmeans.cluster_centers_)                       # les 5 centres appris
+print(kmeans.inertia_)                               # somme des distances² aux centres</code></pre></div>
+
+
+<p>Forces : rapide, simple, marche bien sur des clusters sphériques.</p>
+
+<p>Faiblesses :</p>
+<ul>
+<li><strong>K doit être choisi a priori</strong> (méthode du coude, silhouette)</li>
+<li><strong>Sensible à l'initialisation</strong> (<code>n_init=10</code> lance 10 fois et garde le meilleur)</li>
+<li><strong>Suppose des clusters sphériques de taille similaire</strong> (échoue sur des formes complexes)</li>
+<li><strong>Sensible aux outliers</strong> (un point extrême tire le centre)</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Toujours standardiser avant K-means</strong>. Sinon les features de grande échelle dominent la distance et celles de petite échelle sont ignorées. Pareil pour DBSCAN, KNN, et tout algorithme basé sur la distance.</p></div></div>
+
+<p><strong>Choix de K — méthode du coude</strong> : tracer l'inertie en fonction de $K$ et chercher le "coude" où la courbe se stabilise.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">inertias = []
+for k in range(1, 11):
+    km = KMeans(n_clusters=k, random_state=42, n_init=10).fit(X_scaled)
+    inertias.append(km.inertia_)
+
+plt.plot(range(1, 11), inertias, &quot;o-&quot;)
+plt.xlabel(&quot;K&quot;); plt.ylabel(&quot;Inertia&quot;)
+# On cherche le K où l&#x27;ajout d&#x27;un cluster cesse d&#x27;apporter un gain net</code></pre></div>
+
+
+<p>Méthode plus rigoureuse : le <strong>silhouette score</strong>. Pour un point $i$, on définit :</p>
+
+<div class="katex-display">$$s(i) = \frac{b(i) - a(i)}{\max(a(i), b(i))}$$</div>
+
+<p>Lecture : <em>$a(i)$ est la distance moyenne de $i$ aux autres points de son cluster (cohésion intra-cluster), $b(i)$ est la distance moyenne de $i$ aux points du cluster le plus proche auquel il n'appartient pas (séparation inter-cluster)</em>. Le silhouette score est entre -1 et 1 :</p>
+<ul>
+<li>Proche de 1 : $i$ est bien dans son cluster (loin des autres)</li>
+<li>Proche de 0 : $i$ est à la frontière entre deux clusters</li>
+<li>Proche de -1 : $i$ est probablement mal assigné</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import silhouette_score
+score = silhouette_score(X_scaled, labels)   # moyenne sur tous les points
+# Score &gt; 0.5 : structure forte ; 0.25-0.5 : structure faible ; &lt; 0.25 : pas de structure</code></pre></div>
+
+
+<h3 id="syn-hierarchical-clustering">Hierarchical clustering</h3>
+
+<p>Au lieu d'imposer $K$ au début, on construit un <strong>arbre</strong> (dendrogramme) qui montre comment les points se regroupent à toutes les granularités.</p>
+
+<p>Deux approches :</p>
+<ul>
+<li><strong>Agglomératif</strong> (bottom-up) : chaque point est son propre cluster, puis on fusionne les plus proches itérativement</li>
+<li><strong>Divisif</strong> (top-down) : tout est un cluster, puis on divise récursivement</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
+
+Z = linkage(X_scaled, method=&quot;ward&quot;)       # Ward minimise l&#x27;augmentation de variance
+dendrogram(Z)
+plt.show()
+
+# Couper l&#x27;arbre pour obtenir exactement K clusters
+labels = fcluster(Z, t=5, criterion=&quot;maxclust&quot;)</code></pre></div>
+
+
+<p>Avantage : le dendrogramme révèle la structure <strong>hiérarchique</strong> (genre > espèce > variété). Vous pouvez choisir le nombre de clusters <strong>après</strong> avoir vu la structure.</p>
+
+<p>Inconvénient : $O(n^3)$ en complexité, inutilisable au-delà de ~10k points.</p>
+
+<h3 id="syn-pca-principal-component-analysis">PCA (Principal Component Analysis)</h3>
+
+<p>La <strong>réduction de dimension</strong> linéaire la plus utilisée. PCA trouve les axes (combinaisons linéaires des features) qui <strong>maximisent la variance</strong> des données projetées.</p>
+
+<p>Mathématiquement : diagonalisation de la matrice de covariance $\Sigma = \frac{1}{n-1} X^T X$ (après centrage). Les <strong>composantes principales</strong> sont les vecteurs propres de $\Sigma$, ordonnés par valeur propre décroissante. La première composante capture le plus de variance, la seconde est orthogonale à la première et capture le maximum de variance restante, etc.</p>
+
+<div class="katex-display">$$\Sigma \mathbf{v}_k = \lambda_k \mathbf{v}_k, \qquad \lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_p \geq 0$$</div>
+
+<p>Lecture : <em>$\mathbf{v}_k$ est la $k$-ième composante principale (un vecteur de direction dans l'espace des features), et $\lambda_k$ est la variance des données projetées sur cet axe</em>. La <strong>fraction de variance expliquée</strong> par la composante $k$ est $\lambda_k / \sum_j \lambda_j$.</p>
+
+<p><strong>Exemple chiffré</strong> : sur un dataset à 1000 features bruitées, PCA révèle souvent que les 50 premières composantes capturent 95% de la variance. On peut alors passer de 1000 à 50 dimensions sans perte significative d'information — les 950 autres composantes ne contenaient que du bruit.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+import numpy as np
+
+X_scaled = StandardScaler().fit_transform(X)
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X_scaled)                              # projection en 2D
+
+print(&quot;Variance expliquée par composante:&quot;, pca.explained_variance_ratio_)
+# ex: [0.47, 0.23]  → 70% de l&#x27;info dans 2 axes
+print(&quot;Variance cumulative:&quot;, np.cumsum(pca.explained_variance_ratio_))</code></pre></div>
+
+
+<p>Trois usages :</p>
+
+<ol>
+<li><strong>Visualisation</strong> : projeter en 2D ou 3D pour explorer</li>
+<li><strong>Compression</strong> : passer de 1000 dimensions à 50 sans perdre beaucoup d'information</li>
+<li><strong>Décorrélation</strong> : les composantes principales sont orthogonales par construction</li>
+</ol>
+
+<p>Comment choisir le nombre de composantes ? Tracer la courbe de variance cumulative et choisir le $K$ qui capture 90-95%.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">pca_full = PCA().fit(X_scaled)
+plt.plot(np.cumsum(pca_full.explained_variance_ratio_))
+plt.xlabel(&quot;Nombre de composantes&quot;)
+plt.ylabel(&quot;Variance cumulative expliquée&quot;)
+plt.axhline(0.95, color=&quot;red&quot;, linestyle=&quot;--&quot;)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : PCA cherche les "directions naturelles" des données. Si vos points forment un nuage allongé en oblique, la 1ère composante principale est l'axe de cette élongation, la 2ème est perpendiculaire. Vous pouvez ensuite projeter sur le 1er axe seul et perdre très peu d'information. C'est ce qui rend la compression efficace : la variance est concentrée sur quelques axes, pas répartie uniformément.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-dbscan-et-hdbscan">DBSCAN et HDBSCAN</h3>
+
+<p><strong>DBSCAN</strong> (Density-Based Spatial Clustering) ne suppose pas de forme particulière et n'a pas besoin de préciser $K$ — il trouve automatiquement les clusters denses et marque les points isolés comme "bruit".</p>
+
+<p>Deux hyperparamètres :</p>
+<ul>
+<li><code>eps</code> : rayon de voisinage</li>
+<li><code>min_samples</code> : nombre minimum de points pour former un cluster</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.cluster import DBSCAN
+
+db = DBSCAN(eps=0.5, min_samples=5)
+labels = db.fit_predict(X_scaled)
+# labels == -1 → bruit (outlier)
+# labels &gt;= 0 → indice du cluster</code></pre></div>
+
+
+<p>Avantages : trouve automatiquement $K$, détecte les clusters de forme arbitraire (croissants, anneaux), identifie les outliers.</p>
+
+<p>Inconvénients : sensible à <code>eps</code> (trop petit → tout est bruit, trop grand → tout est un seul cluster), échoue avec densités variables, mauvais en haute dimension.</p>
+
+<p><strong>HDBSCAN</strong> est une amélioration qui gère les densités variables et n'a presque pas besoin de tuning :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import hdbscan
+clusterer = hdbscan.HDBSCAN(min_cluster_size=10)
+labels = clusterer.fit_predict(X_scaled)</code></pre></div>
+
+
+<h3 id="syn-t-sne-et-umap">t-SNE et UMAP</h3>
+
+<p>PCA est linéaire — il ne capture pas les structures non linéaires. Pour la <strong>visualisation</strong>, deux algorithmes non linéaires dominent :</p>
+
+<p><strong>t-SNE</strong> : préserve les distances <strong>locales</strong> (les points proches restent proches en 2D). Excellent pour la viz, mais lent et non déterministe.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.manifold import TSNE
+
+tsne = TSNE(n_components=2, perplexity=30, random_state=42)
+X_tsne = tsne.fit_transform(X_scaled)
+plt.scatter(X_tsne[:, 0], X_tsne[:, 1], c=y)</code></pre></div>
+
+
+<p><strong>UMAP</strong> : plus rapide que t-SNE, préserve mieux la structure globale. Standard 2025.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import umap
+reducer = umap.UMAP(n_neighbors=15, min_dist=0.1)
+X_umap = reducer.fit_transform(X_scaled)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège classique</strong> : utiliser t-SNE / UMAP pour autre chose que la visualisation. Les embeddings produits ne sont pas stables, ne capturent pas les distances vraies, et ne devraient <strong>jamais</strong> être utilisés comme features pour un modèle ML downstream. Pour la réduction de dimension visant à entraîner un modèle, utilisez PCA ou un autoencoder. Pour la visualisation, UMAP > t-SNE > PCA.</p></div></div>
+
+<h3 id="syn-détection-danomalies">Détection d'anomalies</h3>
+
+<p>Identifier des points "anormaux" sans labels d'anomalie. Trois familles d'algorithmes :</p>
+
+<p><strong>1. Statistique</strong> : Z-score, IQR — simples mais limitées au cas univarié.</p>
+
+<p><strong>2. Distance / densité</strong></p>
+
+<p><strong>Isolation Forest</strong> : isole les points anormaux avec moins de splits dans des arbres aléatoires (les anomalies sont "faciles" à isoler parce qu'elles sont éloignées du reste).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import IsolationForest
+iso = IsolationForest(contamination=0.05, random_state=42)
+preds = iso.fit_predict(X)   # -1 = anomalie, 1 = normal</code></pre></div>
+
+
+<p><strong>Local Outlier Factor (LOF)</strong> : compare la densité locale d'un point à celle de ses voisins.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.neighbors import LocalOutlierFactor
+lof = LocalOutlierFactor(n_neighbors=20, contamination=0.05)
+preds = lof.fit_predict(X)</code></pre></div>
+
+
+<p><strong>3. Reconstruction</strong> : un autoencoder appris sur les données normales aura une grande erreur de reconstruction sur les anomalies.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : pour la fraude / cybersécurité, combinez plusieurs détecteurs (Isolation Forest + autoencoder + règles métier). Aucun détecteur seul n'a une couverture parfaite. Pour les défauts industriels (vision), un autoencoder ou un U-Net sur images est souvent meilleur que les méthodes statistiques.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Vous lancez K-means avec K=5 sur un dataset, et les résultats changent à chaque exécution. Pourquoi et comment fixer le problème ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Initialisation.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>K-means est <strong>sensible à l'initialisation</strong> : il converge vers un <strong>minimum local</strong> de l'inertie, qui dépend des centres initiaux aléatoires. Différentes initialisations donnent différents clusters finaux.</p>
+
+<p>Solutions :</p>
+
+<ol>
+<li><strong><code>random_state=42</code></strong> : fixe la seed pour la reproductibilité — mais ne garantit pas le meilleur clustering.</li>
+<li><strong><code>n_init=10</code></strong> : sklearn lance 10 initialisations différentes et garde la meilleure (par inertie). Défaut depuis sklearn 1.4.</li>
+<li><strong><code>init=&quot;k-means++&quot;</code></strong> : algorithme d'initialisation intelligent qui choisit les centres pour qu'ils soient initialement éloignés, ce qui converge presque toujours vers un bon optimum. Aussi le défaut.</li>
+</ol>
+
+<p>Pour des résultats stables, combinez les trois.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">KMeans(n_clusters=5, random_state=42, n_init=10, init=&quot;k-means++&quot;)</code></pre></div>
+
+
+</details>
+
+<p><strong>Q2 : Vous avez un dataset à 1000 features et vous voulez le réduire à 50 dimensions pour un modèle ML. PCA ou autoencoder ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Linéarité et données.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Cela dépend de la <strong>structure</strong> des données.</p>
+
+<p><strong>PCA</strong> : rapide, déterministe, interprétable, et marche bien si la variance est concentrée sur quelques axes linéaires. Bon choix par défaut pour des features tabulaires standards.</p>
+
+<p><strong>Autoencoder</strong> : plus puissant pour des structures non linéaires (images, embeddings textuels, signaux complexes), peut apprendre des représentations inaccessibles à PCA. Mais nécessite du tuning, beaucoup de données, et n'est pas déterministe.</p>
+
+<p><strong>Règle pratique</strong> : commencer par PCA. Si les performances downstream sont insuffisantes, essayer un autoencoder. Pour des images, sauter directement à un autoencoder convolutionnel ou un réseau pré-entraîné (ResNet) qui donne déjà des features de haute qualité.</p>
+
+</details>
+
+<p><strong>Q3 : Vous voulez clusterer 10 millions de transactions financières pour détecter des groupes inhabituels. Quel algorithme et pourquoi ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Scalabilité.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Sur 10M de points :</p>
+
+<ol>
+<li><strong>Hierarchical clustering éliminé</strong> : $O(n^3)$, inutilisable.</li>
+<li><strong>K-means</strong> : marche jusqu'à plusieurs millions avec <code>MiniBatchKMeans</code> (version stochastique en mini-batches). Probablement le bon choix : rapide, scalable, clusters interprétables.</li>
+<li><strong>DBSCAN</strong> : peut marcher mais sensible aux paramètres et lent en haute dimension.</li>
+<li><strong>HDBSCAN</strong> : plus pratique mais aussi plus lent.</li>
+<li><strong>PCA → K-means</strong> : excellente pratique sur des données très dimensionnelles, gagne en vitesse et améliore souvent la qualité du clustering.</li>
+</ol>
+
+<p><strong>Pipeline canonique pour 10M de transactions</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.cluster import MiniBatchKMeans
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
+
+pipe = make_pipeline(
+    StandardScaler(),                           # (a) normalisation
+    PCA(n_components=10),                       # (b) réduction 50→10 dims
+    MiniBatchKMeans(n_clusters=20, batch_size=10000, random_state=42)
+)
+labels = pipe.fit_predict(X)</code></pre></div>
+
+
+<p>Pour la <strong>détection d'anomalies pure</strong> plutôt que clustering, Isolation Forest scale aussi bien et est plus directement adapté au problème.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>The Elements of Statistical Learning</em> (Hastie et al.) — chapitre 14 sur le non supervisé</li>
+<li><a href="https://scikit-learn.org/stable/modules/clustering.html" target="_blank" rel="noopener">scikit-learn Clustering</a> — comparaison visuelle de tous les algorithmes</li>
+<li><a href="https://umap-learn.readthedocs.io/" target="_blank" rel="noopener">UMAP documentation</a> — la référence moderne</li>
+<li><em>Pattern Recognition and Machine Learning</em> (Bishop) — chapitre 9 sur les mixtures</li>
+<li><a href="https://hdbscan.readthedocs.io/" target="_blank" rel="noopener">HDBSCAN documentation</a></li>
+<li><a href="https://pyod.readthedocs.io/" target="_blank" rel="noopener">Anomaly Detection with PyOD</a> — boîte à outils complète</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../machine-learning/ensemble-methods.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Ensemble Methods</span>
+  </a>
+  <a href="../deep-learning/fundamentals-dl.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Fundamentals of DL →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ensemble Methods — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Ensemble Methods</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html" class="active">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Machine Learning</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Ensemble Methods</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Ensemble Methods</h1>
+        <p class="page-objective">Comprendre et maîtriser les méthodes d'ensemble —</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Bagging</div>
+        <div class="key-concept-def">Entraîner N modèles sur des échantillons bootstrap puis moyenner (Random Forest).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Boosting</div>
+        <div class="key-concept-def">Entraîner des modèles séquentiellement, chacun corrigeant les erreurs du précédent.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Random Forest</div>
+        <div class="key-concept-def">Bagging d&#x27;arbres + sélection aléatoire de features à chaque split.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Gradient Boosting</div>
+        <div class="key-concept-def">Boosting où chaque arbre fitte le gradient de la loss (XGBoost, LightGBM).</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-ensemble-methods">Cheatsheet — Ensemble Methods</a><ol><li><a href="#decision-tree">Decision Tree</a></li><li><a href="#visualisation-de-larbre">Visualisation de l'arbre</a></li><li><a href="#bagging-random-forest">Bagging — Random Forest</a></li><li><a href="#bagging-générique-nimporte-quel-modèle">Bagging générique (n'importe quel modèle)</a></li><li><a href="#boosting-adaboost">Boosting — AdaBoost</a></li><li><a href="#boosting-gradientboosting-sklearn">Boosting — GradientBoosting (sklearn)</a></li><li><a href="#boosting-xgboost">Boosting — XGBoost ⚡️</a></li><li><a href="#stacking">Stacking</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-decision-trees">1) Decision Trees</a><ol><li><a href="#11-vocabulaire">1.1 Vocabulaire</a></li><li><a href="#12-indice-de-gini">1.2 Indice de Gini</a></li><li><a href="#13-comment-larbre-est-il-construit">1.3 Comment l'arbre est-il construit ?</a></li><li><a href="#14-classification-decisiontreeclassifier">1.4 Classification — `DecisionTreeClassifier`</a></li><li><a href="#15-régression-decisiontreeregressor">1.5 Régression — `DecisionTreeRegressor`</a></li><li><a href="#16-contrôler-loverfitting">1.6 Contrôler l'overfitting</a></li><li><a href="#17-avantages-et-inconvénients">1.7 Avantages et inconvénients</a></li></ol></li><li><a href="#2-bagging-bootstrap-aggregating">2) Bagging — Bootstrap Aggregating</a><ol><li><a href="#21-bootstrapping">2.1 Bootstrapping</a></li><li><a href="#22-random-forest-bagging-darbres">2.2 Random Forest = Bagging d'arbres</a></li><li><a href="#23-bagging-générique">2.3 Bagging générique</a></li><li><a href="#24-avantages-et-inconvénients-du-bagging">2.4 Avantages et inconvénients du Bagging</a></li></ol></li><li><a href="#3-boosting">3) Boosting</a><ol><li><a href="#31-adaboost-adaptive-boosting">3.1 AdaBoost (Adaptive Boosting)</a></li><li><a href="#32-gradient-boosting">3.2 Gradient Boosting 🔥</a></li><li><a href="#33-xgboost-extreme-gradient-boosting">3.3 XGBoost — Extreme Gradient Boosting ⚡️</a></li><li><a href="#34-avantages-et-inconvénients-du-boosting">3.4 Avantages et inconvénients du Boosting</a></li></ol></li><li><a href="#4-comparaison-bagging-vs-boosting">4) Comparaison Bagging vs Boosting</a><li><a href="#5-stacking">5) Stacking</a><ol><li><a href="#51-votingclassifier-votingregressor-agrégation-simple">5.1 VotingClassifier / VotingRegressor — agrégation simple</a></li><li><a href="#52-stackingclassifier-stackingregressor-méta-modèle">5.2 StackingClassifier / StackingRegressor — méta-modèle</a></li></ol></li><li><a href="#6-preprocessing-et-modèles-à-base-darbres">6) Preprocessing et modèles à base d'arbres</a><li><a href="#bibliographie">Bibliographie</a></ol></div>
+<p>Comprendre et maîtriser les méthodes d'ensemble —</p>
+
+<p>Decision Trees, Bagging (Random Forest), Boosting (AdaBoost, GradientBoosting, XGBoost) et Stacking</p>
+
+<ul>
+<li>pour réduire la variance et le biais des modèles ML.</li>
+</ul>
+
+<hr>
+
+<h2 id="cheatsheet-ensemble-methods">📋 Cheatsheet — Ensemble Methods</h2>
+
+<h3 id="decision-tree">Decision Tree</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
+
+## Classification
+tree_clf = DecisionTreeClassifier(
+    max_depth=2,           # profondeur max (contrôle l&#x27;overfitting)
+    min_samples_split=7,   # nb min d&#x27;échantillons pour splitter un nœud
+    min_samples_leaf=3,    # nb min d&#x27;échantillons dans une feuille
+    random_state=2
+)
+tree_clf.fit(X_train, y_train)
+tree_clf.predict([[4, 1]])           # → [1.]   classe prédite
+tree_clf.predict_proba([[4, 1]])     # → [[0., 0.907, 0.093]]  ratio de classes dans la feuille
+
+## Régression
+tree_reg = DecisionTreeRegressor(max_depth=3)
+tree_reg.fit(X_train, y_train)
+
+## Importance des features (basée sur le Gini)
+tree_clf.feature_importances_       # array([0.43, 0.57]) — proportion de réduction d&#x27;impureté</code></pre></div>
+
+
+<h3 id="visualisation-de-larbre">Visualisation de l'arbre</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import graphviz
+from sklearn.tree import export_graphviz
+
+export_graphviz(
+    tree_clf,
+    out_file=&quot;tree.dot&quot;,
+    feature_names=X.columns,
+    class_names=[&#x27;0&#x27;,&#x27;1&#x27;,&#x27;2&#x27;],
+    rounded=True, filled=True        # couleurs et coins arrondis
+)
+with open(&quot;tree.dot&quot;) as f:
+    display(graphviz.Source(f.read()))   # affiche l&#x27;arbre graphiquement</code></pre></div>
+
+
+<h3 id="bagging-random-forest">Bagging — Random Forest</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
+
+## Régression : moyenne des prédictions de n_estimators arbres
+forest_reg = RandomForestRegressor(
+    n_estimators=100,   # nombre d&#x27;arbres (plus = meilleur, mais plus lent)
+    max_depth=5,        # profondeur max de chaque arbre
+    n_jobs=-1           # parallélise sur tous les cœurs
+)
+forest_reg.fit(X_train, y_train)
+forest_reg.feature_importances_     # importance de chaque feature (somme = 1)
+
+## Classification : vote majoritaire entre les n_estimators arbres
+forest_clf = RandomForestClassifier(n_estimators=100, n_jobs=-1)
+forest_clf.fit(X_train, y_train)
+
+## Score OOB (Out-of-Bag) — pseudo test score sans validation set séparé
+forest_reg = RandomForestRegressor(n_estimators=100, oob_score=True)
+forest_reg.fit(X, y)
+forest_reg.oob_score_               # → ~0.85 (score sur les échantillons non tirés)</code></pre></div>
+
+
+<h3 id="bagging-générique-nimporte-quel-modèle">Bagging générique (n'importe quel modèle)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import BaggingClassifier, BaggingRegressor
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import LinearRegression
+
+## Bagger n&#x27;importe quel estimateur sklearn
+bagged_knn = BaggingClassifier(
+    KNeighborsClassifier(n_neighbors=3),   # weak learner
+    n_estimators=40,                        # nombre de modèles
+    oob_score=True                          # active le score OOB
+)
+bagged_knn.fit(X_train, y_train)
+bagged_knn.oob_score_               # score OOB
+
+bagged_lr = BaggingRegressor(LinearRegression(), n_estimators=50, oob_score=True)
+bagged_lr.fit(X, y).oob_score_      # → ~0.507</code></pre></div>
+
+
+<h3 id="boosting-adaboost">Boosting — AdaBoost</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import AdaBoostRegressor, AdaBoostClassifier
+from sklearn.tree import DecisionTreeRegressor
+
+## AdaBoost : chaque arbre apprend sur les résidus pondérés du précédent
+adaboost = AdaBoostRegressor(
+    DecisionTreeRegressor(max_depth=3),   # weak learner (shallow tree)
+    n_estimators=50,                       # nombre d&#x27;étapes séquentielles
+    learning_rate=1.0                      # contribution de chaque étape
+)
+adaboost.fit(X_train, y_train)</code></pre></div>
+
+
+<h3 id="boosting-gradientboosting-sklearn">Boosting — GradientBoosting (sklearn)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import GradientBoostingRegressor, GradientBoostingClassifier
+
+## GradientBoosting : chaque arbre prédit les RÉSIDUS du précédent
+gbr = GradientBoostingRegressor(
+    n_estimators=100,    # nombre d&#x27;arbres séquentiels
+    learning_rate=0.1,   # shrinkage : contribution de chaque arbre (η)
+    max_depth=3          # profondeur de chaque arbre weak learner
+)
+gbr.fit(X_train, y_train)</code></pre></div>
+
+
+<h3 id="boosting-xgboost">Boosting — XGBoost ⚡️</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from xgboost import XGBRegressor
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+X_test, X_val, y_test, y_val = train_test_split(X_test, y_test, test_size=0.5, random_state=42)
+
+xgb = XGBRegressor(
+    max_depth=10,            # profondeur max de chaque arbre
+    n_estimators=100,        # nb max d&#x27;itérations
+    learning_rate=0.1,       # shrinkage (η)
+    early_stopping_rounds=5  # arrête si la loss de val augmente 5 fois de suite
+)
+
+xgb.fit(
+    X_train, y_train,
+    eval_set=[(X_train, y_train), (X_val, y_val)]  # surveille train et val à chaque itération
+)
+
+xgb.predict(X_val)   # prédictions
+
+## XGBoost dans un Pipeline sklearn
+from sklearn.pipeline import make_pipeline
+from sklearn.model_selection import cross_validate
+
+pipe_xgb = make_pipeline(xgb)
+cross_validate(pipe_xgb, X, y, cv=10, scoring=&#x27;r2&#x27;)</code></pre></div>
+
+
+<h3 id="stacking">Stacking</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import VotingClassifier, VotingRegressor
+from sklearn.ensemble import StackingClassifier, StackingRegressor
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+
+## VotingClassifier : agrégation simple (vote ou moyenne des probas)
+ensemble = VotingClassifier(
+    estimators=[(&quot;rf&quot;, RandomForestClassifier()), (&quot;lr&quot;, LogisticRegression())],
+    voting=&#x27;soft&#x27;,      # &#x27;soft&#x27; = moyenne des predict_proba | &#x27;hard&#x27; = vote majoritaire
+    weights=[1, 1]      # poids égaux entre les deux modèles
+)
+ensemble.fit(X_train, y_train)
+
+## StackingClassifier : un meta-modèle apprend à combiner les prédictions
+stacking = StackingClassifier(
+    estimators=[(&quot;rf&quot;, RandomForestClassifier()), (&quot;knn&quot;, KNeighborsClassifier(n_neighbors=10))],
+    final_estimator=LogisticRegression()   # meta-modèle entraîné sur les prédictions des base models
+)
+stacking.fit(X_train, y_train)</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Laisser un Decision Tree croître sans contrainte</strong></p>
+<p>❌ <code>DecisionTreeRegressor()</code> sans <code>max_depth</code> → l'arbre mémorise chaque point du train, R² train = 1.0 mais R² test ≈ 0</p>
+<p>✅ Toujours fixer au moins <code>max_depth</code> ou <code>min_samples_leaf</code> ; tuner avec <code>GridSearchCV</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre <code>predict_proba</code> d'un arbre avec de vraies probabilités</strong></p>
+<p>❌ Interpréter <code>0.907</code> comme une probabilité calibrée → c'est simplement le ratio de classe dans la feuille</p>
+<p>✅ Les arbres sont des classifieurs <strong>non-calibrés</strong> ; utiliser <code>CalibratedClassifierCV</code> si des probabilités calibrées sont nécessaires</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Bagger un Random Forest (<code>BaggingRegressor(RandomForestRegressor())</code>)</strong></p>
+<p>❌ <code>BaggingRegressor(RandomForestClassifier(), n_estimators=100)</code> → entraîne 100 × 100 = 10 000 arbres !</p>
+<p>✅ <code>RandomForestClassifier(n_estimators=100)</code> est déjà un bagging d'arbres — inutile de le re-bagger</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser un learning_rate trop élevé en Gradient Boosting</strong></p>
+<p>❌ <code>learning_rate=1.0</code> avec beaucoup d'estimateurs → overfitting rapide, chaque arbre contribue trop</p>
+<p>✅ Règle empirique : <code>learning_rate</code> petit (0.01–0.1) + <code>n_estimators</code> grand ; utiliser <code>early_stopping_rounds</code> avec XGBoost</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Scaler les données avant un modèle basé sur des arbres</strong></p>
+<p>❌ Perdre du temps à scaler pour Random Forest ou XGBoost — les splits sont basés sur l'<strong>ordre</strong>, pas la magnitude</p>
+<p>✅ Pas de scaling nécessaire pour les tree-based models ; l'ajouter uniquement si le Pipeline doit être générique ou si PCA est utilisée</p></div></div>
+
+<hr>
+
+<h2 id="1-decision-trees">1) Decision Trees</h2>
+
+<p>Les arbres de décision sont des algorithmes supervisés hiérarchiques qui résolvent des tâches de <strong>classification et régression</strong> via des décisions binaires successives.</p>
+
+<figure><img src="../../assets/images/ensemble-methods-01-934d756d.png" alt="" loading="lazy"></figure>
+
+<h3 id="11-vocabulaire">1.1 Vocabulaire</h3>
+
+<figure><img src="../../assets/images/ensemble-methods-02-5809498b.png" alt="" loading="lazy"></figure>
+
+<ul>
+<li><strong>Nœud racine</strong> : contient tout le dataset</li>
+<li><strong>Nœud interne</strong> : condition de split (feature, seuil)</li>
+<li><strong>Feuille</strong> : nœud terminal → prédiction (classe majoritaire ou moyenne)</li>
+<li><strong>Profondeur</strong> : longueur du chemin racine → feuille</li>
+</ul>
+
+<h3 id="12-indice-de-gini">1.2 Indice de Gini</h3>
+
+<p>L'indice de Gini mesure l'<strong>impureté</strong> d'un nœud — plus il est bas, plus le nœud est pur.</p>
+
+<p>$\text{Gini}(\text{nœud}) = 1 - \sum p_i^2$</p>
+
+<p>$p_i$ = ratio de la classe $i$ dans le nœud.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Calcul du Gini du nœud racine (3 classes équilibrées)
+1 - (50/150)**2 - (50/150)**2 - (50/150)**2   # → 0.667 (nœud très impur)
+
+## Calcul du Gini d&#x27;une feuille (quasi-pure)
+1 - 0**2 - (49/54)**2 - (5/54)**2             # → 0.168 (nœud assez pur)</code></pre></div>
+
+
+<h3 id="13-comment-larbre-est-il-construit">1.3 Comment l'arbre est-il construit ?</h3>
+
+<p>L'algorithme CART (Classification and Regression Trees) :</p>
+
+<ol>
+<li>Partir du nœud racine (dataset entier)</li>
+<li>Tester toutes les combinaisons <strong>(feature, seuil)</strong> possibles</li>
+<li>Pour chaque combinaison, calculer le <strong>Gini moyen pondéré</strong> des deux nœuds fils</li>
+<li>Choisir la combinaison qui <strong>minimise</strong> ce Gini moyen</li>
+<li>Splitter le dataset avec cette règle</li>
+<li>Répéter pour chaque sous-ensemble</li>
+<li>S'arrêter quand aucun split n'améliore l'impureté</li>
+</ol>
+
+<h3 id="14-classification-decisiontreeclassifier">1.4 Classification — <code>DecisionTreeClassifier</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.tree import DecisionTreeClassifier
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+X = iris.data[:, 2:]   # petal length et petal width seulement
+y = iris.target
+
+tree_clf = DecisionTreeClassifier(max_depth=2, random_state=2)
+tree_clf.fit(X, y)
+
+tree_clf.predict([[4, 1]])            # → [1.]
+tree_clf.predict_proba([[4, 1]])      # → [[0., 0.907, 0.093]]  ratio dans la feuille</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>predict_proba</code> retourne le <strong>ratio de classes dans la feuille</strong>, pas une probabilité calibrée. Les arbres sont des classifieurs orthogonaux (frontières parallèles aux axes).</p></div></div>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html" target="_blank" rel="noopener">sklearn.tree.DecisionTreeClassifier</a></p>
+
+<h3 id="15-régression-decisiontreeregressor">1.5 Régression — <code>DecisionTreeRegressor</code></h3>
+
+<p>Le Gradient Boosting prédit la <strong>valeur moyenne</strong> de chaque feuille. L'arbre est construit en minimisant la <strong>somme des résidus au carré (SSR)</strong> à chaque split.</p>
+
+<figure><img src="../../assets/images/ensemble-methods-03-bd8c5494.png" alt="" loading="lazy"></figure>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html" target="_blank" rel="noopener">sklearn.tree.DecisionTreeRegressor</a></p>
+
+<h3 id="16-contrôler-loverfitting">1.6 Contrôler l'overfitting</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">DecisionTreeRegressor(
+    max_depth=3,           # profondeur max → principal levier anti-overfitting
+    min_samples_split=7,   # nb min de samples pour splitter un nœud interne
+    min_samples_leaf=3     # nb min de samples dans une feuille
+)</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Hyperparamètre</th><th>Effet si augmenté</th><th>Risque si trop petit</th></tr></thead><tbody><tr><td><code>max_depth</code></td><td>↓ variance, ↑ biais</td><td>Overfitting</td></tr><tr><td><code>min_samples_split</code></td><td>↓ variance</td><td>Overfitting</td></tr><tr><td><code>min_samples_leaf</code></td><td>↓ variance</td><td>Overfitting</td></tr></tbody></table></div>
+<h3 id="17-avantages-et-inconvénients">1.7 Avantages et inconvénients</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>👍 Avantages</th><th>👎 Inconvénients</th></tr></thead><tbody><tr><td>Pas de scaling nécessaire</td><td>Forte variance (petit changement → arbre très différent)</td></tr><tr><td>Résistant aux outliers</td><td>Long à entraîner si profondeur élevée — $O(N \cdot p \cdot d)$</td></tr><tr><td>Interprétable, visualisable</td><td>Splits orthogonaux (parallèles aux axes features)</td></tr><tr><td><code>feature_importances_</code> intégré</td><td>Nécessite du tuning pour ne pas overfitter</td></tr><tr><td>Non-linéaire</td><td>—</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="2-bagging-bootstrap-aggregating">2) Bagging — Bootstrap Aggregating</h2>
+
+<p>Le <strong>Bagging</strong> entraîne plusieurs versions du même modèle (<strong>weak learners</strong>) en parallèle sur des échantillons <strong>bootstrappés</strong> (tirés avec remplacement), puis <strong>agrège</strong> leurs prédictions.</p>
+
+<p><strong>Objectif : réduire la variance</strong></p>
+
+<figure><img src="../../assets/images/ensemble-methods-04-c469ecc3.png" alt="" loading="lazy"></figure>
+
+<h3 id="21-bootstrapping">2.1 Bootstrapping</h3>
+
+<p>Chaque weak learner est entraîné sur un échantillon différent tiré <strong>avec remplacement</strong> du dataset original. En moyenne, ~63% des données originales sont représentées dans chaque bootstrap.</p>
+
+<figure><img src="../../assets/images/ensemble-methods-05-0ee9f1e6.png" alt="" loading="lazy"></figure>
+
+<h3 id="22-random-forest-bagging-darbres">2.2 Random Forest = Bagging d'arbres</h3>
+
+<p>Un Random Forest est un ensemble de Decision Trees entraînés sur des bootstraps distincts, avec un sous-ensemble aléatoire de features à chaque split.</p>
+
+<ul>
+<li><strong>Régression</strong> : les prédictions sont <strong>moyennées</strong></li>
+<li><strong>Classification</strong> : <strong>vote majoritaire</strong> entre les arbres</li>
+</ul>
+
+<figure><img src="../../assets/images/ensemble-methods-06-dfe59849.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
+
+forest = RandomForestRegressor(n_estimators=100, n_jobs=-1)
+forest.fit(X_train, y_train)
+forest.feature_importances_     # importance de chaque feature (basée sur réduction Gini)
+
+## Score OOB — utilise les ~37% d&#x27;échantillons non tirés comme pseudo-validation
+forest_oob = RandomForestRegressor(n_estimators=100, oob_score=True)
+forest_oob.fit(X, y).oob_score_   # → ~0.85</code></pre></div>
+
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html" target="_blank" rel="noopener">sklearn.ensemble.RandomForestRegressor</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html" target="_blank" rel="noopener">sklearn.ensemble.RandomForestClassifier</a></p>
+
+<h3 id="23-bagging-générique">2.3 Bagging générique</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import BaggingClassifier, BaggingRegressor
+
+## Bagger n&#x27;importe quel estimateur (pas seulement des arbres)
+bagged_knn = BaggingClassifier(
+    KNeighborsClassifier(n_neighbors=3),
+    n_estimators=40,
+    oob_score=True
+)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>RandomForestClassifier(n_estimators=100)</code> ≈ <code>BaggingClassifier(DecisionTreeClassifier(), n_estimators=100)</code> — mais RandomForest est plus optimisé (tirage aléatoire des features à chaque split).</p></div></div>
+
+<h3 id="24-avantages-et-inconvénients-du-bagging">2.4 Avantages et inconvénients du Bagging</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>👍 Avantages</th><th>👎 Inconvénients</th></tr></thead><tbody><tr><td>Réduit fortement la variance</td><td>Structure complexe, moins interprétable</td></tr><tr><td>Applicable à n'importe quel modèle</td><td>Long à entraîner</td></tr><tr><td>OOB score = validation gratuite</td><td>Ne réduit pas le biais</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="3-boosting">3) Boosting</h2>
+
+<p>Le <strong>Boosting</strong> entraîne les weak learners <strong>séquentiellement</strong> : chaque modèle apprend des erreurs du précédent.</p>
+
+<p><strong>Objectif : réduire le biais</strong></p>
+
+<figure><img src="../../assets/images/ensemble-methods-07-dba560f5.png" alt="" loading="lazy"></figure>
+
+<h3 id="31-adaboost-adaptive-boosting">3.1 AdaBoost (Adaptive Boosting)</h3>
+
+<p>À chaque itération, AdaBoost <strong>augmente le poids</strong> des observations mal classées, forçant le prochain modèle à se concentrer dessus.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import AdaBoostRegressor, AdaBoostClassifier
+from sklearn.tree import DecisionTreeRegressor
+
+adaboost = AdaBoostRegressor(
+    DecisionTreeRegressor(max_depth=3),   # weak learner : arbre peu profond
+    n_estimators=50,
+    learning_rate=1.0                      # contribution de chaque étape
+)
+adaboost.fit(X_train, y_train)</code></pre></div>
+
+
+<figure><img src="../../assets/images/ensemble-methods-08-345fef25.png" alt="" loading="lazy"></figure>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostRegressor.html" target="_blank" rel="noopener">sklearn.ensemble.AdaBoostRegressor</a></p>
+
+<h3 id="32-gradient-boosting">3.2 Gradient Boosting 🔥</h3>
+
+<p>Plutôt que de pondérer les observations, Gradient Boosting entraîne chaque arbre à prédire les <strong>résidus</strong> du modèle précédent.</p>
+
+<p>$D(x) = \text{dtree}_1(x) + \text{dtree}_2(x) + \dots + \text{dtree}_n(x)$</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import GradientBoostingRegressor
+
+gbr = GradientBoostingRegressor(
+    n_estimators=100,    # nombre d&#x27;arbres séquentiels
+    learning_rate=0.1,   # η (shrinkage) : réduit la contribution de chaque arbre → régularisation
+    max_depth=3          # profondeur de chaque arbre (shallow trees recommandés)
+)
+gbr.fit(X_train, y_train)</code></pre></div>
+
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html" target="_blank" rel="noopener">sklearn.ensemble.GradientBoostingRegressor</a></p>
+
+<p>👉 <a href="https://arogozhnikov.github.io/2016/06/24/gradient_boosting_explained.html" target="_blank" rel="noopener">Brilliantly Wrong — blog visuel sur le Gradient Boosting</a></p>
+
+<h3 id="33-xgboost-extreme-gradient-boosting">3.3 XGBoost — Extreme Gradient Boosting ⚡️</h3>
+
+<p>Librairie dédiée, optimisée avec des techniques inspirées du Deep Learning : régularisation L1/L2 intégrée, parallélisation, <strong>early stopping</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from xgboost import XGBRegressor
+
+## Split en 3 sets : train / val (early stopping) / test (évaluation finale)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+X_test,  X_val,  y_test,  y_val  = train_test_split(X_test, y_test, test_size=0.5, random_state=42)
+
+xgb = XGBRegressor(
+    max_depth=10,
+    n_estimators=100,
+    learning_rate=0.1,
+    early_stopping_rounds=5    # arrête si la loss val augmente 5 fois consécutives
+)
+
+xgb.fit(
+    X_train, y_train,
+    eval_set=[(X_train, y_train), (X_val, y_val)]   # surveille les deux sets à chaque itération
+)
+
+xgb.predict(X_val)   # prédictions sur le set de validation</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Intégration dans un Pipeline sklearn
+from sklearn.pipeline import make_pipeline
+from sklearn.model_selection import cross_validate
+
+pipe_xgb = make_pipeline(xgb)
+cv_results = cross_validate(pipe_xgb, X, y, cv=10, scoring=&#x27;r2&#x27;)</code></pre></div>
+
+
+<p>👉 <a href="https://xgboost.readthedocs.io/en/latest/" target="_blank" rel="noopener">XGBoost documentation</a></p>
+
+<h3 id="34-avantages-et-inconvénients-du-boosting">3.4 Avantages et inconvénients du Boosting</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>👍 Avantages</th><th>👎 Inconvénients</th></tr></thead><tbody><tr><td>Réduit le biais (modèle plus expressif)</td><td>Entraînement séquentiel = lent</td></tr><tr><td>Les bons weak learners ont plus de poids</td><td>Sujette à l'overfitting (tuning nécessaire)</td></tr><tr><td>XGBoost : early stopping, régularisation</td><td>Sensible aux outliers (trop de temps à les prédire)</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="4-comparaison-bagging-vs-boosting">4) Comparaison Bagging vs Boosting</h2>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Bagging</th><th>Boosting</th></tr></thead><tbody><tr><td><strong>Ordre</strong></td><td>Parallèle</td><td>Séquentiel</td></tr><tr><td><strong>Objectif</strong></td><td>Réduire la <strong>variance</strong></td><td>Réduire le <strong>biais</strong></td></tr><tr><td><strong>Exemples</strong></td><td>Random Forest, BaggingRegressor</td><td>AdaBoost, GradientBoosting, XGBoost</td></tr><tr><td><strong>Robustesse aux outliers</strong></td><td>Bonne</td><td>Faible</td></tr><tr><td><strong>Risque principal</strong></td><td>Lenteur (n arbres)</td><td>Overfitting</td></tr></tbody></table></div>
+<figure><img src="../../assets/images/ensemble-methods-09-dba560f5.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="5-stacking">5) Stacking</h2>
+
+<p>Le <strong>Stacking</strong> entraîne des estimateurs <strong>hétérogènes</strong> (modèles différents) et agrège leurs prédictions via un <strong>méta-modèle</strong>.</p>
+
+<p>Différents modèles capturent différentes structures dans les données → leur combinaison peut améliorer les performances.</p>
+
+<h3 id="51-votingclassifier-votingregressor-agrégation-simple">5.1 VotingClassifier / VotingRegressor — agrégation simple</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import VotingClassifier
+
+ensemble = VotingClassifier(
+    estimators=[(&quot;rf&quot;, RandomForestClassifier()), (&quot;lr&quot;, LogisticRegression())],
+    voting=&#x27;soft&#x27;,      # &#x27;soft&#x27; = moyenne des predict_proba (recommandé si les modèles sont calibrés)
+    weights=[1, 1]      # poids relatifs de chaque modèle dans le vote
+)
+ensemble.fit(X_train, y_train)</code></pre></div>
+
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html" target="_blank" rel="noopener">sklearn.ensemble.VotingClassifier</a></p>
+
+<h3 id="52-stackingclassifier-stackingregressor-méta-modèle">5.2 StackingClassifier / StackingRegressor — méta-modèle</h3>
+
+<p>Un <strong>méta-modèle</strong> (final estimator) est entraîné sur les prédictions des modèles de base.</p>
+
+<figure><img src="../../assets/images/ensemble-methods-10-c8d11234.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import StackingClassifier
+from sklearn.neighbors import KNeighborsClassifier
+
+stacking = StackingClassifier(
+    estimators=[
+        (&quot;rf&quot;,  RandomForestClassifier()),          # base model 1
+        (&quot;knn&quot;, KNeighborsClassifier(n_neighbors=10))  # base model 2
+    ],
+    final_estimator=LogisticRegression()   # méta-modèle entraîné sur les prédictions des base models
+)
+stacking.fit(X_train, y_train)</code></pre></div>
+
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.StackingClassifier.html" target="_blank" rel="noopener">sklearn.ensemble.StackingClassifier</a></p>
+
+<hr>
+
+<h2 id="6-preprocessing-et-modèles-à-base-darbres">6) Preprocessing et modèles à base d'arbres</h2>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Les modèles basés sur des arbres (Decision Tree, Random Forest, GradientBoosting, XGBoost) ne nécessitent pas de scaling.</strong> Les splits sont basés sur l'<strong>ordre</strong> des valeurs ($x_j < t$), pas leur magnitude.</p></div></div>
+
+<p><strong>Quand quand même scaler ?</strong></p>
+
+<ul>
+<li>Si <code>PCA</code> est utilisée en amont (elle requiert des features comparables)</li>
+<li>Pour construire un Pipeline générique où l'on souhaite switcher facilement entre tree-based et distance-based models</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Pipeline générique (scaling inclus pour flexibilité)
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestRegressor
+
+## Le StandardScaler n&#x27;impacte pas Random Forest, mais permet de tester Ridge dans le même pipeline
+pipe = make_pipeline(StandardScaler(), RandomForestRegressor(n_estimators=100))</code></pre></div>
+
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<p>👉 <a href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/" target="_blank" rel="noopener">Visual Introduction to Decision Trees —</a> <a href="http://r2d3.us" target="_blank" rel="noopener">r2d3.us</a></p>
+
+<p>👉 <a href="https://arogozhnikov.github.io/2016/06/24/gradient_boosting_explained.html" target="_blank" rel="noopener">Brilliantly Wrong — Gradient Boosting visuel</a></p>
+
+<p>👉 <a href="https://medium.com/towards-data-science/ensemble-methods-bagging-boosting-and-stacking-c9214a10a205" target="_blank" rel="noopener">Ensemble methods under the hood — Medium</a></p>
+
+<p>👉 <a href="https://xgboost.readthedocs.io/en/latest/" target="_blank" rel="noopener">XGBoost documentation</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html" target="_blank" rel="noopener">sklearn.tree.DecisionTreeClassifier</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html" target="_blank" rel="noopener">sklearn.tree.DecisionTreeRegressor</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html" target="_blank" rel="noopener">sklearn.ensemble.RandomForestRegressor</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html" target="_blank" rel="noopener">sklearn.ensemble.GradientBoostingRegressor</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.StackingClassifier.html" target="_blank" rel="noopener">sklearn.ensemble.StackingClassifier</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/ensemble.html#gradient-boosting" target="_blank" rel="noopener">sklearn — user guide Ensemble methods</a></p>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-ce-cours-couvre-quatre-grandes-idées">Ce cours couvre quatre grandes idées :</a></li><li><a href="#ref-5-points-à-retenir-avant-de-commencer">5 points à retenir avant de commencer</a></li></ol></li><li><a href="#ref-1-decision-tree-larbre-de-décision">1 — Decision Tree : l'arbre de décision</a><ol><li><a href="#ref-quest-ce-que-cest">Qu'est-ce que c'est ?</a></li><li><a href="#ref-vocabulaire-de-larbre">Vocabulaire de l'arbre</a></li><li><a href="#ref-comment-larbre-choisit-ses-questions-lindice-de-gini">Comment l'arbre choisit ses questions ? L'indice de Gini</a></li><li><a href="#ref-comment-larbre-est-construit-étape-par-étape-algorithme-cart">Comment l'arbre est construit, étape par étape (algorithme CART)</a></li><li><a href="#ref-entraîner-un-decision-tree-en-python">Entraîner un Decision Tree en Python</a></li><li><a href="#ref-régression-avec-un-arbre">Régression avec un arbre</a></li><li><a href="#ref-lennemi-n1-loverfitting">L'ennemi n°1 : l'overfitting</a></li><li><a href="#ref-avantages-et-limites-dun-seul-arbre">Avantages et limites d'un seul arbre</a></li></ol></li><li><a href="#ref-2-bagging-la-démocratie-des-modèles">2 — Bagging : la démocratie des modèles</a><ol><li><a href="#ref-le-principe">Le principe</a></li><li><a href="#ref-le-bootstrap-tirer-avec-remplacement">Le bootstrap : tirer avec remplacement</a></li><li><a href="#ref-random-forest-bagging-darbres-de-décision">Random Forest = Bagging d'arbres de décision</a></li><li><a href="#ref-bagger-nimporte-quel-modèle">Bagger n'importe quel modèle</a></li><li><a href="#ref-points-clés-du-bagging">Points clés du Bagging</a></li></ol></li><li><a href="#ref-3-boosting-la-correction-progressive">3 — Boosting : la correction progressive</a><ol><li><a href="#ref-le-principe-du-boosting">Le principe du Boosting</a></li><li><a href="#ref-31-adaboost-adaptive-boosting">3.1 AdaBoost (Adaptive Boosting)</a></li><li><a href="#ref-32-gradient-boosting">3.2 Gradient Boosting</a></li><li><a href="#ref-33-xgboost-le-champion-des-compétitions">3.3 XGBoost : le champion des compétitions</a></li><li><a href="#ref-points-clés-du-boosting">Points clés du Boosting</a></li></ol></li><li><a href="#ref-4-bagging-vs-boosting-le-récapitulatif">4 — Bagging vs Boosting : le récapitulatif</a><li><a href="#ref-5-stacking-le-jury-dexperts-hétérogènes">5 — Stacking : le jury d'experts hétérogènes</a><ol><li><a href="#ref-le-principe-du-stacking">Le principe du Stacking</a></li><li><a href="#ref-votingclassifier-le-vote-simple">VotingClassifier : le vote simple</a></li><li><a href="#ref-stackingclassifier-le-méta-modèle">StackingClassifier : le méta-modèle</a></li></ol></li><li><a href="#ref-6-les-arbres-nont-pas-besoin-dêtre-normalisés">6 — Les arbres n'ont pas besoin d'être normalisés</a><li><a href="#ref-7-erreurs-classiques-à-éviter">7 — Erreurs classiques à éviter</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>En Machine Learning, un seul modèle fait souvent des erreurs. L'idée des <strong>méthodes d'ensemble</strong> est simple : plutôt que de faire confiance à un seul expert, on demande l'avis de plusieurs, puis on combine leurs réponses. Ce principe s'appelle la <strong>sagesse des foules</strong>.</p>
+
+<p>Imagine un jury de 100 personnes qui votent pour décider si un accusé est coupable. Même si chaque juré se trompe parfois, le verdict collectif est souvent bien meilleur que celui d'un seul juge. C'est exactement ce que font les méthodes d'ensemble avec les modèles de Machine Learning.</p>
+
+<h3 id="ref-ce-cours-couvre-quatre-grandes-idées">Ce cours couvre quatre grandes idées :</h3>
+
+<ol>
+<li><strong>Decision Tree</strong> — l'élément de base, un arbre de décisions binaires</li>
+<li><strong>Bagging (Random Forest)</strong> — entraîner plein d'arbres en parallèle, chacun sur un sous-ensemble de données</li>
+<li><strong>Boosting (AdaBoost, GradientBoosting, XGBoost)</strong> — entraîner des arbres en séquence, chacun corrigeant les erreurs du précédent</li>
+<li><strong>Stacking</strong> — combiner des modèles très différents via un "méta-modèle"</li>
+</ol>
+
+<h3 id="ref-5-points-à-retenir-avant-de-commencer">5 points à retenir avant de commencer</h3>
+
+<ul>
+<li>Un seul Decision Tree est fragile : il overfit facilement (il mémorise les données au lieu d'apprendre).</li>
+<li>Le Bagging réduit la <strong>variance</strong> (instabilité du modèle) en moyennant plusieurs arbres.</li>
+<li>Le Boosting réduit le <strong>biais</strong> (erreur systématique) en corrigeant les erreurs successivement.</li>
+<li>Random Forest = Bagging appliqué à des arbres de décision, c'est l'un des modèles les plus fiables en pratique.</li>
+<li>XGBoost = version très optimisée du Gradient Boosting, souvent le grand gagnant des compétitions Kaggle.</li>
+</ul>
+
+<hr>
+
+<h2 id="ref-1-decision-tree-larbre-de-décision">1 — Decision Tree : l'arbre de décision</h2>
+
+<h3 id="ref-quest-ce-que-cest">Qu'est-ce que c'est ?</h3>
+
+<p>Un arbre de décision, c'est une suite de questions binaires (oui/non) appliquées sur tes données pour arriver à une prédiction. Comme un jeu de "20 questions" : chaque question divise les données en deux groupes, jusqu'à obtenir des groupes assez purs.</p>
+
+<p><strong>Exemple concret :</strong> Tu veux prédire si un email est un spam ou non.</p>
+<ul>
+<li>Question 1 : Le mot "gratuit" est-il présent ? (oui/non)</li>
+<li>Question 2 : L'expéditeur est-il inconnu ? (oui/non)</li>
+<li>...</li>
+<li>Feuille finale : "C'est un spam" ou "Ce n'est pas un spam"</li>
+</ul>
+
+<h3 id="ref-vocabulaire-de-larbre">Vocabulaire de l'arbre</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Terme</th><th>Définition simple</th></tr></thead><tbody><tr><td><strong>Nœud racine</strong></td><td>Le point de départ : toutes les données</td></tr><tr><td><strong>Nœud interne</strong></td><td>Une question (feature + seuil) qui divise les données</td></tr><tr><td><strong>Feuille</strong></td><td>Le bout de l'arbre : la prédiction finale</td></tr><tr><td><strong>Profondeur</strong></td><td>Le nombre de questions sur le chemin du haut jusqu'en bas</td></tr></tbody></table></div>
+<h3 id="ref-comment-larbre-choisit-ses-questions-lindice-de-gini">Comment l'arbre choisit ses questions ? L'indice de Gini</h3>
+
+<p>L'algorithme cherche la meilleure question à poser à chaque étape. Il utilise l'<strong>indice de Gini</strong> pour mesurer à quel point un groupe est "pur" (contient surtout une seule classe) ou "impur" (mélange de classes).</p>
+
+<div class="katex-display">$$\text{Gini}(\text{nœud}) = 1 - \sum_i p_i^2$$</div>
+
+<p>Où $p_i$ est la proportion de la classe $i$ dans ce nœud.</p>
+
+<ul>
+<li><strong>Gini = 0</strong> : le nœud est parfaitement pur (une seule classe, idéal)</li>
+<li><strong>Gini = 0.5</strong> : le nœud est totalement mélangé (deux classes à 50/50, le pire)</li>
+</ul>
+
+<p><strong>Exemple numérique :</strong></p>
+
+<p>Un nœud contient 3 classes parfaitement équilibrées (50 fleurs de chaque type, 150 au total) :</p>
+
+<div class="katex-display">$$\text{Gini} = 1 - \left(\frac{50}{150}\right)^2 - \left(\frac{50}{150}\right)^2 - \left(\frac{50}{150}\right)^2 = 1 - 3 \times 0{,}111 = 0{,}667$$</div>
+
+<p>Un nœud presque pur (49 de classe A, 5 de classe B, 0 de classe C sur 54) :</p>
+
+<div class="katex-display">$$\text{Gini} = 1 - 0^2 - \left(\frac{49}{54}\right)^2 - \left(\frac{5}{54}\right)^2 \approx 0{,}168$$</div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Vérification manuelle du Gini — nœud impur (3 classes équilibrées)
+gini_racine = 1 - (50/150)**2 - (50/150)**2 - (50/150)**2
+print(gini_racine)   # → 0.667 (très impur)
+
+# Nœud quasi-pur
+gini_feuille = 1 - 0**2 - (49/54)**2 - (5/54)**2
+print(gini_feuille)  # → 0.168 (assez pur)</code></pre></div>
+
+
+<h3 id="ref-comment-larbre-est-construit-étape-par-étape-algorithme-cart">Comment l'arbre est construit, étape par étape (algorithme CART)</h3>
+
+<ol>
+<li>Partir du nœud racine (tout le dataset)</li>
+<li>Tester <strong>toutes</strong> les combinaisons possibles (feature, seuil)</li>
+<li>Pour chaque combinaison, calculer le Gini moyen pondéré des deux groupes créés</li>
+<li>Choisir la combinaison qui <strong>minimise</strong> ce Gini</li>
+<li>Couper le dataset selon cette règle</li>
+<li>Répéter pour chaque sous-groupe obtenu</li>
+<li>S'arrêter quand aucun split n'améliore la pureté (ou quand on atteint les limites fixées)</li>
+</ol>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>L'arbre apprend donc une suite de règles "if/else" automatiquement à partir des données, sans qu'on ait besoin de les définir manuellement.</p></div></div>
+
+<h3 id="ref-entraîner-un-decision-tree-en-python">Entraîner un Decision Tree en Python</h3>
+
+<p>On utilise le jeu de données Iris (3 espèces de fleurs, 4 mesures de pétales/sépales).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.tree import DecisionTreeClassifier
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+X = iris.data[:, 2:]   # on garde seulement la longueur et largeur des pétales
+y = iris.target         # la classe : 0, 1 ou 2
+
+# Créer un arbre de profondeur maximale 2 (2 niveaux de questions)
+tree_clf = DecisionTreeClassifier(max_depth=2, random_state=2)
+tree_clf.fit(X, y)      # entraînement
+
+# Prédire la classe pour une nouvelle fleur (pétale long=4, large=1)
+tree_clf.predict([[4, 1]])           # → [1]  (classe 1 prédite)
+
+# Prédire les &quot;probabilités&quot; (en réalité : ratio de classes dans la feuille)
+tree_clf.predict_proba([[4, 1]])     # → [[0., 0.907, 0.093]]</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>predict_proba</code> ne retourne PAS de vraies probabilités. Il retourne simplement le ratio des classes présentes dans la feuille finale. Si 49 fleurs sur 54 dans cette feuille sont de classe 1, alors "proba" = 49/54 ≈ 0.907. C'est une proportion, pas une probabilité calibrée.</p></div></div>
+
+<h3 id="ref-régression-avec-un-arbre">Régression avec un arbre</h3>
+
+<p>Pour la régression, l'arbre prédit la <strong>valeur moyenne</strong> des exemples qui tombent dans chaque feuille. Au lieu de minimiser le Gini, il minimise la <strong>somme des erreurs au carré (SSR)</strong> à chaque split.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.tree import DecisionTreeRegressor
+
+# Arbre pour prédire un prix, une température, etc.
+tree_reg = DecisionTreeRegressor(max_depth=3)
+tree_reg.fit(X_train, y_train)   # y_train est une valeur numérique continue</code></pre></div>
+
+
+<h3 id="ref-lennemi-n1-loverfitting">L'ennemi n°1 : l'overfitting</h3>
+
+<p>Un arbre sans contrainte va créer une feuille pour chaque point de données — il mémorise tout mais ne généralise pas du tout (R² train = 1.0 mais R² test ≈ 0).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Les trois principaux leviers pour contrôler l&#x27;overfitting
+DecisionTreeClassifier(
+    max_depth=3,           # profondeur max : levier le plus important
+    min_samples_split=7,   # un nœud doit avoir au moins 7 exemples pour être découpé
+    min_samples_leaf=3     # chaque feuille doit contenir au moins 3 exemples
+)</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Hyperparamètre</th><th>Ce qu'il fait si on l'augmente</th></tr></thead><tbody><tr><td><code>max_depth</code></td><td>Arbre moins profond → moins d'overfitting, mais plus de biais</td></tr><tr><td><code>min_samples_split</code></td><td>Moins de découpes → arbre plus simple</td></tr><tr><td><code>min_samples_leaf</code></td><td>Feuilles plus denses → moins de mémorisation du bruit</td></tr></tbody></table></div>
+<h3 id="ref-avantages-et-limites-dun-seul-arbre">Avantages et limites d'un seul arbre</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Avantages</th><th>Limites</th></tr></thead><tbody><tr><td>Pas besoin de normaliser les données</td><td>Forte variance : un petit changement dans les données donne un arbre très différent</td></tr><tr><td>Résultat facile à expliquer</td><td>Overfit facilement sans tuning</td></tr><tr><td>Gère les relations non-linéaires</td><td>Frontières de décision toujours parallèles aux axes des features</td></tr><tr><td>Donne une importance des features</td><td>Moins performant que les méthodes d'ensemble</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La variance élevée d'un seul arbre est exactement le problème que le Bagging va résoudre dans la section suivante.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-bagging-la-démocratie-des-modèles">2 — Bagging : la démocratie des modèles</h2>
+
+<h3 id="ref-le-principe">Le principe</h3>
+
+<p><strong>Bagging</strong> = Bootstrap AGGregating. On crée plusieurs versions du même modèle, chacune entraînée sur un sous-ensemble légèrement différent des données, puis on agrège leurs prédictions.</p>
+
+<p><strong>Analogie :</strong> Imagine 100 groupes de jurés différents, chacun ayant vu une légère variation de l'affaire. Certains jurés peuvent se tromper, mais en vote majoritaire, les erreurs individuelles se compensent.</p>
+
+<p><strong>Objectif : réduire la variance</strong> (rendre le modèle plus stable).</p>
+
+<h3 id="ref-le-bootstrap-tirer-avec-remplacement">Le bootstrap : tirer avec remplacement</h3>
+
+<p>Pour créer chaque sous-ensemble de données, on tire <strong>avec remplacement</strong> dans le dataset original. Si on a 1000 exemples :</p>
+<ul>
+<li>On tire 1000 fois au hasard en remettant chaque exemple après chaque tirage</li>
+<li>Certains exemples apparaîtront plusieurs fois, d'autres pas du tout</li>
+<li>En moyenne, environ <strong>63% des données originales</strong> sont représentées dans chaque bootstrap</li>
+<li>Les ~37% restants s'appellent les données <strong>Out-of-Bag (OOB)</strong></li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Les données OOB sont précieuses : elles permettent d'évaluer le modèle sans avoir besoin d'un set de validation séparé — on obtient un score de validation "gratuit".</p></div></div>
+
+<h3 id="ref-random-forest-bagging-darbres-de-décision">Random Forest = Bagging d'arbres de décision</h3>
+
+<p>Un <strong>Random Forest</strong> c'est exactement ça : on entraîne 100 (ou plus) arbres de décision, chacun sur un bootstrap différent. En plus, à chaque split, on ne considère qu'un sous-ensemble aléatoire des features — ce qui rend les arbres encore plus différents entre eux (moins corrélés), ce qui améliore l'agrégation.</p>
+
+<ul>
+<li>Pour la <strong>régression</strong> : la prédiction finale = moyenne des prédictions de tous les arbres</li>
+<li>Pour la <strong>classification</strong> : la prédiction finale = vote majoritaire entre tous les arbres</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
+
+# --- Régression ---
+# On crée une &quot;forêt&quot; de 100 arbres entraînés sur des bootstraps différents
+forest_reg = RandomForestRegressor(
+    n_estimators=100,   # nombre d&#x27;arbres dans la forêt
+    max_depth=5,        # profondeur max de chaque arbre
+    n_jobs=-1           # utilise tous les cœurs du CPU pour paralléliser
+)
+forest_reg.fit(X_train, y_train)
+
+# Importance des features : quelle feature contribue le plus aux splits ?
+# (basée sur la réduction d&#x27;impureté de Gini, somme = 1.0)
+print(forest_reg.feature_importances_)
+
+# --- Score OOB : évaluation sur les données non tirées ---
+# On active oob_score=True pour obtenir une évaluation &quot;gratuite&quot;
+forest_oob = RandomForestRegressor(n_estimators=100, oob_score=True)
+forest_oob.fit(X, y)                # on entraîne sur tout X (pas de train/test split)
+print(forest_oob.oob_score_)        # → ~0.85 (score R² sur les données OOB)
+
+# --- Classification ---
+forest_clf = RandomForestClassifier(n_estimators=100, n_jobs=-1)
+forest_clf.fit(X_train, y_train)    # vote majoritaire entre les 100 arbres</code></pre></div>
+
+
+<p>Le <code>oob_score_</code> donne une estimation du score de généralisation sans avoir à créer un set de validation séparé. C'est particulièrement utile quand on a peu de données.</p>
+
+<h3 id="ref-bagger-nimporte-quel-modèle">Bagger n'importe quel modèle</h3>
+
+<p><code>BaggingClassifier</code> et <code>BaggingRegressor</code> permettent d'appliquer le principe du bagging à <strong>n'importe quel modèle sklearn</strong>, pas seulement aux arbres.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import BaggingClassifier, BaggingRegressor
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import LinearRegression
+
+# Bagger un KNN : 40 KNN entraînés sur 40 bootstraps différents
+bagged_knn = BaggingClassifier(
+    KNeighborsClassifier(n_neighbors=3),   # le modèle de base (&quot;weak learner&quot;)
+    n_estimators=40,                        # nombre de copies entraînées
+    oob_score=True                          # active le score OOB
+)
+bagged_knn.fit(X_train, y_train)
+print(bagged_knn.oob_score_)   # score de validation automatique
+
+# Bagger une régression linéaire
+bagged_lr = BaggingRegressor(
+    LinearRegression(),
+    n_estimators=50,
+    oob_score=True
+)
+bagged_lr.fit(X, y)
+print(bagged_lr.oob_score_)    # → ~0.507</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais bagger un Random Forest ! <code>BaggingRegressor(RandomForestRegressor(), n_estimators=100)</code> entraînerait 100 × 100 = 10 000 arbres. Random Forest est DÉJÀ un bagging d'arbres. Bagger un Random Forest, c'est doubler inutilement le travail.</p></div></div>
+
+<h3 id="ref-points-clés-du-bagging">Points clés du Bagging</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Avantages</th><th>Limites</th></tr></thead><tbody><tr><td>Réduit fortement la variance</td><td>Ne réduit pas le biais (un mauvais modèle restera mauvais)</td></tr><tr><td>Applicable à n'importe quel modèle</td><td>Résultat moins interprétable qu'un seul arbre</td></tr><tr><td>Score OOB = validation gratuite</td><td>Plus long à entraîner (plusieurs modèles)</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="ref-3-boosting-la-correction-progressive">3 — Boosting : la correction progressive</h2>
+
+<h3 id="ref-le-principe-du-boosting">Le principe du Boosting</h3>
+
+<p>Là où le Bagging entraîne ses modèles <strong>en parallèle</strong> (indépendamment les uns des autres), le Boosting les entraîne <strong>en séquence</strong> : chaque modèle apprend à corriger les erreurs du modèle précédent.</p>
+
+<p><strong>Analogie :</strong> Imagine un étudiant qui révise son examen. Après chaque essai, il identifie les questions où il s'est trompé et consacre plus de temps à ces questions précises lors du prochain entraînement.</p>
+
+<p><strong>Objectif : réduire le biais</strong> (rendre le modèle plus expressif, capable de saisir des patterns complexes).</p>
+
+<h3 id="ref-31-adaboost-adaptive-boosting">3.1 AdaBoost (Adaptive Boosting)</h3>
+
+<p>AdaBoost fonctionne en <strong>pondérant les exemples mal classés</strong> : après chaque modèle entraîné, les exemples sur lesquels il s'est trompé reçoivent un poids plus élevé. Le modèle suivant se concentrera davantage sur ces exemples difficiles.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import AdaBoostRegressor, AdaBoostClassifier
+from sklearn.tree import DecisionTreeRegressor
+
+# AdaBoost avec des arbres peu profonds comme &quot;weak learners&quot;
+adaboost = AdaBoostRegressor(
+    DecisionTreeRegressor(max_depth=3),   # arbre peu profond : intentionnellement faible
+    n_estimators=50,                       # nombre d&#x27;étapes séquentielles
+    learning_rate=1.0                      # à quel point chaque étape contribue à la prédiction finale
+)
+adaboost.fit(X_train, y_train)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>On utilise intentionnellement des arbres peu profonds ("stumps" à max_depth=1 ou petits arbres). L'idée est que chaque modèle individuel soit faible mais que la combinaison soit forte.</p></div></div>
+
+<h3 id="ref-32-gradient-boosting">3.2 Gradient Boosting</h3>
+
+<p>Gradient Boosting est une version plus générale et plus puissante du Boosting. Plutôt que de pondérer les exemples, il entraîne chaque arbre à prédire directement les <strong>résidus</strong> (les erreurs) du modèle précédent.</p>
+
+<p><strong>Comment ça marche, étape par étape :</strong></p>
+
+<ol>
+<li>Le premier arbre fait une prédiction (souvent juste la moyenne de $y$)</li>
+<li>On calcule les <strong>résidus</strong> : $\text{résidu} = y_{\text{réel}} - y_{\text{prédit}}$</li>
+<li>Le deuxième arbre prédit ces résidus</li>
+<li>On additionne les prédictions : $D(x) = \text{arbre}_1(x) + \text{arbre}_2(x)$</li>
+<li>On recalcule les nouveaux résidus et on recommence</li>
+<li>On continue ainsi pour $n$ arbres</li>
+</ol>
+
+<div class="katex-display">$$D(x) = \text{arbre}_1(x) + \text{arbre}_2(x) + \dots + \text{arbre}_n(x)$$</div>
+
+<p><strong>Exemple numérique simplifié :</strong></p>
+<ul>
+<li>Valeur réelle : 150 (prix d'un appartement en k€)</li>
+<li>Arbre 1 prédit : 120 → résidu = 30</li>
+<li>Arbre 2 prédit le résidu 30, prédit : 25 → résidu restant = 5</li>
+<li>Arbre 3 prédit le résidu 5, prédit : 4 → résidu restant = 1</li>
+<li>Prédiction finale : 120 + 25 + 4 = 149</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import GradientBoostingRegressor
+
+# GradientBoosting : chaque arbre prédit les résidus du précédent
+gbr = GradientBoostingRegressor(
+    n_estimators=100,    # nombre d&#x27;arbres séquentiels (100 étapes de correction)
+    learning_rate=0.1,   # η (shrinkage) : chaque arbre contribue seulement à 10%
+                         # de sa prédiction — ralentit mais régularise
+    max_depth=3          # profondeur de chaque arbre (faible = recommandé)
+)
+gbr.fit(X_train, y_train)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le <code>learning_rate</code> (noté $\eta$) est un facteur d'amortissement. Au lieu d'ajouter 100% de la correction de chaque arbre, on n'en ajoute que <code>learning_rate</code>%. Ça ralentit l'apprentissage mais évite l'overfitting. Règle empirique : <code>learning_rate</code> petit (0.01–0.1) + beaucoup d'arbres.</p></div></div>
+
+<h3 id="ref-33-xgboost-le-champion-des-compétitions">3.3 XGBoost : le champion des compétitions</h3>
+
+<p>XGBoost (eXtreme Gradient Boosting) est une librairie dédiée qui optimise le Gradient Boosting avec plusieurs améliorations :</p>
+<ul>
+<li><strong>Régularisation L1/L2</strong> intégrée pour éviter l'overfitting</li>
+<li><strong>Parallélisation</strong> malgré la nature séquentielle</li>
+<li><strong>Early stopping</strong> : arrêt automatique si le modèle ne s'améliore plus sur un set de validation</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from xgboost import XGBRegressor
+from sklearn.model_selection import train_test_split
+
+# On crée 3 ensembles : train / validation (pour early stopping) / test (évaluation finale)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+X_test, X_val, y_test, y_val     = train_test_split(X_test, y_test, test_size=0.5, random_state=42)
+
+xgb = XGBRegressor(
+    max_depth=10,             # profondeur max de chaque arbre
+    n_estimators=100,         # nombre maximum d&#x27;arbres (peut s&#x27;arrêter avant si early stopping)
+    learning_rate=0.1,        # shrinkage : contribution de chaque arbre
+    early_stopping_rounds=5   # si la loss sur le set de validation n&#x27;améliore pas 5 fois de suite → arrêt
+)
+
+xgb.fit(
+    X_train, y_train,
+    eval_set=[(X_train, y_train), (X_val, y_val)]   # surveille train ET val à chaque itération
+)
+
+predictions = xgb.predict(X_val)   # prédictions sur le set de validation</code></pre></div>
+
+
+<p>L'<strong>early stopping</strong> est une technique très pratique : au lieu de deviner combien d'arbres utiliser, XGBoost s'arrête tout seul quand il détecte que le modèle commence à overfitter (la performance sur le set de validation se dégrade).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># XGBoost dans un Pipeline sklearn — fonctionne comme n&#x27;importe quel estimateur
+from sklearn.pipeline import make_pipeline
+from sklearn.model_selection import cross_validate
+
+pipe_xgb = make_pipeline(xgb)
+cv_results = cross_validate(pipe_xgb, X, y, cv=10, scoring=&#x27;r2&#x27;)   # validation croisée en 10 plis</code></pre></div>
+
+
+<h3 id="ref-points-clés-du-boosting">Points clés du Boosting</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Avantages</th><th>Limites</th></tr></thead><tbody><tr><td>Réduit le biais (capture des patterns complexes)</td><td>Entraînement séquentiel = plus lent que le Bagging</td></tr><tr><td>XGBoost : early stopping évite l'overfitting</td><td>Sensible aux outliers (les erreurs élevées attirent trop d'attention)</td></tr><tr><td>Souvent les meilleures performances en pratique</td><td>Nécessite du tuning (<code>learning_rate</code>, <code>max_depth</code>, <code>n_estimators</code>)</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="ref-4-bagging-vs-boosting-le-récapitulatif">4 — Bagging vs Boosting : le récapitulatif</h2>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Bagging</th><th>Boosting</th></tr></thead><tbody><tr><td><strong>Ordre d'entraînement</strong></td><td>Parallèle (indépendant)</td><td>Séquentiel (chacun dépend du précédent)</td></tr><tr><td><strong>Objectif</strong></td><td>Réduire la <strong>variance</strong></td><td>Réduire le <strong>biais</strong></td></tr><tr><td><strong>Exemple le plus connu</strong></td><td>Random Forest</td><td>XGBoost</td></tr><tr><td><strong>Robustesse aux outliers</strong></td><td>Bonne</td><td>Faible (les outliers reçoivent trop de poids)</td></tr><tr><td><strong>Risque principal</strong></td><td>Lenteur si trop d'arbres</td><td>Overfitting si <code>learning_rate</code> trop grand</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>En pratique : commence par Random Forest (robuste, peu de tuning). Si tu veux aller plus loin en performance, essaie XGBoost avec de l'early stopping.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-stacking-le-jury-dexperts-hétérogènes">5 — Stacking : le jury d'experts hétérogènes</h2>
+
+<h3 id="ref-le-principe-du-stacking">Le principe du Stacking</h3>
+
+<p>Jusqu'ici, le Bagging et le Boosting utilisaient des copies du <strong>même type de modèle</strong> (des arbres). Le <strong>Stacking</strong> combine des modèles <strong>de types différents</strong> (un Random Forest, un KNN, une régression logistique...).</p>
+
+<p>Chaque modèle a ses forces et ses faiblesses. Un méta-modèle apprend à exploiter les prédictions de chacun pour construire une prédiction finale plus forte.</p>
+
+<p><strong>Analogie :</strong> Tu demandes l'avis à un médecin, un cardiologue et un radiologue. Chacun donne son diagnostic. Ensuite, un médecin généraliste lit tous les diagnostics et donne le verdict final.</p>
+
+<h3 id="ref-votingclassifier-le-vote-simple">VotingClassifier : le vote simple</h3>
+
+<p>La version la plus simple du stacking : on agrège les prédictions par un simple vote.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import VotingClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+
+# Deux modèles très différents qui votent ensemble
+ensemble = VotingClassifier(
+    estimators=[
+        (&quot;rf&quot;, RandomForestClassifier()),   # modèle 1 : Random Forest
+        (&quot;lr&quot;, LogisticRegression())        # modèle 2 : Régression Logistique
+    ],
+    voting=&#x27;soft&#x27;,    # &#x27;soft&#x27; : moyenne des probas (plus précis si modèles calibrés)
+                      # &#x27;hard&#x27; : vote majoritaire à la classe
+    weights=[1, 1]    # poids égaux pour les deux modèles
+)
+ensemble.fit(X_train, y_train)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>voting=&#x27;soft&#x27;</code> est généralement meilleur que <code>&#x27;hard&#x27;</code> car il utilise plus d'information (les probabilités entières, pas juste la classe gagnante).</p></div></div>
+
+<h3 id="ref-stackingclassifier-le-méta-modèle">StackingClassifier : le méta-modèle</h3>
+
+<p>Le vrai stacking : les prédictions des modèles de base deviennent les <strong>features d'entrée</strong> d'un méta-modèle.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import StackingClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+
+# Les &quot;base models&quot; font leurs prédictions
+# Le &quot;final_estimator&quot; apprend à combiner ces prédictions
+stacking = StackingClassifier(
+    estimators=[
+        (&quot;rf&quot;,  RandomForestClassifier()),            # base model 1
+        (&quot;knn&quot;, KNeighborsClassifier(n_neighbors=10)) # base model 2
+    ],
+    final_estimator=LogisticRegression()   # méta-modèle : apprend à pondérer les prédictions
+)
+stacking.fit(X_train, y_train)</code></pre></div>
+
+
+<p>Comment ça fonctionne en interne :</p>
+<ol>
+<li>Les "base models" (Random Forest + KNN) sont entraînés sur les données d'entraînement</li>
+<li>Chaque base model génère des prédictions</li>
+<li>Ces prédictions deviennent les features d'un nouveau dataset</li>
+<li>Le <code>final_estimator</code> (LogisticRegression ici) est entraîné sur ce nouveau dataset</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-6-les-arbres-nont-pas-besoin-dêtre-normalisés">6 — Les arbres n'ont pas besoin d'être normalisés</h2>
+
+<p>Un point important qui distingue les modèles à base d'arbres des autres :</p>
+
+<p>Les arbres découpent les données selon des <strong>seuils</strong> du type "feature_j < 3.5". Ce qui compte, c'est l'<strong>ordre</strong> des valeurs, pas leur magnitude absolue. Qu'une feature aille de 0 à 1 ou de 0 à 10 000, l'arbre trouvera le même seuil optimal.</p>
+
+<p>Donc : <strong>pas besoin de StandardScaler ou de MinMaxScaler</strong> pour Decision Tree, Random Forest, GradientBoosting ou XGBoost.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Ce pipeline est correct mais le StandardScaler est inutile pour le Random Forest
+# On peut l&#x27;inclure pour avoir un pipeline générique facilement interchangeable
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestRegressor
+
+# Le StandardScaler n&#x27;impacte pas les performances de Random Forest
+# mais permet de switcher facilement vers Ridge ou un autre modèle distance-based
+pipe = make_pipeline(StandardScaler(), RandomForestRegressor(n_estimators=100))</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Exception : inclure un scaler dans le pipeline reste utile si tu veux pouvoir switcher facilement entre un Random Forest et un modèle basé sur les distances (KNN, SVM, Ridge...) sans réécrire le pipeline.</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-erreurs-classiques-à-éviter">7 — Erreurs classiques à éviter</h2>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Laisser croître un arbre sans contrainte</strong></p>
+<p>Sans <code>max_depth</code>, l'arbre mémorise chaque point d'entraînement → R² train = 1.0, R² test ≈ 0. Toujours fixer <code>max_depth</code> ou <code>min_samples_leaf</code>.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Interpréter <code>predict_proba</code> comme une vraie probabilité</strong></p>
+<p>Ce que retourne <code>predict_proba</code> pour un arbre, c'est juste le ratio de classes dans la feuille finale. Ce n'est pas une probabilité calibrée. Utilise <code>CalibratedClassifierCV</code> si tu as besoin de vraies probabilités.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Bagger un Random Forest</strong></p>
+<p><code>BaggingRegressor(RandomForestRegressor(), n_estimators=100)</code> = 100 × 100 = 10 000 arbres entraînés inutilement. Random Forest est déjà un bagging. Ne pas re-bagger.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong><code>learning_rate</code> trop élevé en Boosting</strong></p>
+<p><code>learning_rate=1.0</code> avec beaucoup d'estimateurs → overfitting quasi-certain. Règle : <code>learning_rate</code> entre 0.01 et 0.1, compenser avec plus d'arbres, et utiliser l'early stopping de XGBoost.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>1. Quelle est la différence fondamentale entre Bagging et Boosting ?</strong></p>
+
+<p>Le Bagging entraîne ses modèles en parallèle sur des sous-ensembles de données différents et les combine — il réduit la variance. Le Boosting entraîne ses modèles en séquence, chacun corrigeant les erreurs du précédent — il réduit le biais.</p>
+
+<p><strong>2. Pourquoi un Decision Tree sans contrainte overfit-il ?</strong></p>
+
+<p>Parce qu'il peut créer une feuille pour chaque point de données, mémorisant ainsi les données d'entraînement au lieu d'apprendre un pattern général. Les hyperparamètres <code>max_depth</code>, <code>min_samples_split</code> et <code>min_samples_leaf</code> servent à limiter cette croissance.</p>
+
+<p><strong>3. Qu'est-ce qu'un score OOB et pourquoi est-il utile ?</strong></p>
+
+<p>Le score Out-of-Bag est calculé sur les ~37% de données non tirées lors du bootstrap. Chaque exemple est évalué par les arbres qui ne l'ont pas utilisé pour s'entraîner. Cela fournit une estimation de la performance de généralisation sans avoir besoin de créer un set de validation séparé.</p>
+
+<p><strong>4. Pourquoi l'early stopping de XGBoost est-il une bonne pratique ?</strong></p>
+
+<p>Parce qu'il permet d'éviter l'overfitting automatiquement : XGBoost surveille la performance sur un set de validation à chaque itération et s'arrête dès que la performance se dégrade pendant <code>early_stopping_rounds</code> itérations consécutives. On n'a pas besoin de deviner le bon nombre d'arbres à l'avance.</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Un <strong>Decision Tree</strong> pose des questions binaires sur les données et prédit en fonction des groupes obtenus — simple à comprendre mais overfit facilement sans contraintes de profondeur.</li>
+<li>L'indice de <strong>Gini</strong> mesure l'impureté d'un nœud : l'algorithme CART choisit à chaque étape la question qui minimise ce Gini.</li>
+<li>Le <strong>Bagging</strong> entraîne plusieurs modèles en <strong>parallèle</strong> sur des bootstraps différents et agrège leurs réponses — réduit la <strong>variance</strong> — Random Forest en est l'exemple le plus connu.</li>
+<li>Le <strong>Boosting</strong> entraîne des modèles en <strong>séquence</strong>, chacun corrigeant les erreurs du précédent — réduit le <strong>biais</strong> — XGBoost est la version la plus efficace.</li>
+<li><strong>XGBoost</strong> ajoute régularisation L1/L2 et early stopping au Gradient Boosting — souvent le meilleur modèle tabulaire en pratique.</li>
+<li>Le <strong>Stacking</strong> combine des modèles hétérogènes via un méta-modèle qui apprend à pondérer leurs prédictions.</li>
+<li>Les modèles à base d'arbres <strong>n'ont pas besoin de normalisation</strong> : les splits sont basés sur l'ordre des valeurs, pas leur magnitude.</li>
+<li>Règle d'or XGBoost : <code>learning_rate</code> petit (0.01–0.1) + beaucoup d'arbres + early stopping.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-pourquoi-les-ensembles-fonctionnent">Pourquoi les ensembles fonctionnent</a></li><li><a href="#syn-decision-trees">Decision Trees</a></li><li><a href="#syn-bagging-et-random-forest">Bagging et Random Forest</a></li><li><a href="#syn-boosting">Boosting</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-xgboost-lightgbm-catboost">XGBoost, LightGBM, CatBoost</a></li><li><a href="#syn-stacking">Stacking</a></li><li><a href="#syn-feature-importance">Feature importance</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-pourquoi-les-ensembles-fonctionnent">Pourquoi les ensembles fonctionnent</h3>
+
+<p>L'idée fondamentale : <strong>plusieurs modèles imparfaits combinés peuvent battre un seul modèle parfait</strong>. C'est de la sagesse des foules, version statistique.</p>
+
+<p><strong>Théorème du jury de Condorcet</strong> (1785) : si vous avez $N$ classifieurs avec une accuracy individuelle $p > 0.5$ et que leurs erreurs sont <strong>indépendantes</strong>, alors la probabilité que le vote majoritaire se trompe est :</p>
+
+<div class="katex-display">$$P(\text{erreur}) = \sum_{k=\lceil N/2 \rceil}^{N} \binom{N}{k} (1-p)^k p^{N-k}$$</div>
+
+<p>Lecture : <em>on somme la probabilité qu'exactement $k$ votants (sur $N$) se trompent, pour tous les $k$ qui donneraient une majorité erronée</em>. Quand $N \to \infty$ avec $p > 0.5$, cette probabilité tend vers <strong>zéro</strong>.</p>
+
+<p><strong>Exemple chiffré</strong> : avec $p = 0.7$ et $N = 1$, erreur = 30%. Avec $N = 11$ votants indépendants, l'erreur du vote majoritaire tombe à environ 7.8%. Avec $N = 101$, elle est proche de 0.003%.</p>
+
+<p>Le vote majoritaire (ou moyenne en régression) s'écrit simplement :</p>
+
+<div class="katex-display">$$\hat{y}_{\text{ensemble}} = \text{mode}(\hat{y}_1, \hat{y}_2, \ldots, \hat{y}_N) \quad \text{(classif)}$$</div>
+
+<div class="katex-display">$$\hat{y}_{\text{ensemble}} = \frac{1}{N} \sum_{i=1}^{N} \hat{y}_i \quad \text{(régression)}$$</div>
+
+<p>En pratique, les erreurs ne sont jamais parfaitement indépendantes (les modèles voient les mêmes données), mais le principe reste : <strong>diversité + agrégation = robustesse</strong>.</p>
+
+<p><strong>Décomposition biais-variance pour un ensemble</strong> : si on moyenne $N$ modèles indépendants de variance $\sigma^2$, la variance de l'ensemble est $\sigma^2 / N$. Si les modèles sont corrélés avec coefficient $\rho$, elle devient :</p>
+
+<div class="katex-display">$$\text{Var}(\bar y) = \rho \sigma^2 + \frac{(1 - \rho) \sigma^2}{N}$$</div>
+
+<p>Lecture : <em>plus les modèles sont décorrélés ($\rho$ petit), plus ajouter des arbres réduit la variance</em>. Si $\rho = 1$ (modèles identiques), aucun gain. C'est pourquoi Random Forest <strong>force la décorrélation</strong> avec des bootstrap samples et une sélection aléatoire de features.</p>
+
+<p>Trois mécanismes pour créer de la diversité :</p>
+
+<ol>
+<li><strong>Bagging</strong> : entraîner sur des sous-échantillons différents (Random Forest)</li>
+<li><strong>Boosting</strong> : entraîner séquentiellement, chaque modèle corrige les erreurs du précédent (XGBoost)</li>
+<li><strong>Stacking</strong> : entraîner différents types de modèles puis apprendre comment les combiner</li>
+</ol>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : un médecin spécialiste peut se tromper. Mais si vous demandez à 100 médecins indépendants de diagnostiquer un cas et que 95 disent la même chose, le diagnostic est presque certain. C'est exactement le principe du vote majoritaire en bagging.</p></div></div>
+
+<h3 id="syn-decision-trees">Decision Trees</h3>
+
+<p>L'arbre de décision est le composant de base de la plupart des ensembles. Il fonctionne par <strong>splits successifs</strong> sur les features.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">                    [age &gt; 35 ?]
+                   /            \
+                  oui            non
+                  /               \
+        [revenu &gt; 50k ?]    [a un emploi ?]
+            /     \             /      \
+           oui    non          oui      non
+            |      |            |        |
+        accord  refus       accord    refus</code></pre></div>
+
+
+<p>L'algorithme cherche, à chaque nœud, le <strong>split qui minimise l'impureté</strong> des sous-groupes obtenus. Deux mesures d'impureté courantes :</p>
+
+<div class="katex-display">$$\text{Gini} = 1 - \sum_{k=1}^{K} p_k^2, \qquad \text{Entropie} = -\sum_{k=1}^{K} p_k \log_2 p_k$$</div>
+
+<p>Lecture : <em>$p_k$ est la proportion de la classe $k$ dans le nœud. Gini est maximal (0.5 en binaire) quand les classes sont équilibrées (nœud "impur") et minimal (0) quand le nœud est pur</em>. L'entropie a la même forme mais avec un logarithme ; les deux donnent des résultats très similaires en pratique.</p>
+
+<p><strong>Exemple chiffré</strong> : dans un nœud avec 70 positifs et 30 négatifs, $p_1 = 0.7$, $p_0 = 0.3$. Gini = $1 - (0.49 + 0.09) = 0.42$. Entropie = $-(0.7 \log_2 0.7 + 0.3 \log_2 0.3) = 0.881$.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.tree import DecisionTreeClassifier, plot_tree
+import matplotlib.pyplot as plt
+
+tree = DecisionTreeClassifier(max_depth=4, min_samples_split=20)
+tree.fit(X_train, y_train)
+
+plt.figure(figsize=(20, 10))
+plot_tree(tree, feature_names=X.columns, class_names=[&quot;No&quot;, &quot;Yes&quot;], filled=True)</code></pre></div>
+
+
+<p>Avantages : interprétable, pas besoin de scaling, gère les variables catégorielles, capture les interactions non linéaires.</p>
+
+<p>Inconvénients : overfitte facilement (un arbre profond mémorise le bruit), instable (petit changement dans les données → arbre complètement différent), frontières alignées sur les axes.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Anti-pattern</strong> : utiliser un seul DecisionTree non régularisé. Vous overfittez quasi systématiquement. Toujours soit limiter <code>max_depth</code> (3-10) et <code>min_samples_leaf</code>, soit utiliser un Random Forest qui résout ce problème par construction.</p></div></div>
+
+<h3 id="syn-bagging-et-random-forest">Bagging et Random Forest</h3>
+
+<p><strong>Bagging</strong> (Bootstrap Aggregating) : entraîner $N$ modèles, chacun sur un échantillon <strong>bootstrap</strong> (tirage avec remise) du dataset, puis moyenner les prédictions.</p>
+
+<p>Mathématiquement, chaque arbre voit environ 63% des observations uniques (le reste est dupliqué ou absent). C'est cette variété qui décorrèle les arbres.</p>
+
+<p><strong>Random Forest</strong> ajoute une deuxième astuce : à chaque split d'arbre, on ne considère qu'un <strong>sous-ensemble aléatoire de $m$ features</strong> (typiquement $m = \sqrt{p}$ en classification, $m = p/3$ en régression). Cela décorrèle encore plus les arbres.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import RandomForestClassifier
+
+rf = RandomForestClassifier(
+    n_estimators=200,       # nombre d&#x27;arbres
+    max_depth=None,          # None = arbres complètement développés
+    min_samples_split=2,     # min d&#x27;observations pour splitter
+    max_features=&quot;sqrt&quot;,     # √p features considérées à chaque split
+    n_jobs=-1,               # parallélisme sur tous les cores
+    random_state=42,
+)
+rf.fit(X_train, y_train)</code></pre></div>
+
+
+<p><strong>Exemple chiffré</strong> : sur un dataset avec $p = 100$ features, un single arbre profond peut donner train=0.99 / test=0.72. Un Random Forest avec 200 arbres ($m = \sqrt{100} = 10$) peut donner train=0.98 / test=0.86. La différence train-test se comprime grâce à la décorrélation.</p>
+
+<p>Avantages : très robuste (résiste à l'overfit même sans tuning), pas besoin de scaling, donne une feature importance, parallélisable, bonne baseline tabulaire.</p>
+
+<p>Inconvénients : plus lent que les modèles linéaires en inférence, modèle volumineux en mémoire, moins interprétable qu'un seul arbre.</p>
+
+<h3 id="syn-boosting">Boosting</h3>
+
+<p><strong>Boosting</strong> : entraîner les modèles <strong>séquentiellement</strong>, où chaque nouveau modèle se concentre sur les erreurs des précédents.</p>
+
+<p>Algorithmes classiques :</p>
+<ul>
+<li><strong>AdaBoost</strong> : pondère les exemples mal classés pour les prochains modèles</li>
+<li><strong>Gradient Boosting</strong> : chaque modèle prédit le <strong>gradient de la loss</strong> par rapport aux prédictions cumulées</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import GradientBoostingClassifier
+
+gb = GradientBoostingClassifier(
+    n_estimators=200,
+    learning_rate=0.1,       # pas d&#x27;apprentissage (petit = plus d&#x27;arbres nécessaires)
+    max_depth=3,             # arbres volontairement peu profonds (weak learners)
+    subsample=0.8,           # stochastic gradient boosting
+    random_state=42,
+)
+gb.fit(X_train, y_train)</code></pre></div>
+
+
+<p>Différences clés avec le bagging :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Aspect</th><th>Bagging (RF)</th><th>Boosting (GB, XGB)</th></tr></thead><tbody><tr><td>Mode d'apprentissage</td><td>Parallèle</td><td>Séquentiel</td></tr><tr><td>Type de base learners</td><td>Arbres profonds (low bias)</td><td>Arbres peu profonds (high bias)</td></tr><tr><td>Réduit</td><td>Variance</td><td>Biais</td></tr><tr><td>Sensibilité au bruit</td><td>Robuste</td><td>Plus sensible (overfit possible)</td></tr><tr><td>Vitesse d'entraînement</td><td>Rapide (parallèle)</td><td>Plus lente (séquentielle)</td></tr><tr><td>Performance typique</td><td>Très bonne</td><td>Souvent meilleure (avec tuning)</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : bagging, c'est demander à 100 médecins indépendants leur diagnostic et prendre la majorité — robuste mais limité par leur niveau moyen. Boosting, c'est entraîner un médecin junior, puis un nouveau qui se concentre sur les cas où le premier s'est trompé, puis un troisième qui aborde les erreurs des deux précédents — plus puissant mais peut sur-apprendre les "erreurs" qui sont en fait du bruit.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-xgboost-lightgbm-catboost">XGBoost, LightGBM, CatBoost</h3>
+
+<p>Trois implémentations modernes du gradient boosting qui dominent les compétitions ML tabulaires.</p>
+
+<p><strong>XGBoost</strong> (2014) : la première implémentation rapide. Régularisation explicite, support des valeurs manquantes, parallélisme.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from xgboost import XGBClassifier
+
+xgb = XGBClassifier(
+    n_estimators=500,
+    learning_rate=0.05,
+    max_depth=6,
+    subsample=0.8,
+    colsample_bytree=0.8,
+    reg_alpha=0.1,           # régularisation L1
+    reg_lambda=1.0,          # régularisation L2
+    early_stopping_rounds=50,
+    eval_metric=&quot;auc&quot;,
+)
+xgb.fit(X_train, y_train, eval_set=[(X_val, y_val)])</code></pre></div>
+
+
+<p><strong>LightGBM</strong> (Microsoft, 2017) : 5-10× plus rapide qu'XGBoost grâce au "leaf-wise growth" (vs level-wise) et au "histogram-based binning". Standard de l'industrie en 2025.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from lightgbm import LGBMClassifier
+
+lgb = LGBMClassifier(
+    n_estimators=500,
+    learning_rate=0.05,
+    num_leaves=31,           # plus expressif que max_depth
+    min_child_samples=20,
+    reg_alpha=0.1,
+)</code></pre></div>
+
+
+<p><strong>CatBoost</strong> (Yandex, 2017) : meilleur pour les variables catégorielles natives, sans besoin d'encoding manuel.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from catboost import CatBoostClassifier
+
+cb = CatBoostClassifier(
+    iterations=500,
+    learning_rate=0.05,
+    depth=6,
+    cat_features=[&quot;city&quot;, &quot;category&quot;],
+    verbose=100,
+)</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Critère</th><th>XGBoost</th><th>LightGBM</th><th>CatBoost</th></tr></thead><tbody><tr><td>Vitesse</td><td>Lent</td><td><strong>Rapide</strong></td><td>Moyen</td></tr><tr><td>Mémoire</td><td>Moyenne</td><td><strong>Faible</strong></td><td>Plus élevée</td></tr><tr><td>Catégorielles</td><td>Encoding manuel</td><td>Encoding manuel</td><td><strong>Natif</strong></td></tr><tr><td>Tuning</td><td>Plus de hyperparams</td><td>Plus de hyperparams</td><td>Bons défauts</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Recommandation 2025</strong> : commencer par <strong>LightGBM</strong> pour le tabulaire. Plus rapide à itérer, performances équivalentes ou meilleures qu'XGBoost. Passer à CatBoost si vous avez beaucoup de variables catégorielles. XGBoost reste pertinent dans les écosystèmes établis.</p></div></div>
+
+<h3 id="syn-stacking">Stacking</h3>
+
+<p>Le <strong>stacking</strong> entraîne un méta-modèle qui apprend à combiner les prédictions de plusieurs modèles de base.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.ensemble import StackingClassifier
+
+stacking = StackingClassifier(
+    estimators=[
+        (&quot;lr&quot;, LogisticRegression()),
+        (&quot;rf&quot;, RandomForestClassifier()),
+        (&quot;xgb&quot;, XGBClassifier()),
+        (&quot;svc&quot;, SVC(probability=True)),
+    ],
+    final_estimator=LogisticRegression(),   # méta-modèle simple
+    cv=5,
+)
+stacking.fit(X_train, y_train)</code></pre></div>
+
+
+<p>Le méta-modèle (souvent une LogReg simple) reçoit en entrée les <code>predict_proba</code> des modèles de base et apprend leur pondération optimale. C'est l'arme secrète des compétitions Kaggle, mais c'est lourd en production : 4 modèles à entraîner, sauvegarder, et exécuter à chaque prédiction.</p>
+
+<h3 id="syn-feature-importance">Feature importance</h3>
+
+<p>Les modèles ensemble donnent gratuitement une mesure de l'<strong>importance</strong> de chaque feature :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import matplotlib.pyplot as plt
+import numpy as np
+
+importances = rf.feature_importances_
+feature_names = X.columns
+indices = np.argsort(importances)[::-1]
+
+plt.figure(figsize=(10, 6))
+plt.bar(range(len(indices)), importances[indices])
+plt.xticks(range(len(indices)), feature_names[indices], rotation=90)
+plt.tight_layout()</code></pre></div>
+
+
+<p>Trois types d'importance :</p>
+
+<ol>
+<li><strong>Mean Decrease Impurity (MDI)</strong> : moyenne de la diminution d'impureté due à chaque feature sur tous les splits. Valeur par défaut de <code>feature_importances_</code>.</li>
+<li><strong>Permutation importance</strong> : on permute aléatoirement une feature et on mesure la chute de performance. Plus robuste mais plus lente.</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.inspection import permutation_importance
+perm = permutation_importance(rf, X_test, y_test, n_repeats=10, random_state=42)</code></pre></div>
+
+
+<ol>
+<li><strong>SHAP values</strong> : décomposition équitable de chaque prédiction par feature. Standard moderne pour l'explicabilité.</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import shap
+explainer = shap.TreeExplainer(rf)
+shap_values = explainer.shap_values(X_test)
+shap.summary_plot(shap_values, X_test)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège classique</strong> : la MDI est biaisée en faveur des features avec beaucoup de catégories ou de valeurs uniques. Une feature "ID utilisateur" sera artificiellement importante alors qu'elle ne contient aucune information utile pour la généralisation. <strong>Toujours</strong> vérifier avec permutation importance ou SHAP avant de tirer des conclusions.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi un Random Forest avec 1000 arbres ne fait-il pas overfit, alors qu'un seul arbre de décision profond le fait ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Décorrélation et loi des grands nombres.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Trois mécanismes :</p>
+
+<ol>
+<li><strong>Bootstrap sampling</strong> : chaque arbre est entraîné sur ~63% des données originales (tirage avec remise). Les arbres ne voient pas exactement les mêmes exemples et apprennent donc des "bruits" différents qui s'annulent par moyenne.</li>
+<li><strong>Random feature selection</strong> : à chaque split, on ne considère que $\sqrt{p}$ features aléatoires. Cela force les arbres à explorer différentes structures et les <strong>décorrèle</strong> drastiquement.</li>
+<li><strong>Loi des grands nombres</strong> : moyenner $N$ estimateurs indépendants réduit la variance d'un facteur $1/N$. C'est mathématiquement garanti.</li>
+</ol>
+
+<p>Conséquence : un Random Forest avec 1000 arbres a une variance ~30× plus faible qu'un seul arbre avec les mêmes hyperparamètres. C'est pourquoi vous pouvez laisser les arbres aller jusqu'à <code>max_depth=None</code> sans craindre l'overfit.</p>
+
+</details>
+
+<p><strong>Q2 : Quelle est la différence philosophique entre bagging et boosting, et quand préférer l'un à l'autre ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Variance vs biais.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Bagging</strong> réduit la <strong>variance</strong> : il prend des modèles à forte capacité (arbres profonds) qui overfittent individuellement, et les moyennise pour lisser le bruit.</p>
+
+<p><strong>Boosting</strong> réduit le <strong>biais</strong> : il prend des modèles faibles (arbres peu profonds) qui underfittent individuellement, et les empile séquentiellement pour capturer progressivement le signal.</p>
+
+<p>Quand préférer :</p>
+
+<ol>
+<li><strong>Bagging (Random Forest)</strong> : si vous voulez un modèle robuste sans tuning, qui marche out-of-the-box. Idéal pour des baselines rapides, datasets avec du bruit, modèles parallélisables.</li>
+<li><strong>Boosting (XGBoost / LightGBM)</strong> : si vous voulez la meilleure performance possible et que vous êtes prêt à tuner. Presque toujours le gagnant des compétitions tabulaires.</li>
+<li><strong>Hybride</strong> : Random Forest pour la baseline, LightGBM pour la version finale.</li>
+</ol>
+
+</details>
+
+<p><strong>Q3 : Vous avez entraîné un XGBoost et la feature importance dit que "ID client" est la feature la plus importante. Que se passe-t-il ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Data leakage ou MDI bias.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Deux causes possibles, à investiguer dans cet ordre.</p>
+
+<p><strong>Cause 1 — Data leakage</strong> : si "ID client" est ordonné chronologiquement et que vos labels dépendent du temps (par exemple, les premiers clients ont plus churné), l'ID encode involontairement le timing. C'est du leakage subtile.</p>
+
+<p><strong>Cause 2 — MDI bias</strong> : la mesure par défaut (Mean Decrease Impurity) favorise mécaniquement les features avec beaucoup de valeurs uniques, parce qu'elles offrent plus d'opportunités de splits. Une feature "ID" avec 100k valeurs uniques apparaît systématiquement importante même si elle n'apporte rien.</p>
+
+<p><strong>Diagnostic</strong> : recalculer l'importance avec <strong>permutation_importance</strong> ou <strong>SHAP</strong>. Si l'importance s'effondre, c'était du MDI bias. Si elle reste élevée, c'est du leakage et il faut enlever cette feature et investiguer pourquoi elle est si prédictive.</p>
+
+<p><strong>Règle d'or</strong> : ne <strong>jamais</strong> inclure des identifiants (ID, primary key, hash) comme features. Ce sont presque toujours des sources de leakage ou de pseudo-importance trompeuse.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>The Elements of Statistical Learning</em> (Hastie et al.) — chapitres 9-10</li>
+<li><a href="https://xgboost.readthedocs.io/" target="_blank" rel="noopener">XGBoost documentation</a></li>
+<li><a href="https://lightgbm.readthedocs.io/" target="_blank" rel="noopener">LightGBM documentation</a></li>
+<li><em>XGBoost: A Scalable Tree Boosting System</em> (Chen & Guestrin, 2016) — papier fondateur</li>
+<li><em>LightGBM: A Highly Efficient Gradient Boosting Decision Tree</em> (Ke et al., 2017)</li>
+<li><a href="https://shap.readthedocs.io/" target="_blank" rel="noopener">SHAP documentation</a></li>
+<li><a href="https://www.kaggle.com/learn/intermediate-machine-learning" target="_blank" rel="noopener">Kaggle Learn — Intermediate ML</a></li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../machine-learning/model-tuning.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Model Tuning</span>
+  </a>
+  <a href="../machine-learning/unsupervised-learning.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Unsupervised Learning →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

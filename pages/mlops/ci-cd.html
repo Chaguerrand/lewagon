@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CI / CD — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">CI / CD</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html" class="active">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">MLOps & Production</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>CI / CD</span>
+      </div>
+
+      <div class="page-header">
+        <h1>CI / CD</h1>
+        <p class="page-objective">Mettre en place l'intégration continue (CI) avec GitHub Actions pour tester automatiquement le code à chaque push, et le déploiement continu (CD) avec Streamlit Cloud ou Google Cloud Run pour livrer automatiquement en production.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">CI</div>
+        <div class="key-concept-def">Continuous Integration : tests automatiques à chaque push.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">CD</div>
+        <div class="key-concept-def">Continuous Delivery / Deployment : livraison automatisée jusqu&#x27;en prod.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">GitHub Actions</div>
+        <div class="key-concept-def">Workflows YAML qui s&#x27;exécutent sur des événements Git.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Pre-commit</div>
+        <div class="key-concept-def">Hooks Git locaux qui formatent et lintent avant chaque commit.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-cicd">Cheatsheet — CI/CD</a><ol><li><a href="#github-actions-ci">GitHub Actions — CI</a></li><li><a href="#cd-streamlit-cloud">CD — Streamlit Cloud</a></li><li><a href="#cd-google-cloud-run-via-cloud-build">CD — Google Cloud Run (via Cloud Build)</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-ci-continuous-integration">1) CI — Continuous Integration</a><ol><li><a href="#11-principe">1.1 Principe</a></li><li><a href="#12-github-actions">1.2 GitHub Actions</a></li><li><a href="#13-mise-en-place">1.3 Mise en place</a></li><li><a href="#14-bonus-formatter-avec-black">1.4 Bonus — Formatter avec Black</a></li></ol></li><li><a href="#2-cd-continuous-deployment">2) CD — Continuous Deployment</a><ol><li><a href="#21-principe">2.1 Principe</a></li><li><a href="#22-cd-avec-streamlit-cloud">2.2 CD avec Streamlit Cloud</a></li><li><a href="#23-cd-avec-google-cloud-run-cloud-build">2.3 CD avec Google Cloud Run + Cloud Build</a></li><li><a href="#24-tester-le-cd">2.4 Tester le CD</a></li></ol></li><li><a href="#3-avantages-du-cicd">3) Avantages du CI/CD</a><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-cicd">📋 Cheatsheet — CI/CD</h2>
+
+<h3 id="github-actions-ci">GitHub Actions — CI</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">## .github/workflows/python-ci.yml
+name: basic CI
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3                    # checkout la branche
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v2
+      with:
+        python-version: &quot;3.10&quot;
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run tests
+      run: make                                    # exécute pytest via Makefile</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## Setup
+git checkout -b ci-setup
+mkdir -p .github/workflows
+## Créer le fichier python-ci.yml ci-dessus
+git add .github &amp;&amp; git commit -m &quot;Add CI workflow&quot;
+git push origin ci-setup
+gh pr create --web                                 # crée la PR → CI se déclenche</code></pre></div>
+
+
+<h3 id="cd-streamlit-cloud">CD — Streamlit Cloud</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## 1. Pusher le code sur GitHub
+## 2. Aller sur share.streamlit.io
+## 3. Connecter le repo → auto-deploy à chaque push sur main</code></pre></div>
+
+
+<h3 id="cd-google-cloud-run-via-cloud-build">CD — Google Cloud Run (via Cloud Build)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## 1. Pusher l&#x27;image Docker sur Artifact Registry
+## 2. Dans Cloud Run → &quot;Continuously deploy from source repository&quot;
+## 3. Connecter le repo GitHub via Cloud Build
+## → Chaque push sur main déclenche un build + deploy automatique</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Commiter sans lancer les tests localement</strong></p>
+<p>La CI rattrape les oublis, mais attendre le feedback GitHub est lent — tester localement d'abord.</p>
+<p>❌ Push → attendre 3 min → CI échoue → re-push → re-attendre</p>
+<p>✅ <code>make test</code> avant chaque push, la CI est un filet de sécurité</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier que seuls les événements sur le remote déclenchent la CI</strong></p>
+<p>Un commit local sans push ne déclenche rien sur GitHub Actions.</p>
+<p>❌ <code>git commit</code> sans <code>git push</code> → aucun workflow lancé</p>
+<p>✅ Pousser la branche pour déclencher la CI : <code>git push origin my-branch</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Merger une PR avec la CI en échec</strong></p>
+<p>Un merge avec des tests cassés introduit des bugs dans master.</p>
+<p>❌ "Merge Pull Request" alors que le check CI est rouge</p>
+<p>✅ Configurer la branch protection rule : merge bloqué si CI échoue</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Déployer en CD sans CI</strong></p>
+<p>Le CD sans CI signifie que du code non testé arrive en production à chaque push.</p>
+<p>❌ Auto-deploy Streamlit Cloud sans aucun test → bugs en production</p>
+<p>✅ CI (tests) → CD (deploy) — toujours dans cet ordre</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Hardcoder des secrets dans le workflow YAML</strong></p>
+<p>Les fichiers <code>.github/workflows/</code> sont versionnés et visibles — les secrets y seraient exposés.</p>
+<p>❌ <code>env: API_KEY=sk-12345</code> dans le YAML</p>
+<p>✅ Utiliser GitHub Secrets : Settings → Secrets → <code>${{ secrets.API_KEY }}</code></p></div></div>
+
+<hr>
+
+<h2 id="1-ci-continuous-integration">1) CI — Continuous Integration</h2>
+
+<h3 id="11-principe">1.1 Principe</h3>
+
+<p>La CI intègre automatiquement les changements de code dans la branche principale, en testant chaque commit ou PR dans un <strong>environnement isolé et frais</strong>.</p>
+
+<p>Un workflow CI typique :</p>
+
+<ol>
+<li>Déclenché par un événement git (push, PR)</li>
+<li>Installe les dépendances dans un environnement propre</li>
+<li>Lance les tests (<code>pytest</code>)</li>
+<li>Reporte le résultat (✅ ou ❌) directement dans la PR</li>
+</ol>
+
+<h3 id="12-github-actions">1.2 GitHub Actions</h3>
+
+<p>GitHub Actions est intégré nativement à GitHub — gratuit pour les repos publics, pas de configuration externe.</p>
+
+<h3 id="13-mise-en-place">1.3 Mise en place</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">mkdir -p .github/workflows
+touch .github/workflows/python-ci.yml</code></pre></div>
+
+
+<p>Contenu du fichier YAML (voir Cheatsheet ci-dessus).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git checkout -b ci-setup
+git add .github
+git commit -m &quot;Configure GitHub Actions CI&quot;
+git push origin ci-setup
+gh pr create --web</code></pre></div>
+
+
+<p>Le workflow se lance automatiquement dans la PR :</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le statut du CI (pending → success/failure) apparaît directement dans la PR GitHub. Un développeur qui oublie de tester localement sera averti immédiatement.</p></div></div>
+
+<h3 id="14-bonus-formatter-avec-black">1.4 Bonus — Formatter avec Black</h3>
+
+<p>Ajouter au workflow :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">- name: Format with Black
+  run: black .</code></pre></div>
+
+
+<hr>
+
+<h2 id="2-cd-continuous-deployment">2) CD — Continuous Deployment</h2>
+
+<h3 id="21-principe">2.1 Principe</h3>
+
+<p>Le CD déploie automatiquement en production chaque commit qui passe la CI sur la branche principale. Aucune intervention manuelle.</p>
+
+<h3 id="22-cd-avec-streamlit-cloud">2.2 CD avec Streamlit Cloud</h3>
+
+<p>Streamlit Cloud est connecté à un repo GitHub. À chaque push sur <code>main</code>, l'app est automatiquement re-déployée.</p>
+
+<h3 id="23-cd-avec-google-cloud-run-cloud-build">2.3 CD avec Google Cloud Run + Cloud Build</h3>
+
+<ol>
+<li>Créer un service Cloud Run depuis l'image Artifact Registry</li>
+<li>Activer "Continuously deploy new revisions from a source repository"</li>
+<li>Connecter le repo GitHub via <strong>Cloud Build</strong></li>
+<li>Chaque push sur <code>main</code> → build Docker → deploy automatique</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## Variables d&#x27;environnement
+PROJECT=&quot;le-wagon-project&quot;
+IMAGE=&quot;taxifare-api&quot;
+REGION=&quot;europe-west1&quot;
+DOCKER_REPO_NAME=&quot;my-docker-repo&quot;
+TAG=&quot;0.1&quot;
+IMAGE_URI=${REGION}-docker.pkg.dev/${PROJECT}/${DOCKER_REPO_NAME}/${IMAGE}:${TAG}
+
+## Build et push initial
+docker build -t $IMAGE_URI .
+docker push $IMAGE_URI
+## → Artifact Registry → Deploy to Cloud Run → Setup Cloud Build</code></pre></div>
+
+
+<h3 id="24-tester-le-cd">2.4 Tester le CD</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git checkout -b add-timestamp
+## Modifier le code (ex: ajouter un timestamp à la réponse API)
+git add . &amp;&amp; git commit -m &quot;Add timestamp to API response&quot;
+git push origin add-timestamp
+## → Merger la PR → Cloud Build re-déploie automatiquement</code></pre></div>
+
+
+<hr>
+
+<h2 id="3-avantages-du-cicd">3) Avantages du CI/CD</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Avantage</th><th>Détail</th></tr></thead><tbody><tr><td><strong>Time-to-market</strong></td><td>Livraison plus rapide des nouvelles features</td></tr><tr><td><strong>Qualité</strong></td><td>Tests automatiques à chaque commit → moins de bugs en production</td></tr><tr><td><strong>Fiabilité</strong></td><td>Environnement de test isolé et reproductible</td></tr><tr><td><strong>Rollback</strong></td><td>Retour en arrière facile si un déploiement casse quelque chose</td></tr><tr><td><strong>Moins d'effort manuel</strong></td><td>Plus de "j'ai oublié de lancer les tests" ou "j'ai déployé la mauvaise version"</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://docs.github.com/en/actions" target="_blank" rel="noopener">GitHub Actions documentation</a></li>
+<li>👉 <a href="https://docs.streamlit.io/streamlit-cloud" target="_blank" rel="noopener">Streamlit Cloud deployment</a></li>
+<li>👉 <a href="https://cloud.google.com/build" target="_blank" rel="noopener">Google Cloud Build</a></li>
+<li>👉 <a href="https://github.com/psf/black" target="_blank" rel="noopener">Black formatter</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">🚀 Challenges</h2>
+
+<ul>
+<li>Configurer un workflow GitHub Actions CI avec <code>pytest</code> sur un projet existant</li>
+<li>Connecter un repo à Streamlit Cloud pour du déploiement continu</li>
+<li>Mettre en place le CD avec Cloud Build + Cloud Run</li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-a-retenir">A retenir</a></li><li><a href="#ref-mini-plan">Mini-plan</a></li></ol></li><li><a href="#ref-1-ci-lintégration-continue">1. CI — L'Intégration Continue</a><ol><li><a href="#ref-quest-ce-que-cest-concrètement">Qu'est-ce que c'est concrètement ?</a></li><li><a href="#ref-github-actions-loutil-de-ci-intégré-à-github">GitHub Actions : l'outil de CI intégré à GitHub</a></li><li><a href="#ref-mise-en-place-pas-à-pas">Mise en place pas à pas</a></li><li><a href="#ref-bonus-formater-le-code-automatiquement-avec-black">Bonus — Formater le code automatiquement avec Black</a></li></ol></li><li><a href="#ref-2-cd-le-déploiement-continu">2. CD — Le Déploiement Continu</a><ol><li><a href="#ref-principe">Principe</a></li><li><a href="#ref-option-a-cd-avec-streamlit-cloud-la-plus-simple">Option A — CD avec Streamlit Cloud (la plus simple)</a></li><li><a href="#ref-option-b-cd-avec-google-cloud-run-et-cloud-build-plus-robuste">Option B — CD avec Google Cloud Run et Cloud Build (plus robuste)</a></li><li><a href="#ref-tester-que-le-cd-fonctionne">Tester que le CD fonctionne</a></li></ol></li><li><a href="#ref-3-erreurs-classiques-à-éviter">3. Erreurs classiques à éviter</a><ol><li><a href="#ref-erreur-1-commiter-sans-tester-localement">Erreur 1 — Commiter sans tester localement</a></li><li><a href="#ref-erreur-2-croire-que-git-commit-déclenche-la-ci">Erreur 2 — Croire que git commit déclenche la CI</a></li><li><a href="#ref-erreur-3-merger-une-pr-avec-la-ci-en-echec">Erreur 3 — Merger une PR avec la CI en echec</a></li><li><a href="#ref-erreur-4-mettre-des-secrets-dans-le-fichier-yaml">Erreur 4 — Mettre des secrets dans le fichier YAML</a></li></ol></li><li><a href="#ref-4-pourquoi-le-cicd-change-tout">4. Pourquoi le CI/CD change tout</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Imagine une usine qui fabrique des voitures. Avant qu'une voiture quitte la chaîne, elle passe par une série de <strong>contrôles qualité automatiques</strong> : vérification du moteur, des freins, de la carrosserie. Si un défaut est détecté, la voiture est bloquée — elle n'arrive jamais chez le client avec un problème.</p>
+
+<p>Le <strong>CI/CD</strong> (Intégration Continue / Déploiement Continu), c'est exactement ce principe appliqué au code :</p>
+<ul>
+<li>La <strong>CI</strong> (Continuous Integration) = les contrôles qualité automatiques (tests)</li>
+<li>La <strong>CD</strong> (Continuous Deployment) = la livraison automatique chez le client (mise en production)</li>
+</ul>
+
+<p>Chaque fois qu'un développeur pousse du code sur GitHub, une série d'étapes se déclenche automatiquement : on vérifie que le code fonctionne, puis on le déploie sans intervention humaine.</p>
+
+<h3 id="ref-a-retenir">A retenir</h3>
+
+<ul>
+<li>La <strong>CI</strong> teste automatiquement le code à chaque <code>git push</code></li>
+<li>La <strong>CD</strong> déploie automatiquement le code en production si les tests passent</li>
+<li><strong>GitHub Actions</strong> est l'outil qui orchestre tout ça, directement dans GitHub</li>
+<li>Un fichier <strong>YAML</strong> dans <code>.github/workflows/</code> suffit à tout configurer</li>
+<li>L'ordre est impératif : <strong>CI d'abord, CD ensuite</strong> — jamais l'inverse</li>
+</ul>
+
+<h3 id="ref-mini-plan">Mini-plan</h3>
+
+<ol>
+<li>La CI avec GitHub Actions : déclencher des tests automatiques</li>
+<li>La CD avec Streamlit Cloud ou Google Cloud Run : déployer automatiquement</li>
+<li>Les erreurs classiques à éviter absolument</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-ci-lintégration-continue">1. CI — L'Intégration Continue</h2>
+
+<h3 id="ref-quest-ce-que-cest-concrètement">Qu'est-ce que c'est concrètement ?</h3>
+
+<p>Quand tu travailles en équipe (ou même seul), tu fais régulièrement des <code>git push</code>. Sans CI, rien ne garantit que ton code fonctionne encore après tes modifications. Tu pourrais avoir cassé quelque chose sans le savoir.</p>
+
+<p>La CI, c'est un robot qui :</p>
+<ol>
+<li>Détecte ton <code>git push</code></li>
+<li>Récupère ton code dans un environnement tout propre (une machine virtuelle vierge)</li>
+<li>Installe les dépendances</li>
+<li>Lance les tests automatiques (<code>pytest</code>)</li>
+<li>Te dit si tout va bien (✅) ou si quelque chose est cassé (❌)</li>
+</ol>
+
+<p>Tout ça se passe sur les serveurs de GitHub — pas sur ton ordinateur.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>L'avantage d'un "environnement propre" : les tests tournent sur une machine Ubuntu fraîche, sans aucune dépendance installée en dehors de ce qui est dans <code>requirements.txt</code>. Ça évite le célèbre "ça marche chez moi mais pas ailleurs".</p></div></div>
+
+<h3 id="ref-github-actions-loutil-de-ci-intégré-à-github">GitHub Actions : l'outil de CI intégré à GitHub</h3>
+
+<p>GitHub Actions est directement intégré à GitHub. Gratuit pour les repos publics. Pour l'activer, il suffit de créer un fichier YAML dans ton projet.</p>
+
+<h3 id="ref-mise-en-place-pas-à-pas">Mise en place pas à pas</h3>
+
+<p><strong>Etape 1 — Créer la structure de dossiers</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Dans ton projet Git, créer le dossier pour les workflows
+mkdir -p .github/workflows
+
+# Créer le fichier de configuration CI
+touch .github/workflows/python-ci.yml</code></pre></div>
+
+
+<p><strong>Etape 2 — Ecrire le fichier YAML</strong></p>
+
+<p>C'est ce fichier qui dit à GitHub Actions quoi faire et quand le faire.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># .github/workflows/python-ci.yml
+# Ce fichier configure le workflow CI (Intégration Continue)
+
+name: basic CI  # Nom affiché dans l&#x27;interface GitHub Actions
+
+# &quot;on&quot; définit QUAND ce workflow se déclenche
+on:
+  push:
+    branches: [ master, main ]   # Au moment d&#x27;un push sur main ou master
+  pull_request:
+    branches: [ master, main ]   # Ou quand une PR cible main/master
+
+# &quot;jobs&quot; liste les tâches à exécuter
+jobs:
+  build-and-test:                # Nom du job (libre)
+    runs-on: ubuntu-latest       # Sur quelle machine tourner (Ubuntu vierge)
+
+    steps:                       # Liste des étapes, dans l&#x27;ordre
+    - uses: actions/checkout@v3  # Etape 1 : récupérer le code du repo
+
+    - name: Set up Python 3.10   # Etape 2 : installer Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: &quot;3.10&quot;
+
+    - name: Install dependencies  # Etape 3 : installer les packages
+      run: |
+        python -m pip install --upgrade pip  # Mettre pip à jour
+        pip install -r requirements.txt      # Installer les dépendances du projet
+
+    - name: Run tests             # Etape 4 : lancer les tests
+      run: make                   # Appelle le Makefile qui lance pytest</code></pre></div>
+
+
+<p><strong>Lecture du fichier, section par section :</strong></p>
+
+<ul>
+<li><code>name</code> : le nom du workflow, visible dans GitHub</li>
+<li><code>on</code> : les événements qui déclenchent le workflow (push, pull_request)</li>
+<li><code>branches</code> : sur quelles branches s'appliquent ces événements</li>
+<li><code>jobs</code> : les tâches à réaliser</li>
+<li><code>runs-on</code> : le type de machine virtuelle à utiliser</li>
+<li><code>steps</code> : chaque étape s'exécute l'une après l'autre</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Un fichier YAML est très sensible à l'indentation. Chaque niveau d'imbrication correspond à 2 ou 4 espaces. Ne jamais utiliser de tabulations. Si le workflow ne se lance pas, commence par vérifier l'indentation.</p></div></div>
+
+<p><strong>Etape 3 — Pousser le workflow et créer une PR</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Créer une nouvelle branche pour cette configuration
+git checkout -b ci-setup
+
+# Ajouter et commiter le fichier de workflow
+git add .github
+git commit -m &quot;Configure GitHub Actions CI&quot;
+
+# Pousser la branche sur GitHub
+git push origin ci-setup
+
+# Créer une Pull Request (la CI se déclenche automatiquement)
+gh pr create --web</code></pre></div>
+
+
+<p>Une fois la PR créée, GitHub Actions se lance automatiquement. Dans l'interface GitHub, tu verras un badge vert (✅ tests OK) ou rouge (❌ tests échoués) directement sur la PR.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Un <code>git commit</code> seul ne déclenche rien. Il faut absolument faire un <code>git push</code> pour que GitHub Actions soit informé et lance le workflow.</p></div></div>
+
+<h3 id="ref-bonus-formater-le-code-automatiquement-avec-black">Bonus — Formater le code automatiquement avec Black</h3>
+
+<p>On peut ajouter une étape au workflow pour s'assurer que le code est bien formaté :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># Ajouter cette étape dans la liste &quot;steps&quot; du workflow
+- name: Format with Black
+  run: black .   # Black reformate tout le code Python du projet</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Black est un formateur de code Python qui applique des règles de style de manière stricte et automatique. Plus besoin de débattre des espaces et des indentations en équipe : Black tranche.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-cd-le-déploiement-continu">2. CD — Le Déploiement Continu</h2>
+
+<h3 id="ref-principe">Principe</h3>
+
+<p>La CD prend le relais après la CI. Une fois que les tests passent sur la branche principale (<code>main</code>), le code est automatiquement déployé en production — sans que personne n'ait besoin de cliquer sur quoi que ce soit.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>La CD sans CI est dangereuse. Si tu déploies automatiquement sans tester, chaque push peut envoyer du code cassé en production, visible par tes utilisateurs. Toujours : CI en premier, CD en second.</p></div></div>
+
+<h3 id="ref-option-a-cd-avec-streamlit-cloud-la-plus-simple">Option A — CD avec Streamlit Cloud (la plus simple)</h3>
+
+<p>Streamlit Cloud est une plateforme gratuite pour déployer des applications Streamlit directement depuis GitHub.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># La procédure complète en 3 étapes :
+
+# 1. S&#x27;assurer que le code est bien poussé sur GitHub (branche main)
+git push origin main
+
+# 2. Aller sur share.streamlit.io et se connecter avec son compte GitHub
+
+# 3. Sélectionner le repo et la branche → l&#x27;app est déployée
+
+# Résultat : à chaque nouveau push sur main, Streamlit Cloud
+# re-déploie automatiquement l&#x27;application.</code></pre></div>
+
+
+<p>C'est la solution la plus rapide à mettre en place. Idéal pour les projets de data science avec une interface Streamlit.</p>
+
+<h3 id="ref-option-b-cd-avec-google-cloud-run-et-cloud-build-plus-robuste">Option B — CD avec Google Cloud Run et Cloud Build (plus robuste)</h3>
+
+<p>Pour des applications plus complexes (APIs, modèles ML), Google Cloud Run est une option plus puissante. Le déploiement continu se fait via Cloud Build, qui surveille le repo GitHub.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Variables de configuration (à adapter à ton projet)
+PROJECT=&quot;le-wagon-project&quot;        # Ton ID de projet Google Cloud
+IMAGE=&quot;taxifare-api&quot;              # Nom de ton image Docker
+REGION=&quot;europe-west1&quot;             # Région de déploiement
+DOCKER_REPO_NAME=&quot;my-docker-repo&quot; # Nom du repo dans Artifact Registry
+TAG=&quot;0.1&quot;                         # Tag de version
+
+# Construire l&#x27;URI complète de l&#x27;image
+IMAGE_URI=${REGION}-docker.pkg.dev/${PROJECT}/${DOCKER_REPO_NAME}/${IMAGE}:${TAG}
+
+# Construire et pousser l&#x27;image Docker initiale
+docker build -t $IMAGE_URI .   # Construire l&#x27;image localement
+docker push $IMAGE_URI          # La pousser vers Artifact Registry</code></pre></div>
+
+
+<p><strong>Configuration de Cloud Build (étapes dans la console Google Cloud) :</strong></p>
+
+<ol>
+<li>Dans Cloud Run → créer un service depuis l'image Artifact Registry</li>
+<li>Activer "Continuously deploy new revisions from a source repository"</li>
+<li>Connecter le repo GitHub via Cloud Build</li>
+<li>Resultat : chaque push sur <code>main</code> → build Docker → deploy automatique</li>
+</ol>
+
+<h3 id="ref-tester-que-le-cd-fonctionne">Tester que le CD fonctionne</h3>
+
+<p>Une fois le CD configuré, voici comment vérifier qu'il fonctionne :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Créer une branche pour une modification de test
+git checkout -b add-timestamp
+
+# Faire une petite modification visible dans l&#x27;app
+# Par exemple, ajouter un timestamp dans la réponse de l&#x27;API
+
+# Commiter et pousser
+git add . &amp;&amp; git commit -m &quot;Add timestamp to API response&quot;
+git push origin add-timestamp
+
+# Créer et merger la PR sur main
+# → Cloud Build détecte le merge et lance un nouveau build + deploy
+# → L&#x27;app en production est mise à jour automatiquement</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Si tout est bien configuré, quelques minutes après le merge, ta modification est visible en production sans aucune action manuelle de ta part.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-erreurs-classiques-à-éviter">3. Erreurs classiques à éviter</h2>
+
+<h3 id="ref-erreur-1-commiter-sans-tester-localement">Erreur 1 — Commiter sans tester localement</h3>
+
+<p>La CI va rattraper les erreurs, mais attendre 3 minutes de feedback GitHub à chaque oubli, c'est très lent.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Mauvaise habitude
+git add . &amp;&amp; git commit -m &quot;fix&quot; &amp;&amp; git push
+# → Attendre 3 min → CI échoue → corriger → re-push → re-attendre
+
+# Bonne habitude
+make test          # Lancer les tests localement d&#x27;abord
+git add . &amp;&amp; git commit -m &quot;fix&quot; &amp;&amp; git push
+# → La CI est un filet de sécurité, pas le premier recours</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>La CI est un filet de sécurité, pas un substitut aux tests locaux. Tester localement avant chaque push, c'est la base.</p></div></div>
+
+<h3 id="ref-erreur-2-croire-que-git-commit-déclenche-la-ci">Erreur 2 — Croire que git commit déclenche la CI</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Ne déclenche PAS la CI
+git commit -m &quot;mon changement&quot;
+
+# Déclenche la CI
+git push origin ma-branche</code></pre></div>
+
+
+<p>La CI est sur les serveurs GitHub. Elle ne peut être déclenchée que par des événements remote (push, ouverture de PR).</p>
+
+<h3 id="ref-erreur-3-merger-une-pr-avec-la-ci-en-echec">Erreur 3 — Merger une PR avec la CI en echec</h3>
+
+<p>Si les tests sont rouges et que tu merges quand même, tu introduis des bugs dans <code>main</code> — la branche de référence pour tout le monde.</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Solution : configurer une "branch protection rule" sur <code>main</code> dans GitHub. Cette règle empêche techniquement de merger si la CI est en echec. Settings → Branches → Add rule → "Require status checks to pass before merging".</p></div></div>
+
+<h3 id="ref-erreur-4-mettre-des-secrets-dans-le-fichier-yaml">Erreur 4 — Mettre des secrets dans le fichier YAML</h3>
+
+<p>Les fichiers dans <code>.github/workflows/</code> sont versionnés et visibles par tout le monde (surtout sur un repo public).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># DANGEREUX — la clé API est visible dans l&#x27;historique Git
+env:
+  API_KEY: &quot;sk-12345-ma-super-cle-secrete&quot;
+
+# CORRECT — utiliser les GitHub Secrets
+env:
+  API_KEY: ${{ secrets.API_KEY }}
+  # La valeur réelle est stockée dans GitHub Settings → Secrets and variables</code></pre></div>
+
+
+<p>Pour ajouter un secret : Settings → Secrets and variables → Actions → New repository secret.</p>
+
+<hr>
+
+<h2 id="ref-4-pourquoi-le-cicd-change-tout">4. Pourquoi le CI/CD change tout</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Avantage</th><th>Sans CI/CD</th><th>Avec CI/CD</th></tr></thead><tbody><tr><td><strong>Temps de livraison</strong></td><td>Deploy manuel, lent</td><td>Deploy automatique, immédiat</td></tr><tr><td><strong>Qualité du code</strong></td><td>Tests oubliés = bugs en prod</td><td>Tests automatiques à chaque commit</td></tr><tr><td><strong>Fiabilité</strong></td><td>"Ca marche chez moi"</td><td>Environnement de test reproductible</td></tr><tr><td><strong>Retour en arrière</strong></td><td>Difficile, stressant</td><td>Facile, chaque version est tracée</td></tr><tr><td><strong>Charge mentale</strong></td><td>"Ai-je bien déployé la bonne version ?"</td><td>L'automatisation s'en charge</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le CI/CD, c'est l'application du principe "automatiser ce qui peut l'être". Les humains font des erreurs sur les tâches répétitives. Les machines non. On délègue les vérifications et les déploiements à des machines, pour se concentrer sur ce qui nécessite vraiment de la réflexion.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>1. Quelle est la difference entre la CI et la CD ?</strong></p>
+<p>La CI teste automatiquement le code à chaque push. La CD déploie automatiquement en production si les tests passent. La CI valide, la CD livre.</p>
+
+<p><strong>2. Que se passe-t-il si tu fais <code>git commit</code> sans <code>git push</code> ?</strong></p>
+<p>Rien du tout du côté de GitHub Actions. Le workflow ne se déclenche qu'au moment du <code>git push</code>, car c'est un événement remote que GitHub peut détecter.</p>
+
+<p><strong>3. Pourquoi ne faut-il jamais écrire un mot de passe ou une clé API directement dans un fichier YAML ?</strong></p>
+<p>Les fichiers <code>.github/workflows/</code> sont versionnés dans Git et visibles dans le repo GitHub. Un secret écrit en clair serait accessible à n'importe qui. Il faut utiliser les GitHub Secrets, qui stockent les valeurs de manière chiffrée.</p>
+
+<p><strong>4. Dans quel ordre doit-on toujours mettre en place CI et CD ?</strong></p>
+<p>Toujours CI en premier, CD en second. Déployer sans tester (CD sans CI) risque d'envoyer du code cassé directement en production, visible par les utilisateurs.</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>La <strong>CI</strong> (Intégration Continue) = tests automatiques déclenchés à chaque <code>git push</code> sur GitHub</li>
+<li>La <strong>CD</strong> (Déploiement Continu) = mise en production automatique si les tests passent</li>
+<li>Tout se configure avec un fichier <strong>YAML</strong> dans <code>.github/workflows/</code></li>
+<li>GitHub Actions orchestre la CI : checkout du code → install deps → <code>pytest</code></li>
+<li>Pour la CD : <strong>Streamlit Cloud</strong> (simple, gratuit) ou <strong>Google Cloud Run + Cloud Build</strong> (robuste)</li>
+<li>Un commit seul ne déclenche rien : il faut un <code>git push</code> pour activer la CI</li>
+<li>Ne jamais coller de secrets (clés API, mots de passe) dans le YAML — utiliser les <strong>GitHub Secrets</strong></li>
+<li>Ne jamais merger une PR avec la CI en echec — configurer une branch protection rule</li>
+<li>L'ordre est sacré : <strong>CI d'abord, CD ensuite</strong>, jamais l'inverse</li>
+<li>Analogie usine : CI = contrôle qualité, CD = expedition automatique vers le client</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-continuous-integration">Continuous Integration</a></li><li><a href="#syn-continuous-delivery-deployment">Continuous Delivery & Deployment</a></li><li><a href="#syn-github-actions">GitHub Actions</a></li><li><a href="#syn-pre-commit-hooks">Pre-commit hooks</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-ci-pour-les-pipelines-ml">CI pour les pipelines ML</a></li><li><a href="#syn-déploiement-progressif">Déploiement progressif</a></li><li><a href="#syn-gitops">GitOps</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-continuous-integration">Continuous Integration</h3>
+
+<p><strong>Continuous Integration (CI)</strong> : intégrer fréquemment le travail de plusieurs développeurs dans une même branche partagée, en exécutant automatiquement des <strong>tests à chaque push</strong> pour détecter les régressions tôt.</p>
+
+<p>Sans CI : un développeur travaille 2 semaines sur une feature, merge dans main, casse 50 tests d'autres modules. Personne ne s'en aperçoit avant la prochaine release.</p>
+
+<p>Avec CI : à chaque push, un serveur (GitHub Actions, GitLab CI, Jenkins) exécute la suite de tests. Si un test casse, le push est marqué en rouge et le merge est bloqué jusqu'à ce que ce soit corrigé.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># .github/workflows/ci.yml
+name: CI                              # nom affiché dans l&#x27;onglet Actions de GitHub
+on: [push, pull_request]              # déclenché à chaque push OU ouverture de PR
+
+jobs:
+  test:                               # nom interne du job
+    runs-on: ubuntu-latest            # machine virtuelle gratuite fournie par GitHub
+    steps:
+      - uses: actions/checkout@v4     # récupère le code du repo dans le runner
+      - uses: actions/setup-python@v5 # installe Python (plus rapide que apt install)
+        with:
+          python-version: &quot;3.11&quot;
+      - run: pip install -e &quot;.[dev]&quot;  # installe le package + deps dev (pytest, ruff...)
+      - run: ruff check .             # lint ultra-rapide (remplace flake8 + black + isort)
+      - run: mypy src/                # type checking statique
+      - run: pytest tests/ --cov=src --cov-fail-under=80
+      # ↑ lance les tests + calcule la couverture + échoue si &lt; 80%</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : la CI, c'est comme un test antidopage avant chaque match. Même les meilleurs joueurs peuvent avoir consommé quelque chose de problématique sans s'en rendre compte. Le test attrape ça avant que ça ait des conséquences. Sans CI, vous découvrez le problème pendant le match (en production).</p></div></div>
+
+<h3 id="syn-continuous-delivery-deployment">Continuous Delivery & Deployment</h3>
+
+<p><strong>Continuous Delivery (CD)</strong> : automatiser la <strong>préparation</strong> de chaque version pour qu'elle soit déployable à tout moment. Le déploiement reste manuel (un humain valide).</p>
+
+<p><strong>Continuous Deployment (CD)</strong> : automatiser <strong>aussi</strong> le déploiement. Chaque commit qui passe la CI est automatiquement déployé en production.</p>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>CI seule</th><th>CI + Continuous Delivery</th><th>CI + Continuous Deployment</th></tr></thead><tbody><tr><td>Tests automatiques</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>Build automatique</td><td></td><td>✓</td><td>✓</td></tr><tr><td>Déploiement staging</td><td></td><td>✓</td><td>✓</td></tr><tr><td>Déploiement production</td><td>manuel</td><td>manuel (un clic)</td><td>automatique</td></tr></tbody></table></div>
+<p>Les startups et les SaaS modernes (Netflix, Spotify, Vercel) pratiquent du <strong>Continuous Deployment</strong>, déployant des dizaines de fois par jour. Les domaines régulés (banques, santé) restent souvent en Continuous Delivery, avec un humain qui valide chaque release.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># Exemple : déploiement auto vers Cloud Run après tests OK
+deploy:
+  needs: test                              # ne tourne que si le job &quot;test&quot; a réussi
+  if: github.ref == &#x27;refs/heads/main&#x27;      # seulement sur la branche main (pas les PR)
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
+    - uses: google-github-actions/auth@v2  # auth GCP via service account
+      with:
+        credentials_json: ${{ secrets.GCP_SA_KEY }}   # secret stocké dans GitHub Settings
+    - run: gcloud run deploy api --source . --region us-central1
+    # ↑ build l&#x27;image Docker + déploie Cloud Run en une commande</code></pre></div>
+
+
+<h3 id="syn-github-actions">GitHub Actions</h3>
+
+<p>GitHub Actions est devenu le standard pour la CI/CD des projets open source et des startups. Configuration en YAML, exécution sur des runners GitHub (gratuits jusqu'à 2000 minutes/mois pour les repos privés).</p>
+
+<p>Structure d'un workflow :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">name: My Workflow                # Nom affiché dans l&#x27;UI
+
+on:                              # Quand déclencher
+  push:
+    branches: [main, develop]
+  pull_request:
+  schedule:
+    - cron: &quot;0 6 * * *&quot;          # Tous les jours à 6h UTC
+  workflow_dispatch:             # Déclenchement manuel
+
+jobs:                            # Liste de jobs (parallèles par défaut)
+  test:
+    runs-on: ubuntu-latest       # Type de machine
+    strategy:                    # Matrice d&#x27;environnements
+      matrix:
+        python: [&quot;3.10&quot;, &quot;3.11&quot;, &quot;3.12&quot;]
+    steps:                       # Liste d&#x27;étapes (séquentielles)
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: pip install -e .
+      - run: pytest</code></pre></div>
+
+
+<p>Concepts clés :</p>
+
+<ul>
+<li><strong><code>uses</code></strong> : action réutilisable du marketplace</li>
+<li><strong><code>run</code></strong> : commande shell</li>
+<li><strong><code>secrets</code></strong> : variables sensibles stockées dans GitHub</li>
+<li><strong><code>needs</code></strong> : déclare une dépendance entre jobs</li>
+<li><strong><code>if</code></strong> : condition d'exécution</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : commencez petit. Ajoutez seulement <code>pytest</code> au début. Une fois que ça marche, ajoutez <code>ruff</code>, puis <code>mypy</code>, puis le déploiement. Une CI surchargée et fragile décourage l'équipe — une CI minimale et verte est mieux.</p></div></div>
+
+<h3 id="syn-pre-commit-hooks">Pre-commit hooks</h3>
+
+<p>Les <strong>pre-commit hooks</strong> sont des scripts qui s'exécutent <strong>localement</strong> avant chaque <code>git commit</code>. Ils attrapent les erreurs avant même que le commit ne parte sur GitHub.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># .pre-commit-config.yaml
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.5.0
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.10.0
+    hooks:
+      - id: mypy
+        additional_dependencies: [types-requests]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+        args: [--maxkb=1000]
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.0
+    hooks:
+      - id: gitleaks                # Bloque les commits contenant des secrets</code></pre></div>
+
+
+<p>Installation :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install pre-commit
+pre-commit install
+# Désormais, chaque git commit exécute ces hooks</code></pre></div>
+
+
+<p>Avantages :</p>
+
+<ul>
+<li><strong>Feedback instantané</strong> : pas besoin d'attendre la CI pour voir l'erreur</li>
+<li><strong>Cohérence</strong> : tout le monde a le même style automatiquement</li>
+<li><strong>Sécurité</strong> : <code>gitleaks</code> bloque les commits avec des secrets en clair</li>
+<li><strong>Économie</strong> : moins de runs CI inutiles à cause de typos</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège</strong> : un pre-commit qui prend > 30 secondes décourage l'équipe et finit par être contourné (<code>git commit --no-verify</code>). Gardez les hooks <strong>rapides</strong> : ruff (instantané), mypy si possible, gitleaks. Pas de tests lourds en pre-commit — laissez ça à la CI.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-ci-pour-les-pipelines-ml">CI pour les pipelines ML</h3>
+
+<p>Tester un pipeline ML est plus complexe que tester du code classique. Cinq types de tests à considérer :</p>
+
+<p><strong>1. Tests de code</strong> : tests unitaires Python classiques (pytest).</p>
+
+<p><strong>2. Tests de données</strong> : valider que les données d'entraînement respectent un schéma.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandera as pa
+
+schema = pa.DataFrameSchema({
+    &quot;age&quot;: pa.Column(int, pa.Check.in_range(0, 120)),
+    &quot;income&quot;: pa.Column(float, pa.Check.greater_than(0)),
+})
+schema.validate(df)</code></pre></div>
+
+
+<p><strong>3. Tests de modèle</strong> : sanity checks sur les prédictions.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def test_model_baseline():
+    &quot;&quot;&quot;Le modèle doit être au moins aussi bon que de prédire la classe majoritaire.&quot;&quot;&quot;
+    score = model.score(X_test, y_test)
+    baseline = (y_test == y_test.mode()[0]).mean()
+    assert score &gt; baseline + 0.05</code></pre></div>
+
+
+<p><strong>4. Tests d'invariance</strong> : si je change un détail non significatif, la prédiction ne doit pas changer drastiquement.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def test_robustness_to_capitalization():
+    pred1 = model.predict([&quot;This is great!&quot;])
+    pred2 = model.predict([&quot;this is GREAT!&quot;])
+    assert pred1 == pred2</code></pre></div>
+
+
+<p><strong>5. Tests de performance</strong> : la latence doit rester sous un seuil.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def test_latency_below_100ms():
+    start = time.perf_counter()
+    model.predict(X_sample)
+    assert (time.perf_counter() - start) * 1000 &lt; 100</code></pre></div>
+
+
+<h3 id="syn-déploiement-progressif">Déploiement progressif</h3>
+
+<p>(Cf. Predict in Production pour les détails.)</p>
+
+<p>Trois patterns courants :</p>
+
+<ol>
+<li><strong>Blue-green</strong> : deux environnements identiques, on bascule le trafic d'un coup</li>
+<li><strong>Canary</strong> : 1%-5%-25%-100% progressivement</li>
+<li><strong>Shadow</strong> : la nouvelle version reçoit une copie du trafic mais ses réponses ne sont pas renvoyées (test à charge réelle sans risque)</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># Exemple Cloud Run canary
+deploy-canary:
+  steps:
+    - run: gcloud run deploy api-v2 --source .
+    - run: gcloud run services update-traffic api --to-revisions=api-v1=95,api-v2=5
+    # ... monitor 1h, rollback si KO ...
+    - run: gcloud run services update-traffic api --to-revisions=api-v1=0,api-v2=100</code></pre></div>
+
+
+<h3 id="syn-gitops">GitOps</h3>
+
+<p><strong>GitOps</strong> est un pattern où l'<strong>état désiré de l'infrastructure</strong> est décrit dans un repo Git, et un agent (ArgoCD, Flux) maintient automatiquement l'état réel synchronisé avec ce qui est dans Git.</p>
+
+<p>Avantages :</p>
+
+<ul>
+<li><strong>Audit trail</strong> : toutes les modifications sont des commits, traçables</li>
+<li><strong>Rollback</strong> : <code>git revert</code> pour annuler un déploiement</li>
+<li><strong>Code review</strong> : modifications d'infra passent par PR comme du code</li>
+<li><strong>Reproducibilité</strong> : recréer un environnement = re-appliquer le repo</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># Exemple : un fichier qui décrit le déploiement
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: churn-api
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: api
+          image: gcr.io/my-project/churn-api:v3.2.1
+          resources:
+            limits:
+              memory: &quot;1Gi&quot;
+              cpu: &quot;500m&quot;</code></pre></div>
+
+
+<p>Avec ArgoCD/Flux, dès que vous changez <code>v3.2.1</code> → <code>v3.3.0</code> et committez, le cluster se met à jour automatiquement.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : sans GitOps, déployer c'est appeler la cuisine pour leur dire "préparez la table 5 avec une pizza". Avec GitOps, c'est mettre à jour la commande dans le cahier de la cuisine — et la cuisine voit automatiquement qu'il faut faire une pizza pour la table 5. Le cahier (Git) est la source de vérité, pas les appels téléphoniques.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi configurer une CI dès le premier jour d'un projet, même solo ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>discipline et reproductibilité.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Cinq raisons. (1) <strong>Discipline</strong> : une CI vous force à écrire des tests dès le début, ce qui produit un code plus modulaire et plus testable. Sans CI, vous procrastinez les tests "pour plus tard" qui n'arrive jamais. (2) <strong>Reproductibilité</strong> : la CI tourne dans un environnement neuf, vide. Si "ça marche en local" mais pas en CI, c'est que vous dépendez de quelque chose dans votre environnement local — bug à corriger immédiatement. (3) <strong>Documentation vivante</strong> : le fichier <code>.github/workflows/ci.yml</code> documente exactement comment installer et tester votre projet. Un nouveau contributeur le lit et sait quoi faire. (4) <strong>Sécurité</strong> : les linters (ruff, bandit) attrapent automatiquement des vulnérabilités courantes. (5) <strong>Trace de qualité</strong> : avoir des badges "CI passing" et "coverage 85%" sur votre README inspire confiance pour les recruteurs et les utilisateurs open source. <strong>Coût</strong> : 30 minutes de setup pour un workflow basique. <strong>Bénéfice</strong> : économisé chaque jour pendant des mois. C'est l'investissement avec le meilleur ROI en software engineering. Question d'entretien dev : "Vous configurez la CI quand sur un nouveau projet ?" — la bonne réponse est "dès le premier commit", pas "quand on aura le temps".</p>
+
+</details>
+
+<p><strong>Q2 : Quelle est la différence entre Continuous Delivery et Continuous Deployment ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>automatisation finale.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Continuous Delivery</strong> : chaque commit qui passe la CI est <strong>prêt à être déployé</strong> en production, mais le déploiement reste <strong>déclenché manuellement</strong> (un humain clique sur "Deploy"). C'est l'approche prudente : un humain valide chaque release, peut décider de regrouper plusieurs commits en une seule release, ou de retarder un déploiement pour des raisons business. <strong>Continuous Deployment</strong> : chaque commit qui passe la CI est <strong>automatiquement déployé</strong> en production sans intervention humaine. C'est l'approche aggressive : Netflix, Vercel, Spotify déploient des centaines de fois par jour avec ce modèle. Conditions pour passer en Continuous Deployment : (1) tests complets et fiables (aucun flaky test), (2) monitoring + rollback automatique, (3) feature flags pour activer/désactiver une feature sans redéploiement, (4) discipline d'équipe — un commit cassé en main est cassé en prod. <strong>Recommandation</strong> : commencer par Continuous Delivery (un clic), passer à Continuous Deployment une fois la culture d'équipe et l'infra mûres. Pour un domaine régulé (banque, santé), Delivery suffit souvent. Question d'entretien DevOps : la réponse exhaustive distingue clairement Delivery vs Deployment.</p>
+
+</details>
+
+<p><strong>Q3 : Vous voulez ajouter un test de performance dans votre CI : la latence du modèle doit rester < 100ms. Comment l'implémenter sans casser à chaque variation aléatoire ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>moyenne et tolerance.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Trois précautions essentielles. (1) <strong>Mesurer plusieurs runs</strong> : un seul run peut être lent à cause d'un GC, d'une page swap, ou d'un voisin bruyant sur le runner CI. Mesurer 100 runs et prendre la médiane ou la moyenne après warm-up.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import time
+
+def test_latency():
+    # Warm-up
+    for _ in range(10):
+        model.predict(X_sample)
+
+    # Mesure
+    durations = []
+    for _ in range(100):
+        start = time.perf_counter()
+        model.predict(X_sample)
+        durations.append((time.perf_counter() - start) * 1000)
+
+    p95 = sorted(durations)[95]
+    assert p95 &lt; 100, f&quot;p95 latency was {p95:.2f}ms, expected &lt; 100ms&quot;</code></pre></div>
+
+
+<p>(2) <strong>Tolérance dans le seuil</strong> : ne pas mettre exactement 100ms si la moyenne tourne autour de 95ms — vous aurez des faux positifs. Mettre 150ms pour avoir de la marge. (3) <strong>Runner stable</strong> : utiliser un type d'instance constant (ex : <code>ubuntu-latest</code>). Les VMs cloud ont des perfs variables. Ou mieux, utiliser un self-hosted runner dédié pour les tests de performance. (4) <strong>Bench dans un job séparé</strong> : ne pas bloquer la CI sur les perfs si elles sont lentes ailleurs (un test fonctionnel qui passe ne devrait pas dépendre d'une CI saturée). (5) <strong>Tracker plutôt qu'asserter</strong> : pour des optimisations gradient, mieux que asserter, c'est de <strong>tracker</strong> la latence dans le temps (avec un dashboard) et alerter sur une dégradation > 20%. C'est plus robuste qu'un seuil absolu. Question d'entretien CI : "Comment testez-vous la performance dans la CI ?" — la réponse exhaustive révèle l'expérience pratique.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://docs.github.com/en/actions" target="_blank" rel="noopener">GitHub Actions documentation</a></li>
+<li><em>Continuous Delivery</em> (Jez Humble, David Farley) — la bible historique</li>
+<li><a href="https://pre-commit.com/" target="_blank" rel="noopener">pre-commit.com</a> — pour automatiser les checks locaux</li>
+<li><em>Accelerate</em> (Forsgren, Humble, Kim) — études quantitatives sur les pratiques DevOps</li>
+<li><a href="https://12factor.net/" target="_blank" rel="noopener">The Twelve-Factor App</a> — principes de prod intemporels</li>
+<li><a href="https://github.com/sdras/awesome-actions" target="_blank" rel="noopener">Awesome Actions</a> — liste curée d'actions GitHub</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../mlops/predict-production.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Predict in Production</span>
+  </a>
+  <a href="../mlops/coding-team.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Coding as a Team →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

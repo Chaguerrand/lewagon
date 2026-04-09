@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classes — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Classes</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html" class="active">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Python & SQL Week</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Classes</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Classes</h1>
+        <p class="page-objective">Comprendre les bases de l'OOP (Programmation Orientée Objet) en Python.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Classe</div>
+        <div class="key-concept-def">Plan de fabrication d&#x27;objets : attributs (état) + méthodes (comportement).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">`__init__`</div>
+        <div class="key-concept-def">Constructeur appelé à chaque création d&#x27;instance.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">`self`</div>
+        <div class="key-concept-def">Référence à l&#x27;instance courante, premier argument implicite des méthodes.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Héritage</div>
+        <div class="key-concept-def">Une classe enfant réutilise et étend une classe parent.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-classes-oop">Cheatsheet — Classes & OOP</a><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-oop-data-behavior">1) OOP : data + behavior</a><li><a href="#2-exemple-avec-une-classe-existante-str">2) Exemple avec une classe existante : `str`</a><li><a href="#3-classes-et-instances">3) Classes et instances</a><li><a href="#4-créer-sa-première-classe-car">4) Créer sa première classe : `Car`</a><ol><li><a href="#41-définition">4.1 Définition</a></li><li><a href="#42-instanciation">4.2 Instanciation</a></li></ol></li><li><a href="#5-le-constructeur-__init__">5) Le constructeur : `__init__`</a><li><a href="#6-attributs-dinstance-state">6) Attributs d'instance (state)</a><li><a href="#7-méthodes-dinstance-behavior">7) Méthodes d'instance (behavior)</a><li><a href="#8-le-rôle-de-self">8) Le rôle de `self`</a><li><a href="#9-résumé">9) Résumé</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-classes-oop">📋 Cheatsheet — Classes & OOP</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## ── DÉFINIR UNE CLASSE ───────────────────────────────
+class MaClasse:                        # CamelCase obligatoire
+    def __init__(self, param1, param2):
+        self.attribut1 = param1        # état (state) — toujours dans __init__
+        self.attribut2 = param2
+
+    def ma_methode(self):              # comportement (behavior)
+        return self.attribut1          # accède à l&#x27;état via self
+
+## ── INSTANCIER ───────────────────────────────────────
+obj = MaClasse(&quot;valeur1&quot;, &quot;valeur2&quot;)   # Python appelle __init__ automatiquement
+
+## ── ACCÉDER ──────────────────────────────────────────
+obj.attribut1          # attribut  → sans ()
+obj.ma_methode()       # méthode   → avec ()
+
+## ── MODIFIER UN ATTRIBUT ─────────────────────────────
+obj.attribut1 = &quot;nouvelle_valeur&quot;
+
+## ── EXEMPLE COMPLET ──────────────────────────────────
+class Car:
+    def __init__(self, brand):
+        self.brand = brand
+        self.engine_started = False    # toujours initialiser dans __init__
+
+    def start_engine(self):
+        self.engine_started = True     # modifie l&#x27;état via self
+
+    def is_running(self):
+        return self.engine_started     # retourne l&#x27;état courant
+
+ferrari = Car(&quot;Ferrari&quot;)
+ferrari.start_engine()
+ferrari.is_running()   # True
+
+## ── CONVENTIONS ──────────────────────────────────────
+## Fichier    → snake_case.py
+## Classe     → CamelCase
+## Méthode    → snake_case()
+## Attribut   → snake_case</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier <code>self</code> comme premier paramètre d'une méthode</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Car:
+    def start_engine():  # ❌ TypeError à l&#x27;appel
+        pass
+
+    def start_engine(self):  # ✅
+        pass</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre attribut et méthode (parenthèses)</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">my_car.engine_started()  # ❌ TypeError: &#x27;bool&#x27; is not callable
+my_car.engine_started    # ✅ attribut → sans ()
+my_car.start_engine()    # ✅ méthode  → avec ()</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier d'initialiser un attribut dans <code>__init__</code></strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Car:
+    def start_engine(self):
+        self.engine_started = True  # ❌ l&#x27;attribut n&#x27;existe que si start_engine est appelé
+
+class Car:
+    def __init__(self):
+        self.engine_started = False  # ✅ toujours défini dès l&#x27;instanciation</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Nommer une classe en snake_case</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class sports_car:  # ❌ convention non respectée
+class SportsCar:   # ✅ CamelCase</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Appeler <code>__init__</code> manuellement</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">my_car.__init__()  # ❌ inutile et trompeur
+my_car = Car()     # ✅ Python appelle __init__ automatiquement</code></pre></div></div></div>
+
+<hr>
+
+<h2 id="1-oop-data-behavior">1) OOP : data + behavior</h2>
+
+<p>L'OOP consiste à regrouper :</p>
+
+<ul>
+<li><strong>Data</strong> (ou <strong>state</strong>) : les informations stockées.</li>
+<li><strong>Behavior</strong> : les méthodes (fonctions) qui agissent sur ces données.</li>
+</ul>
+
+<hr>
+
+<h2 id="2-exemple-avec-une-classe-existante-str">2) Exemple avec une classe existante : <code>str</code></h2>
+
+<p>Python fournit des classes intégrées, comme <code>str</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">sentence = &quot;hello world&quot;
+sentence = str(&quot;hello world&quot;)</code></pre></div>
+
+
+<p>Ici :</p>
+
+<ul>
+<li><strong>State</strong> : la suite de caractères.</li>
+<li><strong>Behavior</strong> : des méthodes comme <code>upper()</code>.</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">sentence.upper()</code></pre></div>
+
+
+<hr>
+
+<h2 id="3-classes-et-instances">3) Classes et instances</h2>
+
+<ul>
+<li>Une <strong>classe</strong> est un <em>plan</em> (ou un moule).</li>
+<li>Une <strong>instance</strong> est un <em>objet concret</em> créé à partir de ce plan.</li>
+</ul>
+
+<p>Exemple mental : blueprint de voiture → voitures fabriquées.</p>
+
+<figure><img src="../../assets/images/classes-01-92f0b112.png" alt="Car classes" loading="lazy"></figure>
+
+<p>Car classes</p>
+
+<hr>
+
+<h2 id="4-créer-sa-première-classe-car">4) Créer sa première classe : <code>Car</code></h2>
+
+<h3 id="41-définition">4.1 Définition</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Car:
+	pass</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Convention</strong></p>
+<p>- Nom de fichier : <code>sports_car.py</code> (snake_case)</p>
+<p>- Nom de classe : <code>SportsCar</code> (CamelCase)</p></div></div>
+
+<h3 id="42-instanciation">4.2 Instanciation</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">ferrari = Car()  # crée une instance
+
+type(ferrari)    #=&gt; __main__.Car</code></pre></div>
+
+
+<hr>
+
+<h2 id="5-le-constructeur-__init__">5) Le constructeur : <code>__init__</code></h2>
+
+<p>Quand tu fais <code>Car()</code>, Python :</p>
+
+<ol>
+<li>crée l'objet</li>
+<li>puis appelle <code>__init__</code></li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Car:
+	def __init__(self):
+		print(&quot;You have just instantiated the class!&quot;)
+
+ferrari = Car()
+#=&gt; You have just instantiated the class!</code></pre></div>
+
+
+<hr>
+
+<h2 id="6-attributs-dinstance-state">6) Attributs d'instance (state)</h2>
+
+<p>Les attributs stockent la <strong>data</strong> de l'objet.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Car:
+	def __init__(self):
+		self.engine_started = False
+
+my_car = Car()
+my_car.engine_started  #=&gt; False</code></pre></div>
+
+
+<hr>
+
+<h2 id="7-méthodes-dinstance-behavior">7) Méthodes d'instance (behavior)</h2>
+
+<p>Les méthodes sont les <strong>comportements</strong> de l'objet.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Car:
+	def __init__(self):
+		self.engine_started = False
+
+	def is_engine_started(self):
+		return self.engine_started
+
+	def start_engine(self):
+		self.engine_started = True
+
+my_car = Car()
+my_car.is_engine_started()  #=&gt; False
+my_car.start_engine()
+my_car.is_engine_started()  #=&gt; True</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Parenthèses : méthode vs attribut</strong></p>
+<p>- <code>my_car.is_engine_started()</code> → méthode → <strong>avec</strong> <code>()</code></p>
+<p>- <code>my_car.engine_started</code> → attribut → <strong>sans</strong> <code>()</code></p></div></div>
+
+<hr>
+
+<h2 id="8-le-rôle-de-self">8) Le rôle de <code>self</code></h2>
+
+<p><code>self</code> est une référence vers <strong>l'instance courante</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Castle:
+	def __init__(self, name, ruler):
+		self.name = name
+		self.ruler = ruler
+
+	def castle_details(self):
+		return f&quot;{self.name} is ruled by {self.ruler_name()}&quot;
+
+	def ruler_name(self):
+		return self.ruler.capitalize()
+
+dragonstone = Castle(&quot;Dragonstone&quot;, &quot;targaryen&quot;)
+dragonstone.castle_details()  # =&gt; &quot;Dragonstone is ruled by Targaryen&quot;</code></pre></div>
+
+
+<hr>
+
+<h2 id="9-résumé">9) Résumé</h2>
+
+<ul>
+<li>En Python, <strong>tout est objet</strong>.</li>
+<li>Une classe définit :</li>
+<li>des <strong>attributs</strong> (state)</li>
+<li>des <strong>méthodes</strong> (behavior)</li>
+<li><code>self</code> désigne l'instance sur laquelle la méthode est appelée.</li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-pourquoi-apprendre-les-classes">Pourquoi apprendre les classes ?</a></li><li><a href="#ref-les-5-points-à-retenir-absolument">Les 5 points à retenir absolument</a></li><li><a href="#ref-lanalogie-fil-rouge-le-moule-à-gâteau">L'analogie fil rouge : le moule à gâteau</a></li><li><a href="#ref-ce-que-tu-vas-apprendre-dans-ce-cours">Ce que tu vas apprendre dans ce cours</a></li></ol></li><li><a href="#ref-1-oop-regrouper-données-et-comportements">1) OOP : regrouper données et comportements</a><ol><li><a href="#ref-le-problème-sans-oop">Le problème sans OOP</a></li><li><a href="#ref-la-solution-oop">La solution OOP</a></li></ol></li><li><a href="#ref-2-python-utilise-déjà-des-classes">2) Python utilise déjà des classes</a><li><a href="#ref-3-classe-vs-instance-le-plan-et-lobjet">3) Classe vs Instance : le plan et l'objet</a><ol><li><a href="#ref-la-classe-le-plan-de-construction">La classe = le plan de construction</a></li><li><a href="#ref-linstance-lobjet-concret">L'instance = l'objet concret</a></li></ol></li><li><a href="#ref-4-créer-sa-première-classe">4) Créer sa première classe</a><ol><li><a href="#ref-41-la-définition-minimale">4.1 La définition minimale</a></li><li><a href="#ref-42-instanciation-créer-un-objet-à-partir-de-la-classe">4.2 Instanciation : créer un objet à partir de la classe</a></li></ol></li><li><a href="#ref-5-le-constructeur-__init__">5) Le constructeur : `__init__`</a><ol><li><a href="#ref-quest-ce-que-__init__">Qu'est-ce que `__init__` ?</a></li><li><a href="#ref-passer-des-paramètres-au-constructeur">Passer des paramètres au constructeur</a></li></ol></li><li><a href="#ref-6-les-attributs-dinstance-stocker-létat">6) Les attributs d'instance : stocker l'état</a><ol><li><a href="#ref-cest-quoi-un-attribut">C'est quoi un attribut ?</a></li><li><a href="#ref-on-peut-modifier-un-attribut-directement">On peut modifier un attribut directement</a></li><li><a href="#ref-pourquoi-initialiser-dans-__init__-et-pas-ailleurs">Pourquoi initialiser dans `__init__` et pas ailleurs ?</a></li><li><a href="#ref-exemple-avec-plusieurs-attributs">Exemple avec plusieurs attributs</a></li></ol></li><li><a href="#ref-7-les-méthodes-dinstance-définir-les-comportements">7) Les méthodes d'instance : définir les comportements</a><ol><li><a href="#ref-cest-quoi-une-méthode">C'est quoi une méthode ?</a></li></ol></li><li><a href="#ref-8-le-rôle-de-self">8) Le rôle de `self`</a><ol><li><a href="#ref-comprendre-self">Comprendre `self`</a></li><li><a href="#ref-exemple-avec-self-qui-appelle-une-autre-méthode">Exemple avec `self` qui appelle une autre méthode</a></li></ol></li><li><a href="#ref-9-récapitulatif-classe-complète-commentée">9) Récapitulatif : classe complète commentée</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<h3 id="ref-pourquoi-apprendre-les-classes">Pourquoi apprendre les classes ?</h3>
+
+<p>Jusqu'ici, tu as écrit du code de manière "linéaire" : des variables, des fonctions, des listes. C'est bien pour des petits programmes. Mais dès que ton programme grandit, tu as besoin d'un outil plus puissant pour <strong>organiser</strong> ton code. Cet outil, c'est la <strong>Programmation Orientée Objet</strong> (OOP — <em>Object-Oriented Programming</em>).</p>
+
+<p>L'idée centrale : regrouper dans un même "endroit" les <strong>données</strong> et les <strong>actions</strong> qui vont avec.</p>
+
+<h3 id="ref-les-5-points-à-retenir-absolument">Les 5 points à retenir absolument</h3>
+
+<ul>
+<li>Une <strong>classe</strong> est un moule — elle décrit la structure générale.</li>
+<li>Une <strong>instance</strong> est un objet fabriqué avec ce moule — c'est la chose concrète.</li>
+<li>Les <strong>attributs</strong> sont les informations stockées dans l'objet (son état).</li>
+<li>Les <strong>méthodes</strong> sont les actions que l'objet peut faire (son comportement).</li>
+<li><code>self</code> est le mot magique qui permet à l'objet de se référer à lui-même.</li>
+</ul>
+
+<h3 id="ref-lanalogie-fil-rouge-le-moule-à-gâteau">L'analogie fil rouge : le moule à gâteau</h3>
+
+<p>Imagine un <strong>moule à gâteau en forme d'étoile</strong>.</p>
+
+<ul>
+<li>Le moule = la <strong>classe</strong>. Il définit la forme, mais tout seul il ne sert à rien.</li>
+<li>Chaque gâteau fabriqué avec ce moule = une <strong>instance</strong>. C'est quelque chose de réel, de concret.</li>
+<li>La saveur du gâteau (chocolat, vanille...) = un <strong>attribut</strong>. Chaque gâteau a sa propre saveur.</li>
+<li>"Couper le gâteau" ou "le décorer" = des <strong>méthodes</strong>. Ce sont des actions qu'on peut faire sur un gâteau.</li>
+</ul>
+
+<p>On peut fabriquer autant de gâteaux qu'on veut avec le même moule, chacun avec ses propres caractéristiques.</p>
+
+<h3 id="ref-ce-que-tu-vas-apprendre-dans-ce-cours">Ce que tu vas apprendre dans ce cours</h3>
+
+<ol>
+<li>Ce qu'est l'OOP (données + comportement)</li>
+<li>Comment Python utilise déjà des classes (ex: <code>str</code>)</li>
+<li>La différence entre classe et instance</li>
+<li>Comment créer ta propre classe</li>
+<li>Le constructeur <code>__init__</code></li>
+<li>Les attributs (stocker des données)</li>
+<li>Les méthodes (définir des comportements)</li>
+<li>Le rôle de <code>self</code></li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-oop-regrouper-données-et-comportements">1) OOP : regrouper données et comportements</h2>
+
+<h3 id="ref-le-problème-sans-oop">Le problème sans OOP</h3>
+
+<p>Sans classes, si tu veux modéliser une voiture, tu te retrouves avec des variables éparpillées :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Sans classe : tout est éparpillé, difficile à gérer
+voiture_marque = &quot;Ferrari&quot;        # une variable pour la marque
+voiture_demarree = False          # une autre pour l&#x27;état du moteur
+
+# Et si tu as 10 voitures ? C&#x27;est le chaos.</code></pre></div>
+
+
+<h3 id="ref-la-solution-oop">La solution OOP</h3>
+
+<p>L'OOP regroupe les <strong>données</strong> (ce qu'on sait sur l'objet) et les <strong>comportements</strong> (ce qu'on peut faire avec l'objet) au même endroit.</p>
+
+<ul>
+<li><strong>Data / State (état)</strong> : les informations que l'objet "connaît" sur lui-même. Ex: une voiture connaît sa marque, si son moteur est démarré ou non.</li>
+<li><strong>Behavior (comportement)</strong> : les actions que l'objet peut effectuer. Ex: une voiture peut démarrer son moteur.</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>En OOP, on dit souvent que les objets ont un <strong>état</strong> (ce qu'ils sont) et un <strong>comportement</strong> (ce qu'ils font). C'est exactement comme dans la vraie vie : une lampe a un état (allumée ou éteinte) et un comportement (s'allumer, s'éteindre).</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-python-utilise-déjà-des-classes">2) Python utilise déjà des classes</h2>
+
+<p>Tu les utilises sans le savoir. La classe <code>str</code> en est l'exemple parfait.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">sentence = &quot;hello world&quot;          # crée une instance de la classe str
+sentence = str(&quot;hello world&quot;)     # c&#x27;est exactement pareil, écrit autrement</code></pre></div>
+
+
+<p>Cette chaîne de caractères a :</p>
+<ul>
+<li>un <strong>état</strong> : la suite de lettres <code>&quot;hello world&quot;</code></li>
+<li>des <strong>comportements</strong> : des méthodes qu'on peut appeler dessus</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">sentence.upper()   # appelle la méthode upper() → retourne &quot;HELLO WORLD&quot;</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>En Python, <strong>tout est objet</strong>. Les chaînes, les listes, les entiers... tout. Quand tu écris <code>&quot;bonjour&quot;.upper()</code>, tu appelles une méthode sur une instance de la classe <code>str</code>. Tu utilisais des classes depuis le début sans t'en rendre compte !</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-classe-vs-instance-le-plan-et-lobjet">3) Classe vs Instance : le plan et l'objet</h2>
+
+<h3 id="ref-la-classe-le-plan-de-construction">La classe = le plan de construction</h3>
+
+<p>Une classe décrit comment un objet doit être fait. Elle ne crée rien de concret, elle définit juste la structure.</p>
+
+<h3 id="ref-linstance-lobjet-concret">L'instance = l'objet concret</h3>
+
+<p>Une instance est un objet réel, créé à partir de la classe.</p>
+
+<p>Exemple mental : le plan d'architecte d'une maison (classe) vs la maison construite (instance). À partir d'un seul plan, on peut construire plusieurs maisons différentes.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># La classe &quot;Car&quot; est le plan
+# ferrari, renault, toyota sont des instances (des voitures concrètes)
+ferrari = Car()
+renault = Car()
+toyota  = Car()</code></pre></div>
+
+
+<p>Chaque instance est indépendante : démarrer le moteur de <code>ferrari</code> n'affecte pas <code>renault</code>.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le moule à gâteau (classe) peut servir à faire autant de gâteaux (instances) qu'on veut. Chaque gâteau est indépendant.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-créer-sa-première-classe">4) Créer sa première classe</h2>
+
+<h3 id="ref-41-la-définition-minimale">4.1 La définition minimale</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Car:   # on déclare une classe avec le mot-clé &quot;class&quot;
+    pass     # &quot;pass&quot; = &quot;je ne mets rien pour l&#x27;instant, mais la classe existe&quot;</code></pre></div>
+
+
+<p>La classe <code>Car</code> existe maintenant. Elle est vide, mais elle existe.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Convention de nommage — à respecter toujours :</strong></p>
+<p>- Nom de fichier Python : <code>sports_car.py</code> → <strong>snake_case</strong> (minuscules + underscores)</p>
+<p>- Nom de classe : <code>SportsCar</code> → <strong>CamelCase</strong> (chaque mot commence par une majuscule)</p>
+<p>- Méthodes et attributs : <code>start_engine</code>, <code>engine_started</code> → <strong>snake_case</strong></p></div></div>
+
+<h3 id="ref-42-instanciation-créer-un-objet-à-partir-de-la-classe">4.2 Instanciation : créer un objet à partir de la classe</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">ferrari = Car()   # on &quot;instancie&quot; la classe Car → on crée un objet ferrari
+
+type(ferrari)     # =&gt; &lt;class &#x27;__main__.Car&#x27;&gt;  — Python confirme que ferrari est un Car</code></pre></div>
+
+
+<p><code>Car()</code> avec les parenthèses, c'est comme "appeler" le moule pour fabriquer un gâteau.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>On nomme les classes en <strong>CamelCase</strong>, pas en snake_case. <code>class sports_car:</code> est incorrect. La bonne écriture est <code>class SportsCar:</code>.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-le-constructeur-__init__">5) Le constructeur : <code>__init__</code></h2>
+
+<h3 id="ref-quest-ce-que-__init__">Qu'est-ce que <code>__init__</code> ?</h3>
+
+<p><code>__init__</code> est une méthode <strong>spéciale</strong> appelée automatiquement par Python <strong>à chaque fois qu'une instance est créée</strong>. C'est le "constructeur" de l'objet.</p>
+
+<p>Les doubles underscores <code>__</code> de chaque côté signalent que c'est une méthode réservée par Python (on appelle ça "dunder" pour <em>double underscore</em>).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Car:
+    def __init__(self):                          # cette méthode est appelée automatiquement
+        print(&quot;Une voiture vient d&#x27;être créée!&quot;)  # s&#x27;exécute à la création
+
+ferrari = Car()
+# =&gt; Une voiture vient d&#x27;être créée!            # Python a appelé __init__ tout seul</code></pre></div>
+
+
+<p>Quand tu écris <code>Car()</code>, Python fait deux choses dans l'ordre :</p>
+<ol>
+<li>Il crée l'objet en mémoire.</li>
+<li>Il appelle automatiquement <code>__init__</code> pour l'initialiser.</li>
+</ol>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais appeler <code>__init__</code> manuellement comme ça : <code>ferrari.__init__()</code>. C'est inutile et source de confusion. Python s'en charge tout seul quand tu écris <code>Car()</code>.</p></div></div>
+
+<h3 id="ref-passer-des-paramètres-au-constructeur">Passer des paramètres au constructeur</h3>
+
+<p><code>__init__</code> peut accepter des paramètres, comme n'importe quelle fonction :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Car:
+    def __init__(self, brand):   # brand est un paramètre passé à la création
+        print(f&quot;Voiture créée : {brand}&quot;)
+
+ferrari = Car(&quot;Ferrari&quot;)         # on passe &quot;Ferrari&quot; au constructeur
+# =&gt; Voiture créée : Ferrari</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-6-les-attributs-dinstance-stocker-létat">6) Les attributs d'instance : stocker l'état</h2>
+
+<h3 id="ref-cest-quoi-un-attribut">C'est quoi un attribut ?</h3>
+
+<p>Un attribut, c'est une <strong>variable attachée à une instance</strong>. Elle stocke l'état de l'objet.</p>
+
+<p>On les définit dans <code>__init__</code> avec la syntaxe <code>self.nom_attribut = valeur</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Car:
+    def __init__(self):
+        self.engine_started = False   # l&#x27;attribut engine_started est initialisé à False
+
+my_car = Car()                        # on crée une instance
+my_car.engine_started                 # =&gt; False  — on accède à l&#x27;attribut SANS parenthèses</code></pre></div>
+
+
+<h3 id="ref-on-peut-modifier-un-attribut-directement">On peut modifier un attribut directement</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">my_car.engine_started = True          # on modifie l&#x27;attribut directement
+my_car.engine_started                 # =&gt; True</code></pre></div>
+
+
+<h3 id="ref-pourquoi-initialiser-dans-__init__-et-pas-ailleurs">Pourquoi initialiser dans <code>__init__</code> et pas ailleurs ?</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># MAUVAISE pratique : l&#x27;attribut n&#x27;existe que si la méthode est appelée
+class Car:
+    def start_engine(self):
+        self.engine_started = True    # ❌ engine_started n&#x27;existe pas encore avant cet appel
+
+# BONNE pratique : l&#x27;attribut existe dès la création de l&#x27;objet
+class Car:
+    def __init__(self):
+        self.engine_started = False   # ✅ engine_started existe toujours, dès le départ</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Toujours initialiser tous les attributs dans <code>__init__</code>. Sinon, si tu essaies d'y accéder avant d'avoir appelé la méthode qui le crée, Python lève une <code>AttributeError</code>.</p></div></div>
+
+<h3 id="ref-exemple-avec-plusieurs-attributs">Exemple avec plusieurs attributs</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Car:
+    def __init__(self, brand):         # brand est passé en paramètre
+        self.brand = brand             # on stocke la marque dans l&#x27;attribut self.brand
+        self.engine_started = False    # le moteur est éteint par défaut
+
+ferrari = Car(&quot;Ferrari&quot;)              # on passe &quot;Ferrari&quot; comme valeur de brand
+ferrari.brand                         # =&gt; &quot;Ferrari&quot;
+ferrari.engine_started                # =&gt; False</code></pre></div>
+
+
+<p>Chaque instance a ses <strong>propres</strong> attributs, indépendants des autres :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">renault = Car(&quot;Renault&quot;)
+ferrari.brand   # =&gt; &quot;Ferrari&quot;
+renault.brand   # =&gt; &quot;Renault&quot;   — les deux coexistent sans s&#x27;affecter</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-7-les-méthodes-dinstance-définir-les-comportements">7) Les méthodes d'instance : définir les comportements</h2>
+
+<h3 id="ref-cest-quoi-une-méthode">C'est quoi une méthode ?</h3>
+
+<p>Une méthode, c'est une <strong>fonction définie à l'intérieur d'une classe</strong>. Elle décrit ce que l'objet peut faire.</p>
+
+<p>La différence avec une fonction normale : une méthode prend toujours <code>self</code> comme premier paramètre (pour pouvoir accéder aux attributs de l'instance).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Car:
+    def __init__(self):
+        self.engine_started = False    # état initial : moteur éteint
+
+    def is_engine_started(self):       # méthode qui retourne l&#x27;état du moteur
+        return self.engine_started     # accède à l&#x27;attribut via self
+
+    def start_engine(self):            # méthode qui démarre le moteur
+        self.engine_started = True     # modifie l&#x27;attribut via self
+
+my_car = Car()
+my_car.is_engine_started()   # =&gt; False   — on appelle la méthode AVEC les parenthèses
+my_car.start_engine()        # =&gt; None    — le moteur est maintenant démarré
+my_car.is_engine_started()   # =&gt; True    — l&#x27;état a changé</code></pre></div>
+
+
+<p><strong>Récap :</strong> <code>start_engine()</code> modifie l'état de l'objet. <code>is_engine_started()</code> consulte cet état. Les deux travaillent ensemble pour décrire le comportement d'une voiture.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Méthode vs Attribut : les parenthèses sont obligatoires pour les méthodes.</strong></p>
+<p>- <code>my_car.is_engine_started()</code> avec <code>()</code> → c'est une méthode, on l'appelle.</p>
+<p>- <code>my_car.engine_started</code> sans <code>()</code> → c'est un attribut, on y accède directement.</p>
+<p>Si tu mets des parenthèses sur un attribut : <code>my_car.engine_started()</code> → Python va lever <code>TypeError: &#x27;bool&#x27; object is not callable</code>.</p></div></div>
+
+<hr>
+
+<h2 id="ref-8-le-rôle-de-self">8) Le rôle de <code>self</code></h2>
+
+<h3 id="ref-comprendre-self">Comprendre <code>self</code></h3>
+
+<p><code>self</code> est une référence vers <strong>l'instance courante</strong> — c'est-à-dire l'objet sur lequel la méthode est appelée.</p>
+
+<p>Quand tu écris <code>ferrari.start_engine()</code>, Python traduit ça en <code>Car.start_engine(ferrari)</code>. Il passe automatiquement <code>ferrari</code> comme valeur de <code>self</code>.</p>
+
+<p>C'est pour ça que <code>self</code> est toujours le <strong>premier paramètre</strong> de toute méthode. Python le remplit automatiquement.</p>
+
+<h3 id="ref-exemple-avec-self-qui-appelle-une-autre-méthode">Exemple avec <code>self</code> qui appelle une autre méthode</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Castle:
+    def __init__(self, name, ruler):
+        self.name = name                        # stocke le nom du château
+        self.ruler = ruler                      # stocke le nom du souverain
+
+    def castle_details(self):
+        return f&quot;{self.name} is ruled by {self.ruler_name()}&quot;   # appelle une autre méthode via self
+
+    def ruler_name(self):
+        return self.ruler.capitalize()          # retourne le nom du souverain avec majuscule
+
+dragonstone = Castle(&quot;Dragonstone&quot;, &quot;targaryen&quot;)
+dragonstone.castle_details()   # =&gt; &quot;Dragonstone is ruled by Targaryen&quot;</code></pre></div>
+
+
+<p>Dans cet exemple :</p>
+<ul>
+<li><code>self.name</code> accède à l'attribut <code>name</code> de l'instance.</li>
+<li><code>self.ruler_name()</code> appelle la méthode <code>ruler_name</code> de la même instance.</li>
+<li><code>self</code> est le lien entre toutes les parties de l'objet.</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Une bonne image pour <code>self</code> : imagine que chaque objet a un badge avec son prénom. Quand une méthode s'exécute, <code>self</code> est ce badge — il permet à l'objet de "savoir qui il est" et d'accéder à ses propres données.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Oublier <code>self</code> comme premier paramètre d'une méthode est une erreur classique.</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Car:
+    def start_engine():       # ❌ Python ne sait pas à quelle instance s&#x27;adresser
+        pass
+
+    def start_engine(self):   # ✅ self est obligatoire
+        pass</code></pre></div>
+<p>Sans <code>self</code>, Python lèvera un <code>TypeError</code> dès que tu appelleras la méthode.</p></div></div>
+
+<hr>
+
+<h2 id="ref-9-récapitulatif-classe-complète-commentée">9) Récapitulatif : classe complète commentée</h2>
+
+<p>Voici une classe <code>Car</code> complète, qui regroupe tout ce qu'on a vu :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Car:                              # définition de la classe (le moule)
+    def __init__(self, brand):          # constructeur : appelé automatiquement à la création
+        self.brand = brand              # attribut : marque de la voiture
+        self.engine_started = False     # attribut : état du moteur (éteint par défaut)
+
+    def start_engine(self):             # méthode : action de démarrer le moteur
+        self.engine_started = True      # modifie l&#x27;état de l&#x27;instance via self
+
+    def is_running(self):               # méthode : consulte l&#x27;état du moteur
+        return self.engine_started      # retourne True ou False
+
+# Utilisation
+ferrari = Car(&quot;Ferrari&quot;)               # instanciation : on crée un objet ferrari
+ferrari.brand                          # =&gt; &quot;Ferrari&quot;     — accès à un attribut (sans ())
+ferrari.is_running()                   # =&gt; False         — appel d&#x27;une méthode (avec ())
+ferrari.start_engine()                 # démarre le moteur
+ferrari.is_running()                   # =&gt; True          — l&#x27;état a changé</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p><strong>Résumé des conventions :</strong></p>
+<p>| Élément | Convention | Exemple |</p>
+<p>|---|---|---|</p>
+<p>| Fichier | snake_case | <code>sports_car.py</code> |</p>
+<p>| Classe | CamelCase | <code>SportsCar</code> |</p>
+<p>| Méthode | snake_case | <code>start_engine()</code> |</p>
+<p>| Attribut | snake_case | <code>engine_started</code> |</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1 — Classe ou instance ?</strong></p>
+<p>Dans le code suivant, qu'est-ce qui est une classe et qu'est-ce qui est une instance ?</p>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Dog:
+    pass
+
+rex = Dog()</code></pre></div>
+
+
+<blockquote><p>La classe c'est <code>Dog</code>. L'instance c'est <code>rex</code>. <code>Dog</code> est le moule, <code>rex</code> est le chien concret fabriqué avec ce moule.</p></blockquote>
+
+<hr>
+
+<p><strong>Question 2 — Trouver l'erreur</strong></p>
+<p>Ce code contient une erreur. Laquelle, et pourquoi ?</p>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Car:
+    def __init__(self):
+        self.engine_started = False
+
+my_car = Car()
+my_car.engine_started()</code></pre></div>
+
+
+<blockquote><p><code>engine_started</code> est un <strong>attribut</strong> (un booléen <code>False</code>), pas une méthode. Il ne faut pas mettre de parenthèses. La bonne écriture est <code>my_car.engine_started</code> sans <code>()</code>. Avec les parenthèses, Python tente d'appeler <code>False</code> comme une fonction, ce qui lève <code>TypeError: &#x27;bool&#x27; object is not callable</code>.</p></blockquote>
+
+<hr>
+
+<p><strong>Question 3 — Que fait <code>self</code> ?</strong></p>
+<p>Explique avec tes propres mots pourquoi <code>self</code> est nécessaire dans une méthode.</p>
+
+<blockquote><p><code>self</code> permet à la méthode de savoir sur quelle instance elle est en train de travailler. Sans <code>self</code>, la méthode ne pourrait pas accéder aux attributs de l'objet. C'est le lien entre la méthode et l'instance qui l'appelle.</p></blockquote>
+
+<hr>
+
+<p><strong>Question 4 — Créer une classe</strong></p>
+<p>Crée une classe <code>Lamp</code> avec :</p>
+<ul>
+<li>un attribut <code>is_on</code> initialisé à <code>False</code></li>
+<li>une méthode <code>turn_on()</code> qui passe <code>is_on</code> à <code>True</code></li>
+<li>une méthode <code>turn_off()</code> qui passe <code>is_on</code> à <code>False</code></li>
+</ul>
+
+<blockquote><p>Solution attendue :</p></blockquote>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Lamp:
+    def __init__(self):
+        self.is_on = False
+
+    def turn_on(self):
+        self.is_on = True
+
+    def turn_off(self):
+        self.is_on = False</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Une <strong>classe</strong> est un moule qui définit la structure d'un objet ; une <strong>instance</strong> est l'objet concret créé à partir de ce moule.</li>
+<li>Les <strong>attributs</strong> (définis dans <code>__init__</code> avec <code>self.nom = valeur</code>) stockent l'état de l'objet.</li>
+<li>Les <strong>méthodes</strong> (fonctions dans la classe) définissent les comportements de l'objet.</li>
+<li><code>self</code> est la référence à l'instance courante — il est toujours le premier paramètre de toute méthode.</li>
+<li><code>__init__</code> est le constructeur : Python l'appelle automatiquement à chaque création d'instance.</li>
+<li>On accède à un attribut <strong>sans parenthèses</strong> : <code>objet.attribut</code>. On appelle une méthode <strong>avec parenthèses</strong> : <code>objet.methode()</code>.</li>
+<li>Toujours initialiser les attributs dans <code>__init__</code>, jamais ailleurs.</li>
+<li>Les classes se nomment en <strong>CamelCase</strong> (<code>SportsCar</code>), les méthodes et attributs en <strong>snake_case</strong> (<code>start_engine</code>).</li>
+<li>En Python, tout est objet : les <code>str</code>, <code>list</code>, <code>int</code>... sont tous des instances de classes.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-pourquoi-la-poo">Pourquoi la POO ?</a></li><li><a href="#syn-définir-une-classe">Définir une classe</a></li><li><a href="#syn-méthodes-spéciales-dunder">Méthodes spéciales (`dunder`)</a></li><li><a href="#syn-héritage-et-polymorphisme">Héritage et polymorphisme</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-dataclass-le-mode-moderne">`@dataclass`, le mode moderne</a></li><li><a href="#syn-méthodes-de-classe-et-statiques">Méthodes de classe et statiques</a></li><li><a href="#syn-composition-vs-héritage">Composition vs héritage</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-pourquoi-la-poo">Pourquoi la POO ?</h3>
+
+<p>L'orienté objet n'est ni indispensable, ni magique. C'est un <strong>outil d'organisation</strong> quand vous avez à manipuler des entités qui combinent <strong>état</strong> (données) et <strong>comportement</strong> (opérations sur ces données).</p>
+
+<p>En data science, vous écrivez beaucoup de code <strong>procédural</strong> (transformer des DataFrames, entraîner des modèles avec sklearn) et relativement peu de classes. Mais quand vous en écrivez, c'est généralement pour <strong>deux raisons</strong> :</p>
+
+<ol>
+<li><strong>Encapsuler un état</strong> qui doit être manipulé de manière cohérente (un modèle entraîné qui mémorise ses poids et expose <code>predict</code>)</li>
+<li><strong>Définir une interface</strong> réutilisable (votre propre transformer sklearn-compatible)</li>
+</ol>
+
+<p>La POO devient une charge cognitive si vous l'imposez là où elle n'apporte rien. <strong>Une classe avec une seule méthode statique est presque toujours mieux écrite comme une fonction.</strong></p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : une classe est un <strong>moule à gâteau</strong>, une instance est un gâteau. Le moule définit la forme (les attributs), la recette définit ce qu'on peut faire avec (les méthodes). Vous pouvez fabriquer des centaines de gâteaux du même moule, chacun avec son propre glaçage (état spécifique).</p></div></div>
+
+<h3 id="syn-définir-une-classe">Définir une classe</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class BankAccount:
+    &quot;&quot;&quot;A simple bank account.&quot;&quot;&quot;
+
+    # Attribut de classe (partagé par TOUTES les instances)
+    interest_rate = 0.02
+
+    def __init__(self, owner, balance=0):
+        # Attributs d&#x27;instance (un par objet)
+        self.owner = owner              # self = l&#x27;instance en cours de création
+        self.balance = balance
+
+    def deposit(self, amount):
+        &quot;&quot;&quot;Ajoute amount au solde, échoue si amount &lt;= 0.&quot;&quot;&quot;
+        if amount &lt;= 0:
+            raise ValueError(&quot;Amount must be positive&quot;)
+        self.balance += amount
+
+    def withdraw(self, amount):
+        &quot;&quot;&quot;Retire amount, échoue si solde insuffisant.&quot;&quot;&quot;
+        if amount &gt; self.balance:
+            raise ValueError(&quot;Insufficient funds&quot;)
+        self.balance -= amount
+
+    def apply_interest(self):
+        &quot;&quot;&quot;Applique le taux d&#x27;intérêt de la classe au solde de l&#x27;instance.&quot;&quot;&quot;
+        self.balance *= (1 + BankAccount.interest_rate)</code></pre></div>
+
+
+<p><strong>Utilisation</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">acc = BankAccount(&quot;Alice&quot;, 100)     # __init__ appelé automatiquement
+acc.deposit(50)
+print(acc.balance)                  # 150
+acc.withdraw(30)
+print(acc.balance)                  # 120</code></pre></div>
+
+
+<p><strong>Trois éléments clés</strong> :</p>
+
+<ul>
+<li><strong><code>__init__</code></strong> : le constructeur, appelé automatiquement à la création (<code>BankAccount(&quot;Alice&quot;, 100)</code>).</li>
+<li><strong><code>self</code></strong> : référence à l'instance courante. Premier argument de toute méthode d'instance, <strong>toujours explicite</strong> (contrairement au <code>this</code> implicite de Java/JS).</li>
+<li><strong>Attributs</strong> : créés en assignant <code>self.attribut = valeur</code>. Pas de déclaration préalable.</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège classique</strong> : oublier <code>self</code>. Si vous écrivez <code>def deposit(amount):</code> au lieu de <code>def deposit(self, amount):</code>, l'appel <code>acc.deposit(50)</code> essaie de passer <code>acc</code> comme <code>amount</code> et échoue avec un message déroutant.</p></div></div>
+
+<h3 id="syn-méthodes-spéciales-dunder">Méthodes spéciales (<code>dunder</code>)</h3>
+
+<p>Python utilise des méthodes <strong>double underscore</strong> pour intégrer vos classes au langage. Maîtriser ces dunders fait la différence entre un débutant et un développeur Python idiomatique.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __repr__(self):
+        &quot;&quot;&quot;Représentation pour les développeurs (debug, REPL).&quot;&quot;&quot;
+        return f&quot;Vector({self.x}, {self.y})&quot;
+
+    def __str__(self):
+        &quot;&quot;&quot;Représentation pour les utilisateurs (print, format).&quot;&quot;&quot;
+        return f&quot;({self.x}, {self.y})&quot;
+
+    def __add__(self, other):
+        &quot;&quot;&quot;Permet v1 + v2 via l&#x27;opérateur natif.&quot;&quot;&quot;
+        return Vector(self.x + other.x, self.y + other.y)
+
+    def __mul__(self, scalar):
+        &quot;&quot;&quot;Permet v * 3 via l&#x27;opérateur natif.&quot;&quot;&quot;
+        return Vector(self.x * scalar, self.y * scalar)
+
+    def __eq__(self, other):
+        &quot;&quot;&quot;Permet v1 == v2.&quot;&quot;&quot;
+        return self.x == other.x and self.y == other.y
+
+    def __len__(self):
+        &quot;&quot;&quot;Permet len(v) — renvoie toujours 2 pour un vecteur 2D.&quot;&quot;&quot;
+        return 2
+
+    def __getitem__(self, idx):
+        &quot;&quot;&quot;Permet v[0], v[1].&quot;&quot;&quot;
+        return [self.x, self.y][idx]</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">v1 = Vector(1, 2)
+v2 = Vector(3, 4)
+v3 = v1 + v2          # Appelle __add__ → Vector(4, 6)
+v4 = v1 * 3           # Appelle __mul__ → Vector(3, 6)
+print(v3)             # Appelle __str__ → &quot;(4, 6)&quot;
+v1 == Vector(1, 2)    # True via __eq__
+len(v1)               # 2 via __len__
+v1[0]                 # 1 via __getitem__</code></pre></div>
+
+
+<p>Cette intégration au langage est ce qu'on appelle le <strong>data model</strong> Python. C'est ce qui permet à NumPy d'écrire <code>a + b</code> au lieu de <code>a.add(b)</code>.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : implémentez <strong>toujours</strong> <code>__repr__</code> dans vos classes. Quand vous debuggerez à 23 h une liste d'objets, vous voulez voir <code>[Vector(1, 2), Vector(3, 4)]</code> et pas <code>[&lt;__main__.Vector object at 0x7f8a&gt;, &lt;__main__.Vector object at 0x7f9b&gt;]</code>.</p></div></div>
+
+<h3 id="syn-héritage-et-polymorphisme">Héritage et polymorphisme</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        raise NotImplementedError(&quot;Subclasses must override speak()&quot;)
+
+class Dog(Animal):                    # Dog hérite de Animal
+    def speak(self):
+        return f&quot;{self.name} says Woof!&quot;
+
+class Cat(Animal):
+    def speak(self):
+        return f&quot;{self.name} says Meow!&quot;
+
+# Polymorphisme : on itère sans savoir si c&#x27;est Dog ou Cat
+animals = [Dog(&quot;Rex&quot;), Cat(&quot;Whiskers&quot;), Dog(&quot;Buddy&quot;)]
+for a in animals:
+    print(a.speak())
+# Rex says Woof!
+# Whiskers says Meow!
+# Buddy says Woof!</code></pre></div>
+
+
+<p><strong>Trois concepts</strong> :</p>
+
+<ol>
+<li><strong>Héritage</strong> : <code>class Dog(Animal):</code> indique que <code>Dog</code> hérite de <code>Animal</code>. Toutes les méthodes et attributs d'<code>Animal</code> sont accessibles dans <code>Dog</code>.</li>
+<li><strong>Override</strong> : <code>Dog.speak</code> redéfinit <code>Animal.speak</code>. C'est l'enfant qui gagne.</li>
+<li><strong>Polymorphisme</strong> : la boucle <code>for a in animals</code> appelle <code>a.speak()</code> sans savoir si <code>a</code> est un <code>Dog</code> ou un <code>Cat</code>. C'est Python qui résout dynamiquement.</li>
+</ol>
+
+<p>Pour appeler la version parent depuis l'enfant : <strong><code>super()</code></strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Puppy(Dog):
+    def speak(self):
+        original = super().speak()    # Appelle Dog.speak
+        return f&quot;{original} (but tiny)&quot;</code></pre></div>
+
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-dataclass-le-mode-moderne"><code>@dataclass</code>, le mode moderne</h3>
+
+<p>Pour 90% des cas où vous voulez juste une classe qui contient des données structurées, écrire <code>__init__</code>, <code>__repr__</code>, <code>__eq__</code> à la main est du <strong>boilerplate inutile</strong>. Python 3.7 a introduit <code>@dataclass</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from dataclasses import dataclass, field
+
+@dataclass
+class User:
+    name: str
+    age: int
+    email: str = &quot;anonymous@x.com&quot;               # Valeur par défaut
+    tags: list[str] = field(default_factory=list)  # Pour les mutables (évite le piège)
+
+u = User(&quot;Alice&quot;, 30)
+print(u)              # User(name=&#x27;Alice&#x27;, age=30, email=&#x27;anonymous@x.com&#x27;, tags=[])
+u == User(&quot;Alice&quot;, 30, &quot;anonymous@x.com&quot;, [])  # True</code></pre></div>
+
+
+<p>Le décorateur <strong>génère automatiquement</strong> <code>__init__</code>, <code>__repr__</code>, <code>__eq__</code>.</p>
+
+<p><strong>Variantes</strong> :</p>
+
+<ul>
+<li><code>@dataclass(frozen=True)</code> : instance immuable et hashable (utilisable comme clé de dict).</li>
+<li><code>@dataclass(order=True)</code> : génère <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code> qui comparent dans l'ordre des champs.</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : <code>@dataclass</code> est à la POO Python ce que les f-strings sont au formatage de strings. Une amélioration de la qualité de vie qui transforme un boilerplate verbeux en une déclaration concise. Si vous n'utilisez pas dataclass, c'est presque toujours par habitude obsolète.</p></div></div>
+
+<p>Pour des cas avec <strong>validation</strong> ou <strong>serialization</strong>, montez d'un cran avec <strong><code>pydantic</code></strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from pydantic import BaseModel, EmailStr, Field
+
+class User(BaseModel):
+    name: str = Field(..., min_length=1, max_length=100)
+    age: int = Field(..., ge=0, le=150)
+    email: EmailStr
+
+u = User(name=&quot;Alice&quot;, age=30, email=&quot;a@x.com&quot;)   # Validation au runtime
+u.model_dump_json()   # Serialization JSON gratuite</code></pre></div>
+
+
+<h3 id="syn-méthodes-de-classe-et-statiques">Méthodes de classe et statiques</h3>
+
+<p><strong>Trois types de méthodes</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Pizza:
+    def __init__(self, ingredients):
+        self.ingredients = ingredients
+
+    def describe(self):
+        &quot;&quot;&quot;Méthode d&#x27;instance — accède à self.&quot;&quot;&quot;
+        return f&quot;Pizza with {&#x27;, &#x27;.join(self.ingredients)}&quot;
+
+    @classmethod
+    def margherita(cls):
+        &quot;&quot;&quot;Méthode de classe — accède à cls (la classe), pas à self.&quot;&quot;&quot;
+        return cls([&quot;mozzarella&quot;, &quot;tomatoes&quot;, &quot;basil&quot;])
+
+    @staticmethod
+    def is_valid_ingredient(item):
+        &quot;&quot;&quot;Méthode statique — n&#x27;accède ni à self ni à cls.&quot;&quot;&quot;
+        return item in {&quot;mozzarella&quot;, &quot;tomatoes&quot;, &quot;basil&quot;, &quot;ham&quot;, &quot;olives&quot;}</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">p = Pizza.margherita()                   # Constructeur alternatif
+Pizza.is_valid_ingredient(&quot;ham&quot;)         # True — peut être appelée sur la classe</code></pre></div>
+
+
+<p><strong>Pattern factory</strong> : <code>classmethod</code> est l'idiome Python pour des <strong>constructeurs alternatifs</strong>. <code>dict.fromkeys</code>, <code>datetime.fromtimestamp</code>, <code>pd.DataFrame.from_dict</code> suivent tous ce pattern.</p>
+
+<h3 id="syn-composition-vs-héritage">Composition vs héritage</h3>
+
+<p>L'héritage est tentant mais souvent sur-utilisé. Une règle de design largement acceptée : <strong>préférez la composition à l'héritage</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ❌ Mauvais : héritage abusif
+class Engine: ...
+class Car(Engine): ...   # Une voiture EST un moteur ? Non !
+
+# ✓ Bon : composition
+class Engine: ...
+class Car:
+    def __init__(self):
+        self.engine = Engine()  # Une voiture A un moteur</code></pre></div>
+
+
+<p><strong>Trois raisons</strong> :</p>
+
+<ol>
+<li><strong>Couplage faible</strong> : on peut remplacer le moteur sans casser la voiture.</li>
+<li><strong>Héritage transmet TOUT</strong> : si <code>Engine</code> a une méthode <code>bug_fix_2019</code>, la voiture l'expose aussi, alors que ce n'est pas voulu.</li>
+<li><strong>Diamond problem</strong> : héritage multiple peut créer des conflits subtils. La composition n'a jamais ce problème.</li>
+</ol>
+
+<p><strong>Quand l'héritage est légitime</strong> : quand la relation est vraiment <em>"EST UN"</em> (sklearn <code>LogisticRegression</code> EST UN <code>BaseEstimator</code>) et que l'enfant peut être substitué au parent partout (<strong>principe de Liskov</strong>).</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Anti-pattern</strong> : faire hériter une classe juste pour <strong>réutiliser quelques méthodes</strong>. Si vous avez besoin du code mais pas de la hiérarchie, extrayez les méthodes dans un module séparé ou utilisez un <strong>mixin</strong> (héritage multiple ciblé).</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi <code>self</code> doit-il être passé explicitement comme premier argument de chaque méthode, alors que d'autres langages (Java, JS) le rendent implicite ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Zen of Python.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Le <strong>Zen of Python</strong> dit <em>"Explicit is better than implicit"</em>. Rendre <code>self</code> explicite évite plusieurs ambiguïtés.</p>
+
+<p><strong>Premièrement</strong>, cela rend immédiatement visible qu'une méthode est <strong>liée à une instance</strong> (vs une fonction libre).</p>
+
+<p><strong>Deuxièmement</strong>, cela permet d'appeler une méthode en passant explicitement l'instance :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">Pizza.describe(my_pizza)    # Équivalent à my_pizza.describe()</code></pre></div>
+
+
+<p>C'est utile pour le debug et la metaprogrammation.</p>
+
+<p><strong>Troisièmement</strong>, cela <strong>élimine l'ambiguïté</strong> entre variable locale et attribut d'instance :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">// JS : ambigu
+class User {
+  hello() {
+    name = &quot;Alice&quot;   // Variable locale ou attribut ?
+  }
+}</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Python : sans ambiguïté
+class User:
+    def hello(self):
+        self.name = &quot;Alice&quot;   # Attribut d&#x27;instance, clair
+        name = &quot;Alice&quot;        # Variable locale, clair</code></pre></div>
+
+
+<p>C'est verbeux mais plus sûr — <strong>choix de design conscient de Guido</strong> van Rossum.</p>
+
+</details>
+
+<p><strong>Q2 : Vous avez <code>class Counter: count = 0</code> puis <code>c1 = Counter(); c1.count += 1</code>. Pourquoi cela ne modifie-t-il pas <code>Counter.count</code> ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Attribut de classe vs attribut d'instance.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Quand vous écrivez <code>c1.count += 1</code>, Python :</p>
+
+<ol>
+<li>Évalue <code>c1.count</code> (qui renvoie <code>0</code> — l'attribut de classe, car <code>c1</code> n'a pas encore d'attribut d'instance <code>count</code>)</li>
+<li>Ajoute 1 → obtient <code>1</code></li>
+<li><strong>Crée</strong> un nouvel attribut d'instance <code>c1.count = 1</code> qui <strong>masque</strong> l'attribut de classe</li>
+</ol>
+
+<p>Résultat :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">Counter.count       # Reste 0 — l&#x27;attribut de classe n&#x27;a pas bougé
+c1.count            # 1 — attribut d&#x27;instance nouvellement créé
+c2 = Counter()
+c2.count            # 0 — une nouvelle instance voit toujours l&#x27;attribut de classe</code></pre></div>
+
+
+<p>Si vous vouliez vraiment un compteur <strong>partagé</strong>, il faut écrire explicitement :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">Counter.count += 1   # Modifie l&#x27;attribut de classe directement</code></pre></div>
+
+
+<p>Cette distinction attribut de classe / attribut d'instance est la première chose à clarifier en POO Python.</p>
+
+<p><strong>Piège connexe avec les listes</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Foo:
+    items = []     # Liste partagée par TOUTES les instances !
+
+f1 = Foo()
+f2 = Foo()
+f1.items.append(&quot;x&quot;)   # Mutation in-place
+f2.items              # [&#x27;x&#x27;] — f2 voit la mutation !</code></pre></div>
+
+
+<p>Parce que <code>self.items.append(x)</code> <strong>modifie</strong> la liste de classe sans créer d'attribut d'instance. C'est pourquoi <code>@dataclass</code> impose <code>field(default_factory=list)</code> pour les mutables.</p>
+
+</details>
+
+<p><strong>Q3 : Vous voulez créer un transformer sklearn-compatible. Quelles méthodes devez-vous implémenter, et de quelle classe devez-vous hériter ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Protocole sklearn.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Héritez de <strong><code>BaseEstimator</code></strong> et <strong><code>TransformerMixin</code></strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.base import BaseEstimator, TransformerMixin
+import numpy as np
+
+class LogTransformer(BaseEstimator, TransformerMixin):
+    def __init__(self, offset=1.0):
+        self.offset = offset      # Stocké comme attribut pour get_params/set_params
+
+    def fit(self, X, y=None):
+        &quot;&quot;&quot;Apprend (ici rien à apprendre, donc retour immédiat).&quot;&quot;&quot;
+        return self                # Important : retourner self pour chaînage
+
+    def transform(self, X):
+        &quot;&quot;&quot;Applique la transformation log(1+x).&quot;&quot;&quot;
+        return np.log(X + self.offset)</code></pre></div>
+
+
+<p><strong>Responsabilité de chaque méthode</strong> :</p>
+
+<ul>
+<li><strong><code>fit(X, y=None)</code></strong> : apprend des paramètres depuis les données (ici rien, mais pour un <code>StandardScaler</code>, calcule la moyenne et l'écart-type).</li>
+<li><strong><code>transform(X)</code></strong> : applique la transformation. Doit marcher avec les paramètres appris lors du <code>fit</code>.</li>
+</ul>
+
+<p><strong>Ce qu'on gagne par l'héritage</strong> :</p>
+
+<ul>
+<li><strong><code>BaseEstimator</code></strong> apporte gratuitement <code>get_params</code> et <code>set_params</code> → compatibilité avec <code>GridSearchCV</code>.</li>
+<li><strong><code>TransformerMixin</code></strong> apporte <code>fit_transform</code> qui appelle <code>fit</code> puis <code>transform</code> en une seule fois.</li>
+</ul>
+
+<p><strong>Utilisation</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.pipeline import Pipeline
+
+pipe = Pipeline([
+    (&quot;log&quot;, LogTransformer(offset=1.0)),
+    (&quot;scaler&quot;, StandardScaler()),
+    (&quot;model&quot;, LogisticRegression()),
+])
+pipe.fit(X_train, y_train)</code></pre></div>
+
+
+<p>Cette architecture par composition est exactement le pattern qu'utilise tout sklearn — c'est un excellent exemple de POO bien conçue. Question d'entretien data science : <em>"Comment intégrer un preprocessing custom dans un Pipeline sklearn ?"</em> La réponse est ce snippet.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://docs.python.org/3/reference/datamodel.html" target="_blank" rel="noopener">Python data model</a> — la référence sur tous les dunders</li>
+<li><a href="https://peps.python.org/pep-0557/" target="_blank" rel="noopener">PEP 557 — Data Classes</a> — la spec de <code>@dataclass</code></li>
+<li><em>Fluent Python</em> (Luciano Ramalho), chapitres 9-12 sur le data model et la POO</li>
+<li><em>Effective Python</em> (Brett Slatkin), section "Classes and Inheritance"</li>
+<li><a href="https://python-patterns.guide/gang-of-four/composition-over-inheritance/" target="_blank" rel="noopener">Composition over Inheritance</a> — article de Brandon Rhodes</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../python-sql/dictionaries.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Dictionaries</span>
+  </a>
+  <a href="../python-sql/sql-intro.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">SQL (intro) →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

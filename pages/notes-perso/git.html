@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git push &amp; commit — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Git push &amp; commit</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html" class="active">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Notes perso</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Git push &amp; commit</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Git push &amp; commit</h1>
+        <p class="page-objective">Sauvegarder et envoyer son travail sur GitHub via les commandes Git essentielles.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Working tree</div>
+        <div class="key-concept-def">Vos fichiers locaux non encore mis en scène.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Stage / index</div>
+        <div class="key-concept-def">Zone tampon où vous préparez ce qui ira dans le prochain commit (`git add`).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Commit</div>
+        <div class="key-concept-def">Snapshot horodaté et signé de votre code, identifié par un hash SHA-1.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Remote</div>
+        <div class="key-concept-def">Copie distante du dépôt (souvent `origin` sur GitHub).</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#cheatsheet-git">Cheatsheet — Git</a><li><a href="#1-workflow-standard">1) Workflow standard</a><li><a href="#2-commandes-détaillées">2) Commandes détaillées</a><ol><li><a href="#21-git-add-préparer-les-fichiers">2.1 `git add` — préparer les fichiers</a></li><li><a href="#22-git-commit-enregistrer-un-snapshot">2.2 `git commit` — enregistrer un snapshot</a></li><li><a href="#23-git-push-envoyer-sur-github">2.3 `git push` — envoyer sur GitHub</a></li></ol></li><li><a href="#3-commandes-utiles-en-plus">3) Commandes utiles en plus</a></ol></div>
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<h2 id="cheatsheet-git">📋 Cheatsheet — Git</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## Workflow quotidien
+git status                              # voir l&#x27;état des fichiers
+git add fichier.py                      # stager un fichier
+git add .                               # stager tous les fichiers modifiés
+git commit -m &quot;Message clair&quot;           # enregistrer un snapshot
+git push origin master                  # envoyer sur GitHub
+
+## Consulter l&#x27;historique
+git log                                 # historique complet
+git log --oneline                       # historique condensé
+git diff                                # modifications non stagées
+git diff --staged                       # modifications stagées
+
+## Annuler
+git restore fichier.py                  # annuler les modifs locales
+git restore --staged fichier.py         # déstaguer un fichier
+git commit --amend -m &quot;Nouveau message&quot; # corriger le dernier commit
+
+## Branches
+git branch                              # lister les branches
+git checkout -b nouvelle-branche        # créer et basculer
+git checkout master                     # revenir sur master
+git merge ma-branche                    # fusionner
+
+## Bonne pratique de message de commit
+## ✅  &quot;Add Morse encoder function&quot;
+## ✅  &quot;Fix IndexError in caesar cipher&quot;
+## ❌  &quot;fix&quot; / &quot;wip&quot; / &quot;update&quot;</code></pre></div>
+
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Faire <code>git push</code> sans <code>git add</code> ni <code>git commit</code> avant</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git push origin master  # ❌ rien à envoyer si tu n&#x27;as pas commité
+git add .
+git commit -m &quot;Mon message&quot;
+git push origin master  # ✅</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Message de commit trop vague</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git commit -m &quot;fix&quot;        # ❌ incompréhensible dans l&#x27;historique
+git commit -m &quot;Fix index out of range in caesar cipher&quot;  # ✅</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier de vérifier l'état avant de commiter</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git commit -m &quot;Add feature&quot;  # ❌ tu ne sais pas ce que tu commites
+git status                   # ✅ toujours vérifier avant
+git add fichier_specifique.py
+git commit -m &quot;Add feature&quot;</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser <code>git add .</code> sans vérifier ce qui est modifié</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git add .   # ⚠️ ajoute TOUT — y compris des fichiers non voulus
+git status  # ✅ vérifie d&#x27;abord quels fichiers sont modifiés</code></pre></div></div></div>
+
+<hr>
+
+<h2 id="1-workflow-standard">1) Workflow standard</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git add string_methods.py
+git commit -m &quot;Progress on string_methods: XXX tests passing&quot;
+git push origin master</code></pre></div>
+
+
+<hr>
+
+<h2 id="2-commandes-détaillées">2) Commandes détaillées</h2>
+
+<h3 id="21-git-add-préparer-les-fichiers">2.1 <code>git add</code> — préparer les fichiers</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git add mon_fichier.py     # ajouter un fichier spécifique
+git add .                  # ajouter tous les fichiers modifiés</code></pre></div>
+
+
+<h3 id="22-git-commit-enregistrer-un-snapshot">2.2 <code>git commit</code> — enregistrer un snapshot</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git commit -m &quot;Description claire de ce qui a été fait&quot;</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Bonne pratique</strong> : un message de commit doit décrire <em>ce qui a changé</em>, pas <em>comment</em>. Ex : <code>&quot;Add Morse encoder function&quot;</code> plutôt que <code>&quot;Fixed stuff&quot;</code>.</p></div></div>
+
+<h3 id="23-git-push-envoyer-sur-github">2.3 <code>git push</code> — envoyer sur GitHub</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git push origin master     # envoyer la branche master
+git push origin main       # si la branche principale s&#x27;appelle main</code></pre></div>
+
+
+<hr>
+
+<h2 id="3-commandes-utiles-en-plus">3) Commandes utiles en plus</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git status                 # voir l&#x27;état des fichiers (modifiés, staged...)
+git log --oneline          # historique des commits en une ligne
+git diff                   # voir les modifications non encore stagées</code></pre></div>
+
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-contexte">Contexte</a></li><li><a href="#ref-3-à-5-choses-à-retenir-absolument">3 à 5 choses à retenir absolument</a></li><li><a href="#ref-analogie">Analogie</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-le-workflow-standard-les-3-étapes-incontournables">1) Le workflow standard — les 3 étapes incontournables</a><li><a href="#ref-2-les-commandes-expliquées-une-par-une">2) Les commandes expliquées une par une</a><ol><li><a href="#ref-21-git-add-choisir-ce-quon-sauvegarde">2.1 `git add` — choisir ce qu'on sauvegarde</a></li><li><a href="#ref-22-git-commit-prendre-la-photo">2.2 `git commit` — prendre la photo</a></li><li><a href="#ref-23-git-push-envoyer-sur-github">2.3 `git push` — envoyer sur GitHub</a></li></ol></li><li><a href="#ref-3-les-commandes-utiles-en-plus">3) Les commandes utiles en plus</a><ol><li><a href="#ref-inspecter-létat-de-ton-dépôt">Inspecter l'état de ton dépôt</a></li><li><a href="#ref-annuler-des-modifications">Annuler des modifications</a></li><li><a href="#ref-les-branches-aperçu-rapide">Les branches (aperçu rapide)</a></li></ol></li><li><a href="#ref-4-les-erreurs-classiques-à-éviter">4) Les erreurs classiques à éviter</a><ol><li><a href="#ref-erreur-1-faire-git-push-sans-avoir-ajouté-ni-commité">Erreur 1 — Faire `git push` sans avoir ajouté ni commité</a></li><li><a href="#ref-erreur-2-écrire-un-message-de-commit-trop-vague">Erreur 2 — Écrire un message de commit trop vague</a></li><li><a href="#ref-erreur-3-commiter-sans-vérifier-ce-quon-commit">Erreur 3 — Commiter sans vérifier ce qu'on commit</a></li><li><a href="#ref-erreur-4-utiliser-git-add-sans-vérifier-dabord">Erreur 4 — Utiliser `git add .` sans vérifier d'abord</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<h3 id="ref-contexte">Contexte</h3>
+
+<p>Quand tu codes, tu crées et modifies des fichiers en permanence. Mais que se passe-t-il si tu casses quelque chose ? Ou si tu veux partager ton travail avec quelqu'un ? C'est là qu'intervient <strong>Git</strong>, un outil qui te permet de sauvegarder l'historique de ton code et de l'envoyer sur internet (via <strong>GitHub</strong>).</p>
+
+<h3 id="ref-3-à-5-choses-à-retenir-absolument">3 à 5 choses à retenir absolument</h3>
+
+<ul>
+<li>Git sauvegarde ton code en <strong>3 étapes</strong> : <code>add</code> → <code>commit</code> → <code>push</code></li>
+<li><code>git add</code> prépare les fichiers que tu veux sauvegarder</li>
+<li><code>git commit</code> crée un "snapshot" (une photo instantanée) de ton travail</li>
+<li><code>git push</code> envoie ce snapshot sur GitHub (en ligne)</li>
+<li><code>git status</code> est ton meilleur ami : il te dit toujours où tu en es</li>
+</ul>
+
+<h3 id="ref-analogie">Analogie</h3>
+
+<p>Imagine que tu prépares un colis à envoyer par la Poste :</p>
+
+<ol>
+<li>Tu <strong>choisis les affaires</strong> à mettre dans la boîte → c'est <code>git add</code></li>
+<li>Tu <strong>fermes et étiquettes</strong> la boîte avec une description → c'est <code>git commit</code></li>
+<li>Tu <strong>deposes la boîte</strong> à la Poste pour qu'elle parte → c'est <code>git push</code></li>
+</ol>
+
+<p>Si tu sautes une étape, ton colis n'arrive jamais !</p>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li>Le workflow standard (les 3 commandes de base)</li>
+<li>Chaque commande expliquée en détail</li>
+<li>Les commandes utiles en plus</li>
+<li>Les erreurs classiques à éviter</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-le-workflow-standard-les-3-étapes-incontournables">1) Le workflow standard — les 3 étapes incontournables</h2>
+
+<p>Voici la séquence que tu utiliseras <strong>tous les jours</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Étape 1 — on prépare le fichier modifié
+git add string_methods.py
+
+# Étape 2 — on crée le snapshot avec un message descriptif
+git commit -m &quot;Progress on string_methods: 5 tests passing&quot;
+
+# Étape 3 — on envoie tout sur GitHub
+git push origin master</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Ces 3 commandes forment un seul enchaînement logique. Pense-y comme un rituel : tu ne pousses jamais sans avoir d'abord ajouté et commité.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-les-commandes-expliquées-une-par-une">2) Les commandes expliquées une par une</h2>
+
+<h3 id="ref-21-git-add-choisir-ce-quon-sauvegarde">2.1 <code>git add</code> — choisir ce qu'on sauvegarde</h3>
+
+<p>Avant de créer un snapshot, tu dois dire à Git <strong>quels fichiers</strong> tu veux inclure. On appelle ça "stager" un fichier.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Ajouter un seul fichier précis (recommandé quand tu débutes)
+git add mon_fichier.py
+
+# Ajouter TOUS les fichiers modifiés d&#x27;un coup
+git add .</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>git add .</code> ajoute absolutement tout ce qui a changé dans le dossier. C'est pratique, mais dangereux si tu as modifié des fichiers par erreur. Prends l'habitude de faire <code>git status</code> avant pour voir exactement ce qui sera ajouté.</p></div></div>
+
+<h3 id="ref-22-git-commit-prendre-la-photo">2.2 <code>git commit</code> — prendre la photo</h3>
+
+<p>Une fois les fichiers stagés, tu crées le snapshot. Le flag <code>-m</code> te permet d'écrire un message directement dans la commande.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># La structure de base
+git commit -m &quot;Description claire de ce qui a été fait&quot;</code></pre></div>
+
+
+<h4 id="ref-bien-écrire-ses-messages-de-commit">Bien écrire ses messages de commit</h4>
+
+<p>Un bon message de commit est <strong>court, précis, et en anglais</strong> (convention universelle). Il décrit <strong>ce qui a changé</strong>, pas comment tu l'as fait.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Bons messages ✅
+git commit -m &quot;Add Morse encoder function&quot;
+git commit -m &quot;Fix IndexError in caesar cipher&quot;
+git commit -m &quot;Remove duplicate lines in data cleaning script&quot;
+
+# Mauvais messages ❌
+git commit -m &quot;fix&quot;
+git commit -m &quot;wip&quot;
+git commit -m &quot;update&quot;</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Imagine que tu regardes l'historique de tes commits dans 6 mois. Un message comme <code>&quot;fix&quot;</code> ne te dira rien du tout. Un message comme <code>&quot;Fix IndexError in caesar cipher&quot;</code> te rappellera immédiatement ce que tu as corrigé et pourquoi.</p></div></div>
+
+<h3 id="ref-23-git-push-envoyer-sur-github">2.3 <code>git push</code> — envoyer sur GitHub</h3>
+
+<p><code>push</code> envoie ton ou tes commits locaux vers le dépôt distant (GitHub). <code>origin</code> désigne l'adresse distante, <code>master</code> (ou <code>main</code>) est le nom de ta branche principale.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Si ta branche principale s&#x27;appelle &quot;master&quot;
+git push origin master
+
+# Si ta branche principale s&#x27;appelle &quot;main&quot; (GitHub utilise &quot;main&quot; par défaut depuis 2020)
+git push origin main</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Tu peux vérifier le nom de ta branche avec <code>git branch</code> — la branche active est précédée d'une étoile <code>*</code>.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-les-commandes-utiles-en-plus">3) Les commandes utiles en plus</h2>
+
+<p>Ces commandes ne font pas partie du workflow de sauvegarde, mais elles t'aident à <strong>comprendre ce qui se passe</strong> et à <strong>corriger des erreurs</strong>.</p>
+
+<h3 id="ref-inspecter-létat-de-ton-dépôt">Inspecter l'état de ton dépôt</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git status          # affiche les fichiers modifiés, stagés, ou non trackés
+git log --oneline   # affiche l&#x27;historique des commits sur une seule ligne chacun
+git diff            # montre les modifications non encore stagées (ligne par ligne)
+git diff --staged   # montre les modifications déjà stagées (prêtes à être commitées)</code></pre></div>
+
+
+<p><strong>Exemple de <code>git status</code></strong> : avant de faire quoi que ce soit, tape toujours <code>git status</code>. Tu verras quelque chose comme :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">On branch master
+Changes not staged for commit:
+  modified:   string_methods.py   # &lt;-- ce fichier a été modifié mais pas encore stagé
+
+Untracked files:
+  new_script.py                   # &lt;-- ce fichier est nouveau, Git ne le suit pas encore</code></pre></div>
+
+
+<h3 id="ref-annuler-des-modifications">Annuler des modifications</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Annuler les modifications d&#x27;un fichier (revenir à la dernière version commitée)
+git restore fichier.py
+
+# Déstaguer un fichier (le retirer du &quot;add&quot; sans perdre les modifications)
+git restore --staged fichier.py
+
+# Corriger le message du tout dernier commit (uniquement si pas encore pushé)
+git commit --amend -m &quot;Nouveau message corrigé&quot;</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>git restore fichier.py</code> efface définitivement tes modifications locales sur ce fichier. Il n'y a pas de "annuler" après ça — utilise-le avec précaution.</p></div></div>
+
+<h3 id="ref-les-branches-aperçu-rapide">Les branches (aperçu rapide)</h3>
+
+<p>Une branche, c'est comme une copie parallèle de ton code où tu peux expérimenter sans toucher à la version principale.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git branch                        # lister toutes les branches (l&#x27;active est marquée *)
+git checkout -b nouvelle-branche  # créer une nouvelle branche et basculer dessus
+git checkout master               # revenir sur la branche principale
+git merge ma-branche              # fusionner &quot;ma-branche&quot; dans la branche actuelle</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Au début, tu n'auras probablement qu'une seule branche (<code>master</code> ou <code>main</code>). Les branches deviennent utiles quand tu travailles en équipe ou sur des fonctionnalités expérimentales.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-les-erreurs-classiques-à-éviter">4) Les erreurs classiques à éviter</h2>
+
+<h3 id="ref-erreur-1-faire-git-push-sans-avoir-ajouté-ni-commité">Erreur 1 — Faire <code>git push</code> sans avoir ajouté ni commité</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># ❌ Ça ne pousse rien si tu n&#x27;as pas fait add + commit avant
+git push origin master
+
+# ✅ La bonne séquence
+git add .
+git commit -m &quot;Mon message&quot;
+git push origin master</code></pre></div>
+
+
+<h3 id="ref-erreur-2-écrire-un-message-de-commit-trop-vague">Erreur 2 — Écrire un message de commit trop vague</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git commit -m &quot;fix&quot;        # ❌ incompréhensible dans 6 mois
+git commit -m &quot;Fix index out of range in caesar cipher&quot;  # ✅ précis et utile</code></pre></div>
+
+
+<h3 id="ref-erreur-3-commiter-sans-vérifier-ce-quon-commit">Erreur 3 — Commiter sans vérifier ce qu'on commit</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git commit -m &quot;Add feature&quot;  # ❌ tu ne sais pas exactement ce que tu inclus
+git status                   # ✅ commence toujours par vérifier l&#x27;état
+git add fichier_specifique.py
+git commit -m &quot;Add feature&quot;  # ✅ maintenant tu sais exactement ce qui est commité</code></pre></div>
+
+
+<h3 id="ref-erreur-4-utiliser-git-add-sans-vérifier-dabord">Erreur 4 — Utiliser <code>git add .</code> sans vérifier d'abord</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git add .   # ⚠️ ajoute TOUT — y compris des fichiers que tu ne voulais pas inclure
+git status  # ✅ vérifie d&#x27;abord quels fichiers sont modifiés avant d&#x27;ajouter en masse</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1</strong> — Quelle est la bonne séquence pour sauvegarder et envoyer son travail sur GitHub ? (Mets les commandes dans l'ordre)</p>
+<blockquote><p><code>git push</code>, <code>git commit</code>, <code>git add</code></p></blockquote>
+
+<p><strong>Question 2</strong> — Tu as modifié <code>analyse.py</code> mais quand tu fais <code>git push</code>, rien ne se passe. Pourquoi ? Que dois-tu faire ?</p>
+
+<p><strong>Question 3</strong> — Parmi ces messages de commit, lequel est le meilleur et pourquoi ?</p>
+<blockquote><p>a) <code>&quot;update&quot;</code> — b) <code>&quot;Fix TypeError in data cleaning function&quot;</code> — c) <code>&quot;blabla&quot;</code> — d) <code>&quot;wip2&quot;</code></p></blockquote>
+
+<p><strong>Question 4</strong> — Tu viens de stager accidentellement un fichier avec <code>git add .</code> que tu ne voulais pas inclure. Quelle commande utilises-tu pour le "déstaguer" sans perdre tes modifications ?</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Git sauvegarde ton code en 3 étapes : <code>git add</code> (préparer) → <code>git commit</code> (snapshot) → <code>git push</code> (envoyer sur GitHub).</li>
+<li><code>git status</code> est la commande à taper <strong>en premier</strong>, toujours, avant de faire quoi que ce soit.</li>
+<li>Un bon message de commit est <strong>court et précis</strong> : il décrit ce qui a changé (<code>&quot;Add Morse encoder function&quot;</code>), pas l'état d'esprit (<code>&quot;fix&quot;</code>, <code>&quot;wip&quot;</code>).</li>
+<li><code>git add .</code> ajoute tout d'un coup — pratique mais risqué : vérifie avec <code>git status</code> d'abord.</li>
+<li><code>git log --oneline</code> te montre l'historique de tous tes commits en un coup d'oeil.</li>
+<li><code>git restore fichier.py</code> annule les modifications locales <strong>de façon irréversible</strong>.</li>
+<li><code>git restore --staged fichier.py</code> retire un fichier du stage sans effacer tes changements.</li>
+<li><code>origin</code> = l'adresse distante (GitHub) ; <code>master</code> ou <code>main</code> = ta branche principale.</li>
+<li>Ne fais jamais <code>git push</code> sans avoir d'abord fait <code>add</code> + <code>commit</code> — sinon il n'y a rien à envoyer.</li>
+<li>En résumé : <strong>status → add → commit → push</strong>. Dans cet ordre, à chaque fois.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-le-modèle-mental-de-git">Le modèle mental de Git</a></li><li><a href="#syn-le-triptyque-add-commit-push">Le triptyque add / commit / push</a></li><li><a href="#syn-les-branches-comme-pointeurs">Les branches comme pointeurs</a></li><li><a href="#syn-pull-merge-conflits">Pull, merge, conflits</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-git-stash-et-changements-en-attente">`git stash` et changements en attente</a></li><li><a href="#syn-réécrire-lhistorique-reset-rebase-amend">Réécrire l'historique : reset, rebase, amend</a></li><li><a href="#syn-git-bisect-pour-trouver-le-commit-fautif">`git bisect` pour trouver le commit fautif</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-le-modèle-mental-de-git">Le modèle mental de Git</h3>
+
+<p>Git n'est pas un système de versionnement comme SVN ou Dropbox. C'est un <strong>graphe acyclique orienté (DAG) de snapshots immuables</strong>. Chaque commit est un snapshot <strong>complet</strong> de votre projet à un instant donné, identifié par un <strong>hash SHA-1</strong> (en pratique, ses 7 premiers caractères suffisent : <code>a3f2c91</code>).</p>
+
+<p><strong>Trois zones</strong> à distinguer absolument :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Zone</th><th>Aussi appelée</th><th>Commande qui y déplace</th></tr></thead><tbody><tr><td><strong>Working tree</strong></td><td>dossier de travail</td><td>(vos modifications brutes)</td></tr><tr><td><strong>Staging area</strong></td><td>index</td><td><code>git add</code></td></tr><tr><td><strong>Repository</strong></td><td>history, <code>.git/</code></td><td><code>git commit</code></td></tr></tbody></table></div>
+<p><strong>Diagramme ASCII</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Working tree         Staging area         Repository
+(.py modifié)        (index)              (commits)
+     |                    |                    |
+     |  git add           |  git commit        |
+     |-------------------&gt;|-------------------&gt;|
+     |                    |                    |
+     |  git checkout      |  git reset         |
+     |&lt;-------------------|&lt;-------------------|
+     |                    |                    |</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : pensez à la prise de photos de famille. Le <strong>working tree</strong> est la scène (tout le monde bouge). Le <strong>stage</strong> est quand vous demandez "tout le monde se met en place pour la photo". Le <strong>commit</strong> est le clic sur le déclencheur — la photo est sauvegardée pour toujours, immuable. Le <strong>push</strong> est l'envoi du tirage à la famille distante.</p></div></div>
+
+<h3 id="syn-le-triptyque-add-commit-push">Le triptyque add / commit / push</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git status                       # Affiche : quelles modifications, quoi est staged
+git add file.py                  # Met UNE modification en stage
+git add .                        # Stage TOUTES les modifications du dossier courant
+git add -p                       # Stage interactivement, hunk par hunk (très puissant)
+git commit -m &quot;Ajoute pipeline preprocessing&quot;
+git push origin main             # Envoie les commits locaux vers le remote</code></pre></div>
+
+
+<p><strong>Le message de commit est crucial</strong>. Convention <em>conventional commits</em> largement adoptée :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">feat: ajoute le scaler StandardScaler dans le pipeline
+fix: corrige le bug de division par zéro dans normalize()
+refactor: extrait load_data dans un module dédié
+test: ajoute les tests unitaires pour TrainSplit
+docs: met à jour le README avec les instructions d&#x27;install
+chore: bump scikit-learn de 1.3 à 1.4
+perf: vectorise compute_features, 5x plus rapide</code></pre></div>
+
+
+<p>Préfixes : <code>feat</code>, <code>fix</code>, <code>refactor</code>, <code>test</code>, <code>docs</code>, <code>chore</code>, <code>perf</code>. Ce format permet à des outils comme <code>semantic-release</code> de <strong>générer automatiquement le changelog</strong> et le numéro de version (semver).</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : un commit = une seule intention. Si votre message contient un "et" ("ajoute X <strong>et</strong> corrige Y"), c'est probablement deux commits différents. La règle d'or : un commit doit pouvoir être annulé proprement avec <code>git revert</code> sans casser le reste.</p></div></div>
+
+<h3 id="syn-les-branches-comme-pointeurs">Les branches comme pointeurs</h3>
+
+<p>Une <strong>branche n'est pas un dossier</strong>, ce n'est même pas une copie de votre code. C'est un <strong>pointeur mobile vers un commit</strong>. Quand vous faites un commit sur une branche, le pointeur avance d'un cran.</p>
+
+<p>C'est pourquoi créer une branche est une opération <strong>O(1)</strong> en Git — contrairement à SVN où ça duplique tout.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git branch                       # Liste les branches locales
+git branch feature-pca           # Crée une branche (sans y basculer)
+git checkout feature-pca         # Bascule dessus
+git checkout -b feature-pca      # Combine les deux (shortcut)
+git switch feature-pca           # Syntaxe moderne (Git 2.23+)
+git switch -c feature-pca        # Idem -c = create</code></pre></div>
+
+
+<p><strong>Workflow standard</strong> pour ajouter une feature :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git checkout main &amp;&amp; git pull            # Partir d&#x27;un main à jour
+git switch -c feat/pca-pipeline          # Nouvelle branche
+# ... travail, add, commit ...
+git push -u origin feat/pca-pipeline     # Push avec tracking de la branche distante
+# Ouvrir une Pull Request sur GitHub</code></pre></div>
+
+
+<p><strong>Diagramme</strong> avant/après création de branche :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Avant :               Après création :        Après commit sur feat :
+
+  A---B---C main        A---B---C main          A---B---C main
+                                 \                        \
+                                  feat                     D feat</code></pre></div>
+
+
+<h3 id="syn-pull-merge-conflits">Pull, merge, conflits</h3>
+
+<p><code>git pull</code> est en réalité <code>git fetch &amp;&amp; git merge</code> : récupère les nouveaux commits du remote, puis les fusionne dans votre branche locale.</p>
+
+<p>Quand vos changements et ceux du remote modifient le <strong>même fichier au même endroit</strong>, Git ne sait pas lequel choisir et marque le fichier en conflit. Le fichier ressemble à :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def compute_loss(y_true, y_pred):
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+    return np.mean((y_true - y_pred) ** 2)
+=======
+    return np.sqrt(np.mean((y_true - y_pred) ** 2))
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/main</code></pre></div>
+
+
+<p>Les marqueurs <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> délimitent les <strong>deux versions concurrentes</strong>. Vous devez :</p>
+
+<ol>
+<li><strong>Ouvrir le fichier</strong> et choisir ce qui vous va (ou un mélange)</li>
+<li><strong>Supprimer les marqueurs</strong></li>
+<li><code>git add fichier</code> pour marquer le conflit résolu</li>
+<li><code>git commit</code> (le message de merge est généré automatiquement)</li>
+</ol>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège</strong> : ne <strong>jamais</strong> committer un fichier qui contient encore les marqueurs <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>. Vos tests vont peut-être passer (Python tolère parfois les <code>&lt;</code> en parsing selon le contexte) mais en production le code sera cassé. Ajoutez un pre-commit hook qui rejette ces marqueurs : <code>grep -r &#x27;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&#x27; . &amp;&amp; exit 1</code>.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-git-stash-et-changements-en-attente"><code>git stash</code> et changements en attente</h3>
+
+<p>Vous êtes au milieu d'une feature, mais on vous demande un <strong>hotfix urgent</strong> sur main. Vos modifications ne sont pas prêtes à être committées. Solution :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git stash                        # Met TOUT ce qui n&#x27;est pas committé de côté
+git checkout main
+# ... fix urgent, commit, push ...
+git checkout feat/pca
+git stash pop                    # Restaure les modifs mises de côté et supprime le stash</code></pre></div>
+
+
+<p><strong>Variantes utiles</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git stash list                   # Voir tous les stashes (vous pouvez en avoir plusieurs)
+git stash show stash@{0}         # Voir le contenu d&#x27;un stash
+git stash apply stash@{1}        # Restaure SANS supprimer (pop = apply + drop)
+git stash drop stash@{0}         # Supprime un stash
+git stash -u                     # Inclut aussi les fichiers non trackés (untracked)
+git stash -m &quot;WIP on PCA&quot;        # Avec un message (comme un mini-commit)</code></pre></div>
+
+
+<h3 id="syn-réécrire-lhistorique-reset-rebase-amend">Réécrire l'historique : reset, rebase, amend</h3>
+
+<p><strong>Trois opérations dangereuses</strong> mais essentielles à maîtriser pour ne pas paniquer.</p>
+
+<p><strong><code>git commit --amend</code></strong> modifie le <strong>dernier</strong> commit (message, contenu, ou les deux). Utile quand vous avez oublié un fichier ou fait une typo :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git add fichier_oublie.py
+git commit --amend --no-edit     # Ajoute le fichier au dernier commit, garde le message
+git commit --amend -m &quot;Nouveau message&quot;</code></pre></div>
+
+
+<p><strong><code>git reset</code></strong> déplace le pointeur HEAD en arrière. <strong>Trois modes</strong> selon ce qu'on garde :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git reset --soft HEAD~1     # Annule le commit, garde tout staged (prêt à re-commiter)
+git reset --mixed HEAD~1    # Annule le commit, garde le working tree (défaut)
+git reset --hard HEAD~1     # ☢️ Annule le commit ET les modifications (destructif)</code></pre></div>
+
+
+<p><strong><code>git rebase</code></strong> rejoue vos commits sur une autre base. Utile pour intégrer les changements de main dans votre branche feature sans créer un commit de merge :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git switch feat/pca
+git fetch origin
+git rebase origin/main           # Rejoue vos commits sur le main à jour</code></pre></div>
+
+
+<p><strong>Diagramme</strong> — merge vs rebase :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Avant :              Après merge :        Après rebase :
+
+main:  A---B---C     A---B---C---M        A---B---C
+             \                 /                    \
+feat:         D---E    D---E--/                      D&#x27;---E&#x27; feat</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Règle d'or</strong> : ne <strong>jamais</strong> rebase ou amend une branche déjà poussée et <strong>partagée</strong>. Vous réécrivez l'historique, et toutes les copies locales de vos collègues divergent. Conséquence : conflits horribles. Sur une branche perso non partagée, rebase autant que vous voulez.</p></div></div>
+
+<h3 id="syn-git-bisect-pour-trouver-le-commit-fautif"><code>git bisect</code> pour trouver le commit fautif</h3>
+
+<p>Un test passait il y a une semaine, ne passe plus aujourd'hui, et vous avez fait <strong>50 commits</strong> entre temps. Plutôt que de les tester un par un :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git bisect start
+git bisect bad                   # Le commit courant est cassé
+git bisect good a3f2c91          # Ce commit-là marchait
+
+# Git checkout automatiquement le commit médian
+# Vous testez :
+pytest tests/test_model.py
+git bisect good                  # ou &#x27;bad&#x27; selon le résultat
+
+# Git affine par dichotomie. log₂(50) ≈ 6 itérations suffisent.
+git bisect reset                 # Quand fini</code></pre></div>
+
+
+<p>C'est une <strong>recherche dichotomique automatisée</strong>. Sur 1000 commits, ça prend ~10 vérifications. Vous pouvez même <strong>automatiser totalement</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git bisect run pytest tests/test_model.py
+# Git lance pytest à chaque étape, et s&#x27;arrête tout seul sur le coupable</code></pre></div>
+
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Vous avez fait <code>git reset --hard HEAD~3</code> puis réalisé que vous avez perdu trois commits importants. Sont-ils définitivement perdus ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p><code>git reflog</code>.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Non — pas pendant ~90 jours</strong>. Git conserve un journal de tous les déplacements de HEAD dans <code>.git/logs/HEAD</code>, accessible via <code>git reflog</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git reflog
+# abc1234 HEAD@{0}: reset: moving to HEAD~3
+# def5678 HEAD@{1}: commit: feat: add normalization   ← voilà vos commits perdus
+# 91011ab HEAD@{2}: commit: fix: edge case
+# ...</code></pre></div>
+
+
+<p>Vous voyez <strong>tous les états</strong> par lesquels HEAD est passé, y compris ceux d'avant le reset. Pour récupérer :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git reset --hard HEAD@{1}        # Retour à l&#x27;état d&#x27;avant le reset
+# OU
+git checkout -b recovery HEAD@{1}  # Nouvelle branche pour isoler</code></pre></div>
+
+
+<p><strong>La leçon plus profonde</strong> : Git ne supprime presque rien immédiatement. Les commits "supprimés" deviennent inaccessibles mais <strong>restent dans <code>.git/objects/</code></strong> jusqu'au prochain <code>git gc</code> qui tourne automatiquement après ~30-90 jours. Cette propriété explique pourquoi Git est si <strong>sûr</strong> : presque toutes les opérations destructrices sont récupérables tant qu'on agit vite.</p>
+
+</details>
+
+<p><strong>Q2 : Quelle est la différence entre <code>git pull</code> et <code>git pull --rebase</code>, et lequel préférer en équipe ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Forme de l'historique.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<ul>
+<li><strong><code>git pull</code></strong> fait <code>fetch + merge</code>. S'il y a des commits divergents, ça crée un <strong>commit de merge</strong> supplémentaire. L'historique prend une forme de spaghetti avec des branches qui se recroisent.</li>
+</ul>
+
+<ul>
+<li><strong><code>git pull --rebase</code></strong> fait <code>fetch + rebase</code>. Vos commits locaux sont <strong>rejoués au-dessus de la nouvelle pointe du remote</strong>. L'historique reste <strong>linéaire</strong>.</li>
+</ul>
+
+<p><strong>Comparaison visuelle</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Après git pull (merge)          Après git pull --rebase
+
+  A---B---C---M  main             A---B---C---D&#x27;---E&#x27;  main
+       \     /
+        D---E (local)</code></pre></div>
+
+
+<p>La plupart des équipes préfèrent le <strong>rebase</strong> pour la lisibilité de <code>git log</code>. Configuration globale :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git config --global pull.rebase true</code></pre></div>
+
+
+<p><strong>Attention</strong> : si vos commits locaux sont déjà partagés (push public), ne rebase pas. La règle est : <strong>rebase tant que c'est privé, merge dès que c'est public</strong>.</p>
+
+</details>
+
+<p><strong>Q3 : Vous avez accidentellement committé un fichier <code>secrets.env</code> contenant une clé API et vous l'avez poussé sur GitHub. Que faut-il faire ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>La clé est immédiatement compromise.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Étape 1 (la plus urgente)</strong> : <strong>révoquer immédiatement la clé API</strong> auprès du fournisseur (OpenAI, AWS, Stripe…). Tout secret poussé sur GitHub doit être considéré comme compromis dans les minutes qui suivent — des bots scannent en continu les commits publics à la recherche de clés.</p>
+
+<p><strong>Étape 2</strong> : générer une <strong>nouvelle clé</strong> et l'ajouter à votre <code>.env</code> local (pas en dur dans le code).</p>
+
+<p><strong>Étape 3</strong> : <strong>supprimer le fichier de l'historique</strong> avec <code>git filter-repo</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install git-filter-repo
+git filter-repo --path secrets.env --invert-paths
+git push --force-with-lease origin main</code></pre></div>
+
+
+<p>Note : cela <strong>réécrit l'historique</strong>, à coordonner avec l'équipe.</p>
+
+<p><strong>Étape 4</strong> : <strong>prévenir les collègues</strong> — leurs clones contiennent encore la clé compromise. Ils doivent re-cloner ou rebase par-dessus.</p>
+
+<p><strong>Étape 5 (préventif)</strong> : ajouter au <code>.gitignore</code> et installer un pre-commit hook :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># .gitignore
+*.env
+secrets/
+credentials.json
+
+# Pre-commit hook (gitleaks ou detect-secrets)
+pre-commit install</code></pre></div>
+
+
+<p>C'est une <strong>question d'entretien classique</strong> pour les rôles DevOps / sécurité. Le candidat qui répond "je supprime le fichier dans un nouveau commit" a tout faux : le fichier reste dans l'historique, et la clé reste compromise.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener">Pro Git book</a> (Scott Chacon) — gratuit, exhaustif, la référence absolue</li>
+<li><a href="https://learngitbranching.js.org/" target="_blank" rel="noopener">Learn Git Branching</a> — visualisateur interactif des opérations git</li>
+<li><a href="https://www.conventionalcommits.org/" target="_blank" rel="noopener">Conventional Commits</a> — spec des préfixes de message</li>
+<li><a href="https://ohshitgit.com/" target="_blank" rel="noopener">Oh Shit, Git!</a> — solutions courtes aux situations paniquantes</li>
+<li><a href="https://github.com/newren/git-filter-repo" target="_blank" rel="noopener">git-filter-repo</a> — successeur moderne de filter-branch pour réécrire l'historique</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../notes-perso/gestion-erreurs.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Gestion des erreurs</span>
+  </a>
+  <a href="../python-sql/python-101.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Python 101 →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

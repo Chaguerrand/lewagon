@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundamentals of ML — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Fundamentals of ML</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html" class="active">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Machine Learning</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Fundamentals of ML</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Fundamentals of ML</h1>
+        <p class="page-objective">Comprendre les fondements du Machine Learning — taxonomie (supervisé/non-supervisé), workflow sklearn (fit/predict/score), méthode holdout et cross-validation, biais/variance, et lecture des learning curves pour diagnostiquer underfitting et overfitting.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Supervisé / non supervisé</div>
+        <div class="key-concept-def">Avec ou sans labels cibles dans les données d&#x27;entraînement.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Bias-variance</div>
+        <div class="key-concept-def">Compromis entre sous-apprentissage (biais) et sur-apprentissage (variance).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Cross-validation</div>
+        <div class="key-concept-def">Découpe k fois le jeu pour estimer la performance sans gaspiller de données.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">`fit` / `predict` / `score`</div>
+        <div class="key-concept-def">Le triptyque fondamental de toute API sklearn.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-fundamentals-of-machine-learning">Cheatsheet — Fundamentals of Machine Learning</a><ol><li><a href="#workflow-sklearn-standard">Workflow sklearn standard</a></li><li><a href="#traintest-split-holdout-method">Train/Test Split — Holdout Method</a></li><li><a href="#cross-validation">Cross-Validation</a></li><li><a href="#learning-curves">Learning Curves</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-quest-ce-que-le-machine-learning">1) Qu'est-ce que le Machine Learning ?</a><ol><li><a href="#11-taxonomie-du-ml">1.1 Taxonomie du ML</a></li><li><a href="#12-classification-vs-régression">1.2 Classification vs Régression</a></li><li><a href="#13-vocabulaire-clé">1.3 Vocabulaire clé</a></li></ol></li><li><a href="#2-scikit-learn">2) Scikit-learn</a><ol><li><a href="#21-structure-de-sklearn">2.1 Structure de sklearn</a></li></ol></li><li><a href="#3-linear-modeling-avec-sklearn">3) Linear Modeling avec Sklearn</a><ol><li><a href="#31-rappels">3.1 Rappels</a></li><li><a href="#32-workflow-complet-avec-linearregression">3.2 Workflow complet avec LinearRegression</a></li></ol></li><li><a href="#4-généralisation">4) Généralisation</a><ol><li><a href="#41-méthode-holdout">4.1 Méthode Holdout</a></li><li><a href="#42-k-fold-cross-validation">4.2 K-Fold Cross-Validation</a></li></ol></li><li><a href="#5-biais-variance">5) Biais / Variance</a><li><a href="#6-learning-curves">6) Learning Curves</a><ol><li><a href="#61-comment-les-lire">6.1 Comment les lire</a></li><li><a href="#62-underfitting-biais-élevé">6.2 Underfitting — biais élevé</a></li><li><a href="#63-overfitting-variance-élevée">6.3 Overfitting — variance élevée</a></li><li><a href="#64-courbes-idéales">6.4 Courbes idéales</a></li><li><a href="#65-code-sklearn">6.5 Code sklearn</a></li></ol></li><li><a href="#ressources">Ressources</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-fundamentals-of-machine-learning">📋 Cheatsheet — Fundamentals of Machine Learning</h2>
+
+<h3 id="workflow-sklearn-standard">Workflow sklearn standard</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import LinearRegression
+
+## 1. Importer le modèle (import explicite — &quot;explicit is better than implicit&quot;)
+from sklearn.linear_model import LinearRegression
+
+## 2. Instancier le modèle (= l&#x27;estimateur)
+model = LinearRegression()
+
+## 3. Définir X (features) et y (target)
+X = data[[&#x27;GrLivArea&#x27;]]   # ⚠️ X doit être un DataFrame 2D, pas une Series 1D
+y = data[&#x27;SalePrice&#x27;]     # y peut être une Series
+
+## 4. Entraîner le modèle sur les données d&#x27;entraînement
+model.fit(X_train, y_train)
+
+## 5. Évaluer la performance sur les données de test
+model.score(X_test, y_test)   # R² pour LinearRegression, accuracy pour LogisticRegression
+
+## 6. Prédire sur de nouvelles données
+new_data = pd.DataFrame({&#x27;GrLivArea&#x27;: [1000]})
+model.predict(new_data)       # → array([127113.39...])
+
+## Accéder aux paramètres appris
+model.coef_       # → pente(s) a
+model.intercept_  # → ordonnée à l&#x27;origine b</code></pre></div>
+
+
+<h3 id="traintest-split-holdout-method">Train/Test Split — Holdout Method</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import train_test_split
+
+## Méthode 1 : split du DataFrame
+train_data, test_data = train_test_split(data, test_size=0.3)
+
+## Méthode 2 : split de X et y directement (recommandé)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+
+## test_size = 0.3 → 30% pour le test, 70% pour l&#x27;entraînement
+## random_state = n → reproductibilité (attention : ne pas choisir pour maximiser le score !)</code></pre></div>
+
+
+<h3 id="cross-validation">Cross-Validation</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import cross_validate
+
+model = LinearRegression()
+
+## K-Fold Cross Validation (cv=5 : 5 folds, règle de base)
+cv_results = cross_validate(model, X, y, cv=5)
+
+cv_results[&#x27;test_score&#x27;]          # → scores des 5 folds
+cv_results[&#x27;test_score&#x27;].mean()   # → score moyen cross-validé = métrique fiable</code></pre></div>
+
+
+<h3 id="learning-curves">Learning Curves</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+from sklearn.model_selection import learning_curve
+
+train_sizes = [25, 50, 75, 100, 250, 500, 750, 1000, 1150]
+
+train_sizes, train_scores, test_scores = learning_curve(
+    estimator=LinearRegression(),
+    X=X, y=y,
+    train_sizes=train_sizes,
+    cv=5                          # 5-fold cross-validation pour chaque taille
+)
+
+train_scores_mean = np.mean(train_scores, axis=1)   # moyenne sur les 5 folds
+test_scores_mean  = np.mean(test_scores,  axis=1)
+
+plt.plot(train_sizes, train_scores_mean, label=&#x27;Training score&#x27;)
+plt.plot(train_sizes, test_scores_mean,  label=&#x27;Test score&#x27;)
+plt.xlabel(&#x27;Training set size&#x27;)
+plt.ylabel(&#x27;R² score&#x27;)
+plt.legend()
+plt.show()</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<blockquote><p><strong>Évaluer le modèle sur les mêmes données que l'entraînement</strong><br></p></blockquote>
+
+<blockquote><p>❌ <code>model.fit(X, y)</code> puis <code>model.score(X, y)</code> — score optimiste, aucune mesure de généralisation<br></p></blockquote>
+
+<blockquote><p>✅ Toujours utiliser <code>train_test_split</code> ou <code>cross_validate</code> : entraîner sur <code>X_train</code>, évaluer sur <code>X_test</code><br></p></blockquote>
+
+<blockquote><p><strong>Passer une Series 1D comme X à sklearn</strong><br></p></blockquote>
+
+<blockquote><p>❌ <code>X = data[&#x27;GrLivArea&#x27;]</code> → shape <code>(n,)</code> → <code>ValueError</code> dans sklearn<br></p></blockquote>
+
+<blockquote><p>✅ <code>X = data[[&#x27;GrLivArea&#x27;]]</code> → shape <code>(n, 1)</code> — toujours un DataFrame 2D pour X<br></p></blockquote>
+
+<blockquote><p><strong>Choisir le <code>random_state</code> qui maximise le score holdout</strong><br></p></blockquote>
+
+<blockquote><p>❌ Tester plusieurs <code>random_state</code> et garder celui avec le meilleur score → data leakage<br></p></blockquote>
+
+<blockquote><p>✅ Fixer un <code>random_state</code> a priori et s'y tenir, ou utiliser la cross-validation<br></p></blockquote>
+
+<blockquote><p><strong>Confondre cross-validation et entraînement final</strong><br></p></blockquote>
+
+<blockquote><p>❌ Utiliser le modèle sorti de <code>cross_validate</code> pour prédire — il n'existe pas !<br></p></blockquote>
+
+<blockquote><p>✅ <code>cross_validate</code> ne retourne <strong>que les scores</strong> d'un modèle hypothétique. Le modèle final s'entraîne séparément sur toutes les données.<br></p></blockquote>
+
+<blockquote><p><strong>Importer sklearn de façon non explicite</strong><br></p></blockquote>
+
+<blockquote><p>❌ <code>import sklearn</code> puis <code>sklearn.linear_model.LinearRegression()</code> — ne fonctionne pas avec sklearn<br></p></blockquote>
+
+<blockquote><p>✅ <code>from sklearn.linear_model import LinearRegression</code> — import explicite, conforme au Zen of Python<br></p></blockquote>
+
+<hr>
+
+<h2 id="1-quest-ce-que-le-machine-learning">1) Qu'est-ce que le Machine Learning ?</h2>
+
+<p>Le Machine Learning est la branche de l'informatique qui <strong>apprend des patterns</strong> dans les données pour faire des prédictions ou prendre des décisions, sans être explicitement programmé pour chaque cas.</p>
+
+<figure><img src="../../assets/images/fundamentals-ml-01-1fb027e1.jpg" alt="" loading="lazy"></figure>
+
+<h3 id="11-taxonomie-du-ml">1.1 Taxonomie du ML</h3>
+
+<figure><img src="../../assets/images/fundamentals-ml-02-3c01b89b.png" alt="" loading="lazy"></figure>
+
+<p><strong>Apprentissage supervisé</strong> : on dispose de X (features) <strong>et</strong> de y (target) → on apprend à prédire y à partir de X.</p>
+
+<figure><img src="../../assets/images/fundamentals-ml-03-72217e75.png" alt="" loading="lazy"></figure>
+
+<p><strong>Apprentissage non supervisé</strong> : on dispose uniquement de X → on cherche des structures, des groupes dans les données.</p>
+
+<figure><img src="../../assets/images/fundamentals-ml-04-6e64be96.png" alt="" loading="lazy"></figure>
+
+<h3 id="12-classification-vs-régression">1.2 Classification vs Régression</h3>
+
+<figure><img src="../../assets/images/fundamentals-ml-05-5c92630b.png" alt="" loading="lazy"></figure>
+
+<div class="table-wrapper"><table><thead><tr><th>Type</th><th>Target</th><th>Exemples</th></tr></thead><tbody><tr><td><strong>Régression</strong></td><td>Variable continue</td><td>Prix d'un appartement, température</td></tr><tr><td><strong>Classification</strong></td><td>Variable catégorielle</td><td>Spam/non-spam, survie Titanic</td></tr></tbody></table></div>
+<h3 id="13-vocabulaire-clé">1.3 Vocabulaire clé</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Terme ML</th><th>Synonymes</th></tr></thead><tbody><tr><td>Features</td><td>Input, X, variables, colonnes</td></tr><tr><td>Target</td><td>Output, y, label, class</td></tr><tr><td>Samples</td><td>Lignes, observations</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="2-scikit-learn">2) Scikit-learn</h2>
+
+<figure><img src="../../assets/images/fundamentals-ml-06-2eb8f06c.png" alt="" loading="lazy"></figure>
+
+<p>Sklearn est la bibliothèque ML de référence en Python : preprocessing, modélisation, sélection de modèles.</p>
+
+<p>👉 <a href="http://scikit-learn.org" target="_blank" rel="noopener">scikit-learn.org</a></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install scikit-learn   # installation</code></pre></div>
+
+
+<h3 id="21-structure-de-sklearn">2.1 Structure de sklearn</h3>
+
+<p>Sklearn est organisé en <strong>modules</strong> contenant des <strong>classes</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## ✅ Import explicite — seule bonne pratique
+from sklearn.linear_model import LinearRegression   # module.Classe
+
+model = LinearRegression()   # on sait exactement d&#x27;où vient ce modèle</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## ❌ À éviter
+import sklearn                                       # ne fonctionne pas
+import sklearn.linear_model                          # préfixe complet à chaque fois
+from sklearn.linear_model import *                  # import implicite, pas clair</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>"Explicit is better than implicit"</strong> — The Zen of Python. Toujours importer la classe directement depuis son module.</p></div></div>
+
+<hr>
+
+<h2 id="3-linear-modeling-avec-sklearn">3) Linear Modeling avec Sklearn</h2>
+
+<h3 id="31-rappels">3.1 Rappels</h3>
+
+<p><strong>Régression Linéaire (OLS)</strong> : modélise une relation linéaire entre X et y, en minimisant les résidus.</p>
+
+<p>$y = aX + b$</p>
+
+<p><strong>Régression Logistique</strong> : classifieur malgré son nom — utilise la fonction sigmoid pour prédire P(y=1|X).</p>
+
+<p>$P(y_i = 1 | X) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x)}}$</p>
+
+<h3 id="32-workflow-complet-avec-linearregression">3.2 Workflow complet avec LinearRegression</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+
+data = pd.read_csv(&quot;ML_Houses_dataset.csv&quot;)
+data = data.sample(frac=1)   # mélange les données
+
+## Exploration
+plt.scatter(data[&#x27;GrLivArea&#x27;], data[&#x27;SalePrice&#x27;])
+plt.xlabel(&quot;Living area&quot;)
+plt.ylabel(&quot;Sale price&quot;)
+plt.show()
+
+## Définir X et y
+X = data[[&#x27;GrLivArea&#x27;]]   # ⚠️ double crochets → DataFrame 2D
+y = data[&#x27;SalePrice&#x27;]
+
+## Split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+
+## Entraîner
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+## Paramètres appris
+model.coef_       # → [105.009] : pente a
+model.intercept_  # → 22104.12 : intercept b
+
+## Évaluer
+model.score(X_test, y_test)   # → R² ≈ 0.48
+
+## Prédire
+new_data = pd.DataFrame({&#x27;GrLivArea&#x27;: [1000]})
+model.predict(new_data)   # → [127113.] : prix estimé ~127K$</code></pre></div>
+
+
+<hr>
+
+<h2 id="4-généralisation">4) Généralisation</h2>
+
+<p>La performance d'un modèle ML s'évalue sur sa capacité à <strong>généraliser</strong> sur des données non vues.</p>
+
+<h3 id="41-méthode-holdout">4.1 Méthode Holdout</h3>
+
+<p>Séparer le dataset en :</p>
+
+<ul>
+<li><strong>Training set</strong> (~70%) : pour entraîner le modèle</li>
+<li><strong>Testing set</strong> (~30%) : pour évaluer la généralisation</li>
+</ul>
+
+<figure><img src="../../assets/images/fundamentals-ml-07-3c0fad62.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+model.score(X_test, y_test)   # → score sur données non vues</code></pre></div>
+
+
+<p><strong>Limites du Holdout :</strong></p>
+
+<ul>
+<li>Le split est <strong>aléatoire</strong> → scores différents à chaque exécution</li>
+<li>Le <code>random_state</code> peut être "optimisé" → biais de sélection</li>
+<li>La portion test n'est <strong>pas utilisée pour l'entraînement</strong> → perte d'information si dataset petit</li>
+</ul>
+
+<h3 id="42-k-fold-cross-validation">4.2 K-Fold Cross-Validation</h3>
+
+<p><strong>Solution</strong> : moyenner les scores de K splits différents.</p>
+
+<ol>
+<li>Diviser le dataset en K folds</li>
+<li>Pour chaque fold : entraîner sur les K-1 autres folds, évaluer sur ce fold</li>
+<li>Le score final = <strong>moyenne des K scores</strong></li>
+</ol>
+
+<figure><img src="../../assets/images/fundamentals-ml-08-26400f11.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import cross_validate
+
+model = LinearRegression()
+cv_results = cross_validate(model, X, y, cv=5)   # K=5
+
+cv_results[&#x27;test_score&#x27;]          # → [0.30, 0.43, 0.55, 0.59, 0.51]
+cv_results[&#x27;test_score&#x27;].mean()   # → 0.478 : score cross-validé</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>cross_validate</code> ne retourne <strong>que les scores</strong> — il n'y a pas de modèle entraîné en sortie. Pour prédire, entraîner séparément <code>model.fit(X, y)</code> sur toutes les données.</p></div></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Règle de base</strong> : K = 5 ou 10. Plus K est grand → scores plus représentatifs, mais plus coûteux en calcul.</p></div></div>
+
+<hr>
+
+<h2 id="5-biais-variance">5) Biais / Variance</h2>
+
+<figure><img src="../../assets/images/fundamentals-ml-09-bb14b438.png" alt="" loading="lazy"></figure>
+
+<div class="table-wrapper"><table><thead><tr><th>Problème</th><th>Symptôme</th><th>Cause</th></tr></thead><tbody><tr><td><strong>Underfitting</strong> (biais élevé)</td><td>Score faible en train <strong>et</strong> en test</td><td>Modèle trop simple, ne capture pas les patterns</td></tr><tr><td><strong>Overfitting</strong> (variance élevée)</td><td>Score élevé en train, faible en test</td><td>Modèle trop complexe, mémorise le bruit</td></tr><tr><td><strong>Idéal</strong></td><td>Score élevé en train <strong>et</strong> en test</td><td>Bon équilibre</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>No Free Lunch Theorem</strong> : il n'existe pas de modèle universel optimal. C'est au data scientist de faire des hypothèses sur les données et de tester les modèles appropriés.</p></div></div>
+
+<hr>
+
+<h2 id="6-learning-curves">6) Learning Curves</h2>
+
+<p>Les learning curves permettent de <strong>diagnostiquer</strong> le comportement d'un modèle en fonction de la taille du dataset d'entraînement.</p>
+
+<h3 id="61-comment-les-lire">6.1 Comment les lire</h3>
+
+<p>En augmentant la taille du training set :</p>
+
+<ul>
+<li>Le <strong>training score diminue</strong> (moins d'overfit sur peu de données)</li>
+<li>Le <strong>test score augmente</strong> (plus de données → mieux généralise)</li>
+<li>Les courbes <strong>convergent</strong> vers un plateau</li>
+</ul>
+
+<figure><img src="../../assets/images/fundamentals-ml-10-4e036b54.png" alt="" loading="lazy"></figure>
+
+<h3 id="62-underfitting-biais-élevé">6.2 Underfitting — biais élevé</h3>
+
+<p>Scores faibles en train <strong>et</strong> en test. Les courbes convergent vers un <strong>plateau bas</strong>. Ajouter plus de données n'aide pas.</p>
+
+<figure><img src="../../assets/images/fundamentals-ml-11-17614da2.png" alt="" loading="lazy"></figure>
+
+<h3 id="63-overfitting-variance-élevée">6.3 Overfitting — variance élevée</h3>
+
+<p>Score élevé en train, score bas en test. Grand écart entre les deux courbes. Plus de données <em>pourrait</em> aider.</p>
+
+<figure><img src="../../assets/images/fundamentals-ml-12-eebc2368.png" alt="" loading="lazy"></figure>
+
+<h3 id="64-courbes-idéales">6.4 Courbes idéales</h3>
+
+<p>Scores élevés en train <strong>et</strong> en test, courbes convergées.</p>
+
+<figure><img src="../../assets/images/fundamentals-ml-13-b61e0bb5.png" alt="" loading="lazy"></figure>
+
+<h3 id="65-code-sklearn">6.5 Code sklearn</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+from sklearn.model_selection import learning_curve
+
+train_sizes = [25, 50, 75, 100, 250, 500, 750, 1000, 1150]
+
+train_sizes, train_scores, test_scores = learning_curve(
+    estimator=LinearRegression(),
+    X=X, y=y,
+    train_sizes=train_sizes,
+    cv=5                          # 5-fold CV pour chaque taille
+)
+
+train_scores_mean = np.mean(train_scores, axis=1)
+test_scores_mean  = np.mean(test_scores,  axis=1)
+
+plt.plot(train_sizes, train_scores_mean, label=&#x27;Training score&#x27;)
+plt.plot(train_sizes, test_scores_mean,  label=&#x27;Test score&#x27;)
+plt.xlabel(&#x27;Training set size&#x27;)
+plt.ylabel(&#x27;R² score&#x27;)
+plt.title(&#x27;Learning Curves&#x27;)
+plt.legend()
+plt.show()</code></pre></div>
+
+
+<p><strong>Interprétation du modèle sur le dataset houses :</strong></p>
+
+<figure><img src="../../assets/images/fundamentals-ml-14-56d6e606.png" alt="" loading="lazy"></figure>
+
+<p>Les deux courbes ont convergé et atteint un plateau → le modèle fait de son mieux avec les features disponibles. Ajouter plus de données n'améliorerait pas le score. Il faut chercher de nouvelles features ou un modèle plus complexe.</p>
+
+<hr>
+
+<h2 id="ressources">📚 Ressources</h2>
+
+<ul>
+<li>👉 <a href="https://scikit-learn.org/" target="_blank" rel="noopener">Scikit-learn documentation</a></li>
+<li>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html" target="_blank" rel="noopener">Sklearn — LinearRegression</a></li>
+<li>👉 <a href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.linear_model" target="_blank" rel="noopener">Sklearn — linear_model module</a></li>
+<li>👉 <a href="https://en.wikipedia.org/wiki/No_free_lunch_theorem" target="_blank" rel="noopener">No Free Lunch Theorem</a></li>
+<li>👉 <a href="https://medium.com/towards-data-science/understanding-the-bias-variance-tradeoff-165e6942b229" target="_blank" rel="noopener">Understanding Bias-Variance Tradeoff</a></li>
+<li>👉 <a href="https://www.dataquest.io/blog/learning-curves-machine-learning/" target="_blank" rel="noopener">Learning Curves in Machine Learning</a></li>
+<li>👉 <a href="https://wagon-public-datasets.s3.amazonaws.com/Machine%20Learning%20Datasets/ML_Houses_dataset.csv" target="_blank" rel="noopener">Dataset Houses</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">🚀 Challenges</h2>
+
+<ul>
+<li>Modéliser <code>SalePrice</code> en fonction de <code>GrLivArea</code> avec <code>LinearRegression</code></li>
+<li>Appliquer la méthode holdout avec <code>train_test_split</code></li>
+<li>Comparer les scores holdout et cross-validés</li>
+<li>Tracer et interpréter les learning curves du modèle</li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-quest-ce-que-le-machine-learning">Qu'est-ce que le Machine Learning ?</a></li><li><a href="#ref-les-3-grandes-idées-à-retenir">Les 3 grandes idées à retenir</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-la-carte-du-ml-supervisé-non-supervisé-régression-classification">1. La carte du ML : supervisé, non supervisé, régression, classification</a><ol><li><a href="#ref-11-supervisé-vs-non-supervisé">1.1 Supervisé vs non supervisé</a></li><li><a href="#ref-12-classification-vs-régression">1.2 Classification vs Régression</a></li><li><a href="#ref-13-le-vocabulaire-essentiel">1.3 Le vocabulaire essentiel</a></li></ol></li><li><a href="#ref-2-scikit-learn-la-boîte-à-outils-ml-de-python">2. Scikit-learn : la boîte à outils ML de Python</a><ol><li><a href="#ref-21-pourquoi-scikit-learn">2.1 Pourquoi scikit-learn ?</a></li><li><a href="#ref-22-comment-importer-sklearn-correctement">2.2 Comment importer sklearn correctement</a></li></ol></li><li><a href="#ref-3-le-workflow-sklearn-de-a-à-z">3. Le workflow sklearn de A à Z</a><ol><li><a href="#ref-31-les-3-méthodes-fondamentales">3.1 Les 3 méthodes fondamentales</a></li><li><a href="#ref-32-workflow-complet-prédire-le-prix-dune-maison">3.2 Workflow complet — prédire le prix d'une maison</a></li></ol></li><li><a href="#ref-4-généralisation-pourquoi-le-test-set-est-sacré">4. Généralisation : pourquoi le test set est sacré</a><ol><li><a href="#ref-41-le-problème-évaluer-sur-les-données-dentraînement">4.1 Le problème : évaluer sur les données d'entraînement</a></li><li><a href="#ref-42-la-méthode-holdout">4.2 La méthode Holdout</a></li><li><a href="#ref-43-la-cross-validation-la-solution-robuste">4.3 La cross-validation : la solution robuste</a></li></ol></li><li><a href="#ref-5-biais-et-variance-comprendre-les-deux-ennemis-du-ml">5. Biais et Variance : comprendre les deux ennemis du ML</a><ol><li><a href="#ref-51-le-problème-fondamental">5.1 Le problème fondamental</a></li><li><a href="#ref-52-comment-diagnostiquer">5.2 Comment diagnostiquer</a></li></ol></li><li><a href="#ref-6-les-learning-curves-voir-pour-comprendre">6. Les Learning Curves : voir pour comprendre</a><ol><li><a href="#ref-61-quest-ce-quune-learning-curve">6.1 Qu'est-ce qu'une learning curve ?</a></li><li><a href="#ref-62-lire-une-learning-curve-les-3-cas">6.2 Lire une learning curve : les 3 cas</a></li><li><a href="#ref-63-tracer-les-learning-curves-avec-sklearn">6.3 Tracer les learning curves avec sklearn</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<hr>
+
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<h3 id="ref-quest-ce-que-le-machine-learning">Qu'est-ce que le Machine Learning ?</h3>
+
+<p>Imagine que tu veuilles apprendre à un enfant à reconnaître des chats. Tu ne lui expliques pas une liste de règles ("les chats ont 4 pattes, des moustaches, des oreilles pointues…"). Tu lui montres <strong>des centaines de photos</strong> en disant "ça, c'est un chat" ou "ça, c'en est pas un". Petit à petit, l'enfant apprend <strong>tout seul</strong> à distinguer un chat d'un chien.</p>
+
+<p>Le Machine Learning, c'est exactement ce principe appliqué à un ordinateur : on lui donne des <strong>exemples</strong> (données), et il <strong>apprend des patterns</strong> pour faire des prédictions — sans qu'on lui écrive une règle pour chaque cas possible.</p>
+
+<p><strong>Fil rouge de ce cours :</strong> on va apprendre à prédire le <strong>prix d'une maison</strong> à partir de sa surface. Comme un agent immobilier qui, après avoir vu des centaines de ventes, est capable d'estimer un prix rien qu'en connaissant les mètres carrés.</p>
+
+<hr>
+
+<h3 id="ref-les-3-grandes-idées-à-retenir">Les 3 grandes idées à retenir</h3>
+
+<ol>
+<li><strong>Supervisé vs non-supervisé</strong> — dans le ML supervisé, on donne à la machine les questions ET les réponses pour qu'elle apprenne. Dans le non-supervisé, on lui donne seulement les données et on lui demande de trouver des structures par elle-même.</li>
+<li><strong>Généralisation</strong> — un bon modèle ne doit pas juste mémoriser les données qu'il a vues. Il doit être capable de bien se comporter sur des données <strong>nouvelles</strong>.</li>
+<li><strong>Overfitting</strong> — le piège classique : le modèle apprend "trop bien" les données d'entraînement, au point de mémoriser le bruit. Il échoue sur des données inédites, comme un élève qui apprend les réponses par cœur sans comprendre le cours.</li>
+</ol>
+
+<hr>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li>Taxonomie du ML (supervisé / non supervisé, classification / régression)</li>
+<li>Scikit-learn : la boîte à outils Python</li>
+<li>Workflow complet : entraîner et évaluer un modèle</li>
+<li>Généralisation : holdout et cross-validation</li>
+<li>Biais / Variance : underfitting et overfitting</li>
+<li>Learning curves : diagnostiquer son modèle</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-la-carte-du-ml-supervisé-non-supervisé-régression-classification">1. La carte du ML : supervisé, non supervisé, régression, classification</h2>
+
+<h3 id="ref-11-supervisé-vs-non-supervisé">1.1 Supervisé vs non supervisé</h3>
+
+<p>Le ML se divise en deux grandes familles selon qu'on dispose ou non de <strong>réponses connues</strong> (appelées "labels" ou "targets").</p>
+
+<p><strong>Apprentissage supervisé</strong></p>
+
+<p>On dispose de $X$ (les données d'entrée, appelées <strong>features</strong>) ET de $y$ (la réponse attendue, appelée <strong>target</strong>). Le modèle apprend la relation $X \to y$.</p>
+
+<blockquote><p>Exemples :<br>- $X$ = surface d'une maison → $y$ = prix de vente<br>- $X$ = email → $y$ = spam ou pas spam</p></blockquote>
+
+<p><strong>Apprentissage non supervisé</strong></p>
+
+<p>On ne dispose que de $X$. On demande au modèle de trouver des <strong>structures cachées</strong> dans les données (groupes, clusters, anomalies...).</p>
+
+<blockquote><p>Exemples :<br>- Regrouper des clients en segments similaires (clustering)<br>- Détecter des transactions bancaires anormales</p></blockquote>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Dans ce cours, on se concentre sur l'apprentissage <strong>supervisé</strong> — le plus courant et le plus utilisé en pratique.</p></div></div>
+
+<hr>
+
+<h3 id="ref-12-classification-vs-régression">1.2 Classification vs Régression</h3>
+
+<p>Dans l'apprentissage supervisé, le type de <strong>réponse</strong> $y$ détermine le type de problème :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Type de problème</th><th>Type de $y$</th><th>Exemples</th></tr></thead><tbody><tr><td><strong>Régression</strong></td><td>Nombre continu</td><td>Prix d'une maison, température, salaire</td></tr><tr><td><strong>Classification</strong></td><td>Catégorie</td><td>Spam/pas spam, survie Titanic (0/1), type de fleur</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Pour mémoriser : si la réponse est un <strong>nombre qu'on peut mesurer</strong> → régression. Si c'est une <strong>étiquette</strong> parmi plusieurs choix → classification.</p></div></div>
+
+<hr>
+
+<h3 id="ref-13-le-vocabulaire-essentiel">1.3 Le vocabulaire essentiel</h3>
+
+<p>Le ML a son propre jargon. Voici le dictionnaire de base :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Terme ML</th><th>Ce que ça veut dire concrètement</th></tr></thead><tbody><tr><td><strong>Features</strong> ($X$)</td><td>Les colonnes d'entrée du tableau. Ex : surface, nombre de pièces</td></tr><tr><td><strong>Target</strong> ($y$)</td><td>Ce qu'on veut prédire. Ex : le prix</td></tr><tr><td><strong>Samples</strong></td><td>Les lignes du tableau — chaque observation, chaque maison</td></tr><tr><td><strong>Modèle / Estimateur</strong></td><td>L'algorithme qui apprend la relation $X \to y$</td></tr><tr><td><strong>Entraîner (fit)</strong></td><td>Faire apprendre le modèle sur les données</td></tr><tr><td><strong>Prédire (predict)</strong></td><td>Utiliser le modèle entraîné sur de nouvelles données</td></tr></tbody></table></div>
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Pour s'en souvenir : dans un tableau de données classique, les <strong>colonnes</strong> = features ($X$) sauf une, la colonne cible = target ($y$). Les <strong>lignes</strong> = samples.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-scikit-learn-la-boîte-à-outils-ml-de-python">2. Scikit-learn : la boîte à outils ML de Python</h2>
+
+<h3 id="ref-21-pourquoi-scikit-learn">2.1 Pourquoi scikit-learn ?</h3>
+
+<p>Scikit-learn (ou "sklearn") est <strong>la</strong> bibliothèque ML de référence en Python. Elle propose des centaines d'algorithmes prêts à l'emploi, avec une interface <strong>unifiée et cohérente</strong> : tous les modèles s'utilisent exactement de la même façon.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Scikit-learn ne réinvente pas la roue à chaque algorithme. Que tu utilises une régression linéaire ou un Random Forest, les étapes sont toujours les mêmes : <code>fit()</code>, <code>predict()</code>, <code>score()</code>.</p></div></div>
+
+<h3 id="ref-22-comment-importer-sklearn-correctement">2.2 Comment importer sklearn correctement</h3>
+
+<p>Sklearn est organisé en <strong>modules</strong> (dossiers thématiques) qui contiennent des <strong>classes</strong> (les modèles). Il faut <strong>toujours importer explicitement</strong> ce dont on a besoin.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># La BONNE façon — import explicite, on sait exactement ce qu&#x27;on utilise
+from sklearn.linear_model import LinearRegression  # module → Classe
+
+# Instancier le modèle (= créer un objet modèle vide, pas encore entraîné)
+model = LinearRegression()</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Les mauvaises façons — à éviter absolument
+import sklearn                         # ne fonctionne pas avec sklearn
+from sklearn.linear_model import *     # import &quot;magique&quot;, on ne sait pas ce qu&#x27;on a importé</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>La règle d'or vient du <strong>Zen of Python</strong> : "Explicit is better than implicit". Toujours nommer exactement ce qu'on importe.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-le-workflow-sklearn-de-a-à-z">3. Le workflow sklearn de A à Z</h2>
+
+<h3 id="ref-31-les-3-méthodes-fondamentales">3.1 Les 3 méthodes fondamentales</h3>
+
+<p>Quel que soit le modèle sklearn, on utilise toujours les mêmes 3 méthodes :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Méthode</th><th>Rôle</th><th>Analogie</th></tr></thead><tbody><tr><td><code>model.fit(X_train, y_train)</code></td><td>Entraîne le modèle</td><td>L'étudiant potasse ses fiches</td></tr><tr><td><code>model.predict(X_new)</code></td><td>Fait des prédictions</td><td>L'étudiant répond à l'examen</td></tr><tr><td><code>model.score(X_test, y_test)</code></td><td>Évalue la performance</td><td>On corrige la copie</td></tr></tbody></table></div>
+<hr>
+
+<h3 id="ref-32-workflow-complet-prédire-le-prix-dune-maison">3.2 Workflow complet — prédire le prix d'une maison</h3>
+
+<p>Voici le workflow sklearn de bout en bout, commenté ligne par ligne.</p>
+
+<p><strong>Étape 1 — Préparer les données</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+
+# Charger le dataset (un tableau de maisons avec leurs caractéristiques)
+data = pd.read_csv(&quot;ML_Houses_dataset.csv&quot;)
+
+# Mélanger les lignes pour éviter tout biais d&#x27;ordre
+data = data.sample(frac=1)  # frac=1 → prendre 100% des données, mélangées</code></pre></div>
+
+
+<p><strong>Étape 2 — Définir X et y</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># X = les features (données d&#x27;entrée) → TOUJOURS un DataFrame 2D (double crochets)
+X = data[[&#x27;GrLivArea&#x27;]]   # GrLivArea = surface habitable en pieds carrés
+                          # double crochets [[&#x27;...&#x27;]] → shape (n, 1), format requis par sklearn
+
+# y = la target (ce qu&#x27;on veut prédire) → une Series suffit
+y = data[&#x27;SalePrice&#x27;]     # SalePrice = prix de vente en dollars</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur classique n°1</strong> : écrire <code>X = data[&#x27;GrLivArea&#x27;]</code> avec un seul crochet. Ca donne une Series 1D de shape <code>(n,)</code> — sklearn va lever une <code>ValueError</code>. Il faut <strong>toujours</strong> des doubles crochets pour X : <code>data[[&#x27;colonne&#x27;]]</code> → shape <code>(n, 1)</code>.</p></div></div>
+
+<p><strong>Étape 3 — Diviser en train/test (méthode holdout)</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Séparer les données en 70% entraînement et 30% test
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y,
+    test_size=0.3    # 30% pour le test, les 70% restants pour l&#x27;entraînement
+)
+# X_train : features d&#x27;entraînement     y_train : prix réels d&#x27;entraînement
+# X_test  : features de test (inédites) y_test  : prix réels de test (pour vérifier)</code></pre></div>
+
+
+<p><strong>Étape 4 — Créer et entraîner le modèle</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Créer l&#x27;estimateur (modèle vide, sans paramètres appris)
+model = LinearRegression()
+
+# Entraîner : le modèle cherche la droite qui passe &quot;au mieux&quot; par les points
+model.fit(X_train, y_train)  # = &quot;apprends la relation surface → prix sur ces données&quot;
+
+# Consulter les paramètres appris par le modèle
+print(model.coef_)       # → [105.009] : pour chaque pied² supplémentaire, +105$ de prix
+print(model.intercept_)  # → 22104.12  : prix de base si surface = 0 (valeur théorique)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>La régression linéaire apprend l'équation $y = aX + b$. Ici : <code>prix = 105 × surface + 22104</code>. Le <code>coef_</code> c'est le $a$ (pente), l'<code>intercept_</code> c'est le $b$ (ordonnée à l'origine).</p></div></div>
+
+<p><strong>Formule mathématique de la régression linéaire :</strong></p>
+
+<div class="katex-display">$$y = aX + b$$</div>
+
+<p>Où :</p>
+<ul>
+<li>$y$ = prix prédit (en dollars)</li>
+<li>$X$ = surface habitable (en pieds carrés)</li>
+<li>$a$ = coefficient (pente) — appris par le modèle</li>
+<li>$b$ = intercept — appris par le modèle</li>
+</ul>
+
+<p><strong>Exemple numérique :</strong> pour une maison de 1 500 pieds² :</p>
+
+<div class="katex-display">$$y = 105 \times 1500 + 22104 = 157500 + 22104 = 179604 \text{ \$}$$</div>
+
+<p><strong>Étape 5 — Évaluer et prédire</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Évaluer la performance sur les données de TEST (données non vues pendant l&#x27;entraînement)
+score = model.score(X_test, y_test)  # → R² ≈ 0.48 pour LinearRegression
+print(score)
+# Le R² mesure la qualité des prédictions : 0 = nul, 1 = parfait
+
+# Prédire le prix d&#x27;une NOUVELLE maison de 1000 pieds²
+new_house = pd.DataFrame({&#x27;GrLivArea&#x27;: [1000]})  # DataFrame 2D, comme attendu par sklearn
+predicted_price = model.predict(new_house)        # → array([127113.39])
+print(predicted_price)  # → environ 127 000 $</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Récap du workflow : importer → définir X et y → split train/test → fit sur train → score sur test → predict sur nouvelles données. Ces 5 étapes s'appliquent à TOUS les modèles sklearn.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-généralisation-pourquoi-le-test-set-est-sacré">4. Généralisation : pourquoi le test set est sacré</h2>
+
+<h3 id="ref-41-le-problème-évaluer-sur-les-données-dentraînement">4.1 Le problème : évaluer sur les données d'entraînement</h3>
+
+<p>Imaginons un étudiant qui, au lieu de passer un vrai examen, révise sur les <strong>sujets exacts</strong> qui seront posés et connaît déjà toutes les réponses. Sa note sera parfaite — mais ne dit rien de ses vraies compétences.</p>
+
+<p>C'est le même problème en ML : si on évalue le modèle sur les données qui lui ont <strong>déjà servi à apprendre</strong>, le score sera artificiellement bon.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># MAUVAISE pratique — score trompeur
+model.fit(X, y)     # entraîner sur TOUTES les données
+model.score(X, y)   # évaluer sur les MÊMES données → score ~0.5 mais c&#x27;est faussé
+
+# BONNE pratique — score honnête
+model.fit(X_train, y_train)    # entraîner seulement sur la partie train
+model.score(X_test, y_test)    # évaluer sur des données JAMAIS vues → score réaliste</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Règle absolue</strong> : on n'évalue jamais un modèle sur ses données d'entraînement. Le test set doit rester "vierge" jusqu'au moment de l'évaluation finale.</p></div></div>
+
+<hr>
+
+<h3 id="ref-42-la-méthode-holdout">4.2 La méthode Holdout</h3>
+
+<p>La méthode holdout consiste à <strong>séparer le dataset une seule fois</strong> en deux parties :</p>
+
+<ul>
+<li><strong>Training set</strong> (~70%) : le modèle apprend dessus</li>
+<li><strong>Testing set</strong> (~30%) : on mesure si le modèle généralise</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import train_test_split
+
+# Diviser X et y en train et test
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y,
+    test_size=0.3,     # 30% pour le test
+    random_state=42    # graine aléatoire → résultats reproductibles
+)</code></pre></div>
+
+
+<p><strong>Limites du holdout :</strong></p>
+
+<p>Le split est aléatoire. On pourrait "tomber" sur un split favorable ou défavorable par chance. Et si on teste plein de <code>random_state</code> pour garder celui qui donne le meilleur score, on triche.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur classique n°2</strong> : essayer plusieurs valeurs de <code>random_state</code> et choisir celle qui maximise le score. C'est du <strong>data leakage</strong> (fuite d'information) : on optimise sur le test set, il ne joue plus son rôle de juge impartial.</p></div></div>
+
+<hr>
+
+<h3 id="ref-43-la-cross-validation-la-solution-robuste">4.3 La cross-validation : la solution robuste</h3>
+
+<p><strong>L'idée :</strong> plutôt que de faire un seul split aléatoire, on fait <strong>K splits différents</strong> et on moyenne les scores. Résultat beaucoup plus fiable.</p>
+
+<p><strong>Comment ça marche (K=5) :</strong></p>
+
+<ol>
+<li>On divise le dataset en 5 morceaux égaux ("folds")</li>
+<li><strong>Tour 1</strong> : on entraîne sur les folds 2+3+4+5, on évalue sur le fold 1</li>
+<li><strong>Tour 2</strong> : on entraîne sur les folds 1+3+4+5, on évalue sur le fold 2</li>
+<li>... et ainsi de suite jusqu'au tour 5</li>
+<li>Score final = <strong>moyenne des 5 scores</strong></li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import cross_validate
+
+model = LinearRegression()  # créer le modèle (pas besoin de fit avant)
+
+# Lancer la cross-validation sur 5 folds
+cv_results = cross_validate(
+    model,   # le modèle à évaluer
+    X,       # toutes les features (pas de split préalable)
+    y,       # toute la target
+    cv=5     # K=5 : 5 folds, règle de base recommandée
+)
+
+# Voir les scores de chaque fold
+print(cv_results[&#x27;test_score&#x27;])        # → [0.30, 0.43, 0.55, 0.59, 0.51]
+
+# Le score final : moyenne des 5 scores → métrique fiable
+print(cv_results[&#x27;test_score&#x27;].mean()) # → 0.478</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur classique n°3</strong> : croire que <code>cross_validate</code> retourne un modèle entraîné. Non ! Il retourne <strong>uniquement des scores</strong>. Pour faire des prédictions, il faut entraîner séparément : <code>model.fit(X, y)</code>.</p></div></div>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Règle pratique : utiliser <code>cv=5</code> ou <code>cv=10</code>. Plus K est grand → scores plus fiables, mais plus long à calculer. K=5 est le bon compromis dans la majorité des cas.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-biais-et-variance-comprendre-les-deux-ennemis-du-ml">5. Biais et Variance : comprendre les deux ennemis du ML</h2>
+
+<h3 id="ref-51-le-problème-fondamental">5.1 Le problème fondamental</h3>
+
+<p>Tout modèle ML fait face à un compromis :</p>
+
+<ul>
+<li><strong>Trop simple</strong> → ne capture pas les patterns → <strong>underfitting</strong> (biais élevé)</li>
+<li><strong>Trop complexe</strong> → mémorise le bruit → <strong>overfitting</strong> (variance élevée)</li>
+<li><strong>Juste bien</strong> → capture les vrais patterns, ignore le bruit → <strong>idéal</strong></li>
+</ul>
+
+<p><strong>Analogie :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Situation</th><th>Exemple scolaire</th><th>ML</th></tr></thead><tbody><tr><td><strong>Underfitting</strong></td><td>L'élève n'a pas assez révisé, rate toutes les questions</td><td>Modèle trop simple, mauvais score partout</td></tr><tr><td><strong>Overfitting</strong></td><td>L'élève a appris les réponses par cœur mais ne comprend pas le cours</td><td>Parfait sur train, nul sur de nouvelles données</td></tr><tr><td><strong>Idéal</strong></td><td>L'élève a compris le cours et peut répondre à des questions inédites</td><td>Bon score en train et en test</td></tr></tbody></table></div>
+<hr>
+
+<h3 id="ref-52-comment-diagnostiquer">5.2 Comment diagnostiquer</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Problème</th><th>Score train</th><th>Score test</th><th>Interprétation</th></tr></thead><tbody><tr><td><strong>Underfitting</strong></td><td>Faible</td><td>Faible</td><td>Modèle trop simple — il n'apprend rien</td></tr><tr><td><strong>Overfitting</strong></td><td>Élevé</td><td>Faible</td><td>Grand écart train/test — le modèle mémorise</td></tr><tr><td><strong>Idéal</strong></td><td>Élevé</td><td>Élevé</td><td>Bon équilibre biais/variance</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><strong>No Free Lunch Theorem</strong> : il n'existe pas de modèle "universel" qui est optimal sur tous les problèmes. C'est le rôle du data scientist de tester différents modèles et de choisir le bon pour ses données.</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-les-learning-curves-voir-pour-comprendre">6. Les Learning Curves : voir pour comprendre</h2>
+
+<h3 id="ref-61-quest-ce-quune-learning-curve">6.1 Qu'est-ce qu'une learning curve ?</h3>
+
+<p>Une <strong>learning curve</strong> (courbe d'apprentissage) montre comment évoluent les scores <strong>train</strong> et <strong>test</strong> quand on augmente la taille du dataset d'entraînement. C'est le meilleur outil pour <strong>diagnostiquer</strong> underfitting et overfitting d'un seul coup d'oeil.</p>
+
+<p><strong>Ce qu'on observe systématiquement :</strong></p>
+
+<ul>
+<li>Avec très peu de données : le modèle s'ajuste parfaitement aux rares exemples → <strong>train score élevé, test score bas</strong></li>
+<li>En ajoutant des données : le modèle ne peut plus tout mémoriser → <strong>train score baisse, test score monte</strong></li>
+<li>À terme : les deux courbes <strong>convergent</strong> vers un plateau</li>
+</ul>
+
+<hr>
+
+<h3 id="ref-62-lire-une-learning-curve-les-3-cas">6.2 Lire une learning curve : les 3 cas</h3>
+
+<p><strong>Cas 1 — Underfitting (biais élevé)</strong></p>
+
+<p>Les deux courbes convergent vers un <strong>plateau bas</strong>. Peu importe la quantité de données, le score reste médiocre. Le modèle est trop simple pour capturer la complexité des données.</p>
+
+<p><strong>Diagnostic :</strong> ajouter plus de données n'aidera pas. Il faut un modèle plus complexe ou de meilleures features.</p>
+
+<hr>
+
+<p><strong>Cas 2 — Overfitting (variance élevée)</strong></p>
+
+<p>Le train score reste élevé mais le test score est bien plus bas. Il y a un <strong>grand écart</strong> entre les deux courbes. Le modèle mémorise les données d'entraînement au lieu d'apprendre les vrais patterns.</p>
+
+<p><strong>Diagnostic :</strong> ajouter plus de données <em>pourrait</em> aider (les courbes pourraient encore converger). Sinon, simplifier le modèle.</p>
+
+<hr>
+
+<p><strong>Cas 3 — Modèle idéal</strong></p>
+
+<p>Les deux courbes sont <strong>proches et élevées</strong>, elles convergent vers un bon score. Le modèle généralise bien.</p>
+
+<hr>
+
+<h3 id="ref-63-tracer-les-learning-curves-avec-sklearn">6.3 Tracer les learning curves avec sklearn</h3>
+
+<p>Avant le code, la logique : on va tester le modèle sur des datasets d'entraînement de tailles croissantes (25, 50, 100... 1150 lignes). Pour chaque taille, on fait une cross-validation à 5 folds. Puis on trace l'évolution des scores.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import learning_curve
+
+# Définir les tailles de training set à tester (en nombre de lignes)
+train_sizes = [25, 50, 75, 100, 250, 500, 750, 1000, 1150]
+
+# Calculer les scores pour chaque taille
+train_sizes, train_scores, test_scores = learning_curve(
+    estimator=LinearRegression(),  # le modèle à évaluer
+    X=X,                           # toutes les features
+    y=y,                           # toute la target
+    train_sizes=train_sizes,       # les tailles à tester
+    cv=5                           # 5-fold CV pour chaque taille → scores fiables
+)
+# train_scores et test_scores ont une shape (n_sizes, 5) :
+# n_sizes lignes (une par taille testée) × 5 colonnes (un score par fold)
+
+# Calculer la moyenne sur les 5 folds pour chaque taille de training set
+train_scores_mean = np.mean(train_scores, axis=1)  # axis=1 → moyenne sur les folds (colonnes)
+test_scores_mean  = np.mean(test_scores,  axis=1)  # idem pour les scores de test
+
+# Tracer les deux courbes
+plt.plot(train_sizes, train_scores_mean, label=&#x27;Training score&#x27;)  # courbe train en bleu
+plt.plot(train_sizes, test_scores_mean,  label=&#x27;Test score&#x27;)      # courbe test en orange
+
+plt.xlabel(&#x27;Training set size&#x27;)  # axe X : nombre de lignes d&#x27;entraînement
+plt.ylabel(&#x27;R² score&#x27;)           # axe Y : qualité des prédictions (0 à 1)
+plt.title(&#x27;Learning Curves&#x27;)
+plt.legend()
+plt.show()</code></pre></div>
+
+
+<p><strong>Interprétation sur le dataset houses :</strong></p>
+
+<p>Les deux courbes convergent et atteignent un plateau autour de R² ≈ 0.48. Ni overfitting (pas de grand écart), ni vrai underfitting (les courbes ont convergé). Le modèle fait "de son mieux" avec une seule feature (la surface). Pour progresser, il faudrait ajouter d'autres features (nombre de pièces, quartier, année de construction...) ou utiliser un modèle plus sophistiqué.</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Récap learning curves : 1) Plateau bas des deux côtés → underfitting → changer de modèle. 2) Grand écart train/test → overfitting → plus de données ou simplifier. 3) Courbes proches et hautes → parfait !</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1 — Supervisé ou non supervisé ?</strong></p>
+
+<p>Un data scientist veut regrouper automatiquement des articles de presse en thèmes (sport, politique, culture...) sans avoir de labels prédéfinis. Quel type d'apprentissage utilise-t-il ?</p>
+
+<details>
+<summary>Réponse</summary>
+
+<p>Apprentissage <strong>non supervisé</strong> : on n'a pas de labels $y$ (on ne sait pas d'avance quels thèmes vont émerger). On cherche des structures dans $X$ uniquement. Algorithme typique : clustering (K-Means).</p>
+
+</details>
+
+<hr>
+
+<p><strong>Question 2 — Overfitting ou underfitting ?</strong></p>
+
+<p>Un modèle obtient <code>train_score = 0.95</code> et <code>test_score = 0.31</code>. Que se passe-t-il ? Comment le diagnostiquer sur une learning curve ?</p>
+
+<details>
+<summary>Réponse</summary>
+
+<p>C'est de l'<strong>overfitting</strong> (variance élevée) : le modèle performe très bien sur les données qu'il a vues (train) mais échoue sur de nouvelles données (test). Sur une learning curve, on verrait un grand écart entre les deux courbes — la courbe train reste haute, la courbe test reste basse.</p>
+
+</details>
+
+<hr>
+
+<p><strong>Question 3 — Erreur de forme</strong></p>
+
+<p>Que se passe-t-il si on écrit <code>X = data[&#x27;GrLivArea&#x27;]</code> (un seul crochet) avant de faire <code>model.fit(X_train, y_train)</code> ?</p>
+
+<details>
+<summary>Réponse</summary>
+
+<p><code>data[&#x27;GrLivArea&#x27;]</code> retourne une <strong>Series</strong> de shape <code>(n,)</code> — un vecteur 1D. Sklearn attend un <strong>DataFrame 2D</strong> de shape <code>(n, 1)</code> pour les features. Le résultat sera une <code>ValueError</code>. La bonne écriture : <code>X = data[[&#x27;GrLivArea&#x27;]]</code> (double crochets).</p>
+
+</details>
+
+<hr>
+
+<p><strong>Question 4 — Cross-validation</strong></p>
+
+<p>Après avoir exécuté <code>cv_results = cross_validate(model, X, y, cv=5)</code>, peut-on appeler <code>model.predict(X_new)</code> pour faire des prédictions ?</p>
+
+<details>
+<summary>Réponse</summary>
+
+<p><strong>Non.</strong> <code>cross_validate</code> entraîne et évalue le modèle 5 fois en interne, mais ne modifie pas l'objet <code>model</code> passé en argument — il reste vide (pas encore <code>fit</code>). Pour prédire, il faut d'abord appeler <code>model.fit(X, y)</code> séparément.</p>
+
+</details>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Le <strong>Machine Learning supervisé</strong> apprend une relation $X \to y$ à partir d'exemples étiquetés. Si $y$ est continu : régression. Si $y$ est une catégorie : classification.</li>
+<li>Le <strong>workflow sklearn</strong> est toujours le même : <code>from sklearn.X import Y</code> → <code>model = Y()</code> → <code>fit(X_train, y_train)</code> → <code>score(X_test, y_test)</code> → <code>predict(X_new)</code>.</li>
+<li>Toujours passer <code>X</code> en <strong>DataFrame 2D</strong> (doubles crochets) à sklearn, jamais une Series 1D.</li>
+<li>La <strong>méthode holdout</strong> (<code>train_test_split</code>) sépare les données en train/test pour mesurer la généralisation. Ne jamais évaluer sur les données d'entraînement.</li>
+<li>La <strong>cross-validation</strong> (<code>cross_validate</code>) est plus robuste que le holdout : elle moyenne les scores de K splits et retourne uniquement des scores — pas de modèle entraîné.</li>
+<li><strong>Underfitting</strong> (biais élevé) : scores faibles partout → modèle trop simple. <strong>Overfitting</strong> (variance élevée) : bon score en train, mauvais en test → modèle trop complexe ou trop peu de données.</li>
+<li>Les <strong>learning curves</strong> tracent l'évolution train/test en fonction de la taille du dataset : elles permettent de diagnostiquer visuellement underfitting et overfitting.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-supervisé-non-supervisé-par-renforcement">Supervisé, non supervisé, par renforcement</a></li><li><a href="#syn-lapi-sklearn-fit-predict-score">L'API sklearn : fit, predict, score</a></li><li><a href="#syn-bias-variance-et-capacité-dun-modèle">Bias-variance et capacité d'un modèle</a></li><li><a href="#syn-cross-validation-et-learning-curves">Cross-validation et learning curves</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-le-no-free-lunch-theorem">Le no-free-lunch theorem</a></li><li><a href="#syn-choisir-un-modèle-baseline">Choisir un modèle baseline</a></li><li><a href="#syn-inductive-bias">Inductive bias</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-supervisé-non-supervisé-par-renforcement">Supervisé, non supervisé, par renforcement</h3>
+
+<p>Le machine learning consiste à laisser une machine <strong>apprendre des régularités à partir de données</strong>, au lieu de lui donner des règles explicites écrites à la main. Trois grandes familles de problèmes existent selon le type de "signal d'apprentissage" dont on dispose :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Type</th><th>Données d'entraînement</th><th>Objectif</th><th>Exemples</th></tr></thead><tbody><tr><td><strong>Supervisé</strong></td><td>$(X, y)$ avec labels</td><td>Apprendre une fonction $f: X \to y$</td><td>Classification, régression</td></tr><tr><td><strong>Non supervisé</strong></td><td>$X$ seulement</td><td>Découvrir une structure cachée</td><td>Clustering, réduction dim, anomalies</td></tr><tr><td><strong>Par renforcement</strong></td><td>Interaction avec un environnement</td><td>Maximiser une récompense cumulée</td><td>Jeux, robotique, recommandation</td></tr></tbody></table></div>
+<p>Lecture : dans le supervisé, chaque exemple $i$ de la matrice $X$ est accompagné d'une "bonne réponse" $y_i$ ; le modèle doit apprendre la correspondance. Dans le non supervisé, on n'a que $X$ et on cherche une structure intrinsèque (groupes, axes dominants, points atypiques). En renforcement, il n'y a ni $y$ fixe ni $X$ figé : un agent agit, l'environnement lui répond, et on lui donne une récompense scalaire.</p>
+
+<p>Le supervisé représente environ 80% des applications ML en entreprise parce qu'il apporte la valeur business la plus directe : prédire un churn, un prix, un risque de crédit, une catégorie de ticket.</p>
+
+<p>Sous le supervisé, on distingue deux grands sous-types :</p>
+
+<ul>
+<li><strong>Classification</strong> : prédire une <strong>catégorie discrète</strong> (spam / non-spam, A / B / C, chiffres 0..9)</li>
+<li><strong>Régression</strong> : prédire une <strong>valeur continue</strong> (prix d'un appartement, température de demain, durée d'un trajet)</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Classification : la cible y est une catégorie (0/1 ou string)
+from sklearn.linear_model import LogisticRegression       # baseline linéaire
+from sklearn.ensemble import RandomForestClassifier       # baseline robuste
+
+# Régression : la cible y est un réel
+from sklearn.linear_model import LinearRegression, Ridge  # linéaire + régularisé
+from sklearn.ensemble import RandomForestRegressor        # non linéaire robuste</code></pre></div>
+
+
+<p><strong>Exemple concret chiffré</strong> : sur un dataset de 10 000 clients d'une banque, prédire "va churner ?" (oui/non) est une classification binaire. Prédire "combien dépensera-t-il le mois prochain ?" (en euros) est une régression. Les deux peuvent utiliser les mêmes features d'entrée, mais la métrique et l'algo diffèrent.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : le supervisé, c'est apprendre avec un prof qui corrige chaque copie. Le non supervisé, c'est explorer une bibliothèque pour trouver des thèmes communs entre les livres sans en lire aucun. Le renforcement, c'est apprendre à jouer aux échecs en jouant des milliers de parties contre soi-même et en enregistrant quelles positions mènent à des victoires. Chaque paradigme excelle dans des contextes différents.</p></div></div>
+
+<h3 id="syn-lapi-sklearn-fit-predict-score">L'API sklearn : fit, predict, score</h3>
+
+<p>Sklearn a un design exemplaire qui a inspiré toutes les bibliothèques ML modernes. Tous les estimateurs partagent la <strong>même API</strong> en trois étapes.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import LogisticRegression
+
+model = LogisticRegression()              # 1. Création : objet non entraîné
+model.fit(X_train, y_train)               # 2. Entraînement : apprend les poids
+predictions = model.predict(X_test)       # 3. Prédiction sur nouvelles données
+proba = model.predict_proba(X_test)       # probabilités par classe (classif)
+score = model.score(X_test, y_test)       # métrique par défaut (accuracy ici)</code></pre></div>
+
+
+<p>Quatre méthodes à mémoriser :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Méthode</th><th>Rôle</th></tr></thead><tbody><tr><td><code>fit(X, y)</code></td><td>Apprend les paramètres du modèle sur les données</td></tr><tr><td><code>predict(X)</code></td><td>Retourne les prédictions (classes ou valeurs)</td></tr><tr><td><code>predict_proba(X)</code></td><td>Probabilités par classe (classifieurs probabilistes)</td></tr><tr><td><code>score(X, y)</code></td><td>Métrique par défaut : accuracy en classif, R² en régression</td></tr></tbody></table></div>
+<p>Cette API uniforme est ce qui rend sklearn si productif : changer de modèle ne demande que de changer une ligne d'import. Exemple : tester 4 algorithmes avec exactement le même code d'entraînement.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Boucle sur 4 modèles différents, même interface fit/score
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.svm import SVC
+
+for ModelClass in [LogisticRegression, RandomForestClassifier,
+                   GradientBoostingClassifier, SVC]:
+    model = ModelClass()                       # crée un estimateur
+    model.fit(X_train, y_train)                # apprend sur X_train, y_train
+    acc = model.score(X_test, y_test)          # accuracy sur le test
+    print(f&quot;{ModelClass.__name__}: {acc:.3f}&quot;)
+# Sortie attendue (ordre de grandeur) :
+# LogisticRegression: 0.82
+# RandomForestClassifier: 0.88
+# GradientBoostingClassifier: 0.89
+# SVC: 0.85</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : pour prototyper vite, commencez par un <strong>benchmark</strong> comme ci-dessus. En 15 lignes, vous savez quelle famille d'algorithmes mérite d'être tunée. Sauter cette étape vous fait passer des heures à tuner un modèle qui n'est fondamentalement pas adapté.</p></div></div>
+
+<h3 id="syn-bias-variance-et-capacité-dun-modèle">Bias-variance et capacité d'un modèle</h3>
+
+<p>Tous les problèmes ML se ramènent à un arbitrage fondamental : le <strong>compromis biais-variance</strong>.</p>
+
+<div class="katex-display">$$\text{Erreur totale} = \text{Biais}^2 + \text{Variance} + \text{Bruit irréductible}$$</div>
+
+<p>Lecture : <em>l'erreur de test se décompose en trois termes</em>. Le <strong>biais</strong> mesure l'erreur systématique du modèle (il est trop simple pour capturer la vraie relation). La <strong>variance</strong> mesure la sensibilité du modèle aux variations du dataset d'entraînement (il colle trop au bruit). Le <strong>bruit</strong> est l'incompressible lié à la stochasticité du problème. Diminuer le biais augmente souvent la variance et vice-versa — c'est un compromis, pas une addition gratuite.</p>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Biais élevé (underfit)</th><th>Variance élevée (overfit)</th></tr></thead><tbody><tr><td><strong>Symptôme</strong></td><td>Score bas en train ET en test</td><td>Score haut en train, bas en test</td></tr><tr><td><strong>Cause</strong></td><td>Modèle trop simple</td><td>Modèle trop complexe</td></tr><tr><td><strong>Solution</strong></td><td>Modèle plus puissant, plus de features</td><td>Régularisation, plus de données, modèle plus simple</td></tr></tbody></table></div>
+<p><strong>Exemple chiffré</strong> : sur un dataset de prix immobilier, une régression linéaire donne train=0.65 et test=0.63 — train et test sont bas et alignés, signe d'<strong>underfit</strong>. Un Random Forest profond non régularisé donne train=0.99 et test=0.58 — énorme écart, signe d'<strong>overfit</strong>. Un Random Forest avec <code>max_depth=8</code> et <code>min_samples_leaf=20</code> donne train=0.84 et test=0.81 — c'est l'équilibre recherché.</p>
+
+<p>La <strong>capacité</strong> d'un modèle est sa flexibilité à apprendre des patterns complexes :</p>
+
+<ul>
+<li>Faible capacité : régression linéaire, Naive Bayes</li>
+<li>Capacité moyenne : régression logistique régularisée, Random Forest peu profonds</li>
+<li>Haute capacité : Random Forest profonds, XGBoost, neural networks</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Question d'entretien</strong> : "Vous avez 95% sur le train et 60% sur le test. Que faire ?" Réponse complète : (1) <strong>Diagnostic</strong> : overfit (forte variance). (2) <strong>Solutions</strong> : régularisation (L1/L2/dropout), plus de données, modèle plus simple, feature selection, early stopping. (3) <strong>Mesurer l'effet</strong> de chaque changement en cross-validation. Mauvaise réponse : "essayer un autre algorithme" — l'overfit est rarement une affaire d'algo, c'est une affaire de capacité ou de données.</p></div></div>
+
+<h3 id="syn-cross-validation-et-learning-curves">Cross-validation et learning curves</h3>
+
+<p>Un seul split train/test peut mentir. Vous pouvez tomber par chance sur un split "facile" ou "difficile". La <strong>cross-validation</strong> multiplie les splits pour donner une estimation plus robuste.</p>
+
+<p>L'idée de la <strong>k-fold CV</strong> : diviser le train en $k$ morceaux (folds), entraîner sur $k-1$ folds, valider sur le fold restant, répéter $k$ fois, moyenner les scores.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import cross_val_score
+import numpy as np
+
+# cv=5 → 5 entraînements, 5 scores
+scores = cross_val_score(model, X_train, y_train, cv=5, scoring=&quot;accuracy&quot;)
+print(f&quot;Accuracy CV = {scores.mean():.3f} ± {scores.std():.3f}&quot;)
+# Ex: Accuracy CV = 0.847 ± 0.013  (très stable → modèle fiable)</code></pre></div>
+
+
+<p>La <strong>learning curve</strong> trace le score (train et validation) en fonction de la taille du training set. Elle révèle si vous êtes en sous-apprentissage, sur-apprentissage, ou si plus de données aideraient.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import learning_curve
+import numpy as np
+
+train_sizes, train_scores, val_scores = learning_curve(
+    estimator=pipe,                               # pipeline scaler+modèle
+    X=X_train,
+    y=y_train,
+    cv=5,                                         # 5-fold CV à chaque taille
+    train_sizes=np.linspace(0.1, 1.0, 10),        # 10% → 100% du train
+    scoring=&quot;accuracy&quot;,
+)
+# train_scores shape: (10, 5) — 10 tailles × 5 folds</code></pre></div>
+
+
+<p>Trois patterns à reconnaître :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Bon modèle :                 Underfit :                Overfit :
+score                        score                     score
+  ^                            ^                         ^
+  |  train -- val              |                         |  train ────
+  |  ─────────                 |  ___________            |       \
+  |                            | /                       |        val
+  |                            |/                        |
+  +---------&gt; taille           +---------&gt; taille        +---------&gt; taille
+  (convergence haute)          (plateau bas)             (grand écart)</code></pre></div>
+
+
+<ul>
+<li>Train et val convergent vers un score haut → bon modèle.</li>
+<li>Train et val convergent vers un score <strong>bas</strong> → underfit, prenez un modèle plus puissant ou créez de meilleures features.</li>
+<li>Grand <strong>écart</strong> persistant entre train et val → overfit, ajoutez des données, régularisez ou simplifiez.</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : tracez la learning curve <strong>avant</strong> de chercher des hyperparamètres. Elle vous dit en 30 secondes si vous avez assez de données et si le modèle est de la bonne taille. Économisez des heures de tuning en répondant d'abord aux bonnes questions.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-le-no-free-lunch-theorem">Le no-free-lunch theorem</h3>
+
+<p>Théorème de Wolpert (1996) : <strong>aucun algorithme ML n'est universellement meilleur qu'un autre</strong>. Pour tout algorithme A qui fait mieux que le hasard sur un problème, il existe un autre problème où il fait pire que le hasard, une fois qu'on moyenne sur toutes les distributions possibles.</p>
+
+<p>Conséquence pratique : il n'y a pas de "meilleur" algorithme dans l'absolu. Le choix dépend du problème, des données, des contraintes de latence, de mémoire, et d'interprétabilité.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Type de données</th><th>Algorithme typique</th></tr></thead><tbody><tr><td>Tabulaire avec interactions</td><td>XGBoost, LightGBM, Random Forest</td></tr><tr><td>Tabulaire linéaire</td><td>Régression linéaire/logistique, Ridge</td></tr><tr><td>Texte</td><td>Embeddings + LR, fine-tuning de transformers</td></tr><tr><td>Images</td><td>CNN (ResNet, EfficientNet), Vision Transformer</td></tr><tr><td>Audio / signal</td><td>CNN 1D, transformers spécialisés</td></tr><tr><td>Séries temporelles</td><td>ARIMA, Prophet, LSTM, Temporal Fusion Transformer</td></tr><tr><td>Graphes</td><td>GNN (Graph Neural Networks)</td></tr></tbody></table></div>
+<p>Sur des données <strong>tabulaires</strong>, les arbres boostés (XGBoost, LightGBM) battent encore régulièrement les neural networks en 2025. Sur du texte, des images, du signal, le deep learning domine sans partage.</p>
+
+<h3 id="syn-choisir-un-modèle-baseline">Choisir un modèle baseline</h3>
+
+<p>Avant tout modèle complexe, écrivez une <strong>baseline triviale</strong>. Elle remplit deux rôles :</p>
+
+<ol>
+<li><strong>Sanity check</strong> : votre modèle complexe doit la battre de loin, sinon il y a un bug quelque part (data leakage inversé, erreur de split, mauvaise métrique).</li>
+<li><strong>Référence business</strong> : si la baseline atteint déjà 95% d'accuracy, le gain marginal d'un modèle complexe ne justifie peut-être pas son coût en maintenance.</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.dummy import DummyClassifier, DummyRegressor
+
+# Classification : prédire toujours la classe majoritaire
+dummy_c = DummyClassifier(strategy=&quot;most_frequent&quot;).fit(X_train, y_train)
+print(dummy_c.score(X_test, y_test))    # ex: 0.89 sur un dataset déséquilibré
+
+# Régression : prédire toujours la moyenne de y_train
+dummy_r = DummyRegressor(strategy=&quot;mean&quot;).fit(X_train, y_train)
+print(dummy_r.score(X_test, y_test))    # R² ~ 0 par construction</code></pre></div>
+
+
+<p>Au-delà du dummy, des baselines un cran plus sérieuses :</p>
+
+<ul>
+<li><strong>Régression linéaire/logistique simple</strong> sur les features principales (interprétable, rapide)</li>
+<li><strong>Random Forest avec hyperparamètres par défaut</strong> — étonnamment bon en baseline tabulaire</li>
+<li><strong>K-Nearest Neighbors</strong> — paresseux mais simple, utile pour détecter du data leakage</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : démarrer un projet ML sans baseline, c'est comme courir un marathon sans connaître le record du monde. Vous ne saurez jamais si votre temps est exceptionnel ou ridicule. La baseline est votre point de comparaison absolu.</p></div></div>
+
+<h3 id="syn-inductive-bias">Inductive bias</h3>
+
+<p>Chaque modèle a un <strong>biais inductif</strong> : des hypothèses implicites sur la forme de la solution. Ces hypothèses déterminent ce que le modèle peut et ne peut pas apprendre, indépendamment de la quantité de données.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Modèle</th><th>Biais inductif</th></tr></thead><tbody><tr><td>Régression linéaire</td><td>La cible est une combinaison linéaire des features</td></tr><tr><td>K-NN</td><td>Les points proches dans l'espace ont des labels similaires</td></tr><tr><td>Arbres</td><td>Les frontières de décision sont alignées sur les axes</td></tr><tr><td>Random Forest</td><td>Idem, en lissant par un ensemble</td></tr><tr><td>CNN</td><td>Les features locales en espace (pixels voisins) sont reliées ; invariance par translation</td></tr><tr><td>RNN</td><td>Les éléments d'une séquence ont des dépendances temporelles</td></tr><tr><td>Transformer</td><td>Tout token peut interagir avec tout autre token (self-attention)</td></tr></tbody></table></div>
+<p>Le bon modèle pour un problème est celui dont le biais inductif <strong>correspond à la structure réelle</strong> des données. C'est exactement pourquoi les CNN dominent en vision (image = grille spatiale avec translations locales) et les transformers dominent en NLP (contexte global entre mots distants).</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Question d'entretien deep learning</strong> : "Pourquoi un MLP n'est-il pas adapté aux images ?" Réponse : un MLP traite chaque pixel comme une feature indépendante, sans notion de proximité spatiale ni d'invariance à la translation. Pour reconnaître un chat à droite ou à gauche de l'image, il devrait apprendre deux représentations indépendantes. Un CNN partage ses filtres dans tout le plan, ce qui encode directement l'invariance et permet à un même filtre "détecteur de moustache" de fonctionner partout. C'est pourquoi un CNN à 100k paramètres fait mieux qu'un MLP à 100M paramètres en classification d'images.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Vous voulez prédire le prix d'un appartement à partir de 50 features. Quel algorithme commencer par essayer, et pourquoi ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Tabulaire et baseline.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Sur un problème tabulaire de régression avec 50 features, l'ordre canonique est :</p>
+
+<ol>
+<li><strong>Régression linéaire</strong> (avec scaling et éventuellement transformations log) comme baseline interprétable. Vous obtenez un score, des coefficients, et une intuition.</li>
+<li><strong>Random Forest</strong> par défaut — extraordinairement performant en baseline tabulaire, pas besoin de scaling, donne des feature importances.</li>
+<li><strong>XGBoost / LightGBM</strong> — le standard de l'industrie pour le tabulaire en 2025. Souvent +5 à 10 % sur le RandomForest sans grand effort.</li>
+<li><strong>Stacking</strong> ou <strong>réseau de neurones tabulaire</strong> uniquement si les gains marginaux justifient le coût.</li>
+</ol>
+
+<p>La règle : ne <strong>jamais</strong> sortir l'artillerie deep learning sur du tabulaire sans avoir essayé LightGBM. Sur Kaggle, 95% des datasets tabulaires sont gagnés par LightGBM avec un bon feature engineering.</p>
+
+</details>
+
+<p><strong>Q2 : Quelle est la différence entre <code>model.predict(X)</code> et <code>model.predict_proba(X)</code> en classification, et quand utiliser l'un ou l'autre ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Seuil de décision.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><code>predict</code> retourne directement la classe prédite (0 ou 1 en binaire). <code>predict_proba</code> retourne un vecteur de probabilités par classe, par exemple <code>[0.3, 0.7]</code>. En interne, <code>predict</code> applique un seuil de 0.5 sur les probas :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Équivalences en binaire
+pred_manual = (model.predict_proba(X)[:, 1] &gt; 0.5).astype(int)
+pred_builtin = model.predict(X)
+# pred_manual == pred_builtin</code></pre></div>
+
+
+<p>Quand utiliser <code>predict_proba</code> :</p>
+
+<ol>
+<li><strong>Ajuster le seuil</strong> (par ex. 0.3 au lieu de 0.5 si rater un positif est très coûteux).</li>
+<li><strong>Calculer la ROC-AUC ou la PR-AUC</strong> qui ont besoin des probas continues.</li>
+<li><strong>Ensemble averaging</strong> — moyenner les probas de plusieurs modèles est plus stable que le vote majoritaire.</li>
+<li><strong>Communiquer à un humain</strong> — "confiance 92%" est plus actionnable que "classe 1".</li>
+</ol>
+
+<p>Attention : tous les modèles ne donnent pas des probabilités calibrées par défaut. Random Forest et XGBoost donnent des fréquences brutes parfois mal calibrées — utilisez <code>CalibratedClassifierCV</code> pour les corriger.</p>
+
+</details>
+
+<p><strong>Q3 : Vous obtenez un score de cross-validation de 0.85 ± 0.04 pour le modèle A et 0.86 ± 0.05 pour le modèle B. B est-il significativement meilleur ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Recouvrement des écarts-types.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Pas vraiment</strong>. Les écarts-types des deux scores se chevauchent largement : A est dans [0.81, 0.89], B est dans [0.81, 0.91]. La différence de moyennes (0.01) est petite par rapport à la variabilité (0.04-0.05).</p>
+
+<p>Pour décider rigoureusement, faites un <strong>t-test apparié</strong> sur les scores de chaque fold. Important : il faut utiliser exactement le <strong>même splitting</strong> pour les deux modèles (même seed).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from scipy.stats import ttest_rel
+t_stat, p_value = ttest_rel(scores_A, scores_B)
+# Si p_value &lt; 0.05, B est significativement meilleur</code></pre></div>
+
+
+<p>Souvent, en pratique, on choisit le modèle le <strong>plus simple</strong> ou le <strong>plus rapide</strong> en cas d'égalité statistique (rasoir d'Occam). Mauvaise réponse : "B est meilleur parce que 0.86 > 0.85" — c'est exactement le piège qui conduit à des publications irreproductibles.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Hands-On Machine Learning with Scikit-Learn, Keras and TensorFlow</em> (Aurélien Géron, 3rd ed.) — la référence pratique</li>
+<li><em>The Hundred-Page Machine Learning Book</em> (Andriy Burkov) — concentré et accessible</li>
+<li><em>Pattern Recognition and Machine Learning</em> (Christopher Bishop) — perspective bayésienne approfondie</li>
+<li><a href="https://scikit-learn.org/stable/user_guide.html" target="_blank" rel="noopener">scikit-learn User Guide</a> — la doc est exceptionnelle</li>
+<li><a href="https://www.kaggle.com/learn/intro-to-machine-learning" target="_blank" rel="noopener">Kaggle Learn — Intro to ML</a> — interactif</li>
+<li><em>No-Free-Lunch Theorems</em> (David Wolpert, 1996) — le papier d'origine</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../data-engineering/ml-workflow.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← ML Workflow</span>
+  </a>
+  <a href="../machine-learning/linear-regression.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Linear Regression →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

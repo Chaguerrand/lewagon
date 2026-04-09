@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linear Regression — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Linear Regression</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html" class="active">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Machine Learning</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Linear Regression</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Linear Regression</h1>
+        <p class="page-objective">Comprendre et appliquer la régression linéaire simple et multiple — modéliser une variable cible en fonction de variables explicatives, interpréter les coefficients, évaluer la qualité du modèle (R², p-values) et vérifier les conditions d'inférence.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">OLS</div>
+        <div class="key-concept-def">Ordinary Least Squares : minimise la somme des carrés des résidus.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Coefficient β</div>
+        <div class="key-concept-def">Effet d&#x27;une augmentation d&#x27;une unité de la feature sur la cible.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">R²</div>
+        <div class="key-concept-def">Fraction de variance de y expliquée par le modèle (entre 0 et 1).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Multicolinéarité</div>
+        <div class="key-concept-def">Quand des features sont fortement corrélées entre elles → coefs instables.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-linear-regression">Cheatsheet — Linear Regression</a><ol><li><a href="#setup-données">Setup & données</a></li><li><a href="#exploration-corrélations">Exploration & corrélations</a></li><li><a href="#régression-simple-formula-api-recommandé">Régression simple — Formula API (recommandé)</a></li><li><a href="#régression-simple-standard-api">Régression simple — Standard API</a></li><li><a href="#régression-multiple">Régression multiple</a></li><li><a href="#partial-regression-plots-multivarié">Partial regression plots (multivarié)</a></li><li><a href="#vérification-des-résidus">Vérification des résidus</a></li><li><a href="#rang-dune-matrice-indépendance-des-features">Rang d'une matrice (indépendance des features)</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-recap-inférence-statistique">1) Recap — Inférence statistique</a><ol><li><a href="#11-distribution-déchantillonnage">1.1 Distribution d'échantillonnage</a></li><li><a href="#12-tests-dhypothèse">1.2 Tests d'hypothèse</a></li><li><a href="#13-théorème-central-limite-étendu">1.3 Théorème central limite étendu</a></li><li><a href="#14-inférence-bayésienne">1.4 Inférence bayésienne</a></li></ol></li><li><a href="#2-motivation-pourquoi-la-régression-linéaire">2) Motivation — Pourquoi la régression linéaire ?</a><li><a href="#3-régression-linéaire-simple-approche-visuelle-avec-seaborn">3) Régression linéaire simple — Approche visuelle avec `seaborn`</a><ol><li><a href="#31-le-dataset-mpg">3.1 Le dataset mpg</a></li><li><a href="#32-ordinary-least-squares-ols">3.2 Ordinary Least Squares (OLS)</a></li><li><a href="#33-corrélation-et-r²">3.3 Corrélation et R²</a></li></ol></li><li><a href="#4-régression-linéaire-simple-avec-statsmodels">4) Régression linéaire simple — avec `statsmodels`</a><ol><li><a href="#41-deux-api-disponibles">4.1 Deux API disponibles</a></li><li><a href="#42-interprétation-des-coefficients">4.2 Interprétation des coefficients</a></li><li><a href="#43-lire-le-modelsummary">4.3 Lire le `model.summary()`</a></li><li><a href="#44-inférence-sur-les-coefficients-formule-du-std-err">4.4 Inférence sur les coefficients — Formule du std err</a></li><li><a href="#45-t-statistic-et-p-value">4.5 t-statistic et p-value</a></li><li><a href="#46-f-statistic">4.6 F-statistic</a></li></ol></li><li><a href="#5-vérification-des-conditions-dinférence">5) Vérification des conditions d'inférence</a><ol><li><a href="#51-résidus-normalement-distribués">5.1 Résidus normalement distribués ?</a></li><li><a href="#52-variance-constante-homoscédasticité">5.2 Variance constante (homoscédasticité) ?</a></li><li><a href="#53-que-faire-si-les-résidus-ne-sont-pas-aléatoires">5.3 Que faire si les résidus ne sont pas aléatoires ?</a></li></ol></li><li><a href="#6-régression-linéaire-multiple">6) Régression linéaire multiple</a><ol><li><a href="#61-ajouter-des-variables-explicatives">6.1 Ajouter des variables explicatives</a></li><li><a href="#62-r²-en-régression-multiple">6.2 R² en régression multiple</a></li><li><a href="#63-partial-regression-plots">6.3 Partial regression plots</a></li><li><a href="#64-variables-catégorielles">6.4 Variables catégorielles</a></li></ol></li><li><a href="#7-diagnostic-de-régression-récapitulatif">7) Diagnostic de régression — Récapitulatif</a><li><a href="#8-annexe-solution-mathématique-de-lols">8) (Annexe) Solution mathématique de l'OLS</a><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-linear-regression">📋 Cheatsheet — Linear Regression</h2>
+
+<h3 id="setup-données">Setup & données</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import statsmodels.formula.api as smf
+import statsmodels.api as sm
+
+mpg = sns.load_dataset(&quot;mpg&quot;).dropna()   # charge le dataset mpg</code></pre></div>
+
+
+<h3 id="exploration-corrélations">Exploration & corrélations</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">mpg.corr(numeric_only=True)              # matrice de corrélation (valeurs ρ ∈ [-1, 1])
+mpg.corr()[&#x27;weight&#x27;][&#x27;horsepower&#x27;]**2    # R² entre deux variables
+sns.heatmap(mpg.corr(numeric_only=True), cmap=&quot;coolwarm&quot;, annot=True)  # heatmap
+sns.scatterplot(x=&#x27;horsepower&#x27;, y=&#x27;weight&#x27;, data=mpg)   # nuage de points
+sns.regplot(x=&#x27;horsepower&#x27;, y=&#x27;weight&#x27;, data=mpg, ci=95) # avec droite de régression et IC</code></pre></div>
+
+
+<h3 id="régression-simple-formula-api-recommandé">Régression simple — Formula API (recommandé)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = smf.ols(formula=&#x27;weight ~ horsepower&#x27;, data=mpg).fit()  # ajuste le modèle OLS
+model.params        # → Intercept (β₀) et pente (β₁)
+model.rsquared      # → R² : part de variance expliquée (0 à 1)
+model.summary()     # → tableau complet : coefs, std err, t, p-value, IC 95%
+model.predict(X)    # → valeurs prédites ŷ
+model.resid         # → résidus (y - ŷ)</code></pre></div>
+
+
+<h3 id="régression-simple-standard-api">Régression simple — Standard API</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">Y = mpg[&#x27;weight&#x27;]
+X = mpg[&#x27;horsepower&#x27;]
+model = sm.OLS(Y, X).fit()   # sans intercept automatique (attention !)</code></pre></div>
+
+
+<h3 id="régression-multiple">Régression multiple</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Ajouter plusieurs variables explicatives dans la formule
+model2 = smf.ols(formula=&#x27;weight ~ horsepower + cylinders&#x27;, data=mpg).fit()
+model2.rsquared       # R² global du modèle
+
+## Variable catégorielle → C() encode automatiquement en dummy variables
+model3 = smf.ols(formula=&#x27;weight ~ C(origin)&#x27;, data=mpg).fit()
+model3 = smf.ols(formula=&#x27;weight ~ C(origin) - 1&#x27;, data=mpg).fit()  # sans intercept (coefs = moyennes)</code></pre></div>
+
+
+<h3 id="partial-regression-plots-multivarié">Partial regression plots (multivarié)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fig = plt.figure(figsize=(10, 6))
+fig = sm.graphics.plot_partregress_grid(model2, fig=fig)  # effet de chaque variable en isolation</code></pre></div>
+
+
+<h3 id="vérification-des-résidus">Vérification des résidus</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">predicted = model.predict(mpg[&#x27;horsepower&#x27;])  # ŷ
+residuals = predicted - mpg[&#x27;weight&#x27;]         # résidus = ŷ - y
+
+sns.histplot(residuals, kde=True)             # normalité des résidus (doit ≈ gaussien)
+sns.scatterplot(x=predicted, y=residuals)     # homoscédasticité (variance constante)</code></pre></div>
+
+
+<h3 id="rang-dune-matrice-indépendance-des-features">Rang d'une matrice (indépendance des features)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+np.linalg.matrix_rank(X)   # doit = nombre de features (sinon multicolinéarité !)</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre corrélation et causalité</strong></p>
+<p>❌ <code>&quot;Higher horsepower causes higher weight&quot;</code></p>
+<p>✅ <code>&quot;Powerful cars tend to be heavier&quot;</code> — la régression mesure une association, pas une cause</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Ignorer les conditions d'inférence avant d'interpréter p-values et IC</strong></p>
+<p>❌ Regarder les p-values sans vérifier si les résidus sont normaux et homoscédastiques</p>
+<p>✅ Toujours tracer <code>sns.histplot(residuals)</code> et <code>sns.scatterplot(x=predicted, y=residuals)</code> avant de conclure</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Multicolinéarité : deux features trop corrélées → coefficients non fiables</strong></p>
+<p>❌ Inclure <code>displacement</code> et <code>cylinders</code> ensemble sans vérifier (ρ = 0.95 !)</p>
+<p>✅ Vérifier la matrice de corrélation et le rang de X : <code>np.linalg.matrix_rank(X)</code> doit = nb de features</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier l'intercept dans le modèle Standard API</strong></p>
+<p>❌ <code>sm.OLS(Y, X).fit()</code> — pas d'intercept automatique → R² biaisé</p>
+<p>✅ <code>smf.ols(formula=&#x27;weight ~ horsepower&#x27;, data=mpg).fit()</code> — l'intercept est ajouté automatiquement</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Faire confiance à un R² élevé sans vérifier la significativité statistique</strong></p>
+<p>❌ R² = 0.84 sur un échantillon de 10 observations → peut être dû au hasard</p>
+<p>✅ Vérifier le F-statistic et les p-values individuelles (<code>p &lt; 0.05</code>)</p></div></div>
+
+<hr>
+
+<h2 id="1-recap-inférence-statistique">1) Recap — Inférence statistique</h2>
+
+<h3 id="11-distribution-déchantillonnage">1.1 Distribution d'échantillonnage</h3>
+
+<ul>
+<li><strong>μ̂</strong> = distribution plausible des valeurs pour la vraie moyenne μ</li>
+<li>Intervalles de confiance à 95%</li>
+</ul>
+
+<h3 id="12-tests-dhypothèse">1.2 Tests d'hypothèse</h3>
+
+<ul>
+<li><code>p-value</code> : probabilité d'observer un résultat aussi extrême <strong>si H₀ est vraie</strong></li>
+<li>Seuil de significativité α = 0.05</li>
+</ul>
+
+<h3 id="13-théorème-central-limite-étendu">1.3 Théorème central limite étendu</h3>
+
+<ul>
+<li>z-test pour distributions normales N</li>
+<li>t-test pour distributions de Student T_ν</li>
+</ul>
+
+<h3 id="14-inférence-bayésienne">1.4 Inférence bayésienne</h3>
+
+<ul>
+<li><strong>posterior ∝ prior × likelihood</strong></li>
+<li>Maximum Likelihood Estimate (MLE)</li>
+<li>Maximum A Posteriori Estimate (MAP)</li>
+</ul>
+
+<hr>
+
+<h2 id="2-motivation-pourquoi-la-régression-linéaire">2) Motivation — Pourquoi la régression linéaire ?</h2>
+
+<figure><img src="../../assets/images/linear-regression-01-dd5d5b5d.jpg" alt="" loading="lazy"></figure>
+
+<ul>
+<li>Outil statistique appliqué le plus important</li>
+<li><strong>Interprétable</strong> : chaque coefficient a un sens métier</li>
+<li>Standard pour l'<strong>inférence causale</strong> (<code>causal inference</code>)</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Problème métier</strong> : <em>Comment augmenter la satisfaction client tout en maintenant un volume de commandes sain ?</em></p>
+<p>La régression linéaire permet d'analyser : quelles features impactent le plus <code>review_score</code> ? Comment contrôler les <strong>facteurs confondants</strong> ?</p></div></div>
+
+<hr>
+
+<h2 id="3-régression-linéaire-simple-approche-visuelle-avec-seaborn">3) Régression linéaire simple — Approche visuelle avec <code>seaborn</code></h2>
+
+<h3 id="31-le-dataset-mpg">3.1 Le dataset mpg</h3>
+
+<p>Le dataset <code>mpg</code> contient ~400 modèles de voitures de 1970 à 1982.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+mpg = sns.load_dataset(&quot;mpg&quot;).dropna()   # charge et nettoie le dataset
+mpg.head()                               # aperçu des premières lignes</code></pre></div>
+
+
+<p>Colonnes principales : <code>mpg</code> (miles/gallon), <code>cylinders</code>, <code>displacement</code> (volume en cc), <code>horsepower</code>, <code>weight</code> (en lbs), <code>acceleration</code>.</p>
+
+<h3 id="32-ordinary-least-squares-ols">3.2 Ordinary Least Squares (OLS)</h3>
+
+<p><strong>Objectif</strong> : trouver la droite ŷ = (β₀ + β₁ × horsepower) la plus proche des valeurs réelles de <code>weight</code>.</p>
+
+<p><strong>Formulation mathématique :</strong></p>
+
+<p>On cherche β = (β₀, β₁) qui minimise la <strong>somme des carrés des résidus (SSR)</strong> :</p>
+
+<div class="katex-display">$$underset{beta}{argmin} sum_{i=1}^{n} left( y_i - (beta_0 + beta_1 x_i) right)^2$$</div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>OLS est très sensible aux outliers !</strong> Un point extrême peut fortement déformer la droite.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">sns.scatterplot(x=&#x27;horsepower&#x27;, y=&#x27;weight&#x27;, data=mpg)   # nuage de points brut
+sns.regplot(x=&#x27;horsepower&#x27;, y=&#x27;weight&#x27;, data=mpg)        # avec droite OLS</code></pre></div>
+
+
+<p>👉 <a href="http://setosa.io/ev/ordinary-least-squares-regression/" target="_blank" rel="noopener">Visualisation dynamique OLS</a></p>
+
+<figure><img src="../../assets/images/linear-regression-02-86e401b9.png" alt="" loading="lazy"></figure>
+
+<h3 id="33-corrélation-et-r²">3.3 Corrélation et R²</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">round(mpg.corr(numeric_only=True), 2)                           # matrice de corrélation ρ ∈ [-1, 1]
+
+r_squared = (mpg.corr(numeric_only=True)[&#x27;weight&#x27;][&#x27;horsepower&#x27;])**2
+print(&#x27;R-Squared = &#x27;, r_squared)                                # R² = ρ² pour régression simple</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+R-Squared =  0.7474254996898221</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">plt.figure(figsize=(7, 7))
+sns.heatmap(round(mpg.corr(numeric_only=True), 2),
+            cmap=&quot;coolwarm&quot;, annot=True, annot_kws={&quot;size&quot;: 12})   # heatmap des corrélations</code></pre></div>
+
+
+<p><strong>R² (coefficient de détermination)</strong> : % de la variance de <code>weight</code> expliqué par <code>horsepower</code>.</p>
+
+<ul>
+<li>R² ∈ [0, 1] : 0 = n'explique rien, 1 = relation parfaite</li>
+</ul>
+
+<figure><img src="../../assets/images/linear-regression-03-23a3e69d.png" alt="" loading="lazy"></figure>
+
+<p>👉 <a href="https://statisticsbyjim.com/regression/interpret-r-squared-regression/" target="_blank" rel="noopener">Interpréter R² — Statistics by Jim</a></p>
+
+<hr>
+
+<h2 id="4-régression-linéaire-simple-avec-statsmodels">4) Régression linéaire simple — avec <code>statsmodels</code></h2>
+
+<h3 id="41-deux-api-disponibles">4.1 Deux API disponibles</h3>
+
+<p><strong>Formula API</strong> (recommandé, plus intuitif) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import statsmodels.formula.api as smf
+
+model = smf.ols(formula=&#x27;weight ~ horsepower&#x27;, data=mpg).fit()  # entraîne le modèle</code></pre></div>
+
+
+<p><strong>Standard API</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import statsmodels.api as sm
+
+Y = mpg[&#x27;weight&#x27;]
+X = mpg[&#x27;horsepower&#x27;]
+model = sm.OLS(Y, X).fit()    # trouve le meilleur β — attention : pas d&#x27;intercept auto
+model.predict(X)              # ŷ = valeurs prédites</code></pre></div>
+
+
+<h3 id="42-interprétation-des-coefficients">4.2 Interprétation des coefficients</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">print(model.params)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+Intercept     984.500327
+horsepower     19.078162
+dtype: float64</code></pre></div>
+
+
+<ul>
+<li><strong>β₁ = 19.08</strong> → "Chaque augmentation d'1 horsepower → +19 lbs de poids en moyenne"</li>
+<li><strong>β₀ = 984.5</strong> → "Une voiture à 0 horsepower pèserait 984 lbs" (extrapolation, à prendre avec précaution)</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model.rsquared   # → 0.747 : 74% de la variance du poids expliquée par horsepower</code></pre></div>
+
+
+<h3 id="43-lire-le-modelsummary">4.3 Lire le <code>model.summary()</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model.summary()   # tableau complet d&#x27;inférence statistique</code></pre></div>
+
+
+<p>Métriques clés du summary :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Métrique</th><th>Valeur</th><th>Signification</th><th></th><th></th></tr></thead><tbody><tr><td>R-squared</td><td>0.747</td><td>74.7% de variance expliquée</td><td></td><td></td></tr><tr><td>Adj. R-squared</td><td>0.747</td><td>Pénalisé pour nb de features</td><td></td><td></td></tr><tr><td>F-statistic</td><td>1154</td><td>Significativité globale du modèle</td><td></td><td></td></tr><tr><td>Prob (F-statistic)</td><td>1.36e-118</td><td>p-value globale ≈ 0</td><td></td><td></td></tr><tr><td>coef (horsepower)</td><td>19.078</td><td>Pente β₁</td><td></td><td></td></tr><tr><td>std err</td><td>0.562</td><td>Incertitude sur β₁</td><td></td><td></td></tr><tr><td>t</td><td>33.972</td><td>t-statistic = coef / std err</td><td></td><td></td></tr><tr><td>P>\</td><td>t\</td><td></td><td>0.000</td><td>p-value (≈ 0 → très significatif)</td></tr><tr><td>[0.025, 0.975]</td><td>[17.974, 20.182]</td><td>IC à 95% pour β₁</td><td></td><td></td></tr></tbody></table></div>
+<h3 id="44-inférence-sur-les-coefficients-formule-du-std-err">4.4 Inférence sur les coefficients — Formule du std err</h3>
+
+<p>La distribution de β̂₁ autour de la vraie valeur β₁ est estimée via :</p>
+
+<div class="katex-display">$$text{std err}(hat{beta}_1) = frac{1}{sqrt{n-2}} cdot frac{s(text{résidus})}{s(text{horsepower})} = sqrt{frac{frac{1}{n-2}sum(y_i - hat{y}_i)^2}{sum(x_i - bar{x})^2}}$$</div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">n = 392
+residuals = model.predict(mpg[&#x27;horsepower&#x27;]) - mpg[&#x27;weight&#x27;]
+residuals.std() / mpg.horsepower.std() / (n - 2)**0.5   # → 0.5615 ≈ 0.562 ✓</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>On divise par <strong>n - 2</strong> (degrés de liberté) car on a estimé 2 paramètres (β₀ et β₁). 👉 <a href="https://www.youtube.com/watch?v=4otEcA3gjLk" target="_blank" rel="noopener">Vidéo explicative</a></p></div></div>
+
+<h3 id="45-t-statistic-et-p-value">4.5 t-statistic et p-value</h3>
+
+<p><strong>H₀</strong> : <code>horsepower</code> n'est pas corrélé avec <code>weight</code> (β₁ = 0)</p>
+
+<p>Le t-statistic mesure combien d'écarts-types β̂₁ est éloigné de 0 :</p>
+
+<div class="katex-display">$$t = frac{hat{beta}_1 - 0}{text{std err}(hat{beta}_1)} = frac{19.078}{0.562} = 33.97 text{ écarts-types au-dessus de 0 !}$$</div>
+
+<p>La <code>p-value</code> = probabilité d'observer β̂₁ ≥ 19.07 <strong>si H₀ était vraie</strong> ≈ 0</p>
+
+<p>→ p-value ≈ 0 ≤ 0.05 : la relation est <strong>statistiquement significative</strong></p>
+
+<h3 id="46-f-statistic">4.6 F-statistic</h3>
+
+<div class="katex-display">$$F in <a href="https://wagon-public-datasets.s3.amazonaws.com/data-science-images/lectures/decision-science/LinReg/lin_reg_cheatsheet.png" target="_blank" rel="noopener">1, +infty[$$</div>
+
+<ul>
+<li><strong>H₀</strong> : tous les coefficients sont nuls</li>
+<li>F ≈ 1 → H₀ ne peut pas être rejetée</li>
+<li>F >> 1 → au moins un coefficient est significatif → la régression est globalement significative</li>
+</ul>
+
+<hr>
+
+<h2 id="5-vérification-des-conditions-dinférence">5) Vérification des conditions d'inférence</h2>
+
+<p>Pour que les p-values et IC soient fiables, il faut :</p>
+
+<p>✔ Échantillonnage <strong>aléatoire</strong></p>
+
+<p>✔ Échantillonnage <strong>indépendant</strong> (avec remise ou n < 10% de la population)</p>
+
+<p>⚠ <strong>Résidus normalement distribués et de variance constante</strong> ← à vérifier !</p>
+
+<figure><img src="../../assets/images/linear-regression-04-f492a070.png" alt="" loading="lazy"></figure>
+
+<h3 id="51-résidus-normalement-distribués">5.1 Résidus normalement distribués ?</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">predicted_weights = model.predict(mpg[&#x27;horsepower&#x27;])   # ŷ = poids prédits
+residuals = predicted_weights - mpg[&#x27;weight&#x27;]          # résidus = ŷ - y (aussi : model.resid)
+
+sns.histplot(residuals, kde=True, edgecolor=&#x27;w&#x27;)       # doit ressembler à une gaussienne</code></pre></div>
+
+
+<h3 id="52-variance-constante-homoscédasticité">5.2 Variance constante (homoscédasticité) ?</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Residuals vs Fitted : les résidus doivent être uniformément dispersés
+sns.scatterplot(x=predicted_weights, y=residuals)
+plt.xlabel(&#x27;Predicted weight&#x27;)
+plt.ylabel(&#x27;Residual weight&#x27;)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Hétéroscédasticité</strong> : si la variance des résidus augmente avec ŷ → les IC et p-values sont sous-estimés.</p></div></div>
+
+<figure><img src="../../assets/images/linear-regression-05-8004b102.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Résidus auto-corrélés</strong> : fréquent en séries temporelles (inflation, patterns hebdomadaires...). Si un pattern apparaît → une variable explicative est probablement manquante.</p></div></div>
+
+<figure><img src="../../assets/images/linear-regression-06-dffdc5e6.png" alt="" loading="lazy"></figure>
+
+<h3 id="53-que-faire-si-les-résidus-ne-sont-pas-aléatoires">5.3 Que faire si les résidus ne sont pas aléatoires ?</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Métrique</th><th>Impact</th></tr></thead><tbody><tr><td>R²</td><td>✅ Toujours valide (déterministe)</td></tr><tr><td>p-values et IC</td><td>⚠️ Peuvent être sous-estimés → trop optimistes</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Solutions possibles</strong> : ajouter des features pour expliquer les patterns résiduels, transformer Y (ex: log(Y)), ou utiliser un modèle non linéaire.</p></div></div>
+
+<hr>
+
+<h2 id="6-régression-linéaire-multiple">6) Régression linéaire multiple</h2>
+
+<h3 id="61-ajouter-des-variables-explicatives">6.1 Ajouter des variables explicatives</h3>
+
+<div class="katex-display">$$text{weight} sim beta_0 + beta_1 cdot text{horsepower} + beta_2 cdot text{cylinders}$$</div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model2 = smf.ols(formula=&#x27;weight ~ horsepower + cylinders&#x27;, data=mpg).fit()
+model2.rsquared   # → 0.846 : 84.6% de variance expliquée (vs 74.7% avec une seule variable)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model2.params</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+Intercept     528.876711
+horsepower      8.231070
+cylinders     290.356425
+dtype: float64</code></pre></div>
+
+
+<ul>
+<li>β₁ = 8.23 → "Chaque +1 horsepower augmente le poids de 8 lbs, <strong>en contrôlant le nombre de cylinders</strong>"</li>
+<li>β₂ = 290.4 → "Chaque cylindre supplémentaire augmente le poids de 290 lbs, <strong>en contrôlant horsepower</strong>"</li>
+</ul>
+
+<h3 id="62-r²-en-régression-multiple">6.2 R² en régression multiple</h3>
+
+<div class="katex-display">$$R^2 = 1 - frac{sum(y_i - hat{y}<em>i)^2}{sum(y_i - bar{y})^2} = 1 - frac{SS</em>{text{résidus}}}{SS_{text{moyenne}}}$$</div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>En régression multiple, <strong>R² ≠ Corr(Y, Xᵢ)²</strong>. Toujours inclure un intercept pour que R² soit interprétable.</p></div></div>
+
+<div class="table-wrapper"><table><thead><tr><th>R²</th><th>Interprétation</th></tr></thead><tbody><tr><td>R² = 1</td><td>Modèle parfait : les features expliquent 100% de Y</td></tr><tr><td>R² = 0</td><td>Aussi bon que prédire la moyenne</td></tr><tr><td>R² < 0</td><td>Pire que prédire la moyenne !</td></tr></tbody></table></div>
+<figure><img src="../../assets/images/linear-regression-07-23a3e69d.png" alt="" loading="lazy"></figure>
+
+<h3 id="63-partial-regression-plots">6.3 Partial regression plots</h3>
+
+<p>Visualise l'effet de chaque variable <em>en maintenant les autres constantes</em> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import statsmodels.api as sm
+
+fig = plt.figure(figsize=(10, 6))
+fig = sm.graphics.plot_partregress_grid(model2, fig=fig)   # grille de graphiques partiels</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Comment sont construits ces graphiques ?</strong> La valeur Y d'un point = résidu du poids prédit <strong>sans</strong> la variable en question. La valeur X = résidu de la variable en question <strong>prédit par les autres features</strong>. Cela isole la contribution unique de chaque variable.</p>
+<p>👉 <a href="https://www.youtube.com/watch?v=Xii1jVLnX60&ab_channel=MikkoR%C3%B6nkk%C3%B6" target="_blank" rel="noopener">Explication vidéo</a></p></div></div>
+
+<h3 id="64-variables-catégorielles">6.4 Variables catégorielles</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">mpg[&#x27;origin&#x27;].unique()   # → [&#x27;usa&#x27;, &#x27;japan&#x27;, &#x27;europe&#x27;]
+
+## C() encode automatiquement en variables dummy (one-hot encoding)
+model3 = smf.ols(formula=&#x27;weight ~ C(origin)&#x27;, data=mpg).fit()
+model3.params</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+Intercept             2433.470588   # = moyenne de la référence (europe)
+C(origin)[T.japan]    -212.242740   # japan pèse 212 lbs de moins qu&#x27;europe
+C(origin)[T.usa]       939.019208   # usa pèse 939 lbs de plus qu&#x27;europe
+dtype: float64</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Sans intercept : les coefs = moyennes directes de chaque groupe
+model3 = smf.ols(formula=&#x27;weight ~ C(origin) - 1&#x27;, data=mpg).fit()
+model3.params</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+C(origin)[europe]    2433.470588
+C(origin)[japan]     2221.227848
+C(origin)[usa]       3372.489796
+dtype: float64</code></pre></div>
+
+
+<hr>
+
+<h2 id="7-diagnostic-de-régression-récapitulatif">7) Diagnostic de régression — Récapitulatif</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Vérification</th><th>Description</th><th>Outil</th></tr></thead><tbody><tr><td>Goodness-of-fit</td><td>Le modèle explique une bonne part de la variance</td><td>R²</td></tr><tr><td>Significativité statistique</td><td>Peut-on faire confiance aux coefficients ?</td><td>p-values, F-statistic</td></tr><tr><td>Conditions d'inférence</td><td>Résidus : moyenne nulle, variance constante, non corrélés</td><td>Graphiques des résidus</td></tr></tbody></table></div>
+<p>👉 [Summary annoté complet</a></p>
+
+<hr>
+
+<h2 id="8-annexe-solution-mathématique-de-lols">8) (Annexe) Solution mathématique de l'OLS</h2>
+
+<p><strong>Modèle général (multivarié) :</strong></p>
+
+<div class="katex-display">$$Y = beta_0 + beta_1 X_1 + beta_2 X_2 + ldots + beta_k X_k + u$$</div>
+
+<p>En notation matricielle :</p>
+
+<div class="katex-display">$$vec{Y} = Xvec{beta} + vec{u}$$</div>
+
+<p><strong>OLS</strong> minimise la norme euclidienne des résidus ‖u‖² :</p>
+
+<div class="katex-display">$$|vec{u}|^2 = |vec{Y} - Xvec{beta}|^2$$</div>
+
+<p><strong>Développement :</strong></p>
+
+<div class="katex-display">$$u^T u = (Y' - beta' X')(Y - Xbeta) = Y'Y - 2beta' X'Y + beta' X'Xbeta$$</div>
+
+<p><strong>Dérivée = 0 (condition du minimum) :</strong></p>
+
+<div class="katex-display">$$frac{partial}{partial beta}(Y'Y - 2beta'X'Y + beta'X'Xbeta) = -2X'Y + 2X'Xbeta = 0$$</div>
+
+<p><strong>Solution analytique (Normal Equation) :</strong></p>
+
+<div class="katex-display">$$X'Xbeta = X'Y implies boxed{hat{beta} = (X'X)^{-1}X'Y}$$</div>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>(X'X)⁻¹X'</strong> est appelée la <strong>pseudo-inverse</strong> de X. Elle n'existe que si X est de rang plein (toutes les features sont indépendantes → pas de multicolinéarité).</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">X = np.array([
+    [1., 0., 1.],
+    [0., 1., 1.],
+    [0., 0., 0.]
+])
+
+np.linalg.matrix_rank(X)   # → 2 (pas 3) : la 3ème colonne = somme des deux premières → multicolinéarité !</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+2</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Rang < nombre de features → <strong>(X'X) non inversible</strong> → pas de solution unique OLS → <strong>coefficients non fiables</strong></p></div></div>
+
+<p><strong>Complexité computationnelle :</strong></p>
+
+<ul>
+<li>Inverser X'X (méthode basique) : <strong>O(k³)</strong></li>
+<li>Méthode avancée : <strong>O(k²·⁴)</strong></li>
+<li>Pseudo-inverse via décomposition SVD : <strong>O(k²)</strong> ← meilleure option pour k grand</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>OLS <strong>passe bien à l'échelle en n</strong> (observations) car la complexité est proportionnelle à O(n), mais peut être coûteux si k (features) est très grand.</p></div></div>
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://www.kdnuggets.com/2019/07/check-quality-regression-model-python.html" target="_blank" rel="noopener">OLS Inference Assumptions — KDNuggets</a></li>
+<li>👉 <a href="https://statisticsbyjim.com/regression/ols-linear-regression-assumptions/" target="_blank" rel="noopener">OLS Assumptions — Stats By Jim</a></li>
+<li>👉 <a href="https://www.youtube.com/playlist?list=PLblh5JKOoLUIzaEkCLIUxQFjPIlapw8nU" target="_blank" rel="noopener">StatsQuest - Linear Regression</a> (vidéos YouTube intuitives)</li>
+<li>👉 <a href="https://statisticsbyjim.com/" target="_blank" rel="noopener">Statistics by Jim - Regression Analysis</a> (blog concis)</li>
+<li>👉 <a href="https://www.coursera.org/learn/regression-models" target="_blank" rel="noopener">Coursera — Regression Models</a> (4 semaines, gratuit)</li>
+<li>👉 <a href="https://www.statlearning.com/" target="_blank" rel="noopener">ISLR — Section 3 : Regression</a> (James / Witten / Hastie / Tibshirani)</li>
+<li>👉 <a href="https://statisticsbyjim.com/regression/interpret-r-squared-regression/" target="_blank" rel="noopener">Interpréter R² — Statistics by Jim</a></li>
+<li>👉 <a href="http://setosa.io/ev/ordinary-least-squares-regression/" target="_blank" rel="noopener">Visualisation dynamique OLS</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">🚀 Challenges</h2>
+
+<ul>
+<li><strong>Challenge 01</strong> : Modéliser <code>review_score</code> des <code>orders</code> comme fonction linéaire de plusieurs variables explicatives</li>
+<li><strong>Challenge 02</strong> : Identifier les <code>sellers</code> (et <code>products</code>) systématiquement sous-performants</li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-à-retenir-absolument">À retenir absolument</a></li><li><a href="#ref-analogie-fil-rouge">Analogie fil rouge</a></li><li><a href="#ref-plan-du-cours">Plan du cours</a></li></ol></li><li><a href="#ref-1-la-droite-de-régression-y-beta_0-beta_1-x">1. La droite de régression — $y = \beta_0 + \beta_1 x$</a><ol><li><a href="#ref-la-formule-de-base">La formule de base</a></li><li><a href="#ref-exemple-concret-prédire-le-prix-dun-appartement">Exemple concret — Prédire le prix d'un appartement</a></li></ol></li><li><a href="#ref-2-ols-trouver-la-meilleure-droite">2. OLS — Trouver la meilleure droite</a><ol><li><a href="#ref-le-principe-des-moindres-carrés">Le principe des moindres carrés</a></li><li><a href="#ref-exemple-numérique">Exemple numérique</a></li><li><a href="#ref-le-mse-mean-squared-error">Le MSE — Mean Squared Error</a></li></ol></li><li><a href="#ref-3-mesurer-la-qualité-corrélation-et-r²">3. Mesurer la qualité : corrélation et R²</a><ol><li><a href="#ref-la-corrélation-rho">La corrélation $\rho$</a></li><li><a href="#ref-le-r²-coefficient-de-détermination">Le R² — Coefficient de détermination</a></li></ol></li><li><a href="#ref-4-régression-avec-statsmodels-la-pratique">4. Régression avec `statsmodels` — La pratique</a><ol><li><a href="#ref-installer-et-charger">Installer et charger</a></li><li><a href="#ref-ajuster-le-modèle-formula-api">Ajuster le modèle (Formula API)</a></li><li><a href="#ref-lire-les-coefficients">Lire les coefficients</a></li><li><a href="#ref-faire-des-prédictions">Faire des prédictions</a></li><li><a href="#ref-le-modelsummary-tableau-complet">Le `model.summary()` — Tableau complet</a></li></ol></li><li><a href="#ref-5-tests-statistiques-peut-on-faire-confiance-aux-coefficients">5. Tests statistiques — Peut-on faire confiance aux coefficients ?</a><ol><li><a href="#ref-le-std-err-erreur-standard">Le std err (erreur standard)</a></li><li><a href="#ref-le-t-statistic-et-la-p-value">Le t-statistic et la p-value</a></li><li><a href="#ref-le-f-statistic-significativité-globale-du-modèle">Le F-statistic — Significativité globale du modèle</a></li></ol></li><li><a href="#ref-6-vérification-des-résidus-est-ce-que-le-modèle-est-fiable">6. Vérification des résidus — Est-ce que le modèle est fiable ?</a><ol><li><a href="#ref-condition-1-résidus-normalement-distribués">Condition 1 — Résidus normalement distribués</a></li><li><a href="#ref-condition-2-homoscédasticité-variance-constante">Condition 2 — Homoscédasticité (variance constante)</a></li><li><a href="#ref-que-faire-si-les-conditions-ne-sont-pas-respectées">Que faire si les conditions ne sont pas respectées ?</a></li></ol></li><li><a href="#ref-7-régression-linéaire-multiple">7. Régression linéaire multiple</a><ol><li><a href="#ref-ajouter-plusieurs-variables">Ajouter plusieurs variables</a></li><li><a href="#ref-r²-en-régression-multiple">R² en régression multiple</a></li><li><a href="#ref-partial-regression-plots-isoler-leffet-de-chaque-variable">Partial regression plots — Isoler l'effet de chaque variable</a></li></ol></li><li><a href="#ref-8-variables-catégorielles">8. Variables catégorielles</a><ol><li><a href="#ref-le-problème">Le problème</a></li><li><a href="#ref-la-solution-c-pour-encoder-automatiquement">La solution : `C()` pour encoder automatiquement</a></li></ol></li><li><a href="#ref-9-erreurs-classiques-à-éviter">9. Erreurs classiques à éviter</a><li><a href="#ref-10-annexe-la-solution-mathématique-de-lols-pour-les-curieux">10. Annexe — La solution mathématique de l'OLS (pour les curieux)</a><ol><li><a href="#ref-notation-matricielle">Notation matricielle</a></li><li><a href="#ref-la-solution-analytique">La solution analytique</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>La régression linéaire est l'outil de base de toute l'analyse de données. Son but : <strong>prédire une valeur numérique continue</strong> à partir d'une ou plusieurs autres variables.</p>
+
+<p>Exemples concrets : prédire le prix d'un appartement selon sa surface, estimer le poids d'une voiture selon sa puissance, anticiper le chiffre d'affaires en fonction des dépenses marketing.</p>
+
+<h3 id="ref-à-retenir-absolument">À retenir absolument</h3>
+
+<ul>
+<li>La régression linéaire cherche la <strong>droite</strong> (ou le plan) qui passe au mieux au milieu des données.</li>
+<li>"Au mieux" signifie : <strong>minimiser les écarts entre les valeurs réelles et les valeurs prédites</strong>.</li>
+<li>Chaque variable explicative reçoit un <strong>coefficient</strong> qui quantifie son influence sur la cible.</li>
+<li>Le <strong>R²</strong> mesure la qualité globale du modèle (de 0 = inutile à 1 = parfait).</li>
+<li>Corrélation ne signifie pas causalité : une relation statistique ne prouve pas qu'une variable <em>cause</em> l'autre.</li>
+</ul>
+
+<h3 id="ref-analogie-fil-rouge">Analogie fil rouge</h3>
+
+<p>Imaginez un nuage de points sur un graphique (chaque point = une maison, avec sa surface en X et son prix en Y). La régression linéaire, c'est trouver <strong>la droite qui passe au mieux au milieu de ce nuage</strong> — celle qui minimise la distance verticale entre chaque point et la droite. Une fois cette droite trouvée, on peut lire le prix estimé d'une nouvelle maison en cherchant son point sur la droite.</p>
+
+<h3 id="ref-plan-du-cours">Plan du cours</h3>
+
+<ol>
+<li>La formule de la droite et ses coefficients</li>
+<li>La méthode OLS — comment on trouve la meilleure droite</li>
+<li>Mesurer la qualité : R² et corrélation</li>
+<li>Lire les résultats avec <code>statsmodels</code></li>
+<li>Vérifier les conditions pour que le modèle soit fiable</li>
+<li>Régression multiple — plusieurs variables explicatives</li>
+<li>Variables catégorielles</li>
+<li>Annexe mathématique (pour les curieux)</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-la-droite-de-régression-y-beta_0-beta_1-x">1. La droite de régression — $y = \beta_0 + \beta_1 x$</h2>
+
+<h3 id="ref-la-formule-de-base">La formule de base</h3>
+
+<p>En régression linéaire simple (une seule variable explicative), le modèle est :</p>
+
+<div class="katex-display">$$\hat{y} = \beta_0 + \beta_1 \cdot x$$</div>
+
+<p>Chaque symbole traduit :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Symbole</th><th>Nom</th><th>Signification</th></tr></thead><tbody><tr><td>$\hat{y}$</td><td>y chapeau</td><td>La <strong>valeur prédite</strong> par le modèle</td></tr><tr><td>$\beta_0$</td><td>bêta zéro (intercept)</td><td>La valeur de $y$ quand $x = 0$</td></tr><tr><td>$\beta_1$</td><td>bêta un (pente)</td><td>De combien $y$ augmente quand $x$ augmente de 1</td></tr><tr><td>$x$</td><td>variable explicative</td><td>La variable qu'on utilise pour prédire</td></tr></tbody></table></div>
+<h3 id="ref-exemple-concret-prédire-le-prix-dun-appartement">Exemple concret — Prédire le prix d'un appartement</h3>
+
+<p>Supposons que le modèle a appris :</p>
+
+<div class="katex-display">$$\hat{\text{prix}} = 50\,000 + 3\,000 \cdot \text{surface}$$</div>
+
+<ul>
+<li>$\beta_0 = 50\,000$ : un appartement de 0 m² coûterait 50 000 € (valeur théorique, souvent peu réaliste)</li>
+<li>$\beta_1 = 3\,000$ : chaque m² supplémentaire ajoute 3 000 € au prix</li>
+</ul>
+
+<p>Pour un appartement de <strong>80 m²</strong> :</p>
+
+<div class="katex-display">$$\hat{\text{prix}} = 50\,000 + 3\,000 \times 80 = 50\,000 + 240\,000 = 290\,000 \text{ €}$$</div>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La pente $\beta_1$ est la clé : elle dit "si $x$ augmente de 1, $y$ change de $\beta_1$ en moyenne". C'est ce coefficient qu'on interprète en premier.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-ols-trouver-la-meilleure-droite">2. OLS — Trouver la meilleure droite</h2>
+
+<h3 id="ref-le-principe-des-moindres-carrés">Le principe des moindres carrés</h3>
+
+<p>Pour chaque observation, le modèle fait une erreur : la différence entre la valeur réelle $y_i$ et la valeur prédite $\hat{y}_i$. Cette erreur s'appelle un <strong>résidu</strong>.</p>
+
+<div class="katex-display">$$\text{résidu}_i = y_i - \hat{y}_i$$</div>
+
+<p>La méthode <strong>OLS</strong> (Ordinary Least Squares = moindres carrés ordinaires) cherche les valeurs de $\beta_0$ et $\beta_1$ qui minimisent la <strong>somme des carrés de tous les résidus</strong> :</p>
+
+<div class="katex-display">$$\underset{\beta_0,\, \beta_1}{\arg\min} \sum_{i=1}^{n} \left( y_i - (\beta_0 + \beta_1 x_i) \right)^2$$</div>
+
+<p>En français : on cherche la droite telle que la somme de <em>(erreur)²</em> pour tous les points soit la plus petite possible.</p>
+
+<p><strong>Pourquoi "au carré" ?</strong></p>
+<ul>
+<li>Pour éviter que les erreurs positives et négatives s'annulent</li>
+<li>Pour pénaliser davantage les grosses erreurs (2² = 4, mais 4² = 16)</li>
+</ul>
+
+<h3 id="ref-exemple-numérique">Exemple numérique</h3>
+
+<p>3 appartements :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Surface $x$</th><th>Prix réel $y$</th><th>Prix prédit $\hat{y}$</th><th>Résidu $y - \hat{y}$</th><th>Résidu²</th></tr></thead><tbody><tr><td>30 m²</td><td>140 000 €</td><td>140 000 €</td><td>0</td><td>0</td></tr><tr><td>50 m²</td><td>190 000 €</td><td>200 000 €</td><td>-10 000</td><td>100 000 000</td></tr><tr><td>80 m²</td><td>300 000 €</td><td>290 000 €</td><td>+10 000</td><td>100 000 000</td></tr></tbody></table></div>
+<p>Somme des résidus² = 200 000 000. OLS cherche les $\beta$ qui rendent cette somme minimale.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>OLS est sensible aux valeurs aberrantes (outliers). Un point extrême peut "attirer" la droite vers lui et fausser tout le modèle. Toujours visualiser ses données avant de modéliser.</p></div></div>
+
+<h3 id="ref-le-mse-mean-squared-error">Le MSE — Mean Squared Error</h3>
+
+<p>On divise souvent la somme des résidus² par le nombre d'observations pour obtenir le MSE :</p>
+
+<div class="katex-display">$$\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$</div>
+
+<ul>
+<li>$n$ = nombre d'observations</li>
+<li>Plus le MSE est proche de 0, mieux le modèle prédit</li>
+</ul>
+
+<hr>
+
+<h2 id="ref-3-mesurer-la-qualité-corrélation-et-r²">3. Mesurer la qualité : corrélation et R²</h2>
+
+<h3 id="ref-la-corrélation-rho">La corrélation $\rho$</h3>
+
+<p>La corrélation (notée $\rho$, "rho") mesure à quel point deux variables varient ensemble :</p>
+
+<div class="katex-display">$$\rho \in [-1,\; 1]$$</div>
+
+<ul>
+<li>$\rho = 1$ : relation linéaire parfaite positive (quand $x$ monte, $y$ monte proportionnellement)</li>
+<li>$\rho = -1$ : relation linéaire parfaite négative</li>
+<li>$\rho = 0$ : aucune relation linéaire</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import seaborn as sns
+
+mpg = sns.load_dataset(&quot;mpg&quot;).dropna()  # dataset de voitures (puissance, poids, conso...)
+
+# Matrice de corrélation entre toutes les variables numériques
+mpg.corr(numeric_only=True)
+
+# Corrélation spécifique entre horsepower et weight
+mpg.corr(numeric_only=True)[&#x27;weight&#x27;][&#x27;horsepower&#x27;]  # → environ 0.865</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Visualiser toutes les corrélations d&#x27;un coup
+import matplotlib.pyplot as plt
+plt.figure(figsize=(7, 7))
+sns.heatmap(
+    round(mpg.corr(numeric_only=True), 2),  # arrondir à 2 décimales
+    cmap=&quot;coolwarm&quot;,                         # rouge = corrélation positive, bleu = négative
+    annot=True,                              # afficher les valeurs dans les cases
+    annot_kws={&quot;size&quot;: 12}
+)</code></pre></div>
+
+
+<h3 id="ref-le-r²-coefficient-de-détermination">Le R² — Coefficient de détermination</h3>
+
+<p>Le R² (prononcé "R deux" ou "R carré") est la métrique principale pour évaluer un modèle de régression.</p>
+
+<div class="katex-display">$$R^2 = 1 - \frac{\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}{\sum_{i=1}^{n}(y_i - \bar{y})^2}$$</div>
+
+<p>Chaque terme :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Terme</th><th>Signification</th></tr></thead><tbody><tr><td>$y_i$</td><td>Valeur réelle de l'observation $i$</td></tr><tr><td>$\hat{y}_i$</td><td>Valeur prédite par le modèle</td></tr><tr><td>$\bar{y}$</td><td>Moyenne de toutes les valeurs réelles</td></tr><tr><td>Numérateur</td><td>Erreur résiduelle du modèle</td></tr><tr><td>Dénominateur</td><td>Erreur totale si on prédisait toujours la moyenne</td></tr></tbody></table></div>
+<p><strong>Intuition</strong> : R² compare "mon modèle" à "la stratégie idiote qui prédit toujours la moyenne". Si mon modèle est bien meilleur que cette stratégie, R² est proche de 1.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>R²</th><th>Interprétation</th></tr></thead><tbody><tr><td>$R^2 = 1$</td><td>Prédictions parfaites (rare en pratique)</td></tr><tr><td>$R^2 = 0.75$</td><td>Le modèle explique 75 % de la variance de $y$</td></tr><tr><td>$R^2 = 0$</td><td>Aussi utile que prédire la moyenne — inutile</td></tr><tr><td>$R^2 < 0$</td><td>Pire que prédire la moyenne (modèle mal ajusté)</td></tr></tbody></table></div>
+<p>En régression <strong>simple</strong>, $R^2 = \rho^2$ (le carré de la corrélation).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># R² à la main pour régression simple
+r_squared = (mpg.corr(numeric_only=True)[&#x27;weight&#x27;][&#x27;horsepower&#x27;])**2
+print(&#x27;R² =&#x27;, r_squared)  # → 0.747</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>R² = 0.747 signifie que la puissance du moteur (horsepower) explique 74,7 % des variations de poids des voitures. Les 25,3 % restants sont dus à d'autres facteurs non pris en compte.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-régression-avec-statsmodels-la-pratique">4. Régression avec <code>statsmodels</code> — La pratique</h2>
+
+<h3 id="ref-installer-et-charger">Installer et charger</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import statsmodels.formula.api as smf  # API &quot;formule&quot; — la plus intuitive
+import seaborn as sns
+
+mpg = sns.load_dataset(&quot;mpg&quot;).dropna()  # charger les données</code></pre></div>
+
+
+<h3 id="ref-ajuster-le-modèle-formula-api">Ajuster le modèle (Formula API)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># &quot;weight ~ horsepower&quot; = &quot;je veux prédire weight en fonction de horsepower&quot;
+model = smf.ols(formula=&#x27;weight ~ horsepower&#x27;, data=mpg).fit()</code></pre></div>
+
+
+<p>Décomposition ligne par ligne :</p>
+<ul>
+<li><code>smf.ols(...)</code> : crée un modèle OLS (moindres carrés ordinaires)</li>
+<li><code>formula=&#x27;weight ~ horsepower&#x27;</code> : la variable à prédire est à gauche du <code>~</code>, les variables explicatives à droite</li>
+<li><code>data=mpg</code> : le DataFrame source</li>
+<li><code>.fit()</code> : lance le calcul pour trouver les meilleurs $\beta_0$ et $\beta_1$</li>
+</ul>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>La Formula API ajoute automatiquement l'intercept ($\beta_0$). Préférez toujours cette API à la Standard API pour débuter.</p></div></div>
+
+<h3 id="ref-lire-les-coefficients">Lire les coefficients</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">print(model.params)  # affiche les coefficients estimés</code></pre></div>
+
+
+<p>Résultat :</p>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Intercept     984.500
+horsepower     19.078</code></pre></div>
+
+
+<ul>
+<li><strong>$\beta_0 = 984.5$</strong> (Intercept) : valeur théorique de <code>weight</code> quand <code>horsepower = 0</code></li>
+<li><strong>$\beta_1 = 19.08$</strong> : chaque cheval-vapeur supplémentaire ajoute <strong>19 lbs</strong> au poids moyen</li>
+</ul>
+
+<p>Donc le modèle appris est :</p>
+
+<div class="katex-display">$$\hat{\text{weight}} = 984.5 + 19.08 \times \text{horsepower}$$</div>
+
+<p>Pour une voiture de 150 chevaux :</p>
+
+<div class="katex-display">$$\hat{\text{weight}} = 984.5 + 19.08 \times 150 = 984.5 + 2\,862 = 3\,846.5 \text{ lbs}$$</div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model.rsquared  # → 0.747 : le modèle explique 74.7% de la variance du poids</code></pre></div>
+
+
+<h3 id="ref-faire-des-prédictions">Faire des prédictions</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">nouvelles_valeurs = pd.DataFrame({&#x27;horsepower&#x27;: [100, 150, 200]})  # 3 voitures à prédire
+model.predict(nouvelles_valeurs)  # → poids prédit pour chacune</code></pre></div>
+
+
+<h3 id="ref-le-modelsummary-tableau-complet">Le <code>model.summary()</code> — Tableau complet</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model.summary()  # affiche toutes les statistiques d&#x27;inférence</code></pre></div>
+
+
+<p>Ce tableau contient tout ce dont on a besoin pour évaluer le modèle. Voici les métriques clés :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Métrique</th><th>Valeur</th><th>Ce que ça veut dire</th></tr></thead><tbody><tr><td>R-squared</td><td>0.747</td><td>74.7 % de variance expliquée</td></tr><tr><td>Adj. R-squared</td><td>0.747</td><td>R² pénalisé pour le nb de variables (utile en régression multiple)</td></tr><tr><td>F-statistic</td><td>1154</td><td>Significativité globale du modèle</td></tr><tr><td>Prob (F-statistic)</td><td>≈ 0</td><td>p-value globale : le modèle est utile</td></tr><tr><td>coef (horsepower)</td><td>19.078</td><td>La pente $\beta_1$</td></tr><tr><td>std err</td><td>0.562</td><td>Incertitude sur $\beta_1$</td></tr><tr><td>t</td><td>33.97</td><td>$\beta_1$ est à 33.97 écarts-types de zéro</td></tr><tr><td>P>\</td><td>t\</td><td></td><td>0.000</td><td>p-value : relation très significative</td></tr><tr><td>[0.025, 0.975]</td><td>[17.97, 20.18]</td><td>Intervalle de confiance à 95 % pour $\beta_1$</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="ref-5-tests-statistiques-peut-on-faire-confiance-aux-coefficients">5. Tests statistiques — Peut-on faire confiance aux coefficients ?</h2>
+
+<h3 id="ref-le-std-err-erreur-standard">Le std err (erreur standard)</h3>
+
+<p>On n'a qu'un échantillon de données. Si on avait un échantillon différent, on obtiendrait des $\beta$ légèrement différents. Le <strong>std err</strong> quantifie cette incertitude :</p>
+
+<div class="katex-display">$$\text{std err}(\hat{\beta}_1) = \sqrt{\frac{\frac{1}{n-2}\sum(y_i - \hat{y}_i)^2}{\sum(x_i - \bar{x})^2}}$$</div>
+
+<ul>
+<li>On divise par <strong>$n - 2$</strong> car on a estimé 2 paramètres ($\beta_0$ et $\beta_1$) — ce sont les <strong>degrés de liberté</strong></li>
+<li>Plus $n$ est grand, plus le std err est petit, plus on est précis</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">n = len(mpg)                                           # nombre d&#x27;observations = 392
+residuals = model.predict(mpg[&#x27;horsepower&#x27;]) - mpg[&#x27;weight&#x27;]  # résidus = ŷ - y
+# Vérification manuelle du std err
+residuals.std() / mpg[&#x27;horsepower&#x27;].std() / (n - 2)**0.5  # → ≈ 0.562 (correspond au summary)</code></pre></div>
+
+
+<h3 id="ref-le-t-statistic-et-la-p-value">Le t-statistic et la p-value</h3>
+
+<p><strong>Hypothèse nulle H₀</strong> : <code>horsepower</code> n'a aucun lien avec <code>weight</code>, donc $\beta_1 = 0$.</p>
+
+<p>Le <strong>t-statistic</strong> mesure combien d'écarts-types $\hat{\beta}_1$ est éloigné de zéro :</p>
+
+<div class="katex-display">$$t = \frac{\hat{\beta}_1 - 0}{\text{std err}(\hat{\beta}_1)} = \frac{19.078}{0.562} \approx 33.97$$</div>
+
+<p>Un $t = 33.97$ est <strong>énorme</strong> — cela signifie que si H₀ était vraie (aucun lien), la probabilité d'observer un coefficient aussi grand par pur hasard serait quasi nulle.</p>
+
+<p>Cette probabilité s'appelle la <strong>p-value</strong> :</p>
+
+<ul>
+<li>Si <strong>p-value < 0.05</strong> : on rejette H₀ — la relation est <strong>statistiquement significative</strong></li>
+<li>Si <strong>p-value ≥ 0.05</strong> : on ne peut pas rejeter H₀ — la relation n'est pas prouvée</li>
+</ul>
+
+<p>Ici, p-value ≈ 0 → <code>horsepower</code> est bien un prédicteur significatif de <code>weight</code>.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Une p-value < 0.05 ne signifie pas que la relation est forte ou importante en pratique — elle dit seulement qu'elle n'est probablement pas due au hasard. Un grand échantillon peut rendre n'importe quelle toute petite relation "significative".</p></div></div>
+
+<h3 id="ref-le-f-statistic-significativité-globale-du-modèle">Le F-statistic — Significativité globale du modèle</h3>
+
+<div class="katex-display">$$F \in [1, +\infty[$$</div>
+
+<ul>
+<li><strong>H₀</strong> : tous les coefficients sont nuls (le modèle n'explique rien)</li>
+<li>$F \approx 1$ : impossible de rejeter H₀ — le modèle est inutile</li>
+<li>$F \gg 1$ : au moins un coefficient est significatif — le modèle est globalement utile</li>
+</ul>
+
+<p>Ici $F = 1154$ avec une p-value ≈ 0 : le modèle est clairement significatif.</p>
+
+<hr>
+
+<h2 id="ref-6-vérification-des-résidus-est-ce-que-le-modèle-est-fiable">6. Vérification des résidus — Est-ce que le modèle est fiable ?</h2>
+
+<p>Pour que les p-values et intervalles de confiance soient valides, il faut respecter certaines conditions sur les <strong>résidus</strong>.</p>
+
+<h3 id="ref-condition-1-résidus-normalement-distribués">Condition 1 — Résidus normalement distribués</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">predicted = model.predict(mpg[&#x27;horsepower&#x27;])  # valeurs prédites ŷ
+residuals = predicted - mpg[&#x27;weight&#x27;]          # résidus = ŷ - y
+
+import seaborn as sns
+sns.histplot(residuals, kde=True, edgecolor=&#x27;w&#x27;)  # doit ressembler à une courbe en cloche</code></pre></div>
+
+
+<p>Si l'histogramme ressemble à une gaussienne (courbe en cloche symétrique) : condition respectée.</p>
+
+<h3 id="ref-condition-2-homoscédasticité-variance-constante">Condition 2 — Homoscédasticité (variance constante)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Résidus vs valeurs prédites
+sns.scatterplot(x=predicted, y=residuals)
+# Les points doivent être uniformément dispersés (pas d&#x27;entonnoir, pas de courbe)</code></pre></div>
+
+
+<p>Si les résidus s'écartent de plus en plus quand $\hat{y}$ augmente (forme d'entonnoir), c'est de l'<strong>hétéroscédasticité</strong> : les p-values et IC sont sous-estimés → trop optimistes.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Si les résidus forment un pattern (courbe, entonnoir, zigzag), cela signale soit une variable explicative manquante, soit une relation non linéaire entre $x$ et $y$.</p></div></div>
+
+<h3 id="ref-que-faire-si-les-conditions-ne-sont-pas-respectées">Que faire si les conditions ne sont pas respectées ?</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Problème</th><th>Solution possible</th></tr></thead><tbody><tr><td>Résidus non gaussiens</td><td>Transformer $Y$ (par ex. prendre $\log(Y)$)</td></tr><tr><td>Hétéroscédasticité</td><td>Ajouter des variables explicatives</td></tr><tr><td>Pattern dans les résidus</td><td>Ajouter des features, essayer un modèle non linéaire</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le R² reste toujours valide même si les résidus ne sont pas parfaits. C'est seulement les p-values et intervalles de confiance qui deviennent peu fiables.</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-régression-linéaire-multiple">7. Régression linéaire multiple</h2>
+
+<h3 id="ref-ajouter-plusieurs-variables">Ajouter plusieurs variables</h3>
+
+<p>La régression simple utilise une variable pour prédire. La régression <strong>multiple</strong> en utilise plusieurs :</p>
+
+<div class="katex-display">$$\hat{\text{weight}} = \beta_0 + \beta_1 \cdot \text{horsepower} + \beta_2 \cdot \text{cylinders}$$</div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Ajouter plusieurs variables avec le signe +
+model2 = smf.ols(formula=&#x27;weight ~ horsepower + cylinders&#x27;, data=mpg).fit()
+
+model2.rsquared  # → 0.846 (vs 0.747 avec une seule variable)</code></pre></div>
+
+
+<p>On passe de R² = 0.747 à R² = 0.846 : ajouter <code>cylinders</code> améliore le modèle.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">print(model2.params)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Intercept     528.877
+horsepower      8.231
+cylinders     290.356</code></pre></div>
+
+
+<p>Interprétation :</p>
+<ul>
+<li>$\beta_1 = 8.23$ : "chaque cheval supplémentaire ajoute <strong>8 lbs</strong>, <strong>en maintenant le nombre de cylindres constant</strong>"</li>
+<li>$\beta_2 = 290.4$ : "chaque cylindre supplémentaire ajoute <strong>290 lbs</strong>, <strong>en maintenant la puissance constante</strong>"</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>En régression multiple, les coefficients s'interprètent toujours "toutes choses égales par ailleurs". La pente de <code>horsepower</code> passe de 19 à 8 parce qu'une partie de son effet était en réalité due aux cylindres (les deux variables sont corrélées).</p></div></div>
+
+<h3 id="ref-r²-en-régression-multiple">R² en régression multiple</h3>
+
+<div class="katex-display">$$R^2 = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\sum(y_i - \bar{y})^2} = 1 - \frac{SS_{\text{résidus}}}{SS_{\text{total}}}$$</div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>En régression multiple, $R^2 \neq \rho^2$. La formule reste la même mais on ne peut plus le calculer comme le carré d'une corrélation. Inclure toujours un intercept pour que R² soit interprétable.</p></div></div>
+
+<h3 id="ref-partial-regression-plots-isoler-leffet-de-chaque-variable">Partial regression plots — Isoler l'effet de chaque variable</h3>
+
+<p>Ces graphiques montrent l'effet d'une variable en maintenant les autres constantes :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import statsmodels.api as sm
+import matplotlib.pyplot as plt
+
+fig = plt.figure(figsize=(10, 6))
+# Crée un graphique par variable explicative
+fig = sm.graphics.plot_partregress_grid(model2, fig=fig)</code></pre></div>
+
+
+<p>Sur chaque sous-graphique, on voit la relation "nette" entre une variable et la cible, une fois que l'effet des autres variables a été retiré.</p>
+
+<hr>
+
+<h2 id="ref-8-variables-catégorielles">8. Variables catégorielles</h2>
+
+<h3 id="ref-le-problème">Le problème</h3>
+
+<p><code>origin</code> dans le dataset <code>mpg</code> peut valoir <code>&#x27;usa&#x27;</code>, <code>&#x27;japan&#x27;</code> ou <code>&#x27;europe&#x27;</code>. On ne peut pas mettre des mots dans une formule mathématique.</p>
+
+<h3 id="ref-la-solution-c-pour-encoder-automatiquement">La solution : <code>C()</code> pour encoder automatiquement</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">mpg[&#x27;origin&#x27;].unique()  # → [&#x27;usa&#x27;, &#x27;japan&#x27;, &#x27;europe&#x27;]
+
+# C() = &quot;Catégorie&quot; → crée automatiquement des variables dummy (0/1)
+model3 = smf.ols(formula=&#x27;weight ~ C(origin)&#x27;, data=mpg).fit()
+print(model3.params)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Intercept              2433.47   # = moyenne de la catégorie de référence (europe)
+C(origin)[T.japan]    -212.24    # japan pèse 212 lbs de MOINS qu&#x27;europe en moyenne
+C(origin)[T.usa]       939.02    # usa pèse 939 lbs de PLUS qu&#x27;europe en moyenne</code></pre></div>
+
+
+<p><code>europe</code> est la <strong>catégorie de référence</strong> (la première par ordre alphabétique). Tous les coefficients s'interprètent <em>par rapport à cette référence</em>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Variante sans intercept : les coefficients = moyennes directes de chaque groupe
+model3b = smf.ols(formula=&#x27;weight ~ C(origin) - 1&#x27;, data=mpg).fit()
+print(model3b.params)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">C(origin)[europe]    2433.47
+C(origin)[japan]     2221.23
+C(origin)[usa]       3372.49</code></pre></div>
+
+
+<p>Ici chaque coefficient est directement le poids moyen des voitures de cette origine.</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>En pratique, utilisez <code>C(origin)</code> avec intercept (la version par défaut) sauf si vous voulez comparer les groupes directement à leurs moyennes.</p></div></div>
+
+<hr>
+
+<h2 id="ref-9-erreurs-classiques-à-éviter">9. Erreurs classiques à éviter</h2>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Corrélation ≠ causalité</strong> — "Les voitures puissantes ont tendance à être plus lourdes" n'implique pas que la puissance <em>cause</em> le poids. La régression mesure une association, pas une cause.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Multicolinéarité</strong> — Si deux variables explicatives sont très corrélées entre elles (ex. <code>displacement</code> et <code>cylinders</code> avec $\rho = 0.95$), les coefficients deviennent peu fiables et difficiles à interpréter.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+# Vérifier le rang de la matrice X : doit être égal au nombre de variables
+np.linalg.matrix_rank(X)  # si rang &lt; nb de features → multicolinéarité !</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Oublier l'intercept</strong> — Avec la Standard API (<code>sm.OLS</code>), l'intercept n'est pas ajouté automatiquement. Préférez la Formula API (<code>smf.ols</code>) qui l'inclut toujours.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Faire confiance à un R² élevé sur petit échantillon</strong> — R² = 0.84 avec seulement 10 observations peut être dû au hasard. Vérifiez toujours le F-statistic et les p-values.</p></div></div>
+
+<hr>
+
+<h2 id="ref-10-annexe-la-solution-mathématique-de-lols-pour-les-curieux">10. Annexe — La solution mathématique de l'OLS (pour les curieux)</h2>
+
+<h3 id="ref-notation-matricielle">Notation matricielle</h3>
+
+<p>Quand on a $k$ variables explicatives et $n$ observations, on écrit :</p>
+
+<div class="katex-display">$$\vec{Y} = X\vec{\beta} + \vec{u}$$</div>
+
+<ul>
+<li>$\vec{Y}$ : vecteur de toutes les valeurs cibles (taille $n$)</li>
+<li>$X$ : matrice des variables explicatives ($n$ lignes, $k+1$ colonnes avec une colonne de 1 pour l'intercept)</li>
+<li>$\vec{\beta}$ : vecteur des coefficients à trouver</li>
+<li>$\vec{u}$ : vecteur des résidus (erreurs)</li>
+</ul>
+
+<h3 id="ref-la-solution-analytique">La solution analytique</h3>
+
+<p>OLS minimise $\|\vec{u}\|^2 = \|\vec{Y} - X\vec{\beta}\|^2$. En dérivant et en annulant la dérivée, on obtient la <strong>Normal Equation</strong> :</p>
+
+<div class="katex-display">$$\hat{\beta} = (X^TX)^{-1}X^TY$$</div>
+
+<p>C'est une formule <strong>exacte</strong> — pas besoin de méthode itérative. Elle nécessite d'inverser la matrice $X^TX$.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>$(X^TX)^{-1}X^T$ s'appelle la <strong>pseudo-inverse</strong> de $X$. Elle n'existe que si toutes les colonnes de $X$ sont indépendantes (pas de multicolinéarité).</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+# Exemple de matrice avec multicolinéarité
+X = np.array([
+    [1., 0., 1.],  # 3ème colonne = somme des deux premières
+    [0., 1., 1.],
+    [0., 0., 0.]
+])
+
+np.linalg.matrix_rank(X)  # → 2 (et non 3) : multicolinéarité détectée !</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Si <code>matrix_rank(X) &lt; nombre de colonnes</code>, la matrice $X^TX$ n'est pas inversible → OLS n'a pas de solution unique → les coefficients sont non fiables.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<ol>
+<li><strong>Interprétation des coefficients</strong> : Un modèle prédit le prix d'un appartement avec $\hat{\text{prix}} = 30\,000 + 2\,500 \times \text{surface}$. Que prédit-il pour un appartement de 60 m² ? Que signifie le coefficient 2 500 ?</li>
+</ol>
+
+<ol>
+<li><strong>R² et limites</strong> : Un modèle a R² = 0.92. Est-ce suffisant pour conclure que le modèle est fiable et que les p-values sont valides ? Quelle vérification supplémentaire faut-il faire ?</li>
+</ol>
+
+<ol>
+<li><strong>Régression multiple</strong> : En ajoutant une 2ème variable, le coefficient de la 1ère variable passe de 19 à 8. Comment expliquer cette baisse ? Est-ce un problème ?</li>
+</ol>
+
+<ol>
+<li><strong>Variables catégorielles</strong> : Dans un modèle avec <code>C(origin)</code>, le coefficient de <code>C(origin)[T.usa]</code> vaut 939. Comment interpréter ce chiffre ? Par rapport à quoi est-il mesuré ?</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>La régression linéaire modélise $\hat{y} = \beta_0 + \beta_1 x$ (ou plusieurs $x$ en régression multiple).</li>
+<li>La méthode <strong>OLS</strong> trouve les coefficients $\beta$ qui minimisent la somme des résidus au carré.</li>
+<li>Le <strong>R²</strong> mesure la qualité du modèle : proportion de la variance de $y$ expliquée (de 0 à 1).</li>
+<li>En Python, <code>smf.ols(formula=&#x27;y ~ x&#x27;, data=df).fit()</code> est la façon recommandée pour ajuster le modèle.</li>
+<li><code>model.params</code> donne les coefficients, <code>model.rsquared</code> donne le R², <code>model.summary()</code> donne tout.</li>
+<li>Les <strong>p-values</strong> et intervalles de confiance indiquent si un coefficient est statistiquement significatif (seuil : 0.05).</li>
+<li>Toujours <strong>vérifier les résidus</strong> (histogramme + scatter résidus vs prédits) avant de faire confiance aux p-values.</li>
+<li>En régression multiple, chaque coefficient s'interprète <em>toutes choses égales par ailleurs</em>.</li>
+<li>Les variables catégorielles s'encodent avec <code>C(variable)</code> — une catégorie de référence est choisie automatiquement.</li>
+<li>Corrélation ≠ causalité ; multicolinéarité = coefficients peu fiables.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-le-modèle-linéaire">Le modèle linéaire</a></li><li><a href="#syn-ols-et-minimisation-des-résidus">OLS et minimisation des résidus</a></li><li><a href="#syn-interprétation-des-coefficients">Interprétation des coefficients</a></li><li><a href="#syn-r²-et-autres-métriques">R² et autres métriques</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-hypothèses-du-modèle-linéaire">Hypothèses du modèle linéaire</a></li><li><a href="#syn-multicolinéarité-et-vif">Multicolinéarité et VIF</a></li><li><a href="#syn-régression-robuste-et-alternatives">Régression robuste et alternatives</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-le-modèle-linéaire">Le modèle linéaire</h3>
+
+<p>La régression linéaire suppose que la cible $y$ est une <strong>combinaison linéaire</strong> des features plus du bruit :</p>
+
+<div class="katex-display">$$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_p x_p + \varepsilon$$</div>
+
+<p>Lecture : <em>on multiplie chaque feature $x_j$ par un poids $\beta_j$ à apprendre, on additionne le tout avec un terme constant $\beta_0$ (l'intercept), et on rajoute un bruit $\varepsilon$ qui capture ce qui n'est pas explicable par les features</em>. Les $\beta_j$ sont les <strong>coefficients</strong> à estimer. $\beta_0$ est l'<strong>ordonnée à l'origine</strong> (la valeur prédite quand toutes les features valent zéro). $\varepsilon$ est le bruit, supposé centré ($\mathbb{E}[\varepsilon] = 0$) et de variance constante.</p>
+
+<p>En notation vectorielle compacte :</p>
+
+<div class="katex-display">$$y = \mathbf{x}^T \boldsymbol{\beta} + \varepsilon$$</div>
+
+<p>Lecture : <em>le produit scalaire entre le vecteur de features $\mathbf{x}$ (incluant un 1 en première position pour l'intercept) et le vecteur de poids $\boldsymbol{\beta}$ donne la prédiction</em>. C'est la même formule, juste écrite sans la somme explicite.</p>
+
+<p><strong>Exemple chiffré</strong> : pour prédire le prix d'un appartement avec 3 features (surface en m², nombre de chambres, âge), le modèle ajusté pourrait être $\hat y = 50\,000 + 1\,500 \cdot \text{surface} + 8\,000 \cdot \text{chambres} - 200 \cdot \text{age}$. Un appartement de 60 m², 2 chambres, 10 ans prédirait $50\,000 + 90\,000 + 16\,000 - 2\,000 = 154\,000$ €.</p>
+
+<p>C'est le modèle le plus simple et le plus interprétable de tout le ML, et c'est pour ça qu'il reste massivement utilisé en pratique malgré l'existence d'algorithmes plus puissants.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : la régression linéaire suppose que le monde est plat. Si votre cible varie linéairement avec vos features, c'est parfait. Si elle a des courbures, des seuils, des interactions, vous allez sous-ajuster — mais vous le verrez tout de suite, et vous saurez qu'il faut ajouter des features non linéaires (<code>x²</code>, <code>log(x)</code>, croisements) ou changer de modèle.</p></div></div>
+
+<h3 id="syn-ols-et-minimisation-des-résidus">OLS et minimisation des résidus</h3>
+
+<p><strong>OLS</strong> (Ordinary Least Squares) trouve les coefficients $\boldsymbol{\beta}$ qui minimisent la somme des carrés des <strong>résidus</strong> (écarts entre valeurs observées et valeurs prédites) :</p>
+
+<div class="katex-display">$$\hat{\boldsymbol{\beta}} = \arg\min_\beta \sum_{i=1}^n (y_i - \mathbf{x}_i^T \boldsymbol{\beta})^2$$</div>
+
+<p>Lecture : <em>on cherche le vecteur de poids $\hat{\boldsymbol{\beta}}$ qui rend la somme des carrés des erreurs la plus petite possible</em>. Pour chaque observation $i$, on calcule la prédiction $\mathbf{x}_i^T \boldsymbol{\beta}$, on soustrait la vraie valeur $y_i$, on élève au carré (pour que positifs et négatifs ne s'annulent pas), et on somme.</p>
+
+<p>C'est à un facteur près la <strong>MSE</strong> (Mean Squared Error). Pourquoi le carré et pas la valeur absolue ?</p>
+
+<ul>
+<li><strong>Mathématique</strong> : différentiable partout → solution analytique</li>
+<li><strong>Statistique</strong> : équivalent au maximum de vraisemblance sous l'hypothèse de bruit gaussien</li>
+<li><strong>Pénalise les grandes erreurs</strong> : un résidu de 10 compte 100× plus qu'un résidu de 1</li>
+</ul>
+
+<p>La solution analytique (en notation matricielle) est la fameuse <strong>équation normale</strong> :</p>
+
+<div class="katex-display">$$\hat{\boldsymbol{\beta}} = (X^T X)^{-1} X^T \mathbf{y}$$</div>
+
+<p>Lecture pas à pas :</p>
+<ul>
+<li>$X$ est la matrice des features (une ligne par observation, une colonne par feature, plus une colonne de 1 pour l'intercept)</li>
+<li>$X^T X$ est une matrice carrée $p \times p$ — la "matrice de Gram" des features</li>
+<li>$(X^T X)^{-1}$ est son inverse (existe seulement si les colonnes de $X$ sont linéairement indépendantes)</li>
+<li>$X^T \mathbf{y}$ est un vecteur de taille $p$ — les corrélations entre chaque feature et la cible</li>
+<li>Le produit donne le vecteur des coefficients optimaux $\hat{\boldsymbol{\beta}}$</li>
+</ul>
+
+<p><strong>Exemple chiffré minimal</strong> : avec 3 observations et 1 feature, $X = \begin{pmatrix}1 & 1\\1 & 2\\1 & 3\end{pmatrix}$ et $\mathbf{y} = (2, 4, 5)$. Alors $X^TX = \begin{pmatrix}3 & 6\\6 & 14\end{pmatrix}$, son inverse est $\begin{pmatrix}14/6 & -1\\-1 & 1/2\end{pmatrix}$, $X^T\mathbf{y} = (11, 25)$, et $\hat{\boldsymbol{\beta}} = (0.67, 1.5)$ — soit la droite $\hat y = 0.67 + 1.5 x$.</p>
+
+<p>C'est le seul algorithme de ML pour lequel on a une formule fermée. Pour tous les autres (régression logistique, RF, NN), on doit optimiser itérativement par descente de gradient.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()         # estimateur OLS
+model.fit(X_train, y_train)        # calcule (X^T X)^-1 X^T y en interne
+print(model.coef_)                 # β1, β2, ..., βp  (les pentes)
+print(model.intercept_)            # β0                (l&#x27;ordonnée à l&#x27;origine)
+
+y_pred = model.predict(X_test)     # X_test @ coef_ + intercept_</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Sous le capot</strong> : sklearn ne calcule jamais l'inverse de $X^TX$ explicitement (c'est numériquement instable). Il utilise une <strong>décomposition SVD</strong> ou QR qui est plus robuste aux matrices mal conditionnées. C'est la même idée mathématique mais une implémentation plus fiable.</p></div></div>
+
+<h3 id="syn-interprétation-des-coefficients">Interprétation des coefficients</h3>
+
+<p>C'est l'avantage majeur de la régression linéaire : chaque coefficient a une <strong>interprétation directe</strong>.</p>
+
+<p>$\beta_j$ = "augmentation moyenne de $y$ quand $x_j$ augmente d'<strong>une unité</strong>, <strong>toutes les autres features étant fixes</strong>".</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Modèle appris : prix = 50000 + 1500*surface + 8000*chambres - 200*age
+# β_surface = 1500  → +1 m² → +1500 €
+# β_chambres = 8000 → +1 chambre → +8000 €
+# β_age = -200      → +1 an d&#x27;âge → -200 €</code></pre></div>
+
+
+<p>Trois précautions essentielles :</p>
+
+<ol>
+<li><strong>L'interprétation "toutes choses égales par ailleurs" suppose que les features sont décorrélées</strong>. Si surface et nb_chambres sont corrélés (ce qu'ils sont en pratique), l'interprétation isolée d'un coefficient est trompeuse — c'est la multicolinéarité.</li>
+</ol>
+
+<ol>
+<li><strong>L'unité compte</strong>. Si vous standardisez les features, les coefficients deviennent en "écarts-types" et permettent de comparer l'importance relative des features.</li>
+</ol>
+
+<ol>
+<li><strong>Causalité ≠ corrélation</strong>. Un coefficient positif ne signifie pas que la feature <strong>cause</strong> la cible. C'est juste qu'elles varient ensemble dans vos données.</li>
+</ol>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Question d'entretien</strong> : "Le coefficient pour 'nombre de pompiers présents sur le lieu' est positif dans une régression sur les dégâts d'incendie. Faut-il licencier les pompiers ?" Réponse : non, c'est de la <strong>confusion</strong>. Plus l'incendie est grand, plus il y a de pompiers, plus les dégâts sont élevés. La cause commune est la taille de l'incendie. Pour identifier la causalité, il faut une expérience randomisée (A/B test) ou des techniques d'inférence causale (DAGs, variables instrumentales).</p></div></div>
+
+<h3 id="syn-r²-et-autres-métriques">R² et autres métriques</h3>
+
+<p>Le <strong>coefficient de détermination R²</strong> mesure la fraction de variance de $y$ expliquée par le modèle :</p>
+
+<div class="katex-display">$$R^2 = 1 - \frac{\sum_i (y_i - \hat{y}_i)^2}{\sum_i (y_i - \bar{y})^2}$$</div>
+
+<p>Lecture : <em>le numérateur est la somme des résidus au carré (erreur restante après le modèle). Le dénominateur est la somme des écarts à la moyenne au carré (variance totale de $y$, ce qu'il y avait à expliquer). Leur ratio est la fraction d'erreur non expliquée ; $1$ moins ce ratio est la fraction expliquée.</em></p>
+
+<ul>
+<li>$R^2 = 1$ : prédiction parfaite</li>
+<li>$R^2 = 0$ : aussi bon que prédire la moyenne $\bar y$</li>
+<li>$R^2 < 0$ : pire que la moyenne (oui, c'est possible sur le test set quand un modèle ne généralise pas)</li>
+</ul>
+
+<p><strong>Exemple chiffré</strong> : si la variance totale de $y$ est 1000 (variance des prix) et que votre modèle laisse une somme de résidus² de 200, alors $R^2 = 1 - 200/1000 = 0.80$. Votre modèle "explique" 80% de la variabilité des prix.</p>
+
+<p>Autres métriques courantes pour la régression :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Métrique</th><th>Formule</th><th>Interprétation</th></tr></thead><tbody><tr><td><strong>MSE</strong></td><td>$\frac{1}{n}\sum (y - \hat{y})^2$</td><td>Pénalise les grandes erreurs</td></tr><tr><td><strong>RMSE</strong></td><td>$\sqrt{\text{MSE}}$</td><td>Même unité que $y$</td></tr><tr><td><strong>MAE</strong></td><td>$\frac{1}{n}\sum</td><td>y - \hat{y}</td><td>$</td><td>Robuste aux outliers</td></tr><tr><td><strong>MAPE</strong></td><td>$\frac{100}{n}\sum</td><td>y-\hat{y}</td><td>/</td><td>y</td><td>$</td><td>En pourcentage, lisible</td></tr></tbody></table></div>
+<p>Lecture rapide : la <strong>MSE</strong> carrée les erreurs, donc pénalise fortement les gros écarts (un outlier à +100 pèse 10 000). La <strong>RMSE</strong> remet en unité originale (si MSE=400, RMSE=20 €). La <strong>MAE</strong> fait la moyenne des valeurs absolues et traite toutes les erreurs proportionnellement. La <strong>MAPE</strong> exprime l'erreur en pourcentage de la vraie valeur, utile quand l'échelle de $y$ varie beaucoup.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+import numpy as np
+
+print(f&quot;R² = {r2_score(y_test, y_pred):.3f}&quot;)                        # ex: 0.85
+print(f&quot;RMSE = {np.sqrt(mean_squared_error(y_test, y_pred)):.2f}&quot;)   # ex: 12450 €
+print(f&quot;MAE  = {mean_absolute_error(y_test, y_pred):.2f}&quot;)           # ex:  9820 €
+# La MAE &lt; RMSE toujours ; un gros écart suggère la présence d&#x27;outliers</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : rapportez <strong>toujours</strong> plusieurs métriques. Le R² seul peut être trompeur (0.85 sonne bien mais peut cacher des erreurs de plusieurs centaines d'euros sur un prix). La RMSE en unités originales est plus parlante pour l'utilisateur business. La MAPE en % est utile quand l'échelle de $y$ varie beaucoup.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-hypothèses-du-modèle-linéaire">Hypothèses du modèle linéaire</h3>
+
+<p>OLS donne des coefficients optimaux <strong>sous certaines hypothèses</strong> (théorème de Gauss-Markov). Si elles sont violées, vous gardez des prédictions raisonnables mais perdez la validité statistique des p-values et intervalles de confiance.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Hypothèse</th><th>Vérification</th><th>Conséquence si violée</th></tr></thead><tbody><tr><td><strong>Linéarité</strong></td><td>Plot des résidus vs prédictions</td><td>Modèle biaisé</td></tr><tr><td><strong>Indépendance des résidus</strong></td><td>Pas d'autocorrélation</td><td>Variance sous-estimée (séries temporelles !)</td></tr><tr><td><strong>Homoscédasticité</strong></td><td>Variance constante des résidus</td><td>IC et p-values invalides</td></tr><tr><td><strong>Normalité des résidus</strong></td><td>Q-Q plot</td><td>Inférence statistique invalide</td></tr><tr><td><strong>Pas de multicolinéarité</strong></td><td>VIF < 10</td><td>Coefs instables, interprétation cassée</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import statsmodels.api as sm
+
+X_with_const = sm.add_constant(X_train)        # ajoute une colonne de 1 pour β0
+model = sm.OLS(y_train, X_with_const).fit()    # OLS avec inférence statistique
+print(model.summary())
+# Affiche : coefs, erreurs standard, t-stat, p-values, R², F-stat, Durbin-Watson</code></pre></div>
+
+
+<p><code>statsmodels</code> est complémentaire à sklearn : sklearn est orienté prédiction, statsmodels est orienté inférence (tests d'hypothèses, intervalles de confiance).</p>
+
+<h3 id="syn-multicolinéarité-et-vif">Multicolinéarité et VIF</h3>
+
+<p>La <strong>multicolinéarité</strong> est le fléau de la régression linéaire : quand deux ou plusieurs features sont fortement corrélées, leurs coefficients deviennent instables et difficiles à interpréter.</p>
+
+<p>Symptômes :</p>
+<ul>
+<li>Coefficients qui changent dramatiquement quand on ajoute/enlève une feature</li>
+<li>Coefficients de signe contre-intuitif</li>
+<li>Grands intervalles de confiance malgré un bon R²</li>
+</ul>
+
+<p>Détection : le <strong>VIF</strong> (Variance Inflation Factor) mesure de combien la variance d'un coefficient est "gonflée" par la multicolinéarité.</p>
+
+<div class="katex-display">$$\text{VIF}_j = \frac{1}{1 - R_j^2}$$</div>
+
+<p>Lecture : <em>on régresse la feature $j$ sur toutes les autres features, on récupère le $R^2_j$ de cette régression auxiliaire, et on inverse $1 - R^2_j$</em>. Si $R_j^2 = 0$ (la feature $j$ est indépendante des autres), VIF = 1. Si $R_j^2 = 0.9$ (elle est déjà expliquée à 90% par les autres), VIF = 10 — la variance du coef $\hat\beta_j$ est multipliée par 10.</p>
+
+<p><strong>Exemple chiffré</strong> : avec 100 features corrélées à 0.95 deux à deux, OLS sans régularisation peut donner des coefficients de l'ordre de $10^4$ qui se compensent. Ridge avec $\alpha=1$ ramène ces coefficients à ~0.5, stabilisant drastiquement l'interprétation.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>VIF</th><th>Interprétation</th></tr></thead><tbody><tr><td>1</td><td>Pas de corrélation</td></tr><tr><td>1-5</td><td>Faible, OK</td></tr><tr><td>5-10</td><td>Modérée, prudence</td></tr><tr><td>> 10</td><td>Élevée, à corriger</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.stats.outliers_influence import variance_inflation_factor
+import pandas as pd
+
+# Calcul du VIF pour chaque feature
+vifs = pd.DataFrame({
+    &quot;feature&quot;: X.columns,
+    &quot;VIF&quot;: [variance_inflation_factor(X.values, i) for i in range(X.shape[1])]
+})
+print(vifs.sort_values(&quot;VIF&quot;, ascending=False))</code></pre></div>
+
+
+<p>Solutions : (1) supprimer une des features corrélées, (2) PCA pour décorréler, (3) Ridge regression qui tolère la multicolinéarité par construction.</p>
+
+<h3 id="syn-régression-robuste-et-alternatives">Régression robuste et alternatives</h3>
+
+<p>OLS est <strong>très sensible aux outliers</strong> parce qu'il pénalise les erreurs au carré. Un seul point extrême peut tirer toute la droite.</p>
+
+<p>Trois alternatives plus robustes :</p>
+
+<p><strong>1. Régression Huber</strong> : pénalise quadratiquement les petites erreurs et linéairement les grandes.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import HuberRegressor
+HuberRegressor().fit(X, y)   # robuste aux outliers modérés</code></pre></div>
+
+
+<p><strong>2. Régression quantile</strong> : minimise la valeur absolue (équivalent MLE sous Laplace), prédit la médiane plutôt que la moyenne.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import QuantileRegressor
+QuantileRegressor(quantile=0.5).fit(X, y)    # médiane
+QuantileRegressor(quantile=0.95).fit(X, y)   # 95e percentile (borne haute)</code></pre></div>
+
+
+<p><strong>3. RANSAC</strong> : ajuste sur un sous-ensemble aléatoire et compte combien d'autres points "soutiennent" le fit. Particulièrement utile en vision par ordinateur.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import RANSACRegressor
+RANSACRegressor().fit(X, y)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : OLS est un ami trop influençable qui change d'avis dès qu'une voix discordante s'élève. Huber est plus mesuré : il écoute les opinions extrêmes mais ne les laisse pas dominer. Quantile est zen : il fait ce que la majorité dit, peu importe les minorités vocales. Choisissez selon votre tolérance aux outliers et votre besoin d'estimer la médiane plutôt que la moyenne.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Vous avez un R² de 0.99 sur le train et 0.30 sur le test. Quel est le diagnostic et quelles solutions ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Overfitting ou data leakage.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Diagnostic : <strong>overfitting massif</strong>, ou <strong>data leakage</strong> dans le train. Quatre vérifications dans cet ordre.</p>
+
+<ol>
+<li><strong>Dimensionnalité</strong> : combien de features pour combien d'observations ? Avec 100 features et 200 observations, OLS overfit de manière garantie. Solution : Ridge/Lasso ou réduction de features.</li>
+<li><strong>Features suspectes</strong> : y a-t-il une feature qui contient (presque) directement $y$ ? Par exemple "prix au m² calculé" qui inclut déjà le prix. C'est du leakage évident.</li>
+<li><strong>Split</strong> : est-ce une vraie séparation chronologique pour des données temporelles ? Beaucoup de bugs viennent d'un split aléatoire sur des données qui devraient être splitées dans le temps.</li>
+<li><strong>Lasso pour identifier les features importantes</strong> : si Lasso met 99 features à zéro et garde 1 seule, c'est probablement la feature de leakage.</li>
+</ol>
+
+</details>
+
+<p><strong>Q2 : Vous voulez tester si une feature est "statistiquement significative" dans votre modèle. Quelle est la bonne approche, et quel est le piège classique ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>P-value et corrélations.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>L'approche standard : utiliser <code>statsmodels</code> qui donne une p-value pour chaque coefficient. La p-value teste l'hypothèse nulle "le coefficient est zéro". Si p < 0.05, on rejette H₀ et on conclut que la feature est significative.</p>
+
+<p><strong>Piège 1</strong> : la multicolinéarité fausse les p-values. Deux features corrélées peuvent toutes deux apparaître non significatives alors qu'au moins une l'est en réalité.</p>
+
+<p><strong>Piège 2</strong> : avec 100 features, ~5 seront "significatives" par hasard (multiple testing). Solutions : correction de Bonferroni ($\alpha / n$) ou Benjamini-Hochberg.</p>
+
+<p><strong>Piège 3</strong> : "significatif" ≠ "important". Avec un million d'observations, vous trouverez des effets statistiquement significatifs sans importance pratique ($\beta = 0.001$ €). Toujours rapporter aussi la <strong>taille d'effet</strong> (la valeur du $\beta$ en unités interprétables) en plus de la p-value.</p>
+
+</details>
+
+<p><strong>Q3 : Vous régressez le prix d'une maison sur 5 features et obtenez R² = 0.6. Vous ajoutez 50 features supplémentaires et le R² monte à 0.95. Le second modèle est-il meilleur ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>R² ajusté.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Pas nécessairement</strong>. Le R² classique augmente <strong>toujours</strong> quand on ajoute des features, même si elles sont du bruit pur. C'est une propriété mathématique de l'optimisation OLS. Pour comparer des modèles avec différents nombres de features, il faut utiliser le <strong>R² ajusté</strong> :</p>
+
+<div class="katex-display">$$R^2_{\text{adj}} = 1 - \frac{(1 - R^2)(n - 1)}{n - p - 1}$$</div>
+
+<p>Lecture : <em>on part du R² classique et on applique une correction qui devient d'autant plus sévère que $p$ (le nombre de features) grandit par rapport à $n$ (le nombre d'observations)</em>. Si vous ajoutez une feature qui n'apporte rien, le numérateur ne baisse pas mais le dénominateur devient plus petit → le R² ajusté <strong>diminue</strong>.</p>
+
+<p>Plus rigoureux encore : tester sur un <strong>vrai test set</strong> non vu pendant l'entraînement (R² hors échantillon). Si R²_test = 0.55 avec 5 features et R²_test = 0.40 avec 55 features, vous overfittez. Dans l'industrie, le test out-of-sample est la seule métrique qui compte pour décider si un modèle plus complexe est réellement meilleur.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>An Introduction to Statistical Learning</em> (James, Witten, Hastie, Tibshirani, gratuit) — chapitre 3</li>
+<li><em>Practical Statistics for Data Scientists</em> (Bruce & Bruce) — perspective applicative</li>
+<li><a href="https://www.statsmodels.org/" target="_blank" rel="noopener">statsmodels documentation</a> — pour l'inférence statistique</li>
+<li><a href="https://online.stat.psu.edu/stat501/" target="_blank" rel="noopener">Penn State Stat 501</a> — cours universitaire complet et gratuit</li>
+<li><em>Regression and Other Stories</em> (Gelman, Hill, Vehtari) — perspective bayésienne et causale</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../machine-learning/fundamentals-ml.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Fundamentals of ML</span>
+  </a>
+  <a href="../machine-learning/logistic-regression.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Logistic Regression →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

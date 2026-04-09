@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GenAI, RAG &amp; Agents — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">GenAI, RAG &amp; Agents</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html" class="active">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">NLP & LLM</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>GenAI, RAG &amp; Agents</span>
+      </div>
+
+      <div class="page-header">
+        <h1>GenAI, RAG &amp; Agents</h1>
+        <p class="page-objective">Comprendre comment intégrer les LLMs dans des applications concrètes — appeler des APIs de modèles, alimenter un LLM avec ses propres documents via RAG (Retrieval Augmented Generation), connecter des outils via le function calling, et orchestrer des agents autonomes avec LangChain.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">RAG</div>
+        <div class="key-concept-def">Retrieval-Augmented Generation : on cherche des passages puis on génère grâce à eux.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Vector DB</div>
+        <div class="key-concept-def">Base de données qui indexe des embeddings pour la recherche par similarité.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Agent</div>
+        <div class="key-concept-def">LLM qui planifie et appelle des outils dans une boucle pour atteindre un objectif.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Function calling</div>
+        <div class="key-concept-def">Capacité d&#x27;un LLM à émettre du JSON structuré pour invoquer une API.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-gen-ai-apis-rag-agents">Cheatsheet — Gen AI, APIs, RAG & Agents</a><ol><li><a href="#appel-api-gemini">Appel API (Gemini)</a></li><li><a href="#embedding-de-documents">Embedding de documents</a></li><li><a href="#rag-pipeline-complet-avec-langchain">RAG — Pipeline complet avec LangChain</a></li><li><a href="#tool-calling-function-calling">Tool Calling (Function Calling)</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-pourquoi-aller-au-delà-du-chat">1) Pourquoi aller au-delà du chat ?</a><li><a href="#2-training-fine-tuning-et-grounding">2) Training, Fine-tuning et Grounding</a><ol><li><a href="#21-les-trois-approches">2.1 Les trois approches</a></li><li><a href="#22-techniques-de-fine-tuning">2.2 Techniques de fine-tuning</a></li></ol></li><li><a href="#3-utiliser-les-apis-de-llms">3) Utiliser les APIs de LLMs</a><ol><li><a href="#31-appel-basique">3.1 Appel basique</a></li><li><a href="#32-system-prompt-et-paramètres">3.2 System prompt et paramètres</a></li></ol></li><li><a href="#4-retrieval-augmented-generation-rag">4) Retrieval Augmented Generation (RAG)</a><ol><li><a href="#41-pourquoi-le-rag">4.1 Pourquoi le RAG ?</a></li><li><a href="#42-document-embeddings">4.2 Document Embeddings</a></li><li><a href="#43-recherche-par-similarité">4.3 Recherche par similarité</a></li><li><a href="#44-pipeline-rag-avec-langchain">4.4 Pipeline RAG avec LangChain</a></li></ol></li><li><a href="#5-tool-calling-function-calling">5) Tool Calling (Function Calling)</a><li><a href="#6-agents-llm">6) Agents LLM</a><ol><li><a href="#61-définition">6.1 Définition</a></li><li><a href="#62-composants">6.2 Composants</a></li><li><a href="#63-frameworks-populaires">6.3 Frameworks populaires</a></li><li><a href="#64-systèmes-multi-agents">6.4 Systèmes multi-agents</a></li></ol></li><li><a href="#7-évaluer-les-llms-et-les-agents">7) Évaluer les LLMs et les Agents</a><ol><li><a href="#71-métriques-selon-la-tâche">7.1 Métriques selon la tâche</a></li><li><a href="#72-benchmarks-standards">7.2 Benchmarks standards</a></li></ol></li><li><a href="#8-model-compression">8) Model Compression</a><ol><li><a href="#81-quantization-poids-plus-petits">8.1 Quantization (poids plus petits)</a></li><li><a href="#82-distillation-modèle-plus-petit">8.2 Distillation (modèle plus petit)</a></li></ol></li><li><a href="#9-limites-et-risques">9) Limites et risques</a><li><a href="#annexe-peft-en-détail">📎 Annexe — PEFT en détail</a><ol><li><a href="#adapters">Adapters</a></li><li><a href="#lora-low-rank-adaptation">LoRA (Low-Rank Adaptation)</a></li><li><a href="#qlora">QLoRA</a></li></ol></li><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-gen-ai-apis-rag-agents">📋 Cheatsheet — Gen AI, APIs, RAG & Agents</h2>
+
+<h3 id="appel-api-gemini">Appel API (Gemini)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from google import genai
+import os
+
+os.environ[&#x27;GOOGLE_API_KEY&#x27;] = &quot;your_api_key&quot;     # clé API Gemini
+client = genai.Client()                             # instancie le client
+
+## Appel simple
+response = client.models.generate_content(
+    model=&quot;gemini-2.5-flash-lite&quot;,                  # modèle à utiliser
+    contents=&quot;Translate &#x27;Hello&#x27; to French&quot;          # prompt utilisateur
+)
+response.text                                       # → &quot;Bonjour&quot;
+
+## Avec system prompt et paramètres de génération
+response = client.models.generate_content(
+    model=&quot;gemini-2.5-flash-lite&quot;,
+    contents=&quot;Give instructions to cook samosas&quot;,
+    config=genai.types.GenerateContentConfig(
+        system_instruction=&quot;You are a sarcastic chef&quot;,  # personnalité du modèle
+        max_output_tokens=200,                           # longueur max
+        temperature=1.2                                  # créativité
+    )
+)</code></pre></div>
+
+
+<h3 id="embedding-de-documents">Embedding de documents</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Convertir un texte en vecteur dense (embedding)
+embedding = client.models.embed_content(
+    model=&quot;gemini-embedding-001&quot;,
+    contents=[&quot;This is a sentence to embed&quot;]
+)
+len(embedding.embeddings[0].values)                 # dimension du vecteur (ex: 768)</code></pre></div>
+
+
+<h3 id="rag-pipeline-complet-avec-langchain">RAG — Pipeline complet avec LangChain</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from langchain_community.document_loaders import PyPDFLoader
+from langchain_chroma import Chroma
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
+
+## 1. Charger le document
+loader = PyPDFLoader(&quot;book.pdf&quot;)
+data = loader.load()                                # liste de Documents (1 par page)
+
+## 2. Créer les embeddings et stocker dans un Vector DB
+embeddings = GoogleGenerativeAIEmbeddings(model=&quot;models/gemini-embedding-001&quot;)
+vector_db = Chroma.from_documents(
+    documents=data,                                 # chunks de texte
+    embedding=embeddings                            # modèle d&#x27;embedding
+)
+
+## 3. Recherche par similarité
+query = &quot;How does class inheritance work?&quot;
+docs = vector_db.similarity_search(query, k=5)      # 5 documents les plus pertinents
+
+## 4. Génération avec contexte
+prompt = &quot;\n\n&quot;.join(doc.page_content for doc in docs)
+prompt += &quot;\n\n&quot; + query + &quot; Answer based on the sources only.&quot;
+response = client.models.generate_content(model=&quot;gemini-2.5-flash-lite&quot;, contents=prompt)</code></pre></div>
+
+
+<h3 id="tool-calling-function-calling">Tool Calling (Function Calling)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## 1. Décrire la fonction pour le LLM
+get_matches_declaration = {
+    &quot;name&quot;: &quot;get_matches&quot;,
+    &quot;description&quot;: &quot;Return football matches by country and year range&quot;,
+    &quot;parameters&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;country&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;Country name&quot;},
+            &quot;start_year&quot;: {&quot;type&quot;: &quot;number&quot;, &quot;description&quot;: &quot;Start year&quot;},
+            &quot;end_year&quot;: {&quot;type&quot;: &quot;number&quot;, &quot;description&quot;: &quot;End year&quot;}
+        },
+        &quot;required&quot;: [&quot;country&quot;, &quot;start_year&quot;, &quot;end_year&quot;]
+    }
+}
+
+## 2. Appeler le LLM avec l&#x27;outil
+tools = genai.types.Tool(function_declarations=[get_matches_declaration])
+response = client.models.generate_content(
+    model=&quot;gemini-2.5-flash-lite&quot;,
+    contents=&quot;Matches in Italy in the 80s and 90s&quot;,
+    config=genai.types.GenerateContentConfig(tools=[tools])
+)
+
+## 3. Extraire les arguments et appeler la fonction
+args = response.candidates[0].content.parts[0].function_call.args
+result = matches_finder(**args)                     # appel de la vraie fonction Python</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser un embedding model différent pour les documents et la query</strong></p>
+<p>La similarité cosinus ne fonctionne que si les vecteurs sont dans le <strong>même espace</strong>. Mixer deux modèles d'embedding produit des résultats incohérents.</p>
+<p>❌ Embedder les documents avec <code>gemini-embedding-001</code> et la query avec <code>text-embedding-ada-002</code></p>
+<p>✅ Toujours utiliser le <strong>même modèle</strong> d'embedding pour les documents et les requêtes</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Passer tout le document dans le prompt au lieu de faire du RAG</strong></p>
+<p>Les context windows sont limitées et coûteuses. 100 rapports annuels = 20M tokens → inabordable.</p>
+<p>❌ <code>prompt = entire_document + question</code> sur un document de 500 pages</p>
+<p>✅ Retriever les chunks pertinents via similarity search, puis ne passer que ceux-là dans le prompt</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre fine-tuning et RAG (grounding)</strong></p>
+<p>Le fine-tuning modifie les <strong>poids</strong> du modèle (coûteux, long). Le RAG injecte du contexte dans le <strong>prompt</strong> sans toucher au modèle.</p>
+<p>❌ Fine-tuner un LLM pour lui apprendre le contenu d'un PDF mis à jour chaque semaine</p>
+<p>✅ Utiliser RAG pour injecter le PDF à jour dans le prompt à chaque requête</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Faire confiance aux arguments extraits par le tool calling sans validation</strong></p>
+<p>Le LLM peut halluciner des valeurs d'arguments qui ne correspondent à aucune donnée réelle.</p>
+<p>❌ <code>matches_finder(**args)</code> directement sans vérifier que les valeurs sont valides</p>
+<p>✅ Valider les arguments extraits (types, plages, existence dans la base) avant d'exécuter la fonction</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Déployer un agent autonome sans garde-fous</strong></p>
+<p>Un agent peut boucler indéfiniment, appeler des outils de façon destructrice, ou générer des coûts API incontrôlés.</p>
+<p>❌ Laisser un agent avec accès à une base de données en écriture sans limites</p>
+<p>✅ Limiter le nombre d'itérations, les permissions des outils, et monitorer les coûts</p></div></div>
+
+<hr>
+
+<h2 id="1-pourquoi-aller-au-delà-du-chat">1) Pourquoi aller au-delà du chat ?</h2>
+
+<p>Pour productionnaliser l'IA générative, il faut dépasser les interfaces de chat :</p>
+
+<ul>
+<li><strong>APIs</strong> : exploiter la puissance des LLMs dans ses propres applications</li>
+<li><strong>RAG</strong> : alimenter le modèle avec ses propres documents</li>
+<li><strong>Agents</strong> : automatiser des tâches complexes via des LLMs qui utilisent des outils</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>LangChain</strong> 🦜🔗 est le framework open-source de référence pour construire des applications LLM — il fournit une interface commune pour les modèles, les outils, les vector stores et les agents.</p></div></div>
+
+<figure><img src="../../assets/images/gen-ai-rag-agents-01-d7404d86.png" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/gen-ai-rag-agents-02-7bd96d43.webp" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="2-training-fine-tuning-et-grounding">2) Training, Fine-tuning et Grounding</h2>
+
+<h3 id="21-les-trois-approches">2.1 Les trois approches</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Approche</th><th>Principe</th><th>Coût</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td><strong>Training</strong></td><td>Construire un modèle from scratch sur un corpus massif</td><td>Très élevé (millions $)</td><td>Nouveau domaine sans modèle existant</td></tr><tr><td><strong>Fine-tuning</strong></td><td>Ajuster un modèle pré-entraîné sur des données spécifiques</td><td>Moyen</td><td>Spécialiser le comportement du modèle</td></tr><tr><td><strong>Grounding (RAG)</strong></td><td>Connecter le modèle à des données externes via le prompt</td><td>Faible</td><td>Données qui changent, documents privés</td></tr></tbody></table></div>
+<figure><img src="../../assets/images/gen-ai-rag-agents-03-98719b15.png" alt="" loading="lazy"></figure>
+
+<h3 id="22-techniques-de-fine-tuning">2.2 Techniques de fine-tuning</h3>
+
+<ul>
+<li><strong>Full fine-tuning</strong> : met à jour tous les poids — coûteux mais maximal</li>
+<li><strong>PEFT (Parameter-Efficient Fine Tuning)</strong> : gèle les poids existants, ajoute et entraîne seulement quelques paramètres supplémentaires</li>
+<li><strong>Adapters</strong> : couches ajoutées entre les blocs existants</li>
+<li><strong>LoRA</strong> (Low-Rank Adaptation) : couches en parallèle, très peu de paramètres</li>
+<li><strong>QLoRA</strong> : LoRA sur un modèle quantifié → encore moins de mémoire</li>
+<li><strong>Instruction tuning</strong> : fine-tuner avec des paires instruction-réponse (ex: Flan-T5)</li>
+<li><strong>RLHF</strong> (Reinforcement Learning from Human Feedback) : signaux de récompense humains (ex: InstructGPT → ChatGPT)</li>
+</ul>
+
+<figure><img src="../../assets/images/gen-ai-rag-agents-04-b3ceee67.jpg" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/gen-ai-rag-agents-05-e0641395.svg" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="3-utiliser-les-apis-de-llms">3) Utiliser les APIs de LLMs</h2>
+
+<h3 id="31-appel-basique">3.1 Appel basique</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from google import genai
+
+client = genai.Client()
+response = client.models.generate_content(
+    model=&quot;gemini-2.5-flash-lite&quot;,
+    contents=&quot;Translate &#x27;Hello, how are you?&#x27; to French&quot;
+)
+response.text                                       # → &quot;Bonjour, comment allez-vous ?&quot;</code></pre></div>
+
+
+<h3 id="32-system-prompt-et-paramètres">3.2 System prompt et paramètres</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">response = client.models.generate_content(
+    model=&quot;gemini-2.5-flash-lite&quot;,
+    contents=&quot;Give instructions to cook vegetable samosas&quot;,
+    config=genai.types.GenerateContentConfig(
+        system_instruction=&quot;You are a sassy culinary instructor&quot;,
+        max_output_tokens=200,                      # limite la longueur
+        temperature=1.2                             # plus de créativité
+    )
+)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Chaque API de modèle (OpenAI, Anthropic, Google…) a sa propre syntaxe. LangChain fournit une <strong>interface commune</strong> pour passer facilement d'un modèle à un autre.</p></div></div>
+
+<hr>
+
+<h2 id="4-retrieval-augmented-generation-rag">4) Retrieval Augmented Generation (RAG)</h2>
+
+<h3 id="41-pourquoi-le-rag">4.1 Pourquoi le RAG ?</h3>
+
+<p>Les LLMs ne connaissent que leurs données d'entraînement — ils n'ont pas accès à vos documents privés ni aux informations récentes. Re-entraîner est coûteux et lent.</p>
+
+<p><strong>Solution</strong> : récupérer les documents pertinents et les injecter dans le prompt.</p>
+
+<figure><img src="../../assets/images/gen-ai-rag-agents-06-b7bf1d39.png" alt="End user asks a question. The Gen AI app searches the entreprise data and retrieves relevant documents. Then the app prompts the LLM using the retrieved information." loading="lazy"></figure>
+
+<h3 id="42-document-embeddings">4.2 Document Embeddings</h3>
+
+<p>On convertit chaque document (ou chunk) en un <strong>vecteur dense</strong> via un modèle d'embedding, puis on stocke ces vecteurs dans un <strong>Vector Database</strong> (ex: Chroma, Pinecone, Weaviate).</p>
+
+<figure><img src="../../assets/images/gen-ai-rag-agents-07-91877d85.webp" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Embedding d&#x27;un texte
+embedding = client.models.embed_content(
+    model=&quot;gemini-embedding-001&quot;,
+    contents=[&quot;This is a sentence to embed&quot;]
+)</code></pre></div>
+
+
+<h3 id="43-recherche-par-similarité">4.3 Recherche par similarité</h3>
+
+<p>On embed la query avec le <strong>même modèle</strong>, puis on calcule la <strong>similarité cosinus</strong> entre la query et tous les documents pour trouver les plus pertinents.</p>
+
+<figure><img src="../../assets/images/gen-ai-rag-agents-08-ca757f00.png" alt="3 types of similarity search: based on Euclidean or Manhattan distance, or on Cosine similarity" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/gen-ai-rag-agents-09-f4ce5123.png" alt="User input goes through the embedding model, giving an embedding that can be used to lookup in the vector database" loading="lazy"></figure>
+
+<h3 id="44-pipeline-rag-avec-langchain">4.4 Pipeline RAG avec LangChain</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from langchain_community.document_loaders import PyPDFLoader
+from langchain_chroma import Chroma
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
+
+## 1. Charger et chunker le document
+loader = PyPDFLoader(&quot;book.pdf&quot;)
+data = [d for d in loader.load() if d.page_content]   # 1 Document par page
+
+## 2. Stocker dans un Vector DB
+embeddings = GoogleGenerativeAIEmbeddings(model=&quot;models/gemini-embedding-001&quot;)
+vector_db = Chroma.from_documents(documents=data, embedding=embeddings)
+
+## 3. Retrieval
+query = &quot;How does class inheritance work?&quot;
+docs = vector_db.similarity_search(query, k=5)         # top 5 chunks
+
+## 4. Generation
+prompt = &quot;\n\n&quot;.join(doc.page_content for doc in docs)
+prompt += &quot;\n\n&quot; + query + &quot; Answer based on the sources only.&quot;
+response = client.models.generate_content(model=&quot;gemini-2.5-flash-lite&quot;, contents=prompt)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le chunking (découpage des documents) a un impact majeur sur la qualité du RAG. Un chunk = une page est simpliste — en production, on utilise des stratégies plus fines (taille fixe avec overlap, par paragraphe, récursif…).</p></div></div>
+
+<hr>
+
+<h2 id="5-tool-calling-function-calling">5) Tool Calling (Function Calling)</h2>
+
+<p>Le tool calling permet au LLM d'<strong>extraire des arguments structurés</strong> depuis une requête en langage naturel, pour appeler une fonction Python.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## 1. Décrire la fonction au LLM (schéma JSON)
+get_matches_declaration = {
+    &quot;name&quot;: &quot;get_matches&quot;,
+    &quot;description&quot;: &quot;Return football matches by country and year range&quot;,
+    &quot;parameters&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;country&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;Country name&quot;},
+            &quot;start_year&quot;: {&quot;type&quot;: &quot;number&quot;, &quot;description&quot;: &quot;Start year&quot;},
+            &quot;end_year&quot;: {&quot;type&quot;: &quot;number&quot;, &quot;description&quot;: &quot;End year&quot;}
+        },
+        &quot;required&quot;: [&quot;country&quot;, &quot;start_year&quot;, &quot;end_year&quot;]
+    }
+}
+
+## 2. Le LLM extrait les arguments
+tools = genai.types.Tool(function_declarations=[get_matches_declaration])
+response = client.models.generate_content(
+    model=&quot;gemini-2.5-flash-lite&quot;,
+    contents=&quot;Matches in Italy between 1980 and end of 20th century&quot;,
+    config=genai.types.GenerateContentConfig(tools=[tools])
+)
+
+## 3. Appeler la vraie fonction avec les arguments extraits
+args = response.candidates[0].content.parts[0].function_call.args
+result = matches_finder(**args)                     # → DataFrame filtré</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le LLM ne <strong>exécute pas</strong> la fonction — il extrait les arguments. C'est votre code qui appelle la fonction réelle.</p></div></div>
+
+<hr>
+
+<h2 id="6-agents-llm">6) Agents LLM</h2>
+
+<h3 id="61-définition">6.1 Définition</h3>
+
+<p>Un <strong>agent</strong> utilise un LLM comme "cerveau" pour raisonner, planifier et exécuter des actions vers un objectif — en utilisant des outils et de la mémoire.</p>
+
+<p><strong>Boucle de base</strong> : Observer → Réfléchir → Agir → Répéter</p>
+
+<figure><img src="../../assets/images/gen-ai-rag-agents-10-4242f3d1.png" alt="An LLM Agent uses an LLM and Tools (e.g. search the web, make a booking, check a payment, run python code), Memory (past chat history), and Knowledge (from a vector database)" loading="lazy"></figure>
+
+<h3 id="62-composants">6.2 Composants</h3>
+
+<ul>
+<li><strong>LLM</strong> = cerveau (raisonnement, planification)</li>
+<li><strong>Tools</strong> = mains (recherche web, base de données, API, code…)</li>
+<li><strong>Memory</strong> = contexte persistant entre les étapes</li>
+</ul>
+
+<h3 id="63-frameworks-populaires">6.3 Frameworks populaires</h3>
+
+<figure><img src="../../assets/images/gen-ai-rag-agents-11-f3f498a9.png" alt="" loading="lazy"></figure>
+
+<p>LangChain, LangGraph, CrewAI, AutoGen… fournissent des briques prêtes à l'emploi pour construire des agents.</p>
+
+<h3 id="64-systèmes-multi-agents">6.4 Systèmes multi-agents</h3>
+
+<p>Plusieurs agents spécialisés collaborent pour résoudre un problème complexe :</p>
+
+<ol>
+<li><strong>Research Agent</strong> → collecte l'information</li>
+<li><strong>Summarizer Agent</strong> → condense</li>
+<li><strong>Writer Agent</strong> → rédige le rapport final</li>
+</ol>
+
+<hr>
+
+<h2 id="7-évaluer-les-llms-et-les-agents">7) Évaluer les LLMs et les Agents</h2>
+
+<h3 id="71-métriques-selon-la-tâche">7.1 Métriques selon la tâche</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Type de tâche</th><th>Métriques</th></tr></thead><tbody><tr><td>Classification</td><td>Accuracy, Precision, Recall, F1</td></tr><tr><td>Traduction / Résumé</td><td>BLEU (precision), ROUGE (recall)</td></tr><tr><td>Génération ouverte</td><td>Perplexité, évaluation humaine, LLM-as-a-judge</td></tr><tr><td>Agents</td><td>Goal completion rate, tool usage correctness, efficiency, robustness</td></tr></tbody></table></div>
+<h3 id="72-benchmarks-standards">7.2 Benchmarks standards</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Capacité</th><th>Benchmarks</th></tr></thead><tbody><tr><td>Compréhension générale</td><td>GLUE, SuperGLUE</td></tr><tr><td>Raisonnement multi-sujet</td><td>MMLU, ARC, Big-Bench</td></tr><tr><td>Factualité / Hallucination</td><td>TruthfulQA, FEVER, FactScore</td></tr><tr><td>Code</td><td>HumanEval, MBPP</td></tr><tr><td>Maths / Logique</td><td>GSM8K, MATH, LogiQA</td></tr><tr><td>Tool Use / Agents</td><td>ToolBench, AgentBench</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="8-model-compression">8) Model Compression</h2>
+
+<h3 id="81-quantization-poids-plus-petits">8.1 Quantization (poids plus petits)</h3>
+
+<p>Remplacer les poids 32-bit float par des formats plus compacts (16-bit, 8-bit, 4-bit) pour réduire la taille du modèle et accélérer l'inférence.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Exemple : Llama Guard 3-1B en 4-bit = 460 Mo au lieu de ~4 Go
+## Disponible sur HuggingFace : meta-llama/Llama-Guard-3-1B-INT4</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Règle de base : 1 paramètre en 32-bit = 4 octets. Un modèle de 8B paramètres = ~32 Go en FP32, ~16 Go en FP16, ~8 Go en INT8, ~4 Go en INT4.</p></div></div>
+
+<h3 id="82-distillation-modèle-plus-petit">8.2 Distillation (modèle plus petit)</h3>
+
+<p>Entraîner un petit modèle (student) à imiter les sorties d'un grand modèle (teacher) — le student apprend la distribution de probabilités du teacher, pas les labels bruts.</p>
+
+<p>Exemple : <strong>DistilBERT</strong> = 40% plus petit, 60% plus rapide, 97% des performances de BERT.</p>
+
+<p>👉 <a href="https://huggingface.co/docs/optimum/en/concept_guides/quantization" target="_blank" rel="noopener">Documentation quantization — HuggingFace</a></p>
+
+<hr>
+
+<h2 id="9-limites-et-risques">9) Limites et risques</h2>
+
+<ul>
+<li><strong>Biais</strong> dans les données d'entraînement → réponses biaisées</li>
+<li><strong>Hallucinations</strong> — le modèle invente des faits avec confiance</li>
+<li><strong>Fiabilité</strong> — même avec tool calling, les résultats ne sont pas garantis</li>
+<li><strong>Données obsolètes</strong> — le modèle ne connaît que ses données d'entraînement</li>
+<li><strong>Pas d'intervalles de confiance</strong> — impossible de quantifier l'incertitude</li>
+</ul>
+
+<hr>
+
+<h2 id="annexe-peft-en-détail">📎 Annexe — PEFT en détail</h2>
+
+<h3 id="adapters">Adapters</h3>
+
+<figure><img src="../../assets/images/gen-ai-rag-agents-12-070ef900.png" alt="" loading="lazy"></figure>
+
+<p>Au lieu d'entraîner 768 × 768 = 589 824 paramètres, on entraîne seulement 2 × 768 × 24 = 36 864 paramètres.</p>
+
+<h3 id="lora-low-rank-adaptation">LoRA (Low-Rank Adaptation)</h3>
+
+<figure><img src="../../assets/images/gen-ai-rag-agents-13-50c47998.png" alt="" loading="lazy"></figure>
+
+<p>Au lieu de 589 824 paramètres, on entraîne 2 × 768 × 8 = 6 144 paramètres.</p>
+
+<h3 id="qlora">QLoRA</h3>
+
+<p>LoRA appliqué sur un modèle <strong>quantifié</strong> → encore moins de mémoire.</p>
+
+<p>👉 <a href="https://huggingface.co/blog/4bit-transformers-bitsandbytes" target="_blank" rel="noopener">HuggingFace Blog — QLoRA</a></p>
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://platform.openai.com/docs/introduction" target="_blank" rel="noopener">OpenAI API Docs</a></li>
+<li>👉 <a href="https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/" target="_blank" rel="noopener">Andrew Ng — Prompt Engineering for Developers</a> (gratuit, 1h)</li>
+<li>👉 <a href="http://Deeplearning.ai" target="_blank" rel="noopener">Deeplearning.ai</a> <a href="https://www.deeplearning.ai/short-courses/" target="_blank" rel="noopener">— tous les cours courts</a></li>
+<li>👉 <a href="https://python.langchain.com/docs/" target="_blank" rel="noopener">LangChain Documentation</a></li>
+<li>👉 <a href="https://www.trychroma.com/" target="_blank" rel="noopener">Chroma Vector DB</a></li>
+<li>👉 <a href="https://rssdsaisection.substack.com/" target="_blank" rel="noopener">RSS Data Science Newsletter</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">🚀 Challenges</h2>
+
+<ul>
+<li>Appeler l'API Gemini avec un system prompt et des paramètres de génération</li>
+<li>Construire un pipeline RAG complet avec LangChain : charger un PDF, créer un vector store, faire de la similarity search, et générer une réponse</li>
+<li>Implémenter du tool calling pour interroger un DataFrame en langage naturel</li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-5-points-à-retenir-absolument">5 points à retenir absolument</a></li><li><a href="#ref-analogie-fil-rouge-le-llm-comme-stagiaire">Analogie fil rouge — le LLM comme stagiaire</a></li><li><a href="#ref-mini-plan">Mini-plan</a></li></ol></li><li><a href="#ref-1-pourquoi-aller-au-delà-du-chat">1. Pourquoi aller au-delà du chat ?</a><li><a href="#ref-2-training-fine-tuning-et-rag-quand-utiliser-quoi">2. Training, Fine-tuning et RAG — quand utiliser quoi ?</a><ol><li><a href="#ref-les-trois-approches">Les trois approches</a></li><li><a href="#ref-les-variantes-du-fine-tuning">Les variantes du fine-tuning</a></li></ol></li><li><a href="#ref-3-appeler-une-api-de-llm">3. Appeler une API de LLM</a><ol><li><a href="#ref-appel-basique-avec-gemini">Appel basique avec Gemini</a></li><li><a href="#ref-ajouter-un-system-prompt-et-des-paramètres">Ajouter un system prompt et des paramètres</a></li></ol></li><li><a href="#ref-4-rag-retrieval-augmented-generation">4. RAG — Retrieval Augmented Generation</a><ol><li><a href="#ref-le-problème-que-rag-résout">Le problème que RAG résout</a></li><li><a href="#ref-étape-1-les-embeddings-transformer-le-texte-en-vecteurs">Étape 1 — Les embeddings : transformer le texte en vecteurs</a></li><li><a href="#ref-étape-2-la-recherche-par-similarité">Étape 2 — La recherche par similarité</a></li><li><a href="#ref-étape-3-la-vector-database">Étape 3 — La Vector Database</a></li><li><a href="#ref-pipeline-rag-complet-avec-langchain">Pipeline RAG complet avec LangChain</a></li></ol></li><li><a href="#ref-5-tool-calling-function-calling">5. Tool Calling (Function Calling)</a><ol><li><a href="#ref-le-principe">Le principe</a></li></ol></li><li><a href="#ref-6-agents-llm">6. Agents LLM</a><ol><li><a href="#ref-définition">Définition</a></li><li><a href="#ref-les-trois-composants-dun-agent">Les trois composants d'un agent</a></li><li><a href="#ref-frameworks-pour-construire-des-agents">Frameworks pour construire des agents</a></li><li><a href="#ref-systèmes-multi-agents">Systèmes multi-agents</a></li></ol></li><li><a href="#ref-7-évaluer-les-llms-et-les-agents">7. Évaluer les LLMs et les agents</a><ol><li><a href="#ref-métriques-selon-la-tâche">Métriques selon la tâche</a></li><li><a href="#ref-benchmarks-standards">Benchmarks standards</a></li></ol></li><li><a href="#ref-8-compression-de-modèles">8. Compression de modèles</a><ol><li><a href="#ref-quantization-des-poids-plus-légers">Quantization — des poids plus légers</a></li><li><a href="#ref-distillation-un-modèle-plus-petit-qui-imite-le-grand">Distillation — un modèle plus petit qui imite le grand</a></li></ol></li><li><a href="#ref-9-limites-et-risques-des-llms">9. Limites et risques des LLMs</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Jusqu'ici, un LLM (modèle de langage) c'est une boîte noire disponible sur ChatGPT ou Gemini : tu poses une question, tu reçois une réponse. Mais pour construire de vraies applications, il faut aller plus loin : appeler ces modèles depuis ton propre code, leur donner accès à <strong>tes documents</strong>, leur connecter des <strong>outils</strong>, et même leur confier des <strong>tâches autonomes</strong>.</p>
+
+<p>Ce cours couvre exactement ça, en quatre grandes briques :</p>
+
+<ol>
+<li><strong>Appeler l'API d'un LLM</strong> — parler à un modèle depuis Python</li>
+<li><strong>RAG (Retrieval Augmented Generation)</strong> — donner de la documentation au modèle</li>
+<li><strong>Tool Calling</strong> — permettre au modèle de déclencher des fonctions Python</li>
+<li><strong>Agents</strong> — donner au modèle la capacité d'agir de façon autonome</li>
+</ol>
+
+<h3 id="ref-5-points-à-retenir-absolument">5 points à retenir absolument</h3>
+
+<ul>
+<li>Un LLM ne sait que ce qu'il a appris à l'entraînement — il ne connaît pas tes PDF ni tes données internes.</li>
+<li>Le RAG est la solution la moins chère pour lui donner du contexte : on cherche les bons morceaux, on les colle dans le prompt.</li>
+<li>Le tool calling ne fait pas tourner de code : le LLM extrait des arguments, c'est <strong>ton code</strong> qui exécute la fonction.</li>
+<li>Un agent, c'est un LLM en boucle : il observe, réfléchit, agit, et recommence jusqu'à atteindre l'objectif.</li>
+<li>Toujours utiliser <strong>le même modèle d'embedding</strong> pour les documents et pour les questions.</li>
+</ul>
+
+<h3 id="ref-analogie-fil-rouge-le-llm-comme-stagiaire">Analogie fil rouge — le LLM comme stagiaire</h3>
+
+<p>Imagine un stagiaire brillant mais qui arrive sans aucune connaissance de ton entreprise. Il est intelligent, sait raisonner, s'exprime très bien — mais il ne connaît pas tes clients, tes produits, tes données.</p>
+
+<ul>
+<li><strong>RAG</strong> = lui donner un classeur de documentation où chercher avant de répondre.</li>
+<li><strong>Tool calling</strong> = lui donner accès à des outils (téléphone, tableur, base de données) qu'il peut demander à utiliser.</li>
+<li><strong>Agent</strong> = lui confier une mission entière et le laisser enchaîner les étapes seul.</li>
+</ul>
+
+<h3 id="ref-mini-plan">Mini-plan</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">1. Pourquoi aller au-delà du chat ?
+2. Training vs Fine-tuning vs RAG — quand utiliser quoi ?
+3. Appeler une API de LLM
+4. RAG — pipeline complet
+5. Tool Calling
+6. Agents
+7. Évaluer les LLMs et les agents
+8. Compression de modèles (quantization, distillation)
+9. Limites et risques</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-1-pourquoi-aller-au-delà-du-chat">1. Pourquoi aller au-delà du chat ?</h2>
+
+<p>ChatGPT et consorts sont des interfaces grand public. Pour intégrer un LLM dans <strong>ton application</strong> (une API web, un script Python, un pipeline de données), tu dois passer par une API.</p>
+
+<p>Trois raisons principales :</p>
+
+<ul>
+<li><strong>APIs</strong> : exploiter la puissance d'un LLM dans ton propre code, avec tes propres données.</li>
+<li><strong>RAG</strong> : alimenter le modèle avec des documents que tu contrôles (rapports internes, PDF, base de connaissance).</li>
+<li><strong>Agents</strong> : automatiser des tâches complexes — le LLM prend des décisions et appelle des outils.</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>LangChain</strong> est le framework open-source de référence pour construire des applications LLM. Il fournit une interface commune pour les modèles, les vector stores, les outils et les agents — ce qui permet de changer de modèle (OpenAI, Gemini, Anthropic…) sans tout réécrire.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-training-fine-tuning-et-rag-quand-utiliser-quoi">2. Training, Fine-tuning et RAG — quand utiliser quoi ?</h2>
+
+<p>Il existe trois façons d'adapter un LLM à tes besoins. Comprendre leurs différences est essentiel pour ne pas tomber dans des pièges coûteux.</p>
+
+<h3 id="ref-les-trois-approches">Les trois approches</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Approche</th><th>Ce que ça fait</th><th>Coût</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td><strong>Training</strong> (from scratch)</td><td>Construire un modèle entier</td><td>Très élevé (millions €)</td><td>Presque jamais — réservé aux grands labos</td></tr><tr><td><strong>Fine-tuning</strong></td><td>Ajuster les poids d'un modèle existant sur tes données</td><td>Moyen</td><td>Changer le comportement/style du modèle</td></tr><tr><td><strong>RAG (Grounding)</strong></td><td>Injecter du contexte dans le prompt sans toucher au modèle</td><td>Faible</td><td>Données qui changent, documents privés</td></tr></tbody></table></div>
+<p><strong>Exemple concret</strong> : tu as un document PDF de politique RH mis à jour chaque trimestre.</p>
+
+<ul>
+<li>Mauvaise idée : le fine-tuner à chaque mise à jour (coûteux, lent).</li>
+<li>Bonne idée : RAG — à chaque question, tu cherches les bons extraits du PDF et tu les colles dans le prompt.</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Fine-tuning ≠ RAG.</strong> Le fine-tuning modifie les poids du modèle de façon permanente. Le RAG injecte du contexte dans le prompt sans toucher au modèle. Pour des données qui changent régulièrement, le RAG est presque toujours le bon choix.</p></div></div>
+
+<h3 id="ref-les-variantes-du-fine-tuning">Les variantes du fine-tuning</h3>
+
+<p>Si tu dois quand même fine-tuner, voici les techniques du moins au plus coûteux :</p>
+
+<ul>
+<li><strong>Full fine-tuning</strong> : met à jour tous les poids du modèle. Puissant, mais énorme consommation de mémoire GPU.</li>
+<li><strong>PEFT (Parameter-Efficient Fine Tuning)</strong> : gèle la plupart des poids, n'entraîne que quelques paramètres supplémentaires.</li>
+<li><strong>Adapters</strong> : on insère de petites couches entre les blocs existants du transformer.</li>
+<li><strong>LoRA</strong> (Low-Rank Adaptation) : on ajoute de petites matrices en parallèle. Très peu de paramètres à entraîner.</li>
+<li><strong>QLoRA</strong> : LoRA sur un modèle quantifié (poids compressés) — encore moins de mémoire requise.</li>
+<li><strong>Instruction tuning</strong> : fine-tuner avec des paires (instruction, réponse) pour que le modèle suive mieux les consignes.</li>
+<li><strong>RLHF</strong> (Reinforcement Learning from Human Feedback) : des humains notent les réponses, le modèle apprend de ces signaux — c'est ce qui a transformé GPT-3 en ChatGPT.</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><strong>LoRA en deux mots</strong> : au lieu de mettre à jour une matrice de poids de taille 768×768 (589 824 paramètres), on entraîne deux petites matrices de taille 768×8 et 8×768 (soit seulement 12 288 paramètres). La mise à jour est reconstituée en multipliant ces deux petites matrices.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-appeler-une-api-de-llm">3. Appeler une API de LLM</h2>
+
+<h3 id="ref-appel-basique-avec-gemini">Appel basique avec Gemini</h3>
+
+<p>Le principe est simple : tu crées un client, tu envoies un prompt, tu récupères une réponse texte.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from google import genai
+import os
+
+# On configure la clé API (à ne JAMAIS hardcoder dans le code — utiliser les variables d&#x27;env)
+os.environ[&#x27;GOOGLE_API_KEY&#x27;] = &quot;ta_clé_api_ici&quot;
+
+# Instanciation du client Gemini
+client = genai.Client()
+
+# Appel basique : on envoie un prompt, on reçoit du texte
+response = client.models.generate_content(
+    model=&quot;gemini-2.5-flash-lite&quot;,           # modèle à utiliser
+    contents=&quot;Translate &#x27;Hello&#x27; to French&quot;   # le prompt utilisateur
+)
+
+print(response.text)  # → &quot;Bonjour&quot;</code></pre></div>
+
+
+<p><strong>Ce qui se passe</strong> : ton code envoie une requête HTTP à l'API Gemini, qui fait tourner le modèle dans le cloud et te renvoie une réponse JSON. Tu n'as rien à héberger localement.</p>
+
+<h3 id="ref-ajouter-un-system-prompt-et-des-paramètres">Ajouter un system prompt et des paramètres</h3>
+
+<p>Le system prompt permet de définir le comportement général du modèle (son "rôle"). Les paramètres contrôlent la génération.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">response = client.models.generate_content(
+    model=&quot;gemini-2.5-flash-lite&quot;,
+    contents=&quot;Give instructions to cook vegetable samosas&quot;,  # message utilisateur
+    config=genai.types.GenerateContentConfig(
+        system_instruction=&quot;You are a sassy culinary instructor&quot;,  # personnalité du modèle
+        max_output_tokens=200,   # longueur maximale de la réponse
+        temperature=1.2          # créativité : 0 = déterministe, 2 = très créatif
+    )
+)</code></pre></div>
+
+
+<p><strong>temperature</strong> : c'est le paramètre le plus important à comprendre.</p>
+<ul>
+<li><code>temperature=0</code> : le modèle choisit toujours le mot le plus probable (réponses prévisibles, factuellesç).</li>
+<li><code>temperature=1.2</code> : il prend des risques, explore des formulations moins probables (réponses plus créatives mais moins fiables).</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Chaque fournisseur de LLM (OpenAI, Anthropic, Google…) a sa propre syntaxe d'API. LangChain unifie tout ça derrière une interface commune, ce qui permet de changer de modèle en changeant juste une ligne de code.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-rag-retrieval-augmented-generation">4. RAG — Retrieval Augmented Generation</h2>
+
+<h3 id="ref-le-problème-que-rag-résout">Le problème que RAG résout</h3>
+
+<p>Un LLM ne connaît que ce qu'il a vu pendant son entraînement. Il ne sait pas :</p>
+<ul>
+<li>ce qu'il y a dans tes PDF internes,</li>
+<li>ce qui s'est passé après sa date de coupure,</li>
+<li>les données propres à ton entreprise.</li>
+</ul>
+
+<p>La solution naive serait de coller tout le document dans le prompt. Mais un rapport annuel fait 200 pages : tu ne peux pas tout envoyer à chaque requête (trop cher, trop lent, souvent impossible).</p>
+
+<p><strong>La solution RAG</strong> : avant d'appeler le LLM, tu cherches les morceaux pertinents dans ta base documentaire, et tu n'injectes que ceux-là dans le prompt.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Question de l&#x27;utilisateur
+       ↓
+   [Recherche dans la base vectorielle]
+       ↓
+   Top 5 extraits pertinents
+       ↓
+   LLM répond en se basant sur ces extraits</code></pre></div>
+
+
+<h3 id="ref-étape-1-les-embeddings-transformer-le-texte-en-vecteurs">Étape 1 — Les embeddings : transformer le texte en vecteurs</h3>
+
+<p>Un <strong>embedding</strong>, c'est la représentation d'un texte sous forme de liste de nombres (un vecteur). Des textes avec un sens proche auront des vecteurs proches dans l'espace mathématique.</p>
+
+<p>Exemple concret : "chien", "chiot", "labrador" auront des vecteurs proches. "chien" et "voiture" seront éloignés.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># On transforme une phrase en vecteur dense
+embedding = client.models.embed_content(
+    model=&quot;gemini-embedding-001&quot;,                     # modèle d&#x27;embedding
+    contents=[&quot;This is a sentence to embed&quot;]          # texte à vectoriser
+)
+
+# Le résultat est une liste de nombres (ex: 768 valeurs)
+print(len(embedding.embeddings[0].values))  # → 768</code></pre></div>
+
+
+<h3 id="ref-étape-2-la-recherche-par-similarité">Étape 2 — La recherche par similarité</h3>
+
+<p>Pour trouver les extraits pertinents par rapport à une question, on :</p>
+<ol>
+<li>Transforme la question en vecteur (avec <strong>le même modèle d'embedding</strong>).</li>
+<li>Calcule la <strong>similarité cosinus</strong> entre ce vecteur et tous les vecteurs des documents.</li>
+<li>Retourne les K documents les plus proches.</li>
+</ol>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Règle absolue</strong> : utiliser toujours le même modèle d'embedding pour les documents ET pour les questions. Si tu indexes avec <code>gemini-embedding-001</code> et que tu cherches avec <code>text-embedding-ada-002</code>, les vecteurs ne sont pas dans le même espace — les résultats seront du bruit.</p></div></div>
+
+<h3 id="ref-étape-3-la-vector-database">Étape 3 — La Vector Database</h3>
+
+<p>Une <strong>Vector Database</strong> (base de données vectorielle) est une base spécialisée dans le stockage et la recherche de vecteurs. Elle optimise la recherche par similarité sur des millions de vecteurs.</p>
+
+<p>Exemples : <strong>Chroma</strong> (local, facile à démarrer), Pinecone, Weaviate, FAISS.</p>
+
+<h3 id="ref-pipeline-rag-complet-avec-langchain">Pipeline RAG complet avec LangChain</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from langchain_community.document_loaders import PyPDFLoader
+from langchain_chroma import Chroma
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
+
+# --- PHASE D&#x27;INDEXATION (fait une seule fois) ---
+
+# 1. Charger le PDF : LangChain découpe le document en pages (1 Document par page)
+loader = PyPDFLoader(&quot;book.pdf&quot;)
+data = [d for d in loader.load() if d.page_content]  # filtre les pages vides
+
+# 2. Créer le modèle d&#x27;embedding
+embeddings = GoogleGenerativeAIEmbeddings(model=&quot;models/gemini-embedding-001&quot;)
+
+# 3. Vectoriser les pages et les stocker dans Chroma (Vector DB locale)
+vector_db = Chroma.from_documents(
+    documents=data,        # liste des pages du PDF
+    embedding=embeddings   # modèle qui va créer les vecteurs
+)
+
+# --- PHASE DE REQUÊTE (à chaque question utilisateur) ---
+
+# 4. L&#x27;utilisateur pose une question
+query = &quot;How does class inheritance work?&quot;
+
+# 5. Rechercher les 5 pages les plus pertinentes par similarité cosinus
+docs = vector_db.similarity_search(query, k=5)  # k = nombre de résultats
+
+# 6. Construire le prompt en collant les extraits pertinents + la question
+context = &quot;\n\n&quot;.join(doc.page_content for doc in docs)  # assemble les extraits
+prompt = context + &quot;\n\n&quot; + query + &quot; Answer based on the sources only.&quot;
+
+# 7. Envoyer au LLM qui répond en se basant uniquement sur ces extraits
+response = client.models.generate_content(
+    model=&quot;gemini-2.5-flash-lite&quot;,
+    contents=prompt
+)
+print(response.text)</code></pre></div>
+
+
+<p><strong>Récap du pipeline</strong> : charger le PDF → vectoriser chaque page → stocker dans Chroma → à chaque question, chercher les pages pertinentes → coller dans le prompt → LLM répond.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Le chunking, c'est critique.</strong> Dans l'exemple ci-dessus, un "chunk" = une page. C'est un découpage très simple. En production, on utilise des stratégies plus fines : taille fixe avec overlap (pour ne pas couper une idée en plein milieu), découpage par paragraphe, par section, etc. Un mauvais découpage dégrade fortement la qualité du RAG.</p></div></div>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><strong>Pourquoi la similarité cosinus et pas la distance euclidienne ?</strong> La distance euclidienne mesure l'écart absolu entre deux points. La similarité cosinus mesure l'angle entre deux vecteurs — elle est insensible à la norme (longueur) du vecteur. Pour du texte, deux phrases de longueurs très différentes mais de même sens auront un angle proche de 0, donc une similarité cosinus proche de 1. C'est pourquoi c'est la métrique standard en NLP.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-tool-calling-function-calling">5. Tool Calling (Function Calling)</h2>
+
+<h3 id="ref-le-principe">Le principe</h3>
+
+<p>Jusqu'ici, on donne un texte au LLM et il répond du texte. Avec le <strong>tool calling</strong>, on lui dit : "Si tu as besoin d'une information, tu peux demander à appeler ces fonctions Python."</p>
+
+<p>Le LLM ne fait PAS tourner le code. Il analyse la question, extrait des arguments structurés, et renvoie un JSON. C'est <strong>ton code</strong> qui appelle la vraie fonction.</p>
+
+<p><strong>Exemple concret</strong> : l'utilisateur écrit "Donne-moi les matchs de foot en Italie dans les années 80 et 90". Au lieu de répondre de mémoire (avec risque d'hallucination), le LLM comprend qu'il doit appeler une fonction <code>get_matches(country=&quot;Italy&quot;, start_year=1980, end_year=1999)</code> et renvoie ces arguments structurés.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># 1. Décrire la fonction au LLM via un schéma JSON
+#    (comme une documentation que le LLM va lire)
+get_matches_declaration = {
+    &quot;name&quot;: &quot;get_matches&quot;,
+    &quot;description&quot;: &quot;Return football matches by country and year range&quot;,  # explication en anglais pour le LLM
+    &quot;parameters&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;country&quot;:    {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;Country name&quot;},
+            &quot;start_year&quot;: {&quot;type&quot;: &quot;number&quot;, &quot;description&quot;: &quot;Start year&quot;},
+            &quot;end_year&quot;:   {&quot;type&quot;: &quot;number&quot;, &quot;description&quot;: &quot;End year&quot;}
+        },
+        &quot;required&quot;: [&quot;country&quot;, &quot;start_year&quot;, &quot;end_year&quot;]  # arguments obligatoires
+    }
+}
+
+# 2. Créer l&#x27;objet Tool et l&#x27;envoyer au LLM avec la question
+tools = genai.types.Tool(function_declarations=[get_matches_declaration])
+response = client.models.generate_content(
+    model=&quot;gemini-2.5-flash-lite&quot;,
+    contents=&quot;Matches in Italy between 1980 and end of 20th century&quot;,  # question en langage naturel
+    config=genai.types.GenerateContentConfig(tools=[tools])  # on passe les outils disponibles
+)
+
+# 3. Le LLM n&#x27;a PAS répondu en texte — il a extrait des arguments structurés
+#    On les récupère depuis la réponse
+args = response.candidates[0].content.parts[0].function_call.args
+# args = {&quot;country&quot;: &quot;Italy&quot;, &quot;start_year&quot;: 1980, &quot;end_year&quot;: 1999}
+
+# 4. On appelle la vraie fonction Python avec ces arguments
+result = matches_finder(**args)  # → retourne un DataFrame filtré</code></pre></div>
+
+
+<p><strong>Récap</strong> : question en langage naturel → LLM extrait des arguments JSON → ton code appelle la fonction → tu fais ce que tu veux du résultat (le repasser au LLM, l'afficher, etc.).</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le LLM ne "voit" jamais ta fonction Python. Il reçoit juste la description en JSON, comme un humain lirait une documentation d'API. C'est ton code qui fait le pont entre le JSON retourné par le LLM et l'appel Python réel.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Valide toujours les arguments avant d'exécuter.</strong> Le LLM peut halluciner des valeurs (par exemple <code>start_year=1985.5</code> ou un pays mal orthographié). Avant d'appeler ta fonction, vérifie que les types sont corrects et que les valeurs sont dans des plages attendues.</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-agents-llm">6. Agents LLM</h2>
+
+<h3 id="ref-définition">Définition</h3>
+
+<p>Un <strong>agent LLM</strong>, c'est un programme qui utilise un LLM comme "cerveau" pour accomplir une tâche complexe de façon autonome. Il ne se contente pas de répondre à une question — il planifie, agit, observe les résultats, et ajuste sa stratégie.</p>
+
+<p><strong>Boucle de base d'un agent</strong> (pattern ReAct : Reason + Act) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">1. Observer la situation (ce qu&#x27;on lui demande, les résultats précédents)
+2. Réfléchir (le LLM raisonne sur la prochaine étape)
+3. Agir (appeler un outil : recherche web, base de données, code…)
+4. Retour à l&#x27;étape 1 jusqu&#x27;à l&#x27;objectif atteint</code></pre></div>
+
+
+<p><strong>Exemple concret</strong> : "Trouve les 3 startups françaises de l'IA les plus levées en 2024 et génère un rapport".</p>
+<ul>
+<li>Étape 1 : recherche web "startups IA France 2024 levées de fonds"</li>
+<li>Étape 2 : lit les résultats, identifie les 3 startups</li>
+<li>Étape 3 : recherche des infos complémentaires sur chacune</li>
+<li>Étape 4 : rédige le rapport final</li>
+</ul>
+
+<h3 id="ref-les-trois-composants-dun-agent">Les trois composants d'un agent</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">+-----------------------+
+|       AGENT           |
+|                       |
+|  LLM (cerveau)        |  ← raisonne, planifie, décide
+|  Tools (mains)        |  ← recherche web, BDD, API, exécution de code
+|  Memory (mémoire)     |  ← conserve le contexte entre les étapes
++-----------------------+</code></pre></div>
+
+
+<ul>
+<li><strong>LLM</strong> : le moteur de raisonnement. Il décide quelle action entreprendre.</li>
+<li><strong>Tools</strong> : les fonctions que l'agent peut appeler (search, calculer, lire un fichier, écrire en base…).</li>
+<li><strong>Memory</strong> : l'historique de conversation et les résultats intermédiaires.</li>
+</ul>
+
+<h3 id="ref-frameworks-pour-construire-des-agents">Frameworks pour construire des agents</h3>
+
+<p>LangChain, LangGraph, CrewAI, AutoGen… fournissent des briques prêtes à l'emploi. LangChain reste le plus utilisé et documenté.</p>
+
+<h3 id="ref-systèmes-multi-agents">Systèmes multi-agents</h3>
+
+<p>Pour des tâches très complexes, on fait collaborer plusieurs agents spécialisés :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Exemple : pipeline de veille concurrentielle
+
+[Research Agent]   → collecte des infos sur le web
+      ↓
+[Analyst Agent]    → synthétise et identifie les tendances
+      ↓
+[Writer Agent]     → rédige le rapport final structuré</code></pre></div>
+
+
+<p>Chaque agent a son propre LLM, ses propres outils, et sa propre spécialité. Un agent "orchestrateur" coordonne l'ensemble.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Ne pas déployer un agent sans garde-fous.</strong> Un agent peut boucler indéfiniment (et générer des coûts API incontrôlés), appeler des outils de façon destructrice (écrire en base de données sans validation), ou se coincer dans une boucle d'erreurs. Toujours limiter : le nombre max d'itérations, les permissions des outils, et monitorer les coûts en temps réel.</p></div></div>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p><strong>Bonnes pratiques pour les agents :</strong></p>
+<p>- Limiter le nombre d'itérations (<code>max_iterations=10</code>)</p>
+<p>- Donner des outils en lecture seule si l'écriture n'est pas nécessaire</p>
+<p>- Logger chaque action de l'agent pour le debug</p>
+<p>- Tester avec des tâches simples avant de déployer en production</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-évaluer-les-llms-et-les-agents">7. Évaluer les LLMs et les agents</h2>
+
+<h3 id="ref-métriques-selon-la-tâche">Métriques selon la tâche</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Type de tâche</th><th>Métriques classiques</th></tr></thead><tbody><tr><td>Classification</td><td>Accuracy, Precision, Recall, F1</td></tr><tr><td>Traduction / Résumé</td><td>BLEU (mesure la précision), ROUGE (mesure le rappel)</td></tr><tr><td>Génération ouverte</td><td>Perplexité, évaluation humaine, LLM-as-a-judge</td></tr><tr><td>Agents</td><td>Taux de complétion de l'objectif, bonne utilisation des outils, efficacité, robustesse</td></tr></tbody></table></div>
+<p><strong>LLM-as-a-judge</strong> : utiliser un LLM (ex: GPT-4) pour évaluer les réponses d'un autre LLM. C'est devenu une pratique courante car l'évaluation humaine est coûteuse et lente.</p>
+
+<h3 id="ref-benchmarks-standards">Benchmarks standards</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Capacité évaluée</th><th>Benchmarks connus</th></tr></thead><tbody><tr><td>Compréhension générale du langage</td><td>GLUE, SuperGLUE</td></tr><tr><td>Raisonnement multi-domaine</td><td>MMLU, ARC, Big-Bench</td></tr><tr><td>Factualité / Hallucinations</td><td>TruthfulQA, FEVER, FactScore</td></tr><tr><td>Code</td><td>HumanEval, MBPP</td></tr><tr><td>Maths / Logique</td><td>GSM8K, MATH, LogiQA</td></tr><tr><td>Utilisation d'outils / Agents</td><td>ToolBench, AgentBench</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><strong>BLEU vs ROUGE</strong> : BLEU (Bilingual Evaluation Understudy) compare les n-grammes de la réponse générée à la référence — c'est une mesure de <strong>précision</strong> (est-ce que ce que j'ai produit est correct ?). ROUGE fait l'inverse — c'est une mesure de <strong>rappel</strong> (est-ce que j'ai couvert tout ce qu'il fallait ?). Pour le résumé automatique, ROUGE-L est le plus couramment utilisé.</p></div></div>
+
+<hr>
+
+<h2 id="ref-8-compression-de-modèles">8. Compression de modèles</h2>
+
+<p>Les grands modèles (70B, 405B paramètres) sont difficiles à faire tourner localement. Deux techniques permettent de les compresser.</p>
+
+<h3 id="ref-quantization-des-poids-plus-légers">Quantization — des poids plus légers</h3>
+
+<p>On remplace les poids flottants 32-bit par des formats plus petits : 16-bit, 8-bit, voire 4-bit.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Règle de calcul :
+# 1 paramètre en FP32 = 4 octets
+# Un modèle de 8 milliards de paramètres :
+# - FP32  → 8B × 4 octets = ~32 Go de VRAM
+# - FP16  → 8B × 2 octets = ~16 Go
+# - INT8  → 8B × 1 octet  = ~8 Go
+# - INT4  → 8B × 0.5 oct  = ~4 Go
+
+# Exemple concret : Llama Guard 3-1B en 4-bit = 460 Mo au lieu de ~4 Go
+# Disponible sur HuggingFace : meta-llama/Llama-Guard-3-1B-INT4</code></pre></div>
+
+
+<p>La perte de précision est souvent faible en pratique : un modèle INT4 conserve ~95% des performances d'un modèle FP32 pour la plupart des tâches.</p>
+
+<h3 id="ref-distillation-un-modèle-plus-petit-qui-imite-le-grand">Distillation — un modèle plus petit qui imite le grand</h3>
+
+<p>On entraîne un <strong>petit modèle</strong> (student) à reproduire les sorties d'un <strong>grand modèle</strong> (teacher). Le student n'apprend pas les labels bruts — il apprend la <strong>distribution de probabilités</strong> du teacher, ce qui lui permet de capturer les nuances du raisonnement.</p>
+
+<p><strong>Exemple emblématique</strong> : DistilBERT = 40% plus petit que BERT, 60% plus rapide à l'inférence, mais conserve 97% des performances sur les benchmarks standards.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Quantization vs Distillation</strong> : la quantization compresse un modèle existant en réduisant la précision des poids. La distillation crée un nouveau modèle plus petit qui imite le comportement du grand. Les deux sont complémentaires — QLoRA, par exemple, combine fine-tuning LoRA et quantization.</p></div></div>
+
+<hr>
+
+<h2 id="ref-9-limites-et-risques-des-llms">9. Limites et risques des LLMs</h2>
+
+<p>Avant de déployer un LLM en production, il faut avoir conscience de ses limitations :</p>
+
+<ul>
+<li><strong>Hallucinations</strong> : le modèle invente des faits avec une confiance totale. Il peut citer des sources qui n'existent pas, donner des chiffres faux, ou attribuer des propos à des personnes qui ne les ont pas tenus.</li>
+<li><strong>Biais</strong> : les données d'entraînement reflètent les biais humains — les réponses peuvent être biaisées sur le genre, l'origine, la culture, etc.</li>
+<li><strong>Données obsolètes</strong> : le modèle ne sait pas ce qui s'est passé après sa date de coupure (cut-off date).</li>
+<li><strong>Pas de confiance calibrée</strong> : contrairement à un modèle statistique classique, un LLM ne peut pas dire "je suis sûr à 73%". Il répond avec la même assurance qu'il soit sûr ou en train d'halluciner.</li>
+<li><strong>Fiabilité du tool calling</strong> : même avec des outils, les arguments extraits peuvent être erronés — toujours valider avant d'exécuter.</li>
+</ul>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p><strong>Pour limiter les hallucinations en RAG</strong> : demande explicitement au LLM de répondre uniquement à partir des sources fournies, et de dire "je ne sais pas" si l'information n'est pas dans le contexte. Ajouter <code>&quot;Answer based on the sources only. If the answer is not in the sources, say so.&quot;</code> à ton prompt fait une vraie différence.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>1. Quelle est la différence fondamentale entre RAG et fine-tuning ?</strong></p>
+<p>Le fine-tuning modifie les poids du modèle de façon permanente (coûteux, long, à refaire si les données changent). Le RAG injecte du contexte dans le prompt sans modifier le modèle (rapide, peu coûteux, facilement mis à jour).</p>
+
+<p><strong>2. Pourquoi faut-il absolument utiliser le même modèle d'embedding pour les documents et pour les questions dans un système RAG ?</strong></p>
+<p>Les embeddings créés par différents modèles vivent dans des espaces vectoriels différents. Comparer un vecteur de <code>gemini-embedding-001</code> avec un vecteur de <code>text-embedding-ada-002</code>, c'est comme comparer des coordonnées GPS avec des coordonnées en Lambert — les distances calculées n'ont aucun sens.</p>
+
+<p><strong>3. Lors d'un tool calling, qui exécute réellement la fonction Python ?</strong></p>
+<p>Ton code Python, pas le LLM. Le LLM extrait les arguments et les renvoie en JSON structuré. C'est toi qui appelles la fonction avec ces arguments et qui décides quoi faire du résultat.</p>
+
+<p><strong>4. Qu'est-ce qui distingue un agent LLM d'un simple appel API avec tool calling ?</strong></p>
+<p>Un agent fonctionne en boucle autonome : il observe, réfléchit, agit, puis recommence jusqu'à atteindre l'objectif. Il peut enchaîner plusieurs appels d'outils, gérer de la mémoire entre les étapes, et adapter sa stratégie en cours de route. Un simple tool calling est une interaction unique (une question → un appel de fonction → une réponse).</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li><strong>RAG</strong> = chercher les bons extraits dans tes documents, les coller dans le prompt, laisser le LLM répondre — c'est la façon la moins coûteuse de donner de la "mémoire documentaire" à un modèle.</li>
+<li><strong>Embeddings</strong> = représentation numérique du sens d'un texte — des textes proches sémantiquement ont des vecteurs proches.</li>
+<li><strong>Vector DB</strong> (ex: Chroma) = base de données spécialisée pour stocker et chercher des vecteurs par similarité cosinus.</li>
+<li><strong>Tool calling</strong> = le LLM extrait des arguments structurés depuis le langage naturel, ton code exécute la vraie fonction — le LLM ne fait jamais tourner du code directement.</li>
+<li><strong>Agent</strong> = LLM en boucle autonome (Observer → Réfléchir → Agir) qui peut enchaîner plusieurs outils pour accomplir une tâche complexe.</li>
+<li><strong>Fine-tuning</strong> modifie les poids du modèle (coûteux) ; <strong>RAG</strong> injecte du contexte dans le prompt (léger) — pour des données qui changent, RAG est presque toujours le bon choix.</li>
+<li><strong>Quantization</strong> réduit la taille mémoire d'un modèle (FP32 → INT4 = 8x moins de VRAM) ; <strong>Distillation</strong> crée un modèle plus petit qui imite un grand.</li>
+<li>Un LLM hallucine, est biaisé, et n'a pas accès aux données après sa date de coupure — à ne jamais oublier en production.</li>
+<li>Toujours valider les arguments extraits par le tool calling avant de les exécuter.</li>
+<li>Toujours limiter les agents (max itérations, permissions, monitoring des coûts) avant de les déployer.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-travailler-avec-les-apis-llm">Travailler avec les APIs LLM</a></li><li><a href="#syn-prompt-engineering">Prompt engineering</a></li><li><a href="#syn-le-pattern-rag">Le pattern RAG</a></li><li><a href="#syn-agents-et-tool-use">Agents et tool use</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-vector-databases">Vector databases</a></li><li><a href="#syn-function-calling-structuré">Function calling structuré</a></li><li><a href="#syn-coût-et-latence-en-production">Coût et latence en production</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-travailler-avec-les-apis-llm">Travailler avec les APIs LLM</h3>
+
+<p>Les APIs des grands fournisseurs (OpenAI, Anthropic, Google, Mistral) suivent un format convergent, basé sur des <strong>messages structurés en rôles</strong>. Comprendre ce format est la première étape pour construire n'importe quelle application LLM.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from anthropic import Anthropic
+
+client = Anthropic()                            # lit ANTHROPIC_API_KEY dans l&#x27;env
+
+response = client.messages.create(
+    model=&quot;claude-3-5-sonnet-20241022&quot;,         # identifiant de modèle
+    max_tokens=1024,                            # longueur max de la réponse
+    messages=[
+        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Qu&#x27;est-ce qu&#x27;un LLM en 3 phrases ?&quot;},
+    ],
+    system=&quot;Tu es un professeur d&#x27;informatique.&quot;,   # persona persistant
+)
+print(response.content[0].text)                 # la réponse textuelle</code></pre></div>
+
+
+<p><strong>Quatre rôles principaux</strong> dans la plupart des APIs :</p>
+
+<ul>
+<li><strong><code>system</code></strong> : instructions persistantes pour toute la conversation (persona, contraintes, format attendu)</li>
+<li><strong><code>user</code></strong> : messages de l'utilisateur humain</li>
+<li><strong><code>assistant</code></strong> : réponses du modèle (vous les fournissez pour reconstruire l'historique conversationnel)</li>
+<li><strong><code>tool</code></strong> : résultats d'exécution de fonctions (pour les agents)</li>
+</ul>
+
+<p><strong>Hyperparamètres clés à connaître</strong> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Paramètre</th><th>Effet</th></tr></thead><tbody><tr><td><code>temperature</code> (0-2)</td><td>0 = déterministe et factuel, 1 = créatif, 2 = chaotique</td></tr><tr><td><code>top_p</code></td><td>Échantillonnage nucleus, alternative à temperature</td></tr><tr><td><code>max_tokens</code></td><td>Longueur maximale de la réponse générée</td></tr><tr><td><code>stop</code></td><td>Séquences qui arrêtent la génération</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : <code>temperature=0</code> est un fonctionnaire qui répond toujours la même chose à la même question. <code>temperature=1</code> est un écrivain qui propose une version différente à chaque fois. <code>temperature=2</code> est un poète sous psychotropes. Pour de l'extraction structurée (JSON, classification, parsing), utilisez 0. Pour de la création de contenu, 0,7 à 1. Pour du brainstorming, 1 à 1,3.</p></div></div>
+
+<h3 id="syn-prompt-engineering">Prompt engineering</h3>
+
+<p>Cinq techniques essentielles à maîtriser pour obtenir de bons résultats sans toucher au modèle.</p>
+
+<p><strong>1. Soyez spécifique sur la sortie attendue.</strong> Un prompt vague donne une réponse vague. Un prompt précis donne une réponse exploitable.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">❌ &quot;Résume cet article.&quot;
+
+✓ &quot;Résume cet article en exactement 3 bullet points,
+   chacun de moins de 20 mots, en français,
+   en commençant par un verbe à l&#x27;infinitif.&quot;</code></pre></div>
+
+
+<p><strong>2. Few-shot prompting</strong> : montrer des exemples du comportement voulu. C'est l'une des techniques les plus puissantes en prompt engineering, et souvent la plus sous-utilisée.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Classifie le sentiment :
+
+Texte: &quot;Ce film est génial !&quot; → POSITIF
+Texte: &quot;Quelle perte de temps.&quot; → NÉGATIF
+Texte: &quot;Bof, sans plus.&quot; → NEUTRE
+Texte: &quot;J&#x27;ai adoré l&#x27;histoire et les personnages.&quot; →</code></pre></div>
+
+
+<p><strong>3. Chain-of-Thought</strong> : demander un raisonnement étape par étape avant la réponse finale. Sur des problèmes de raisonnement (maths, logique, diagnostic), le CoT améliore la précision de 20 à 50%.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">&quot;Résous ce problème en réfléchissant étape par étape,
+puis donne ta réponse finale dans un format &lt;answer&gt;...&lt;/answer&gt;.&quot;</code></pre></div>
+
+
+<p><strong>4. Structure XML</strong> : utiliser des tags pour organiser des blocs longs. Claude est particulièrement réceptif au formatage XML, et c'est aussi plus simple à parser côté code.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">&lt;context&gt;
+{document long}
+&lt;/context&gt;
+
+&lt;question&gt;
+Quels sont les 3 points clés de ce document ?
+&lt;/question&gt;</code></pre></div>
+
+
+<p><strong>5. Réflexion explicite</strong> : "avant de répondre, pense à ce qui pourrait mal se passer et vérifie ton raisonnement". Effet notable sur les hallucinations.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : avant de coder un agent compliqué, <strong>passez 20 minutes à itérer sur votre prompt</strong>. Souvent, un bon prompt élimine 80% des problèmes que vous auriez résolus avec du code post-processing. Le prompt est du code, traitez-le avec la même rigueur.</p></div></div>
+
+<h3 id="syn-le-pattern-rag">Le pattern RAG</h3>
+
+<p><strong>Retrieval-Augmented Generation</strong> : ajouter des connaissances externes à un LLM <strong>au moment de la requête</strong>, sans modifier le modèle. C'est le pattern dominant pour construire des chatbots sur des données privées (docs internes, contrats, base de connaissance).</p>
+
+<p><strong>Pipeline canonique en deux phases</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">1. Indexation (offline, une fois par batch)
+   ├─ Découper les documents en chunks de ~500 tokens avec overlap
+   ├─ Générer des embeddings de chaque chunk avec un sentence-transformer
+   └─ Stocker les vecteurs + payload dans une vector DB
+
+2. Requête (runtime, à chaque question)
+   ├─ Encoder la question en embedding (même modèle qu&#x27;à l&#x27;indexation !)
+   ├─ Chercher les top-k chunks les plus similaires (cosine similarity)
+   ├─ Construire un prompt incluant ces chunks comme contexte
+   └─ Appeler le LLM avec ce prompt enrichi</code></pre></div>
+
+
+<p><strong>Détail des étapes clés</strong> :</p>
+
+<ul>
+<li><strong>Chunking</strong> : les documents sont trop longs pour être passés tels quels à un LLM et trop longs pour être bien retrouvés (un embedding d'un document de 50 pages est un "moyenne diluée" peu discriminante). On les découpe en chunks de ~500-1000 tokens avec 10% d'overlap pour éviter de couper au milieu d'une phrase importante.</li>
+<li><strong>Embeddings</strong> : chaque chunk est transformé en un vecteur dense (384 à 1536 dimensions selon le modèle). Deux chunks sémantiquement proches ont des vecteurs proches (au sens cosinus).</li>
+<li><strong>Vector DB</strong> : stocke les vecteurs avec une structure indexée (HNSW, IVF) qui permet une recherche top-k en quelques millisecondes même sur des millions de documents.</li>
+<li><strong>Retrieval</strong> : pour une question, on calcule son embedding et on cherche les $k$ chunks les plus similaires (typiquement $k=3$ à $10$).</li>
+<li><strong>Generation</strong> : on passe les chunks trouvés comme contexte au LLM avec un prompt qui l'instruit à répondre <strong>uniquement</strong> à partir de ce contexte.</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sentence_transformers import SentenceTransformer
+import faiss
+import numpy as np
+
+# 1. Indexation
+embedder = SentenceTransformer(&quot;all-MiniLM-L6-v2&quot;)    # sortie : vecteurs de dim 384
+chunks = [
+    &quot;Notre politique de remboursement permet 30 jours...&quot;,
+    &quot;Les frais de port sont gratuits au-dessus de 50€...&quot;,
+    # ... des milliers d&#x27;autres chunks
+]
+embeddings = embedder.encode(chunks)                   # shape (n, 384)
+
+dim = embeddings.shape[1]
+index = faiss.IndexFlatL2(dim)                         # index exact (pour petit corpus)
+index.add(embeddings.astype(&quot;float32&quot;))
+
+# 2. Requête
+def rag_query(question):
+    q_emb = embedder.encode([question]).astype(&quot;float32&quot;)
+    distances, indices = index.search(q_emb, k=3)      # top-3 chunks similaires
+    relevant = [chunks[i] for i in indices[0]]
+
+    context = &quot;\n---\n&quot;.join(relevant)
+    prompt = f&quot;&quot;&quot;Contexte:
+{context}
+
+Question: {question}
+
+Réponds uniquement à partir du contexte ci-dessus.
+Si l&#x27;information n&#x27;y est pas, réponds &quot;Je ne sais pas&quot;.&quot;&quot;&quot;
+
+    return llm.generate(prompt)</code></pre></div>
+
+
+<p><strong>Avantages du RAG</strong> par rapport au fine-tuning :</p>
+
+<ul>
+<li>Connaissances <strong>toujours à jour</strong> : on met à jour l'index, pas le modèle</li>
+<li><strong>Traçabilité</strong> : on sait exactement quels documents ont été utilisés, on peut les afficher à l'utilisateur</li>
+<li><strong>Pas de fine-tuning</strong> nécessaire → pas de GPU → pas de cycle d'entraînement</li>
+<li><strong>Économique</strong> : un petit LLM + RAG bat souvent un gros LLM sans contexte</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : un LLM seul est un consultant expert mais qui n'a pas accès à votre intranet d'entreprise. Le RAG, c'est lui donner un assistant qui cherche les bons documents avant chaque question. Le consultant garde son expertise générale, mais répond avec vos données spécifiques.</p></div></div>
+
+<h3 id="syn-agents-et-tool-use">Agents et tool use</h3>
+
+<p>Un <strong>agent</strong> est un LLM qui peut <strong>prendre des actions</strong> dans le monde via des <strong>outils</strong> (fonctions). C'est ce qui transforme un chatbot passif en assistant actif capable de réellement accomplir des tâches.</p>
+
+<p><strong>Le pattern agent loop fondamental</strong> :</p>
+
+<ol>
+<li>L'utilisateur pose une question</li>
+<li>Le LLM décide d'appeler un outil et génère les arguments (en JSON)</li>
+<li>Le code orchestrateur exécute l'outil et renvoie le résultat au LLM</li>
+<li>Le LLM intègre le résultat et soit répond à l'utilisateur, soit appelle un autre outil</li>
+<li>On répète jusqu'à ce que le LLM réponde sans demander d'outil</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">user query → LLM → tool_call → exec(tool) → result → LLM → tool_call → ... → final answer</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from anthropic import Anthropic
+
+client = Anthropic()
+
+# Déclaration des outils disponibles avec un schéma JSON
+tools = [{
+    &quot;name&quot;: &quot;get_weather&quot;,
+    &quot;description&quot;: &quot;Get current weather for a city&quot;,
+    &quot;input_schema&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;city&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;Name of the city&quot;},
+        },
+        &quot;required&quot;: [&quot;city&quot;],
+    },
+}]
+
+response = client.messages.create(
+    model=&quot;claude-3-5-sonnet-20241022&quot;,
+    max_tokens=1024,
+    tools=tools,
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;What&#x27;s the weather in Paris?&quot;}],
+)
+
+# response.content contient soit du texte, soit un bloc tool_use avec les arguments
+# À vous d&#x27;exécuter la fonction réelle et de réinjecter le résultat comme message &quot;tool&quot;</code></pre></div>
+
+
+<p><strong>Outils typiques pour un agent</strong> :</p>
+
+<ul>
+<li><code>web_search(query)</code> : recherche web</li>
+<li><code>read_file(path)</code> / <code>write_file(path, content)</code> : système de fichiers</li>
+<li><code>run_code(code)</code> : exécution Python sandboxée</li>
+<li><code>query_database(sql)</code> : requêtes SQL en lecture</li>
+<li><code>send_email(to, subject, body)</code> : envoi de mails (attention aux risques)</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Sécurité</strong> : un agent qui peut exécuter du code ou envoyer des emails peut faire des dégâts massifs. <strong>Toujours</strong> : (1) sandboxer l'exécution de code (Docker, gVisor, restricted environment), (2) demander confirmation utilisateur pour les actions destructrices ou externes, (3) limiter le nombre d'itérations (sinon l'agent peut boucler à l'infini). <strong>Jamais</strong> donner à un agent l'accès à des ressources qui ne devraient pas être modifiables par lui.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-vector-databases">Vector databases</h3>
+
+<p>Pour stocker des millions d'embeddings et effectuer de la recherche par similarité ultra-rapide en production.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Solution</th><th>Type</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td><strong>FAISS</strong></td><td>Lib en mémoire</td><td>Local, prototypes, datasets < 10M</td></tr><tr><td><strong>Chroma</strong></td><td>DB embarquée</td><td>Petits projets, simple à démarrer</td></tr><tr><td><strong>Qdrant</strong></td><td>DB self-hosted ou cloud</td><td>Production, filtrage avancé par metadata</td></tr><tr><td><strong>Pinecone</strong></td><td>DB managée cloud</td><td>Production sans ops, payant</td></tr><tr><td><strong>Weaviate</strong></td><td>DB self-hosted ou cloud</td><td>Avec relations entre objets</td></tr><tr><td><strong>pgvector</strong></td><td>Extension Postgres</td><td>Si vous avez déjà Postgres</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import qdrant_client
+from qdrant_client.models import Distance, VectorParams, PointStruct
+
+client = qdrant_client.QdrantClient(&quot;localhost&quot;, port=6333)
+client.create_collection(
+    collection_name=&quot;docs&quot;,
+    vectors_config=VectorParams(size=384, distance=Distance.COSINE),   # cosine similarity
+)
+
+# Insertion : on stocke vecteur + payload (texte original, metadata)
+client.upsert(
+    collection_name=&quot;docs&quot;,
+    points=[
+        PointStruct(id=i, vector=emb.tolist(), payload={&quot;text&quot;: chunks[i]})
+        for i, emb in enumerate(embeddings)
+    ],
+)
+
+# Recherche : on envoie un vecteur, on reçoit les plus proches
+results = client.search(
+    collection_name=&quot;docs&quot;,
+    query_vector=q_emb.tolist(),
+    limit=5,
+)</code></pre></div>
+
+
+<h3 id="syn-function-calling-structuré">Function calling structuré</h3>
+
+<p>Les LLMs modernes (GPT-4, Claude, Gemini) peuvent <strong>générer du JSON valide directement</strong>, sans parsing post-hoc fragile à base de regex. C'est le mode standard pour intégrer un LLM dans un pipeline applicatif.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">response = client.messages.create(
+    model=&quot;claude-3-5-sonnet-20241022&quot;,
+    max_tokens=1024,
+    messages=[{
+        &quot;role&quot;: &quot;user&quot;,
+        &quot;content&quot;: &quot;Extract: &#x27;Alice (30) lives in Paris with her cat Felix (5)&#x27;&quot;
+    }],
+    tools=[{
+        &quot;name&quot;: &quot;extract_person&quot;,
+        &quot;description&quot;: &quot;Extract structured person info&quot;,
+        &quot;input_schema&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;name&quot;: {&quot;type&quot;: &quot;string&quot;},
+                &quot;age&quot;: {&quot;type&quot;: &quot;integer&quot;},
+                &quot;city&quot;: {&quot;type&quot;: &quot;string&quot;},
+                &quot;pets&quot;: {
+                    &quot;type&quot;: &quot;array&quot;,
+                    &quot;items&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;name&quot;: {&quot;type&quot;: &quot;string&quot;},
+                            &quot;age&quot;: {&quot;type&quot;: &quot;integer&quot;},
+                        },
+                    },
+                },
+            },
+            &quot;required&quot;: [&quot;name&quot;, &quot;age&quot;, &quot;city&quot;],
+        },
+    }],
+    tool_choice={&quot;type&quot;: &quot;tool&quot;, &quot;name&quot;: &quot;extract_person&quot;},   # force l&#x27;appel de cet outil
+)</code></pre></div>
+
+
+<p>Le LLM <strong>garantit</strong> de retourner un objet conforme au schéma. Plus de parser regex fragile, plus de <code>KeyError</code>, plus de réponses au format inattendu. C'est devenu la façon de facto d'extraire des données structurées à partir de texte non-structuré.</p>
+
+<h3 id="syn-coût-et-latence-en-production">Coût et latence en production</h3>
+
+<p>Quand vous passez d'un prototype à une application en production, deux contraintes deviennent critiques et structurantes.</p>
+
+<p><strong>Coût</strong> : pour 1 million de requêtes/jour avec GPT-4 (environ 10 $/Mtoken input + 30 $/Mtoken output) et 1 000 tokens en moyenne, c'est environ 40 000 $/mois. Optimisations possibles :</p>
+
+<ul>
+<li><strong>Caching</strong> : pour des questions répétitives, mémoriser les réponses par hash du prompt</li>
+<li><strong>Modèle plus petit</strong> : Claude Haiku, Mistral 7B, Gemini Flash — souvent suffisants pour 80% des requêtes</li>
+<li><strong>Routage</strong> : Haiku pour les questions simples, Opus pour les complexes (router à base d'un classifieur)</li>
+<li><strong>Fine-tuning d'un petit modèle</strong> : un modèle open source fine-tuné coûte parfois moins en inférence qu'une API</li>
+</ul>
+
+<p><strong>Latence</strong> : les LLMs sont lents (quelques secondes par requête). Optimisations :</p>
+
+<ul>
+<li><strong>Streaming</strong> : commencer à afficher la réponse pendant qu'elle se génère (perception de rapidité)</li>
+<li><strong>Modèles plus petits</strong> : Haiku ~5× plus rapide qu'Opus</li>
+<li><strong>Caching</strong> : 0 ms pour une réponse en cache</li>
+<li><strong>Inférence locale</strong> : <code>vLLM</code>, <code>llama.cpp</code> — élimine la latence réseau</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : commencez par le modèle le plus puissant pour valider votre concept. Une fois que le pipeline marche, <strong>descendez progressivement</strong> vers des modèles moins chers en mesurant la qualité à chaque étape. Souvent, on découvre qu'un Mistral 7B suffit pour 80% des requêtes.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi RAG est-il généralement préférable à fine-tuner un LLM pour répondre à des questions sur la doc interne d'une entreprise ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>maintenance, coût, traçabilité.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Quatre raisons. (1) <strong>Mise à jour des connaissances</strong> : la doc interne change tous les jours. Avec RAG, vous mettez à jour l'index (instantané, gratuit). Avec fine-tuning, vous devez réentraîner le modèle à chaque changement majeur (lent, cher). (2) <strong>Coût</strong> : RAG = juste un embedder + une base vectorielle. Fine-tuning = des heures de GPU. (3) <strong>Traçabilité</strong> : RAG vous dit exactement quels documents ont été utilisés pour répondre. Le fine-tuning est une boîte noire — impossible de citer une source. (4) <strong>Hallucinations contrôlées</strong> : avec un bon prompt RAG ("réponds uniquement depuis le contexte"), le modèle est forcé d'utiliser les documents fournis. Le fine-tuning n'apporte pas cette garantie. <strong>Quand fine-tuner quand même</strong> : si vous voulez changer le <strong>style</strong> (vocabulaire spécialisé, format de réponse) ou si vous avez des milliers d'exemples Q&A annotés. La combinaison gagnante : fine-tuning léger pour le style + RAG pour le contenu. Question d'entretien LLM applicatif moderne classique.</p>
+
+</details>
+
+<p><strong>Q2 : Vous construisez un agent qui peut exécuter du code Python. Quelles sont les 3 mesures de sécurité minimales ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>sandboxing, limites, whitelist.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>(1) <strong>Sandboxing complet</strong> : exécuter dans un container Docker isolé sans accès au filesystem hôte ni au réseau (sauf si explicitement nécessaire). Outils : Docker avec <code>--read-only</code>, gVisor, Firecracker, E2B. Mauvaise approche : <code>exec()</code> ou <code>subprocess</code> direct sur le système — un agent malveillant ou égaré peut alors tout détruire. (2) <strong>Limites de ressources</strong> : timeout (10-30 secondes max), limite de RAM (1 Go), limite de CPU. Sinon un fork bomb ou une boucle infinie consomme toute la machine. (3) <strong>Whitelist d'imports</strong> : interdire <code>os</code>, <code>subprocess</code>, <code>shutil</code>, <code>socket</code>. Autoriser uniquement les libs nécessaires (numpy, pandas, matplotlib). Outil : E2B, Modal, ou un Python restreint custom. Mesures supplémentaires recommandées : (4) <strong>Audit log</strong> : enregistrer chaque exécution avec le code, les inputs et les outputs. (5) <strong>Approbation utilisateur</strong> pour les actions destructrices ou externes. (6) <strong>Rate limiting</strong> : pas plus de N exécutions par minute par utilisateur. Question d'entretien sécurité agent : un candidat qui ne mentionne pas le sandboxing est immédiatement disqualifié pour un poste agent-as-a-service.</p>
+
+</details>
+
+<p><strong>Q3 : Vous avez 50 000 documents PDF (1 à 50 pages chacun) et vous voulez construire un chatbot qui répond aux questions à leur sujet. Quelle architecture proposez-vous ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>RAG industriel complet.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Pipeline complet de RAG industriel. <strong>(1) Extraction</strong> : utiliser <code>pdfplumber</code>, <code>PyMuPDF</code> ou <code>unstructured.io</code> pour extraire le texte (et idéalement aussi les tables, headers, etc.). <strong>(2) Chunking</strong> : diviser chaque PDF en chunks de ~500-1000 tokens avec ~10% d'overlap (pour éviter de couper au milieu d'une phrase pertinente). LangChain et LlamaIndex fournissent des <code>RecursiveCharacterTextSplitter</code> qui font ça intelligemment. <strong>(3) Embedding</strong> : encoder chaque chunk avec un modèle adapté. Pour du multilingue : <code>BAAI/bge-m3</code>. Pour de l'anglais pur : <code>BAAI/bge-large-en</code>. Pour économiser : <code>all-MiniLM-L6-v2</code> (plus petit mais 90% des perfs). <strong>(4) Indexation</strong> : stocker dans Qdrant ou pgvector avec metadata (nom du PDF, page, section). Avec 50k × ~50 chunks ≈ 2,5M vecteurs, tout à fait gérable. <strong>(5) Retrieval</strong> : pour une question, encoder, faire une recherche top-k=10 par cosine similarity, optionnellement re-ranker avec un cross-encoder (<code>BAAI/bge-reranker-base</code>) pour améliorer la précision. <strong>(6) Génération</strong> : passer les top-3-5 chunks pertinents à un LLM (Claude 3.5 Sonnet ou GPT-4o pour la qualité, Mistral 7B/Llama 3 pour économiser), avec un prompt qui force "réponds uniquement depuis le contexte fourni et cite les sources". <strong>(7) UX</strong> : afficher les sources cliquables (page du PDF) sous la réponse pour la transparence. <strong>Outils</strong> : LangChain ou LlamaIndex pour orchestrer, Streamlit/Gradio pour une UI rapide, FastAPI pour la prod. C'est le pipeline standard 2025 pour un chatbot doc d'entreprise. Question d'entretien architecture LLM : la réponse révèle l'expérience pratique.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://docs.anthropic.com/" target="_blank" rel="noopener">Anthropic API documentation</a> — référence Claude</li>
+<li><a href="https://platform.openai.com/docs" target="_blank" rel="noopener">OpenAI API documentation</a></li>
+<li><a href="https://python.langchain.com/" target="_blank" rel="noopener">LangChain documentation</a> — orchestration RAG/agents</li>
+<li><a href="https://docs.llamaindex.ai/" target="_blank" rel="noopener">LlamaIndex</a> — alternative à LangChain, plus orienté RAG</li>
+<li><em>Building LLM-Powered Applications</em> (Valentina Alto) — pour le côté pratique</li>
+<li><a href="https://qdrant.tech/documentation/" target="_blank" rel="noopener">Qdrant documentation</a> — vector DB de référence</li>
+<li><em>Prompt Engineering Guide</em> (DAIR.AI) — référence ouverte sur le prompting</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../nlp-llm/transformers-advanced.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Transformers — Compléments</span>
+  </a>
+  <a href="../specialise/time-series.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Time Series →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Scraping — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Web Scraping</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html" class="active">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Data Toolkit</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Web Scraping</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Web Scraping</h1>
+        <p class="page-objective">Extraire des données structurées depuis une page web en Python avec `requests` et `BeautifulSoup`, et les intégrer dans un DataFrame Pandas.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">HTML DOM</div>
+        <div class="key-concept-def">Arbre d&#x27;éléments balisés que parse un navigateur ou BeautifulSoup.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Selector CSS</div>
+        <div class="key-concept-def">Motif comme `div.price &gt; span` pour cibler un nœud précis.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Robots.txt</div>
+        <div class="key-concept-def">Fichier déclarant les chemins qu&#x27;un site ne veut pas voir scrapés.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">User-Agent</div>
+        <div class="key-concept-def">Header HTTP qui s&#x27;identifie auprès du serveur ; certains sites le filtrent.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-web-scraping">Cheatsheet — Web Scraping</a><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-quest-ce-que-le-scraping">1) Qu'est-ce que le scraping ?</a><ol><li><a href="#11-notre-mission">1.1 Notre mission 🎯</a></li></ol></li><li><a href="#2-html-rappels">2) HTML — rappels</a><ol><li><a href="#21-structure-dun-élément-html">2.1 Structure d'un élément HTML</a></li><li><a href="#22-exemple-de-page-html">2.2 Exemple de page HTML</a></li></ol></li><li><a href="#3-beautifulsoup">3) BeautifulSoup</a><ol><li><a href="#31-structure-typique-dun-scraper">3.1 Structure typique d'un scraper</a></li><li><a href="#32-rechercher-par-nom-délément">3.2 Rechercher par nom d'élément</a></li><li><a href="#33-rechercher-par-classe-css">3.3 Rechercher par classe CSS</a></li><li><a href="#34-rechercher-par-id">3.4 Rechercher par id</a></li></ol></li><li><a href="#4-application-scraper-wikipedia">4) Application — scraper Wikipedia</a><ol><li><a href="#41-tester-sur-un-seul-pays">4.1 Tester sur un seul pays</a></li><li><a href="#42-refactoriser-en-fonction">4.2 Refactoriser en fonction</a></li><li><a href="#43-appliquer-sur-tout-le-dataframe">4.3 Appliquer sur tout le DataFrame</a></li><li><a href="#44-vérifier-les-résultats">4.4 Vérifier les résultats</a></li></ol></li><li><a href="#5-sauvegarder-les-données">5) 💾 Sauvegarder les données</a><ol><li><a href="#51-sauvegarde-simple">5.1 Sauvegarde simple</a></li><li><a href="#52-sauvegarde-intermédiaire-bonne-pratique">5.2 Sauvegarde intermédiaire (bonne pratique)</a></li></ol></li><li><a href="#6-pour-aller-plus-loin">6) Pour aller plus loin</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-web-scraping">📋 Cheatsheet — Web Scraping</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import requests
+from bs4 import BeautifulSoup
+
+## ── RÉCUPÉRER LE HTML ─────────────────────────────────
+response = requests.get(url)                              # requête simple
+response = requests.get(url, headers={&quot;User-Agent&quot;: &quot;Mon app&quot;})  # avec header (anti-403)
+soup = BeautifulSoup(response.content, &quot;html.parser&quot;)    # parser le HTML
+
+## ── RECHERCHER DES ÉLÉMENTS ──────────────────────────
+soup.find(&#x27;h1&#x27;)                          # premier &lt;h1&gt; trouvé
+soup.find_all(&#x27;article&#x27;)                 # liste de tous les &lt;article&gt;
+soup.find(&#x27;p&#x27;).text                      # texte contenu dans le premier &lt;p&gt;
+
+soup.find(class_=&quot;infobox-data&quot;)         # par classe CSS (class_ → évite conflit avec mot-clé Python)
+soup.find_all(&quot;li&quot;, class_=&quot;package&quot;)    # tous les &lt;li&gt; de classe &quot;package&quot;
+soup.find(id=&quot;author&quot;)                   # par attribut id
+soup.find(id=&quot;author&quot;).text              # texte de l&#x27;élément trouvé
+
+## ── STRUCTURE HTML TYPIQUE ───────────────────────────
+## &lt;p class=&quot;summary&quot;&gt;Texte ici&lt;/p&gt;
+## → tag : &quot;p&quot;
+## → attribut class : &quot;summary&quot;
+## → contenu : &quot;Texte ici&quot;
+
+## ── SCRAPER UNE PAGE EN FONCTION ─────────────────────
+def scrape_region(country):
+    url = f&quot;https://en.wikipedia.org/wiki/Geography_of_{country}&quot;
+    headers = {&quot;User-Agent&quot;: &quot;Data Sourcing Demo&quot;}
+    response = requests.get(url, headers=headers)          # récupère le HTML
+    soup = BeautifulSoup(response.text, &quot;html.parser&quot;)     # parse le HTML
+    infobox = soup.find(class_=&quot;infobox-data&quot;)             # trouve l&#x27;élément cible
+    return infobox.text if infobox else None               # retourne le texte ou None
+
+## ── APPLIQUER SUR UN DATAFRAME ───────────────────────
+df[&#x27;Region&#x27;] = df[&#x27;Full Name&#x27;].map(scrape_region)          # applique la fonction sur chaque ligne
+
+## ── SAUVEGARDE INTERMÉDIAIRE ─────────────────────────
+import csv
+
+with open(&#x27;data/tmp.csv&#x27;, &#x27;a&#x27;) as f:     # mode &#x27;a&#x27; = append (reprend sans écraser)
+    writer = csv.writer(f)
+    writer.writerow([country, region])   # une ligne écrite à chaque itération
+
+df = pd.read_csv(&#x27;data/tmp.csv&#x27;, names=[&#x27;Full Name&#x27;, &#x27;Region&#x27;])  # relire les résultats
+
+## ── SAUVEGARDER LE RÉSULTAT FINAL ────────────────────
+df.to_csv(&quot;countries_regions.csv&quot;, index=False)   # index=False pour ne pas sauvegarder l&#x27;index Pandas</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier le <code>User-Agent</code> sur certains sites</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">response = requests.get(url)                                          # ❌ 403 Forbidden sur Wikipedia
+response = requests.get(url, headers={&quot;User-Agent&quot;: &quot;Mon app&quot;})       # ✅</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser <code>class</code> au lieu de <code>class_</code> dans BeautifulSoup</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">soup.find(&quot;li&quot;, class=&quot;package&quot;)    # ❌ SyntaxError — class est un mot-clé Python réservé
+soup.find(&quot;li&quot;, class_=&quot;package&quot;)   # ✅ BeautifulSoup accepte class_ pour les classes CSS</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Appeler <code>.text</code> sans vérifier que l'élément existe</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">region = soup.find(class_=&quot;infobox-data&quot;).text   # ❌ AttributeError si l&#x27;élément est absent
+infobox = soup.find(class_=&quot;infobox-data&quot;)
+region = infobox.text if infobox else None        # ✅ vérifier avant d&#x27;accéder à .text</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Ajouter <code>try/except</code> trop tôt pendant le développement</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def scrape(country):
+    try:
+        ...               # ❌ masque toutes les erreurs → impossible de débugger
+    except:
+        return None
+## ✅ Tester d&#x27;abord sur UN cas, s&#x27;assurer que ça marche, puis ajouter try/except</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Ne pas sauvegarder les résultats intermédiaires</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## ❌ Si le scraper est bloqué au pays 150, tout est perdu
+## ✅ Écrire chaque résultat dans un CSV au fil de la boucle (voir section 5)</code></pre></div></div></div>
+
+<hr>
+
+<h2 id="1-quest-ce-que-le-scraping">1) Qu'est-ce que le scraping ?</h2>
+
+<blockquote><p>Le <strong>web scraping</strong> est le processus automatisé d'extraction de données structurées depuis des sites web. Il repose sur des scripts qui récupèrent le HTML d'une page et en extraient les informations utiles.<br></p></blockquote>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>À utiliser en dernier recours.</strong> Préférer toujours un CSV, une base SQL ou une API quand c'est disponible.</p>
+<p>- Les structures HTML <strong>changent</strong> et peuvent casser ton code</p>
+<p>- Scraper peut <strong>violer</strong> les CGU de certains sites</p>
+<p>- Des <strong>mécanismes anti-scraping</strong> peuvent te bloquer</p></div></div>
+
+<h3 id="11-notre-mission">1.1 Notre mission 🎯</h3>
+
+<p>On a déjà un dataset avec des informations par pays, mais il manque la <strong>région géographique</strong> de chaque pays. On va l'extraire depuis Wikipedia :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">https://en.wikipedia.org/wiki/Geography_of_&lt;Nom_du_pays&gt;</code></pre></div>
+
+
+<hr>
+
+<h2 id="2-html-rappels">2) HTML — rappels</h2>
+
+<blockquote><p><strong>HTML</strong> (HyperText Markup Language) est le langage standard pour structurer le contenu du web. Le navigateur reçoit du HTML via HTTP et l'affiche sous forme de page.<br></p></blockquote>
+
+<figure><img src="../../assets/images/scraping-01-b1ad7c99.png" alt="" loading="lazy"></figure>
+
+<h3 id="21-structure-dun-élément-html">2.1 Structure d'un élément HTML</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## &lt;p class=&quot;summary&quot;&gt;This is a paragraph of the class summary.&lt;/p&gt;
+## ├── tag       : &quot;p&quot;
+## ├── attribut  : class=&quot;summary&quot;
+## └── contenu   : &quot;This is a paragraph of the class summary.&quot;</code></pre></div>
+
+
+<p>Un élément peut avoir zéro ou plusieurs attributs : <code>class</code>, <code>id</code>, <code>src</code>, <code>href</code>, <code>style</code>…</p>
+
+<h3 id="22-exemple-de-page-html">2.2 Exemple de page HTML</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Structure HTML typique
+## &lt;html&gt;
+##   &lt;header&gt;&lt;title&gt;HTML example&lt;/title&gt;&lt;/header&gt;
+##   &lt;body&gt;
+##     &lt;h1&gt;My First Heading&lt;/h1&gt;
+##     &lt;p&gt;This is a very simple html page.&lt;/p&gt;
+##     &lt;h2&gt;Packages we use today&lt;/h2&gt;
+##     &lt;ul&gt;
+##       &lt;li class=&quot;built-in&quot;&gt;CSV&lt;/li&gt;
+##       &lt;li class=&quot;package&quot;&gt;Pandas&lt;/li&gt;
+##       &lt;li class=&quot;package&quot;&gt;Requests&lt;/li&gt;
+##       &lt;li class=&quot;package&quot;&gt;BeautifulSoup&lt;/li&gt;
+##     &lt;/ul&gt;
+##     &lt;div id=&quot;credits&quot;&gt;
+##       &lt;span&gt;By &lt;a href=&quot;http://www.lewagon.com&quot; id=&quot;author&quot;&gt;Le Wagon&lt;/a&gt;&lt;/span&gt;
+##     &lt;/div&gt;
+##   &lt;/body&gt;
+## &lt;/html&gt;</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Inspecter le HTML d'une page</strong></p>
+<p>Clic droit sur n'importe quel élément d'un site → <strong>Inspecter</strong> pour voir l'arbre HTML complet.</p></div></div>
+
+<hr>
+
+<h2 id="3-beautifulsoup">3) BeautifulSoup</h2>
+
+<blockquote><p><strong>BeautifulSoup</strong> est la librairie Python de référence pour parcourir et extraire des données depuis du HTML ou du XML.<br></p></blockquote>
+
+<p>👉 <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/" target="_blank" rel="noopener">Documentation BeautifulSoup</a></p>
+
+<h3 id="31-structure-typique-dun-scraper">3.1 Structure typique d'un scraper</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import requests
+from bs4 import BeautifulSoup
+
+response = requests.get(url)                              # récupère le HTML brut
+soup = BeautifulSoup(response.content, &quot;html.parser&quot;)    # parse le HTML en arbre navigable
+
+## On peut maintenant interroger l&#x27;objet soup
+soup.title.string          # titre de la page
+soup.find(&#x27;h1&#x27;)            # premier &lt;h1&gt;
+soup.find_all(&#x27;a&#x27;)         # tous les liens &lt;a&gt;</code></pre></div>
+
+
+<h3 id="32-rechercher-par-nom-délément">3.2 Rechercher par nom d'élément</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## HTML :
+## &lt;h1&gt;My First Heading&lt;/h1&gt;
+## &lt;article&gt;How to load CSVs?&lt;/article&gt;
+## &lt;article&gt;API calls with Python&lt;/article&gt;
+
+paragraph = soup.find(&quot;p&quot;)             # retourne le premier &lt;p&gt; trouvé
+articles = soup.find_all(&quot;article&quot;)    # retourne une liste de tous les &lt;article&gt;</code></pre></div>
+
+
+<h3 id="33-rechercher-par-classe-css">3.3 Rechercher par classe CSS</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## HTML :
+## &lt;li class=&quot;built-in&quot;&gt;CSV&lt;/li&gt;
+## &lt;li class=&quot;package&quot;&gt;Pandas&lt;/li&gt;
+## &lt;li class=&quot;package&quot;&gt;Requests&lt;/li&gt;
+
+items = soup.find_all(&quot;li&quot;, class_=&quot;package&quot;)   # class_ (avec underscore) pour éviter le conflit Python</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>class</code> est un mot-clé réservé en Python. BeautifulSoup utilise <code>class_</code> à la place.</p></div></div>
+
+<h3 id="34-rechercher-par-id">3.4 Rechercher par id</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## HTML :
+## &lt;a href=&quot;http://www.lewagon.com&quot; id=&quot;author&quot;&gt;Le Wagon&lt;/a&gt;
+
+item = soup.find(id=&quot;author&quot;).text    # retourne &quot;Le Wagon&quot;</code></pre></div>
+
+
+<hr>
+
+<h2 id="4-application-scraper-wikipedia">4) Application — scraper Wikipedia</h2>
+
+<h3 id="41-tester-sur-un-seul-pays">4.1 Tester sur un seul pays</h3>
+
+<p>Toujours commencer par faire fonctionner le scraper sur <strong>un seul exemple</strong> avant de boucler.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import requests
+from bs4 import BeautifulSoup
+
+url = &quot;https://en.wikipedia.org/wiki/Geography_of_Belgium&quot;
+
+## Wikipedia exige un User-Agent, sinon réponse 403 Forbidden
+headers = {&quot;User-Agent&quot;: &quot;Data Sourcing Demo - just for illustration purposes&quot;}
+
+response = requests.get(url, headers=headers)            # récupère le HTML
+soup = BeautifulSoup(response.text, &quot;html.parser&quot;)       # parse le HTML
+
+infobox = soup.find(class_=&quot;infobox-data&quot;)               # trouve la première cellule de l&#x27;infobox
+region = infobox.text                                    # extrait le texte
+print(region)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+Europe</code></pre></div>
+
+
+<h3 id="42-refactoriser-en-fonction">4.2 Refactoriser en fonction</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def region_scraper(country):
+    url = f&quot;https://en.wikipedia.org/wiki/Geography_of_{country}&quot;
+    print(f&quot;Scraping info for {country}&quot;)
+    try:
+        headers = {&quot;User-Agent&quot;: &quot;Data Sourcing Demo - just for illustration purposes&quot;}
+        response = requests.get(url, headers=headers)        # récupère le HTML
+        soup = BeautifulSoup(response.text, &quot;html.parser&quot;)   # parse le HTML
+        infobox = soup.find(class_=&quot;infobox-data&quot;)           # trouve l&#x27;élément cible
+        region = infobox.text                                # extrait le texte
+        return region
+    except:
+        return None    # retourne None si la page ou l&#x27;infobox est introuvable</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">region_scraper(&quot;Belgium&quot;)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+&#x27;Europe&#x27;</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong><code>try/except</code> : seulement quand le code fonctionne</strong></p>
+<p>Ne jamais ajouter <code>try/except</code> pendant le développement — cela masque les erreurs. L'ajouter uniquement une fois que le cas simple fonctionne correctement.</p></div></div>
+
+<h3 id="43-appliquer-sur-tout-le-dataframe">4.3 Appliquer sur tout le DataFrame</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## map() applique la fonction sur chaque valeur de la colonne
+regions = iso_df[&#x27;Full Name&#x27;].map(region_scraper)
+
+## Assigner le résultat dans une nouvelle colonne
+iso_df[&#x27;Region&#x27;] = regions</code></pre></div>
+
+
+<h3 id="44-vérifier-les-résultats">4.4 Vérifier les résultats</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">iso_df[&#x27;Region&#x27;].isnull().sum()   # nombre de pays sans région trouvée</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+104</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Pourquoi autant de <code>None</code> ?</strong></p>
+<p>- "St. Lucia" → Wikipedia veut "Saint Lucia"</p>
+<p>- Burkina Faso → pas d'<code>infobox</code> sur sa page</p>
+<p>- Andorra, Austria → format d'infobox différent</p>
+<p>Le scraping est fragile par nature. Quand c'est possible, utiliser un CSV ou une API à la place.</p></div></div>
+
+<hr>
+
+<h2 id="5-sauvegarder-les-données">5) 💾 Sauvegarder les données</h2>
+
+<h3 id="51-sauvegarde-simple">5.1 Sauvegarde simple</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+
+iso_df.to_csv(&quot;countries_regions.csv&quot;, index=False)   # index=False → pas de colonne d&#x27;index Pandas</code></pre></div>
+
+
+<h3 id="52-sauvegarde-intermédiaire-bonne-pratique">5.2 Sauvegarde intermédiaire (bonne pratique)</h3>
+
+<p>Pour des scraping longs, sauvegarder au fil de la boucle permet de reprendre en cas d'interruption.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import csv
+
+tmp_file_path = &quot;data/regions_tmp.csv&quot;
+start_index = 0   # modifier cette valeur pour reprendre depuis un point d&#x27;arrêt
+
+with open(tmp_file_path, &#x27;a&#x27;) as tmp_file:   # mode &#x27;a&#x27; = append — ne pas écraser les données existantes
+    csv_writer = csv.writer(tmp_file)
+    for country in iso_df[&#x27;Full Name&#x27;][start_index:]:
+        region = region_scraper(country)
+        csv_writer.writerow([country, region])   # écriture immédiate à chaque itération</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Reprendre un scraping interrompu</strong></p>
+<p>Si le scraper est bloqué au pays 80, compter le nombre de lignes déjà dans le CSV et mettre <code>start_index = 80</code>. Le CSV en mode <code>append</code> ne réécrit pas ce qui a déjà été collecté.</p></div></div>
+
+<p>Relire les résultats intermédiaires :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">country_region_df = pd.read_csv(tmp_file_path, names=[&#x27;Full Name&#x27;, &#x27;Region&#x27;])
+country_region_df.head()</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+##   Full Name           Region
+## 0 Afghanistan         Asia
+## 1 Åland Islands       NaN
+## 2 Albania             Europe
+## 3 Algeria             Africa
+## 4 American Samoa      United States[a]</code></pre></div>
+
+
+<hr>
+
+<h2 id="6-pour-aller-plus-loin">6) Pour aller plus loin</h2>
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p><strong>Wikipedia a une API Python officielle</strong> — bien plus fiable que le scraping HTML.</p>
+<p>👉 <a href="https://wikipedia-api.readthedocs.io/en/latest/README.html" target="_blank" rel="noopener">wikipedia-api sur ReadTheDocs</a></p></div></div>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Dans la pratique</strong>, pour les régions par pays, un simple CSV de référence aurait suffi et évité tout ce scraping. Toujours chercher une source de données plus directe avant de scraper.</p></div></div>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-a-retenir-avant-de-commencer">A retenir avant de commencer</a></li><li><a href="#ref-lanalogie-fil-rouge">L'analogie fil rouge</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-le-html-ce-quon-lit-quand-on-scrape">1. Le HTML — ce qu'on lit quand on scrape</a><ol><li><a href="#ref-un-élément-html-cest-quoi">Un élément HTML, c'est quoi ?</a></li><li><a href="#ref-une-page-html-complète-ressemble-à-ça">Une page HTML complète ressemble à ça</a></li></ol></li><li><a href="#ref-2-récupérer-une-page-web-avec-requests">2. Récupérer une page web avec `requests`</a><ol><li><a href="#ref-requête-simple">Requête simple</a></li><li><a href="#ref-le-problème-du-user-agent">Le problème du User-Agent</a></li></ol></li><li><a href="#ref-3-analyser-le-html-avec-beautifulsoup">3. Analyser le HTML avec `BeautifulSoup`</a><ol><li><a href="#ref-créer-lobjet-soup">Créer l'objet `soup`</a></li><li><a href="#ref-chercher-par-nom-de-balise-find-et-find_all">Chercher par nom de balise — `find()` et `find_all()`</a></li><li><a href="#ref-chercher-par-classe-css-class_">Chercher par classe CSS — `class_`</a></li><li><a href="#ref-chercher-par-identifiant-id">Chercher par identifiant — `id`</a></li><li><a href="#ref-tableau-récapitulatif-des-méthodes-de-recherche">Tableau récapitulatif des méthodes de recherche</a></li></ol></li><li><a href="#ref-4-application-complète-scraper-wikipedia">4. Application complète — Scraper Wikipedia</a><ol><li><a href="#ref-le-contexte">Le contexte</a></li><li><a href="#ref-etape-1-tester-sur-un-seul-pays">Etape 1 — Tester sur un seul pays</a></li><li><a href="#ref-etape-2-transformer-en-fonction-réutilisable">Etape 2 — Transformer en fonction réutilisable</a></li><li><a href="#ref-etape-3-appliquer-sur-tout-le-dataframe">Etape 3 — Appliquer sur tout le DataFrame</a></li></ol></li><li><a href="#ref-5-sauvegarder-les-données">5. Sauvegarder les données</a><ol><li><a href="#ref-sauvegarde-simple-du-dataframe-final">Sauvegarde simple du DataFrame final</a></li><li><a href="#ref-sauvegarde-intermédiaire-la-bonne-pratique-pour-les-scraping-longs">Sauvegarde intermédiaire — la bonne pratique pour les scraping longs</a></li><li><a href="#ref-relire-les-résultats-intermédiaires">Relire les résultats intermédiaires</a></li></ol></li><li><a href="#ref-6-les-erreurs-classiques-à-éviter">6. Les erreurs classiques à éviter</a><ol><li><a href="#ref-oublier-le-user-agent">Oublier le User-Agent</a></li><li><a href="#ref-ecrire-class-au-lieu-de-class_">Ecrire `class` au lieu de `class_`</a></li><li><a href="#ref-appeler-text-sans-vérifier-que-lélément-existe">Appeler `.text` sans vérifier que l'élément existe</a></li><li><a href="#ref-ajouter-tryexcept-trop-tôt">Ajouter `try/except` trop tôt</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Le <strong>web scraping</strong> est une technique qui permet d'extraire automatiquement des données depuis des pages web. Plutôt que de copier-coller manuellement des informations, on écrit un script Python qui va lire le code HTML d'une page et en extraire ce dont on a besoin.</p>
+
+<p>Pour faire du scraping en Python, on utilise deux outils qui travaillent ensemble :</p>
+
+<ul>
+<li><strong><code>requests</code></strong> : envoie une requête à un site web et récupère le HTML brut (comme si ton navigateur visitait la page)</li>
+<li><strong><code>BeautifulSoup</code></strong> : lit ce HTML et permet d'y chercher des éléments précis (un titre, un tableau, une cellule...)</li>
+</ul>
+
+<h3 id="ref-a-retenir-avant-de-commencer">A retenir avant de commencer</h3>
+
+<ol>
+<li>Le scraping est un <strong>dernier recours</strong> — si un CSV ou une API existe, utilise-les à la place.</li>
+<li>Les <strong>structures HTML changent</strong> : un site peut mettre à jour sa mise en page et casser ton code du jour au lendemain.</li>
+<li>Scraper peut <strong>violer les conditions d'utilisation</strong> d'un site — toujours vérifier avant.</li>
+<li>Certains sites bloquent les bots — il faut parfois se présenter avec un <strong>User-Agent</strong> pour ne pas être rejeté.</li>
+<li>Sur de grands volumes, <strong>sauvegarde au fil de l'eau</strong> : si ton script plante au 150e pays, tu ne veux pas tout recommencer.</li>
+</ol>
+
+<h3 id="ref-lanalogie-fil-rouge">L'analogie fil rouge</h3>
+
+<p>Imagine que tu reçois un annuaire papier (le HTML) d'une ville. <code>requests</code> va te chercher cet annuaire depuis la bibliothèque. <code>BeautifulSoup</code> est ta loupe : elle te permet de trouver rapidement la rubrique "boulangeries" ou la fiche de Monsieur Dupont sans lire tout l'annuaire à la main.</p>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li>Qu'est-ce que le HTML ? (ce qu'on va lire)</li>
+<li>Comment récupérer et analyser une page avec Python ?</li>
+<li>Comment chercher des éléments précis dans le HTML ?</li>
+<li>Application complète : scraper Wikipedia pays par pays</li>
+<li>Comment sauvegarder les données proprement ?</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-le-html-ce-quon-lit-quand-on-scrape">1. Le HTML — ce qu'on lit quand on scrape</h2>
+
+<p>Quand tu visites un site web, ton navigateur reçoit du <strong>HTML</strong> (HyperText Markup Language). C'est un fichier texte structuré en <strong>balises</strong> imbriquées. Le navigateur lit ces balises et les affiche joliment. Nous, on va lire ce fichier brut pour en extraire des données.</p>
+
+<h3 id="ref-un-élément-html-cest-quoi">Un élément HTML, c'est quoi ?</h3>
+
+<p>Chaque morceau d'une page est décrit par une <strong>balise</strong> (tag), qui peut avoir des <strong>attributs</strong>, et contient du <strong>contenu</strong> (texte ou d'autres balises).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Exemple d&#x27;élément HTML :
+# &lt;p class=&quot;summary&quot;&gt;Ceci est un paragraphe.&lt;/p&gt;
+#
+# Décomposition :
+# ├── tag       : &quot;p&quot;          → le type d&#x27;élément (paragraphe)
+# ├── attribut  : class=&quot;summary&quot;  → une propriété de l&#x27;élément
+# └── contenu   : &quot;Ceci est un paragraphe.&quot;  → le texte visible</code></pre></div>
+
+
+<p>Les attributs courants sont <code>class</code>, <code>id</code>, <code>href</code> (pour les liens), <code>src</code> (pour les images)...</p>
+
+<h3 id="ref-une-page-html-complète-ressemble-à-ça">Une page HTML complète ressemble à ça</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># &lt;html&gt;
+#   &lt;header&gt;&lt;title&gt;Ma page&lt;/title&gt;&lt;/header&gt;
+#   &lt;body&gt;
+#     &lt;h1&gt;Mon premier titre&lt;/h1&gt;
+#     &lt;p&gt;Un paragraphe de texte.&lt;/p&gt;
+#     &lt;h2&gt;Packages Python utiles&lt;/h2&gt;
+#     &lt;ul&gt;
+#       &lt;li class=&quot;built-in&quot;&gt;CSV&lt;/li&gt;
+#       &lt;li class=&quot;package&quot;&gt;Pandas&lt;/li&gt;
+#       &lt;li class=&quot;package&quot;&gt;Requests&lt;/li&gt;
+#       &lt;li class=&quot;package&quot;&gt;BeautifulSoup&lt;/li&gt;
+#     &lt;/ul&gt;
+#     &lt;div id=&quot;credits&quot;&gt;
+#       &lt;span&gt;Par &lt;a href=&quot;http://www.lewagon.com&quot; id=&quot;author&quot;&gt;Le Wagon&lt;/a&gt;&lt;/span&gt;
+#     &lt;/div&gt;
+#   &lt;/body&gt;
+# &lt;/html&gt;</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Astuce pratique : dans ton navigateur, fais un <strong>clic droit</strong> sur n'importe quel élément d'un site, puis clique sur <strong>"Inspecter"</strong>. Tu verras le code HTML exact de la page — c'est indispensable pour repérer ce qu'on veut extraire avant d'écrire le code.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-récupérer-une-page-web-avec-requests">2. Récupérer une page web avec <code>requests</code></h2>
+
+<p>La librairie <code>requests</code> permet d'envoyer une requête HTTP à un serveur et de récupérer la réponse — c'est-à-dire le HTML de la page.</p>
+
+<h3 id="ref-requête-simple">Requête simple</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import requests  # importe la librairie
+
+url = &quot;https://en.wikipedia.org/wiki/Geography_of_Belgium&quot;
+
+response = requests.get(url)  # envoie une requête GET à l&#x27;URL et stocke la réponse
+print(response.status_code)   # affiche 200 si la requête a réussi (404 = page introuvable)
+print(response.text[:500])    # affiche les 500 premiers caractères du HTML reçu</code></pre></div>
+
+
+<h3 id="ref-le-problème-du-user-agent">Le problème du User-Agent</h3>
+
+<p>Certains sites (dont Wikipedia) vérifient si la requête vient d'un vrai navigateur ou d'un bot. Si tu ne te présentes pas, ils peuvent répondre avec une erreur <strong>403 Forbidden</strong>.</p>
+
+<p>La solution : ajouter un <strong>en-tête</strong> (<code>header</code>) qui simule un navigateur normal.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import requests
+
+url = &quot;https://en.wikipedia.org/wiki/Geography_of_Belgium&quot;
+
+# On précise qui on est avec un User-Agent — Wikipedia l&#x27;exige
+headers = {&quot;User-Agent&quot;: &quot;Data Sourcing Demo - just for illustration purposes&quot;}
+
+response = requests.get(url, headers=headers)  # requête avec identification
+print(response.status_code)                    # doit afficher 200</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Sans <code>headers={&quot;User-Agent&quot;: &quot;...&quot;}</code>, Wikipedia renvoie une erreur 403 et tu n'obtiens pas le HTML. Toujours vérifier le <code>status_code</code> avant d'aller plus loin.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-analyser-le-html-avec-beautifulsoup">3. Analyser le HTML avec <code>BeautifulSoup</code></h2>
+
+<p>Une fois le HTML récupéré, il faut le "découper" intelligemment pour en extraire des données. C'est le rôle de <strong>BeautifulSoup</strong>.</p>
+
+<h3 id="ref-créer-lobjet-soup">Créer l'objet <code>soup</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import requests
+from bs4 import BeautifulSoup  # importe BeautifulSoup depuis le package bs4
+
+url = &quot;https://en.wikipedia.org/wiki/Geography_of_Belgium&quot;
+headers = {&quot;User-Agent&quot;: &quot;Data Sourcing Demo&quot;}
+
+response = requests.get(url, headers=headers)              # récupère le HTML
+
+# BeautifulSoup reçoit le contenu HTML et le &quot;parse&quot; (analyse) en arbre navigable
+soup = BeautifulSoup(response.content, &quot;html.parser&quot;)
+
+# L&#x27;objet soup est maintenant une représentation structurée de la page
+# On peut l&#x27;interroger pour trouver n&#x27;importe quel élément</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><code>&quot;html.parser&quot;</code> est le moteur d'analyse HTML intégré à Python. Il existe d'autres parsers comme <code>lxml</code> (plus rapide), mais <code>html.parser</code> est suffisant pour débuter et ne nécessite pas d'installation supplémentaire.</p></div></div>
+
+<h3 id="ref-chercher-par-nom-de-balise-find-et-find_all">Chercher par nom de balise — <code>find()</code> et <code>find_all()</code></h3>
+
+<p>Il y a deux fonctions principales pour chercher dans le HTML :</p>
+
+<ul>
+<li><code>find(&quot;balise&quot;)</code> → retourne <strong>le premier</strong> élément correspondant</li>
+<li><code>find_all(&quot;balise&quot;)</code> → retourne <strong>une liste de tous</strong> les éléments correspondants</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Exemple basé sur ce HTML :
+# &lt;h1&gt;Mon premier titre&lt;/h1&gt;
+# &lt;article&gt;Comment charger des CSV ?&lt;/article&gt;
+# &lt;article&gt;Appels API avec Python&lt;/article&gt;
+
+premier_p = soup.find(&quot;p&quot;)           # retourne le premier &lt;p&gt; trouvé dans la page
+tous_articles = soup.find_all(&quot;article&quot;)  # retourne une LISTE de tous les &lt;article&gt;
+
+print(premier_p.text)         # .text extrait uniquement le texte (sans les balises)
+print(len(tous_articles))     # nombre d&#x27;articles trouvés</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>.text</code> est une propriété de BeautifulSoup qui retourne le contenu texte d'un élément, sans les balises HTML. C'est ce qu'on utilisera le plus souvent pour récupérer des données.</p></div></div>
+
+<h3 id="ref-chercher-par-classe-css-class_">Chercher par classe CSS — <code>class_</code></h3>
+
+<p>En HTML, les éléments peuvent avoir une propriété <code>class</code> qui sert à les styliser ou à les regrouper. C'est souvent le moyen le plus précis de cibler un élément.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Exemple basé sur ce HTML :
+# &lt;li class=&quot;built-in&quot;&gt;CSV&lt;/li&gt;
+# &lt;li class=&quot;package&quot;&gt;Pandas&lt;/li&gt;
+# &lt;li class=&quot;package&quot;&gt;Requests&lt;/li&gt;
+# &lt;li class=&quot;package&quot;&gt;BeautifulSoup&lt;/li&gt;
+
+# On cherche tous les &lt;li&gt; qui ont la classe &quot;package&quot;
+packages = soup.find_all(&quot;li&quot;, class_=&quot;package&quot;)  # class_ avec underscore (voir ci-dessous)
+
+for item in packages:    # on boucle sur la liste
+    print(item.text)     # affiche : Pandas, puis Requests, puis BeautifulSoup</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>En Python, <code>class</code> est un mot réservé (il sert à définir des classes Python). BeautifulSoup utilise donc <code>class_</code> (avec un underscore) pour éviter le conflit. Écrire <code>class=</code> provoque une <code>SyntaxError</code>.</p></div></div>
+
+<h3 id="ref-chercher-par-identifiant-id">Chercher par identifiant — <code>id</code></h3>
+
+<p>L'attribut <code>id</code> est censé être <strong>unique</strong> dans une page. C'est donc le moyen le plus ciblé de trouver un élément précis.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Exemple basé sur ce HTML :
+# &lt;a href=&quot;http://www.lewagon.com&quot; id=&quot;author&quot;&gt;Le Wagon&lt;/a&gt;
+
+auteur = soup.find(id=&quot;author&quot;)   # trouve l&#x27;élément dont l&#x27;id est &quot;author&quot;
+print(auteur.text)                 # affiche : &quot;Le Wagon&quot;</code></pre></div>
+
+
+<h3 id="ref-tableau-récapitulatif-des-méthodes-de-recherche">Tableau récapitulatif des méthodes de recherche</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># PAR NOM DE BALISE
+soup.find(&quot;h1&quot;)               # premier &lt;h1&gt;
+soup.find_all(&quot;p&quot;)            # tous les &lt;p&gt;
+
+# PAR CLASSE CSS
+soup.find(class_=&quot;infobox-data&quot;)            # premier élément avec cette classe
+soup.find_all(&quot;li&quot;, class_=&quot;package&quot;)       # tous les &lt;li&gt; avec cette classe
+
+# PAR ID
+soup.find(id=&quot;author&quot;)                      # l&#x27;élément avec cet id (unique)
+soup.find(id=&quot;author&quot;).text                 # le texte de cet élément</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-4-application-complète-scraper-wikipedia">4. Application complète — Scraper Wikipedia</h2>
+
+<h3 id="ref-le-contexte">Le contexte</h3>
+
+<p>On a un DataFrame (<code>iso_df</code>) avec une liste de pays. Il manque une colonne "Région géographique". Cette information se trouve sur des pages Wikipedia du type :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">https://en.wikipedia.org/wiki/Geography_of_Belgium
+https://en.wikipedia.org/wiki/Geography_of_France
+...</code></pre></div>
+
+
+<p>On va écrire un script qui visite automatiquement ces pages et extrait la région.</p>
+
+<h3 id="ref-etape-1-tester-sur-un-seul-pays">Etape 1 — Tester sur un seul pays</h3>
+
+<p>Règle d'or : <strong>faire fonctionner le code sur un exemple avant de boucler</strong>. Ne jamais construire la boucle en premier.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import requests
+from bs4 import BeautifulSoup
+
+# On commence par la Belgique — un cas simple pour valider le code
+url = &quot;https://en.wikipedia.org/wiki/Geography_of_Belgium&quot;
+headers = {&quot;User-Agent&quot;: &quot;Data Sourcing Demo - just for illustration purposes&quot;}
+
+response = requests.get(url, headers=headers)         # récupère le HTML de la page
+soup = BeautifulSoup(response.text, &quot;html.parser&quot;)    # analyse le HTML
+
+# Sur Wikipedia, la région se trouve dans l&#x27;infobox, dans un élément de classe &quot;infobox-data&quot;
+infobox = soup.find(class_=&quot;infobox-data&quot;)            # trouve le premier élément avec cette classe
+region = infobox.text                                  # extrait le texte
+
+print(region)  # Affiche : Europe</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Output</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># Output attendu :
+Europe</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Si ce code retourne "Europe", le scraper fonctionne pour ce cas. On peut passer à l'étape suivante.</p></div></div>
+
+<h3 id="ref-etape-2-transformer-en-fonction-réutilisable">Etape 2 — Transformer en fonction réutilisable</h3>
+
+<p>On encapsule le code dans une fonction qui prend un nom de pays et retourne sa région.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def region_scraper(country):
+    # Construit l&#x27;URL dynamiquement avec le nom du pays
+    url = f&quot;https://en.wikipedia.org/wiki/Geography_of_{country}&quot;
+    print(f&quot;Scraping {country}...&quot;)  # affiche la progression
+
+    try:
+        headers = {&quot;User-Agent&quot;: &quot;Data Sourcing Demo - just for illustration purposes&quot;}
+        response = requests.get(url, headers=headers)        # récupère la page
+        soup = BeautifulSoup(response.text, &quot;html.parser&quot;)   # analyse le HTML
+        infobox = soup.find(class_=&quot;infobox-data&quot;)           # cherche la cellule région
+        region = infobox.text                                 # extrait le texte
+        return region                                         # retourne la région trouvée
+
+    except:
+        return None  # si la page n&#x27;existe pas ou que l&#x27;infobox est absente, retourne None
+
+# Test de la fonction
+print(region_scraper(&quot;Belgium&quot;))   # Affiche : Europe
+print(region_scraper(&quot;France&quot;))    # Affiche : Europe</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le <code>try/except</code> masque toutes les erreurs. Ne l'ajoute qu'une fois que le cas simple fonctionne. Pendant le développement, laisse les erreurs s'afficher — elles t'indiquent ce qui ne va pas.</p></div></div>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le <code>f&quot;...{country}...&quot;</code> s'appelle une <strong>f-string</strong> : c'est une façon de construire une chaîne de caractères en y insérant des variables directement. Ici, si <code>country = &quot;Belgium&quot;</code>, alors <code>f&quot;...{country}&quot;</code> donne <code>&quot;...Belgium&quot;</code>.</p></div></div>
+
+<h3 id="ref-etape-3-appliquer-sur-tout-le-dataframe">Etape 3 — Appliquer sur tout le DataFrame</h3>
+
+<p>La méthode <code>.map()</code> de Pandas applique une fonction sur chaque valeur d'une colonne. C'est l'équivalent d'une boucle <code>for</code> simplifiée.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># map() va appeler region_scraper(&quot;Afghanistan&quot;), region_scraper(&quot;Albania&quot;), etc.
+# pour chaque valeur de la colonne &quot;Full Name&quot;
+iso_df[&#x27;Region&#x27;] = iso_df[&#x27;Full Name&#x27;].map(region_scraper)
+
+# Vérification : combien de pays n&#x27;ont pas de région trouvée ?
+print(iso_df[&#x27;Region&#x27;].isnull().sum())  # Affiche le nombre de None dans la colonne</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Output</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># Output possible :
+104</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Obtenir beaucoup de <code>None</code> est normal — le scraping est fragile par nature. "St. Lucia" n'existe pas sur Wikipedia (il faudrait "Saint Lucia"), certains pays n'ont pas d'infobox, etc. C'est exactement pour ça qu'on préfère les APIs ou les CSV quand c'est possible.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-sauvegarder-les-données">5. Sauvegarder les données</h2>
+
+<h3 id="ref-sauvegarde-simple-du-dataframe-final">Sauvegarde simple du DataFrame final</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+
+# Sauvegarde le DataFrame dans un fichier CSV
+iso_df.to_csv(&quot;countries_regions.csv&quot;, index=False)
+# index=False : ne pas inclure la colonne d&#x27;index automatique de Pandas dans le CSV</code></pre></div>
+
+
+<h3 id="ref-sauvegarde-intermédiaire-la-bonne-pratique-pour-les-scraping-longs">Sauvegarde intermédiaire — la bonne pratique pour les scraping longs</h3>
+
+<p>Si ton scraper traite 200 pays et plante au 150e, tu perds tout. La solution : <strong>écrire chaque résultat immédiatement dans un fichier</strong>, au fil de la boucle.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import csv  # module CSV intégré à Python, pas besoin de l&#x27;installer
+
+tmp_file_path = &quot;data/regions_tmp.csv&quot;  # chemin du fichier temporaire
+start_index = 0  # permet de reprendre là où on s&#x27;est arrêté (modifier si interruption)
+
+# Ouvre le fichier en mode &quot;append&quot; (ajout) — ne réécrit pas ce qui existe déjà
+with open(tmp_file_path, &#x27;a&#x27;) as tmp_file:
+    csv_writer = csv.writer(tmp_file)  # crée un objet pour écrire des lignes CSV
+
+    # Boucle sur les pays à partir de start_index
+    for country in iso_df[&#x27;Full Name&#x27;][start_index:]:
+        region = region_scraper(country)           # scrape la région pour ce pays
+        csv_writer.writerow([country, region])     # écrit immédiatement une ligne dans le CSV</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Si le scraper est bloqué au pays 80 (par exemple à cause d'une erreur réseau), compte le nombre de lignes déjà dans le CSV et mets <code>start_index = 80</code>. Le mode <code>&#x27;a&#x27;</code> (append) reprend sans écraser ce qui a déjà été collecté.</p></div></div>
+
+<h3 id="ref-relire-les-résultats-intermédiaires">Relire les résultats intermédiaires</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+
+# Relit le fichier CSV temporaire avec les bons noms de colonnes
+country_region_df = pd.read_csv(tmp_file_path, names=[&#x27;Full Name&#x27;, &#x27;Region&#x27;])
+
+country_region_df.head()  # affiche les premières lignes pour vérifier</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Output</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># Output :
+#   Full Name           Region
+# 0 Afghanistan         Asia
+# 1 Åland Islands       NaN
+# 2 Albania             Europe
+# 3 Algeria             Africa
+# 4 American Samoa      United States[a]</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-6-les-erreurs-classiques-à-éviter">6. Les erreurs classiques à éviter</h2>
+
+<h3 id="ref-oublier-le-user-agent">Oublier le User-Agent</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">response = requests.get(url)                                         # ❌ 403 Forbidden sur Wikipedia
+response = requests.get(url, headers={&quot;User-Agent&quot;: &quot;Mon app&quot;})      # ✅</code></pre></div>
+
+
+<h3 id="ref-ecrire-class-au-lieu-de-class_">Ecrire <code>class</code> au lieu de <code>class_</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">soup.find(&quot;li&quot;, class=&quot;package&quot;)    # ❌ SyntaxError — class est réservé en Python
+soup.find(&quot;li&quot;, class_=&quot;package&quot;)   # ✅</code></pre></div>
+
+
+<h3 id="ref-appeler-text-sans-vérifier-que-lélément-existe">Appeler <code>.text</code> sans vérifier que l'élément existe</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Si soup.find() ne trouve rien, il retourne None
+# Appeler .text sur None provoque une AttributeError
+
+region = soup.find(class_=&quot;infobox-data&quot;).text    # ❌ plante si l&#x27;élément est absent
+
+infobox = soup.find(class_=&quot;infobox-data&quot;)        # ✅ on stocke d&#x27;abord le résultat
+region = infobox.text if infobox else None         # ✅ on vérifie avant d&#x27;accéder à .text</code></pre></div>
+
+
+<h3 id="ref-ajouter-tryexcept-trop-tôt">Ajouter <code>try/except</code> trop tôt</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def scrape(country):
+    try:
+        ...          # ❌ masque toutes les erreurs → impossible de comprendre ce qui ne va pas
+    except:
+        return None
+
+# ✅ Tester d&#x27;abord sur un cas simple SANS try/except
+# ✅ Ajouter try/except seulement une fois que le code fonctionne correctement</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>1. Quelle est la différence entre <code>find()</code> et <code>find_all()</code> dans BeautifulSoup ?</strong></p>
+
+<blockquote><p><code>find()</code> retourne le premier élément correspondant (un seul objet), tandis que <code>find_all()</code> retourne une liste de tous les éléments correspondants. Si aucun élément n'est trouvé, <code>find()</code> retourne <code>None</code> et <code>find_all()</code> retourne une liste vide.</p></blockquote>
+
+<p><strong>2. Pourquoi BeautifulSoup utilise <code>class_</code> et non <code>class</code> ?</strong></p>
+
+<blockquote><p>Parce que <code>class</code> est un mot réservé du langage Python (il sert à définir des classes). Utiliser <code>class=</code> dans un appel de fonction provoquerait une <code>SyntaxError</code>. BeautifulSoup contourne ce problème en acceptant <code>class_</code> (avec underscore).</p></blockquote>
+
+<p><strong>3. Pourquoi est-il conseillé de sauvegarder les résultats au fil de la boucle plutôt qu'à la fin ?</strong></p>
+
+<blockquote><p>Le scraping peut prendre beaucoup de temps et peut être interrompu (coupure réseau, erreur, blocage du site). Si on sauvegarde seulement à la fin, toutes les données collectées sont perdues. En écrivant chaque résultat immédiatement dans un fichier CSV en mode <code>&#x27;a&#x27;</code> (append), on peut reprendre depuis là où on s'est arrêté.</p></blockquote>
+
+<p><strong>4. Dans quel ordre doit-on toujours procéder quand on écrit un scraper ?</strong></p>
+
+<blockquote><p>Toujours commencer par faire fonctionner le code sur <strong>un seul exemple</strong> concret, vérifier que le résultat est correct, puis généraliser en fonction, et enfin appliquer sur tout le dataset. Ne jamais construire la boucle en premier.</p></blockquote>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Le <strong>web scraping</strong> extrait automatiquement des données depuis du HTML — c'est un dernier recours (préférer CSV ou API).</li>
+<li><code>requests.get(url, headers={&quot;User-Agent&quot;: &quot;...&quot;})</code> récupère le HTML d'une page.</li>
+<li><code>BeautifulSoup(response.content, &quot;html.parser&quot;)</code> transforme ce HTML en objet Python navigable.</li>
+<li><code>soup.find(&quot;balise&quot;)</code> retourne le premier élément, <code>soup.find_all(&quot;balise&quot;)</code> retourne une liste.</li>
+<li>On peut cibler par classe CSS (<code>class_=&quot;nom&quot;</code>) ou par identifiant (<code>id=&quot;nom&quot;</code>).</li>
+<li>Toujours tester sur <strong>un seul exemple</strong> avant de boucler sur tout un dataset.</li>
+<li>Vérifier que l'élément existe avant d'appeler <code>.text</code> pour éviter les <code>AttributeError</code>.</li>
+<li>Sur de longs scraping, sauvegarder au fil de la boucle avec <code>csv.writer</code> en mode <code>&#x27;a&#x27;</code> (append).</li>
+<li><code>class_</code> (avec underscore) est obligatoire dans BeautifulSoup — <code>class</code> est un mot réservé Python.</li>
+<li>Le scraping est fragile : les pages changent, certains noms diffèrent d'un site à l'autre (<code>&quot;St. Lucia&quot;</code> vs <code>&quot;Saint Lucia&quot;</code>).</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-quand-scraper-quand-ne-pas-scraper">Quand scraper, quand ne pas scraper</a></li><li><a href="#syn-le-cycle-requests-beautifulsoup">Le cycle requests + BeautifulSoup</a></li><li><a href="#syn-sélecteurs-css-et-xpath">Sélecteurs : CSS et XPath</a></li><li><a href="#syn-parser-un-site-multi-pages">Parser un site multi-pages</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-javascript-rendering-selenium-et-playwright">JavaScript rendering : Selenium et Playwright</a></li><li><a href="#syn-légalité-éthique-et-robotstxt">Légalité, éthique et `robots.txt`</a></li><li><a href="#syn-anti-bot-et-stratégies-de-contournement">Anti-bot et stratégies de contournement</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-quand-scraper-quand-ne-pas-scraper">Quand scraper, quand ne pas scraper</h3>
+
+<p>Le scraping consiste à extraire des données depuis le HTML d'un site web qui n'expose pas d'API. C'est puissant mais c'est presque toujours <strong>le dernier recours</strong>. Avant de scraper, posez ces questions dans l'ordre :</p>
+
+<ol>
+<li><strong>Une API existe-t-elle ?</strong> (officielle, partenaire, ou tierce). 90% des grands sites en ont une.</li>
+<li><strong>Le site propose-t-il un export ?</strong> Beaucoup d'open data publics ont un bouton "télécharger en CSV".</li>
+<li><strong>Y a-t-il un dataset déjà compilé ?</strong> Kaggle, data.gouv.fr, Eurostat, ou un repo GitHub.</li>
+<li><strong>Si rien de tout ça, le scraping est-il autorisé ?</strong> Le <code>robots.txt</code>, les CGU, et la loi varient selon les pays.</li>
+</ol>
+
+<p>Un scraper est <strong>fragile par construction</strong> : si le site change un nom de classe CSS, votre scraper casse <strong>silencieusement</strong> et continue à insérer des données incorrectes en base. C'est de la <strong>dette technique permanente</strong>.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : scraper, c'est comme réparer sa voiture en démontant le pare-brise pour atteindre le moteur. Ça marche, mais c'est sale, ça casse facilement, et il y a des chances que vous abîmiez quelque chose. Quand le constructeur (le site) sort une nouvelle version, vous devez tout refaire.</p></div></div>
+
+<h3 id="syn-le-cycle-requests-beautifulsoup">Le cycle requests + BeautifulSoup</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import requests
+from bs4 import BeautifulSoup
+
+# 1. Récupérer le HTML
+response = requests.get(
+    &quot;https://example.com/products&quot;,
+    headers={&quot;User-Agent&quot;: &quot;Mozilla/5.0 (compatible; MyBot/1.0)&quot;},
+    timeout=10,
+)
+response.raise_for_status()
+
+# 2. Parser le HTML
+soup = BeautifulSoup(response.text, &quot;html.parser&quot;)
+
+# 3. Extraire les éléments
+products = soup.select(&quot;div.product-card&quot;)
+for p in products:
+    name = p.select_one(&quot;h3.product-name&quot;).get_text(strip=True)
+    price = p.select_one(&quot;span.price&quot;).get_text(strip=True)
+    url = p.select_one(&quot;a&quot;)[&quot;href&quot;]
+    print(name, price, url)</code></pre></div>
+
+
+<p><strong>Décomposition ligne par ligne</strong> :</p>
+
+<ul>
+<li><code>requests.get(..., headers=..., timeout=10)</code> : récupère la page. Sans <code>User-Agent</code>, beaucoup de sites renvoient une page d'erreur.</li>
+<li><code>response.raise_for_status()</code> : lève une exception si statut 4xx/5xx.</li>
+<li><code>BeautifulSoup(..., &quot;html.parser&quot;)</code> : parse le HTML en arbre navigable.</li>
+<li><code>soup.select(...)</code> : cherche tous les éléments correspondant au sélecteur CSS.</li>
+<li><code>.select_one(...)</code> : cherche <strong>le premier</strong> élément correspondant.</li>
+<li><code>.get_text(strip=True)</code> : extrait le texte sans les balises, trim les espaces.</li>
+<li><code>p.select_one(&quot;a&quot;)[&quot;href&quot;]</code> : accède à l'attribut <code>href</code> du premier lien.</li>
+</ul>
+
+<h3 id="syn-sélecteurs-css-et-xpath">Sélecteurs : CSS et XPath</h3>
+
+<p>BeautifulSoup supporte deux syntaxes pour cibler des éléments.</p>
+
+<p><strong>CSS</strong> (recommandé en général) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">soup.select(&quot;div.product-card&quot;)          # Toutes les divs avec classe product-card
+soup.select_one(&quot;h1#title&quot;)              # Premier h1 avec id title
+soup.select(&quot;a[href^=&#x27;https&#x27;]&quot;)          # Liens commençant par https
+soup.select(&quot;ul &gt; li:nth-child(odd)&quot;)    # Items impairs d&#x27;une liste
+soup.select(&quot;article p:first-of-type&quot;)   # Premier paragraphe de chaque article</code></pre></div>
+
+
+<p><strong>XPath</strong> (via <code>lxml</code>) — plus puissant pour des navigations complexes :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from lxml import html
+tree = html.fromstring(response.text)
+prices = tree.xpath(&#x27;//div[@class=&quot;product-card&quot;]//span[@class=&quot;price&quot;]/text()&#x27;)
+parents = tree.xpath(&#x27;//span[contains(text(), &quot;Sold out&quot;)]/parent::div&#x27;)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : pour identifier les sélecteurs, ouvrez le site dans Chrome, faites <strong>Inspecter</strong> (F12), clic droit sur l'élément voulu → <strong>Copy</strong> → <strong>Copy selector</strong>. Cela vous donne un sélecteur CSS qui marche immédiatement. Affinez ensuite en utilisant des classes plus génériques pour rendre votre scraper résistant aux petits changements.</p></div></div>
+
+<h3 id="syn-parser-un-site-multi-pages">Parser un site multi-pages</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def scrape_all_pages(base_url, max_pages=100):
+    &quot;&quot;&quot;Parcourt les pages de pagination d&#x27;un site.&quot;&quot;&quot;
+    all_items = []
+    for page in range(1, max_pages + 1):
+        url = f&quot;{base_url}?page={page}&quot;
+        r = requests.get(url, headers=HEADERS, timeout=10)
+        if r.status_code != 200:
+            break                                    # Page inexistante
+        soup = BeautifulSoup(r.text, &quot;html.parser&quot;)
+        items = soup.select(&quot;div.item&quot;)
+        if not items:
+            break                                    # Plus de résultats
+        all_items.extend([parse_item(it) for it in items])
+        time.sleep(1)                                # Politesse entre requêtes
+    return all_items</code></pre></div>
+
+
+<p><strong>Trois éléments cruciaux</strong> :</p>
+
+<ol>
+<li><strong>Condition d'arrêt</strong> : ne jamais boucler à l'infini.</li>
+<li><strong><code>time.sleep</code></strong> : 1 seconde minimum entre les requêtes. Hammer un site est <strong>impoli ET vous fera bannir</strong>.</li>
+<li><strong>Sauvegarde incrémentale</strong> : écrire chaque page sur disque au fur et à mesure.</li>
+</ol>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-javascript-rendering-selenium-et-playwright">JavaScript rendering : Selenium et Playwright</h3>
+
+<p>Beaucoup de sites modernes (React, Vue, Angular) génèrent leur HTML <strong>côté client</strong> en JavaScript. Quand vous récupérez la page avec <code>requests</code>, vous obtenez un squelette quasi vide :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+&lt;script src=&quot;bundle.js&quot;&gt;&lt;/script&gt;</code></pre></div>
+
+
+<p>Aucune donnée à scraper. <strong>Solution</strong> : utiliser un navigateur <strong>headless</strong> qui exécute le JS comme un vrai browser.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from playwright.sync_api import sync_playwright
+
+with sync_playwright() as p:
+    browser = p.chromium.launch(headless=True)
+    page = browser.new_page()
+    page.goto(&quot;https://example.com/products&quot;)
+    page.wait_for_selector(&quot;div.product-card&quot;)   # Attend que le JS ait rempli la page
+    html = page.content()
+    browser.close()
+
+soup = BeautifulSoup(html, &quot;html.parser&quot;)</code></pre></div>
+
+
+<p><strong>Playwright</strong> (récent, moderne) est généralement préféré à <strong>Selenium</strong> (plus ancien, plus lourd).</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Attention performance</strong> : un browser headless prend ~200 Mo de RAM et ~2 secondes par page. Pour scraper 10 000 pages, c'est plusieurs <strong>heures</strong>. Avant de sortir l'artillerie lourde, vérifiez si l'API GraphQL ou les XHR du site sont accessibles directement (Network tab du navigateur). Vous économiserez 100x en perf.</p></div></div>
+
+<h3 id="syn-légalité-éthique-et-robotstxt">Légalité, éthique et <code>robots.txt</code></h3>
+
+<p>Le <code>robots.txt</code> est un fichier à la racine d'un site (<code>https://example.com/robots.txt</code>) qui déclare ce que les bots peuvent et ne peuvent pas faire :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">User-agent: *
+Disallow: /admin/
+Disallow: /api/
+Crawl-delay: 5</code></pre></div>
+
+
+<p>Ce n'est <strong>pas une obligation légale</strong>, mais c'est une convention universelle. Le respecter est un signe de professionnalisme et vous évite les bannissements.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from urllib.robotparser import RobotFileParser
+rp = RobotFileParser(&quot;https://example.com/robots.txt&quot;)
+rp.read()
+rp.can_fetch(&quot;MyBot/1.0&quot;, &quot;https://example.com/products/123&quot;)  # True / False</code></pre></div>
+
+
+<p><strong>Légal vs interdit</strong> : le scraping en lui-même est <strong>légal</strong> dans la plupart des juridictions tant qu'il s'agit de données publiques. Mais plusieurs lignes rouges :</p>
+
+<ul>
+<li>Scraper des <strong>données personnelles</strong> sans consentement → RGPD (Europe), CCPA (Californie)</li>
+<li>Scraper en <strong>violation explicite des CGU</strong> → procès possible (LinkedIn vs hiQ Labs, Meta vs scrappers)</li>
+<li>Scraper à un <strong>rythme qui dégrade le service</strong> → délit informatique potentiel</li>
+<li><strong>Revendre</strong> des données scrapées sans autorisation → propriété intellectuelle</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Règle d'or</strong> : ne scrapez jamais ce que vous n'iriez pas chercher manuellement. Ne scrapez jamais à plus d'une requête par seconde. Identifiez votre bot avec un User-Agent contenant un email. Si le site propose une API payante, utilisez-la — c'est moins cher qu'un avocat.</p></div></div>
+
+<h3 id="syn-anti-bot-et-stratégies-de-contournement">Anti-bot et stratégies de contournement</h3>
+
+<p>Les sites se défendent contre le scraping avec différents niveaux :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Niveau</th><th>Mécanisme</th><th>Contournement légal</th></tr></thead><tbody><tr><td>1</td><td>Header <code>User-Agent</code> requis</td><td>Mettre un UA réaliste</td></tr><tr><td>2</td><td>Cookies de session</td><td><code>requests.Session()</code> qui persiste les cookies</td></tr><tr><td>3</td><td>CAPTCHA après N requêtes</td><td>Ralentir, alterner les IP</td></tr><tr><td>4</td><td>JavaScript challenge (Cloudflare)</td><td>Playwright, ou service tiers (ScraperAPI)</td></tr><tr><td>5</td><td>Empreinte navigateur (TLS, canvas)</td><td>Difficile, parfois impossible</td></tr><tr><td>6</td><td>IP banning</td><td>Proxies rotatifs, IP résidentielles</td></tr></tbody></table></div>
+<p>Plus vous montez dans l'échelle, plus c'est techniquement difficile et plus c'est moralement et <strong>légalement risqué</strong>. Les niveaux 5-6 indiquent que le site <strong>ne veut vraiment pas</strong> être scrapé : continuer expose à des poursuites.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : pour des projets sérieux et récurrents, envisagez les <strong>services de scraping managés</strong> (Bright Data, Apify, ScraperAPI). Ils gèrent les proxies, les CAPTCHAs, le rendering JS, et vous garantissent la conformité légale. Le coût (10-100€/mois) est largement compensé par le temps de maintenance économisé.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Vous scrapez une page et <code>response.text</code> renvoie du texte vide ou une page de chargement. Quelles sont les trois causes principales et comment diagnostiquer ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>JavaScript et headers.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Cause 1 — JavaScript rendering</strong> : la page est rendue côté client, <code>requests</code> ne voit que le squelette. <strong>Diagnostic</strong> : ouvrez <code>view-source:URL</code> dans Chrome (raccourci <code>Ctrl+U</code>). Si la donnée n'y est pas mais qu'elle est visible dans l'inspecteur, c'est du JS. <strong>Solution</strong> : Playwright ou trouver l'API XHR sous-jacente.</p>
+
+<p><strong>Cause 2 — User-Agent manquant</strong> : le serveur détecte l'absence d'UA et renvoie une page différente. <strong>Diagnostic</strong> : essayez avec un UA Chrome réaliste.</p>
+
+<p><strong>Cause 3 — Cookies / login requis</strong> : la page nécessite une session. <strong>Diagnostic</strong> : ouvrez un onglet Privé, allez sur la page sans être loggé. Si vous voyez le contenu, c'est juste un cookie ; sinon il faut s'authentifier. <strong>Solution</strong> : <code>requests.Session()</code> ou Playwright avec login programmatique.</p>
+
+</details>
+
+<p><strong>Q2 : Quelle est la différence entre <code>select</code> et <code>find_all</code> en BeautifulSoup, et lequel choisir ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Syntaxe.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong><code>find_all</code></strong> est l'API historique qui prend des arguments nommés :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">soup.find_all(&quot;div&quot;, class_=&quot;product&quot;, id=&quot;featured&quot;)</code></pre></div>
+
+
+<p>C'est verbeux et le <code>class_</code> (avec underscore) trahit que <code>class</code> est un mot réservé Python.</p>
+
+<p><strong><code>select</code></strong> prend un sélecteur CSS standard :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">soup.select(&quot;div.product#featured&quot;)</code></pre></div>
+
+
+<p>Plus concis, plus expressif (supporte les pseudo-classes <code>:nth-child</code>, <code>:first-of-type</code>, les combinateurs <code>&gt;</code>, <code>~</code>, <code>+</code>), et c'est la même syntaxe que celle qu'on copie-colle depuis <strong>Chrome DevTools</strong>.</p>
+
+<p>Préférez <strong>toujours</strong> <code>select</code>/<code>select_one</code> sauf cas particuliers (recherche par regex sur le texte par exemple). En entretien data engineering, montrer une maîtrise des sélecteurs CSS témoigne d'une expérience web.</p>
+
+</details>
+
+<p><strong>Q3 : Vous scrapez un site et après 50 requêtes, vous recevez systématiquement des erreurs 403. Que se passe-t-il et comment réagir éthiquement ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Ratelimiting et IPs.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Le site vous a probablement <strong>banni ou rate-limité</strong>.</p>
+
+<p><strong>Diagnostic</strong> :</p>
+
+<ol>
+<li>Vérifiez les headers de la 403 — souvent <code>Retry-After</code> ou un message explicite.</li>
+<li>Testez avec une autre IP (4G mobile) — si ça marche, c'est un ban d'IP.</li>
+<li>Testez avec un autre UA.</li>
+</ol>
+
+<p><strong>Réaction éthique</strong> :</p>
+
+<ul>
+<li><strong>Ralentissez drastiquement</strong> (1 requête toutes les 5-10 secondes)</li>
+<li>Respectez le <code>robots.txt</code></li>
+<li>Si le site continue à vous bloquer, <strong>acceptez le signal</strong>. Le site vous dit qu'il ne veut pas être scrapé.</li>
+</ul>
+
+<p>Forcer le passage avec des proxies tournants vous met en <strong>zone grise légale</strong> et expose votre employeur à des risques juridiques.</p>
+
+<p><strong>Alternative</strong> : contacter le site et demander un accès API officiel — beaucoup acceptent pour des cas d'usage légitimes (recherche, intégration B2B).</p>
+
+<p><strong>Ce qu'il ne faut jamais faire</strong> : utiliser plusieurs IPs résidentielles pour brouiller le tracking et continuer comme si de rien n'était.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/" target="_blank" rel="noopener">Beautiful Soup documentation</a> — claire et exhaustive</li>
+<li><a href="https://playwright.dev/python/" target="_blank" rel="noopener">Playwright Python</a> — la doc officielle</li>
+<li><em>Web Scraping with Python</em> (Ryan Mitchell, 2nd ed.) — référence du domaine</li>
+<li><a href="https://scrapy.org/" target="_blank" rel="noopener">Scrapy</a> — framework pour des crawlers de production</li>
+<li><a href="https://developers.google.com/search/docs/advanced/robots/intro" target="_blank" rel="noopener">robots.txt Specifications</a> — la spec officielle</li>
+<li><a href="https://en.wikipedia.org/wiki/HiQ_Labs_v._LinkedIn" target="_blank" rel="noopener">hiQ Labs vs LinkedIn</a> — l'arrêt qui a clarifié la légalité du scraping de données publiques aux US</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../data-toolkit/data-sourcing.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Data Sourcing</span>
+  </a>
+  <a href="../data-toolkit/coding-properly.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Coding Properly →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lists &amp; loops — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Lists &amp; loops</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html" class="active">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Python & SQL Week</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Lists &amp; loops</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Lists &amp; loops</h1>
+        <p class="page-objective">Comprendre les **listes** en Python et savoir itérer dessus avec une boucle `for`.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Iterable</div>
+        <div class="key-concept-def">Objet qu&#x27;on peut parcourir avec `for x in …` (list, tuple, dict, generator…).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">List comprehension</div>
+        <div class="key-concept-def">`[expr for x in iterable if cond]` — création concise et rapide.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Slicing</div>
+        <div class="key-concept-def">`lst[start:stop:step]` extrait une sous-liste sans modifier l&#x27;original.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Enumerate / zip</div>
+        <div class="key-concept-def">`enumerate` donne (index, valeur), `zip` parcourt plusieurs iterables en parallèle.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-listes-boucles">Cheatsheet — Listes & Boucles</a><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-listes-définition">1) Listes : définition</a><li><a href="#2-créer-une-liste">2) Créer une liste</a><li><a href="#3-index-ça-commence-à-0">3) Index : ça commence à 0</a><li><a href="#4-lire-un-élément-accès-par-index">4) Lire un élément (accès par index)</a><li><a href="#5-modifier-un-élément">5) Modifier un élément</a><li><a href="#6-ajouter-un-élément-append">6) Ajouter un élément : `append()`</a><li><a href="#7-supprimer-un-élément">7) Supprimer un élément</a><ol><li><a href="#71-supprimer-par-valeur-remove">7.1 Supprimer par valeur : `remove()`</a></li><li><a href="#72-supprimer-par-index-pop-et-del">7.2 Supprimer par index : `pop()` et `del`</a></li></ol></li><li><a href="#8-méthodes-utiles">8) Méthodes utiles</a><ol><li><a href="#81-taille-len">8.1 Taille : `len()`</a></li><li><a href="#82-trier-sort-vs-sorted">8.2 Trier : `sort()` vs `sorted()`</a></li></ol></li><li><a href="#9-boucles-for">9) Boucles : `for`</a><ol><li><a href="#91-exemple-avec-range">9.1 Exemple avec `range()`</a></li><li><a href="#92-itérer-directement-sur-une-liste">9.2 Itérer directement sur une liste</a></li></ol></li></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-listes-boucles">📋 Cheatsheet — Listes & Boucles</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## ── CRÉER ────────────────────────────────────────────
+lst = []                       # liste vide
+lst = [1, &quot;hello&quot;, True]       # liste mixte
+
+## ── ACCÈS ────────────────────────────────────────────
+lst[0]      # premier élément
+lst[-1]     # dernier élément
+lst[1:3]    # slice → éléments index 1 et 2
+
+## ── MODIFIER ─────────────────────────────────────────
+lst[0] = 99                    # remplace l&#x27;élément à l&#x27;index 0
+
+## ── AJOUTER ──────────────────────────────────────────
+lst.append(4)          # ajoute en fin de liste
+lst.insert(0, &quot;top&quot;)   # insère à l&#x27;index 0
+lst.extend([5, 6])     # ajoute plusieurs éléments (aplatit)
+
+## ── SUPPRIMER ────────────────────────────────────────
+lst.remove(&quot;hello&quot;)    # par valeur (1ère occurrence)
+lst.pop(0)             # par index, retourne la valeur supprimée
+del lst[0]             # par index, ne retourne rien
+
+## ── INFOS ────────────────────────────────────────────
+len(lst)               # nombre d&#x27;éléments
+lst.count(1)           # nombre d&#x27;occurrences de la valeur 1
+lst.index(99)          # index de la valeur 99
+
+## ── TRIER ────────────────────────────────────────────
+lst.sort()                  # trie en place, retourne None
+lst.sort(reverse=True)      # trie en place, ordre décroissant
+new = sorted(lst)           # retourne une nouvelle liste triée
+
+## ── BOUCLES ──────────────────────────────────────────
+for item in lst:            # itérer sur les valeurs
+    print(item)
+
+for i, item in enumerate(lst):   # itérer avec index
+    print(i, item)
+
+for i in range(5):          # 0, 1, 2, 3, 4
+    print(i)
+
+for i in range(1, 6):       # 1, 2, 3, 4, 5
+    print(i)</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Accéder à un index qui n'existe pas</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles = [&quot;john&quot;, &quot;ringo&quot;, &quot;george&quot;]
+beatles[5]  # ❌ IndexError: list index out of range</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre <code>append()</code> et <code>extend()</code></strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">lst = [1, 2]
+lst.append([3, 4])   # ❌ donne [1, 2, [3, 4]]
+lst.extend([3, 4])   # ✅ donne [1, 2, 3, 4]</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Modifier une liste pendant qu'on itère dessus</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for item in lst:
+    lst.remove(item)  # ❌ comportement imprévisible
+## ✅ Itère sur une copie : for item in lst.copy():</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier que <code>sort()</code> modifie la liste en place et retourne <code>None</code></strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">result = lst.sort()   # ❌ result vaut None
+lst.sort()            # ✅ la liste est triée sur place
+result = sorted(lst)  # ✅ retourne une nouvelle liste triée</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser <code>range()</code> avec un seul argument en attendant 1..n</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for i in range(5):    # ❌ donne 0, 1, 2, 3, 4
+for i in range(1, 6): # ✅ donne 1, 2, 3, 4, 5</code></pre></div></div></div>
+
+<hr>
+
+<h2 id="1-listes-définition">1) Listes : définition</h2>
+
+<p>Une <strong>liste</strong> (list) est une collection <strong>ordonnée</strong> d'éléments.</p>
+
+<ul>
+<li>Elle peut contenir des types variés.</li>
+<li>Les éléments sont accessibles par <strong>index</strong>.</li>
+</ul>
+
+<hr>
+
+<h2 id="2-créer-une-liste">2) Créer une liste</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">empty_list = []  # liste vide
+beatles = [&quot;john&quot;, &quot;ringo&quot;, &quot;seb&quot;]  # liste de strings</code></pre></div>
+
+
+<hr>
+
+<h2 id="3-index-ça-commence-à-0">3) Index : ça commence à 0</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles = [&quot;john&quot;, &quot;ringo&quot;, &quot;seb&quot;]
+## index =&gt;    0       1       2</code></pre></div>
+
+
+<hr>
+
+<h2 id="4-lire-un-élément-accès-par-index">4) Lire un élément (accès par index)</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles = [&quot;john&quot;, &quot;ringo&quot;, &quot;seb&quot;]
+
+beatles[0]   #=&gt; &quot;john&quot;
+beatles[2]   #=&gt; &quot;seb&quot;
+beatles[-1]  #=&gt; &quot;seb&quot;  (dernier élément)
+beatles[8]   #=&gt; IndexError: list index out of range</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Un index en dehors des limites déclenche une <code>IndexError</code>.</p></div></div>
+
+<hr>
+
+<h2 id="5-modifier-un-élément">5) Modifier un élément</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles = [&quot;john&quot;, &quot;ringo&quot;, &quot;seb&quot;]
+
+beatles[2] = &quot;george&quot;
+print(beatles)  #=&gt; [&quot;john&quot;, &quot;ringo&quot;, &quot;george&quot;]</code></pre></div>
+
+
+<hr>
+
+<h2 id="6-ajouter-un-élément-append">6) Ajouter un élément : <code>append()</code></h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles = [&quot;john&quot;, &quot;ringo&quot;, &quot;george&quot;]
+
+beatles.append(&quot;paul&quot;)
+print(beatles)  #=&gt; [&quot;john&quot;, &quot;ringo&quot;, &quot;george&quot;, &quot;paul&quot;]</code></pre></div>
+
+
+<hr>
+
+<h2 id="7-supprimer-un-élément">7) Supprimer un élément</h2>
+
+<h3 id="71-supprimer-par-valeur-remove">7.1 Supprimer par valeur : <code>remove()</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles.remove(&quot;paul&quot;)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>remove()</code> supprime <strong>la première occurrence</strong> seulement.</p></div></div>
+
+<h3 id="72-supprimer-par-index-pop-et-del">7.2 Supprimer par index : <code>pop()</code> et <code>del</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">removed = beatles.pop(0)  # retire et renvoie l&#x27;élément à l&#x27;index 0
+
+## ou
+
+del beatles[0]  # retire l&#x27;élément, sans le renvoyer</code></pre></div>
+
+
+<hr>
+
+<h2 id="8-méthodes-utiles">8) Méthodes utiles</h2>
+
+<h3 id="81-taille-len">8.1 Taille : <code>len()</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">len(beatles)   #=&gt; nombre d&#x27;éléments dans la liste</code></pre></div>
+
+
+<h3 id="82-trier-sort-vs-sorted">8.2 Trier : <code>sort()</code> vs <code>sorted()</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles.sort()             # trie en place, retourne None
+result = sorted(beatles)   # retourne une nouvelle liste triée, beatles inchangée</code></pre></div>
+
+
+<hr>
+
+<h2 id="9-boucles-for">9) Boucles : <code>for</code></h2>
+
+<h3 id="91-exemple-avec-range">9.1 Exemple avec <code>range()</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for num in range(5):
+	print(num)
+
+#=&gt; 0
+#=&gt; 1
+#=&gt; 2
+#=&gt; 3
+#=&gt; 4</code></pre></div>
+
+
+<h3 id="92-itérer-directement-sur-une-liste">9.2 Itérer directement sur une liste</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for name in beatles:
+	print(name)</code></pre></div>
+
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-à-quoi-ça-sert">À quoi ça sert ?</a></li><li><a href="#ref-principes-clés">Principes clés</a></li><li><a href="#ref-analogie-fil-rouge">Analogie fil rouge</a></li><li><a href="#ref-à-retenir-avant-de-commencer">À retenir avant de commencer</a></li><li><a href="#ref-dans-ce-cours-reformulé-nous-allons">Dans ce cours reformulé, nous allons…</a></li></ol></li><li><a href="#ref-1-cest-quoi-une-liste">1) C'est quoi une liste ?</a><li><a href="#ref-2-lindex-le-numéro-de-casier">2) L'index : le numéro de casier</a><li><a href="#ref-3-lire-un-élément">3) Lire un élément</a><li><a href="#ref-4-modifier-un-élément">4) Modifier un élément</a><li><a href="#ref-5-ajouter-des-éléments">5) Ajouter des éléments</a><ol><li><a href="#ref-append-ajouter-un-seul-élément-à-la-fin">`append()` — ajouter un seul élément à la fin</a></li><li><a href="#ref-insert-ajouter-à-un-endroit-précis">`insert()` — ajouter à un endroit précis</a></li><li><a href="#ref-extend-fusionner-une-autre-liste">`extend()` — fusionner une autre liste</a></li></ol></li><li><a href="#ref-6-supprimer-des-éléments">6) Supprimer des éléments</a><ol><li><a href="#ref-remove-supprimer-par-valeur">`remove()` — supprimer par valeur</a></li><li><a href="#ref-pop-supprimer-par-index-et-récupérer-la-valeur">`pop()` — supprimer par index et récupérer la valeur</a></li><li><a href="#ref-del-supprimer-par-index-sans-récupérer-la-valeur">`del` — supprimer par index sans récupérer la valeur</a></li></ol></li><li><a href="#ref-7-méthodes-utiles">7) Méthodes utiles</a><ol><li><a href="#ref-len-connaître-la-taille-dune-liste">`len()` — connaître la taille d'une liste</a></li><li><a href="#ref-count-compter-les-occurrences-dune-valeur">`count()` — compter les occurrences d'une valeur</a></li><li><a href="#ref-index-trouver-la-position-dune-valeur">`index()` — trouver la position d'une valeur</a></li><li><a href="#ref-sort-vs-sorted-trier-une-liste">`sort()` vs `sorted()` — trier une liste</a></li></ol></li><li><a href="#ref-8-les-boucles-for">8) Les boucles `for`</a><ol><li><a href="#ref-for-sur-une-liste">`for` sur une liste</a></li><li><a href="#ref-range-boucler-sur-des-nombres">`range()` — boucler sur des nombres</a></li><li><a href="#ref-enumerate-boucler-avec-lindex-et-la-valeur">`enumerate()` — boucler avec l'index et la valeur</a></li></ol></li><li><a href="#ref-9-erreurs-fréquentes-à-éviter">9) Erreurs fréquentes à éviter</a><ol><li><a href="#ref-ne-pas-modifier-une-liste-pendant-quon-la-parcourt">Ne pas modifier une liste pendant qu'on la parcourt</a></li><li><a href="#ref-récapitulatif-des-erreurs-classiques">Récapitulatif des erreurs classiques</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<h3 id="ref-à-quoi-ça-sert">À quoi ça sert ?</h3>
+
+<p>En programmation, on manipule souvent des <strong>groupes de données</strong> : une liste de prénoms, une série de notes, une collection de prix. Python propose un outil parfait pour ça : la <strong>liste</strong> (<code>list</code>). Et pour traiter chaque élément d'une liste un par un, on utilise une <strong>boucle</strong> (<code>for</code>).</p>
+
+<h3 id="ref-principes-clés">Principes clés</h3>
+
+<ul>
+<li>Une liste est une <strong>collection ordonnée</strong> d'éléments, entre crochets <code>[...]</code>.</li>
+<li>Chaque élément a un <strong>numéro de position</strong> appelé <strong>index</strong>, qui commence à <code>0</code>.</li>
+<li>Une boucle <code>for</code> permet de <strong>répéter une action</strong> pour chaque élément d'une liste.</li>
+<li>On peut <strong>ajouter</strong>, <strong>modifier</strong>, <strong>supprimer</strong> des éléments d'une liste à tout moment.</li>
+<li><code>sort()</code> modifie la liste sur place ; <code>sorted()</code> retourne une nouvelle liste triée.</li>
+</ul>
+
+<h3 id="ref-analogie-fil-rouge">Analogie fil rouge</h3>
+
+<p>Imagine un <strong>casier de vestiaire</strong> : chaque casier a un <strong>numéro</strong> (l'index), et tu peux y mettre ou retirer quelque chose à tout moment. La liste Python, c'est exactement ça — une rangée de casiers numérotés.</p>
+
+<h3 id="ref-à-retenir-avant-de-commencer">À retenir avant de commencer</h3>
+
+<ol>
+<li>Les index commencent à <strong>0</strong>, pas à 1.</li>
+<li><code>append()</code> ajoute <strong>un seul</strong> élément à la fin.</li>
+<li><code>extend()</code> fusionne <strong>une autre liste</strong> dans la tienne.</li>
+<li><code>sort()</code> retourne <code>None</code> — ne pas l'assigner à une variable.</li>
+<li>Ne jamais modifier une liste <strong>pendant</strong> qu'on la parcourt avec <code>for</code>.</li>
+</ol>
+
+<h3 id="ref-dans-ce-cours-reformulé-nous-allons">Dans ce cours reformulé, nous allons…</h3>
+
+<ol>
+<li>Créer et lire des listes</li>
+<li>Modifier, ajouter et supprimer des éléments</li>
+<li>Utiliser les méthodes utiles (<code>len</code>, <code>sort</code>, <code>sorted</code>)</li>
+<li>Parcourir une liste avec une boucle <code>for</code></li>
+<li>Éviter les erreurs classiques des débutants</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-cest-quoi-une-liste">1) C'est quoi une liste ?</h2>
+
+<p>Une <strong>liste</strong> est une boîte qui contient plusieurs valeurs dans un ordre précis. On la note avec des crochets <code>[...]</code> et on sépare les éléments par des virgules.</p>
+
+<p>Elle peut contenir des nombres, des mots, des booléens — ou même un mélange de tout ça.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Une liste vide (casier vide)
+empty_list = []
+
+# Une liste de prénoms (trois casiers remplis)
+beatles = [&quot;john&quot;, &quot;ringo&quot;, &quot;george&quot;]
+
+# Une liste mixte — Python l&#x27;accepte
+melange = [1, &quot;hello&quot;, True]</code></pre></div>
+
+
+<ul>
+<li><code>empty_list</code> est une liste vide : elle est prête à recevoir des éléments.</li>
+<li><code>beatles</code> contient 3 chaînes de caractères.</li>
+<li><code>melange</code> montre que Python accepte des types différents dans la même liste.</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Dans la pratique, on met surtout des éléments du <strong>même type</strong> dans une liste, pour garder le code lisible.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-lindex-le-numéro-de-casier">2) L'index : le numéro de casier</h2>
+
+<p>Chaque élément d'une liste a un <strong>index</strong> — son numéro de position. Le premier élément est à l'index <code>0</code>, le deuxième à <code>1</code>, etc.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles = [&quot;john&quot;, &quot;ringo&quot;, &quot;george&quot;]
+#  index =&gt;   0       1        2</code></pre></div>
+
+
+<p>Python accepte aussi les <strong>index négatifs</strong> pour lire depuis la fin :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles[-1]  # dernier élément  =&gt; &quot;george&quot;
+beatles[-2]  # avant-dernier    =&gt; &quot;ringo&quot;</code></pre></div>
+
+
+<p>L'index <code>-1</code> correspond toujours au dernier casier, sans avoir à connaître la taille de la liste.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Si tu demandes un index qui n'existe pas (par exemple <code>beatles[5]</code> alors qu'il y a seulement 3 éléments), Python déclenche une <code>IndexError</code>. Pense toujours à vérifier la taille de ta liste avec <code>len()</code>.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-lire-un-élément">3) Lire un élément</h2>
+
+<p>Pour lire un élément, on écrit le nom de la liste suivi de l'index entre crochets.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles = [&quot;john&quot;, &quot;ringo&quot;, &quot;george&quot;]
+
+print(beatles[0])   # affiche &quot;john&quot;   — premier casier
+print(beatles[2])   # affiche &quot;george&quot; — troisième casier
+print(beatles[-1])  # affiche &quot;george&quot; — dernier casier (raccourci pratique)</code></pre></div>
+
+
+<ul>
+<li><code>beatles[0]</code> ouvre le casier numéro 0 et lit ce qu'il contient.</li>
+<li><code>beatles[-1]</code> lit le dernier casier, peu importe la taille de la liste.</li>
+</ul>
+
+<hr>
+
+<h2 id="ref-4-modifier-un-élément">4) Modifier un élément</h2>
+
+<p>Pour changer la valeur d'un casier, on assigne une nouvelle valeur à cet index.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles = [&quot;john&quot;, &quot;ringo&quot;, &quot;seb&quot;]  # &quot;seb&quot; est une erreur dans notre liste
+
+beatles[2] = &quot;george&quot;               # on corrige le casier numéro 2
+print(beatles)                      # affiche [&quot;john&quot;, &quot;ringo&quot;, &quot;george&quot;]</code></pre></div>
+
+
+<p>On cible le casier <code>[2]</code> et on y met <code>&quot;george&quot;</code> à la place de <code>&quot;seb&quot;</code>.</p>
+
+<hr>
+
+<h2 id="ref-5-ajouter-des-éléments">5) Ajouter des éléments</h2>
+
+<p>Il existe trois façons d'ajouter des éléments.</p>
+
+<h3 id="ref-append-ajouter-un-seul-élément-à-la-fin"><code>append()</code> — ajouter un seul élément à la fin</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles = [&quot;john&quot;, &quot;ringo&quot;, &quot;george&quot;]
+
+beatles.append(&quot;paul&quot;)      # ajoute &quot;paul&quot; à la fin de la liste
+print(beatles)              # [&quot;john&quot;, &quot;ringo&quot;, &quot;george&quot;, &quot;paul&quot;]</code></pre></div>
+
+
+<p><code>append()</code> place un nouvel élément dans le dernier casier disponible.</p>
+
+<h3 id="ref-insert-ajouter-à-un-endroit-précis"><code>insert()</code> — ajouter à un endroit précis</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles.insert(0, &quot;pete&quot;)   # insère &quot;pete&quot; en position 0 (en tête de liste)
+print(beatles)              # [&quot;pete&quot;, &quot;john&quot;, &quot;ringo&quot;, &quot;george&quot;, &quot;paul&quot;]</code></pre></div>
+
+
+<p><code>insert(index, valeur)</code> pousse les autres éléments vers la droite.</p>
+
+<h3 id="ref-extend-fusionner-une-autre-liste"><code>extend()</code> — fusionner une autre liste</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles = [&quot;john&quot;, &quot;paul&quot;]
+nouveaux = [&quot;george&quot;, &quot;ringo&quot;]
+
+beatles.extend(nouveaux)    # fusionne les deux listes en une
+print(beatles)              # [&quot;john&quot;, &quot;paul&quot;, &quot;george&quot;, &quot;ringo&quot;]</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong><code>append()</code> vs <code>extend()</code> — erreur classique !</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">lst = [1, 2]
+lst.append([3, 4])   # donne [1, 2, [3, 4]]  — une liste DANS la liste
+lst.extend([3, 4])   # donne [1, 2, 3, 4]    — les éléments sont fusionnés</code></pre></div>
+<p><code>append()</code> traite <code>[3, 4]</code> comme <strong>un seul élément</strong>. <code>extend()</code> le <strong>déroule</strong> et ajoute chaque valeur séparément.</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-supprimer-des-éléments">6) Supprimer des éléments</h2>
+
+<p>Trois outils selon ce que tu sais de l'élément à supprimer.</p>
+
+<h3 id="ref-remove-supprimer-par-valeur"><code>remove()</code> — supprimer par valeur</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles = [&quot;john&quot;, &quot;ringo&quot;, &quot;george&quot;, &quot;paul&quot;]
+
+beatles.remove(&quot;ringo&quot;)     # cherche &quot;ringo&quot; et le retire
+print(beatles)              # [&quot;john&quot;, &quot;george&quot;, &quot;paul&quot;]</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>remove()</code> supprime uniquement <strong>la première occurrence</strong> de la valeur. Si <code>&quot;ringo&quot;</code> apparaît deux fois, seul le premier est retiré.</p></div></div>
+
+<h3 id="ref-pop-supprimer-par-index-et-récupérer-la-valeur"><code>pop()</code> — supprimer par index et récupérer la valeur</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles = [&quot;john&quot;, &quot;george&quot;, &quot;paul&quot;]
+
+removed = beatles.pop(0)    # retire l&#x27;élément à l&#x27;index 0 ET le renvoie
+print(removed)              # &quot;john&quot;
+print(beatles)              # [&quot;george&quot;, &quot;paul&quot;]</code></pre></div>
+
+
+<p><code>pop()</code> est utile quand tu veux <strong>utiliser</strong> l'élément que tu retires.</p>
+
+<h3 id="ref-del-supprimer-par-index-sans-récupérer-la-valeur"><code>del</code> — supprimer par index sans récupérer la valeur</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles = [&quot;george&quot;, &quot;paul&quot;]
+
+del beatles[0]              # retire l&#x27;élément à l&#x27;index 0, sans le retourner
+print(beatles)              # [&quot;paul&quot;]</code></pre></div>
+
+
+<p><code>del</code> est plus direct mais ne te donne pas la valeur supprimée.</p>
+
+<hr>
+
+<h2 id="ref-7-méthodes-utiles">7) Méthodes utiles</h2>
+
+<h3 id="ref-len-connaître-la-taille-dune-liste"><code>len()</code> — connaître la taille d'une liste</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles = [&quot;john&quot;, &quot;ringo&quot;, &quot;george&quot;, &quot;paul&quot;]
+
+print(len(beatles))   # affiche 4 — il y a 4 éléments</code></pre></div>
+
+
+<p><code>len()</code> compte le nombre de casiers occupés dans ta liste.</p>
+
+<h3 id="ref-count-compter-les-occurrences-dune-valeur"><code>count()</code> — compter les occurrences d'une valeur</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">notes = [12, 15, 12, 18, 12]
+
+print(notes.count(12))   # affiche 3 — &quot;12&quot; apparaît 3 fois</code></pre></div>
+
+
+<h3 id="ref-index-trouver-la-position-dune-valeur"><code>index()</code> — trouver la position d'une valeur</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles = [&quot;john&quot;, &quot;ringo&quot;, &quot;george&quot;, &quot;paul&quot;]
+
+print(beatles.index(&quot;george&quot;))   # affiche 2</code></pre></div>
+
+
+<h3 id="ref-sort-vs-sorted-trier-une-liste"><code>sort()</code> vs <code>sorted()</code> — trier une liste</h3>
+
+<p>Ces deux outils trient une liste, mais de manière différente.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">notes = [15, 8, 18, 12]
+
+# --- sort() : trie la liste EN PLACE ---
+notes.sort()               # modifie &quot;notes&quot; directement
+print(notes)               # [8, 12, 15, 18]
+
+# --- sort(reverse=True) : ordre décroissant ---
+notes.sort(reverse=True)   # modifie &quot;notes&quot; directement
+print(notes)               # [18, 15, 12, 8]
+
+# --- sorted() : retourne une NOUVELLE liste triée ---
+notes_originales = [15, 8, 18, 12]
+notes_triees = sorted(notes_originales)   # notes_originales reste inchangée
+print(notes_triees)        # [8, 12, 15, 18]
+print(notes_originales)    # [15, 8, 18, 12]  — toujours dans l&#x27;ordre original</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège classique avec <code>sort()</code> :</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">result = notes.sort()   # result vaut None — sort() ne retourne rien !</code></pre></div>
+<p><code>sort()</code> modifie la liste sur place et retourne <code>None</code>. Ne jamais l'assigner à une variable. Utilise <code>sorted()</code> si tu veux garder le résultat dans une nouvelle variable.</p></div></div>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><strong>Mémo</strong> : <code>sort()</code> = "je <strong>transforme</strong> la liste" | <code>sorted()</code> = "je <strong>crée</strong> une nouvelle liste triée"</p></div></div>
+
+<hr>
+
+<h2 id="ref-8-les-boucles-for">8) Les boucles <code>for</code></h2>
+
+<p>Une boucle <code>for</code> permet de <strong>répéter une action</strong> pour chaque élément d'une liste (ou d'une séquence de nombres). Elle lit chaque casier l'un après l'autre, du premier au dernier.</p>
+
+<h3 id="ref-for-sur-une-liste"><code>for</code> sur une liste</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles = [&quot;john&quot;, &quot;ringo&quot;, &quot;george&quot;, &quot;paul&quot;]
+
+for name in beatles:          # pour chaque prénom dans beatles…
+    print(name)               # …on l&#x27;affiche</code></pre></div>
+
+
+<p>Résultat :</p>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">john
+ringo
+george
+paul</code></pre></div>
+
+
+<p>À chaque tour de boucle, la variable <code>name</code> prend la valeur de l'élément suivant.</p>
+
+<h3 id="ref-range-boucler-sur-des-nombres"><code>range()</code> — boucler sur des nombres</h3>
+
+<p><code>range(n)</code> génère une séquence de nombres entiers de <code>0</code> à <code>n-1</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for num in range(5):    # num prend les valeurs 0, 1, 2, 3, 4
+    print(num)</code></pre></div>
+
+
+<p>Résultat : <code>0  1  2  3  4</code></p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>range(5)</code> donne <code>0, 1, 2, 3, 4</code> — <strong>pas</strong> <code>1, 2, 3, 4, 5</code>. Si tu veux commencer à 1, utilise <code>range(1, 6)</code>.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for i in range(1, 6):   # i prend les valeurs 1, 2, 3, 4, 5
+    print(i)</code></pre></div>
+
+
+<p>Résultat : <code>1  2  3  4  5</code></p>
+
+<h3 id="ref-enumerate-boucler-avec-lindex-et-la-valeur"><code>enumerate()</code> — boucler avec l'index et la valeur</h3>
+
+<p>Parfois tu as besoin de connaître <strong>à la fois</strong> la position et la valeur de chaque élément.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">beatles = [&quot;john&quot;, &quot;ringo&quot;, &quot;george&quot;, &quot;paul&quot;]
+
+for i, name in enumerate(beatles):   # i = index, name = valeur
+    print(i, name)                   # affiche le numéro et le prénom</code></pre></div>
+
+
+<p>Résultat :</p>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">0 john
+1 ringo
+2 george
+3 paul</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>enumerate()</code> est très pratique quand tu veux numéroter des éléments, créer un menu ou afficher "élément 1 sur 4", etc.</p></div></div>
+
+<hr>
+
+<h2 id="ref-9-erreurs-fréquentes-à-éviter">9) Erreurs fréquentes à éviter</h2>
+
+<h3 id="ref-ne-pas-modifier-une-liste-pendant-quon-la-parcourt">Ne pas modifier une liste pendant qu'on la parcourt</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">lst = [1, 2, 3, 4, 5]
+
+# MAUVAIS : comportement imprévisible
+for item in lst:
+    lst.remove(item)    # on modifie la liste pendant qu&#x27;on la lit
+
+# BON : on itère sur une copie
+for item in lst.copy():    # lst.copy() crée une copie indépendante
+    lst.remove(item)</code></pre></div>
+
+
+<p>Quand on supprime des éléments pendant la boucle, Python perd le fil et saute des éléments. Toujours travailler sur une <strong>copie</strong> avec <code>lst.copy()</code>.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Règle simple : si tu dois modifier une liste en la parcourant, itère sur <code>lst.copy()</code>, pas sur <code>lst</code> directement.</p></div></div>
+
+<h3 id="ref-récapitulatif-des-erreurs-classiques">Récapitulatif des erreurs classiques</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Erreur</th><th>Mauvaise version</th><th>Bonne version</th></tr></thead><tbody><tr><td>Index hors limites</td><td><code>beatles[5]</code> (3 éléments)</td><td>Vérifier <code>len()</code> avant</td></tr><tr><td><code>append</code> vs <code>extend</code></td><td><code>lst.append([3, 4])</code></td><td><code>lst.extend([3, 4])</code></td></tr><tr><td><code>sort()</code> assigné</td><td><code>result = lst.sort()</code></td><td><code>result = sorted(lst)</code></td></tr><tr><td><code>range()</code> commence à 0</td><td><code>range(5)</code> pour 1..5</td><td><code>range(1, 6)</code></td></tr><tr><td>Modifier en itérant</td><td><code>for x in lst: lst.remove(x)</code></td><td><code>for x in lst.copy(): lst.remove(x)</code></td></tr></tbody></table></div>
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>1.</strong> Que retourne <code>beatles[-1]</code> si <code>beatles = [&quot;john&quot;, &quot;ringo&quot;, &quot;george&quot;]</code> ?</p>
+
+<p><strong>2.</strong> Quelle est la différence entre <code>lst.sort()</code> et <code>sorted(lst)</code> ? Lequel dois-tu utiliser si tu veux garder la liste originale intacte ?</p>
+
+<p><strong>3.</strong> Tu as la liste <code>prix = [12, 5, 8, 20, 3]</code>. Écris le code qui affiche chaque prix <strong>avec son numéro de position</strong> (en utilisant <code>enumerate</code>).</p>
+
+<p><strong>4.</strong> Que se passe-t-il si tu exécutes ce code ? Quel est le problème ?</p>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">lst = [1, 2, 3]
+result = lst.sort()
+print(result)</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Une <strong>liste</strong> <code>[...]</code> stocke des éléments dans un ordre précis, accessibles par <strong>index</strong> (commence à <code>0</code>).</li>
+<li><code>append()</code> ajoute un élément en fin de liste ; <code>extend()</code> fusionne une autre liste.</li>
+<li><code>remove()</code> supprime par valeur (première occurrence) ; <code>pop(index)</code> supprime par index et retourne la valeur ; <code>del lst[index]</code> supprime sans retourner.</li>
+<li><code>len()</code> donne le nombre d'éléments ; <code>sort()</code> trie <strong>en place</strong> (retourne <code>None</code>) ; <code>sorted()</code> retourne une <strong>nouvelle liste triée</strong>.</li>
+<li>Une boucle <code>for item in liste:</code> parcourt chaque élément un par un.</li>
+<li><code>range(n)</code> génère <code>0, 1, ..., n-1</code> ; <code>range(a, b)</code> génère <code>a, a+1, ..., b-1</code>.</li>
+<li><code>enumerate(liste)</code> donne accès à l'<strong>index</strong> et à la <strong>valeur</strong> en même temps.</li>
+<li>Ne jamais modifier une liste pendant qu'on la parcourt : utiliser <code>liste.copy()</code>.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-les-listes-tableau-dynamique">Les listes : tableau dynamique</a></li><li><a href="#syn-boucles-for-et-itérables">Boucles `for` et itérables</a></li><li><a href="#syn-list-comprehensions">List comprehensions</a></li><li><a href="#syn-break-continue-else-de-boucle">`break`, `continue`, `else` de boucle</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-générateurs-et-flux-paresseux">Générateurs et flux paresseux</a></li><li><a href="#syn-complexité-des-opérations-sur-liste">Complexité des opérations sur liste</a></li><li><a href="#syn-quand-préférer-un-set-une-deque-ou-un-tuple">Quand préférer un `set`, une `deque` ou un tuple</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-les-listes-tableau-dynamique">Les listes : tableau dynamique</h3>
+
+<p>Une liste Python est implémentée comme un <strong>tableau dynamique</strong> (équivalent du <code>vector</code> en C++, <code>ArrayList</code> en Java) : un bloc contigu de pointeurs en mémoire, qui se redimensionne automatiquement quand on dépasse sa capacité.</p>
+
+<p><strong>Performances</strong> :</p>
+
+<ul>
+<li><strong>Accès indexé</strong> en $O(1)$ : <code>lst[42]</code> est instantané quelle que soit la taille.</li>
+<li><strong>Append amorti</strong> en $O(1)$ : la capacité double quand pleine, donc le coût moyen est constant même si un append occasionnel est en $O(n)$.</li>
+<li><strong>Insertion/suppression en milieu</strong> en $O(n)$ : il faut décaler tous les éléments suivants.</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">lst = [3, 1, 4, 1, 5, 9, 2, 6]
+
+lst[0]              # 3       — accès O(1)
+lst[-1]             # 6       — index négatif depuis la fin
+lst[2:5]            # [4,1,5] — slicing (crée une nouvelle liste)
+len(lst)            # 8       — stocké en attribut, O(1)
+
+lst.append(7)       # Ajoute à la fin (O(1))
+lst.insert(0, 0)    # Ajoute en début — O(n), coûteux
+lst.pop()           # Retire et renvoie le dernier (O(1))
+lst.pop(0)          # Retire et renvoie le premier (O(n))
+lst.sort()          # Tri in-place, O(n log n) — Timsort
+sorted(lst)         # Renvoie une copie triée, ne modifie pas lst</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : une liste Python est comme un parking dont on agrandit la taille quand il est plein. Garer à l'entrée (<code>insert(0, ...)</code>) oblige à déplacer toutes les voitures d'une place — coûteux. Garer au fond (<code>append</code>) est gratuit. Si vous avez besoin d'insertions fréquentes en début, prenez plutôt un <code>collections.deque</code>.</p></div></div>
+
+<h3 id="syn-boucles-for-et-itérables">Boucles <code>for</code> et itérables</h3>
+
+<p>La boucle <code>for</code> en Python est <strong>différente</strong> du <code>for(i=0; i&lt;n; i++)</code> du C : elle parcourt un <strong>itérable</strong>, pas un compteur.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for x in [10, 20, 30]:
+    print(x)
+# 10
+# 20
+# 30
+
+# Pour avoir aussi l&#x27;index
+for i, x in enumerate([10, 20, 30]):
+    print(i, x)
+# 0 10
+# 1 20
+# 2 30
+
+# Pour parcourir deux listes en parallèle
+for name, score in zip([&quot;Alice&quot;, &quot;Bob&quot;], [85, 92]):
+    print(name, score)
+# Alice 85
+# Bob 92
+
+# Pour un compteur numérique
+for i in range(5):          # 0, 1, 2, 3, 4
+    print(i)
+for i in range(2, 10, 2):   # 2, 4, 6, 8 (start, stop, step)
+    print(i)</code></pre></div>
+
+
+<p>Un <strong>itérable</strong> est tout objet qui implémente <code>__iter__()</code>. Cela inclut : listes, tuples, strings, dicts, sets, générateurs, fichiers ouverts, et n'importe quelle classe que vous écrivez avec <code>__iter__</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Itérer un fichier ligne par ligne (sans charger en mémoire)
+with open(&quot;data.csv&quot;) as f:
+    for line in f:
+        process(line)
+
+# Itérer les caractères d&#x27;une chaîne
+for ch in &quot;hello&quot;:
+    print(ch)
+
+# Itérer les clés d&#x27;un dict
+for key in {&quot;a&quot;: 1, &quot;b&quot;: 2}:
+    print(key)</code></pre></div>
+
+
+<h3 id="syn-list-comprehensions">List comprehensions</h3>
+
+<p>L'idiome le plus puissant et le plus pythonique pour transformer un itérable. <strong>Syntaxe</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">[expression for item in iterable if condition]</code></pre></div>
+
+
+<p><strong>Exemples du quotidien</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Transformer
+squares = [x**2 for x in range(10)]
+# [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+# Filtrer
+evens = [x for x in range(20) if x % 2 == 0]
+# [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+
+# Transformer + filtrer
+labels = [&quot;Alice&quot;, &quot;bob&quot;, &quot;CHARLIE&quot;, &quot;dave&quot;]
+clean = [name.title() for name in labels if len(name) &gt; 3]
+# [&#x27;Alice&#x27;, &#x27;Charlie&#x27;, &#x27;Dave&#x27;]
+
+# Avec un dict
+ages = {&quot;Alice&quot;: 30, &quot;Bob&quot;: 25, &quot;Charlie&quot;: 35}
+adults = {name: age for name, age in ages.items() if age &gt;= 30}
+# {&#x27;Alice&#x27;: 30, &#x27;Charlie&#x27;: 35}
+
+# Avec un set (déduplication automatique)
+unique_lengths = {len(word) for word in [&quot;hi&quot;, &quot;hello&quot;, &quot;ok&quot;, &quot;bye&quot;]}
+# {2, 5, 3}</code></pre></div>
+
+
+<p>Les comprehensions sont à la fois <strong>plus rapides</strong> qu'un <code>for</code> + <code>append</code> (implémentées en C dans CPython) et <strong>plus lisibles</strong>, <strong>tant qu'elles tiennent sur une ligne</strong>. Au-delà, redécomposez en boucle classique.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Anti-pattern</strong> : <code>[print(x) for x in items]</code>. Cela construit une liste de <code>None</code> que personne n'utilise, juste pour ses effets de bord. Préférez une boucle <code>for</code> classique : <code>for x in items: print(x)</code>. Les comprehensions sont faites pour <strong>construire</strong> une nouvelle collection, pas pour exécuter du code.</p></div></div>
+
+<h3 id="syn-break-continue-else-de-boucle"><code>break</code>, <code>continue</code>, <code>else</code> de boucle</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for x in items:
+    if x is None:
+        continue        # Passe à l&#x27;itération suivante
+    if x == STOP:
+        break           # Sort de la boucle
+    process(x)
+else:
+    # Exécuté SEULEMENT si la boucle s&#x27;est terminée sans break
+    print(&quot;All items processed&quot;)</code></pre></div>
+
+
+<p>Le <strong><code>else</code> de boucle</strong> est mal connu et très utile : il s'exécute si la boucle s'est terminée <strong>naturellement</strong> (sans <code>break</code>). Pattern de recherche linéaire :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for prime in primes:
+    if number % prime == 0:
+        print(f&quot;{number} is not prime, divisible by {prime}&quot;)
+        break
+else:
+    # Aucune division entière trouvée → premier
+    print(f&quot;{number} is prime&quot;)</code></pre></div>
+
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-générateurs-et-flux-paresseux">Générateurs et flux paresseux</h3>
+
+<p>Une comprehension entre crochets <code>[]</code> construit <strong>toute la liste</strong> en mémoire. Une comprehension entre parenthèses <code>()</code> crée un <strong>générateur</strong> : un itérateur paresseux qui calcule les valeurs à la demande.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># List comprehension : construit immédiatement, occupe la mémoire
+squares_list = [x**2 for x in range(10**7)]    # ~80 Mo de RAM
+
+# Generator expression : ne calcule rien tant qu&#x27;on ne demande pas
+squares_gen = (x**2 for x in range(10**7))     # Quelques bytes
+
+# On peut l&#x27;utiliser dans n&#x27;importe quelle fonction qui prend un iterable
+total = sum(x**2 for x in range(10**7))        # Pas besoin de matérialiser</code></pre></div>
+
+
+<p>Vous pouvez aussi écrire des générateurs sous forme de <strong>fonction avec <code>yield</code></strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def fibonacci():
+    a, b = 0, 1
+    while True:
+        yield a             # Pause ici, renvoie a, reprend au prochain next()
+        a, b = b, a + b
+
+# Première utilisation : prendre les 10 premiers
+from itertools import islice
+list(islice(fibonacci(), 10))
+# [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : une liste, c'est un livre imprimé — toutes les pages existent en même temps. Un générateur, c'est un robinet — chaque verre est rempli à la demande, et il n'y a aucune limite à la quantité totale tant qu'on ne demande pas tout d'un coup. Pour traiter un dataset de 100 Go ligne par ligne, le générateur est <strong>obligatoire</strong>.</p></div></div>
+
+<h3 id="syn-complexité-des-opérations-sur-liste">Complexité des opérations sur liste</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Opération</th><th>Complexité</th><th>Notes</th></tr></thead><tbody><tr><td><code>lst[i]</code></td><td>$O(1)$</td><td>Accès indexé</td></tr><tr><td><code>lst.append(x)</code></td><td>$O(1)$ amorti</td><td>Coûteux quand redimensionnement</td></tr><tr><td><code>lst.pop()</code></td><td>$O(1)$</td><td>Retire le dernier</td></tr><tr><td><code>lst.pop(0)</code> ou <code>lst.insert(0, x)</code></td><td>$O(n)$</td><td>Décale tout</td></tr><tr><td><code>x in lst</code></td><td>$O(n)$</td><td>Parcours linéaire</td></tr><tr><td><code>lst.sort()</code></td><td>$O(n \log n)$</td><td>Timsort</td></tr><tr><td><code>len(lst)</code></td><td>$O(1)$</td><td>Stocké en attribut</td></tr><tr><td><code>lst[a:b]</code></td><td>$O(b-a)$</td><td>Crée une copie</td></tr></tbody></table></div>
+<p><strong>Explication des notations</strong> : $O(1)$ = temps constant (ne dépend pas de la taille), $O(n)$ = temps linéaire (proportionnel à la taille), $O(n \log n)$ = entre linéaire et quadratique.</p>
+
+<p>Maîtriser ces complexités vous évite des bugs de performance. Construire un grand dict en testant <code>if key in dict_keys_list</code> à chaque insertion est $O(n^2)$ — à éviter.</p>
+
+<h3 id="syn-quand-préférer-un-set-une-deque-ou-un-tuple">Quand préférer un <code>set</code>, une <code>deque</code> ou un tuple</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Besoin</th><th>Bonne structure</th><th>Pourquoi</th></tr></thead><tbody><tr><td>Test d'appartenance fréquent</td><td><code>set</code></td><td>$O(1)$ vs $O(n)$ pour list</td></tr><tr><td>Déduplication</td><td><code>set</code></td><td>Construction directe : <code>set(lst)</code></td></tr><tr><td>File / queue (FIFO)</td><td><code>collections.deque</code></td><td>append/popleft en $O(1)$</td></tr><tr><td>Pile (LIFO)</td><td><code>list</code></td><td>append/pop en $O(1)$</td></tr><tr><td>Coordonnées immuables</td><td><code>tuple</code></td><td>Plus rapide, hashable, lisible</td></tr><tr><td>Données labellisées</td><td><code>NamedTuple</code> ou <code>dataclass</code></td><td>Auto-documenté</td></tr></tbody></table></div>
+<p><strong>Exemple d'optimisation</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ❌ Mauvais : O(n²)
+seen = []
+for x in items:
+    if x not in seen:   # O(n) à chaque iter → O(n²) total
+        seen.append(x)
+
+# ✓ Bon : O(n)
+seen = set()
+for x in items:
+    if x not in seen:   # O(1) à chaque iter → O(n) total
+        seen.add(x)
+
+# ✓ Encore mieux : O(n) en une ligne, préserve l&#x27;ordre
+unique = list(dict.fromkeys(items))</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : si vous écrivez une fonction qui ne modifie pas son argument liste, acceptez <code>Iterable</code> plutôt que <code>list</code>. Cela rend votre fonction utilisable avec des générateurs, tuples, sets, et clarifie l'intention. <code>def total(items: Iterable[int]) -&gt; int: return sum(items)</code>.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi <code>lst = [[]] * 5</code> puis <code>lst[0].append(1)</code> modifie-t-il toutes les sous-listes ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Références partagées.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><code>[[]] * 5</code> ne crée <strong>pas</strong> cinq listes vides distinctes. Cela crée <strong>une seule</strong> liste vide et la référence cinq fois :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">lst = [[]] * 5
+lst[0] is lst[1]    # True — même objet !</code></pre></div>
+
+
+<p>Quand vous modifiez <code>lst[0]</code>, vous modifiez le <strong>seul et unique</strong> objet liste interne, donc tous les indices reflètent le changement :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">lst[0].append(1)
+print(lst)          # [[1], [1], [1], [1], [1]]</code></pre></div>
+
+
+<p>La <strong>solution canonique</strong> est une comprehension :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">lst = [[] for _ in range(5)]
+# Appelle [] à chaque itération → crée cinq objets distincts
+lst[0].append(1)
+print(lst)          # [[1], [], [], [], []]</code></pre></div>
+
+
+<p>C'est exactement le même piège que les <strong>arguments par défaut mutables</strong>. La règle : la multiplication par <code>&lt;em&gt;</code> est OK pour les types <strong>immuables</strong> (<code>[0] &lt;/em&gt; 5</code> marche bien) mais <strong>traîtresse</strong> pour les mutables.</p>
+
+</details>
+
+<p><strong>Q2 : Quelle est la différence d'usage entre une <code>list</code> et un <code>tuple</code>, alors qu'ils semblent quasi identiques ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Sémantique vs performance.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Trois différences</strong> :</p>
+
+<ol>
+<li><strong>Mutabilité</strong> : list est mutable, tuple est immuable.</li>
+<li><strong>Performance</strong> : tuple est légèrement plus rapide à créer et accéder, et plus économe en mémoire (~1.5x).</li>
+<li><strong>Sémantique</strong> : on utilise une <strong>list</strong> pour une collection homogène de taille variable (<code>scores = [85, 92, 78]</code>), un <strong>tuple</strong> pour un agrégat hétérogène de taille fixe (<code>point = (x, y)</code>, <code>record = (name, age, score)</code>).</li>
+</ol>
+
+<p><strong>Conséquence pratique</strong> : un tuple est <strong>hashable</strong> s'il ne contient que des éléments hashables — donc utilisable comme clé de dict ou élément de set. Une liste ne peut <strong>jamais</strong> l'être :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">d = {(1, 2): &quot;ok&quot;}        # OK : tuple hashable
+d[[1, 2]] = &quot;fail&quot;        # TypeError: unhashable type: &#x27;list&#x27;</code></pre></div>
+
+
+<p>Pour les retours de fonction multi-valeurs, le tuple est l'<strong>idiome</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def get_size(path):
+    return (os.path.getsize(path), os.path.getmtime(path))</code></pre></div>
+
+
+</details>
+
+<p><strong>Q3 : Vous avez une liste de 1 million de strings et vous voulez tester rapidement si certains mots existent dedans. Quelle structure utiliser et pourquoi ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Test d'appartenance.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Convertissez la liste en <code>set</code></strong> une seule fois :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">lookup = set(my_list)   # O(n) — coût initial</code></pre></div>
+
+
+<p>Le test <code>word in lookup</code> est alors <strong>$O(1)$</strong> en moyenne (table de hachage), contre <strong>$O(n)$</strong> pour <code>word in my_list</code>.</p>
+
+<p><strong>Gain pratique</strong> : pour 1 million de strings et 1000 lookups, vous passez de <strong>plusieurs secondes</strong> à <strong>quelques millisecondes</strong>.</p>
+
+<p>L'investissement initial pour construire le set est $O(n)$ mais <strong>s'amortit dès le 2e lookup</strong>.</p>
+
+<p><strong>Cas particuliers</strong> :</p>
+
+<ul>
+<li>Si vous avez besoin de l'<strong>ordre original</strong> ET du test rapide, gardez les deux structures en parallèle.</li>
+<li>Si vous avez besoin d'<strong>associer une valeur</strong> à chaque string, utilisez un <code>dict</code> qui a la même propriété $O(1)$ pour les lookups.</li>
+<li>Pour des ensembles <strong>très grands</strong> (> 100 M), un <a href="https://en.wikipedia.org/wiki/Bloom_filter" target="_blank" rel="noopener">Bloom filter</a> est plus économe en mémoire (au prix d'un faible taux de faux positifs).</li>
+</ul>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://wiki.python.org/moin/TimeComplexity" target="_blank" rel="noopener">Time Complexity (Python wiki)</a> — table officielle des complexités des opérations</li>
+<li><a href="https://peps.python.org/pep-0202/" target="_blank" rel="noopener">PEP 202 — List Comprehensions</a> — la spec d'origine</li>
+<li><em>Fluent Python</em> (Luciano Ramalho), chapitre 2 sur les sequences</li>
+<li><a href="https://www.dabeaz.com/generators/" target="_blank" rel="noopener">Generator Tricks for System Programmers</a> (David Beazley) — l'article culte sur les générateurs</li>
+<li><a href="https://docs.python.org/3/library/collections.html" target="_blank" rel="noopener">collections — High-performance container datatypes</a> — deque, Counter, defaultdict</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../python-sql/python-101.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Python 101</span>
+  </a>
+  <a href="../python-sql/dictionaries.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Dictionaries →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

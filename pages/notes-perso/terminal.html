@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terminal — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Terminal</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html" class="active">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Notes perso</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Terminal</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Terminal</h1>
+        <p class="page-objective">Maîtriser les commandes essentielles du Terminal pour naviguer, gérer des fichiers et interagir avec le système.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Shell</div>
+        <div class="key-concept-def">Programme texte qui interprète les commandes que vous tapez (bash, zsh).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Working directory</div>
+        <div class="key-concept-def">Dossier courant dans lequel s&#x27;exécutent vos commandes (`pwd`).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Pipe `|`</div>
+        <div class="key-concept-def">Envoie la sortie d&#x27;une commande comme entrée de la suivante.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Glob</div>
+        <div class="key-concept-def">Motif comme `*.py` qui correspond à plusieurs fichiers à la fois.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#cheatsheet-terminal">Cheatsheet — Terminal</a><li><a href="#1-navigation">1) Navigation</a><li><a href="#2-fichiers-dossiers">2) Fichiers & Dossiers</a><li><a href="#3-lecture-recherche">3) Lecture & Recherche</a><li><a href="#4-système">4) Système</a><li><a href="#5-processus">5) Processus</a><li><a href="#6-raccourcis-utiles">6) Raccourcis utiles</a></ol></div>
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<h2 id="cheatsheet-terminal">📋 Cheatsheet — Terminal</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## Navigation
+pwd                        # répertoire actuel
+ls                         # lister les fichiers
+ls -la                     # liste détaillée (permissions, cachés)
+cd dossier/                # entrer dans un dossier
+cd ..                      # remonter d&#x27;un niveau
+cd ~                       # aller au home
+cd -                       # revenir au répertoire précédent
+
+## Fichiers &amp; Dossiers
+touch fichier.txt           # créer un fichier vide
+mkdir dossier/              # créer un dossier
+mkdir -p a/b/c              # créer des dossiers imbriqués
+cp source.txt dest.txt      # copier un fichier
+cp -r src/ dest/            # copier un dossier
+mv ancien.txt nouveau.txt   # renommer ou déplacer
+rm fichier.txt              # supprimer un fichier (IRRÉVERSIBLE)
+rm -r dossier/              # supprimer un dossier (IRRÉVERSIBLE)
+
+## Lire &amp; Chercher
+cat fichier.txt             # afficher le contenu
+head -n 5 fichier.txt       # afficher les 5 premières lignes
+grep &quot;mot&quot; fichier.txt      # chercher un mot
+find . -name &quot;*.py&quot;         # chercher des fichiers par nom
+
+## Système
+clear                       # vider l&#x27;écran
+history                     # historique des commandes
+open .                      # ouvrir Finder ici (macOS)
+
+## Raccourcis clavier
+## Tab        → autocomplétion
+## ↑ / ↓     → naviguer dans l&#x27;historique
+## Ctrl + C   → interrompre une commande
+## Ctrl + L   → vider l&#x27;écran
+## Ctrl + A   → début de ligne
+## Ctrl + E   → fin de ligne</code></pre></div>
+
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Mauvaise commande Terminal dans le répertoire courant</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">cd projets    # ❌ si &quot;projets&quot; n&#x27;existe pas → &quot;No such file or directory&quot;
+ls            # ✅ vérifie d&#x27;abord ce qui existe
+cd projets    # ✅ maintenant que tu sais qu&#x27;il existe</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Supprimer récursivement sans vérifier</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">rm -r /      # ❌ DANGEREUX : supprime tout le système de fichiers
+rm -r dossier_specifique/  # ✅ toujours cibler précisément</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre <code>cp</code> (copie) et <code>mv</code> (déplace/renomme)</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">cp ancien.py nouveau.py   # ✅ crée une copie, l&#x27;original reste
+mv ancien.py nouveau.py   # ✅ renomme (l&#x27;original disparaît)</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier que <code>rm</code> est irréversible</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">rm fichier.txt  # ❌ pas de corbeille — suppression définitive
+## ✅ Utilise d&#x27;abord &quot;ls&quot; pour confirmer que tu cibles le bon fichier</code></pre></div></div></div>
+
+<hr>
+
+<h2 id="1-navigation">1) Navigation</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pwd          # afficher le répertoire actuel
+ls           # lister les fichiers
+ls -la       # lister avec détails (permissions, taille, fichiers cachés)
+cd dossier   # aller dans un dossier
+cd ..        # remonter d&#x27;un niveau
+cd ~         # aller au répertoire home</code></pre></div>
+
+
+<hr>
+
+<h2 id="2-fichiers-dossiers">2) Fichiers & Dossiers</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">touch fichier.txt        # créer un fichier vide
+mkdir nouveau_dossier    # créer un dossier
+cp source dest           # copier un fichier
+mv source dest           # déplacer ou renommer
+rm fichier.txt           # supprimer un fichier
+rm -r dossier            # supprimer un dossier (récursif)</code></pre></div>
+
+
+<hr>
+
+<h2 id="3-lecture-recherche">3) Lecture & Recherche</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">cat fichier.txt          # afficher le contenu d&#x27;un fichier
+grep &quot;mot&quot; fichier.txt   # chercher un mot dans un fichier
+find . -name &quot;*.py&quot;      # chercher des fichiers par nom</code></pre></div>
+
+
+<hr>
+
+<h2 id="4-système">4) Système</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">open .                   # ouvrir le Finder dans le répertoire actuel
+open fichier.pdf         # ouvrir un fichier avec l&#x27;app par défaut
+clear                    # vider l&#x27;écran
+history                  # voir l&#x27;historique des commandes</code></pre></div>
+
+
+<hr>
+
+<h2 id="5-processus">5) Processus</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">top                      # moniteur de processus en temps réel
+kill PID                 # arrêter un processus par son ID</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Ctrl + C</strong> — interrompre une commande en cours</p></div></div>
+
+<hr>
+
+<h2 id="6-raccourcis-utiles">6) Raccourcis utiles</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Raccourci</th><th>Action</th></tr></thead><tbody><tr><td><code>Tab</code></td><td>autocomplétion</td></tr><tr><td><code>↑</code> / <code>↓</code></td><td>naviguer dans l'historique</td></tr><tr><td><code>Ctrl + L</code></td><td>vider l'écran</td></tr><tr><td><code>Ctrl + A</code></td><td>aller au début de la ligne</td></tr></tbody></table></div>| <code>Ctrl + E</code> | aller à la fin de la ligne |
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><li><a href="#ref-1-navigation-se-repérer-dans-larborescence">1) Navigation — Se repérer dans l'arborescence</a><ol><li><a href="#ref-savoir-où-lon-est-pwd">Savoir où l'on est : `pwd`</a></li><li><a href="#ref-voir-ce-quil-y-a-dans-un-dossier-ls">Voir ce qu'il y a dans un dossier : `ls`</a></li><li><a href="#ref-se-déplacer-cd">Se déplacer : `cd`</a></li></ol></li><li><a href="#ref-2-fichiers-dossiers-créer-copier-déplacer-supprimer">2) Fichiers & Dossiers — Créer, copier, déplacer, supprimer</a><ol><li><a href="#ref-créer-touch-et-mkdir">Créer : `touch` et `mkdir`</a></li><li><a href="#ref-copier-cp">Copier : `cp`</a></li><li><a href="#ref-déplacer-ou-renommer-mv">Déplacer ou renommer : `mv`</a></li><li><a href="#ref-supprimer-rm">Supprimer : `rm`</a></li></ol></li><li><a href="#ref-3-lecture-recherche-lire-et-chercher-dans-les-fichiers">3) Lecture & Recherche — Lire et chercher dans les fichiers</a><ol><li><a href="#ref-afficher-le-contenu-dun-fichier-cat">Afficher le contenu d'un fichier : `cat`</a></li><li><a href="#ref-chercher-un-mot-dans-un-fichier-grep">Chercher un mot dans un fichier : `grep`</a></li><li><a href="#ref-chercher-des-fichiers-par-nom-find">Chercher des fichiers par nom : `find`</a></li></ol></li><li><a href="#ref-4-commandes-système-quelques-outils-pratiques">4) Commandes Système — Quelques outils pratiques</a><ol><li><a href="#ref-ouvrir-un-fichier-ou-un-dossier-macos">Ouvrir un fichier ou un dossier (macOS)</a></li><li><a href="#ref-nettoyer-lécran-et-voir-lhistorique">Nettoyer l'écran et voir l'historique</a></li><li><a href="#ref-surveiller-les-processus-en-cours-top">Surveiller les processus en cours : `top`</a></li></ol></li><li><a href="#ref-5-raccourcis-clavier-aller-plus-vite-au-quotidien">5) Raccourcis Clavier — Aller plus vite au quotidien</a><li><a href="#ref-cheatsheet-de-référence-rapide">Cheatsheet de référence rapide</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Le Terminal est une fenêtre noire (ou blanche) dans laquelle on tape des commandes textuelles pour piloter son ordinateur. Pas de clic, pas d'icône : uniquement du texte. Cela peut sembler intimidant au premier abord, mais c'est en réalité un outil extrêmement puissant et rapide, utilisé quotidiennement par tous les développeurs et data scientists.</p>
+
+<p><strong>À quoi ça sert concrètement ?</strong> Quand tu travailles sur un projet de data science, tu vas régulièrement avoir besoin de : naviguer entre des dossiers de fichiers, créer ou supprimer des scripts Python, lancer des programmes, installer des bibliothèques. Tout cela se fait beaucoup plus vite et plus précisément via le Terminal qu'en cliquant dans le Finder.</p>
+
+<p><strong>Principes clés à garder en tête :</strong></p>
+
+<ul>
+<li>Le Terminal travaille toujours à partir d'un emplacement précis sur ton disque dur (le "répertoire courant").</li>
+<li>Chaque commande suit la même logique : un mot-clé, puis optionnellement des options et des cibles.</li>
+<li>Certaines actions sont irréversibles (notamment <code>rm</code> qui supprime sans corbeille).</li>
+<li>Le Terminal est ton allié : il ne fait que ce que tu lui demandes.</li>
+</ul>
+
+<p><strong>À retenir absolument :</strong></p>
+
+<ul>
+<li><code>pwd</code> — "où suis-je ?" → affiche le dossier dans lequel tu te trouves</li>
+<li><code>ls</code> — "qu'est-ce qu'il y a ici ?" → liste les fichiers et dossiers</li>
+<li><code>cd</code> — "je me déplace" → change de répertoire</li>
+<li><code>rm</code> — "je supprime définitivement" → sans corbeille, sans retour possible</li>
+<li><code>Tab</code> — ton meilleur ami → autocomplétion des noms de fichiers et commandes</li>
+</ul>
+
+<p><strong>Analogie fil rouge :</strong> Imagine que ton ordinateur est un immeuble géant avec des centaines de salles (les dossiers) et des objets dans chaque salle (les fichiers). Le Terminal, c'est ton badge d'accès universel : au lieu de chercher visuellement chaque salle, tu donnes des instructions précises — "va au 3e étage, couloir B, ouvre la salle 12, prends le fichier rouge".</p>
+
+<p><strong>Dans ce cours reformulé, nous allons d'abord</strong> comprendre comment se repérer et naviguer dans l'arborescence de fichiers, <strong>puis</strong> apprendre à créer, copier, déplacer et supprimer des fichiers et dossiers, <strong>puis</strong> voir comment lire le contenu d'un fichier et faire des recherches, <strong>puis</strong> explorer quelques commandes système utiles, <strong>et enfin</strong> maîtriser les raccourcis clavier qui font gagner un temps précieux au quotidien.</p>
+
+<hr>
+
+<h2 id="ref-1-navigation-se-repérer-dans-larborescence">1) Navigation — Se repérer dans l'arborescence</h2>
+
+<p>Avant de faire quoi que ce soit, il faut savoir <strong>où tu es</strong>. Dans le Terminal, tu es toujours "positionné" dans un dossier précis. C'est ce qu'on appelle le <strong>répertoire courant</strong>.</p>
+
+<h3 id="ref-savoir-où-lon-est-pwd">Savoir où l'on est : <code>pwd</code></h3>
+
+<p><code>pwd</code> signifie <em>print working directory</em> — "affiche le répertoire de travail". C'est la première commande à connaître.</p>
+
+<p>Ici, on demande au Terminal de nous dire dans quel dossier on se trouve :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pwd                  # affiche le chemin complet du répertoire courant</code></pre></div>
+
+
+<p>Résultat typique : <code>/Users/thibaud/Desktop/mon-projet</code> — c'est le "chemin" vers ton dossier actuel, comme une adresse postale dans l'ordinateur.</p>
+
+<h3 id="ref-voir-ce-quil-y-a-dans-un-dossier-ls">Voir ce qu'il y a dans un dossier : <code>ls</code></h3>
+
+<p><code>ls</code> signifie <em>list</em> — "liste". Il affiche le contenu du dossier courant.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">ls           # liste les fichiers et dossiers visibles
+ls -la       # liste TOUT, y compris les fichiers cachés (qui commencent par .)
+             # et affiche les détails : permissions, taille, date de modification</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Les fichiers dont le nom commence par un point (<code>.bashrc</code>, <code>.gitignore</code>) sont des fichiers cachés. Ils n'apparaissent pas avec <code>ls</code> simple, mais bien avec <code>ls -la</code>.</p></div></div>
+
+<h3 id="ref-se-déplacer-cd">Se déplacer : <code>cd</code></h3>
+
+<p><code>cd</code> signifie <em>change directory</em> — "change de dossier". C'est la commande de déplacement.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">cd projets/         # entre dans le sous-dossier &quot;projets&quot; (qui doit exister ici)
+cd ..               # remonte d&#x27;un niveau (va dans le dossier parent)
+cd ~                # va directement au dossier &quot;home&quot; (ton espace personnel)
+cd -                # revient au répertoire où tu étais juste avant</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Si tu tapes <code>cd projets</code> mais que ce dossier n'existe pas, le Terminal affiche <code>No such file or directory</code>. Utilise d'abord <code>ls</code> pour vérifier ce qui existe avant de te déplacer.</p></div></div>
+
+<p><strong>Exemple concret :</strong> Tu es sur le bureau (<code>/Users/thibaud/Desktop</code>) et tu veux aller dans ton dossier de projet. Tu tapes :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">ls                  # tu vois : &quot;lewagon-data-science&quot;, &quot;photos&quot;, &quot;cv.pdf&quot;
+cd lewagon-data-science/   # tu entres dans le projet
+pwd                 # confirme : /Users/thibaud/Desktop/lewagon-data-science</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Récap express — Navigation : <code>pwd</code> pour se situer, <code>ls</code> pour voir le contenu, <code>cd</code> pour se déplacer. Ces trois commandes sont la base de tout.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-fichiers-dossiers-créer-copier-déplacer-supprimer">2) Fichiers & Dossiers — Créer, copier, déplacer, supprimer</h2>
+
+<p>Une fois qu'on sait se repérer, on peut commencer à agir sur les fichiers et dossiers.</p>
+
+<h3 id="ref-créer-touch-et-mkdir">Créer : <code>touch</code> et <code>mkdir</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">touch notes.txt         # crée un fichier vide nommé &quot;notes.txt&quot;
+                        # si le fichier existe déjà, met à jour sa date de modification
+mkdir mon_projet/       # crée un nouveau dossier nommé &quot;mon_projet&quot;
+mkdir -p data/raw/csv/  # crée plusieurs dossiers imbriqués d&#x27;un seul coup
+                        # (-p = &quot;parents&quot; : crée tous les dossiers intermédiaires si besoin)</code></pre></div>
+
+
+<p><strong>Exemple concret :</strong> Tu veux initialiser la structure d'un projet data :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">mkdir -p mon_projet/data/raw    # crée mon_projet/, puis data/ dedans, puis raw/ dedans
+touch mon_projet/README.txt     # crée un fichier README vide dans mon_projet/</code></pre></div>
+
+
+<h3 id="ref-copier-cp">Copier : <code>cp</code></h3>
+
+<p><code>cp</code> signifie <em>copy</em> — "copie". L'original reste intact.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">cp script.py script_backup.py   # copie &quot;script.py&quot; → crée &quot;script_backup.py&quot;
+                                 # l&#x27;original &quot;script.py&quot; existe toujours
+cp -r dossier_source/ dossier_copie/  # copie tout un dossier (avec son contenu)
+                                       # (-r = &quot;récursif&quot; : descend dans les sous-dossiers)</code></pre></div>
+
+
+<h3 id="ref-déplacer-ou-renommer-mv">Déplacer ou renommer : <code>mv</code></h3>
+
+<p><code>mv</code> signifie <em>move</em> — "déplace". Contrairement à <code>cp</code>, l'original disparaît.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">mv rapport.txt archives/rapport.txt   # déplace &quot;rapport.txt&quot; dans le dossier &quot;archives/&quot;
+mv ancien_nom.py nouveau_nom.py       # renomme le fichier (même dossier, nouveau nom)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>mv</code> fait deux choses : il déplace ET il renomme. Si la destination est dans le même dossier mais avec un nom différent, c'est un renommage. Si c'est dans un autre dossier, c'est un déplacement.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Piège fréquent : confondre <code>cp</code> et <code>mv</code>. Avec <code>cp</code>, l'original reste. Avec <code>mv</code>, l'original disparaît. Quand tu veux juste renommer, utilise <code>mv</code>. Quand tu veux garder une copie de secours, utilise <code>cp</code>.</p></div></div>
+
+<h3 id="ref-supprimer-rm">Supprimer : <code>rm</code></h3>
+
+<p><code>rm</code> signifie <em>remove</em> — "supprime".</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">rm fichier.txt       # supprime &quot;fichier.txt&quot; — définitivement, sans corbeille
+rm -r mon_dossier/   # supprime tout un dossier et son contenu
+                     # (-r = &quot;récursif&quot; : supprime tous les fichiers et sous-dossiers)</code></pre></div>
+
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><code>rm</code> est IRRÉVERSIBLE. Il n'y a pas de corbeille, pas d'annulation. Le fichier est supprimé pour de bon. Bonne habitude : toujours faire <code>ls</code> juste avant pour confirmer que tu cibles le bon fichier.</p></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p>Ne jamais taper <code>rm -r /</code> — c'est une commande qui supprimerait l'intégralité du système de fichiers de ton ordinateur. Cible toujours un dossier spécifique : <code>rm -r mon_dossier_specifique/</code>.</p></div></div>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Récap express — Fichiers & Dossiers : <code>touch</code> crée un fichier, <code>mkdir</code> crée un dossier, <code>cp</code> copie (l'original reste), <code>mv</code> déplace/renomme (l'original disparaît), <code>rm</code> supprime définitivement.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-lecture-recherche-lire-et-chercher-dans-les-fichiers">3) Lecture & Recherche — Lire et chercher dans les fichiers</h2>
+
+<p>Le Terminal te permet aussi de lire et de fouiller dans tes fichiers sans ouvrir un éditeur.</p>
+
+<h3 id="ref-afficher-le-contenu-dun-fichier-cat">Afficher le contenu d'un fichier : <code>cat</code></h3>
+
+<p><code>cat</code> signifie <em>concatenate</em> — à l'origine pour assembler des fichiers, mais on l'utilise surtout pour afficher un fichier.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">cat notes.txt        # affiche tout le contenu de &quot;notes.txt&quot; dans le terminal
+head -n 5 notes.txt  # affiche seulement les 5 premières lignes
+                     # (-n 5 = &quot;nombre de lignes = 5&quot;)</code></pre></div>
+
+
+<p><strong>Exemple concret :</strong> Tu as un fichier CSV de données et tu veux juste voir les premières lignes :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">head -n 3 ventes.csv   # affiche les 3 premières lignes du fichier CSV</code></pre></div>
+
+
+<h3 id="ref-chercher-un-mot-dans-un-fichier-grep">Chercher un mot dans un fichier : <code>grep</code></h3>
+
+<p><code>grep</code> permet de chercher un mot ou un motif dans un fichier. Imagine <code>Ctrl+F</code> mais en ligne de commande.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">grep &quot;erreur&quot; logs.txt      # affiche toutes les lignes de &quot;logs.txt&quot; qui contiennent &quot;erreur&quot;
+grep &quot;import&quot; script.py     # trouve toutes les lignes d&#x27;import dans un script Python</code></pre></div>
+
+
+<h3 id="ref-chercher-des-fichiers-par-nom-find">Chercher des fichiers par nom : <code>find</code></h3>
+
+<p><code>find</code> cherche des fichiers dans un dossier (et ses sous-dossiers) selon leur nom.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">find . -name &quot;*.py&quot;         # cherche tous les fichiers .py à partir du dossier courant (.)
+                            # (* = n&#x27;importe quel nom, .py = extension Python)
+find . -name &quot;rapport*&quot;     # cherche tous les fichiers dont le nom commence par &quot;rapport&quot;</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Pour aller plus loin : <code>grep</code> peut aussi chercher dans plusieurs fichiers à la fois. Par exemple <code>grep &quot;TODO&quot; *.py</code> cherche la chaîne "TODO" dans tous les fichiers Python du dossier courant. Très utile pour retrouver des notes laissées dans son code.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-commandes-système-quelques-outils-pratiques">4) Commandes Système — Quelques outils pratiques</h2>
+
+<h3 id="ref-ouvrir-un-fichier-ou-un-dossier-macos">Ouvrir un fichier ou un dossier (macOS)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">open .               # ouvre le Finder à l&#x27;emplacement courant (très pratique !)
+open fichier.pdf     # ouvre &quot;fichier.pdf&quot; avec l&#x27;application par défaut (Aperçu, etc.)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>open .</code> est très pratique quand tu veux passer du Terminal au Finder pour voir tes fichiers graphiquement. Le point <code>.</code> signifie "le dossier courant".</p></div></div>
+
+<h3 id="ref-nettoyer-lécran-et-voir-lhistorique">Nettoyer l'écran et voir l'historique</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">clear                # vide l&#x27;affichage du terminal (les commandes précédentes disparaissent)
+history              # affiche la liste de toutes les commandes tapées précédemment</code></pre></div>
+
+
+<h3 id="ref-surveiller-les-processus-en-cours-top">Surveiller les processus en cours : <code>top</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">top                  # affiche en temps réel les processus qui tournent sur ton ordinateur
+                     # (CPU utilisé, mémoire, etc.) — appuie sur &quot;q&quot; pour quitter
+kill 1234            # arrête le processus qui a l&#x27;identifiant numérique 1234
+                     # (le PID est visible dans la colonne &quot;PID&quot; de la commande top)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Si une commande tourne depuis trop longtemps ou est bloquée, appuie sur <strong>Ctrl + C</strong> pour l'interrompre. C'est l'équivalent de "forcer la fermeture" d'un programme.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-raccourcis-clavier-aller-plus-vite-au-quotidien">5) Raccourcis Clavier — Aller plus vite au quotidien</h2>
+
+<p>Ces raccourcis vont transformer ta façon de travailler dans le Terminal. Prends le temps de les mémoriser.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Raccourci</th><th>Ce que ça fait</th></tr></thead><tbody><tr><td><code>Tab</code></td><td>Autocomplétion — commence à taper un nom, appuie sur Tab, le Terminal complète</td></tr><tr><td><code>↑</code> / <code>↓</code></td><td>Navigue dans l'historique des commandes déjà tapées</td></tr><tr><td><code>Ctrl + C</code></td><td>Interrompt la commande en cours</td></tr><tr><td><code>Ctrl + L</code></td><td>Vide l'écran (équivalent de <code>clear</code>)</td></tr><tr><td><code>Ctrl + A</code></td><td>Va au début de la ligne de commande en cours</td></tr><tr><td><code>Ctrl + E</code></td><td>Va à la fin de la ligne de commande en cours</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le raccourci <code>Tab</code> est probablement le plus précieux. Si tu tapes <code>cd lewag</code> puis appuies sur Tab, le Terminal complète automatiquement en <code>cd lewagon-data-science/</code> si c'est le seul dossier qui correspond. Ça évite les fautes de frappe et fait gagner un temps fou.</p></div></div>
+
+<hr>
+
+<h2 id="ref-cheatsheet-de-référence-rapide">📋 Cheatsheet de référence rapide</h2>
+
+<p>Voici une synthèse de toutes les commandes vues dans ce cours, à garder sous la main :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># --- NAVIGATION ---
+pwd                        # où suis-je ? (répertoire courant)
+ls                         # qu&#x27;est-ce qu&#x27;il y a ici ? (liste les fichiers)
+ls -la                     # liste détaillée (permissions, taille, fichiers cachés)
+cd dossier/                # entrer dans un sous-dossier
+cd ..                      # remonter d&#x27;un niveau
+cd ~                       # aller au répertoire home (ton espace personnel)
+cd -                       # revenir au répertoire précédent
+
+# --- FICHIERS &amp; DOSSIERS ---
+touch fichier.txt           # créer un fichier vide
+mkdir dossier/              # créer un dossier
+mkdir -p a/b/c              # créer des dossiers imbriqués en une commande
+cp source.txt dest.txt      # copier un fichier (l&#x27;original reste)
+cp -r src/ dest/            # copier un dossier entier
+mv ancien.txt nouveau.txt   # renommer ou déplacer (l&#x27;original disparaît)
+rm fichier.txt              # supprimer un fichier (DÉFINITIF, sans corbeille)
+rm -r dossier/              # supprimer un dossier et tout son contenu (DÉFINITIF)
+
+# --- LIRE &amp; CHERCHER ---
+cat fichier.txt             # afficher tout le contenu d&#x27;un fichier
+head -n 5 fichier.txt       # afficher seulement les 5 premières lignes
+grep &quot;mot&quot; fichier.txt      # chercher un mot dans un fichier
+find . -name &quot;*.py&quot;         # chercher des fichiers par leur extension
+
+# --- SYSTÈME ---
+clear                       # vider l&#x27;écran
+history                     # voir l&#x27;historique des commandes
+open .                      # ouvrir le Finder ici (macOS uniquement)
+top                         # surveiller les processus en temps réel (q pour quitter)
+kill PID                    # arrêter un processus par son identifiant</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<ol>
+<li>Tu veux savoir dans quel dossier tu te trouves, puis lister son contenu, puis entrer dans un sous-dossier appelé <code>scripts</code>. Quelles sont les trois commandes à taper dans l'ordre ?</li>
+</ol>
+
+<ol>
+<li>Quelle est la différence entre <code>cp</code> et <code>mv</code> ? Dans quel cas utiliserais-tu l'un plutôt que l'autre ?</li>
+</ol>
+
+<ol>
+<li>Pourquoi faut-il faire attention avant d'utiliser <code>rm -r</code> ? Que se passerait-il si tu tapes <code>rm -r /</code> par erreur ?</li>
+</ol>
+
+<ol>
+<li>Tu cherches tous les fichiers Python (<code>.py</code>) dans ton dossier de projet et ses sous-dossiers. Quelle commande utilises-tu ?</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Le Terminal permet de piloter son ordinateur par des commandes textuelles, sans souris ni interface graphique.</li>
+<li>Les trois commandes de navigation essentielles sont <code>pwd</code> (où suis-je), <code>ls</code> (qu'est-ce qu'il y a) et <code>cd</code> (je me déplace).</li>
+<li>Pour les fichiers : <code>touch</code> crée, <code>mkdir</code> crée un dossier, <code>cp</code> copie, <code>mv</code> déplace ou renomme, <code>rm</code> supprime définitivement.</li>
+<li><code>rm</code> et <code>rm -r</code> sont irréversibles : il n'y a pas de corbeille. Toujours vérifier avec <code>ls</code> avant de supprimer.</li>
+<li><code>cat</code> affiche le contenu d'un fichier, <code>grep</code> cherche un mot dedans, <code>find</code> cherche des fichiers par nom.</li>
+<li>La touche <code>Tab</code> autocompléte les noms de fichiers et commandes : c'est le raccourci le plus utile du Terminal.</li>
+<li><code>Ctrl + C</code> interrompt immédiatement n'importe quelle commande bloquée ou qui tourne trop longtemps.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-le-shell-ce-méta-langage">Le shell, ce méta-langage</a></li><li><a href="#syn-le-système-de-fichiers-comme-arbre">Le système de fichiers comme arbre</a></li><li><a href="#syn-pipes-et-redirections">Pipes et redirections</a></li><li><a href="#syn-permissions-et-propriété">Permissions et propriété</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-variables-denvironnement-et-path">Variables d'environnement et `$PATH`</a></li><li><a href="#syn-glob-expansion-et-quoting">Glob, expansion et quoting</a></li><li><a href="#syn-processus-jobs-et-signaux">Processus, jobs et signaux</a></li><li><a href="#syn-tmux-et-travail-en-remote">`tmux` et travail en remote</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-le-shell-ce-méta-langage">Le shell, ce méta-langage</h3>
+
+<p>Le <strong>shell</strong> (bash, zsh, fish…) est un programme qui lit votre saisie ligne par ligne, l'interprète comme une commande et l'exécute. Ce n'est <strong>ni le terminal</strong> (l'application graphique qui affiche du texte), <strong>ni le système d'exploitation</strong> : c'est la couche d'orchestration qui transforme <code>ls -la | grep .py</code> en quatre opérations système distinctes (fork, exec, pipe, wait).</p>
+
+<p><strong>Exemple concret</strong> pour comprendre la distinction :</p>
+
+<ul>
+<li><strong>Terminal</strong> : l'application que vous lancez (Terminal.app, iTerm2, Alacritty…). Elle ne fait qu'afficher du texte et capturer les touches.</li>
+<li><strong>Shell</strong> : le programme que le terminal exécute à l'intérieur (bash, zsh…). C'est lui qui comprend <code>ls</code>, <code>cd</code>, les variables.</li>
+<li><strong>Programme</strong> : <code>python</code>, <code>git</code>, <code>curl</code>… sont des binaires indépendants que le shell lance.</li>
+</ul>
+
+<p>Cette distinction explique pourquoi votre <code>alias</code> zsh ne fonctionne pas dans un script bash : ce n'est pas la même implémentation du langage.</p>
+
+<p>Une commande typique a la forme <code>commande [options] [arguments]</code>. Les options courtes (<code>-l</code>) se combinent (<code>-la</code> = <code>-l -a</code>), les options longues (<code>--all</code>) sont plus lisibles dans les scripts. Le code de retour (0 = succès, ≠ 0 = erreur) est stocké dans <code>$?</code> et conditionne les chaînages <code>&amp;&amp;</code> et <code>||</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Crée data/raw si inexistant, s&#x27;y déplace, télécharge le dataset
+mkdir -p data/raw &amp;&amp; cd data/raw &amp;&amp; curl -O https://example.com/dataset.csv</code></pre></div>
+
+
+<p><strong>Commentaire ligne par ligne :</strong></p>
+
+<ul>
+<li><code>mkdir -p data/raw</code> : <code>-p</code> crée aussi les parents et n'échoue pas si le dossier existe déjà.</li>
+<li><code>&amp;&amp;</code> : "ET logique" — la commande suivante n'est exécutée QUE si la précédente a retourné 0.</li>
+<li><code>cd data/raw</code> : entre dans le dossier qu'on vient de créer.</li>
+<li><code>curl -O</code> : télécharge l'URL et enregistre avec le nom de fichier de l'URL (ici <code>dataset.csv</code>).</li>
+<li>Résultat : si l'une des trois étapes échoue, les suivantes ne s'exécutent pas → pas de dossier vide, pas de download dans le mauvais endroit.</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : le shell est à votre OS ce que le REPL Python est à l'interpréteur. Vous tapez une expression, il l'évalue, vous voyez le résultat. La différence est que chaque "expression" du shell est en réalité un mini-programme qui peut chaîner des dizaines de processus, exactement comme une chaîne de production d'usine.</p></div></div>
+
+<h3 id="syn-le-système-de-fichiers-comme-arbre">Le système de fichiers comme arbre</h3>
+
+<p>Tout est fichier sous Unix, et tout est rangé dans un <strong>arbre</strong> dont la racine est <code>/</code>. Les chemins <strong>absolus</strong> (<code>/Users/alice/projects/lewagon</code>) partent toujours de la racine. Les chemins <strong>relatifs</strong> (<code>../data/raw</code>) partent du répertoire courant (obtenu avec <code>pwd</code>). Le tilde <code>~</code> est un raccourci vers votre home (<code>/Users/alice</code> sur macOS, <code>/home/alice</code> sur Linux).</p>
+
+<p>Exemple concret : depuis <code>/Users/alice/projects/lewagon/notebooks</code> :</p>
+
+<ul>
+<li><code>cd ..</code> vous amène à <code>/Users/alice/projects/lewagon</code> (un niveau au-dessus)</li>
+<li><code>cd ../..</code> vous amène à <code>/Users/alice/projects</code></li>
+<li><code>cd ~/Documents</code> vous amène à <code>/Users/alice/Documents</code> quelque soit le point de départ</li>
+<li><code>cd /</code> vous amène à la racine du disque</li>
+</ul>
+
+<div class="table-wrapper"><table><thead><tr><th>Commande</th><th>Action</th><th>Astuce</th></tr></thead><tbody><tr><td><code>pwd</code></td><td>Print working directory</td><td>Toujours commencer par là quand vous êtes perdu</td></tr><tr><td><code>cd -</code></td><td>Retour au dossier précédent</td><td>Comme <code>Alt+Tab</code> pour les dossiers</td></tr><tr><td><code>ls -la</code></td><td>Liste détaillée incluant les fichiers cachés</td><td>Le <code>.</code> au début masque par convention</td></tr><tr><td><code>tree -L 2</code></td><td>Vue arborescente, profondeur 2</td><td>À installer (<code>brew install tree</code>)</td></tr></tbody></table></div>
+<p><strong>Exemple de sortie <code>ls -la</code> commentée :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">total 24
+drwxr-xr-x  5 alice staff   160 Apr  1 14:23 .
+drwxr-xr-x  8 alice staff   256 Apr  1 14:20 ..
+-rw-r--r--  1 alice staff   142 Apr  1 14:23 README.md
+-rwxr-xr-x  1 alice staff   512 Apr  1 14:22 train.sh
+drwxr-xr-x  3 alice staff    96 Apr  1 14:21 data</code></pre></div>
+
+
+<ul>
+<li>Colonne 1 : permissions + type (<code>d</code> = dossier, <code>-</code> = fichier, <code>l</code> = lien)</li>
+<li>Colonne 2 : nombre de liens physiques</li>
+<li>Colonne 3-4 : owner et group</li>
+<li>Colonne 5 : taille en bytes</li>
+<li>Colonne 6-8 : date de dernière modification</li>
+<li>Colonne 9 : nom</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège</strong> : <code>cd ~/Desktop/Mon Dossier</code> échoue à cause de l'espace. Le shell parse <code>Mon</code> et <code>Dossier</code> comme deux arguments. Solutions : guillemets <code>cd &quot;~/Desktop/Mon Dossier&quot;</code> ou échappement <code>cd ~/Desktop/Mon\ Dossier</code>. C'est pourquoi les conventions Unix recommandent toujours <code>snake_case</code> ou <code>kebab-case</code> pour les noms de fichiers (<code>mon_dossier</code> ou <code>mon-dossier</code>).</p></div></div>
+
+<h3 id="syn-pipes-et-redirections">Pipes et redirections</h3>
+
+<p>C'est le concept le plus puissant d'Unix et celui qu'on sous-utilise le plus en débutant. <strong>Trois opérateurs</strong> à maîtriser :</p>
+
+<ul>
+<li><code>commande &gt; fichier</code> : redirige la sortie standard (stdout) vers un fichier (<strong>écrase</strong> le contenu).</li>
+<li><code>commande &gt;&gt; fichier</code> : pareil, mais en mode <strong>append</strong> (ajoute à la fin).</li>
+<li><code>commande1 | commande2</code> : la stdout de la première devient la stdin de la seconde.</li>
+</ul>
+
+<p><strong>Exemples concrets</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Compter combien de fichiers Python ont été modifiés aujourd&#x27;hui
+find . -name &quot;*.py&quot; -mtime 0 | wc -l</code></pre></div>
+
+
+<p>Décomposition :</p>
+
+<ol>
+<li><code>find . -name &quot;*.py&quot; -mtime 0</code> : cherche récursivement depuis <code>.</code> tous les fichiers <code>.py</code> modifiés dans les dernières 24 h (<code>-mtime 0</code>). Sortie : une liste de chemins, un par ligne.</li>
+<li><code>| wc -l</code> : compte le nombre de lignes de ce qui arrive en entrée. Résultat : un entier.</li>
+</ol>
+
+<p>Ce qu'on obtient : un chiffre, par exemple <code>7</code>. Le tout en 1 ligne, sans variable intermédiaire, sans fichier temporaire.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Trouver les 5 fichiers les plus volumineux d&#x27;un projet
+du -ah . | sort -hr | head -5</code></pre></div>
+
+
+<p>Décomposition :</p>
+
+<ol>
+<li><code>du -ah .</code> : affiche la taille (<code>-a</code> = tous les fichiers, pas juste les dossiers ; <code>-h</code> = human readable). Sortie : <code>12K ./file.py</code>, <code>1.2M ./data.csv</code>, …</li>
+<li><code>sort -hr</code> : trie en ordre numérique <strong>human</strong> (<code>-h</code>, comprend K/M/G) et en <strong>reverse</strong> (<code>-r</code>, décroissant).</li>
+<li><code>head -5</code> : garde les 5 premières lignes.</li>
+</ol>
+
+<p>Résultat : les 5 plus gros fichiers avec leur taille.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Sauvegarder stdout et stderr séparément pendant un entraînement
+python train.py &gt; train.log 2&gt; train.err</code></pre></div>
+
+
+<ul>
+<li><code>&gt; train.log</code> redirige stdout vers <code>train.log</code>.</li>
+<li><code>2&gt; train.err</code> redirige stderr (descriptor 2) vers <code>train.err</code>.</li>
+<li>Pour tout mélanger dans un seul fichier : <code>python train.py &gt; out.log 2&gt;&amp;1</code> ou <code>python train.py &amp;&gt; out.log</code>.</li>
+</ul>
+
+<p>L'idée fondatrice : chaque outil fait <strong>UNE</strong> chose, et on les compose pour créer un pipeline plus complexe. Cette philosophie a précédé Map-Reduce et le streaming Spark de 40 ans.</p>
+
+<h3 id="syn-permissions-et-propriété">Permissions et propriété</h3>
+
+<p>Chaque fichier appartient à un utilisateur (owner) et à un groupe, et porte trois triplets de permissions : <strong>owner / group / others</strong>, chacun avec read (<code>r</code>), write (<code>w</code>), execute (<code>x</code>). <code>ls -l</code> affiche par exemple <code>-rwxr-xr--</code> :</p>
+
+<ul>
+<li><code>-</code> : type (fichier régulier ; <code>d</code> pour dossier, <code>l</code> pour lien symbolique)</li>
+<li><code>rwx</code> : owner peut tout faire (lire, écrire, exécuter)</li>
+<li><code>r-x</code> : groupe peut lire et exécuter (mais pas modifier)</li>
+<li><code>r--</code> : autres ne peuvent que lire</li>
+</ul>
+
+<p>En notation octale, chaque triplet devient un chiffre (r=4, w=2, x=1) : <code>rwx r-x r--</code> = <code>7 5 4</code> → <code>754</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">chmod +x train.sh          # Rend le script exécutable pour tout le monde
+chmod 755 train.sh         # Équivalent : rwxr-xr-x (owner tout, groupe et autres en lecture/exec)
+chmod 644 secrets.env      # rw-r--r-- : owner lit/écrit, les autres lisent seulement
+chown alice:staff train.sh # Change owner et group</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège</strong> : <code>chmod 777</code> sur tout est l'équivalent unix de <code>try: ... except: pass</code> — ça fait disparaître l'erreur sans la comprendre. C'est aussi un trou de sécurité béant : n'importe qui peut modifier votre code et y injecter une backdoor. Préférez toujours des permissions <strong>minimales</strong> : <code>644</code> pour des fichiers de données, <code>755</code> pour des scripts exécutables, <code>600</code> pour des secrets.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-variables-denvironnement-et-path">Variables d'environnement et <code>$PATH</code></h3>
+
+<p>Une <strong>variable d'environnement</strong> est une paire clé/valeur héritée par les processus enfants. La plus critique est <strong><code>$PATH</code></strong> : la liste des dossiers où le shell cherche un exécutable quand vous tapez son nom. Quand vous installez un nouvel outil et qu'il n'est "pas trouvé" (<code>command not found</code>), c'est presque toujours un problème de <code>$PATH</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">echo $PATH                       # Affiche la liste, colon-separated
+# /usr/local/bin:/usr/bin:/bin:/Users/alice/.pyenv/shims
+
+which python3                    # Trouve quel binaire est résolu en premier
+# /Users/alice/.pyenv/shims/python3
+
+export PATH=&quot;$HOME/.local/bin:$PATH&quot;  # Ajoute un dossier EN TÊTE</code></pre></div>
+
+
+<p><strong>Pourquoi "en tête"</strong> : le shell cherche les dossiers dans l'ordre et prend le premier match. En ajoutant votre dossier en tête, vos binaires prennent la priorité sur les binaires système.</p>
+
+<p>Pour rendre un export <strong>permanent</strong>, ajoutez la ligne dans <code>~/.zshrc</code> (zsh) ou <code>~/.bashrc</code> (bash). Pour appliquer immédiatement : <code>source ~/.zshrc</code>.</p>
+
+<p>En data science, deux variables d'environnement vitales :</p>
+
+<ul>
+<li><strong><code>PYTHONPATH</code></strong> : dossiers où Python cherche les modules à importer.</li>
+<li><strong><code>OPENAI_API_KEY</code></strong> (et consorts) : secrets d'API — <strong>jamais</strong> dans le code, toujours via l'environnement, et idéalement chargés depuis un <code>.env</code> via <code>python-dotenv</code>.</li>
+</ul>
+
+<p><strong>Exemple de <code>.env</code></strong> pour un projet ML :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">OPENAI_API_KEY=sk-proj-abc...xyz
+DATABASE_URL=postgresql://alice:secret@localhost:5432/mydb
+MLFLOW_TRACKING_URI=http://localhost:5000</code></pre></div>
+
+
+<p>Puis dans votre script Python :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from dotenv import load_dotenv
+import os
+
+load_dotenv()                               # Lit .env et peuple os.environ
+api_key = os.environ[&quot;OPENAI_API_KEY&quot;]      # Lève KeyError si absent → fail-fast</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : ajoutez <code>.env</code> à votre <code>.gitignore</code> dès le premier commit. Une fois qu'une clé d'API est dans l'historique git public, elle est <strong>compromise</strong> — il faut la révoquer ET réécrire l'historique. C'est une question d'entretien classique : "Qu'est-ce qui se passe si vous committez un secret par erreur ?"</p></div></div>
+
+<h3 id="syn-glob-expansion-et-quoting">Glob, expansion et quoting</h3>
+
+<p>Le shell <strong>expanse</strong> les motifs avant d'invoquer la commande. C'est puissant mais c'est une source de bugs subtils :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">ls *.csv         # Le shell remplace *.csv par tous les .csv du dossier courant
+rm -rf &quot;$DIR&quot;/*  # Supprime le contenu de $DIR mais pas $DIR lui-même</code></pre></div>
+
+
+<p><strong>Trois niveaux de quoting</strong> à distinguer :</p>
+
+<ul>
+<li><code>&#x27;simple quotes&#x27;</code> : <strong>aucun</strong> caractère n'est interprété, prend tout littéralement. Utile pour des chaînes contenant <code>$</code>, <code>*</code>, <code>!</code>.</li>
+<li><code>&quot;double quotes&quot;</code> : interpole <code>$variables</code> et <code>$(commandes)</code>, mais <strong>protège des espaces</strong>.</li>
+<li><strong>Pas de quotes</strong> : tout est expansé, espaces compris. Source de bugs si une variable contient un espace.</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">NAME=&quot;Alice Wagon&quot;
+echo $NAME      # Affiche &quot;Alice Wagon&quot; — mais bash voit deux arguments
+echo &quot;$NAME&quot;    # Affiche &quot;Alice Wagon&quot; — un seul argument, sûr
+echo &#x27;$NAME&#x27;    # Affiche littéralement &quot;$NAME&quot;, sans expansion</code></pre></div>
+
+
+<p><strong>Exemple pratique</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Mauvais : si un fichier contient un espace dans son nom, ça casse
+for f in $(ls *.csv); do mv $f ${f%.csv}.txt; done
+
+# Bon : le glob direct préserve les noms, les quotes protègent chaque variable
+for f in *.csv; do mv &quot;$f&quot; &quot;${f%.csv}.txt&quot;; done</code></pre></div>
+
+
+<p><code>${f%.csv}</code> signifie "<code>$f</code> sans le suffixe <code>.csv</code>" — syntaxe utile pour changer une extension.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège classique en entretien DevOps</strong> : pourquoi <code>for f in $(ls <em>.csv); do ...</code> casse-t-il sur des fichiers contenant des espaces ? Réponse : <code>$(ls)</code> est expansé en une suite de tokens découpés sur les espaces. <code>for f in </em>.csv; do ...</code> est correct parce que le glob produit des tokens déjà séparés proprement et chaque token est un fichier complet.</p></div></div>
+
+<h3 id="syn-processus-jobs-et-signaux">Processus, jobs et signaux</h3>
+
+<p>Chaque commande lancée crée un <strong>processus</strong> avec un PID (process ID). Plusieurs façons de les manipuler :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">python long_training.py &amp;      # &amp; lance en arrière-plan, retourne aussitôt
+jobs                            # Liste les jobs du shell courant
+fg %1                           # Ramène le job 1 au premier plan
+# Ctrl+Z → suspend le processus courant
+bg                              # Reprend en arrière-plan le job suspendu</code></pre></div>
+
+
+<p><strong>Cas d'usage concret</strong> : vous lancez un entraînement long, vous voulez garder le terminal libre pour d'autres commandes :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">python train.py &gt; train.log 2&gt;&amp;1 &amp;    # &amp; à la fin : arrière-plan
+[1] 12345                              # Le shell affiche le job id et le PID
+# ... vous continuez à travailler ...
+tail -f train.log                      # Pour voir les logs en live
+# Ctrl+C sur tail ne tue pas train.py — c&#x27;est un autre processus</code></pre></div>
+
+
+<p><strong>Signaux les plus utiles</strong> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Signal</th><th>Touche / cmd</th><th>Action</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td><code>SIGINT</code> (2)</td><td><code>Ctrl+C</code></td><td>Interrompre proprement</td><td>Arrêter un script Python qui boucle</td></tr><tr><td><code>SIGTSTP</code> (20)</td><td><code>Ctrl+Z</code></td><td>Suspendre</td><td>Mettre en pause sans tuer</td></tr><tr><td><code>SIGTERM</code> (15)</td><td><code>kill PID</code></td><td>Terminer proprement</td><td>Demander à un serveur de s'arrêter</td></tr><tr><td><code>SIGKILL</code> (9)</td><td><code>kill -9 PID</code></td><td>Tuer immédiatement</td><td>Quand SIGTERM échoue (dernier recours)</td></tr></tbody></table></div>
+<p><code>SIGKILL</code> ne peut <strong>pas</strong> être intercepté par le programme : il n'a aucune chance de fermer ses fichiers, libérer ses verrous ou flusher ses buffers. C'est pourquoi <code>kill -9</code> est à éviter sauf urgence — utilisez d'abord <code>kill PID</code> et laissez 5 secondes au processus pour se terminer proprement.</p>
+
+<h3 id="syn-tmux-et-travail-en-remote"><code>tmux</code> et travail en remote</h3>
+
+<p>Quand vous entraînez un modèle sur un serveur distant via SSH, votre session se ferme dès que la connexion tombe — et votre <code>python train.py</code> part avec elle. La solution professionnelle est <strong><code>tmux</code></strong> (ou <code>screen</code>) : un multiplexeur de terminal qui maintient des sessions persistantes côté serveur, indépendamment de votre client.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Sur le serveur (via ssh)
+tmux new -s train          # Nouvelle session nommée &quot;train&quot;
+python train.py            # Lancer l&#x27;entraînement
+# Ctrl+b puis d : se détache (le job continue en arrière-plan du serveur)
+
+# Vous pouvez fermer votre laptop, ssh se coupe — train.py tourne encore
+
+# De retour plus tard
+ssh user@server
+tmux ls                    # Liste les sessions existantes
+# train: 1 windows (created Mon Apr  1 10:00:00 2024) [80x24]
+tmux attach -t train       # Réattacher pour voir la progression</code></pre></div>
+
+
+<p><strong>Avantages secondaires</strong> : panneaux multiples (<code>Ctrl+b &quot;</code> horizontal, <code>Ctrl+b %</code> vertical), historique scrollable (<code>Ctrl+b &lt;a href=&quot;https://mywiki.wooledge.org/BashPitfalls&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;</code>), copie/collage entre panneaux. C'est la première chose à installer sur n'importe quel serveur de prod.</p>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi <code>cd new_dir</code> dans un script bash ne change-t-il pas le dossier du shell parent ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Pensez à ce qui se passe quand vous lancez <code>./script.sh</code> : quel processus exécute le script ?</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Quand vous exécutez un script avec <code>./script.sh</code>, le shell parent crée un <strong>processus enfant</strong> qui exécute le script. Les variables d'environnement et le <code>pwd</code> sont <strong>locaux à ce processus enfant</strong> — ils sont détruits quand le script se termine. Le shell parent ne voit jamais ces changements.</p>
+
+<p>Pour qu'un script affecte le shell parent, il faut le <strong>sourcer</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">source script.sh    # ou, équivalent :
+. script.sh</code></pre></div>
+
+
+<p>Le sourcing exécute le script <strong>dans le contexte du shell courant</strong>, pas dans un sous-processus. C'est exactement ce qu'on fait avec <code>source venv/bin/activate</code> : si on l'exécutait normalement (<code>./venv/bin/activate</code>), le <code>PATH</code> modifié serait perdu dès la fin de l'activation.</p>
+
+<p><strong>Règle</strong> : pour les scripts qui modifient l'environnement, documenter clairement qu'il faut les sourcer (ou fournir un alias qui le fait automatiquement).</p>
+
+</details>
+
+<p><strong>Q2 : Quelle est la différence entre <code>&gt;</code> et <code>&gt;&gt;</code>, et pourquoi <code>command &gt; file 2&gt;&amp;1</code> n'est-il pas équivalent à <code>command 2&gt;&amp;1 &gt; file</code> ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Les redirections sont appliquées <strong>dans l'ordre où elles sont écrites</strong>. Que fait <code>2&gt;&amp;1</code> à chaque position ?</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><code>&gt;</code> écrase, <code>&gt;&gt;</code> append. Pour la deuxième partie, c'est une question piège classique : les redirections sont évaluées <strong>de gauche à droite</strong>.</p>
+
+<p><strong>Version 1</strong> : <code>command &gt; file 2&gt;&amp;1</code></p>
+
+<ol>
+<li><code>&gt; file</code> : stdout (fd 1) est redirigé vers <code>file</code>.</li>
+<li><code>2&gt;&amp;1</code> : stderr (fd 2) est redirigé vers "ce vers quoi stdout pointe actuellement", c'est-à-dire <code>file</code>.</li>
+<li>Résultat : <strong>tout</strong> va dans <code>file</code>.</li>
+</ol>
+
+<p><strong>Version 2</strong> : <code>command 2&gt;&amp;1 &gt; file</code></p>
+
+<ol>
+<li><code>2&gt;&amp;1</code> : stderr est redirigé vers "ce vers quoi stdout pointe actuellement", c'est-à-dire le <strong>terminal</strong> (stdout n'a pas encore été redirigé).</li>
+<li><code>&gt; file</code> : stdout est redirigé vers <code>file</code>.</li>
+<li>Résultat : stdout va dans <code>file</code>, <strong>stderr va dans le terminal</strong>.</li>
+</ol>
+
+<p>La syntaxe moderne <strong><code>command &amp;&gt; file</code></strong> évite l'ambiguïté et redirige stdout + stderr vers <code>file</code> en une seule fois. En entretien DevOps, c'est une question qui sépare ceux qui ont vraiment débuggé des scripts en prod de ceux qui ont juste lu un tutoriel.</p>
+
+</details>
+
+<p><strong>Q3 : Vous lancez <code>du -sh *</code> dans un dossier de 200 Go et la commande est très lente. Comment l'accélérer sans changer d'outil ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p><code>du</code> est séquentiel par défaut. Comment paralléliser sur plusieurs sous-dossiers en même temps ?</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><code>du</code> parcourt l'arbre <strong>séquentiellement</strong>. Sur un disque SSD ou un système de fichiers réseau, vous pouvez paralléliser avec GNU <code>parallel</code> ou <code>xargs -P</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Lance 8 &#x27;du&#x27; en parallèle, un par sous-dossier
+ls | xargs -n1 -P8 du -sh</code></pre></div>
+
+
+<ul>
+<li><code>-n1</code> : un argument (un dossier) par invocation de <code>du</code>.</li>
+<li><code>-P8</code> : 8 processus en parallèle.</li>
+</ul>
+
+<p>Sur un <strong>HDD</strong> classique en revanche, paralléliser <strong>empire</strong> les choses (les têtes de lecture font des allers-retours). La vraie réponse d'entretien est : <strong>connaître le matériel</strong> sur lequel on tourne avant de paralléliser. C'est exactement le même raisonnement qu'avec le multiprocessing en Python : le GIL et le coût des fork peuvent rendre la version parallèle plus lente qu'une version séquentielle bien écrite.</p>
+
+<p><strong>Alternative moderne</strong> : <code>dust</code> (une réécriture rust de <code>du</code>) est beaucoup plus rapide sans avoir besoin de paralléliser manuellement.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li>[Bash Pitfalls</a> — collection canonique des pièges, mémoriser les 10 premiers est un must</li>
+<li><a href="https://google.github.io/styleguide/shellguide.html" target="_blank" rel="noopener">Google Shell Style Guide</a> — référence pour écrire des scripts maintenables</li>
+<li><a href="https://explainshell.com/" target="_blank" rel="noopener">explainshell.com</a> — colle une commande, obtient une explication de chaque flag</li>
+<li><a href="https://tldr.sh/" target="_blank" rel="noopener">tldr-pages</a> — alternative pratique au <code>man</code>, exemples concrets</li>
+<li><em>The Linux Command Line</em> (William Shotts, NoStarch Press) — manuel complet et gratuit en PDF</li>
+<li><em>The Missing Semester of Your CS Education</em> (MIT) — cours vidéo gratuit, leçons 1-3 sur le shell</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <div></div>
+  <a href="../notes-perso/note-diverses.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Notes diverses →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

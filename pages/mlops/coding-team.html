@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding as a Team — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Coding as a Team</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html" class="active">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">MLOps & Production</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Coding as a Team</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Coding as a Team</h1>
+        <p class="page-objective">Maîtriser le workflow Git en équipe — branches, pull requests, code review, gestion des conflits, notebooks collaboratifs et organisation de projet Data Science.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Branch</div>
+        <div class="key-concept-def">Ligne de développement parallèle où vous travaillez sans casser `main`.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Pull Request</div>
+        <div class="key-concept-def">Demande de fusion d&#x27;une branche vers `main`, support de la code review.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Merge vs rebase</div>
+        <div class="key-concept-def">Fusion qui crée un commit vs réécriture linéaire de l&#x27;historique.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Code review</div>
+        <div class="key-concept-def">Relecture par un pair avant intégration ; outil de qualité et d&#x27;apprentissage.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-coding-as-a-team">Cheatsheet — Coding as a Team</a><ol><li><a href="#créer-un-repo-et-inviter-des-collaborateurs">Créer un repo et inviter des collaborateurs</a></li><li><a href="#workflow-branches">Workflow branches</a></li><li><a href="#mettre-à-jour-master-après-un-merge">Mettre à jour master après un merge</a></li><li><a href="#merger-master-dans-sa-branche-si-besoin">Merger master dans sa branche (si besoin)</a></li><li><a href="#résoudre-des-conflits">Résoudre des conflits</a></li><li><a href="#git-status-les-3-niveaux">Git status — Les 3 niveaux</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-créer-et-configurer-un-repo-projet">1) Créer et configurer un repo projet</a><ol><li><a href="#11-depuis-zéro">1.1 Depuis zéro</a></li><li><a href="#12-ajouter-des-collaborateurs">1.2 Ajouter des collaborateurs</a></li></ol></li><li><a href="#2-rappels-git-les-3-niveaux-de-statut">2) Rappels Git — Les 3 niveaux de statut</a><li><a href="#3-travailler-en-équipe-branches-et-pull-requests">3) Travailler en équipe — Branches et Pull Requests</a><ol><li><a href="#31-diviser-le-travail">3.1 Diviser le travail</a></li><li><a href="#32-workflow-git">3.2 Workflow Git</a></li><li><a href="#33-pull-requests">3.3 Pull Requests</a></li><li><a href="#34-après-le-merge-mettre-à-jour-master">3.4 Après le merge — Mettre à jour master</a></li><li><a href="#35-merger-master-dans-sa-branche">3.5 Merger master dans sa branche</a></li></ol></li><li><a href="#4-gérer-les-conflits">4) Gérer les conflits</a><ol><li><a href="#41-quand-ça-arrive">4.1 Quand ça arrive</a></li><li><a href="#42-résolution">4.2 Résolution</a></li><li><a href="#43-deux-règles-dor">4.3 Deux règles d'or</a></li></ol></li><li><a href="#5-notebooks-en-équipe">5) Notebooks en équipe</a><ol><li><a href="#51-problèmes">5.1 Problèmes</a></li><li><a href="#52-bonnes-pratiques">5.2 Bonnes pratiques</a></li></ol></li><li><a href="#6-fichiers-volumineux">6) Fichiers volumineux</a><li><a href="#7-organisation-de-projet">7) Organisation de projet</a><ol><li><a href="#71-kanban">7.1 Kanban</a></li><li><a href="#72-architecture-selon-le-type-de-démo">7.2 Architecture selon le type de démo</a></li></ol></li><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-coding-as-a-team">📋 Cheatsheet — Coding as a Team</h2>
+
+<h3 id="créer-un-repo-et-inviter-des-collaborateurs">Créer un repo et inviter des collaborateurs</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">cd ~/code/YOUR_USERNAME
+mkdir my-project &amp;&amp; cd my-project
+git init
+echo &#x27;# my-project&#x27; &gt;&gt; README.md
+git add README.md &amp;&amp; git commit -m &#x27;kickstart project&#x27;
+gh repo create                         # crée le repo GitHub via CLI
+git push origin master                 # premier et DERNIER push sur master
+
+## Collaborateurs : Settings → Collaborators → Add people
+## Le collaborateur clone ensuite :
+git clone git@github.com:OWNER/PROJECT.git   # toujours SSH, pas HTTPS</code></pre></div>
+
+
+<h3 id="workflow-branches">Workflow branches</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git branch                             # liste les branches locales
+git checkout -b feature-encoding       # crée et switch sur une nouvelle branche
+## ... coder, commiter ...
+git push origin feature-encoding       # push la branche sur GitHub
+## → Créer une Pull Request sur GitHub
+## → Review → Merge → Delete branch</code></pre></div>
+
+
+<h3 id="mettre-à-jour-master-après-un-merge">Mettre à jour master après un merge</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git status                             # DOIT être clean avant pull/checkout/merge
+git checkout master
+git pull origin master                 # récupère les commits du merge
+git sweep                              # nettoie les branches locales mergées
+pip install -r requirements.txt        # au cas où des packages ont été ajoutés</code></pre></div>
+
+
+<h3 id="merger-master-dans-sa-branche-si-besoin">Merger master dans sa branche (si besoin)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git add . &amp;&amp; git commit -m &#x27;WIP&#x27;       # commiter d&#x27;abord
+git status                             # vérifier que c&#x27;est clean
+git checkout master
+git pull origin master
+git checkout my-feature
+git merge master                       # peut générer des conflits</code></pre></div>
+
+
+<h3 id="résoudre-des-conflits">Résoudre des conflits</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## Après un merge avec conflits :
+## 1. Ouvrir VS Code → Cmd+Shift+F → chercher &quot;&lt;&lt;&lt;&lt;&lt;&quot;
+## 2. Garder le bon code, supprimer les marqueurs &lt;&lt;&lt;&lt;&lt; ===== &gt;&gt;&gt;&gt;&gt;
+## 3. Finaliser le merge :
+git add .
+git commit --no-edit                   # utilise le message de merge par défaut
+git push origin my-branch</code></pre></div>
+
+
+<h3 id="git-status-les-3-niveaux">Git status — Les 3 niveaux</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git add file.py                        # Modified → Staged
+git restore --staged file.py           # Staged → Modified (garde les modifs)
+git restore file.py                    # Modified → dernière version commitée (⚠️ perd les modifs)
+git revert &lt;commit_id&gt;                 # annule un commit en créant un nouveau commit inverse</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Commiter directement sur <code>master</code></strong></p>
+<p>Le master doit toujours être stable — les modifications passent par des branches et des pull requests.</p>
+<p>❌ <code>git checkout master &amp;&amp; git commit</code> → casse le workflow de l'équipe</p>
+<p>✅ Toujours créer une branche : <code>git checkout -b my-feature</code> → PR → review → merge</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Pull, checkout ou merge avec un <code>git status</code> non-clean</strong></p>
+<p>Des fichiers modifiés non commités peuvent créer des conflits silencieux ou des pertes de données.</p>
+<p>❌ <code>git pull origin master</code> avec des fichiers modifiés → merge chaotique</p>
+<p>✅ Toujours vérifier <code>git status</code> est clean avant toute opération de branche</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Modifier le notebook d'un coéquipier</strong></p>
+<p>Les notebooks génèrent des diffs illisibles et des conflits quasi impossibles à résoudre.</p>
+<p>❌ Deux personnes éditent <code>exploration.ipynb</code> → conflit ingérable</p>
+<p>✅ Chaque personne crée son propre notebook préfixé : <code>alice_dataviz.ipynb</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Pusher des fichiers > 100 Mo sur GitHub</strong></p>
+<p>GitHub refuse les fichiers > 100 Mo — et une fois commités, ils sont difficiles à retirer de l'historique.</p>
+<p>❌ <code>git add data/big_dataset.csv</code> → push bloqué</p>
+<p>✅ Ajouter <code>raw_data/</code> dans <code>.gitignore</code> dès le début du projet</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Cloner un repo avec HTTPS au lieu de SSH</strong></p>
+<p>HTTPS demande un mot de passe à chaque push — SSH utilise une clé et fonctionne sans friction.</p>
+<p>❌ <code>git clone https://github.com/...</code> → mot de passe à chaque push</p>
+<p>✅ <code>git clone git@github.com:...</code> (SSH)</p></div></div>
+
+<hr>
+
+<h2 id="1-créer-et-configurer-un-repo-projet">1) Créer et configurer un repo projet</h2>
+
+<h3 id="11-depuis-zéro">1.1 Depuis zéro</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">cd ~/code/YOUR_USERNAME
+mkdir my-project &amp;&amp; cd my-project
+git init
+echo &#x27;# my-project&#x27; &gt;&gt; README.md
+git add README.md &amp;&amp; git commit -m &#x27;kickstart project&#x27;
+gh repo create                         # CLI GitHub
+git push origin master</code></pre></div>
+
+
+<h3 id="12-ajouter-des-collaborateurs">1.2 Ajouter des collaborateurs</h3>
+
+<p>Aller dans Settings → Collaborators → Add people sur GitHub. Les collaborateurs acceptent l'invitation par email puis clonent :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">mkdir ~/code/OWNER_USERNAME &amp;&amp; cd $_
+git clone git@github.com:OWNER_USERNAME/PROJECT.git</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Toujours cloner avec <strong>SSH</strong> (<code>git@github.com:...</code>), jamais HTTPS.</p></div></div>
+
+<hr>
+
+<h2 id="2-rappels-git-les-3-niveaux-de-statut">2) Rappels Git — Les 3 niveaux de statut</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Untracked ──git add──→ Staged ──git commit──→ Committed
+                ↑           │
+      git restore --staged  │
+                ←───────────┘</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git add file.py              # → Staged
+git restore --staged file.py # → Modified (garde les changements)
+git restore file.py          # → Dernière version commitée (⚠️ perd les changements)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>git revert &lt;commit_id&gt;</code> crée un nouveau commit qui annule le commit ciblé — l'historique est préservé.</p></div></div>
+
+<hr>
+
+<h2 id="3-travailler-en-équipe-branches-et-pull-requests">3) Travailler en équipe — Branches et Pull Requests</h2>
+
+<h3 id="31-diviser-le-travail">3.1 Diviser le travail</h3>
+
+<ol>
+<li>Découper le workflow en <strong>jobs parallèles</strong> (baseline, EDA, cleaning, feature engineering…)</li>
+<li>Découper chaque job en <strong>petites tâches</strong></li>
+<li>Une tâche = une branche = une Pull Request</li>
+</ol>
+
+<h3 id="32-workflow-git">3.2 Workflow Git</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## 1. Créer une branche
+git checkout -b feature-encoding
+
+## 2. Coder, commiter
+git add . &amp;&amp; git commit -m &#x27;add ordinal encoding&#x27;
+
+## 3. Pusher la branche
+git push origin feature-encoding
+
+## 4. Créer une PR sur GitHub → Review → Merge → Delete branch</code></pre></div>
+
+
+<h3 id="33-pull-requests">3.3 Pull Requests</h3>
+
+<ul>
+<li>Écrire un <strong>titre</strong> et une <strong>description</strong> clairs (ce qui a été fait, packages ajoutés…)</li>
+<li>Le reviewer commente le diff, ligne par ligne</li>
+<li>Si OK → "Merge Pull Request" → "Delete Branch"</li>
+<li>Si pas OK → commentaire général "Review done", l'auteur corrige</li>
+</ul>
+
+<h3 id="34-après-le-merge-mettre-à-jour-master">3.4 Après le merge — Mettre à jour master</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git status                             # DOIT être clean
+git checkout master
+git pull origin master
+git sweep                              # nettoie les branches locales mergées
+pip install -r requirements.txt        # nouveaux packages éventuels</code></pre></div>
+
+
+<h3 id="35-merger-master-dans-sa-branche">3.5 Merger master dans sa branche</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git add . &amp;&amp; git commit -m &#x27;WIP&#x27;
+git checkout master &amp;&amp; git pull origin master
+git checkout my-feature &amp;&amp; git merge master</code></pre></div>
+
+
+<hr>
+
+<h2 id="4-gérer-les-conflits">4) Gérer les conflits</h2>
+
+<h3 id="41-quand-ça-arrive">4.1 Quand ça arrive</h3>
+
+<p>Un conflit survient quand master a changé entre la création de la branche et le merge.</p>
+
+<h3 id="42-résolution">4.2 Résolution</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git checkout master &amp;&amp; git pull origin master
+git checkout my-branch &amp;&amp; git merge master
+## → Conflits ! Normal.
+## Ouvrir VS Code → Cmd+Shift+F → chercher &quot;&lt;&lt;&lt;&lt;&lt;&quot;
+## Garder le bon code, supprimer les marqueurs
+git add .
+git commit --no-edit
+git push origin my-branch</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>On peut aussi résoudre les conflits directement sur GitHub via le bouton "Resolve conflicts" dans la PR.</p></div></div>
+
+<h3 id="43-deux-règles-dor">4.3 Deux règles d'or</h3>
+
+<ol>
+<li><strong>Ne jamais commiter sur master</strong> — toujours passer par une branche</li>
+<li><strong>Toujours avoir un <code>git status</code> clean</strong> avant <code>pull</code>, <code>checkout</code> ou <code>merge</code></li>
+</ol>
+
+<hr>
+
+<h2 id="5-notebooks-en-équipe">5) Notebooks en équipe</h2>
+
+<h3 id="51-problèmes">5.1 Problèmes</h3>
+
+<ul>
+<li>GitHub rend les notebooks lentement et mal</li>
+<li>Les diffs sont illisibles (JSON brut)</li>
+<li>Les conflits sont quasi impossibles à résoudre</li>
+</ul>
+
+<h3 id="52-bonnes-pratiques">5.2 Bonnes pratiques</h3>
+
+<ul>
+<li><strong>Ne pas modifier</strong> le notebook d'un coéquipier — créer le sien</li>
+<li>Préfixer avec son pseudo GitHub : <code>alice_dataviz.ipynb</code></li>
+<li>Utiliser <strong>nbdime</strong> pour comparer des notebooks :</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install nbdime
+nbdime diff-web base.ipynb updated.ipynb</code></pre></div>
+
+
+<hr>
+
+<h2 id="6-fichiers-volumineux">6) Fichiers volumineux</h2>
+
+<p>GitHub refuse les fichiers > 100 Mo.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">echo &#x27;raw_data/&#x27; &gt;&gt; .gitignore         # ignorer le dossier de données
+mkdir raw_data
+## Chaque coéquipier télécharge les données séparément</code></pre></div>
+
+
+<p>Si un gros fichier a déjà été commité :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">mv path/to/big_file raw_data/
+git add path/to/big_file &amp;&amp; git commit -m &#x27;move big file to raw_data&#x27;
+git filter-branch --force --index-filter \
+  &quot;git rm --cached --ignore-unmatch path/to/big_file&quot; \
+  --prune-empty --tag-name-filter cat -- --all
+git push origin YOUR_BRANCH</code></pre></div>
+
+
+<hr>
+
+<h2 id="7-organisation-de-projet">7) Organisation de projet</h2>
+
+<h3 id="71-kanban">7.1 Kanban</h3>
+
+<p>Découper en <strong>Backlog → To do → Doing → Done</strong> avec Trello, Notion ou GitHub Projects.</p>
+
+<h3 id="72-architecture-selon-le-type-de-démo">7.2 Architecture selon le type de démo</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">## Présentation
+└── project/               # R&amp;D repo
+
+## API prédictive
+├── project_api/            # API repo
+└── project/                # R&amp;D repo
+
+## Application complète
+├── project_api/            # API repo (Cloud Run)
+├── project_app/            # Frontend repo (Streamlit)
+└── project/                # R&amp;D repo</code></pre></div>
+
+
+<p>👉 <a href="https://github.com/lewagon/data-templates" target="_blank" rel="noopener">Templates de projet Le Wagon</a></p>
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://github.com/cli/cli" target="_blank" rel="noopener">GitHub CLI (gh)</a></li>
+<li>👉 <a href="https://github.com/jupyter/nbdime" target="_blank" rel="noopener">nbdime — Notebook diffs</a></li>
+<li>👉 <a href="https://longair.net/blog/2011/02/27/an-asymmetry-between-git-pull-and-git-push/" target="_blank" rel="noopener">Git Pitfalls</a></li>
+<li>👉 <a href="https://docs.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository" target="_blank" rel="noopener">GitHub — Removing large files from history</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">🚀 Challenges</h2>
+
+<ul>
+<li>Créer un repo projet, inviter les collaborateurs, et mettre en place le workflow branches + PR</li>
+<li>Organiser le Kanban et répartir les tâches en jobs parallèles</li>
+<li>Pratiquer la résolution de conflits Git</li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-a-retenir">A retenir</a></li><li><a href="#ref-plan-du-cours">Plan du cours</a></li></ol></li><li><a href="#ref-1-créer-et-configurer-un-repo-projet">1 — Créer et configurer un repo projet</a><ol><li><a href="#ref-créer-le-repo-depuis-zéro">Créer le repo depuis zéro</a></li><li><a href="#ref-inviter-des-collaborateurs">Inviter des collaborateurs</a></li></ol></li><li><a href="#ref-2-rappels-git-les-3-niveaux-de-statut">2 — Rappels Git — Les 3 niveaux de statut</a><li><a href="#ref-3-travailler-en-équipe-branches-et-pull-requests">3 — Travailler en équipe — Branches et Pull Requests</a><ol><li><a href="#ref-31-diviser-le-travail">3.1 Diviser le travail</a></li><li><a href="#ref-32-workflow-git-complet-du-début-à-la-fin">3.2 Workflow Git complet (du début à la fin)</a></li><li><a href="#ref-33-pull-requests-le-processus-de-validation">3.3 Pull Requests — Le processus de validation</a></li><li><a href="#ref-34-mettre-à-jour-master-après-un-merge">3.4 Mettre à jour master après un merge</a></li><li><a href="#ref-35-mettre-à-jour-sa-branche-avec-master-si-besoin">3.5 Mettre à jour sa branche avec master (si besoin)</a></li></ol></li><li><a href="#ref-4-gérer-les-conflits">4 — Gérer les conflits</a><ol><li><a href="#ref-quand-un-conflit-survient-il">Quand un conflit survient-il ?</a></li><li><a href="#ref-résoudre-un-conflit-pas-à-pas">Résoudre un conflit pas à pas</a></li><li><a href="#ref-les-deux-règles-dor">Les deux règles d'or</a></li></ol></li><li><a href="#ref-5-notebooks-en-équipe">5 — Notebooks en équipe</a><ol><li><a href="#ref-pourquoi-les-notebooks-sont-problématiques-avec-git">Pourquoi les notebooks sont problématiques avec Git</a></li><li><a href="#ref-bonne-pratique-un-notebook-par-personne">Bonne pratique : un notebook par personne</a></li><li><a href="#ref-comparer-des-notebooks-avec-nbdime">Comparer des notebooks avec nbdime</a></li></ol></li><li><a href="#ref-6-fichiers-volumineux">6 — Fichiers volumineux</a><ol><li><a href="#ref-la-limite-github">La limite GitHub</a></li><li><a href="#ref-si-un-gros-fichier-a-déjà-été-commité-par-erreur">Si un gros fichier a déjà été commité par erreur</a></li></ol></li><li><a href="#ref-7-organisation-de-projet">7 — Organisation de projet</a><ol><li><a href="#ref-kanban-visualiser-lavancement">Kanban : visualiser l'avancement</a></li><li><a href="#ref-architecture-de-repo-selon-le-type-de-projet">Architecture de repo selon le type de projet</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Jusqu'ici, tu as travaillé seul sur Git : tu commitais, tu pushais, et personne ne touchait à ton code entre-temps. En équipe, tout change. Plusieurs personnes modifient les mêmes fichiers en même temps, et sans organisation, c'est le chaos : qui a changé quoi ? Quelle version est la bonne ? Comment intégrer le travail de chacun sans tout casser ?</p>
+
+<p>Ce cours répond à ces questions en t'apprenant le <strong>workflow Git en équipe</strong> : branches, pull requests, code review, et gestion des conflits. C'est la manière dont travaillent les équipes de développeurs professionnels — et les équipes Data Science aussi.</p>
+
+<p><strong>Analogie fil rouge.</strong> Imagine que tu co-écris un rapport Word avec deux collègues. Si vous éditez tous les trois le même fichier en même temps, vous allez vous écraser mutuellement. La solution ? Chacun fait une copie, travaille dessus, puis vous fusionnez à la fin en comparant les versions. C'est exactement ce que font les <strong>branches Git</strong>.</p>
+
+<h3 id="ref-a-retenir">A retenir</h3>
+
+<ul>
+<li><code>master</code> (ou <code>main</code>) est la version officielle et stable du projet — on n'y touche jamais directement.</li>
+<li>Une <strong>branche</strong> est une copie de travail isolée — on y développe une fonctionnalité, puis on la fusionne.</li>
+<li>Une <strong>Pull Request (PR)</strong> est une demande de fusion : "j'ai fini ma partie, quelqu'un peut vérifier et l'intégrer ?"</li>
+<li>La <strong>code review</strong> permet à un coéquipier de valider le travail avant qu'il rejoigne <code>master</code>.</li>
+<li>Un <strong>conflit</strong> survient quand deux personnes ont modifié le même endroit — Git demande alors qu'un humain choisisse quelle version garder.</li>
+</ul>
+
+<h3 id="ref-plan-du-cours">Plan du cours</h3>
+
+<ol>
+<li>Créer et configurer un repo projet</li>
+<li>Rappels Git — les 3 niveaux de statut</li>
+<li>Travailler en équipe — branches et Pull Requests</li>
+<li>Gérer les conflits</li>
+<li>Notebooks en équipe</li>
+<li>Fichiers volumineux</li>
+<li>Organisation de projet</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-créer-et-configurer-un-repo-projet">1 — Créer et configurer un repo projet</h2>
+
+<h3 id="ref-créer-le-repo-depuis-zéro">Créer le repo depuis zéro</h3>
+
+<p>La première personne (le "owner") crée le repo et le met en ligne sur GitHub.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Se placer dans son dossier de code
+cd ~/code/YOUR_USERNAME
+
+# Créer un nouveau dossier et y entrer
+mkdir my-project &amp;&amp; cd my-project
+
+# Initialiser git dans ce dossier
+git init
+
+# Créer un fichier README minimal
+echo &#x27;# my-project&#x27; &gt;&gt; README.md
+
+# Premier commit
+git add README.md &amp;&amp; git commit -m &#x27;kickstart project&#x27;
+
+# Créer le repo sur GitHub via la CLI (répond aux questions interactives)
+gh repo create
+
+# Envoyer le code sur GitHub — c&#x27;est le SEUL push direct sur master
+git push origin master</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Après ce premier push, plus personne ne pousse directement sur <code>master</code>. Tout passe par des branches et des Pull Requests.</p></div></div>
+
+<h3 id="ref-inviter-des-collaborateurs">Inviter des collaborateurs</h3>
+
+<p>Sur GitHub, aller dans <strong>Settings → Collaborators → Add people</strong>. Les collaborateurs reçoivent un email d'invitation. Une fois acceptée, ils clonent le repo :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Créer un dossier au nom du owner pour s&#x27;organiser
+mkdir ~/code/OWNER_USERNAME &amp;&amp; cd ~/code/OWNER_USERNAME
+
+# Cloner le repo en SSH (jamais en HTTPS)
+git clone git@github.com:OWNER_USERNAME/PROJECT.git</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La différence SSH vs HTTPS : avec SSH, tu te connectes avec une clé déjà configurée — aucun mot de passe à saisir. Avec HTTPS, Git te le demande à chaque push. Toujours utiliser SSH.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-rappels-git-les-3-niveaux-de-statut">2 — Rappels Git — Les 3 niveaux de statut</h2>
+
+<p>Avant de parler de travail en équipe, voici un rappel important sur les états d'un fichier dans Git. Il y en a 3 :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Untracked / Modified  ──git add──▶  Staged  ──git commit──▶  Committed
+                              ◀──git restore --staged──
+                              ◀──git restore──  (⚠️ perd les changements)</code></pre></div>
+
+
+<ul>
+<li><strong>Untracked / Modified</strong> : le fichier a été modifié, Git le voit mais ne le suit pas encore.</li>
+<li><strong>Staged</strong> : le fichier est "prêt à être commité" — tu l'as mis en file d'attente avec <code>git add</code>.</li>
+<li><strong>Committed</strong> : les changements sont enregistrés dans l'historique Git.</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Mettre un fichier en staged
+git add file.py              # Modified → Staged
+
+# Annuler le staging (les modifications sont conservées)
+git restore --staged file.py # Staged → Modified
+
+# Annuler les modifications (retourne à la dernière version commitée)
+git restore file.py          # ⚠️ DESTRUCTIF — les changements sont perdus</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><code>git revert &lt;commit_id&gt;</code> est une commande utile pour "annuler" un commit. Contrairement à d'autres méthodes, elle ne supprime rien de l'historique : elle crée un nouveau commit qui fait l'inverse du commit ciblé. C'est la méthode sûre pour revenir en arrière.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-travailler-en-équipe-branches-et-pull-requests">3 — Travailler en équipe — Branches et Pull Requests</h2>
+
+<h3 id="ref-31-diviser-le-travail">3.1 Diviser le travail</h3>
+
+<p>La première étape est d'organisation, pas de code. On découpe le projet en <strong>jobs parallèles</strong> que les membres de l'équipe peuvent faire en même temps sans se marcher dessus.</p>
+
+<p>Exemple sur un projet Data Science :</p>
+<ul>
+<li>Alice travaille sur le nettoyage des données</li>
+<li>Bob travaille sur l'analyse exploratoire (EDA)</li>
+<li>Clara travaille sur le feature engineering</li>
+</ul>
+
+<p>Chaque tâche devient une <strong>branche</strong> distincte. La règle d'or :</p>
+
+<blockquote><p><strong>1 tâche = 1 branche = 1 Pull Request</strong></p></blockquote>
+
+<h3 id="ref-32-workflow-git-complet-du-début-à-la-fin">3.2 Workflow Git complet (du début à la fin)</h3>
+
+<p>Voici ce que fait chaque développeur pour chaque tâche :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># 1. S&#x27;assurer d&#x27;être sur master à jour
+git checkout master
+git pull origin master
+
+# 2. Créer une nouvelle branche pour la tâche
+#    Le nom est explicite : on sait ce que fait la branche
+git checkout -b feature-encoding
+
+# 3. Travailler... puis commiter régulièrement
+git add .
+git commit -m &#x27;add ordinal encoding for categorical columns&#x27;
+
+# 4. Pusher la branche sur GitHub (pas master !)
+git push origin feature-encoding
+
+# 5. Aller sur GitHub et créer une Pull Request
+#    GitHub propose souvent un bouton &quot;Compare &amp; pull request&quot; automatiquement</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Une branche nommée <code>feature-encoding</code> indique clairement ce qu'elle contient. Évite les noms vagues comme <code>test</code> ou <code>modif</code>.</p></div></div>
+
+<h3 id="ref-33-pull-requests-le-processus-de-validation">3.3 Pull Requests — Le processus de validation</h3>
+
+<p>Une Pull Request (PR) est une proposition de fusion. C'est aussi une conversation autour du code.</p>
+
+<p><strong>Créer une bonne PR :</strong></p>
+<ul>
+<li>Titre clair : "Add ordinal encoding for categorical columns"</li>
+<li>Description : ce qui a été fait, pourquoi, packages éventuellement ajoutés</li>
+<li>Assigner un reviewer (coéquipier)</li>
+</ul>
+
+<p><strong>Rôle du reviewer :</strong></p>
+<ul>
+<li>Il consulte le <strong>diff</strong> (les modifications) ligne par ligne sur GitHub</li>
+<li>Il laisse des commentaires sur les lignes qu'il questionne</li>
+<li>Si tout est OK → il clique "Merge Pull Request" puis "Delete Branch"</li>
+<li>Si des corrections sont nécessaires → il laisse un commentaire général, l'auteur corrige et re-push</li>
+</ul>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Supprimer la branche après le merge est une bonne pratique. GitHub propose le bouton directement après le merge. Cela évite l'accumulation de branches mortes.</p></div></div>
+
+<h3 id="ref-34-mettre-à-jour-master-après-un-merge">3.4 Mettre à jour master après un merge</h3>
+
+<p>Une fois la PR mergée, tous les coéquipiers doivent récupérer les changements sur leur machine :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># 1. Vérifier que le dossier de travail est propre (aucune modif en cours)
+git status                             # doit afficher &quot;nothing to commit&quot;
+
+# 2. Retourner sur master
+git checkout master
+
+# 3. Récupérer les nouveaux commits (ceux du merge)
+git pull origin master
+
+# 4. Nettoyer les branches locales déjà mergées
+git sweep                              # commande custom Le Wagon
+
+# 5. Installer les éventuels nouveaux packages
+pip install -r requirements.txt</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais faire <code>git pull</code>, <code>git checkout</code> ou <code>git merge</code> avec des fichiers modifiés non commités. Vérifie toujours avec <code>git status</code> que tout est propre avant. Des fichiers en cours peuvent créer des conflits silencieux ou être écrasés.</p></div></div>
+
+<h3 id="ref-35-mettre-à-jour-sa-branche-avec-master-si-besoin">3.5 Mettre à jour sa branche avec master (si besoin)</h3>
+
+<p>Parfois, master a évolué pendant que tu travaillais sur ta branche. Tu veux intégrer ces nouveaux changements dans ta branche sans attendre le merge de la tienne.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># 1. Commiter ton travail en cours (même si c&#x27;est un WIP)
+git add . &amp;&amp; git commit -m &#x27;WIP: encodage en cours&#x27;
+
+# 2. Retourner sur master et le mettre à jour
+git checkout master
+git pull origin master
+
+# 3. Retourner sur ta branche
+git checkout my-feature
+
+# 4. Fusionner master dans ta branche
+#    Cela peut générer des conflits (voir section suivante)
+git merge master</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-4-gérer-les-conflits">4 — Gérer les conflits</h2>
+
+<h3 id="ref-quand-un-conflit-survient-il">Quand un conflit survient-il ?</h3>
+
+<p>Un conflit arrive quand deux personnes ont modifié <strong>le même endroit dans le même fichier</strong>, et que Git doit choisir laquelle des deux versions garder — mais il ne peut pas décider seul.</p>
+
+<p>Exemple concret : Alice et Bob ont tous les deux modifié la ligne 42 du fichier <code>preprocessing.py</code>. Quand Bob essaie de merger master (qui contient les changements d'Alice), Git s'arrête et demande : "je vois deux versions différentes de la même ligne — laquelle gardes-tu ?"</p>
+
+<h3 id="ref-résoudre-un-conflit-pas-à-pas">Résoudre un conflit pas à pas</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Mettre master à jour
+git checkout master &amp;&amp; git pull origin master
+
+# Retourner sur sa branche et tenter le merge
+git checkout my-branch &amp;&amp; git merge master
+# → Git affiche : &quot;CONFLICT (content): Merge conflict in preprocessing.py&quot;
+# C&#x27;est normal. Ne pas paniquer.
+
+# Ouvrir VS Code pour localiser les conflits
+# Cmd+Shift+F (Mac) → chercher &quot;&lt;&lt;&lt;&lt;&lt;&quot;
+# Git a marqué les zones conflictuelles comme ceci :
+#
+# &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+# mon code à moi
+# =======
+# le code de master (version d&#x27;Alice)
+# &gt;&gt;&gt;&gt;&gt;&gt;&gt; master
+#
+# → Garder le bon code (le tien, celui d&#x27;Alice, ou une combinaison)
+# → Supprimer les marqueurs &lt;&lt;&lt;&lt;&lt;&lt;, =======, &gt;&gt;&gt;&gt;&gt;&gt;&gt;
+
+# Une fois tous les conflits résolus, finaliser le merge
+git add .                              # marquer les fichiers comme résolus
+git commit --no-edit                   # utilise le message de merge par défaut
+git push origin my-branch              # pusher la branche résolue</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Sur GitHub, dans l'interface d'une Pull Request, un bouton "Resolve conflicts" permet parfois de résoudre des conflits simples directement dans le navigateur, sans avoir à toucher au terminal.</p></div></div>
+
+<h3 id="ref-les-deux-règles-dor">Les deux règles d'or</h3>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p><strong>Règle 1 — Ne jamais commiter directement sur <code>master</code>.</strong> Toujours créer une branche, même pour un changement minuscule. Master doit rester stable à tout moment.</p></div></div>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p><strong>Règle 2 — Toujours avoir <code>git status</code> propre avant <code>pull</code>, <code>checkout</code> ou <code>merge</code>.</strong> Des fichiers modifiés non commités peuvent se mélanger avec les changements entrants et créer des situations très difficiles à démêler.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-notebooks-en-équipe">5 — Notebooks en équipe</h2>
+
+<h3 id="ref-pourquoi-les-notebooks-sont-problématiques-avec-git">Pourquoi les notebooks sont problématiques avec Git</h3>
+
+<p>Un fichier <code>.ipynb</code> n'est pas du Python pur — c'est un fichier JSON qui contient le code, les outputs, les métadonnées et l'état d'exécution. Cela pose trois problèmes :</p>
+
+<ol>
+<li><strong>GitHub les affiche lentement et mal</strong> dans l'interface web.</li>
+<li><strong>Les diffs sont illisibles</strong> : au lieu de voir "tu as changé cette ligne de code", tu vois des dizaines de lignes de JSON modifié.</li>
+<li><strong>Les conflits sont quasi impossibles à résoudre</strong> manuellement dans ce format.</li>
+</ol>
+
+<h3 id="ref-bonne-pratique-un-notebook-par-personne">Bonne pratique : un notebook par personne</h3>
+
+<p>La solution la plus simple est d'éviter les conflits plutôt que de les résoudre.</p>
+
+<blockquote><p><strong>Chaque personne a son propre notebook, préfixé par son pseudo GitHub.</strong></p></blockquote>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">alice_eda.ipynb
+bob_feature_engineering.ipynb
+clara_dataviz.ipynb</code></pre></div>
+
+
+<p>Ainsi, personne ne touche jamais au notebook d'un autre — aucun conflit possible.</p>
+
+<h3 id="ref-comparer-des-notebooks-avec-nbdime">Comparer des notebooks avec nbdime</h3>
+
+<p>Si tu as besoin de comparer deux versions d'un notebook, utilise <code>nbdime</code>, un outil conçu pour ça :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Installer nbdime
+pip install nbdime
+
+# Lancer une interface web pour comparer deux notebooks
+nbdime diff-web base.ipynb updated.ipynb
+# → Une page s&#x27;ouvre dans le navigateur avec une vue diff lisible</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><code>nbdime</code> s'intègre aussi à Git pour remplacer le diff par défaut sur les <code>.ipynb</code>. Pratique dans les équipes qui travaillent beaucoup avec des notebooks.</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-fichiers-volumineux">6 — Fichiers volumineux</h2>
+
+<h3 id="ref-la-limite-github">La limite GitHub</h3>
+
+<p>GitHub refuse catégoriquement les fichiers dépassant <strong>100 Mo</strong>. En Data Science, c'est fréquent : datasets bruts, fichiers CSV volumineux, etc.</p>
+
+<p>La solution : ne jamais les commiter. On les exclut avec <code>.gitignore</code> dès le début du projet.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Ajouter le dossier raw_data/ à .gitignore
+echo &#x27;raw_data/&#x27; &gt;&gt; .gitignore         # tout ce dossier sera ignoré par Git
+
+# Créer le dossier (il existera localement mais ne sera jamais pushé)
+mkdir raw_data
+
+# Chaque coéquipier télécharge les données séparément
+# (depuis Kaggle, S3, Google Drive, etc.)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Faire cela <strong>dès le début</strong> du projet. Si un gros fichier est commité par erreur, le retirer de l'historique est compliqué et destructif pour toute l'équipe.</p></div></div>
+
+<h3 id="ref-si-un-gros-fichier-a-déjà-été-commité-par-erreur">Si un gros fichier a déjà été commité par erreur</h3>
+
+<p>C'est une situation délicate, mais réparable. Il faut réécrire l'historique Git pour effacer toute trace du fichier :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># 1. Déplacer le fichier dans raw_data/
+mv path/to/big_file raw_data/
+
+# 2. Commiter ce déplacement (mais le fichier est toujours dans l&#x27;historique Git)
+git add path/to/big_file &amp;&amp; git commit -m &#x27;move big file to raw_data&#x27;
+
+# 3. Réécrire l&#x27;historique pour supprimer le fichier de TOUS les commits passés
+git filter-branch --force --index-filter \
+  &quot;git rm --cached --ignore-unmatch path/to/big_file&quot; \
+  --prune-empty --tag-name-filter cat -- --all
+
+# 4. Pusher la branche (avec --force car l&#x27;historique a changé)
+git push origin YOUR_BRANCH</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>git filter-branch</code> réécrit l'historique. Si d'autres personnes ont déjà cloné le repo, elles devront re-cloner. A éviter à tout prix — le <code>.gitignore</code> dès le début est la vraie solution.</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-organisation-de-projet">7 — Organisation de projet</h2>
+
+<h3 id="ref-kanban-visualiser-lavancement">Kanban : visualiser l'avancement</h3>
+
+<p>Un <strong>tableau Kanban</strong> permet à toute l'équipe de voir en un coup d'oeil qui fait quoi et où en est chaque tâche. Les colonnes classiques :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Backlog</th><th>To do</th><th>Doing</th><th>Done</th></tr></thead><tbody><tr><td>Idées futures</td><td>Tâches prêtes à démarrer</td><td>En cours</td><td>Terminé</td></tr></tbody></table></div>
+<p>Outils recommandés : <strong>Trello</strong>, <strong>Notion</strong>, ou <strong>GitHub Projects</strong> (directement dans le repo).</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Une tâche dans "Doing" doit correspondre à une branche Git active. Quand la PR est mergée, la tâche passe en "Done" et la branche est supprimée.</p></div></div>
+
+<h3 id="ref-architecture-de-repo-selon-le-type-de-projet">Architecture de repo selon le type de projet</h3>
+
+<p>Selon ce que le projet doit produire (une présentation ? une API ? une app complète ?), l'organisation des repos change :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Cas 1 — Présentation simple
+project/               # un seul repo de R&amp;D
+
+# Cas 2 — API prédictive
+project_api/           # repo pour l&#x27;API (FastAPI, Flask...)
+project/               # repo de R&amp;D (notebooks, modèles...)
+
+# Cas 3 — Application complète
+project_api/           # repo API (déployée sur Cloud Run)
+project_app/           # repo frontend (Streamlit, React...)
+project/               # repo R&amp;D (recherche, expérimentations)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le Wagon fournit des templates de projet tout prêts à l'adresse : <code>github.com/lewagon/data-templates</code>. Ils incluent la structure de dossiers, le <code>.gitignore</code>, et les fichiers de configuration de base.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>1. Pourquoi ne doit-on jamais commiter directement sur <code>master</code> dans un projet d'équipe ?</strong></p>
+
+<p>Parce que <code>master</code> est la version de référence, stable et partagée. Si tout le monde pousse dessus directement, n'importe quelle erreur individuelle casse le travail de toute l'équipe. Les branches isolent les changements jusqu'à ce qu'ils soient validés.</p>
+
+<p><strong>2. Tu travailles sur ta branche <code>feature-encoding</code> depuis deux jours. Un coéquipier vient de merger sa branche dans <code>master</code>. Que fais-tu ?</strong></p>
+
+<p>Tu mets à jour <code>master</code> localement (<code>git checkout master &amp;&amp; git pull origin master</code>), puis tu reviens sur ta branche et tu fais <code>git merge master</code> pour intégrer ses changements dans ta branche. Des conflits peuvent survenir — il faut les résoudre avant de continuer.</p>
+
+<p><strong>3. Que signifient les marqueurs <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> dans un fichier ?</strong></p>
+
+<p>Ce sont des marqueurs de conflit insérés par Git. La zone entre <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> et <code>=======</code> est ta version du code. La zone entre <code>=======</code> et <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> est la version qui vient de l'autre branche. Il faut choisir ce qu'on garde, supprimer les marqueurs, puis finaliser le merge avec <code>git add . &amp;&amp; git commit --no-edit</code>.</p>
+
+<p><strong>4. Pourquoi deux coéquipiers ne doivent-ils pas éditer le même notebook Jupyter ?</strong></p>
+
+<p>Les notebooks sont stockés en JSON. Deux personnes qui modifient le même notebook créent un conflit Git dans ce JSON — qui est illisible et presque impossible à résoudre manuellement. La solution est que chaque personne crée son propre notebook préfixé par son pseudo.</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li><code>master</code> est sacré : stable, propre, jamais modifié directement — tout passe par des branches.</li>
+<li>Workflow de base : <code>git checkout -b ma-branche</code> → coder → commiter → <code>git push origin ma-branche</code> → Pull Request → Review → Merge → Delete branch.</li>
+<li>Avant tout <code>pull</code>, <code>checkout</code> ou <code>merge</code> : vérifier que <code>git status</code> est propre.</li>
+<li>Un conflit n'est pas une catastrophe : Git marque les zones problématiques avec <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>/<code>=======</code>/<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>, tu choisis ce qu'on garde, tu supprimes les marqueurs, tu commites.</li>
+<li>Notebooks en équipe : un notebook par personne, préfixé par son pseudo — jamais toucher au notebook d'un autre.</li>
+<li>Fichiers volumineux (> 100 Mo) : les exclure avec <code>.gitignore</code> dès le départ, jamais les commiter.</li>
+<li>Organisation : tableau Kanban (Backlog → To do → Doing → Done) + une tâche = une branche = une PR.</li>
+<li>Toujours cloner avec SSH (<code>git@github.com:...</code>), jamais HTTPS.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-git-workflow-en-équipe">Git workflow en équipe</a></li><li><a href="#syn-pull-requests-et-code-review">Pull Requests et code review</a></li><li><a href="#syn-code-review-règles-dor">Code review : règles d'or</a></li><li><a href="#syn-conflits-de-merge">Conflits de merge</a></li><li><a href="#syn-conventions-et-style-guide">Conventions et style guide</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-git-flow-vs-trunk-based">Git flow vs trunk-based</a></li><li><a href="#syn-rebase-vs-merge">Rebase vs merge</a></li><li><a href="#syn-ownership-et-code-review-distribuée">Ownership et code review distribuée</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-git-workflow-en-équipe">Git workflow en équipe</h3>
+
+<p>Travailler en équipe sur un projet logiciel demande une discipline qui n'existe pas en solo. Quatre principes :</p>
+
+<ol>
+<li><strong>Une branche par feature</strong> : ne jamais coder directement sur <code>main</code></li>
+<li><strong>Petits commits</strong> : un commit = une intention claire, réversible</li>
+<li><strong>Pull Requests</strong> : toute fusion vers <code>main</code> passe par une PR validée</li>
+<li><strong>Communication asynchrone</strong> : les commentaires de PR remplacent les conversations</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Workflow standard
+git checkout main &amp;&amp; git pull               # Partir d&#x27;un main à jour
+git switch -c feat/add-user-auth            # Créer une branche feature
+# ... développer, committer ...
+git push -u origin feat/add-user-auth       # Push avec tracking
+# Ouvrir une PR sur GitHub</code></pre></div>
+
+
+<p><strong>Vue graphique du flux</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">main         o───o───o───o───o───o ─────────── (branche partagée protégée)
+                      \              \
+feat/auth              o───o───o───o──●  (PR mergée)
+                       ↑   ↑   ↑
+                     commit commit commit</code></pre></div>
+
+
+<p>Chaque développeur "checkoute" depuis main, crée sa branche, y commit plusieurs fois, puis ouvre une PR. La PR est revue, testée par la CI, puis mergée dans main.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : coder en solo, c'est cuisiner chez vous. Vous pouvez utiliser n'importe quelle marmite, ranger comme vous voulez. Coder en équipe, c'est cuisiner dans un restaurant. Tout doit être à sa place, étiqueté, et chaque action est visible par les autres. Les conventions ne sont pas du formalisme, elles évitent que la cuisine devienne ingérable à 5 cuisiniers.</p></div></div>
+
+<h3 id="syn-pull-requests-et-code-review">Pull Requests et code review</h3>
+
+<p>Une <strong>Pull Request</strong> (PR) est une demande de fusion d'une branche vers <code>main</code>. Elle déclenche :</p>
+
+<ol>
+<li>Le <strong>build et les tests</strong> automatiques (CI)</li>
+<li>La <strong>review par un pair</strong> (code review)</li>
+<li>La <strong>fusion</strong> une fois tout validé</li>
+</ol>
+
+<p>Anatomie d'une bonne PR :</p>
+
+<ul>
+<li><strong>Titre clair</strong> : "Add JWT authentication for /api/users endpoints" (pas "fix")</li>
+<li><strong>Description</strong> : pourquoi cette PR existe, ce qu'elle change, comment tester</li>
+<li><strong>Petite taille</strong> : < 400 lignes idéalement, jamais > 1000 lignes</li>
+<li><strong>Une seule intention</strong> : si la PR contient "add X and refactor Y", c'est probablement deux PR</li>
+<li><strong>Tests inclus</strong> : pas de PR sans test sur le nouveau code</li>
+</ul>
+
+<p>Template typique :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">## What
+Adds JWT authentication on /api/users endpoints.
+
+## Why
+Closes #123. The /users endpoints currently expose all user data publicly.
+
+## How
+- New middleware `auth_required` in `src/middleware/auth.py`
+- New tests in `tests/test_auth.py`
+- Updated docs in `README.md`
+
+## How to test
+1. `pytest tests/test_auth.py`
+2. `curl -H &quot;Authorization: Bearer ...&quot; localhost:8000/api/users`</code></pre></div>
+
+
+<h3 id="syn-code-review-règles-dor">Code review : règles d'or</h3>
+
+<p>Pour le <strong>reviewer</strong> :</p>
+
+<ul>
+<li><strong>Lire la description</strong> avant le diff. Comprendre l'intention.</li>
+<li><strong>Commenter avec bienveillance</strong>. "Je trouve plus lisible de..." > "C'est moche".</li>
+<li><strong>Distinguer les types</strong> : nit (cosmétique), suggestion (optionnel), question, blocker.</li>
+<li><strong>Tester si possible</strong> : checkout la branche et essayer.</li>
+<li><strong>Approuver vite</strong> : un PR qui attend 3 jours frustre l'auteur et bloque l'équipe.</li>
+</ul>
+
+<p>Pour l'<strong>auteur</strong> :</p>
+
+<ul>
+<li><strong>Auto-review</strong> d'abord : relisez votre propre PR avant de la demander.</li>
+<li><strong>Réagir à tous les commentaires</strong> : soit corriger, soit expliquer pourquoi.</li>
+<li><strong>Ne pas le prendre personnellement</strong> : la review critique le code, pas vous.</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : adoptez la convention <code>[nit]</code>, <code>[suggestion]</code>, <code>[blocker]</code> dans les commentaires. Cela clarifie immédiatement ce qui doit être corrigé vs ce qui est optionnel. Un PR bloqué uniquement sur des nits est frustrant et inutile.</p></div></div>
+
+<h3 id="syn-conflits-de-merge">Conflits de merge</h3>
+
+<p>Quand votre branche et <code>main</code> ont modifié les mêmes lignes, git ne sait pas quel choisir. Vous devez résoudre manuellement.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git checkout main &amp;&amp; git pull
+git checkout feat/my-branch
+git merge main
+# CONFLICT (content): Merge conflict in src/auth.py
+
+# Ouvrir src/auth.py — vous voyez :
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+def authenticate(user, password):
+    return check_bcrypt(user.password, password)
+=======
+def authenticate(user, password):
+    return check_argon2(user.password, password)
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; main</code></pre></div>
+
+
+<p>Trois étapes pour résoudre :</p>
+
+<ol>
+<li><strong>Ouvrir le fichier</strong> et choisir/combiner les versions</li>
+<li><strong>Supprimer les marqueurs</strong> <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code></li>
+<li><code>git add fichier &amp;&amp; git commit</code></li>
+</ol>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur catastrophique</strong> : committer avec les marqueurs de conflit encore dans le code. Le code passe les tests Python (les <code>&lt;&lt;&lt;</code> sont des opérateurs valides) mais en runtime, c'est cassé. Toujours <code>git diff</code> ou <code>git grep &quot;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&quot;</code> après résolution. Un pre-commit hook peut bloquer ça automatiquement.</p></div></div>
+
+<p>Stratégies pour minimiser les conflits :</p>
+
+<ul>
+<li><strong>Petites PRs</strong> : moins de chances de toucher aux mêmes fichiers</li>
+<li><strong>Merger main fréquemment</strong> dans votre branche (<code>git merge main</code> tous les jours)</li>
+<li><strong>Communication</strong> : "je touche à <code>auth.py</code> cette semaine"</li>
+</ul>
+
+<h3 id="syn-conventions-et-style-guide">Conventions et style guide</h3>
+
+<p>Une convention partagée vaut mieux qu'une "meilleure" pratique imposée par un seul. Cinq conventions à fixer en équipe :</p>
+
+<ol>
+<li><strong>Style guide Python</strong> : PEP8 + ruff/black. Aucun débat.</li>
+<li><strong>Format des commits</strong> : Conventional Commits (<code>feat:</code>, <code>fix:</code>, <code>chore:</code>...).</li>
+<li><strong>Branches naming</strong> : <code>feat/short-description</code>, <code>fix/bug-name</code>, <code>chore/cleanup</code>.</li>
+<li><strong>PR template</strong> : What, Why, How, How to test (cf. exemple plus haut).</li>
+<li><strong>Code owners</strong> : qui doit reviewer quoi (<code>CODEOWNERS</code> file).</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># .github/CODEOWNERS
+src/api/         @backend-team
+src/ml/          @ml-team
+src/frontend/    @frontend-team
+*.md             @docs-team</code></pre></div>
+
+
+<p>Une PR qui modifie <code>src/api/</code> sera automatiquement assignée à <code>@backend-team</code> pour review.</p>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-git-flow-vs-trunk-based">Git flow vs trunk-based</h3>
+
+<p>Deux philosophies de branching.</p>
+
+<p><strong>Git Flow</strong> (Vincent Driessen, 2010) : modèle complexe avec plusieurs branches longues.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">main           o-----------o-------o      (production)
+develop        |  o-o-o-o-/-o-o-o-/-o     (intégration)
+feature/X      |  |       |
+hotfix/Y       |          |       |
+release/v1.0   |              o-o-/</code></pre></div>
+
+
+<ul>
+<li><code>main</code> : production, jamais touchée directement</li>
+<li><code>develop</code> : intégration des features</li>
+<li><code>feature/*</code> : par feature</li>
+<li><code>release/*</code> : préparation d'une release</li>
+<li><code>hotfix/*</code> : correctifs urgents en prod</li>
+</ul>
+
+<p>Avantages : très structuré, permet de coder plusieurs versions en parallèle.</p>
+
+<p>Inconvénients : complexe, lent à itérer, beaucoup de merges.</p>
+
+<p><strong>Trunk-based development</strong> : tout le monde commit dans <code>main</code> directement (ou via des PRs courtes). Adopté par Google, Facebook, Spotify.</p>
+
+<ul>
+<li>Une seule branche longue : <code>main</code> (alias <code>trunk</code>)</li>
+<li>Branches feature <strong>courtes</strong> (< 1-2 jours)</li>
+<li><strong>Feature flags</strong> pour cacher du code non terminé en production</li>
+</ul>
+
+<p>Avantages : simple, itération rapide, moins de conflits.</p>
+
+<p>Inconvénients : nécessite une bonne CI et de la discipline.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Recommandation 2025</strong> : pour 90% des équipes modernes, <strong>trunk-based</strong> est meilleur. Git Flow était adapté à des releases trimestrielles d'application desktop. Aujourd'hui, on déploie plusieurs fois par jour, donc une seule branche partagée + feature flags est plus efficace.</p></div></div>
+
+<h3 id="syn-rebase-vs-merge">Rebase vs merge</h3>
+
+<p>Deux manières d'intégrer des changements de <code>main</code> dans votre branche feature.</p>
+
+<p><strong>Merge</strong> : crée un commit de merge. L'historique conserve la structure de branches.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git checkout feat/my-branch
+git merge main
+# Crée un commit &quot;Merge branch &#x27;main&#x27; into feat/my-branch&quot;</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Avant merge :                      Après merge :
+main     A───B───C                 main     A───B───C
+              \                                 \   \
+feat          D───E                 feat         D───E───M  (M = merge commit)</code></pre></div>
+
+
+<p><strong>Rebase</strong> : rejoue vos commits par-dessus la pointe de <code>main</code>. Historique linéaire.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git checkout feat/my-branch
+git rebase main
+# Vos commits sont &quot;déplacés&quot; sur la nouvelle base</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Avant rebase :                     Après rebase :
+main     A───B───C                 main     A───B───C
+              \                                     \
+feat          D───E                 feat             D&#x27;───E&#x27;  (recréés sur C)</code></pre></div>
+
+
+<p>Les commits D et E deviennent D' et E' (nouveaux hash) rejoués sur C. L'historique est linéaire, comme si vous aviez commencé votre branche depuis le C actuel.</p>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Merge</th><th>Rebase</th></tr></thead><tbody><tr><td>Historique</td><td>Avec branches (graphe)</td><td>Linéaire</td></tr><tr><td>Lisibilité de <code>git log</code></td><td>Moins claire</td><td>Plus claire</td></tr><tr><td>Préserve l'historique exact</td><td>Oui</td><td>Non (réécrit)</td></tr><tr><td>Conflits</td><td>Une fois</td><td>Possiblement plusieurs fois</td></tr><tr><td>Sécurité</td><td>Sûr</td><td><strong>Dangereux</strong> sur une branche partagée</td></tr></tbody></table></div>
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Règle d'or absolue</strong> : <strong>ne jamais rebase une branche déjà partagée</strong>. Si vous avez <code>git push</code> votre branche et que d'autres l'ont pullée, rebase + force-push casse leur historique local, conflits horribles. Rebase est OK uniquement sur une branche perso non encore push, ou avec une convention d'équipe ("toutes les branches feature/* sont rebasables").</p></div></div>
+
+<p><strong>Stratégie courante</strong> : rebase votre branche feature sur main avant de la merger, pour avoir un historique propre. Une fois mergée, ne touchez plus jamais à l'historique.</p>
+
+<h3 id="syn-ownership-et-code-review-distribuée">Ownership et code review distribuée</h3>
+
+<p>Sur de gros projets, personne ne connaît tout le codebase. La <strong>code ownership</strong> définit qui est responsable de quelle partie.</p>
+
+<p>Avantages :</p>
+
+<ul>
+<li><strong>Review compétente</strong> : les bons experts revoient leur domaine</li>
+<li><strong>Connaissance maintenue</strong> : chaque module a un mainteneur identifié</li>
+<li><strong>Responsabilité claire</strong> : si un bug arrive en prod sur <code>auth.py</code>, on sait qui appeler</li>
+</ul>
+
+<p>Outils :</p>
+
+<ul>
+<li><strong>CODEOWNERS</strong> (GitHub natif) : auto-assignation des reviewers</li>
+<li><strong>Reviewable</strong> ou <strong>Gerrit</strong> : pour de la review plus structurée</li>
+<li><strong>Crucible</strong> (Atlassian) : pour les enterprises</li>
+</ul>
+
+<p>Sur des très gros codebases (Google, Facebook), il y a même des <strong>OWNERS</strong> files par dossier qui listent qui peut approuver des changements à chaque niveau.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : sans ownership, votre code est comme un terrain communal — personne ne se sent responsable de l'entretenir, donc personne ne le fait. Avec ownership, chaque parcelle a un jardinier qui s'en occupe. Le résultat sur 5 ans est radicalement différent.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi une PR de 1000 lignes est-elle un anti-pattern, même si le code est de qualité ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>review.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Trois raisons. (1) <strong>La review est inefficace</strong> : au-delà de ~400 lignes, l'attention du reviewer chute drastiquement. Une étude de SmartBear (2008) montre que la détection de défauts s'effondre après 200 lignes. Le reviewer va survoler, donner un "LGTM" superficiel, et laisser passer des bugs. (2) <strong>Difficile à debugger après merge</strong> : si la PR introduit un régression, vous devez chercher dans 1000 lignes laquelle est responsable. Une PR de 100 lignes vous donne immédiatement le coupable. (3) <strong>Frustrant pour l'auteur</strong> : passer 2 semaines sur une grosse PR puis recevoir des commentaires structurels qui demandent de tout refaire est démoralisant. Mieux vaut 5 PR de 200 lignes incrémentalement validées. <strong>Bonne pratique</strong> : viser ~200 lignes par PR. Si vous arrivez à 500, c'est un signal pour découper. Outils : <code>git diff --stat</code> montre la taille de votre PR. Décomposer une grosse feature en plusieurs PR demande un peu de planning au début mais accélère drastiquement le développement à terme. Question d'entretien dev senior : "Quelle est la bonne taille pour une PR ?" — la réponse révèle l'expérience d'équipe.</p>
+
+</details>
+
+<p><strong>Q2 : Vous travaillez sur une feature depuis 1 semaine sur une branche, et <code>main</code> a beaucoup avancé. Faut-il merger main dans votre branche ou rebaser ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>workflow d'équipe.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Cela dépend de la convention de votre équipe</strong>, mais voici les recommandations modernes. <strong>Si votre branche n'est pas push</strong> (ou est privée à vous seul) : <code>git rebase main</code>. Cela donne un historique linéaire propre, plus facile à reviewer et à comprendre. <strong>Si votre branche est push et que d'autres y collaborent</strong> : <code>git merge main</code>. Le rebase + force-push casserait leur historique local. <strong>Compromis pragmatique</strong> : (a) pendant le développement, mergez <code>main</code> dans votre branche pour rester à jour (<code>git merge main</code> régulièrement). (b) Juste avant de merger votre PR vers main, faites un <strong>squash merge</strong> : tous vos commits sont fusionnés en un seul, qui est mergé proprement. C'est ce que GitHub propose en option "Squash and merge" — résultat : historique propre dans <code>main</code>, et vous n'avez jamais à rebaser. <strong>Note</strong> : Google et la plupart des grandes entreprises utilisent le squash merge par défaut pour cette raison. Ça simplifie la mental model. Question d'entretien git : "Rebase ou merge ?" — la réponse exhaustive parle de la politique d'équipe et du squash merge.</p>
+
+</details>
+
+<p><strong>Q3 : Vous avez accidentellement committé un fichier <code>.env</code> contenant une clé API et l'avez poussé. Que faut-il faire ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>la clé est compromise.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Cinq étapes dans cet ordre, <strong>immédiatement</strong> : (1) <strong>Révoquer la clé chez le provider</strong> (OpenAI, AWS, Stripe...). C'est l'action la plus urgente. Toute clé poussée sur GitHub est compromise dans les minutes qui suivent — des bots scannent en continu. (2) <strong>Générer une nouvelle clé</strong> et l'ajouter à <code>.env</code> (ou à un secret manager). (3) <strong>Supprimer la clé de l'historique git</strong> avec <code>git filter-repo --path .env --invert-paths</code> puis <code>git push --force-with-lease</code>. Note : cela réécrit l'historique, à coordonner avec l'équipe. (4) <strong>Prévenir l'équipe</strong> : tous les clones existants contiennent encore la clé, ils doivent re-cloner. (5) <strong>Préventif</strong> : ajouter <code>.env</code> au <code>.gitignore</code>, installer un pre-commit hook (<code>gitleaks</code>, <code>detect-secrets</code>) qui bloque les commits contenant des secrets, ajouter un secret scanning dans la CI (GitHub fait ça automatiquement). <strong>Erreur critique</strong> : juste supprimer le fichier dans un nouveau commit. Le fichier reste accessible dans l'historique. La clé est toujours compromise. <strong>Attitude générale</strong> : tout secret committé est compromis, point. Pas de "j'ai supprimé tout de suite". Il faut <strong>toujours</strong> révoquer et régénérer. Question d'entretien sécurité : "Que faire si vous committez un secret par erreur ?" — la réponse doit être instantanée et exhaustive.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Pro Git</em> (Scott Chacon, gratuit) — la bible Git</li>
+<li><a href="https://www.conventionalcommits.org/" target="_blank" rel="noopener">Conventional Commits</a> — convention de message</li>
+<li><em>The DevOps Handbook</em> (Kim, Humble, Debois, Willis) — pratiques d'équipe</li>
+<li><em>Accelerate</em> (Forsgren, Humble, Kim) — études quantitatives sur les pratiques DevOps</li>
+<li><a href="https://trunkbaseddevelopment.com/" target="_blank" rel="noopener">Trunk-Based Development</a> — site dédié</li>
+<li><a href="https://google.github.io/eng-practices/" target="_blank" rel="noopener">Google Engineering Practices</a> — guide de code review</li>
+<li><a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners" target="_blank" rel="noopener">GitHub Docs — Code Owners</a></li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../mlops/ci-cd.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← CI / CD</span>
+  </a>
+  <a href="../mlops/user-interface.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">User Interface →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

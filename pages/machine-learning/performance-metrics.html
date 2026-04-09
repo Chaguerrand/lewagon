@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Performance Metrics — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Performance Metrics</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html" class="active">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Machine Learning</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Performance Metrics</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Performance Metrics</h1>
+        <p class="page-objective">Comprendre et choisir les bonnes métriques pour évaluer un modèle de Machine Learning, en régression comme en classification — et maîtriser l'algorithme KNN ainsi que l'analyse d'erreurs.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Accuracy</div>
+        <div class="key-concept-def">Fraction de prédictions correctes ; trompeuse si classes déséquilibrées.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Precision / Recall</div>
+        <div class="key-concept-def">Précision = pertinence des positifs prédits ; recall = couverture des vrais positifs.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">F1-score</div>
+        <div class="key-concept-def">Moyenne harmonique de précision et recall.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">ROC-AUC</div>
+        <div class="key-concept-def">Aire sous la courbe TPR vs FPR ; mesure la séparabilité des classes.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-performance-metrics">Cheatsheet — Performance Metrics</a><ol><li><a href="#knn">KNN</a></li><li><a href="#baseline">Baseline</a></li><li><a href="#métriques-de-régression">Métriques de régression</a></li><li><a href="#métriques-de-classification">Métriques de classification</a></li><li><a href="#matrice-de-confusion">Matrice de confusion</a></li><li><a href="#courbe-precision-recall-seuil">Courbe Precision-Recall & seuil</a></li><li><a href="#roc-auc">ROC-AUC</a></li><li><a href="#cross-validation-avec-métriques-multiples">Cross-validation avec métriques multiples</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-rappels-data-preprocessing">1) Rappels — Data Preprocessing</a><li><a href="#2-k-nearest-neighbors-knn">2) K-Nearest Neighbors (KNN)</a><ol><li><a href="#21-fonctionnement">2.1 Fonctionnement</a></li><li><a href="#22-choisir-k">2.2 Choisir K</a></li><li><a href="#23-hyperparamètres-sklearn">2.3 Hyperparamètres sklearn</a></li><li><a href="#24-usages-de-knn">2.4 Usages de KNN</a></li></ol></li><li><a href="#3-cycle-de-vie-du-modèle-baseline">3) Cycle de vie du modèle & Baseline</a><ol><li><a href="#31-score-baseline">3.1 Score baseline</a></li></ol></li><li><a href="#4-métriques-de-régression">4) Métriques de régression</a><ol><li><a href="#41-mse-mean-squared-error">4.1 MSE — Mean Squared Error</a></li><li><a href="#42-rmse-root-mean-squared-error">4.2 RMSE — Root Mean Squared Error</a></li><li><a href="#43-mae-mean-absolute-error">4.3 MAE — Mean Absolute Error</a></li><li><a href="#44-max-error">4.4 Max Error</a></li><li><a href="#45-r²-coefficient-de-détermination">4.5 R² — Coefficient de détermination</a></li><li><a href="#46-code-calculer-toutes-les-métriques">4.6 Code — Calculer toutes les métriques</a></li><li><a href="#47-cross-validation-avec-métriques-multiples">4.7 Cross-validation avec métriques multiples</a></li><li><a href="#48-quand-utiliser-quelle-métrique">4.8 Quand utiliser quelle métrique ?</a></li></ol></li><li><a href="#5-métriques-de-classification">5) Métriques de classification</a><ol><li><a href="#51-les-4-cas-possibles">5.1 Les 4 cas possibles</a></li><li><a href="#52-matrice-de-confusion">5.2 Matrice de confusion</a></li><li><a href="#53-accuracy">5.3 Accuracy</a></li><li><a href="#54-recall-sensibilité">5.4 Recall (Sensibilité)</a></li><li><a href="#55-precision">5.5 Precision</a></li><li><a href="#56-f1-score">5.6 F1 Score</a></li><li><a href="#57-code-toutes-les-métriques-de-classification">5.7 Code — Toutes les métriques de classification</a></li><li><a href="#58-tableau-récapitulatif">5.8 Tableau récapitulatif</a></li></ol></li><li><a href="#6-tradeoff-precisionrecall-ajustement-du-seuil">6) Tradeoff Precision–Recall & Ajustement du seuil</a><ol><li><a href="#61-courbe-precision-recall">6.1 Courbe Precision-Recall</a></li><li><a href="#62-trouver-et-appliquer-un-seuil-optimal">6.2 Trouver et appliquer un seuil optimal</a></li></ol></li><li><a href="#7-roc-auc">7) ROC-AUC</a><ol><li><a href="#71-auc-area-under-curve">7.1 AUC — Area Under Curve</a></li></ol></li><li><a href="#8-analyse-derreurs">8) Analyse d'erreurs</a><li><a href="#ressources">Ressources</a></ol></div>
+<p>Comprendre et choisir les bonnes métriques pour évaluer un modèle de Machine Learning, en régression comme en classification — et maîtriser l'algorithme KNN ainsi que l'analyse d'erreurs.</p>
+
+<hr>
+
+<h2 id="cheatsheet-performance-metrics">📋 Cheatsheet — Performance Metrics</h2>
+
+<h3 id="knn">KNN</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
+
+## Classification KNN
+knn_clf = KNeighborsClassifier(n_neighbors=5, weights=&#x27;uniform&#x27;, p=2)  # K=5, distance euclidienne
+knn_clf.fit(X_train, y_train)
+knn_clf.score(X_test, y_test)   # accuracy par défaut
+
+## Régression KNN
+knn_reg = KNeighborsRegressor(n_neighbors=5)
+knn_reg.fit(X_train, y_train)
+knn_reg.score(X_test, y_test)   # R² par défaut</code></pre></div>
+
+
+<h3 id="baseline">Baseline</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.dummy import DummyRegressor, DummyClassifier
+
+## Baseline régression : prédit toujours la moyenne
+baseline = DummyRegressor(strategy=&quot;mean&quot;)
+baseline.fit(X_train, y_train)
+baseline.score(X_test, y_test)  # → ~0.0 (R² proche de 0)
+
+## Baseline classification : prédit toujours la classe majoritaire
+baseline_clf = DummyClassifier(strategy=&quot;most_frequent&quot;)
+baseline_clf.fit(X_train, y_train)
+baseline_clf.score(X_test, y_test)  # → précision trompeuse si classes déséquilibrées</code></pre></div>
+
+
+<h3 id="métriques-de-régression">Métriques de régression</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score, max_error
+import math
+
+mse = mean_squared_error(y_true, y_pred)    # Pénalise fortement les grandes erreurs
+rmse = math.sqrt(mse)                       # MSE dans l&#x27;unité du target
+mae = mean_absolute_error(y_true, y_pred)   # Erreur moyenne absolue, robuste aux outliers
+r2 = r2_score(y_true, y_pred)              # Part de variance expliquée [0, 1]
+me = max_error(y_true, y_pred)             # Plus grande erreur commise par le modèle</code></pre></div>
+
+
+<h3 id="métriques-de-classification">Métriques de classification</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+accuracy = accuracy_score(y_true, y_pred)           # (TP+TN) / total
+precision = precision_score(y_true, y_pred)         # TP / (TP+FP) — évite les fausses alarmes
+recall = recall_score(y_true, y_pred)               # TP / (TP+FN) — capture tous les positifs
+f1 = f1_score(y_true, y_pred)                       # Moyenne harmonique precision/recall</code></pre></div>
+
+
+<h3 id="matrice-de-confusion">Matrice de confusion</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+
+results_df = pd.DataFrame({&quot;actual&quot;: y_true, &quot;predicted&quot;: y_pred})
+confusion_matrix = pd.crosstab(index=results_df[&#x27;actual&#x27;], columns=results_df[&#x27;predicted&#x27;])
+## Affiche : lignes = valeurs réelles, colonnes = valeurs prédites</code></pre></div>
+
+
+<h3 id="courbe-precision-recall-seuil">Courbe Precision-Recall & seuil</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import precision_recall_curve
+from sklearn.model_selection import cross_val_predict
+
+## Obtenir les probabilités en cross-validation
+proba = cross_val_predict(model, X, y, cv=5, method=&#x27;predict_proba&#x27;)
+proba_positive = proba[:, 1]                         # probabilités de la classe positive
+
+## Calculer la courbe
+precision, recall, thresholds = precision_recall_curve(y_true, proba_positive)
+
+## Trouver le seuil garantissant recall &gt;= 0.8
+scores_df = pd.DataFrame({&#x27;threshold&#x27;: thresholds, &#x27;precision&#x27;: precision[:-1], &#x27;recall&#x27;: recall[:-1]})
+optimal_threshold = scores_df[scores_df[&#x27;recall&#x27;] &gt;= 0.8].threshold.max()  # → ~0.31
+
+## Prédire avec seuil personnalisé
+def custom_predict(X, threshold):
+    probs = model.predict_proba(X)[:, 1]             # probabilités classe positive
+    return (probs &gt; threshold).astype(int)           # convertit en 0/1 selon le seuil</code></pre></div>
+
+
+<h3 id="roc-auc">ROC-AUC</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import roc_curve, roc_auc_score
+
+fpr, tpr, thresholds = roc_curve(y_true, proba_positive)   # taux FP et VP par seuil
+auc_score = roc_auc_score(y_true, proba_positive)          # aire sous la courbe ROC → ~0.91</code></pre></div>
+
+
+<h3 id="cross-validation-avec-métriques-multiples">Cross-validation avec métriques multiples</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import cross_validate
+
+cv_results = cross_validate(
+    model, X, y, cv=5,
+    scoring=[&#x27;r2&#x27;, &#x27;neg_mean_absolute_error&#x27;, &#x27;neg_mean_squared_error&#x27;, &#x27;max_error&#x27;]
+)  # retourne un dict avec les scores par fold pour chaque métrique
+cv_results[&#x27;test_r2&#x27;].mean()   # moyenne du R² sur les 5 folds</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Se fier uniquement à l'accuracy sur un dataset déséquilibré</strong></p>
+<p>❌ Accuracy = 0.91 sur un dataset 90% négatif / 10% positif → le modèle prédit toujours ❌ et semble performant</p>
+<p>✅ Vérifier également Recall et Precision : un Recall de 0.10 révèle que le modèle rate 90% des positifs</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Optimiser la mauvaise métrique selon le cas métier</strong></p>
+<p>❌ Optimiser la Precision pour détecter une maladie → on rate des malades (faux négatifs élevés)</p>
+<p>✅ Identifier le coût métier d'un FP vs FN avant de choisir la métrique : détection maladie → Recall ; publicité ciblée → Precision</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Ne pas définir de baseline avant d'évaluer un modèle</strong></p>
+<p>❌ Annoncer "notre modèle a un R² de 0.77" sans point de comparaison — est-ce bon ou mauvais ?</p>
+<p>✅ Toujours commencer par un <code>DummyRegressor</code> ou <code>DummyClassifier</code> pour avoir un plancher de référence</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier de scaler avant KNN</strong></p>
+<p>❌ Appliquer KNN sur des features non-scalées → les features avec de grandes valeurs dominent la distance</p>
+<p>✅ Toujours standardiser ou normaliser les features avant d'utiliser KNN (distance-based model)</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Choisir K trop petit ou trop grand pour KNN</strong></p>
+<p>❌ K=1 → surapprentissage (overfitting), K=N → sous-apprentissage (underfitting)</p>
+<p>✅ Tester plusieurs valeurs de K en cross-validation et choisir celui qui minimise l'erreur de validation</p></div></div>
+
+<hr>
+
+<h2 id="1-rappels-data-preprocessing">1) Rappels — Data Preprocessing</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Étape</th><th>Méthodes clés</th></tr></thead><tbody><tr><td>Valeurs manquantes</td><td>Detect → Drop / Impute (<code>SimpleImputer</code>)</td></tr><tr><td>Scaling</td><td><code>StandardScaler</code>, <code>MinMaxScaler</code>, <code>RobustScaler</code></td></tr><tr><td>Outliers</td><td>Boxplot → Drop ou Conserver</td></tr><tr><td>Encodage</td><td><code>OrdinalEncoder</code>, <code>OneHotEncoder</code>, <code>LabelEncoder</code></td></tr><tr><td>Balancing</td><td>Oversampling, Undersampling, SMOTE</td></tr><tr><td>Discrétisation</td><td><code>pd.cut()</code> — continu → catégoriel</td></tr><tr><td>Feature Engineering</td><td>Création de features via domaine métier</td></tr><tr><td>Feature Selection</td><td>Permutation importance, corrélation</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="2-k-nearest-neighbors-knn">2) K-Nearest Neighbors (KNN)</h2>
+
+<p>KNN est un modèle <strong>non-linéaire basé sur la distance</strong>, capable de résoudre des tâches de régression et de classification.</p>
+
+<ul>
+<li>Regarde les <code>K</code> échantillons les plus proches pour faire une prédiction</li>
+<li><code>K</code> est un <strong>hyperparamètre</strong> à tuner</li>
+<li>Requiert un <strong>scaling</strong> des features (distance-based)</li>
+</ul>
+
+<figure><img src="../../assets/images/performance-metrics-01-4762dd22.png" alt="" loading="lazy"></figure>
+
+<h3 id="21-fonctionnement">2.1 Fonctionnement</h3>
+
+<p><strong>Pour la classification :</strong> vote majoritaire parmi les K voisins</p>
+
+<figure><img src="../../assets/images/performance-metrics-02-e4c3afb0.png" alt="" loading="lazy"></figure>
+
+<p><strong>Pour la régression :</strong> moyenne des valeurs y des K voisins</p>
+
+<figure><img src="../../assets/images/performance-metrics-03-ae66dcd0.png" alt="" loading="lazy"></figure>
+
+<h3 id="22-choisir-k">2.2 Choisir K</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>K faible</th><th>K élevé</th></tr></thead><tbody><tr><td>Peu d'observations utilisées</td><td>Signal dilué</td></tr><tr><td>Sujet à l'overfitting</td><td>Sujet à l'underfitting</td></tr><tr><td>Frontières très irrégulières</td><td>Frontières très lisses</td></tr></tbody></table></div>
+<figure><img src="../../assets/images/performance-metrics-04-0421c8b8.png" alt="" loading="lazy"></figure>
+
+<h3 id="23-hyperparamètres-sklearn">2.3 Hyperparamètres sklearn</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">KNeighborsClassifier(
+    n_neighbors=5,      # K : nombre de voisins
+    weights=&#x27;uniform&#x27;,  # &#x27;uniform&#x27; = poids égaux | &#x27;distance&#x27; = plus de poids aux voisins proches
+    p=2                 # 2 = distance euclidienne | 1 = distance Manhattan
+)</code></pre></div>
+
+
+<h3 id="24-usages-de-knn">2.4 Usages de KNN</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.neighbors import KNeighborsRegressor, KNeighborsClassifier, NearestNeighbors
+from sklearn.impute import KNNImputer
+
+KNeighborsRegressor()    # régression
+KNeighborsClassifier()   # classification
+NearestNeighbors()       # détection de similarité / clustering
+KNNImputer()             # imputation de valeurs manquantes via KNN</code></pre></div>
+
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/classes.html?highlight=neighbors#module-sklearn.neighbors" target="_blank" rel="noopener">sklearn.neighbors API</a></p>
+
+<hr>
+
+<h2 id="3-cycle-de-vie-du-modèle-baseline">3) Cycle de vie du modèle & Baseline</h2>
+
+<figure><img src="../../assets/images/performance-metrics-05-c2e1bc57.png" alt="" loading="lazy"></figure>
+
+<h3 id="31-score-baseline">3.1 Score baseline</h3>
+
+<p>Avant tout modèle complexe, établir un score de référence avec des stratégies naïves :</p>
+
+<ul>
+<li><strong>Régression</strong> : prédire toujours la moyenne / médiane</li>
+<li><strong>Classification</strong> : prédire toujours la classe la plus fréquente</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.dummy import DummyRegressor
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=6)
+
+## Baseline : prédit toujours la moyenne
+baseline_model = DummyRegressor(strategy=&quot;mean&quot;)
+baseline_model.fit(X_train, y_train)
+baseline_model.score(X_test, y_test)   # → ~0.001 (quasi nul)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Modèle réel pour comparaison
+model = LinearRegression().fit(X_train, y_train)
+model.score(X_test, y_test)             # → ~0.77 (bien supérieur à la baseline)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La baseline permet de détecter rapidement les obstacles dans le pipeline avant d'itérer vers des modèles plus complexes.</p></div></div>
+
+<hr>
+
+<h2 id="4-métriques-de-régression">4) Métriques de régression</h2>
+
+<figure><img src="../../assets/images/performance-metrics-06-43fc51af.png" alt="" loading="lazy"></figure>
+
+<h3 id="41-mse-mean-squared-error">4.1 MSE — Mean Squared Error</h3>
+
+<p>$MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$</p>
+
+<ul>
+<li>Pénalise fortement les grandes erreurs (carré)</li>
+<li>Pas dans l'unité du target</li>
+<li>Très sensible aux outliers</li>
+</ul>
+
+<p>👉 À utiliser quand les grandes erreurs sont disproportionnellement coûteuses (ex: essais cliniques)</p>
+
+<figure><img src="../../assets/images/performance-metrics-07-419bce33.png" alt="" loading="lazy"></figure>
+
+<h3 id="42-rmse-root-mean-squared-error">4.2 RMSE — Root Mean Squared Error</h3>
+
+<p>$RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}$</p>
+
+<p>👉 Même logique que MSE mais <strong>dans l'unité du target</strong> → plus interprétable</p>
+
+<h3 id="43-mae-mean-absolute-error">4.3 MAE — Mean Absolute Error</h3>
+
+<p>$MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|$</p>
+
+<ul>
+<li>Moins sensible aux outliers que MSE</li>
+<li>Erreurs pénalisées proportionnellement à leur taille</li>
+</ul>
+
+<p>👉 À utiliser quand toutes les erreurs ont une importance proportionnelle (ex: météo)</p>
+
+<h3 id="44-max-error">4.4 Max Error</h3>
+
+<p>$ME = \max_{i=1}^{n} |y_i - \hat{y}_i|$</p>
+
+<p>👉 À utiliser quand on veut limiter la magnitude maximale d'une erreur (ex: température max d'un équipement)</p>
+
+<h3 id="45-r²-coefficient-de-détermination">4.5 R² — Coefficient de détermination</h3>
+
+<p>$R^2 = 1 - \frac{\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}{\sum_{i=1}^{n}(y_i - \bar{y})^2}$</p>
+
+<ul>
+<li>Proportion de variance expliquée par le modèle</li>
+<li>Plage typique : $[0, 1]$ — score optimal = 1</li>
+<li>Indépendant des unités → comparaison entre datasets</li>
+</ul>
+
+<p>👉 À utiliser comme métrique générale de qualité d'ajustement</p>
+
+<h3 id="46-code-calculer-toutes-les-métriques">4.6 Code — Calculer toutes les métriques</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score, max_error
+import math
+
+mse = mean_squared_error(y_true, y_pred)    # → 36776200.68
+rmse = math.sqrt(mse)                       # → 6064.34
+mae = mean_absolute_error(y_true, y_pred)   # → 4234.0
+r2 = r2_score(y_true, y_pred)              # → 0.75
+me = max_error(y_true, y_pred)             # → 29184.77
+
+print(&#x27;MSE =&#x27;, round(mse, 2))
+print(&#x27;RMSE =&#x27;, round(rmse, 2))
+print(&#x27;MAE =&#x27;, round(mae, 2))
+print(&#x27;R2 =&#x27;, round(r2, 2))
+print(&#x27;Max Error =&#x27;, round(me, 2))</code></pre></div>
+
+
+<h3 id="47-cross-validation-avec-métriques-multiples">4.7 Cross-validation avec métriques multiples</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import cross_validate
+
+model = LinearRegression()
+cv_results = cross_validate(
+    model, X, y, cv=5,
+    scoring=[&#x27;max_error&#x27;, &#x27;r2&#x27;, &#x27;neg_mean_absolute_error&#x27;, &#x27;neg_mean_squared_error&#x27;]
+)   # retourne un dict avec les scores par fold
+
+cv_results[&#x27;test_r2&#x27;].mean()   # → ~0.747</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Pour voir toutes les métriques disponibles : 👉 <a href="https://scikit-learn.org/stable/modules/model_evaluation.html" target="_blank" rel="noopener"><code>sklearn.metrics.SCORERS.keys()</code></a></p></div></div>
+
+<h3 id="48-quand-utiliser-quelle-métrique">4.8 Quand utiliser quelle métrique ?</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Métrique</th><th>Utiliser quand...</th></tr></thead><tbody><tr><td>MSE</td><td>Grandes erreurs doivent être plus pénalisées</td></tr><tr><td>RMSE</td><td>Comme MSE, mais résultat dans l'unité du target</td></tr><tr><td>MAE</td><td>Toutes les erreurs ont une importance proportionnelle</td></tr><tr><td>Max Error</td><td>On veut limiter la magnitude maximale d'une erreur</td></tr><tr><td>R²</td><td>Métrique générale de goodness-of-fit, comparaison inter-datasets</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="5-métriques-de-classification">5) Métriques de classification</h2>
+
+<h3 id="51-les-4-cas-possibles">5.1 Les 4 cas possibles</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Prédit ✅</th><th>Prédit ❌</th></tr></thead><tbody><tr><td><strong>Réel ✅</strong></td><td>TP — Vrai Positif</td><td>FN — Faux Négatif</td></tr><tr><td><strong>Réel ❌</strong></td><td>FP — Faux Positif</td><td>TN — Vrai Négatif</td></tr></tbody></table></div>
+<h3 id="52-matrice-de-confusion">5.2 Matrice de confusion</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+
+y_test = [0, 1, 0, 0, 1, 0, 1, 1, 0, 1]   # vérités terrain
+preds  = [0, 0, 0, 0, 1, 1, 1, 1, 1, 1]   # prédictions du modèle
+
+results_df = pd.DataFrame({&quot;actual&quot;: y_test, &quot;predicted&quot;: preds})
+confusion_matrix = pd.crosstab(
+    index=results_df[&#x27;actual&#x27;],
+    columns=results_df[&#x27;predicted&#x27;]
+)   # lignes = valeurs réelles, colonnes = valeurs prédites</code></pre></div>
+
+
+<p>👉 <a href="https://pandas.pydata.org/docs/reference/api/pandas.crosstab.html" target="_blank" rel="noopener">pandas.crosstab documentation</a></p>
+
+<figure><img src="../../assets/images/performance-metrics-08-06abbc21.png" alt="" loading="lazy"></figure>
+
+<h3 id="53-accuracy">5.3 Accuracy</h3>
+
+<p>$accuracy = \frac{TP + TN}{TP + TN + FP + FN}$</p>
+
+<p>👉 À utiliser quand les classes sont équilibrées et que chaque classe est également importante.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Sur un dataset déséquilibré (ex: 90% négatif), l'accuracy peut être trompeuse — un modèle qui prédit toujours ❌ obtient 91% d'accuracy mais recall = 0.10.</p></div></div>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html" target="_blank" rel="noopener">sklearn.metrics.accuracy_score</a></p>
+
+<h3 id="54-recall-sensibilité">5.4 Recall (Sensibilité)</h3>
+
+<p>$recall = \frac{TP}{TP + FN}$</p>
+
+<p>Mesure la <strong>capacité à détecter tous les positifs</strong> (minimise les faux négatifs).</p>
+
+<p>👉 À utiliser quand rater un positif est très coûteux : détection de fraude, dépistage de maladie, leads commerciaux.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Recall élevé seul peut générer trop de fausses alarmes (FP élevé). Ex: une alarme incendie qui se déclenche trop souvent.</p></div></div>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html" target="_blank" rel="noopener">sklearn.metrics.recall_score</a></p>
+
+<h3 id="55-precision">5.5 Precision</h3>
+
+<p>$precision = \frac{TP}{TP + FP}$</p>
+
+<p>Mesure la <strong>confiance du modèle quand il prédit positif</strong> (minimise les faux positifs).</p>
+
+<p>👉 À utiliser quand déclencher une fausse alarme est coûteux : publicité ciblée, homologation médicament.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Precision élevée seule peut manquer beaucoup de vrais positifs (FN élevé).</p></div></div>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html" target="_blank" rel="noopener">sklearn.metrics.precision_score</a></p>
+
+<h3 id="56-f1-score">5.6 F1 Score</h3>
+
+<p>$F1 = 2 \cdot \frac{precision \times recall}{precision + recall}$</p>
+
+<p>Moyenne harmonique de la precision et du recall — plus influencé par la valeur la plus basse des deux.</p>
+
+<p>👉 À utiliser comme métrique générale, notamment pour comparer des modèles sur des datasets déséquilibrés.</p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html" target="_blank" rel="noopener">sklearn.metrics.f1_score</a></p>
+
+<h3 id="57-code-toutes-les-métriques-de-classification">5.7 Code — Toutes les métriques de classification</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+y_true = [0, 1, 0, 0, 1, 0, 1, 1, 0, 1]
+y_pred = [0, 0, 0, 0, 1, 1, 1, 1, 1, 1]
+
+print(&#x27;Accuracy =&#x27;,  round(accuracy_score(y_true, y_pred), 2))   # → 0.7
+print(&#x27;Precision =&#x27;, round(precision_score(y_true, y_pred), 2))  # → 0.67
+print(&#x27;Recall =&#x27;,    round(recall_score(y_true, y_pred), 2))     # → 0.8
+print(&#x27;F1 score =&#x27;,  round(f1_score(y_true, y_pred), 2))         # → 0.73</code></pre></div>
+
+
+<h3 id="58-tableau-récapitulatif">5.8 Tableau récapitulatif</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Métrique</th><th>Formule</th><th>Utiliser quand...</th></tr></thead><tbody><tr><td>Accuracy</td><td>(TP+TN)/total</td><td>Classes équilibrées, importance égale</td></tr><tr><td>Recall</td><td>TP/(TP+FN)</td><td>Minimiser les faux négatifs (ex: maladie, fraude)</td></tr><tr><td>Precision</td><td>TP/(TP+FP)</td><td>Minimiser les faux positifs (ex: médicament, pub)</td></tr><tr><td>F1 Score</td><td>2·P·R/(P+R)</td><td>Compromis precision/recall, comparaison générale</td></tr><tr><td>ROC-AUC</td><td>Aire sous ROC</td><td>Robustesse générale, indépendant du seuil</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="6-tradeoff-precisionrecall-ajustement-du-seuil">6) Tradeoff Precision–Recall & Ajustement du seuil</h2>
+
+<p>Il existe une <strong>relation inverse</strong> entre precision et recall : augmenter l'un diminue l'autre.</p>
+
+<figure><img src="../../assets/images/performance-metrics-09-9793478d.png" alt="" loading="lazy"></figure>
+
+<h3 id="61-courbe-precision-recall">6.1 Courbe Precision-Recall</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import LabelEncoder
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import cross_val_predict
+from sklearn.metrics import precision_recall_curve
+
+## Encoder le target
+le = LabelEncoder()
+y_encoded = le.fit_transform(data[&#x27;price_range&#x27;])   # cheap=0, expensive=1
+
+## Obtenir les probabilités via cross-validation
+proba = cross_val_predict(model, X, y_encoded, cv=5, method=&#x27;predict_proba&#x27;)
+proba_expensive = proba[:, 1]   # probabilités de la classe &quot;expensive&quot; (classe 1)
+
+## Calculer la courbe precision-recall
+precision, recall, thresholds = precision_recall_curve(y_encoded, proba_expensive)
+
+## Stocker dans un DataFrame pour analyse
+scores = pd.DataFrame({
+    &#x27;threshold&#x27;: thresholds,
+    &#x27;precision&#x27;: precision[:-1],   # dernière valeur ignorée (artefact sklearn)
+    &#x27;recall&#x27;: recall[:-1]
+})</code></pre></div>
+
+
+<h3 id="62-trouver-et-appliquer-un-seuil-optimal">6.2 Trouver et appliquer un seuil optimal</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Trouver le seuil garantissant recall &gt;= 0.80
+optimal_threshold = scores[scores[&#x27;recall&#x27;] &gt;= 0.8].threshold.max()   # → ~0.305
+
+## Appliquer un seuil personnalisé
+model.fit(X, y_encoded)
+
+def custom_predict(X, custom_threshold):
+    probs = model.predict_proba(X)[:, 1]            # probabilités classe positive
+    return (probs &gt; custom_threshold).astype(int)   # 1 si prob &gt; seuil, sinon 0
+
+updated_preds = custom_predict(X, custom_threshold=0.305)
+
+from sklearn.metrics import recall_score, precision_score, f1_score
+print(&quot;Recall:&quot;,    recall_score(y_encoded, updated_preds))     # → 0.807
+print(&quot;Precision:&quot;, precision_score(y_encoded, updated_preds))  # → 0.929
+print(&quot;F1 Score:&quot;,  f1_score(y_encoded, updated_preds))         # → 0.864</code></pre></div>
+
+
+<hr>
+
+<h2 id="7-roc-auc">7) ROC-AUC</h2>
+
+<p>La courbe ROC résume la capacité du modèle à arbitrer entre <strong>Taux de Vrais Positifs</strong> (TPR = recall) et <strong>Taux de Faux Positifs</strong> (FPR) à différents seuils.</p>
+
+<p>$TPR = \frac{TP}{TP + FN} \qquad FPR = \frac{FP}{FP + TN}$</p>
+
+<figure><img src="../../assets/images/performance-metrics-10-a6e2250f.png" alt="" loading="lazy"></figure>
+
+<h3 id="71-auc-area-under-curve">7.1 AUC — Area Under Curve</h3>
+
+<p>Plus l'aire est grande, meilleure est la performance globale du modèle.</p>
+
+<figure><img src="../../assets/images/performance-metrics-11-1da0a15e.png" alt="" loading="lazy"></figure>
+
+<ul>
+<li><strong>AUC = 1.0</strong> → modèle parfait</li>
+<li><strong>AUC = 0.5</strong> → modèle aléatoire (diagonale)</li>
+<li>Indépendant du seuil → idéal pour comparer des modèles</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import roc_curve, roc_auc_score
+
+## Extraire les métriques ROC par seuil
+fpr, tpr, thresholds = roc_curve(y_encoded, proba_expensive)
+
+## Calculer l&#x27;AUC
+auc_score = roc_auc_score(y_encoded, proba_expensive)   # → ~0.909</code></pre></div>
+
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html" target="_blank" rel="noopener">sklearn.metrics.roc_auc_score</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html" target="_blank" rel="noopener">sklearn.metrics.roc_curve</a></p>
+
+<hr>
+
+<h2 id="8-analyse-derreurs">8) Analyse d'erreurs</h2>
+
+<p>Un processus itératif pour identifier les thèmes communs dans les erreurs du modèle.</p>
+
+<p><strong>Questions à se poser :</strong></p>
+
+<ul>
+<li>Certains sous-groupes (cohorts) dans X sont-ils mieux ou moins bien prédits ?</li>
+<li>Une classe est-elle systématiquement mieux identifiée que les autres ?</li>
+<li>Certaines erreurs très larges dégradent-elles la performance globale ?</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Chaque métrique ne raconte qu'une partie de l'histoire. Investiguer la performance du modèle sous plusieurs angles avant de conclure.</p></div></div>
+
+<p>Ces analyses peuvent conduire à : collecte de données supplémentaires, feature engineering ciblé, ajustement du seuil de décision.</p>
+
+<hr>
+
+<h2 id="ressources">📚 Ressources</h2>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/classes.html?highlight=neighbors#module-sklearn.neighbors" target="_blank" rel="noopener">sklearn.neighbors API</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/classes.html?highlight=dummy#module-sklearn.dummy" target="_blank" rel="noopener">sklearn.dummy.DummyRegressor</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics" target="_blank" rel="noopener">sklearn.metrics — toutes les métriques de régression</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html" target="_blank" rel="noopener">sklearn.metrics.accuracy_score</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html" target="_blank" rel="noopener">sklearn.metrics.recall_score</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html" target="_blank" rel="noopener">sklearn.metrics.precision_score</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html" target="_blank" rel="noopener">sklearn.metrics.f1_score</a></p>
+
+<p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html" target="_blank" rel="noopener">sklearn.metrics.roc_auc_score</a></p>
+
+<p>👉 <a href="https://pandas.pydata.org/docs/reference/api/pandas.crosstab.html" target="_blank" rel="noopener">pandas.crosstab</a></p>
+
+<p>👉 <a href="https://www.programmingr.com/knn-hyperparameters-a-friendly-guide-to-optimization/" target="_blank" rel="noopener">KNN Hyperparameters Guide</a></p>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-a-retenir-absolument">A retenir absolument</a></li><li><a href="#ref-lanalogie-fil-rouge-le-test-médical">L'analogie fil rouge : le test médical</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-rappels-préparer-les-données-avant-de-modéliser">1. Rappels — Préparer les données avant de modéliser</a><li><a href="#ref-2-k-nearest-neighbors-knn">2. K-Nearest Neighbors (KNN)</a><ol><li><a href="#ref-21-lidée-intuitive">2.1 L'idée intuitive</a></li><li><a href="#ref-22-comment-knn-mesure-la-proximité">2.2 Comment KNN mesure la "proximité" ?</a></li><li><a href="#ref-23-choisir-k-ni-trop-petit-ni-trop-grand">2.3 Choisir K : ni trop petit, ni trop grand</a></li><li><a href="#ref-24-code-knn-avec-sklearn">2.4 Code KNN avec sklearn</a></li><li><a href="#ref-25-autres-usages-de-knn">2.5 Autres usages de KNN</a></li></ol></li><li><a href="#ref-3-baseline-le-score-plancher-à-battre">3. Baseline — Le score plancher à battre</a><li><a href="#ref-4-métriques-de-régression">4. Métriques de régression</a><ol><li><a href="#ref-41-mse-mean-squared-error-erreur-quadratique-moyenne">4.1 MSE — Mean Squared Error (Erreur quadratique moyenne)</a></li><li><a href="#ref-42-rmse-root-mean-squared-error">4.2 RMSE — Root Mean Squared Error</a></li><li><a href="#ref-43-mae-mean-absolute-error-erreur-absolue-moyenne">4.3 MAE — Mean Absolute Error (Erreur absolue moyenne)</a></li><li><a href="#ref-44-max-error-erreur-maximale">4.4 Max Error (Erreur maximale)</a></li><li><a href="#ref-45-r²-coefficient-de-détermination">4.5 R² — Coefficient de détermination</a></li><li><a href="#ref-46-code-calculer-toutes-les-métriques-de-régression">4.6 Code — Calculer toutes les métriques de régression</a></li><li><a href="#ref-47-cross-validation-avec-plusieurs-métriques-à-la-fois">4.7 Cross-validation avec plusieurs métriques à la fois</a></li><li><a href="#ref-48-tableau-récapitulatif-métriques-de-régression">4.8 Tableau récapitulatif — Métriques de régression</a></li></ol></li><li><a href="#ref-5-métriques-de-classification">5. Métriques de classification</a><ol><li><a href="#ref-51-les-4-cas-possibles-et-leur-nom">5.1 Les 4 cas possibles (et leur nom)</a></li><li><a href="#ref-52-la-matrice-de-confusion">5.2 La matrice de confusion</a></li><li><a href="#ref-53-accuracy-précision-globale">5.3 Accuracy (Précision globale)</a></li><li><a href="#ref-54-recall-rappel-ou-sensibilité">5.4 Recall (Rappel ou Sensibilité)</a></li><li><a href="#ref-55-precision-précision">5.5 Precision (Précision)</a></li><li><a href="#ref-56-f1-score">5.6 F1 Score</a></li><li><a href="#ref-57-code-toutes-les-métriques-de-classification">5.7 Code — Toutes les métriques de classification</a></li><li><a href="#ref-58-tableau-récapitulatif-métriques-de-classification">5.8 Tableau récapitulatif — Métriques de classification</a></li></ol></li><li><a href="#ref-6-tradeoff-precisionrecall-et-ajustement-du-seuil">6. Tradeoff Precision–Recall et ajustement du seuil</a><ol><li><a href="#ref-61-le-seuil-de-décision">6.1 Le seuil de décision</a></li><li><a href="#ref-62-code-courbe-precision-recall-et-seuil-optimal">6.2 Code — Courbe Precision-Recall et seuil optimal</a></li><li><a href="#ref-63-appliquer-le-seuil-personnalisé">6.3 Appliquer le seuil personnalisé</a></li></ol></li><li><a href="#ref-7-courbe-roc-et-auc">7. Courbe ROC et AUC</a><ol><li><a href="#ref-71-quest-ce-que-la-courbe-roc">7.1 Qu'est-ce que la courbe ROC ?</a></li><li><a href="#ref-72-auc-area-under-the-curve-aire-sous-la-courbe">7.2 AUC — Area Under the Curve (Aire sous la courbe)</a></li><li><a href="#ref-73-code-courbe-roc-et-auc">7.3 Code — Courbe ROC et AUC</a></li></ol></li><li><a href="#ref-8-analyse-derreurs">8. Analyse d'erreurs</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Quand tu entraînes un modèle de Machine Learning, comment savoir s'il est bon ? Comment mesurer "bon" ? C'est exactement le rôle des <strong>métriques de performance</strong> : ce sont des chiffres qui résument, de manière objective, à quel point ton modèle se trompe (ou non).</p>
+
+<p>Ce cours couvre les métriques les plus importantes :</p>
+
+<ul>
+<li>En <strong>régression</strong> (prédire un nombre) : MSE, RMSE, MAE, Max Error, R²</li>
+<li>En <strong>classification</strong> (prédire une catégorie) : Accuracy, Precision, Recall, F1 Score, ROC-AUC</li>
+<li>La <strong>matrice de confusion</strong> : un tableau qui détaille les erreurs</li>
+<li>La notion de <strong>baseline</strong> : le point de référence minimal</li>
+<li>L'algorithme <strong>KNN</strong> (K plus proches voisins), souvent utilisé comme premier modèle de référence</li>
+</ul>
+
+<h3 id="ref-a-retenir-absolument">A retenir absolument</h3>
+
+<ul>
+<li>Une seule métrique ne suffit jamais à tout dire sur un modèle.</li>
+<li>Sur des données <strong>déséquilibrées</strong> (ex : 95% de "non-malade"), l'Accuracy peut être totalement trompeuse.</li>
+<li>Il faut toujours commencer par établir une <strong>baseline</strong> avant de jubiler sur un score.</li>
+<li>Chaque métrique répond à une question métier précise — choisir la bonne, c'est comprendre le coût de chaque type d'erreur.</li>
+<li>Le <strong>seuil de décision</strong> d'un modèle de classification est réglable : on peut privilégier moins de faux positifs ou moins de faux négatifs selon le contexte.</li>
+</ul>
+
+<h3 id="ref-lanalogie-fil-rouge-le-test-médical">L'analogie fil rouge : le test médical</h3>
+
+<p>Imagine un test de dépistage d'une maladie grave.</p>
+
+<ul>
+<li><strong>Vrai Positif (TP)</strong> : le patient est malade, le test dit "malade". Parfait.</li>
+<li><strong>Vrai Négatif (TN)</strong> : le patient est sain, le test dit "sain". Parfait.</li>
+<li><strong>Faux Positif (FP)</strong> : le patient est sain, mais le test dit "malade". Il va stresser inutilement et subir des examens supplémentaires coûteux.</li>
+<li><strong>Faux Négatif (FN)</strong> : le patient est malade, mais le test dit "sain". Il rentre chez lui sans traitement. C'est potentiellement catastrophique.</li>
+</ul>
+
+<p>Ces 4 cas sont au coeur de toutes les métriques de classification. On y reviendra constamment tout au long du cours.</p>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li>Rappels preprocessing et introduction à KNN</li>
+<li>Baseline : le score plancher à battre</li>
+<li>Métriques de régression (MSE, RMSE, MAE, Max Error, R²)</li>
+<li>Métriques de classification (Accuracy, Recall, Precision, F1)</li>
+<li>Tradeoff Precision–Recall et ajustement du seuil</li>
+<li>Courbe ROC et AUC</li>
+<li>Analyse d'erreurs</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-rappels-préparer-les-données-avant-de-modéliser">1. Rappels — Préparer les données avant de modéliser</h2>
+
+<p>Avant même de parler de métriques, les données doivent être propres. Voici un résumé des étapes clés de préparation :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Problème</th><th>Solution sklearn / pandas</th></tr></thead><tbody><tr><td>Valeurs manquantes</td><td>Détecter avec <code>.isnull()</code>, supprimer avec <code>.dropna()</code>, imputer avec <code>SimpleImputer</code></td></tr><tr><td>Features sur des échelles très différentes</td><td><code>StandardScaler</code>, <code>MinMaxScaler</code>, <code>RobustScaler</code></td></tr><tr><td>Valeurs aberrantes (outliers)</td><td>Visualiser avec boxplot, décider de supprimer ou conserver</td></tr><tr><td>Variables textuelles / catégorielles</td><td><code>OrdinalEncoder</code>, <code>OneHotEncoder</code>, <code>LabelEncoder</code></td></tr><tr><td>Classes déséquilibrées</td><td>Oversampling, Undersampling, SMOTE</td></tr><tr><td>Feature engineering</td><td>Créer de nouvelles colonnes pertinentes (ex : âge calculé depuis une date)</td></tr></tbody></table></div>
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le scaling est OBLIGATOIRE pour KNN. Sans scaling, une feature exprimée en milliers (ex : revenus) va écraser une feature en unités (ex : nombre d'enfants) dans le calcul des distances.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-k-nearest-neighbors-knn">2. K-Nearest Neighbors (KNN)</h2>
+
+<h3 id="ref-21-lidée-intuitive">2.1 L'idée intuitive</h3>
+
+<p>KNN est l'un des algorithmes les plus simples qui soit. Son principe : <strong>"dis-moi qui sont tes voisins, je te dirai qui tu es"</strong>.</p>
+
+<p>Pour prédire la valeur d'un nouveau point, KNN regarde les $K$ points d'entraînement les plus proches (ses "voisins") et :</p>
+<ul>
+<li>En <strong>classification</strong> : il fait voter les voisins, la classe majoritaire l'emporte</li>
+<li>En <strong>régression</strong> : il calcule la moyenne des valeurs $y$ des voisins</li>
+</ul>
+
+<p>$K$ est un <strong>hyperparamètre</strong> : tu dois le choisir toi-même, il ne s'apprend pas automatiquement.</p>
+
+<h3 id="ref-22-comment-knn-mesure-la-proximité">2.2 Comment KNN mesure la "proximité" ?</h3>
+
+<p>Par défaut, KNN utilise la <strong>distance euclidienne</strong> (le paramètre <code>p=2</code> dans sklearn), c'est-à-dire la distance "à vol d'oiseau" entre deux points.</p>
+
+<div class="katex-display">$$d(A, B) = \sqrt{\sum_{j=1}^{p} (A_j - B_j)^2}$$</div>
+
+<p>Exemple concret : si tu as deux patients décrits par leur âge (40 ans vs 42 ans) et leur poids (70 kg vs 85 kg), la distance euclidienne est :</p>
+
+<div class="katex-display">$$d = \sqrt{(42 - 40)^2 + (85 - 70)^2} = \sqrt{4 + 225} = \sqrt{229} \approx 15.1$$</div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Remarque : le poids (en kg) domine largement l'âge (en années) car les valeurs sont plus grandes. C'est pourquoi il FAUT scaler avant KNN : pour que chaque feature pèse le même poids dans la distance.</p></div></div>
+
+<h3 id="ref-23-choisir-k-ni-trop-petit-ni-trop-grand">2.3 Choisir K : ni trop petit, ni trop grand</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>K petit (ex : K=1)</th><th>K grand (ex : K=100)</th></tr></thead><tbody><tr><td>Le modèle suit chaque point d'entraînement</td><td>Le modèle moyennise trop, il est "aveugle"</td></tr><tr><td><strong>Overfitting</strong> : parfait en train, mauvais en test</td><td><strong>Underfitting</strong> : trop simple, il rate les patterns</td></tr><tr><td>Frontières de décision irrégulières</td><td>Frontières très lisses</td></tr></tbody></table></div>
+<p>La bonne pratique : tester plusieurs valeurs de $K$ avec une <strong>cross-validation</strong> et garder celle qui minimise l'erreur de validation.</p>
+
+<h3 id="ref-24-code-knn-avec-sklearn">2.4 Code KNN avec sklearn</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
+
+# --- Classification KNN ---
+knn_clf = KNeighborsClassifier(
+    n_neighbors=5,       # K = 5 voisins à consulter
+    weights=&#x27;uniform&#x27;,   # chaque voisin a le même poids (&#x27;distance&#x27; = les proches pèsent plus)
+    p=2                  # p=2 → distance euclidienne ; p=1 → distance Manhattan
+)
+knn_clf.fit(X_train, y_train)           # entraînement = juste mémoriser les données
+score_clf = knn_clf.score(X_test, y_test)   # retourne l&#x27;accuracy par défaut
+
+# --- Régression KNN ---
+knn_reg = KNeighborsRegressor(n_neighbors=5)
+knn_reg.fit(X_train, y_train)
+score_reg = knn_reg.score(X_test, y_test)   # retourne le R² par défaut</code></pre></div>
+
+
+<p>Récap : <code>fit()</code> ne fait rien de complexe pour KNN — il mémorise juste les données. La vraie logique s'exécute au moment de <code>predict()</code>.</p>
+
+<h3 id="ref-25-autres-usages-de-knn">2.5 Autres usages de KNN</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.neighbors import NearestNeighbors
+from sklearn.impute import KNNImputer
+
+NearestNeighbors()   # trouver des items similaires (recommandation, clustering)
+KNNImputer()         # imputer les valeurs manquantes par la moyenne des K voisins</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-3-baseline-le-score-plancher-à-battre">3. Baseline — Le score plancher à battre</h2>
+
+<p>Avant de lancer un modèle complexe, commence par définir une <strong>baseline</strong> : c'est le score d'un modèle "idiot" qui ne fait aucun effort.</p>
+
+<ul>
+<li>En <strong>régression</strong> : prédire toujours la moyenne de $y$</li>
+<li>En <strong>classification</strong> : prédire toujours la classe la plus fréquente</li>
+</ul>
+
+<p>Si ton modèle ne fait pas mieux que cette baseline, c'est qu'il n'apprend rien d'utile.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.dummy import DummyRegressor, DummyClassifier
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=6)
+
+# Baseline régression : prédit toujours la moyenne de y_train
+baseline = DummyRegressor(strategy=&quot;mean&quot;)
+baseline.fit(X_train, y_train)
+score_baseline = baseline.score(X_test, y_test)   # → ~0.001 (quasi nul, c&#x27;est normal)
+
+# Vrai modèle
+model = LinearRegression()
+model.fit(X_train, y_train)
+score_model = model.score(X_test, y_test)          # → ~0.77 (bien supérieur à la baseline)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Baseline classification : prédit toujours la classe majoritaire
+baseline_clf = DummyClassifier(strategy=&quot;most_frequent&quot;)
+baseline_clf.fit(X_train, y_train)
+score_clf_baseline = baseline_clf.score(X_test, y_test)   # trompeusement élevé si déséquilibré</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Exemple : si 90% des observations sont "non-spam", une baseline qui prédit toujours "non-spam" obtient 90% d'accuracy. Ton vrai modèle doit dépasser ce chiffre pour avoir de la valeur.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-métriques-de-régression">4. Métriques de régression</h2>
+
+<p>En régression, on prédit une <strong>valeur numérique continue</strong> (ex : le prix d'une maison, la température de demain). L'erreur est la différence entre la valeur réelle $y_i$ et la valeur prédite $\hat{y}_i$.</p>
+
+<h3 id="ref-41-mse-mean-squared-error-erreur-quadratique-moyenne">4.1 MSE — Mean Squared Error (Erreur quadratique moyenne)</h3>
+
+<div class="katex-display">$$MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$</div>
+
+<p>Traduction : on calcule la différence entre valeur réelle et prédite, on la met au carré (pour punir les grosses erreurs plus fort), et on fait la moyenne.</p>
+
+<p><strong>Intuition</strong> : le carré fait que une erreur de 10 coûte 100, mais une erreur de 100 coûte 10 000. Les grandes erreurs sont donc punies de façon disproportionnée.</p>
+
+<p><strong>Exemple numérique</strong> : 3 prédictions avec des erreurs de +2, -3, +10.</p>
+
+<div class="katex-display">$$MSE = \frac{2^2 + (-3)^2 + 10^2}{3} = \frac{4 + 9 + 100}{3} = \frac{113}{3} \approx 37.7$$</div>
+
+<p>L'erreur de 10 a largement dominé le calcul — c'est voulu.</p>
+
+<p><strong>Quand l'utiliser</strong> : quand les grandes erreurs sont particulièrement coûteuses (essais cliniques, prédictions financières critiques).</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le MSE n'est pas dans l'unité du target. Si tu prédis des prix en euros, le MSE sera en euros². C'est difficile à interpréter directement.</p></div></div>
+
+<h3 id="ref-42-rmse-root-mean-squared-error">4.2 RMSE — Root Mean Squared Error</h3>
+
+<div class="katex-display">$$RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}$$</div>
+
+<p>C'est simplement la racine carrée du MSE. Avantage : le résultat est dans la <strong>même unité</strong> que le target.</p>
+
+<p><strong>Exemple</strong> (suite) : $RMSE = \sqrt{37.7} \approx 6.14$ euros si on prédisait des prix.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>RMSE est généralement préféré à MSE pour la communication des résultats, car il est directement interprétable : "en moyenne, le modèle se trompe d'environ 6 euros".</p></div></div>
+
+<h3 id="ref-43-mae-mean-absolute-error-erreur-absolue-moyenne">4.3 MAE — Mean Absolute Error (Erreur absolue moyenne)</h3>
+
+<div class="katex-display">$$MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|$$</div>
+
+<p>On prend la valeur absolue de chaque erreur (on ignore le signe) et on fait la moyenne.</p>
+
+<p><strong>Exemple numérique</strong> (mêmes données que ci-dessus) :</p>
+
+<div class="katex-display">$$MAE = \frac{|2| + |-3| + |10|}{3} = \frac{2 + 3 + 10}{3} = 5$$</div>
+
+<p>Ici, toutes les erreurs pèsent proportionnellement à leur taille, sans sur-pénaliser les grandes erreurs.</p>
+
+<p><strong>Quand l'utiliser</strong> : quand toutes les erreurs ont une importance équivalente (prévision météo, stocks).</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Comparaison MSE vs MAE : avec les mêmes données, MAE = 5 et RMSE ≈ 6.14. L'écart vient du fait que RMSE est "tiré vers le haut" par la grande erreur de 10. Plus l'écart entre MAE et RMSE est grand, plus il y a des erreurs extrêmes dans tes prédictions.</p></div></div>
+
+<h3 id="ref-44-max-error-erreur-maximale">4.4 Max Error (Erreur maximale)</h3>
+
+<div class="katex-display">$$ME = \max_{i=1}^{n} |y_i - \hat{y}_i|$$</div>
+
+<p>Simplement : quelle est la PIRE erreur commise par le modèle, sur l'ensemble du jeu de test ?</p>
+
+<p><strong>Exemple</strong> : avec des erreurs de 2, 3 et 10, la Max Error vaut 10.</p>
+
+<p><strong>Quand l'utiliser</strong> : quand une seule grande erreur peut être catastrophique et que tu veux garantir un "plafond" d'erreur (ex : température maximale d'un équipement industriel, dosage médical).</p>
+
+<h3 id="ref-45-r²-coefficient-de-détermination">4.5 R² — Coefficient de détermination</h3>
+
+<div class="katex-display">$$R^2 = 1 - \frac{\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}{\sum_{i=1}^{n}(y_i - \bar{y})^2}$$</div>
+
+<p>Où $\bar{y}$ est la moyenne des valeurs réelles.</p>
+
+<p><strong>Intuition</strong> : le R² compare l'erreur de ton modèle (numérateur) à l'erreur d'un modèle "idiot" qui prédit toujours la moyenne (dénominateur).</p>
+
+<ul>
+<li>$R^2 = 1$ : ton modèle est parfait (erreur nulle)</li>
+<li>$R^2 = 0$ : ton modèle ne fait pas mieux que de prédire la moyenne (comme la baseline)</li>
+<li>$R^2 < 0$ : ton modèle est pire que la baseline (c'est mauvais signe)</li>
+</ul>
+
+<p><strong>Exemple</strong> : Un R² de 0.77 signifie que ton modèle explique 77% de la variabilité des données. Les 23% restants sont "inexpliqués" (bruit, features manquantes...).</p>
+
+<p><strong>Avantage clé</strong> : le R² est <strong>sans unité</strong>, ce qui permet de comparer la qualité de modèles sur des datasets différents.</p>
+
+<h3 id="ref-46-code-calculer-toutes-les-métriques-de-régression">4.6 Code — Calculer toutes les métriques de régression</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score, max_error
+import math
+
+# Valeurs réelles et prédites (exemple)
+y_true = [100, 200, 300, 400, 500]
+y_pred = [110, 195, 280, 410, 480]
+
+mse  = mean_squared_error(y_true, y_pred)    # → erreur quadratique moyenne
+rmse = math.sqrt(mse)                        # → dans l&#x27;unité du target (ex : euros)
+mae  = mean_absolute_error(y_true, y_pred)   # → erreur absolue moyenne, robuste aux outliers
+r2   = r2_score(y_true, y_pred)              # → proportion de variance expliquée [0, 1]
+me   = max_error(y_true, y_pred)             # → la pire erreur commise
+
+print(&#x27;MSE =&#x27;,       round(mse, 2))
+print(&#x27;RMSE =&#x27;,      round(rmse, 2))
+print(&#x27;MAE =&#x27;,       round(mae, 2))
+print(&#x27;R² =&#x27;,        round(r2, 2))
+print(&#x27;Max Error =&#x27;, round(me, 2))</code></pre></div>
+
+
+<p>Récap : MSE/RMSE pénalisent les grosses erreurs, MAE est plus robuste, R² est universel pour comparer des modèles, Max Error protège contre le pire cas.</p>
+
+<h3 id="ref-47-cross-validation-avec-plusieurs-métriques-à-la-fois">4.7 Cross-validation avec plusieurs métriques à la fois</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import cross_validate
+from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+
+# Évaluer sur 5 folds avec 4 métriques en même temps
+cv_results = cross_validate(
+    model, X, y,
+    cv=5,                     # découpe les données en 5 parties
+    scoring=[
+        &#x27;r2&#x27;,
+        &#x27;neg_mean_absolute_error&#x27;,    # sklearn retourne des valeurs négatives pour les erreurs
+        &#x27;neg_mean_squared_error&#x27;,     # (convention : score = valeur à maximiser)
+        &#x27;max_error&#x27;
+    ]
+)
+
+# Récupérer la moyenne du R² sur les 5 folds
+print(&quot;R² moyen :&quot;, cv_results[&#x27;test_r2&#x27;].mean())   # → ~0.747</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Pourquoi "neg_mean_absolute_error" et pas juste "mean_absolute_error" ? Sklearn s'attend à ce que tous les scores soient "à maximiser". Comme MAE et MSE sont "à minimiser", sklearn les retourne en négatif pour garder une convention cohérente. Pour retrouver la vraie valeur, multiplie par -1.</p></div></div>
+
+<h3 id="ref-48-tableau-récapitulatif-métriques-de-régression">4.8 Tableau récapitulatif — Métriques de régression</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Métrique</th><th>Question à laquelle elle répond</th><th>Utiliser quand...</th></tr></thead><tbody><tr><td>MSE</td><td>De combien se trompe-t-on en moyenne (penalité forte sur les grosses erreurs) ?</td><td>Les grandes erreurs sont très coûteuses</td></tr><tr><td>RMSE</td><td>Même chose, mais dans l'unité du target</td><td>Idem MSE, mais tu veux interpréter directement</td></tr><tr><td>MAE</td><td>De combien se trompe-t-on en moyenne (toutes erreurs équivalentes) ?</td><td>Toutes les erreurs se valent proportionnellement</td></tr><tr><td>Max Error</td><td>Quelle est la PIRE erreur possible ?</td><td>Tu dois garantir un plafond d'erreur</td></tr><tr><td>R²</td><td>Quelle part de la variabilité le modèle explique-t-il ?</td><td>Comparer des modèles entre eux, communiquer un score global</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="ref-5-métriques-de-classification">5. Métriques de classification</h2>
+
+<p>En classification, on prédit une <strong>catégorie</strong> (oui/non, spam/pas spam, malade/sain). Pour évaluer la qualité d'un modèle de classification, il faut comprendre les 4 types de résultats possibles.</p>
+
+<h3 id="ref-51-les-4-cas-possibles-et-leur-nom">5.1 Les 4 cas possibles (et leur nom)</h3>
+
+<p>Revenons à notre analogie médicale :</p>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Le modèle prédit : POSITIF (malade)</th><th>Le modèle prédit : NÉGATIF (sain)</th></tr></thead><tbody><tr><td><strong>Réalité : POSITIF (malade)</strong></td><td><strong>TP — Vrai Positif</strong> : correctement détecté</td><td><strong>FN — Faux Négatif</strong> : raté ! le patient rentre sans traitement</td></tr><tr><td><strong>Réalité : NÉGATIF (sain)</strong></td><td><strong>FP — Faux Positif</strong> : fausse alarme, stress inutile</td><td><strong>TN — Vrai Négatif</strong> : correctement écarté</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Mémo pour ne pas confondre FP et FN :</p>
+<p>- <strong>Faux Positif</strong> = le modèle dit "oui" alors que c'est "non" (fausse alarme)</p>
+<p>- <strong>Faux Négatif</strong> = le modèle dit "non" alors que c'est "oui" (oubli, ratage)</p></div></div>
+
+<h3 id="ref-52-la-matrice-de-confusion">5.2 La matrice de confusion</h3>
+
+<p>La matrice de confusion est un tableau qui résume ces 4 cas pour l'ensemble des prédictions. C'est l'outil de base pour comprendre où un modèle se trompe.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+
+# Exemple : 10 patients, résultats réels et prédictions
+y_test = [0, 1, 0, 0, 1, 0, 1, 1, 0, 1]   # 0=sain, 1=malade (vérité terrain)
+preds  = [0, 0, 0, 0, 1, 1, 1, 1, 1, 1]   # prédictions du modèle
+
+results_df = pd.DataFrame({&quot;actual&quot;: y_test, &quot;predicted&quot;: preds})
+
+# Construire la matrice : lignes = vrai label, colonnes = label prédit
+confusion_matrix = pd.crosstab(
+    index=results_df[&#x27;actual&#x27;],       # lignes = valeurs réelles
+    columns=results_df[&#x27;predicted&#x27;]   # colonnes = valeurs prédites
+)
+print(confusion_matrix)</code></pre></div>
+
+
+<p>Résultat attendu :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">predicted  0  1
+actual
+0          3  2     ← 3 vrais négatifs, 2 faux positifs
+1          1  4     ← 1 faux négatif, 4 vrais positifs</code></pre></div>
+
+
+<p>Lecture : sur les 5 patients réellement malades (ligne <code>actual=1</code>), le modèle en a correctement détecté 4 (TP=4) et en a raté 1 (FN=1).</p>
+
+<h3 id="ref-53-accuracy-précision-globale">5.3 Accuracy (Précision globale)</h3>
+
+<div class="katex-display">$$accuracy = \frac{TP + TN}{TP + TN + FP + FN}$$</div>
+
+<p>C'est le pourcentage de prédictions correctes, toutes classes confondues.</p>
+
+<p><strong>Exemple</strong> (avec nos 10 patients) :</p>
+
+<div class="katex-display">$$accuracy = \frac{4 + 3}{4 + 3 + 2 + 1} = \frac{7}{10} = 0.70$$</div>
+
+<p>Le modèle a bien classé 7 patients sur 10.</p>
+
+<p><strong>Quand l'utiliser</strong> : quand les classes sont <strong>équilibrées</strong> (autant de positifs que de négatifs) et que chaque type d'erreur coûte pareil.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Piege classique : sur un dataset avec 90% de patients sains, un modèle qui prédit TOUJOURS "sain" obtient 90% d'accuracy... mais détecte 0% des malades. L'accuracy seule est complètement trompeuse dans ce cas. C'est pourquoi on a besoin du Recall et de la Precision.</p></div></div>
+
+<h3 id="ref-54-recall-rappel-ou-sensibilité">5.4 Recall (Rappel ou Sensibilité)</h3>
+
+<div class="katex-display">$$recall = \frac{TP}{TP + FN}$$</div>
+
+<p>Traduction : parmi tous les cas réellement positifs, combien le modèle en a-t-il détectés ?</p>
+
+<p><strong>Exemple</strong> :</p>
+
+<div class="katex-display">$$recall = \frac{4}{4 + 1} = \frac{4}{5} = 0.80$$</div>
+
+<p>Le modèle a détecté 80% des vrais malades. Il en a raté 20% (1 patient sur 5).</p>
+
+<p><strong>Intuition</strong> : le Recall répond à la question "est-ce que je rate des positifs ?" Un Recall de 1.0 signifie qu'on n'en rate aucun. Un Recall de 0.10 signifie qu'on en rate 90%.</p>
+
+<p><strong>Quand l'utiliser</strong> : quand rater un positif est très coûteux — détection de maladie, fraude bancaire, détection de feux de forêt. Dans notre analogie médicale, un FN peut coûter une vie : on veut un Recall maximal.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Recall élevé seul ne suffit pas. Si le modèle dit "tout le monde est malade", le Recall est 1.0 (on ne rate aucun malade)... mais on envoie aussi tous les gens sains passer des examens inutiles. C'est là qu'intervient la Precision.</p></div></div>
+
+<h3 id="ref-55-precision-précision">5.5 Precision (Précision)</h3>
+
+<div class="katex-display">$$precision = \frac{TP}{TP + FP}$$</div>
+
+<p>Traduction : parmi toutes les fois où le modèle a prédit "positif", combien avait-il raison ?</p>
+
+<p><strong>Exemple</strong> :</p>
+
+<div class="katex-display">$$precision = \frac{4}{4 + 2} = \frac{4}{6} \approx 0.67$$</div>
+
+<p>Sur 6 prédictions "malade" du modèle, 4 étaient vraiment malades (67% de fiabilité).</p>
+
+<p><strong>Intuition</strong> : la Precision répond à "est-ce que mes alertes sont fiables ?" Une Precision de 1.0 signifie que chaque fois qu'on dit "positif", c'est vrai. Une Precision faible signifie beaucoup de fausses alarmes.</p>
+
+<p><strong>Quand l'utiliser</strong> : quand déclencher une fausse alarme est coûteux — publicité ciblée (dépenser un budget sur quelqu'un qui n'achètera pas), homologation d'un médicament, détection de spam (mettre un vrai email dans les spams).</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le tradeoff Precision/Recall : si tu dis "tout le monde est malade" → Recall=1, Precision basse. Si tu dis seulement "malade" quand tu es très sûr → Precision=1, mais tu rates beaucoup. On ne peut pas maximiser les deux en même temps, il faut choisir selon le contexte métier.</p></div></div>
+
+<h3 id="ref-56-f1-score">5.6 F1 Score</h3>
+
+<div class="katex-display">$$F1 = 2 \cdot \frac{precision \times recall}{precision + recall}$$</div>
+
+<p>Le F1 est la <strong>moyenne harmonique</strong> de la Precision et du Recall. Il combine les deux en un seul chiffre, en pénalisant fortement si l'un des deux est très bas.</p>
+
+<p><strong>Exemple</strong> :</p>
+
+<div class="katex-display">$$F1 = 2 \cdot \frac{0.67 \times 0.80}{0.67 + 0.80} = 2 \cdot \frac{0.536}{1.47} \approx 0.73$$</div>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Pourquoi la moyenne harmonique plutôt que la moyenne arithmétique ? Si Precision=1.0 et Recall=0.01 (catastrophique), la moyenne arithmétique donnerait 0.505 (un score "correct" trompeur). La moyenne harmonique donnerait $\approx 0.02$ — beaucoup plus honnête.</p></div></div>
+
+<p><strong>Quand l'utiliser</strong> : en cas général, surtout sur des datasets déséquilibrés, pour comparer plusieurs modèles avec un seul chiffre.</p>
+
+<h3 id="ref-57-code-toutes-les-métriques-de-classification">5.7 Code — Toutes les métriques de classification</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+y_true = [0, 1, 0, 0, 1, 0, 1, 1, 0, 1]   # vérités terrain
+y_pred = [0, 0, 0, 0, 1, 1, 1, 1, 1, 1]   # prédictions du modèle
+
+# Calculer chaque métrique
+acc  = accuracy_score(y_true, y_pred)    # proportion de prédictions correctes
+prec = precision_score(y_true, y_pred)  # fiabilité quand le modèle dit &quot;positif&quot;
+rec  = recall_score(y_true, y_pred)     # capacité à ne pas rater les positifs
+f1   = f1_score(y_true, y_pred)         # équilibre precision/recall
+
+print(&#x27;Accuracy =&#x27;,  round(acc, 2))    # → 0.70
+print(&#x27;Precision =&#x27;, round(prec, 2))   # → 0.67
+print(&#x27;Recall =&#x27;,    round(rec, 2))    # → 0.80
+print(&#x27;F1 Score =&#x27;,  round(f1, 2))     # → 0.73</code></pre></div>
+
+
+<p>Récap : ces 4 fonctions prennent <code>y_true</code> (réalité) et <code>y_pred</code> (prédictions) et retournent un chiffre entre 0 et 1, où 1 est parfait.</p>
+
+<h3 id="ref-58-tableau-récapitulatif-métriques-de-classification">5.8 Tableau récapitulatif — Métriques de classification</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Métrique</th><th>Formule</th><th>Question</th><th>Utiliser quand...</th></tr></thead><tbody><tr><td>Accuracy</td><td>$(TP+TN)/(total)$</td><td>Combien de prédictions correctes au total ?</td><td>Classes équilibrées</td></tr><tr><td>Recall</td><td>$TP/(TP+FN)$</td><td>Est-ce qu'on rate des positifs ?</td><td>Rater un positif est très coûteux (maladie, fraude)</td></tr><tr><td>Precision</td><td>$TP/(TP+FP)$</td><td>Quand on dit "positif", est-on fiable ?</td><td>Fausse alarme est coûteuse (pub, médicament)</td></tr><tr><td>F1 Score</td><td>$2 \cdot P \cdot R/(P+R)$</td><td>Quel équilibre precision/recall ?</td><td>Comparaison générale, datasets déséquilibrés</td></tr><tr><td>ROC-AUC</td><td>Aire sous courbe ROC</td><td>Le modèle discrimine-t-il bien, peu importe le seuil ?</td><td>Comparer des modèles entre eux</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="ref-6-tradeoff-precisionrecall-et-ajustement-du-seuil">6. Tradeoff Precision–Recall et ajustement du seuil</h2>
+
+<h3 id="ref-61-le-seuil-de-décision">6.1 Le seuil de décision</h3>
+
+<p>Un modèle de classification comme la régression logistique ne sort pas directement "0" ou "1" — il sort une <strong>probabilité</strong> entre 0 et 1. Par défaut, le seuil est fixé à 0.5 : si la probabilité estimée dépasse 0.5, le modèle prédit "positif".</p>
+
+<p>Mais ce seuil est réglable. Si tu l'abaisses à 0.3, le modèle sera plus "prudent" et dira "positif" plus souvent : le Recall monte, mais la Precision baisse (plus de fausses alarmes). Si tu l'augmentes à 0.7, le modèle ne dira "positif" que lorsqu'il est très sûr : la Precision monte, mais le Recall baisse (plus de ratés).</p>
+
+<p><strong>Analogie</strong> : imagine une alarme incendie. Si tu règles le détecteur de fumée pour être très sensible (seuil bas), il se déclenche au moindre soupçon — tu détectes tous les vrais feux (Recall élevé), mais aussi beaucoup de fausses alarmes (Precision basse). Si tu le règles peu sensible (seuil haut), il ne se déclenche que pour les vrais feux importants (Precision élevée), mais il peut ne pas sonner pour un petit feu débutant (Recall bas).</p>
+
+<h3 id="ref-62-code-courbe-precision-recall-et-seuil-optimal">6.2 Code — Courbe Precision-Recall et seuil optimal</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import LabelEncoder
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import cross_val_predict
+from sklearn.metrics import precision_recall_curve, recall_score, precision_score, f1_score
+import pandas as pd
+
+# Encoder la cible en 0/1
+le = LabelEncoder()
+y_encoded = le.fit_transform(y)   # ex: &#x27;cheap&#x27;=0, &#x27;expensive&#x27;=1
+
+# Obtenir les PROBABILITÉS (pas juste 0/1) via cross-validation
+# method=&#x27;predict_proba&#x27; pour récupérer les proba au lieu des classes
+proba = cross_val_predict(model, X, y_encoded, cv=5, method=&#x27;predict_proba&#x27;)
+proba_positive = proba[:, 1]   # colonne 1 = probabilités d&#x27;appartenir à la classe positive
+
+# Calculer precision et recall pour chaque valeur de seuil possible
+precision_vals, recall_vals, thresholds = precision_recall_curve(y_encoded, proba_positive)
+
+# Stocker dans un DataFrame pour analyser
+scores = pd.DataFrame({
+    &#x27;threshold&#x27;: thresholds,
+    &#x27;precision&#x27;: precision_vals[:-1],   # dernier élément retiré (artefact sklearn)
+    &#x27;recall&#x27;: recall_vals[:-1]
+})
+
+# Trouver le seuil qui garantit recall &gt;= 0.80
+# (on prend le threshold le plus ÉLEVÉ satisfaisant la contrainte → precision maximale)
+optimal_threshold = scores[scores[&#x27;recall&#x27;] &gt;= 0.8][&#x27;threshold&#x27;].max()
+print(&quot;Seuil optimal :&quot;, round(optimal_threshold, 3))   # → ~0.305</code></pre></div>
+
+
+<h3 id="ref-63-appliquer-le-seuil-personnalisé">6.3 Appliquer le seuil personnalisé</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Entraîner le modèle sur tout le dataset
+model.fit(X, y_encoded)
+
+# Fonction de prédiction avec seuil personnalisé
+def custom_predict(X_data, custom_threshold):
+    probs = model.predict_proba(X_data)[:, 1]        # probabilités classe positive
+    return (probs &gt; custom_threshold).astype(int)    # 1 si prob &gt; seuil, sinon 0
+
+# Prédire avec le seuil optimal trouvé
+updated_preds = custom_predict(X, custom_threshold=0.305)
+
+# Vérifier les nouvelles métriques
+print(&quot;Recall :&quot;,    round(recall_score(y_encoded, updated_preds), 3))     # → 0.807
+print(&quot;Precision :&quot;, round(precision_score(y_encoded, updated_preds), 3))  # → 0.929
+print(&quot;F1 Score :&quot;,  round(f1_score(y_encoded, updated_preds), 3))         # → 0.864</code></pre></div>
+
+
+<p>Récap : en abaissant le seuil de 0.5 à 0.305, on garantit un Recall de 80% tout en maintenant une Precision de 93%. Le seuil par défaut à 0.5 n'est pas toujours le meilleur choix.</p>
+
+<hr>
+
+<h2 id="ref-7-courbe-roc-et-auc">7. Courbe ROC et AUC</h2>
+
+<h3 id="ref-71-quest-ce-que-la-courbe-roc">7.1 Qu'est-ce que la courbe ROC ?</h3>
+
+<p>ROC signifie "Receiver Operating Characteristic". C'est une courbe qui montre le compromis entre :</p>
+<ul>
+<li>Le <strong>TPR</strong> (True Positive Rate = Recall) : proportion de vrais positifs détectés</li>
+<li>Le <strong>FPR</strong> (False Positive Rate) : proportion de faux positifs générés</li>
+</ul>
+
+<div class="katex-display">$$TPR = \frac{TP}{TP + FN} \quad \text{(= Recall)}$$</div>
+
+<div class="katex-display">$$FPR = \frac{FP}{FP + TN} \quad \text{(proportion de négatifs incorrectement classés positifs)}$$</div>
+
+<p>La courbe ROC trace le TPR (axe Y) en fonction du FPR (axe X) pour <strong>tous les seuils possibles</strong>. Chaque point de la courbe correspond à un seuil de décision différent.</p>
+
+<p><strong>Interprétation</strong> :</p>
+<ul>
+<li>Un modèle parfait aurait un point dans le coin supérieur gauche (TPR=1, FPR=0) — il détecte tous les positifs sans aucune fausse alarme.</li>
+<li>La diagonale représente un modèle aléatoire (équivalent à lancer une pièce).</li>
+<li>Plus la courbe "monte" vers le coin supérieur gauche, meilleur est le modèle.</li>
+</ul>
+
+<h3 id="ref-72-auc-area-under-the-curve-aire-sous-la-courbe">7.2 AUC — Area Under the Curve (Aire sous la courbe)</h3>
+
+<p>L'AUC est l'aire sous la courbe ROC. Elle résume la qualité globale du modèle en un seul chiffre.</p>
+
+<ul>
+<li>$AUC = 1.0$ → modèle parfait (sépare parfaitement les classes)</li>
+<li>$AUC = 0.5$ → modèle aléatoire (ne vaut rien)</li>
+<li>$AUC = 0.9$ → très bon modèle</li>
+</ul>
+
+<p><strong>Intuition</strong> : l'AUC représente la probabilité que le modèle attribue un score plus élevé à un positif aléatoire qu'à un négatif aléatoire. Un AUC de 0.91 signifie que dans 91% des comparaisons "un malade vs un sain", le modèle attribue bien la probabilité plus haute au malade.</p>
+
+<p><strong>Avantage clé</strong> : l'AUC est <strong>indépendante du seuil de décision</strong>. C'est donc idéal pour comparer deux modèles entre eux sans avoir à choisir un seuil.</p>
+
+<h3 id="ref-73-code-courbe-roc-et-auc">7.3 Code — Courbe ROC et AUC</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import roc_curve, roc_auc_score
+
+# Calculer les métriques ROC pour chaque seuil possible
+fpr, tpr, thresholds = roc_curve(y_encoded, proba_positive)
+# fpr : liste des taux de faux positifs (un par seuil)
+# tpr : liste des taux de vrais positifs (un par seuil)
+
+# Calculer l&#x27;AUC (aire sous la courbe)
+auc_score = roc_auc_score(y_encoded, proba_positive)
+print(&quot;AUC =&quot;, round(auc_score, 3))   # → ~0.909
+
+# Tracer la courbe ROC (avec matplotlib)
+import matplotlib.pyplot as plt
+
+plt.plot(fpr, tpr, label=f&quot;Modèle (AUC = {auc_score:.2f})&quot;)   # courbe du modèle
+plt.plot([0, 1], [0, 1], &#x27;k--&#x27;, label=&quot;Aléatoire (AUC = 0.5)&quot;)  # ligne de référence
+plt.xlabel(&quot;Taux de Faux Positifs (FPR)&quot;)
+plt.ylabel(&quot;Taux de Vrais Positifs (TPR = Recall)&quot;)
+plt.title(&quot;Courbe ROC&quot;)
+plt.legend()
+plt.show()</code></pre></div>
+
+
+<p>Récap : <code>roc_curve()</code> prend les vraies étiquettes et les probabilités (pas les prédictions 0/1). <code>roc_auc_score()</code> retourne un chiffre entre 0.5 et 1.0 — plus il est proche de 1, meilleur est le modèle.</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Bonne pratique : utilise l'AUC pour comparer des modèles entre eux (quel algorithme est meilleur ?), et la courbe Precision-Recall pour ajuster le seuil de décision selon tes besoins métier.</p></div></div>
+
+<hr>
+
+<h2 id="ref-8-analyse-derreurs">8. Analyse d'erreurs</h2>
+
+<p>Obtenir un bon score global, c'est bien — mais comprendre <strong>où</strong> et <strong>pour qui</strong> le modèle se trompe, c'est encore mieux.</p>
+
+<p><strong>Questions à se poser systématiquement</strong> :</p>
+
+<ul>
+<li>Certains <strong>sous-groupes</strong> (tranches d'âge, régions géographiques...) sont-ils moins bien prédits que d'autres ?</li>
+<li>Une <strong>classe</strong> est-elle systématiquement confondue avec une autre (ex : le modèle dit toujours "chat" quand c'est un "léopard") ?</li>
+<li>Y a-t-il quelques <strong>erreurs très larges</strong> qui tirent le score vers le bas, ou est-ce une erreur diffuse sur tous les exemples ?</li>
+</ul>
+
+<p>Ces analyses peuvent déboucher sur :</p>
+<ul>
+<li>La collecte de données supplémentaires pour les sous-groupes sous-représentés</li>
+<li>Du feature engineering ciblé pour mieux distinguer les classes confondues</li>
+<li>L'ajustement du seuil de décision pour équilibrer Precision et Recall</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Chaque métrique ne raconte qu'une partie de l'histoire. Un R² de 0.85 peut cacher quelques erreurs gigantesques sur des cas rares importants. Un Recall de 0.90 peut masquer une Precision catastrophique. Explore toujours plusieurs angles avant de conclure qu'un modèle est "bon".</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Q1.</strong> Tu entraînes un modèle pour détecter des transactions frauduleuses. Dans ton dataset, 99% des transactions sont normales et 1% sont frauduleuses. Ton modèle prédit "normal" pour toutes les transactions et obtient 99% d'accuracy. Est-ce un bon modèle ? Quelle(s) métrique(s) devrais-tu regarder à la place ?</p>
+
+<p><strong>Q2.</strong> Tu dois choisir entre deux modèles pour détecter une maladie grave :</p>
+<ul>
+<li>Modèle A : Precision = 0.95, Recall = 0.55</li>
+<li>Modèle B : Precision = 0.70, Recall = 0.92</li>
+</ul>
+
+<p>Lequel choisis-tu et pourquoi ? (Rappel : la maladie est grave et un diagnostic raté peut être fatal.)</p>
+
+<p><strong>Q3.</strong> Un collègue te dit "mon modèle KNN a un score de 0.88 sur le test set, c'est excellent !". Quelle est la première question que tu lui poses avant de valider ce résultat ?</p>
+
+<p><strong>Q4.</strong> Tu as un modèle de régression qui prédit les salaires. Le MAE est de 2 000 € et le RMSE est de 8 500 €. Que t'indique ce grand écart entre MAE et RMSE sur les erreurs de ton modèle ?</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Les <strong>métriques de régression</strong> mesurent l'écart entre valeurs prédites et réelles : MSE/RMSE pénalisent les grandes erreurs, MAE est robuste aux outliers, R² mesure le % de variance expliquée.</li>
+<li>Les <strong>métriques de classification</strong> mesurent la qualité des prédictions catégorielles : <strong>Recall</strong> maximise la détection des positifs (minimise FN), <strong>Precision</strong> maximise la fiabilité des alertes (minimise FP), <strong>F1</strong> équilibre les deux.</li>
+<li>La <strong>matrice de confusion</strong> est l'outil de base pour comprendre où un modèle se trompe.</li>
+<li><strong>Accuracy seule = piège</strong> sur des datasets déséquilibrés : un modèle qui dit toujours "non" peut avoir 99% d'accuracy et 0% d'utilité.</li>
+<li>Toujours définir une <strong>baseline</strong> (DummyRegressor / DummyClassifier) avant d'évaluer un modèle réel.</li>
+<li><strong>KNN</strong> est simple et efficace, mais exige un <strong>scaling</strong> préalable et le bon choix de $K$ (via cross-validation).</li>
+<li>Le <strong>seuil de décision</strong> d'un classificateur est réglable : baisser le seuil augmente le Recall, le monter augmente la Precision.</li>
+<li>L'<strong>AUC-ROC</strong> résume la performance d'un modèle de classification indépendamment du seuil — idéal pour comparer des modèles entre eux.</li>
+<li>L'analyse d'erreurs va au-delà des métriques globales : cherche les sous-groupes mal prédits et les erreurs systématiques.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-métriques-de-classification">Métriques de classification</a></li><li><a href="#syn-confusion-matrix">Confusion matrix</a></li><li><a href="#syn-métriques-de-régression">Métriques de régression</a></li><li><a href="#syn-cross-validation">Cross-validation</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-courbes-roc-et-pr">Courbes ROC et PR</a></li><li><a href="#syn-métriques-pour-problèmes-spécifiques">Métriques pour problèmes spécifiques</a></li><li><a href="#syn-choix-de-la-métrique-business">Choix de la métrique business</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-métriques-de-classification">Métriques de classification</h3>
+
+<p>Pour un problème binaire, la prédiction peut être correcte ou incorrecte de <strong>quatre manières</strong>. Tout part de la <strong>matrice de confusion</strong> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Réel positif</th><th>Réel négatif</th></tr></thead><tbody><tr><td><strong>Prédit positif</strong></td><td>TP (vrai positif)</td><td>FP (faux positif)</td></tr><tr><td><strong>Prédit négatif</strong></td><td>FN (faux négatif)</td><td>TN (vrai négatif)</td></tr></tbody></table></div>
+<p>Vocabulaire :</p>
+<ul>
+<li><strong>TP</strong> (True Positive) : le modèle dit "positif", et c'est vraiment positif → succès</li>
+<li><strong>FP</strong> (False Positive) : le modèle dit "positif", mais c'est négatif → fausse alarme</li>
+<li><strong>FN</strong> (False Negative) : le modèle dit "négatif", mais c'est positif → occasion ratée</li>
+<li><strong>TN</strong> (True Negative) : le modèle dit "négatif", et c'est vraiment négatif → succès</li>
+</ul>
+
+<p>À partir de ces 4 nombres, on construit toutes les métriques.</p>
+
+<p><strong>Exemple chiffré</strong> — détection de fraude sur 10 000 transactions :</p>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Vraie fraude</th><th>Pas fraude</th></tr></thead><tbody><tr><td><strong>Prédit fraude</strong></td><td>TP = 40</td><td>FP = 60</td></tr><tr><td><strong>Prédit normal</strong></td><td>FN = 10</td><td>TN = 9 890</td></tr></tbody></table></div>
+<p>Calculs :</p>
+
+<div class="katex-display">$$\text{Accuracy} = \frac{TP + TN}{TP+TN+FP+FN} = \frac{40 + 9890}{10000} = 0.993$$</div>
+
+<p>Lecture : <em>fraction de prédictions correctes, peu importe la classe</em>. Ici 99.3% — très élevé, mais trompeur car le dataset est déséquilibré.</p>
+
+<div class="katex-display">$$\text{Precision} = \frac{TP}{TP + FP} = \frac{40}{40 + 60} = 0.40$$</div>
+
+<p>Lecture : <em>parmi toutes les transactions que le modèle a marquées comme fraudes, 40% étaient de vraies fraudes</em>. Les 60% restants sont des fausses alarmes qui ennuient les clients.</p>
+
+<div class="katex-display">$$\text{Recall (sensitivity)} = \frac{TP}{TP + FN} = \frac{40}{40 + 10} = 0.80$$</div>
+
+<p>Lecture : <em>parmi toutes les vraies fraudes, 80% ont été détectées</em>. On en a raté 20% (les 10 FN).</p>
+
+<div class="katex-display">$$\text{F1-score} = 2 \cdot \frac{P \cdot R}{P + R} = 2 \cdot \frac{0.40 \cdot 0.80}{0.40 + 0.80} = 0.533$$</div>
+
+<p>Lecture : <em>moyenne harmonique de precision et recall</em>. L'harmonique pénalise sévèrement le déséquilibre : si l'un des deux est très bas, le F1 tombe. Ici 0.53, très éloigné de l'accuracy 0.99 — on voit que le modèle est médiocre sur la classe qui nous intéresse.</p>
+
+<div class="katex-display">$$F_\beta = (1 + \beta^2) \cdot \frac{P \cdot R}{\beta^2 \cdot P + R}$$</div>
+
+<p>Lecture : <em>le F-beta généralise le F1 en pondérant recall et precision</em>. Avec $\beta = 1$ on retombe sur F1. Avec $\beta > 1$ (par exemple $\beta = 2$), on favorise le recall. Avec $\beta < 1$ (par exemple $\beta = 0.5$), on favorise la precision. Choisissez $\beta$ selon le coût métier relatif des FP et FN.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import (accuracy_score, precision_score, recall_score,
+                              f1_score, classification_report, confusion_matrix)
+
+print(classification_report(y_test, y_pred))
+# precision / recall / f1-score / support pour chaque classe + moyennes</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : la <strong>precision</strong> est la qualité d'un filet de pêche — quel pourcentage de ce que vous attrapez est vraiment du poisson (et non des branches). Le <strong>recall</strong> est la couverture — quel pourcentage de tous les poissons de l'étang vous attrapez. Vous pouvez maximiser l'un au détriment de l'autre, mais rarement les deux ensemble. Le <strong>F1</strong> est un compromis qui pénalise les déséquilibres.</p></div></div>
+
+<h3 id="syn-confusion-matrix">Confusion matrix</h3>
+
+<p>La <strong>matrice de confusion</strong> est l'outil de diagnostic le plus utile en classification. Elle révèle exactement où le modèle se trompe.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import confusion_matrix
+import seaborn as sns
+
+cm = confusion_matrix(y_test, y_pred)
+sns.heatmap(cm, annot=True, fmt=&quot;d&quot;, cmap=&quot;Blues&quot;,
+            xticklabels=[&quot;Pred Neg&quot;, &quot;Pred Pos&quot;],
+            yticklabels=[&quot;True Neg&quot;, &quot;True Pos&quot;])</code></pre></div>
+
+
+<p>Pour une classification multi-classes (par exemple 10 classes), la matrice est 10×10 et révèle les <strong>confusions systématiques</strong> : "le modèle confond toujours 4 et 9" pointe immédiatement vers une faiblesse spécifique (et suggère d'ajouter des features ou du data augmentation ciblé).</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : tracez <strong>toujours</strong> la confusion matrix avant de calculer une métrique unique. Vous verrez en 5 secondes si votre 95% d'accuracy cache une catastrophe sur une classe minoritaire. C'est aussi la première chose que les recruteurs vérifient quand vous présentez un projet ML.</p></div></div>
+
+<h3 id="syn-métriques-de-régression">Métriques de régression</h3>
+
+<p>Pour la régression :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Métrique</th><th>Formule</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td><strong>MSE</strong></td><td>$\frac{1}{n}\sum (y - \hat{y})^2$</td><td>Pénalise fortement les grandes erreurs</td></tr><tr><td><strong>RMSE</strong></td><td>$\sqrt{\text{MSE}}$</td><td>Même unité que $y$, plus interprétable</td></tr><tr><td><strong>MAE</strong></td><td>$\frac{1}{n}\sum</td><td>y - \hat{y}</td><td>$</td><td>Robuste aux outliers</td></tr><tr><td><strong>MAPE</strong></td><td>$\frac{100}{n}\sum</td><td>y-\hat{y}</td><td>/</td><td>y</td><td>$</td><td>En pourcentage, lisible</td></tr><tr><td><strong>R²</strong></td><td>$1 - \frac{\sum(y-\hat{y})^2}{\sum(y-\bar{y})^2}$</td><td>Fraction de variance expliquée</td></tr><tr><td><strong>MSLE</strong></td><td>$\frac{1}{n}\sum(\log(1+y) - \log(1+\hat{y}))^2$</td><td>Pour valeurs très étalées (revenus)</td></tr></tbody></table></div>
+<p>Lecture : la <strong>MSE</strong> met les erreurs au carré → un outlier à +100 compte comme 10 000. La <strong>RMSE</strong> remet ça en unité originale (si MSE=400, RMSE=20 €). La <strong>MAE</strong> somme les valeurs absolues → traite toutes les erreurs linéairement, plus robuste. La <strong>MAPE</strong> exprime l'erreur en % de la vraie valeur, utile quand $y$ couvre plusieurs ordres de grandeur.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+import numpy as np
+
+print(f&quot;R²   = {r2_score(y_test, y_pred):.3f}&quot;)                        # 0.85
+print(f&quot;RMSE = {np.sqrt(mean_squared_error(y_test, y_pred)):.2f}&quot;)     # 12450
+print(f&quot;MAE  = {mean_absolute_error(y_test, y_pred):.2f}&quot;)             #  9820</code></pre></div>
+
+
+<p>Choix selon le contexte :</p>
+
+<ul>
+<li><strong>Outliers fréquents</strong> : MAE (résistant)</li>
+<li><strong>Outliers à pénaliser fortement</strong> : MSE / RMSE</li>
+<li><strong>Grande étendue de valeurs</strong> : MAPE ou MSLE (relatif)</li>
+<li><strong>Communication non technique</strong> : R² (entre 0 et 1, intuitif)</li>
+</ul>
+
+<h3 id="syn-cross-validation">Cross-validation</h3>
+
+<p>Une métrique sur un seul train/test split peut être trompeuse. La <strong>cross-validation</strong> moyenne plusieurs splits pour une estimation plus robuste.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import cross_val_score
+
+scores = cross_val_score(model, X, y, cv=5, scoring=&quot;f1&quot;)
+print(f&quot;F1 = {scores.mean():.3f} ± {scores.std():.3f}&quot;)
+# Exemple: F1 = 0.847 ± 0.013  (très stable)</code></pre></div>
+
+
+<p>L'écart-type des scores indique la <strong>stabilité</strong> : un modèle avec 0.85 ± 0.02 est plus fiable qu'un autre à 0.86 ± 0.10.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Type de CV</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td><strong>KFold</strong></td><td>Régression, dataset i.i.d.</td></tr><tr><td><strong>StratifiedKFold</strong></td><td>Classification (préserve les proportions de classes)</td></tr><tr><td><strong>TimeSeriesSplit</strong></td><td>Séries temporelles (jamais fitter sur le futur)</td></tr><tr><td><strong>GroupKFold</strong></td><td>Données avec groupes (patients avec plusieurs visites)</td></tr><tr><td><strong>LeaveOneOut</strong></td><td>Très petits datasets (< 100 observations)</td></tr></tbody></table></div>
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-courbes-roc-et-pr">Courbes ROC et PR</h3>
+
+<p>La <strong>courbe ROC</strong> trace le taux de vrais positifs (TPR = recall) contre le taux de faux positifs (FPR), à mesure qu'on <strong>varie le seuil de décision</strong> de 0 à 1.</p>
+
+<div class="katex-display">$$\text{TPR} = \frac{TP}{TP + FN}, \qquad \text{FPR} = \frac{FP}{FP + TN}$$</div>
+
+<p>Lecture : <em>TPR est la proportion de vrais positifs qu'on capture (le recall). FPR est la proportion de négatifs qu'on marque à tort comme positifs</em>. Quand on baisse le seuil, on capture plus de positifs (TPR monte) mais on fait plus de fausses alarmes (FPR monte aussi).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import roc_curve, auc
+
+fpr, tpr, thresholds = roc_curve(y_test, proba)
+roc_auc = auc(fpr, tpr)</code></pre></div>
+
+
+<p>L'<strong>AUC-ROC</strong> mesure l'aire sous cette courbe :</p>
+
+<ul>
+<li>AUC = 1 : classifieur parfait</li>
+<li>AUC = 0.5 : aléatoire (droite diagonale)</li>
+<li>AUC < 0.5 : pire qu'aléatoire (votre modèle est inversé — swapper les classes le corrige)</li>
+</ul>
+
+<p>L'AUC-ROC a une interprétation probabiliste très élégante : c'est la probabilité que, pour un couple aléatoire (positif, négatif), le modèle donne un score plus élevé au positif. C'est une mesure <strong>invariante au seuil</strong>.</p>
+
+<p>La <strong>courbe PR</strong> (Precision-Recall) trace precision contre recall. Elle est <strong>plus appropriée</strong> que la ROC pour les classes déséquilibrées, parce qu'elle ne fait pas illusion sur le grand nombre de vrais négatifs.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import precision_recall_curve, average_precision_score
+
+precision, recall, thresholds = precision_recall_curve(y_test, proba)
+avg_precision = average_precision_score(y_test, proba)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Question d'entretien</strong> : "Quelle est la différence entre ROC-AUC et PR-AUC, et laquelle préférer ?" Réponse : ROC-AUC est dominée par les vrais négatifs quand la classe positive est rare — un modèle très médiocre peut avoir ROC-AUC = 0.95. PR-AUC ne regarde que la classe positive et est plus stricte. Pour une fraude à 0.1%, ROC-AUC peut être 0.99 alors que PR-AUC n'est que 0.30. <strong>Toujours</strong> utiliser PR-AUC pour les classes déséquilibrées.</p></div></div>
+
+<h3 id="syn-métriques-pour-problèmes-spécifiques">Métriques pour problèmes spécifiques</h3>
+
+<p><strong>Multi-classes</strong> : trois manières d'agréger les métriques par classe.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Stratégie</th><th>Méthode</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td><strong>Macro</strong></td><td>Moyenne simple des métriques par classe</td><td>Toutes les classes ont la même importance</td></tr><tr><td><strong>Weighted</strong></td><td>Moyenne pondérée par le support</td><td>Refléter le poids réel des classes</td></tr><tr><td><strong>Micro</strong></td><td>Calcul global (somme des TP, FP, FN)</td><td>Quand on veut un score global</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">f1_score(y, y_pred, average=&quot;macro&quot;)     # égalité des classes
+f1_score(y, y_pred, average=&quot;weighted&quot;)  # poids par fréquence
+f1_score(y, y_pred, average=&quot;micro&quot;)     # équivalent à accuracy en multi-classe</code></pre></div>
+
+
+<p><strong>Multi-label</strong> (chaque instance peut avoir plusieurs labels) : Hamming loss, Jaccard score.</p>
+
+<p><strong>Information retrieval</strong> : MAP@K, NDCG@K, MRR — métriques pour systèmes de recommandation.</p>
+
+<p><strong>Détection d'objets</strong> : IoU (Intersection over Union), mAP (mean Average Precision).</p>
+
+<h3 id="syn-choix-de-la-métrique-business">Choix de la métrique business</h3>
+
+<p>La métrique que vous optimisez doit refléter le <strong>coût réel</strong> des erreurs.</p>
+
+<p><strong>Exemple 1 — Détection de fraude bancaire</strong></p>
+
+<ul>
+<li>FN (fraude non détectée) = perte financière directe, 1 000 €</li>
+<li>FP (transaction légitime bloquée) = friction client, 50 €</li>
+</ul>
+
+<p>Coût relatif : 20:1. On veut un seuil très bas → maximiser le recall, pas l'accuracy. Métrique : <strong>F2-score</strong> (qui pondère le recall 4× plus que la precision) ou <strong>PR-AUC</strong>.</p>
+
+<p><strong>Exemple 2 — Filtre spam</strong></p>
+
+<ul>
+<li>FN (spam dans la boîte) = nuisance mineure</li>
+<li>FP (email légitime en spam) = catastrophe (perte d'opportunité business)</li>
+</ul>
+
+<p>Coût relatif inverse. On veut un seuil très haut → maximiser la precision. Métrique : <strong>F0.5-score</strong> ou precision pure.</p>
+
+<p><strong>Exemple 3 — Prix immobilier</strong></p>
+
+<ul>
+<li>Surestimation = bien invendable</li>
+<li>Sous-estimation = manque à gagner</li>
+</ul>
+
+<p>Coût symétrique → MAE ou RMSE.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : avant de choisir un modèle, <strong>chiffrez le coût de chaque type d'erreur</strong> en euros (ou en KPI business). Optimiser une métrique technique sans cette traduction donne souvent un modèle qui fait gagner des points de F1 mais perdre de l'argent. C'est ce qui distingue un data scientist orienté business d'un data scientist orienté Kaggle.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi l'accuracy est-elle dangereuse pour les classes déséquilibrées, et par quoi la remplacer ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Baseline triviale.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Sur un dataset où 99% des classes sont négatives, un classifieur trivial qui prédit toujours "négatif" obtient 99% d'accuracy — sans détecter aucun positif. Votre modèle peut sembler exceptionnel selon l'accuracy alors qu'il est inutile.</p>
+
+<p>Métriques alternatives :</p>
+
+<ol>
+<li><strong>F1-score</strong> : moyenne harmonique précision/recall, équilibre les deux</li>
+<li><strong>PR-AUC</strong> : aire sous la courbe Precision-Recall, robuste au déséquilibre</li>
+<li><strong>Recall sur la classe positive</strong> : combien de vrais positifs vous détectez</li>
+<li><strong>MCC</strong> (Matthews Correlation Coefficient) : score équilibré entre -1 et 1 qui prend en compte les 4 cellules de la matrice de confusion</li>
+<li><strong>Confusion matrix</strong> : visualiser TP/FP/TN/FN</li>
+</ol>
+
+<p>Règle : sur un dataset déséquilibré, ne <strong>jamais</strong> rapporter l'accuracy seule. Toujours coupler avec une métrique sensible à la classe minoritaire.</p>
+
+</details>
+
+<p><strong>Q2 : Quelle est la différence entre la moyenne arithmétique et la moyenne harmonique de précision/recall, et pourquoi le F1-score utilise-t-il l'harmonique ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Déséquilibre extrême.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>La <strong>moyenne arithmétique</strong> $(P+R)/2$ est égale à 0.5 si $P = 1$ et $R = 0$ — ce qui suggère qu'un modèle ultra-précis mais sans recall serait "moyen".</p>
+
+<p>La <strong>moyenne harmonique</strong> $2 \cdot P \cdot R / (P + R)$ est égale à 0 dans ce même cas — elle pénalise sévèrement le déséquilibre.</p>
+
+<div class="katex-display">$$F_1 = \frac{2 P R}{P + R}$$</div>
+
+<p>Lecture : <em>on multiplie précision et recall (produit), puis on divise par leur somme, le tout fois 2</em>. Si l'un des deux est nul, le numérateur est nul donc F1 = 0. C'est exactement l'esprit du F1-score : un modèle est bon <strong>seulement si</strong> il est à la fois précis ET sensible.</p>
+
+<p>Plus généralement, le <strong>F-beta score</strong></p>
+
+<div class="katex-display">$$F_\beta = (1 + \beta^2) \cdot \frac{P \cdot R}{\beta^2 \cdot P + R}$$</div>
+
+<p>permet de pondérer : $\beta = 1$ équilibre, $\beta < 1$ favorise la précision, $\beta > 1$ favorise le recall. $\beta$ représente à quel point on juge le recall plus important que la précision.</p>
+
+</details>
+
+<p><strong>Q3 : Vous comparez deux modèles : A a ROC-AUC = 0.95, B a ROC-AUC = 0.93. Sur le même dataset, A a PR-AUC = 0.30 et B a PR-AUC = 0.55. Lequel choisir ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Déséquilibre et priorités.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Très probablement <strong>modèle B</strong>. La grande différence entre ROC-AUC et PR-AUC suggère que le dataset est très déséquilibré (peu de positifs).</p>
+
+<p>Dans ce cas, ROC-AUC est dominée par les vrais négatifs et donne une vision optimiste des deux modèles. PR-AUC se concentre sur la classe positive et révèle que B est nettement supérieur à A pour détecter les vrais positifs. Si votre objectif est de <strong>détecter</strong> la classe rare (fraude, maladie, anomalie), B est meilleur d'un facteur 1.83 (0.55 / 0.30).</p>
+
+<p>Le 0.02 de différence sur ROC-AUC est cosmétique. <strong>Règle générale</strong> : si les deux métriques divergent, faites confiance à la PR-AUC pour les classes rares et regardez la confusion matrix pour confirmer.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://scikit-learn.org/stable/modules/model_evaluation.html" target="_blank" rel="noopener">scikit-learn Metrics documentation</a></li>
+<li><em>Pattern Classification</em> (Duda, Hart, Stork) — chapitre 9 sur l'évaluation</li>
+<li><a href="https://developers.google.com/machine-learning/crash-course/classification" target="_blank" rel="noopener">Google ML Crash Course — Classification</a></li>
+<li><a href="https://machinelearningmastery.com/imbalanced-classification/" target="_blank" rel="noopener">Machine Learning Mastery — Imbalanced Classification</a></li>
+<li><em>Tour of Evaluation Metrics for Imbalanced Classification</em> — article approfondi</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../machine-learning/logistic-regression.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Logistic Regression</span>
+  </a>
+  <a href="../machine-learning/model-tuning.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Model Tuning →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

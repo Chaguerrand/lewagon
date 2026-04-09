@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundamentals of DL — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Fundamentals of DL</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html" class="active">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Deep Learning</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Fundamentals of DL</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Fundamentals of DL</h1>
+        <p class="page-objective">Démystifier le Deep Learning, comprendre l'architecture d'un réseau de neurones (neurone, couche, activation) et construire son premier modèle avec Keras/TensorFlow.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Neurone</div>
+        <div class="key-concept-def">Combinaison linéaire des entrées + activation non-linéaire.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Forward / backward pass</div>
+        <div class="key-concept-def">Calcul de la prédiction puis propagation du gradient en arrière.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Activation</div>
+        <div class="key-concept-def">ReLU, sigmoid, tanh — introduit la non-linéarité dans le réseau.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Epoch / batch</div>
+        <div class="key-concept-def">Une passe sur tout le dataset ; un sous-ensemble traité à la fois.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-fundamentals-of-deep-learning">Cheatsheet — Fundamentals of Deep Learning</a><ol><li><a href="#imports-installation">Imports & Installation</a></li><li><a href="#définir-larchitecture-modeladd">Définir l'architecture (model.add)</a></li><li><a href="#dernière-couche-selon-la-tâche">Dernière couche selon la tâche</a></li><li><a href="#compiler-le-modèle">Compiler le modèle</a></li><li><a href="#entraîner-le-modèle">Entraîner le modèle</a></li><li><a href="#prédire-et-évaluer">Prédire et évaluer</a></li><li><a href="#résumé-du-modèle">Résumé du modèle</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-le-deep-learning-est-partout">1) Le Deep Learning est partout</a><ol><li><a href="#11-applications-emblématiques">1.1 Applications emblématiques</a></li></ol></li><li><a href="#2-architecture-de-base">2) Architecture de base</a><ol><li><a href="#21-quest-ce-quun-neurone">2.1 Qu'est-ce qu'un neurone ?</a></li><li><a href="#22-fonctions-dactivation">2.2 Fonctions d'activation</a></li><li><a href="#23-couche-layer-et-réseau">2.3 Couche (Layer) et réseau</a></li><li><a href="#24-visualiser-un-réseau">2.4 Visualiser un réseau</a></li></ol></li><li><a href="#3-premier-réseau-de-neurones-en-keras">3) Premier réseau de neurones en Keras</a><ol><li><a href="#31-keras-tensorflow">3.1 Keras & TensorFlow</a></li><li><a href="#32-les-3-étapes-define-compile-fit">3.2 Les 3 étapes : Define → Compile → Fit</a></li><li><a href="#33-définir-larchitecture-modeladd">3.3 Définir l'architecture : `model.add(...)`</a></li><li><a href="#34-règles-de-décision">3.4 Règles de décision</a></li><li><a href="#35-compter-les-paramètres-modelsummary">3.5 Compter les paramètres : `model.summary()`</a></li></ol></li><li><a href="#4-training-loss-optimisation">4) Training : Loss & Optimisation</a><ol><li><a href="#41-compiler-modelcompile">4.1 Compiler : `model.compile(...)`</a></li><li><a href="#42-entraîner-modelfit">4.2 Entraîner : `model.fit(...)`</a></li></ol></li><li><a href="#5-exemple-complet-reconnaissance-faciale">5) Exemple complet : reconnaissance faciale</a><ol><li><a href="#51-charger-les-données">5.1 Charger les données</a></li><li><a href="#52-preprocessing-minimal">5.2 Preprocessing minimal</a></li><li><a href="#53-construire-et-entraîner-le-modèle">5.3 Construire et entraîner le modèle</a></li><li><a href="#54-évaluer">5.4 Évaluer</a></li></ol></li><li><a href="#6-conclusion-intuition">6) Conclusion & Intuition</a><ol><li><a href="#61-le-deep-learning-cest-quoi">6.1 Le Deep Learning, c'est quoi ?</a></li><li><a href="#62-pourquoi-ça-marche">6.2 Pourquoi ça marche ?</a></li><li><a href="#63-pro-tips-récapitulatifs">6.3 Pro tips récapitulatifs</a></li></ol></li><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-fundamentals-of-deep-learning">📋 Cheatsheet — Fundamentals of Deep Learning</h2>
+
+<h3 id="imports-installation">Imports & Installation</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install tensorflow          # installe TensorFlow + Keras</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import Sequential, layers  # API séquentielle Keras
+from keras import Input                           # couche d&#x27;entrée explicite
+import numpy as np                                # calcul numérique</code></pre></div>
+
+
+<h3 id="définir-larchitecture-modeladd">Définir l'architecture (model.add)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = Sequential()                              # initialise un modèle séquentiel
+model.add(Input(shape=(4,)))                       # déclare la forme de l&#x27;input (tuple)
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))     # couche dense : 10 neurones, activation ReLU
+model.add(layers.Dense(1, activation=&#x27;linear&#x27;))    # couche de sortie : régression (1 valeur)</code></pre></div>
+
+
+<h3 id="dernière-couche-selon-la-tâche">Dernière couche selon la tâche</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Régression → activation linéaire
+model.add(layers.Dense(1, activation=&#x27;linear&#x27;))    # prédit 1 valeur continue
+model.add(layers.Dense(13, activation=&#x27;linear&#x27;))   # prédit 13 valeurs continues
+
+## Classification binaire → sigmoid
+model.add(layers.Dense(1, activation=&#x27;sigmoid&#x27;))   # prédit P(classe=1)
+
+## Classification multi-classes → softmax
+model.add(layers.Dense(8, activation=&#x27;softmax&#x27;))   # prédit proba pour 8 classes (somme = 1)</code></pre></div>
+
+
+<h3 id="compiler-le-modèle">Compiler le modèle</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model.compile(
+    loss=&#x27;mse&#x27;,                # fonction de perte (mse pour régression)
+    optimizer=&#x27;adam&#x27;,          # optimiseur (adam par défaut)
+    metrics=[&#x27;accuracy&#x27;]       # métrique affichée pendant le fit (optionnel)
+)
+
+## Régression → loss=&#x27;mse&#x27; ou &#x27;mae&#x27;
+## Classification binaire → loss=&#x27;binary_crossentropy&#x27;
+## Classification multi-classes → loss=&#x27;categorical_crossentropy&#x27;</code></pre></div>
+
+
+<h3 id="entraîner-le-modèle">Entraîner le modèle</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model.fit(
+    X_train, y_train,          # données d&#x27;entraînement
+    batch_size=32,             # taille du sous-ensemble par itération
+    epochs=10                  # nombre de passages sur tout le dataset
+)</code></pre></div>
+
+
+<h3 id="prédire-et-évaluer">Prédire et évaluer</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">y_pred = model.predict(X_new)                      # prédit sur de nouvelles données
+model.evaluate(X_test, y_test)                     # retourne [loss, metrics] sur le test set</code></pre></div>
+
+
+<h3 id="résumé-du-modèle">Résumé du modèle</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model.summary()                # affiche architecture, output shapes, nb de paramètres
+## Paramètres couche Dense = (n_inputs × n_neurons) + n_neurons (biais)</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier de spécifier l'Input shape</strong></p>
+<p>❌ Ne pas déclarer la forme de l'entrée → le modèle ne peut pas calculer ses poids</p>
+<p><code>python</p>
+<p>model = Sequential()</p>
+<p>model.add(layers.Dense(10, activation=&#x27;relu&#x27;))  # pas d&#x27;Input → erreur ou inférence tardive</p>
+</code>
+<p>✅ Toujours déclarer l'Input en premier</p>
+<p><code>python</p>
+<p>model = Sequential()</p>
+<p>model.add(Input(shape=(4,)))                    # forme explicite</p>
+<p>model.add(layers.Dense(10, activation=&#x27;relu&#x27;))</p>
+</code></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Mauvaise activation sur la dernière couche</strong></p>
+<p>❌ Utiliser <code>relu</code> en sortie pour une classification binaire</p>
+<p><code>python</p>
+<p>model.add(layers.Dense(1, activation=&#x27;relu&#x27;))   # relu ≠ probabilité !</p>
+</code>
+<p>✅ Utiliser <code>sigmoid</code> (binaire) ou <code>softmax</code> (multi-classes)</p>
+<p><code>python</p>
+<p>model.add(layers.Dense(1, activation=&#x27;sigmoid&#x27;))  # retourne P(y=1) entre 0 et 1</p>
+</code></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Mauvaise loss pour la tâche</strong></p>
+<p>❌ Utiliser <code>mse</code> pour une classification</p>
+<p><code>python</p>
+<p>model.compile(loss=&#x27;mse&#x27;, optimizer=&#x27;adam&#x27;)      # mse = régression, pas classification</p>
+</code>
+<p>✅ Adapter la loss à la tâche</p>
+<p><code>python</p>
+<p>model.compile(loss=&#x27;binary_crossentropy&#x27;, optimizer=&#x27;adam&#x27;)  # classification binaire</p>
+</code></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Ne pas standardiser les données avant le fit</strong></p>
+<p>❌ Passer les données brutes au réseau → convergence lente ou échec</p>
+<p><code>python</p>
+<p><a href="http://model.fit" target="_blank" rel="noopener">model.fit</a>(X_train_raw, y_train, epochs=20)      # features pas normalisées</p>
+</code>
+<p>✅ Toujours scaler les features</p>
+<p><code>python</p>
+<p>from sklearn.preprocessing import StandardScaler</p>
+<p>scaler = StandardScaler()</p>
+<p>X_train = <a href="http://scaler.fit" target="_blank" rel="noopener">scaler.fit</a>_transform(X_train_raw)     # moyenne=0, écart-type=1</p>
+<p><a href="http://model.fit" target="_blank" rel="noopener">model.fit</a>(X_train, y_train, epochs=20)</p>
+</code></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre nombre de neurones et nombre de classes</strong></p>
+<p>❌ Mettre 2 neurones pour une classification binaire avec sigmoid</p>
+<p><code>python</p>
+<p>model.add(layers.Dense(2, activation=&#x27;sigmoid&#x27;))  # sigmoid + 2 neurones ≠ binaire</p>
+</code>
+<p>✅ 1 neurone + sigmoid pour binaire, n neurones + softmax pour n classes</p>
+<p><code>python</p>
+<p>model.add(layers.Dense(1, activation=&#x27;sigmoid&#x27;))  # binaire : 1 neurone</p>
+<p>model.add(layers.Dense(8, activation=&#x27;softmax&#x27;))  # 8 classes : 8 neurones</p>
+</code></div></div>
+
+<hr>
+
+<h2 id="1-le-deep-learning-est-partout">1) Le Deep Learning est partout</h2>
+
+<h3 id="11-applications-emblématiques">1.1 Applications emblématiques</h3>
+
+<p>Le Deep Learning alimente une multitude d'applications concrètes :</p>
+
+<ul>
+<li><strong>Image detection & recognition</strong> — voitures autonomes, détection de violence, déverrouillage facial</li>
+<li><strong>Pose estimation</strong> — analyse biomécanique, sport</li>
+<li><strong>NLP</strong> — extraction d'information, sentiment analysis, traduction</li>
+<li><strong>Speech to text</strong> — reconnaissance vocale, assistants intelligents</li>
+<li><strong>Source separation</strong> — séparation de voix / instruments dans un signal audio</li>
+<li><strong>Captioning</strong> — génération de description textuelle à partir d'une image</li>
+<li><strong>Génération</strong> — DeepFakes, visages synthétiques (GANs)</li>
+</ul>
+
+<figure><img src="../../assets/images/fundamentals-dl-01-830d14b9.gif" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/fundamentals-dl-02-29aecac1.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Beaucoup d'applications sont impressionnantes mais pas toujours exploitables dans un contexte business. Garder un regard critique !</p></div></div>
+
+<hr>
+
+<h2 id="2-architecture-de-base">2) Architecture de base</h2>
+
+<h3 id="21-quest-ce-quun-neurone">2.1 Qu'est-ce qu'un neurone ?</h3>
+
+<p>Un <strong>neurone</strong> est la brique élémentaire d'un réseau de neurones. Il enchaîne deux opérations :</p>
+
+<ol>
+<li><strong>Combinaison linéaire</strong> des entrées : $\sum_{k=1}^{n} w_k x_k + b$</li>
+<li><strong>Fonction d'activation</strong> non-linéaire $f$ appliquée au résultat</li>
+</ol>
+
+<p>$\text{output} = f\left(\sum_{k=1}^{n} w_k x_k + b\right)$</p>
+
+<figure><img src="../../assets/images/fundamentals-dl-03-16e30481.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Exemple : un neurone avec 4 entrées
+def neuron(X):
+    linear = -3 + 2.1*X[0] - 1.2*X[1] + 0.3*X[2] + 1.3*X[3]  # combinaison linéaire
+    return max(0, linear)                                         # activation ReLU</code></pre></div>
+
+
+<h3 id="22-fonctions-dactivation">2.2 Fonctions d'activation</h3>
+
+<figure><img src="../../assets/images/fundamentals-dl-04-91f81731.png" alt="" loading="lazy"></figure>
+
+<div class="table-wrapper"><table><thead><tr><th>Activation</th><th>Formule</th><th>Usage principal</th><th>ReLU</th><th>$\max(0, x)$</th><th>Couches cachées (défaut)</th></tr></thead><tbody><tr><td>Sigmoid</td><td>$\frac{1}{1 + e^{-x}}$</td><td>Dernière couche, classification binaire</td><td>Softmax</td><td>$\frac{e^{x_i}}{\sum e^{x_j}}$</td><td>Dernière couche, classification multi-classes</td></tr><tr><td>Tanh</td><td>$\tanh(x)$</td><td>Couches cachées (alternatif)</td><td>Linear</td><td>$x$</td><td>Dernière couche, régression</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Pourquoi des activations ?</strong> Sans fonctions d'activation non-linéaires, empiler des couches linéaires revient à une seule régression linéaire : $A(a_1 x_1 + a_2 x_2) + B(b_1 x_1 + b_2 x_2) = (Aa_1 + Bb_1)x_1 + (Aa_2 + Bb_2)x_2$</p></div></div>
+
+<h3 id="23-couche-layer-et-réseau">2.3 Couche (Layer) et réseau</h3>
+
+<p>Un <strong>layer</strong> = plusieurs neurones appliqués en parallèle sur le même input.</p>
+
+<p>Un <strong>Neural Network</strong> = une suite de couches empilées. Les poids $\theta$ de toutes les régressions linéaires constituent les <strong>paramètres</strong> du réseau.</p>
+
+<figure><img src="../../assets/images/fundamentals-dl-05-e06433ab.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Deep Learning</strong> = Neural Networks avec <strong>beaucoup de couches</strong> (d'où le « Deep »).</p></div></div>
+
+<h3 id="24-visualiser-un-réseau">2.4 Visualiser un réseau</h3>
+
+<p>👉 <a href="https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4&seed=0.13983&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false&regularization_hide=true&showTestData_hide=true&stepButton_hide=false&activation_hide=false&problem_hide=false&batchSize_hide=true&dataset_hide=false&resetButton_hide=false&discretize_hide=true&playButton_hide=false&learningRate_hide=true&regularizationRate_hide=true&percTrainData_hide=true&numHiddenLayers_hide=false" target="_blank" rel="noopener">TensorFlow Playground</a></p>
+
+<ul>
+<li>Essayer de fitter un problème non-linéaire avec des activations <strong>linéaires</strong> uniquement → impossible !</li>
+<li>Tester différents datasets et nombre de couches</li>
+</ul>
+
+<hr>
+
+<h2 id="3-premier-réseau-de-neurones-en-keras">3) Premier réseau de neurones en Keras</h2>
+
+<h3 id="31-keras-tensorflow">3.1 Keras & TensorFlow</h3>
+
+<ul>
+<li><strong>TensorFlow</strong> : framework open-source de Google pour le ML/DL</li>
+<li><strong>Keras</strong> : API haut niveau qui tourne sur TensorFlow, interface simplifiée</li>
+</ul>
+
+<figure><img src="../../assets/images/fundamentals-dl-06-a993f196.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>👉 <a href="https://www.tensorflow.org/guide/keras" target="_blank" rel="noopener">tensorflow.keras — docs officielles</a> | 👉 <a href="http://keras.io" target="_blank" rel="noopener">keras.io</a></p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install tensorflow    # installe TF + Keras</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import *   # import depuis TF
+from keras import *              # import direct (meilleur autocomplete VS Code)</code></pre></div>
+
+
+<h3 id="32-les-3-étapes-define-compile-fit">3.2 Les 3 étapes : Define → Compile → Fit</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## 1. DEFINE — architecture du modèle
+from tensorflow.keras import Sequential
+model = Sequential()
+model.add(...)                     # ajouter des couches
+
+## 2. COMPILE — définir loss + optimizer
+model.compile(...)
+
+## 3. FIT — entraîner sur les données
+model.fit(X, y, ...)
+
+## 4. PREDICT — utiliser le modèle
+y_new = model.predict(X_new)</code></pre></div>
+
+
+<h3 id="33-définir-larchitecture-modeladd">3.3 Définir l'architecture : <code>model.add(...)</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from keras import Sequential, layers
+
+model = Sequential()
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))    # 1ère couche : 10 neurones, ReLU
+model.add(layers.Dense(20, activation=&#x27;tanh&#x27;))    # 2ème couche : 20 neurones, tanh</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Les couches standard sont appelées <strong>Fully Connected</strong> ou <strong>Dense</strong> dans Keras.</p></div></div>
+
+<h3 id="34-règles-de-décision">3.4 Règles de décision</h3>
+
+<p><strong>Règle 1 — Déclarer la forme de l'input</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from keras import Input
+
+model = Sequential()
+model.add(Input(shape=(4,)))                      # 4 features → tuple (4,)
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Spécifier <code>Input(shape=...)</code> permet à Keras de construire le modèle et d'allouer la mémoire immédiatement.</p></div></div>
+
+<p><strong>Règle 2 — La dernière couche est dictée par la tâche</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Tâche</th><th>Activation finale</th><th>Nb neurones</th><th>Loss</th></tr></thead><tbody><tr><td>Régression (k valeurs)</td><td><code>linear</code></td><td>k</td><td><code>mse</code></td></tr><tr><td>Classification multi-classes</td><td><code>softmax</code></td><td>n_classes</td><td><code>categorical_crossentropy</code></td></tr></tbody></table></div>
+<figure><img src="../../assets/images/fundamentals-dl-07-773e7c6b.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>softmax</code> transforme des scores en probabilités qui somment à 1. Pour 2 classes, <code>softmax</code> = <code>sigmoid</code>.</p></div></div>
+
+<p><strong>Exemples récapitulatifs</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">### Régression (1 valeur)
+model = Sequential()
+model.add(Input(shape=(100,)))
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))
+model.add(layers.Dense(1, activation=&#x27;linear&#x27;))     # sortie continue
+
+### Classification binaire
+model = Sequential()
+model.add(Input(shape=(100,)))
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))
+model.add(layers.Dense(1, activation=&#x27;sigmoid&#x27;))    # P(y=1)
+
+### Classification 8 classes
+model = Sequential()
+model.add(Input(shape=(100,)))
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))
+model.add(layers.Dense(8, activation=&#x27;softmax&#x27;))    # probas pour 8 classes</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Pro tip</strong> : toujours commencer avec <code>relu</code> pour les couches cachées. Le choix de l'activation ne concerne que la dernière couche en général.</p></div></div>
+
+<h3 id="35-compter-les-paramètres-modelsummary">3.5 Compter les paramètres : <code>model.summary()</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = Sequential()
+model.add(Input(shape=(4,)))
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))    # params = 4×10 + 10 = 50
+model.add(layers.Dense(1, activation=&#x27;linear&#x27;))   # params = 10×1 + 1  = 11
+model.summary()                                    # Total : 61 paramètres</code></pre></div>
+
+
+<p>$\text{Paramètres d'une couche Dense} = n_{\text{inputs}} \times n_{\text{neurons}} + n_{\text{neurons}}$</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = Sequential()
+model.add(Input(shape=(784,)))
+model.add(layers.Dense(64, activation=&#x27;relu&#x27;))     # 784×64 + 64 = 50 240
+model.add(layers.Dense(64, activation=&#x27;tanh&#x27;))     # 64×64 + 64  = 4 160
+model.add(layers.Dense(10, activation=&#x27;softmax&#x27;))  # 64×10 + 10  = 650
+model.summary()                                     # Total : 55 050 paramètres</code></pre></div>
+
+
+<hr>
+
+<h2 id="4-training-loss-optimisation">4) Training : Loss & Optimisation</h2>
+
+<h3 id="41-compiler-modelcompile">4.1 Compiler : <code>model.compile(...)</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model.compile(
+    loss=&#x27;mse&#x27;,           # comment comparer y_true vs y_pred
+    optimizer=&#x27;adam&#x27;       # comment mettre à jour θ (équivalent du solver sklearn)
+)</code></pre></div>
+
+
+<h3 id="42-entraîner-modelfit">4.2 Entraîner : <code>model.fit(...)</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model.fit(X, y, batch_size=32, epochs=10)</code></pre></div>
+
+
+<p>L'apprentissage est <strong>itératif</strong> et <strong>stochastique</strong> (rappel : SGD) :</p>
+
+<ul>
+<li><code>batch_size</code> = taille du sous-ensemble utilisé pour une mise à jour des poids $\theta$</li>
+<li>Le dataset entier est découpé en batches</li>
+<li>Quand l'algorithme a vu <strong>toutes</strong> les données → 1 <strong>epoch</strong></li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>👉 <a href="http://model.fit" target="_blank" rel="noopener">model.fit</a><a href="https://www.tensorflow.org/api_docs/python/tf/keras/Model#fit" target="_blank" rel="noopener">() — docs TF</a></p></div></div>
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Le détail de la loss et de l'optimisation est l'objet du <strong>cours 2 (Optimisation)</strong>.</p></div></div>
+
+<hr>
+
+<h2 id="5-exemple-complet-reconnaissance-faciale">5) Exemple complet : reconnaissance faciale</h2>
+
+<h3 id="51-charger-les-données">5.1 Charger les données</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.datasets import fetch_lfw_people
+
+faces = fetch_lfw_people(min_faces_per_person=200, resize=0.25)
+print(faces.images.shape)        # (766, 31, 23) → 766 images 31×23 pixels, noir &amp; blanc
+print(np.unique(faces.target))   # array([0, 1]) → 2 classes</code></pre></div>
+
+
+<h3 id="52-preprocessing-minimal">5.2 Preprocessing minimal</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Flatten : transformer chaque image 2D en vecteur 1D
+X = faces.images.reshape(766, 31*23)   # shape (766, 713)
+y = faces.target                        # shape (766,)
+
+## Train/test split
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=3)
+
+## Standardiser
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)  # fit + transform sur le train</code></pre></div>
+
+
+<h3 id="53-construire-et-entraîner-le-modèle">5.3 Construire et entraîner le modèle</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import Sequential, layers
+
+model = Sequential()
+model.add(Input(shape=(713,)))                       # 713 pixels en entrée
+model.add(layers.Dense(20, activation=&#x27;relu&#x27;))       # couche cachée 1
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))       # couche cachée 2
+model.add(layers.Dense(1, activation=&#x27;sigmoid&#x27;))     # sortie binaire
+
+model.compile(
+    optimizer=&#x27;adam&#x27;,
+    loss=&#x27;binary_crossentropy&#x27;,
+    metrics=[&#x27;accuracy&#x27;]
+)
+
+model.fit(X_train, y_train, batch_size=16, epochs=20)</code></pre></div>
+
+
+<h3 id="54-évaluer">5.4 Évaluer</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model.evaluate(scaler.transform(X_test), y_test)    # [loss, accuracy]</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+## [0.3246, 0.9271] → ~93% accuracy</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Baseline (classe majoritaire)
+530 / (530 + 236)   # ≈ 69% → le modèle fait bien mieux</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Prédictions (probabilités)
+model.predict(scaler.transform(X_test))[:5]</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+## array([[0.9999], [0.0877], [0.9999], [0.0001], [0.0044]])</code></pre></div>
+
+
+<hr>
+
+<h2 id="6-conclusion-intuition">6) Conclusion & Intuition</h2>
+
+<h3 id="61-le-deep-learning-cest-quoi">6.1 Le Deep Learning, c'est quoi ?</h3>
+
+<p>Rien de plus que des <strong>régressions linéaires empilées</strong> + des <strong>fonctions d'activation non-linéaires</strong>.</p>
+
+<h3 id="62-pourquoi-ça-marche">6.2 Pourquoi ça marche ?</h3>
+
+<p><strong>A) Mathématiquement</strong> — Les réseaux denses sont des <strong>approximateurs universels</strong> : avec une seule couche cachée, ils peuvent approximer n'importe quelle fonction continue avec une précision arbitraire.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Cela ne garantit pas qu'on puisse facilement <strong>trouver</strong> les paramètres optimaux ! Cela peut demander un très grand nombre d'exemples ou de puissance de calcul.</p></div></div>
+
+<p><strong>B) Intuitivement</strong> — Contrairement aux autres algorithmes de ML, les réseaux de neurones sont très difficiles à interpréter. L'objectif est d'apprendre <strong>ce qui les fait fonctionner</strong>, pas pourquoi.</p>
+
+<h3 id="63-pro-tips-récapitulatifs">6.3 Pro tips récapitulatifs</h3>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Récap des bonnes pratiques</strong> :</p>
+<p>- Toujours ajouter un <code>Input(shape=...)</code> pour déclarer la taille de l'entrée</p>
+<p>- Le nombre de neurones de la <strong>dernière couche</strong> = la dimension de la sortie</p>
+<p>- Activation finale : <code>linear</code> (régression), <code>sigmoid</code> (binaire), <code>softmax</code> (multi-classes)</p>
+<p>- Commencer avec <code>relu</code> pour toutes les couches cachées</p>
+<p>- Utiliser <code>model.summary()</code> pour vérifier l'architecture et compter les paramètres</p></div></div>
+
+<hr>
+
+<h2 id="bibliographie">Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://medium.com/towards-data-science/beginners-ask-how-many-hidden-layers-neurons-to-use-in-artificial-neural-networks-51466afa0d3e" target="_blank" rel="noopener">How many layers / neurons do I need?</a></li>
+<li>👉 <a href="https://www.v7labs.com/blog/neural-networks-activation-functions" target="_blank" rel="noopener">Activation Functions in Neural Networks — 12 Types & Use Cases</a></li>
+<li>👉 <a href="https://playground.tensorflow.org/" target="_blank" rel="noopener">TensorFlow Playground</a></li>
+<li>👉 <a href="https://keras.io/getting_started/" target="_blank" rel="noopener">Keras official docs</a></li>
+<li>👉 <a href="https://www.tensorflow.org/guide/keras" target="_blank" rel="noopener">tensorflow.keras official docs</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">Challenges</h2>
+
+<p>Construire des modèles Keras sur différents datasets et tâches (régression, classification binaire, multi-classes) en appliquant les 3 étapes : Define → Compile → Fit.</p>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-a-retenir-avant-de-commencer">A retenir avant de commencer</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-le-neurone-artificiel-la-brique-de-base">1. Le neurone artificiel — la brique de base</a><ol><li><a href="#ref-11-ce-quil-fait">1.1 Ce qu'il fait</a></li><li><a href="#ref-12-exemple-numérique-chiffré">1.2 Exemple numérique chiffré</a></li></ol></li><li><a href="#ref-2-les-fonctions-dactivation-pourquoi-cest-vital">2. Les fonctions d'activation — pourquoi c'est vital</a><ol><li><a href="#ref-21-le-problème-sans-activation">2.1 Le problème sans activation</a></li><li><a href="#ref-22-les-4-activations-à-connaître">2.2 Les 4 activations à connaître</a></li><li><a href="#ref-23-tableau-récapitulatif">2.3 Tableau récapitulatif</a></li></ol></li><li><a href="#ref-3-couches-et-réseau-assembler-les-briques">3. Couches et réseau — assembler les briques</a><ol><li><a href="#ref-31-une-couche-plusieurs-neurones-en-parallèle">3.1 Une couche = plusieurs neurones en parallèle</a></li><li><a href="#ref-32-un-réseau-couches-empilées">3.2 Un réseau = couches empilées</a></li><li><a href="#ref-33-compter-les-paramètres-dune-couche">3.3 Compter les paramètres d'une couche</a></li></ol></li><li><a href="#ref-4-keras-coder-ton-réseau-en-3-étapes">4. Keras — coder ton réseau en 3 étapes</a><ol><li><a href="#ref-41-pourquoi-keras">4.1 Pourquoi Keras ?</a></li><li><a href="#ref-42-les-3-étapes-fondamentales">4.2 Les 3 étapes fondamentales</a></li><li><a href="#ref-43-pourquoi-déclarer-linput">4.3 Pourquoi déclarer l'Input ?</a></li><li><a href="#ref-44-la-règle-dor-la-dernière-couche-dépend-de-ta-tâche">4.4 La règle d'or : la dernière couche dépend de ta tâche</a></li><li><a href="#ref-45-inspecter-son-modèle-modelsummary">4.5 Inspecter son modèle : model.summary()</a></li><li><a href="#ref-46-entraîner-prédire-évaluer">4.6 Entraîner, prédire, évaluer</a></li></ol></li><li><a href="#ref-5-exemple-complet-reconnaissance-de-visages">5. Exemple complet — Reconnaissance de visages</a><ol><li><a href="#ref-51-charger-les-données">5.1 Charger les données</a></li><li><a href="#ref-52-préparer-les-données">5.2 Préparer les données</a></li><li><a href="#ref-53-définir-compiler-et-entraîner">5.3 Définir, compiler et entraîner</a></li><li><a href="#ref-54-évaluer-et-prédire">5.4 Évaluer et prédire</a></li></ol></li><li><a href="#ref-6-erreurs-classiques-à-ne-pas-commettre">6. Erreurs classiques à ne pas commettre</a><ol><li><a href="#ref-oublier-de-déclarer-input">Oublier de déclarer Input</a></li><li><a href="#ref-mauvaise-activation-en-sortie">Mauvaise activation en sortie</a></li><li><a href="#ref-mauvaise-loss-pour-la-tâche">Mauvaise loss pour la tâche</a></li><li><a href="#ref-ne-pas-standardiser-les-features">Ne pas standardiser les features</a></li><li><a href="#ref-confondre-nombre-de-neurones-et-nombre-de-classes">Confondre nombre de neurones et nombre de classes</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Le Deep Learning fait partie du Machine Learning. C'est la technologie derrière la reconnaissance faciale de ton smartphone, les sous-titres automatiques de YouTube, ou encore ChatGPT. Le terme "deep" (profond) vient du fait que ces modèles sont construits en empilant de nombreuses <strong>couches</strong> les unes sur les autres — comme un immeuble avec plusieurs étages.</p>
+
+<p>L'idée de base est pourtant simple : un réseau de neurones artificiel s'inspire (très vaguement) du cerveau humain. Dans ton cerveau, des milliards de neurones biologiques s'envoient des signaux électriques. Dans un ordinateur, on va simuler cette idée avec des petites opérations mathématiques — des <strong>neurones artificiels</strong> — qu'on connecte ensemble.</p>
+
+<p><strong>Analogie fil rouge — les Lego :</strong> imagine que tu construis un château avec des Lego. Chaque brique individuelle (un neurone) fait quelque chose de simple. Mais en empilant et connectant des milliers de briques (une architecture), tu obtiens une construction complexe capable de reconnaître un visage, traduire un texte, ou piloter une voiture autonome.</p>
+
+<h3 id="ref-a-retenir-avant-de-commencer">A retenir avant de commencer</h3>
+
+<ul>
+<li>Un <strong>neurone</strong> = une mini-fonction mathématique qui prend des chiffres en entrée, les combine, et produit un chiffre en sortie.</li>
+<li>Une <strong>couche (layer)</strong> = plusieurs neurones qui travaillent en parallèle sur les mêmes données d'entrée.</li>
+<li>Un <strong>réseau de neurones</strong> = plusieurs couches empilées les unes derrière les autres.</li>
+<li>Le <strong>forward pass</strong> = envoyer des données à travers le réseau de gauche à droite pour obtenir une prédiction.</li>
+<li>Le <strong>backward pass</strong> = remonter les erreurs de droite à gauche pour corriger les paramètres du réseau (apprentissage).</li>
+</ul>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li>Qu'est-ce qu'un neurone et comment fonctionne-t-il ?</li>
+<li>Les fonctions d'activation : pourquoi sont-elles indispensables ?</li>
+<li>Assembler des couches pour former un réseau</li>
+<li>Coder un réseau avec Keras en 3 étapes : Define → Compile → Fit</li>
+<li>Exemple complet : reconnaître des visages</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-le-neurone-artificiel-la-brique-de-base">1. Le neurone artificiel — la brique de base</h2>
+
+<h3 id="ref-11-ce-quil-fait">1.1 Ce qu'il fait</h3>
+
+<p>Un neurone artificiel fait exactement deux choses, dans cet ordre :</p>
+
+<p><strong>Étape 1 — Combinaison linéaire.</strong> Il multiplie chaque entrée par un poids (un nombre appris), additionne tout, et ajoute un biais.</p>
+
+<div class="katex-display">$$z = w_1 x_1 + w_2 x_2 + \cdots + w_n x_n + b = \sum_{k=1}^{n} w_k x_k + b$$</div>
+
+<p>Où :</p>
+<ul>
+<li>$x_k$ = les valeurs d'entrée (tes données)</li>
+<li>$w_k$ = les <strong>poids</strong> (weights) — c'est ce que le réseau va apprendre</li>
+<li>$b$ = le <strong>biais</strong> (bias) — un réglage fin, aussi appris</li>
+<li>$z$ = le résultat intermédiaire (une somme pondérée)</li>
+</ul>
+
+<p><strong>Étape 2 — Fonction d'activation.</strong> Le résultat $z$ passe dans une fonction $f$ qui introduit de la non-linéarité :</p>
+
+<div class="katex-display">$$\text{sortie} = f(z) = f\left(\sum_{k=1}^{n} w_k x_k + b\right)$$</div>
+
+<h3 id="ref-12-exemple-numérique-chiffré">1.2 Exemple numérique chiffré</h3>
+
+<p>Imagine un neurone avec 4 entrées. Ces entrées représentent 4 caractéristiques d'un email : longueur (pixels), présence du mot "gratuit", heure d'envoi, nombre de liens.</p>
+
+<p>Données d'entrée : $x_1 = 1.0,\ x_2 = 0.0,\ x_3 = 14.0,\ x_4 = 3.0$</p>
+
+<p>Poids appris : $w_1 = 2.1,\ w_2 = -1.2,\ w_3 = 0.3,\ w_4 = 1.3$, biais $b = -3.0$</p>
+
+<p>Calcul de la combinaison linéaire :</p>
+
+<div class="katex-display">$$z = -3.0 + 2.1 \times 1.0 + (-1.2) \times 0.0 + 0.3 \times 14.0 + 1.3 \times 3.0$$</div>
+<div class="katex-display">$$z = -3.0 + 2.1 + 0 + 4.2 + 3.9 = 7.2$$</div>
+
+<p>Avec l'activation ReLU (on verra ce que c'est juste après) : $f(7.2) = 7.2$ (positif, donc inchangé).</p>
+
+<p>En Python, ce neurone s'écrit :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Un neurone manuel avec 4 entrées et activation ReLU
+def neuron(X):
+    # Étape 1 : combinaison linéaire (poids appris à la main ici pour l&#x27;exemple)
+    z = -3.0 + 2.1*X[0] + (-1.2)*X[1] + 0.3*X[2] + 1.3*X[3]  # somme pondérée + biais
+    # Étape 2 : activation ReLU = max(0, z)
+    return max(0, z)  # si z est négatif, le neurone &quot;s&#x27;éteint&quot;
+
+# Test
+X = [1.0, 0.0, 14.0, 3.0]
+print(neuron(X))  # → 7.2</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Ce neurone ressemble beaucoup à une régression linéaire, avec une étape en plus (la fonction d'activation). En fait, le Deep Learning, c'est beaucoup de régressions linéaires empilées avec des activations non-linéaires entre elles.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-les-fonctions-dactivation-pourquoi-cest-vital">2. Les fonctions d'activation — pourquoi c'est vital</h2>
+
+<h3 id="ref-21-le-problème-sans-activation">2.1 Le problème sans activation</h3>
+
+<p>Sans fonction d'activation non-linéaire, empiler plusieurs couches linéaires n'a aucun intérêt. Voici pourquoi :</p>
+
+<p>Suppose deux couches linéaires de suite. La première calcule $a_1 x_1 + a_2 x_2$, la seconde multiplie ce résultat par $A$ et ajoute $B(b_1 x_1 + b_2 x_2)$. Au total :</p>
+
+<div class="katex-display">$$A(a_1 x_1 + a_2 x_2) + B(b_1 x_1 + b_2 x_2) = (Aa_1 + Bb_1)x_1 + (Aa_2 + Bb_2)x_2$$</div>
+
+<p>Résultat : c'est encore une simple régression linéaire ! Peu importe le nombre de couches, sans activation non-linéaire, le réseau ne peut pas apprendre des relations complexes (par exemple, "est-ce que cette image contient un chat ?").</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Sans fonctions d'activation non-linéaires, un réseau profond = une seule régression linéaire. Autant ne rien faire. C'est pour ça que les activations sont absolument indispensables.</p></div></div>
+
+<h3 id="ref-22-les-4-activations-à-connaître">2.2 Les 4 activations à connaître</h3>
+
+<h4 id="ref-relu-rectified-linear-unit">ReLU (Rectified Linear Unit)</h4>
+
+<div class="katex-display">$$f(x) = \max(0, x)$$</div>
+
+<ul>
+<li>Si $x > 0$ : la valeur passe telle quelle.</li>
+<li>Si $x \leq 0$ : le neurone "s'éteint" et renvoie 0.</li>
+</ul>
+
+<p><strong>Exemple numérique :</strong> $f(3.5) = 3.5$, $f(-2.1) = 0$, $f(0) = 0$.</p>
+
+<p><strong>Usage :</strong> couches cachées (c'est le choix par défaut, le plus utilisé).</p>
+
+<p><strong>Pourquoi c'est bien ?</strong> C'est simple, rapide à calculer, et ça marche très bien en pratique.</p>
+
+<h4 id="ref-sigmoïde">Sigmoïde</h4>
+
+<div class="katex-display">$$f(x) = \frac{1}{1 + e^{-x}}$$</div>
+
+<ul>
+<li>Transforme n'importe quel nombre en une valeur <strong>entre 0 et 1</strong>.</li>
+<li>Interprétation directe : une probabilité.</li>
+</ul>
+
+<p><strong>Exemple numérique :</strong> $f(0) = 0.5$, $f(2) \approx 0.88$, $f(-3) \approx 0.047$.</p>
+
+<p><strong>Usage :</strong> dernière couche pour une <strong>classification binaire</strong> (spam / pas spam, malade / sain).</p>
+
+<h4 id="ref-tanh-tangente-hyperbolique">Tanh (tangente hyperbolique)</h4>
+
+<div class="katex-display">$$f(x) = \tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$$</div>
+
+<ul>
+<li>Transforme n'importe quel nombre en une valeur <strong>entre -1 et 1</strong>.</li>
+<li>Similaire à la sigmoïde mais centrée en 0.</li>
+</ul>
+
+<p><strong>Exemple numérique :</strong> $\tanh(0) = 0$, $\tanh(1) \approx 0.76$, $\tanh(-1) \approx -0.76$.</p>
+
+<p><strong>Usage :</strong> couches cachées (alternative à ReLU, moins utilisée aujourd'hui).</p>
+
+<h4 id="ref-softmax">Softmax</h4>
+
+<div class="katex-display">$$f(x_i) = \frac{e^{x_i}}{\sum_{j} e^{x_j}}$$</div>
+
+<ul>
+<li>Prend un vecteur de scores et renvoie un vecteur de <strong>probabilités qui somment à 1</strong>.</li>
+<li>C'est comme normaliser les scores pour qu'ils représentent des probabilités.</li>
+</ul>
+
+<p><strong>Exemple numérique :</strong> scores $[2.0, 1.0, 0.1]$ → softmax → $[0.659, 0.242, 0.099]$ (somme = 1).</p>
+
+<p><strong>Usage :</strong> dernière couche pour une <strong>classification multi-classes</strong> (chien / chat / lapin / oiseau).</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Pour retenir quel usage : ReLU = milieu du réseau (couches cachées). Sigmoïde = sortie binaire (0 ou 1). Softmax = sortie plusieurs classes. Linéaire = sortie régression (valeur continue).</p></div></div>
+
+<h3 id="ref-23-tableau-récapitulatif">2.3 Tableau récapitulatif</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Activation</th><th>Formule</th><th>Sortie</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td>ReLU</td><td>$\max(0, x)$</td><td>$[0, +\infty)$</td><td>Couches cachées (défaut)</td></tr><tr><td>Sigmoïde</td><td>$\frac{1}{1+e^{-x}}$</td><td>$(0, 1)$</td><td>Sortie classification binaire</td></tr><tr><td>Tanh</td><td>$\tanh(x)$</td><td>$(-1, 1)$</td><td>Couches cachées (alternatif)</td></tr><tr><td>Softmax</td><td>$\frac{e^{x_i}}{\sum e^{x_j}}$</td><td>Probas (somme = 1)</td><td>Sortie multi-classes</td></tr><tr><td>Linéaire</td><td>$x$</td><td>$(-\infty, +\infty)$</td><td>Sortie régression</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="ref-3-couches-et-réseau-assembler-les-briques">3. Couches et réseau — assembler les briques</h2>
+
+<h3 id="ref-31-une-couche-plusieurs-neurones-en-parallèle">3.1 Une couche = plusieurs neurones en parallèle</h3>
+
+<p>Une <strong>couche Dense</strong> (ou "Fully Connected") = plusieurs neurones qui regardent tous les mêmes entrées et produisent chacun une sortie.</p>
+
+<p><strong>Analogie :</strong> une couche de 10 neurones, c'est comme 10 experts qui examinent les mêmes données et donnent chacun leur avis. Ces 10 avis deviennent l'entrée de la couche suivante.</p>
+
+<p>Si la couche précédente a 4 sorties et la couche suivante a 10 neurones, alors :</p>
+<ul>
+<li>Chaque neurone a 4 poids + 1 biais = 5 paramètres</li>
+<li>10 neurones × 5 paramètres = <strong>50 paramètres</strong> au total pour cette couche</li>
+</ul>
+
+<h3 id="ref-32-un-réseau-couches-empilées">3.2 Un réseau = couches empilées</h3>
+
+<p>Un <strong>réseau de neurones</strong> enchaîne plusieurs couches :</p>
+
+<ul>
+<li><strong>Couche d'entrée (Input)</strong> : reçoit tes données brutes (ex : 713 pixels d'une image)</li>
+<li><strong>Couches cachées (Hidden layers)</strong> : transforment progressivement les données</li>
+<li><strong>Couche de sortie (Output)</strong> : produit la prédiction finale</li>
+</ul>
+
+<p><strong>Le "Deep" Learning</strong> : quand il y a beaucoup de couches cachées, on parle de réseau "profond" (deep). Plus il y a de couches, plus le réseau peut apprendre des représentations complexes.</p>
+
+<h3 id="ref-33-compter-les-paramètres-dune-couche">3.3 Compter les paramètres d'une couche</h3>
+
+<p>La formule pour une couche Dense :</p>
+
+<div class="katex-display">$$\text{Paramètres} = n_{\text{entrées}} \times n_{\text{neurones}} + n_{\text{neurones}}$$</div>
+
+<p>Le $+ n_{\text{neurones}}$ correspond aux biais (un biais par neurone).</p>
+
+<p><strong>Exemple :</strong> couche Dense(10) après une entrée de taille 4 :</p>
+
+<div class="katex-display">$$\text{Paramètres} = 4 \times 10 + 10 = 40 + 10 = 50$$</div>
+
+<p><strong>Exemple avec un réseau complet :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Input(784) → Dense(64) → Dense(64) → Dense(10)
+
+Dense(64)  : 784×64 + 64  = 50 176 + 64  = 50 240 paramètres
+Dense(64)  :  64×64 + 64  =  4 096 + 64  =  4 160 paramètres
+Dense(10)  :  64×10 + 10  =    640 + 10  =    650 paramètres
+                                             ──────────────────
+Total                                      = 55 050 paramètres</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Un réseau de neurones peut avoir des millions de paramètres (poids et biais). L'entraînement consiste à trouver les meilleures valeurs pour tous ces paramètres afin de minimiser les erreurs sur les données d'entraînement.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-keras-coder-ton-réseau-en-3-étapes">4. Keras — coder ton réseau en 3 étapes</h2>
+
+<h3 id="ref-41-pourquoi-keras">4.1 Pourquoi Keras ?</h3>
+
+<p><strong>TensorFlow</strong> est le moteur puissant (développé par Google) qui fait tous les calculs mathématiques lourds. <strong>Keras</strong> est l'interface conviviale qui tourne par-dessus TensorFlow. C'est comme une voiture automatique : TensorFlow est le moteur, Keras est le volant et les pédales.</p>
+
+<p>Pour installer :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Dans ton terminal
+# pip install tensorflow    ← installe TF et Keras en même temps</code></pre></div>
+
+
+<p>Pour importer :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import Sequential  # le type de modèle (couches en séquence)
+from tensorflow.keras import layers      # les types de couches disponibles
+from keras import Input                  # pour déclarer la forme des données d&#x27;entrée
+import numpy as np                       # calcul numérique de base</code></pre></div>
+
+
+<h3 id="ref-42-les-3-étapes-fondamentales">4.2 Les 3 étapes fondamentales</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ── ÉTAPE 1 : DEFINE ──────────────────────────────────────────────────────────
+# Définir l&#x27;architecture : combien de couches, combien de neurones, quelle activation ?
+model = Sequential()           # modèle séquentiel = couches empilées une à une
+model.add(Input(shape=(4,)))   # 4 features en entrée (OBLIGATOIRE en 1er)
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))   # couche cachée : 10 neurones, ReLU
+model.add(layers.Dense(1, activation=&#x27;linear&#x27;))  # couche de sortie : 1 valeur continue
+
+# ── ÉTAPE 2 : COMPILE ─────────────────────────────────────────────────────────
+# Définir comment mesurer les erreurs (loss) et comment les corriger (optimizer)
+model.compile(
+    loss=&#x27;mse&#x27;,         # MSE = Mean Squared Error, adapté à la régression
+    optimizer=&#x27;adam&#x27;    # Adam = algorithme d&#x27;optimisation (très bon par défaut)
+)
+
+# ── ÉTAPE 3 : FIT ─────────────────────────────────────────────────────────────
+# Entraîner le modèle sur tes données
+model.fit(
+    X_train, y_train,  # données d&#x27;entraînement (features et labels)
+    batch_size=32,     # le réseau voit 32 exemples à la fois avant de mettre à jour ses poids
+    epochs=10          # nombre de fois qu&#x27;on passe sur l&#x27;intégralité du dataset
+)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Retiens ces 3 mots : Define (construire), Compile (configurer), Fit (entraîner). C'est toujours dans cet ordre, pour chaque réseau que tu construiras.</p></div></div>
+
+<h3 id="ref-43-pourquoi-déclarer-linput">4.3 Pourquoi déclarer l'Input ?</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># SANS Input explicite → problème potentiel
+model = Sequential()
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))  # Keras ne sait pas encore quelle taille ont les données
+
+# AVEC Input explicite → bonne pratique
+model = Sequential()
+model.add(Input(shape=(4,)))                    # 4 features : Keras construit le réseau immédiatement
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))  # les paramètres sont alloués dès maintenant</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Toujours mettre Input(shape=...) en premier. Le shape est un tuple : (4,) pour 4 features, (784,) pour 784 pixels. La virgule finale est importante — c'est la syntaxe Python pour un tuple à un seul élément.</p></div></div>
+
+<h3 id="ref-44-la-règle-dor-la-dernière-couche-dépend-de-ta-tâche">4.4 La règle d'or : la dernière couche dépend de ta tâche</h3>
+
+<p>C'est l'erreur la plus fréquente chez les débutants. La <strong>dernière couche</strong> doit être adaptée à ce que tu veux prédire :</p>
+
+<p><strong>Régression</strong> (prédire une valeur continue, ex : prix d'un appartement) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model.add(layers.Dense(1, activation=&#x27;linear&#x27;))   # 1 neurone, activation linéaire = identité
+# &#x27;linear&#x27; signifie juste : ne rien faire, laisser passer la valeur telle quelle</code></pre></div>
+
+
+<p><strong>Classification binaire</strong> (prédire oui/non, ex : spam/pas spam) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model.add(layers.Dense(1, activation=&#x27;sigmoid&#x27;))  # 1 neurone, sigmoid → probabilité entre 0 et 1
+# la sortie représente P(classe=1) : par exemple 0.85 = 85% de chances que ce soit du spam</code></pre></div>
+
+
+<p><strong>Classification multi-classes</strong> (prédire une catégorie parmi N, ex : type de fleur parmi 3) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model.add(layers.Dense(8, activation=&#x27;softmax&#x27;))  # N neurones (ici 8 classes), softmax → vecteur de probas
+# la sortie est un vecteur de 8 probabilités qui somment à 1 : [0.05, 0.72, 0.01, ..., 0.03]</code></pre></div>
+
+
+<p>La <strong>loss function</strong> doit aussi être adaptée à la tâche :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Tâche</th><th>Activation finale</th><th>Nombre de neurones en sortie</th><th>Loss</th></tr></thead><tbody><tr><td>Régression</td><td><code>linear</code></td><td>$k$ (nombre de valeurs à prédire)</td><td><code>mse</code> ou <code>mae</code></td></tr><tr><td>Classification binaire</td><td><code>sigmoid</code></td><td>1</td><td><code>binary_crossentropy</code></td></tr><tr><td>Multi-classes</td><td><code>softmax</code></td><td>$n$ (nombre de classes)</td><td><code>categorical_crossentropy</code></td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Régression → MSE
+model.compile(loss=&#x27;mse&#x27;, optimizer=&#x27;adam&#x27;)
+
+# Classification binaire → binary crossentropy
+model.compile(loss=&#x27;binary_crossentropy&#x27;, optimizer=&#x27;adam&#x27;, metrics=[&#x27;accuracy&#x27;])
+
+# Classification multi-classes → categorical crossentropy
+model.compile(loss=&#x27;categorical_crossentropy&#x27;, optimizer=&#x27;adam&#x27;, metrics=[&#x27;accuracy&#x27;])</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>La "loss" (ou fonction de perte) mesure à quel point le modèle se trompe. Plus elle est basse, meilleur est le modèle. L'optimiseur (Adam) cherche à la minimiser en ajustant les poids à chaque étape d'entraînement.</p></div></div>
+
+<h3 id="ref-45-inspecter-son-modèle-modelsummary">4.5 Inspecter son modèle : model.summary()</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = Sequential()
+model.add(Input(shape=(4,)))
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))   # 4×10 + 10 = 50 paramètres
+model.add(layers.Dense(1, activation=&#x27;linear&#x27;))  # 10×1 + 1  = 11 paramètres
+model.summary()                                  # affiche le tableau récapitulatif</code></pre></div>
+
+
+<p><code>model.summary()</code> affiche :</p>
+<ul>
+<li>Le nom et type de chaque couche</li>
+<li>La forme (shape) de la sortie de chaque couche</li>
+<li>Le nombre de paramètres par couche</li>
+<li>Le total des paramètres (entraînables et non-entraînables)</li>
+</ul>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Prends l'habitude d'appeler model.summary() après avoir défini ton modèle. C'est le moyen le plus rapide de vérifier que l'architecture est correcte et de repérer une erreur de shape.</p></div></div>
+
+<h3 id="ref-46-entraîner-prédire-évaluer">4.6 Entraîner, prédire, évaluer</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Entraîner
+model.fit(
+    X_train, y_train,   # features et labels d&#x27;entraînement
+    batch_size=32,      # taille des &quot;mini-paquets&quot; de données à chaque mise à jour
+    epochs=10           # nombre de passages complets sur le dataset
+)
+# À chaque epoch, Keras affiche la loss (et les metrics si définies)
+
+# Prédire sur de nouvelles données
+y_pred = model.predict(X_new)   # retourne un tableau numpy avec les prédictions
+
+# Évaluer sur le jeu de test
+loss, accuracy = model.evaluate(X_test, y_test)   # retourne [loss, metrics...]
+print(f&quot;Accuracy : {accuracy:.2%}&quot;)               # ex : &quot;Accuracy : 92.71%&quot;</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais utiliser X_test pendant l'entraînement. Le jeu de test sert uniquement à évaluer les performances finales du modèle, après l'entraînement. Sinon, tu "triches" et tu ne sais pas si ton modèle généralise vraiment.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-exemple-complet-reconnaissance-de-visages">5. Exemple complet — Reconnaissance de visages</h2>
+
+<p>Mettons tout en pratique avec un exemple réel : reconnaître si une photo de visage correspond à George W. Bush ou Colin Powell (classification binaire).</p>
+
+<h3 id="ref-51-charger-les-données">5.1 Charger les données</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.datasets import fetch_lfw_people
+import numpy as np
+
+# Charger des photos de visages célèbres (base LFW - Labeled Faces in the Wild)
+faces = fetch_lfw_people(min_faces_per_person=200, resize=0.25)
+
+print(faces.images.shape)      # (766, 31, 23) → 766 images de 31×23 pixels en niveaux de gris
+print(np.unique(faces.target)) # [0, 1] → 2 personnes donc classification binaire</code></pre></div>
+
+
+<h3 id="ref-52-préparer-les-données">5.2 Préparer les données</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Les réseaux denses attendent des vecteurs 1D, pas des images 2D
+# On &quot;aplatit&quot; chaque image 31×23 en un vecteur de 713 valeurs
+X = faces.images.reshape(766, 31*23)  # shape (766, 713) : chaque ligne = 1 image aplatie
+y = faces.target                       # shape (766,) : 0 ou 1 pour chaque image
+
+# Séparation train / test
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y,
+    test_size=0.25,     # 25% pour le test, 75% pour l&#x27;entraînement
+    random_state=3      # graine aléatoire pour la reproductibilité
+)
+
+# Standardisation : mettre toutes les features à la même échelle (moyenne=0, écart-type=1)
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)  # fit sur le train, puis transform : NE JAMAIS fit sur le test</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>La standardisation est quasi-obligatoire pour les réseaux de neurones. Sans elle, les gradients peuvent exploser ou s'évaporer pendant l'entraînement, et le modèle converge très mal ou pas du tout.</p></div></div>
+
+<h3 id="ref-53-définir-compiler-et-entraîner">5.3 Définir, compiler et entraîner</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import Sequential, layers
+from keras import Input
+
+# ── DEFINE ────────────────────────────────────────────────────────────────────
+model = Sequential()
+model.add(Input(shape=(713,)))                      # 713 pixels en entrée
+
+model.add(layers.Dense(20, activation=&#x27;relu&#x27;))      # couche cachée 1 : 20 neurones
+# paramètres : 713×20 + 20 = 14 280
+
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))      # couche cachée 2 : 10 neurones
+# paramètres :  20×10 + 10 =    210
+
+model.add(layers.Dense(1, activation=&#x27;sigmoid&#x27;))    # sortie binaire : 1 neurone sigmoid
+# paramètres :  10×1 + 1  =     11
+
+# ── COMPILE ───────────────────────────────────────────────────────────────────
+model.compile(
+    optimizer=&#x27;adam&#x27;,               # optimiseur Adam : robuste et efficace
+    loss=&#x27;binary_crossentropy&#x27;,     # loss pour classification binaire
+    metrics=[&#x27;accuracy&#x27;]            # afficher l&#x27;accuracy pendant le fit
+)
+
+model.summary()  # vérifie l&#x27;architecture avant de lancer l&#x27;entraînement
+
+# ── FIT ───────────────────────────────────────────────────────────────────────
+model.fit(
+    X_train, y_train,
+    batch_size=16,   # mini-batch de 16 images à chaque mise à jour des poids
+    epochs=20        # 20 passages complets sur les données d&#x27;entraînement
+)
+# Pendant le fit, Keras affiche la loss et l&#x27;accuracy epoch par epoch</code></pre></div>
+
+
+<h3 id="ref-54-évaluer-et-prédire">5.4 Évaluer et prédire</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Évaluation sur le jeu de test (ne pas oublier de standardiser X_test avec le même scaler !)
+results = model.evaluate(scaler.transform(X_test), y_test)
+# → [0.3246, 0.9271]  ← loss = 0.32, accuracy = 92.71%
+
+# Comparer à la baseline naïve (prédire toujours la classe majoritaire)
+baseline = 530 / (530 + 236)   # proportion de la classe majoritaire dans le dataset
+print(f&quot;Baseline : {baseline:.1%}&quot;)  # → ~69%
+print(&quot;Notre modèle : ~93%&quot;)         # bien mieux que la baseline !
+
+# Prédictions sur les 5 premières images de test
+proba = model.predict(scaler.transform(X_test))[:5]
+print(proba)
+# → [[0.9999], [0.0877], [0.9999], [0.0001], [0.0044]]
+# Lecture : 1ère image → 99.99% de chances d&#x27;être la personne 1 (presque certain)
+#           2ème image → 8.77% de chances (donc probablement la personne 0)</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Notre réseau atteint ~93% d'accuracy contre ~69% pour la baseline. C'est une vraie amélioration, obtenue en quelques lignes de code avec un réseau très simple à 2 couches cachées seulement.</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-erreurs-classiques-à-ne-pas-commettre">6. Erreurs classiques à ne pas commettre</h2>
+
+<h3 id="ref-oublier-de-déclarer-input">Oublier de déclarer Input</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ❌ MAUVAIS — Keras infère la shape tardivement, risque d&#x27;erreur
+model = Sequential()
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))   # pas d&#x27;Input → problèmes possibles
+
+# ✅ BON — la shape est déclarée explicitement
+model = Sequential()
+model.add(Input(shape=(4,)))                     # toujours en 1er
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))</code></pre></div>
+
+
+<h3 id="ref-mauvaise-activation-en-sortie">Mauvaise activation en sortie</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ❌ MAUVAIS — relu en sortie pour une classification binaire
+model.add(layers.Dense(1, activation=&#x27;relu&#x27;))    # relu ne donne pas une probabilité !
+
+# ✅ BON — sigmoid pour sortie binaire
+model.add(layers.Dense(1, activation=&#x27;sigmoid&#x27;)) # sigmoid → P(y=1) entre 0 et 1</code></pre></div>
+
+
+<h3 id="ref-mauvaise-loss-pour-la-tâche">Mauvaise loss pour la tâche</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ❌ MAUVAIS — mse pour une classification
+model.compile(loss=&#x27;mse&#x27;, optimizer=&#x27;adam&#x27;)      # mse est pour la régression
+
+# ✅ BON — binary_crossentropy pour classification binaire
+model.compile(loss=&#x27;binary_crossentropy&#x27;, optimizer=&#x27;adam&#x27;)</code></pre></div>
+
+
+<h3 id="ref-ne-pas-standardiser-les-features">Ne pas standardiser les features</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ❌ MAUVAIS — données brutes → convergence lente ou échec
+model.fit(X_train_raw, y_train, epochs=20)
+
+# ✅ BON — standardiser avant de passer au réseau
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train_raw)      # moyenne=0, écart-type=1
+model.fit(X_train, y_train, epochs=20)</code></pre></div>
+
+
+<h3 id="ref-confondre-nombre-de-neurones-et-nombre-de-classes">Confondre nombre de neurones et nombre de classes</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ❌ MAUVAIS — 2 neurones pour une classification binaire avec sigmoid
+model.add(layers.Dense(2, activation=&#x27;sigmoid&#x27;))  # sigmoid + 2 neurones = confusion
+
+# ✅ BON — 1 neurone + sigmoid pour binaire
+model.add(layers.Dense(1, activation=&#x27;sigmoid&#x27;))  # classification binaire
+
+# ✅ BON — N neurones + softmax pour N classes
+model.add(layers.Dense(8, activation=&#x27;softmax&#x27;))  # 8 classes = 8 neurones</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1.</strong> Un neurone artificiel reçoit 3 entrées : $x_1 = 2$, $x_2 = -1$, $x_3 = 0.5$. Les poids sont $w_1 = 0.5$, $w_2 = -1.0$, $w_3 = 2.0$ et le biais est $b = 1.0$. L'activation est ReLU. Quelle est la sortie du neurone ?</p>
+
+<p><em>(Calcule : $z = 0.5 \times 2 + (-1.0) \times (-1) + 2.0 \times 0.5 + 1.0 = 1 + 1 + 1 + 1 = 4.0$, puis $\text{ReLU}(4.0) = 4.0$)</em></p>
+
+<p><strong>Question 2.</strong> Tu veux prédire la note d'un film (entre 0 et 10). Quelle activation utilises-tu en sortie ? Quelle loss ? Combien de neurones dans ta dernière couche ?</p>
+
+<p><em>(Réponse attendue : activation <code>linear</code>, loss <code>mse</code> ou <code>mae</code>, 1 neurone)</em></p>
+
+<p><strong>Question 3.</strong> Tu as un dataset de photos de chats, chiens, lapins et oiseaux. Quelle activation utilises-tu en sortie ? Combien de neurones ? Quelle loss ?</p>
+
+<p><em>(Réponse attendue : <code>softmax</code>, 4 neurones, <code>categorical_crossentropy</code>)</em></p>
+
+<p><strong>Question 4.</strong> Un réseau a Input(shape=(100,)) suivi d'une couche Dense(50) puis Dense(20) puis Dense(1). Combien de paramètres en tout ?</p>
+
+<p><em>(Calcul : Dense(50) = 100×50 + 50 = 5050 ; Dense(20) = 50×20 + 20 = 1020 ; Dense(1) = 20×1 + 1 = 21 ; Total = 6091)</em></p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Le <strong>Deep Learning</strong> = des régressions linéaires empilées + des fonctions d'activation non-linéaires. Sans les activations, tout le réseau se réduit à une seule régression linéaire.</li>
+<li>Un <strong>neurone</strong> calcule $f(\sum w_k x_k + b)$ : une combinaison pondérée des entrées suivie d'une activation.</li>
+<li>Une <strong>couche Dense</strong> = N neurones appliqués en parallèle sur les mêmes entrées, avec $n_{\text{entrées}} \times N + N$ paramètres.</li>
+<li>La <strong>dernière couche</strong> est dictée par la tâche : <code>linear</code> pour la régression, <code>sigmoid</code> pour la classification binaire, <code>softmax</code> pour le multi-classes.</li>
+<li>Les <strong>3 étapes Keras</strong> sont toujours : <code>model = Sequential()</code> + <code>model.add(...)</code> → <code>model.compile(...)</code> → <code>model.fit(...)</code>.</li>
+<li>Toujours mettre <code>Input(shape=...)</code> en premier et <strong>standardiser</strong> les données avant de les passer au réseau.</li>
+<li><code>model.summary()</code> est ton meilleur ami pour vérifier l'architecture et compter les paramètres.</li>
+<li><code>model.predict()</code> retourne les prédictions, <code>model.evaluate()</code> retourne la loss et les métriques sur un jeu de test.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-du-neurone-biologique-à-lunité-artificielle">Du neurone biologique à l'unité artificielle</a></li><li><a href="#syn-forward-pass">Forward pass</a></li><li><a href="#syn-backpropagation">Backpropagation</a></li><li><a href="#syn-architectures-de-base">Architectures de base</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-initialisation-des-poids">Initialisation des poids</a></li><li><a href="#syn-batch-normalization">Batch Normalization</a></li><li><a href="#syn-régularisation-dropout-weight-decay">Régularisation : dropout, weight decay</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-du-neurone-biologique-à-lunité-artificielle">Du neurone biologique à l'unité artificielle</h3>
+
+<p>Un <strong>neurone artificiel</strong> est une fonction simple : il prend des entrées $\mathbf{x}$, calcule une combinaison linéaire pondérée $z = \mathbf{w}^T \mathbf{x} + b$, puis applique une <strong>fonction d'activation</strong> non linéaire $\sigma$ :</p>
+
+<div class="katex-display">$$\text{output} = \sigma(\mathbf{w}^T \mathbf{x} + b)$$</div>
+
+<p><strong>Lecture de la formule</strong> : on multiplie chaque entrée $x_i$ par un poids $w_i$ (qui représente l'importance de cette entrée pour ce neurone), on additionne tous les produits ($\mathbf{w}^T \mathbf{x}$ est le produit scalaire), on ajoute un <strong>biais</strong> $b$ qui décale la sortie (comme l'ordonnée à l'origine d'une droite), puis on passe le tout dans une fonction non linéaire $\sigma$ qui "plie" la réponse. Sans ce pliage, peu importe le nombre de couches empilées, le réseau ne sait faire qu'une droite (voir la Q1).</p>
+
+<p>C'est inspiré (très librement) du neurone biologique : les dendrites collectent des signaux, le corps cellulaire les somme, et si le total dépasse un seuil, l'axone "tire" un signal de sortie.</p>
+
+<p><strong>Exemple chiffré minimal</strong> : un neurone avec $\mathbf{w} = [0.5, -0.2, 0.1]$, $b = 0.3$, entrée $\mathbf{x} = [1, 2, 3]$ et ReLU.</p>
+
+<ul>
+<li>$z = 0.5 \cdot 1 + (-0.2) \cdot 2 + 0.1 \cdot 3 + 0.3 = 0.5 - 0.4 + 0.3 + 0.3 = 0.7$</li>
+<li>$\text{output} = \max(0, 0.7) = 0.7$</li>
+</ul>
+
+<p>Trois activations courantes :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Activation</th><th>Formule</th><th>Caractéristique</th></tr></thead><tbody><tr><td><strong>ReLU</strong></td><td>$\max(0, z)$</td><td>Standard, rapide, sparse</td></tr><tr><td><strong>Sigmoid</strong></td><td>$1/(1+e^{-z})$</td><td>Sortie [0,1], pour binaire</td></tr><tr><td><strong>Tanh</strong></td><td>$(e^z - e^{-z})/(e^z + e^{-z})$</td><td>Sortie [-1,1], centrée</td></tr><tr><td><strong>Softmax</strong></td><td>$e^{z_i}/\sum_j e^{z_j}$</td><td>Pour multi-classes</td></tr><tr><td><strong>GELU</strong></td><td>$z \cdot \Phi(z)$</td><td>Lisse, utilisée dans les transformers</td></tr></tbody></table></div>
+<p><strong>Lecture de ReLU</strong> : si $z$ est négatif, le neurone est "éteint" (sortie 0) ; s'il est positif, on laisse passer tel quel. Extrêmement simple, dérivée triviale (0 ou 1), d'où son succès.</p>
+
+<p><strong>Lecture de Sigmoid</strong> : écrase n'importe quel réel $z$ vers l'intervalle $(0, 1)$. Quand $z \to +\infty$, la sortie tend vers 1 ; quand $z \to -\infty$, vers 0 ; en 0, la sortie vaut 0,5. Parfait pour interpréter la sortie comme une probabilité.</p>
+
+<p><strong>Lecture de Tanh</strong> : même forme en S que sigmoid mais centrée en 0 et valeurs dans $(-1, 1)$. Souvent préférée à sigmoid dans les couches cachées car centrée.</p>
+
+<p><strong>Lecture de Softmax</strong> : transforme un vecteur de scores bruts $(z_1, \dots, z_K)$ en une distribution de probabilité. On exponentialise chaque $z_i$ pour tout rendre positif, puis on divise par la somme pour que le tout somme à 1. Exemple : scores $(2, 1, 0)$ → $(e^2, e^1, e^0) = (7{,}39, 2{,}72, 1) → (0{,}665, 0{,}245, 0{,}090)$.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : un seul neurone est une régression logistique. Une couche de neurones est plusieurs régressions logistiques en parallèle. Un réseau profond est plusieurs couches empilées. Cette composition de fonctions linéaires + non-linéarités lui donne le pouvoir d'approximer n'importe quelle fonction continue (théorème d'approximation universelle, Cybenko 1989).</p></div></div>
+
+<h3 id="syn-forward-pass">Forward pass</h3>
+
+<p>Une <strong>couche dense</strong> (fully connected) calcule :</p>
+
+<div class="katex-display">$$\mathbf{h} = \sigma(W \mathbf{x} + \mathbf{b})$$</div>
+
+<p><strong>Lecture de la formule</strong> : $W$ est une matrice de poids de taille $m \times n$ ($m$ neurones en sortie, $n$ entrées). $W \mathbf{x}$ est un produit matrice-vecteur : la $i$-ème sortie est $\sum_j W_{ij} x_j$ (la combinaison linéaire du neurone $i$). On ajoute un vecteur de biais $\mathbf{b}$ de taille $m$ (un biais par neurone), puis on applique $\sigma$ élément par élément. Cette seule ligne fait tourner toute une couche en un seul calcul matriciel — c'est pour ça que les GPU sont si efficaces.</p>
+
+<p>Un réseau à L couches enchaîne ces opérations :</p>
+
+<div class="katex-display">$$\mathbf{h}^{(1)} = \sigma(W^{(1)} \mathbf{x} + \mathbf{b}^{(1)})$$</div>
+<div class="katex-display">$$\mathbf{h}^{(2)} = \sigma(W^{(2)} \mathbf{h}^{(1)} + \mathbf{b}^{(2)})$$</div>
+<div class="katex-display">$$\cdots$$</div>
+<div class="katex-display">$$\hat{y} = \sigma(W^{(L)} \mathbf{h}^{(L-1)} + \mathbf{b}^{(L)})$$</div>
+
+<p><strong>Lecture</strong> : la sortie d'une couche devient l'entrée de la suivante. L'exposant $(l)$ indique simplement le numéro de la couche (1 à L). La dernière couche produit la prédiction $\hat{y}$ (avec une activation adaptée au problème : softmax pour multi-classes, sigmoid pour binaire, linéaire pour régression).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import tensorflow as tf
+from tensorflow.keras import layers, models
+
+# On construit un MLP simple pour classer MNIST (images 28x28 = 784 pixels, 10 classes)
+model = models.Sequential([
+    layers.Input(shape=(784,)),                  # Vecteur d&#x27;entrée aplati (784 pixels)
+    layers.Dense(128, activation=&quot;relu&quot;),        # Couche cachée 1 : 784 -&gt; 128, ReLU
+    layers.Dense(64, activation=&quot;relu&quot;),         # Couche cachée 2 : 128 -&gt; 64, ReLU
+    layers.Dense(10, activation=&quot;softmax&quot;),      # Sortie : 64 -&gt; 10 probabilités (softmax)
+])
+
+model.summary()  # Affiche l&#x27;architecture et le nombre de paramètres par couche</code></pre></div>
+
+
+<p>Le <strong>nombre de paramètres</strong> d'une couche dense de $n$ vers $m$ est $n \cdot m + m$ (poids + biais). Exemple : pour la première couche ci-dessus, $784 \cdot 128 + 128 = 100\,480$ paramètres. Un réseau de 1000-512-256-10 a environ 660k paramètres.</p>
+
+<h3 id="syn-backpropagation">Backpropagation</h3>
+
+<p>L'entraînement consiste à ajuster les poids pour minimiser une <strong>loss function</strong> (cross-entropy en classification, MSE en régression). On utilise la descente de gradient.</p>
+
+<p>Le défi : comment calculer $\partial \mathcal{L} / \partial w_{ij}^{(l)}$ pour un poids enfoui dans une couche profonde ?</p>
+
+<p><strong>Backpropagation</strong> (Rumelhart, Hinton, Williams, 1986) résout ce problème par la <strong>règle de la chaîne</strong> :</p>
+
+<div class="katex-display">$$\frac{\partial \mathcal{L}}{\partial w_{ij}^{(l)}} = \frac{\partial \mathcal{L}}{\partial h^{(l)}} \cdot \frac{\partial h^{(l)}}{\partial z^{(l)}} \cdot \frac{\partial z^{(l)}}{\partial w_{ij}^{(l)}}$$</div>
+
+<p><strong>Lecture de la formule</strong> : on décompose la dérivée "loss par rapport à un poids profond" en trois morceaux faciles à calculer. (1) $\partial \mathcal{L} / \partial h^{(l)}$ : comment la loss change si la sortie de la couche $l$ change (obtenu en propageant le gradient depuis la sortie). (2) $\partial h^{(l)} / \partial z^{(l)}$ : la dérivée de l'activation (par exemple ReLU' vaut 1 si $z > 0$, 0 sinon). (3) $\partial z^{(l)} / \partial w_{ij}^{(l)}$ : comme $z = W h^{(l-1)} + b$, cette dérivée vaut simplement $h_j^{(l-1)}$ (l'entrée correspondante). Le miracle : on peut réutiliser les gradients calculés à la couche $l+1$ pour calculer ceux à la couche $l$, d'où le nom "back"-propagation.</p>
+
+<p>La mise à jour finale d'un poids est :</p>
+
+<div class="katex-display">$$w_{ij}^{(l)} \leftarrow w_{ij}^{(l)} - \eta \cdot \frac{\partial \mathcal{L}}{\partial w_{ij}^{(l)}}$$</div>
+
+<p><strong>Lecture</strong> : on se déplace en sens inverse du gradient (puisque le gradient pointe dans la direction de plus forte montée de la loss). $\eta$ est le <strong>learning rate</strong>, qui contrôle la taille du pas.</p>
+
+<p>L'algorithme calcule ces dérivées <strong>en arrière</strong>, de la sortie vers l'entrée, en réutilisant les calculs intermédiaires. Complexité : $O(\text{taille du réseau})$ pour calculer tous les gradients.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># On &quot;compile&quot; le modèle : on lui dit quelle loss minimiser et quel optimiseur utiliser
+model.compile(
+    optimizer=&quot;adam&quot;,                              # Adam : descente de gradient adaptative
+    loss=&quot;sparse_categorical_crossentropy&quot;,        # Loss classif multi-classes (labels entiers)
+    metrics=[&quot;accuracy&quot;],                          # Métrique à afficher pendant l&#x27;entraînement
+)
+# fit() itère sur les données : forward -&gt; loss -&gt; backprop -&gt; mise à jour des poids
+model.fit(X_train, y_train, epochs=20, batch_size=32, validation_split=0.2)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : forward pass = vous prédisez une réponse à un examen. Loss = on vous dit votre note. Backprop = vous remontez chaque erreur dans votre raisonnement pour comprendre où vous vous êtes trompé, et vous corrigez chaque étape proportionnellement à sa contribution à l'erreur finale. Le miracle de backprop : ce processus est entièrement automatisé via la dérivation symbolique (autograd dans PyTorch, gradient tape dans TensorFlow).</p></div></div>
+
+<h3 id="syn-architectures-de-base">Architectures de base</h3>
+
+<p><strong>MLP (Multi-Layer Perceptron)</strong> : couches denses empilées. Pour des données tabulaires ou comme tête finale d'autres réseaux.</p>
+
+<p><strong>CNN</strong> : pour les images. Convolutions + pooling.</p>
+
+<p><strong>RNN / LSTM / GRU</strong> : pour les séquences. Mémoire interne qui se met à jour.</p>
+
+<p><strong>Transformer</strong> : pour les séquences (depuis 2017, domine NLP et la vision). Self-attention au lieu de récurrence.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Type de données</th><th>Architecture</th></tr></thead><tbody><tr><td>Tabulaire</td><td>MLP (mais XGBoost reste souvent meilleur)</td></tr><tr><td>Images</td><td>CNN (ResNet, EfficientNet) ou Vision Transformer</td></tr><tr><td>Texte</td><td>Transformer (BERT, GPT)</td></tr><tr><td>Séries temporelles</td><td>LSTM, Temporal Fusion Transformer</td></tr><tr><td>Audio</td><td>CNN 1D, transformers</td></tr><tr><td>Graphes</td><td>Graph Neural Networks (GCN, GAT)</td></tr></tbody></table></div>
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-initialisation-des-poids">Initialisation des poids</h3>
+
+<p>Le choix de l'initialisation des poids a un impact massif sur la convergence. Mauvaise initialisation = gradients qui explosent ou s'évanouissent.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Méthode</th><th>Variance cible</th><th>Pour quelle activation</th></tr></thead><tbody><tr><td><strong>Xavier/Glorot</strong></td><td>$2/(n_{\text{in}}+n_{\text{out}})$</td><td>tanh, sigmoid</td></tr><tr><td><strong>He</strong></td><td>$2/n_{\text{in}}$</td><td>ReLU</td></tr><tr><td><strong>Uniform standard</strong></td><td>Souvent trop grand</td><td>À éviter en général</td></tr></tbody></table></div>
+<p><strong>Lecture de l'initialisation He</strong> : chaque poids est tiré d'une gaussienne centrée en 0 avec variance $2/n_{\text{in}}$, où $n_{\text{in}}$ est le nombre d'entrées du neurone. L'idée : plus un neurone a d'entrées, plus on doit réduire l'échelle des poids pour que la somme pondérée ait une variance contrôlée. Avec ReLU, on multiplie par 2 car ReLU coupe la moitié des activations (les négatives), ce qui divise la variance par 2 — on compense.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Initialisation He pour une couche ReLU (standard moderne)
+layers.Dense(128, activation=&quot;relu&quot;, kernel_initializer=&quot;he_normal&quot;)
+# Initialisation Glorot pour une activation symétrique comme tanh
+layers.Dense(64, activation=&quot;tanh&quot;, kernel_initializer=&quot;glorot_normal&quot;)</code></pre></div>
+
+
+<p>L'idée mathématique : la variance des activations doit rester ~constante d'une couche à l'autre. Sinon les valeurs explosent ou décroissent exponentiellement avec la profondeur.</p>
+
+<h3 id="syn-batch-normalization">Batch Normalization</h3>
+
+<p>Introduite par Ioffe & Szegedy (2015), BatchNorm normalise les activations à chaque couche pendant l'entraînement :</p>
+
+<div class="katex-display">$$\hat{h} = \gamma \cdot \frac{h - \mu_{\text{batch}}}{\sqrt{\sigma_{\text{batch}}^2 + \epsilon}} + \beta$$</div>
+
+<p><strong>Lecture de la formule</strong> : pour chaque activation $h$ d'un mini-batch, on calcule la moyenne $\mu_{\text{batch}}$ et l'écart-type $\sigma_{\text{batch}}$ du batch. On centre puis on réduit : $(h - \mu)/\sigma$. On obtient une distribution de moyenne 0 et de variance 1. Mais on ne veut pas forcer aveuglément ça (le réseau peut avoir besoin d'une autre échelle), donc on ré-échelle avec un paramètre appris $\gamma$ et on décale avec $\beta$. Le petit $\epsilon$ (ex. $10^{-5}$) évite la division par 0.</p>
+
+<p>Effets :</p>
+
+<ul>
+<li>Accélère la convergence (plus grand learning rate possible)</li>
+<li>Régularise (légèrement, à cause du bruit du batch)</li>
+<li>Permet des réseaux plus profonds</li>
+<li>Réduit la sensibilité à l'initialisation</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Ordre canonique : Dense -&gt; BatchNorm -&gt; Activation -&gt; Dropout
+model = models.Sequential([
+    layers.Dense(256),                    # Linéaire (pas d&#x27;activation ici)
+    layers.BatchNormalization(),          # Normalisation sur le batch
+    layers.ReLU(),                        # Activation APRÈS BatchNorm
+    layers.Dropout(0.3),                  # Régularisation
+    layers.Dense(10, activation=&quot;softmax&quot;),
+])</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège</strong> : BatchNorm se comporte différemment en train et en eval. Pendant l'entraînement, il utilise les stats du batch courant. Pendant l'inférence, il utilise les stats moyennes accumulées. Si vous oubliez de mettre <code>model.eval()</code> en PyTorch ou <code>training=False</code> en TF, vous obtenez des prédictions instables. Cause classique de bugs en déploiement.</p></div></div>
+
+<h3 id="syn-régularisation-dropout-weight-decay">Régularisation : dropout, weight decay</h3>
+
+<p><strong>Dropout</strong> : pendant l'entraînement, on désactive aléatoirement une fraction des neurones à chaque step. Force le réseau à ne pas dépendre de neurones individuels.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">layers.Dropout(0.3)  # 30% des neurones mis à 0 aléatoirement à chaque step (train uniquement)</code></pre></div>
+
+
+<p>C'est extrêmement efficace pour réduire l'overfitting, surtout dans les dernières couches d'un réseau. Pendant l'inférence, le dropout est désactivé et les sorties sont automatiquement compensées d'un facteur $1/(1-p)$ (implémentation "inverted dropout").</p>
+
+<p><strong>Weight decay</strong> = régularisation L2 ajoutée à la loss :</p>
+
+<div class="katex-display">$$\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{data}} + \lambda \sum_{w} w^2$$</div>
+
+<p><strong>Lecture de la formule</strong> : on ajoute une pénalité proportionnelle à la somme des carrés des poids. Si un poids devient gros, il pénalise la loss — le réseau est donc "encouragé" à garder des poids petits et lisses. $\lambda$ contrôle l'importance de cette pénalité (typiquement $10^{-4}$ à $10^{-2}$).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import regularizers
+# On ajoute la régularisation L2 directement sur les poids de la couche
+layers.Dense(128, activation=&quot;relu&quot;, kernel_regularizer=regularizers.l2(0.01))</code></pre></div>
+
+
+<p><strong>Early stopping</strong> : arrêter quand la validation cesse de s'améliorer.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.callbacks import EarlyStopping
+# patience=5 : arrêter si val_loss ne baisse pas pendant 5 epochs consécutives
+# restore_best_weights : on récupère les poids du meilleur epoch (pas du dernier)
+es = EarlyStopping(patience=5, restore_best_weights=True)
+model.fit(..., callbacks=[es])</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : combinez dropout (0.2-0.5 dans les couches denses cachées), weight decay (1e-4 à 1e-2), early stopping. C'est le triplet standard qui résout l'overfitting dans 90% des cas. Augmenter les données et utiliser de la data augmentation est encore plus efficace, mais pas toujours possible.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi un réseau de neurones avec uniquement des activations linéaires (ou aucune activation) est-il équivalent à une régression linéaire, peu importe sa profondeur ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>composition de fonctions linéaires.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Parce que la <strong>composition de fonctions linéaires reste linéaire</strong>. Si vous empilez deux couches denses sans activation : $\mathbf{h}_2 = W_2(W_1 \mathbf{x} + \mathbf{b}_1) + \mathbf{b}_2 = (W_2 W_1) \mathbf{x} + (W_2 \mathbf{b}_1 + \mathbf{b}_2)$. C'est juste une nouvelle régression linéaire avec une matrice $W_2 W_1$ et un biais combiné. Avec 100 couches, c'est toujours linéaire — vous gagnez rien. Les <strong>non-linéarités</strong> (ReLU, sigmoid, tanh) sont ce qui permet au réseau d'apprendre des fonctions arbitrairement complexes. C'est le théorème d'approximation universelle : un réseau à 1 couche cachée + activation non linéaire peut approximer n'importe quelle fonction continue, à condition d'avoir assez de neurones. Question d'entretien deep learning fondamentale : si un candidat ne sait pas que les non-linéarités sont essentielles, il n'a pas compris pourquoi le deep learning existe.</p>
+
+</details>
+
+<p><strong>Q2 : Vous avez un réseau profond et la loss explose au début de l'entraînement. Quelles sont les causes possibles et les fixes ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>initialisation et learning rate.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Cinq causes courantes. (1) <strong>Learning rate trop élevé</strong> : les mises à jour de poids sont trop grandes et le réseau "explose". Réduire d'un facteur 10 (par exemple de 1e-3 à 1e-4). (2) <strong>Mauvaise initialisation des poids</strong> : sans Xavier/He, les activations explosent dans les premières couches. Utiliser <code>kernel_initializer=&quot;he_normal&quot;</code> pour ReLU. (3) <strong>Pas de normalisation des entrées</strong> : si vos features ne sont pas standardisées (mean 0, std 1), les premiers calculs sont gigantesques. Toujours <code>StandardScaler</code> ou normalisation par batch en entrée. (4) <strong>Loss inappropriée</strong> : par exemple, log(0) si vous avez des prédictions exactement à 0. Solution : <code>BinaryCrossentropy(from_logits=True)</code> au lieu de <code>from_logits=False</code> qui implique sigmoid + log et peut diverger. (5) <strong>Gradient exploding dans les RNN</strong> : utiliser <code>gradient clipping</code> (<code>tf.clip_by_norm</code>). La séquence d'investigation : (a) vérifier les inputs, (b) baisser le LR, (c) ajouter BatchNorm, (d) clipper les gradients. Question d'entretien debugging classique en deep learning.</p>
+
+</details>
+
+<p><strong>Q3 : Vous entraînez un MLP sur des données tabulaires (1000 lignes, 50 features) et obtenez 65% d'accuracy. Un Random Forest atteint 85% sur les mêmes données. Pourquoi ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>inductive bias et taille de dataset.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>C'est attendu et c'est la règle : <strong>sur le tabulaire, les arbres boostés battent presque toujours les neural networks</strong>. Trois raisons. (1) <strong>Inductive bias</strong> : les arbres sont conçus pour les données tabulaires hétérogènes. Leur biais (splits axis-aligned, pas d'hypothèse sur les distances) correspond à la structure réelle. Les MLP supposent une structure euclidienne et peinent à apprendre des interactions non linéaires sans énormément de données. (2) <strong>Taille de dataset</strong> : 1000 lignes c'est minuscule pour le DL. Les neural networks ont besoin de 10k-100k+ exemples pour briller. Random Forest et XGBoost donnent leur meilleur dès quelques centaines d'exemples. (3) <strong>Tuning</strong> : un MLP a besoin d'un tuning soigné (architecture, learning rate, dropout, etc.). Random Forest marche raisonnablement out-of-the-box. <strong>Recommandation pratique</strong> : pour du tabulaire de petite/moyenne taille, ne <strong>jamais</strong> sortir le DL. Utilisez XGBoost/LightGBM. Le DL ne devient compétitif sur du tabulaire qu'à partir de quelques centaines de milliers de lignes ET avec un feature engineering soigné. Question d'entretien : "Pourquoi le DL ne domine-t-il pas sur le tabulaire ?" — la réponse exhaustive parle d'inductive bias et de taille d'échantillon.</p>
+
+</details>
+
+<p><strong>Q4 : Lors du forward pass, vous obtenez des activations qui valent toutes 0 dans une couche ReLU en milieu de réseau. Que s'est-il passé et comment corriger ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Dying ReLU.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>C'est le phénomène de <strong>dying ReLU</strong>. La ReLU a une dérivée de 0 dès que l'entrée est négative. Si après une grosse mise à jour les entrées d'un neurone deviennent systématiquement négatives, sa sortie vaut 0, <strong>son gradient est 0</strong>, et il n'apprend plus jamais — il est "mort". Quand beaucoup de neurones meurent, des couches entières s'éteignent. <strong>Causes</strong> : learning rate trop grand, mauvaise initialisation (pas He), ou distribution d'entrée décalée. <strong>Fixes</strong> : (1) baisser le learning rate, (2) utiliser <code>he_normal</code> comme initialisation, (3) normaliser les entrées, (4) remplacer ReLU par <strong>Leaky ReLU</strong> ($\max(0.01 z, z)$) ou <strong>GELU</strong> qui ont une petite pente pour les négatifs et ne peuvent pas mourir, (5) ajouter BatchNorm avant l'activation pour re-centrer les pré-activations. En pratique, avec He + LR raisonnable + BatchNorm, le dying ReLU est rare. Question d'entretien orientée debugging.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Deep Learning</em> (Goodfellow, Bengio, Courville, gratuit en HTML) — la bible théorique</li>
+<li><em>Hands-On Machine Learning</em> (Aurélien Géron) — chapitres 10-11 sur les MLP</li>
+<li><a href="https://www.3blue1brown.com/topics/neural-networks" target="_blank" rel="noopener">3Blue1Brown — Neural Networks</a> — vidéos pédagogiques essentielles</li>
+<li><a href="http://cs231n.stanford.edu/" target="_blank" rel="noopener">Stanford CS231n</a> — cours de Karpathy, accessible en ligne</li>
+<li><a href="https://www.tensorflow.org/tutorials" target="_blank" rel="noopener">TensorFlow tutorials</a> et <a href="https://pytorch.org/tutorials/" target="_blank" rel="noopener">PyTorch tutorials</a></li>
+<li><em>Deep Learning with Python</em> (François Chollet) — par le créateur de Keras</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../machine-learning/unsupervised-learning.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Unsupervised Learning</span>
+  </a>
+  <a href="../deep-learning/optimizer-loss-fitting.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Optimizer, Loss & Fitting →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

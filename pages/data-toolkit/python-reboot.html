@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Reboot — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Python Reboot</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html" class="active">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Data Toolkit</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Python Reboot</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Python Reboot</h1>
+        <p class="page-objective">Réviser les fondamentaux Python (CLI, Git, types de données, structures de contrôle, fonctions) et les bibliothèques essentielles pour la data science : NumPy, Pandas et Matplotlib/Seaborn.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Scope</div>
+        <div class="key-concept-def">Zone de visibilité d&#x27;une variable (locale, englobante, globale, builtin).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">`*args` / `**kwargs`</div>
+        <div class="key-concept-def">Captent un nombre arbitraire d&#x27;arguments positionnels ou nommés.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Lambda</div>
+        <div class="key-concept-def">Fonction anonyme d&#x27;une seule expression : `lambda x: x*2`.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Décorateur</div>
+        <div class="key-concept-def">Fonction qui en enrobe une autre pour en modifier le comportement.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#bilan-de-révision-session-du-13-mars-2026">🧠 Bilan de révision — Session du 13 mars 2026</a><ol><li><a href="#points-prioritaires-à-retravailler">🔴 Points prioritaires à retravailler</a></li></ol></li><li><a href="#cheatsheet-python-reboot">Cheatsheet — Python Reboot</a><ol><li><a href="#cli-git">CLI & Git</a></li><li><a href="#types-python-structures">Types Python & structures</a></li><li><a href="#fonctions">Fonctions</a></li><li><a href="#numpy">NumPy</a></li><li><a href="#pandas">Pandas</a></li><li><a href="#visualisation">Visualisation</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-cli-et-git-essentials">1) CLI et Git Essentials</a><ol><li><a href="#11-navigation-dans-le-terminal">1.1 Navigation dans le terminal</a></li><li><a href="#12-git-essentials">1.2 Git essentials</a></li></ol></li><li><a href="#2-python-essentials">2) Python Essentials</a><ol><li><a href="#21-types-de-données">2.1 Types de données</a></li><li><a href="#22-structures-de-contrôle">2.2 Structures de contrôle</a></li><li><a href="#23-itération-sur-les-dicts">2.3 Itération sur les dicts</a></li><li><a href="#24-fonctions">2.4 Fonctions</a></li></ol></li><li><a href="#3-numpy-essentials">3) NumPy Essentials</a><ol><li><a href="#31-création-et-shape">3.1 Création et shape</a></li><li><a href="#32-sélection-slicing">3.2 Sélection / slicing</a></li><li><a href="#33-opérations-vectorisées">3.3 Opérations vectorisées</a></li></ol></li><li><a href="#4-pandas-essentials">4) Pandas Essentials</a><ol><li><a href="#41-création-et-index">4.1 Création et index</a></li><li><a href="#42-sélection-de-colonnes">4.2 Sélection de colonnes</a></li><li><a href="#43-sélection-de-lignes">4.3 Sélection de lignes</a></li><li><a href="#44-sélection-lignes-colonnes">4.4 Sélection lignes + colonnes</a></li><li><a href="#45-filtrage-booléen">4.5 Filtrage booléen</a></li><li><a href="#46-modification-de-colonnes">4.6 Modification de colonnes</a></li><li><a href="#47-datetimes">4.7 Datetimes</a></li><li><a href="#48-exploration-rapide-eda">4.8 Exploration rapide (EDA)</a></li><li><a href="#49-groupby-tri-visualisation-rapide">4.9 Groupby, tri, visualisation rapide</a></li></ol></li><li><a href="#5-visualisation-essentials">5) Visualisation Essentials</a><ol><li><a href="#51-relations">5.1 Relations</a></li><li><a href="#52-contre-des-catégories">5.2 Contre des catégories</a></li><li><a href="#53-distributions">5.3 Distributions</a></li><li><a href="#54-subplots">5.4 Subplots</a></li></ol></li></ol></div>
+<p>Réviser les fondamentaux Python (CLI, Git, types de données, structures de contrôle, fonctions) et les bibliothèques essentielles pour la data science : NumPy, Pandas et Matplotlib/Seaborn.</p>
+
+<hr>
+
+<h2 id="bilan-de-révision-session-du-13-mars-2026">🧠 Bilan de révision — Session du 13 mars 2026</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Question</th><th>Résultat</th><th>Point clé à retenir</th></tr></thead><tbody><tr><td>Interpréter β₁ logistique (fare)</td><td>⚠️ Partiel</td><td>β₁ = variation de <strong>log-odds</strong>, pas de probabilité. Toujours passer par exp(β) → odds ratio</td></tr><tr><td>QCM : intercept logistique → taux de survie</td><td>❌ Piège log-odds</td><td>log-odds = -0.47 → odds = exp(-0.47) = 0.62 → p = 0.62/1.62 = <strong>38%</strong></td></tr><tr><td>Debug VIF</td><td>⚠️ Partiel</td><td>L'erreur était l'absence de <strong>scaling</strong> avant le calcul du VIF, pas la dernière ligne</td></tr><tr><td>Interpréter β₁ linéaire + R²</td><td>✅ Bien</td><td>Ajouter "en moyenne" + vérifier les <strong>résidus</strong> avant de conclure sur les p-values</td></tr></tbody></table></div>
+<h3 id="points-prioritaires-à-retravailler">🔴 Points prioritaires à retravailler</h3>
+
+<p><strong>La chaîne log-odds → odds → probabilité</strong> (régression logistique) : β ne s'interprète jamais directement comme une probabilité.</p>
+
+<p><strong>L'interprétation de la p-value</strong> : la p-value = P(données aussi extrêmes | H₀ vraie). Elle ne mesure PAS la probabilité que H₀ soit vraie, ni celle que l'effet soit réel.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Question</th><th>Résultat</th><th>Point clé à retenir</th><th></th></tr></thead><tbody><tr><td>QCM p-value (Statistical Inference)</td><td>❌ Piège classique</td><td>p-value ≠ probabilité que H₀ soit vraie. C'est P(données</td><td>H₀). Raisonne toujours <strong>sous H₀</strong></td></tr></tbody></table></div>
+<hr>
+
+<h2 id="cheatsheet-python-reboot">📋 Cheatsheet — Python Reboot</h2>
+
+<h3 id="cli-git">CLI & Git</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pwd                        # Affiche le répertoire courant
+ls / l / la                # Liste le contenu du dossier
+tree                       # Affiche l&#x27;arborescence
+cd ..                      # Remonte d&#x27;un niveau
+cd ~                       # Va au dossier home
+cd some-folder             # Entre dans un sous-dossier
+git status                 # Vérifie l&#x27;état du repo
+git add file               # Ajoute un fichier au staging
+git commit -m &quot;message&quot;    # Crée un commit
+git push origin master     # Pousse les commits vers GitHub</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import os
+os.getcwd()                # Équivalent de pwd
+os.chdir(&#x27;../folder&#x27;)      # Équivalent de cd ../folder</code></pre></div>
+
+
+<h3 id="types-python-structures">Types Python & structures</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Multiplication de strings et listes
+&quot;42&quot; * 2                   # ✅ retourne &#x27;4242&#x27;
+[42] * 2                   # ✅ retourne [42, 42]
+
+## Accès par index
+c = [21, 42, 84]
+c[1]                       # ✅ retourne 42
+
+## Accès dict
+d = {&#x27;a&#x27;: 21, &#x27;b&#x27;: 42}
+d[&#x27;b&#x27;]                     # ✅ retourne 42
+
+## Itération sur dict
+for user, pwd in passwords.items():   # dépacke les tuples (clé, valeur)
+    print(f&quot;{user} - {pwd}&quot;)
+
+## List comprehension
+[f.lower() for f in files if f.endswith(&#x27;csv&#x27;)]  # ✅ filtre + transformation</code></pre></div>
+
+
+<h3 id="fonctions">Fonctions</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Bonne pratique : utiliser return, pas print
+def get_pwd(user):
+    return passwords.get(user, &quot;Not found&quot;)   # retourne la valeur ou le défaut
+
+## Piège classique : les variables locales ne modifient pas les globales
+user = &quot;   Pauline   &quot;
+user = clean_user(user)    # ✅ réassigner pour que la modification soit effective</code></pre></div>
+
+
+<h3 id="numpy">NumPy</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+data_np = np.array(data_list)      # crée un array 2D depuis une liste de listes
+data_np.shape                      # retourne (n_rows, n_cols)
+data_np[1]                         # sélectionne la ligne 2 (index 1)
+data_np[:, 2]                      # sélectionne la colonne 3
+data_np[2, 1:-1]                   # ligne 3, colonnes 2 à avant-dernière
+data_np[:, 1] + data_np[:, 2]      # addition de colonnes élément par élément
+data_np.sum(axis=0)                # somme par colonne (axe 0 = lignes empilées)
+data_np.sum(axis=1)                # somme par ligne (axe 1 = colonnes empilées)
+data_np + 1                        # broadcasting : ajoute 1 à chaque élément</code></pre></div>
+
+
+<h3 id="pandas">Pandas</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+
+df = pd.DataFrame(data)            # crée un DataFrame depuis un dict
+df.set_index(&#x27;id&#x27;)                 # sans inplace : ne modifie pas df
+df = df.set_index(&#x27;id&#x27;)            # ✅ réassigner pour que ça soit effectif
+
+df[&#x27;username&#x27;]                     # retourne une Series
+df[[&#x27;username&#x27;]]                   # retourne un DataFrame (double crochet)
+df[0:1]                            # sélection de lignes par position (slice)
+df.iloc[0:1]                       # sélection par position (entier)
+df.loc[101:102]                    # sélection par label d&#x27;index
+df.iloc[0, 2]                      # cellule position [ligne, col]
+df.loc[:103, [&#x27;username&#x27;]]         # lignes jusqu&#x27;à 103, colonne username
+
+mask = df[&#x27;gender&#x27;] == &#x27;M&#x27;         # crée un masque booléen
+df[mask]                           # filtre le DataFrame avec le masque
+df[df[&#x27;gender&#x27;] == &#x27;M&#x27;]            # identique, en une ligne
+
+df[&#x27;username&#x27;].str.strip()         # supprime les espaces autour des strings
+df[&#x27;username&#x27;].str.capitalize()    # met en majuscule la 1ère lettre
+df[&#x27;col&#x27;] = df[&#x27;input&#x27;].apply(fn)  # applique une fonction Python sur une colonne (lent !)
+df[&#x27;col&#x27;] = df[&#x27;input&#x27;] ** 2       # ✅ préférer les opérations vectorisées (rapide)
+
+df.head()                          # affiche les 5 premières lignes
+df.shape                           # retourne (n_lignes, n_colonnes)
+df.info()                          # types, valeurs non-nulles
+df.dtypes                          # types de chaque colonne
+df.isnull().sum()                  # nombre de valeurs nulles par colonne
+df.describe()                      # statistiques descriptives
+
+df.groupby(&#x27;day&#x27;).sum()                              # agrégation par groupe
+df.groupby(&#x27;day&#x27;).sum().sort_values(by=&#x27;col&#x27;)        # tri après agrégation
+df.groupby(&#x27;day&#x27;).sum()[[&#x27;total_bill&#x27;]].plot(kind=&#x27;bar&#x27;)  # graphe en barres</code></pre></div>
+
+
+<h3 id="visualisation">Visualisation</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.scatterplot(data=df, x=&#x27;total_bill&#x27;, y=&#x27;tip&#x27;)          # nuage de points
+sns.scatterplot(data=df, x=&#x27;total_bill&#x27;, y=&#x27;tip&#x27;, hue=&#x27;sex&#x27;)  # avec couleur par catégorie
+plt.plot((x1, x2), (y1, y2), color=&#x27;red&#x27;)                 # ligne rouge sur le graphe
+sns.barplot(data=df, x=&#x27;smoker&#x27;, y=&#x27;tip&#x27;, hue=&#x27;sex&#x27;)       # barres par catégorie
+sns.histplot(data=df, x=&#x27;tip&#x27;)                             # histogramme
+sns.boxplot(data=df, y=&#x27;tip&#x27;, x=&#x27;smoker&#x27;)                  # boîte à moustaches
+sns.violinplot(data=df, y=&#x27;tip&#x27;, x=&#x27;smoker&#x27;)               # violin plot
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))      # 2 graphes côte à côte
+sns.histplot(data=df, x=&#x27;total_bill&#x27;, ax=ax1)              # assigner à ax1
+sns.histplot(data=df, x=&#x27;tip&#x27;, ax=ax2)                     # assigner à ax2</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<blockquote><p>[!CAUTION]<br></p></blockquote>
+
+<blockquote><p><strong>Oublier de réassigner après une opération non-inplace</strong><br></p></blockquote>
+
+<blockquote><p>❌ <code>df.set_index(&#x27;id&#x27;)</code> → ne modifie pas <code>df</code><br></p></blockquote>
+
+<blockquote><p>✅ <code>df = df.set_index(&#x27;id&#x27;)</code> → réassigne le résultat<br></p></blockquote>
+
+<blockquote><p>[!CAUTION]<br></p></blockquote>
+
+<blockquote><p><strong>Confondre Series et DataFrame lors de la sélection de colonnes</strong><br></p></blockquote>
+
+<blockquote><p>❌ <code>df[&#x27;username&#x27;]</code> → retourne une Series<br></p></blockquote>
+
+<blockquote><p>✅ <code>df[[&#x27;username&#x27;]]</code> → retourne un DataFrame (nécessaire pour certaines opérations)<br></p></blockquote>
+
+<blockquote><p>[!CAUTION]<br></p></blockquote>
+
+<blockquote><p><strong>Utiliser <code>.apply()</code> pour des opérations numériques simples</strong><br></p></blockquote>
+
+<blockquote><p>❌ <code>df[&#x27;col&#x27;] = df[&#x27;input&#x27;].apply(lambda x: x**2)</code> → très lent<br></p></blockquote>
+
+<blockquote><p>✅ <code>df[&#x27;col&#x27;] = df[&#x27;input&#x27;] ** 2</code> → vectorisé, rapide<br></p></blockquote>
+
+<blockquote><p>[!CAUTION]<br></p></blockquote>
+
+<blockquote><p><strong>Croire que modifier une variable locale modifie la variable globale</strong><br></p></blockquote>
+
+<blockquote><p>❌ <code>clean_user(user)</code> → <code>user</code> reste inchangé<br></p></blockquote>
+
+<blockquote><p>✅ <code>user = clean_user(user)</code> → réassigner explicitement<br></p></blockquote>
+
+<blockquote><p>[!CAUTION]<br></p></blockquote>
+
+<blockquote><p><strong>Confondre axis=0 et axis=1 dans NumPy/Pandas</strong><br></p></blockquote>
+
+<blockquote><p>❌ <code>data_np.sum(axis=0)</code> si on veut la somme par ligne<br></p></blockquote>
+
+<blockquote><p>✅ <code>axis=0</code> = opération sur les lignes (résultat par colonne) | <code>axis=1</code> = opération sur les colonnes (résultat par ligne)<br></p></blockquote>
+
+<hr>
+
+<h2 id="1-cli-et-git-essentials">1) CLI et Git Essentials</h2>
+
+<h3 id="11-navigation-dans-le-terminal">1.1 Navigation dans le terminal</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pwd                     # Où suis-je ? → /Users/username/code/...
+ls                      # Qu&#x27;est-ce qu&#x27;il y a ici ? (niveau courant)
+l                       # Alias court de ls -l
+la                      # Alias court de ls -la (incluant fichiers cachés)
+tree                    # Arborescence complète du dossier
+cd ..                   # Remonter d&#x27;un niveau
+cd ../..                # Remonter de deux niveaux
+cd ~                    # Aller au dossier home
+cd /                    # Aller à la racine
+cd some-folder          # Entrer dans un sous-dossier
+cd ../folder            # Aller dans un dossier voisin</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import os
+os.getcwd()             # Équivalent Python de pwd
+os.chdir(&#x27;../folder&#x27;)   # Équivalent Python de cd ../folder</code></pre></div>
+
+
+<p>Structure typique d'un projet Le Wagon :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">/
+├── Users
+│   └── username
+│       ├── code
+│       │   └── githubusername
+│       │       ├── 01-Python
+│       │       ├── 02-Data-Toolkit
+│       │       └── your-project
+│       ├── Documents
+│       └── Downloads
+└── Volumes</code></pre></div>
+
+
+<h3 id="12-git-essentials">1.2 Git essentials</h3>
+
+<figure><img src="../../assets/images/python-reboot-01-546e9233.png" alt="" loading="lazy"></figure>
+
+<p>Les 4 étapes essentielles :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git status                                        # Voir l&#x27;état des fichiers
+git add a_file another_file                       # Stager les fichiers modifiés
+git commit -m &quot;Here comes a MEANINGFUL message&quot;  # Créer un snapshot
+git push origin master                            # Pousser vers GitHub</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## Travailler dans un notebook : commiter aussi le notebook !
+git add some_test.pickle your_notebook.ipynb</code></pre></div>
+
+
+<hr>
+
+<h2 id="2-python-essentials">2) Python Essentials</h2>
+
+<h3 id="21-types-de-données">2.1 Types de données</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">a = &quot;42&quot;
+a * 2       # &#x27;4242&#x27; → la multiplication répète la string
+
+b = [42]
+b * 2       # [42, 42] → la multiplication répète la liste
+
+c = [21, 42, 84]
+c[1]        # 42 → accès par index (0-based)
+
+d = {&#x27;a&#x27;: 21, &#x27;b&#x27;: 42, &#x27;c&#x27;: 84}
+d[&#x27;b&#x27;]      # 42 → accès dict par clé</code></pre></div>
+
+
+<h3 id="22-structures-de-contrôle">2.2 Structures de contrôle</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">filenames = [&quot;file_one.csv&quot;, &quot;FILE_TWO.csv&quot;, &quot;.keep&quot;]
+
+## Boucle + condition
+csv_filenames = []
+for file in filenames:
+    if file.endswith(&quot;.csv&quot;):
+        csv_filenames.append(file.lower())
+## Résultat : [&#x27;file_one.csv&#x27;, &#x27;file_two.csv&#x27;]
+
+## List comprehension équivalente (plus pythonique)
+csv_filenames = [file.lower() for file in filenames if file.endswith(&#x27;csv&#x27;)]</code></pre></div>
+
+
+<figure><img src="../../assets/images/python-reboot-02-5c70bebb.png" alt="" loading="lazy"></figure>
+
+<h3 id="23-itération-sur-les-dicts">2.3 Itération sur les dicts</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">passwords = {&#x27;Jean&#x27;: &#x27;1234&#x27;, &#x27;Phil&#x27;: &#x27;pa$$word&#x27;}
+
+&#x27;Jean&#x27; in passwords          # True → vérifie si une clé existe
+passwords.keys()             # dict_keys([&#x27;Jean&#x27;, &#x27;Phil&#x27;])
+passwords.values()           # dict_values([&#x27;1234&#x27;, &#x27;pa$$word&#x27;])
+
+## Dépackage des tuples (clé, valeur)
+for user, password in passwords.items():
+    print(f&quot;{user} - {password}&quot;)
+## Jean - 1234
+## Phil - pa$$word</code></pre></div>
+
+
+<h3 id="24-fonctions">2.4 Fonctions</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Retourner une valeur vs. juste l&#x27;afficher
+def get_pwd(user):
+    return passwords.get(user, &quot;Not found&quot;)   # ✅ retourne la valeur
+
+phil_password = get_pwd(&quot;Phil&quot;)   # &#x27;pa$$word&#x27; → récupérable
+
+## Piège : les variables locales ne modifient pas les globales
+user = &quot;    Pauline   &quot;
+
+def clean_user(user):
+    user = user.strip()    # modifie la copie locale, pas la globale
+    return user
+
+user = clean_user(user)    # ✅ réassigner pour que la modif soit effective
+## user → &#x27;Pauline&#x27;</code></pre></div>
+
+
+<hr>
+
+<h2 id="3-numpy-essentials">3) NumPy Essentials</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np</code></pre></div>
+
+
+<h3 id="31-création-et-shape">3.1 Création et shape</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data_list = [
+    [ 0,  1,  2,  3,  4],
+    [10, 11, 12, 13, 14],
+    [20, 21, 22, 23, 24],
+    [30, 31, 32, 33, 34],
+    [40, 41, 42, 43, 44],
+]
+
+data_np = np.array(data_list)   # crée un array 2D depuis liste de listes
+data_np.shape                   # (5, 5) → (n_lignes, n_colonnes)</code></pre></div>
+
+
+<h3 id="32-sélection-slicing">3.2 Sélection / slicing</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data_np[1]          # ligne 2 → array([10, 11, 12, 13, 14])
+data_np[:, 2]       # colonne 3 → array([ 2, 12, 22, 32, 42])
+data_np[2, 1:4]     # ligne 3, colonnes 2 à 4 → array([21, 22, 23])
+data_np[2, 1:-1]    # ligne 3, de la col 2 à l&#x27;avant-dernière (plus robuste)</code></pre></div>
+
+
+<figure><img src="../../assets/images/python-reboot-03-d5982f4d.png" alt="" loading="lazy"></figure>
+
+<h3 id="33-opérations-vectorisées">3.3 Opérations vectorisées</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data_np[:, 1] + data_np[:, 2]   # addition de deux colonnes → array([ 3, 23, 43, 63, 83])
+data_np.sum(axis=1)              # somme par ligne → array([ 10,  60, 110, 160, 210])
+data_np + 1                      # broadcasting : +1 sur chaque élément</code></pre></div>
+
+
+<blockquote><p>[!TIP]<br></p></blockquote>
+
+<blockquote><p><strong>Comprendre les axes</strong> : <code>axis=0</code> opère sur les lignes (résultat par colonne), <code>axis=1</code> opère sur les colonnes (résultat par ligne).<br></p></blockquote>
+
+<figure><img src="../../assets/images/python-reboot-04-62a4a448.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="4-pandas-essentials">4) Pandas Essentials</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd</code></pre></div>
+
+
+<h3 id="41-création-et-index">4.1 Création et index</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data = {
+    &#x27;id&#x27;: [101, 102, 103, 104],
+    &#x27;username&#x27;: [&#x27;  Jean  &#x27;, &#x27;phil&#x27;, &#x27;  mia &#x27;, &#x27;Pauline&#x27;],
+    &#x27;password&#x27;: [&#x27;1234&#x27;, &#x27;pa$$word&#x27;, &#x27;ri543&amp;&#x27;, &#x27;fdf342&#x27;],
+    &#x27;birth_date&#x27;: [&#x27;4/5/2008&#x27;, &#x27;5/7/2000&#x27;, &#x27;9/12/1988&#x27;, &#x27;4/1/2004&#x27;],
+    &#x27;gender&#x27;: [&#x27;M&#x27;, &#x27;M&#x27;, &#x27;W&#x27;, &#x27;W&#x27;],
+}
+
+df = pd.DataFrame(data)
+
+df.set_index(&#x27;id&#x27;)      # ⚠️ ne modifie PAS df (retourne une copie)
+df = df.set_index(&#x27;id&#x27;) # ✅ réassigner pour que l&#x27;index soit modifié</code></pre></div>
+
+
+<h3 id="42-sélection-de-colonnes">4.2 Sélection de colonnes</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df[&#x27;username&#x27;]        # → Series (1D)
+df[[&#x27;username&#x27;]]      # → DataFrame (2D, double crochet)
+
+type(df[&#x27;username&#x27;]), type(df[[&#x27;username&#x27;]])
+## (pandas.core.series.Series, pandas.core.frame.DataFrame)</code></pre></div>
+
+
+<h3 id="43-sélection-de-lignes">4.3 Sélection de lignes</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df[0:1]               # slice par position → 1ère ligne
+df.iloc[0:1]          # sélection par position entière (integer location)
+df.loc[101:102]       # sélection par label d&#x27;index (inclus les deux bornes)</code></pre></div>
+
+
+<h3 id="44-sélection-lignes-colonnes">4.4 Sélection lignes + colonnes</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df.iloc[0, 2]                        # cellule position [ligne 0, col 2]
+df.loc[:103, [&#x27;username&#x27;, &#x27;birth_date&#x27;]]  # lignes jusqu&#x27;à 103, colonnes nommées</code></pre></div>
+
+
+<h3 id="45-filtrage-booléen">4.5 Filtrage booléen</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">mask = df[&#x27;gender&#x27;] == &#x27;M&#x27;    # crée une Series de booléens
+df[mask]                      # filtre → ne garde que les lignes True
+df[df[&#x27;gender&#x27;] == &#x27;M&#x27;]       # identique en une ligne</code></pre></div>
+
+
+<h3 id="46-modification-de-colonnes">4.6 Modification de colonnes</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Méthodes string
+df[&#x27;username&#x27;].str.strip()            # supprime les espaces
+df[&#x27;username&#x27;].str.capitalize()       # capitalise
+
+## Chaîner les opérations
+df[&#x27;cleaned_username&#x27;] = df[&#x27;username&#x27;].str.strip().str.capitalize()
+
+## .apply() → pour des transformations complexes, mais lent
+df[&#x27;new_column&#x27;] = df[&#x27;input_column&#x27;].apply(get_some_info)
+
+## ⚠️ Éviter .apply() pour les opérations numériques simples
+df[&#x27;new&#x27;] = df[&#x27;input&#x27;].apply(lambda x: x**2)  # ❌ lent
+df[&#x27;new&#x27;] = df[&#x27;input&#x27;] ** 2                   # ✅ rapide (vectorisé)</code></pre></div>
+
+
+<h3 id="47-datetimes">4.7 Datetimes</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df[&#x27;birth_date&#x27;] = pd.to_datetime(df[&#x27;birth_date&#x27;])   # convertit en datetime
+
+from datetime import datetime
+import numpy as np
+
+df[&#x27;age&#x27;] = (datetime.today() - df[&#x27;birth_date&#x27;]) / np.timedelta64(365, &#x27;D&#x27;)
+## retourne l&#x27;âge en années (float)</code></pre></div>
+
+
+<h3 id="48-exploration-rapide-eda">4.8 Exploration rapide (EDA)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df.head()          # 5 premières lignes
+df.shape           # (244, 7) → dimensions
+df.info()          # types, valeurs non-nulles, mémoire
+df.dtypes          # type de chaque colonne
+df.isnull().sum()  # nombre de NaN par colonne
+df.describe()      # statistiques descriptives (count, mean, std, min, quartiles, max)</code></pre></div>
+
+
+<h3 id="49-groupby-tri-visualisation-rapide">4.9 Groupby, tri, visualisation rapide</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df.groupby(&#x27;day&#x27;)                                           # crée un objet GroupBy
+df.groupby(&#x27;day&#x27;).sum()                                     # agrège par somme
+df.groupby(&#x27;day&#x27;).sum().sort_values(by=&#x27;total_bill&#x27;, ascending=False)  # trier
+
+## Graphe rapide (très pratique pour l&#x27;exploration)
+df.groupby(&#x27;day&#x27;).sum()[[&#x27;total_bill&#x27;]] \
+                 .sort_values(by=&#x27;total_bill&#x27;, ascending=False) \
+                 .plot(kind=&#x27;bar&#x27;)</code></pre></div>
+
+
+<hr>
+
+<h2 id="5-visualisation-essentials">5) Visualisation Essentials</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import matplotlib.pyplot as plt
+import seaborn as sns</code></pre></div>
+
+
+<h3 id="51-relations">5.1 Relations</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">sns.scatterplot(data=df, x=&#x27;total_bill&#x27;, y=&#x27;tip&#x27;)               # nuage de points simple
+sns.scatterplot(data=df, x=&#x27;total_bill&#x27;, y=&#x27;tip&#x27;, hue=&#x27;sex&#x27;)    # couleur par catégorie
+
+## Ajouter une ligne rouge
+x1, y1 = 0, 1
+x2, y2 = 50, 6
+sns.scatterplot(data=df, x=&#x27;total_bill&#x27;, y=&#x27;tip&#x27;)
+plt.plot((x1, x2), (y1, y2), color=&#x27;red&#x27;)</code></pre></div>
+
+
+<h3 id="52-contre-des-catégories">5.2 Contre des catégories</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">sns.barplot(data=df, x=&#x27;smoker&#x27;, y=&#x27;tip&#x27;)              # barres simples
+sns.barplot(data=df, x=&#x27;smoker&#x27;, y=&#x27;tip&#x27;, hue=&#x27;sex&#x27;)   # double découpage</code></pre></div>
+
+
+<h3 id="53-distributions">5.3 Distributions</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">sns.histplot(data=df, x=&#x27;tip&#x27;)                         # histogramme
+sns.boxplot(data=df, y=&#x27;tip&#x27;, x=&#x27;smoker&#x27;)              # boîte à moustaches
+sns.violinplot(data=df, y=&#x27;tip&#x27;, x=&#x27;smoker&#x27;)           # violin plot (densité)</code></pre></div>
+
+
+<h3 id="54-subplots">5.4 Subplots</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))   # 2 graphes côte à côte
+sns.histplot(data=df, x=&#x27;total_bill&#x27;, ax=ax1)            # assigner à ax1
+sns.histplot(data=df, x=&#x27;tip&#x27;, ax=ax2)                   # assigner à ax2</code></pre></div>
+
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-ce-quil-faut-retenir-absolument">Ce qu'il faut retenir absolument</a></li><li><a href="#ref-analogie-fil-rouge">Analogie fil rouge</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-cli-et-git-naviguer-et-sauvegarder">1) CLI et Git — Naviguer et sauvegarder</a><ol><li><a href="#ref-11-le-terminal-se-repérer-dans-ses-fichiers">1.1 Le terminal : se repérer dans ses fichiers</a></li><li><a href="#ref-12-git-sauvegarder-son-travail-par-instantanés">1.2 Git : sauvegarder son travail par instantanés</a></li></ol></li><li><a href="#ref-2-python-essentials-les-bases-du-langage">2) Python Essentials — Les bases du langage</a><ol><li><a href="#ref-21-les-types-de-données">2.1 Les types de données</a></li><li><a href="#ref-22-les-structures-de-contrôle-boucles-et-conditions">2.2 Les structures de contrôle — boucles et conditions</a></li><li><a href="#ref-23-itérer-sur-un-dictionnaire">2.3 Itérer sur un dictionnaire</a></li><li><a href="#ref-24-les-fonctions">2.4 Les fonctions</a></li></ol></li><li><a href="#ref-3-numpy-calculs-rapides-sur-des-tableaux">3) NumPy — Calculs rapides sur des tableaux</a><ol><li><a href="#ref-31-créer-un-array-et-comprendre-sa-forme">3.1 Créer un array et comprendre sa forme</a></li><li><a href="#ref-32-sélectionner-des-données-slicing">3.2 Sélectionner des données (slicing)</a></li><li><a href="#ref-33-opérations-vectorisées-et-broadcasting">3.3 Opérations vectorisées et broadcasting</a></li></ol></li><li><a href="#ref-4-pandas-manipulation-de-données-tabulaires">4) Pandas — Manipulation de données tabulaires</a><ol><li><a href="#ref-41-créer-un-dataframe-et-définir-un-index">4.1 Créer un DataFrame et définir un index</a></li><li><a href="#ref-42-sélectionner-des-colonnes-series-vs-dataframe">4.2 Sélectionner des colonnes : Series vs DataFrame</a></li><li><a href="#ref-43-sélectionner-des-lignes">4.3 Sélectionner des lignes</a></li><li><a href="#ref-44-sélectionner-lignes-et-colonnes-simultanément">4.4 Sélectionner lignes ET colonnes simultanément</a></li><li><a href="#ref-45-filtrer-les-lignes-avec-un-masque-booléen">4.5 Filtrer les lignes avec un masque booléen</a></li><li><a href="#ref-46-modifier-et-créer-des-colonnes">4.6 Modifier et créer des colonnes</a></li><li><a href="#ref-47-convertir-des-dates">4.7 Convertir des dates</a></li><li><a href="#ref-48-explorer-rapidement-un-dataframe-eda">4.8 Explorer rapidement un DataFrame (EDA)</a></li><li><a href="#ref-49-agréger-avec-groupby">4.9 Agréger avec groupby</a></li></ol></li><li><a href="#ref-5-visualisation-matplotlib-et-seaborn">5) Visualisation — Matplotlib et Seaborn</a><ol><li><a href="#ref-51-visualiser-des-relations-entre-deux-variables">5.1 Visualiser des relations entre deux variables</a></li><li><a href="#ref-52-comparer-des-catégories">5.2 Comparer des catégories</a></li><li><a href="#ref-53-visualiser-des-distributions">5.3 Visualiser des distributions</a></li><li><a href="#ref-54-plusieurs-graphiques-côte-à-côte-subplots">5.4 Plusieurs graphiques côte à côte (subplots)</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Ce cours est un tour d'horizon des outils et concepts Python que tu vas utiliser tous les jours en data science. Ce n'est pas un cours entièrement nouveau : c'est une remise à niveau accélérée. L'idée est de s'assurer que les bases sont solides avant de plonger dans l'analyse de données.</p>
+
+<h3 id="ref-ce-quil-faut-retenir-absolument">Ce qu'il faut retenir absolument</h3>
+
+<ul>
+<li>Le terminal (CLI) est ton ami : il te permet de naviguer dans tes fichiers sans souris.</li>
+<li>Git sert à sauvegarder ton travail par "instantanés" et à le partager sur GitHub.</li>
+<li>Python propose plusieurs types de données (texte, nombres, listes, dictionnaires) qui se comportent différemment.</li>
+<li>NumPy est la bibliothèque pour faire des calculs rapides sur des tableaux de nombres.</li>
+<li>Pandas est la bibliothèque pour manipuler des tableaux de données (comme Excel, mais en Python).</li>
+</ul>
+
+<h3 id="ref-analogie-fil-rouge">Analogie fil rouge</h3>
+
+<p>Imagine que tu travailles dans un restaurant. Le <strong>terminal</strong> est ta cuisine (tu sais exactement où tout se trouve). <strong>Git</strong> est ton carnet de recettes (tu notes chaque modification). <strong>Python</strong> est la langue que tu parles. <strong>NumPy</strong> est ta calculatrice de chef (rapide, précise). <strong>Pandas</strong> est ton grand tableau de bord avec toutes les commandes du jour. Et <strong>Matplotlib/Seaborn</strong> sont les jolies assiettes dans lesquelles tu présentes tes plats.</p>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li>CLI et Git — naviguer dans ton ordinateur et sauvegarder ton travail</li>
+<li>Python Essentials — types de données, boucles, fonctions</li>
+<li>NumPy — tableaux numériques rapides</li>
+<li>Pandas — manipulation de données tabulaires</li>
+<li>Visualisation — Matplotlib et Seaborn</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-cli-et-git-naviguer-et-sauvegarder">1) CLI et Git — Naviguer et sauvegarder</h2>
+
+<h3 id="ref-11-le-terminal-se-repérer-dans-ses-fichiers">1.1 Le terminal : se repérer dans ses fichiers</h3>
+
+<p>Le terminal (aussi appelé "ligne de commande" ou CLI pour <em>Command Line Interface</em>) te permet d'interagir avec ton ordinateur en tapant des commandes texte. C'est plus rapide et plus précis que de cliquer avec une souris.</p>
+
+<p>Imagine que ton ordinateur est un immeuble. Chaque dossier est un étage. Les commandes ci-dessous te permettent de te déplacer dans cet immeuble.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pwd          # Affiche où tu es en ce moment (ton &quot;étage&quot; actuel)
+ls           # Liste ce qu&#x27;il y a dans le dossier courant
+la           # Idem, mais montre aussi les fichiers cachés (commençant par .)
+tree         # Affiche toute l&#x27;arborescence en arbre visuel
+cd ..        # Remonte d&#x27;un niveau (aller à l&#x27;étage du dessus)
+cd ../..     # Remonte de deux niveaux
+cd ~         # Va directement à ton dossier personnel (home)
+cd /         # Va à la racine du système (tout en bas de l&#x27;immeuble)
+cd monDossier      # Entre dans le sous-dossier &quot;monDossier&quot;
+cd ../autreEndroit # Va dans un dossier voisin</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>pwd</code> signifie "print working directory" — c'est la première commande à taper quand tu te perds dans le terminal.</p></div></div>
+
+<p>Structure typique d'un projet Le Wagon — voici à quoi ressemble l'arborescence de ton ordinateur :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">/
+├── Users
+│   └── tonNom
+│       ├── code
+│       │   └── tonGitHub
+│       │       ├── 01-Python
+│       │       ├── 02-Data-Toolkit
+│       │       └── ton-projet
+│       ├── Documents
+│       └── Downloads
+└── Volumes</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>En Python, tu peux faire exactement la même chose qu'avec le terminal grâce au module <code>os</code>.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import os           # Importe le module pour interagir avec le système
+
+os.getcwd()         # Retourne le chemin du dossier courant (= pwd dans le terminal)
+os.chdir(&#x27;../dossier&#x27;)  # Change de dossier (= cd ../dossier dans le terminal)</code></pre></div>
+
+
+<hr>
+
+<h3 id="ref-12-git-sauvegarder-son-travail-par-instantanés">1.2 Git : sauvegarder son travail par instantanés</h3>
+
+<p>Git est un outil de gestion de versions. Il te permet de sauvegarder l'état de tes fichiers à un instant précis (on appelle ça un "commit"), d'y revenir si besoin, et de partager ton travail sur GitHub.</p>
+
+<p>Pense à Git comme à un jeu vidéo : tu peux créer des points de sauvegarde à tout moment et y revenir si tu fais une erreur.</p>
+
+<p>Le flux de travail Git se résume en 4 étapes :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git status                                      # Vérifie quels fichiers ont changé
+git add mon_fichier.py mon_notebook.ipynb       # Sélectionne les fichiers à sauvegarder
+git commit -m &quot;Message qui explique le changement&quot;  # Crée le point de sauvegarde
+git push origin master                          # Envoie les sauvegardes sur GitHub</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le message du commit doit être clair et descriptif. "fix" ou "test" ne veut rien dire. Écris plutôt "Ajout de la fonction de nettoyage des données".</p></div></div>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Si tu travailles dans un notebook Jupyter, n'oublie pas d'ajouter le fichier <code>.ipynb</code> dans ton <code>git add</code> — sinon ton travail de notebook ne sera pas sauvegardé !</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-python-essentials-les-bases-du-langage">2) Python Essentials — Les bases du langage</h2>
+
+<h3 id="ref-21-les-types-de-données">2.1 Les types de données</h3>
+
+<p>En Python, chaque valeur a un type. Le type détermine ce qu'on peut faire avec. Voici les types les plus courants :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># --- Les strings (chaînes de caractères) ---
+a = &quot;42&quot;       # Ce n&#x27;est PAS le nombre 42, c&#x27;est le texte &quot;42&quot;
+a * 2          # Répète la string deux fois → &#x27;4242&#x27; (concaténation, pas multiplication !)
+
+# --- Les listes ---
+b = [42]       # Une liste contenant un seul élément
+b * 2          # Répète la liste → [42, 42]
+
+# --- Accès aux éléments d&#x27;une liste ---
+c = [21, 42, 84]   # 3 éléments, indexés 0, 1, 2
+c[0]               # → 21 (le premier élément, attention : on commence à 0 !)
+c[1]               # → 42 (le deuxième élément)
+c[-1]              # → 84 (le dernier élément, index négatif = compte depuis la fin)
+
+# --- Les dictionnaires ---
+d = {&#x27;a&#x27;: 21, &#x27;b&#x27;: 42, &#x27;c&#x27;: 84}   # Paires clé : valeur
+d[&#x27;b&#x27;]                              # → 42 (accès par la clé, pas par la position)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Les index commencent à 0 en Python, pas à 1. <code>c[0]</code> est le premier élément, <code>c[1]</code> est le deuxième, etc. C'est l'erreur la plus fréquente chez les débutants.</p></div></div>
+
+<hr>
+
+<h3 id="ref-22-les-structures-de-contrôle-boucles-et-conditions">2.2 Les structures de contrôle — boucles et conditions</h3>
+
+<p>Imagine que tu as une liste de fichiers et tu veux garder seulement ceux qui sont des fichiers CSV.</p>
+
+<p><strong>Version longue (boucle for + if) :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">filenames = [&quot;fichier_un.csv&quot;, &quot;FICHIER_DEUX.csv&quot;, &quot;.keep&quot;]  # Liste de fichiers
+
+csv_filenames = []                         # Liste vide qui va accueillir les résultats
+
+for file in filenames:                     # Pour chaque fichier dans la liste
+    if file.endswith(&quot;.csv&quot;):              # Si le nom se termine par &quot;.csv&quot;
+        csv_filenames.append(file.lower()) # Ajoute-le en minuscules à la liste résultat
+
+# Résultat : [&#x27;fichier_un.csv&#x27;, &#x27;fichier_deux.csv&#x27;]
+# &quot;.keep&quot; a été ignoré car il ne finit pas par &quot;.csv&quot;</code></pre></div>
+
+
+<p><strong>Version courte (list comprehension) — la façon "pythonique" :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Même résultat, en une seule ligne
+csv_filenames = [file.lower() for file in filenames if file.endswith(&#x27;csv&#x27;)]
+#                ^^^^^^^^^^^^      ^^^^^^^^^^^^^^^^^^^    ^^^^^^^^^^^^^^^^^
+#                Transformation    Pour chaque élément    Condition de filtre</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La <strong>list comprehension</strong> se lit de gauche à droite : "donne-moi <code>file.lower()</code> pour chaque <code>file</code> dans <code>filenames</code>, si ce fichier se termine par 'csv'".</p></div></div>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Les deux versions font exactement la même chose. La list comprehension est plus concise et considérée comme plus "pythonique" (= idiomatique en Python).</p></div></div>
+
+<hr>
+
+<h3 id="ref-23-itérer-sur-un-dictionnaire">2.3 Itérer sur un dictionnaire</h3>
+
+<p>Un dictionnaire contient des paires clé/valeur. Pour accéder aux deux en même temps, on utilise <code>.items()</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">passwords = {&#x27;Jean&#x27;: &#x27;1234&#x27;, &#x27;Phil&#x27;: &#x27;pa$$word&#x27;}  # Dictionnaire nom → mot de passe
+
+# Vérifier si une clé existe
+&#x27;Jean&#x27; in passwords      # → True
+&#x27;Marie&#x27; in passwords     # → False
+
+# Lister les clés et les valeurs
+passwords.keys()         # → dict_keys([&#x27;Jean&#x27;, &#x27;Phil&#x27;])
+passwords.values()       # → dict_values([&#x27;1234&#x27;, &#x27;pa$$word&#x27;])
+
+# Itérer sur les paires clé/valeur avec .items()
+for user, password in passwords.items():   # &quot;dépacke&quot; chaque paire en deux variables
+    print(f&quot;{user} - {password}&quot;)          # f-string pour formater l&#x27;affichage
+
+# Affiche :
+# Jean - 1234
+# Phil - pa$$word</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>for user, password in passwords.items()</code> — c'est ce qu'on appelle le <strong>dépackage de tuple</strong>. Python récupère chaque paire <code>(&#x27;Jean&#x27;, &#x27;1234&#x27;)</code> et la sépare automatiquement en <code>user = &#x27;Jean&#x27;</code> et <code>password = &#x27;1234&#x27;</code>.</p></div></div>
+
+<hr>
+
+<h3 id="ref-24-les-fonctions">2.4 Les fonctions</h3>
+
+<p>Une fonction est un bloc de code réutilisable. Tu la définis une fois, tu l'utilises autant de fois que tu veux.</p>
+
+<p><strong>Bonne pratique : <code>return</code> vs <code>print</code></strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">passwords = {&#x27;Jean&#x27;: &#x27;1234&#x27;, &#x27;Phil&#x27;: &#x27;pa$$word&#x27;}
+
+# Version avec return (BONNE PRATIQUE)
+def get_pwd(user):
+    return passwords.get(user, &quot;Introuvable&quot;)  # .get(clé, valeur_par_défaut)
+
+mot_de_passe = get_pwd(&quot;Phil&quot;)   # → &#x27;pa$$word&#x27; (valeur récupérable et réutilisable)
+print(mot_de_passe)              # → affiche &#x27;pa$$word&#x27;
+
+# Version avec print (MAUVAISE PRATIQUE pour des fonctions utilitaires)
+def get_pwd_mauvais(user):
+    print(passwords.get(user, &quot;Introuvable&quot;))  # Affiche à l&#x27;écran, mais ne retourne rien !
+
+resultat = get_pwd_mauvais(&quot;Phil&quot;)   # Affiche &#x27;pa$$word&#x27;...
+print(resultat)                      # ... mais affiche None ! La valeur est perdue.</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>print()</code> ne renvoie rien — il affiche à l'écran et c'est tout. Si tu veux récupérer la valeur d'une fonction pour la réutiliser ailleurs, tu dois utiliser <code>return</code>.</p></div></div>
+
+<p><strong>Piège classique : les variables locales</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">user = &quot;    Pauline   &quot;   # Variable globale avec des espaces
+
+def clean_user(user):     # &quot;user&quot; ici est une copie LOCALE, pas la variable globale
+    user = user.strip()   # Supprime les espaces — mais seulement dans la copie locale !
+    return user           # Retourne la copie nettoyée
+
+# Version incorrecte
+clean_user(user)           # ❌ La fonction est appelée mais le résultat est perdu
+print(user)                # → &#x27;    Pauline   &#x27; (inchangé !)
+
+# Version correcte
+user = clean_user(user)    # ✅ On réassigne le résultat à la variable globale
+print(user)                # → &#x27;Pauline&#x27; (nettoyé)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Les fonctions Python ne modifient pas les variables qu'on leur passe (pour les types simples comme les strings). Elles travaillent sur une <strong>copie locale</strong>. Pour que la modification soit visible à l'extérieur, il faut <strong>réassigner</strong> : <code>variable = ma_fonction(variable)</code>.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-numpy-calculs-rapides-sur-des-tableaux">3) NumPy — Calculs rapides sur des tableaux</h2>
+
+<p>NumPy (Numerical Python) est la bibliothèque de référence pour faire des calculs mathématiques sur des tableaux de données. Elle est beaucoup plus rapide que les listes Python classiques pour les opérations numériques.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np   # Convention : on importe numpy sous l&#x27;alias &quot;np&quot;</code></pre></div>
+
+
+<hr>
+
+<h3 id="ref-31-créer-un-array-et-comprendre-sa-forme">3.1 Créer un array et comprendre sa forme</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Données sous forme de liste de listes (comme un tableau Excel)
+data_list = [
+    [ 0,  1,  2,  3,  4],   # ligne 0
+    [10, 11, 12, 13, 14],   # ligne 1
+    [20, 21, 22, 23, 24],   # ligne 2
+    [30, 31, 32, 33, 34],   # ligne 3
+    [40, 41, 42, 43, 44],   # ligne 4
+]
+
+data_np = np.array(data_list)   # Convertit la liste de listes en array NumPy 2D
+data_np.shape                   # → (5, 5) : 5 lignes et 5 colonnes
+#                                  (n_lignes, n_colonnes) — toujours dans cet ordre</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>.shape</code> est une <strong>propriété</strong>, pas une fonction. On écrit <code>data_np.shape</code> et non <code>data_np.shape()</code>. Elle retourne un tuple <code>(n_lignes, n_colonnes)</code>.</p></div></div>
+
+<hr>
+
+<h3 id="ref-32-sélectionner-des-données-slicing">3.2 Sélectionner des données (slicing)</h3>
+
+<p>Le slicing NumPy utilise la notation <code>[lignes, colonnes]</code>. La virgule sépare les dimensions.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data_np[1]          # Sélectionne la ligne d&#x27;index 1 (= 2ème ligne)
+                    # → array([10, 11, 12, 13, 14])
+
+data_np[:, 2]       # Le &quot;:&quot; signifie &quot;toutes les lignes&quot;, puis colonne d&#x27;index 2
+                    # → array([ 2, 12, 22, 32, 42])
+
+data_np[2, 1:4]     # Ligne d&#x27;index 2, colonnes d&#x27;index 1 à 3 (4 exclu)
+                    # → array([21, 22, 23])
+
+data_np[2, 1:-1]    # Ligne d&#x27;index 2, de la colonne 1 jusqu&#x27;à l&#x27;avant-dernière
+                    # → array([21, 22, 23]) — plus robuste si le nombre de colonnes change</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Rappel des slices Python : <code>1:4</code> signifie "de l'index 1 inclus à l'index 4 exclu". <code>-1</code> désigne le dernier élément, <code>-2</code> l'avant-dernier, etc.</p></div></div>
+
+<hr>
+
+<h3 id="ref-33-opérations-vectorisées-et-broadcasting">3.3 Opérations vectorisées et broadcasting</h3>
+
+<p>La grande force de NumPy est de faire des opérations sur tous les éléments d'un array en une seule ligne, sans boucle. C'est ce qu'on appelle la <strong>vectorisation</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Addition de deux colonnes élément par élément
+data_np[:, 1] + data_np[:, 2]
+# Colonne 1 : [ 1, 11, 21, 31, 41]
+# Colonne 2 : [ 2, 12, 22, 32, 42]
+# Résultat  : [ 3, 23, 43, 63, 83] ← chaque paire d&#x27;éléments a été additionnée
+
+# Somme selon un axe
+data_np.sum(axis=0)   # Somme sur l&#x27;axe 0 (= en descendant les lignes) → résultat par colonne
+                      # → array([100, 105, 110, 115, 120])
+
+data_np.sum(axis=1)   # Somme sur l&#x27;axe 1 (= en parcourant les colonnes) → résultat par ligne
+                      # → array([ 10,  60, 110, 160, 210])
+
+# Broadcasting : opération avec un scalaire
+data_np + 1           # Ajoute 1 à CHAQUE élément de l&#x27;array en une seule opération</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Comprendre axis=0 et axis=1 — le piège classique :</strong></p>
+<p>- <code>axis=0</code> : tu "descends" le long des lignes → le résultat est une valeur par <strong>colonne</strong></p>
+<p>- <code>axis=1</code> : tu "parcours" le long des colonnes → le résultat est une valeur par <strong>ligne</strong></p>
+<p>Astuce : <code>axis=0</code> réduit les lignes (tu obtiens moins de lignes), <code>axis=1</code> réduit les colonnes.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-pandas-manipulation-de-données-tabulaires">4) Pandas — Manipulation de données tabulaires</h2>
+
+<p>Pandas est la bibliothèque incontournable pour manipuler des tableaux de données structurées (comme des fichiers CSV ou des tables de base de données). Son objet principal est le <strong>DataFrame</strong>, qui ressemble à un tableau Excel.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd   # Convention : on importe pandas sous l&#x27;alias &quot;pd&quot;</code></pre></div>
+
+
+<hr>
+
+<h3 id="ref-41-créer-un-dataframe-et-définir-un-index">4.1 Créer un DataFrame et définir un index</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Un dictionnaire Python : clés = noms de colonnes, valeurs = listes de données
+data = {
+    &#x27;id&#x27;:         [101, 102, 103, 104],
+    &#x27;username&#x27;:   [&#x27;  Jean  &#x27;, &#x27;phil&#x27;, &#x27;  mia &#x27;, &#x27;Pauline&#x27;],
+    &#x27;password&#x27;:   [&#x27;1234&#x27;, &#x27;pa$$word&#x27;, &#x27;ri543&amp;&#x27;, &#x27;fdf342&#x27;],
+    &#x27;birth_date&#x27;: [&#x27;4/5/2008&#x27;, &#x27;5/7/2000&#x27;, &#x27;9/12/1988&#x27;, &#x27;4/1/2004&#x27;],
+    &#x27;gender&#x27;:     [&#x27;M&#x27;, &#x27;M&#x27;, &#x27;W&#x27;, &#x27;W&#x27;],
+}
+
+df = pd.DataFrame(data)   # Crée le DataFrame à partir du dictionnaire
+
+# Définir la colonne &#x27;id&#x27; comme index (identifiant de chaque ligne)
+df.set_index(&#x27;id&#x27;)        # ⚠️ PIÈGE : ne modifie PAS df, retourne une copie !
+df = df.set_index(&#x27;id&#x27;)   # ✅ Réassigner pour que la modification soit effective</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège fondamental Pandas :</strong> beaucoup de méthodes Pandas ne modifient pas le DataFrame en place — elles retournent une copie modifiée. Il faut <strong>réassigner</strong> : <code>df = df.methode()</code>. Si tu oublies le <code>df =</code>, rien ne change.</p></div></div>
+
+<hr>
+
+<h3 id="ref-42-sélectionner-des-colonnes-series-vs-dataframe">4.2 Sélectionner des colonnes : Series vs DataFrame</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df[&#x27;username&#x27;]      # Retourne une Series (= une seule colonne, objet 1D)
+df[[&#x27;username&#x27;]]    # Retourne un DataFrame (= tableau à une colonne, objet 2D)
+                    # La différence : un crochet simple → Series, double → DataFrame</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Pourquoi c'est important ? Certaines fonctions Pandas n'acceptent que des DataFrames, d'autres acceptent aussi les Series. En cas de doute, utilise les <strong>doubles crochets</strong> <code>[[]]</code> pour rester en DataFrame.</p></div></div>
+
+<hr>
+
+<h3 id="ref-43-sélectionner-des-lignes">4.3 Sélectionner des lignes</h3>
+
+<p>Il existe trois façons principales de sélectionner des lignes :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df[0:1]           # Slice par position (comme pour une liste Python) → 1ère ligne
+                  # Fonctionne mais déconseillé : ambigu avec les labels
+
+df.iloc[0:1]      # .iloc = sélection par position entière (Integer LOCation)
+                  # → toujours par numéro de ligne, indépendamment de l&#x27;index
+
+df.loc[101:102]   # .loc = sélection par label d&#x27;index (Label-based LOCation)
+                  # → utilise les valeurs de l&#x27;index (ici 101 et 102)
+                  # Attention : les deux bornes sont INCLUSES avec .loc</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Règle simple : utilise <code>.iloc</code> quand tu penses "je veux la 3ème ligne", utilise <code>.loc</code> quand tu penses "je veux la ligne avec l'id 103".</p></div></div>
+
+<hr>
+
+<h3 id="ref-44-sélectionner-lignes-et-colonnes-simultanément">4.4 Sélectionner lignes ET colonnes simultanément</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df.iloc[0, 2]                            # Ligne position 0, colonne position 2
+                                         # → &#x27;  Jean  &#x27; (1ère ligne, 3ème colonne)
+
+df.loc[:103, [&#x27;username&#x27;, &#x27;birth_date&#x27;]] # Toutes lignes jusqu&#x27;à l&#x27;index 103,
+                                         # seulement les colonnes &#x27;username&#x27; et &#x27;birth_date&#x27;</code></pre></div>
+
+
+<hr>
+
+<h3 id="ref-45-filtrer-les-lignes-avec-un-masque-booléen">4.5 Filtrer les lignes avec un masque booléen</h3>
+
+<p>Le filtrage booléen est la façon la plus courante de sélectionner des lignes selon une condition.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Étape 1 : créer un masque (une colonne de True/False)
+mask = df[&#x27;gender&#x27;] == &#x27;M&#x27;   # Pour chaque ligne, vrai si gender est &#x27;M&#x27;, faux sinon
+# → Series de booléens : [True, True, False, False]
+
+# Étape 2 : appliquer le masque au DataFrame
+df[mask]                     # Garde uniquement les lignes où le masque est True
+
+# En une seule ligne (identique)
+df[df[&#x27;gender&#x27;] == &#x27;M&#x27;]      # Combine les deux étapes</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Tu peux combiner plusieurs conditions avec <code>&amp;</code> (ET) et <code>|</code> (OU) :</p>
+<p><code>df[(df[&#x27;gender&#x27;] == &#x27;M&#x27;) &amp; (df[&#x27;id&#x27;] &gt; 101)]</code> → hommes avec id supérieur à 101.</p></div></div>
+
+<hr>
+
+<h3 id="ref-46-modifier-et-créer-des-colonnes">4.6 Modifier et créer des colonnes</h3>
+
+<p><strong>Méthodes string vectorisées :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df[&#x27;username&#x27;].str.strip()        # Supprime les espaces en début et fin de chaque valeur
+df[&#x27;username&#x27;].str.capitalize()   # Met la 1ère lettre en majuscule pour chaque valeur
+
+# Enchaîner les méthodes et sauvegarder dans une nouvelle colonne
+df[&#x27;username_propre&#x27;] = df[&#x27;username&#x27;].str.strip().str.capitalize()
+# → [&#x27;Jean&#x27;, &#x27;Phil&#x27;, &#x27;Mia&#x27;, &#x27;Pauline&#x27;]</code></pre></div>
+
+
+<p><strong>Créer une colonne avec une opération mathématique :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Version lente (à éviter pour les opérations simples)
+df[&#x27;nouveau&#x27;] = df[&#x27;colonne&#x27;].apply(lambda x: x**2)   # ❌ .apply() = boucle déguisée
+
+# Version rapide (vectorisée, à préférer)
+df[&#x27;nouveau&#x27;] = df[&#x27;colonne&#x27;] ** 2                     # ✅ NumPy sous le capot, très rapide</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>.apply()</code> est lent car il exécute une boucle Python sur chaque ligne. Pour les opérations mathématiques simples (+, -, *, <strong>, etc.), utilise toujours les </strong>opérateurs vectorisés** directement sur la colonne. Garde <code>.apply()</code> pour les transformations complexes qui n'ont pas d'équivalent vectorisé.</p></div></div>
+
+<hr>
+
+<h3 id="ref-47-convertir-des-dates">4.7 Convertir des dates</h3>
+
+<p>Les dates sont souvent stockées comme du texte dans les fichiers CSV. Il faut les convertir en vrai type datetime pour pouvoir faire des calculs.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Convertir la colonne &#x27;birth_date&#x27; du texte vers le type datetime
+df[&#x27;birth_date&#x27;] = pd.to_datetime(df[&#x27;birth_date&#x27;])   # Pandas comprend de nombreux formats
+
+# Calculer l&#x27;âge de chaque personne
+from datetime import datetime
+import numpy as np
+
+df[&#x27;age&#x27;] = (datetime.today() - df[&#x27;birth_date&#x27;]) / np.timedelta64(365, &#x27;D&#x27;)
+# datetime.today()        = date d&#x27;aujourd&#x27;hui
+# - df[&#x27;birth_date&#x27;]      = soustraction de dates → durée en jours
+# / np.timedelta64(365,&#x27;D&#x27;) = conversion en années (flottant)</code></pre></div>
+
+
+<hr>
+
+<h3 id="ref-48-explorer-rapidement-un-dataframe-eda">4.8 Explorer rapidement un DataFrame (EDA)</h3>
+
+<p>Avant toute analyse, ces commandes te donnent une vue d'ensemble de tes données :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df.head()          # Affiche les 5 premières lignes
+df.shape           # → (244, 7) : 244 lignes, 7 colonnes
+df.info()          # Types de chaque colonne, nombre de valeurs non-nulles, mémoire utilisée
+df.dtypes          # Type de donnée de chaque colonne (int, float, object, datetime...)
+df.isnull().sum()  # Nombre de valeurs manquantes (NaN) par colonne
+df.describe()      # Statistiques descriptives : moyenne, écart-type, quartiles, min/max</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Ces 6 commandes sont tes premières actions sur tout nouveau dataset. Prends l'habitude de les exécuter systématiquement avant toute manipulation.</p></div></div>
+
+<hr>
+
+<h3 id="ref-49-agréger-avec-groupby">4.9 Agréger avec groupby</h3>
+
+<p><code>groupby</code> permet de regrouper les lignes selon une colonne et d'appliquer une opération sur chaque groupe — comme les tableaux croisés dynamiques d'Excel.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df.groupby(&#x27;day&#x27;)             # Crée un objet GroupBy (rien ne s&#x27;affiche encore)
+df.groupby(&#x27;day&#x27;).sum()       # Calcule la somme de chaque colonne pour chaque jour
+
+# Trier le résultat après l&#x27;agrégation
+df.groupby(&#x27;day&#x27;).sum().sort_values(by=&#x27;total_bill&#x27;, ascending=False)
+# ascending=False → du plus grand au plus petit
+
+# Afficher un graphe directement depuis un DataFrame groupé
+df.groupby(&#x27;day&#x27;).sum()[[&#x27;total_bill&#x27;]] \
+                 .sort_values(by=&#x27;total_bill&#x27;, ascending=False) \
+                 .plot(kind=&#x27;bar&#x27;)
+# [[&#x27;total_bill&#x27;]] → on sélectionne une seule colonne (double crochet = DataFrame)
+# .plot(kind=&#x27;bar&#x27;) → graphique en barres directement depuis Pandas</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-5-visualisation-matplotlib-et-seaborn">5) Visualisation — Matplotlib et Seaborn</h2>
+
+<p>Matplotlib est la bibliothèque de visualisation de base en Python. Seaborn est une surcouche de Matplotlib qui produit de beaux graphiques statistiques avec moins de code.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import matplotlib.pyplot as plt   # Convention : alias &quot;plt&quot;
+import seaborn as sns              # Convention : alias &quot;sns&quot;</code></pre></div>
+
+
+<hr>
+
+<h3 id="ref-51-visualiser-des-relations-entre-deux-variables">5.1 Visualiser des relations entre deux variables</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Nuage de points simple (scatter plot)
+sns.scatterplot(data=df, x=&#x27;total_bill&#x27;, y=&#x27;tip&#x27;)
+# data= : le DataFrame source
+# x=    : la colonne pour l&#x27;axe horizontal
+# y=    : la colonne pour l&#x27;axe vertical
+
+# Nuage de points avec couleur par catégorie
+sns.scatterplot(data=df, x=&#x27;total_bill&#x27;, y=&#x27;tip&#x27;, hue=&#x27;sex&#x27;)
+# hue= : colore les points selon les valeurs d&#x27;une colonne catégorielle
+
+# Ajouter une ligne droite au graphique (ex : une tendance)
+x1, y1 = 0, 1     # Point de départ de la ligne
+x2, y2 = 50, 6    # Point d&#x27;arrivée de la ligne
+sns.scatterplot(data=df, x=&#x27;total_bill&#x27;, y=&#x27;tip&#x27;)
+plt.plot((x1, x2), (y1, y2), color=&#x27;red&#x27;)   # Ligne rouge par-dessus le scatter</code></pre></div>
+
+
+<hr>
+
+<h3 id="ref-52-comparer-des-catégories">5.2 Comparer des catégories</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Barres simples : valeur moyenne de &#x27;tip&#x27; pour chaque catégorie de &#x27;smoker&#x27;
+sns.barplot(data=df, x=&#x27;smoker&#x27;, y=&#x27;tip&#x27;)
+
+# Double découpage : fumeurs vs non-fumeurs, et en plus par sexe
+sns.barplot(data=df, x=&#x27;smoker&#x27;, y=&#x27;tip&#x27;, hue=&#x27;sex&#x27;)
+# hue= : divise chaque barre en sous-groupes</code></pre></div>
+
+
+<hr>
+
+<h3 id="ref-53-visualiser-des-distributions">5.3 Visualiser des distributions</h3>
+
+<p>Ces graphiques montrent comment les valeurs d'une variable se répartissent.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Histogramme : répartition d&#x27;une variable continue en tranches (bins)
+sns.histplot(data=df, x=&#x27;tip&#x27;)
+
+# Boîte à moustaches : médiane, quartiles, valeurs extrêmes
+sns.boxplot(data=df, y=&#x27;tip&#x27;, x=&#x27;smoker&#x27;)
+
+# Violin plot : comme la boîte à moustaches + densité de distribution
+sns.violinplot(data=df, y=&#x27;tip&#x27;, x=&#x27;smoker&#x27;)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Quand utiliser quel graphique ?</p>
+<p>- <strong>Scatter</strong> : relation entre deux variables numériques</p>
+<p>- <strong>Barplot</strong> : valeur moyenne d'une variable numérique par catégorie</p>
+<p>- <strong>Histplot</strong> : distribution d'une variable numérique</p>
+<p>- <strong>Boxplot</strong> : distribution + valeurs aberrantes, comparaison entre groupes</p>
+<p>- <strong>Violinplot</strong> : comme le boxplot mais avec plus d'information sur la densité</p></div></div>
+
+<hr>
+
+<h3 id="ref-54-plusieurs-graphiques-côte-à-côte-subplots">5.4 Plusieurs graphiques côte à côte (subplots)</h3>
+
+<p>Parfois tu veux afficher plusieurs graphiques sur la même figure pour les comparer.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Crée une figure avec 2 graphiques côte à côte
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
+# plt.subplots(1, 2)      → 1 ligne, 2 colonnes de graphiques
+# figsize=(15, 5)         → largeur 15, hauteur 5 (en pouces)
+# fig                     → la figure entière
+# (ax1, ax2)              → les deux &quot;zones&quot; de dessin individuelles
+
+sns.histplot(data=df, x=&#x27;total_bill&#x27;, ax=ax1)   # Dessinée dans la zone gauche
+sns.histplot(data=df, x=&#x27;tip&#x27;,        ax=ax2)   # Dessinée dans la zone droite</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>ax=ax1</code> permet de dire à Seaborn "dessine ce graphique dans cette zone précise". Sans ça, Seaborn créerait automatiquement une nouvelle figure à chaque fois.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>1. Quelle est la différence entre <code>df[&#x27;col&#x27;]</code> et <code>df[[&#x27;col&#x27;]]</code> en Pandas ?</strong></p>
+<p>Pense au type retourné par chacune des deux écritures.</p>
+
+<p><strong>2. Que se passe-t-il si on écrit <code>df.set_index(&#x27;id&#x27;)</code> sans réassigner ?</strong></p>
+<p>Pourquoi faut-il écrire <code>df = df.set_index(&#x27;id&#x27;)</code> ?</p>
+
+<p><strong>3. Dans NumPy, <code>data_np.sum(axis=0)</code> et <code>data_np.sum(axis=1)</code> : lequel donne une somme par ligne, lequel donne une somme par colonne ? Explique avec tes mots.</strong></p>
+
+<p><strong>4. Quelle est la différence entre <code>return</code> et <code>print</code> dans une fonction Python ? Donne un exemple où <code>print</code> serait insuffisant.</strong></p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Le <strong>terminal</strong> permet de naviguer dans les fichiers avec <code>pwd</code>, <code>ls</code>, <code>cd</code>. Git sauvegarde le travail en 4 étapes : <code>status → add → commit → push</code>.</li>
+<li>En Python, les <strong>index commencent à 0</strong>. Les strings et listes se multiplient par répétition. Les dicts s'interrogent par clé.</li>
+<li>Les <strong>fonctions</strong> doivent utiliser <code>return</code> (pas <code>print</code>) pour que la valeur soit récupérable. Toujours réassigner : <code>variable = ma_fonction(variable)</code>.</li>
+<li><strong>NumPy</strong> travaille sur des arrays 2D. Le slicing <code>[ligne, colonne]</code> permet d'accéder à n'importe quelle cellule. <code>axis=0</code> = résultat par colonne, <code>axis=1</code> = résultat par ligne.</li>
+<li><strong>Pandas</strong> : toujours réassigner après une opération non-inplace (<code>df = df.methode()</code>). <code>df[&#x27;col&#x27;]</code> = Series, <code>df[[&#x27;col&#x27;]]</code> = DataFrame. Filtrer avec un masque booléen.</li>
+<li>Préférer les <strong>opérations vectorisées</strong> (rapides) à <code>.apply()</code> (lent) pour les calculs numériques.</li>
+<li><strong>Seaborn</strong> : <code>scatterplot</code> pour les relations, <code>barplot</code> pour les catégories, <code>histplot</code>/<code>boxplot</code>/<code>violinplot</code> pour les distributions. <code>plt.subplots()</code> pour plusieurs graphiques côte à côte.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-le-modèle-dobjet-python">Le modèle d'objet Python</a></li><li><a href="#syn-scopes-et-closures">Scopes et closures</a></li><li><a href="#syn-décorateurs">Décorateurs</a></li><li><a href="#syn-itérateurs-et-générateurs">Itérateurs et générateurs</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-métaclasses-et-pourquoi-ne-pas-les-utiliser">Métaclasses (et pourquoi ne pas les utiliser)</a></li><li><a href="#syn-asynchronisme-asyncio-en-pratique">Asynchronisme : `asyncio` en pratique</a></li><li><a href="#syn-outils-de-virtualisation-venv-poetry-uv">Outils de virtualisation : venv, poetry, uv</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-le-modèle-dobjet-python">Le modèle d'objet Python</h3>
+
+<p><strong>Tout en Python est un objet</strong> : entiers, fonctions, classes, modules, exceptions. Chaque objet a trois attributs intrinsèques :</p>
+
+<ul>
+<li>Une <strong>identité</strong> (<code>id(obj)</code>) — son adresse mémoire, immuable</li>
+<li>Un <strong>type</strong> (<code>type(obj)</code>) — sa classe d'appartenance</li>
+<li>Une <strong>valeur</strong> — ce qu'il contient</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">x = 42
+id(x)              # 4302845712 (par exemple)
+type(x)            # &lt;class &#x27;int&#x27;&gt;
+isinstance(x, int) # True</code></pre></div>
+
+
+<p><strong>Conséquence</strong> : passer un objet à une fonction passe sa <strong>référence</strong>, pas une copie. Les types <strong>immuables</strong> (<code>int</code>, <code>str</code>, <code>tuple</code>) sont "protégés" parce que toute modification crée un nouvel objet. Les types <strong>mutables</strong> (<code>list</code>, <code>dict</code>, <code>set</code>) peuvent être modifiés en place — ce qui surprend les nouveaux venus de C ou Java.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def add_one(x):
+    x += 1           # Crée un nouvel int, n&#x27;affecte pas l&#x27;original
+
+a = 5
+add_one(a); print(a)        # 5 (int immutable)
+
+def add_zero(lst):
+    lst.append(0)    # Modifie la liste reçue !
+
+b = [1, 2]
+add_zero(b); print(b)       # [1, 2, 0] (list mutable, modifiée !)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : un objet immuable est comme une carte d'identité — quand vous voulez changer le nom, on vous en délivre une nouvelle, l'ancienne est invalidée. Un objet mutable est comme un cahier — vous pouvez ajouter ou raturer des pages sans changer la couverture. La référence (le numéro de page de garde) reste la même.</p></div></div>
+
+<h3 id="syn-scopes-et-closures">Scopes et closures</h3>
+
+<p>Python suit la règle <strong>LEGB</strong> pour résoudre un nom :</p>
+
+<ol>
+<li><strong>L</strong>ocal : variables définies dans la fonction courante</li>
+<li><strong>E</strong>nclosing : variables des fonctions englobantes</li>
+<li><strong>G</strong>lobal : variables au niveau module</li>
+<li><strong>B</strong>uilt-in : noms prédéfinis (<code>len</code>, <code>print</code>, <code>range</code>…)</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">x = &quot;global&quot;
+
+def outer():
+    x = &quot;enclosing&quot;
+    def inner():
+        x = &quot;local&quot;
+        print(x)       # &quot;local&quot;
+    inner()
+    print(x)           # &quot;enclosing&quot;
+
+outer()
+print(x)               # &quot;global&quot;</code></pre></div>
+
+
+<p>Pour <strong>modifier</strong> une variable d'un scope englobant, deux mots-clés :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">counter = 0           # global
+
+def increment_global():
+    global counter
+    counter += 1      # Sans &#x27;global&#x27;, ça crée une variable locale
+
+def make_counter():
+    &quot;&quot;&quot;Factory qui renvoie une fonction-compteur avec son propre état.&quot;&quot;&quot;
+    count = 0
+    def increment():
+        nonlocal count    # Réfère à count de la fonction englobante
+        count += 1
+        return count
+    return increment</code></pre></div>
+
+
+<p><code>make_counter</code> renvoie une <strong>closure</strong> : une fonction qui <strong>capture</strong> des variables de son environnement de définition. C'est la base du pattern factory.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">counter = make_counter()
+counter()   # 1
+counter()   # 2
+counter()   # 3</code></pre></div>
+
+
+<h3 id="syn-décorateurs">Décorateurs</h3>
+
+<p>Un <strong>décorateur</strong> est une fonction qui prend une fonction en argument et renvoie une autre fonction. Le sucre syntaxique <code>@</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def log_calls(func):
+    &quot;&quot;&quot;Décorateur qui log chaque appel d&#x27;une fonction.&quot;&quot;&quot;
+    def wrapper(*args, **kwargs):
+        print(f&quot;Calling {func.__name__}({args}, {kwargs})&quot;)
+        result = func(*args, **kwargs)
+        print(f&quot;  → {result}&quot;)
+        return result
+    return wrapper
+
+@log_calls
+def add(a, b):
+    return a + b
+
+add(3, 4)
+# Calling add((3, 4), {})
+#   → 7
+# 7</code></pre></div>
+
+
+<p>Le <code>@log_calls</code> au-dessus de <code>def add</code> est <strong>strictement équivalent</strong> à <code>add = log_calls(add)</code>. C'est juste plus joli.</p>
+
+<p><strong>Décorateurs courants en data science</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">@functools.lru_cache(maxsize=1024)
+def expensive_compute(x): ...            # Mémoïsation automatique
+
+@property
+def full_name(self):                      # Getter qui se comporte comme un attribut
+    return f&quot;{self.first} {self.last}&quot;
+
+@staticmethod
+def helper(x): return x * 2              # Méthode sans self
+
+@dataclass
+class User: ...                           # Génération auto de __init__/__repr__</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : utilisez <code>functools.wraps</code> quand vous écrivez vos propres décorateurs, sinon <code>wrapper.__name__</code> renvoie <code>&#x27;wrapper&#x27;</code> et le debug devient infernal.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from functools import wraps
+
+def log_calls(func):
+    @wraps(func)               # Préserve __name__, __doc__, etc.
+    def wrapper(*args, **kwargs):
+        ...
+    return wrapper</code></pre></div>
+
+
+<h3 id="syn-itérateurs-et-générateurs">Itérateurs et générateurs</h3>
+
+<p>Un <strong>itérateur</strong> est un objet qui implémente <code>__next__()</code> et <code>__iter__()</code>. La boucle <code>for</code> les utilise sous le capot.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">it = iter([1, 2, 3])
+next(it)    # 1
+next(it)    # 2
+next(it)    # 3
+next(it)    # StopIteration</code></pre></div>
+
+
+<p>Un <strong>générateur</strong> est une fonction qui utilise <code>yield</code> au lieu de <code>return</code>. À chaque appel, elle <strong>reprend</strong> où elle s'était arrêtée.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def fibonacci():
+    a, b = 0, 1
+    while True:
+        yield a          # Pause ici, renvoie a
+        a, b = b, a + b  # Reprend ici au prochain appel
+
+# Utilisation
+gen = fibonacci()
+for _ in range(10):
+    print(next(gen))     # 0, 1, 1, 2, 3, 5, 8, 13, 21, 34</code></pre></div>
+
+
+<p><strong>Avantage massif</strong> : les générateurs sont <strong>paresseux</strong>. Ils ne calculent rien tant qu'on ne demande pas, et n'occupent quasiment pas de mémoire — peu importe la taille de la séquence générée.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Lecture d&#x27;un fichier de 100 Go ligne par ligne — sans saturer la RAM
+def read_lines(path):
+    with open(path) as f:
+        for line in f:
+            yield line.strip()
+
+for line in read_lines(&quot;huge.csv&quot;):
+    process(line)</code></pre></div>
+
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-métaclasses-et-pourquoi-ne-pas-les-utiliser">Métaclasses (et pourquoi ne pas les utiliser)</h3>
+
+<p>Une <strong>métaclasse</strong> est la classe d'une classe. En Python, <code>type</code> est la métaclasse par défaut : <code>type(MyClass) is type</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Singleton(type):
+    &quot;&quot;&quot;Métaclasse qui garantit qu&#x27;une seule instance de la classe existe.&quot;&quot;&quot;
+    _instances = {}
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super().__call__(*args, **kwargs)
+        return cls._instances[cls]
+
+class Database(metaclass=Singleton):
+    def __init__(self):
+        print(&quot;Connecting...&quot;)
+
+a = Database()   # &quot;Connecting...&quot;
+b = Database()   # Pas de print — même instance
+a is b           # True</code></pre></div>
+
+
+<p>C'est puissant mais c'est aussi un piège : <strong>99% des cas</strong> où vous pensez avoir besoin d'une métaclasse, un <strong>décorateur de classe</strong> ou une <strong>factory function</strong> suffit.</p>
+
+<p>Citation de Tim Peters :</p>
+
+<blockquote><p><em>"Metaclasses are deeper magic than 99% of users should ever worry about. If you wonder whether you need them, you don't."</em></p></blockquote>
+
+<p>Connaissance utile pour passer un entretien Python avancé, mais à <strong>éviter</strong> en production.</p>
+
+<h3 id="syn-asynchronisme-asyncio-en-pratique">Asynchronisme : <code>asyncio</code> en pratique</h3>
+
+<p><code>async</code>/<code>await</code> permet d'écrire du code <strong>concurrent</strong> non bloquant. Chaque <code>await</code> indique un point où la tâche peut être suspendue pendant que d'autres tâches progressent.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import asyncio
+import httpx
+
+async def fetch(client, url):
+    r = await client.get(url)           # Pause ici, autre tâche peut tourner
+    return r.status_code
+
+async def main():
+    async with httpx.AsyncClient() as client:
+        urls = [f&quot;https://example.com/page/{i}&quot; for i in range(100)]
+        tasks = [fetch(client, url) for url in urls]
+        results = await asyncio.gather(*tasks)   # Lance les 100 en parallèle
+    return results
+
+asyncio.run(main())</code></pre></div>
+
+
+<p><strong>100 requêtes lancées en parallèle</strong> dans un seul thread, sans le coût de threads OS. Sur des appels I/O (réseau, fichier, DB), c'est <strong>50-100x plus rapide</strong> que la version séquentielle.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège</strong> : <code>asyncio</code> ne donne <strong>pas</strong> de speedup CPU. Il est utile uniquement pour <strong>I/O</strong>. Faire <code>await heavy_compute(x)</code> ne parallélise rien parce que <code>heavy_compute</code> n'est pas awaitable. Pour du calcul, restez sur <code>multiprocessing</code> ou NumPy. Confondre les deux est l'erreur classique en entretien backend.</p></div></div>
+
+<h3 id="syn-outils-de-virtualisation-venv-poetry-uv">Outils de virtualisation : venv, poetry, uv</h3>
+
+<p><strong>Trois générations</strong> d'outils pour isoler les dépendances Python :</p>
+
+<p><strong><code>venv</code></strong> (stdlib) — minimal, suffisant :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">python -m venv .venv
+source .venv/bin/activate
+pip install pandas scikit-learn
+pip freeze &gt; requirements.txt</code></pre></div>
+
+
+<p><strong><code>poetry</code></strong> — gestionnaire moderne avec lock file et résolution de dépendances :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">poetry init
+poetry add pandas scikit-learn
+poetry add --group dev pytest mypy
+poetry install
+poetry run python script.py</code></pre></div>
+
+
+<p>Le fichier <code>pyproject.toml</code> est plus expressif que <code>requirements.txt</code>, et le <code>poetry.lock</code> garantit que tout le monde a <strong>exactement</strong> les mêmes versions.</p>
+
+<p><strong><code>uv</code></strong> (Astral, 2024) — l'évolution actuelle, écrite en <strong>Rust</strong>, 10-100x plus rapide :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">uv venv
+uv pip install pandas scikit-learn
+uv pip compile requirements.in -o requirements.txt</code></pre></div>
+
+
+<p>Compatible avec les workflows pip et poetry. C'est probablement l'outil à adopter pour les nouveaux projets en 2025+.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Recommandation</strong> : pour un projet personnel, <code>venv + pip</code> suffit. Pour un projet partagé en équipe, <code>poetry</code> ou <code>uv</code> apporte la garantie de reproductibilité du lock file. Ce qu'il ne faut <strong>jamais</strong> faire : installer les dépendances dans le Python système (<code>sudo pip install</code> est un anti-pattern majeur).</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Quelle est la différence entre <code>list</code> et <code>tuple</code> au-delà de la mutabilité, et pourquoi cette différence existe-t-elle ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Intention sémantique.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Au-delà de la mutabilité, <strong>trois différences pratiques</strong> :</p>
+
+<ol>
+<li><strong>Performance</strong> : tuple est ~30% plus rapide à créer et plus économe en mémoire (~16 bytes de moins par instance) — parce que sa taille est connue à la création.</li>
+<li><strong>Hashabilité</strong> : un tuple est hashable s'il ne contient que des éléments hashables, donc utilisable comme clé de dict ou élément de set. Une liste ne peut <strong>jamais</strong> l'être.</li>
+<li><strong>Sémantique</strong> :</li>
+</ol>
+<ul>
+<li><strong><code>list</code></strong> pour une <strong>collection homogène de taille variable</strong> (<code>scores = [85, 92]</code>)</li>
+<li><strong><code>tuple</code></strong> pour un <strong>agrégat hétérogène de taille fixe</strong> (<code>point = (x, y)</code>, <code>record = (name, age, city)</code>)</li>
+</ul>
+
+<p>C'est cette <strong>intention sémantique</strong> qui justifie l'existence des deux : utiliser un tuple signale "structure fixe" au lecteur, utiliser une liste signale "collection extensible". Cette distinction est ce qui différencie un dev Python idiomatique d'un dev qui transpose ses habitudes Java.</p>
+
+<p>En entretien : choisir le bon entre les deux dans un exemple est un mini-test révélateur.</p>
+
+</details>
+
+<p><strong>Q2 : Vous avez une fonction <code>f</code> et vous voulez ajouter un cache pour ses appels. Avant d'écrire un wrapper manuel, qu'est-ce que la stdlib propose et quels sont ses pièges ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p><code>functools.lru_cache</code>.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong><code>functools.lru_cache(maxsize=128)</code></strong> ou <strong><code>functools.cache</code></strong> (Python 3.9+, équivalent à <code>lru_cache(maxsize=None)</code>). Décorez votre fonction et c'est tout :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from functools import cache
+
+@cache
+def fib(n):
+    if n &lt; 2:
+        return n
+    return fib(n-1) + fib(n-2)
+
+fib(100)   # Instantané grâce au cache</code></pre></div>
+
+
+<p><strong>Pièges importants</strong> :</p>
+
+<ol>
+<li><strong>La fonction doit être pure</strong> (mêmes entrées → mêmes sorties, sans effet de bord), sinon le cache renvoie des valeurs périmées.</li>
+<li><strong>Tous les arguments doivent être hashables</strong> — donc pas de list, dict, ou DataFrame en argument (utilisez tuple à la place).</li>
+<li><strong><code>maxsize=None</code></strong> est dangereux si l'espace d'entrées est immense : la mémoire grandit indéfiniment.</li>
+</ol>
+
+<p>Pour 99% des cas, c'est exactement la bonne réponse.</p>
+
+<p><strong>Question d'entretien Python</strong> : <em>"Comment optimiser une récursion <code>fibonacci(40)</code> qui prend des secondes ?"</em> — réponse : <code>@lru_cache</code> la rend instantanée par <strong>mémoïsation</strong>. Une seule ligne au lieu de réécrire en programmation dynamique.</p>
+
+</details>
+
+<p><strong>Q3 : Votre script a une variable globale qui change pendant l'exécution. Pourquoi est-ce généralement une mauvaise idée et que faire à la place ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Testabilité.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Variables globales mutables = couplage caché</strong> entre fonctions. Les inconvénients :</p>
+
+<ol>
+<li><strong>Tests difficiles</strong> : chaque test doit reset l'état global ou les tests s'influencent mutuellement.</li>
+<li><strong>Concurrence</strong> : deux threads qui modifient la même globale créent des <strong>race conditions</strong>.</li>
+<li><strong>Lisibilité</strong> : impossible de savoir d'où vient une valeur en lisant juste une fonction.</li>
+</ol>
+
+<p><strong>Solutions selon le cas</strong> :</p>
+
+<p><strong>(a) Passer en argument</strong> : la fonction reçoit explicitement l'état dont elle a besoin. C'est le plus simple.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def compute(data, config):  # config est explicite
+    return data * config.factor</code></pre></div>
+
+
+<p><strong>(b) Encapsuler dans une classe</strong> : si plusieurs fonctions partagent un état, créer une classe avec cet état comme attribut.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Processor:
+    def __init__(self, config):
+        self.config = config
+    def compute(self, data):
+        return data * self.config.factor</code></pre></div>
+
+
+<p><strong>(c) Pattern singleton / injection de dépendances</strong> : pour des configurations partagées globalement (logger, DB connection), utiliser un seul point d'accès initialisé au démarrage.</p>
+
+<p><strong>La règle</strong> : <em>"global mutable state is the root of much evil"</em> — citation reprise de tous les manuels modernes de software engineering.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Fluent Python</em> (Luciano Ramalho, 2nd ed.) — la référence absolue pour Python intermédiaire/avancé</li>
+<li><em>Effective Python</em> (Brett Slatkin, 3rd ed.) — 90 règles pratiques</li>
+<li><a href="https://docs.python.org/3/reference/datamodel.html" target="_blank" rel="noopener">Python data model</a> — la doc officielle des dunders</li>
+<li><a href="https://realpython.com/primer-on-python-decorators/" target="_blank" rel="noopener">Real Python — Decorators</a> — tutoriel solide</li>
+<li><a href="https://docs.python.org/3/library/asyncio.html" target="_blank" rel="noopener">asyncio docs</a> — la référence</li>
+<li><a href="https://docs.astral.sh/uv/" target="_blank" rel="noopener">uv documentation</a> — l'outil moderne de packaging</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../data-toolkit/coding-properly.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Coding Properly</span>
+  </a>
+  <a href="../data-toolkit/ai-as-developer.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">AI as Developer →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

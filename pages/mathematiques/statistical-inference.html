@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistical Inference — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Statistical Inference</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html" class="active">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Maths & Statistiques</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Statistical Inference</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Statistical Inference</h1>
+        <p class="page-objective">🎯 Comprendre comment estimer la vraie valeur d'un paramètre à partir d'un échantillon limité, quantifier la confiance dans ces estimations, et tester des hypothèses de manière rigoureuse.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Hypothèse nulle</div>
+        <div class="key-concept-def">Affirmation par défaut qu&#x27;on cherche à rejeter (`H₀: pas d&#x27;effet`).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">p-value</div>
+        <div class="key-concept-def">Probabilité d&#x27;observer ce résultat (ou plus extrême) si H₀ est vraie.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Intervalle de confiance</div>
+        <div class="key-concept-def">Plage qui contient le vrai paramètre avec une proba donnée.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Erreur de type I / II</div>
+        <div class="key-concept-def">Faux positif (rejeter H₀ à tort) vs faux négatif (ne pas la rejeter).</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-statistical-inference">Cheatsheet — Statistical Inference</a><ol><li><a href="#confidence-interval">Confidence Interval</a></li><li><a href="#p-value-z-test-grand-échantillon">p-value (z-test, grand échantillon)</a></li><li><a href="#t-test-petit-échantillon-sigma-inconnu">t-test (petit échantillon, sigma inconnu)</a></li><li><a href="#z-score-et-t-statistique">z-score et T-statistique</a></li><li><a href="#bayesian-updating-intuition">Bayesian updating (intuition)</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-motivation">1) Motivation</a><ol><li><a href="#11-problème-business">1.1 Problème business</a></li></ol></li><li><a href="#2-rappels-de-probabilités">2) Rappels de probabilités</a><ol><li><a href="#21-concepts-fondamentaux">2.1 Concepts fondamentaux</a></li><li><a href="#22-théorème-central-limite-clt">2.2 Théorème Central Limite (CLT)</a></li><li><a href="#23-z-score">2.3 z-score</a></li></ol></li><li><a href="#3-distribution-déchantillonnage-intervalles-de-confiance">3) Distribution d'échantillonnage & Intervalles de confiance</a><ol><li><a href="#31-estimer-la-taille-moyenne-des-citoyens-us">3.1 Estimer la taille moyenne des citoyens US</a></li><li><a href="#32-best-guess-et-loi-des-grands-nombres">3.2 Best Guess et Loi des Grands Nombres</a></li><li><a href="#33-intervalle-de-confiance-clt">3.3 Intervalle de confiance (CLT)</a></li><li><a href="#34-perception-humaine-des-niveaux-de-confiance">3.4 Perception humaine des niveaux de confiance</a></li><li><a href="#35-taille-déchantillon-n-considérations">3.5 Taille d'échantillon n — considérations</a></li></ol></li><li><a href="#4-hypothesis-testing">4) Hypothesis Testing</a><ol><li><a href="#41-exemple-tester-une-nouvelle-feature-dapp">4.1 Exemple — Tester une nouvelle feature d'app</a></li><li><a href="#42-step-①-design-de-lexpérience-ab-test">4.2 Step ① — Design de l'expérience (A/B Test)</a></li><li><a href="#43-step-②-analyse-statistique">4.3 Step ② — Analyse statistique</a></li><li><a href="#44-puissance-dun-test-statistique">4.4 Puissance d'un test statistique</a></li><li><a href="#45-choisir-α">4.5 Choisir α</a></li></ol></li><li><a href="#5-t-tests-petits-échantillons">5) t-tests (petits échantillons)</a><ol><li><a href="#51-problème-avec-les-petits-n">5.1 Problème avec les petits n</a></li><li><a href="#52-loi-de-student">5.2 Loi de Student</a></li><li><a href="#53-clt-généralisé-récapitulatif">5.3 CLT généralisé — récapitulatif</a></li></ol></li><li><a href="#6-interprétation-bayésienne">6) Interprétation bayésienne</a><ol><li><a href="#61-problème-tester-léquité-dune-pièce">6.1 Problème — Tester l'équité d'une pièce</a></li><li><a href="#62-sans-prior-fréquentiste">6.2 Sans prior (fréquentiste)</a></li><li><a href="#63-avec-prior-bayésien">6.3 Avec prior (bayésien)</a></li></ol></li><li><a href="#7-bibliographie">7) Bibliographie</a><li><a href="#8-projet-olist">8) Projet Olist</a><ol><li><a href="#81-présentation">8.1 Présentation</a></li><li><a href="#82-workflow-vendeur">8.2 Workflow vendeur ⚙️</a></li><li><a href="#83-workflow-client">8.3 Workflow client ⚙️</a></li><li><a href="#84-dataset">8.4 Dataset</a></li><li><a href="#85-plan-du-module">8.5 Plan du module</a></li><li><a href="#86-challenges-du-jour">8.6 Challenges du jour</a></li></ol></li><li><a href="#your-turn">Your turn !</a></ol></div>
+<p>🎯 Comprendre comment estimer la vraie valeur d'un paramètre à partir d'un échantillon limité, quantifier la confiance dans ces estimations, et tester des hypothèses de manière rigoureuse.</p>
+
+<hr>
+
+<h2 id="cheatsheet-statistical-inference">📋 Cheatsheet — Statistical Inference</h2>
+
+<h3 id="confidence-interval">Confidence Interval</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from scipy import stats
+
+## Distribution estimée de la moyenne (mu=170, standard error=0.63)
+mu_estim = stats.norm(170, 0.63)
+
+## Intervalle de confiance à 95%
+confidence_interval = 0.95
+sup_proba = (1 + confidence_interval) / 2   # → 0.975
+inf_proba = (1 - confidence_interval) / 2   # → 0.025
+
+mu_upper = mu_estim.ppf(sup_proba)   # borne supérieure (ppf = inverse du cdf)
+mu_lower = mu_estim.ppf(inf_proba)   # borne inférieure
+
+## Vérification : doit retourner ~0.95
+round(mu_estim.cdf(mu_upper) - mu_estim.cdf(mu_lower), 2)   # → 0.95</code></pre></div>
+
+
+<h3 id="p-value-z-test-grand-échantillon">p-value (z-test, grand échantillon)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from scipy.stats import norm
+
+## Sous H0 : mu=300, sigma=50, n=100 → standard error = 50/sqrt(100) = 5
+X = norm(300, 50 / (100 ** 0.5))
+
+## P(X_bar &gt;= 310 | H0) → test unilatéral droit
+p_value = 1 - X.cdf(310)
+round(p_value, 2)   # → 0.02  (&lt; 0.05 ⇒ on rejette H0)</code></pre></div>
+
+
+<h3 id="t-test-petit-échantillon-sigma-inconnu">t-test (petit échantillon, sigma inconnu)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from scipy import stats
+
+## Test si la moyenne d&#x27;un échantillon diffère d&#x27;une valeur de référence
+t_stat, p_value = stats.ttest_1samp(sample, popmean=300)   # retourne (t, p)
+
+## Test deux groupes indépendants (A/B test)
+t_stat, p_value = stats.ttest_ind(group_a, group_b)         # retourne (t, p)</code></pre></div>
+
+
+<h3 id="z-score-et-t-statistique">z-score et T-statistique</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## z-score : observation en nb d&#x27;écarts-types au-dessus/en-dessous de mu
+z = (x - mu) / sigma
+
+## Standard error (SE) de la moyenne empirique
+se = sigma / (n ** 0.5)        # ou s/sqrt(n) si sigma inconnu
+
+## T-statistique (petit n, sigma inconnu) → suit Student(n-1)
+t = (x_bar - mu) / (s / (n ** 0.5))</code></pre></div>
+
+
+<h3 id="bayesian-updating-intuition">Bayesian updating (intuition)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Prior      : p(H)        = N(0.5, 0.3)   → croyance initiale (coin fair)
+## Likelihood : p(data|H)   = N(0.7, 0.1)   → observé après 10 tirages
+## Posterior  : p(H|data)  ∝ prior × likelihood   → mise à jour bayésienne
+## Sans prior fort : posterior ≈ likelihood (MLE)</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Interpréter l'intervalle de confiance comme une probabilité sur μ</strong></p>
+<p>❌ <code>&quot;Il y a 95% de chances que μ soit entre 168.7 et 171.2&quot;</code></p>
+<p>✅ "Si on répète l'expérience, 95% des intervalles construits contiendront le vrai μ" — μ est fixe, pas aléatoire !</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre "ne pas rejeter H0" avec "accepter H0"</strong></p>
+<p>❌ p-value > 0.05 → "H0 est vraie, la feature n'a aucun effet"</p>
+<p>✅ p-value > 0.05 → "On manque de preuves suffisantes pour rejeter H0" — ce n'est pas une preuve que H0 est vraie</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Changer α après avoir vu les résultats (p-hacking)</strong></p>
+<p>❌ Observer p = 0.07, puis décider de fixer α = 0.10 pour rejeter H0</p>
+<p>✅ Fixer α <strong>avant</strong> l'expérience en fonction du risque acceptable d'erreur de Type I (faux positif)</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser un z-test quand n est petit et σ est inconnu</strong></p>
+<p>❌ <code>norm(mu, s/sqrt(n)).cdf(x)</code> avec n = 12 et σ non connu</p>
+<p>✅ <code>stats.ttest_1samp(sample, mu)</code> — la loi de Student(n-1) est adaptée aux petits échantillons</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier que le CLT nécessite des observations indépendantes</strong></p>
+<p>❌ Appliquer le CLT sur des données corrélées (séries temporelles, cluster) sans correction</p>
+<p>✅ Vérifier que l'échantillonnage est aléatoire et que n < 10% × N (population finie)</p></div></div>
+
+<hr>
+
+<h2 id="1-motivation">1) Motivation</h2>
+
+<h3 id="11-problème-business">1.1 Problème business</h3>
+
+<p>Comment augmenter la satisfaction client tout en maintenant un volume de commandes sain ? La satisfaction se mesure via le <code>review_score</code>.</p>
+
+<p>👉 On cherche à identifier les features les plus impactantes sur le <code>review_score</code></p>
+
+<p>Si on trouve que <code>wait_time</code> est fortement corrélé à un mauvais score :</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Question clé :</strong> Comment être <strong>confiant</strong> que nos findings sur des données historiques vont bien se généraliser ? On ne peut pas attendre des années pour le vérifier.</p></div></div>
+
+<figure><img src="../../assets/images/statistical-inference-01-70e83358.png" alt="" loading="lazy"></figure>
+
+<p><strong>Welcome Statistical Inference Analysis !</strong></p>
+
+<p>1️⃣ Entraîner des modèles ML linéaires pour trouver des corrélations</p>
+
+<p>2️⃣ Utiliser le CLT pour <strong>quantifier la significativité statistique</strong> de ces findings</p>
+
+<hr>
+
+<h2 id="2-rappels-de-probabilités">2) Rappels de probabilités</h2>
+
+<h3 id="21-concepts-fondamentaux">2.1 Concepts fondamentaux</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Définition</th><th></th></tr></thead><tbody><tr><td><strong>Variable aléatoire</strong> X</td><td>Résultat numérique d'une expérience aléatoire</td><td></td></tr><tr><td><strong>Distribution</strong> p(X) = p(μ, σ)</td><td>Distribution sous-jacente de X — μ et σ sont ses "statistiques"</td><td></td></tr><tr><td><strong>Loi Normale</strong> N(μ, σ)</td><td>Entièrement décrite par μ et σ seulement</td><td></td></tr><tr><td><strong>Probabilité conditionnelle</strong> P(B\</td><td>A)</td><td>Probabilité de B sachant A</td></tr></tbody></table></div>
+<h3 id="22-théorème-central-limite-clt">2.2 Théorème Central Limite (CLT)</h3>
+
+<figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/IllustrationCentralTheorem.png/800px-IllustrationCentralTheorem.png" alt="" loading="lazy"></figure>
+
+<p>Lorsqu'on considère des variables aléatoires <strong>indépendantes</strong> X₁…Xₙ avec une distribution commune p(μ, σ) :</p>
+
+<ul>
+<li>Leur moyenne X̄ converge vers une loi Normale quand n augmente</li>
+<li>Centrée sur μ, avec un écart-type <strong>σ/√n</strong> (= standard error)</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Plus n est grand, plus la distribution de X̄ est <strong>resserrée</strong> autour de μ. C'est le fondement de toute l'inférence statistique.</p></div></div>
+
+<h3 id="23-z-score">2.3 z-score</h3>
+
+<p>Si x est une observation de X(μ, σ), son z-score est :</p>
+
+<p>z = (x − μ) / σ</p>
+
+<p>Le z-score exprime x en <strong>nombre d'écarts-types</strong> au-dessus ou en dessous de μ.</p>
+
+<p>Pour la moyenne empirique : Z = (X̄ − μ) / (σ/√n) → N(0,1) quand n → ∞</p>
+
+<hr>
+
+<h2 id="3-distribution-déchantillonnage-intervalles-de-confiance">3) Distribution d'échantillonnage & Intervalles de confiance</h2>
+
+<h3 id="31-estimer-la-taille-moyenne-des-citoyens-us">3.1 Estimer la taille moyenne des citoyens US</h3>
+
+<p>🎯 Objectif : estimer μ sur N = 331 M personnes</p>
+
+<p>❌ Impossible de tout mesurer → on utilise un <strong>échantillon aléatoire</strong></p>
+
+<p><strong>Méthode :</strong> sélectionner aléatoirement n = 1000 personnes 🎲</p>
+
+<p>On calcule sur l'échantillon :</p>
+
+<ul>
+<li>la moyenne empirique X̄ₙ = 170 cm</li>
+<li>l'écart-type empirique s = 20 cm</li>
+</ul>
+
+<figure><img src="../../assets/images/statistical-inference-03-52d8e05a.png" alt="" loading="lazy"></figure>
+
+<h3 id="32-best-guess-et-loi-des-grands-nombres">3.2 Best Guess et Loi des Grands Nombres</h3>
+
+<p><strong>Best Guess :</strong> X̄ₙ = 170 cm est notre meilleure estimation de μ.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Loi des Grands Nombres :</strong> X̄ₙ converge vers μ quand n → ∞ — c'est la base intuitive de l'estimation.</p></div></div>
+
+<h3 id="33-intervalle-de-confiance-clt">3.3 Intervalle de confiance (CLT)</h3>
+
+<p>Par le CLT, avec n assez grand et un échantillonnage aléatoire :</p>
+
+<p>X̄ₙ ≈ N(μ, σ/√n) ≈ N(μ, 20/√1000) = N(μ, 0.63)</p>
+
+<figure><img src="../../assets/images/statistical-inference-04-46b2ffae.png" alt="" loading="lazy"></figure>
+
+<p>On a mesuré X̄ₙ = 170 cm → la distribution de μ la plus vraisemblable est <strong>N(170, 0.63)</strong></p>
+
+<p>C'est le <strong>Maximum Likelihood Estimate (MLE)</strong> pour μ.</p>
+
+<figure><img src="../../assets/images/statistical-inference-05-6976cf05.png" alt="" loading="lazy"></figure>
+
+<p>👉 On lit : μ = 170 ± 2 × 0.63 [95% CI] ⇔ μ entre 168.7 et 171.2 cm</p>
+
+<p><strong>Interprétation correcte :</strong></p>
+
+<p>✅ Si on répète l'expérience, 95% des intervalles construits contiendront le vrai μ</p>
+
+<figure><img src="../../assets/images/statistical-inference-06-33a9a7a9.png" alt="" loading="lazy"></figure>
+
+<p>✅ On est confiant à 95% que [168.7 – 171.2] capture la vraie taille moyenne.</p>
+
+<p>❌ Ne pas dire "il y a 95% de chances que μ soit entre…" — μ est fixe, pas aléatoire !</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Vérification via la CDF (Cumulative Density Function)
+from scipy import stats
+
+mu_estim = stats.norm(170, 0.63)   # distribution estimée de la moyenne
+
+## Probabilité que mu soit entre 168.7 et 171.2
+print(&#x27;% confidence interval = &#x27;, round(mu_estim.cdf(171.2) - mu_estim.cdf(168.7), 2))</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+% confidence interval =  0.95</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Formule générale pour tout niveau de confiance
+confidence_interval = 0.99
+
+sup_proba = (1 + confidence_interval) / 2   # 99.5%
+inf_proba = (1 - confidence_interval) / 2   # 0.5%
+
+mu_upper_bound = mu_estim.ppf(sup_proba)   # inverse du cdf → hauteur associée à la proba
+mu_lower_bound = mu_estim.ppf(inf_proba)
+
+print(&#x27;mu_upper_bound: &#x27;, mu_upper_bound)
+print(&#x27;mu_lower_bound: &#x27;, mu_lower_bound)
+print(&#x27;% confidence interval = &#x27;, round(mu_estim.cdf(mu_upper_bound) - mu_estim.cdf(mu_lower_bound), 2))</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+mu_upper_bound:  171.6227724612358
+mu_lower_bound:  168.3772275387642
+% confidence interval =  0.99</code></pre></div>
+
+
+<h3 id="34-perception-humaine-des-niveaux-de-confiance">3.4 Perception humaine des niveaux de confiance</h3>
+
+<p>Noms courants selon l'IPCC (Intergovernmental Panel on Climate Change) :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Niveau</th><th>Nom</th></tr></thead><tbody><tr><td>1-sigma (68%)</td><td>"likely"</td></tr><tr><td>90%</td><td>"very likely"</td></tr><tr><td>2-sigma (95%)</td><td>"extremely likely"</td></tr><tr><td>3-sigma (99.7%)</td><td>"virtually certain"</td></tr><tr><td>5-sigma</td><td>"proof" (seuil en physique théorique)</td></tr></tbody></table></div>
+<p>👉 <a href="https://archive.ipcc.ch/publications_and_data/ar4/wg1/en/ch1s1-6.html" target="_blank" rel="noopener">Source IPCC</a></p>
+
+<figure><img src="../../assets/images/statistical-inference-07-2066aae9.svg" alt="" loading="lazy"></figure>
+
+<h3 id="35-taille-déchantillon-n-considérations">3.5 Taille d'échantillon n — considérations</h3>
+
+<p><strong>Quand n est-il assez grand pour le CLT ?</strong></p>
+
+<ul>
+<li>n > 30 ⇒ CLT s'applique <strong>et</strong> s peut approximer σ dans les z-statistics</li>
+<li>n > 10 <em>et</em> observations non-skewed sans outliers ⇒ CLT s'applique encore</li>
+<li>Population globale connue comme normale ⇒ CLT s'applique même pour n petit</li>
+</ul>
+
+<p><strong>Quand n est-il assez petit pour des tirages indépendants (sans remise) ?</strong></p>
+
+<ul>
+<li>n < 10% × N</li>
+</ul>
+
+<hr>
+
+<h2 id="4-hypothesis-testing">4) Hypothesis Testing</h2>
+
+<h3 id="41-exemple-tester-une-nouvelle-feature-dapp">4.1 Exemple — Tester une nouvelle feature d'app</h3>
+
+<p>Contexte : PM d'une app mobile. N = 1000 utilisateurs, μ = 300 sec/session, σ = 50 sec.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Hypothèse : passer en dark mode augmenterait le temps par session. Comment tester cela rigoureusement ?</p></div></div>
+
+<h3 id="42-step-①-design-de-lexpérience-ab-test">4.2 Step ① — Design de l'expérience (A/B Test)</h3>
+
+<ol>
+<li>Développer la feature (dark mode)</li>
+<li>Créer deux groupes : <strong>control group</strong> vs. <strong>treatment group</strong></li>
+<li>Assigner aléatoirement <strong>n = 100 users</strong> au groupe traitement</li>
+<li>Déployer le dark mode uniquement au groupe traitement</li>
+<li>Collecter les stats : on mesure <strong>X̄₁₀₀ = 310 secondes</strong></li>
+</ol>
+
+<figure><img src="../../assets/images/statistical-inference-08-c710ea8f.png" alt="" loading="lazy"></figure>
+
+<h3 id="43-step-②-analyse-statistique">4.3 Step ② — Analyse statistique</h3>
+
+<ol>
+<li><strong>H0</strong> (Null Hypothesis) : μ = 300 (inchangé en dark mode)</li>
+<li><strong>Ha</strong> (Alternative Hypothesis) : μ > 300 (augmenté en dark mode)</li>
+<li><strong>Significance Level</strong> α = 5% (choisi avant l'expérience)</li>
+<li>Calculer la <strong>p-value</strong> = P(X̄ₙ ≥ 310 | H0)</li>
+</ol>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Règle de décision :</strong></p>
+<p>- p-value < α → on <strong>rejette H0</strong> en faveur de Ha</p>
+<p>- p-value > α → on <strong>ne peut pas rejeter H0</strong> (≠ accepter H0 !)</p></div></div>
+
+<p>Par le CLT (n=100 assez grand) : X̄₁₀₀ ≈ N(300, 50/√100) sous H0</p>
+
+<figure><img src="../../assets/images/statistical-inference-09-639d8829.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from scipy.stats import norm
+
+## Distribution de X_bar sous H0 : mu=300, se=50/sqrt(100)=5
+X = norm(300, 50 / (100 ** 0.5))
+
+## P(X_bar &gt;= 310 | H0) → p-value du test unilatéral droit
+p_value = 1 - X.cdf(310)
+round(p_value, 2)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+0.02</code></pre></div>
+
+
+<p>👍 p-value = 0.02 < 0.05 ⇒ On rejette H0 ⇒ Le dark mode a un effet réel !</p>
+
+<h3 id="44-puissance-dun-test-statistique">4.4 Puissance d'un test statistique</h3>
+
+<p>La <strong>puissance</strong> = probabilité de <strong>rejeter correctement H0</strong> quand elle doit l'être.</p>
+
+<ul>
+<li>Power = P(ne pas rater une bonne feature en A/B testing)</li>
+<li>Power = P(ne pas rater un médicament efficace en essai clinique)</li>
+<li>Power = 1 − P(Type II error)</li>
+</ul>
+
+<p>👉 <a href="https://www.youtube.com/watch?v=Rsc5znwR5FA&list=PLblh5JKOoLUIcdlgu78MnlATeyx4cEVeR&index=112&t=0s" target="_blank" rel="noopener">StatQuest - vidéo intuitive sur la puissance</a></p>
+
+<h3 id="45-choisir-α">4.5 Choisir α</h3>
+
+<p>α = 0.05 est le niveau standard (utilisé en essais cliniques notamment).</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Type I error</strong> (Faux Positif) vs. <strong>Type II error</strong> (Faux Négatif) — le choix de α dépend de votre tolérance à chacun de ces risques.</p></div></div>
+
+<p>❌ Ne jamais changer α <strong>après</strong> avoir vu les résultats pour faire passer son hypothèse.</p>
+
+<p>✅ Choisir α <strong>avant</strong> l'expérience.</p>
+
+<hr>
+
+<h2 id="5-t-tests-petits-échantillons">5) t-tests (petits échantillons)</h2>
+
+<h3 id="51-problème-avec-les-petits-n">5.1 Problème avec les petits n</h3>
+
+<figure><img src="../../assets/images/statistical-inference-10-46b2ffae.png" alt="" loading="lazy"></figure>
+
+<p>Quand n est petit et σ inconnu, la Z-statistique pose deux problèmes :</p>
+
+<ul>
+<li>Elle ne peut pas être approximée par N(0,1)</li>
+<li>Elle ne peut pas être calculée sans connaître σ</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Solution :</strong> utiliser la <strong>T-statistique</strong> T = (X̄ − μ) / (s/√n) qui suit une <strong>loi de Student Tₙ₋₁(0,1)</strong> — identique au raisonnement z-test, mais avec la bonne distribution !</p></div></div>
+
+<h3 id="52-loi-de-student">5.2 Loi de Student</h3>
+
+<p>Tᵥ(μ, σ) — une distribution par <strong>degré de liberté</strong> ν :</p>
+
+<ul>
+<li>Queues plus épaisses que la loi Normale (plus conservatrice)</li>
+<li>Tᵥ → N quand ν → ∞</li>
+<li>Accessible via <code>scipy.stats.t</code> ou une t-table</li>
+</ul>
+
+<figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Student_t_pdf.svg/1024px-Student_t_pdf.svg.png" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/statistical-inference-12-9720335a.jpg" alt="" loading="lazy"></figure>
+
+<p>👉 <a href="https://statisticsbyjim.com/hypothesis-testing/degrees-freedom-statistics/" target="_blank" rel="noopener">Statistics By Jim — Degrees of Freedom</a></p>
+
+<h3 id="53-clt-généralisé-récapitulatif">5.3 CLT généralisé — récapitulatif</h3>
+
+<p>Pour X₁…Xₙ indépendantes, de moyenne μ et écart-type σ :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Cas</th><th>Statistique</th><th>Distribution</th></tr></thead><tbody><tr><td>n grand (> 30), σ connu</td><td>Z = (X̄ − μ) / (σ/√n)</td><td>N(0, 1)</td></tr><tr><td>n quelconque, σ inconnu</td><td>T = (X̄ − μ) / (s/√n)</td><td>Tₙ₋₁(0, 1)</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>Pourquoi (n-1) ? → <a href="https://www.statisticshowto.com/bessels-correction/" target="_blank" rel="noopener">Bessel's Correction</a></p></div></div>
+
+<hr>
+
+<h2 id="6-interprétation-bayésienne">6) Interprétation bayésienne</h2>
+
+<h3 id="61-problème-tester-léquité-dune-pièce">6.1 Problème — Tester l'équité d'une pièce</h3>
+
+<p>On tire une pièce n fois pour mesurer sa <strong>fairness</strong> : p(H) = probabilité de tomber sur Face.</p>
+
+<p>🤔 Est-ce que μ = 0.5 ? La pièce est-elle équitable ?</p>
+
+<h3 id="62-sans-prior-fréquentiste">6.2 Sans prior (fréquentiste)</h3>
+
+<p>On observe X̄ = 0.7 sur 10 tirages. Sans croyance préalable :</p>
+
+<ul>
+<li>Meilleure estimation (MLE) : μ = 0.7</li>
+<li>Distribution postérieure ≈ N(0.7, σ/√n) = N(0.7, 0.1)</li>
+</ul>
+
+<figure><img src="../../assets/images/statistical-inference-13-b024c4ea.png" alt="" loading="lazy"></figure>
+
+<h3 id="63-avec-prior-bayésien">6.3 Avec prior (bayésien)</h3>
+
+<p>On pense que la plupart des pièces sont équitables → prior : p(H) = N(0.5, 0.3)</p>
+
+<p><strong>Formule de Bayes :</strong> p(H|data) ∝ p(data|H) × p(H)</p>
+
+<ul>
+<li><strong>Prior</strong> p(H) : croyance initiale</li>
+<li><strong>Likelihood</strong> p(data|H) : vraisemblance des données observées</li>
+<li><strong>Posterior</strong> p(H|data) : croyance mise à jour après l'expérience</li>
+</ul>
+
+<figure><img src="../../assets/images/statistical-inference-14-35734646.png" alt="" loading="lazy"></figure>
+
+<p>👉 Le posterior est un <strong>compromis</strong> entre la croyance initiale et les données observées — plus les données sont nombreuses, plus elles prennent le dessus sur le prior.</p>
+
+<hr>
+
+<h2 id="7-bibliographie">7) Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://www.youtube.com/watch?time_continue=3&v=rhuMH8A5t8s&feature=emb_logo" target="_blank" rel="noopener">3Blue1Brown — Bayesian Updating and Probability Density Functions</a></li>
+<li>👉 <a href="https://medium.com/towards-data-science/probability-concepts-explained-bayesian-inference-for-parameter-estimation-90e8930e5348" target="_blank" rel="noopener">Towards Data Science — Bayesian Inference for Parameter Estimation</a></li>
+<li>👉 <a href="https://www.khanacademy.org/math/statistics-probability" target="_blank" rel="noopener">Khan Academy — Statistics and Probability</a> (~20h)</li>
+<li>👉 <a href="https://cdn1.sph.harvard.edu/wp-content/uploads/sites/1268/2019/10/ci_hernanrobins_26oct19.pdf" target="_blank" rel="noopener">Hernán & Robins — Causal Inference: What if</a> (textbook <a href="http://M.Sc" target="_blank" rel="noopener">M.Sc</a>.)</li>
+</ul>
+
+<hr>
+
+<h2 id="8-projet-olist">8) Projet Olist</h2>
+
+<h3 id="81-présentation">8.1 Présentation</h3>
+
+<figure><img src="../../assets/images/statistical-inference-15-ab631007.png" alt="" loading="lazy"></figure>
+
+<ul>
+<li>🗓 Fondé en 2015</li>
+<li>🇧🇷 Opère au Brésil</li>
+<li>💻 100% digital (Pure Digital Player)</li>
+<li>🛒 Service e-commerce pour vendeurs — connecte de petits marchands aux grandes marketplaces (Amazon, Bahia, Walmart…)</li>
+<li>✅ Offre des services de logistique et gestion de stocks</li>
+<li>❗️ Ne vend rien directement aux consommateurs</li>
+</ul>
+
+<h3 id="82-workflow-vendeur">8.2 Workflow vendeur ⚙️</h3>
+
+<ol>
+<li>Rejoindre Olist</li>
+<li>Uploader son catalogue → Olist affiche les produits sur les marketplaces</li>
+<li>Recevoir une notification à chaque commande</li>
+<li>Remettre les articles à un transporteur tiers</li>
+</ol>
+
+<h3 id="83-workflow-client">8.3 Workflow client ⚙️</h3>
+
+<ol>
+<li>Parcourir les produits sur les marketplaces</li>
+<li>Acheter via <code>Olist.store</code></li>
+<li>Recevoir une date de livraison estimée</li>
+<li>Recevoir la commande</li>
+<li>Laisser un avis</li>
+</ol>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Entre 2016 et mi-2018, un avis pouvait être laissé dès l'envoi de la commande — avant même réception du produit !</p></div></div>
+
+<h3 id="84-dataset">8.4 Dataset</h3>
+
+<ul>
+<li>Publié sur Kaggle en novembre 2018 : 👉 <a href="http://kaggle.com/olistbr/brazilian-ecommerce" target="_blank" rel="noopener">kaggle.com/olistbr/brazilian-ecommerce</a></li>
+<li>~100k commandes entre 2016 et 2018</li>
+<li>8 fichiers CSV, ~120 MB</li>
+<li>Données réelles (informations identifiables anonymisées)</li>
+</ul>
+
+<figure><img src="../../assets/images/statistical-inference-16-b019bc5b.png" alt="" loading="lazy"></figure>
+
+<h3 id="85-plan-du-module">8.5 Plan du module</h3>
+
+<p><strong>Unit 1 — Data Preparation</strong></p>
+
+<ul>
+<li>Organiser le repo</li>
+<li>Préparer les données Orders dans une classe réutilisable</li>
+<li>Comprendre les données</li>
+</ul>
+
+<p><strong>Unit 2 & 3 — Data Analysis</strong></p>
+
+<ul>
+<li>Décomposer le problème en analyses actionnables</li>
+<li>Utiliser la régression linéaire/logistique pour comprendre l'impact sur les review scores</li>
+</ul>
+
+<p><strong>Unit 4 — Visualisation & Dashboard</strong></p>
+
+<ul>
+<li>Analyser et visualiser avec Plotly (en binôme)</li>
+<li>Construire un dashboard avec Dash</li>
+<li>Présenter les résultats</li>
+</ul>
+
+<h3 id="86-challenges-du-jour">8.6 Challenges du jour</h3>
+
+<p><strong>Challenge 1 :</strong> Setup du projet</p>
+
+<p><strong>Challenge 2 :</strong> Charger les données dans un dictionnaire de DataFrames</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">{
+    &#x27;orders&#x27;: DataFrame,   # données du fichier orders.csv
+    &#x27;sellers&#x27;: DataFrame,  # données du fichier sellers.csv
+    ...
+}</code></pre></div>
+
+
+<p><strong>Challenge 3 :</strong> Explorer les données</p>
+
+<p><strong>Challenge 4 :</strong> Préparer et enrichir les données orders pour la modélisation statistique</p>
+
+<hr>
+
+<h2 id="your-turn">🚀 Your turn !</h2>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-pourquoi-linférence-statistique">Pourquoi l'inférence statistique ?</a></li><li><a href="#ref-les-3-idées-clés-à-retenir">Les 3 idées clés à retenir</a></li><li><a href="#ref-plan-du-cours">Plan du cours</a></li></ol></li><li><a href="#ref-1-rappels-de-probabilités">1. Rappels de probabilités</a><ol><li><a href="#ref-11-les-concepts-de-base">1.1 Les concepts de base</a></li><li><a href="#ref-12-le-théorème-central-limite-clt-lidée-la-plus-importante-du-cours">1.2 Le Théorème Central Limite (CLT) — l'idée la plus importante du cours</a></li><li><a href="#ref-13-le-z-score-mesurer-lécart-en-nombre-décarts-types">1.3 Le z-score — mesurer l'écart en "nombre d'écarts-types"</a></li></ol></li><li><a href="#ref-2-distribution-déchantillonnage-et-intervalles-de-confiance">2. Distribution d'échantillonnage et intervalles de confiance</a><ol><li><a href="#ref-21-le-problème-estimer-une-vraie-valeur-inconnue">2.1 Le problème : estimer une vraie valeur inconnue</a></li><li><a href="#ref-22-construire-lintervalle-de-confiance">2.2 Construire l'intervalle de confiance</a></li><li><a href="#ref-23-interprétation-correcte-de-lintervalle-de-confiance">2.3 Interprétation correcte de l'intervalle de confiance</a></li><li><a href="#ref-24-code-python-calculer-un-intervalle-de-confiance">2.4 Code Python — calculer un intervalle de confiance</a></li><li><a href="#ref-25-les-niveaux-de-confiance-en-pratique">2.5 Les niveaux de confiance en pratique</a></li><li><a href="#ref-26-quelle-taille-déchantillon-est-suffisante">2.6 Quelle taille d'échantillon est suffisante ?</a></li></ol></li><li><a href="#ref-3-tests-dhypothèses-hypothesis-testing">3. Tests d'hypothèses (Hypothesis Testing)</a><ol><li><a href="#ref-31-le-problème-est-ce-que-mon-observation-est-due-au-hasard">3.1 Le problème : est-ce que mon observation est due au hasard ?</a></li><li><a href="#ref-32-les-4-étapes-dun-test-statistique">3.2 Les 4 étapes d'un test statistique</a></li><li><a href="#ref-33-code-python-calculer-la-p-value">3.3 Code Python — calculer la p-value</a></li><li><a href="#ref-34-la-puissance-dun-test">3.4 La puissance d'un test</a></li><li><a href="#ref-35-les-deux-types-derreurs">3.5 Les deux types d'erreurs</a></li></ol></li><li><a href="#ref-4-le-t-test-pour-les-petits-échantillons">4. Le t-test — pour les petits échantillons</a><ol><li><a href="#ref-41-pourquoi-le-z-test-ne-suffit-pas-toujours">4.1 Pourquoi le z-test ne suffit pas toujours</a></li><li><a href="#ref-42-la-t-statistique-et-la-loi-de-student">4.2 La T-statistique et la loi de Student</a></li><li><a href="#ref-43-la-loi-de-student-intuition-visuelle">4.3 La loi de Student — intuition visuelle</a></li><li><a href="#ref-44-récapitulatif-z-test-vs-t-test">4.4 Récapitulatif — z-test vs t-test</a></li><li><a href="#ref-45-code-python-t-test-avec-scipy">4.5 Code Python — t-test avec scipy</a></li></ol></li><li><a href="#ref-5-interprétation-bayésienne-intuition">5. Interprétation bayésienne (intuition)</a><ol><li><a href="#ref-51-un-problème-différent-la-pièce-équitable">5.1 Un problème différent : la pièce équitable</a></li><li><a href="#ref-52-le-théorème-de-bayes">5.2 Le théorème de Bayes</a></li></ol></li><li><a href="#ref-6-erreurs-classiques-à-éviter">6. Erreurs classiques à éviter</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<h3 id="ref-pourquoi-linférence-statistique">Pourquoi l'inférence statistique ?</h3>
+
+<p>Imaginons que tu travailles pour un institut de sondage. Tu veux connaitre la taille moyenne de tous les Français — 68 millions de personnes. Mesurer tout le monde est impossible. Alors tu prends un <strong>échantillon</strong> : 1 000 personnes choisies au hasard. Tu calcules leur taille moyenne et tu te demandes : "Est-ce que ce chiffre reflète bien la réalité du pays entier ?"</p>
+
+<p>C'est exactement ce que fait l'inférence statistique : <strong>tirer des conclusions sur une grande population à partir d'un petit échantillon</strong>, tout en mesurant l'incertitude de ces conclusions.</p>
+
+<h3 id="ref-les-3-idées-clés-à-retenir">Les 3 idées clés à retenir</h3>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>1. On ne peut jamais mesurer toute une population — on travaille toujours sur un échantillon.</p>
+<p>2. La moyenne d'un échantillon suit une loi normale (grâce au Théorème Central Limite).</p>
+<p>3. L'intervalle de confiance et la p-value sont deux outils pour quantifier l'incertitude.</p></div></div>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie fil rouge — le sondage :</strong> Tout au long de ce cours, imagine que tu estimes la taille moyenne des citoyens américains (330 millions de personnes). Tu sélectionnes 1 000 personnes au hasard. Toutes les formules du cours s'illustrent avec cet exemple concret.</p></div></div>
+
+<h3 id="ref-plan-du-cours">Plan du cours</h3>
+
+<ol>
+<li>Rappels de probabilités et Théorème Central Limite (CLT)</li>
+<li>Distribution d'échantillonnage et intervalles de confiance</li>
+<li>Tests d'hypothèses et p-value</li>
+<li>t-test pour les petits échantillons</li>
+<li>Interprétation bayésienne (intuition)</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-rappels-de-probabilités">1. Rappels de probabilités</h2>
+
+<h3 id="ref-11-les-concepts-de-base">1.1 Les concepts de base</h3>
+
+<p>Avant de plonger dans l'inférence, rappelons quelques notions fondamentales.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>En clair</th></tr></thead><tbody><tr><td><strong>Variable aléatoire</strong> $X$</td><td>Une grandeur dont la valeur dépend du hasard. Ex : la taille d'une personne choisie au hasard.</td></tr><tr><td><strong>Distribution</strong> $p(X)$</td><td>La "forme" de la répartition des valeurs possibles de $X$. Elle est résumée par $\mu$ (moyenne) et $\sigma$ (écart-type).</td></tr><tr><td><strong>Loi Normale</strong> $\mathcal{N}(\mu, \sigma)$</td><td>La fameuse courbe en cloche. Complètement décrite par deux paramètres : $\mu$ et $\sigma$.</td></tr><tr><td><strong>Probabilité conditionnelle</strong> $P(B \mid A)$</td><td>La probabilité que $B$ se réalise, <strong>sachant que</strong> $A$ est déjà arrivé.</td></tr></tbody></table></div>
+<h3 id="ref-12-le-théorème-central-limite-clt-lidée-la-plus-importante-du-cours">1.2 Le Théorème Central Limite (CLT) — l'idée la plus importante du cours</h3>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><strong>Le CLT en une phrase :</strong> si tu prends beaucoup de moyennes d'échantillons aléatoires, ces moyennes suivent une loi normale — même si les données originales ne sont pas du tout normales.</p></div></div>
+
+<p><strong>Formellement :</strong> soit $X_1, X_2, \ldots, X_n$ des variables aléatoires <strong>indépendantes</strong>, toutes issues de la même distribution de moyenne $\mu$ et d'écart-type $\sigma$. Alors, quand $n$ devient grand :</p>
+
+<div class="katex-display">$$\bar{X}_n \xrightarrow{n \to \infty} \mathcal{N}\!\left(\mu,\ \frac{\sigma}{\sqrt{n}}\right)$$</div>
+
+<p><strong>Traduction symbole par symbole :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Symbole</th><th>Signification</th></tr></thead><tbody><tr><td>$\bar{X}_n$</td><td>La moyenne calculée sur un échantillon de taille $n$</td></tr><tr><td>$\mathcal{N}(\ldots)$</td><td>"Suit une loi normale centrée sur..."</td></tr><tr><td>$\mu$</td><td>La vraie moyenne de la population (inconnue !)</td></tr><tr><td>$\frac{\sigma}{\sqrt{n}}$</td><td>L'<strong>erreur standard</strong> (standard error) — à quel point la moyenne d'un échantillon peut varier</td></tr></tbody></table></div>
+<p><strong>Intuition :</strong> plus ton échantillon est grand, plus ta moyenne est précise. Si $n = 4$, l'erreur standard vaut $\sigma/2$. Si $n = 100$, elle vaut $\sigma/10$. Multiplier la taille de l'échantillon par 100 divise l'incertitude par 10.</p>
+
+<p><strong>Exemple numérique :</strong> taille des Américains, $\sigma = 20$ cm, $n = 1000$.</p>
+<div class="katex-display">$$\text{Erreur standard} = \frac{20}{\sqrt{1000}} \approx 0.63 \text{ cm}$$</div>
+<p>La moyenne de l'échantillon ne dévie donc que de $\pm 0.63$ cm en moyenne.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le CLT ne s'applique correctement que si les observations sont <strong>indépendantes</strong> (tirées au hasard, sans lien entre elles). Attention aux séries temporelles ou aux données corrélées !</p></div></div>
+
+<h3 id="ref-13-le-z-score-mesurer-lécart-en-nombre-décarts-types">1.3 Le z-score — mesurer l'écart en "nombre d'écarts-types"</h3>
+
+<p>Le z-score transforme n'importe quelle valeur en un nombre sans unité : "combien d'écarts-types suis-je au-dessus ou en-dessous de la moyenne ?"</p>
+
+<div class="katex-display">$$z = \frac{x - \mu}{\sigma}$$</div>
+
+<p><strong>Traduction :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Symbole</th><th>Signification</th></tr></thead><tbody><tr><td>$x$</td><td>L'observation dont on veut mesurer l'écart</td></tr><tr><td>$\mu$</td><td>La moyenne de référence (la moyenne de la population)</td></tr><tr><td>$\sigma$</td><td>L'écart-type de la population</td></tr><tr><td>$z$</td><td>Le résultat : le nombre d'écarts-types d'écart</td></tr></tbody></table></div>
+<p><strong>Exemple :</strong> si la taille moyenne est $\mu = 170$ cm avec $\sigma = 20$ cm, et qu'une personne mesure 190 cm :</p>
+<div class="katex-display">$$z = \frac{190 - 170}{20} = \frac{20}{20} = 1$$</div>
+<p>Cette personne est à <strong>1 écart-type</strong> au-dessus de la moyenne. Rien d'extraordinaire.</p>
+
+<p>Pour la <strong>moyenne d'un échantillon</strong> (et non plus une observation individuelle), on remplace $\sigma$ par l'erreur standard $\sigma/\sqrt{n}$ :</p>
+
+<div class="katex-display">$$Z = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \xrightarrow{n \to \infty} \mathcal{N}(0, 1)$$</div>
+
+<p><strong>Traduction :</strong> ce z-score de la moyenne suit une loi normale standard (centrée sur 0, écart-type 1) quand $n$ est grand.</p>
+
+<hr>
+
+<h2 id="ref-2-distribution-déchantillonnage-et-intervalles-de-confiance">2. Distribution d'échantillonnage et intervalles de confiance</h2>
+
+<h3 id="ref-21-le-problème-estimer-une-vraie-valeur-inconnue">2.1 Le problème : estimer une vraie valeur inconnue</h3>
+
+<p>On veut connaitre $\mu$ = la taille moyenne de <strong>tous</strong> les Américains ($N = 331$ millions). C'est impossible à mesurer directement.</p>
+
+<p>On prend donc un <strong>échantillon aléatoire</strong> de $n = 1000$ personnes. On calcule :</p>
+<ul>
+<li>La moyenne empirique : $\bar{X}_n = 170$ cm</li>
+<li>L'écart-type empirique : $s = 20$ cm</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Loi des Grands Nombres :</strong> plus $n$ est grand, plus $\bar{X}_n$ se rapproche de $\mu$. C'est l'intuition qui justifie d'utiliser la moyenne d'échantillon comme estimation de la vraie moyenne.</p></div></div>
+
+<h3 id="ref-22-construire-lintervalle-de-confiance">2.2 Construire l'intervalle de confiance</h3>
+
+<p>Par le CLT, on sait que :</p>
+
+<div class="katex-display">$$\bar{X}_n \approx \mathcal{N}\!\left(\mu,\ \frac{s}{\sqrt{n}}\right) = \mathcal{N}\!\left(\mu,\ \frac{20}{\sqrt{1000}}\right) \approx \mathcal{N}(\mu,\ 0.63)$$</div>
+
+<p>On a observé $\bar{X}_n = 170$ cm. Notre meilleure estimation (<strong>Maximum de Vraisemblance, MLE</strong>) est donc que $\mu$ suit approximativement $\mathcal{N}(170,\ 0.63)$.</p>
+
+<p>À partir de là, on peut calculer un <strong>intervalle de confiance à 95%</strong> :</p>
+
+<div class="katex-display">$$\mu \approx \bar{X}_n \pm 2 \times \frac{s}{\sqrt{n}} \quad \Longleftrightarrow \quad \mu \in [168.7,\ 171.2] \text{ cm}$$</div>
+
+<p>La formule générale pour un intervalle de confiance au niveau $(1 - \alpha)$ est :</p>
+
+<div class="katex-display">$$\text{IC}_{1-\alpha} = \left[\bar{X}_n - z_{1-\alpha/2} \cdot \frac{s}{\sqrt{n}},\quad \bar{X}_n + z_{1-\alpha/2} \cdot \frac{s}{\sqrt{n}}\right]$$</div>
+
+<p><strong>Traduction symbole par symbole :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Symbole</th><th>Signification</th></tr></thead><tbody><tr><td>$\bar{X}_n$</td><td>La moyenne calculée sur l'échantillon</td></tr><tr><td>$z_{1-\alpha/2}$</td><td>Le "multiplicateur" issu de la loi normale. Pour 95% : $z = 1.96 \approx 2$. Pour 99% : $z \approx 2.58$</td></tr><tr><td>$s$</td><td>L'écart-type estimé sur l'échantillon (on ne connait pas $\sigma$)</td></tr><tr><td>$\sqrt{n}$</td><td>La racine carrée de la taille de l'échantillon</td></tr><tr><td>$s/\sqrt{n}$</td><td>L'erreur standard : l'incertitude sur la moyenne</td></tr></tbody></table></div>
+<p><strong>Exemple numérique :</strong> $\bar{X}_n = 170$, $s = 20$, $n = 1000$.</p>
+<div class="katex-display">$$\text{IC}_{95\%} = \left[170 - 1.96 \times 0.63,\quad 170 + 1.96 \times 0.63\right] = [168.77,\; 171.23]$$</div>
+
+<h3 id="ref-23-interprétation-correcte-de-lintervalle-de-confiance">2.3 Interprétation correcte de l'intervalle de confiance</h3>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>L'erreur la plus fréquente :</strong> dire "il y a 95% de chances que $\mu$ soit entre 168.7 et 171.2 cm". C'est <strong>faux</strong> !</p>
+<p>La vraie interprétation : si on répétait l'expérience 100 fois (100 sondages différents de 1 000 personnes), environ 95 de ces intervalles construits contiendraient le vrai $\mu$. La vraie valeur $\mu$ est <strong>fixe</strong> — c'est l'intervalle qui est aléatoire !</p></div></div>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p><strong>Formulation correcte :</strong> "On est confiant à 95% que l'intervalle $[168.7 ; 171.2]$ capture la vraie taille moyenne des Américains."</p></div></div>
+
+<h3 id="ref-24-code-python-calculer-un-intervalle-de-confiance">2.4 Code Python — calculer un intervalle de confiance</h3>
+
+<p>Voici comment calculer un intervalle de confiance en Python avec <code>scipy</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from scipy import stats
+
+# On modélise la distribution de mu grâce au CLT
+# Centre : notre estimation 170 cm, écart-type : l&#x27;erreur standard 0.63 cm
+mu_estim = stats.norm(170, 0.63)   # distribution N(170, 0.63)
+
+# On veut un intervalle de confiance à 95%
+confidence_interval = 0.95
+
+# Les bornes en termes de probabilité cumulée :
+# - La borne sup correspond à la probabilité 97.5% (= (1 + 0.95) / 2)
+# - La borne inf correspond à la probabilité 2.5%  (= (1 - 0.95) / 2)
+sup_proba = (1 + confidence_interval) / 2   # → 0.975
+inf_proba = (1 - confidence_interval) / 2   # → 0.025
+
+# .ppf() = &quot;Percent Point Function&quot; = inverse de la CDF
+# Donne la valeur de x telle que P(X &lt;= x) = proba
+mu_upper = mu_estim.ppf(sup_proba)   # borne supérieure → ~171.23
+mu_lower = mu_estim.ppf(inf_proba)   # borne inférieure → ~168.77
+
+# Vérification : la différence de CDF entre les deux bornes doit valoir 0.95
+round(mu_estim.cdf(mu_upper) - mu_estim.cdf(mu_lower), 2)   # → 0.95</code></pre></div>
+
+
+<p><strong>Récap du code :</strong> on modélise $\mu$ comme une loi normale centrée sur notre estimation (170 cm) avec l'erreur standard comme écart-type. <code>.ppf()</code> est l'inverse de la CDF — elle répond à "quelle valeur correspond à telle probabilité cumulée ?". On récupère ainsi les deux bornes de l'intervalle.</p>
+
+<h3 id="ref-25-les-niveaux-de-confiance-en-pratique">2.5 Les niveaux de confiance en pratique</h3>
+
+<p>Le GIEC (Intergovernmental Panel on Climate Change) utilise ces noms courants :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Niveau de confiance</th><th>Nom informel</th></tr></thead><tbody><tr><td>68% (1 sigma)</td><td>"probable"</td></tr><tr><td>90%</td><td>"très probable"</td></tr><tr><td>95% (2 sigma)</td><td>"extrêmement probable"</td></tr><tr><td>99.7% (3 sigma)</td><td>"virtuellement certain"</td></tr><tr><td>5 sigma</td><td>"preuve" (standard en physique des particules)</td></tr></tbody></table></div>
+<h3 id="ref-26-quelle-taille-déchantillon-est-suffisante">2.6 Quelle taille d'échantillon est suffisante ?</h3>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><strong>Règle pratique pour le CLT :</strong></p>
+<p>- $n > 30$ : le CLT s'applique, et $s$ peut approximer $\sigma$</p>
+<p>- $n > 10$ avec des données sans valeurs aberrantes ni forte asymétrie : le CLT tient encore</p>
+<p>- Population connue comme normale : le CLT s'applique même pour $n$ petit</p>
+<p><strong>Pour des tirages indépendants (sans remise) :</strong></p>
+<p>- Il faut que $n < 10\% \times N$ (taille de l'échantillon < 10% de la population totale)</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-tests-dhypothèses-hypothesis-testing">3. Tests d'hypothèses (Hypothesis Testing)</h2>
+
+<h3 id="ref-31-le-problème-est-ce-que-mon-observation-est-due-au-hasard">3.1 Le problème : est-ce que mon observation est due au hasard ?</h3>
+
+<p>Contexte : tu es Product Manager d'une app mobile. Ton app a $N = 1000$ utilisateurs avec une durée de session moyenne $\mu = 300$ secondes ($\sigma = 50$ secondes). Tu veux tester si passer en <strong>dark mode</strong> augmente le temps de session.</p>
+
+<p>Tu sélectionnes $n = 100$ utilisateurs, tu actives le dark mode pour eux uniquement. Résultat observé : $\bar{X}_{100} = 310$ secondes.</p>
+
+<p><strong>La grande question :</strong> est-ce que ces 10 secondes de plus sont <strong>vraiment dues</strong> au dark mode, ou juste du hasard d'échantillonnage ?</p>
+
+<h3 id="ref-32-les-4-étapes-dun-test-statistique">3.2 Les 4 étapes d'un test statistique</h3>
+
+<p><strong>Etape 1 — Design de l'expérience (A/B Test)</strong></p>
+
+<ol>
+<li>Développer la feature (dark mode)</li>
+<li>Créer deux groupes : <strong>groupe contrôle</strong> (app normale) vs. <strong>groupe traitement</strong> (dark mode)</li>
+<li>Assigner aléatoirement les 100 utilisateurs au groupe traitement</li>
+<li>Collecter les données après un certain temps</li>
+</ol>
+
+<p><strong>Etape 2 — Poser les hypothèses</strong></p>
+
+<ul>
+<li>$H_0$ (Hypothèse Nulle) : $\mu = 300$ sec — le dark mode ne change rien</li>
+<li>$H_a$ (Hypothèse Alternative) : $\mu > 300$ sec — le dark mode augmente le temps de session</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>$H_0$ est toujours l'hypothèse du "statu quo", du "rien ne change". On cherche à la <strong>rejeter</strong> pour prouver qu'il se passe quelque chose.</p></div></div>
+
+<p><strong>Etape 3 — Choisir le seuil de significativité $\alpha$</strong></p>
+
+<p>On fixe $\alpha = 0.05$ (5%). C'est le standard le plus utilisé.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Il faut fixer $\alpha$ <strong>AVANT</strong> de voir les résultats. Le fixer après en fonction des résultats observés, c'est du <strong>p-hacking</strong> — une pratique frauduleuse qui fausse les conclusions.</p></div></div>
+
+<p><strong>Etape 4 — Calculer la p-value et décider</strong></p>
+
+<p>La <strong>p-value</strong> est la probabilité d'observer un résultat aussi extrême (ou plus) que celui qu'on a mesuré, <strong>en supposant que $H_0$ est vraie</strong>.</p>
+
+<div class="katex-display">$$\text{p-value} = P(\bar{X}_n \geq 310 \mid H_0 \text{ vraie}) = P(\bar{X}_n \geq 310 \mid \mu = 300)$$</div>
+
+<p>Par le CLT, sous $H_0$ : $\bar{X}_{100} \approx \mathcal{N}(300,\ 50/\sqrt{100}) = \mathcal{N}(300,\ 5)$</p>
+
+<p><strong>Règle de décision :</strong></p>
+
+<div class="katex-display">$$\text{p-value} < \alpha \Rightarrow \text{on rejette } H_0 \quad | \quad \text{p-value} \geq \alpha \Rightarrow \text{on ne peut pas rejeter } H_0$$</div>
+
+<h3 id="ref-33-code-python-calculer-la-p-value">3.3 Code Python — calculer la p-value</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from scipy.stats import norm
+
+# Sous H0 : la distribution de la moyenne X_bar est N(300, 5)
+# mu = 300 (hypothèse nulle), se = sigma / sqrt(n) = 50 / sqrt(100) = 5
+X = norm(300, 50 / (100 ** 0.5))   # → N(300, 5)
+
+# P(X_bar &gt;= 310 | H0) = probabilité d&#x27;observer 310 ou plus si H0 est vraie
+# = 1 - P(X_bar &lt;= 310) = 1 - CDF(310)
+p_value = 1 - X.cdf(310)
+
+round(p_value, 2)   # → 0.02</code></pre></div>
+
+
+<p>Résultat : $\text{p-value} = 0.02 < \alpha = 0.05$</p>
+
+<p><strong>Conclusion : on rejette $H_0$.</strong> Le dark mode a un effet statistiquement significatif sur le temps de session.</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p><strong>Interprétation :</strong> si le dark mode ne changeait rien ($H_0$ vraie), il y aurait seulement 2% de chances d'observer une moyenne de 310 sec ou plus. C'est trop improbable pour être dû au hasard — on en déduit que le dark mode a bien un effet.</p></div></div>
+
+<h3 id="ref-34-la-puissance-dun-test">3.4 La puissance d'un test</h3>
+
+<p>La <strong>puissance</strong> d'un test est la probabilité de <strong>rejeter $H_0$ quand elle est effectivement fausse</strong>. Autrement dit, la probabilité de détecter un vrai effet.</p>
+
+<div class="katex-display">$$\text{Puissance} = 1 - P(\text{Erreur de type II})$$</div>
+
+<p><strong>Pourquoi c'est important ?</strong> Un test peu puissant "rate" de vrais effets. En médecine, une faible puissance signifie qu'on peut rater un médicament qui fonctionne vraiment.</p>
+
+<h3 id="ref-35-les-deux-types-derreurs">3.5 Les deux types d'erreurs</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>$H_0$ vraie</th><th>$H_0$ fausse</th></tr></thead><tbody><tr><td><strong>On rejette $H_0$</strong></td><td>Erreur Type I (Faux Positif) — probabilité = $\alpha$</td><td>Décision correcte — probabilité = Puissance</td></tr><tr><td><strong>On ne rejette pas $H_0$</strong></td><td>Décision correcte</td><td>Erreur Type II (Faux Négatif) — probabilité = $\beta$</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><strong>Erreur Type I</strong> : on croit que le dark mode marche, mais c'était du hasard. (Faux positif)</p>
+<p><strong>Erreur Type II</strong> : le dark mode marche vraiment, mais on ne l'a pas détecté. (Faux négatif)</p>
+<p>Le choix de $\alpha$ reflète ta tolérance à l'erreur de type I. Plus $\alpha$ est petit, moins tu risques les faux positifs — mais plus tu risques les faux négatifs.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège majeur :</strong> $\text{p-value} > 0.05$ ne signifie PAS que $H_0$ est vraie ! Cela signifie seulement qu'on <strong>manque de preuves suffisantes</strong> pour la rejeter. C'est une nuance cruciale.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-le-t-test-pour-les-petits-échantillons">4. Le t-test — pour les petits échantillons</h2>
+
+<h3 id="ref-41-pourquoi-le-z-test-ne-suffit-pas-toujours">4.1 Pourquoi le z-test ne suffit pas toujours</h3>
+
+<p>Jusqu'ici on a utilisé le z-test, valable quand :</p>
+<ul>
+<li>$n$ est grand (> 30)</li>
+<li>$\sigma$ (l'écart-type de la population) est connu</li>
+</ul>
+
+<p>Mais si $n$ est petit (par exemple $n = 12$) et qu'on ne connait pas $\sigma$ (ce qui est presque toujours le cas en pratique), la Z-statistique est trop imprécise.</p>
+
+<p><strong>Le problème :</strong> quand $n$ est petit, $s$ (l'écart-type de l'échantillon) est lui-même une estimation imprécise de $\sigma$. Utiliser $\mathcal{N}(0,1)$ sous-estime l'incertitude réelle.</p>
+
+<h3 id="ref-42-la-t-statistique-et-la-loi-de-student">4.2 La T-statistique et la loi de Student</h3>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Solution :</strong> remplacer le z-score par la <strong>T-statistique</strong>, qui utilise $s$ à la place de $\sigma$ et suit une <strong>loi de Student</strong> plutôt qu'une loi normale.</p></div></div>
+
+<div class="katex-display">$$T = \frac{\bar{X} - \mu}{s / \sqrt{n}}$$</div>
+
+<p><strong>Traduction symbole par symbole :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Symbole</th><th>Signification</th></tr></thead><tbody><tr><td>$\bar{X}$</td><td>La moyenne de l'échantillon</td></tr><tr><td>$\mu$</td><td>La valeur de référence testée (celle de $H_0$)</td></tr><tr><td>$s$</td><td>L'écart-type <strong>estimé</strong> sur l'échantillon (on ne connait pas $\sigma$)</td></tr><tr><td>$\sqrt{n}$</td><td>La racine carrée de la taille de l'échantillon</td></tr><tr><td>$T$</td><td>La statistique de test — suit $t_{n-1}(0, 1)$</td></tr></tbody></table></div>
+<p>Cette statistique $T$ ne suit pas $\mathcal{N}(0,1)$ mais la <strong>loi de Student</strong> à $n-1$ degrés de liberté, notée $t_{n-1}$.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><strong>Pourquoi $n - 1$ degrés de liberté ?</strong> Parce qu'on a "dépensé" une information pour estimer la moyenne. Il ne reste donc que $n-1$ "informations libres" pour estimer la variance. C'est la <strong>correction de Bessel</strong>.</p></div></div>
+
+<h3 id="ref-43-la-loi-de-student-intuition-visuelle">4.3 La loi de Student — intuition visuelle</h3>
+
+<p>La loi de Student ressemble à la loi normale, mais avec des <strong>queues plus épaisses</strong> (plus de masse aux extrêmes). Cela reflète l'incertitude supplémentaire due au petit échantillon.</p>
+
+<ul>
+<li>Avec peu de données ($n$ petit, $\nu$ petit) : queues très épaisses — beaucoup d'incertitude</li>
+<li>Quand $n \to \infty$ : la loi de Student converge vers $\mathcal{N}(0, 1)$</li>
+</ul>
+
+<p><strong>Pourquoi des queues plus épaisses ?</strong> Parce qu'avec un petit échantillon, notre estimation $s$ de $\sigma$ peut être loin de la vraie valeur. Il faut donc être plus "conservateur" et accepter que les valeurs extrêmes sont plus probables qu'on ne le pense.</p>
+
+<h3 id="ref-44-récapitulatif-z-test-vs-t-test">4.4 Récapitulatif — z-test vs t-test</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Situation</th><th>Statistique utilisée</th><th>Distribution</th></tr></thead><tbody><tr><td>$n$ grand (> 30), $\sigma$ connu</td><td>$Z = \dfrac{\bar{X} - \mu}{\sigma / \sqrt{n}}$</td><td>$\mathcal{N}(0, 1)$</td></tr><tr><td>$n$ quelconque, $\sigma$ inconnu</td><td>$T = \dfrac{\bar{X} - \mu}{s / \sqrt{n}}$</td><td>$t_{n-1}(0, 1)$</td></tr></tbody></table></div>
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p><strong>En pratique :</strong> quand tu ne connais pas $\sigma$ (presque toujours), utilise le t-test. Si $n > 30$, les résultats du t-test et du z-test sont très proches.</p></div></div>
+
+<h3 id="ref-45-code-python-t-test-avec-scipy">4.5 Code Python — t-test avec scipy</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from scipy import stats
+
+# Exemple 1 : tester si la moyenne d&#x27;un échantillon diffère d&#x27;une valeur de référence
+# Ici, on teste si la moyenne de &#x27;sample&#x27; est différente de 300
+t_stat, p_value = stats.ttest_1samp(sample, popmean=300)
+# t_stat : la valeur de la T-statistique calculée
+# p_value : la p-value associée (test bilatéral par défaut)
+
+# Exemple 2 : comparer deux groupes indépendants (A/B test)
+# Ici, on teste si group_a et group_b ont la même moyenne
+t_stat, p_value = stats.ttest_ind(group_a, group_b)
+# Retourne (T-statistique, p-value) pour le test bilatéral H0: mu_a = mu_b</code></pre></div>
+
+
+<p><strong>Récap du code :</strong> <code>ttest_1samp</code> compare un échantillon à une valeur fixe. <code>ttest_ind</code> compare deux groupes entre eux (parfait pour les A/B tests). Dans les deux cas, scipy gère automatiquement la loi de Student avec le bon nombre de degrés de liberté.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais utiliser <code>norm(mu, s/sqrt(n)).cdf(x)</code> quand $n$ est petit et $\sigma$ inconnu. Toujours utiliser <code>stats.ttest_1samp(sample, mu)</code> dans ce cas — la loi de Student est la bonne distribution.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-interprétation-bayésienne-intuition">5. Interprétation bayésienne (intuition)</h2>
+
+<h3 id="ref-51-un-problème-différent-la-pièce-équitable">5.1 Un problème différent : la pièce équitable</h3>
+
+<p>On lance une pièce $n = 10$ fois. On obtient 7 faces (70%). La pièce est-elle truquée ?</p>
+
+<p>L'approche fréquentiste (z-test ou t-test) répond : "Quelle est la probabilité d'observer 70% de faces si la pièce est équitable ?" Elle ne tient pas compte de nos croyances préalables.</p>
+
+<p>L'approche <strong>bayésienne</strong> dit : "Avant l'expérience, je pense que la pièce est probablement équitable. L'expérience me fait réviser cette croyance, mais pas complètement."</p>
+
+<h3 id="ref-52-le-théorème-de-bayes">5.2 Le théorème de Bayes</h3>
+
+<div class="katex-display">$$p(H \mid \text{données}) \propto p(\text{données} \mid H) \times p(H)$$</div>
+
+<p><strong>Traduction :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Terme</th><th>Nom</th><th>Signification</th></tr></thead><tbody><tr><td>$p(H)$</td><td><strong>Prior</strong> (a priori)</td><td>Ma croyance <strong>avant</strong> d'observer les données</td></tr><tr><td>$p(\text{données} \mid H)$</td><td><strong>Vraisemblance</strong> (likelihood)</td><td>La probabilité d'observer ces données si $H$ est vraie</td></tr><tr><td>$p(H \mid \text{données})$</td><td><strong>Posterior</strong> (a posteriori)</td><td>Ma croyance <strong>mise à jour</strong> après les données</td></tr><tr><td>$\propto$</td><td>"Proportionnel à"</td><td>Le posterior est proportionnel au produit des deux termes</td></tr></tbody></table></div>
+<p><strong>Exemple numérique avec la pièce :</strong></p>
+
+<ul>
+<li><strong>Prior</strong> : je pense que la pièce est équitable → $p(H) \approx \mathcal{N}(0.5,\ 0.3)$ (croyance centrée sur 0.5)</li>
+<li><strong>Likelihood</strong> : j'observe 70% de faces → $p(\text{données} \mid H) \approx \mathcal{N}(0.7,\ 0.1)$</li>
+<li><strong>Posterior</strong> : compromis entre les deux → centré quelque part entre 0.5 et 0.7</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Intuition clé :</strong> le posterior est un <strong>compromis</strong> entre tes croyances initiales et les données. Si tes données sont nombreuses, elles "écrasent" le prior. Si tes données sont rares, le prior a plus d'influence.</p>
+<p>Quand le prior est vague (peu informatif), le posterior se rapproche du Maximum de Vraisemblance (MLE) — c'est le lien entre l'approche bayésienne et l'approche fréquentiste.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Résumé conceptuel de l&#x27;approche bayésienne (pas de code scipy ici)
+# Prior      : p(H)       = N(0.5, 0.3)   → croyance initiale (pièce équitable)
+# Likelihood : p(data|H)  = N(0.7, 0.1)   → observé après 10 tirages (70% faces)
+# Posterior  : p(H|data) proportionnel à prior * likelihood → mise à jour bayésienne
+# Sans prior fort : posterior ≈ likelihood (equivalent au MLE fréquentiste)</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-6-erreurs-classiques-à-éviter">6. Erreurs classiques à éviter</h2>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur 1 — Mauvaise interprétation de l'intervalle de confiance</strong></p>
+<p>- Faux : "Il y a 95% de chances que $\mu$ soit entre 168.7 et 171.2"</p>
+<p>- Juste : "95% des intervalles construits de cette façon contiendraient $\mu$"</p>
+<p>$\mu$ est une constante fixe — c'est l'intervalle qui est aléatoire !</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur 2 — Confondre "ne pas rejeter $H_0$" et "accepter $H_0$"</strong></p>
+<p>- Faux : "p-value = 0.08 > 0.05, donc $H_0$ est vraie, la feature n'a aucun effet"</p>
+<p>- Juste : "On manque de preuves suffisantes pour rejeter $H_0$" — ce n'est pas une preuve que $H_0$ est vraie</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur 3 — Le p-hacking</strong></p>
+<p>- Faux : observer $p = 0.07$, puis décider de fixer $\alpha = 0.10$ pour pouvoir rejeter $H_0$</p>
+<p>- Juste : fixer $\alpha$ <strong>avant</strong> l'expérience selon le risque acceptable</p>
+<p>Changer $\alpha$ après avoir vu les résultats est une fraude statistique.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur 4 — z-test avec petit $n$ et $\sigma$ inconnu</strong></p>
+<p>- Faux : <code>norm(mu, s/sqrt(n)).cdf(x)</code> avec $n = 12$ et $\sigma$ non connu</p>
+<p>- Juste : <code>stats.ttest_1samp(sample, mu)</code> — utiliser la loi de Student</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur 5 — CLT sur des données corrélées</strong></p>
+<p>- Faux : appliquer le CLT sur des séries temporelles ou des clusters sans correction</p>
+<p>- Juste : vérifier que l'échantillonnage est aléatoire et que $n < 10\% \times N$</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1.</strong> Tu calcules un intervalle de confiance à 95% : $[45.2 ; 52.8]$. Un collègue dit : "Génial, il y a 95% de chances que la vraie valeur soit dans cet intervalle." Est-il dans le vrai ? Explique pourquoi.</p>
+
+<p><strong>Question 2.</strong> Tu lances un A/B test sur une nouvelle fonctionnalité. Après analyse, tu obtiens $\text{p-value} = 0.12$. Ton manager conclut : "La fonctionnalité n'a aucun effet." Est-il dans le vrai ? Que lui répondre ?</p>
+
+<p><strong>Question 3.</strong> Tu veux comparer le panier moyen de deux groupes clients avec $n_A = 15$ et $n_B = 18$. Tu ne connais pas l'écart-type de la population. Quel test statistique utilises-tu et pourquoi ?</p>
+
+<p><strong>Question 4.</strong> Quelle est la différence entre l'<strong>erreur standard</strong> $(\sigma/\sqrt{n})$ et l'<strong>écart-type</strong> $(\sigma)$ ? Qu'est-ce que chacun mesure ?</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>L'inférence statistique permet d'estimer les paramètres d'une population (ex. : $\mu$) à partir d'un échantillon limité.</li>
+<li>Le <strong>Théorème Central Limite</strong> garantit que la moyenne d'un échantillon suit $\mathcal{N}(\mu, \sigma/\sqrt{n})$ pour $n$ grand.</li>
+<li>L'<strong>erreur standard</strong> $s/\sqrt{n}$ mesure la précision de l'estimation : plus $n$ est grand, plus elle est petite.</li>
+<li>Un <strong>intervalle de confiance à 95%</strong> signifie que 95% des intervalles construits par cette méthode contiendraient le vrai paramètre — et non pas que le paramètre a 95% de chances d'y être.</li>
+<li>La <strong>p-value</strong> = probabilité d'observer un résultat aussi extrême sous $H_0$. Si $\text{p-value} < \alpha$, on rejette $H_0$.</li>
+<li>$\text{p-value} > \alpha$ ne signifie pas que $H_0$ est vraie : cela signifie seulement qu'on manque de preuves pour la rejeter.</li>
+<li>Le <strong>t-test</strong> remplace le z-test quand $n$ est petit et $\sigma$ inconnu : la T-statistique suit une loi de Student $t_{n-1}$, plus "conservative" que la loi normale.</li>
+<li>L'approche <strong>bayésienne</strong> intègre une croyance initiale (prior) et la met à jour avec les données (likelihood) pour obtenir une croyance révisée (posterior).</li>
+<li>Fixer $\alpha$ <strong>avant</strong> l'expérience est une règle fondamentale — le p-hacking (modifier $\alpha$ après) est une fraude.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-population-vs-échantillon">Population vs échantillon</a></li><li><a href="#syn-tests-dhypothèse">Tests d'hypothèse</a></li><li><a href="#syn-p-value-et-intervalle-de-confiance">p-value et intervalle de confiance</a></li><li><a href="#syn-tests-classiques">Tests classiques</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-erreurs-de-type-i-et-ii-puissance">Erreurs de type I et II, puissance</a></li><li><a href="#syn-tests-ab-en-pratique">Tests A/B en pratique</a></li><li><a href="#syn-bayésien-vs-fréquentiste">Bayésien vs fréquentiste</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-population-vs-échantillon">Population vs échantillon</h3>
+
+<p>L'<strong>inférence statistique</strong> cherche à tirer des conclusions sur une <strong>population</strong> (l'ensemble auquel on s'intéresse) à partir d'un <strong>échantillon</strong> (un sous-ensemble qu'on a effectivement observé).</p>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Population</th><th>Échantillon</th></tr></thead><tbody><tr><td>Notation</td><td>$\mu$, $\sigma$, $p$</td><td>$\bar{x}$, $s$, $\hat{p}$</td></tr><tr><td>Connue ?</td><td>Non (en général)</td><td>Oui (mesurée)</td></tr><tr><td>Inférable</td><td>Oui, à partir de l'échantillon</td><td>—</td></tr></tbody></table></div>
+<p>L'<strong>estimateur</strong> est une statistique de l'échantillon utilisée pour deviner un paramètre de la population. La moyenne empirique $\bar{x}$ est l'estimateur de $\mu$. L'écart-type empirique $s$ est l'estimateur de $\sigma$.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : la population est l'océan, l'échantillon est un seau d'eau. L'inférence statistique vous demande de deviner la salinité de tout l'océan à partir d'un seau. Plus le seau est grand (plus l'échantillon est grand), plus l'estimation est fiable. Mais même un petit seau correctement prélevé donne une bonne estimation, parce que l'océan est suffisamment homogène à grande échelle.</p></div></div>
+
+<h3 id="syn-tests-dhypothèse">Tests d'hypothèse</h3>
+
+<p>Le pattern fondamental de la statistique inférentielle :</p>
+
+<ol>
+<li><strong>Formuler</strong> deux hypothèses concurrentes :</li>
+</ol>
+<ul>
+<li><strong>$H_0$</strong> (hypothèse nulle) : "il n'y a pas d'effet"</li>
+<li><strong>$H_1$</strong> (hypothèse alternative) : "il y a un effet"</li>
+</ul>
+<ol>
+<li><strong>Choisir</strong> un test statistique adapté à la question</li>
+<li><strong>Calculer</strong> une statistique de test à partir des données</li>
+<li><strong>Décider</strong> : rejeter $H_0$ si la statistique est trop "extrême"</li>
+</ol>
+
+<p><strong>L'idée maîtresse</strong> : on suppose que $H_0$ est vraie, on calcule la probabilité d'obtenir nos données sous cette hypothèse, et si cette probabilité est très petite, on conclut que $H_0$ était probablement fausse.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Subtilité philosophique</strong> : on ne "prouve" jamais $H_1$. On <strong>rejette</strong> ou on <strong>ne rejette pas</strong> $H_0$. C'est la <strong>présomption d'innocence</strong> appliquée à la statistique : on suppose qu'il n'y a pas d'effet jusqu'à preuve du contraire. Cette discipline mentale évite beaucoup de faux positifs.</p></div></div>
+
+<h3 id="syn-p-value-et-intervalle-de-confiance">p-value et intervalle de confiance</h3>
+
+<p>La <strong>p-value</strong> est la probabilité, <strong>sous l'hypothèse nulle</strong>, d'observer une statistique aussi extrême ou plus extrême que celle calculée.</p>
+
+<div class="katex-display">$$\text{p-value} = P(\text{observer cela} \mid H_0 \text{ vraie})$$</div>
+
+<p>Lecture : <em>si on suppose qu'il n'y a vraiment aucun effet, quelle est la probabilité d'avoir obtenu ces données par pur hasard ?</em> Si elle est très petite, c'est qu'il y a probablement un effet.</p>
+
+<p><strong>Convention universelle</strong> : si p-value < 0.05, on rejette $H_0$. Le seuil $\alpha = 0.05$ est <strong>arbitraire</strong> (Fisher, 1925) et critiqué — beaucoup d'études exigent maintenant 0.01 ou même 0.001.</p>
+
+<p><strong>Une p-value n'est PAS</strong> :</p>
+
+<ul>
+<li>❌ La probabilité que $H_0$ soit vraie</li>
+<li>❌ La probabilité que $H_1$ soit vraie</li>
+<li>❌ La force de l'effet</li>
+<li>❌ Une preuve définitive</li>
+</ul>
+
+<p><strong>Une p-value EST</strong> :</p>
+
+<ul>
+<li>✓ La probabilité, en supposant $H_0$, d'observer ces données par hasard</li>
+<li>✓ Un seuil pour décider de rejeter $H_0$</li>
+<li>✓ Très sensible à la taille d'échantillon</li>
+</ul>
+
+<p>L'<strong>intervalle de confiance</strong> à 95% est complémentaire : c'est l'ensemble des valeurs du paramètre pour lesquelles la p-value serait > 0.05.</p>
+
+<p><strong>Formule pour un IC à 95% sur une moyenne</strong> :</p>
+
+<div class="katex-display">$$\text{IC}_{95\%} = \bar{x} \pm 1.96 \cdot \frac{\sigma}{\sqrt{n}}$$</div>
+
+<p>Lecture : <em>l'intervalle est centré sur la moyenne empirique $\bar{x}$, avec une demi-largeur égale à 1.96 fois l'erreur standard</em>. Le facteur 1.96 vient du fait que 95% d'une loi normale est dans $[\mu - 1.96\sigma, \mu + 1.96\sigma]$.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from scipy import stats
+data = [4.5, 5.2, 4.8, 5.1, 4.9, 5.3]
+mean = np.mean(data)
+ci_low, ci_high = stats.t.interval(
+    confidence=0.95,
+    df=len(data)-1,
+    loc=mean,
+    scale=stats.sem(data),      # Erreur standard de la moyenne
+)
+print(f&quot;{mean:.2f} (95% CI: [{ci_low:.2f}, {ci_high:.2f}])&quot;)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : rapportez <strong>toujours</strong> l'IC en plus de la p-value. Une p-value seule ne dit pas si l'effet est de 0.1 ou de 100. L'IC montre la <strong>précision</strong> et la <strong>magnitude</strong>.</p></div></div>
+
+<h3 id="syn-tests-classiques">Tests classiques</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Test</th><th>Quand l'utiliser</th><th>Hypothèse</th></tr></thead><tbody><tr><td><strong>t-test 1-sample</strong></td><td>Comparer une moyenne à une valeur connue</td><td>Données ≈ normales</td></tr><tr><td><strong>t-test 2-sample</strong></td><td>Comparer deux moyennes indépendantes</td><td>Variances similaires</td></tr><tr><td><strong>t-test paired</strong></td><td>Comparer deux mesures sur les mêmes sujets</td><td>Avant/après traitement</td></tr><tr><td><strong>Wilcoxon / Mann-Whitney</strong></td><td>Versions non paramétriques (sans normalité)</td><td>Robuste aux outliers</td></tr><tr><td><strong>chi² d'indépendance</strong></td><td>Indépendance entre 2 var. catégorielles</td><td>Tableau de contingence</td></tr><tr><td><strong>chi² d'ajustement</strong></td><td>Var. suit-elle une distribution donnée</td><td>—</td></tr><tr><td><strong>ANOVA</strong></td><td>Comparer plus de 2 moyennes</td><td>Variances égales</td></tr><tr><td><strong>Shapiro-Wilk</strong></td><td>Tester la normalité d'un échantillon</td><td>—</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from scipy import stats
+
+# T-test 2-sample : comparer ventes avant/après un changement
+sales_before = [120, 135, 140, 110, 125]
+sales_after = [150, 160, 145, 170, 155]
+t_stat, p_value = stats.ttest_ind(sales_before, sales_after)
+print(f&quot;t = {t_stat:.3f}, p = {p_value:.4f}&quot;)
+# Si p &lt; 0.05, on rejette &quot;pas de différence&quot;
+
+# Chi² d&#x27;indépendance sur un tableau de contingence
+from scipy.stats import chi2_contingency
+table = np.array([[80, 20], [60, 40]])  # 2 groupes × 2 catégories
+chi2, p, dof, expected = chi2_contingency(table)</code></pre></div>
+
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-erreurs-de-type-i-et-ii-puissance">Erreurs de type I et II, puissance</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>$H_0$ vraie</th><th>$H_0$ fausse</th></tr></thead><tbody><tr><td><strong>Rejeter $H_0$</strong></td><td>❌ Type I (faux positif)</td><td>✓ Vrai positif</td></tr><tr><td><strong>Ne pas rejeter $H_0$</strong></td><td>✓ Vrai négatif</td><td>❌ Type II (faux négatif)</td></tr></tbody></table></div>
+<ul>
+<li><strong>$\alpha$</strong> = P(Type I) = seuil de p-value (0.05 typiquement)</li>
+<li><strong>$\beta$</strong> = P(Type II) = manquer un vrai effet</li>
+<li><strong>Puissance</strong> = $1 - \beta$ = probabilité de détecter un vrai effet</li>
+</ul>
+
+<p>Plus la <strong>puissance</strong> est haute, plus vous êtes sûr de ne pas rater un effet réel. Elle dépend de :</p>
+
+<ul>
+<li><strong>Taille d'effet</strong> : un grand effet est facile à détecter</li>
+<li><strong>Taille d'échantillon</strong> : plus de données → plus de puissance</li>
+<li><strong>Variance</strong> : moins de bruit → plus de puissance</li>
+<li><strong>$\alpha$</strong> : un seuil plus laxiste → plus de puissance</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from statsmodels.stats.power import TTestIndPower
+
+analysis = TTestIndPower()
+sample_size = analysis.solve_power(
+    effect_size=0.5,       # Cohen&#x27;s d modéré
+    alpha=0.05,
+    power=0.80,
+)
+print(f&quot;Échantillon requis : {sample_size:.0f} par groupe&quot;)
+# ≈ 64 par groupe</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : <strong>calculer la taille d'échantillon AVANT</strong> l'expérience, pas après. Une étude sous-dimensionnée gaspille du temps et donne des résultats irreproductibles. La règle d'or : viser une puissance de <strong>0.80 minimum</strong>, idéalement 0.90 pour des décisions critiques.</p></div></div>
+
+<h3 id="syn-tests-ab-en-pratique">Tests A/B en pratique</h3>
+
+<p>Le <strong>test A/B</strong> est l'application industrielle la plus courante de l'inférence statistique : vous comparez une <strong>variante (B)</strong> à une <strong>référence (A)</strong> sur une métrique business.</p>
+
+<p><strong>Pipeline canonique</strong> :</p>
+
+<ol>
+<li><strong>Formuler une hypothèse claire</strong> : "Le bouton vert convertit mieux que le bleu"</li>
+<li><strong>Calculer la taille d'échantillon</strong> nécessaire pour détecter l'effet minimum d'intérêt</li>
+<li><strong>Randomiser les utilisateurs</strong> entre A et B (50/50 ou autre split)</li>
+<li><strong>Laisser tourner</strong> jusqu'à atteindre la taille calculée — <strong>ne pas peeker avant</strong></li>
+<li><strong>Analyser</strong> : test du chi² (taux) ou t-test (montants)</li>
+<li><strong>Conclure</strong> seulement si la significativité ET la taille d'effet sont atteintes</li>
+</ol>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Anti-pattern majeur — le "peeking"</strong> : regarder les résultats au fur et à mesure et arrêter dès que p < 0.05. Cela <strong>inflate massivement</strong> le taux de faux positifs. Si vous devez monitorer en continu, utilisez des <strong>tests séquentiels</strong> (SPRT, mSPRT) ou ajustez le seuil avec une correction de Bonferroni séquentielle.</p></div></div>
+
+<h3 id="syn-bayésien-vs-fréquentiste">Bayésien vs fréquentiste</h3>
+
+<p><strong>Deux philosophies</strong> de l'inférence cohabitent.</p>
+
+<p><strong>Fréquentiste</strong> (Fisher, Neyman, Pearson) : les paramètres sont des <strong>constantes inconnues</strong>. La probabilité est la <strong>fréquence à long terme</strong>. On définit des intervalles de confiance, des p-values, des tests d'hypothèse.</p>
+
+<p><strong>Bayésien</strong> (Bayes, Laplace, Jaynes) : les paramètres sont des <strong>variables aléatoires</strong>. On part d'une <strong>prior</strong> (croyance avant les données), on observe les données, et on calcule la <strong>posterior</strong> (croyance mise à jour) via Bayes :</p>
+
+<div class="katex-display">$$P(\theta | \text{data}) = \frac{P(\text{data} | \theta) \cdot P(\theta)}{P(\text{data})}$$</div>
+
+<p>Lecture : <em>notre croyance sur $\theta$ après avoir vu les données est proportionnelle à la vraisemblance des données sous $\theta$, multipliée par notre croyance a priori sur $\theta$</em>.</p>
+
+<p><strong>Avantages du bayésien</strong> :</p>
+
+<ul>
+<li>Permet d'<strong>incorporer une connaissance préalable</strong> (prior)</li>
+<li>Donne directement la probabilité que $\theta$ soit dans un intervalle (pas un IC bizarre)</li>
+<li>Permet de <strong>mettre à jour en continu</strong> sans peeking</li>
+<li>Naturel pour les modèles hiérarchiques</li>
+</ul>
+
+<p><strong>Inconvénients</strong> :</p>
+
+<ul>
+<li>Nécessite de spécifier une prior (peut sembler subjectif)</li>
+<li>Plus coûteux en calcul (MCMC, variational inference)</li>
+<li>Moins enseigné, moins d'outils mainstream</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pymc as pm
+
+with pm.Model() as model:
+    # Prior : on pense que p est entre 0 et 1, uniformément
+    p = pm.Beta(&quot;p&quot;, alpha=1, beta=1)
+    # Likelihood : observation de 70 succès sur 100 essais
+    obs = pm.Binomial(&quot;obs&quot;, n=100, p=p, observed=70)
+    trace = pm.sample(1000)
+
+# trace.posterior[&#x27;p&#x27;] est maintenant la distribution a posteriori de p</code></pre></div>
+
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Vous obtenez p = 0.04 en comparant deux moyennes. Vous décidez de rejeter $H_0$ et de conclure qu'il y a une différence. Quelle est la probabilité que vous ayez tort ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Pas 0.04.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Pas 0.04</strong>, malgré ce que tout le monde croit.</p>
+
+<p>p = 0.04 dit : <em>"Sous l'hypothèse nulle, la probabilité d'observer cette donnée ou pire est 4%"</em>. Ce <strong>n'est PAS</strong> la probabilité que $H_0$ soit vraie.</p>
+
+<p>La probabilité d'avoir tort dépend aussi de :</p>
+
+<ul>
+<li>La <strong>prior</strong> (à quel point $H_0$ était plausible avant l'expérience)</li>
+<li>La <strong>puissance</strong> du test</li>
+<li>Le <strong>base rate</strong> des hypothèses vraies dans votre domaine</li>
+</ul>
+
+<p>Si vous testez <strong>1000 hypothèses</strong> dont seulement 5% sont vraiment vraies, une p-value de 0.05 a un <strong>taux de faux positifs de ~50%</strong> (selon Ioannidis).</p>
+
+<p>C'est pourquoi des disciplines comme la médecine et la psychologie tournent vers des seuils plus stricts (0.005) ou abandonnent les p-values pour passer au bayésien.</p>
+
+<p>La <strong>crise de la réplication</strong> est en grande partie due à cette confusion fondamentale.</p>
+
+</details>
+
+<p><strong>Q2 : Vous comparez deux groupes avec un t-test et obtenez p = 0.001. Vous concluez que la différence est très importante. Êtes-vous correct ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Significativité statistique vs pratique.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Non</strong>, vous confondez <strong>significativité statistique</strong> et <strong>importance pratique</strong>.</p>
+
+<p>Une p-value très petite signifie juste que vous êtes très sûr qu'il y a une différence <strong>(≠ zéro)</strong>, pas que la différence est <strong>grande</strong>.</p>
+
+<p>Avec un échantillon de <strong>1 million</strong>, vous pouvez détecter une différence de 0.01% comme statistiquement significative à p < 0.001 — <strong>sans la moindre importance business</strong>.</p>
+
+<p>À l'inverse, une différence de 50% peut être non significative sur n=10.</p>
+
+<p><strong>Toujours rapporter la taille d'effet</strong> :</p>
+
+<ul>
+<li><strong>Cohen's d</strong> pour des moyennes (0.2 = petit, 0.5 = moyen, 0.8 = grand)</li>
+<li>Différence <strong>relative</strong> en pourcentage</li>
+</ul>
+
+<p><strong>Le bon réflexe</strong> : <em>"OK, la différence est statistiquement significative. Mais combien représente-t-elle en absolu, et est-ce que ça vaut le coût d'implémenter le changement ?"</em></p>
+
+<p>C'est la différence entre un statisticien et un <strong>data scientist orienté business</strong>.</p>
+
+</details>
+
+<p><strong>Q3 : Vous lancez un A/B test prévu pour 14 jours. Au jour 5, p = 0.04 et le PM veut arrêter et déployer. Que faut-il répondre ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Peeking.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Refuser</strong>. Arrêter dès qu'on atteint p < 0.05 <strong>inflate dramatiquement</strong> le taux de faux positifs.</p>
+
+<p>Si vous regardez les données 14 fois (une par jour), votre taux de faux positifs réel <strong>n'est plus 5% mais ~30%</strong>. C'est exactement comme rejouer plusieurs fois à la roulette en s'arrêtant au premier gain — vous gagnez "souvent" mais l'espérance est négative.</p>
+
+<p><strong>Trois solutions correctes</strong> :</p>
+
+<ol>
+<li><strong>Attendre les 14 jours prévus</strong> et analyser une seule fois — c'est la seule approche fréquentiste rigoureuse.</li>
+</ol>
+
+<ol>
+<li><strong>Utiliser un test séquentiel</strong> (SPRT, mSPRT, alpha-spending) qui ajuste le seuil en fonction du nombre de "looks". Optimizely et VWO le font automatiquement.</li>
+</ol>
+
+<ol>
+<li><strong>Passer en bayésien</strong> : calculer la <strong>probabilité posterior</strong> que B > A. Cette probabilité est valide à n'importe quel moment, sans correction.</li>
+</ol>
+
+<p>Question d'entretien data product : <em>"Pourquoi ne pas arrêter un A/B test quand p < 0.05 ?"</em> — la réponse exhaustive sépare les data scientists qui ont fait l'erreur de ceux qui ne l'ont jamais faite.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Statistical Inference</em> (Casella & Berger) — référence académique</li>
+<li><a href="https://xcelab.net/rm/statistical-rethinking/" target="_blank" rel="noopener">Statistical Rethinking</a> (Richard McElreath) — meilleur cours bayésien</li>
+<li><a href="https://experimentguide.com/" target="_blank" rel="noopener">Trustworthy Online Controlled Experiments</a> (Kohavi, Tang, Xu) — bible des A/B tests</li>
+<li><a href="https://www.evanmiller.org/ab-testing/sample-size.html" target="_blank" rel="noopener">Statistical Significance, Power and Sample Size</a> — calculator interactif</li>
+<li><a href="https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124" target="_blank" rel="noopener">Why Most Published Research Findings Are False</a> (Ioannidis, 2005) — papier culte sur la crise de réplication</li>
+<li><a href="https://seeing-theory.brown.edu/" target="_blank" rel="noopener">seeing-theory.brown.edu — Inferential Statistics</a> — visualisations interactives</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../mathematiques/statistics-probabilities.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Statistics & Probabilities</span>
+  </a>
+  <a href="../mathematiques/under-the-hood.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Under the Hood →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

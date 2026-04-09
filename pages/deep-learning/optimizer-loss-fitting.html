@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optimizer, Loss &amp; Fitting — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Optimizer, Loss &amp; Fitting</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html" class="active">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Deep Learning</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Optimizer, Loss &amp; Fitting</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Optimizer, Loss &amp; Fitting</h1>
+        <p class="page-objective">Comprendre le fonctionnement interne de l'entraînement d'un réseau de neurones — loss function, optimizer, backpropagation, batch/epochs, early stopping, régularisation (L1/L2/Dropout) — et savoir configurer `model.compile()` et `model.fit()` en Keras.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Gradient descent</div>
+        <div class="key-concept-def">Met à jour les poids dans la direction opposée au gradient de la loss.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Adam</div>
+        <div class="key-concept-def">Optimizer adaptatif combinant momentum et taux d&#x27;apprentissage par paramètre.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Learning rate</div>
+        <div class="key-concept-def">Taille du pas de mise à jour ; le hyperparamètre le plus critique.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Vanishing gradient</div>
+        <div class="key-concept-def">Gradients qui deviennent quasi-nuls dans les couches profondes.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-optimizer-loss-fitting">Cheatsheet — Optimizer, Loss & Fitting</a><ol><li><a href="#compiler-le-modèle">Compiler le modèle</a></li><li><a href="#configurer-loptimizer-manuellement">Configurer l'optimizer manuellement</a></li><li><a href="#entraîner-avec-validation-split">Entraîner avec validation split</a></li><li><a href="#entraîner-avec-validation-data-explicite">Entraîner avec validation data explicite</a></li><li><a href="#early-stopping">Early Stopping</a></li><li><a href="#régularisation-l1-l2">Régularisation L1 / L2</a></li><li><a href="#dropout">Dropout</a></li><li><a href="#preprocessing-intégré-normalization-layer">Preprocessing intégré (Normalization layer)</a></li><li><a href="#sauvegarder-charger-un-modèle">Sauvegarder / Charger un modèle</a></li><li><a href="#métriques-et-losses-personnalisées">Métriques et losses personnalisées</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#0-rappels">0) Rappels</a><ol><li><a href="#01-architecture-dun-réseau-de-neurones">0.1 Architecture d'un réseau de neurones</a></li><li><a href="#02-les-3-étapes-keras">0.2 Les 3 étapes Keras</a></li></ol></li><li><a href="#1-compiling-modelcompile">1) Compiling : `model.compile(...)`</a><ol><li><a href="#11-les-métriques">1.1 Les métriques</a></li><li><a href="#12-la-loss-function-l_xtheta">1.2 La loss function $L_X(\theta)$</a></li><li><a href="#binary-cross-entropy-log-loss">Binary Cross-Entropy (Log Loss)</a></li></ol></li><li><a href="#2-loptimizer">2) L'optimizer</a><ol><li><a href="#21-forward-vs-backward-propagation">2.1 Forward vs. Backward Propagation</a></li><li><a href="#pourquoi-backpropagation">Pourquoi « backpropagation » ?</a></li><li><a href="#22-quel-optimizer-choisir">2.2 Quel optimizer choisir ?</a></li></ol></li><li><a href="#3-hyperparamètres-de-loptimizer">3) Hyperparamètres de l'optimizer</a><ol><li><a href="#31-learning-rate">3.1 Learning Rate</a></li><li><a href="#32-batch-size">3.2 Batch Size</a></li><li><a href="#33-nombre-depochs">3.3 Nombre d'epochs</a></li><li><a href="#34-train-validation-test-split">3.4 Train / Validation / Test Split</a></li><li><a href="#35-early-stopping">3.5 Early Stopping</a></li></ol></li><li><a href="#4-régularisation">4) Régularisation</a><ol><li><a href="#41-régularisation-l1-l2">4.1 Régularisation L1 / L2</a></li><li><a href="#42-dropout">4.2 Dropout</a></li></ol></li><li><a href="#5-preprocessing-intégré-dans-tensorflow">5) Preprocessing intégré dans TensorFlow</a><ol><li><a href="#51-le-problème-features-mal-scalées">5.1 Le problème : features mal scalées</a></li><li><a href="#52-option-1-scaler-externe-standardscaler">5.2 Option 1 — Scaler externe (StandardScaler)</a></li><li><a href="#53-option-2-normalization-layer-intégrée-recommandée">5.3 Option 2 — Normalization layer intégrée (recommandée)</a></li></ol></li><li><a href="#6-sauvegarder-et-charger-des-modèles">6) Sauvegarder et charger des modèles</a><li><a href="#7-pro-tips">7) Pro Tips</a><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-optimizer-loss-fitting">📋 Cheatsheet — Optimizer, Loss & Fitting</h2>
+
+<h3 id="compiler-le-modèle">Compiler le modèle</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Régression
+model.compile(
+    loss=&#x27;mse&#x27;,                        # Mean Squared Error
+    optimizer=&#x27;adam&#x27;,                   # optimiseur par défaut recommandé
+    metrics=[&#x27;mae&#x27;]                    # métrique humaine affichée à chaque epoch
+)
+
+## Classification binaire (2 classes)
+model.compile(
+    loss=&#x27;binary_crossentropy&#x27;,        # log loss pour sortie sigmoid
+    optimizer=&#x27;adam&#x27;,
+    metrics=[&#x27;accuracy&#x27;]
+)
+
+## Classification multi-classes (&gt;2 classes)
+model.compile(
+    loss=&#x27;categorical_crossentropy&#x27;,   # pour sortie softmax (one-hot encoded y)
+    optimizer=&#x27;adam&#x27;,
+    metrics=[&#x27;accuracy&#x27;, &#x27;precision&#x27;]
+)</code></pre></div>
+
+
+<h3 id="configurer-loptimizer-manuellement">Configurer l'optimizer manuellement</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import tensorflow as tf
+
+opt = tf.keras.optimizers.Adam(
+    learning_rate=0.01,                # taux d&#x27;apprentissage (défaut 0.001)
+    beta_1=0.9,                        # momentum (défaut 0.9)
+    beta_2=0.999                       # scaling adaptatif (défaut 0.999)
+)
+model.compile(loss=&#x27;mse&#x27;, optimizer=opt)</code></pre></div>
+
+
+<h3 id="entraîner-avec-validation-split">Entraîner avec validation split</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">history = model.fit(
+    X_train, y_train,
+    validation_split=0.3,              # 30% derniers index pour validation
+    batch_size=32,                     # taille du mini-batch
+    epochs=1000,                       # sera coupé par l&#x27;early stopping
+    callbacks=[es]                     # liste de callbacks
+)</code></pre></div>
+
+
+<h3 id="entraîner-avec-validation-data-explicite">Entraîner avec validation data explicite</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">history = model.fit(
+    X_train, y_train,
+    validation_data=(X_val, y_val),    # données de validation explicites
+    batch_size=16,
+    epochs=100
+)</code></pre></div>
+
+
+<h3 id="early-stopping">Early Stopping</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.callbacks import EarlyStopping
+
+es = EarlyStopping(
+    patience=20,                       # attend 20 epochs sans amélioration
+    restore_best_weights=True          # restaure les poids du meilleur epoch
+)
+
+model.fit(X_train, y_train,
+          validation_split=0.3,
+          epochs=1000,
+          callbacks=[es])              # callback appelé à la fin de chaque epoch</code></pre></div>
+
+
+<h3 id="régularisation-l1-l2">Régularisation L1 / L2</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from keras import regularizers
+
+reg_l1 = regularizers.L1(0.01)               # pousse les poids vers 0 (sparsité)
+reg_l2 = regularizers.L2(0.01)               # garde les poids petits
+reg_l1_l2 = regularizers.l1_l2(l1=0.005, l2=0.0005)  # combinaison des deux
+
+## Appliquer sur les poids d&#x27;une couche
+layers.Dense(50, activation=&#x27;relu&#x27;, kernel_regularizer=reg_l2)
+
+## Appliquer sur les biais (rare)
+layers.Dense(20, activation=&#x27;relu&#x27;, bias_regularizer=reg_l2)
+
+## Appliquer sur la sortie de la couche (sparsité des activations)
+layers.Dense(10, activation=&#x27;relu&#x27;, activity_regularizer=reg_l1)</code></pre></div>
+
+
+<h3 id="dropout">Dropout</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from keras import layers
+
+model.add(layers.Dense(20, activation=&#x27;relu&#x27;))
+model.add(layers.Dropout(rate=0.2))           # désactive 20% des neurones aléatoirement
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))
+model.add(layers.Dropout(rate=0.2))
+model.add(layers.Dense(1, activation=&#x27;sigmoid&#x27;))
+## ⚠️ Dropout n&#x27;ajoute AUCUN paramètre supplémentaire</code></pre></div>
+
+
+<h3 id="preprocessing-intégré-normalization-layer">Preprocessing intégré (Normalization layer)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.layers import Normalization
+
+normalizer = Normalization()           # instancie la couche
+normalizer.adapt(X_train)             # &quot;fit&quot; sur le train set
+
+model = Sequential()
+model.add(normalizer)                  # première couche = normalisation
+model.add(layers.Dense(16, activation=&#x27;relu&#x27;))
+model.add(layers.Dense(1, activation=&#x27;linear&#x27;))
+## Plus besoin de scaler manuellement avec StandardScaler !</code></pre></div>
+
+
+<h3 id="sauvegarder-charger-un-modèle">Sauvegarder / Charger un modèle</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import models
+
+models.save_model(model, &#x27;my_model.keras&#x27;)         # sauvegarde le modèle
+loaded_model = models.load_model(&#x27;my_model.keras&#x27;)  # charge le modèle
+## ⚠️ Format .keras requiert tensorflow&gt;=2.16 / keras&gt;=3</code></pre></div>
+
+
+<h3 id="métriques-et-losses-personnalisées">Métriques et losses personnalisées</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import tensorflow as tf
+
+## Métrique personnalisée
+def custom_mse(y_true, y_pred):
+    squared_diff = tf.square(y_true - y_pred)      # différence au carré
+    return tf.reduce_mean(squared_diff)             # moyenne
+
+model.compile(loss=custom_mse, optimizer=&#x27;adam&#x27;, metrics=[custom_mse])
+
+## Métrique Keras fine-tunable
+auc = tf.keras.metrics.AUC(num_thresholds=200, curve=&#x27;ROC&#x27;)
+model.compile(loss=&#x27;binary_crossentropy&#x27;, metrics=[auc])</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser l'accuracy comme loss function</strong></p>
+<p>❌ L'accuracy n'est pas dérivable → impossible de calculer un gradient</p>
+<p><code>python</p>
+<p>model.compile(loss=&#x27;accuracy&#x27;, optimizer=&#x27;adam&#x27;)  # ❌ &quot;accuracy&quot; n&#x27;est pas une loss !</p>
+</code>
+<p>✅ Utiliser une loss lisse (dérivable) et mettre l'accuracy en métrique</p>
+<p><code>python</p>
+<p>model.compile(loss=&#x27;binary_crossentropy&#x27;, optimizer=&#x27;adam&#x27;, metrics=[&#x27;accuracy&#x27;])</p>
+</code></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser le test set pour décider quand arrêter l'entraînement</strong></p>
+<p>❌ <code>validation_data=(X_test, y_test)</code> → data leakage, le test set influence l'optimisation</p>
+<p><code>python</p>
+<p><a href="http://model.fit" target="_blank" rel="noopener">model.fit</a>(X_train, y_train, validation_data=(X_test, y_test))  # ❌ leakage !</p>
+</code>
+<p>✅ Utiliser un vrai validation set séparé ou <code>validation_split</code></p>
+<p><code>python</p>
+<p><a href="http://model.fit" target="_blank" rel="noopener">model.fit</a>(X_train, y_train, validation_split=0.3)  # ✅ 30% du train pour validation</p>
+</code></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier <code>restore_best_weights=True</code> dans l'Early Stopping</strong></p>
+<p>❌ Sans cette option, le modèle conserve les poids du <strong>dernier</strong> epoch (potentiellement overfitté)</p>
+<p><code>python</p>
+<p>es = EarlyStopping(patience=20)  # restaure les poids de l&#x27;epoch final, pas le meilleur</p>
+</code>
+<p>✅ Toujours restaurer les meilleurs poids</p>
+<p><code>python</p>
+<p>es = EarlyStopping(patience=20, restore_best_weights=True)</p>
+</code></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Régulariser avant de vérifier que le modèle peut overfitter</strong></p>
+<p>❌ Ajouter Dropout + L2 dès le départ → le modèle n'apprend rien</p>
+<p><code>python</p>
+<p>model.add(layers.Dense(50, kernel_regularizer=regularizers.L2(0.1)))</p>
+<p>model.add(layers.Dropout(0.5))  # trop de régularisation dès le début</p>
+</code>
+<p>✅ D'abord construire un modèle simple qui overfit, puis ajouter de la régularisation progressivement</p>
+<p><code>python</p>
+<p># 1) Vérifier que le modèle overfit (bon signe : il apprend)</p>
+<p># 2) Ajouter Early Stopping</p>
+<p># 3) Ajouter Dropout/L2 si nécessaire</p>
+</code></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Ne pas standardiser les features avant l'entraînement</strong></p>
+<p>❌ Des features sur des échelles différentes → convergence lente ou échec</p>
+<p><code>python</p>
+<p><a href="http://model.fit" target="_blank" rel="noopener">model.fit</a>(X_train_raw, y_train)  # feature 4 est 100× plus grande que les autres</p>
+</code>
+<p>✅ Standardiser avec <code>StandardScaler</code> ou la couche <code>Normalization</code> de Keras</p>
+<p><code>python</p>
+<p>normalizer = Normalization()</p>
+<p>normalizer.adapt(X_train)</p>
+<p>model.add(normalizer)  # intégré dans l&#x27;architecture</p>
+</code></div></div>
+
+<hr>
+
+<h2 id="0-rappels">0) Rappels</h2>
+
+<h3 id="01-architecture-dun-réseau-de-neurones">0.1 Architecture d'un réseau de neurones</h3>
+
+<p>Un réseau de neurones est un empilement de couches. Chaque couche est composée de neurones = <strong>combinaison linéaire</strong> + <strong>fonction d'activation</strong>.</p>
+
+<figure><img src="../../assets/images/optimizer-loss-fitting-01-4ed660ae.png" alt="" loading="lazy"></figure>
+
+<h3 id="02-les-3-étapes-keras">0.2 Les 3 étapes Keras</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from keras import Sequential, layers, Input
+
+## 1. Architecture
+model = Sequential()
+model.add(Input(shape=(128,)))
+model.add(layers.Dense(100, activation=&#x27;relu&#x27;))
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))
+model.add(layers.Dense(5, activation=&#x27;softmax&#x27;))
+
+## 2. Compilation (loss + optimizer)
+model.compile(loss=&#x27;categorical_crossentropy&#x27;, optimizer=&#x27;adam&#x27;)
+
+## 3. Entraînement
+model.fit(X, y, batch_size=32, epochs=100)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>👉 <a href="https://keras.io/" target="_blank" rel="noopener">Keras documentation</a> | 👉 <a href="https://www.tensorflow.org/guide/keras" target="_blank" rel="noopener">TensorFlow Keras guide</a></p></div></div>
+
+<hr>
+
+<h2 id="1-compiling-modelcompile">1) Compiling : <code>model.compile(...)</code></h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model.compile(loss=..., optimizer=..., metrics=...)</code></pre></div>
+
+
+<p>Le compile définit <strong>comment</strong> le réseau optimise ses paramètres $\theta$ :</p>
+
+<ul>
+<li><strong>loss</strong> = fonction lisse à minimiser (optimise $theta$)</li>
+<li><strong>optimizer</strong> = algorithme de mise à jour de $\theta$</li>
+<li><strong>metrics</strong> = mesures humaines de performance (ne sert pas à l'optimisation)</li>
+</ul>
+
+<h3 id="11-les-métriques">1.1 Les métriques</h3>
+
+<p>Les métriques mesurent la qualité des prédictions de manière interprétable. Elles sont calculées par <strong>forward propagation</strong> à chaque epoch.</p>
+
+<p><strong>Forward propagation</strong> = pour un input $X$, le modèle calcule $\hat{y} = f_\theta(X)$ via une multiplication matricielle par couche.</p>
+
+<figure><img src="../../assets/images/optimizer-loss-fitting-02-237120e1.png" alt="" loading="lazy"></figure>
+
+<div class="table-wrapper"><table><thead><tr><th>Tâche</th><th>Métriques classiques</th></tr></thead><tbody><tr><td>Régression</td><td>MSE, MAE, RMSE, RMSLE, R²</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Avec des strings (accès rapide)
+model.compile(metrics=[&#x27;accuracy&#x27;, &#x27;precision&#x27;])
+
+## Avec des objets Keras (fine-tuning)
+auc = tf.keras.metrics.AUC(num_thresholds=200, curve=&#x27;ROC&#x27;)
+model.compile(metrics=[auc])
+
+## Métrique personnalisée
+def custom_mse(y_true, y_pred):
+    return tf.reduce_mean(tf.square(y_true - y_pred))
+
+model.compile(metrics=[custom_mse])</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>👉 <a href="https://www.tensorflow.org/api_docs/python/tf/keras/metrics" target="_blank" rel="noopener">Keras metrics — docs</a></p></div></div>
+
+<h3 id="12-la-loss-function-l_xtheta">1.2 La loss function $L_X(\theta)$</h3>
+
+<p>La loss est la fonction que <code>.fit()</code> cherche à <strong>minimiser</strong>. Caractéristiques :</p>
+
+<ul>
+<li><strong>Différente</strong> de la métrique (la loss doit être lisse/dérivable)</li>
+<li><strong>Une seule</strong> loss par modèle (mais plusieurs métriques possibles)</li>
+<li>Doit être <strong>continue et (sous-)différentiable</strong> par rapport à $\theta$</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Pourquoi l'accuracy ne peut pas être une loss ? Parce qu'elle <strong>saute</strong> de 0 à 1 quand $\theta$ varie → pas de gradient exploitable. Les cross-entropies, en revanche, produisent des probabilités qui varient <strong>continûment</strong>.</p></div></div>
+
+<figure><img src="../../assets/images/optimizer-loss-fitting-03-22c247ed.png" alt="" loading="lazy"></figure>
+
+<h3 id="binary-cross-entropy-log-loss">Binary Cross-Entropy (Log Loss)</h3>
+
+<p>$\text{Log Loss} = -\frac{1}{n}\sum_{i=0}^{n} \left[ y_i \log(\hat{y}_i) + (1 - y_i)\log(1 - \hat{y}_i) \right]$</p>
+
+<ul>
+<li>Si $y = 1$ → $\text{Loss} = -\log(\hat{y})$ → pénalise les $\hat{y}$ proches de 0</li>
+<li>Si $y = 0$ → $\text{Loss} = -\log(1 - \hat{y})$ → pénalise les $\hat{y}$ proches de 1</li>
+</ul>
+
+<figure><img src="../../assets/images/optimizer-loss-fitting-04-d99265c0.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Avec un string
+model.compile(loss=&#x27;binary_crossentropy&#x27;)
+
+## Avec un objet Keras
+loss = tf.keras.losses.BinaryCrossentropy()
+model.compile(loss=loss)
+
+## Loss personnalisée
+def custom_mse(y_true, y_pred):
+    return tf.reduce_mean(tf.square(y_true - y_pred))
+
+model.compile(loss=custom_mse)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>👉 <a href="https://www.tensorflow.org/api_docs/python/tf/keras/losses" target="_blank" rel="noopener">Keras losses — docs</a> | 👉 <a href="https://www.youtube.com/watch?v=ErfnhcEV1O8" target="_blank" rel="noopener">Shannon's Information Theory (vidéo)</a></p></div></div>
+
+<hr>
+
+<h2 id="2-loptimizer">2) L'optimizer</h2>
+
+<p>L'optimizer met à jour les poids $\theta$ du modèle en utilisant le gradient de la loss.</p>
+
+<figure><img src="../../assets/images/optimizer-loss-fitting-05-d0e1e950.gif" alt="" loading="lazy"></figure>
+
+<h3 id="21-forward-vs-backward-propagation">2.1 Forward vs. Backward Propagation</h3>
+
+<p>À chaque itération $k$, sur un mini-batch :</p>
+
+<ol>
+<li><strong>Forward propagation</strong> : calcul de $f_{\theta_k}(X_{\text{batch}})$ puis de la loss $L(\theta_k)$</li>
+<li><strong>Backward propagation</strong> : calcul du gradient $\nabla L$ puis mise à jour des poids : $\theta_{k+1} \leftarrow \text{Update}(\theta_k, \nabla L)$</li>
+</ol>
+
+<h3 id="pourquoi-backpropagation">Pourquoi « backpropagation » ?</h3>
+
+<p>Le gradient $\nabla L(\theta)$ contient $p$ dérivées partielles (une par poids) :</p>
+
+<p>$\nabla L(\theta) = \begin{bmatrix} \frac{\partial L}{\partial \theta_1} \\ \vdots \\ \frac{\partial L}{\partial \theta_p} \end{bmatrix}$</p>
+
+<p>Calculer chaque dérivée <strong>numériquement</strong> ($frac{L(theta_i + h) - L(theta_i)}{h}$) nécessiterait $p$ forward passes → beaucoup trop lent.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>La Chain Rule</strong> permet de calculer <strong>analytiquement</strong> toutes les dérivées en un seul backward pass, en réutilisant les calculs intermédiaires stockés lors du forward pass. Un backward pass prend environ le même temps qu'un forward pass.</p></div></div>
+
+<figure><img src="../../assets/images/optimizer-loss-fitting-06-bae204fb.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Vanishing Gradient</strong> : les poids des premières couches (profondes) sont plus difficiles à mettre à jour que ceux des dernières couches (proches de la sortie). C'est un problème fondamental des réseaux profonds.</p></div></div>
+
+<h3 id="22-quel-optimizer-choisir">2.2 Quel optimizer choisir ?</h3>
+
+<p>Le gradient descent simple se bloque facilement dans des <strong>minima locaux</strong>. Les optimizers modernes ajoutent des mécanismes pour en sortir :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Optimizer</th><th>Particularité</th><th>SGD</th><th>Gradient descent de base</th></tr></thead><tbody><tr><td>Momentum</td><td>Ajoute de l'inertie (accélère dans la bonne direction)</td><td>AdaGrad</td><td>Learning rate adaptatif par feature</td></tr><tr><td>RMSProp</td><td>Ajoute un decay (seuls les gradients récents comptent)</td><td><strong>Adam</strong></td><td><strong>Combine tout</strong> — meilleur choix par défaut</td></tr></tbody></table></div>
+<figure><img src="../../assets/images/optimizer-loss-fitting-07-4d94dd98.gif" alt="Comparing gradient in cyan, with momentum in magenta, adagrad in white, rmsprop in green, and adam in blue" loading="lazy"></figure>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Adam = toujours commencer par Adam.</strong> 👉 <a href="https://www.tensorflow.org/api_docs/python/tf/keras/optimizers" target="_blank" rel="noopener">Keras optimizers — docs</a></p></div></div>
+
+<hr>
+
+<h2 id="3-hyperparamètres-de-loptimizer">3) Hyperparamètres de l'optimizer</h2>
+
+<h3 id="31-learning-rate">3.1 Learning Rate</h3>
+
+<p>Le learning rate contrôle l'<strong>amplitude de la mise à jour</strong> des poids à chaque itération.</p>
+
+<figure><img src="../../assets/images/optimizer-loss-fitting-08-f82ccecc.png" alt="Learning rate" loading="lazy"></figure>
+
+<ul>
+<li>Trop grand → le modèle diverge</li>
+<li>Trop petit → convergence très lente, nécessite beaucoup plus d'epochs</li>
+<li>Commencer avec le défaut d'Adam (<code>0.001</code>)</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Les <strong>schedulers</strong> permettent de faire varier le learning rate pendant l'entraînement. 👉 <a href="https://www.tensorflow.org/api_docs/python/tf/keras/optimizers/schedules" target="_blank" rel="noopener">Keras schedulers — docs</a></p></div></div>
+
+<h3 id="32-batch-size">3.2 Batch Size</h3>
+
+<p>Avec 100 samples et <code>batch_size=10</code>, une epoch = 10 mises à jour des poids.</p>
+
+<figure><img src="../../assets/images/optimizer-loss-fitting-09-e72c3fc5.png" alt="" loading="lazy"></figure>
+
+<div class="table-wrapper"><table><thead><tr><th>Petit batch</th><th>Grand batch</th><th>Plus stochastique</th><th>Plus stable</th></tr></thead><tbody><tr><td>Convergence potentiellement plus rapide</td><td>Meilleure généralisation</td><td>Moins coûteux en mémoire</td><td>Plus coûteux en calcul</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>En pratique</strong> : 16 ou 32 pour des données réelles (images, texte). Plus pour des petits datasets tabulaires. Toujours une <strong>puissance de 2</strong> (raisons computationnelles).</p></div></div>
+
+<h3 id="33-nombre-depochs">3.3 Nombre d'epochs</h3>
+
+<p>Le nombre d'epochs n'est pas un hyperparamètre à régler finement : on met un nombre <strong>grand</strong> (ex: 1000) et on laisse l'<strong>Early Stopping</strong> décider quand arrêter.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Plus le batch size est grand, plus il faudra d'epochs pour convergence.</p></div></div>
+
+<h3 id="34-train-validation-test-split">3.4 Train / Validation / Test Split</h3>
+
+<p>Pour savoir quand le modèle commence à <strong>overfitter</strong>, on évalue sur un <strong>validation set</strong> (et non le test set !) :</p>
+
+<figure><img src="../../assets/images/optimizer-loss-fitting-10-ae743975.png" alt="Validation set" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Option 1 : validation_data explicite
+history = model.fit(X_train, y_train,
+                    validation_data=(X_val, y_val),
+                    batch_size=16, epochs=100)
+
+## Option 2 : validation_split automatique
+history = model.fit(X_train, y_train,
+                    validation_split=0.3,     # derniers 30% des index (avant shuffle)
+                    batch_size=16, epochs=100)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le <code>validation_split</code> se fait <strong>avant</strong> le shuffle de chaque epoch → pas de data leakage.</p></div></div>
+
+<h3 id="35-early-stopping">3.5 Early Stopping</h3>
+
+<p>L'Early Stopping arrête l'entraînement quand la validation loss ne s'améliore plus.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.callbacks import EarlyStopping
+
+## Basique : arrête dès que la val loss augmente
+es = EarlyStopping()
+
+## Avec patience : attend N epochs sans amélioration
+es = EarlyStopping(patience=20)
+
+## Avec restauration des meilleurs poids ✅
+es = EarlyStopping(patience=20, restore_best_weights=True)
+
+model.fit(X_train, y_train,
+          validation_split=0.3,
+          epochs=1000,
+          callbacks=[es])</code></pre></div>
+
+
+<figure><img src="../../assets/images/optimizer-loss-fitting-11-e8be1729.png" alt="Validation loss" loading="lazy"></figure>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Sans <code>patience</code>, le modèle s'arrête trop tôt à cause de la nature <strong>stochastique</strong> de la loss. Avec <code>patience=20</code>, on tolère 20 epochs sans amélioration avant de stopper.</p></div></div>
+
+<hr>
+
+<h2 id="4-régularisation">4) Régularisation</h2>
+
+<p>La régularisation empêche le modèle d'<strong>overfitter</strong>. À appliquer <strong>après</strong> avoir vérifié que le modèle est capable d'overfitter (= il apprend).</p>
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>👉 <a href="https://www.tensorflow.org/tutorials/keras/overfit_and_underfit#strategies_to_prevent_overfitting" target="_blank" rel="noopener">TensorFlow — strategies to prevent overfitting</a></p></div></div>
+
+<h3 id="41-régularisation-l1-l2">4.1 Régularisation L1 / L2</h3>
+
+<p>Fonctionne comme en ML classique : ajoute un terme de pénalité à la loss.</p>
+
+<ul>
+<li><strong>L1</strong> : $\text{Loss}_{\text{reg}} = \text{Loss} + \alpha \sum_i |\theta_i|$ → pousse les poids vers 0 (sparsité)</li>
+<li><strong>L2</strong> : $\text{Loss}_{\text{reg}} = \text{Loss} + \alpha \sum_i \theta_i^2$ → garde les poids petits</li>
+</ul>
+
+<p>La régularisation se définit <strong>couche par couche</strong> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Paramètre</th><th>Cible</th><th>Usage</th><th><code>kernel_regularizer</code></th><th>Poids $W$ de la couche</th><th><strong>Le plus courant</strong> — équivalent de la régularisation en régression linéaire</th></tr></thead><tbody><tr><td><code>bias_regularizer</code></td><td>Biais $b$ de la couche</td><td>Rarement utilisé</td><td><code>activity_regularizer</code></td><td>Sortie $f(W \cdot X + b)$</td><td>Rend la sortie sparse — utile pour auto-encoders</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from keras import regularizers, Sequential, Input, layers
+
+reg_l2 = regularizers.L2(0.01)
+
+model = Sequential()
+model.add(Input(shape=(3,)))
+model.add(layers.Dense(100, activation=&#x27;relu&#x27;))
+model.add(layers.Dense(50, activation=&#x27;relu&#x27;, kernel_regularizer=reg_l2))  # L2 sur les poids
+model.add(layers.Dense(1, activation=&#x27;sigmoid&#x27;))</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La régularisation n'ajoute <strong>aucun paramètre supplémentaire</strong> au modèle. Elle modifie uniquement la loss optimisée.</p></div></div>
+
+<h3 id="42-dropout">4.2 Dropout</h3>
+
+<p>Le Dropout <strong>désactive aléatoirement</strong> un pourcentage de neurones à chaque itération pendant l'entraînement. Cela empêche les neurones de se sur-spécialiser.</p>
+
+<figure><img src="../../assets/images/optimizer-loss-fitting-12-868eb2ba.png" alt="Dropout" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = Sequential()
+model.add(Input(shape=(56,)))
+model.add(layers.Dense(20, activation=&#x27;relu&#x27;))
+model.add(layers.Dropout(rate=0.2))            # désactive 20% des neurones aléatoirement
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))
+model.add(layers.Dropout(rate=0.2))
+model.add(layers.Dense(3, activation=&#x27;softmax&#x27;))</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le Dropout n'ajoute <strong>aucun paramètre</strong> supplémentaire. Il est désactivé automatiquement lors du <code>predict()</code>.</p></div></div>
+
+<hr>
+
+<h2 id="5-preprocessing-intégré-dans-tensorflow">5) Preprocessing intégré dans TensorFlow</h2>
+
+<h3 id="51-le-problème-features-mal-scalées">5.1 Le problème : features mal scalées</h3>
+
+<p>Des features sur des échelles très différentes ralentissent ou empêchent la convergence.</p>
+
+<h3 id="52-option-1-scaler-externe-standardscaler">5.2 Option 1 — Scaler externe (StandardScaler)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)     # fit + transform sur le train
+X_test_scaled = scaler.transform(X_test)            # transform seulement sur le test
+
+model.fit(X_train_scaled, y_train, validation_data=(X_test_scaled, y_test))</code></pre></div>
+
+
+<h3 id="53-option-2-normalization-layer-intégrée-recommandée">5.3 Option 2 — Normalization layer intégrée (recommandée)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.layers import Normalization
+
+normalizer = Normalization()
+normalizer.adapt(X_train)               # &quot;fit&quot; la normalisation sur le train
+
+model = Sequential()
+model.add(normalizer)                    # 1ère couche = normalisation automatique
+model.add(layers.Dense(16, activation=&#x27;relu&#x27;))
+model.add(layers.Dense(3, activation=&#x27;linear&#x27;))
+
+## Plus besoin de scaler X_train ou X_test manuellement !
+model.fit(X_train, y_train, validation_data=(X_test, y_test))</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Autres couches de preprocessing disponibles : <code>CategoryEncoding</code> (OneHotEncoder), <code>TextVectorization</code> (NLP), <code>Resizing</code> (images). 👉 <a href="https://www.tensorflow.org/guide/keras/preprocessing_layers" target="_blank" rel="noopener">Liste complète</a></p></div></div>
+
+<hr>
+
+<h2 id="6-sauvegarder-et-charger-des-modèles">6) Sauvegarder et charger des modèles</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import models
+
+## Sauvegarder
+models.save_model(model, &#x27;my_model.keras&#x27;)
+
+## Charger
+loaded_model = models.load_model(&#x27;my_model.keras&#x27;)
+
+## Le modèle chargé est prêt à predict sans ré-entraînement
+loaded_model.predict(X_new)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le format <code>.keras</code> nécessite <code>tensorflow&gt;=2.16</code> / <code>keras&gt;=3</code>. Les anciens modèles (sans <code>.keras</code>) ne sont pas compatibles.</p></div></div>
+
+<hr>
+
+<h2 id="7-pro-tips">7) Pro Tips</h2>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Workflow recommandé</strong> :</p>
+<p>1. Commencer par la <strong>dernière couche</strong> (dictée par la tâche)</p>
+<p>2. Implémenter l'architecture la <strong>plus simple</strong> possible</p>
+<p>3. Fixer le <code>batch_size</code> (32 par défaut) et ne pas y toucher au début</p>
+<p>4. Mettre beaucoup d'<code>epochs</code> + <strong>Early Stopping</strong> → le modèle décide quand s'arrêter</p>
+<p>5. D'abord <strong>faire overfitter</strong> le modèle (signe qu'il apprend)</p>
+<p>6. Si le modèle n'overfit pas → ajuster le <strong>learning rate</strong> ou changer l'architecture</p>
+<p>7. Si le train loss descendait encore au moment de l'early stopping → la <strong>régularisation</strong> peut aider</p>
+<p>8. Régulariser les <strong>dernières couches d'abord</strong> avant les premières</p></div></div>
+
+<hr>
+
+<h2 id="bibliographie">Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://www.tensorflow.org/api_docs/python/tf/keras/optimizers" target="_blank" rel="noopener">Keras optimizers — docs</a></li>
+<li>👉 <a href="https://www.tensorflow.org/api_docs/python/tf/keras/losses" target="_blank" rel="noopener">Keras losses — docs</a></li>
+<li>👉 <a href="https://www.tensorflow.org/api_docs/python/tf/keras/metrics" target="_blank" rel="noopener">Keras metrics — docs</a></li>
+<li>👉 <a href="https://www.tensorflow.org/guide/keras/preprocessing_layers" target="_blank" rel="noopener">Keras preprocessing layers</a></li>
+<li>👉 <a href="http://neuralnetworksanddeeplearning.com/chap2.html#in_what_sense_is_backpropagation_a_fast_algorithm" target="_blank" rel="noopener">In what sense is backprop a fast algorithm</a></li>
+<li>👉 <a href="https://www.youtube.com/watch?v=Ilg3gGewQ5U" target="_blank" rel="noopener">3Blue1Brown — Neural Networks (1h)</a></li>
+<li>👉 <a href="https://youtu.be/d14TUNcbn1k?t=157" target="_blank" rel="noopener">Stanford — Graphs and Backpropagation (1h20)</a></li>
+<li>👉 <a href="https://www.youtube.com/watch?v=0T0QrHO56qg" target="_blank" rel="noopener">Khan Academy — Chain Rule (5 min)</a></li>
+<li>👉 <a href="https://medium.com/towards-data-science/a-visual-explanation-of-gradient-descent-methods-momentum-adagrad-rmsprop-adam-f898b102325c" target="_blank" rel="noopener">Visual explanation of gradient descent methods</a></li>
+<li>👉 <a href="https://distill.pub/2017/momentum/" target="_blank" rel="noopener">Distill — Why Momentum Really Works</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">Challenges</h2>
+
+<p>Configurer et entraîner des réseaux Keras avec différentes loss, optimizers, early stopping, régularisation L2/Dropout, et preprocessing intégré (Normalization layer).</p>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-contexte-de-quoi-parle-t-on">Contexte : de quoi parle-t-on ?</a></li><li><a href="#ref-les-5-points-à-retenir-avant-de-commencer">Les 5 points à retenir avant de commencer</a></li><li><a href="#ref-lanalogie-fil-rouge-la-randonnée-en-montagne">L'analogie fil rouge : la randonnée en montagne</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-les-3-étapes-keras-architecture-compilation-entraînement">1. Les 3 étapes Keras : architecture, compilation, entraînement</a><li><a href="#ref-2-modelcompile-choisir-la-loss-loptimizer-et-les-métriques">2. `model.compile()` — Choisir la loss, l'optimizer et les métriques</a><ol><li><a href="#ref-la-signature-de-compile">La signature de `compile`</a></li><li><a href="#ref-quelle-loss-pour-quelle-tâche">Quelle loss pour quelle tâche ?</a></li></ol></li><li><a href="#ref-3-la-loss-function-mesurer-lerreur-du-modèle">3. La Loss Function — mesurer l'erreur du modèle</a><ol><li><a href="#ref-quest-ce-quune-loss-function">Qu'est-ce qu'une loss function ?</a></li><li><a href="#ref-31-la-mse-mean-squared-error-régression">3.1 La MSE — Mean Squared Error (Régression)</a></li><li><a href="#ref-32-la-binary-cross-entropy-classification-binaire">3.2 La Binary Cross-Entropy (Classification binaire)</a></li></ol></li><li><a href="#ref-4-loptimizer-comment-le-modèle-apprend">4. L'Optimizer — comment le modèle apprend</a><ol><li><a href="#ref-41-forward-et-backward-propagation">4.1 Forward et Backward Propagation</a></li><li><a href="#ref-42-le-gradient-quest-ce-que-cest-exactement">4.2 Le gradient — qu'est-ce que c'est exactement ?</a></li><li><a href="#ref-43-quel-optimizer-choisir">4.3 Quel optimizer choisir ?</a></li></ol></li><li><a href="#ref-5-les-hyperparamètres-de-lentraînement">5. Les Hyperparamètres de l'entraînement</a><ol><li><a href="#ref-51-le-learning-rate-la-taille-du-pas">5.1 Le Learning Rate — la taille du pas</a></li><li><a href="#ref-52-le-batch-size-combien-dexemples-par-mise-à-jour">5.2 Le Batch Size — combien d'exemples par mise à jour</a></li><li><a href="#ref-53-le-nombre-depochs-combien-de-fois-on-voit-tout-le-dataset">5.3 Le Nombre d'Epochs — combien de fois on voit tout le dataset</a></li></ol></li><li><a href="#ref-6-validation-set-et-early-stopping">6. Validation Set et Early Stopping</a><ol><li><a href="#ref-61-pourquoi-un-validation-set">6.1 Pourquoi un validation set ?</a></li><li><a href="#ref-62-early-stopping-arrêter-au-bon-moment">6.2 Early Stopping — arrêter au bon moment</a></li></ol></li><li><a href="#ref-7-régularisation-éviter-le-surapprentissage">7. Régularisation — éviter le surapprentissage</a><ol><li><a href="#ref-cest-quoi-loverfitting-concrètement">C'est quoi l'overfitting, concrètement ?</a></li><li><a href="#ref-71-régularisation-l1-et-l2">7.1 Régularisation L1 et L2</a></li><li><a href="#ref-72-dropout-le-meilleur-ami-contre-loverfitting">7.2 Dropout — le meilleur ami contre l'overfitting</a></li></ol></li><li><a href="#ref-8-preprocessing-intégré-dans-keras">8. Preprocessing intégré dans Keras</a><ol><li><a href="#ref-pourquoi-normaliser-les-features">Pourquoi normaliser les features ?</a></li><li><a href="#ref-option-1-standardscaler-de-sklearn-approche-classique">Option 1 — StandardScaler de sklearn (approche classique)</a></li><li><a href="#ref-option-2-couche-normalization-de-keras-recommandée">Option 2 — Couche Normalization de Keras (recommandée)</a></li></ol></li><li><a href="#ref-9-sauvegarder-et-charger-un-modèle">9. Sauvegarder et charger un modèle</a><li><a href="#ref-10-récapitulatif-les-erreurs-classiques-à-éviter">10. Récapitulatif — Les erreurs classiques à éviter</a><ol><li><a href="#ref-erreur-1-utiliser-laccuracy-comme-loss">Erreur 1 : Utiliser l'accuracy comme loss</a></li><li><a href="#ref-erreur-2-utiliser-le-test-set-pour-la-validation">Erreur 2 : Utiliser le test set pour la validation</a></li><li><a href="#ref-erreur-3-oublier-restore_best_weightstrue">Erreur 3 : Oublier `restore_best_weights=True`</a></li><li><a href="#ref-erreur-4-régulariser-avant-davoir-vérifié-que-le-modèle-overfit">Erreur 4 : Régulariser avant d'avoir vérifié que le modèle overfit</a></li><li><a href="#ref-erreur-5-ne-pas-normaliser-les-features">Erreur 5 : Ne pas normaliser les features</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<h3 id="ref-contexte-de-quoi-parle-t-on">Contexte : de quoi parle-t-on ?</h3>
+
+<p>Quand tu entraînes un réseau de neurones, il se passe trois choses en boucle :</p>
+
+<ol>
+<li>Le modèle fait une <strong>prédiction</strong> (forward pass)</li>
+<li>On mesure à quel point il s'est <strong>trompé</strong> (loss function)</li>
+<li>On <strong>corrige</strong> ses paramètres pour qu'il se trompe moins la prochaine fois (optimizer)</li>
+</ol>
+
+<p>Ce cours couvre exactement ces trois étapes, plus les outils pour contrôler l'entraînement : le <strong>batch size</strong>, le <strong>nombre d'epochs</strong>, l'<strong>early stopping</strong>, et la <strong>régularisation</strong>.</p>
+
+<h3 id="ref-les-5-points-à-retenir-avant-de-commencer">Les 5 points à retenir avant de commencer</h3>
+
+<ul>
+<li>La <strong>loss function</strong> est la mesure d'erreur que le modèle cherche à minimiser — elle doit être mathématiquement "lisse" (dérivable).</li>
+<li>L'<strong>optimizer</strong> (Adam par défaut) décide comment modifier les poids à chaque étape.</li>
+<li>Un <strong>epoch</strong> = une passe complète sur tout le dataset d'entraînement.</li>
+<li>Le <strong>batch size</strong> contrôle combien d'exemples on regarde avant de mettre à jour les poids.</li>
+<li>L'<strong>early stopping</strong> arrête l'entraînement automatiquement quand le modèle commence à mémoriser au lieu d'apprendre.</li>
+</ul>
+
+<h3 id="ref-lanalogie-fil-rouge-la-randonnée-en-montagne">L'analogie fil rouge : la randonnée en montagne</h3>
+
+<p>Imagine que tu es dans un brouillard épais sur une montagne, et que tu cherches le point le plus bas (la vallée). Tu ne vois pas loin, mais tu peux sentir la pente sous tes pieds.</p>
+
+<ul>
+<li>La <strong>montagne</strong> = le paysage de la loss function (toutes les valeurs possibles d'erreur)</li>
+<li><strong>Toi</strong> = les paramètres $\theta$ du modèle</li>
+<li><strong>Descendre vers la vallée</strong> = minimiser la loss</li>
+<li><strong>Regarder la pente</strong> = calculer le gradient</li>
+<li><strong>Faire un pas</strong> = mise à jour des poids par l'optimizer</li>
+<li><strong>La taille de ton pas</strong> = le learning rate</li>
+<li><strong>S'arrêter quand tu n'avances plus</strong> = early stopping</li>
+</ul>
+
+<p>Cette analogie reviendra tout au long du cours.</p>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li><code>model.compile()</code> — choisir la loss, l'optimizer et les métriques</li>
+<li>La loss function en détail — MSE et Cross-Entropy</li>
+<li>L'optimizer — comment il met à jour les poids (gradient, backpropagation)</li>
+<li>Les hyperparamètres — learning rate, batch size, epochs</li>
+<li>L'early stopping et le validation set</li>
+<li>La régularisation — L1/L2 et Dropout</li>
+<li>Le preprocessing intégré</li>
+<li>Sauvegarder et charger un modèle</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-les-3-étapes-keras-architecture-compilation-entraînement">1. Les 3 étapes Keras : architecture, compilation, entraînement</h2>
+
+<p>Avant d'entrer dans les détails, voici la structure de base d'un modèle Keras. Tout tourne autour de ces trois blocs.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from keras import Sequential, layers, Input
+
+# --- Etape 1 : définir l&#x27;architecture ---
+model = Sequential()
+model.add(Input(shape=(128,)))              # 128 features en entrée
+model.add(layers.Dense(100, activation=&#x27;relu&#x27;))   # couche cachée avec 100 neurones
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))    # couche cachée avec 10 neurones
+model.add(layers.Dense(5, activation=&#x27;softmax&#x27;))  # 5 classes en sortie
+
+# --- Etape 2 : compiler (choisir loss + optimizer) ---
+model.compile(loss=&#x27;categorical_crossentropy&#x27;, optimizer=&#x27;adam&#x27;)
+
+# --- Etape 3 : entraîner ---
+model.fit(X, y, batch_size=32, epochs=100)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Retenir l'ordre : <strong>Architecture → Compilation → Entraînement</strong>. On ne peut pas entraîner un modèle non compilé, et on ne peut pas compiler un modèle sans architecture.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-modelcompile-choisir-la-loss-loptimizer-et-les-métriques">2. <code>model.compile()</code> — Choisir la loss, l'optimizer et les métriques</h2>
+
+<h3 id="ref-la-signature-de-compile">La signature de <code>compile</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model.compile(
+    loss=...,       # ce que le modèle minimise
+    optimizer=...,  # comment il met à jour ses poids
+    metrics=[...]   # ce qu&#x27;on affiche pour se repérer (ne sert PAS à l&#x27;optimisation)
+)</code></pre></div>
+
+
+<h3 id="ref-quelle-loss-pour-quelle-tâche">Quelle loss pour quelle tâche ?</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Tâche</th><th>Loss recommandée</th><th>Activation de sortie</th></tr></thead><tbody><tr><td>Régression</td><td><code>&#x27;mse&#x27;</code> (Mean Squared Error)</td><td><code>&#x27;linear&#x27;</code></td></tr><tr><td>Classification binaire (2 classes)</td><td><code>&#x27;binary_crossentropy&#x27;</code></td><td><code>&#x27;sigmoid&#x27;</code></td></tr><tr><td>Classification multi-classes (>2)</td><td><code>&#x27;categorical_crossentropy&#x27;</code></td><td><code>&#x27;softmax&#x27;</code></td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Régression : prédire un prix, une température, etc.
+model.compile(
+    loss=&#x27;mse&#x27;,          # erreur quadratique moyenne
+    optimizer=&#x27;adam&#x27;,    # optimiseur par défaut
+    metrics=[&#x27;mae&#x27;]      # MAE affiché pour avoir une idée de l&#x27;erreur en valeur absolue
+)
+
+# Classification binaire : spam/pas spam, malade/sain, etc.
+model.compile(
+    loss=&#x27;binary_crossentropy&#x27;,   # log loss pour 2 classes
+    optimizer=&#x27;adam&#x27;,
+    metrics=[&#x27;accuracy&#x27;]          # % de bonnes prédictions affiché
+)
+
+# Classification multi-classes : chien/chat/oiseau, etc.
+model.compile(
+    loss=&#x27;categorical_crossentropy&#x27;,   # pour une sortie softmax
+    optimizer=&#x27;adam&#x27;,
+    metrics=[&#x27;accuracy&#x27;]
+)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Loss ≠ Métrique.</strong> La loss doit être mathématiquement "lisse" (dérivable) pour que l'optimizer puisse calculer un gradient. L'accuracy, elle, "saute" de 0 à 1 d'un coup — impossible d'en calculer une pente. On la met en <strong>metrics</strong> pour l'affichage, jamais en <strong>loss</strong>.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># FAUX — ne pas faire ça
+model.compile(loss=&#x27;accuracy&#x27;, optimizer=&#x27;adam&#x27;)  # erreur !
+
+# CORRECT
+model.compile(loss=&#x27;binary_crossentropy&#x27;, optimizer=&#x27;adam&#x27;, metrics=[&#x27;accuracy&#x27;])</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-3-la-loss-function-mesurer-lerreur-du-modèle">3. La Loss Function — mesurer l'erreur du modèle</h2>
+
+<h3 id="ref-quest-ce-quune-loss-function">Qu'est-ce qu'une loss function ?</h3>
+
+<p>C'est une fonction mathématique qui prend en entrée les <strong>prédictions du modèle</strong> $\hat{y}$ et les <strong>vraies valeurs</strong> $y$, et qui retourne un <strong>nombre positif</strong> : plus ce nombre est grand, plus le modèle s'est trompé.</p>
+
+<p>L'entraînement consiste à faire descendre ce nombre vers zéro. Comme dans notre analogie : descendre vers la vallée.</p>
+
+<h3 id="ref-31-la-mse-mean-squared-error-régression">3.1 La MSE — Mean Squared Error (Régression)</h3>
+
+<p><strong>Formule :</strong></p>
+
+<div class="katex-display">$$\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$</div>
+
+<p><strong>Traduction en français :</strong> Pour chaque exemple $i$, on calcule la différence entre la vraie valeur $y_i$ et la prédiction $\hat{y}_i$, on la met au carré (pour éviter les annulations entre erreurs positives et négatives), et on fait la moyenne sur tous les $n$ exemples.</p>
+
+<p><strong>Exemple numérique :</strong> Ton modèle doit prédire des températures.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Exemple</th><th>Vraie valeur $y_i$</th><th>Prédiction $\hat{y}_i$</th><th>Erreur $(y_i - \hat{y}_i)$</th><th>Erreur²</th></tr></thead><tbody><tr><td>1</td><td>20°C</td><td>18°C</td><td>2</td><td>4</td></tr><tr><td>2</td><td>25°C</td><td>27°C</td><td>-2</td><td>4</td></tr><tr><td>3</td><td>15°C</td><td>14°C</td><td>1</td><td>1</td></tr></tbody></table></div>
+<div class="katex-display">$$\text{MSE} = \frac{4 + 4 + 1}{3} = \frac{9}{3} = 3$$</div>
+
+<p>L'erreur quadratique moyenne est de 3°C². Si tu veux une erreur en degrés directement, utilise la <strong>MAE</strong> (Mean Absolute Error) ou la <strong>RMSE</strong> (racine carrée de la MSE = $\sqrt{3} \approx 1.73$°C).</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Pourquoi mettre au <strong>carré</strong> ? Deux raisons : (1) les erreurs positives et négatives ne s'annulent pas, (2) les grosses erreurs sont pénalisées beaucoup plus fort que les petites (une erreur de 4 donne 16, une erreur de 2 donne 4).</p></div></div>
+
+<h3 id="ref-32-la-binary-cross-entropy-classification-binaire">3.2 La Binary Cross-Entropy (Classification binaire)</h3>
+
+<p><strong>Formule :</strong></p>
+
+<div class="katex-display">$$\text{Log Loss} = -\frac{1}{n}\sum_{i=1}^{n} \left[ y_i \log(\hat{y}_i) + (1 - y_i)\log(1 - \hat{y}_i) \right]$$</div>
+
+<p><strong>Décomposons :</strong> Le modèle prédit une <strong>probabilité</strong> $\hat{y}_i \in [0, 1]$ (grâce à la fonction sigmoid en sortie). La vraie étiquette $y_i$ est 0 ou 1.</p>
+
+<ul>
+<li>Si $y_i = 1$ (c'est positif), la loss vaut $-\log(\hat{y}_i)$. Si le modèle dit $\hat{y}_i = 0.9$ (confiant et correct) → loss = $-\log(0.9) \approx 0.1$ (faible). Si $\hat{y}_i = 0.1$ (confiant et faux) → loss = $-\log(0.1) \approx 2.3$ (forte pénalité).</li>
+<li>Si $y_i = 0$ (c'est négatif), la loss vaut $-\log(1 - \hat{y}_i)$. Même logique inversée.</li>
+</ul>
+
+<p><strong>Exemple numérique :</strong> Détection de spam (1 = spam, 0 = pas spam).</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Email</th><th>Vraie étiquette $y_i$</th><th>Probabilité prédite $\hat{y}_i$</th><th>Contribution à la loss</th></tr></thead><tbody><tr><td>A</td><td>1 (spam)</td><td>0.9</td><td>$-\log(0.9) \approx 0.105$</td></tr><tr><td>B</td><td>1 (spam)</td><td>0.2</td><td>$-\log(0.2) \approx 1.609$</td></tr><tr><td>C</td><td>0 (pas spam)</td><td>0.1</td><td>$-\log(0.9) \approx 0.105$</td></tr></tbody></table></div>
+<div class="katex-display">$$\text{Log Loss} = \frac{0.105 + 1.609 + 0.105}{3} \approx 0.606$$</div>
+
+<p>L'email B est mal prédit (vrai spam prédit à seulement 20%) et contribue beaucoup à la loss.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La cross-entropy punit <strong>très fortement</strong> les prédictions confiantes mais fausses. C'est le comportement voulu : si tu affirmes "0% de chance que ce soit un cancer" et que c'en est un, tu mérites une grosse pénalité.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-loptimizer-comment-le-modèle-apprend">4. L'Optimizer — comment le modèle apprend</h2>
+
+<h3 id="ref-41-forward-et-backward-propagation">4.1 Forward et Backward Propagation</h3>
+
+<p>À chaque <strong>itération</strong> (sur un mini-batch de données), deux étapes se succèdent :</p>
+
+<p><strong>1. Forward propagation (aller)</strong> : le modèle calcule sa prédiction $\hat{y}$ à partir des entrées $X$, puis on calcule la loss.</p>
+
+<p><strong>2. Backward propagation (retour)</strong> : on calcule le <strong>gradient</strong> de la loss par rapport à chaque poids — c'est la "direction de la pente" sous nos pieds dans l'analogie montagne — puis on met à jour les poids.</p>
+
+<p>La <strong>mise à jour des poids</strong> suit cette règle (gradient descent simple) :</p>
+
+<div class="katex-display">$$\theta_{k+1} \leftarrow \theta_k - \alpha \cdot \nabla L(\theta_k)$$</div>
+
+<p><strong>Traduction :</strong> Le nouveau poids $\theta_{k+1}$ = l'ancien poids $\theta_k$ <strong>moins</strong> le learning rate $\alpha$ multiplié par la pente (gradient $\nabla L$). On descend dans la direction de la pente, avec un pas de taille $\alpha$.</p>
+
+<p><strong>Exemple numérique simple :</strong></p>
+
+<p>Un poids vaut $\theta = 2.0$. La pente (gradient) calculée est $\nabla L = 0.5$. Le learning rate est $\alpha = 0.1$.</p>
+
+<div class="katex-display">$$\theta_{\text{nouveau}} = 2.0 - 0.1 \times 0.5 = 2.0 - 0.05 = 1.95$$</div>
+
+<p>Le poids a diminué légèrement dans la direction qui réduit la loss.</p>
+
+<h3 id="ref-42-le-gradient-quest-ce-que-cest-exactement">4.2 Le gradient — qu'est-ce que c'est exactement ?</h3>
+
+<p>Un réseau de neurones peut avoir des <strong>millions de poids</strong> $\theta_1, \theta_2, \dots, \theta_p$. Le gradient est un vecteur de toutes les dérivées partielles :</p>
+
+<div class="katex-display">$$\nabla L(\theta) = \begin{bmatrix} \frac{\partial L}{\partial \theta_1} \\ \vdots \\ \frac{\partial L}{\partial \theta_p} \end{bmatrix}$$</div>
+
+<p>Chaque composante indique : "si j'augmente ce poids de très peu, la loss augmente ou diminue de combien ?"</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><strong>Pourquoi "back"-propagation ?</strong> Calculer ces millions de dérivées une par une serait catastrophiquement lent. La rétropropagation utilise la <strong>règle de la chaîne</strong> (chain rule) pour les calculer toutes en une seule passe arrière, en réutilisant les calculs du forward pass. Un backward pass prend environ le même temps qu'un forward pass — c'est un algorithme très efficace.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Vanishing Gradient</strong> : Dans les réseaux très profonds, les gradients peuvent devenir extrêmement petits en remontant vers les premières couches. Résultat : les premières couches n'apprennent presque plus. C'est un problème fondamental que les architectures modernes (BatchNorm, ResNet, etc.) cherchent à résoudre.</p></div></div>
+
+<h3 id="ref-43-quel-optimizer-choisir">4.3 Quel optimizer choisir ?</h3>
+
+<p>Le gradient descent "de base" (SGD) a un problème : il peut se bloquer dans des <strong>minima locaux</strong> (des petites vallées qui ne sont pas la vraie vallée la plus profonde). Les optimizers modernes ajoutent des mécanismes pour mieux naviguer :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Optimizer</th><th>Ce qu'il ajoute</th></tr></thead><tbody><tr><td><strong>SGD</strong></td><td>Gradient descent de base — simple mais limité</td></tr><tr><td><strong>Momentum</strong></td><td>Inertie : accélère dans la bonne direction (comme une boule qui roule)</td></tr><tr><td><strong>AdaGrad</strong></td><td>Learning rate différent par paramètre — s'adapte à l'importance de chaque feature</td></tr><tr><td><strong>RMSProp</strong></td><td>Comme AdaGrad mais seuls les gradients récents comptent</td></tr><tr><td><strong>Adam</strong></td><td>Combine Momentum + RMSProp — le meilleur des deux mondes</td></tr></tbody></table></div>
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p><strong>Règle simple : toujours commencer par Adam.</strong> Il converge vite, s'adapte à chaque paramètre, et est robuste dans la plupart des situations. Tu n'as presque jamais besoin de changer.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import tensorflow as tf
+
+# Utiliser Adam avec les paramètres par défaut (recommandé pour commencer)
+model.compile(loss=&#x27;mse&#x27;, optimizer=&#x27;adam&#x27;)
+
+# Si tu veux ajuster le learning rate manuellement
+opt = tf.keras.optimizers.Adam(
+    learning_rate=0.01,   # défaut : 0.001 — augmenter si convergence trop lente
+    beta_1=0.9,           # momentum — rarement à changer
+    beta_2=0.999          # scaling adaptatif — rarement à changer
+)
+model.compile(loss=&#x27;mse&#x27;, optimizer=opt)</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-5-les-hyperparamètres-de-lentraînement">5. Les Hyperparamètres de l'entraînement</h2>
+
+<h3 id="ref-51-le-learning-rate-la-taille-du-pas">5.1 Le Learning Rate — la taille du pas</h3>
+
+<p>Le learning rate $\alpha$ contrôle <strong>de combien on modifie les poids</strong> à chaque mise à jour.</p>
+
+<ul>
+<li><strong>Trop grand</strong> ($\alpha = 1.0$) : les poids changent trop brutalement, le modèle "saute" par-dessus la vallée et <strong>diverge</strong> (la loss monte au lieu de descendre).</li>
+<li><strong>Trop petit</strong> ($\alpha = 0.000001$) : les poids changent très peu, le modèle converge <strong>très lentement</strong> et il faut des milliers d'epochs.</li>
+<li><strong>Bien calibré</strong> ($\alpha = 0.001$ pour Adam) : descente régulière et efficace.</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Valeur de départ recommandée</strong> : <code>0.001</code> avec Adam. C'est la valeur par défaut et elle fonctionne bien dans 80% des cas. Si la loss ne bouge pas, essaie <code>0.01</code>. Si elle diverge, essaie <code>0.0001</code>.</p></div></div>
+
+<h3 id="ref-52-le-batch-size-combien-dexemples-par-mise-à-jour">5.2 Le Batch Size — combien d'exemples par mise à jour</h3>
+
+<p>Au lieu de regarder tous les exemples avant de faire une mise à jour des poids (trop lent), on découpe le dataset en <strong>mini-batches</strong> et on met à jour les poids après chaque mini-batch.</p>
+
+<p><strong>Exemple concret :</strong> 1000 exemples d'entraînement, <code>batch_size=100</code>.</p>
+<ul>
+<li>1 epoch = 10 mini-batches = 10 mises à jour des poids.</li>
+</ul>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Petit batch (16-32)</th><th>Grand batch (256-512)</th></tr></thead><tbody><tr><td>Mises à jour par epoch</td><td>Beaucoup</td><td>Peu</td></tr><tr><td>Qualité du gradient</td><td>Bruitée (stochastique)</td><td>Stable</td></tr><tr><td>Vitesse de convergence</td><td>Souvent plus rapide</td><td>Peut nécessiter plus d'epochs</td></tr><tr><td>Mémoire utilisée</td><td>Peu</td><td>Beaucoup</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>En pratique</strong> : <code>32</code> est un excellent point de départ. Toujours choisir une <strong>puissance de 2</strong> (16, 32, 64, 128...) pour des raisons de performance GPU. Pour de petits datasets tabulaires, tu peux aller jusqu'à 256 sans problème.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">history = model.fit(
+    X_train, y_train,
+    batch_size=32,    # 32 exemples par mise à jour
+    epochs=100
+)</code></pre></div>
+
+
+<h3 id="ref-53-le-nombre-depochs-combien-de-fois-on-voit-tout-le-dataset">5.3 Le Nombre d'Epochs — combien de fois on voit tout le dataset</h3>
+
+<p>Un <strong>epoch</strong> = le modèle a vu une fois chaque exemple du dataset d'entraînement.</p>
+
+<p>En pratique, on met un grand nombre d'epochs (ex: <code>1000</code>) et on laisse l'<strong>Early Stopping</strong> décider quand arrêter. Il n'y a pas de règle magique pour le nombre d'epochs.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Plus le batch size est grand, plus il faut d'epochs pour que le modèle fasse autant de mises à jour totales. Avec <code>batch_size=1000</code> et 1000 exemples, il n'y a <strong>qu'une seule mise à jour par epoch</strong>.</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-validation-set-et-early-stopping">6. Validation Set et Early Stopping</h2>
+
+<h3 id="ref-61-pourquoi-un-validation-set">6.1 Pourquoi un validation set ?</h3>
+
+<p>Pendant l'entraînement, le modèle voit les mêmes données encore et encore. À force, il commence à les <strong>mémoriser</strong> au lieu de vraiment apprendre (c'est l'overfitting). Pour détecter ça, on réserve une partie des données — le <strong>validation set</strong> — que le modèle ne voit jamais pendant l'entraînement. On mesure la performance dessus à chaque epoch.</p>
+
+<p><strong>Le signal d'alerte :</strong> la loss d'entraînement continue de baisser, mais la <strong>loss de validation</strong> commence à remonter. Le modèle mémorise, il n'apprend plus.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Option 1 : séparer manuellement les données
+history = model.fit(
+    X_train, y_train,
+    validation_data=(X_val, y_val),   # données séparées explicitement
+    batch_size=32,
+    epochs=100
+)
+
+# Option 2 : laisser Keras séparer automatiquement
+history = model.fit(
+    X_train, y_train,
+    validation_split=0.3,    # les 30% derniers exemples servent de validation
+    batch_size=32,
+    epochs=100
+)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Ne jamais utiliser le test set comme validation set !</strong> Si tu te sers du test set pour décider quand arrêter, tu laisses le test set influencer l'entraînement — c'est du <strong>data leakage</strong>. Le test set doit rester complètement isolé jusqu'à l'évaluation finale.</p></div></div>
+
+<h3 id="ref-62-early-stopping-arrêter-au-bon-moment">6.2 Early Stopping — arrêter au bon moment</h3>
+
+<p>L'Early Stopping surveille la validation loss après chaque epoch et arrête l'entraînement si elle ne s'améliore plus.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.callbacks import EarlyStopping
+
+es = EarlyStopping(
+    patience=20,                  # attend 20 epochs sans amélioration avant d&#x27;arrêter
+    restore_best_weights=True     # revient aux poids du meilleur epoch
+)
+
+history = model.fit(
+    X_train, y_train,
+    validation_split=0.3,
+    epochs=1000,           # grand nombre — l&#x27;early stopping s&#x27;occupera d&#x27;arrêter
+    callbacks=[es]         # la liste de &quot;surveillants&quot; appelés après chaque epoch
+)</code></pre></div>
+
+
+<p><strong>Fonctionnement de <code>patience=20</code> :</strong> L'entraînement continue tant que la validation loss s'améliore. Si elle ne s'améliore pas pendant 20 epochs consécutives, l'entraînement s'arrête.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Toujours mettre <code>restore_best_weights=True</code></strong>. Sans ça, le modèle garde les poids du <strong>dernier epoch</strong> — qui est potentiellement overfitté. Avec cette option, il revient aux poids de l'epoch où la validation loss était la meilleure.</p></div></div>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Pourquoi une <code>patience</code> > 0 ?</strong> La loss peut fluctuer légèrement à cause du caractère aléatoire des mini-batches (stochasticité). Sans patience, le modèle s'arrêterait à la première fluctuation temporaire. <code>patience=20</code> lui laisse le temps de "rebondir".</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-régularisation-éviter-le-surapprentissage">7. Régularisation — éviter le surapprentissage</h2>
+
+<h3 id="ref-cest-quoi-loverfitting-concrètement">C'est quoi l'overfitting, concrètement ?</h3>
+
+<p>Un modèle qui overfit a <strong>mémorisé les données d'entraînement</strong> au lieu d'apprendre des règles générales. Il performe très bien sur le train set, mais très mal sur des données nouvelles.</p>
+
+<p><strong>L'analogie :</strong> Étudier pour un examen en mémorisant les réponses exactes des annales, sans comprendre les concepts. Tu réussis les vieux examens, mais échoues sur de nouvelles questions.</p>
+
+<p>La régularisation force le modèle à apprendre des patterns plus simples et généraux.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Règle d'or</strong> : ne pas régulariser avant d'avoir vérifié que le modèle est capable d'overfitter. Un modèle qui overfit = il apprend vraiment quelque chose. S'il n'overfit même pas, c'est qu'il n'apprend rien du tout — la régularisation ne ferait qu'aggraver la situation.</p></div></div>
+
+<p><strong>Workflow recommandé :</strong></p>
+<ol>
+<li>Construire un modèle simple, vérifier qu'il overfit</li>
+<li>Ajouter l'Early Stopping</li>
+<li>Si l'overfitting persiste, ajouter Dropout et/ou L2</li>
+</ol>
+
+<h3 id="ref-71-régularisation-l1-et-l2">7.1 Régularisation L1 et L2</h3>
+
+<p><strong>Principe :</strong> Ajouter un terme de <strong>pénalité</strong> à la loss. Ça décourage le modèle d'utiliser des poids trop grands, qui sont souvent signe de surapprentissage.</p>
+
+<p><strong>L2 (Ridge) :</strong></p>
+
+<div class="katex-display">$$\text{Loss}_{\text{régularisée}} = \text{Loss} + \alpha \sum_{i} \theta_i^2$$</div>
+
+<p><strong>Intuition :</strong> On ajoute la somme des <strong>carrés des poids</strong> à la loss. Le modèle est pénalisé s'il utilise des poids élevés → il préfère des poids petits → moins d'overfitting.</p>
+
+<p><strong>L1 (Lasso) :</strong></p>
+
+<div class="katex-display">$$\text{Loss}_{\text{régularisée}} = \text{Loss} + \alpha \sum_{i} |\theta_i|$$</div>
+
+<p><strong>Intuition :</strong> On ajoute la somme des <strong>valeurs absolues des poids</strong>. L1 pousse les poids exactement vers zéro (sparsité) → certains neurones sont complètement ignorés.</p>
+
+<p><strong>Exemple numérique avec L2 :</strong> Un poids vaut $\theta = 3.0$, $\alpha = 0.01$.</p>
+
+<p>Pénalité L2 pour ce poids : $\alpha \times \theta^2 = 0.01 \times 9 = 0.09$. Ce terme s'ajoute à la loss totale, ce qui pousse l'optimizer à réduire ce poids.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from keras import regularizers, Sequential, Input, layers
+
+# Créer un régulariseur L2
+reg_l2 = regularizers.L2(0.01)   # alpha = 0.01
+
+model = Sequential()
+model.add(Input(shape=(10,)))
+model.add(layers.Dense(100, activation=&#x27;relu&#x27;))
+model.add(layers.Dense(
+    50,
+    activation=&#x27;relu&#x27;,
+    kernel_regularizer=reg_l2   # applique L2 sur les poids (W) de cette couche
+))
+model.add(layers.Dense(1, activation=&#x27;sigmoid&#x27;))</code></pre></div>
+
+
+<p><strong>Les trois cibles possibles de la régularisation :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Paramètre</th><th>Ce qu'il régularise</th><th>Utilisation</th></tr></thead><tbody><tr><td><code>kernel_regularizer</code></td><td>Les poids $W$ de la couche</td><td><strong>Le plus courant</strong></td></tr><tr><td><code>bias_regularizer</code></td><td>Les biais $b$</td><td>Rare</td></tr><tr><td><code>activity_regularizer</code></td><td>La sortie de la couche $f(WX + b)$</td><td>Auto-encoders</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La régularisation L1/L2 n'ajoute <strong>aucun paramètre</strong> au modèle. Elle modifie uniquement la fonction de loss que l'optimizer minimise. <code>model.summary()</code> affichera le même nombre de paramètres.</p></div></div>
+
+<h3 id="ref-72-dropout-le-meilleur-ami-contre-loverfitting">7.2 Dropout — le meilleur ami contre l'overfitting</h3>
+
+<p><strong>Principe :</strong> Pendant l'entraînement, on <strong>désactive aléatoirement</strong> un pourcentage de neurones à chaque itération. Les neurones désactivés ne participent ni au forward pass ni au backward pass.</p>
+
+<p><strong>Pourquoi ça fonctionne ?</strong> Quand certains neurones sont coupés aléatoirement, les autres sont forcés d'apprendre des représentations indépendantes et robustes. Aucun neurone ne peut se "reposer" sur ses voisins.</p>
+
+<p><strong>L'analogie :</strong> Apprendre à dribbler au basket avec des coéquipiers qui disparaissent aléatoirement. Tu es forcé de maîtriser toi-même plutôt que de toujours passer la balle au même.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from keras import layers, Sequential, Input
+
+model = Sequential()
+model.add(Input(shape=(56,)))
+model.add(layers.Dense(20, activation=&#x27;relu&#x27;))
+model.add(layers.Dropout(rate=0.2))         # désactive 20% des 20 neurones aléatoirement
+model.add(layers.Dense(10, activation=&#x27;relu&#x27;))
+model.add(layers.Dropout(rate=0.2))         # idem pour les 10 neurones suivants
+model.add(layers.Dense(1, activation=&#x27;sigmoid&#x27;))</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le Dropout est <strong>automatiquement désactivé</strong> lors du <code>model.predict()</code> ou <code>model.evaluate()</code>. Pendant l'inférence, tous les neurones sont actifs (mais leurs sorties sont ajustées par un facteur $1 - \text{rate}$ pour maintenir l'échelle des activations).</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le Dropout n'ajoute <strong>aucun paramètre</strong> supplémentaire au modèle. C'est juste un masque aléatoire appliqué pendant l'entraînement.</p></div></div>
+
+<hr>
+
+<h2 id="ref-8-preprocessing-intégré-dans-keras">8. Preprocessing intégré dans Keras</h2>
+
+<h3 id="ref-pourquoi-normaliser-les-features">Pourquoi normaliser les features ?</h3>
+
+<p>Si une feature varie entre 0 et 100 000 (ex: un salaire) et une autre entre 0 et 1 (ex: une proportion), l'optimizer aura du mal à trouver le bon learning rate pour les deux en même temps. La convergence sera lente ou instable.</p>
+
+<p><strong>La solution :</strong> ramener toutes les features à la même échelle (moyenne 0, écart-type 1).</p>
+
+<h3 id="ref-option-1-standardscaler-de-sklearn-approche-classique">Option 1 — StandardScaler de sklearn (approche classique)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)   # calcule moyenne/std sur train, puis transforme
+X_test_scaled = scaler.transform(X_test)          # utilise la même moyenne/std pour transformer
+
+model.fit(X_train_scaled, y_train, validation_data=(X_test_scaled, y_test))</code></pre></div>
+
+
+<h3 id="ref-option-2-couche-normalization-de-keras-recommandée">Option 2 — Couche Normalization de Keras (recommandée)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.layers import Normalization
+
+# Créer la couche de normalisation
+normalizer = Normalization()
+normalizer.adapt(X_train)   # calcule la moyenne et l&#x27;écart-type sur X_train
+
+model = Sequential()
+model.add(normalizer)        # 1ère couche : normalise automatiquement les entrées
+model.add(layers.Dense(16, activation=&#x27;relu&#x27;))
+model.add(layers.Dense(1, activation=&#x27;linear&#x27;))
+
+# Plus besoin de scaler manuellement !
+model.fit(X_train, y_train, validation_data=(X_test, y_test))</code></pre></div>
+
+
+<p><strong>Avantage de l'Option 2 :</strong> La normalisation est <strong>intégrée dans le modèle</strong>. Quand tu sauvegardes et recharges le modèle, tu n'as pas besoin de sauvegarder le scaler séparément. Et lors de la prédiction en production, tu passes directement les données brutes.</p>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Préfère la couche <code>Normalization</code> de Keras quand tu travailles dans un pipeline entièrement Keras/TensorFlow. Utilise <code>StandardScaler</code> si tu mélanges sklearn et Keras.</p></div></div>
+
+<hr>
+
+<h2 id="ref-9-sauvegarder-et-charger-un-modèle">9. Sauvegarder et charger un modèle</h2>
+
+<p>Entraîner un gros modèle peut prendre des heures. On veut pouvoir le sauvegarder pour l'utiliser plus tard sans ré-entraîner.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import models
+
+# Sauvegarder le modèle complet (architecture + poids + optimizer)
+models.save_model(model, &#x27;mon_modele.keras&#x27;)
+
+# Charger le modèle
+modele_charge = models.load_model(&#x27;mon_modele.keras&#x27;)
+
+# Le modèle chargé est prêt à être utilisé immédiatement
+predictions = modele_charge.predict(X_nouvelles_donnees)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le format <code>.keras</code> nécessite <code>tensorflow &gt;= 2.16</code> ou <code>keras &gt;= 3</code>. Pour des versions plus anciennes, utilise le format <code>.h5</code> : <code>models.save_model(model, &#x27;mon_modele.h5&#x27;)</code>.</p></div></div>
+
+<hr>
+
+<h2 id="ref-10-récapitulatif-les-erreurs-classiques-à-éviter">10. Récapitulatif — Les erreurs classiques à éviter</h2>
+
+<h3 id="ref-erreur-1-utiliser-laccuracy-comme-loss">Erreur 1 : Utiliser l'accuracy comme loss</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># FAUX
+model.compile(loss=&#x27;accuracy&#x27;, optimizer=&#x27;adam&#x27;)
+
+# CORRECT — accuracy en métrique, pas en loss
+model.compile(loss=&#x27;binary_crossentropy&#x27;, optimizer=&#x27;adam&#x27;, metrics=[&#x27;accuracy&#x27;])</code></pre></div>
+
+
+<h3 id="ref-erreur-2-utiliser-le-test-set-pour-la-validation">Erreur 2 : Utiliser le test set pour la validation</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># FAUX — data leakage !
+model.fit(X_train, y_train, validation_data=(X_test, y_test))
+
+# CORRECT — utiliser un vrai validation set séparé
+model.fit(X_train, y_train, validation_split=0.3)</code></pre></div>
+
+
+<h3 id="ref-erreur-3-oublier-restore_best_weightstrue">Erreur 3 : Oublier <code>restore_best_weights=True</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># FAUX — garde les poids du dernier epoch (potentiellement overfitté)
+es = EarlyStopping(patience=20)
+
+# CORRECT — revient aux meilleurs poids
+es = EarlyStopping(patience=20, restore_best_weights=True)</code></pre></div>
+
+
+<h3 id="ref-erreur-4-régulariser-avant-davoir-vérifié-que-le-modèle-overfit">Erreur 4 : Régulariser avant d'avoir vérifié que le modèle overfit</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># FAUX — trop de régularisation d&#x27;emblée, le modèle n&#x27;apprend rien
+model.add(layers.Dense(50, kernel_regularizer=regularizers.L2(0.1)))
+model.add(layers.Dropout(0.5))
+
+# CORRECT — d&#x27;abord faire overfitter, puis régulariser progressivement
+# Étape 1 : modèle simple sans régularisation, vérifier l&#x27;overfitting
+# Étape 2 : Early Stopping
+# Étape 3 : Dropout / L2 si l&#x27;overfitting persiste</code></pre></div>
+
+
+<h3 id="ref-erreur-5-ne-pas-normaliser-les-features">Erreur 5 : Ne pas normaliser les features</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># FAUX — features sur des échelles très différentes
+model.fit(X_brut, y_train)  # convergence lente ou échouée
+
+# CORRECT
+normalizer = Normalization()
+normalizer.adapt(X_train)
+model.add(normalizer)  # première couche = normalisation</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1 — La loss vs la métrique :</strong></p>
+<p>Tu entraînes un classifieur binaire (fraude / pas fraude). Lequel de ces <code>compile</code> est correct, et pourquoi ?</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># A
+model.compile(loss=&#x27;accuracy&#x27;, optimizer=&#x27;adam&#x27;, metrics=[&#x27;binary_crossentropy&#x27;])
+
+# B
+model.compile(loss=&#x27;binary_crossentropy&#x27;, optimizer=&#x27;adam&#x27;, metrics=[&#x27;accuracy&#x27;])</code></pre></div>
+
+
+<p><strong>Question 2 — Le gradient :</strong></p>
+<p>Ton modèle a un poids $\theta = 5.0$. Le gradient calculé est $\nabla L = 2.0$ et le learning rate est $\alpha = 0.1$. Quelle sera la valeur du poids après une mise à jour ? Applique la formule $\theta_{k+1} = \theta_k - \alpha \cdot \nabla L(\theta_k)$.</p>
+
+<p><strong>Question 3 — Early Stopping :</strong></p>
+<p>Tu entraînes un modèle avec <code>EarlyStopping(patience=10, restore_best_weights=True)</code>. L'entraînement s'arrête à l'epoch 47. La meilleure validation loss a été atteinte à l'epoch 37. Que fait Keras avec les poids du modèle ?</p>
+
+<p><strong>Question 4 — Overfitting ou underfitting ?</strong></p>
+<p>Après l'entraînement, tu observes :</p>
+<ul>
+<li>Loss d'entraînement : 0.02 (très faible)</li>
+<li>Loss de validation : 1.85 (très élevée)</li>
+</ul>
+
+<p>Que se passe-t-il et quelle technique appliques-tu en premier ?</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li><code>model.compile(loss=..., optimizer=&#x27;adam&#x27;, metrics=[...])</code> — la <strong>loss</strong> est minimisée, les <strong>métriques</strong> sont juste affichées.</li>
+<li>Pour la <strong>régression</strong> : <code>loss=&#x27;mse&#x27;</code>. Pour la <strong>classification binaire</strong> : <code>loss=&#x27;binary_crossentropy&#x27;</code>. Pour la <strong>classification multi-classes</strong> : <code>loss=&#x27;categorical_crossentropy&#x27;</code>.</li>
+<li>Le <strong>gradient</strong> indique la pente de la loss : l'optimizer l'utilise pour mettre à jour les poids ($\theta \leftarrow \theta - \alpha \cdot \nabla L$). <strong>Adam</strong> est le meilleur choix par défaut.</li>
+<li>Le <strong>learning rate</strong> $\alpha$ contrôle la taille du pas : trop grand = divergence, trop petit = lenteur. Défaut Adam : <code>0.001</code>.</li>
+<li>Le <strong>batch size</strong> (défaut : 32) contrôle combien d'exemples on regarde avant chaque mise à jour. Toujours une puissance de 2.</li>
+<li>Le <strong>validation set</strong> détecte l'overfitting. Ne jamais utiliser le test set pour ça.</li>
+<li>L'<strong>Early Stopping</strong> (<code>patience=20, restore_best_weights=True</code>) arrête l'entraînement au bon moment et restaure les meilleurs poids.</li>
+<li>La <strong>régularisation L2</strong> pénalise les gros poids. Le <strong>Dropout</strong> désactive des neurones aléatoirement. Les deux luttent contre l'overfitting.</li>
+<li><strong>Workflow</strong> : faire overfitter → Early Stopping → Dropout/L2 si nécessaire.</li>
+<li>Toujours <strong>normaliser</strong> les features (couche <code>Normalization</code> de Keras ou <code>StandardScaler</code>).</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-choisir-une-fonction-de-coût">Choisir une fonction de coût</a></li><li><a href="#syn-optimizers-sgd-momentum-adam">Optimizers : SGD, Momentum, Adam</a></li><li><a href="#syn-learning-rate">Learning rate</a></li><li><a href="#syn-batch-size-et-epochs">Batch size et epochs</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-schedulers-de-learning-rate">Schedulers de learning rate</a></li><li><a href="#syn-gradient-clipping">Gradient clipping</a></li><li><a href="#syn-mixed-precision">Mixed precision</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-choisir-une-fonction-de-coût">Choisir une fonction de coût</h3>
+
+<p>La loss function définit ce que le modèle cherche à minimiser. Trois choix selon le type de problème :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Problème</th><th>Loss recommandée</th><th>Formule</th></tr></thead><tbody><tr><td><strong>Régression</strong></td><td>MSE</td><td>$\frac{1}{n}\sum (y - \hat{y})^2$</td></tr><tr><td><strong>Régression robuste</strong></td><td>MAE</td><td>$\frac{1}{n}\sum</td><td>y - \hat{y}</td><td>$</td></tr><tr><td><strong>Régression robuste</strong></td><td>Huber</td><td>quadratique près de 0, linéaire loin</td></tr><tr><td><strong>Classification binaire</strong></td><td>Binary cross-entropy</td><td>$-\frac{1}{n}\sum [y\log p + (1-y)\log(1-p)]$</td></tr><tr><td><strong>Classification multi-classe</strong></td><td>Categorical cross-entropy</td><td>$-\sum_k y_k \log p_k$</td></tr><tr><td><strong>Classification (labels entiers)</strong></td><td>Sparse categorical CE</td><td>équivalent, plus efficace</td></tr></tbody></table></div>
+<p><strong>Lecture de MSE</strong> (Mean Squared Error) : pour chaque exemple $i$, on calcule l'erreur $y_i - \hat y_i$ entre la vraie valeur et la prédiction, on l'élève au carré (ce qui pénalise fortement les grosses erreurs et rend la fonction dérivable partout), puis on fait la moyenne sur les $n$ exemples. Exemple : vrais $[3, 5]$, prédits $[2, 7]$ → erreurs $[1, -2]$ → carrés $[1, 4]$ → MSE = $2{,}5$.</p>
+
+<p><strong>Lecture de MAE</strong> (Mean Absolute Error) : même chose sans carré. On prend la valeur absolue. Traite chaque erreur linéairement, ce qui rend la loss beaucoup moins sensible aux outliers. Avec le même exemple, MAE = $(1 + 2)/2 = 1{,}5$.</p>
+
+<p><strong>Lecture de la cross-entropy binaire</strong> : pour chaque exemple, $y \in \{0, 1\}$ est la vraie classe et $p \in (0, 1)$ la probabilité prédite pour la classe 1. Si $y = 1$, on ne garde que $-\log p$ : plus $p$ est proche de 1 (bon), plus la loss est proche de 0 ; si $p$ est proche de 0 (très faux), $-\log p$ explose. Si $y = 0$, c'est l'inverse avec $-\log(1 - p)$. Exemple : $y = 1$, $p = 0{,}9$ → loss = $-\log 0{,}9 \approx 0{,}105$. $y = 1$, $p = 0{,}1$ → loss = $-\log 0{,}1 \approx 2{,}30$. La cross-entropy punit très fort une prédiction confiante et fausse.</p>
+
+<p><strong>Lecture de la categorical cross-entropy</strong> : généralisation à $K$ classes. $\mathbf{y}$ est un vecteur one-hot (un seul 1, le reste à 0), $\mathbf{p}$ est la sortie du softmax. La somme $-\sum_k y_k \log p_k$ ne garde qu'un seul terme non nul : $-\log p_{k^<em>}$ où $k^</em>$ est la vraie classe. Exemple : vraie classe = chien, softmax = $(0{,}1, 0{,}7, 0{,}2)$ pour (chat, chien, oiseau) → loss = $-\log 0{,}7 \approx 0{,}357$.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Régression
+model.compile(loss=&quot;mse&quot;, optimizer=&quot;adam&quot;)                       # Erreur quadratique moyenne
+model.compile(loss=&quot;mae&quot;, optimizer=&quot;adam&quot;)                       # Erreur absolue moyenne
+model.compile(loss=tf.keras.losses.Huber(delta=1.0), optimizer=&quot;adam&quot;)  # Quadratique puis linéaire
+
+# Classification
+model.compile(loss=&quot;binary_crossentropy&quot;, optimizer=&quot;adam&quot;)       # 2 classes, sortie sigmoid
+model.compile(loss=&quot;categorical_crossentropy&quot;, optimizer=&quot;adam&quot;)  # K classes, labels one-hot
+model.compile(loss=&quot;sparse_categorical_crossentropy&quot;, optimizer=&quot;adam&quot;)  # K classes, labels entiers</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : la loss est la <strong>boussole</strong> du modèle. Si vous lui donnez la mauvaise boussole, il converge dans la mauvaise direction. MSE pénalise très fort les grandes erreurs (utile quand vous voulez éviter les catastrophes), MAE traite toutes les erreurs équivalemment (utile en présence d'outliers). Cross-entropy mesure la "surprise" probabiliste — c'est l'extension naturelle du concept à la classification.</p></div></div>
+
+<h3 id="syn-optimizers-sgd-momentum-adam">Optimizers : SGD, Momentum, Adam</h3>
+
+<p>Chaque optimizer définit <strong>comment</strong> mettre à jour les poids étant donné le gradient.</p>
+
+<p><strong>SGD (Stochastic Gradient Descent)</strong> :</p>
+
+<div class="katex-display">$$\mathbf{w}_{t+1} = \mathbf{w}_t - \eta \nabla \mathcal{L}_{\text{batch}}(\mathbf{w}_t)$$</div>
+
+<p><strong>Lecture de la formule</strong> : à l'étape $t$, on calcule le gradient $\nabla \mathcal{L}$ (un vecteur qui pointe dans la direction de plus forte augmentation de la loss) sur un mini-batch. On se déplace de $-\eta \cdot \nabla \mathcal{L}$, c'est-à-dire dans la direction <strong>opposée</strong> au gradient (pour descendre la loss) d'une quantité proportionnelle au learning rate $\eta$. C'est la descente la plus simple. "Stochastic" vient du fait qu'on utilise un petit batch aléatoire au lieu du dataset entier : plus rapide, mais bruité.</p>
+
+<p><strong>SGD avec Momentum</strong> :</p>
+
+<div class="katex-display">$$\mathbf{v}_{t+1} = \beta \mathbf{v}_t + (1 - \beta) \nabla \mathcal{L}$$</div>
+<div class="katex-display">$$\mathbf{w}_{t+1} = \mathbf{w}_t - \eta \mathbf{v}_{t+1}$$</div>
+
+<p><strong>Lecture de la formule</strong> : $\mathbf{v}_t$ est une <strong>moyenne exponentielle mobile</strong> des gradients passés. À chaque pas, on mélange l'ancien $\mathbf{v}_t$ (pondéré par $\beta = 0{,}9$) avec le nouveau gradient (pondéré par $1 - \beta = 0{,}1$). Résultat : $\mathbf{v}$ devient une "vitesse" qui intègre l'historique. Quand les gradients récents pointent dans la même direction, la vitesse s'accumule et on accélère. Quand ils oscillent, les composantes opposées se compensent et on avance plus droit. Image physique : une boule qui roule dans un bol prend de la vitesse, alors que SGD pur "tombe" à chaque pas.</p>
+
+<p><strong>Adam (Kingma & Ba, 2014)</strong> : combine momentum et un learning rate adaptatif par paramètre.</p>
+
+<div class="katex-display">$$m_t = \beta_1 m_{t-1} + (1 - \beta_1) g_t$$</div>
+<div class="katex-display">$$v_t = \beta_2 v_{t-1} + (1 - \beta_2) g_t^2$$</div>
+<div class="katex-display">$$\mathbf{w}_{t+1} = \mathbf{w}_t - \eta \frac{m_t}{\sqrt{v_t} + \epsilon}$$</div>
+
+<p><strong>Lecture de la formule</strong> : $g_t$ est le gradient courant. $m_t$ est la moyenne mobile du gradient (comme le momentum, avec $\beta_1 = 0{,}9$) : c'est le <strong>premier moment</strong> (moyenne). $v_t$ est la moyenne mobile du gradient <strong>au carré</strong> (avec $\beta_2 = 0{,}999$) : c'est le <strong>second moment</strong> (variance non centrée). La mise à jour finale divise $m_t$ par $\sqrt{v_t}$ : chaque paramètre reçoit son propre learning rate effectif. Si un paramètre a eu de gros gradients récemment, $v_t$ est grand, donc son learning rate est réduit automatiquement. À l'inverse, un paramètre rarement mis à jour garde un grand learning rate. Le $\epsilon$ (ex. $10^{-8}$) évite la division par 0. Note : les versions exactes font un "bias correction" supplémentaire ($\hat m_t = m_t/(1-\beta_1^t)$) pour compenser le biais des premiers pas.</p>
+
+<p>Adam est l'optimizer par défaut en deep learning depuis 2015 parce qu'il marche bien out-of-the-box.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.optimizers import SGD, Adam, AdamW
+
+# SGD classique avec momentum 0.9
+model.compile(optimizer=SGD(learning_rate=1e-2, momentum=0.9), loss=&quot;mse&quot;)
+
+# Adam standard, LR 1e-3 = valeur par défaut qui marche 90% du temps
+model.compile(optimizer=Adam(learning_rate=1e-3), loss=&quot;mse&quot;)
+
+# AdamW : Adam avec weight decay &quot;proprement&quot; séparé de l&#x27;update (Loshchilov 2019)
+model.compile(optimizer=AdamW(learning_rate=1e-3, weight_decay=1e-4), loss=&quot;mse&quot;)</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Optimizer</th><th>Forces</th><th>Faiblesses</th></tr></thead><tbody><tr><td><strong>SGD</strong></td><td>Simple, généralise mieux</td><td>Lent, sensible au LR</td></tr><tr><td><strong>SGD + momentum</strong></td><td>Plus rapide, moins d'oscillations</td><td>Toujours sensible au LR</td></tr><tr><td><strong>Adam</strong></td><td>Rapide, adaptatif</td><td>Peut moins bien généraliser</td></tr><tr><td><strong>AdamW</strong></td><td>Adam corrigé</td><td>Standard moderne</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Recommandation 2025</strong> : utilisez <strong>AdamW</strong> par défaut. Si vous entraînez un grand modèle avec beaucoup de données et que la généralisation compte plus que la vitesse, essayez SGD + momentum + scheduler — c'est ce qui produit les meilleurs ResNets et a produit les premiers transformers SOTA.</p></div></div>
+
+<h3 id="syn-learning-rate">Learning rate</h3>
+
+<p>L'<strong>hyperparamètre le plus critique</strong> en deep learning. Plage typique : $10^{-5}$ à $10^{-2}$.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>LR</th><th>Symptôme</th></tr></thead><tbody><tr><td>Trop élevé</td><td>Loss qui explose ou oscille</td></tr><tr><td>Trop bas</td><td>Convergence très lente, plateau</td></tr><tr><td>Bon</td><td>Décroissance régulière, sans à-coups</td></tr></tbody></table></div>
+<p><strong>Méthode pour trouver le bon LR</strong> : le <strong>LR finder</strong> (Smith, 2017). On entraîne pour quelques itérations en augmentant exponentiellement le LR, et on choisit la valeur juste avant que la loss n'explose.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Implémentation simple en TF
+import numpy as np
+
+lrs = np.logspace(-7, 1, 100)        # 100 LR de 1e-7 à 1e+1 en échelle logarithmique
+losses = []
+for lr in lrs:
+    model.optimizer.learning_rate.assign(lr)   # On force le LR de l&#x27;optimiseur
+    loss = model.train_on_batch(X_batch, y_batch)  # Un seul step d&#x27;entraînement
+    losses.append(loss)
+
+plt.semilogx(lrs, losses)            # Axe X logarithmique
+plt.xlabel(&quot;Learning rate&quot;)
+plt.ylabel(&quot;Loss&quot;)
+# Choisir le LR juste avant l&#x27;explosion (typiquement 10x plus petit)</code></pre></div>
+
+
+<h3 id="syn-batch-size-et-epochs">Batch size et epochs</h3>
+
+<p><strong>Batch size</strong> : nombre d'exemples utilisés pour calculer un gradient.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Taille</th><th>Effet</th></tr></thead><tbody><tr><td><strong>1 (true SGD)</strong></td><td>Très bruité, slow</td></tr><tr><td><strong>32-64</strong></td><td>Standard, bon compromis</td></tr><tr><td><strong>256-1024</strong></td><td>Moins bruité, généralisation parfois moins bonne</td></tr><tr><td><strong>Très grand (10k+)</strong></td><td>Nécessite un grand learning rate, bien généralise (Goyal et al., 2017)</td></tr></tbody></table></div>
+<p><strong>Epochs</strong> : nombre de passages complets sur le dataset. Trop peu = sous-apprentissage. Trop = sur-apprentissage. Solution : early stopping.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model.fit(
+    X_train, y_train,
+    batch_size=64,                          # 64 exemples par mini-batch
+    epochs=100,                             # Maximum d&#x27;epochs (early stopping arrêtera avant)
+    validation_split=0.2,                   # 20% pour validation
+    callbacks=[EarlyStopping(patience=10, restore_best_weights=True)],
+)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : une epoch, c'est lire un livre entier une fois. Le batch size, c'est combien de pages vous lisez avant de réfléchir et noter ce que vous avez compris. 1 page = lent et hésitant. 100 pages = rapide mais approximatif. La règle : commencer à 32 et augmenter si la mémoire le permet et si la convergence est trop bruitée.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-schedulers-de-learning-rate">Schedulers de learning rate</h3>
+
+<p>Le LR optimal change pendant l'entraînement : il faut un grand LR au début (pour explorer) et un petit LR à la fin (pour affiner). Un <strong>scheduler</strong> ajuste automatiquement le LR.</p>
+
+<p><strong>Step decay</strong> : diviser le LR par 10 toutes les 30 epochs.</p>
+
+<div class="katex-display">$$\eta_t = \eta_0 \cdot \gamma^{\lfloor t / s \rfloor}$$</div>
+
+<p><strong>Lecture</strong> : $\eta_0$ est le LR initial, $\gamma = 0{,}1$ le facteur de décroissance, $s = 30$ la période. À l'epoch 0, $\eta = \eta_0$. À l'epoch 30, on divise par 10. À l'epoch 60, par 100. Par paliers.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def lr_schedule(epoch):
+    return 1e-3 * (0.1 ** (epoch // 30))   # 1e-3 puis 1e-4 puis 1e-5 ...
+
+model.fit(..., callbacks=[tf.keras.callbacks.LearningRateScheduler(lr_schedule)])</code></pre></div>
+
+
+<p><strong>Cosine annealing</strong> :</p>
+
+<div class="katex-display">$$\eta_t = \frac{\eta_0}{2}\left(1 + \cos\left(\frac{t \pi}{T}\right)\right)$$</div>
+
+<p><strong>Lecture de la formule</strong> : $T$ est la durée totale d'entraînement. À $t = 0$, $\cos(0) = 1$ donc $\eta = \eta_0$ (plein régime). À $t = T/2$, $\cos(\pi/2) = 0$ donc $\eta = \eta_0 / 2$. À $t = T$, $\cos(\pi) = -1$ donc $\eta = 0$. La courbe est une demi-période de cosinus qui descend en douceur, sans paliers brutaux.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">schedule = tf.keras.optimizers.schedules.CosineDecay(
+    initial_learning_rate=1e-3,      # LR de départ
+    decay_steps=10000,                # Nombre de steps sur lesquels on décroît
+)
+optimizer = tf.keras.optimizers.Adam(learning_rate=schedule)</code></pre></div>
+
+
+<p><strong>ReduceLROnPlateau</strong> : diviser le LR par 10 quand la validation cesse de s'améliorer.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.callbacks import ReduceLROnPlateau
+
+reduce_lr = ReduceLROnPlateau(
+    monitor=&quot;val_loss&quot;,   # On surveille la val_loss
+    factor=0.1,           # On divise le LR par 10
+    patience=5,           # Si pas d&#x27;amélioration pendant 5 epochs
+    min_lr=1e-6,          # Plancher : on ne descend jamais sous 1e-6
+)
+model.fit(..., callbacks=[reduce_lr])</code></pre></div>
+
+
+<p><strong>Warmup + cosine</strong> : augmente progressivement le LR pendant les premières epochs (warmup) puis décroit en cosinus. Standard pour entraîner des transformers.</p>
+
+<h3 id="syn-gradient-clipping">Gradient clipping</h3>
+
+<p>Quand les gradients explosent (RNNs, transformers, ou réseaux mal initialisés), une seule mise à jour peut détruire le modèle. <strong>Gradient clipping</strong> limite leur norme :</p>
+
+<div class="katex-display">$$\mathbf{g} \leftarrow \mathbf{g} \cdot \min\left(1, \frac{\theta}{\|\mathbf{g}\|}\right)$$</div>
+
+<p><strong>Lecture</strong> : si la norme $\|\mathbf{g}\|$ du gradient dépasse un seuil $\theta$, on le rescale pour ramener sa norme exactement à $\theta$. Si elle est déjà plus petite, on ne touche à rien. Cela préserve la <strong>direction</strong> du gradient mais plafonne sa <strong>magnitude</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># clipnorm : on clippe la norme globale du gradient à 1.0
+optimizer = Adam(learning_rate=1e-3, clipnorm=1.0)
+# Alternative : clipvalue=0.5 pour clipper chaque composante individuellement à [-0.5, 0.5]</code></pre></div>
+
+
+<p>C'est la technique standard pour stabiliser les RNNs et les transformers. Sans elle, l'entraînement de GPT-2/3 serait impossible.</p>
+
+<h3 id="syn-mixed-precision">Mixed precision</h3>
+
+<p>L'idée : utiliser des nombres en <code>float16</code> (16 bits) au lieu de <code>float32</code> (32 bits) pour les calculs. Avantages :</p>
+
+<ul>
+<li><strong>Mémoire</strong> : 2x moins → batch size plus grand → meilleure généralisation</li>
+<li><strong>Vitesse</strong> : sur GPU avec Tensor Cores (NVIDIA Volta+), 3-8x plus rapide</li>
+<li><strong>Pas de perte</strong> de précision si bien fait</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import mixed_precision
+# Active la policy globale : forward en float16, loss en float32
+mixed_precision.set_global_policy(&quot;mixed_float16&quot;)
+# Le modèle s&#x27;entraînera désormais en mixed precision</code></pre></div>
+
+
+<p>PyTorch a un équivalent avec <code>torch.cuda.amp.autocast</code>.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège</strong> : la couche de sortie doit rester en <code>float32</code> pour éviter des problèmes de précision sur les softmax/sigmoid. La policy <code>mixed_float16</code> de Keras le fait automatiquement, mais vérifiez si vous codez à la main.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Vous entraînez un modèle avec Adam et le <code>validation_loss</code> cesse de s'améliorer après 20 epochs alors que <code>train_loss</code> continue de décroître. Que faire ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>overfitting.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>C'est de l'<strong>overfitting</strong> classique. Cinq actions à essayer dans cet ordre. (1) <strong>Early stopping</strong> : arrêter l'entraînement à l'epoch où val_loss était minimale. C'est gratuit et préserve le meilleur modèle. (2) <strong>Régularisation</strong> : ajouter du <strong>dropout</strong> (0.2-0.5) ou augmenter le <strong>weight_decay</strong> (1e-4 à 1e-2). (3) <strong>Data augmentation</strong> : pour des images, ajouter rotation/flip/crop ; pour du texte, paraphrasage ou synonymes. (4) <strong>Réduire la capacité du modèle</strong> : moins de couches, moins de neurones par couche. Contre-intuitif mais efficace. (5) <strong>Plus de données</strong> : si possible, c'est toujours la meilleure solution. Note : ne JAMAIS continuer à entraîner en espérant que ça s'arrange — l'overfitting empire avec le temps. Question d'entretien deep learning : "Comment réduire l'overfitting ?" — la réponse exhaustive cite les 5 techniques.</p>
+
+</details>
+
+<p><strong>Q2 : Pourquoi Adam est-il préféré à SGD pour entraîner la plupart des réseaux modernes ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>adaptatif et momentum.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Trois raisons principales. (1) <strong>Adaptatif</strong> : Adam ajuste le LR pour chaque paramètre individuellement, basé sur l'historique des gradients (la division par $\sqrt{v_t}$). Les paramètres avec des gradients faibles reçoivent un grand LR effectif, ceux avec des gradients larges un petit LR. Conséquence : moins de tuning manuel du LR. (2) <strong>Momentum intégré</strong> ($m_t$) : Adam combine SGD avec momentum, ce qui accélère la convergence dans les vallées étroites et lisse les oscillations. (3) <strong>Robustesse</strong> : Adam fonctionne bien out-of-the-box avec un LR de 1e-3 pour quasi tous les problèmes, alors que SGD nécessite un tuning fin du LR + scheduler. <strong>Limites</strong> : sur les très grands modèles (vision SOTA, GPT-style), SGD avec momentum + scheduler bien tuné généralise souvent mieux qu'Adam — c'est pourquoi les papers de SOTA utilisent souvent SGD. <strong>Recommandation pratique</strong> : Adam pour 90% des cas, SGD si vous voulez maximiser la généralisation au prix d'un tuning soigneux. AdamW (Adam + weight decay correct) est encore meilleur qu'Adam et devrait être le défaut depuis 2018.</p>
+
+</details>
+
+<p><strong>Q3 : Vous entraînez sur 8 GPUs et vous augmentez le batch size de 64 à 512. Pourquoi devez-vous aussi changer le learning rate, et comment ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>règle linéaire.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Avec un batch size plus grand, chaque mise à jour de poids est plus précise (moins de bruit). Vous pouvez donc faire <strong>un pas plus grand</strong> sans risquer de diverger. La règle empirique de Goyal et al. (2017, <em>Accurate, Large Minibatch SGD</em>) : multiplier le LR par le même facteur que le batch size. Donc batch 64 → 512 (×8) implique LR 1e-3 → 8e-3. <strong>Précautions</strong> : (1) avec un grand LR, l'entraînement peut diverger au début. Solution : <strong>warmup</strong> linéaire pendant les premières 5-10 epochs. (2) Au-delà d'un certain batch size (typiquement 8k-32k), la règle linéaire échoue et vous avez besoin d'optimizers spécialisés (LARS, LAMB). <strong>Sans cet ajustement</strong>, vous obtenez un modèle qui converge mais sous-performe — pas un crash, juste un moins bon résultat. C'est exactement comme cela qu'on entraîne BERT et GPT à grande échelle. Question d'entretien deep learning systems : "Pourquoi le LR doit-il scaler avec le batch size ?"</p>
+
+</details>
+
+<p><strong>Q4 : Expliquez intuitivement ce que fait la division par $\sqrt{v_t}$ dans Adam.</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Normalisation par la variance des gradients.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>$v_t$ est une moyenne mobile des <strong>carrés</strong> des gradients passés. Donc $\sqrt{v_t}$ est approximativement l'<strong>écart-type</strong> du gradient pour ce paramètre. En divisant $m_t$ par $\sqrt{v_t}$, Adam fait essentiellement une <strong>normalisation</strong> du gradient : chaque paramètre avance d'un pas de l'ordre de $\eta$, indépendamment de l'échelle brute de son gradient. Conséquence : un paramètre dont le gradient est toujours petit (ex. dans une couche profonde avec vanishing gradient) est rattrapé, car $\sqrt{v_t}$ est aussi petit, donc le ratio reste proche de 1. À l'inverse, un paramètre dont le gradient varie beaucoup (grosses variations) voit ses updates amorties. C'est pourquoi Adam est robuste au <strong>mauvais conditionnement</strong> du problème : dans les zones où la loss est très aplatie dans certaines directions et très raide dans d'autres, SGD oscille, mais Adam "normalise" et avance plus proprement. C'est mathématiquement proche d'une approximation diagonale du préconditionnement de Newton. Question d'entretien DL avancée.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Deep Learning</em> (Goodfellow et al.) — chapitre 8 sur l'optimisation</li>
+<li><em>Adam: A Method for Stochastic Optimization</em> (Kingma & Ba, 2015) — papier fondateur</li>
+<li><em>Decoupled Weight Decay Regularization</em> (Loshchilov & Hutter, 2019) — AdamW</li>
+<li><a href="https://sgugger.github.io/the-1cycle-policy.html" target="_blank" rel="noopener">The 1cycle policy</a> (Sylvain Gugger) — scheduler très efficace</li>
+<li><em>Cyclical Learning Rates for Training Neural Networks</em> (Smith, 2017) — LR finder</li>
+<li><a href="https://distill.pub/2017/momentum/" target="_blank" rel="noopener">Distill — Why Momentum Really Works</a> — visualisation magistrale</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../deep-learning/fundamentals-dl.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Fundamentals of DL</span>
+  </a>
+  <a href="../deep-learning/cnn.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Convolutional Neural Networks →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reinforcement Learning — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Reinforcement Learning</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html" class="active">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Domaines spécialisés</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Reinforcement Learning</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Reinforcement Learning</h1>
+        <p class="page-objective">Comprendre les fondements du Reinforcement Learning — agent, environnement, récompense, politique — et implémenter Q-Learning et Deep Q-Networks avec Gymnasium et Stable Baselines 3.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Agent / environnement</div>
+        <div class="key-concept-def">L&#x27;agent agit ; l&#x27;environnement répond par un état et une récompense.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Politique</div>
+        <div class="key-concept-def">Fonction qui choisit l&#x27;action à prendre dans un état donné.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Q-value</div>
+        <div class="key-concept-def">Récompense future attendue en partant d&#x27;un état et d&#x27;une action.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Exploration vs exploitation</div>
+        <div class="key-concept-def">Tester de nouvelles actions vs jouer la meilleure connue.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-reinforcement-learning">Cheatsheet — Reinforcement Learning</a><ol><li><a href="#concepts-clés">Concepts clés</a></li><li><a href="#q-learning-bellman-equation">Q-Learning — Bellman equation</a></li><li><a href="#gymnasium-interagir-avec-un-environnement">Gymnasium — Interagir avec un environnement</a></li><li><a href="#stable-baselines-3-entraîner-un-agent-dqn">Stable Baselines 3 — Entraîner un agent DQN</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-quest-ce-que-le-reinforcement-learning">1) Qu'est-ce que le Reinforcement Learning ?</a><ol><li><a href="#11-où-se-situe-le-rl-dans-le-ml">1.1 Où se situe le RL dans le ML ?</a></li><li><a href="#12-applications-réelles">1.2 Applications réelles</a></li></ol></li><li><a href="#2-fondements-du-rl">2) Fondements du RL</a><ol><li><a href="#21-composants-clés">2.1 Composants clés</a></li><li><a href="#22-la-boucle-rl">2.2 La boucle RL</a></li><li><a href="#23-exploration-vs-exploitation">2.3 Exploration vs Exploitation</a></li><li><a href="#24-espaces-dactions">2.4 Espaces d'actions</a></li><li><a href="#25-tâches-épisodiques-vs-continues">2.5 Tâches épisodiques vs continues</a></li><li><a href="#26-récompenses-retardées-delayed-rewards">2.6 Récompenses retardées (delayed rewards)</a></li><li><a href="#27-politique-policy">2.7 Politique (Policy)</a></li></ol></li><li><a href="#3-exemples-concrets">3) Exemples concrets</a><ol><li><a href="#31-naviguer-dans-un-labyrinthe">3.1 Naviguer dans un labyrinthe</a></li><li><a href="#32-entraîner-un-chien">3.2 Entraîner un chien</a></li><li><a href="#33-voiture-autonome">3.3 Voiture autonome</a></li></ol></li><li><a href="#4-algorithmes-de-rl">4) Algorithmes de RL</a><ol><li><a href="#41-model-free-vs-model-based">4.1 Model-Free vs Model-Based</a></li><li><a href="#42-q-learning-vs-policy-optimization">4.2 Q-Learning vs Policy Optimization</a></li></ol></li><li><a href="#5-q-learning-en-détail">5) Q-Learning en détail</a><ol><li><a href="#51-fonctions-de-valeur">5.1 Fonctions de valeur</a></li><li><a href="#52-algorithme-q-learning">5.2 Algorithme Q-Learning</a></li><li><a href="#53-équation-de-bellman">5.3 Équation de Bellman</a></li><li><a href="#54-hyperparamètres">5.4 Hyperparamètres</a></li></ol></li><li><a href="#6-deep-q-networks-dqn">6) Deep Q-Networks (DQN)</a><ol><li><a href="#61-principe">6.1 Principe</a></li><li><a href="#62-avantages-par-rapport-au-q-learning">6.2 Avantages par rapport au Q-Learning</a></li></ol></li><li><a href="#7-gymnasium-environnements-rl">7) Gymnasium — Environnements RL</a><ol><li><a href="#71-installation-et-chargement">7.1 Installation et chargement</a></li><li><a href="#72-interactions-de-base">7.2 Interactions de base</a></li></ol></li><li><a href="#8-stable-baselines-3-algorithmes-rl">8) Stable Baselines 3 — Algorithmes RL</a><ol><li><a href="#81-pipeline-complet">8.1 Pipeline complet</a></li></ol></li><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-reinforcement-learning">📋 Cheatsheet — Reinforcement Learning</h2>
+
+<h3 id="concepts-clés">Concepts clés</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Composants du RL :
+## - Agent       : le décideur (apprend une politique)
+## - Environment : le monde avec lequel l&#x27;agent interagit
+## - State (s)   : situation actuelle de l&#x27;environnement
+## - Action (a)  : choix de l&#x27;agent
+## - Reward (r)  : feedback après une action
+## - Policy (π)  : stratégie = mapping état → action
+
+## Boucle RL : Observe → Act → Reward → Learn → Repeat</code></pre></div>
+
+
+<h3 id="q-learning-bellman-equation">Q-Learning — Bellman equation</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Q(s, a) = &quot;qualité&quot; de prendre l&#x27;action a dans l&#x27;état s
+## Mise à jour après chaque step :
+## Q(s,a) ← Q(s,a) + α * [R(s,a) + γ * max Q(s&#x27;,a&#x27;) - Q(s,a)]
+#
+## α = learning rate (0.1)    : vitesse de mise à jour
+## γ = discount factor (0.99) : importance des récompenses futures
+## ε = exploration rate        : proba d&#x27;action aléatoire (décroît au fil du temps)</code></pre></div>
+
+
+<h3 id="gymnasium-interagir-avec-un-environnement">Gymnasium — Interagir avec un environnement</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import gymnasium as gym
+
+env = gym.make(&#x27;FrozenLake-v1&#x27;, is_slippery=False)   # crée l&#x27;environnement
+state, info = env.reset()                              # démarre un épisode
+action = env.action_space.sample()                     # action aléatoire (exploration)
+next_state, reward, terminated, truncated, info = env.step(action)  # exécute l&#x27;action
+env.close()                                            # libère les ressources</code></pre></div>
+
+
+<h3 id="stable-baselines-3-entraîner-un-agent-dqn">Stable Baselines 3 — Entraîner un agent DQN</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from stable_baselines3 import DQN
+from stable_baselines3.common.evaluation import evaluate_policy
+import gymnasium as gym
+
+env = gym.make(&#x27;FrozenLake-v1&#x27;, is_slippery=False)
+
+## Entraîner
+model = DQN(&quot;MlpPolicy&quot;, env, verbose=1)              # MlpPolicy = réseau fully-connected
+model.learn(total_timesteps=100_000)                   # entraîne pendant 100K steps
+model.save(&quot;dqn_frozen_lake&quot;)                          # sauvegarde le modèle
+
+## Évaluer
+model = DQN.load(&quot;dqn_frozen_lake&quot;, env=env)           # charge le modèle
+mean_reward, std = evaluate_policy(model, env, n_eval_episodes=1000)
+
+## Utiliser
+state, info = env.reset()
+action, _ = model.predict(state)                       # le modèle choisit l&#x27;action
+next_state, reward, terminated, truncated, info = env.step(int(action))
+## Répéter predict → step jusqu&#x27;à terminated ou truncated</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre exploration et exploitation</strong></p>
+<p>Un agent qui n'explore jamais reste bloqué dans une stratégie sous-optimale. Un agent qui explore tout le temps n'exploite jamais ce qu'il sait.</p>
+<p>❌ <code>ε = 0</code> dès le début → l'agent ne découvre jamais les meilleures actions</p>
+<p>✅ Commencer avec <code>ε</code> élevé (exploration), puis le décroître progressivement (exploitation)</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser Q-Learning avec une Q-table sur un espace d'états trop grand</strong></p>
+<p>La Q-table croît exponentiellement avec le nombre d'états et d'actions — impossible pour des images ou des espaces continus.</p>
+<p>❌ <code>Q-table</code> sur un jeu Atari (millions d'états-pixels possibles)</p>
+<p>✅ Utiliser un <strong>Deep Q-Network (DQN)</strong> qui approxime la Q-function avec un réseau de neurones</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier que les récompenses sont souvent retardées (delayed rewards)</strong></p>
+<p>L'agent doit connecter des actions présentes à des récompenses futures — une récompense immédiate n'est pas toujours le meilleur signal.</p>
+<p>❌ <code>γ = 0</code> (discount factor nul) → l'agent ne regarde que la récompense immédiate</p>
+<p>✅ <code>γ</code> proche de 1 (ex: 0.99) pour valoriser les récompenses futures dans les tâches épisodiques</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Ne pas distinguer tâches épisodiques et continues</strong></p>
+<p>En épisodique (jeu, labyrinthe), l'épisode finit naturellement. En continu (robot de surveillance), il n'y a pas de fin — le design des récompenses est très différent.</p>
+<p>❌ Appliquer un algorithme épisodique sans adaptation à un environnement continu</p>
+<p>✅ Choisir l'algorithme et le design de récompense adaptés au type de tâche</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Lancer <code>model.learn()</code> avec trop peu de timesteps</strong></p>
+<p>Le RL nécessite beaucoup d'interactions pour converger — bien plus que le supervised learning.</p>
+<p>❌ <code>model.learn(total_timesteps=1000)</code> sur un environnement complexe → politique aléatoire</p>
+<p>✅ Commencer avec 100K–1M timesteps, évaluer, puis augmenter si nécessaire</p></div></div>
+
+<hr>
+
+<h2 id="1-quest-ce-que-le-reinforcement-learning">1) Qu'est-ce que le Reinforcement Learning ?</h2>
+
+<p>Le RL est une branche du ML où un <strong>agent</strong> apprend à prendre des décisions en interagissant avec son <strong>environnement</strong> pour maximiser une <strong>récompense cumulée</strong>.</p>
+
+<figure><img src="../../assets/images/reinforcement-learning-01-eb20def6.webp" alt="" loading="lazy"></figure>
+
+<p>👉 <a href="https://www.youtube.com/embed/kopoLzvh5jY" target="_blank" rel="noopener">Vidéo — Agents jouant à cache-cache (OpenAI)</a></p>
+
+<h3 id="11-où-se-situe-le-rl-dans-le-ml">1.1 Où se situe le RL dans le ML ?</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Paradigme</th><th>Données</th><th>Objectif</th></tr></thead><tbody><tr><td><strong>Supervised Learning</strong></td><td>Données labellées (X, y)</td><td>Apprendre une fonction X → y</td></tr><tr><td><strong>Unsupervised Learning</strong></td><td>Données non labellées (X)</td><td>Trouver des patterns dans X</td></tr><tr><td><strong>Reinforcement Learning</strong></td><td>Pas de dataset — essai-erreur</td><td>Maximiser les récompenses cumulées</td></tr></tbody></table></div>
+<figure><img src="../../assets/images/reinforcement-learning-02-aacfa192.png" alt="" loading="lazy"></figure>
+
+<h3 id="12-applications-réelles">1.2 Applications réelles</h3>
+
+<ul>
+<li>🎮 <strong>Jeux vidéo</strong> — Atari, Dota, Go (AlphaGo)</li>
+<li>🚗 <strong>Véhicules autonomes</strong> — conduite en simulation et réel</li>
+<li>💰 <strong>Trading</strong> — décisions buy/sell pour maximiser le profit</li>
+<li>🤖 <strong>Robotique</strong> — locomotion, manipulation d'objets</li>
+</ul>
+
+<hr>
+
+<h2 id="2-fondements-du-rl">2) Fondements du RL</h2>
+
+<h3 id="21-composants-clés">2.1 Composants clés</h3>
+
+<figure><img src="../../assets/images/reinforcement-learning-03-3a162143.png" alt="" loading="lazy"></figure>
+
+<ul>
+<li><strong>Agent</strong> : le décideur qui cherche à atteindre un objectif</li>
+<li><strong>Environment</strong> : le monde avec lequel l'agent interagit</li>
+<li><strong>State (s)</strong> : ce que l'agent sait de sa situation actuelle</li>
+<li><strong>Action (a)</strong> : choix que fait l'agent pour influencer l'environnement</li>
+<li><strong>Reward (r)</strong> : feedback qui indique la qualité de l'action</li>
+</ul>
+
+<h3 id="22-la-boucle-rl">2.2 La boucle RL</h3>
+
+<p>👀 <strong>Observer</strong> → 🎯 <strong>Agir</strong> → 🏆 <strong>Recevoir reward</strong> → 🧠 <strong>Apprendre</strong> → 🔁 <strong>Répéter</strong></p>
+
+<h3 id="23-exploration-vs-exploitation">2.3 Exploration vs Exploitation</h3>
+
+<ul>
+<li><strong>Exploitation</strong> : choisir les actions connues qui donnent de bonnes récompenses</li>
+<li><strong>Exploration</strong> : essayer de nouvelles actions pour découvrir de meilleures stratégies</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>L'équilibre exploration/exploitation est contrôlé par le paramètre <strong>ε</strong> (epsilon). On commence avec ε élevé (exploration), puis on le décroît progressivement.</p></div></div>
+
+<h3 id="24-espaces-dactions">2.4 Espaces d'actions</h3>
+
+<ul>
+<li><strong>Discret</strong> : ensemble fini d'actions (haut, bas, gauche, droite)</li>
+<li><strong>Continu</strong> : actions sur un spectre (angle de direction, accélération)</li>
+</ul>
+
+<h3 id="25-tâches-épisodiques-vs-continues">2.5 Tâches épisodiques vs continues</h3>
+
+<ul>
+<li><strong>Épisodique</strong> : début et fin clairs (un round de jeu, un labyrinthe)</li>
+<li><strong>Continue</strong> : pas de fin naturelle (robot de surveillance, trading)</li>
+</ul>
+
+<h3 id="26-récompenses-retardées-delayed-rewards">2.6 Récompenses retardées (delayed rewards)</h3>
+
+<p>Les meilleures actions ne sont pas récompensées immédiatement — l'agent doit relier ses actions présentes à des résultats futurs.</p>
+
+<h3 id="27-politique-policy">2.7 Politique (Policy)</h3>
+
+<p>La <strong>politique</strong> π est la stratégie de l'agent : un mapping état → action. Une bonne politique maximise la récompense cumulée.</p>
+
+<hr>
+
+<h2 id="3-exemples-concrets">3) Exemples concrets</h2>
+
+<h3 id="31-naviguer-dans-un-labyrinthe">3.1 Naviguer dans un labyrinthe</h3>
+
+<figure><img src="../../assets/images/reinforcement-learning-04-d35e9313.png" alt="Mouse in a maze Example" loading="lazy"></figure>
+
+<p>State = cellule du grid | Action = haut/bas/gauche/droite | Reward = pénalité par step, grosse récompense à la sortie</p>
+
+<h3 id="32-entraîner-un-chien">3.2 Entraîner un chien</h3>
+
+<figure><img src="../../assets/images/reinforcement-learning-05-a9b58058.png" alt="Dog Training Example" loading="lazy"></figure>
+
+<p>Action = sit/jump/roll | Reward = friandise | Delayed rewards = récompense après une routine complète</p>
+
+<h3 id="33-voiture-autonome">3.3 Voiture autonome</h3>
+
+<figure><img src="../../assets/images/reinforcement-learning-06-46a8cacb.png" alt="Self-Driving Car Example" loading="lazy"></figure>
+
+<p>State = vitesse, position, trafic | Action = direction, accélération (continu) | Reward = +sécurité, −collision</p>
+
+<p>👉 <a href="https://wagon-public-datasets.s3.amazonaws.com/data-science-images/lectures/deep-learning/reinforcement-learning/carracing.gif" target="_blank" rel="noopener">Vidéo car racing</a></p>
+
+<hr>
+
+<h2 id="4-algorithmes-de-rl">4) Algorithmes de RL</h2>
+
+<figure><img src="../../assets/images/reinforcement-learning-07-2a251cd5.svg" alt="" loading="lazy"></figure>
+
+<h3 id="41-model-free-vs-model-based">4.1 Model-Free vs Model-Based</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Model-Free</th><th>Model-Based</th></tr></thead><tbody><tr><td><strong>Principe</strong></td><td>Apprend par essai-erreur, sans modèle</td><td>Utilise un modèle pour planifier</td></tr><tr><td><strong>Analogie</strong></td><td>Apprendre un jeu en y jouant</td><td>Utiliser un GPS pour planifier</td></tr></tbody></table></div>
+<figure><img src="../../assets/images/reinforcement-learning-08-d47863e8.png" alt="Model-Free vs Model-Based" loading="lazy"></figure>
+
+<h3 id="42-q-learning-vs-policy-optimization">4.2 Q-Learning vs Policy Optimization</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Q-Learning</th><th>Policy Optimization</th></tr></thead><tbody><tr><td><strong>Principe</strong></td><td>Apprend la valeur de chaque action, choisit la meilleure</td><td>Apprend directement la meilleure politique</td></tr><tr><td><strong>Analogie</strong></td><td>Note chaque plat, choisit le meilleur</td><td>Apprend à toujours commander le spécial du chef</td></tr></tbody></table></div>
+<figure><img src="../../assets/images/reinforcement-learning-09-4a04da98.png" alt="Q-Learning vs Policy Optimization" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="5-q-learning-en-détail">5) Q-Learning en détail</h2>
+
+<h3 id="51-fonctions-de-valeur">5.1 Fonctions de valeur</h3>
+
+<ul>
+<li><strong>V(s)</strong> = combien vaut l'état s (state value function)</li>
+<li><strong>Q(s, a)</strong> = combien vaut l'action a dans l'état s (action-value function)</li>
+</ul>
+
+<p>Avec une Q-function connue, la politique est simple : dans chaque état, prendre l'action avec le Q le plus élevé.</p>
+
+<h3 id="52-algorithme-q-learning">5.2 Algorithme Q-Learning</h3>
+
+<p>L'agent construit une <strong>Q-table</strong> qui stocke les estimations de récompense cumulée pour chaque paire (état, action).</p>
+
+<figure><img src="../../assets/images/reinforcement-learning-10-2b8169e7.png" alt="The example environment." loading="lazy"></figure>
+
+<p><strong>Étapes</strong> :</p>
+
+<ol>
+<li><strong>Initialiser</strong> la Q-table à 0</li>
+<li><strong>Choisir</strong> une action (ε-greedy : aléatoire avec proba ε, meilleure sinon)</li>
+<li><strong>Exécuter</strong> l'action, observer le reward et le nouvel état</li>
+<li><strong>Mettre à jour</strong> la Q-table via l'équation de Bellman</li>
+<li><strong>Répéter</strong> jusqu'à convergence</li>
+</ol>
+
+<h3 id="53-équation-de-bellman">5.3 Équation de Bellman</h3>
+
+<figure><img src="../../assets/images/reinforcement-learning-11-b14b825e.png" alt="Annotated Bellmann equation" loading="lazy"></figure>
+
+<p>$Q(s,a) \leftarrow Q(s,a) + \alpha \left[ R(s,a) + \gamma \max_{a'} Q(s',a') - Q(s,a) \right]$</p>
+
+<p>Décomposition :</p>
+
+<ul>
+<li>$R(s,a)$ = récompense immédiate</li>
+<li>$\gamma \max_{a'} Q(s',a')$ = meilleure valeur future (discountée)</li>
+<li>$\alpha$ = learning rate (fraction de mise à jour)</li>
+</ul>
+
+<h3 id="54-hyperparamètres">5.4 Hyperparamètres</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Paramètre</th><th>Rôle</th><th>Effet</th></tr></thead><tbody><tr><td><strong>α</strong> (learning rate)</td><td>Vitesse de mise à jour de Q</td><td>α élevé → rapide mais instable</td></tr><tr><td><strong>γ</strong> (discount factor)</td><td>Importance des récompenses futures</td><td>γ → 1 = long terme, γ → 0 = court terme</td></tr><tr><td><strong>ε</strong> (exploration rate)</td><td>Proba d'action aléatoire</td><td>Décroît au fil de l'entraînement</td></tr></tbody></table></div>
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Q-Learning fonctionne bien sur des environnements <strong>petits et discrets</strong>. Pour des espaces d'états grands ou continus, il faut passer au <strong>Deep Q-Network</strong>.</p></div></div>
+
+<hr>
+
+<h2 id="6-deep-q-networks-dqn">6) Deep Q-Networks (DQN)</h2>
+
+<h3 id="61-principe">6.1 Principe</h3>
+
+<p>Remplacer la Q-table par un <strong>réseau de neurones</strong> qui prend un état en entrée et prédit les Q-values pour toutes les actions possibles.</p>
+
+<figure><img src="../../assets/images/reinforcement-learning-12-52f8f7ce.webp" alt="Q learning vs Deep Q learning" loading="lazy"></figure>
+
+<h3 id="62-avantages-par-rapport-au-q-learning">6.2 Avantages par rapport au Q-Learning</h3>
+
+<ul>
+<li>Gère des <strong>espaces d'états massifs</strong> (images, signaux continus)</li>
+<li><strong>Généralise</strong> entre des états similaires (le réseau apprend des patterns)</li>
+<li>Permet le RL sur des tâches complexes : Atari, robotique, conduite autonome</li>
+</ul>
+
+<figure><img src="../../assets/images/reinforcement-learning-13-16f29c5b.png" alt="" loading="lazy"></figure>
+
+<p>👉 <a href="https://wagon-public-datasets.s3.amazonaws.com/data-science-images/lectures/deep-learning/reinforcement-learning/breakoutgif.gif" target="_blank" rel="noopener">Vidéo Atari Breakout DQN</a></p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Plus d'algorithmes RL disponibles sur la librairie <a href="https://stable-baselines3.readthedocs.io/en/master/guide/algos.html" target="_blank" rel="noopener">Stable Baselines 3</a> : DQN, PPO, A2C, SAC…</p></div></div>
+
+<hr>
+
+<h2 id="7-gymnasium-environnements-rl">7) Gymnasium — Environnements RL</h2>
+
+<h3 id="71-installation-et-chargement">7.1 Installation et chargement</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## pip install gymnasium
+import gymnasium as gym
+
+env = gym.make(&#x27;FrozenLake-v1&#x27;, is_slippery=False)    # environnement FrozenLake 4×4</code></pre></div>
+
+
+<h3 id="72-interactions-de-base">7.2 Interactions de base</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">state, info = env.reset()                              # démarre un nouvel épisode
+
+action = env.action_space.sample()                     # action aléatoire
+## FrozenLake : 0=left, 1=down, 2=right, 3=up
+
+next_state, reward, terminated, truncated, info = env.step(action)
+## terminated = True si l&#x27;agent a atteint le goal ou est tombé dans un trou
+## truncated = True si le temps est écoulé
+
+env.close()                                            # libère les ressources</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Gymnasium propose des dizaines d'environnements : <code>CartPole-v1</code>, <code>MountainCar-v0</code>, <code>Taxi-v3</code>, jeux Atari… 👉 <a href="https://gymnasium.farama.org/" target="_blank" rel="noopener">Catalogue complet</a></p></div></div>
+
+<hr>
+
+<h2 id="8-stable-baselines-3-algorithmes-rl">8) Stable Baselines 3 — Algorithmes RL</h2>
+
+<h3 id="81-pipeline-complet">8.1 Pipeline complet</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## pip install &#x27;stable-baselines3[extra]&#x27;
+from stable_baselines3 import DQN
+from stable_baselines3.common.vec_env import DummyVecEnv
+from stable_baselines3.common.evaluation import evaluate_policy
+import gymnasium as gym
+
+## 1. Charger l&#x27;environnement
+env = gym.make(&#x27;FrozenLake-v1&#x27;, is_slippery=False, render_mode=None)
+env = DummyVecEnv([lambda: env])                       # wrapper requis par SB3
+
+## 2. Entraîner
+model = DQN(&#x27;MlpPolicy&#x27;, env, verbose=1)              # MlpPolicy = réseau FC
+model.learn(total_timesteps=100_000)                   # 100K interactions
+model.save(&#x27;dqn_frozen_lake&#x27;)                          # sauvegarde
+
+## 3. Évaluer
+model = DQN.load(&#x27;dqn_frozen_lake&#x27;, env=env)
+mean_reward, std = evaluate_policy(model, env, n_eval_episodes=1000)
+print(f&quot;Mean reward: {mean_reward} ± {std}&quot;)
+
+## 4. Utiliser
+env2 = gym.make(&#x27;FrozenLake-v1&#x27;, render_mode=&#x27;human&#x27;, is_slippery=False)
+state, info = env2.reset()
+action, _ = model.predict(state)                       # le modèle décide
+state, reward, terminated, truncated, info = env2.step(int(action))
+## Répéter predict → step jusqu&#x27;à terminated ou truncated</code></pre></div>
+
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://gymnasium.farama.org/" target="_blank" rel="noopener">Gymnasium documentation</a></li>
+<li>👉 <a href="https://stable-baselines3.readthedocs.io/en/master/" target="_blank" rel="noopener">Stable Baselines 3 documentation</a></li>
+<li>👉 <a href="https://spinningup.openai.com/en/latest/spinningup/rl_intro.html" target="_blank" rel="noopener">OpenAI Spinning Up — Intro to RL</a></li>
+<li>👉 <a href="https://medium.com/towards-data-science/illustrated-guide-to-recurrent-neural-networks-79e5eb8049c9" target="_blank" rel="noopener">Towards Data Science — Illustrated Guide to RNNs</a></li>
+<li>👉 <a href="https://github.com/johnnycode8/gym_solutions/tree/main" target="_blank" rel="noopener">Gym environment solutions repository</a></li>
+<li>👉 <a href="https://github.com/lewagon/data-lecture-starters/blob/main/starters/06-DL_08-Reinforcement-Learning.ipynb" target="_blank" rel="noopener">Le Wagon — Starter notebook RL</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">🚀 Challenges</h2>
+
+<ul>
+<li>Implémenter Q-Learning from scratch sur FrozenLake et visualiser la convergence de la Q-table</li>
+<li>Entraîner un agent DQN avec Stable Baselines 3 sur CartPole et FrozenLake</li>
+<li>Comparer les performances de DQN, PPO et A2C sur un même environnement</li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-lanalogie-fil-rouge-dresser-un-chien-avec-des-friandises">L'analogie fil rouge : dresser un chien avec des friandises</a></li><li><a href="#ref-5-points-à-retenir-absolument">5 points à retenir absolument</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-quest-ce-que-le-reinforcement-learning">1. Qu'est-ce que le Reinforcement Learning ?</a><ol><li><a href="#ref-11-sa-place-dans-le-machine-learning">1.1 Sa place dans le Machine Learning</a></li><li><a href="#ref-12-exemples-concrets-dapplications">1.2 Exemples concrets d'applications</a></li></ol></li><li><a href="#ref-2-les-briques-fondamentales">2. Les briques fondamentales</a><ol><li><a href="#ref-21-agent-environnement-état-action-récompense">2.1 Agent, Environnement, État, Action, Récompense</a></li><li><a href="#ref-22-la-boucle-rl">2.2 La boucle RL</a></li><li><a href="#ref-23-politique-policy">2.3 Politique (Policy)</a></li><li><a href="#ref-24-tâches-épisodiques-vs-continues">2.4 Tâches épisodiques vs continues</a></li></ol></li><li><a href="#ref-3-exploration-vs-exploitation-le-grand-dilemme">3. Exploration vs Exploitation : le grand dilemme</a><ol><li><a href="#ref-31-le-problème">3.1 Le problème</a></li><li><a href="#ref-32-la-stratégie-ε-greedy-epsilon-greedy">3.2 La stratégie ε-greedy (epsilon-greedy)</a></li></ol></li><li><a href="#ref-4-q-learning-apprendre-la-valeur-des-actions">4. Q-Learning : apprendre la valeur des actions</a><ol><li><a href="#ref-41-la-q-function-combien-vaut-cette-action-dans-cette-situation">4.1 La Q-function : "combien vaut cette action dans cette situation ?"</a></li><li><a href="#ref-42-la-q-table">4.2 La Q-table</a></li><li><a href="#ref-43-léquation-de-bellman-la-formule-de-mise-à-jour">4.3 L'équation de Bellman : la formule de mise à jour</a></li><li><a href="#ref-44-les-hyperparamètres-du-q-learning">4.4 Les hyperparamètres du Q-Learning</a></li></ol></li><li><a href="#ref-5-deep-q-networks-dqn-quand-la-q-table-ne-suffit-plus">5. Deep Q-Networks (DQN) : quand la Q-table ne suffit plus</a><ol><li><a href="#ref-51-la-limite-de-la-q-table">5.1 La limite de la Q-table</a></li><li><a href="#ref-52-la-solution-remplacer-la-table-par-un-réseau-de-neurones">5.2 La solution : remplacer la table par un réseau de neurones</a></li></ol></li><li><a href="#ref-6-gymnasium-pratiquer-avec-des-environnements-rl">6. Gymnasium — Pratiquer avec des environnements RL</a><ol><li><a href="#ref-61-cest-quoi-gymnasium">6.1 C'est quoi Gymnasium ?</a></li><li><a href="#ref-62-créer-et-explorer-un-environnement">6.2 Créer et explorer un environnement</a></li><li><a href="#ref-63-la-boucle-dinteraction-de-base">6.3 La boucle d'interaction de base</a></li></ol></li><li><a href="#ref-7-stable-baselines-3-entraîner-un-agent-sans-tout-coder">7. Stable Baselines 3 — Entraîner un agent sans tout coder</a><ol><li><a href="#ref-71-cest-quoi-stable-baselines-3">7.1 C'est quoi Stable Baselines 3 ?</a></li><li><a href="#ref-72-pipeline-complet-entraîner-évaluer-utiliser">7.2 Pipeline complet : entraîner, évaluer, utiliser</a></li><li><a href="#ref-73-choisir-entre-les-algorithmes-de-sb3">7.3 Choisir entre les algorithmes de SB3</a></li></ol></li><li><a href="#ref-8-récapitulatif-des-erreurs-classiques">8. Récapitulatif des erreurs classiques</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Le Reinforcement Learning (RL), ou <strong>apprentissage par renforcement</strong>, est un mode d'apprentissage radicalement différent du Machine Learning classique. Pas de tableau de données labellées ici : l'agent apprend seul, en essayant des actions et en recevant des signaux de succès ou d'échec.</p>
+
+<h3 id="ref-lanalogie-fil-rouge-dresser-un-chien-avec-des-friandises">L'analogie fil rouge : dresser un chien avec des friandises</h3>
+
+<p>Imagine que tu veux apprendre à ton chien à s'asseoir. Tu n'as pas de manuel, tu essaies. Quand il s'assoit, tu lui donnes une friandise (récompense positive). Quand il saute partout, rien — ou peut-être un "non" ferme (récompense nulle ou négative). Avec le temps, le chien comprend quelles actions lui valent des friandises, et il les répète. C'est exactement le principe du RL.</p>
+
+<p>Dans cette analogie :</p>
+<ul>
+<li>Le <strong>chien</strong> = l'agent (celui qui apprend et décide)</li>
+<li><strong>Toi</strong> et la pièce autour = l'environnement</li>
+<li>La <strong>position du chien</strong> à chaque instant = l'état</li>
+<li><strong>S'asseoir, sauter, rouler</strong> = les actions possibles</li>
+<li>La <strong>friandise</strong> (ou son absence) = la récompense</li>
+<li>La <strong>stratégie globale</strong> du chien pour maximiser les friandises = la politique</li>
+</ul>
+
+<h3 id="ref-5-points-à-retenir-absolument">5 points à retenir absolument</h3>
+
+<ol>
+<li>L'agent apprend par <strong>essai-erreur</strong>, sans données labellées au départ.</li>
+<li>L'objectif est de <strong>maximiser la récompense cumulée</strong> sur le long terme, pas juste la prochaine friandise.</li>
+<li>Il faut équilibrer <strong>exploration</strong> (essayer de nouvelles choses) et <strong>exploitation</strong> (répéter ce qui marche).</li>
+<li>Le <strong>Q-Learning</strong> construit un tableau des meilleures actions par situation. Le <strong>Deep Q-Network (DQN)</strong> remplace ce tableau par un réseau de neurones pour gérer des situations complexes.</li>
+<li>Des librairies comme <strong>Gymnasium</strong> (environnements) et <strong>Stable Baselines 3</strong> (algorithmes) permettent de pratiquer le RL sans repartir de zéro.</li>
+</ol>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li>Qu'est-ce que le RL et où se situe-t-il dans le ML ?</li>
+<li>Les briques fondamentales : agent, état, action, récompense, politique</li>
+<li>Le dilemme exploration vs exploitation</li>
+<li>Le Q-Learning : comment un agent construit sa "carte des bonnes actions"</li>
+<li>L'équation de Bellman : la formule clé de mise à jour</li>
+<li>Des Q-tables aux Deep Q-Networks (DQN)</li>
+<li>Pratiquer avec Gymnasium</li>
+<li>Entraîner un agent avec Stable Baselines 3</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-quest-ce-que-le-reinforcement-learning">1. Qu'est-ce que le Reinforcement Learning ?</h2>
+
+<h3 id="ref-11-sa-place-dans-le-machine-learning">1.1 Sa place dans le Machine Learning</h3>
+
+<p>Il existe trois grandes familles d'apprentissage automatique :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Paradigme</th><th>Ce qu'on lui donne</th><th>Ce qu'il apprend</th></tr></thead><tbody><tr><td><strong>Supervised Learning</strong></td><td>Des exemples labellés (photos + étiquettes)</td><td>À prédire une étiquette pour un nouvel exemple</td></tr><tr><td><strong>Unsupervised Learning</strong></td><td>Des données brutes (sans étiquette)</td><td>À trouver des groupes, des patterns</td></tr><tr><td><strong>Reinforcement Learning</strong></td><td>Rien — juste un environnement et un score</td><td>À prendre les meilleures décisions pour maximiser ce score</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le RL n'a pas de "bonne réponse" à imiter. Il découvre lui-même ce qui fonctionne, comme un enfant qui apprend à marcher en tombant et en se relevant.</p></div></div>
+
+<h3 id="ref-12-exemples-concrets-dapplications">1.2 Exemples concrets d'applications</h3>
+
+<ul>
+<li><strong>Jeux vidéo</strong> : AlphaGo (DeepMind) a battu le champion du monde de Go. Des agents RL maîtrisent des jeux Atari mieux que n'importe quel humain.</li>
+<li><strong>Voitures autonomes</strong> : l'agent apprend à conduire en simulation, en recevant des pénalités lors des collisions et des récompenses pour les kilomètres parcourus.</li>
+<li><strong>Trading</strong> : l'agent apprend à acheter et vendre des actifs financiers pour maximiser le profit.</li>
+<li><strong>Robotique</strong> : un bras robotique apprend à saisir un objet par essai-erreur, sans qu'on lui programme chaque mouvement.</li>
+<li><strong>Chatbots (RLHF)</strong> : les LLMs comme ChatGPT sont affinés avec du RL à partir du feedback humain (Reinforcement Learning from Human Feedback).</li>
+</ul>
+
+<hr>
+
+<h2 id="ref-2-les-briques-fondamentales">2. Les briques fondamentales</h2>
+
+<h3 id="ref-21-agent-environnement-état-action-récompense">2.1 Agent, Environnement, État, Action, Récompense</h3>
+
+<p>Voici comment s'articulent les composants du RL :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Agent → choisit une Action → l&#x27;Environnement réagit → renvoie un nouvel État + une Récompense → l&#x27;Agent apprend → répète</code></pre></div>
+
+
+<p>Chaque composant en détail :</p>
+
+<ul>
+<li><strong>Agent</strong> : le "cerveau" qui prend des décisions. C'est lui qu'on entraîne.</li>
+<li><strong>Environnement</strong> : tout ce qui est extérieur à l'agent. Il répond aux actions et renvoie une observation.</li>
+<li><strong>État (s)</strong> : la description de la situation actuelle telle que perçue par l'agent. Exemple : "je suis dans la case (2,3) du labyrinthe", ou "la balle est à la position (x,y) avec une vitesse v".</li>
+<li><strong>Action (a)</strong> : ce que l'agent peut faire. Exemple : aller à gauche, sauter, accélérer.</li>
+<li><strong>Récompense (r)</strong> : un signal numérique qui indique si l'action était bonne ou mauvaise. +1 pour avoir réussi, -1 pour être tombé dans un trou, 0 sinon.</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>La récompense est souvent <strong>retardée</strong> : une action maintenant peut n'avoir de conséquence positive que 10 étapes plus tard. C'est ce qui rend le RL difficile — on ne sait pas toujours quelle action a "vraiment" causé le succès.</p></div></div>
+
+<h3 id="ref-22-la-boucle-rl">2.2 La boucle RL</h3>
+
+<p>La boucle fondamentale du RL se répète indéfiniment :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">1. Observer l&#x27;état actuel s
+2. Choisir une action a (selon la politique)
+3. Exécuter a dans l&#x27;environnement
+4. Recevoir la récompense r et le nouvel état s&#x27;
+5. Mettre à jour la connaissance de l&#x27;agent
+6. Recommencer depuis s&#x27;</code></pre></div>
+
+
+<p><strong>Exemple avec le chien</strong> : il observe la pièce (état), décide de s'asseoir (action), reçoit une friandise (récompense +1), se retrouve assis (nouvel état), et retient que "s'asseoir quand le maître est debout devant moi" vaut des friandises.</p>
+
+<h3 id="ref-23-politique-policy">2.3 Politique (Policy)</h3>
+
+<p>La <strong>politique</strong> $\pi$ (lettre grecque "pi") est la stratégie complète de l'agent : pour chaque état possible, elle indique quelle action choisir.</p>
+
+<div class="katex-display">$$\pi(s) = a$$</div>
+
+<p>C'est la "recette de cuisine" de l'agent. L'entraînement RL, c'est précisément le fait d'<strong>améliorer cette politique</strong> pour que les décisions prises rapportent le plus de récompenses possible sur la durée.</p>
+
+<h3 id="ref-24-tâches-épisodiques-vs-continues">2.4 Tâches épisodiques vs continues</h3>
+
+<ul>
+<li><strong>Épisodique</strong> : il y a un début et une fin clairs. Exemple : une partie d'échecs, traverser un labyrinthe. On parle d'<strong>épisode</strong>. L'agent repart de zéro à chaque épisode.</li>
+<li><strong>Continue</strong> : pas de fin. Exemple : un robot de surveillance qui tourne en permanence, un système de trading. L'agent doit gérer l'accumulation infinie de récompenses.</li>
+</ul>
+
+<hr>
+
+<h2 id="ref-3-exploration-vs-exploitation-le-grand-dilemme">3. Exploration vs Exploitation : le grand dilemme</h2>
+
+<h3 id="ref-31-le-problème">3.1 Le problème</h3>
+
+<p>Imagine que tu arrives dans une nouvelle ville et que tu dois choisir un restaurant. Tu connais déjà un bon restaurant (tu y es allé hier). Est-ce que tu :</p>
+
+<ul>
+<li><strong>Exploites</strong> : tu retournes au restaurant connu, car tu sais que c'est bon ?</li>
+<li><strong>Explores</strong> : tu essaies un nouveau restaurant, qui pourrait être meilleur... ou bien pire ?</li>
+</ul>
+
+<p>L'agent RL fait face exactement à ce dilemme à chaque action.</p>
+
+<ul>
+<li><strong>Exploitation</strong> : choisir l'action qui semble la meilleure selon ce que l'on sait déjà.</li>
+<li><strong>Exploration</strong> : choisir une action aléatoire pour découvrir de nouvelles possibilités.</li>
+</ul>
+
+<h3 id="ref-32-la-stratégie-ε-greedy-epsilon-greedy">3.2 La stratégie ε-greedy (epsilon-greedy)</h3>
+
+<p>La solution la plus courante : le paramètre <strong>ε (epsilon)</strong>, un nombre entre 0 et 1.</p>
+
+<ul>
+<li>Avec une probabilité $\varepsilon$ → l'agent choisit une <strong>action aléatoire</strong> (exploration)</li>
+<li>Avec une probabilité $1 - \varepsilon$ → l'agent choisit la <strong>meilleure action connue</strong> (exploitation)</li>
+</ul>
+
+<p>Au début de l'entraînement, $\varepsilon$ est élevé (beaucoup d'exploration). On le diminue progressivement : l'agent explore de moins en moins car il a appris à bien se comporter.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Si $\varepsilon = 0$ dès le début, l'agent n'explore jamais et reste coincé dans une stratégie médiocre. Si $\varepsilon = 1$ en permanence, il ne capitalise jamais sur ce qu'il a appris. On part souvent de $\varepsilon = 1.0$ et on descend progressivement jusqu'à $\varepsilon = 0.01$.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-q-learning-apprendre-la-valeur-des-actions">4. Q-Learning : apprendre la valeur des actions</h2>
+
+<h3 id="ref-41-la-q-function-combien-vaut-cette-action-dans-cette-situation">4.1 La Q-function : "combien vaut cette action dans cette situation ?"</h3>
+
+<p>Le Q-Learning repose sur l'idée d'affecter une <strong>note</strong> à chaque paire (état, action). Cette note s'appelle la <strong>Q-value</strong> :</p>
+
+<div class="katex-display">$$Q(s, a) = \text{"valeur" de faire l'action } a \text{ quand on est dans l'état } s$$</div>
+
+<p>Plus la Q-value est haute, plus l'action est prometteuse dans cet état.</p>
+
+<p><strong>Exemple avec le labyrinthe</strong> : l'agent est dans la case (2,2), juste à côté d'un trou. La Q-value de l'action "aller à droite vers le trou" sera très basse (grosse pénalité prévue), tandis que "aller en haut vers la sortie" sera élevée.</p>
+
+<h3 id="ref-42-la-q-table">4.2 La Q-table</h3>
+
+<p>Pour les environnements simples, on stocke toutes les Q-values dans un tableau : la <strong>Q-table</strong>.</p>
+
+<ul>
+<li>Une ligne par état possible</li>
+<li>Une colonne par action possible</li>
+<li>Chaque case contient la Q-value estimée</li>
+</ul>
+
+<p>Au départ, toutes les cases sont à 0. L'agent explore et met à jour les cases au fur et à mesure.</p>
+
+<p><strong>Exemple FrozenLake</strong> : un lac gelé 4×4 = 16 cases (états) × 4 directions (actions) = une Q-table de 16 × 4 = 64 cases.</p>
+
+<h3 id="ref-43-léquation-de-bellman-la-formule-de-mise-à-jour">4.3 L'équation de Bellman : la formule de mise à jour</h3>
+
+<p>C'est le coeur du Q-Learning. Après chaque action, on met à jour la Q-value grâce à l'équation de Bellman :</p>
+
+<div class="katex-display">$$Q(s, a) \leftarrow Q(s, a) + \alpha \left[ R(s,a) + \gamma \cdot \max_{a'} Q(s', a') - Q(s, a) \right]$$</div>
+
+<p>Décryptons symbole par symbole :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Symbole</th><th>Nom</th><th>Rôle</th><th>Analogie chien</th></tr></thead><tbody><tr><td>$Q(s, a)$</td><td>Q-value actuelle</td><td>Ce qu'on sait déjà</td><td>Note actuelle de "s'asseoir"</td></tr><tr><td>$\alpha$</td><td>Learning rate</td><td>Vitesse de mise à jour</td><td>À quel point le chien retient rapidement</td></tr><tr><td>$R(s,a)$</td><td>Récompense immédiate</td><td>Ce qu'on vient de gagner</td><td>La friandise reçue tout de suite</td></tr><tr><td>$\gamma$</td><td>Discount factor</td><td>Importance du futur vs présent</td><td>Le chien préfère-t-il la friandise maintenant ou demain ?</td></tr><tr><td>$\max_{a'} Q(s', a')$</td><td>Meilleure Q-value future</td><td>Meilleur scénario depuis le nouvel état</td><td>"Depuis là où je suis, la meilleure suite possible"</td></tr></tbody></table></div>
+<p><strong>Intuition</strong> : la nouvelle Q-value est une combinaison de ce qu'on savait et de ce qu'on vient d'apprendre (récompense immédiate + meilleure perspective future).</p>
+
+<h4 id="ref-exemple-numérique-pas-à-pas">Exemple numérique pas à pas</h4>
+
+<p>Situation : l'agent est dans l'état $s$, choisit l'action $a$, reçoit une récompense $R = +1$ et atterrit dans $s'$ où la meilleure Q-value disponible est $\max Q(s', a') = 0.8$.</p>
+
+<p>Paramètres : $\alpha = 0.1$, $\gamma = 0.99$, $Q(s, a)$ actuel $= 0.5$.</p>
+
+<div class="katex-display">$$Q(s, a) \leftarrow 0.5 + 0.1 \times \left[ 1 + 0.99 \times 0.8 - 0.5 \right]$$</div>
+<div class="katex-display">$$= 0.5 + 0.1 \times \left[ 1 + 0.792 - 0.5 \right]$$</div>
+<div class="katex-display">$$= 0.5 + 0.1 \times 1.292$$</div>
+<div class="katex-display">$$= 0.5 + 0.1292 = 0.6292$$</div>
+
+<p>La Q-value est passée de 0.5 à 0.63 — elle a augmenté car l'action s'est révélée bonne.</p>
+
+<h3 id="ref-44-les-hyperparamètres-du-q-learning">4.4 Les hyperparamètres du Q-Learning</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Paramètre</th><th>Valeur typique</th><th>Effet si trop grand</th><th>Effet si trop petit</th></tr></thead><tbody><tr><td><strong>α</strong> (learning rate)</td><td>0.1</td><td>Apprentissage instable, oscille</td><td>Apprentissage trop lent</td></tr><tr><td><strong>γ</strong> (discount factor)</td><td>0.99</td><td>Vision très long terme (parfois flou)</td><td>L'agent ne voit pas plus loin que le prochain pas</td></tr><tr><td><strong>ε</strong> (exploration)</td><td>1.0 → 0.01</td><td>Trop d'exploration, n'exploite pas</td><td>Ne découvre jamais rien de nouveau</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><strong>γ proche de 1</strong> = l'agent est "patient", il valorise les récompenses futures presque autant que les immédiates. <strong>γ proche de 0</strong> = l'agent est "myope", il ne pense qu'à la prochaine friandise.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-deep-q-networks-dqn-quand-la-q-table-ne-suffit-plus">5. Deep Q-Networks (DQN) : quand la Q-table ne suffit plus</h2>
+
+<h3 id="ref-51-la-limite-de-la-q-table">5.1 La limite de la Q-table</h3>
+
+<p>La Q-table stocke une valeur pour chaque paire (état, action). Ça marche parfaitement pour des environnements petits comme FrozenLake (16 états × 4 actions). Mais imaginez :</p>
+
+<ul>
+<li><strong>Jeu Atari</strong> : l'état = une image en pixels. Des millions de pixels = des milliards de combinaisons possibles. Impossible de stocker une Q-table.</li>
+<li><strong>Voiture autonome</strong> : l'état = vitesse + position + angle + trafic... un espace continu infini.</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>La Q-table <strong>explose en taille</strong> dès que l'espace des états devient grand ou continu. On ne peut pas la stocker, et encore moins l'apprendre efficacement.</p></div></div>
+
+<h3 id="ref-52-la-solution-remplacer-la-table-par-un-réseau-de-neurones">5.2 La solution : remplacer la table par un réseau de neurones</h3>
+
+<p>Un <strong>Deep Q-Network (DQN)</strong> est simplement un réseau de neurones qui :</p>
+<ul>
+<li><strong>Prend en entrée</strong> : l'état actuel (pixels, vecteurs de features...)</li>
+<li><strong>Retourne en sortie</strong> : les Q-values pour chaque action possible</li>
+</ul>
+
+<p>Au lieu de consulter une case dans un tableau, on fait une <strong>prédiction</strong> avec le réseau. Et au lieu de mettre à jour une case, on <strong>entraîne le réseau</strong> (backpropagation) pour que ses prédictions se rapprochent des Q-values cibles calculées via Bellman.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">État s (pixels ou vecteur)
+        ↓
+  [Réseau de neurones]
+        ↓
+Q(s, gauche), Q(s, droite), Q(s, haut), Q(s, bas)
+        ↓
+Choisir l&#x27;action avec le Q max</code></pre></div>
+
+
+<p><strong>Avantages du DQN</strong> :</p>
+<ul>
+<li>Gère des espaces d'états massifs (images, séquences)</li>
+<li><strong>Généralise</strong> : si deux états se ressemblent, les Q-values prédites seront proches — sans avoir besoin de les avoir tous vus</li>
+<li>Permet le RL sur des tâches complexes (Atari, robotique)</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La différence entre Q-Learning et DQN, c'est la même que la différence entre une lookup table et une fonction apprise. L'une consulte, l'autre prédit.</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-gymnasium-pratiquer-avec-des-environnements-rl">6. Gymnasium — Pratiquer avec des environnements RL</h2>
+
+<h3 id="ref-61-cest-quoi-gymnasium">6.1 C'est quoi Gymnasium ?</h3>
+
+<p><strong>Gymnasium</strong> (anciennement OpenAI Gym) est une librairie Python qui fournit des <strong>environnements RL prêts à l'emploi</strong> : labyrinthes, jeux Atari, simulateurs physiques... L'interface est toujours la même, quelle que soit la complexité de l'environnement.</p>
+
+<h3 id="ref-62-créer-et-explorer-un-environnement">6.2 Créer et explorer un environnement</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import gymnasium as gym
+
+# Créer l&#x27;environnement FrozenLake : un lac gelé 4×4
+# is_slippery=False : on enlève le hasard pour simplifier
+env = gym.make(&#x27;FrozenLake-v1&#x27;, is_slippery=False)
+
+# Inspecter l&#x27;espace des états et des actions
+print(env.observation_space)   # Discrete(16) → 16 états possibles (les 16 cases)
+print(env.action_space)        # Discrete(4)  → 4 actions : 0=gauche, 1=bas, 2=droite, 3=haut</code></pre></div>
+
+
+<h3 id="ref-63-la-boucle-dinteraction-de-base">6.3 La boucle d'interaction de base</h3>
+
+<p>Voici comment faire interagir un agent (ici aléatoire) avec l'environnement :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import gymnasium as gym
+
+env = gym.make(&#x27;FrozenLake-v1&#x27;, is_slippery=False)
+
+# Démarrer un nouvel épisode — l&#x27;agent revient à la case départ
+state, info = env.reset()
+print(f&quot;État initial : {state}&quot;)   # 0 = case en haut à gauche
+
+done = False
+total_reward = 0
+
+while not done:
+    # Choisir une action aléatoire (stratégie d&#x27;exploration pure)
+    action = env.action_space.sample()   # 0, 1, 2 ou 3 au hasard
+
+    # Exécuter l&#x27;action dans l&#x27;environnement
+    next_state, reward, terminated, truncated, info = env.step(action)
+    # next_state  : nouvelle case où l&#x27;agent se trouve
+    # reward      : 1.0 si l&#x27;agent atteint le but (G), 0.0 sinon
+    # terminated  : True si l&#x27;épisode est terminé (but atteint ou trou)
+    # truncated   : True si on a dépassé le nombre max de steps
+
+    total_reward += reward
+    state = next_state
+    done = terminated or truncated   # l&#x27;épisode est fini si l&#x27;un ou l&#x27;autre est True
+
+print(f&quot;Récompense totale : {total_reward}&quot;)   # 1.0 = succès, 0.0 = échec
+
+# Libérer les ressources à la fin
+env.close()</code></pre></div>
+
+
+<p><strong>Récap</strong> : <code>reset()</code> démarre un épisode, <code>step(action)</code> avance d'un pas et retourne 5 valeurs, <code>close()</code> libère la mémoire.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Gymnasium propose des dizaines d'environnements : <code>CartPole-v1</code> (équilibrer un balancier), <code>MountainCar-v0</code> (voiture dans une vallée), <code>Taxi-v3</code> (taxi dans une grille), et des jeux Atari complets.</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-stable-baselines-3-entraîner-un-agent-sans-tout-coder">7. Stable Baselines 3 — Entraîner un agent sans tout coder</h2>
+
+<h3 id="ref-71-cest-quoi-stable-baselines-3">7.1 C'est quoi Stable Baselines 3 ?</h3>
+
+<p><strong>Stable Baselines 3 (SB3)</strong> est une librairie PyTorch qui implémente les algorithmes RL les plus populaires (DQN, PPO, A2C, SAC...) de façon robuste et réutilisable. On n'a pas besoin de coder l'algorithme soi-même : on choisit, on configure, on entraîne.</p>
+
+<h3 id="ref-72-pipeline-complet-entraîner-évaluer-utiliser">7.2 Pipeline complet : entraîner, évaluer, utiliser</h3>
+
+<p>Voici un pipeline complet pour entraîner un agent DQN sur FrozenLake :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from stable_baselines3 import DQN                           # l&#x27;algorithme DQN
+from stable_baselines3.common.vec_env import DummyVecEnv    # wrapper obligatoire pour SB3
+from stable_baselines3.common.evaluation import evaluate_policy  # outil d&#x27;évaluation
+import gymnasium as gym
+
+# ── ÉTAPE 1 : Créer l&#x27;environnement ──────────────────────────────────────
+env = gym.make(&#x27;FrozenLake-v1&#x27;, is_slippery=False, render_mode=None)
+env = DummyVecEnv([lambda: env])   # SB3 requiert ce wrapper — permet la vectorisation
+
+# ── ÉTAPE 2 : Créer et entraîner le modèle ───────────────────────────────
+model = DQN(
+    &#x27;MlpPolicy&#x27;,     # MlpPolicy = réseau fully-connected (Multi-Layer Perceptron)
+    env,
+    verbose=1        # affiche les logs d&#x27;entraînement
+)
+
+model.learn(total_timesteps=100_000)   # 100 000 interactions agent-environnement
+# ⚠️ Le RL a besoin de BEAUCOUP de données — 100K est un minimum pour FrozenLake
+
+model.save(&#x27;dqn_frozen_lake&#x27;)   # sauvegarde les poids du réseau dans un fichier
+
+# ── ÉTAPE 3 : Évaluer les performances ───────────────────────────────────
+model = DQN.load(&#x27;dqn_frozen_lake&#x27;, env=env)   # recharger le modèle sauvegardé
+
+mean_reward, std_reward = evaluate_policy(
+    model, env,
+    n_eval_episodes=1000   # évaluer sur 1000 parties pour une mesure fiable
+)
+print(f&quot;Récompense moyenne : {mean_reward:.3f} ± {std_reward:.3f}&quot;)
+# Un bon agent devrait approcher 1.0 sur FrozenLake sans glissade
+
+# ── ÉTAPE 4 : Utiliser l&#x27;agent entraîné ──────────────────────────────────
+env_human = gym.make(&#x27;FrozenLake-v1&#x27;, render_mode=&#x27;human&#x27;, is_slippery=False)
+state, info = env_human.reset()
+
+done = False
+while not done:
+    action, _ = model.predict(state)   # le modèle choisit la meilleure action
+    state, reward, terminated, truncated, info = env_human.step(int(action))
+    done = terminated or truncated
+
+env_human.close()</code></pre></div>
+
+
+<p><strong>Récap</strong> : <code>DQN(&#x27;MlpPolicy&#x27;, env)</code> crée le modèle, <code>model.learn()</code> entraîne, <code>evaluate_policy()</code> mesure, <code>model.predict()</code> utilise l'agent entraîné.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais lancer <code>model.learn(total_timesteps=1000)</code> sur un environnement complexe — l'agent n'aura pas eu assez d'expériences pour apprendre quoi que ce soit. Partir de 100K–1M steps selon la complexité.</p></div></div>
+
+<h3 id="ref-73-choisir-entre-les-algorithmes-de-sb3">7.3 Choisir entre les algorithmes de SB3</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Algorithme</th><th>Type d'action</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td><strong>DQN</strong></td><td>Discret</td><td>Jeux, labyrinthes, actions finies</td></tr><tr><td><strong>PPO</strong></td><td>Discret ou continu</td><td>Robotique, simulation — souvent le meilleur point de départ</td></tr><tr><td><strong>A2C</strong></td><td>Discret ou continu</td><td>Alternative à PPO, plus rapide mais moins stable</td></tr><tr><td><strong>SAC</strong></td><td>Continu uniquement</td><td>Contrôle fin, bras robotiques, conduite</td></tr></tbody></table></div>
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>En pratique, <strong>PPO</strong> est souvent l'algorithme à essayer en premier : il est stable, performant, et fonctionne sur presque tous les types d'environnements.</p></div></div>
+
+<hr>
+
+<h2 id="ref-8-récapitulatif-des-erreurs-classiques">8. Récapitulatif des erreurs classiques</h2>
+
+<p>Voici les pièges les plus fréquents quand on débute en RL :</p>
+
+<p><strong>1. Trop d'exploitation, pas assez d'exploration</strong></p>
+<p>Mettre $\varepsilon = 0$ dès le départ signifie que l'agent répète toujours les mêmes actions sans découvrir de meilleures solutions. Toujours commencer avec une exploration élevée.</p>
+
+<p><strong>2. Utiliser une Q-table pour un espace d'états trop grand</strong></p>
+<p>Une Q-table sur un jeu Atari (des millions d'états-pixels) est impossible à stocker. Passer au DQN dès que l'espace des états devient grand ou continu.</p>
+
+<p><strong>3. Oublier les récompenses retardées</strong></p>
+<p>Avec $\gamma = 0$, l'agent ne regarde que la prochaine friandise et ignore tout le futur. Utiliser $\gamma$ proche de 1 (ex: 0.99) pour valoriser les récompenses futures.</p>
+
+<p><strong>4. Entraîner trop peu longtemps</strong></p>
+<p><code>model.learn(total_timesteps=1000)</code> sur un environnement complexe donnera une politique complètement aléatoire. Le RL nécessite beaucoup plus d'interactions que le supervised learning.</p>
+
+<p><strong>5. Confondre tâches épisodiques et continues</strong></p>
+<p>Le design des récompenses et le choix de l'algorithme sont très différents selon qu'il y a une fin naturelle (jeu) ou non (robot de surveillance).</p>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1 — Les fondamentaux</strong></p>
+<p>Dans le RL, quelle est la différence entre un <strong>état</strong>, une <strong>action</strong> et une <strong>récompense</strong> ? Donne un exemple pour chacun en utilisant l'analogie du chien.</p>
+
+<p><strong>Question 2 — Bellman</strong></p>
+<p>Explique en tes propres mots ce que fait l'équation de Bellman. Pourquoi multiplie-t-on la meilleure Q-value future par $\gamma$ (discount factor) plutôt que de la prendre telle quelle ?</p>
+
+<p><strong>Question 3 — Q-table vs DQN</strong></p>
+<p>Pourquoi ne peut-on pas utiliser une Q-table pour jouer à un jeu Atari ? Qu'est-ce qu'un DQN apporte comme solution, concrètement ?</p>
+
+<p><strong>Question 4 — Code</strong></p>
+<p>Dans le code Gymnasium, la fonction <code>env.step(action)</code> retourne 5 valeurs. Sans regarder le cours, peux-tu nommer les 5 valeurs et expliquer à quoi sert chacune ?</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Le <strong>Reinforcement Learning</strong> apprend par essai-erreur : un agent interagit avec un environnement et maximise une récompense cumulée — pas de données labellées.</li>
+<li>Les briques de base : <strong>agent</strong> (décideur), <strong>état</strong> (la situation), <strong>action</strong> (ce que l'agent fait), <strong>récompense</strong> (le score), <strong>politique</strong> (la stratégie).</li>
+<li>Le paramètre <strong>ε</strong> contrôle l'équilibre exploration/exploitation : élevé au début (on découvre), faible ensuite (on exploite).</li>
+<li>Le <strong>Q-Learning</strong> construit une table qui note chaque paire (état, action). L'<strong>équation de Bellman</strong> met à jour ces notes après chaque action, en combinant récompense immédiate et perspective future.</li>
+<li>Le <strong>DQN</strong> remplace la Q-table par un réseau de neurones — indispensable dès que l'espace des états est grand ou continu.</li>
+<li><strong>Gymnasium</strong> fournit des environnements prêts à l'emploi. L'interface universelle : <code>reset()</code>, <code>step(action)</code>, <code>close()</code>.</li>
+<li><strong>Stable Baselines 3</strong> fournit des algorithmes RL clés en main (DQN, PPO, A2C...) : <code>model.learn()</code>, <code>evaluate_policy()</code>, <code>model.predict()</code>.</li>
+<li>Le RL nécessite <strong>beaucoup</strong> d'interactions pour converger — bien plus que le supervised learning.</li>
+<li>Commencer par <strong>PPO</strong> sur des environnements simples comme <code>CartPole-v1</code> ou <code>FrozenLake-v1</code> pour se familiariser.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-le-cadre-rl">Le cadre RL</a></li><li><a href="#syn-mdp-markov-decision-process">MDP : Markov Decision Process</a></li><li><a href="#syn-value-function-et-équation-de-bellman">Value function et équation de Bellman</a></li><li><a href="#syn-exploration-vs-exploitation">Exploration vs exploitation</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-deep-q-networks-dqn">Deep Q-Networks (DQN)</a></li><li><a href="#syn-policy-gradient-et-actor-critic">Policy Gradient et Actor-Critic</a></li><li><a href="#syn-rlhf-et-alignement-de-llms">RLHF et alignement de LLMs</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-le-cadre-rl">Le cadre RL</h3>
+
+<p>Le <strong>Reinforcement Learning</strong> est une famille d'algorithmes où un <strong>agent</strong> apprend à prendre des décisions en interagissant avec un <strong>environnement</strong> pour maximiser une <strong>récompense cumulée</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">       action
+   Agent ──→ Environnement
+         ←──
+       observation, reward</code></pre></div>
+
+
+<p>Cinq éléments :</p>
+
+<ul>
+<li><strong>État</strong> ($s$) : description de la situation actuelle</li>
+<li><strong>Action</strong> ($a$) : ce que l'agent peut faire</li>
+<li><strong>Récompense</strong> ($r$) : signal numérique reçu après chaque action</li>
+<li><strong>Politique</strong> ($\pi$) : stratégie qui mappe états → actions</li>
+<li><strong>Return</strong> : somme (souvent discountée) des récompenses futures</li>
+</ul>
+
+<p>L'objectif : trouver la politique $\pi^*$ qui maximise l'espérance du return.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : RL, c'est apprendre à jouer aux échecs en jouant des milliers de parties. Personne ne vous dit "joue Cavalier en E5" à chaque coup. Vous gagnez ou perdez à la fin, et vous ajustez votre stratégie pour gagner plus souvent. Le supervisé serait "regarde 10 000 positions classées comme bonnes ou mauvaises". Le RL est plus proche de l'apprentissage humain par l'expérience.</p></div></div>
+
+<h3 id="syn-mdp-markov-decision-process">MDP : Markov Decision Process</h3>
+
+<p>Un MDP est le formalisme mathématique du RL :</p>
+
+<ul>
+<li>Ensemble d'états $\mathcal{S}$</li>
+<li>Ensemble d'actions $\mathcal{A}$</li>
+<li>Fonction de transition $P(s' | s, a)$ : probabilité d'aller en $s'$ depuis $s$ en faisant $a$</li>
+<li>Fonction de récompense $R(s, a, s')$</li>
+<li>Discount factor $\gamma \in [0, 1]$</li>
+</ul>
+
+<p><strong>Propriété de Markov</strong> : le futur ne dépend que de l'état actuel, pas de l'historique. C'est une simplification mais elle suffit pour beaucoup de problèmes.</p>
+
+<p>Le <strong>return</strong> discounted :</p>
+
+<div class="katex-display">$$G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \cdots = \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}$$</div>
+
+<p>$\gamma = 0$ : agent myope (ne pense qu'à la prochaine récompense). $\gamma = 0.99$ : agent qui valorise fortement les récompenses futures.</p>
+
+<h3 id="syn-value-function-et-équation-de-bellman">Value function et équation de Bellman</h3>
+
+<p>La <strong>value function</strong> d'une politique $\pi$ mesure la qualité d'être dans un état $s$ si on suit $\pi$ ensuite :</p>
+
+<div class="katex-display">$$V^\pi(s) = \sum_a \pi(a|s) \left[ R(s,a) + \gamma V^\pi(s') \right]$$</div>
+
+<p><strong>Décomposition terme à terme</strong> :</p>
+
+<ul>
+<li>$V^\pi(s)$ : la "valeur" de l'état $s$ sous la politique $\pi$ — à quel point c'est "bon" d'être ici</li>
+<li>$\sum_a$ : on somme sur toutes les actions possibles</li>
+<li>$\pi(a|s)$ : probabilité que la politique choisisse l'action $a$ dans l'état $s$</li>
+<li>$R(s,a)$ : récompense immédiate reçue après avoir fait $a$</li>
+<li>$\gamma$ : discount factor (entre 0 et 1), à quel point on valorise le futur</li>
+<li>$V^\pi(s')$ : la valeur de l'état SUIVANT — auto-référence récursive, c'est ça Bellman</li>
+</ul>
+
+<p><strong>Lecture intuitive</strong> : "ma valeur actuelle = récompense immédiate moyenne + valeur future actualisée moyenne". C'est le cœur du RL : la valeur d'un état dépend de la valeur des états suivants, définie de manière récursive.</p>
+
+<p>La <strong>Q-value</strong> $Q(s, a)$ est la variante "action-état" : valeur si on prend l'action $a$ dans l'état $s$ puis qu'on suit la politique optimale.</p>
+
+<div class="katex-display">$$Q^*(s, a) = E[G_t | s_t = s, a_t = a]$$</div>
+
+<p>L'algorithme <strong>Q-learning</strong> met à jour itérativement les Q-values :</p>
+
+<div class="katex-display">$$Q(s, a) \leftarrow Q(s, a) + \alpha [r + \gamma \max_{a'} Q(s', a') - Q(s, a)]$$</div>
+
+<p><strong>Décomposition de la mise à jour</strong> :</p>
+
+<ul>
+<li>$Q(s,a)$ : l'estimation actuelle (que l'on va corriger)</li>
+<li>$\alpha$ : learning rate, typiquement 0.01 à 0.1 — contrôle la vitesse d'apprentissage</li>
+<li>$r$ : récompense observée après avoir fait $a$</li>
+<li>$\gamma \max_{a'} Q(s', a')$ : la meilleure valeur espérée depuis l'état suivant</li>
+<li>$r + \gamma \max_{a'} Q(s', a')$ : la "TD target" — ce que Q devrait valoir idéalement</li>
+<li>$[\text{target} - Q(s,a)]$ : l'erreur de prédiction (appelée TD error)</li>
+</ul>
+
+<p>On pousse $Q(s,a)$ dans la direction de la target d'un facteur $\alpha$. C'est un cas particulier de Bellman optimality equation.</p>
+
+<p>Une fois Q appris, la politique optimale est :</p>
+
+<div class="katex-display">$$\pi^<em>(s) = \arg\max_a Q^</em>(s, a)$$</div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+# Q-learning pour un environnement discret simple
+Q = np.zeros((n_states, n_actions))   # table Q initialisée à zéro
+alpha = 0.1                            # learning rate
+gamma = 0.95                           # discount factor — valorise fortement le futur
+
+for episode in range(1000):
+    s = env.reset()                    # état initial de l&#x27;épisode
+    done = False
+    while not done:
+        # Epsilon-greedy : explorer ou exploiter ?
+        if np.random.random() &lt; epsilon:
+            a = env.action_space.sample()  # action aléatoire (exploration)
+        else:
+            a = np.argmax(Q[s])            # meilleure action connue (exploitation)
+
+        s_next, r, done, _ = env.step(a)   # l&#x27;environnement applique l&#x27;action
+
+        # Q-learning update : pousse Q(s,a) vers r + gamma * max_a&#x27; Q(s&#x27;,a&#x27;)
+        Q[s, a] += alpha * (r + gamma * np.max(Q[s_next]) - Q[s, a])
+        s = s_next                         # on passe à l&#x27;état suivant</code></pre></div>
+
+
+<h3 id="syn-exploration-vs-exploitation">Exploration vs exploitation</h3>
+
+<p>Le dilemme central du RL : <strong>exploration</strong> (essayer de nouvelles actions pour découvrir leurs récompenses) vs <strong>exploitation</strong> (jouer la meilleure action connue pour maximiser le score).</p>
+
+<p><strong>Stratégies courantes</strong> :</p>
+
+<ul>
+<li><strong>ε-greedy</strong> : avec proba $\epsilon$, action aléatoire ; sinon action greedy. $\epsilon$ décroît au fil de l'entraînement.</li>
+<li><strong>Softmax / Boltzmann</strong> : probabilité d'action proportionnelle à $\exp(Q/T)$ avec $T$ qui décroît.</li>
+<li><strong>UCB</strong> (Upper Confidence Bound) : favorise les actions peu testées.</li>
+<li><strong>Curiosity-driven</strong> : récompense intrinsèque pour explorer des états nouveaux.</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Epsilon decay typique
+epsilon = max(epsilon_min, epsilon_start * (epsilon_decay ** episode))</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : exploration vs exploitation, c'est le dilemme du restaurant. Vous connaissez votre pizzeria favorite (exploitation, score garanti). Mais peut-être qu'il y a un meilleur resto deux rues plus loin que vous n'avez jamais essayé (exploration, score potentiellement supérieur ou plus mauvais). Trop d'exploration = vous mangez souvent mal. Trop d'exploitation = vous ratez la meilleure découverte de votre vie. Le bon équilibre dépend du contexte.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-deep-q-networks-dqn">Deep Q-Networks (DQN)</h3>
+
+<p>Pour les environnements à grand espace d'états (par exemple Atari, où l'état est une image de 84×84 pixels), une table $Q(s, a)$ est impossible. <strong>DQN</strong> (Mnih et al., 2013, DeepMind) remplace la table par un <strong>réseau de neurones</strong> qui approxime $Q$.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import torch.nn as nn
+
+class DQN(nn.Module):
+    def __init__(self, n_actions):
+        super().__init__()
+        self.conv = nn.Sequential(
+            nn.Conv2d(4, 32, 8, stride=4), nn.ReLU(),
+            nn.Conv2d(32, 64, 4, stride=2), nn.ReLU(),
+            nn.Conv2d(64, 64, 3, stride=1), nn.ReLU(),
+        )
+        self.fc = nn.Sequential(
+            nn.Linear(64 * 7 * 7, 512), nn.ReLU(),
+            nn.Linear(512, n_actions),
+        )
+
+    def forward(self, x):
+        x = self.conv(x).view(x.size(0), -1)
+        return self.fc(x)</code></pre></div>
+
+
+<p>Deux innovations clés pour stabiliser l'entraînement :</p>
+
+<ol>
+<li><strong>Experience replay</strong> : stocker les transitions $(s, a, r, s')$ dans un buffer et tirer des mini-batches au hasard. Décorrèle les samples consécutifs.</li>
+</ol>
+
+<ol>
+<li><strong>Target network</strong> : maintenir une copie figée du DQN qui est mise à jour périodiquement, pour éviter que la target soit "mouvante".</li>
+</ol>
+
+<p>DQN a produit des agents qui battent l'humain sur la plupart des jeux Atari à partir des seuls pixels. C'est la première démonstration spectaculaire du deep RL.</p>
+
+<h3 id="syn-policy-gradient-et-actor-critic">Policy Gradient et Actor-Critic</h3>
+
+<p>Au lieu d'apprendre $Q$ et de dériver une politique, on peut <strong>apprendre directement</strong> la politique $\pi_\theta(a|s)$ avec un réseau de neurones.</p>
+
+<p><strong>Policy gradient theorem</strong> :</p>
+
+<div class="katex-display">$$\nabla_\theta J(\theta) = E_{\pi_\theta}\left[\nabla_\theta \log \pi_\theta(a|s) \cdot Q(s, a)\right]$$</div>
+
+<p>Algorithme <strong>REINFORCE</strong> (Williams, 1992) : Monte-Carlo policy gradient simple.</p>
+
+<p><strong>Actor-Critic</strong> : combine deux réseaux :</p>
+
+<ul>
+<li><strong>Actor</strong> : la politique $\pi_\theta(a|s)$</li>
+<li><strong>Critic</strong> : la value function $V_\phi(s)$ qui réduit la variance du gradient</li>
+</ul>
+
+<p><strong>PPO</strong> (Proximal Policy Optimization, Schulman et al., 2017) : algorithme actor-critic avec une fonction de loss qui limite les changements de politique trop brutaux via un "clipping ratio". Concrètement, à chaque mise à jour, PPO interdit à la nouvelle politique de s'éloigner de plus de ±20% de l'ancienne — cela évite les crashs d'entraînement où un trop gros step oublie tout ce qui a été appris. C'est le standard moderne en RL — utilisé par OpenAI Five (Dota 2), AlphaGo, et la plupart des agents RL industriels.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Avec Stable-Baselines3 — la lib de référence pour tester du RL rapidement
+from stable_baselines3 import PPO
+import gymnasium as gym
+
+env = gym.make(&quot;CartPole-v1&quot;)              # environnement classique : équilibrer un pendule
+model = PPO(&quot;MlpPolicy&quot;, env, verbose=1)   # MLP pour la policy (suffit pour CartPole)
+model.learn(total_timesteps=100000)        # ~30 secondes sur CPU pour ce problème
+
+# Tester la politique apprise
+obs, _ = env.reset()
+for _ in range(1000):
+    action, _ = model.predict(obs)         # politique déterministe en eval
+    obs, reward, done, _, _ = env.step(action)
+    if done: obs, _ = env.reset()          # nouvel épisode si le pendule tombe</code></pre></div>
+
+
+<h3 id="syn-rlhf-et-alignement-de-llms">RLHF et alignement de LLMs</h3>
+
+<p>Le RL a connu un nouveau sursaut grâce à son utilisation pour aligner les LLMs sur les préférences humaines.</p>
+
+<p><strong>RLHF</strong> (Reinforcement Learning from Human Feedback) :</p>
+
+<ol>
+<li><strong>SFT</strong> : fine-tuner sur des exemples de bonnes réponses</li>
+<li><strong>Reward modeling</strong> : entraîner un modèle qui prédit "cette réponse est-elle bonne ?" à partir de paires comparées par des humains</li>
+<li><strong>PPO</strong> : optimiser le LLM avec PPO en maximisant le score du reward model</li>
+</ol>
+
+<p>C'est exactement comme ça que ChatGPT et Claude ont été entraînés à être polis et utiles. Sans RLHF, GPT-3 brut était utile mais souvent toxique ou hors sujet.</p>
+
+<p><strong>DPO</strong> (Direct Preference Optimization, 2023) : version simplifiée qui optimise directement le LLM sur les paires de préférences sans passer par un reward model. Plus stable et plus simple. Devenu standard pour l'alignement open source en 2024.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Limite du RL en pratique</strong> : la plupart des algorithmes RL sont <strong>extrêmement gourmands en samples</strong> (millions d'épisodes) et <strong>instables</strong> à l'entraînement. Pour des problèmes du monde réel (qui ne sont pas des simulateurs), c'est souvent intractable. C'est pourquoi le RL reste principalement utilisé dans : (1) jeux et simulateurs (DeepMind, OpenAI), (2) alignement de LLMs, (3) robotique avec sim-to-real, (4) recherche académique. Pour des problèmes industriels classiques, le supervisé reste roi.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Quelle est la différence fondamentale entre apprentissage supervisé et reinforcement learning ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>signal d'apprentissage.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Supervisé</strong> : on a $(X, y)$ avec $y$ étant la "bonne réponse" pour chaque $X$. Le modèle apprend à mapper $X \to y$. Le signal est dense et précis : pour chaque exemple, on sait exactement quelle erreur le modèle a faite. <strong>RL</strong> : pas de "bonne réponse" pour chaque action. On a juste un signal de récompense, qui peut être : (a) <strong>différé</strong> (vous gagnez la partie d'échecs après 50 coups, mais lequel des 50 était le bon ?), (b) <strong>clairsemé</strong> (très peu de récompenses non nulles), (c) <strong>bruité</strong> (la même action peut donner des résultats différents). Conséquences : le RL doit apprendre à <strong>attribuer le crédit</strong> à des actions passées (credit assignment problem), il est beaucoup plus difficile à entraîner, et il a besoin de beaucoup plus d'interactions. <strong>Quand utiliser quoi</strong> : supervisé si vous avez accès à des labels ; RL si vous avez seulement un signal de récompense post-hoc et pouvez générer des trajectoires (typiquement dans un simulateur). Question d'entretien classique pour vérifier la compréhension du paradigme.</p>
+
+</details>
+
+<p><strong>Q2 : Pourquoi le discount factor $\gamma$ est-il important, et que se passe-t-il aux extrêmes $\gamma = 0$ et $\gamma = 1$ ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>myopie et convergence.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>$\gamma$ contrôle l'importance des récompenses futures. <strong>$\gamma = 0$</strong> : l'agent est complètement myope, il ne maximise que la récompense immédiate. Conséquence : il prend des décisions locales optimales mais peut rater des stratégies à long terme. Exemple : un agent qui mange tous les bonbons d'une pièce sans jamais ouvrir la porte vers la pièce suivante avec encore plus de bonbons. <strong>$\gamma = 1$</strong> : toutes les récompenses futures comptent autant que la présente. Problème mathématique : si l'épisode est infini, la somme peut diverger ($G_t = R + R + R + ... = \infty$). Solution : utiliser $\gamma < 1$ ou imposer une longueur d'épisode finie. <strong>En pratique</strong> : $\gamma = 0.95-0.99$ est le standard. Plus $\gamma$ est proche de 1, plus l'horizon effectif de planification est long (~$1/(1-\gamma)$ pas), mais plus la convergence est lente. Pour un environnement où les récompenses arrivent loin dans le temps (jeux longs, goal-reaching), $\gamma$ doit être proche de 1.</p>
+
+</details>
+
+<p><strong>Q3 : Pourquoi le RL est-il rarement utilisé dans l'industrie pour des problèmes "classiques" alors qu'il est puissant dans les jeux ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>sample efficiency et risque.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Trois obstacles majeurs. (1) <strong>Sample efficiency</strong> : un algorithme RL moderne (PPO, SAC) a besoin de millions d'épisodes pour converger. Dans un simulateur (Atari, échecs), c'est faisable en quelques jours sur GPU. Dans le monde réel (robotique, marketing, recommandation), chaque "épisode" coûte du temps et de l'argent réel — impensable de faire un million d'A/B tests. (2) <strong>Pas de simulateur</strong> : la plupart des problèmes industriels n'ont pas de simulateur fidèle. Vous ne pouvez pas "rejouer" 1 million de fois la décision d'embaucher un candidat ou de fixer un prix produit. Sans simulateur, vous êtes obligé de faire de l'<strong>offline RL</strong> (apprendre depuis des données historiques), qui est encore très immature. (3) <strong>Risque</strong> : le RL explore. Pendant l'exploration, l'agent prend volontairement des actions sous-optimales pour découvrir leurs effets. En finance, en santé, en logistique, ces actions sous-optimales coûtent des vies ou des millions. Ce qui est OK dans un jeu Atari ne l'est pas dans le monde réel. <strong>Conséquence</strong> : le RL en industrie est limité à des cas où il y a un simulateur (jeu, drone, robotique) ou où l'on peut faire de la <strong>bandits</strong> (forme simplifiée et plus safe du RL utilisée pour les recommandations et l'A/B testing). Question d'entretien data science avancé : "Pourquoi le RL n'a-t-il pas remplacé le supervisé en industrie ?" — la réponse exhaustive parle de sample efficiency, simulators, et risque opérationnel.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Reinforcement Learning: An Introduction</em> (Sutton & Barto, gratuit) — la bible</li>
+<li><a href="https://spinningup.openai.com/" target="_blank" rel="noopener">OpenAI Spinning Up</a> — tutoriel pratique excellent</li>
+<li><a href="https://stable-baselines3.readthedocs.io/" target="_blank" rel="noopener">Stable-Baselines3</a> — implémentations PPO, SAC, DQN</li>
+<li><a href="https://gymnasium.farama.org/" target="_blank" rel="noopener">Gymnasium (ex-OpenAI Gym)</a> — environnements standards</li>
+<li><em>Playing Atari with Deep Reinforcement Learning</em> (Mnih et al., 2013) — papier DQN</li>
+<li><em>Proximal Policy Optimization</em> (Schulman et al., 2017) — papier PPO</li>
+<li><a href="https://www.youtube.com/playlist?list=PLqYmG7hTraZBKeNJ-JE_eyJHZ7XgBoAyb" target="_blank" rel="noopener">DeepMind RL Course</a> — cours vidéo</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../specialise/time-series.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Time Series</span>
+  </a>
+  <a href="../specialise/explainable-ai.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Explainable AI →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

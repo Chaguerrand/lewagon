@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convolutional Neural Networks — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Convolutional Neural Networks</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html" class="active">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Deep Learning</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Convolutional Neural Networks</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Convolutional Neural Networks</h1>
+        <p class="page-objective">Comprendre pourquoi les réseaux denses sont inadaptés aux images, maîtriser l'architecture des CNN (convolution, kernel, stride, padding, pooling) et savoir utiliser le Transfer Learning avec des modèles pré-entraînés en Keras.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Convolution</div>
+        <div class="key-concept-def">Filtre glissant qui détecte des motifs locaux indépendamment de leur position.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Pooling</div>
+        <div class="key-concept-def">Sous-échantillonne (max, avg) pour réduire la résolution et gagner en invariance.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Stride / padding</div>
+        <div class="key-concept-def">Pas du filtre et zéros ajoutés en bordure pour contrôler la taille de sortie.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Transfer learning</div>
+        <div class="key-concept-def">Réutiliser un réseau pré-entraîné (ImageNet) puis fine-tuner.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-convolutional-neural-networks">Cheatsheet — Convolutional Neural Networks</a><ol><li><a href="#preprocessing-dimages">Preprocessing d'images</a></li><li><a href="#architecture-cnn-de-base">Architecture CNN de base</a></li><li><a href="#couche-conv2d-paramètres-clés">Couche Conv2D — paramètres clés</a></li><li><a href="#couches-de-pooling">Couches de Pooling</a></li><li><a href="#compter-les-paramètres-dune-conv2d">Compter les paramètres d'une Conv2D</a></li><li><a href="#compile-fit-rappel">Compile & Fit (rappel)</a></li><li><a href="#transfer-learning">Transfer Learning</a></li><li><a href="#inspecter-les-activations-dune-couche">Inspecter les activations d'une couche</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#0-rappels-dense-neural-networks">0) Rappels — Dense Neural Networks</a><li><a href="#1-applications-du-deep-learning-sur-les-images">1) Applications du Deep Learning sur les images</a><li><a href="#2-preprocessing-des-images">2) Preprocessing des images</a><ol><li><a href="#21-représentation-dune-image">2.1 Représentation d'une image</a></li><li><a href="#22-preprocessing">2.2 Preprocessing</a></li></ol></li><li><a href="#3-architecture-dun-cnn">3) Architecture d'un CNN</a><ol><li><a href="#31-pourquoi-les-réseaux-dense-sont-inadaptés-aux-images">3.1 Pourquoi les réseaux Dense sont inadaptés aux images ?</a></li><li><a href="#32-la-convolution">3.2 La convolution</a></li><li><a href="#que-font-les-kernels">Que font les kernels ?</a></li><li><a href="#images-couleur-3-channels">Images couleur (3 channels)</a></li><li><a href="#une-couche-convolutionnelle">Une couche convolutionnelle</a></li><li><a href="#couches-chaînées-cnn">Couches chaînées → CNN</a></li><li><a href="#poids-des-kernels">Poids des kernels</a></li><li><a href="#compter-les-paramètres">Compter les paramètres</a></li><li><a href="#33-syntaxe-keras">3.3 Syntaxe Keras</a></li><li><a href="#34-intuitions-sur-les-kernels-appris">3.4 Intuitions sur les kernels appris</a></li></ol></li><li><a href="#4-hyperparamètres-de-convolution">4) Hyperparamètres de convolution</a><ol><li><a href="#41-strides">4.1 Strides</a></li><li><a href="#42-padding">4.2 Padding</a></li><li><a href="#43-pooling">4.3 Pooling</a></li><li><a href="#résumé-des-hyperparamètres">Résumé des hyperparamètres</a></li></ol></li><li><a href="#5-cas-réel-reconnaissance-de-chiffres-mnist">5) Cas réel : reconnaissance de chiffres (MNIST)</a><ol><li><a href="#51-charger-et-préparer-les-données">5.1 Charger et préparer les données</a></li><li><a href="#52-modèle-cnn">5.2 Modèle CNN</a></li><li><a href="#53-version-avec-preprocessing-intégré">5.3 Version avec preprocessing intégré</a></li><li><a href="#54-inspecter-les-activations">5.4 Inspecter les activations</a></li></ol></li><li><a href="#6-architectures-classiques-transfer-learning">6) Architectures classiques & Transfer Learning</a><ol><li><a href="#61-architectures-sota">6.1 Architectures SOTA</a></li><li><a href="#62-transfer-learning">6.2 Transfer Learning</a></li><li><a href="#63-modèles-pré-entraînés-disponibles">6.3 Modèles pré-entraînés disponibles</a></li><li><a href="#64-stratégie-de-construction-dun-cnn">6.4 Stratégie de construction d'un CNN</a></li></ol></li><li><a href="#7-bonus-google-colab">7) Bonus : Google Colab</a><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-convolutional-neural-networks">📋 Cheatsheet — Convolutional Neural Networks</h2>
+
+<h3 id="preprocessing-dimages">Preprocessing d'images</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Normalisation des pixels (0-255 → 0-1)
+X_train = X_train / 255.                              # division simple
+## ou via une couche Keras intégrée :
+layers.Rescaling(scale=1./255.)                        # normalisation dans le modèle
+
+## Resize recommandé : (224, 224, 3) pour les modèles SOTA
+## Charger un dataset d&#x27;images depuis un dossier
+from tensorflow.keras.utils import image_dataset_from_directory
+ds = image_dataset_from_directory(&#x27;path/to/data/&#x27;,     # charge images par batch
+                                  image_size=(224, 224),
+                                  batch_size=32)</code></pre></div>
+
+
+<h3 id="architecture-cnn-de-base">Architecture CNN de base</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import Sequential, Input, layers
+
+model = Sequential()
+model.add(Input(shape=(224, 224, 3)))                  # image couleur 224×224
+
+## Bloc convolution + pooling (répéter 2-3 fois)
+model.add(layers.Conv2D(32, (3, 3), activation=&#x27;relu&#x27;, padding=&#x27;same&#x27;))  # 32 filtres, kernel 3×3
+model.add(layers.MaxPool2D(pool_size=(2, 2)))          # réduit la taille par 2
+
+model.add(layers.Conv2D(64, (3, 3), activation=&#x27;relu&#x27;, padding=&#x27;same&#x27;))  # plus de filtres
+model.add(layers.MaxPool2D(pool_size=(2, 2)))
+
+## Partie dense (classification)
+model.add(layers.Flatten())                            # 3D → 1D
+model.add(layers.Dense(50, activation=&#x27;relu&#x27;))         # couche cachée
+model.add(layers.Dropout(0.3))                         # régularisation
+model.add(layers.Dense(10, activation=&#x27;softmax&#x27;))      # 10 classes</code></pre></div>
+
+
+<h3 id="couche-conv2d-paramètres-clés">Couche Conv2D — paramètres clés</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">layers.Conv2D(
+    filters=32,               # nombre de filtres (= profondeur de la sortie)
+    kernel_size=(3, 3),       # taille du kernel (3 ↔ (3,3))
+    strides=(1, 1),           # pas de déplacement du kernel (défaut=1)
+    padding=&#x27;same&#x27;,           # &#x27;valid&#x27; (pas de padding) ou &#x27;same&#x27; (conserve la taille)
+    activation=&#x27;relu&#x27;         # activation appliquée après la convolution
+)</code></pre></div>
+
+
+<h3 id="couches-de-pooling">Couches de Pooling</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">layers.MaxPool2D(pool_size=(2, 2))           # garde le max → réduit taille par 2
+layers.AveragePooling2D(pool_size=(2, 2))    # garde la moyenne → réduit taille par 2
+## Le pooling n&#x27;a AUCUN paramètre entraînable</code></pre></div>
+
+
+<h3 id="compter-les-paramètres-dune-conv2d">Compter les paramètres d'une Conv2D</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Paramètres = nb_filtres × (nb_channels_input × kernel_h × kernel_w) + nb_filtres (biais)
+## Exemple : Conv2D(6, (3,3)) sur image RGB (3 channels)
+## → 6 × (3 × 3 × 3) + 6 = 168 paramètres
+## ⚠️ Le nombre de paramètres ne dépend PAS de la taille de l&#x27;image !</code></pre></div>
+
+
+<h3 id="compile-fit-rappel">Compile & Fit (rappel)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Classification multi-classes (y one-hot encoded)
+model.compile(loss=&#x27;categorical_crossentropy&#x27;, optimizer=&#x27;adam&#x27;, metrics=[&#x27;accuracy&#x27;])
+
+## Classification multi-classes (y en entiers)
+model.compile(loss=&#x27;sparse_categorical_crossentropy&#x27;, optimizer=&#x27;adam&#x27;, metrics=[&#x27;accuracy&#x27;])
+
+## One-hot encoding du target
+from tensorflow.keras.utils import to_categorical
+y_cat = to_categorical(y, num_classes=10)              # shape (n, 10)
+
+## Fit avec early stopping
+from tensorflow.keras.callbacks import EarlyStopping
+es = EarlyStopping(patience=30, restore_best_weights=True)
+model.fit(X_train, y_train, batch_size=32, epochs=100, validation_split=0.3, callbacks=[es])</code></pre></div>
+
+
+<h3 id="transfer-learning">Transfer Learning</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.applications import VGG16
+
+## Charger le modèle pré-entraîné SANS les couches denses
+base_model = VGG16(weights=&#x27;imagenet&#x27;,                 # poids pré-entraînés sur ImageNet
+                   include_top=False,                   # exclut les couches Dense
+                   input_shape=(224, 224, 3))
+
+base_model.trainable = False                           # 🧊 geler les poids convolutionnels
+
+## Construire le modèle complet
+model = Sequential([
+    base_model,                                        # couches conv pré-entraînées
+    layers.Flatten(),
+    layers.Dense(50, activation=&#x27;relu&#x27;),               # nouvelles couches Dense
+    layers.Dense(10, activation=&#x27;softmax&#x27;)             # adaptées à notre tâche
+])</code></pre></div>
+
+
+<h3 id="inspecter-les-activations-dune-couche">Inspecter les activations d'une couche</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">layer_1 = model.layers[0]                             # récupère la 1ère couche
+activation = layer_1(X_train[0:10])                   # calcule la sortie pour 10 images
+## activation.shape → (10, H, W, nb_filtres)
+plt.imshow(activation[0, :, :, 0], cmap=&#x27;gray&#x27;)       # affiche le 1er feature map</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser un réseau Dense (Flatten) directement sur des images</strong></p>
+<p>❌ Flatten une image 225×225×3 → 151 875 features → explosion du nombre de paramètres + perte de l'information spatiale</p>
+<p><code>python</p>
+<p>model.add(layers.Flatten())                     # 151 875 inputs</p>
+<p>model.add(layers.Dense(100, activation=&#x27;relu&#x27;))  # 15M+ paramètres !</p>
+</code>
+<p>✅ Utiliser des couches Conv2D + MaxPool2D qui exploitent la structure spatiale avec beaucoup moins de paramètres</p>
+<p><code>python</p>
+<p>model.add(layers.Conv2D(16, (3, 3), activation=&#x27;relu&#x27;))  # ~450 paramètres</p>
+<p>model.add(layers.MaxPool2D((2, 2)))</p>
+</code></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier de normaliser les pixels (0-255)</strong></p>
+<p>❌ Passer des valeurs brutes 0-255 au réseau → convergence lente ou échec</p>
+<p><code>python</p>
+<p><a href="http://model.fit" target="_blank" rel="noopener">model.fit</a>(X_train_raw, y_train)    # pixels entre 0 et 255</p>
+</code>
+<p>✅ Normaliser les pixels entre 0 et 1 (ou -1 et 1)</p>
+<p><code>python</p>
+<p>X_train = X_train / 255.           # normalisation simple</p>
+<p># ou intégrer layers.Rescaling(1./255.) dans l&#x27;architecture</p>
+</code></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier le Flatten entre les couches Conv2D et Dense</strong></p>
+<p>❌ Passer directement d'une sortie 3D (Conv2D) à une couche Dense → erreur de dimensions</p>
+<p><code>python</p>
+<p>model.add(layers.Conv2D(16, (3,3), activation=&#x27;relu&#x27;))</p>
+<p>model.add(layers.Dense(10, activation=&#x27;softmax&#x27;))      # ❌ Dense attend du 1D !</p>
+</code>
+<p>✅ Toujours ajouter <code>Flatten()</code> entre la partie convolutionnelle et la partie dense</p>
+<p><code>python</p>
+<p>model.add(layers.Conv2D(16, (3,3), activation=&#x27;relu&#x27;))</p>
+<p>model.add(layers.Flatten())                            # 3D → 1D</p>
+<p>model.add(layers.Dense(10, activation=&#x27;softmax&#x27;))</p>
+</code></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser des kernels trop grands ou trop petits pour la taille de l'image</strong></p>
+<p>❌ Kernel (2,2) sur une image 1200×800 → ne voit rien de pertinent. Kernel (64,64) sur 128×128 → trop gros</p>
+<p><code>python</p>
+<p>layers.Conv2D(32, (64, 64))   # kernel disproportionné pour une image 128×128</p>
+</code>
+<p>✅ Kernels (3,3) ou (5,5) pour des images ~224×224, avec des kernels qui diminuent dans les couches profondes</p>
+<p><code>python</p>
+<p>layers.Conv2D(32, (5, 5))     # 1ères couches : gros kernels, peu de filtres</p>
+<p>layers.Conv2D(128, (3, 3))    # dernières couches : petits kernels, plus de filtres</p>
+</code></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Entraîner un CNN from scratch quand on a peu de données</strong></p>
+<p>❌ Construire une architecture de zéro avec 500 images → overfit massif</p>
+<p><code>python</p>
+<p>model = Sequential()   # CNN custom avec 500 images → pas assez de données</p>
+</code>
+<p>✅ Utiliser le Transfer Learning : charger un modèle pré-entraîné (VGG16, ResNet50), geler les couches conv, et n'entraîner que les couches Dense</p>
+<p><code>python</p>
+<p>base = VGG16(weights=&#x27;imagenet&#x27;, include_top=False, input_shape=(224,224,3))</p>
+<p>base.trainable = False   # geler → seules les couches Dense sont entraînées</p>
+</code></div></div>
+
+<hr>
+
+<h2 id="0-rappels-dense-neural-networks">0) Rappels — Dense Neural Networks</h2>
+
+<p>Un réseau Dense classique en Keras suit 3 étapes : <strong>Architecture → Compile → Fit</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import Sequential, Input, layers, optimizers, callbacks
+
+## 1. Architecture
+model = Sequential()
+model.add(Input(shape=(10,)))
+model.add(layers.Dense(50, activation=&#x27;relu&#x27;))
+model.add(layers.Dense(25, activation=&#x27;relu&#x27;))
+model.add(layers.Dense(4, activation=&#x27;softmax&#x27;))
+
+## 2. Compilation
+opt = optimizers.Adam(learning_rate=0.01)
+model.compile(loss=&#x27;categorical_crossentropy&#x27;, optimizer=opt, metrics=[&#x27;accuracy&#x27;])
+
+## 3. Fit
+es = callbacks.EarlyStopping(patience=30, restore_best_weights=True)
+model.fit(X, y, batch_size=16, epochs=100, validation_split=0.3, callbacks=[es])</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Mais que se passe-t-il si l'input n'est pas un vecteur mais une <strong>image</strong> ?</p></div></div>
+
+<hr>
+
+<h2 id="1-applications-du-deep-learning-sur-les-images">1) Applications du Deep Learning sur les images</h2>
+
+<p>Les CNN sont à la base de nombreuses applications en Computer Vision :</p>
+
+<ul>
+<li><strong>Object Detection</strong> — détection d'objets dans des scènes (voitures autonomes)</li>
+<li><strong>Facial Recognition</strong> — détection + identification de visages</li>
+<li><strong>Image Segmentation</strong> — segmentation pixel par pixel (imagerie médicale)</li>
+<li><strong>Captioning</strong> — génération de texte décrivant une image</li>
+</ul>
+
+<figure><img src="../../assets/images/cnn-01-9c95690a.jpg" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/cnn-02-8704fba0.jpg" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="2-preprocessing-des-images">2) Preprocessing des images</h2>
+
+<h3 id="21-représentation-dune-image">2.1 Représentation d'une image</h3>
+
+<ul>
+<li><strong>Noir & blanc</strong> : matrice de taille <code>(height, width)</code>, valeurs 0-255</li>
+<li><strong>Couleur (RGB)</strong> : tenseur de taille <code>(height, width, 3)</code> — un canal par couleur (Rouge, Vert, Bleu)</li>
+</ul>
+
+<figure><img src="../../assets/images/cnn-03-ef789e16.jpg" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/cnn-04-b1db96c0.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Convention</strong> : en maths, un tableau 2D = matrice, un tableau 3D+ = tenseur. En code (NumPy/TF), tout est un <code>array</code> ou <code>tensor</code>.</p></div></div>
+
+<h3 id="22-preprocessing">2.2 Preprocessing</h3>
+
+<p><strong>Resizing</strong> — Toutes les images doivent avoir la <strong>même taille</strong>.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Les modèles SOTA sont entraînés sur des images <strong>(224, 224, 3)</strong>. Il est rarement utile d'utiliser des résolutions supérieures à 256 pixels.</p></div></div>
+
+<p><strong>Normalisation des intensités</strong> — Les pixels vont de 0 à 255. Diviser par 255 pour obtenir des valeurs entre 0 et 1 :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">X_train = X_train / 255.                              # normalisation manuelle
+## ou
+layers.Rescaling(scale=1./255.)                        # couche Keras intégrée</code></pre></div>
+
+
+<p><strong>Data Augmentation</strong> — Créer des données supplémentaires en transformant les images existantes (le label ne change pas) : mirror (retournement), crop (recadrage), rotations, blur, changement de couleurs, déformations…</p>
+
+<p><strong>Data Loader</strong> — Les images ne tiennent pas en mémoire → les charger <strong>à la volée</strong> (on the fly) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.utils import image_dataset_from_directory
+ds = image_dataset_from_directory(&#x27;path/&#x27;, image_size=(224, 224), batch_size=32)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>👉 <a href="https://www.tensorflow.org/api_docs/python/tf/keras/utils/image_dataset_from_directory" target="_blank" rel="noopener">tf.keras.utils.image_dataset_from_directory — docs</a></p></div></div>
+
+<hr>
+
+<h2 id="3-architecture-dun-cnn">3) Architecture d'un CNN</h2>
+
+<h3 id="31-pourquoi-les-réseaux-dense-sont-inadaptés-aux-images">3.1 Pourquoi les réseaux Dense sont inadaptés aux images ?</h3>
+
+<p><strong>Raison 1 — Trop de paramètres</strong></p>
+
+<p>Flatten une image 225×225×3 = 151 875 features. Une seule couche Dense(100) génère <strong>15 millions</strong> de paramètres !</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = Sequential()
+model.add(Input(shape=(225, 225, 3)))
+model.add(layers.Reshape((225*225*3,)))        # flatten = 151 875
+model.add(layers.Dense(100, activation=&#x27;relu&#x27;)) # 15 187 600 paramètres !</code></pre></div>
+
+
+<p><strong>Raison 2 — Pas d'invariance par translation</strong></p>
+
+<p>Si un carré rouge se déplace dans l'image, le vecteur flatté change complètement → le réseau Dense ne reconnaît plus le même objet.</p>
+
+<figure><img src="../../assets/images/cnn-05-727eeb5b.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La convolution résout ces deux problèmes : elle partage les poids (moins de paramètres) et détecte les mêmes motifs quelle que soit leur position dans l'image.</p></div></div>
+
+<h3 id="32-la-convolution">3.2 La convolution</h3>
+
+<p>Une <strong>convolution</strong> = un <strong>kernel</strong> (petite matrice de poids) qui <strong>glisse</strong> sur l'image et effectue un produit élément par élément à chaque position.</p>
+
+<p><strong>Étape 1</strong> — Produit élément par élément (≠ produit matriciel) :</p>
+
+<figure><img src="../../assets/images/cnn-06-b132822e.png" alt="" loading="lazy"></figure>
+
+<p><strong>Étape 2</strong> — Le kernel glisse sur toute l'image :</p>
+
+<figure><img src="../../assets/images/cnn-07-c0cbcb9d.gif" alt="" loading="lazy"></figure>
+
+<h3 id="que-font-les-kernels">Que font les kernels ?</h3>
+
+<p>Chaque kernel extrait une <strong>feature spécifique</strong> de l'image (contours, textures, dégradés…) :</p>
+
+<figure><img src="../../assets/images/cnn-08-8b576cdc.png" alt="" loading="lazy"></figure>
+
+<h3 id="images-couleur-3-channels">Images couleur (3 channels)</h3>
+
+<p>Pour une image RGB, un <strong>filtre</strong> est composé de <strong>3 kernels</strong> (un par canal). Les résultats sont sommés + un biais :</p>
+
+<figure><img src="../../assets/images/cnn-09-a4a3ce53.gif" alt="" loading="lazy"></figure>
+
+<div class="table-wrapper"><table><thead><tr><th>Terme</th><th>Définition</th><th>Kernel</th><th>Petite matrice de poids (ex: 3×3) appliquée à <strong>un</strong> channel</th></tr></thead><tbody><tr><td>Filtre</td><td>Ensemble de kernels (1 par channel d'entrée) + 1 biais</td><td>Couche Conv2D</td><td>Plusieurs filtres appliqués en parallèle sur le même input</td></tr></tbody></table></div>
+<h3 id="une-couche-convolutionnelle">Une couche convolutionnelle</h3>
+
+<p>Appliquer <strong>N filtres</strong> sur le même input → la sortie a une profondeur de N.</p>
+
+<figure><img src="../../assets/images/cnn-10-3e375a23.png" alt="" loading="lazy"></figure>
+
+<h3 id="couches-chaînées-cnn">Couches chaînées → CNN</h3>
+
+<figure><img src="../../assets/images/cnn-11-289c85e8.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Le <strong>Flatten</strong> ne se fait qu'à la toute fin, avant les couches Dense.</p></div></div>
+
+<h3 id="poids-des-kernels">Poids des kernels</h3>
+
+<p>Les poids des kernels sont <strong>initialisés aléatoirement</strong> puis <strong>appris</strong> pendant <code>model.fit()</code> via backpropagation — exactement comme les poids des couches Dense.</p>
+
+<h3 id="compter-les-paramètres">Compter les paramètres</h3>
+
+<p>$\text{Params d'un filtre} = \text{nb\_channels} \times k_h \times k_w + 1 \text{ (biais)}$</p>
+
+<p>$\text{Params d'une couche Conv2D} = \text{nb\_filtres} \times (\text{nb\_channels} \times k_h \times k_w + 1)$</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Le nombre de paramètres d'un CNN ne dépend PAS de la taille de l'image</strong> — contrairement aux réseaux Dense. C'est un avantage majeur.</p></div></div>
+
+<h3 id="33-syntaxe-keras">3.3 Syntaxe Keras</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = Sequential()
+model.add(Input(shape=(225, 225, 3)))
+model.add(layers.Conv2D(6, kernel_size=(3, 3), activation=&#x27;relu&#x27;))   # 6 filtres 3×3 → 168 params
+model.add(layers.Conv2D(4, kernel_size=3, activation=&#x27;relu&#x27;))        # kernel_size=3 ↔ (3,3) → 220 params
+model.add(layers.Flatten())                                          # aplatir avant Dense
+model.add(layers.Dense(1, activation=&#x27;sigmoid&#x27;))                     # sortie binaire</code></pre></div>
+
+
+<h3 id="34-intuitions-sur-les-kernels-appris">3.4 Intuitions sur les kernels appris</h3>
+
+<p>Après entraînement, les filtres se spécialisent automatiquement : certains détectent des <strong>rayures</strong>, d'autres des <strong>taches de couleur</strong>, des <strong>contours</strong>, etc.</p>
+
+<figure><img src="../../assets/images/cnn-12-e9b689d4.jpeg" alt="" loading="lazy"></figure>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>En Deep Learning, <strong>l'extraction de features est faite directement par le modèle</strong> — pas besoin de les concevoir manuellement. L'extraction est optimisée pour la tâche.</p></div></div>
+
+<figure><img src="../../assets/images/cnn-13-92f700d8.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="4-hyperparamètres-de-convolution">4) Hyperparamètres de convolution</h2>
+
+<h3 id="41-strides">4.1 Strides</h3>
+
+<p>Le <strong>stride</strong> contrôle le pas de déplacement du kernel sur l'image. Un stride de 2 réduit la taille de sortie par 2.</p>
+
+<figure><img src="../../assets/images/cnn-14-bf81dabd.gif" alt="no_padding_strides.gif" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">layers.Conv2D(16, (2, 2), strides=(1, 1))    # stride=1 (défaut) → sortie ≈ même taille
+layers.Conv2D(16, (2, 2), strides=(2, 2))    # stride=2 → sortie ≈ taille / 2</code></pre></div>
+
+
+<h3 id="42-padding">4.2 Padding</h3>
+
+<p>Le <strong>padding</strong> ajoute des pixels vides (=0) autour de l'image pour contrôler la taille de sortie.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">layers.Conv2D(16, (2, 2), padding=&#x27;valid&#x27;)    # pas de padding → sortie plus petite (défaut)
+layers.Conv2D(16, (2, 2), padding=&#x27;same&#x27;)     # padding → sortie = même taille que l&#x27;input</code></pre></div>
+
+
+<h3 id="43-pooling">4.3 Pooling</h3>
+
+<p>Le <strong>pooling</strong> réduit la taille de la sortie d'une convolution — zéro paramètre entraînable.</p>
+
+<p><strong>MaxPool2D</strong> — garde la valeur maximale :</p>
+
+<figure><img src="../../assets/images/cnn-15-b3cdd0e9.png" alt="" loading="lazy"></figure>
+
+<p><strong>AveragePooling2D</strong> — garde la moyenne :</p>
+
+<figure><img src="../../assets/images/cnn-16-f4307bae.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Bonne pratique</strong> : ajouter un MaxPool2D après chaque Conv2D.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = Sequential()
+model.add(Input(shape=(225, 225, 3)))
+model.add(layers.Conv2D(16, (2, 2), activation=&#x27;relu&#x27;))
+model.add(layers.MaxPool2D(pool_size=(2, 2)))          # 224→112
+model.add(layers.Conv2D(16, (2, 2), activation=&#x27;relu&#x27;))
+model.add(layers.MaxPool2D(pool_size=(2, 2)))          # 111→55
+model.add(layers.Flatten())
+model.add(layers.Dense(6, activation=&#x27;relu&#x27;))
+model.add(layers.Dense(1, activation=&#x27;sigmoid&#x27;))
+## Total : ~291K params vs ~2.4M params pour un Dense équivalent</code></pre></div>
+
+
+<h3 id="résumé-des-hyperparamètres">Résumé des hyperparamètres</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Composant</th><th>Rôle</th><th>Choix courant</th><th><strong>Filtres</strong></th><th>Nombre de features extraites</th><th>32, 64, 128… (croissant)</th></tr></thead><tbody><tr><td><strong>Kernel size</strong></td><td>Taille du champ de vision</td><td>(3,3) ou (5,5) pour images 224×224</td><td><strong>Strides</strong></td><td>Pas de déplacement</td><td>(1,1) par défaut</td></tr><tr><td><strong>Padding</strong></td><td>Conservation de la taille</td><td><code>&#x27;same&#x27;</code> ou <code>&#x27;valid&#x27;</code></td><td><strong>Pooling</strong></td><td>Réduction de taille</td><td>MaxPool2D(2,2) après chaque Conv2D</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="5-cas-réel-reconnaissance-de-chiffres-mnist">5) Cas réel : reconnaissance de chiffres (MNIST)</h2>
+
+<h3 id="51-charger-et-préparer-les-données">5.1 Charger et préparer les données</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.datasets import mnist
+(X_train, y_train), (X_test, y_test) = mnist.load_data()  # images 28×28 noir &amp; blanc
+X_train = X_train / 255.                                    # normaliser
+X_train = X_train.reshape(-1, 28, 28, 1)                    # ajouter le channel (28,28) → (28,28,1)
+
+from tensorflow.keras.utils import to_categorical
+y_cat_train = to_categorical(y_train, num_classes=10)        # one-hot encoding</code></pre></div>
+
+
+<h3 id="52-modèle-cnn">5.2 Modèle CNN</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = Sequential()
+model.add(Input(shape=(28, 28, 1)))
+model.add(layers.Conv2D(16, (3, 3), padding=&#x27;same&#x27;, activation=&#x27;relu&#x27;))   # 1ère conv
+model.add(layers.MaxPool2D(pool_size=(2, 2)))                             # 28→14
+model.add(layers.Conv2D(32, (2, 2), padding=&#x27;same&#x27;, activation=&#x27;relu&#x27;))   # 2ème conv (+ filtres)
+model.add(layers.MaxPool2D(pool_size=(2, 2)))                             # 14→7
+model.add(layers.Flatten())                                                # 7×7×32 = 1568
+model.add(layers.Dense(50, activation=&#x27;relu&#x27;))
+model.add(layers.Dense(10, activation=&#x27;softmax&#x27;))                         # 10 classes
+
+model.compile(loss=&#x27;categorical_crossentropy&#x27;, optimizer=&#x27;adam&#x27;, metrics=[&#x27;accuracy&#x27;])
+model.fit(X_train, y_cat_train, epochs=1, batch_size=32)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+## accuracy: ~0.98 sur le test set après 1 epoch seulement</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Pattern courant</strong> : au fil des couches, le <strong>kernel size diminue</strong> et le <strong>nombre de filtres augmente</strong>.</p></div></div>
+
+<h3 id="53-version-avec-preprocessing-intégré">5.3 Version avec preprocessing intégré</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model_pipe = Sequential([
+    Input(shape=(28, 28, 1)),
+    layers.Rescaling(scale=1./255.),                          # normalisation intégrée
+    layers.Conv2D(16, (3, 3), padding=&#x27;same&#x27;, activation=&#x27;relu&#x27;),
+    layers.MaxPool2D(pool_size=(2, 2)),
+    layers.Conv2D(32, (2, 2), padding=&#x27;same&#x27;, activation=&#x27;relu&#x27;),
+    layers.MaxPool2D(pool_size=(2, 2)),
+    layers.Flatten(),
+    layers.Dense(50, activation=&#x27;relu&#x27;),
+    layers.Dropout(0.3),                                       # régularisation
+    layers.Dense(10, activation=&#x27;softmax&#x27;)
+])
+
+model_pipe.compile(loss=&#x27;sparse_categorical_crossentropy&#x27;,     # pas besoin de one-hot encoding
+                   optimizer=&#x27;adam&#x27;, metrics=[&#x27;accuracy&#x27;])
+model_pipe.fit(X_train_raw, y_train_raw, epochs=1, batch_size=32)</code></pre></div>
+
+
+<h3 id="54-inspecter-les-activations">5.4 Inspecter les activations</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">layer_1 = model.layers[0]                     # 1ère couche Conv2D
+activation = layer_1(X_train[0:10])            # sortie pour 10 images
+
+## Afficher les 16 feature maps de la 1ère image
+fig, axs = plt.subplots(4, 4, figsize=(15, 6))
+for i in range(16):
+    axs[i//4, i%4].imshow(activation[0, :, :, i], cmap=&#x27;gray&#x27;)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Au fur et à mesure des couches, les images deviennent plus petites et plus abstraites → on les appelle <strong>activation maps</strong>. 👉 <a href="https://tensorspace.org/html/playground/lenet.html" target="_blank" rel="noopener">TensorSpace — LeNet Playground</a> | 👉 <a href="https://poloclub.github.io/cnn-explainer/" target="_blank" rel="noopener">CNN Explainer</a></p></div></div>
+
+<hr>
+
+<h2 id="6-architectures-classiques-transfer-learning">6) Architectures classiques & Transfer Learning</h2>
+
+<h3 id="61-architectures-sota">6.1 Architectures SOTA</h3>
+
+<figure><img src="../../assets/images/cnn-17-9f10ce2e.png" alt="" loading="lazy"></figure>
+
+<p>Des architectures comme <strong>AlexNet</strong>, <strong>VGG-16</strong>, <strong>ResNet50</strong> ont été entraînées sur des millions d'images (ImageNet).</p>
+
+<h3 id="62-transfer-learning">6.2 Transfer Learning</h3>
+
+<p>L'idée : <strong>réutiliser les couches convolutionnelles</strong> pré-entraînées (qui savent déjà détecter contours, formes, textures) et ne ré-entraîner que les <strong>couches Dense</strong> adaptées à notre tâche.</p>
+
+<figure><img src="../../assets/images/cnn-18-2a43aa8c.png" alt="" loading="lazy"></figure>
+
+<p><strong>Le processus</strong> :</p>
+
+<ol>
+<li>Charger un modèle pré-entraîné <strong>sans</strong> les couches Dense (<code>include_top=False</code>)</li>
+<li><strong>Geler</strong> les poids convolutionnels (<code>trainable = False</code>)</li>
+<li>Ajouter de nouvelles couches Dense adaptées à notre tâche</li>
+<li>Entraîner uniquement les couches Dense</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.applications import VGG16
+
+base_model = VGG16(weights=&#x27;imagenet&#x27;, include_top=False, input_shape=(224, 224, 3))
+base_model.trainable = False            # 🧊 geler les couches conv
+
+model = Sequential([
+    base_model,
+    layers.Flatten(),
+    layers.Dense(50, activation=&#x27;relu&#x27;),
+    layers.Dense(10, activation=&#x27;softmax&#x27;)
+])</code></pre></div>
+
+
+<h3 id="63-modèles-pré-entraînés-disponibles">6.3 Modèles pré-entraînés disponibles</h3>
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>👉 <a href="https://www.tensorflow.org/api_docs/python/tf/keras/applications/vgg16" target="_blank" rel="noopener">VGG16</a> | 👉 <a href="https://www.tensorflow.org/api_docs/python/tf/keras/applications/vgg19" target="_blank" rel="noopener">VGG19</a> | 👉 <a href="https://www.tensorflow.org/api_docs/python/tf/keras/applications/resnet50" target="_blank" rel="noopener">ResNet50</a> | 👉 <a href="https://www.tensorflow.org/api_docs/python/tf/keras/applications" target="_blank" rel="noopener">Liste complète — tf.keras.applications</a></p></div></div>
+
+<h3 id="64-stratégie-de-construction-dun-cnn">6.4 Stratégie de construction d'un CNN</h3>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>"Faire ouvrir les yeux au réseau progressivement"</strong> :</p>
+<p>- <strong>1ères couches</strong> → gros kernels (5,5), peu de filtres (32, 64) → capturent les features spatiales générales</p>
+<p>- <strong>Dernières couches</strong> → petits kernels (3,3), plus de filtres (128, 256) → capturent les détails fins</p></div></div>
+
+<hr>
+
+<h2 id="7-bonus-google-colab">7) Bonus : Google Colab</h2>
+
+<p>Google Colab permet d'entraîner des modèles DL gratuitement avec un <strong>GPU</strong>.</p>
+
+<ul>
+<li>Charger des notebooks locaux</li>
+<li>Monter Google Drive</li>
+<li>Activer le <strong>runtime GPU</strong> (Runtime > Change runtime type > GPU)</li>
+<li>Utilisation gratuite ~10h en continu</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>👉 <a href="https://colab.research.google.com/" target="_blank" rel="noopener">Google Colab</a> | 👉 <a href="https://kitt.lewagon.com/knowledge/tutorials/data_google_colab" target="_blank" rel="noopener">Le Wagon — Introduction to Google Colab</a></p></div></div>
+
+<hr>
+
+<h2 id="bibliographie">Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks" target="_blank" rel="noopener">Stanford — CS230 CNN Cheat Sheets (Shervine)</a></li>
+<li>👉 <a href="https://www.youtube.com/watch?v=OoUX-nOEjG0&list=RDCMUCdKG2JnvPu6mY1NDXYFfN0g" target="_blank" rel="noopener">Stanford — CS 231 (15h sur Youtube)</a></li>
+<li>👉 <a href="https://www.youtube.com/watch?v=KuXjwB4LzSA" target="_blank" rel="noopener">3Blue1Brown — Convolutions (vidéo)</a></li>
+<li>👉 <a href="https://medium.com/towards-data-science/illustrated-10-cnn-architectures-95d78ace614d" target="_blank" rel="noopener">10 CNN Architectures — Illustrated</a></li>
+<li>👉 <a href="https://tensorspace.org/html/playground/lenet.html" target="_blank" rel="noopener">TensorSpace — LeNet Playground</a></li>
+<li>👉 <a href="https://poloclub.github.io/cnn-explainer/" target="_blank" rel="noopener">CNN Explainer</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">Challenges</h2>
+
+<p>Construire des CNN sur MNIST et d'autres datasets d'images, expérimenter avec les hyperparamètres (kernels, filtres, pooling, padding), et appliquer le Transfer Learning avec VGG16.</p>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-a-retenir-avant-de-commencer">A retenir avant de commencer</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-pourquoi-les-réseaux-dense-échouent-sur-les-images">1. Pourquoi les réseaux Dense échouent sur les images</a><ol><li><a href="#ref-le-problème-du-nombre-de-paramètres">Le problème du nombre de paramètres</a></li><li><a href="#ref-le-problème-de-linvariance-par-translation">Le problème de l'invariance par translation</a></li></ol></li><li><a href="#ref-2-représentation-dune-image-et-preprocessing">2. Représentation d'une image et preprocessing</a><ol><li><a href="#ref-21-une-image-un-tableau-de-chiffres">2.1 Une image = un tableau de chiffres</a></li><li><a href="#ref-22-normalisation-des-pixels">2.2 Normalisation des pixels</a></li><li><a href="#ref-23-resize-même-taille-pour-toutes-les-images">2.3 Resize : même taille pour toutes les images</a></li><li><a href="#ref-24-data-augmentation">2.4 Data Augmentation</a></li><li><a href="#ref-25-charger-des-images-depuis-un-dossier">2.5 Charger des images depuis un dossier</a></li></ol></li><li><a href="#ref-3-la-convolution-expliquée-pas-à-pas">3. La convolution expliquée pas à pas</a><ol><li><a href="#ref-31-le-kernel-la-loupe">3.1 Le kernel : la loupe</a></li><li><a href="#ref-32-le-kernel-glisse-sur-toute-limage">3.2 Le kernel glisse sur toute l'image</a></li><li><a href="#ref-33-que-détecte-un-kernel">3.3 Que détecte un kernel ?</a></li><li><a href="#ref-34-images-couleur-un-filtre-3-kernels">3.4 Images couleur : un filtre = 3 kernels</a></li><li><a href="#ref-35-compter-les-paramètres-dune-couche-conv2d">3.5 Compter les paramètres d'une couche Conv2D</a></li></ol></li><li><a href="#ref-4-les-hyperparamètres-de-la-convolution">4. Les hyperparamètres de la convolution</a><ol><li><a href="#ref-41-taille-de-la-sortie-après-une-convolution">4.1 Taille de la sortie après une convolution</a></li><li><a href="#ref-42-stride-le-pas-de-la-loupe">4.2 Stride — le pas de la loupe</a></li><li><a href="#ref-43-padding-gérer-les-bords">4.3 Padding — gérer les bords</a></li><li><a href="#ref-44-pooling-réduire-la-taille-sans-paramètres">4.4 Pooling — réduire la taille sans paramètres</a></li></ol></li><li><a href="#ref-5-architecture-complète-dun-cnn">5. Architecture complète d'un CNN</a><ol><li><a href="#ref-51-la-structure-générale">5.1 La structure générale</a></li><li><a href="#ref-52-code-keras-commenté-architecture-cnn-de-base">5.2 Code Keras commenté — architecture CNN de base</a></li><li><a href="#ref-53-paramètres-clés-de-conv2d">5.3 Paramètres clés de Conv2D</a></li></ol></li><li><a href="#ref-6-exemple-complet-reconnaissance-de-chiffres-mnist">6. Exemple complet : reconnaissance de chiffres (MNIST)</a><ol><li><a href="#ref-61-préparer-les-données">6.1 Préparer les données</a></li><li><a href="#ref-62-construire-et-entraîner-le-modèle">6.2 Construire et entraîner le modèle</a></li><li><a href="#ref-63-version-avec-preprocessing-intégré-dans-le-modèle">6.3 Version avec preprocessing intégré dans le modèle</a></li></ol></li><li><a href="#ref-7-transfer-learning-réutiliser-un-cnn-géant">7. Transfer Learning — réutiliser un CNN géant</a><ol><li><a href="#ref-71-le-concept">7.1 Le concept</a></li><li><a href="#ref-72-code-keras-transfer-learning-avec-vgg16">7.2 Code Keras — Transfer Learning avec VGG16</a></li><li><a href="#ref-73-modèles-pré-entraînés-disponibles-dans-keras">7.3 Modèles pré-entraînés disponibles dans Keras</a></li></ol></li><li><a href="#ref-8-erreurs-classiques-à-éviter">8. Erreurs classiques à éviter</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Quand on parle d'intelligence artificielle qui "voit" des images — reconnaître un chat, détecter une tumeur sur une radio, lire un panneau de signalisation — on utilise presque toujours des <strong>Convolutional Neural Networks</strong> (CNN, ou réseaux de neurones convolutionnels).</p>
+
+<p>Mais pourquoi ne pas simplement utiliser un réseau de neurones classique sur une image ? Parce que cela ne fonctionne pas bien : trop de paramètres, trop peu de sens de la structure spatiale. Les CNN ont été inventés précisément pour résoudre ce problème.</p>
+
+<p><strong>L'analogie fil rouge de ce cours :</strong> imagine une loupe qui se déplace lentement sur une photo, case par case. À chaque position, elle regarde un petit carré de pixels et note ce qu'elle y voit (un contour ? une tache de couleur ? une courbe ?). C'est exactement ce que fait un <strong>filtre de convolution</strong>. Ce mécanisme est le coeur des CNN.</p>
+
+<h3 id="ref-a-retenir-avant-de-commencer">A retenir avant de commencer</h3>
+
+<ul>
+<li>Une image est un tableau de chiffres (pixels). Une image couleur = 3 tableaux empilés (rouge, vert, bleu).</li>
+<li>Un réseau Dense classique "écrase" l'image en liste → il perd l'information spatiale et génère des millions de paramètres inutiles.</li>
+<li>La <strong>convolution</strong> = une petite matrice de poids (le "kernel") qui glisse sur l'image et extrait des motifs locaux.</li>
+<li>Le <strong>pooling</strong> = une opération qui réduit la taille de l'image après chaque convolution (sans paramètres à apprendre).</li>
+<li>Le <strong>Transfer Learning</strong> = réutiliser un CNN déjà entraîné sur des millions d'images pour votre propre tâche.</li>
+</ul>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li>Pourquoi les réseaux Dense ne fonctionnent pas sur les images</li>
+<li>Représentation d'une image en chiffres + preprocessing</li>
+<li>La convolution expliquée pas à pas</li>
+<li>Les hyperparamètres (stride, padding, pooling)</li>
+<li>Construire un CNN complet en Keras (exemple MNIST)</li>
+<li>Transfer Learning avec VGG16</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-pourquoi-les-réseaux-dense-échouent-sur-les-images">1. Pourquoi les réseaux Dense échouent sur les images</h2>
+
+<h3 id="ref-le-problème-du-nombre-de-paramètres">Le problème du nombre de paramètres</h3>
+
+<p>Un réseau Dense classique attend un vecteur 1D en entrée. Pour lui donner une image, il faut d'abord l'aplatir (Flatten) : transformer le tableau 2D ou 3D en une longue liste de chiffres.</p>
+
+<p>Exemple concret : une image couleur de taille $224 \times 224$ pixels avec 3 canaux (RGB).</p>
+
+<div class="katex-display">$$\text{Nombre de pixels} = 224 \times 224 \times 3 = 150\,528 \text{ features}$$</div>
+
+<p>Si on connecte ces 150 528 features à une première couche de 100 neurones :</p>
+
+<div class="katex-display">$$\text{Paramètres} = 150\,528 \times 100 + 100 \text{ (biais)} \approx \mathbf{15 \text{ millions}}$$</div>
+
+<p>...pour une seule couche ! C'est énorme, long à entraîner, et facile à sur-apprendre.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Exemple de ce qu&#x27;il NE FAUT PAS faire
+model.add(layers.Flatten())                      # 150 528 features
+model.add(layers.Dense(100, activation=&#x27;relu&#x27;))  # 15 millions de paramètres !</code></pre></div>
+
+
+<h3 id="ref-le-problème-de-linvariance-par-translation">Le problème de l'invariance par translation</h3>
+
+<p>Si un carré rouge est en haut à gauche de l'image, il sera représenté par des chiffres dans les premières positions du vecteur flatté. Si le même carré se déplace en bas à droite, les chiffres changent de position → le réseau Dense le voit comme un objet complètement différent.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La convolution résout ces deux problèmes d'un coup : elle partage les poids sur toute l'image (moins de paramètres) et détecte le même motif quelle que soit sa position (invariance par translation).</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-représentation-dune-image-et-preprocessing">2. Représentation d'une image et preprocessing</h2>
+
+<h3 id="ref-21-une-image-un-tableau-de-chiffres">2.1 Une image = un tableau de chiffres</h3>
+
+<p>Chaque pixel a une valeur entre 0 (noir) et 255 (blanc/couleur maximale).</p>
+
+<ul>
+<li><strong>Image en niveaux de gris</strong> : tableau de forme <code>(hauteur, largeur)</code>, ex. <code>(28, 28)</code></li>
+<li><strong>Image couleur RGB</strong> : tableau de forme <code>(hauteur, largeur, 3)</code>, ex. <code>(224, 224, 3)</code> — un "calque" par couleur (Rouge, Vert, Bleu)</li>
+</ul>
+
+<p>En pratique, un dataset de N images a la forme <code>(N, hauteur, largeur, canaux)</code>.</p>
+
+<h3 id="ref-22-normalisation-des-pixels">2.2 Normalisation des pixels</h3>
+
+<p>Les pixels vont de 0 à 255. Les réseaux de neurones apprennent beaucoup mieux avec des valeurs proches de 0. On divise donc par 255 pour ramener tout entre 0 et 1 :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Méthode 1 : normalisation manuelle (avant de passer au modèle)
+X_train = X_train / 255.   # tous les pixels passent de [0-255] à [0-1]
+
+# Méthode 2 : couche intégrée dans le modèle Keras (normalise à la volée)
+layers.Rescaling(scale=1./255.)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais oublier la normalisation ! Des pixels entre 0 et 255 rendent l'apprentissage très instable ou carrément impossible.</p></div></div>
+
+<h3 id="ref-23-resize-même-taille-pour-toutes-les-images">2.3 Resize : même taille pour toutes les images</h3>
+
+<p>Un réseau attend toujours des images de la même taille. Les modèles professionnels (dits SOTA) utilisent souvent <code>(224, 224, 3)</code>.</p>
+
+<h3 id="ref-24-data-augmentation">2.4 Data Augmentation</h3>
+
+<p>Quand on manque de données, on peut créer de nouvelles images en modifiant les existantes : retourner l'image en miroir, la recadrer, la faire pivoter, changer les couleurs... Le label (la classe) reste le même.</p>
+
+<h3 id="ref-25-charger-des-images-depuis-un-dossier">2.5 Charger des images depuis un dossier</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.utils import image_dataset_from_directory
+
+# Charge les images par petits lots (batch) depuis un dossier organisé par classe
+ds = image_dataset_from_directory(
+    &#x27;chemin/vers/mes/images/&#x27;,   # dossier avec sous-dossiers = classes
+    image_size=(224, 224),       # redimensionne toutes les images
+    batch_size=32                # charge 32 images à la fois en mémoire
+)</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-3-la-convolution-expliquée-pas-à-pas">3. La convolution expliquée pas à pas</h2>
+
+<h3 id="ref-31-le-kernel-la-loupe">3.1 Le kernel : la loupe</h3>
+
+<p>Un <strong>kernel</strong> (ou noyau) est une petite matrice de poids, typiquement $3 \times 3$ ou $5 \times 5$. Ces poids sont <strong>appris automatiquement</strong> pendant l'entraînement.</p>
+
+<p>Imaginons un kernel $3 \times 3$ et un morceau d'image $3 \times 3$ :</p>
+
+<div class="katex-display">$$\text{Kernel} = \begin{pmatrix} 1 & 0 & -1 \\ 1 & 0 & -1 \\ 1 & 0 & -1 \end{pmatrix} \quad \text{Morceau image} = \begin{pmatrix} 10 & 20 & 30 \\ 40 & 50 & 60 \\ 70 & 80 & 90 \end{pmatrix}$$</div>
+
+<p>On multiplie chaque case par son correspondant, puis on additionne tout :</p>
+
+<div class="katex-display">$$\text{Résultat} = (1\times10) + (0\times20) + (-1\times30) + \ldots = -60$$</div>
+
+<p>Ce résultat unique est stocké dans la <strong>carte de features</strong> (feature map) de sortie.</p>
+
+<h3 id="ref-32-le-kernel-glisse-sur-toute-limage">3.2 Le kernel glisse sur toute l'image</h3>
+
+<p>La loupe se déplace de gauche à droite, de haut en bas, sur toute l'image. À chaque position, elle calcule un résultat. L'ensemble de ces résultats forme la feature map.</p>
+
+<p><strong>Exemple</strong> : image $5 \times 5$, kernel $3 \times 3$, pas de déplacement = 1</p>
+<ul>
+<li>La loupe peut se placer en $(5-3+1) \times (5-3+1) = 3 \times 3 = 9$ positions</li>
+<li>La feature map de sortie est donc de taille $3 \times 3$</li>
+</ul>
+
+<h3 id="ref-33-que-détecte-un-kernel">3.3 Que détecte un kernel ?</h3>
+
+<p>Chaque kernel se spécialise pour détecter un type de motif : contours verticaux, contours horizontaux, taches de couleur, diagonales... Ces spécialisations <strong>émergent automatiquement</strong> pendant l'entraînement. On ne les programme pas manuellement.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>En Machine Learning classique, l'humain choisissait les features à extraire. En Deep Learning, le réseau apprend lui-même les meilleures features pour la tâche. C'est ce qui rend les CNN si puissants.</p></div></div>
+
+<h3 id="ref-34-images-couleur-un-filtre-3-kernels">3.4 Images couleur : un filtre = 3 kernels</h3>
+
+<p>Pour une image RGB (3 canaux), un <strong>filtre</strong> contient 3 kernels (un par canal). Chaque kernel opère sur son canal, les résultats sont additionnés, et on ajoute un biais. Cela donne <strong>un seul</strong> chiffre de sortie par position.</p>
+
+<p><strong>Vocabulaire à retenir :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>Terme</th><th>Ce que c'est</th></tr></thead><tbody><tr><td><strong>Kernel</strong></td><td>Petite matrice de poids $k \times k$ appliquée à UN canal</td></tr><tr><td><strong>Filtre</strong></td><td>Ensemble de kernels (un par canal d'entrée) + 1 biais. Produit UN feature map</td></tr><tr><td><strong>Couche Conv2D</strong></td><td>Applique N filtres en parallèle → produit N feature maps en sortie</td></tr></tbody></table></div>
+<h3 id="ref-35-compter-les-paramètres-dune-couche-conv2d">3.5 Compter les paramètres d'une couche Conv2D</h3>
+
+<p>C'est une formule clé. Pour une couche <code>Conv2D(F, (k, k))</code> appliquée à une entrée avec $C$ canaux :</p>
+
+<div class="katex-display">$$\boxed{\text{Paramètres} = F \times (C \times k \times k + 1)}$$</div>
+
+<p>Où :</p>
+<ul>
+<li>$F$ = nombre de filtres</li>
+<li>$C$ = nombre de canaux en entrée</li>
+<li>$k$ = taille du kernel (ex: 3 pour un kernel $3\times3$)</li>
+<li>$+1$ = le biais par filtre</li>
+</ul>
+
+<p><strong>Exemple numérique :</strong> <code>Conv2D(6, (3, 3))</code> sur une image RGB ($C = 3$)</p>
+
+<div class="katex-display">$$\text{Paramètres} = 6 \times (3 \times 3 \times 3 + 1) = 6 \times 28 = \mathbf{168}$$</div>
+
+<p>Comparer avec un Dense sur la même image $224\times224$ : des millions de paramètres. Ici, seulement 168 !</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le nombre de paramètres d'une Conv2D ne dépend PAS de la taille de l'image. Un kernel 3x3 sur une image 28x28 ou une image 1000x1000 aura toujours le même nombre de paramètres. C'est un avantage majeur des CNN.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-les-hyperparamètres-de-la-convolution">4. Les hyperparamètres de la convolution</h2>
+
+<h3 id="ref-41-taille-de-la-sortie-après-une-convolution">4.1 Taille de la sortie après une convolution</h3>
+
+<p>Sans padding, la taille de la sortie est :</p>
+
+<div class="katex-display">$$\text{Taille sortie} = \left\lfloor \frac{\text{Taille entrée} - k}{\text{stride}} \right\rfloor + 1$$</div>
+
+<p>Où :</p>
+<ul>
+<li>$k$ = taille du kernel</li>
+<li>stride = pas de déplacement (voir ci-dessous)</li>
+</ul>
+
+<p><strong>Exemple :</strong> image $28 \times 28$, kernel $3 \times 3$, stride $= 1$</p>
+
+<div class="katex-display">$$\text{Taille sortie} = \frac{28 - 3}{1} + 1 = 26$$</div>
+
+<p>La sortie est $26 \times 26$ (l'image "rétrécit" de 2 pixels de chaque côté).</p>
+
+<h3 id="ref-42-stride-le-pas-de-la-loupe">4.2 Stride — le pas de la loupe</h3>
+
+<p>Le <strong>stride</strong> contrôle de combien de cases la loupe se déplace à chaque étape.</p>
+
+<ul>
+<li><code>strides=(1, 1)</code> (défaut) : la loupe avance case par case → sortie presque aussi grande que l'entrée</li>
+<li><code>strides=(2, 2)</code> : la loupe saute une case sur deux → la sortie est environ 2 fois plus petite</li>
+</ul>
+
+<p><strong>Exemple numérique :</strong> image $28 \times 28$, kernel $3 \times 3$, stride $= 2$</p>
+
+<div class="katex-display">$$\text{Taille sortie} = \frac{28 - 3}{2} + 1 = 13.5 \rightarrow 13$$</div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">layers.Conv2D(16, (3, 3), strides=(1, 1))  # sortie ≈ même taille
+layers.Conv2D(16, (3, 3), strides=(2, 2))  # sortie ≈ taille / 2</code></pre></div>
+
+
+<h3 id="ref-43-padding-gérer-les-bords">4.3 Padding — gérer les bords</h3>
+
+<p>Sans padding, la loupe ne peut pas aller aux bords de l'image, donc la sortie est plus petite que l'entrée. Le <strong>padding</strong> ajoute des pixels "vides" (valeur 0) tout autour pour compenser.</p>
+
+<ul>
+<li><code>padding=&#x27;valid&#x27;</code> (défaut) : pas de padding → la sortie rétrécit</li>
+<li><code>padding=&#x27;same&#x27;</code> : on ajoute juste assez de padding pour que la sortie ait la <strong>même taille</strong> que l'entrée</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">layers.Conv2D(16, (3, 3), padding=&#x27;valid&#x27;)  # image rétrécit
+layers.Conv2D(16, (3, 3), padding=&#x27;same&#x27;)   # image garde sa taille (pratique !)</code></pre></div>
+
+
+<h3 id="ref-44-pooling-réduire-la-taille-sans-paramètres">4.4 Pooling — réduire la taille sans paramètres</h3>
+
+<p>Le <strong>pooling</strong> est une opération qui réduit la taille des feature maps après une convolution. Il n'a <strong>aucun paramètre à apprendre</strong>.</p>
+
+<p><strong>MaxPool2D</strong> : divise l'image en petites zones et garde la valeur maximale de chaque zone.</p>
+
+<p>Exemple avec <code>MaxPool2D(pool_size=(2, 2))</code> : chaque carré de $2 \times 2$ pixels est remplacé par son maximum → la taille est divisée par 2.</p>
+
+<div class="katex-display">$$\text{Image } 28 \times 28 \xrightarrow{\text{MaxPool}(2,2)} \text{Image } 14 \times 14$$</div>
+
+<p><strong>AveragePooling2D</strong> : fait la même chose mais en gardant la moyenne au lieu du maximum.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">layers.MaxPool2D(pool_size=(2, 2))       # garde le max → divise la taille par 2
+layers.AveragePooling2D(pool_size=(2, 2))  # garde la moyenne → divise la taille par 2</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Bonne pratique : ajouter un MaxPool2D après chaque Conv2D. Cela réduit la taille progressivement et force le réseau à extraire les features les plus importantes.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-architecture-complète-dun-cnn">5. Architecture complète d'un CNN</h2>
+
+<h3 id="ref-51-la-structure-générale">5.1 La structure générale</h3>
+
+<p>Un CNN se divise en deux parties :</p>
+
+<ol>
+<li><strong>Partie convolutionnelle</strong> : blocs <code>Conv2D → MaxPool2D</code> répétés → extrait les features</li>
+<li><strong>Partie classification</strong> : <code>Flatten → Dense → Dense</code> → fait la prédiction finale</li>
+</ol>
+
+<p>Le <code>Flatten</code> à la charnière convertit les feature maps 3D en un vecteur 1D que les couches Dense peuvent traiter.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais oublier le Flatten entre les couches Conv2D et les couches Dense ! Les couches Dense n'acceptent que du 1D. Sans Flatten, Keras retourne une erreur de dimensions.</p></div></div>
+
+<h3 id="ref-52-code-keras-commenté-architecture-cnn-de-base">5.2 Code Keras commenté — architecture CNN de base</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import Sequential, Input, layers
+
+model = Sequential()
+
+# --- Entrée ---
+model.add(Input(shape=(224, 224, 3)))              # image couleur 224×224 pixels
+
+# --- Bloc 1 : Conv + Pooling ---
+model.add(layers.Conv2D(
+    32,                  # 32 filtres → 32 feature maps en sortie
+    (3, 3),              # kernel de taille 3×3 (la &quot;loupe&quot;)
+    activation=&#x27;relu&#x27;,   # activation non-linéaire après chaque convolution
+    padding=&#x27;same&#x27;       # la sortie garde la même taille que l&#x27;entrée
+))
+model.add(layers.MaxPool2D(pool_size=(2, 2)))      # 224×224 → 112×112
+
+# --- Bloc 2 : Conv + Pooling (plus de filtres pour capturer plus de détails) ---
+model.add(layers.Conv2D(
+    64,                  # 64 filtres (on augmente au fil des couches)
+    (3, 3),
+    activation=&#x27;relu&#x27;,
+    padding=&#x27;same&#x27;
+))
+model.add(layers.MaxPool2D(pool_size=(2, 2)))      # 112×112 → 56×56
+
+# --- Charnière : conversion 3D → 1D ---
+model.add(layers.Flatten())                        # 56×56×64 = 200 704 valeurs → vecteur 1D
+
+# --- Partie Dense : classification ---
+model.add(layers.Dense(50, activation=&#x27;relu&#x27;))     # couche cachée classique
+model.add(layers.Dropout(0.3))                     # désactive 30% des neurones → réduit l&#x27;overfitting
+model.add(layers.Dense(10, activation=&#x27;softmax&#x27;))  # 10 classes → probabilités (somme = 1)</code></pre></div>
+
+
+<p><strong>Récap de l'architecture :</strong></p>
+<ul>
+<li>Les blocs Conv+Pool extraient des features de plus en plus abstraites</li>
+<li>Chaque MaxPool divise la taille par 2 → l'information est progressivement condensée</li>
+<li>Le Flatten "déplie" le volume 3D en liste pour les couches Dense</li>
+<li>La dernière Dense avec softmax prédit quelle classe est la plus probable</li>
+</ul>
+
+<h3 id="ref-53-paramètres-clés-de-conv2d">5.3 Paramètres clés de Conv2D</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">layers.Conv2D(
+    filters=32,          # nombre de filtres (= profondeur de la sortie)
+    kernel_size=(3, 3),  # taille du kernel ; on peut écrire juste 3 au lieu de (3,3)
+    strides=(1, 1),      # pas de déplacement (défaut = 1)
+    padding=&#x27;same&#x27;,      # &#x27;valid&#x27; = sortie rétrécit, &#x27;same&#x27; = sortie même taille
+    activation=&#x27;relu&#x27;    # activation après la convolution
+)</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-6-exemple-complet-reconnaissance-de-chiffres-mnist">6. Exemple complet : reconnaissance de chiffres (MNIST)</h2>
+
+<p>MNIST est un dataset de 70 000 images de chiffres manuscrits (0 à 9), en niveaux de gris, de taille $28 \times 28$.</p>
+
+<h3 id="ref-61-préparer-les-données">6.1 Préparer les données</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.datasets import mnist
+from tensorflow.keras.utils import to_categorical
+
+# Charger le dataset (déjà séparé train/test)
+(X_train, y_train), (X_test, y_test) = mnist.load_data()
+
+# Les images sont de forme (60000, 28, 28) → ajouter le canal couleur
+# Conv2D attend (hauteur, largeur, canaux) → on ajoute le canal &quot;gris&quot; (= 1)
+X_train = X_train.reshape(-1, 28, 28, 1)   # (60000, 28, 28, 1)
+X_test  = X_test.reshape(-1, 28, 28, 1)
+
+# Normaliser les pixels entre 0 et 1
+X_train = X_train / 255.
+X_test  = X_test  / 255.
+
+# Encoder les labels en one-hot : 3 → [0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+y_train_cat = to_categorical(y_train, num_classes=10)
+y_test_cat  = to_categorical(y_test,  num_classes=10)</code></pre></div>
+
+
+<h3 id="ref-62-construire-et-entraîner-le-modèle">6.2 Construire et entraîner le modèle</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import Sequential, Input, layers
+from tensorflow.keras.callbacks import EarlyStopping
+
+model = Sequential()
+model.add(Input(shape=(28, 28, 1)))                                     # image gris 28×28
+
+# Bloc 1
+model.add(layers.Conv2D(16, (3, 3), padding=&#x27;same&#x27;, activation=&#x27;relu&#x27;)) # 28×28×16
+model.add(layers.MaxPool2D(pool_size=(2, 2)))                           # 28→14
+
+# Bloc 2
+model.add(layers.Conv2D(32, (2, 2), padding=&#x27;same&#x27;, activation=&#x27;relu&#x27;)) # 14×14×32
+model.add(layers.MaxPool2D(pool_size=(2, 2)))                           # 14→7
+
+# Partie Dense
+model.add(layers.Flatten())                                              # 7×7×32 = 1568
+model.add(layers.Dense(50, activation=&#x27;relu&#x27;))
+model.add(layers.Dense(10, activation=&#x27;softmax&#x27;))                       # 10 chiffres
+
+# Compilation
+model.compile(
+    loss=&#x27;categorical_crossentropy&#x27;,  # car on a fait du one-hot encoding
+    optimizer=&#x27;adam&#x27;,
+    metrics=[&#x27;accuracy&#x27;]
+)
+
+# Entraînement avec early stopping
+es = EarlyStopping(patience=5, restore_best_weights=True)
+model.fit(
+    X_train, y_train_cat,
+    batch_size=32,
+    epochs=20,
+    validation_split=0.2,
+    callbacks=[es]
+)</code></pre></div>
+
+
+<p>Résultat attendu : environ <strong>98-99% d'accuracy</strong> sur le test set — avec un modèle relativement simple !</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Pattern courant dans les CNN : au fil des couches, le kernel size diminue (5×5 → 3×3 → 3×3) et le nombre de filtres augmente (16 → 32 → 64). Les premières couches voient large pour capturer les grandes structures ; les dernières voient petit mais sont plus nombreuses pour capturer les détails fins.</p></div></div>
+
+<h3 id="ref-63-version-avec-preprocessing-intégré-dans-le-modèle">6.3 Version avec preprocessing intégré dans le modèle</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model_v2 = Sequential([
+    Input(shape=(28, 28, 1)),
+    layers.Rescaling(scale=1./255.),                          # normalisation intégrée
+    layers.Conv2D(16, (3, 3), padding=&#x27;same&#x27;, activation=&#x27;relu&#x27;),
+    layers.MaxPool2D((2, 2)),
+    layers.Conv2D(32, (2, 2), padding=&#x27;same&#x27;, activation=&#x27;relu&#x27;),
+    layers.MaxPool2D((2, 2)),
+    layers.Flatten(),
+    layers.Dense(50, activation=&#x27;relu&#x27;),
+    layers.Dropout(0.3),                                       # régularisation
+    layers.Dense(10, activation=&#x27;softmax&#x27;)
+])
+
+# Avec sparse_categorical_crossentropy, pas besoin de one-hot encoding
+model_v2.compile(
+    loss=&#x27;sparse_categorical_crossentropy&#x27;,
+    optimizer=&#x27;adam&#x27;,
+    metrics=[&#x27;accuracy&#x27;]
+)
+model_v2.fit(X_train_raw, y_train, epochs=20, batch_size=32)  # pixels bruts 0-255 acceptés</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-7-transfer-learning-réutiliser-un-cnn-géant">7. Transfer Learning — réutiliser un CNN géant</h2>
+
+<h3 id="ref-71-le-concept">7.1 Le concept</h3>
+
+<p>Entraîner un CNN from scratch (de zéro) demande des <strong>millions d'images</strong> et des <strong>heures/jours de calcul</strong>. Des chercheurs ont déjà fait ce travail : VGG16, ResNet50, etc. ont été entraînés sur <strong>ImageNet</strong> (14 millions d'images, 1000 classes).</p>
+
+<p>Ces modèles ont appris à reconnaître toutes sortes de formes, textures, contours. On peut <strong>réutiliser</strong> ces connaissances pour notre propre tâche.</p>
+
+<p><strong>La stratégie en 4 étapes :</strong></p>
+
+<ol>
+<li>Charger le modèle pré-entraîné <strong>sans</strong> les couches Dense du haut (<code>include_top=False</code>)</li>
+<li><strong>Geler</strong> les poids convolutionnels (<code>trainable = False</code>) — ils ne changeront pas</li>
+<li>Ajouter de <strong>nouvelles couches Dense</strong> adaptées à notre tâche</li>
+<li>Entraîner <strong>uniquement</strong> les nouvelles couches Dense</li>
+</ol>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Analogie : c'est comme engager un chirurgien expert en biologie et lui apprendre uniquement les procédures spécifiques à votre hôpital. Il garde toute sa connaissance générale, vous lui enseignez juste l'adaptation locale.</p></div></div>
+
+<h3 id="ref-72-code-keras-transfer-learning-avec-vgg16">7.2 Code Keras — Transfer Learning avec VGG16</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.applications import VGG16
+from tensorflow.keras import Sequential, layers
+
+# Charger VGG16 pré-entraîné sur ImageNet
+# include_top=False : on enlève les 3 couches Dense du haut (spécifiques à ImageNet)
+base_model = VGG16(
+    weights=&#x27;imagenet&#x27;,          # poids appris sur 14M d&#x27;images
+    include_top=False,           # on garde seulement la partie convolutionnelle
+    input_shape=(224, 224, 3)    # taille d&#x27;entrée attendue
+)
+
+# Geler TOUS les poids convolutionnels : ils ne seront PAS réentraînés
+base_model.trainable = False     # économise du temps et évite de &quot;désapprendre&quot;
+
+# Construire notre modèle complet
+model = Sequential([
+    base_model,                              # &quot;cerveau visuel&quot; pré-entraîné (gelé)
+    layers.Flatten(),                        # aplatir avant les Dense
+    layers.Dense(50, activation=&#x27;relu&#x27;),     # couche Dense adaptée à NOTRE tâche
+    layers.Dense(10, activation=&#x27;softmax&#x27;)   # sortie pour NOTRE nombre de classes
+])
+
+model.compile(loss=&#x27;categorical_crossentropy&#x27;, optimizer=&#x27;adam&#x27;, metrics=[&#x27;accuracy&#x27;])</code></pre></div>
+
+
+<p><strong>Ce qui se passe pendant <code>model.fit()</code> :</strong></p>
+<ul>
+<li>Les poids de <code>base_model</code> sont gelés → ils ne changent pas</li>
+<li>Seuls les poids des deux couches Dense finales s'entraînent</li>
+<li>On a besoin de beaucoup moins de données et de temps</li>
+</ul>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Règle pratique : si vous avez moins de 10 000 images, utilisez toujours le Transfer Learning. Entraîner from scratch avec peu de données aboutit quasi-systématiquement à de l'overfitting massif.</p></div></div>
+
+<h3 id="ref-73-modèles-pré-entraînés-disponibles-dans-keras">7.3 Modèles pré-entraînés disponibles dans Keras</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.applications import VGG16      # classique, simple à utiliser
+from tensorflow.keras.applications import VGG19      # version plus profonde de VGG16
+from tensorflow.keras.applications import ResNet50   # plus récent, plus performant
+# Et bien d&#x27;autres : MobileNet, EfficientNet, InceptionV3...</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-8-erreurs-classiques-à-éviter">8. Erreurs classiques à éviter</h2>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur 1 — Faire Flatten directement sur une grande image</strong></p>
+<p>Aplatir une image 224×224×3 → 150 528 features avant toute convolution → explosion du nombre de paramètres, apprentissage impossible. Toujours passer par des blocs Conv2D + MaxPool2D d'abord.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur 2 — Oublier de normaliser les pixels</strong></p>
+<p>Des valeurs entre 0 et 255 rendent la convergence très lente ou causent l'explosion du gradient. Toujours diviser par 255 (ou utiliser <code>layers.Rescaling</code>).</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur 3 — Oublier le Flatten avant les couches Dense</strong></p>
+<p>Une couche Dense attend un vecteur 1D. Si vous mettez une Dense directement après une Conv2D, Keras retourne une erreur. Il faut toujours un <code>Flatten()</code> entre les deux parties.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur 4 — Utiliser des kernels trop grands</strong></p>
+<p>Un kernel (64, 64) sur une image (128, 128) est disproportionné. Kernels (3,3) ou (5,5) pour des images ~224×224. Plus les couches sont profondes, plus les kernels sont petits.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur 5 — Entraîner from scratch avec peu de données</strong></p>
+<p>Avec 500 images, un CNN personnalisé va overfitter massivement. Utilisez le Transfer Learning : prenez VGG16 gelé et entraînez seulement les couches Dense.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1 :</strong> Une image couleur de $64 \times 64$ pixels est passée dans une <code>Conv2D(32, (5, 5), padding=&#x27;valid&#x27;, strides=(1,1))</code>. Quelle est la forme de la sortie ? Combien de paramètres cette couche a-t-elle ?</p>
+
+<blockquote><p>Réponse : Taille sortie = $(64-5)/1 + 1 = 60$. Forme : $(60, 60, 32)$. Paramètres : $32 \times (3 \times 5 \times 5 + 1) = 32 \times 76 = 2\,432$.</p></blockquote>
+
+<p><strong>Question 2 :</strong> Vous avez un dataset de 800 photos de chats et chiens. Quelle approche choisir : CNN from scratch ou Transfer Learning ? Pourquoi ?</p>
+
+<blockquote><p>Réponse : Transfer Learning obligatoirement. 800 images est insuffisant pour apprendre les features visuelles from scratch → overfitting certain. Avec VGG16 gelé, les features convolutionnelles sont déjà apprises sur 14M d'images et seules les 2 couches Dense finales s'entraînent.</p></blockquote>
+
+<p><strong>Question 3 :</strong> Dans cette séquence <code>Conv2D(16, (3,3)) → MaxPool2D(2,2) → Conv2D(32, (3,3)) → MaxPool2D(2,2) → Flatten → Dense(10)</code>, pourquoi le nombre de filtres augmente-t-il (16 → 32) alors que la taille diminue ?</p>
+
+<blockquote><p>Réponse : Les premières couches détectent des features simples (contours, textures basiques) → peu de filtres suffisent. Les couches plus profondes détectent des features complexes (formes, parties d'objets) → on a besoin de plus de filtres pour capturer cette diversité. Parallèlement, le pooling réduit la taille spatiale pour limiter le nombre de paramètres.</p></blockquote>
+
+<p><strong>Question 4 :</strong> Quelle est la différence entre <code>padding=&#x27;same&#x27;</code> et <code>padding=&#x27;valid&#x27;</code> ? Dans quel cas préférer l'un ou l'autre ?</p>
+
+<blockquote><p>Réponse : <code>&#x27;valid&#x27;</code> = pas de padding, la sortie rétrécit (taille entrée - k + 1). <code>&#x27;same&#x27;</code> = ajout de zéros autour pour conserver la même taille. On préfère <code>&#x27;same&#x27;</code> dans les premières couches pour ne pas perdre d'information trop vite, et <code>&#x27;valid&#x27;</code> quand on veut explicitement réduire la taille ou dans les couches finales.</p></blockquote>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Un <strong>CNN</strong> est un réseau de neurones conçu pour les images : il préserve la structure spatiale et partage les poids.</li>
+<li>Un <strong>kernel</strong> (loupe $k \times k$) glisse sur l'image et extrait un motif local à chaque position — c'est la <strong>convolution</strong>.</li>
+<li>Une couche <code>Conv2D(F, (k,k))</code> applique F filtres → produit F <strong>feature maps</strong>. Ses paramètres : $F \times (C \times k^2 + 1)$ — indépendant de la taille de l'image.</li>
+<li>Le <strong>stride</strong> contrôle le pas de déplacement ; le <strong>padding</strong> contrôle si la taille rétrécit ou non.</li>
+<li>Le <strong>MaxPooling</strong> réduit la taille par 2 sans paramètre à apprendre — il garde le maximum de chaque zone $2 \times 2$.</li>
+<li>L'architecture typique : <code>[Conv2D + MaxPool2D] × N → Flatten → Dense → Dense(softmax)</code>.</li>
+<li>Le <strong>Flatten</strong> est indispensable pour passer du 3D (feature maps) au 1D (couches Dense).</li>
+<li>Toujours <strong>normaliser</strong> les pixels (diviser par 255) avant d'entraîner.</li>
+<li>Avec peu de données (< 10 000 images), utiliser le <strong>Transfer Learning</strong> : charger VGG16 avec <code>weights=&#x27;imagenet&#x27;</code>, geler ses couches (<code>trainable=False</code>), et n'entraîner que de nouvelles couches Dense.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-pourquoi-les-cnn-dominent-en-vision">Pourquoi les CNN dominent en vision</a></li><li><a href="#syn-la-convolution-2d">La convolution 2D</a></li><li><a href="#syn-pooling-et-réduction-spatiale">Pooling et réduction spatiale</a></li><li><a href="#syn-architecture-cnn-typique">Architecture CNN typique</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-transfer-learning">Transfer learning</a></li><li><a href="#syn-architectures-modernes-resnet-efficientnet">Architectures modernes : ResNet, EfficientNet</a></li><li><a href="#syn-vision-transformers">Vision Transformers</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-pourquoi-les-cnn-dominent-en-vision">Pourquoi les CNN dominent en vision</h3>
+
+<p>Une image de 224×224 pixels en RGB a 224 × 224 × 3 = <strong>150 528</strong> pixels. Si vous la passez à un MLP, la première couche dense de 1000 neurones a 150 millions de paramètres. Beaucoup trop pour une seule image.</p>
+
+<p>Un CNN exploite trois propriétés des images naturelles :</p>
+
+<ol>
+<li><strong>Localité</strong> : les pixels proches sont reliés, les pixels distants moins. Pas besoin de connecter tout à tout.</li>
+<li><strong>Stationnarité</strong> : un détecteur de "bord vertical" est utile partout dans l'image, pas seulement au pixel (42, 17). On peut donc <strong>partager les poids</strong>.</li>
+<li><strong>Hiérarchie</strong> : les pixels forment des bords, les bords forment des coins, les coins forment des formes, les formes forment des objets.</li>
+</ol>
+
+<p>Ces trois propriétés sont encodées dans l'architecture du CNN, ce qui réduit drastiquement le nombre de paramètres et accélère l'apprentissage.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : un MLP regarde chaque pixel comme une feature isolée — c'est comme essayer de comprendre une image en lisant chaque pixel à voix haute, dans l'ordre. Un CNN regarde des <strong>petites zones</strong> à la fois, comme votre œil qui scanne une image. Et il utilise <strong>le même filtre</strong> sur toute l'image — c'est comme avoir un seul détecteur de "moustache" qui marche peu importe où le chat est dans la photo.</p></div></div>
+
+<h3 id="syn-la-convolution-2d">La convolution 2D</h3>
+
+<p>L'opération centrale du CNN. Un <strong>filtre</strong> (ou kernel) de petite taille (3×3, 5×5) glisse sur l'image et calcule un produit scalaire à chaque position.</p>
+
+<p>Mathématiquement :</p>
+
+<div class="katex-display">$$\text{output}(i, j) = \sum_{m=0}^{k-1} \sum_{n=0}^{k-1} \text{input}(i+m, j+n) \cdot \text{filter}(m, n) + b$$</div>
+
+<p><strong>Lecture de la formule</strong> : pour chaque position $(i, j)$ de la sortie, on superpose le filtre $k \times k$ sur la région $(i..i+k-1, j..j+k-1)$ de l'image d'entrée. On multiplie élément par élément, on somme tout, on ajoute le biais $b$. On glisse ensuite le filtre d'un pas (stride) vers la droite, puis vers le bas, en répétant le calcul partout. Le filtre est un <strong>détecteur local</strong> : selon ses valeurs, il réagira fort aux bords horizontaux, verticaux, coins, textures, etc.</p>
+
+<p><strong>Exemple numérique complet</strong> — une image 5×5 et un filtre 3×3 détecteur de bord vertical (Sobel simplifié), stride 1, pas de padding :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Image 5x5 :                 Filtre 3x3 :
+[ 10  10  10  50  50 ]      [ -1  0  1 ]
+[ 10  10  10  50  50 ]      [ -1  0  1 ]
+[ 10  10  10  50  50 ]      [ -1  0  1 ]
+[ 10  10  10  50  50 ]
+[ 10  10  10  50  50 ]</code></pre></div>
+
+
+<p>L'image est noire (10) à gauche et blanche (50) à droite : il y a un bord vertical entre les colonnes 3 et 4.</p>
+
+<p>Calcul de <code>output(0, 0)</code> : on place le filtre sur la région supérieure-gauche [10,10,10 / 10,10,10 / 10,10,10] :</p>
+<ul>
+<li>$(-1 \cdot 10) + (0 \cdot 10) + (1 \cdot 10) + (-1 \cdot 10) + (0 \cdot 10) + (1 \cdot 10) + (-1 \cdot 10) + (0 \cdot 10) + (1 \cdot 10) = 0$</li>
+</ul>
+
+<p>Calcul de <code>output(0, 1)</code> : région [10,10,50 / 10,10,50 / 10,10,50] :</p>
+<ul>
+<li>$(-1 \cdot 10) + (0 \cdot 10) + (1 \cdot 50) + (-1 \cdot 10) + (0 \cdot 10) + (1 \cdot 50) + (-1 \cdot 10) + (0 \cdot 10) + (1 \cdot 50) = -30 + 150 = 120$</li>
+</ul>
+
+<p>Calcul de <code>output(0, 2)</code> : région [10,50,50 / 10,50,50 / 10,50,50] :</p>
+<ul>
+<li>$(-1 \cdot 10) + (0 \cdot 50) + (1 \cdot 50) + (-1 \cdot 10) + (0 \cdot 50) + (1 \cdot 50) + (-1 \cdot 10) + (0 \cdot 50) + (1 \cdot 50) = -30 + 150 = 120$</li>
+</ul>
+
+<p>La sortie complète 3×3 est :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">[ 0    120  120 ]
+[ 0    120  120 ]
+[ 0    120  120 ]</code></pre></div>
+
+
+<p><strong>Lecture du résultat</strong> : la colonne 0 vaut 0 (zone uniforme noire), les colonnes 1-2 valent 120 (forte réponse du détecteur au bord vertical). Le filtre a bien trouvé le bord.</p>
+
+<p><strong>Taille de la sortie</strong> : pour une image $H \times W$ avec un filtre $k \times k$, stride $s$ et padding $p$ :</p>
+
+<div class="katex-display">$$H_{\text{out}} = \left\lfloor \frac{H + 2p - k}{s} \right\rfloor + 1$$</div>
+
+<p><strong>Lecture</strong> : $2p$ compte les zéros ajoutés des deux côtés. $H + 2p - k$ est la "course" possible du filtre, et on divise par le stride. Pour notre exemple : $H = 5$, $p = 0$, $k = 3$, $s = 1$ → $(5 - 3)/1 + 1 = 3$. ✓</p>
+
+<p>Trois hyperparamètres clés :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Paramètre</th><th>Effet</th></tr></thead><tbody><tr><td><strong>Filter size</strong> (kernel)</td><td>Taille du voisinage (3×3 standard)</td></tr><tr><td><strong>Stride</strong></td><td>Pas du filtre (1 = pixel par pixel, 2 = un sur deux)</td></tr><tr><td><strong>Padding</strong></td><td>Zéros ajoutés en bordure ("same" préserve la taille, "valid" la réduit)</td></tr></tbody></table></div>
+<p><strong>Padding "same"</strong> : on ajoute des zéros autour pour que la sortie fasse la même taille que l'entrée. Avec un filtre 3×3, $p = 1$. Avec 5×5, $p = 2$.</p>
+
+<p>Une couche convolutive avec $N$ filtres de taille $k \times k$ sur une image avec $C$ canaux a $(k \cdot k \cdot C + 1) \cdot N$ paramètres — beaucoup moins qu'un MLP équivalent.</p>
+
+<p><strong>Lecture</strong> : chaque filtre voit les $C$ canaux d'entrée (donc $k \cdot k \cdot C$ poids) plus 1 biais. On a $N$ filtres indépendants, donc on multiplie. Exemple : 32 filtres 3×3 sur RGB = $(3 \cdot 3 \cdot 3 + 1) \cdot 32 = 28 \cdot 32 = 896$ paramètres.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import tensorflow as tf
+from tensorflow.keras import layers, models
+
+model = models.Sequential([
+    # Conv2D(N, (kh, kw)) : N filtres de taille kh*kw
+    layers.Conv2D(32, (3, 3), activation=&quot;relu&quot;, padding=&quot;same&quot;,
+                  input_shape=(224, 224, 3)),   # Output : 224x224x32 (same padding)
+    layers.MaxPooling2D((2, 2)),                # Output : 112x112x32 (divise H,W par 2)
+    layers.Conv2D(64, (3, 3), activation=&quot;relu&quot;, padding=&quot;same&quot;),   # 112x112x64
+    layers.MaxPooling2D((2, 2)),                                    # 56x56x64
+    layers.Conv2D(128, (3, 3), activation=&quot;relu&quot;, padding=&quot;same&quot;),  # 56x56x128
+    layers.GlobalAveragePooling2D(),            # Moyenne sur H,W -&gt; vecteur de 128
+    layers.Dense(10, activation=&quot;softmax&quot;),     # 10 classes en sortie
+])</code></pre></div>
+
+
+<h3 id="syn-pooling-et-réduction-spatiale">Pooling et réduction spatiale</h3>
+
+<p>Le pooling réduit la résolution spatiale (hauteur × largeur) tout en gardant la profondeur (canaux). Deux types courants :</p>
+
+<ul>
+<li><strong>Max pooling</strong> : prend le max sur une fenêtre 2×2 → divise H,W par 2</li>
+<li><strong>Average pooling</strong> : prend la moyenne — moins agressif</li>
+</ul>
+
+<p><strong>Exemple de max pooling 2×2 sans recouvrement</strong> sur une feature map 4×4 :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Input 4x4 :              Max pool 2x2 :
+[ 1  3  2  4 ]           [ 3  4 ]
+[ 0  2  1  3 ]           [ 5  6 ]
+[ 4  5  0  1 ]
+[ 2  1  6  0 ]</code></pre></div>
+
+
+<ul>
+<li>Bloc supérieur-gauche [1,3,0,2] → max = 3</li>
+<li>Bloc supérieur-droit [2,4,1,3] → max = 4</li>
+<li>Bloc inférieur-gauche [4,5,2,1] → max = 5</li>
+<li>Bloc inférieur-droit [0,1,6,0] → max = 6</li>
+</ul>
+
+<p>Effets :</p>
+
+<ul>
+<li>Réduit le nombre de paramètres pour les couches suivantes</li>
+<li>Donne une <strong>invariance par translation</strong> locale (un objet déplacé d'un pixel produit la même sortie)</li>
+<li>Augmente le <strong>champ récepteur</strong> des couches profondes</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">layers.MaxPooling2D((2, 2))     # Divise H et W par 2, garde la profondeur
+layers.GlobalAveragePooling2D() # Moyenne sur toute la carte -&gt; 1 scalaire par canal</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique moderne</strong> : remplacer le pooling par des <strong>convolutions à stride 2</strong>. Plus expressif, et c'est ce que font les architectures SOTA depuis ResNet. Le pooling reste utile pour le <code>GlobalAveragePooling</code> final qui transforme une feature map en vecteur sans paramètres.</p></div></div>
+
+<h3 id="syn-architecture-cnn-typique">Architecture CNN typique</h3>
+
+<p>Un CNN classique enchaîne :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Input (224x224x3)
+    |
+Conv 32 + ReLU + Pool   -&gt;  112x112x32
+    |
+Conv 64 + ReLU + Pool   -&gt;  56x56x64
+    |
+Conv 128 + ReLU + Pool  -&gt;  28x28x128
+    |
+Conv 256 + ReLU + Pool  -&gt;  14x14x256
+    |
+Global Average Pooling  -&gt;  256
+    |
+Dense + Softmax         -&gt;  10 classes</code></pre></div>
+
+
+<p>Trois patterns à observer :</p>
+
+<ol>
+<li><strong>Profondeur croissante</strong> : on commence avec peu de filtres (32) et on augmente (256). Les premières couches détectent des features simples (bords), les dernières des features complexes (têtes, objets).</li>
+<li><strong>Résolution spatiale décroissante</strong> : 224 → 112 → 56 → 28 → 14. On compresse l'information spatiale.</li>
+<li><strong>GAP au lieu de Flatten + Dense</strong> : <code>GlobalAveragePooling</code> réduit drastiquement les paramètres et est plus robuste à l'overfit que Flatten.</li>
+</ol>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-transfer-learning">Transfer learning</h3>
+
+<p>C'est <strong>la</strong> technique pratique la plus puissante en vision. Plutôt que d'entraîner un CNN from scratch (qui demande des millions d'images), on prend un réseau pré-entraîné sur ImageNet (1.4M images, 1000 classes) et on l'<strong>adapte</strong> à votre tâche.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.applications import EfficientNetB0
+
+# Charger le réseau pré-entraîné, sans la couche finale (include_top=False)
+base_model = EfficientNetB0(weights=&quot;imagenet&quot;, include_top=False, input_shape=(224, 224, 3))
+base_model.trainable = False        # Gèle tous les poids : pas d&#x27;update pendant le fit
+
+model = models.Sequential([
+    base_model,                                      # Backbone figé
+    layers.GlobalAveragePooling2D(),                 # Réduction en vecteur
+    layers.Dropout(0.3),                             # Régularisation
+    layers.Dense(10, activation=&quot;softmax&quot;),          # Nouvelle tête 10 classes
+])
+
+# Le LR peut rester standard car on n&#x27;entraîne que la tête (petit nombre de paramètres)
+model.compile(optimizer=&quot;adam&quot;, loss=&quot;sparse_categorical_crossentropy&quot;, metrics=[&quot;accuracy&quot;])
+model.fit(X_train, y_train, epochs=10, validation_split=0.2)</code></pre></div>
+
+
+<p>Deux modes selon la taille de votre dataset :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Taille du dataset</th><th>Stratégie</th></tr></thead><tbody><tr><td>< 1000 images</td><td><strong>Feature extraction</strong> : geler tout sauf la tête</td></tr><tr><td>1000-10 000</td><td><strong>Fine-tuning partiel</strong> : geler les premières couches, dégeler les dernières</td></tr><tr><td>> 10 000</td><td><strong>Fine-tuning complet</strong> : entraîner toutes les couches avec un petit LR</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : entraîner un CNN from scratch, c'est apprendre à un enfant à reconnaître des chats en lui montrant 0 images préalables. Il aura besoin de milliers d'exemples. Le transfer learning, c'est apprendre à un adulte qui a déjà vu des animaux toute sa vie : il lui suffit de 5 exemples de chats et il généralise immédiatement. C'est pourquoi le transfer learning permet de faire de la vision avec quelques centaines d'exemples là où il en faudrait des millions sans.</p></div></div>
+
+<h3 id="syn-architectures-modernes-resnet-efficientnet">Architectures modernes : ResNet, EfficientNet</h3>
+
+<p><strong>ResNet</strong> (He et al., 2015) : a permis l'entraînement de réseaux <strong>très profonds</strong> (152 couches+) grâce aux <strong>skip connections</strong> :</p>
+
+<div class="katex-display">$$\mathbf{h}_{l+1} = \mathbf{h}_l + F(\mathbf{h}_l, W_l)$$</div>
+
+<p><strong>Lecture de la formule</strong> : au lieu de forcer le bloc $F$ à apprendre toute la transformation, on lui demande juste d'apprendre <strong>l'écart</strong> entre l'entrée et la sortie. L'entrée $\mathbf{h}_l$ est ajoutée directement à la sortie du bloc — c'est le "skip" ou "shortcut". Pendant la backprop, les gradients remontent par cette addition sans être multipliés par les poids du bloc, ce qui résout le vanishing gradient : même dans un réseau à 152 couches, le gradient peut traverser toutes les skip connections comme une autoroute.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.applications import ResNet50
+# Charger le ResNet-50 pré-entraîné sur ImageNet
+model = ResNet50(weights=&quot;imagenet&quot;)</code></pre></div>
+
+
+<p><strong>EfficientNet</strong> (Tan & Le, 2019) : optimise simultanément la profondeur, la largeur, et la résolution d'entrée selon une <strong>règle de scaling</strong> dérivée mathématiquement :</p>
+
+<div class="katex-display">$$\text{depth} = \alpha^\phi, \quad \text{width} = \beta^\phi, \quad \text{resolution} = \gamma^\phi$$</div>
+
+<p><strong>Lecture</strong> : pour augmenter la taille du modèle, on ne grossit pas qu'un seul axe (depth, width ou résolution) mais les <strong>trois en même temps</strong> dans des proportions optimisées par recherche. $\phi$ est le "compound coefficient" qui règle la taille totale : B0 utilise $\phi = 0$, B7 un $\phi$ plus grand.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Architecture</th><th>Paramètres</th><th>Top-1 ImageNet</th><th>Cas d'usage</th></tr></thead><tbody><tr><td>MobileNet</td><td>4M</td><td>70%</td><td>Mobile, edge devices</td></tr><tr><td>EfficientNet-B0</td><td>5M</td><td>77%</td><td>Standard moderne</td></tr><tr><td>ResNet-50</td><td>25M</td><td>76%</td><td>Classique fiable</td></tr><tr><td>EfficientNet-B7</td><td>66M</td><td>84%</td><td>Recherche, GPU puissant</td></tr><tr><td>ViT-Base</td><td>86M</td><td>81%</td><td>State of the art (avec pre-training)</td></tr></tbody></table></div>
+<h3 id="syn-vision-transformers">Vision Transformers</h3>
+
+<p>Depuis 2020 (ViT, Dosovitskiy et al.), les <strong>transformers</strong> (initialement créés pour le NLP) dominent aussi en vision pour les très gros modèles et datasets. L'idée : découper l'image en patches (16×16 par exemple) et les passer à un transformer comme on le ferait pour des mots.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from transformers import ViTModel
+# Charge ViT-Base pré-entraîné sur ImageNet, patches de 16x16
+model = ViTModel.from_pretrained(&quot;google/vit-base-patch16-224&quot;)</code></pre></div>
+
+
+<p>Avantages : meilleur passage à l'échelle qu'un CNN sur des datasets gigantesques (JFT-300M, LAION-5B). Inconvénients : nécessite plus de données pour bien fonctionner.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Recommandation pratique 2025</strong> : pour 95% des cas réels, un EfficientNet ou ResNet pré-entraîné est encore le bon choix. Les Vision Transformers ne battent les CNN que quand vous avez accès à des datasets de >100 millions d'images. Sur ImageNet (1.4M), les CNN modernes restent compétitifs avec moins de paramètres.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi un filtre 3×3 a-t-il besoin de moins de paramètres qu'un MLP pour traiter une image, et combien exactement ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>weight sharing.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Un filtre 3×3 sur une image RGB a $3 \times 3 \times 3 + 1 = 28$ paramètres (les 9 valeurs du filtre, sur les 3 canaux d'entrée, plus le biais). Et ce <strong>même</strong> filtre est appliqué à toutes les positions de l'image (224 × 224 = 50 176 positions pour une image 224×224). C'est le <strong>weight sharing</strong> : un seul filtre, des dizaines de milliers de positions. Comparez à un MLP : la première couche dense de 224×224×3 = 150 528 entrées vers 32 neurones a déjà ~5 millions de paramètres. Une convolution avec 32 filtres 3×3 a $32 \times 28 = 896$ paramètres. Soit un facteur <strong>5500x</strong> moins. C'est exactement pourquoi les CNN sont la bonne architecture pour les images : le partage de poids encode l'invariance par translation et rend l'apprentissage tractable avec des datasets de quelques milliers d'images au lieu de millions. Question d'entretien CNN fondamentale.</p>
+
+</details>
+
+<p><strong>Q2 : Vous voulez classifier 5000 images de fleurs en 10 espèces. Quelle stratégie : entraîner un CNN from scratch ou utiliser le transfer learning ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>taille de dataset.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Transfer learning, sans hésitation</strong>. 5000 images sont insuffisantes pour entraîner un CNN profond from scratch — vous overfittriez immédiatement. La stratégie canonique : (1) Charger un EfficientNet-B0 ou ResNet-50 pré-entraîné sur ImageNet (qui a déjà vu des milliers de classes incluant probablement quelques fleurs). (2) Geler le base_model. (3) Ajouter une nouvelle tête : <code>GlobalAveragePooling → Dropout → Dense(10, softmax)</code>. (4) Entraîner pour 5-10 epochs avec un LR moyen (1e-3). (5) <strong>Optionnel</strong> (si plus de gains à chercher) : dégeler les dernières couches du base_model et fine-tuner avec un LR très petit (1e-5) pour adapter les features au domaine "fleurs". Avec cette pipeline, vous atteignez typiquement 90%+ d'accuracy sur 10 classes en quelques minutes d'entraînement. <strong>From scratch</strong> sur 5000 images donnerait probablement 60-70% au mieux. Question d'entretien classique : "Comment classifier des images avec peu de données ?" — la réponse parle inévitablement de transfer learning.</p>
+
+</details>
+
+<p><strong>Q3 : Vous entraînez un CNN pour la détection de défauts industriels. Le modèle marche bien en validation mais échoue en production. Qu'est-ce qui peut s'être passé ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>data drift et distribution shift.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>C'est très probablement un <strong>distribution shift</strong> : les images de production ne ressemblent pas aux images d'entraînement. Causes typiques : (1) <strong>Conditions d'éclairage différentes</strong> : entraîné sous éclairage de studio, déployé dans une usine. (2) <strong>Nouvel équipement</strong> : la caméra de prod a une résolution ou un angle différent. (3) <strong>Nouvelles classes de défauts</strong> apparues après l'entraînement (concept drift). (4) <strong>Domain shift</strong> : photos d'usine A vs usine B. <strong>Solutions</strong> : (a) <strong>Data augmentation agressive</strong> pendant l'entraînement (rotation, flip, brightness, blur, etc.) pour rendre le modèle robuste. (b) <strong>Test-time augmentation</strong> : moyenner les prédictions sur plusieurs versions augmentées de l'image de test. (c) <strong>Domain adaptation</strong> : techniques comme CORAL ou DANN pour aligner les distributions. (d) <strong>Monitoring continu</strong> : tracker la distribution des prédictions en prod et alerter quand elle dérive. (e) <strong>Reentraînement régulier</strong> sur les nouvelles données labellisées. <strong>Règle d'or</strong> : un modèle de vision en production a besoin de monitoring et de reentraînement continu, ce n'est jamais "fit and forget". Question d'entretien MLOps classique.</p>
+
+</details>
+
+<p><strong>Q4 : Avec une image d'entrée 32×32×3, un Conv2D de 16 filtres 5×5, stride 1, padding "valid", quelle est la taille de la sortie et le nombre de paramètres ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Formule de taille de sortie et comptage des poids.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Taille de sortie</strong> : avec padding "valid" (pas de padding), $H_{\text{out}} = (32 - 5)/1 + 1 = 28$. Donc la sortie est $28 \times 28 \times 16$ (16 car on a 16 filtres, chacun produit sa propre feature map). <strong>Paramètres</strong> : chaque filtre voit les 3 canaux d'entrée sur une zone 5×5, donc $5 \cdot 5 \cdot 3 = 75$ poids + 1 biais = 76. On a 16 filtres, donc $16 \cdot 76 = 1216$ paramètres au total. À comparer avec un Dense équivalent qui prendrait $32 \cdot 32 \cdot 3 = 3072$ entrées et produirait $28 \cdot 28 \cdot 16 = 12544$ neurones, soit $3072 \cdot 12544 + 12544 \approx 38{,}5$ millions de paramètres. Le CNN économise un facteur $30\,000$ grâce au weight sharing. Question d'entretien CNN quantitative très courante.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Deep Learning for Computer Vision</em> (Stanford CS231n, Karpathy) — le cours de référence</li>
+<li><a href="https://pytorch.org/vision/stable/models.html" target="_blank" rel="noopener">PyTorch torchvision models</a> — tous les CNN pré-entraînés</li>
+<li><a href="https://tfhub.dev/" target="_blank" rel="noopener">TensorFlow Hub</a> — modèles vision et au-delà</li>
+<li><em>Deep Residual Learning for Image Recognition</em> (He et al., 2015) — papier ResNet</li>
+<li><em>EfficientNet: Rethinking Model Scaling</em> (Tan & Le, 2019)</li>
+<li><em>An Image is Worth 16x16 Words</em> (Dosovitskiy et al., 2020) — papier ViT</li>
+<li><a href="https://course.fast.ai/" target="_blank" rel="noopener">fast.ai Practical Deep Learning</a> — approche pragmatique top-down</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../deep-learning/optimizer-loss-fitting.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Optimizer, Loss & Fitting</span>
+  </a>
+  <a href="../deep-learning/rnn.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Recurrent Neural Networks →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python 101 — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Python 101</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html" class="active">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Python & SQL Week</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Python 101</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Python 101</h1>
+        <p class="page-objective">Comprendre les bases de Python : types, chaînes, nombres, variables, fonctions, et conditions.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Variable</div>
+        <div class="key-concept-def">Étiquette qui pointe vers une valeur en mémoire.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Type</div>
+        <div class="key-concept-def">Catégorie d&#x27;une valeur (`int`, `float`, `str`, `bool`).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">f-string</div>
+        <div class="key-concept-def">Chaîne formatée `f&quot;…{var}…&quot;` qui interpole des expressions Python.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Mutable / immutable</div>
+        <div class="key-concept-def">Une `list` peut être modifiée en place, un `tuple` non.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-python-101">Cheatsheet — Python 101</a><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-types-de-données-data-types">1) Types de données (data types)</a><ol><li><a href="#vérifier-le-type">Vérifier le type</a></li></ol></li><li><a href="#2-strings-chaînes-de-caractères">2) Strings (chaînes de caractères)</a><ol><li><a href="#21-opérations-utiles">2.1 Opérations utiles</a></li></ol></li><li><a href="#3-fonctions-vs-méthodes">3) Fonctions vs méthodes</a><ol><li><a href="#fonction">Fonction</a></li><li><a href="#méthode">Méthode</a></li></ol></li><li><a href="#4-nombres-numerics">4) Nombres (numerics)</a><ol><li><a href="#41-opérations">4.1 Opérations</a></li><li><a href="#42-conversion-en-string">4.2 Conversion en string</a></li><li><a href="#43-arrondir">4.3 Arrondir</a></li></ol></li><li><a href="#5-variables">5) Variables</a><li><a href="#6-fonctions-définir-les-tiennes">6) Fonctions (définir les tiennes)</a><ol><li><a href="#61-pourquoi">6.1 Pourquoi ?</a></li><li><a href="#exemple">Exemple</a></li><li><a href="#un-exemple-avec-2-paramètres">Un exemple avec 2 paramètres</a></li></ol></li><li><a href="#7-control-flow-conditions">7) Control flow (conditions)</a><ol><li><a href="#71-if">7.1 `if`</a></li><li><a href="#72-if-else">7.2 `if / else`</a></li><li><a href="#73-if-elif-else">7.3 `if / elif / else`</a></li><li><a href="#74-ternary-operator">7.4 Ternary operator</a></li></ol></li><li><a href="#8-conditions-multiples">8) Conditions multiples</a><ol><li><a href="#and">AND</a></li><li><a href="#or">OR</a></li></ol></li><li><a href="#9-valeurs-spéciales-none">9) Valeurs spéciales : `None`</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-python-101">📋 Cheatsheet — Python 101</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## ── TYPES DE BASE ────────────────────────────────────
+&quot;hello&quot;        # str
+42             # int
+3.14           # float
+True / False   # bool
+[1, 2, 3]      # list
+{&quot;a&quot;: 1}       # dict
+
+type(42)       # &lt;class &#x27;int&#x27;&gt;
+
+## ── STRINGS ──────────────────────────────────────────
+&quot;hello&quot;.upper()              # &quot;HELLO&quot;
+&quot;hello&quot;.capitalize()         # &quot;Hello&quot;
+&quot; hi &quot;.strip()               # &quot;hi&quot;
+f&quot;J&#x27;ai {age} ans&quot;            # f-string interpolation
+
+## ── CONVERSIONS ──────────────────────────────────────
+int(&quot;42&quot;)      # 42
+float(&quot;3.14&quot;)  # 3.14
+str(42)        # &quot;42&quot;
+
+## ── FONCTIONS ────────────────────────────────────────
+def greet(name):
+    return f&quot;Hi {name}&quot;    # retourne une string interpolée
+
+## ── CONDITIONS ───────────────────────────────────────
+if x &gt; 0:
+    ...
+elif x == 0:
+    ...
+else:
+    ...
+
+&quot;positif&quot; if x &gt; 0 else &quot;négatif&quot;   # ternaire
+
+## ── OPÉRATEURS LOGIQUES ──────────────────────────────
+True and False   # False
+True or False    # True
+not True         # False</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier le <code>f</code> devant une f-string</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;Bonjour {nom}&quot;   # ❌ affiche littéralement &quot;{nom}&quot;
+f&quot;Bonjour {nom}&quot;  # ✅</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre <code>=</code> (affectation) et <code>==</code> (comparaison)</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">if age = 18:   # ❌ SyntaxError
+if age == 18:  # ✅</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier les parenthèses sur un appel de méthode</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;hello&quot;.upper   # ❌ retourne la méthode, pas le résultat
+&quot;hello&quot;.upper() # ✅ retourne &quot;HELLO&quot;</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Indentation incorrecte dans un <code>if</code> ou une fonction</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def say_hi(name):
+return f&quot;Hi {name}&quot;   # ❌ IndentationError
+
+def say_hi(name):
+    return f&quot;Hi {name}&quot;  # ✅</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser <code>int()</code> sur une valeur non convertible</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">int(&quot;hello&quot;)  # ❌ ValueError
+int(&quot;42&quot;)     # ✅</code></pre></div></div></div>
+
+<hr>
+
+<h2 id="1-types-de-données-data-types">1) Types de données (data types)</h2>
+
+<p>Python a plusieurs types de données courants.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;Hello World!&quot;             #=&gt; str
+12                         #=&gt; int
+3.14                       #=&gt; float
+[&quot;hi&quot;, 12, 3.14]           #=&gt; list
+{&quot;name&quot;: &quot;Ben&quot;, &quot;age&quot;: 31}  #=&gt; dict
+(250, 4)                   #=&gt; tuple
+True                       #=&gt; bool
+False                      #=&gt; bool
+range(5)                   #=&gt; range</code></pre></div>
+
+
+<h3 id="vérifier-le-type">Vérifier le type</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">type(12)  #=&gt; &lt;class &#x27;int&#x27;&gt;</code></pre></div>
+
+
+<hr>
+
+<h2 id="2-strings-chaînes-de-caractères">2) Strings (chaînes de caractères)</h2>
+
+<p>Une string est une suite de caractères, entre guillemets simples ou doubles.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;hello&quot; == &#x27;hello&#x27;                    #=&gt; True
+&quot;hello world!&quot;.upper()                #=&gt; &quot;HELLO WORLD!&quot;
+&quot; scraped_email@email.com   &quot;.strip() #=&gt; &quot;scraped_email@email.com&quot;</code></pre></div>
+
+
+<h3 id="21-opérations-utiles">2.1 Opérations utiles</h3>
+
+<h4 id="concaténation">Concaténation</h4>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;hello&quot; + &quot; &quot; + &quot;world!&quot;  #=&gt; &quot;hello world!&quot;</code></pre></div>
+
+
+<h4 id="interpolation-f-strings">Interpolation (f-strings)</h4>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">f&quot;two: {1 + 1}&quot;  #=&gt; &quot;two: 2&quot;</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Pour interpoler, il faut le <code>f</code> devant la string.</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;two: {1 + 1}&quot;  #=&gt; &quot;two: {1 + 1}&quot;</code></pre></div></div></div>
+
+<h4 id="convertir-en-nombre">Convertir en nombre</h4>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">int(&quot;31&quot;)     #=&gt; 31
+float(&quot;31.2&quot;) #=&gt; 31.2</code></pre></div>
+
+
+<h4 id="longueur">Longueur</h4>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">len(&quot;hello&quot;)  #=&gt; 5</code></pre></div>
+
+
+<hr>
+
+<h2 id="3-fonctions-vs-méthodes">3) Fonctions vs méthodes</h2>
+
+<h3 id="fonction">Fonction</h3>
+
+<ul>
+<li>Non associée à un objet.</li>
+<li>Appel : <code>fonction(arguments)</code></li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">str(42)    #=&gt; &quot;42&quot;
+str(42.5)  #=&gt; &quot;42.5&quot;
+str(True)  #=&gt; &quot;True&quot;</code></pre></div>
+
+
+<h3 id="méthode">Méthode</h3>
+
+<ul>
+<li>Associée à un objet.</li>
+<li>Appel : <code>objet.methode(arguments)</code></li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;Python&quot;.startswith(&quot;P&quot;)  #=&gt; True
+123.startswith(1)          #=&gt; AttributeError</code></pre></div>
+
+
+<hr>
+
+<h2 id="4-nombres-numerics">4) Nombres (numerics)</h2>
+
+<h3 id="41-opérations">4.1 Opérations</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">1 + 2   #=&gt; 3
+2 * 4   #=&gt; 8
+3 % 2   #=&gt; 1
+2 ** 3  #=&gt; 8</code></pre></div>
+
+
+<h3 id="42-conversion-en-string">4.2 Conversion en string</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">str(12)   #=&gt; &#x27;12&#x27;
+str(12.4) #=&gt; &#x27;12.4&#x27;</code></pre></div>
+
+
+<h3 id="43-arrondir">4.3 Arrondir</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">round(12.4)  #=&gt; 12</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p><strong>La doc Python est ton amie</strong></p>
+<p>👉 <a href="https://docs.python.org/3/" target="_blank" rel="noopener">https://docs.python.org/3/</a></p></div></div>
+
+<hr>
+
+<h2 id="5-variables">5) Variables</h2>
+
+<p>Une variable sert à stocker une valeur pour la réutiliser.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">age = 17
+print(f&quot;You are {age} years old&quot;)
+
+print(&quot;Lucky you, it&#x27;s your birthday!&quot;)
+age = age + 1
+print(f&quot;You are now {age}&quot;)</code></pre></div>
+
+
+<hr>
+
+<h2 id="6-fonctions-définir-les-tiennes">6) Fonctions (définir les tiennes)</h2>
+
+<h3 id="61-pourquoi">6.1 Pourquoi ?</h3>
+
+<p>Pour réutiliser du code sur des entrées différentes.</p>
+
+<h3 id="exemple">Exemple</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def say_hi(name):
+	return f&quot;Hi {name}.&quot;
+
+print(say_hi(&quot;Alex&quot;))
+print(say_hi(&quot;Edward&quot;))</code></pre></div>
+
+
+<h3 id="un-exemple-avec-2-paramètres">Un exemple avec 2 paramètres</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def full_name(first_name, last_name):
+	name = first_name.capitalize() + &quot; &quot; + last_name.capitalize()
+	return name
+
+print(full_name(&quot;boris&quot;, &quot;paillard&quot;))
+print(full_name(&quot;seb&quot;, &quot;saunier&quot;))</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Parameters vs arguments</strong></p>
+<p>- <code>first_name</code>, <code>last_name</code> sont des <strong>paramètres</strong>.</p>
+<p>- Les valeurs passées à l'appel (ex : <code>&quot;boris&quot;</code>) sont des <strong>arguments</strong>.</p></div></div>
+
+<hr>
+
+<h2 id="7-control-flow-conditions">7) Control flow (conditions)</h2>
+
+<h3 id="71-if">7.1 <code>if</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">if condition:
+	# exécuté si condition est True</code></pre></div>
+
+
+<h3 id="72-if-else">7.2 <code>if / else</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">if condition:
+	# exécuté si truthy
+else:
+	# sinon</code></pre></div>
+
+
+<h3 id="73-if-elif-else">7.3 <code>if / elif / else</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">if condition:
+	...
+elif other_condition:
+	...
+else:
+	...</code></pre></div>
+
+
+<h3 id="74-ternary-operator">7.4 Ternary operator</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">age = 18
+print(&quot;You can vote&quot; if age &gt;= 18 else &quot;You can&#x27;t vote&quot;)</code></pre></div>
+
+
+<hr>
+
+<h2 id="8-conditions-multiples">8) Conditions multiples</h2>
+
+<h3 id="and">AND</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">True  and True            #=&gt; True
+True  and False           #=&gt; False
+False and False           #=&gt; False</code></pre></div>
+
+
+<h3 id="or">OR</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">True  or False            #=&gt; True
+False or False            #=&gt; False</code></pre></div>
+
+
+<hr>
+
+<h2 id="9-valeurs-spéciales-none">9) Valeurs spéciales : <code>None</code></h2>
+
+<p>En Python, presque tout est truthy, sauf notamment :</p>
+
+<ul>
+<li><code>None</code></li>
+<li><code>False</code></li>
+<li>les valeurs "vides" (<code>[]</code>, <code>{}</code>, <code>&#x27;&#x27;</code>, <code>0</code>, etc.)</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">name = &quot;Jenny&quot;
+
+if name:
+	print(f&quot;Hi {name}&quot;)
+else:
+	print(&quot;Name not provided&quot;)</code></pre></div>
+
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><li><a href="#ref-1-les-types-de-données-les-ingrédients-de-python">1) Les types de données : les ingrédients de Python</a><li><a href="#ref-2-les-strings-manipuler-du-texte">2) Les strings : manipuler du texte</a><ol><li><a href="#ref-concaténer-coller-des-strings">Concaténer (coller) des strings</a></li><li><a href="#ref-f-strings-interpoler-des-valeurs-dans-un-texte">f-strings : interpoler des valeurs dans un texte</a></li><li><a href="#ref-convertir-du-texte-en-nombre-et-vice-versa">Convertir du texte en nombre et vice-versa</a></li><li><a href="#ref-connaître-la-longueur">Connaître la longueur</a></li></ol></li><li><a href="#ref-3-fonction-vs-méthode-deux-manières-dappeler-du-code">3) Fonction vs méthode : deux manières d'appeler du code</a><li><a href="#ref-4-les-nombres">4) Les nombres</a><ol><li><a href="#ref-opérations-de-base">Opérations de base</a></li><li><a href="#ref-conversion-en-texte">Conversion en texte</a></li><li><a href="#ref-arrondir">Arrondir</a></li></ol></li><li><a href="#ref-5-les-variables-ranger-une-valeur-dans-un-bocal">5) Les variables : ranger une valeur dans un bocal</a><li><a href="#ref-6-écrire-ses-propres-fonctions">6) Écrire ses propres fonctions</a><ol><li><a href="#ref-pourquoi">Pourquoi ?</a></li><li><a href="#ref-exemple-simple">Exemple simple</a></li><li><a href="#ref-exemple-avec-2-paramètres">Exemple avec 2 paramètres</a></li></ol></li><li><a href="#ref-7-les-conditions-faire-des-choix">7) Les conditions : faire des choix</a><ol><li><a href="#ref-if-si-telle-condition-est-vraie-fais-ceci">`if` : « si telle condition est vraie, fais ceci »</a></li><li><a href="#ref-if-else-sinon-fais-autre-chose">`if / else` : « sinon, fais autre chose »</a></li><li><a href="#ref-if-elif-else-plusieurs-cas">`if / elif / else` : plusieurs cas</a></li><li><a href="#ref-lopérateur-ternaire-une-condition-en-une-ligne">L'opérateur ternaire : une condition en une ligne</a></li></ol></li><li><a href="#ref-8-combiner-des-conditions-and-or-not">8) Combiner des conditions : `and`, `or`, `not`</a><li><a href="#ref-9-la-valeur-spéciale-none-et-les-valeurs-vides">9) La valeur spéciale `None` et les valeurs « vides »</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Python est un <strong>langage de programmation</strong> : une manière d'écrire des instructions que l'ordinateur comprend. Avant d'écrire des programmes utiles, il faut apprendre les briques de base : comment stocker une information (une variable), quels genres d'informations existent (un texte ? un nombre ?), comment prendre une décision (si… alors…) et comment créer une petite machine réutilisable (une fonction).</p>
+
+<p>Ce cours est une visite guidée de ces briques. À la fin, tu sauras lire et écrire du Python très simple — le genre qu'on utilise dans <strong>tous</strong> les scripts et projets data, sans exception.</p>
+
+<p><strong>À retenir absolument</strong></p>
+
+<ul>
+<li>En Python, chaque valeur a un <strong>type</strong> (texte, entier, booléen…) et ce type détermine ce que tu peux en faire.</li>
+<li>Une <strong>variable</strong> n'est qu'une étiquette collée sur une valeur pour la retrouver plus tard.</li>
+<li>Une <strong>fonction</strong> est une recette qui transforme des ingrédients (les paramètres) en un résultat.</li>
+<li>Les <strong>conditions</strong> (<code>if / else</code>) permettent au programme de faire des choix différents selon la situation.</li>
+<li><strong>L'indentation</strong> (les espaces au début des lignes) n'est pas décorative en Python : elle définit la structure du code.</li>
+</ul>
+
+<p><strong>Analogie fil rouge.</strong> Imagine Python comme une cuisine. Les <strong>types</strong> sont les ingrédients (farine, œufs, lait). Les <strong>variables</strong> sont les bocaux étiquetés où tu ranges les ingrédients. Les <strong>fonctions</strong> sont tes recettes. Les <strong>conditions</strong> sont tes choix : « si j'ai du chocolat, je fais un gâteau au chocolat, sinon je fais un gâteau nature ». Garde cette image en tête tout le cours.</p>
+
+<p><strong>Dans ce cours reformulé</strong>, nous allons d'abord découvrir les types de données, puis manipuler du texte (strings) et des nombres, ensuite comprendre la différence fonction / méthode, stocker des valeurs dans des variables, écrire nos propres fonctions, et enfin prendre des décisions avec les conditions.</p>
+
+<hr>
+
+<h2 id="ref-1-les-types-de-données-les-ingrédients-de-python">1) Les types de données : les ingrédients de Python</h2>
+
+<p>Chaque valeur que tu manipules en Python appartient à un <strong>type</strong>. Le type, c'est la « nature » de l'ingrédient : est-ce du texte, un nombre entier, un nombre à virgule, une liste de choses ?</p>
+
+<p>Voici les types de base que tu vas croiser tout le temps.</p>
+
+<p>Ici, on écrit une série de valeurs et, à droite de chaque ligne, un commentaire qui indique son type :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;Hello World!&quot;               # str   — une chaîne de caractères (du texte)
+12                           # int   — un nombre entier
+3.14                         # float — un nombre à virgule (flottant)
+[&quot;hi&quot;, 12, 3.14]             # list  — une liste ordonnée de plusieurs valeurs
+{&quot;name&quot;: &quot;Ben&quot;, &quot;age&quot;: 31}   # dict  — un dictionnaire : des paires clé → valeur
+(250, 4)                     # tuple — comme une liste, mais non modifiable
+True                         # bool  — un booléen : vrai
+False                        # bool  — un booléen : faux</code></pre></div>
+
+
+<p>Récap : tu viens de rencontrer les 7 types de base. Dans la vraie vie, tu passeras 90 % de ton temps avec <code>str</code>, <code>int</code>, <code>float</code>, <code>list</code>, <code>dict</code> et <code>bool</code>.</p>
+
+<p>Pour demander à Python le type d'une valeur, on utilise la fonction <code>type()</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">type(12)   # Python répond : &lt;class &#x27;int&#x27;&gt;, autrement dit &quot;c&#x27;est un entier&quot;</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Astuce : quand tu as un doute sur ce qu'est une variable ou pourquoi ton code plante, glisse un <code>print(type(ma_variable))</code> pour vérifier. 90 % des bugs de débutant viennent d'un type inattendu (un « 42 » texte au lieu d'un 42 entier, par exemple).</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-les-strings-manipuler-du-texte">2) Les strings : manipuler du texte</h2>
+
+<p>Une <strong>string</strong> (chaîne de caractères) est simplement du texte entre guillemets. Python accepte les guillemets simples <code>&#x27;...&#x27;</code> ou doubles <code>&quot;...&quot;</code> — au choix, tant que tu restes cohérent.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;hello&quot; == &#x27;hello&#x27;                       # True — les deux guillemets produisent la même string
+&quot;hello world!&quot;.upper()                   # &quot;HELLO WORLD!&quot; — la méthode .upper() met tout en majuscules
+&quot; scraped_email@email.com   &quot;.strip()    # &quot;scraped_email@email.com&quot; — .strip() enlève les espaces autour</code></pre></div>
+
+
+<p>Résumé : <code>.upper()</code>, <code>.lower()</code>, <code>.strip()</code>, <code>.capitalize()</code> sont tes amis pour nettoyer du texte venu de l'extérieur (un fichier, un formulaire web…).</p>
+
+<h3 id="ref-concaténer-coller-des-strings">Concaténer (coller) des strings</h3>
+
+<p>Pour assembler deux morceaux de texte, on les additionne avec <code>+</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;hello&quot; + &quot; &quot; + &quot;world!&quot;   # &quot;hello world!&quot; — trois strings collées l&#x27;une à l&#x27;autre</code></pre></div>
+
+
+<h3 id="ref-f-strings-interpoler-des-valeurs-dans-un-texte">f-strings : interpoler des valeurs dans un texte</h3>
+
+<p>Une <strong>f-string</strong> est un texte qui contient des « trous » qu'on remplit avec des valeurs. Elle commence par la lettre <code>f</code> juste avant le guillemet, et les trous sont écrits entre accolades <code>{}</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">age = 31                          # on stocke l&#x27;âge dans une variable
+f&quot;J&#x27;ai {age} ans&quot;                 # &quot;J&#x27;ai 31 ans&quot; — {age} est remplacé par la valeur de age
+f&quot;two: {1 + 1}&quot;                   # &quot;two: 2&quot; — on peut même mettre un calcul dans les accolades</code></pre></div>
+
+
+<p>Explication : Python voit le <code>f</code> devant le guillemet, comprend qu'il doit remplacer les <code>{...}</code> par leur valeur, et produit un texte fini.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Piège fréquent : oublier le <code>f</code>. Sans lui, les accolades sont prises au pied de la lettre et affichées telles quelles.</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;two: {1 + 1}&quot;    # affiche littéralement &quot;two: {1 + 1}&quot; — pas de calcul, pas de remplacement
+f&quot;two: {1 + 1}&quot;   # &quot;two: 2&quot; — correct</code></pre></div></div></div>
+
+<h3 id="ref-convertir-du-texte-en-nombre-et-vice-versa">Convertir du texte en nombre et vice-versa</h3>
+
+<p>Quand tu lis un nombre depuis un fichier ou un formulaire, il arrive souvent <strong>sous forme de texte</strong>. Pour faire des maths, il faut le convertir :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">int(&quot;31&quot;)       # 31    — transforme le texte &quot;31&quot; en entier
+float(&quot;31.2&quot;)   # 31.2  — transforme le texte &quot;31.2&quot; en flottant
+str(42)         # &quot;42&quot;  — dans l&#x27;autre sens : transforme l&#x27;entier 42 en texte</code></pre></div>
+
+
+<h3 id="ref-connaître-la-longueur">Connaître la longueur</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">len(&quot;hello&quot;)   # 5 — len() compte le nombre de caractères de la string</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Récap express : une string se nettoie avec <code>.strip()</code>, se met en majuscules avec <code>.upper()</code>, se combine avec <code>+</code>, s'interpole avec <code>f&quot;...&quot;</code>, et se compte avec <code>len()</code>.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-fonction-vs-méthode-deux-manières-dappeler-du-code">3) Fonction vs méthode : deux manières d'appeler du code</h2>
+
+<p>C'est une distinction qui déroute au début, mais elle est simple.</p>
+
+<p><strong>Une fonction</strong> est autonome. Tu l'appelles par son nom, en mettant les arguments entre parenthèses : <code>nom_de_fonction(arguments)</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">str(42)     # &quot;42&quot;   — str() est une fonction : on lui donne 42, elle renvoie le texte &quot;42&quot;
+str(42.5)   # &quot;42.5&quot;
+str(True)   # &quot;True&quot;</code></pre></div>
+
+
+<p><strong>Une méthode</strong> est attachée à un objet. Tu l'appelles via un point : <code>objet.nom_de_methode(arguments)</code>. La méthode agit <strong>sur l'objet</strong> qui est devant le point.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;Python&quot;.startswith(&quot;P&quot;)   # True — .startswith() est une méthode de l&#x27;objet string &quot;Python&quot;</code></pre></div>
+
+
+<p>Et quand tu appelles une méthode sur un objet qui ne la possède pas, Python râle :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">(123).startswith(1)        # AttributeError : les entiers n&#x27;ont pas de méthode .startswith()</code></pre></div>
+
+
+<p>Analogie : une fonction est un outil posé sur l'établi, tu le prends pour agir sur quelque chose. Une méthode est un outil intégré à un objet, comme l'ouverture automatique d'une voiture — c'est la voiture qui sait ouvrir ses propres portes.</p>
+
+<hr>
+
+<h2 id="ref-4-les-nombres">4) Les nombres</h2>
+
+<h3 id="ref-opérations-de-base">Opérations de base</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">1 + 2    # 3  — addition
+2 * 4    # 8  — multiplication
+3 % 2    # 1  — modulo : le reste de la division entière de 3 par 2
+2 ** 3   # 8  — puissance : 2 à la puissance 3, soit 2×2×2</code></pre></div>
+
+
+<p>Le <strong>modulo</strong> (<code>%</code>) est très utile : il permet de savoir si un nombre est pair (<code>n % 2 == 0</code>), multiple de 10, etc.</p>
+
+<h3 id="ref-conversion-en-texte">Conversion en texte</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">str(12)     # &quot;12&quot;
+str(12.4)   # &quot;12.4&quot;</code></pre></div>
+
+
+<h3 id="ref-arrondir">Arrondir</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">round(12.4)   # 12 — round() arrondit au plus proche</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Pour aller plus loin : <code>round(12.5)</code> renvoie… <code>12</code> en Python, pas <code>13</code> ! Python utilise l'<strong>arrondi banquier</strong> : en cas d'égalité, il arrondit vers le nombre pair le plus proche. Bon à savoir pour ne pas être surpris.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-les-variables-ranger-une-valeur-dans-un-bocal">5) Les variables : ranger une valeur dans un bocal</h2>
+
+<p>Une variable, c'est juste une <strong>étiquette</strong> que tu colles sur une valeur pour pouvoir la réutiliser. L'opérateur <code>=</code> sert à faire ce collage.</p>
+
+<p>Ici, on déclare la variable <code>age</code>, on l'affiche, puis on la modifie :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">age = 17                                 # on range 17 dans le bocal &quot;age&quot;
+print(f&quot;You are {age} years old&quot;)        # &quot;You are 17 years old&quot;
+
+print(&quot;Lucky you, it&#x27;s your birthday!&quot;)
+age = age + 1                            # on lit la valeur actuelle de age (17), on ajoute 1, et on range le résultat (18) dans age
+print(f&quot;You are now {age}&quot;)              # &quot;You are now 18&quot;</code></pre></div>
+
+
+<p>Explication ligne par ligne : <code>age = age + 1</code> se lit de droite à gauche. Python calcule d'abord <code>age + 1</code> (soit <code>17 + 1 = 18</code>), puis range le résultat dans <code>age</code>. À la fin, <code>age</code> vaut 18.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Piège fréquent : confondre <code>=</code> (affectation : « je range ») et <code>==</code> (comparaison : « est-ce que c'est égal ? »).</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">age = 18    # affectation : on range 18 dans age
+age == 18   # comparaison : renvoie True si age vaut 18</code></pre></div></div></div>
+
+<hr>
+
+<h2 id="ref-6-écrire-ses-propres-fonctions">6) Écrire ses propres fonctions</h2>
+
+<h3 id="ref-pourquoi">Pourquoi ?</h3>
+
+<p>Pour ne pas réécrire le même code plusieurs fois. Si tu dois saluer 10 personnes, tu n'écris pas 10 fois la phrase : tu crées <strong>une</strong> fonction <code>say_hi(name)</code> que tu appelles 10 fois avec un nom différent.</p>
+
+<h3 id="ref-exemple-simple">Exemple simple</h3>
+
+<p>On définit la fonction avec <code>def</code>, on donne un nom (<code>say_hi</code>), puis entre parenthèses on liste les <strong>paramètres</strong> (les ingrédients qu'elle attend). Le corps de la fonction est <strong>indenté</strong> (décalé vers la droite). <code>return</code> indique ce que la fonction renvoie.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def say_hi(name):              # on définit la fonction say_hi qui attend un paramètre &quot;name&quot;
+    return f&quot;Hi {name}.&quot;       # elle renvoie le texte &quot;Hi &quot; suivi du nom passé en argument
+
+print(say_hi(&quot;Alex&quot;))          # affiche &quot;Hi Alex.&quot;
+print(say_hi(&quot;Edward&quot;))        # affiche &quot;Hi Edward.&quot;</code></pre></div>
+
+
+<p>Résumé : tu as défini une recette une seule fois, et tu l'as utilisée deux fois avec des ingrédients différents.</p>
+
+<h3 id="ref-exemple-avec-2-paramètres">Exemple avec 2 paramètres</h3>
+
+<p>Les fonctions peuvent prendre plusieurs paramètres, séparés par des virgules.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def full_name(first_name, last_name):                          # deux paramètres
+    name = first_name.capitalize() + &quot; &quot; + last_name.capitalize()  # on met chaque prénom en Majuscule et on les colle
+    return name                                                # on renvoie le nom complet
+
+print(full_name(&quot;boris&quot;, &quot;paillard&quot;))   # &quot;Boris Paillard&quot;
+print(full_name(&quot;seb&quot;, &quot;saunier&quot;))      # &quot;Seb Saunier&quot;</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Astuce : vocabulaire à ne jamais confondre.</p>
+<p>- <strong>Paramètres</strong> = les noms écrits dans la définition (<code>first_name</code>, <code>last_name</code>). Ce sont les « cases » que la fonction attend.</p>
+<p>- <strong>Arguments</strong> = les valeurs réellement passées à l'appel (<code>&quot;boris&quot;</code>, <code>&quot;paillard&quot;</code>). Ce sont ce qu'on verse dans les cases.</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-les-conditions-faire-des-choix">7) Les conditions : faire des choix</h2>
+
+<h3 id="ref-if-si-telle-condition-est-vraie-fais-ceci"><code>if</code> : « si telle condition est vraie, fais ceci »</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">if age &gt;= 18:
+    print(&quot;Tu peux voter.&quot;)   # cette ligne n&#x27;est exécutée que si age est supérieur ou égal à 18</code></pre></div>
+
+
+<p>Note l'indentation : tout ce qui est « à l'intérieur » du <code>if</code> doit être décalé de quatre espaces (ou d'une tabulation).</p>
+
+<h3 id="ref-if-else-sinon-fais-autre-chose"><code>if / else</code> : « sinon, fais autre chose »</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">if age &gt;= 18:
+    print(&quot;Tu peux voter.&quot;)    # si la condition est vraie
+else:
+    print(&quot;Pas encore.&quot;)       # si la condition est fausse</code></pre></div>
+
+
+<h3 id="ref-if-elif-else-plusieurs-cas"><code>if / elif / else</code> : plusieurs cas</h3>
+
+<p><code>elif</code> est la contraction de « else if » : « sinon, si telle autre condition ».</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">if note &gt;= 16:
+    print(&quot;Très bien&quot;)
+elif note &gt;= 12:
+    print(&quot;Bien&quot;)              # testé seulement si la première condition a échoué
+elif note &gt;= 10:
+    print(&quot;Passable&quot;)
+else:
+    print(&quot;Insuffisant&quot;)       # si aucune condition précédente n&#x27;a été vraie</code></pre></div>
+
+
+<p>Python teste les conditions <strong>dans l'ordre</strong> et s'arrête à la première qui est vraie.</p>
+
+<h3 id="ref-lopérateur-ternaire-une-condition-en-une-ligne">L'opérateur ternaire : une condition en une ligne</h3>
+
+<p>Quand ta condition est très simple, tu peux l'écrire en une seule ligne :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">age = 18
+print(&quot;You can vote&quot; if age &gt;= 18 else &quot;You can&#x27;t vote&quot;)   # affiche &quot;You can vote&quot;</code></pre></div>
+
+
+<p>Lecture : « affiche <strong>X</strong> si condition, <strong>sinon</strong> Y ». L'ordre est un peu spécial (le résultat d'abord, puis la condition), mais on s'y habitue vite.</p>
+
+<hr>
+
+<h2 id="ref-8-combiner-des-conditions-and-or-not">8) Combiner des conditions : <code>and</code>, <code>or</code>, <code>not</code></h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">True  and True    # True  — les deux doivent être vrais
+True  and False   # False — l&#x27;un est faux, donc tout est faux
+False and False   # False
+
+True  or False    # True  — il suffit qu&#x27;un seul soit vrai
+False or False    # False — les deux sont faux</code></pre></div>
+
+
+<p>Exemple concret : pour qu'un utilisateur puisse se connecter, il faut un <strong>login</strong> correct <strong>et</strong> un <strong>mot de passe</strong> correct. <code>login_ok and password_ok</code>.</p>
+
+<hr>
+
+<h2 id="ref-9-la-valeur-spéciale-none-et-les-valeurs-vides">9) La valeur spéciale <code>None</code> et les valeurs « vides »</h2>
+
+<p>En Python, presque toutes les valeurs sont considérées comme <strong>vraies</strong> dans une condition. Les exceptions principales — que Python considère comme <strong>fausses</strong> — sont :</p>
+
+<ul>
+<li><code>None</code> (l'absence de valeur)</li>
+<li><code>False</code></li>
+<li>les « conteneurs vides » : liste vide <code>[]</code>, dictionnaire vide <code>{}</code>, string vide <code>&quot;&quot;</code>, et le nombre <code>0</code></li>
+</ul>
+
+<p>On peut donc tester directement une variable dans un <code>if</code>, sans comparer explicitement :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">name = &quot;Jenny&quot;
+
+if name:                           # équivaut à &quot;si name n&#x27;est ni vide ni None&quot;
+    print(f&quot;Hi {name}&quot;)            # &quot;Hi Jenny&quot;
+else:
+    print(&quot;Name not provided&quot;)</code></pre></div>
+
+
+<p>Résumé : <code>if name:</code> est une manière courte et idiomatique de dire « si on a bien un nom ».</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Piège fréquent : oublier les parenthèses sur un appel de méthode.</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;hello&quot;.upper    # ❌ renvoie la méthode elle-même (un objet), pas le résultat
+&quot;hello&quot;.upper()  # ✅ renvoie &quot;HELLO&quot;</code></pre></div></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Piège fréquent : indentation incorrecte. Chaque bloc (fonction, if, boucle) doit être décalé de manière cohérente.</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def say_hi(name):
+return f&quot;Hi {name}&quot;     # ❌ IndentationError — le return n&#x27;est pas indenté
+
+def say_hi(name):
+    return f&quot;Hi {name}&quot; # ✅</code></pre></div></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<ol>
+<li>Quelle est la différence entre <code>=</code> et <code>==</code> en Python ? Donne un exemple de chacun.</li>
+<li>Pourquoi la ligne <code>&quot;J&#x27;ai {age} ans&quot;</code> n'affiche-t-elle pas l'âge, alors que <code>f&quot;J&#x27;ai {age} ans&quot;</code> le fait ?</li>
+<li>Que renvoie <code>type(3.14)</code> ? Et <code>type(&quot;3.14&quot;)</code> ?</li>
+<li>Dans la fonction <code>def full_name(first_name, last_name):</code>, qui sont les paramètres et qui sont les arguments quand on appelle <code>full_name(&quot;boris&quot;, &quot;paillard&quot;)</code> ?</li>
+<li>Que va afficher ce code, et pourquoi ?</li>
+</ol>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">   name = &quot;&quot;
+   if name:
+       print(&quot;Bonjour&quot;)
+   else:
+       print(&quot;Anonyme&quot;)</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Python distingue plusieurs <strong>types</strong> : <code>str</code> (texte), <code>int</code> (entier), <code>float</code> (virgule), <code>list</code>, <code>dict</code>, <code>bool</code>. Vérifie avec <code>type()</code>.</li>
+<li>Les <strong>strings</strong> se nettoient avec <code>.strip()</code>, se concatènent avec <code>+</code> et s'interpolent avec les <strong>f-strings</strong> <code>f&quot;Bonjour {name}&quot;</code>.</li>
+<li>Une <strong>fonction</strong> est autonome (<code>str(42)</code>), une <strong>méthode</strong> est attachée à un objet (<code>&quot;hi&quot;.upper()</code>).</li>
+<li>Une <strong>variable</strong> stocke une valeur (<code>age = 17</code>). <code>=</code> range, <code>==</code> compare.</li>
+<li>On crée ses fonctions avec <code>def nom(params):</code> et on renvoie un résultat avec <code>return</code>.</li>
+<li>Les <strong>conditions</strong> <code>if / elif / else</code> permettent les choix. L'<strong>indentation</strong> structure le code.</li>
+<li><code>and</code>, <code>or</code>, <code>not</code> combinent les conditions. <code>None</code>, <code>0</code>, <code>&quot;&quot;</code>, <code>[]</code> sont considérés comme faux.</li>
+<li>90 % des erreurs de débutant : oubli du <code>f</code>, confusion <code>=</code> vs <code>==</code>, indentation, oubli des parenthèses sur une méthode.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-variables-types-et-duck-typing">Variables, types et duck typing</a></li><li><a href="#syn-opérateurs-et-expressions">Opérateurs et expressions</a></li><li><a href="#syn-contrôle-de-flux">Contrôle de flux</a></li><li><a href="#syn-fonctions">Fonctions</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-type-hints-et-mypy">Type hints et `mypy`</a></li><li><a href="#syn-mutabilité-et-passage-darguments">Mutabilité et passage d'arguments</a></li><li><a href="#syn-le-gil-et-ses-conséquences">Le GIL et ses conséquences</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-variables-types-et-duck-typing">Variables, types et duck typing</h3>
+
+<p>Python est un langage <strong>dynamiquement typé</strong> : une variable est juste une étiquette qui peut pointer vers n'importe quel objet, et changer de type au cours de l'exécution. Contrairement à C ou Java, vous ne déclarez jamais le type. Le type est attaché à l'<strong>objet</strong>, pas à la variable.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">x = 42         # x pointe vers un int
+x = &quot;hello&quot;    # x pointe maintenant vers un str — c&#x27;est légal
+x = [1, 2, 3]  # x pointe maintenant vers une list
+# L&#x27;int 42 existe toujours en mémoire, mais plus aucune variable ne le référence</code></pre></div>
+
+
+<p><strong>Types built-in essentiels</strong> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Type</th><th>Exemple</th><th>Mutable ?</th><th>Hashable ?</th></tr></thead><tbody><tr><td><code>int</code></td><td><code>42</code>, <code>-3</code>, <code>10**100</code></td><td>Non</td><td>Oui (précision arbitraire !)</td></tr><tr><td><code>float</code></td><td><code>3.14</code>, <code>1e-5</code></td><td>Non</td><td>Oui</td></tr><tr><td><code>bool</code></td><td><code>True</code>, <code>False</code></td><td>Non</td><td>Oui</td></tr><tr><td><code>str</code></td><td><code>&quot;hello&quot;</code>, <code>&#x27;world&#x27;</code></td><td>Non</td><td>Oui</td></tr><tr><td><code>list</code></td><td><code>[1, 2, 3]</code></td><td><strong>Oui</strong></td><td>Non</td></tr><tr><td><code>tuple</code></td><td><code>(1, 2, 3)</code></td><td>Non</td><td>Oui (si éléments hashables)</td></tr><tr><td><code>dict</code></td><td><code>{&quot;a&quot;: 1}</code></td><td><strong>Oui</strong></td><td>Non</td></tr><tr><td><code>set</code></td><td><code>{1, 2, 3}</code></td><td><strong>Oui</strong></td><td>Non</td></tr><tr><td><code>None</code></td><td><code>None</code></td><td>(singleton unique)</td><td>Oui</td></tr></tbody></table></div>
+<p>Le <strong>duck typing</strong> est la philosophie de Python : <em>"If it walks like a duck and quacks like a duck, it's a duck"</em>. Au lieu de vérifier le type d'un objet, on vérifie qu'il <strong>se comporte</strong> comme attendu.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def total(items):
+    return sum(items)
+
+total([1, 2, 3])              # 6 (list)
+total((1, 2, 3))              # 6 (tuple)
+total({1, 2, 3})              # 6 (set)
+total(range(4))               # 6 (range object)
+total(x for x in [1, 2, 3])   # 6 (generator)</code></pre></div>
+
+
+<p><code>sum</code> ne demande pas "es-tu une liste ?" mais "es-tu itérable et tes éléments supportent-ils l'addition ?".</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : duck typing, c'est embaucher un musicien sans demander son diplôme. Vous lui passez une partition, s'il joue juste, c'est bon. Le typage statique de Java/C++, c'est exiger un Conservatoire avant l'audition.</p></div></div>
+
+<h3 id="syn-opérateurs-et-expressions">Opérateurs et expressions</h3>
+
+<p><strong>Arithmétiques</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">7 + 3       # 10
+7 - 3       # 4
+7 * 3       # 21
+7 / 3       # 2.333...  — division réelle (TOUJOURS un float en Python 3)
+7 // 3      # 2         — division entière (floor)
+7 % 3       # 1         — modulo (reste)
+7 ** 3      # 343       — puissance (7^3)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège classique</strong> : <code>7 / 2</code> retourne <code>3.5</code> en Python 3. En Python 2, c'était <code>3</code>. Beaucoup de tutoriels obsolètes confondent encore. Pour la division entière : <code>//</code>.</p></div></div>
+
+<p><strong>Comparaisons</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">a == b        # Égalité de valeur
+a != b        # Inégalité
+a is b        # Identité (même objet) — à réserver à None, True, False
+a &lt; b &lt;= c    # Chaînage : équivalent à (a &lt; b) and (b &lt;= c)</code></pre></div>
+
+
+<p><strong>Logiques</strong> court-circuitées :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;Alice&quot; or &quot;Bob&quot;     # &quot;Alice&quot; — premier truthy
+&quot;&quot; or &quot;default&quot;      # &quot;default&quot; — pattern de fallback
+0 and &quot;x&quot;            # 0 — premier falsy</code></pre></div>
+
+
+<h3 id="syn-contrôle-de-flux">Contrôle de flux</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Expression conditionnelle (ternary)
+grade = &quot;A&quot; if score &gt;= 80 else &quot;B&quot;
+
+# for (TOUJOURS sur un iterable, pas sur un index)
+for i, word in enumerate(words):
+    print(i, word)
+
+# while
+n = 0
+while n &lt; 5:
+    print(n); n += 1</code></pre></div>
+
+
+<p>Idiome Python : <strong>toujours itérer sur l'iterable</strong>, jamais sur les indices :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ❌ Mauvais
+for i in range(len(words)):
+    print(words[i])
+
+# ✓ Bon
+for word in words:
+    print(word)</code></pre></div>
+
+
+<h3 id="syn-fonctions">Fonctions</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def compute_score(predictions, labels, weight=1.0):
+    &quot;&quot;&quot;Compute weighted accuracy.
+
+    Args:
+        predictions: Liste de labels prédits
+        labels: Liste de vrais labels
+        weight: Multiplicateur appliqué au résultat
+
+    Returns:
+        Weighted accuracy (float).
+    &quot;&quot;&quot;
+    correct = sum(p == l for p, l in zip(predictions, labels))
+    return weight * correct / len(labels)</code></pre></div>
+
+
+<p><strong><code>*args</code> / <code>&lt;/strong&gt;kwargs</code>** capturent un nombre arbitraire d'arguments :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def stats(*nums, **opts):
+    print(nums)        # Tuple des positionnels
+    print(opts)        # Dict des nommés
+
+stats(1, 2, 3, mean=True)
+# (1, 2, 3)
+# {&#x27;mean&#x27;: True}</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : préférez les arguments <strong>nommés</strong> dès que vous avez plus de 2-3 paramètres. <code>train(X, y, test_size=0.2, random_state=42)</code> est bien plus lisible que <code>train(X, y, 0.2, 42)</code>.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-type-hints-et-mypy">Type hints et <code>mypy</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from typing import Optional
+
+def divide(a: float, b: float) -&gt; Optional[float]:
+    if b == 0:
+        return None
+    return a / b
+
+def process(items: list[int]) -&gt; dict[str, int]:
+    return {&quot;count&quot;: len(items), &quot;sum&quot;: sum(items)}</code></pre></div>
+
+
+<p><code>mypy</code> vérifie statiquement <strong>avant</strong> d'exécuter :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">mypy your_module.py
+# your_module.py:12: error: Argument 1 has incompatible type &quot;str&quot;; expected &quot;float&quot;</code></pre></div>
+
+
+<p>Python 3.10+ accepte <code>str | int | None</code> au lieu de <code>Union[str, int, None]</code>.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : les type hints, c'est mettre des étiquettes sur les bacs de votre cuisine. Python ne vous oblige pas à les respecter, mais quand vous cherchez quelque chose à 3 h du matin, vous vous remerciez.</p></div></div>
+
+<h3 id="syn-mutabilité-et-passage-darguments">Mutabilité et passage d'arguments</h3>
+
+<p>Python passe les arguments <strong>par référence d'objet</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def add_one(x):
+    x += 1            # Crée un nouvel int, n&#x27;affecte pas l&#x27;original
+a = 5; add_one(a); print(a)    # 5 (int immutable)
+
+def append_zero(lst):
+    lst.append(0)     # Modifie l&#x27;objet pointé
+l = [1, 2]; append_zero(l); print(l)    # [1, 2, 0] — la liste a été modifiée !</code></pre></div>
+
+
+<p><strong>Piège des arguments par défaut mutables</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def append_to(item, lst=[]):    # ❌ NE FAITES JAMAIS ÇA
+    lst.append(item)
+    return lst
+
+append_to(1)   # [1]
+append_to(2)   # [1, 2] !! la même liste est réutilisée</code></pre></div>
+
+
+<p><strong>Fix</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def append_to(item, lst=None):
+    if lst is None:
+        lst = []          # Nouvelle liste à chaque appel
+    lst.append(item)
+    return lst</code></pre></div>
+
+
+<h3 id="syn-le-gil-et-ses-conséquences">Le GIL et ses conséquences</h3>
+
+<p>Le <strong>GIL</strong> (Global Interpreter Lock) empêche plusieurs threads Python d'exécuter du bytecode en même temps. <code>threading</code> ne donne <strong>pas</strong> de speedup CPU sur du code Python pur.</p>
+
+<p><strong>Trois solutions</strong> selon le profil :</p>
+
+<ol>
+<li><strong>I/O-bound</strong> (HTTP, fichier, DB) : <code>threading</code> ou <code>asyncio</code> — le GIL est libéré pendant les attentes.</li>
+<li><strong>CPU-bound</strong> : <code>multiprocessing</code> lance plusieurs processus Python indépendants.</li>
+<li><strong>Calcul numérique</strong> : NumPy/Pandas/PyTorch tournent en C et <strong>libèrent le GIL</strong>.</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># I/O-bound
+from concurrent.futures import ThreadPoolExecutor
+with ThreadPoolExecutor(max_workers=10) as ex:
+    results = list(ex.map(requests.get, urls))
+
+# CPU-bound
+from concurrent.futures import ProcessPoolExecutor
+with ProcessPoolExecutor(max_workers=4) as ex:
+    results = list(ex.map(heavy_compute, dataset))</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Question d'entretien classique</strong> : <em>"Pourquoi mon programme avec 8 threads n'est-il pas 8x plus rapide ?"</em> Réponse : le GIL. Contournements : multiprocessing, NumPy, ou Go/Rust.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi <code>0.1 + 0.2 == 0.3</code> retourne-t-il <code>False</code> en Python ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Représentation flottante IEEE 754.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Parce que <code>0.1</code>, <code>0.2</code> et <code>0.3</code> <strong>ne sont pas représentables exactement</strong> en binaire flottant IEEE 754. <code>0.1</code> est en fait stocké comme <code>0.1000000000000000055...</code>. La somme <code>0.1 + 0.2</code> donne <code>0.30000000000000004</code>, pas égal à la représentation de <code>0.3</code>.</p>
+
+<p><strong>Règle universelle</strong> : ne <strong>jamais</strong> comparer deux floats avec <code>==</code>. Utilisez :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import math
+math.isclose(0.1 + 0.2, 0.3, rel_tol=1e-9)   # True
+
+# ou NumPy
+np.isclose(0.1 + 0.2, 0.3)                    # True</code></pre></div>
+
+
+<p>Pour des <strong>montants financiers</strong>, utilisez <code>decimal.Decimal</code> qui fait du calcul en base 10 :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from decimal import Decimal
+Decimal(&quot;0.1&quot;) + Decimal(&quot;0.2&quot;) == Decimal(&quot;0.3&quot;)   # True</code></pre></div>
+
+
+<p>C'est une question d'entretien éliminatoire en numérique.</p>
+
+</details>
+
+<p><strong>Q2 : <code>True == 1</code> et <code>True + 1 == 2</code> retournent <code>True</code>. Pourquoi ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Héritage de <code>bool</code>.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Parce que <strong><code>bool</code> est une sous-classe de <code>int</code></strong> en Python. <code>True</code> est littéralement l'entier <code>1</code>, <code>False</code> est l'entier <code>0</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">isinstance(True, int)     # True
+True + 1                  # 2
+sum([True, False, True])  # 2 — très utile pour compter</code></pre></div>
+
+
+<p>Ce choix permet <code>sum(x &gt; 0 for x in nums)</code> qui compte les éléments positifs — un idiome très courant.</p>
+
+<p>Pour vérifier <strong>strictement</strong> le type booléen :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">type(x) is bool    # True uniquement pour True/False, pas pour 0/1</code></pre></div>
+
+
+</details>
+
+<p><strong>Q3 : Vous voulez écrire une fonction qui retourne plusieurs valeurs. Quelle est la meilleure pratique ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Tuples, NamedTuple, ou dataclass ?</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Option 1 — Tuple</strong> (idiome standard pour 2 valeurs simples) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def divmod_custom(a, b):
+    return a // b, a % b            # Renvoie un tuple
+
+q, r = divmod_custom(10, 3)         # Unpacking</code></pre></div>
+
+
+<p><strong>Option 2 — NamedTuple</strong> (3-4 valeurs avec noms) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from typing import NamedTuple
+
+class Result(NamedTuple):
+    score: float
+    n_iter: int
+    converged: bool
+
+r = train()
+print(r.score)    # Accès par nom</code></pre></div>
+
+
+<p><strong>Option 3 — <code>@dataclass</code></strong> (résultats riches avec validation/méthodes) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from dataclasses import dataclass
+
+@dataclass
+class TrainingResult:
+    score: float
+    n_iter: int
+    history: list</code></pre></div>
+
+
+<p><strong>Règle</strong> : plus la valeur de retour est centrale au domaine, plus elle mérite une structure nommée. Tuple pour une utilité ponctuelle ; dataclass pour un concept métier central.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/" target="_blank" rel="noopener">Python Tutorial officiel</a> — par les auteurs du langage</li>
+<li><em>Python Crash Course</em> (Eric Matthes) — référence pour démarrer</li>
+<li><em>Fluent Python</em> (Luciano Ramalho) — pour aller au-delà des bases</li>
+<li><a href="https://realpython.com/python-basics/" target="_blank" rel="noopener">Real Python — Python Basics</a> — tutoriels solides</li>
+<li><a href="https://peps.python.org/pep-0008/" target="_blank" rel="noopener">PEP 8 — Style Guide</a> — à lire au moins une fois</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../notes-perso/git.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Git push & commit</span>
+  </a>
+  <a href="../python-sql/list-and-loops.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Lists & loops →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

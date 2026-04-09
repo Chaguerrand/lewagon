@@ -1,0 +1,2348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synthèse ML (v2) — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Synthèse ML (v2)</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html" class="active">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Synthèses & Cheatsheets</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Synthèse ML (v2)</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Synthèse ML (v2)</h1>
+        <p class="page-objective">Cours de synthèse complet suivant le pipeline ML étape par étape. Chaque étape inclut des explications détaillées, le code, les formules, les bonnes pratiques, les erreurs à éviter, et **des exemples concrets typiques**.
+></p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Pipeline E2E</div>
+        <div class="key-concept-def">De la donnée brute jusqu&#x27;au modèle déployé : chaque étape compte.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Baseline</div>
+        <div class="key-concept-def">Modèle simple de référence à battre (moyenne, classifieur trivial).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Iterative loop</div>
+        <div class="key-concept-def">Boucle d&#x27;amélioration : mesurer → analyser → corriger → remesurer.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Feature engineering</div>
+        <div class="key-concept-def">Création de nouvelles variables qui aident le modèle.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#le-pipeline">Le Pipeline</a><li><a href="#étape-1-collect">Étape 1 — COLLECT</a><li><a href="#11-chargement">1.1 Chargement</a><li><a href="#12-premier-aperçu">1.2 Premier aperçu</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li></ol></li><li><a href="#étape-2-eda">Étape 2 — EDA</a><li><a href="#21-distributions">2.1 Distributions</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li></ol></li><li><a href="#22-corrélations">2.2 Corrélations</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li></ol></li><li><a href="#23-valeurs-manquantes">2.3 Valeurs manquantes</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li></ol></li><li><a href="#étape-3-clean">Étape 3 — CLEAN</a><li><a href="#31-doublons">3.1 Doublons</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li></ol></li><li><a href="#32-valeurs-manquantes-stratégies">3.2 Valeurs manquantes — Stratégies</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li></ol></li><li><a href="#33-outliers">3.3 Outliers</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li></ol></li><li><a href="#étape-4-split">Étape 4 — SPLIT</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li></ol></li><li><a href="#étape-5-preprocess">Étape 5 — PREPROCESS</a><li><a href="#51-feature-scaling">5.1 Feature Scaling</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li></ol></li><li><a href="#52-encodage-catégoriel">5.2 Encodage catégoriel</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li></ol></li><li><a href="#53-équilibrage-classification">5.3 Équilibrage (classification)</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li></ol></li><li><a href="#54-feature-engineering">5.4 Feature Engineering</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li></ol></li><li><a href="#55-feature-selection">5.5 Feature Selection</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li></ol></li><li><a href="#56-pipeline-anti-leakage">5.6 Pipeline anti-leakage</a><li><a href="#étape-6-model">Étape 6 — MODEL</a><li><a href="#61-baseline">6.1 Baseline</a><li><a href="#62-modèles-de-régression">6.2 Modèles de régression</a><ol><li><a href="#ex-1-linearregression-ols">Ex 1 — LinearRegression (OLS)</a></li><li><a href="#ex-2-ridge-l2-réduit-coefs-vers-0">Ex 2 — Ridge (L2 — réduit coefs vers 0)</a></li><li><a href="#ex-3-lasso-l1-annule-coefs-feature-selection">Ex 3 — Lasso (L1 — annule coefs, feature selection)</a></li><li><a href="#ex-4-elasticnet-mix-l1l2">Ex 4 — ElasticNet (mix L1+L2)</a></li></ol></li><li><a href="#63-modèles-de-classification">6.3 Modèles de classification</a><ol><li><a href="#ex-1-logisticregression-sans-régularisation">Ex 1 — LogisticRegression (sans régularisation)</a></li><li><a href="#ex-2-logisticregression-avec-l2">Ex 2 — LogisticRegression avec L2</a></li><li><a href="#ex-3-logisticregression-avec-l1-feature-selection">Ex 3 — LogisticRegression avec L1 (feature selection)</a></li><li><a href="#ex-4-knn">Ex 4 — KNN</a></li><li><a href="#ex-5-svm-svc">Ex 5 — SVM (SVC)</a></li></ol></li><li><a href="#64-cross-validation">6.4 Cross-validation</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li></ol></li><li><a href="#65-biais-variance">6.5 Biais / Variance</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li></ol></li><li><a href="#étape-7-tune">Étape 7 — TUNE</a><li><a href="#71-params-vs-hyperparams">7.1 Params vs Hyperparams</a><li><a href="#72-gridsearchcv">7.2 GridSearchCV</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li></ol></li><li><a href="#73-randomizedsearchcv">7.3 RandomizedSearchCV</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li><li><a href="#distributions-scipy">Distributions scipy</a></li></ol></li><li><a href="#74-workflow-recommandé">7.4 Workflow recommandé</a><li><a href="#étape-8-evaluate">Étape 8 — EVALUATE</a><li><a href="#81-métriques-de-régression">8.1 Métriques de régression</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li></ol></li><li><a href="#82-métriques-de-classification">8.2 Métriques de classification</a><ol><li><a href="#exemples-typiques">Exemples typiques</a></li></ol></li><li><a href="#annexe-under-the-hood">Annexe — Under the Hood</a><li><a href="#loss-functions">Loss Functions</a><li><a href="#gradient-descent">Gradient Descent</a><li><a href="#annexe-checklist-erreurs">Annexe — Checklist Erreurs</a><ol><li><a href="#data-leakage">Data Leakage</a></li><li><a href="#preprocessing">Preprocessing</a></li><li><a href="#modélisation">Modélisation</a></li></ol></li></ol></div>
+<blockquote><p><strong>Objectif</strong> : Cours de synthèse complet suivant le pipeline ML étape par étape. Chaque étape inclut des explications détaillées, le code, les formules, les bonnes pratiques, les erreurs à éviter, et <strong>des exemples concrets typiques</strong>.<br></p></blockquote>
+
+<hr>
+
+<h2 id="le-pipeline">Le Pipeline</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">1. COLLECT → 2. EDA → 3. CLEAN → 4. SPLIT → 5. PREPROCESS → 6. MODEL → 7. TUNE → 8. EVALUATE</code></pre></div>
+
+
+<p><strong>Règle d'or</strong> : toutes les transformations doivent être apprises sur le train set uniquement, puis appliquées au test set.</p>
+
+<hr>
+
+<h2 id="étape-1-collect">Étape 1 — COLLECT</h2>
+
+<h2 id="11-chargement">1.1 Chargement</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+data = pd.read_csv(&quot;data.csv&quot;)
+data = pd.read_csv(&quot;https://url-du-dataset.csv&quot;)</code></pre></div>
+
+
+<h2 id="12-premier-aperçu">1.2 Premier aperçu</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data.shape       # (n_rows, n_cols)
+data.head()      # 5 premières lignes
+data.info()      # types, non-null
+data.describe()  # stats descriptives</code></pre></div>
+
+
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — Dataset immobilier (Houses)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data = pd.read_csv(&quot;https://wagon-public-datasets.s3.amazonaws.com/houses_train_raw.csv&quot;)
+X = data.drop(columns=[&#x27;SalePrice&#x27;])
+y = data[&#x27;SalePrice&#x27;]   # target continue → RÉGRESSION</code></pre></div>
+
+
+<p><strong>Ex 2 — Dataset Titanic</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data = pd.read_csv(&quot;https://wagon-public-datasets.s3.amazonaws.com/.../ML_titanic_dataset_encoded.csv&quot;)
+y = data[&#x27;survived&#x27;]       # target binaire → CLASSIFICATION
+X = data.drop(columns=[&#x27;survived&#x27;])</code></pre></div>
+
+
+<p><strong>Ex 3 — Dataset voitures mpg</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import seaborn as sns
+mpg = sns.load_dataset(&#x27;mpg&#x27;).dropna()
+y = mpg[&#x27;mpg&#x27;]             # consommation → RÉGRESSION
+X = mpg[[&#x27;horsepower&#x27;,&#x27;weight&#x27;,&#x27;cylinders&#x27;]]</code></pre></div>
+
+
+<blockquote><p>❌ Erreur : commencer à modéliser sans explorer les données. L'EDA vient AVANT.<br></p></blockquote>
+
+<hr>
+
+<h2 id="étape-2-eda">Étape 2 — EDA</h2>
+
+<h2 id="21-distributions">2.1 Distributions</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import seaborn as sns
+import matplotlib.pyplot as plt
+
+data.select_dtypes(include=&#x27;number&#x27;).hist(figsize=(15,10), bins=30)
+sns.histplot(data[&#x27;SalePrice&#x27;], kde=True)</code></pre></div>
+
+
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — Distribution skewed (prix immobilier)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">sns.histplot(data[&#x27;SalePrice&#x27;], kde=True)
+## → Distribution très skewed à droite → envisager log transform : np.log1p(y)</code></pre></div>
+
+
+<p><strong>Ex 2 — Distribution normale (taille humaine)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">sns.histplot(data[&#x27;Height&#x27;], kde=True)
+## → Distribution symétrique, en cloche → StandardScaler approprié</code></pre></div>
+
+
+<h2 id="22-corrélations">2.2 Corrélations</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">corr = data.select_dtypes(&#x27;number&#x27;).corr()
+sns.heatmap(corr, cmap=&#x27;coolwarm&#x27;, annot=True, fmt=&#x27;.2f&#x27;)</code></pre></div>
+
+
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — Features très corrélées entre elles (multicolinéarité)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">mpg.corr()[&#x27;displacement&#x27;][&#x27;cylinders&#x27;]   # → ρ = 0.95!
+## → Garder une seule des deux, ou laisser la régularisation gérer</code></pre></div>
+
+
+<p><strong>Ex 2 — Feature bien corrélée au target</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data.corr()[&#x27;SalePrice&#x27;][&#x27;GrLivArea&#x27;]   # → ρ = 0.71
+## → GrLivArea sera probablement une feature importante</code></pre></div>
+
+
+<p><strong>Ex 3 — Feature non corrélée au target</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data.corr()[&#x27;SalePrice&#x27;][&#x27;MoSold&#x27;]   # → ρ = 0.03
+## → MoSold (mois de vente) n&#x27;apporte quasi rien au modèle</code></pre></div>
+
+
+<h2 id="23-valeurs-manquantes">2.3 Valeurs manquantes</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">(data.isnull().sum() / len(data) * 100).sort_values(ascending=False)</code></pre></div>
+
+
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — 99% NaN → supprimer la colonne</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## PoolQC a 99% de NaN → la supprimer
+data = data.drop(columns=[&#x27;PoolQC&#x27;])</code></pre></div>
+
+
+<p><strong>Ex 2 — NaN = info métier</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Alley : NaN signifie &quot;pas d&#x27;allée&quot; — PAS une donnée manquante
+data[&#x27;Alley&#x27;] = data[&#x27;Alley&#x27;].fillna(&#x27;NoAlley&#x27;)</code></pre></div>
+
+
+<p><strong>Ex 3 — 15% NaN numérique → imputer</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## LotFrontage : 15% de NaN → imputer par la médiane (après le split!)</code></pre></div>
+
+
+<blockquote><p>⚠️ Corrélation ≠ Causalité. ρ élevé ne prouve pas que X cause Y.<br></p></blockquote>
+
+<hr>
+
+<h2 id="étape-3-clean">Étape 3 — CLEAN</h2>
+
+<h2 id="31-doublons">3.1 Doublons</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">print(f&quot;Doublons : {data.duplicated().sum()}&quot;)
+data = data.drop_duplicates()</code></pre></div>
+
+
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — Doublons exacts</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">len(data)                   # → 1760
+data.duplicated().sum()     # → 303
+data = data.drop_duplicates()
+len(data)                   # → 1457</code></pre></div>
+
+
+<p><strong>Ex 2 — Doublons sur certaines colonnes</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Même client avec deux entrées → garder la plus récente
+data = data.sort_values(&#x27;date&#x27;).drop_duplicates(subset=[&#x27;client_id&#x27;], keep=&#x27;last&#x27;)</code></pre></div>
+
+
+<h2 id="32-valeurs-manquantes-stratégies">3.2 Valeurs manquantes — Stratégies</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Taux NaN</th><th>Stratégie</th></tr></thead><tbody><tr><td>>50%</td><td>Supprimer la colonne</td></tr><tr><td><30%</td><td>Imputer (mean, median, most_frequent)</td></tr><tr><td>NaN = info métier</td><td>Remplacer par valeur significative</td></tr></tbody></table></div>
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — Imputation numérique par la médiane</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.impute import SimpleImputer
+imputer = SimpleImputer(strategy=&#x27;median&#x27;)
+imputer.fit(X_train[[&#x27;LotFrontage&#x27;]])
+X_train[&#x27;LotFrontage&#x27;] = imputer.transform(X_train[[&#x27;LotFrontage&#x27;]])
+X_test[&#x27;LotFrontage&#x27;] = imputer.transform(X_test[[&#x27;LotFrontage&#x27;]])
+print(imputer.statistics_)   # → [68.0] (médiane apprise sur train)</code></pre></div>
+
+
+<p><strong>Ex 2 — Imputation catégorielle par le mode</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">imputer_cat = SimpleImputer(strategy=&#x27;most_frequent&#x27;)
+imputer_cat.fit(X_train[[&#x27;FireplaceQu&#x27;]])
+X_train[&#x27;FireplaceQu&#x27;] = imputer_cat.transform(X_train[[&#x27;FireplaceQu&#x27;]])
+X_test[&#x27;FireplaceQu&#x27;] = imputer_cat.transform(X_test[[&#x27;FireplaceQu&#x27;]])</code></pre></div>
+
+
+<p><strong>Ex 3 — Plusieurs colonnes d'un coup</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">num_cols = [&#x27;Age&#x27;, &#x27;Income&#x27;, &#x27;Score&#x27;]
+imputer = SimpleImputer(strategy=&#x27;mean&#x27;)
+imputer.fit(X_train[num_cols])
+X_train[num_cols] = imputer.transform(X_train[num_cols])
+X_test[num_cols] = imputer.transform(X_test[num_cols])
+print(imputer.statistics_)   # → [34.2, 52000.0, 7.3] une par colonne</code></pre></div>
+
+
+<p><strong>Ex 4 — NaN = info métier (pas d'imputation)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## AVANT le split (c&#x27;est du domain knowledge, pas une stat)
+data[&#x27;Alley&#x27;] = data[&#x27;Alley&#x27;].fillna(&#x27;NoAlley&#x27;)
+data[&#x27;GarageType&#x27;] = data[&#x27;GarageType&#x27;].fillna(&#x27;NoGarage&#x27;)</code></pre></div>
+
+
+<blockquote><p>❌ Imputer AVANT le split = data leakage. Le imputer doit être fit sur le train uniquement.<br></p></blockquote>
+
+<h2 id="33-outliers">3.3 Outliers</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data[[&#x27;GrLivArea&#x27;]].boxplot()
+mask = (data[&#x27;GrLivArea&#x27;] &gt; 0) &amp; (data[&#x27;GrLivArea&#x27;] &lt; 5000)
+data = data[mask].reset_index(drop=True)</code></pre></div>
+
+
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — Outlier = erreur de saisie</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Un terrain de 0 m² → clairement une erreur
+data = data[data[&#x27;LotArea&#x27;] &gt; 0]</code></pre></div>
+
+
+<p><strong>Ex 2 — Outlier = valeur extrême mais légitime</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Une maison à 600k$ dans un dataset moyen à 180k$ → valeur réelle, garder
+## Mais utiliser RobustScaler au lieu de StandardScaler</code></pre></div>
+
+
+<p><strong>Ex 3 — Détection par IQR</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">Q1 = data[&#x27;col&#x27;].quantile(0.25)
+Q3 = data[&#x27;col&#x27;].quantile(0.75)
+IQR = Q3 - Q1
+lower = Q1 - 1.5 * IQR
+upper = Q3 + 1.5 * IQR
+data = data[(data[&#x27;col&#x27;] &gt;= lower) &amp; (data[&#x27;col&#x27;] &lt;= upper)]</code></pre></div>
+
+
+<blockquote><p>⚠️ Toujours comprendre le contexte métier avant de supprimer un outlier.<br></p></blockquote>
+
+<hr>
+
+<h2 id="étape-4-split">Étape 4 — SPLIT</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import train_test_split
+
+y = data[&#x27;SalePrice&#x27;]
+X = data.drop(columns=[&#x27;SalePrice&#x27;])
+
+## ⚠️ X doit être 2D : data[[&#x27;col&#x27;]] pas data[&#x27;col&#x27;]
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42
+)</code></pre></div>
+
+
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — Split standard (régression)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42
+)</code></pre></div>
+
+
+<p><strong>Ex 2 — Split stratifié (classification déséquilibrée)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Target : 90% classe 0, 10% classe 1 → stratify garde les proportions
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42, stratify=y
+)</code></pre></div>
+
+
+<p><strong>Ex 3 — Erreur classique : X en 1D</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## ❌ FAUX — Series 1D → ValueError dans sklearn
+X = data[&#x27;GrLivArea&#x27;]
+
+## ✅ CORRECT — DataFrame 2D
+X = data[[&#x27;GrLivArea&#x27;]]</code></pre></div>
+
+
+<p><strong>Règles fondamentales</strong> :</p>
+
+<ol>
+<li>Splitter AVANT tout preprocessing</li>
+<li>Ne jamais optimiser le random_state.</li>
+</ol>
+<p><strong>"Optimiser le random_state"</strong> veut dire : essayer <code>random_state=0, 1, 2, 3...</code> et garder celui qui donne le meilleur score. En faisant ça, tu ne choisis pas un meilleur modèle — tu choisis un découpage chanceux. Ton score ne reflète plus la vraie performance du modèle, il reflète ta chance au tirage.</p>
+<ol>
+<li>Le test set ne sert qu'UNE FOIS à la fin</li>
+<li>Classification déséquilibrée → <code>stratify=y</code></li>
+</ol>
+
+<blockquote><p>❌ Erreur fatale n°1 : scaler/encoder AVANT le split = data leakage.<br></p></blockquote>
+
+<hr>
+
+<h2 id="étape-5-preprocess">Étape 5 — PREPROCESS</h2>
+
+<p><strong>Règle</strong> : fit sur train → transform sur train ET test.</p>
+
+<h2 id="51-feature-scaling">5.1 Feature Scaling</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Scaler</th><th>Formule</th><th>Usage</th></tr></thead><tbody><tr><td>StandardScaler</td><td>z=(x-μ)/σ</td><td>Défaut, distrib normale</td></tr><tr><td>MinMaxScaler</td><td>[0,1]</td><td>KNN, sparse, bornes</td></tr><tr><td>RobustScaler</td><td>(x-med)/IQR</td><td>Robuste outliers</td></tr></tbody></table></div>
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — StandardScaler (cas général)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)   # PAS fit_transform!</code></pre></div>
+
+
+<p><strong>Ex 2 — RobustScaler (outliers présents)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import RobustScaler
+scaler = RobustScaler()
+X_train_scaled = scaler.fit_transform(X_train)   # utilise median et IQR
+X_test_scaled = scaler.transform(X_test)</code></pre></div>
+
+
+<p><strong>Ex 3 — MinMaxScaler (features positives / KNN)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+X_train_scaled = scaler.fit_transform(X_train)   # compresse dans [0,1]
+X_test_scaled = scaler.transform(X_test)</code></pre></div>
+
+
+<p><strong>Ex 4 — Scaler UNE seule colonne</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">scaler = StandardScaler()
+scaler.fit(X_train[[&#x27;GrLivArea&#x27;]])
+X_train[&#x27;GrLivArea&#x27;] = scaler.transform(X_train[[&#x27;GrLivArea&#x27;]])
+X_test[&#x27;GrLivArea&#x27;] = scaler.transform(X_test[[&#x27;GrLivArea&#x27;]])</code></pre></div>
+
+
+<p><strong>Modèles qui EXIGENT le scaling</strong> : KNN, SVM, Ridge, Lasso, ElasticNet, LogisticRegression régularisée.</p>
+
+<blockquote><p>❌ <code>scaler.fit_transform(X_test)</code> = DATA LEAKAGE.<br></p></blockquote>
+
+<blockquote><p>❌ Scaler AVANT le split = DATA LEAKAGE.<br></p></blockquote>
+
+<h2 id="52-encodage-catégoriel">5.2 Encodage catégoriel</h2>
+
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — OrdinalEncoder (catégories ordonnées)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import OrdinalEncoder
+encoder = OrdinalEncoder(categories=[[&#x27;bad&#x27;,&#x27;average&#x27;,&#x27;good&#x27;]])
+encoder.fit(X_train[[&#x27;quality&#x27;]])
+X_train[&#x27;quality_enc&#x27;] = encoder.transform(X_train[[&#x27;quality&#x27;]])
+X_test[&#x27;quality_enc&#x27;] = encoder.transform(X_test[[&#x27;quality&#x27;]])
+## bad=0, average=1, good=2</code></pre></div>
+
+
+<p><strong>Ex 2 — OneHotEncoder (catégories sans ordre)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import OneHotEncoder
+ohe = OneHotEncoder(sparse_output=False, drop=&#x27;first&#x27;)
+ohe.fit(X_train[[&#x27;city&#x27;]])
+
+encoded_train = ohe.transform(X_train[[&#x27;city&#x27;]])
+encoded_test = ohe.transform(X_test[[&#x27;city&#x27;]])
+print(ohe.get_feature_names_out())   # → [&#x27;city_London&#x27;, &#x27;city_Paris&#x27;]</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">**sparse_output=False** — Par défaut, le OneHotEncoder retourne une matrice sparse (creuse). 
+Une matrice sparse est un format optimisé pour stocker des matrices avec beaucoup de zéros 
+— ce qui est le cas du OHE (chaque ligne n&#x27;a qu&#x27;un seul 1, tout le reste est 0). 
+C&#x27;est efficace en mémoire quand tu as des centaines de catégories, mais c&#x27;est difficile à manipuler : 
+tu ne peux pas le mettre directement dans un DataFrame, tu ne peux pas le visualiser avec print() facilement. 
+Avec sparse_output=False, tu récupères un array numpy classique, plus pratique pour travailler.
+
+drop=&#x27;first&#x27; — C&#x27;est la solution au piège de la multicolinéarité. Prenons l&#x27;exemple de embark_town avec 3 villes :
+Sans drop=&#x27;first&#x27;, le OHE crée 3 colonnes
+
+Le problème : si tu connais deux colonnes, tu déduis la troisième (Cherbourg + Southampton + Queenstown = 1 toujours). 
+C&#x27;est une redondance parfaite. 
+
+Sans régularisation, le modèle ne sait pas comment répartir les coefficients entre les 3 → ils deviennent instables et explosent.
+Avec drop=&#x27;first&#x27;, on supprime la première catégorie (Cherbourg) :
+On ne perd aucune information — Cherbourg est implicitement représenté quand les deux autres sont à 0. Mais on élimine la redondance. 
+Cherbourg devient la catégorie de référence et les coefficients des autres villes s&#x27;interprètent par rapport à elle.</code></pre></div>
+
+
+<p><strong>Ex 3 — OHE SANS drop='first' → piège multicolinéarité</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## embark_town : Cherbourg, Southampton, Queenstown
+## OHE crée 3 colonnes : C + S + Q = 1 TOUJOURS → multicolinéarité parfaite
+## → Sans régularisation : coefficients instables, explosent
+## → Avec Lasso (L1) : met les redondants à 0 automatiquement
+## → Solution : drop=&#x27;first&#x27; OU régulariser</code></pre></div>
+
+
+<p><strong>Ex 4 — LabelEncoder (target classif) - !! OUI TARGET y PAS DONNÉES SOURCES (X) !!</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+y_encoded = le.fit_transform(y)   # Adelie=0, Chinstrap=1, Gentoo=2
+y_original = le.inverse_transform(y_encoded)   # décode</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## ============================================================
+## ERREURS CLASSIQUES
+## ============================================================
+#
+## ❌ LabelEncoder sur une feature → invente un faux ordre
+##    ville: Paris=2 &gt; Lyon=0  → le modèle apprend n&#x27;importe quoi
+#
+## ❌ OrdinalEncoder sur des catégories sans ordre
+##    ville: Paris=0, Lyon=1, Marseille=2 → même problème
+#
+## ❌ OneHotEncoder sans drop=&#x27;first&#x27; → multicolinéarité
+##    3 villes → 3 colonnes → C1 + C2 + C3 = 1 toujours
+##    → coefficients instables sans régularisation
+#
+## ✅ LabelEncoder → target uniquement --&gt; LabelEncoder attend une Series 1D (un seul vecteur) et non pas un DataFrame (d&#x27;où la différence avec OrdinalNecoder qui pourrait paraître similaire)
+## ✅ OrdinalEncoder → features avec ordre naturel (taille, niveau)
+## ✅ OneHotEncoder(drop=&#x27;first&#x27;) → features sans ordre (ville, couleur)</code></pre></div>
+
+
+<blockquote><p>❌ OrdinalEncoder sur des catégories SANS ordre (couleurs, villes) = fausse relation.<br></p></blockquote>
+
+<h2 id="53-équilibrage-classification">5.3 Équilibrage (classification)</h2>
+
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — SMOTE (oversampling synthétique)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from imblearn.over_sampling import SMOTE
+smote = SMOTE(random_state=42)
+X_train_res, y_train_res = smote.fit_resample(X_train, y_train)
+print(f&quot;Avant: {y_train.value_counts().to_dict()}&quot;)
+print(f&quot;Après: {pd.Series(y_train_res).value_counts().to_dict()}&quot;)</code></pre></div>
+
+
+<p><strong>Ex 2 — Undersampling (sous-échantillonner la majorité)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from imblearn.under_sampling import RandomUnderSampler
+rus = RandomUnderSampler(random_state=42)
+X_train_res, y_train_res = rus.fit_resample(X_train, y_train)</code></pre></div>
+
+
+<blockquote><p>❌ SMOTE APRÈS le split uniquement. Jamais avant.<br></p></blockquote>
+
+<h2 id="54-feature-engineering">5.4 Feature Engineering</h2>
+
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — Ratio</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data[&#x27;bedroom_ratio&#x27;] = data[&#x27;BedroomAbvGr&#x27;] / data[&#x27;TotRmsAbvGrd&#x27;]</code></pre></div>
+
+
+<p><strong>Ex 2 — Log transform (réduire skew)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+data[&#x27;log_price&#x27;] = np.log1p(data[&#x27;SalePrice&#x27;])</code></pre></div>
+
+
+<p><strong>Ex 3 — Date → feature numérique</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data[&#x27;delivery_days&#x27;] = (data[&#x27;delivered&#x27;] - data[&#x27;dispatched&#x27;]).dt.days
+data[&#x27;is_weekend&#x27;] = data[&#x27;day_of_week&#x27;].isin([5,6]).astype(int)</code></pre></div>
+
+
+<h2 id="55-feature-selection">5.5 Feature Selection</h2>
+
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — Supprimer features très corrélées entre elles</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">corr = X.corr().abs()
+upper = corr.where(np.triu(np.ones(corr.shape), k=1).astype(bool))
+to_drop = [col for col in upper.columns if any(upper[col] &gt; 0.9)]
+X = X.drop(columns=to_drop)</code></pre></div>
+
+
+<p><strong>Ex 2 — Permutation importance</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.inspection import permutation_importance
+result = permutation_importance(model, X_test, y_test, n_repeats=10)
+importance = pd.DataFrame({
+    &#x27;feature&#x27;: X.columns,
+    &#x27;importance&#x27;: result.importances_mean
+}).sort_values(&#x27;importance&#x27;, ascending=False)</code></pre></div>
+
+
+<h2 id="56-pipeline-anti-leakage">5.6 Pipeline anti-leakage</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.pipeline import make_pipeline
+pipe = make_pipeline(StandardScaler(), Ridge(alpha=1))
+from sklearn.model_selection import cross_validate
+cross_validate(pipe, X, y, cv=5)   # scaling refait dans chaque fold!</code></pre></div>
+
+
+<hr>
+
+<h2 id="étape-6-model">Étape 6 — MODEL</h2>
+
+<h2 id="61-baseline">6.1 Baseline</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.dummy import DummyRegressor, DummyClassifier
+
+baseline = DummyRegressor(strategy=&#x27;mean&#x27;)
+baseline.fit(X_train, y_train)
+print(f&quot;Baseline R²: {baseline.score(X_test, y_test):.3f}&quot;)   # → ~0.0</code></pre></div>
+
+
+<blockquote><p>💡 Si votre modèle ne bat pas la baseline, il y a un problème fondamental.<br></p></blockquote>
+
+<h2 id="62-modèles-de-régression">6.2 Modèles de régression</h2>
+
+<h3 id="ex-1-linearregression-ols">Ex 1 — LinearRegression (OLS)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit(X_train, y_train)
+print(f&quot;R²: {model.score(X_test, y_test):.3f}&quot;)
+print(f&quot;Coefs: {model.coef_}&quot;)
+print(f&quot;Intercept: {model.intercept_}&quot;)
+## ŷ = β₀ + β₁X₁ + ... | Minimise Σ(y-ŷ)²</code></pre></div>
+
+
+<h3 id="ex-2-ridge-l2-réduit-coefs-vers-0">Ex 2 — Ridge (L2 — réduit coefs vers 0)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import Ridge
+ridge = Ridge(alpha=1)   # alpha = force de régularisation
+ridge.fit(X_train_scaled, y_train)   # ⚠️ scaling obligatoire!
+## Loss = Σ(y-ŷ)² + α·Σβⱼ²</code></pre></div>
+
+
+<h3 id="ex-3-lasso-l1-annule-coefs-feature-selection">Ex 3 — Lasso (L1 — annule coefs, feature selection)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import Lasso
+lasso = Lasso(alpha=1)
+lasso.fit(X_train_scaled, y_train)
+## Loss = Σ(y-ŷ)² + α·Σ|βⱼ| → certains coefs = exactement 0
+print(f&quot;Features éliminées: {(lasso.coef_ == 0).sum()}&quot;)</code></pre></div>
+
+
+<h3 id="ex-4-elasticnet-mix-l1l2">Ex 4 — ElasticNet (mix L1+L2)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import ElasticNet
+elastic = ElasticNet(alpha=1, l1_ratio=0.5)
+## l1_ratio=0 → Ridge | l1_ratio=1 → Lasso</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">Ridge → tu veux garder toutes les features, juste calmer les coefficients.
+Lasso → tu veux que le modèle élimine lui-même les features inutiles (coefs = 0).
+ElasticNet → tu hésites, ou tu as des features corrélées en groupes. Tu laisses l1_ratio décider via GridSearch.
+En cas de doute → Ridge. C&#x27;est rarement nuisible.</code></pre></div>
+
+
+<blockquote><p>💡 On ne régularise JAMAIS β₀. Scaling OBLIGATOIRE pour Ridge/Lasso/ElasticNet.<br></p></blockquote>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Ridge (L2)</th><th>Lasso (L1)</th></tr></thead><tbody><tr><td>Effet α++</td><td>Coefs → 0</td><td>Coefs = 0 (sélection)</td></tr><tr><td>Multicolinéarité</td><td>Gère bien</td><td>Garde 1 feature</td></tr><tr><td>Quand</td><td>Toutes features utiles</td><td>Sélection features</td></tr></tbody></table></div>
+<h2 id="63-modèles-de-classification">6.3 Modèles de classification</h2>
+
+<h3 id="ex-1-logisticregression-sans-régularisation">Ex 1 — LogisticRegression (sans régularisation)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import LogisticRegression
+model = LogisticRegression(penalty=None, max_iter=5000, tol=1e-9)
+model.fit(X_scaled, y)
+coefs = pd.Series(model.coef_[0], index=X.columns)
+coefs.abs().sort_values(ascending=False)   # features par importance</code></pre></div>
+
+
+<h3 id="ex-2-logisticregression-avec-l2">Ex 2 — LogisticRegression avec L2</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = LogisticRegression(penalty=&#x27;l2&#x27;, C=0.1, max_iter=5000)
+## C = 1/alpha : C grand = PEU régul | C petit = FORTE régul
+model.fit(X_scaled, y)</code></pre></div>
+
+
+<h3 id="ex-3-logisticregression-avec-l1-feature-selection">Ex 3 — LogisticRegression avec L1 (feature selection)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = LogisticRegression(penalty=&#x27;l1&#x27;, C=0.1, solver=&#x27;liblinear&#x27;, max_iter=5000)
+## solver=&#x27;liblinear&#x27; requis pour L1!
+model.fit(X_scaled, y)
+## Les coefs à 0 = features éliminées (comme Lasso)
+zero_features = X.columns[model.coef_[0] == 0].tolist()</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">C vs alpha — dans Ridge/Lasso, alpha grand = forte régularisation. 
+
+Dans LogisticRegression, le paramètre s&#x27;appelle C et c&#x27;est l&#x27;inverse : C = 1/alpha. 
+Donc C grand = peu régularisé, C petit = forte régularisation. Le réflexe est inversé.
+
+Interprétation des coefficients — la LogisticRegression prédit des log-odds en interne. 
+Un coef positif signifie que la feature augmente la probabilité de la classe positive. 
+Pour rendre ça concret, on prend exp(coef) qui donne l&#x27;odds ratio : de combien les chances sont multipliées. 
+Exemple sur le Titanic : exp(2.67) = 14 → une femme avait 14 fois plus de chances de survivre qu&#x27;un homme, toutes choses égales par ailleurs.</code></pre></div>
+
+
+<h3 id="ex-4-knn">Ex 4 — KNN</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.neighbors import KNeighborsRegressor
+model = KNeighborsRegressor(n_neighbors=5)
+model.fit(X_train_scaled, y_train)   # ⚠️ scaling obligatoire!</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Param</th><th>Effet</th></tr></thead><tbody><tr><td>n_neighbors (1...50)</td><td>K petit=overfit, K grand=underfit</td></tr><tr><td>p (1=Manhattan, 2=Euclid)</td><td>Change la distance</td></tr><tr><td>weights (uniform/distance)</td><td>distance = proches pèsent +</td></tr></tbody></table></div>
+<p><strong>Elbow Method pour choisir K</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">scores = []
+for k in range(1, 51):
+    model = KNeighborsRegressor(n_neighbors=k)
+    cv = cross_validate(model, X_train_scaled, y_train, cv=5)
+    scores.append(cv[&#x27;test_score&#x27;].mean())
+
+plt.plot(range(1, 51), scores)
+plt.xlabel(&#x27;K&#x27;); plt.ylabel(&#x27;R²&#x27;)</code></pre></div>
+
+
+<blockquote><p>❌ K=1 overfit toujours. SCALING OBLIGATOIRE.<br></p></blockquote>
+
+<h3 id="ex-5-svm-svc">Ex 5 — SVM (SVC)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.svm import SVC
+svc = SVC(kernel=&#x27;rbf&#x27;, C=1, gamma=0.1)
+svc.fit(X_train_scaled, y_train)   # ⚠️ scaling obligatoire!</code></pre></div>
+
+
+<p><strong>Kernels</strong> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Kernel</th><th>K(a,b)</th><th>Hyperparams</th></tr></thead><tbody><tr><td>linear</td><td>aᵀb</td><td>C</td></tr><tr><td>poly</td><td>(aᵀb+c)ᵈ</td><td>C, degree, coef0</td></tr><tr><td>rbf</td><td>exp(-γ‖a-b‖²)</td><td>C, gamma</td></tr><tr><td>sigmoid</td><td>tanh(γaᵀb+c)</td><td>C, gamma, coef0</td></tr></tbody></table></div>- C grand → marge dure, overfit | C petit → underfit
+<ul>
+<li>γ grand → myope, overfit | γ petit → lisse, underfit</li>
+<li>Kernel Trick : similarité haute dim sans créer les features</li>
+</ul>
+
+<blockquote><p>❌ SCALING OBLIGATOIRE. Tuner C et gamma ENSEMBLE.<br></p></blockquote>
+
+<h2 id="64-cross-validation">6.4 Cross-validation</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import cross_validate
+cv_results = cross_validate(model, X_train_scaled, y_train, cv=5)
+print(f&quot;Score moyen: {cv_results[&#x27;test_score&#x27;].mean():.3f}&quot;)</code></pre></div>
+
+
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — CV simple</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">cv = cross_validate(Ridge(alpha=1), X_train_scaled, y_train, cv=5)
+print(cv[&#x27;test_score&#x27;].mean())</code></pre></div>
+
+
+<p><strong>Ex 2 — CV avec Pipeline (anti-leakage)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">pipe = make_pipeline(StandardScaler(), Ridge(alpha=1))
+cv = cross_validate(pipe, X_train, y_train, cv=5)</code></pre></div>
+
+
+<p><strong>Ex 3 — CV multi-métriques</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">cv = cross_validate(model, X, y, cv=5,
+    scoring=[&#x27;r2&#x27;, &#x27;neg_mean_absolute_error&#x27;])</code></pre></div>
+
+
+<blockquote><p>⚠️ cross_validate ne retourne PAS de modèle. Pour prédire : <a href="http://model.fit" target="_blank" rel="noopener">model.fit</a>() séparément.<br></p></blockquote>
+
+<h2 id="65-biais-variance">6.5 Biais / Variance</h2>
+
+<p>TotalError = Bias² + Variance + IrreducibleError</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Diagnostic</th><th>Symptôme</th><th>Solution</th></tr></thead><tbody><tr><td>UNDERFIT</td><td>Faible train ET test</td><td>• features, modèle + complexe</td></tr><tr><td>OVERFIT</td><td>Haut train, bas test</td><td>Régulariser, + données</td></tr><tr><td>IDÉAL</td><td>Haut train ET test</td><td>✓</td></tr></tbody></table></div>
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — Learning curves : diagnostic underfit</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import learning_curve
+train_sizes, train_scores, test_scores = learning_curve(
+    LinearRegression(), X, y, cv=5, train_sizes=[50,100,250,500,1000])
+## → Courbes convergent vers un plateau BAS → underfit → besoin de + features</code></pre></div>
+
+
+<p><strong>Ex 2 — Learning curves : diagnostic overfit</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## → Grand écart entre train (0.95) et test (0.60) → overfit → régulariser</code></pre></div>
+
+
+<hr>
+
+<h2 id="étape-7-tune">Étape 7 — TUNE</h2>
+
+<h2 id="71-params-vs-hyperparams">7.1 Params vs Hyperparams</h2>
+
+<ul>
+<li><strong>Paramètres</strong> (β) : appris par .fit() → β₀, β₁...</li>
+<li><strong>Hyperparamètres</strong> : choisis → alpha, C, K, gamma, kernel</li>
+<li><strong>FIT</strong> = min Loss → params | <strong>TUNE</strong> = max Metric → hyperparams</li>
+</ul>
+
+<h2 id="72-gridsearchcv">7.2 GridSearchCV</h2>
+
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — Grid coarse (KNN)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import GridSearchCV
+from sklearn.neighbors import KNeighborsRegressor
+
+search = GridSearchCV(
+    KNeighborsRegressor(),
+    {&#x27;n_neighbors&#x27;: [1,5,10,20,50], &#x27;p&#x27;: [1,2,3]},
+    scoring=&#x27;r2&#x27;, cv=5, n_jobs=-1
+)
+search.fit(X_train_scaled, y_train)
+print(search.best_params_)    # → {&#x27;n_neighbors&#x27;: 10, &#x27;p&#x27;: 2}
+print(search.best_score_)     # → 0.72</code></pre></div>
+
+
+<p><strong>Ex 2 — Grid fine (affinage autour du best)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">search2 = GridSearchCV(
+    KNeighborsRegressor(),
+    {&#x27;n_neighbors&#x27;: list(range(6, 16)), &#x27;p&#x27;: [1,2]},
+    scoring=&#x27;r2&#x27;, cv=5, n_jobs=-1
+)
+search2.fit(X_train_scaled, y_train)
+best_k = search2.best_params_[&#x27;n_neighbors&#x27;]</code></pre></div>
+
+
+<p><strong>Ex 3 — Grid multi-params (ElasticNet)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">search = GridSearchCV(
+    ElasticNet(),
+    {&#x27;alpha&#x27;: [0.01, 0.1, 1, 10], &#x27;l1_ratio&#x27;: [0.2, 0.5, 0.8]},
+    scoring=&#x27;r2&#x27;, cv=5, n_jobs=-1
+)
+search.fit(X_train_scaled, y_train)
+## N modèles = 4 × 3 × 5 = 60</code></pre></div>
+
+
+<p><strong>Ex 4 — Visualiser les résultats</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+pd.DataFrame(search.cv_results_)[[&#x27;params&#x27;,&#x27;mean_test_score&#x27;,&#x27;rank_test_score&#x27;]]</code></pre></div>
+
+
+<h2 id="73-randomizedsearchcv">7.3 RandomizedSearchCV</h2>
+
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — RandomSearch avec distributions continues</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import RandomizedSearchCV
+from scipy.stats import uniform, randint, loguniform
+
+search = RandomizedSearchCV(
+    ElasticNet(),
+    {&#x27;alpha&#x27;: loguniform(0.001, 10), &#x27;l1_ratio&#x27;: uniform(0, 1)},
+    n_iter=100, scoring=&#x27;r2&#x27;, cv=5, n_jobs=-1, random_state=42
+)
+search.fit(X_train_scaled, y_train)</code></pre></div>
+
+
+<p><strong>Ex 2 — RandomSearch SVM (rbf + sigmoid)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">search = RandomizedSearchCV(
+    SVC(),
+    {&#x27;kernel&#x27;: [&#x27;rbf&#x27;,&#x27;sigmoid&#x27;], &#x27;C&#x27;: loguniform(0.1,100), &#x27;gamma&#x27;: loguniform(0.001,10)},
+    n_iter=50, cv=5, n_jobs=-1, random_state=42
+)
+search.fit(X_train_scaled, y_train)</code></pre></div>
+
+
+<p><strong>Ex 3 — RandomSearch SVM poly (séparé)</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">search_poly = RandomizedSearchCV(
+    SVC(kernel=&#x27;poly&#x27;),
+    {&#x27;degree&#x27;: randint(2,6), &#x27;C&#x27;: loguniform(0.1,100), &#x27;coef0&#x27;: uniform(0,10)},
+    n_iter=50, cv=5, n_jobs=-1, random_state=42
+)
+search_poly.fit(X_train_scaled, y_train)</code></pre></div>
+
+
+<h3 id="distributions-scipy">Distributions scipy</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Distribution</th><th>Code</th><th>Usage</th></tr></thead><tbody><tr><td>Uniforme continue</td><td>uniform(a,b) → [a,a+b]</td><td>Aucune idée</td></tr><tr><td>Uniforme discrète</td><td>randint(a,b) → [a,b[</td><td>n_neighbors</td></tr><tr><td>Log-uniforme</td><td>loguniform(a,b)</td><td>alpha, C, gamma</td></tr><tr><td>Normale</td><td>norm(μ,σ)</td><td>A priori connu</td></tr></tbody></table></div>
+<h2 id="74-workflow-recommandé">7.4 Workflow recommandé</h2>
+
+<ol>
+<li><strong>Coarse</strong> : loguniform, large range → trouver la zone</li>
+<li><strong>Fine</strong> : resserrer autour du best → affiner</li>
+<li><strong>Évaluer</strong> : best_estimator_.score(X_test_scaled, y_test)</li>
+</ol>
+
+<blockquote><p>❌ Tuner sur le test set = contamination. Toujours via CV sur train.<br></p></blockquote>
+
+<blockquote><p>❌ Grille trop fine dès le début → loguniform d'abord.<br></p></blockquote>
+
+<hr>
+
+<h2 id="étape-8-evaluate">Étape 8 — EVALUATE</h2>
+
+<h2 id="81-métriques-de-régression">8.1 Métriques de régression</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Métrique</th><th>Usage</th></tr></thead><tbody><tr><td>MSE Σ(y-ŷ)²/n</td><td>Grandes erreurs coûteuses</td></tr><tr><td>RMSE √MSE</td><td>Dans l'unité du target</td></tr><tr><td>MAE Σ</td><td>y-ŷ</td></tr><tr><td>R² 1-SS_res/SS_tot</td><td>Qualité générale</td></tr></tbody></table></div>
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — Évaluation complète régression</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+import math
+
+y_pred = best_model.predict(X_test_scaled)
+print(f&quot;R²   = {r2_score(y_test, y_pred):.3f}&quot;)
+print(f&quot;RMSE = {math.sqrt(mean_squared_error(y_test, y_pred)):,.0f}&quot;)
+print(f&quot;MAE  = {mean_absolute_error(y_test, y_pred):,.0f}&quot;)</code></pre></div>
+
+
+<p><strong>Ex 2 — Comparer au score CV</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">print(f&quot;Score CV:   {search.best_score_:.3f}&quot;)
+print(f&quot;Score test: {best_model.score(X_test_scaled, y_test):.3f}&quot;)
+## Écart &lt; 5% → bonne généralisation
+## Écart &gt; 10% → possible overfitting des hyperparamètres</code></pre></div>
+
+
+<h2 id="82-métriques-de-classification">8.2 Métriques de classification</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Métrique</th><th>Formule</th><th>Usage</th></tr></thead><tbody><tr><td>Accuracy</td><td>(TP+TN)/total</td><td>Classes équilibrées</td></tr><tr><td>Precision</td><td>TP/(TP+FP)</td><td>Minimiser fausses alarmes</td></tr><tr><td>Recall</td><td>TP/(TP+FN)</td><td>Capturer tous les positifs</td></tr><tr><td>F1</td><td>2·P·R/(P+R)</td><td>Compromis P/R</td></tr><tr><td>ROC-AUC</td><td>Aire sous ROC</td><td>Indépendant du seuil</td></tr></tbody></table></div>
+<h3 id="exemples-typiques">Exemples typiques</h3>
+
+<p><strong>Ex 1 — Évaluation complète classification</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+y_pred = model.predict(X_test)
+print(f&quot;Accuracy:  {accuracy_score(y_test, y_pred):.3f}&quot;)
+print(f&quot;Precision: {precision_score(y_test, y_pred):.3f}&quot;)
+print(f&quot;Recall:    {recall_score(y_test, y_pred):.3f}&quot;)
+print(f&quot;F1:        {f1_score(y_test, y_pred):.3f}&quot;)</code></pre></div>
+
+
+<p><strong>Ex 2 — Confusion matrix</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">results = pd.DataFrame({&#x27;actual&#x27;: y_test, &#x27;predicted&#x27;: y_pred})
+confusion = pd.crosstab(results[&#x27;actual&#x27;], results[&#x27;predicted&#x27;])
+print(confusion)</code></pre></div>
+
+
+<p><strong>Ex 3 — Piège accuracy sur dataset déséquilibré</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Dataset 90% négatif, 10% positif
+## Accuracy = 0.91 → semble bon!
+## Mais Recall = 0.10 → le modèle rate 90% des positifs!
+## → Toujours vérifier Recall ET Precision</code></pre></div>
+
+
+<p><strong>Ex 4 — Ajuster le seuil de décision</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import precision_recall_curve
+proba = model.predict_proba(X_test)[:, 1]
+precision, recall, thresholds = precision_recall_curve(y_test, proba)
+
+## Trouver le seuil pour recall &gt;= 0.8
+scores = pd.DataFrame({&#x27;threshold&#x27;: thresholds, &#x27;recall&#x27;: recall[:-1]})
+optimal = scores[scores[&#x27;recall&#x27;] &gt;= 0.8].threshold.max()
+
+## Prédire avec ce seuil
+y_custom = (proba &gt; optimal).astype(int)</code></pre></div>
+
+
+<p><strong>Ex 5 — ROC-AUC</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import roc_auc_score
+auc = roc_auc_score(y_test, model.predict_proba(X_test)[:, 1])
+print(f&quot;AUC: {auc:.3f}&quot;)   # 1.0 = parfait, 0.5 = aléatoire</code></pre></div>
+
+
+<hr>
+
+<h2 id="annexe-under-the-hood">Annexe — Under the Hood</h2>
+
+<h2 id="loss-functions">Loss Functions</h2>
+
+<ul>
+<li>Régression : MSE (sensible outliers) | MAE (robuste) | Huber (mix)</li>
+<li>Classification : Log-Loss (LogReg) | Hinge (SVM)</li>
+</ul>
+
+<blockquote><p>❌ Loss ≠ Métrique! Loss = .fit() optimise (dérivable). Métrique = évaluation.<br></p></blockquote>
+
+<h2 id="gradient-descent">Gradient Descent</h2>
+
+<p>β(k+1) = β(k) - η · ∇L(β(k))</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Méthode</th><th>Obs/step</th><th>Trade-off</th></tr></thead><tbody><tr><td>Full GD</td><td>Toutes</td><td>Stable, lent</td></tr><tr><td>Mini-Batch</td><td>16-64</td><td>Compromis</td></tr><tr><td>SGD</td><td>1</td><td>Rapide, bruité</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">SGDRegressor(loss=&#x27;squared_error&#x27;)   # = LinearRegression via SGD
+SGDClassifier(loss=&#x27;log_loss&#x27;)       # = LogisticRegression via SGD
+SGDClassifier(loss=&#x27;hinge&#x27;)          # = SVC via SGD</code></pre></div>
+
+
+<hr>
+
+<h2 id="annexe-checklist-erreurs">Annexe — Checklist Erreurs</h2>
+
+<h3 id="data-leakage">Data Leakage</h3>
+
+<ul>
+<li>❌ Scaler/encoder avant le split</li>
+<li>❌ Fit scaler sur le test set</li>
+<li>❌ SMOTE avant le split</li>
+<li>❌ Tuner hyperparams sur le test set</li>
+<li>✅ Pipeline = scale dans chaque fold CV</li>
+</ul>
+
+<h3 id="preprocessing">Preprocessing</h3>
+
+<ul>
+<li>❌ X = data['col'] (Series 1D)</li>
+<li>❌ OHE sans drop='first'</li>
+<li>❌ OrdinalEncoder sans ordre</li>
+<li>❌ Oublier scaling avant KNN/SVM/Ridge/Lasso</li>
+</ul>
+
+<h3 id="modélisation">Modélisation</h3>
+
+<ul>
+<li>❌ Confondre C (inverse) et alpha</li>
+<li>❌ K=1 pour KNN</li>
+<li>❌ penalty='l1' sans solver='liblinear'</li>
+<li>❌ Grille trop fine dès le début</li>
+<li>❌ Accuracy sur dataset déséquilibré</li>
+<li>❌ Confondre loss et métrique</li>
+</ul>
+
+<hr>
+
+<blockquote><p><br></p></blockquote>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-analogie-fil-rouge-la-ligne-de-production">Analogie fil rouge : la ligne de production</a></li><li><a href="#ref-mini-plan-du-pipeline">Mini-plan du pipeline</a></li></ol></li><li><a href="#ref-étape-1-collect-charger-les-données">Étape 1 — COLLECT : charger les données</a><ol><li><a href="#ref-quest-ce-quon-fait">Qu'est-ce qu'on fait ?</a></li><li><a href="#ref-exemples-concrets">Exemples concrets</a></li></ol></li><li><a href="#ref-étape-2-eda-explorer-les-données">Étape 2 — EDA : explorer les données</a><ol><li><a href="#ref-objectif-de-leda">Objectif de l'EDA</a></li><li><a href="#ref-21-distributions">2.1 Distributions</a></li><li><a href="#ref-22-corrélations">2.2 Corrélations</a></li><li><a href="#ref-23-valeurs-manquantes">2.3 Valeurs manquantes</a></li></ol></li><li><a href="#ref-étape-3-clean-nettoyer-les-données">Étape 3 — CLEAN : nettoyer les données</a><ol><li><a href="#ref-31-doublons">3.1 Doublons</a></li><li><a href="#ref-32-valeurs-manquantes-stratégies">3.2 Valeurs manquantes — stratégies</a></li><li><a href="#ref-33-outliers">3.3 Outliers</a></li></ol></li><li><a href="#ref-étape-4-split-couper-les-données">Étape 4 — SPLIT : couper les données</a><ol><li><a href="#ref-pourquoi-couper">Pourquoi couper ?</a></li></ol></li><li><a href="#ref-étape-5-preprocess-préparer-les-features">Étape 5 — PREPROCESS : préparer les features</a><ol><li><a href="#ref-51-feature-scaling-mise-à-léchelle">5.1 Feature Scaling (mise à l'échelle)</a></li><li><a href="#ref-52-encodage-des-variables-catégorielles">5.2 Encodage des variables catégorielles</a></li><li><a href="#ref-53-équilibrage-des-classes-classification">5.3 Équilibrage des classes (classification)</a></li><li><a href="#ref-54-feature-engineering">5.4 Feature Engineering</a></li><li><a href="#ref-55-feature-selection">5.5 Feature Selection</a></li><li><a href="#ref-56-pipeline-sklearn-anti-leakage-automatique">5.6 Pipeline sklearn — anti-leakage automatique</a></li></ol></li><li><a href="#ref-étape-6-model-construire-et-évaluer-le-modèle">Étape 6 — MODEL : construire et évaluer le modèle</a><ol><li><a href="#ref-61-commencer-par-la-baseline-obligatoire">6.1 Commencer par la baseline (obligatoire)</a></li><li><a href="#ref-62-modèles-de-régression-prédire-un-nombre">6.2 Modèles de régression (prédire un nombre)</a></li><li><a href="#ref-63-modèles-de-classification-prédire-une-classe">6.3 Modèles de classification (prédire une classe)</a></li><li><a href="#ref-64-cross-validation">6.4 Cross-Validation</a></li><li><a href="#ref-65-biais-vs-variance">6.5 Biais vs Variance</a></li></ol></li><li><a href="#ref-étape-7-tune-optimiser-les-hyperparamètres">Étape 7 — TUNE : optimiser les hyperparamètres</a><ol><li><a href="#ref-params-vs-hyperparamètres">Params vs Hyperparamètres</a></li><li><a href="#ref-71-gridsearchcv-exploration-exhaustive">7.1 GridSearchCV — exploration exhaustive</a></li><li><a href="#ref-72-randomizedsearchcv-exploration-aléatoire">7.2 RandomizedSearchCV — exploration aléatoire</a></li></ol></li><li><a href="#ref-étape-8-evaluate-mesurer-les-performances-finales">Étape 8 — EVALUATE : mesurer les performances finales</a><ol><li><a href="#ref-81-métriques-de-régression">8.1 Métriques de régression</a></li><li><a href="#ref-82-métriques-de-classification">8.2 Métriques de classification</a></li></ol></li><li><a href="#ref-annexe-sous-le-capot">Annexe — Sous le capot</a><ol><li><a href="#ref-fonctions-de-perte-loss-functions">Fonctions de perte (Loss functions)</a></li><li><a href="#ref-descente-de-gradient">Descente de gradient</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<hr>
+
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Le machine learning (ML), c'est l'art d'apprendre à une machine à faire des prédictions à partir de données. Mais entre le moment où tu récupères tes données brutes et celui où ton modèle prédit correctement, il y a tout un <strong>pipeline</strong> à suivre — une suite d'étapes dans un ordre précis.</p>
+
+<p>Ce cours couvre ce pipeline en entier, du début à la fin.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Les 5 choses absolument à retenir avant de commencer :</p>
+<p>1. <strong>Le pipeline a un ordre strict</strong> — ne jamais modéliser sans avoir exploré et nettoyé les données.</p>
+<p>2. <strong>La règle d'or du split</strong> — toutes les transformations (scaling, imputation) doivent être <em>apprises</em> sur le train set uniquement, puis <em>appliquées</em> sur le test set.</p>
+<p>3. <strong>Data leakage = ennemi public n°1</strong> — si le modèle "voit" le test avant l'évaluation, le score est bidon.</p>
+<p>4. <strong>Baseline d'abord</strong> — un modèle bête sert de référence. S'il fait mieux que le tien, il y a un problème.</p>
+<p>5. <strong>Cross-validation > test set unique</strong> — évaluer sur 5 folds donne une estimation bien plus fiable.</p></div></div>
+
+<h3 id="ref-analogie-fil-rouge-la-ligne-de-production">Analogie fil rouge : la ligne de production</h3>
+
+<p>Imagine une <strong>usine qui fabrique des voitures</strong>. Les pièces brutes arrivent (COLLECT), on les inspecte (EDA), on enlève les défauts (CLEAN), on partage le stock en deux (SPLIT), on usine les pièces aux bonnes dimensions (PREPROCESS), on assemble le moteur (MODEL), on règle les réglages fins (TUNE), puis on teste le véhicule fini (EVALUATE). Si tu usines les pièces <em>avant</em> de les trier, tu gâches du travail. Si tu testes en utilisant les pièces que tu as déjà inspectées, ton test ne vaut rien.</p>
+
+<h3 id="ref-mini-plan-du-pipeline">Mini-plan du pipeline</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">1. COLLECT      → Charger les données, définir X et y
+2. EDA          → Explorer, visualiser, comprendre les distributions
+3. CLEAN        → Doublons, valeurs manquantes, outliers
+4. SPLIT        → train / test (avant tout preprocessing !)
+5. PREPROCESS   → Scaling, encodage, équilibrage, feature engineering
+6. MODEL        → Baseline → modèle → cross-validation → biais/variance
+7. TUNE         → GridSearchCV / RandomizedSearchCV sur les hyperparamètres
+8. EVALUATE     → Métriques finales sur le test set (une seule fois)</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-étape-1-collect-charger-les-données">Étape 1 — COLLECT : charger les données</h2>
+
+<h3 id="ref-quest-ce-quon-fait">Qu'est-ce qu'on fait ?</h3>
+
+<p>On importe les données dans Python sous forme de DataFrame (un tableau avec lignes et colonnes). On définit aussi <code>X</code> (les variables d'entrée) et <code>y</code> (la variable cible, ce qu'on veut prédire).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+
+# Charger depuis un fichier local ou une URL
+data = pd.read_csv(&quot;data.csv&quot;)
+data = pd.read_csv(&quot;https://url-du-dataset.csv&quot;)
+
+# Premier aperçu indispensable
+data.shape       # (nombre de lignes, nombre de colonnes)
+data.head()      # 5 premières lignes
+data.info()      # types des colonnes, présence de NaN
+data.describe()  # statistiques descriptives (min, max, moyenne…)</code></pre></div>
+
+
+<h3 id="ref-exemples-concrets">Exemples concrets</h3>
+
+<p><strong>Prédire le prix d'une maison (régression — y est un nombre continu) :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data = pd.read_csv(&quot;houses.csv&quot;)
+X = data.drop(columns=[&#x27;SalePrice&#x27;])  # toutes les colonnes sauf le prix
+y = data[&#x27;SalePrice&#x27;]                 # ce qu&#x27;on veut prédire : un prix en $</code></pre></div>
+
+
+<p><strong>Prédire la survie sur le Titanic (classification — y est 0 ou 1) :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data = pd.read_csv(&quot;titanic.csv&quot;)
+y = data[&#x27;survived&#x27;]                  # 1 = survécu, 0 = décédé
+X = data.drop(columns=[&#x27;survived&#x27;])   # tout le reste</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais commencer à construire un modèle sans avoir d'abord exploré les données. L'EDA vient AVANT la modélisation, toujours.</p></div></div>
+
+<hr>
+
+<h2 id="ref-étape-2-eda-explorer-les-données">Étape 2 — EDA : explorer les données</h2>
+
+<h3 id="ref-objectif-de-leda">Objectif de l'EDA</h3>
+
+<p>On regarde comment les données sont distribuées, quelles variables sont liées entre elles, et où se cachent les valeurs manquantes. L'objectif : comprendre ce qu'on a avant de le transformer.</p>
+
+<h3 id="ref-21-distributions">2.1 Distributions</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Histogrammes de toutes les colonnes numériques
+data.select_dtypes(include=&#x27;number&#x27;).hist(figsize=(15,10), bins=30)
+
+# Distribution d&#x27;une seule colonne avec courbe lissée
+sns.histplot(data[&#x27;SalePrice&#x27;], kde=True)
+plt.show()</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Si la distribution est très décalée à droite (comme les prix immobiliers), on parle de distribution "skewed". Dans ce cas, appliquer un log transform peut aider : <code>np.log1p(y)</code>. Cela "rapproche" les valeurs extrêmes du centre.</p></div></div>
+
+<h3 id="ref-22-corrélations">2.2 Corrélations</h3>
+
+<p>La corrélation mesure à quel point deux variables évoluent ensemble. Elle varie entre -1 et +1 :</p>
+<ul>
+<li>$\rho = 1$ : parfaitement corrélées positivement (quand l'une monte, l'autre monte)</li>
+<li>$\rho = 0$ : aucune relation linéaire</li>
+<li>$\rho = -1$ : parfaitement corrélées négativement</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">corr = data.select_dtypes(&#x27;number&#x27;).corr()  # matrice de corrélations
+sns.heatmap(corr, cmap=&#x27;coolwarm&#x27;, annot=True, fmt=&#x27;.2f&#x27;)  # visualisation</code></pre></div>
+
+
+<p><strong>Exemple — détecter les features utiles (dataset maisons) :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data.corr()[&#x27;SalePrice&#x27;][&#x27;GrLivArea&#x27;]   # → ρ = 0.71 → très lié au prix
+data.corr()[&#x27;SalePrice&#x27;][&#x27;MoSold&#x27;]      # → ρ = 0.03 → quasi inutile</code></pre></div>
+
+
+<p><strong>Exemple — détecter des features trop liées entre elles (multicolinéarité) :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">mpg.corr()[&#x27;displacement&#x27;][&#x27;cylinders&#x27;]   # → ρ = 0.95 : quasi-doublons
+# Garder une seule, ou laisser la régularisation gérer</code></pre></div>
+
+
+<h3 id="ref-23-valeurs-manquantes">2.3 Valeurs manquantes</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Pourcentage de NaN par colonne, trié du plus élevé au plus bas
+(data.isnull().sum() / len(data) * 100).sort_values(ascending=False)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Corrélation ≠ Causalité. Une forte corrélation entre deux variables ne prouve pas que l'une cause l'autre. Exemple classique : les ventes de glaces et les noyades sont corrélées — mais c'est l'été qui cause les deux, pas l'une l'autre.</p></div></div>
+
+<hr>
+
+<h2 id="ref-étape-3-clean-nettoyer-les-données">Étape 3 — CLEAN : nettoyer les données</h2>
+
+<h3 id="ref-31-doublons">3.1 Doublons</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">print(f&quot;Doublons : {data.duplicated().sum()}&quot;)  # combien y en a-t-il ?
+data = data.drop_duplicates()                   # les supprimer</code></pre></div>
+
+
+<p><strong>Exemple — garder la ligne la plus récente par client :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data = data.sort_values(&#x27;date&#x27;).drop_duplicates(subset=[&#x27;client_id&#x27;], keep=&#x27;last&#x27;)</code></pre></div>
+
+
+<h3 id="ref-32-valeurs-manquantes-stratégies">3.2 Valeurs manquantes — stratégies</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Taux de NaN</th><th>Stratégie recommandée</th></tr></thead><tbody><tr><td>> 50%</td><td>Supprimer la colonne</td></tr><tr><td>< 30%</td><td>Imputer (remplir avec mean, median, mode)</td></tr><tr><td>NaN = info métier</td><td>Remplacer par une valeur significative</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>"Imputer" = remplir les trous. On choisit une valeur représentative (médiane pour les numériques, valeur la plus fréquente pour les catégorielles) et on remplace les NaN par elle. IMPORTANT : cette valeur doit être calculée uniquement sur le train set (sinon c'est du data leakage).</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.impute import SimpleImputer
+
+# Imputation numérique par la médiane
+imputer = SimpleImputer(strategy=&#x27;median&#x27;)
+imputer.fit(X_train[[&#x27;LotFrontage&#x27;]])          # apprend la médiane sur le train
+X_train[&#x27;LotFrontage&#x27;] = imputer.transform(X_train[[&#x27;LotFrontage&#x27;]])  # applique
+X_test[&#x27;LotFrontage&#x27;] = imputer.transform(X_test[[&#x27;LotFrontage&#x27;]])    # même valeur
+
+print(imputer.statistics_)   # → [68.0] : la médiane apprise
+
+# Imputation catégorielle par la valeur la plus fréquente
+imputer_cat = SimpleImputer(strategy=&#x27;most_frequent&#x27;)
+imputer_cat.fit(X_train[[&#x27;FireplaceQu&#x27;]])
+X_train[&#x27;FireplaceQu&#x27;] = imputer_cat.transform(X_train[[&#x27;FireplaceQu&#x27;]])
+X_test[&#x27;FireplaceQu&#x27;] = imputer_cat.transform(X_test[[&#x27;FireplaceQu&#x27;]])</code></pre></div>
+
+
+<p><strong>Exemple — NaN qui veut dire quelque chose :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># &quot;Alley&quot; dans le dataset maisons : NaN signifie &quot;pas d&#x27;allée&quot;, pas une donnée manquante
+# → On remplace manuellement AVANT le split (c&#x27;est du bon sens métier, pas une stat)
+data[&#x27;Alley&#x27;] = data[&#x27;Alley&#x27;].fillna(&#x27;NoAlley&#x27;)
+data[&#x27;GarageType&#x27;] = data[&#x27;GarageType&#x27;].fillna(&#x27;NoGarage&#x27;)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Imputer AVANT le split = data leakage. Si tu calcules la médiane sur l'ensemble des données (train + test), tu "contamines" le train avec de l'info venant du test. Toujours fit sur le train uniquement.</p></div></div>
+
+<h3 id="ref-33-outliers">3.3 Outliers</h3>
+
+<p>Un outlier est une valeur anormalement éloignée des autres. Il peut être :</p>
+<ul>
+<li>une <strong>erreur de saisie</strong> → supprimer</li>
+<li>une <strong>valeur extrême réelle</strong> → garder, mais adapter le scaler</li>
+</ul>
+
+<p><strong>Détection par la méthode IQR (Inter-Quartile Range) :</strong></p>
+
+<div class="katex-display">$$\text{IQR} = Q_3 - Q_1$$</div>
+
+<div class="katex-display">$$\text{Seuil bas} = Q_1 - 1.5 \times \text{IQR}, \quad \text{Seuil haut} = Q_3 + 1.5 \times \text{IQR}$$</div>
+
+<p>Intuition : tout ce qui est au-delà de 1.5 fois l'écart interquartile est considéré suspect.</p>
+
+<p>Exemple numérique : si $Q_1 = 100$, $Q_3 = 200$, alors $\text{IQR} = 100$, seuil bas = $-50$, seuil haut = $350$.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">Q1 = data[&#x27;col&#x27;].quantile(0.25)   # 1er quartile
+Q3 = data[&#x27;col&#x27;].quantile(0.75)   # 3ème quartile
+IQR = Q3 - Q1
+lower = Q1 - 1.5 * IQR
+upper = Q3 + 1.5 * IQR
+data = data[(data[&#x27;col&#x27;] &gt;= lower) &amp; (data[&#x27;col&#x27;] &lt;= upper)]  # garder l&#x27;intervalle</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Toujours comprendre le contexte métier avant de supprimer un outlier. Une maison à 600 000 $ dans un dataset moyen à 180 000 $ est une vraie maison chère — pas une erreur. Dans ce cas, utilise RobustScaler plutôt que de supprimer la valeur.</p></div></div>
+
+<hr>
+
+<h2 id="ref-étape-4-split-couper-les-données">Étape 4 — SPLIT : couper les données</h2>
+
+<h3 id="ref-pourquoi-couper">Pourquoi couper ?</h3>
+
+<p>On doit évaluer le modèle sur des données qu'il n'a <strong>jamais vues</strong> pendant l'entraînement. On coupe donc le dataset en deux :</p>
+<ul>
+<li><strong>Train set</strong> (~70%) : le modèle apprend dessus</li>
+<li><strong>Test set</strong> (~30%) : on l'évalue dessus une seule fois à la fin</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import train_test_split
+
+y = data[&#x27;SalePrice&#x27;]
+X = data.drop(columns=[&#x27;SalePrice&#x27;])
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y,
+    test_size=0.3,     # 30% pour le test
+    random_state=42    # pour reproduire le même découpage
+)</code></pre></div>
+
+
+<p><strong>Split stratifié (classification déséquilibrée) :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Si 90% de la classe 0 et 10% de la classe 1
+# → stratify=y garantit que train et test ont les mêmes proportions
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42, stratify=y
+)</code></pre></div>
+
+
+<p><strong>Erreur classique à éviter :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># FAUX : X est une Series 1D → sklearn plante
+X = data[&#x27;GrLivArea&#x27;]
+
+# CORRECT : X est un DataFrame 2D (double crochet)
+X = data[[&#x27;GrLivArea&#x27;]]</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Les 4 règles du split :</p>
+<p>1. Splitter AVANT tout preprocessing</p>
+<p>2. Ne jamais choisir le random_state qui donne le meilleur score (c'est tricher)</p>
+<p>3. Le test set ne sert qu'UNE SEULE FOIS, à la toute fin</p>
+<p>4. Dataset déséquilibré → toujours utiliser <code>stratify=y</code></p></div></div>
+
+<hr>
+
+<h2 id="ref-étape-5-preprocess-préparer-les-features">Étape 5 — PREPROCESS : préparer les features</h2>
+
+<p><strong>La règle absolue</strong> : <code>.fit()</code> uniquement sur le train → <code>.transform()</code> sur train ET test.</p>
+
+<h3 id="ref-51-feature-scaling-mise-à-léchelle">5.1 Feature Scaling (mise à l'échelle)</h3>
+
+<p>Certains modèles (KNN, SVM, Ridge, Lasso, LogisticRegression régularisée) sont sensibles aux échelles des features. Si une feature vaut entre 0 et 1 000 000 et une autre entre 0 et 1, le modèle va accorder trop d'importance à la première.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Scaler</th><th>Formule</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td>StandardScaler</td><td>$z = \frac{x - \mu}{\sigma}$</td><td>Par défaut, distributions proches du normal</td></tr><tr><td>MinMaxScaler</td><td>$x' = \frac{x - x_{min}}{x_{max} - x_{min}}$ (dans [0,1])</td><td>KNN, réseaux de neurones, features positives</td></tr><tr><td>RobustScaler</td><td>$x' = \frac{x - \text{mediane}}{\text{IQR}}$</td><td>Quand il y a des outliers</td></tr></tbody></table></div>
+<p><strong>Intuition de StandardScaler :</strong> $\mu$ est la moyenne, $\sigma$ l'écart-type. Après transformation, la moyenne devient 0 et l'écart-type devient 1. Exemple : températures [10, 20, 30] → $\mu=20$, $\sigma=10$ → [-1, 0, 1].</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)  # apprend μ et σ sur le train, et transforme
+X_test_scaled = scaler.transform(X_test)         # utilise les mêmes μ et σ appris, PAS fit_transform!</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import RobustScaler
+
+scaler = RobustScaler()                          # utilise médiane et IQR → résistant aux outliers
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>scaler.fit_transform(X_test)</code> = DATA LEAKAGE. On apprendrait les paramètres du scaler sur les données de test — interdit. Seul <code>.transform()</code> sur le test.</p></div></div>
+
+<h3 id="ref-52-encodage-des-variables-catégorielles">5.2 Encodage des variables catégorielles</h3>
+
+<p>Les modèles ML ne savent pas lire du texte ("Paris", "Lyon"). Il faut transformer les catégories en nombres.</p>
+
+<p><strong>OrdinalEncoder — pour les catégories avec un ordre naturel :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import OrdinalEncoder
+
+# &quot;quality&quot; a un ordre : bad &lt; average &lt; good
+encoder = OrdinalEncoder(categories=[[&#x27;bad&#x27;, &#x27;average&#x27;, &#x27;good&#x27;]])
+encoder.fit(X_train[[&#x27;quality&#x27;]])
+X_train[&#x27;quality_enc&#x27;] = encoder.transform(X_train[[&#x27;quality&#x27;]])  # bad=0, average=1, good=2
+X_test[&#x27;quality_enc&#x27;] = encoder.transform(X_test[[&#x27;quality&#x27;]])</code></pre></div>
+
+
+<p><strong>OneHotEncoder — pour les catégories SANS ordre :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import OneHotEncoder
+
+# &quot;city&quot; : Paris, Lyon, Marseille — aucun ordre
+ohe = OneHotEncoder(sparse_output=False, drop=&#x27;first&#x27;)
+# sparse_output=False → tableau numpy classique (plus facile à manipuler)
+# drop=&#x27;first&#x27; → évite la multicolinéarité parfaite (voir explication ci-dessous)
+ohe.fit(X_train[[&#x27;city&#x27;]])
+encoded_train = ohe.transform(X_train[[&#x27;city&#x27;]])
+encoded_test = ohe.transform(X_test[[&#x27;city&#x27;]])
+print(ohe.get_feature_names_out())   # → [&#x27;city_Lyon&#x27;, &#x27;city_Paris&#x27;]</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Pourquoi <code>drop=&#x27;first&#x27;</code> ? Si tu as 3 villes (Paris, Lyon, Marseille), OHE crée 3 colonnes de 0/1. Mais la somme des 3 colonnes vaut toujours 1 : si tu sais que Paris=0 et Lyon=0, tu déduis forcément Marseille=1. C'est une redondance parfaite qui rend les coefficients instables. En supprimant la première colonne, Marseille devient implicite (les deux autres à 0 = Marseille), et la redondance disparaît.</p></div></div>
+
+<p><strong>LabelEncoder — UNIQUEMENT pour encoder la target y :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.preprocessing import LabelEncoder
+
+le = LabelEncoder()
+y_encoded = le.fit_transform(y)         # &#x27;Adelie&#x27;=0, &#x27;Chinstrap&#x27;=1, &#x27;Gentoo&#x27;=2
+y_original = le.inverse_transform(y_encoded)  # décodage</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Résumé des erreurs classiques d'encodage :</p>
+<p>- LabelEncoder sur une feature X → invente un faux ordre (Paris=2 > Lyon=0, ce qui n'a aucun sens)</p>
+<p>- OrdinalEncoder sur des catégories sans ordre → même problème</p>
+<p>- OneHotEncoder sans <code>drop=&#x27;first&#x27;</code> → multicolinéarité parfaite</p>
+<p>- LabelEncoder attend une Series 1D — pour les features X, utiliser OrdinalEncoder ou OHE</p></div></div>
+
+<h3 id="ref-53-équilibrage-des-classes-classification">5.3 Équilibrage des classes (classification)</h3>
+
+<p>Si ton dataset a 90% de classe 0 et 10% de classe 1, le modèle peut simplement tout prédire "0" et atteindre 90% d'accuracy — sans rien apprendre d'utile.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from imblearn.over_sampling import SMOTE
+
+# SMOTE génère des exemples synthétiques de la classe minoritaire
+smote = SMOTE(random_state=42)
+X_train_res, y_train_res = smote.fit_resample(X_train, y_train)
+# Les données d&#x27;entraînement sont maintenant équilibrées</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>SMOTE s'applique UNIQUEMENT sur le train set, APRÈS le split. Sinon on crée de faux exemples dans le test set et le score ne veut plus rien dire.</p></div></div>
+
+<h3 id="ref-54-feature-engineering">5.4 Feature Engineering</h3>
+
+<p>Créer de nouvelles features à partir des existantes pour donner plus d'information au modèle.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Ratio : proportion de chambres parmi toutes les pièces
+data[&#x27;bedroom_ratio&#x27;] = data[&#x27;BedroomAbvGr&#x27;] / data[&#x27;TotRmsAbvGrd&#x27;]
+
+# Log transform : réduire l&#x27;asymétrie d&#x27;une distribution (skew)
+import numpy as np
+data[&#x27;log_price&#x27;] = np.log1p(data[&#x27;SalePrice&#x27;])  # log1p = log(1+x) évite log(0)
+
+# Date → feature numérique
+data[&#x27;delivery_days&#x27;] = (data[&#x27;delivered&#x27;] - data[&#x27;dispatched&#x27;]).dt.days
+data[&#x27;is_weekend&#x27;] = data[&#x27;day_of_week&#x27;].isin([5, 6]).astype(int)  # 1 si weekend</code></pre></div>
+
+
+<h3 id="ref-55-feature-selection">5.5 Feature Selection</h3>
+
+<p>Trop de features inutiles → bruit → overfit. On peut supprimer les features trop corrélées entre elles, ou utiliser l'importance des permutations.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.inspection import permutation_importance
+
+# Mesure l&#x27;impact de chaque feature sur le score (en la &quot;brouillant&quot;)
+result = permutation_importance(model, X_test, y_test, n_repeats=10)
+importance = pd.DataFrame({
+    &#x27;feature&#x27;: X.columns,
+    &#x27;importance&#x27;: result.importances_mean
+}).sort_values(&#x27;importance&#x27;, ascending=False)</code></pre></div>
+
+
+<h3 id="ref-56-pipeline-sklearn-anti-leakage-automatique">5.6 Pipeline sklearn — anti-leakage automatique</h3>
+
+<p>Un <code>Pipeline</code> enchaîne les transformations et garantit que le scaling est fait correctement dans chaque fold de cross-validation.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.pipeline import make_pipeline
+from sklearn.linear_model import Ridge
+
+pipe = make_pipeline(StandardScaler(), Ridge(alpha=1))
+# Quand on fait CV avec ce pipe, le StandardScaler est re-fitté à chaque fold
+# → zéro risque de leakage</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-étape-6-model-construire-et-évaluer-le-modèle">Étape 6 — MODEL : construire et évaluer le modèle</h2>
+
+<h3 id="ref-61-commencer-par-la-baseline-obligatoire">6.1 Commencer par la baseline (obligatoire)</h3>
+
+<p>Avant tout modèle sérieux, on entraîne un modèle "bête" qui sert de référence minimum.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.dummy import DummyRegressor
+
+baseline = DummyRegressor(strategy=&#x27;mean&#x27;)  # prédit toujours la moyenne
+baseline.fit(X_train, y_train)
+print(f&quot;Baseline R²: {baseline.score(X_test, y_test):.3f}&quot;)  # → ~0.0</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Si votre modèle ne fait pas mieux que la baseline (qui prédit toujours la moyenne), il y a un problème fondamental — dans les données ou dans le code.</p></div></div>
+
+<h3 id="ref-62-modèles-de-régression-prédire-un-nombre">6.2 Modèles de régression (prédire un nombre)</h3>
+
+<p><strong>LinearRegression — le plus simple :</strong></p>
+
+<div class="katex-display">$$\hat{y} = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \ldots + \beta_n X_n$$</div>
+
+<p>Le modèle cherche les coefficients $\beta$ qui minimisent la somme des erreurs au carré : $\sum (y - \hat{y})^2$.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+model.fit(X_train, y_train)              # apprend les coefficients β
+print(f&quot;R²: {model.score(X_test, y_test):.3f}&quot;)
+print(f&quot;Coefficients: {model.coef_}&quot;)   # un β par feature
+print(f&quot;Intercept: {model.intercept_}&quot;) # β₀</code></pre></div>
+
+
+<p><strong>Ridge (régression avec régularisation L2) :</strong></p>
+
+<div class="katex-display">$$\text{Loss} = \underbrace{\sum (y - \hat{y})^2}_{\text{erreur classique}} + \underbrace{\alpha \sum \beta_j^2}_{\text{pénalité L2}}$$</div>
+
+<p>Intuition : on pénalise les coefficients trop grands. Plus $\alpha$ est élevé, plus les coefficients sont poussés vers 0 (mais jamais exactement 0).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import Ridge
+
+ridge = Ridge(alpha=1)                          # alpha = force de la pénalité
+ridge.fit(X_train_scaled, y_train)              # ⚠️ scaling OBLIGATOIRE</code></pre></div>
+
+
+<p><strong>Lasso (régularisation L1 — fait de la sélection de features) :</strong></p>
+
+<div class="katex-display">$$\text{Loss} = \sum (y - \hat{y})^2 + \alpha \sum |\beta_j|$$</div>
+
+<p>Différence clé avec Ridge : la pénalité en valeur absolue pousse certains coefficients à être <strong>exactement 0</strong> → le modèle élimine lui-même les features inutiles.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import Lasso
+
+lasso = Lasso(alpha=1)
+lasso.fit(X_train_scaled, y_train)
+print(f&quot;Features éliminées: {(lasso.coef_ == 0).sum()}&quot;)  # combien de coefs = 0</code></pre></div>
+
+
+<p><strong>ElasticNet — mix Ridge + Lasso :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import ElasticNet
+
+elastic = ElasticNet(alpha=1, l1_ratio=0.5)  # l1_ratio=0 → Ridge, l1_ratio=1 → Lasso
+elastic.fit(X_train_scaled, y_train)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Quand utiliser quoi ?</p>
+<p>- <strong>Ridge</strong> : tu veux garder toutes les features, juste "calmer" les coefficients → cas général</p>
+<p>- <strong>Lasso</strong> : tu veux que le modèle élimine lui-même les features inutiles</p>
+<p>- <strong>ElasticNet</strong> : tu hésites, ou tu as des groupes de features corrélées</p>
+<p>- En cas de doute → Ridge. C'est rarement nuisible.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Scaling OBLIGATOIRE pour Ridge, Lasso, ElasticNet. Sans ça, les pénalités sont appliquées de façon inégale selon les échelles des features.</p></div></div>
+
+<h3 id="ref-63-modèles-de-classification-prédire-une-classe">6.3 Modèles de classification (prédire une classe)</h3>
+
+<p><strong>LogisticRegression :</strong></p>
+
+<p>Malgré son nom, c'est bien un modèle de classification. Il prédit une probabilité entre 0 et 1 via la fonction sigmoïde :</p>
+
+<div class="katex-display">$$P(y=1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + \ldots)}}$$</div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import LogisticRegression
+
+# Sans régularisation
+model = LogisticRegression(penalty=None, max_iter=5000)
+model.fit(X_scaled, y)
+
+# Avec régularisation L2 (C = 1/alpha → C petit = forte régularisation)
+model = LogisticRegression(penalty=&#x27;l2&#x27;, C=0.1, max_iter=5000)
+model.fit(X_scaled, y)
+
+# Avec L1 (feature selection) — solver=&#x27;liblinear&#x27; requis pour L1 !
+model = LogisticRegression(penalty=&#x27;l1&#x27;, C=0.1, solver=&#x27;liblinear&#x27;, max_iter=5000)
+model.fit(X_scaled, y)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Attention au paramètre C : dans Ridge/Lasso, <code>alpha</code> grand = forte régularisation. Dans LogisticRegression, <code>C</code> est l'inverse : <code>C = 1/alpha</code>. Donc <strong>C petit = forte régularisation</strong>. Le réflexe est inversé !</p></div></div>
+
+<p><strong>KNN (K plus proches voisins) :</strong></p>
+
+<p>Pour prédire, on regarde les K voisins les plus proches dans l'espace des features et on vote (classification) ou on moyenne (régression).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.neighbors import KNeighborsRegressor
+from sklearn.model_selection import cross_validate
+
+# Trouver le bon K avec la méthode du coude
+scores = []
+for k in range(1, 51):
+    model = KNeighborsRegressor(n_neighbors=k)
+    cv = cross_validate(model, X_train_scaled, y_train, cv=5)
+    scores.append(cv[&#x27;test_score&#x27;].mean())
+
+plt.plot(range(1, 51), scores)
+plt.xlabel(&#x27;K (nombre de voisins)&#x27;); plt.ylabel(&#x27;R²&#x27;)
+# Chercher le &quot;coude&quot; : le K à partir duquel le score se stabilise</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>K=1 = overfit garanti (le modèle mémorise les données). K trop grand = underfit (trop lissé). Scaling OBLIGATOIRE — KNN mesure des distances et est totalement faussé par des échelles différentes.</p></div></div>
+
+<p><strong>SVM (Support Vector Machine) :</strong></p>
+
+<p>Le SVM cherche la frontière de décision qui sépare les classes avec la marge maximale. Le "kernel" permet de gérer des frontières non-linéaires.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.svm import SVC
+
+svc = SVC(kernel=&#x27;rbf&#x27;, C=1, gamma=0.1)
+svc.fit(X_train_scaled, y_train)  # ⚠️ scaling OBLIGATOIRE</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Kernel</th><th>Formule</th><th>Quand</th></tr></thead><tbody><tr><td>linear</td><td>$a^Tb$</td><td>Données linéairement séparables</td></tr><tr><td>rbf</td><td>$e^{-\gamma \</td><td>a-b\</td><td>^2}$</td><td>Cas général (défaut)</td></tr><tr><td>poly</td><td>$(a^Tb + c)^d$</td><td>Relations polynomiales</td></tr></tbody></table></div>
+<ul>
+<li>$C$ grand → marge dure, risque d'overfit | $C$ petit → marge souple, underfit</li>
+<li>$\gamma$ grand → myope (overfits les points proches) | $\gamma$ petit → lisse (underfits)</li>
+</ul>
+
+<h3 id="ref-64-cross-validation">6.4 Cross-Validation</h3>
+
+<p>Au lieu d'évaluer sur un seul split train/test, la cross-validation coupe le train set en K folds et évalue K fois. On obtient K scores → on prend la moyenne.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import cross_validate
+from sklearn.pipeline import make_pipeline
+
+# Avec pipeline (anti-leakage) — recommandé
+pipe = make_pipeline(StandardScaler(), Ridge(alpha=1))
+cv = cross_validate(pipe, X_train, y_train, cv=5)
+print(f&quot;Score moyen: {cv[&#x27;test_score&#x27;].mean():.3f}&quot;)
+print(f&quot;Écart-type: {cv[&#x27;test_score&#x27;].std():.3f}&quot;)
+
+# Multi-métriques
+cv = cross_validate(model, X, y, cv=5,
+    scoring=[&#x27;r2&#x27;, &#x27;neg_mean_absolute_error&#x27;])</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>cross_validate</code> ne retourne PAS de modèle entraîné. Il sert uniquement à estimer la performance. Pour obtenir les prédictions finales, faire <code>model.fit()</code> séparément après.</p></div></div>
+
+<h3 id="ref-65-biais-vs-variance">6.5 Biais vs Variance</h3>
+
+<div class="katex-display">$$\text{Erreur totale} = \text{Biais}^2 + \text{Variance} + \text{Erreur irréductible}$$</div>
+
+<div class="table-wrapper"><table><thead><tr><th>Problème</th><th>Symptôme</th><th>Solution</th></tr></thead><tbody><tr><td>Underfit (fort biais)</td><td>Score faible sur train ET test</td><td>Plus de features, modèle plus complexe</td></tr><tr><td>Overfit (forte variance)</td><td>Score élevé sur train, bas sur test</td><td>Régulariser, plus de données</td></tr><tr><td>Idéal</td><td>Score élevé sur train ET test</td><td>Rien à faire</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import learning_curve
+
+# Courbes d&#x27;apprentissage — diagnostic visuellement
+train_sizes, train_scores, test_scores = learning_curve(
+    LinearRegression(), X, y, cv=5, train_sizes=[50, 100, 250, 500, 1000])
+# → Les deux courbes convergent vers un plateau bas → underfit
+# → Grand écart entre les courbes → overfit</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-étape-7-tune-optimiser-les-hyperparamètres">Étape 7 — TUNE : optimiser les hyperparamètres</h2>
+
+<h3 id="ref-params-vs-hyperparamètres">Params vs Hyperparamètres</h3>
+
+<ul>
+<li><strong>Paramètres</strong> ($\beta_0, \beta_1, \ldots$) : appris automatiquement par <code>.fit()</code> — tu ne les choisis pas</li>
+<li><strong>Hyperparamètres</strong> (<code>alpha</code>, <code>C</code>, <code>K</code>, <code>gamma</code>) : choisis <em>par toi</em> avant l'entraînement — c'est ça le tuning</li>
+</ul>
+
+<p>Le tuning cherche les hyperparamètres qui <strong>maximisent la métrique</strong> (par CV sur le train set — jamais sur le test).</p>
+
+<h3 id="ref-71-gridsearchcv-exploration-exhaustive">7.1 GridSearchCV — exploration exhaustive</h3>
+
+<p>On définit une grille de valeurs à tester, GridSearch les teste toutes.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import GridSearchCV
+from sklearn.neighbors import KNeighborsRegressor
+
+# Étape 1 — grille grossière (coarse) : trouver la zone
+search = GridSearchCV(
+    KNeighborsRegressor(),
+    {&#x27;n_neighbors&#x27;: [1, 5, 10, 20, 50], &#x27;p&#x27;: [1, 2, 3]},  # grille à tester
+    scoring=&#x27;r2&#x27;,   # métrique d&#x27;optimisation
+    cv=5,           # 5-fold CV pour chaque combinaison
+    n_jobs=-1       # paralléliser sur tous les CPU
+)
+search.fit(X_train_scaled, y_train)
+print(search.best_params_)    # → {&#x27;n_neighbors&#x27;: 10, &#x27;p&#x27;: 2}
+print(search.best_score_)     # → 0.72
+
+# Étape 2 — grille fine : affiner autour du best
+search2 = GridSearchCV(
+    KNeighborsRegressor(),
+    {&#x27;n_neighbors&#x27;: list(range(6, 16)), &#x27;p&#x27;: [1, 2]},  # zone resserrée
+    scoring=&#x27;r2&#x27;, cv=5, n_jobs=-1
+)
+search2.fit(X_train_scaled, y_train)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Visualiser tous les résultats
+import pandas as pd
+pd.DataFrame(search.cv_results_)[[&#x27;params&#x27;, &#x27;mean_test_score&#x27;, &#x27;rank_test_score&#x27;]]</code></pre></div>
+
+
+<h3 id="ref-72-randomizedsearchcv-exploration-aléatoire">7.2 RandomizedSearchCV — exploration aléatoire</h3>
+
+<p>Plus efficace que GridSearch quand l'espace est grand. On explore un sous-ensemble aléatoire de combinaisons, en tirant les valeurs depuis des distributions statistiques.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import RandomizedSearchCV
+from scipy.stats import loguniform, uniform
+
+# loguniform pour alpha, C, gamma → ces paramètres varient sur des ordres de grandeur
+search = RandomizedSearchCV(
+    ElasticNet(),
+    {&#x27;alpha&#x27;: loguniform(0.001, 10),   # tire dans [0.001, 10] en échelle log
+     &#x27;l1_ratio&#x27;: uniform(0, 1)},       # tire uniformément dans [0, 1]
+    n_iter=100,     # 100 combinaisons aléatoires (vs toutes pour Grid)
+    scoring=&#x27;r2&#x27;, cv=5, n_jobs=-1, random_state=42
+)
+search.fit(X_train_scaled, y_train)</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Distribution scipy</th><th>Code</th><th>Utilisation</th></tr></thead><tbody><tr><td>Uniforme continue</td><td><code>uniform(a, b)</code> → [a, a+b]</td><td>Quand aucune idée de l'ordre de grandeur</td></tr><tr><td>Uniforme discrète</td><td><code>randint(a, b)</code> → [a, b[</td><td>Entiers (n_neighbors)</td></tr><tr><td>Log-uniforme</td><td><code>loguniform(a, b)</code></td><td>alpha, C, gamma (varient sur des décades)</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Workflow recommandé de tuning :</p>
+<p>1. <strong>Coarse</strong> : RandomSearch avec <code>loguniform</code> et large plage → identifier la zone</p>
+<p>2. <strong>Fine</strong> : GridSearch resserré autour du best → affiner précisément</p>
+<p>3. <strong>Évaluer</strong> : <code>search.best_estimator_.score(X_test_scaled, y_test)</code></p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais tuner les hyperparamètres en regardant le score sur le test set — c'est du data leakage. Toujours via CV sur le train set uniquement.</p></div></div>
+
+<hr>
+
+<h2 id="ref-étape-8-evaluate-mesurer-les-performances-finales">Étape 8 — EVALUATE : mesurer les performances finales</h2>
+
+<p>C'est <strong>la seule étape où on utilise le test set</strong>. On évalue le meilleur modèle trouvé après tuning.</p>
+
+<h3 id="ref-81-métriques-de-régression">8.1 Métriques de régression</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Métrique</th><th>Formule</th><th>Interprétation</th></tr></thead><tbody><tr><td>MSE</td><td>$\frac{1}{n}\sum(y - \hat{y})^2$</td><td>Pénalise fort les grandes erreurs</td></tr><tr><td>RMSE</td><td>$\sqrt{\text{MSE}}$</td><td>Dans la même unité que y (ex: euros)</td></tr><tr><td>MAE</td><td>$\frac{1}{n}\sum</td><td>y - \hat{y}</td><td>$</td><td>Plus robuste aux outliers que RMSE</td></tr><tr><td>R²</td><td>$1 - \frac{SS_{res}}{SS_{tot}}$</td><td>0 = modèle nul, 1 = parfait</td></tr></tbody></table></div>
+<p><strong>R² intuitif :</strong> si $R^2 = 0.75$, le modèle explique 75% de la variance du target. Les 25% restants sont de la variabilité que le modèle ne parvient pas à capturer.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+import math
+
+y_pred = best_model.predict(X_test_scaled)   # prédictions sur les données de test
+print(f&quot;R²   = {r2_score(y_test, y_pred):.3f}&quot;)
+print(f&quot;RMSE = {math.sqrt(mean_squared_error(y_test, y_pred)):,.0f} €&quot;)
+print(f&quot;MAE  = {mean_absolute_error(y_test, y_pred):,.0f} €&quot;)
+
+# Comparer au score CV pour détecter l&#x27;overfit des hyperparamètres
+print(f&quot;Score CV moyen: {search.best_score_:.3f}&quot;)
+print(f&quot;Score test:     {best_model.score(X_test_scaled, y_test):.3f}&quot;)
+# Écart &lt; 5% → bonne généralisation
+# Écart &gt; 10% → possible overfit des hyperparamètres</code></pre></div>
+
+
+<h3 id="ref-82-métriques-de-classification">8.2 Métriques de classification</h3>
+
+<p>Pour la classification, on distingue 4 cas via la <strong>matrice de confusion</strong> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Prédit positif</th><th>Prédit négatif</th></tr></thead><tbody><tr><td>Réel positif</td><td><strong>TP</strong> (Vrai Positif)</td><td><strong>FN</strong> (Faux Négatif)</td></tr><tr><td>Réel négatif</td><td><strong>FP</strong> (Faux Positif)</td><td><strong>TN</strong> (Vrai Négatif)</td></tr></tbody></table></div>
+<div class="table-wrapper"><table><thead><tr><th>Métrique</th><th>Formule</th><th>Quand l'utiliser</th></tr></thead><tbody><tr><td>Accuracy</td><td>$\frac{TP + TN}{\text{total}}$</td><td>Classes équilibrées</td></tr><tr><td>Precision</td><td>$\frac{TP}{TP + FP}$</td><td>Coût élevé des fausses alarmes</td></tr><tr><td>Recall</td><td>$\frac{TP}{TP + FN}$</td><td>Coût élevé des cas manqués</td></tr><tr><td>F1</td><td>$\frac{2 \times P \times R}{P + R}$</td><td>Compromis Precision/Recall</td></tr><tr><td>ROC-AUC</td><td>Aire sous la courbe ROC</td><td>Indépendant du seuil de décision</td></tr></tbody></table></div>
+<p><strong>Intuition :</strong> Pour la détection de cancer, le Recall est crucial (on ne veut rater aucun cas positif). Pour la détection de spam, la Precision est importante (on ne veut pas envoyer de vrais emails aux spams).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
+
+y_pred = model.predict(X_test)
+print(f&quot;Accuracy:  {accuracy_score(y_test, y_pred):.3f}&quot;)
+print(f&quot;Precision: {precision_score(y_test, y_pred):.3f}&quot;)
+print(f&quot;Recall:    {recall_score(y_test, y_pred):.3f}&quot;)
+print(f&quot;F1:        {f1_score(y_test, y_pred):.3f}&quot;)
+
+# AUC — utilise les probabilités, pas les classes binaires
+auc = roc_auc_score(y_test, model.predict_proba(X_test)[:, 1])
+print(f&quot;AUC: {auc:.3f}&quot;)  # 1.0 = parfait, 0.5 = aléatoire</code></pre></div>
+
+
+<p><strong>Exemple — piège de l'accuracy sur dataset déséquilibré :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Dataset : 90% classe 0, 10% classe 1
+# Un modèle qui prédit TOUJOURS 0 obtient :
+# Accuracy = 0.90 → semble excellent !
+# Recall = 0.00 → rate 100% des cas positifs !
+# → Toujours vérifier Recall ET Precision sur un dataset déséquilibré</code></pre></div>
+
+
+<p><strong>Ajuster le seuil de décision :</strong></p>
+
+<p>Par défaut, sklearn classe comme positif si la probabilité prédite > 0.5. On peut ajuster ce seuil.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.metrics import precision_recall_curve
+
+proba = model.predict_proba(X_test)[:, 1]  # probabilités de la classe positive
+precision, recall, thresholds = precision_recall_curve(y_test, proba)
+
+# Trouver le seuil minimum pour avoir recall &gt;= 0.80
+scores = pd.DataFrame({&#x27;threshold&#x27;: thresholds, &#x27;recall&#x27;: recall[:-1]})
+optimal = scores[scores[&#x27;recall&#x27;] &gt;= 0.8].threshold.max()
+
+y_custom = (proba &gt; optimal).astype(int)  # prédictions avec le nouveau seuil</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-annexe-sous-le-capot">Annexe — Sous le capot</h2>
+
+<h3 id="ref-fonctions-de-perte-loss-functions">Fonctions de perte (Loss functions)</h3>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Loss ≠ Métrique ! La <strong>loss</strong> est ce que <code>.fit()</code> minimise (elle doit être dérivable pour le gradient descent). La <strong>métrique</strong> est ce qu'on utilise pour évaluer (lisible par un humain). R² est une métrique, MSE peut être les deux.</p></div></div>
+
+<ul>
+<li>Régression : MSE (sensible aux outliers) | MAE (robuste) | Huber (compromis)</li>
+<li>Classification : Log-Loss (LogisticRegression) | Hinge (SVM)</li>
+</ul>
+
+<h3 id="ref-descente-de-gradient">Descente de gradient</h3>
+
+<p>Comment le modèle apprend : il met à jour les coefficients $\beta$ dans la direction qui réduit l'erreur.</p>
+
+<div class="katex-display">$$\beta^{(k+1)} = \beta^{(k)} - \eta \cdot \nabla L(\beta^{(k)})$$</div>
+
+<p>où $\eta$ est le <strong>learning rate</strong> (taille du pas) et $\nabla L$ est le gradient de la loss.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Méthode</th><th>Observations par étape</th><th>Trade-off</th></tr></thead><tbody><tr><td>Gradient Descent complet</td><td>Toutes</td><td>Stable mais très lent</td></tr><tr><td>Mini-Batch GD</td><td>16–64</td><td>Compromis (le plus utilisé)</td></tr><tr><td>SGD (stochastique)</td><td>1 seule</td><td>Rapide mais bruité</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.linear_model import SGDRegressor, SGDClassifier
+
+SGDRegressor(loss=&#x27;squared_error&#x27;)   # équivalent à LinearRegression via SGD
+SGDClassifier(loss=&#x27;log_loss&#x27;)       # équivalent à LogisticRegression via SGD
+SGDClassifier(loss=&#x27;hinge&#x27;)          # équivalent à SVC via SGD</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Q1 — Pipeline et data leakage :</strong></p>
+<p>Tu charges un dataset, tu appliques un <code>StandardScaler</code> sur l'intégralité des données, puis tu fais le train/test split. Quel est le problème ? Comment le corriger ?</p>
+
+<details>
+<summary>Réponse</summary>
+<p>C'est du data leakage : le scaler a "vu" les données de test pour calculer μ et σ. Le test set est contaminé. Solution : toujours splitter AVANT de scaler. Mieux encore : utiliser un Pipeline sklearn pour que le scaling soit automatiquement fait après le split dans chaque fold de CV.</p>
+</details>
+
+<p><strong>Q2 — Choix d'encodeur :</strong></p>
+<p>Tu as une feature "niveau d'éducation" avec les valeurs : "lycée", "licence", "master", "doctorat". Quel encodeur utilises-tu et pourquoi ? Qu'est-ce qui se passerait avec un OneHotEncoder ?</p>
+
+<details>
+<summary>Réponse</summary>
+<p>OrdinalEncoder avec l'ordre explicite <code>[&#x27;lycée&#x27;, &#x27;licence&#x27;, &#x27;master&#x27;, &#x27;doctorat&#x27;]</code>. Il y a un ordre naturel. Un OneHotEncoder créerait 4 colonnes binaires, perdant l'information d'ordre et augmentant la dimensionnalité inutilement.</p>
+</details>
+
+<p><strong>Q3 — Biais/Variance :</strong></p>
+<p>Un modèle Ridge donne R²=0.92 sur le train et R²=0.61 sur le test. Quel est le diagnostic ? Quelles sont deux solutions possibles ?</p>
+
+<details>
+<summary>Réponse</summary>
+<p>Overfit (forte variance). Solutions : augmenter alpha pour renforcer la régularisation, obtenir plus de données d'entraînement, supprimer des features peu informatives, utiliser la cross-validation pour mieux estimer le vrai score.</p>
+</details>
+
+<p><strong>Q4 — Classification déséquilibrée :</strong></p>
+<p>Dataset de détection de fraude : 99% de transactions légitimes, 1% frauduleuses. Ton modèle atteint 99% d'accuracy. Est-il bon ? Quelle métrique regarder en priorité et pourquoi ?</p>
+
+<details>
+<summary>Réponse</summary>
+<p>Non — un modèle qui prédit "légitime" à chaque fois atteint 99% d'accuracy. Il est inutile. La métrique prioritaire est le Recall (ou F1) : on veut surtout ne pas rater les fraudes (Recall = TP/(TP+FN)). Un Recall de 0% est catastrophique même avec 99% d'accuracy.</p>
+</details>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ol>
+<li><strong>Pipeline strict</strong> : COLLECT → EDA → CLEAN → SPLIT → PREPROCESS → MODEL → TUNE → EVALUATE.</li>
+<li><strong>Règle d'or</strong> : fit sur le train uniquement, transform sur train ET test — jamais l'inverse.</li>
+<li><strong>Data leakage</strong> : scaler/encoder avant le split = résultats biaisés → utiliser Pipeline sklearn.</li>
+<li><strong>Split</strong> : toujours avant tout preprocessing ; <code>stratify=y</code> si classes déséquilibrées.</li>
+<li><strong>Scaling obligatoire</strong> pour KNN, SVM, Ridge, Lasso, ElasticNet, LogisticRegression régularisée.</li>
+<li><strong>Encodage</strong> : OrdinalEncoder pour l'ordre, OneHotEncoder(drop='first') pour sans ordre, LabelEncoder uniquement pour y.</li>
+<li><strong>Biais/Variance</strong> : underfit → modèle plus complexe ; overfit → régulariser ou plus de données.</li>
+<li><strong>Tuning</strong> : GridSearchCV coarse puis fine, ou RandomizedSearchCV — toujours sur le train (CV), jamais sur le test.</li>
+<li><strong>Classification</strong> : l'accuracy est trompeuse sur dataset déséquilibré → Precision, Recall, F1, AUC.</li>
+<li><strong>Test set</strong> : utilisé UNE SEULE FOIS à la fin pour la mesure de performance définitive.</li>
+</ol>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-le-pipeline-ml-end-to-end">Le pipeline ML end-to-end</a></li><li><a href="#syn-étape-1-définition-du-problème-10-du-temps-50-de-limpact">Étape 1 — Définition du problème (10% du temps, 50% de l'impact)</a></li><li><a href="#syn-étape-2-données-et-eda-40-du-temps">Étape 2 — Données et EDA (40% du temps)</a></li><li><a href="#syn-étape-3-modélisation-20-du-temps">Étape 3 — Modélisation (20% du temps)</a></li><li><a href="#syn-étape-4-évaluation-rigoureuse-10-du-temps">Étape 4 — Évaluation rigoureuse (10% du temps)</a></li><li><a href="#syn-étape-5-déploiement-et-monitoring-20-du-temps">Étape 5 — Déploiement et monitoring (20% du temps)</a></li><li><a href="#syn-choisir-le-bon-modèle-récapitulatif-rapide">Choisir le bon modèle — récapitulatif rapide</a></li><li><a href="#syn-méthodologie-ditération">Méthodologie d'itération</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-le-bon-ordre-des-optimisations">Le bon ordre des optimisations</a></li><li><a href="#syn-top-10-des-erreurs-en-ml-applicatif">Top 10 des erreurs en ML applicatif</a></li><li><a href="#syn-communication-des-résultats">Communication des résultats</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-le-pipeline-ml-end-to-end">Le pipeline ML end-to-end</h3>
+
+<p>Tout projet de machine learning sérieux suit le même pipeline, indépendamment du domaine ou de l'algorithme. Que vous fassiez de la détection de fraude bancaire, de la recommandation de films ou de la prédiction de maintenance industrielle, vous retrouverez <strong>les mêmes 5 grandes étapes</strong>. Les confondre ou en sauter une est la cause numéro un des échecs de projets ML en entreprise.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">1. Définition du problème  (clarifier l&#x27;objectif business)
+   ↓
+2. Collecte + exploration des données  (EDA)
+   ↓
+3. Préparation + feature engineering  (cleaning, encoding, scaling)
+   ↓
+4. Modélisation (train + validation)  (baseline → modèles complexes)
+   ↓
+5. Évaluation et tuning  (CV, métriques, interprétation)
+   ↓
+6. Déploiement et monitoring  (API, batch, drift)
+   ↓
+7. Maintenance et amélioration continue  (retraining, versioning)</code></pre></div>
+
+
+<p>Sans ce cadre, on bricole. Avec ce cadre, on industrialise. Chaque étape a ses outils, ses pièges, et ses livrables.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : un projet ML, c'est comme construire une maison. Vous ne commencez pas par les murs sans plan. Vous étudiez le terrain (EDA), dessinez les plans (définition du problème), posez les fondations (preprocessing), puis montez les murs (modèle) et finissez l'intérieur (déploiement). Sauter une étape — "on commence à entraîner avant de regarder la donnée" — garantit que vous reconstruirez tout deux fois.</p></div></div>
+
+<h3 id="syn-étape-1-définition-du-problème-10-du-temps-50-de-limpact">Étape 1 — Définition du problème (10% du temps, 50% de l'impact)</h3>
+
+<p>C'est l'étape la plus courte et la plus décisive. Quatre questions à clarifier <strong>avant</strong> d'ouvrir un notebook :</p>
+
+<ul>
+<li><strong>Quel est l'objectif business ?</strong> "Réduire le churn de 5% d'ici 6 mois" est précis. "Améliorer la rétention" est une lettre au père Noël.</li>
+<li><strong>Quelle est la métrique de succès ?</strong> F1, RMSE, ROC-AUC, lift sur le top 10%, ROI estimé ?</li>
+<li><strong>Quelle est la baseline actuelle ?</strong> Sans ML, comment décide-t-on aujourd'hui ? Si le métier fait déjà 82% de bonnes prédictions à la main, un modèle à 83% n'apporte rien.</li>
+<li><strong>Quelle est la valeur business attendue ?</strong> Si elle est inférieure au coût du projet (compute + salaires + maintenance), <strong>abandonnez</strong>.</li>
+</ul>
+
+<p><strong>Exemple concret — churn télécom</strong> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Élément</th><th>Valeur</th></tr></thead><tbody><tr><td>Objectif</td><td>Réduire le churn mensuel de 4.5% à 3.5%</td></tr><tr><td>Métrique technique</td><td>Recall@top-10% (capturer 80% des churners dans le top 10%)</td></tr><tr><td>Baseline métier</td><td>Ciblage aléatoire : recall ≈ 10%</td></tr><tr><td>Baseline ML triviale</td><td>Règle "client inactif 30j" : recall ≈ 35%</td></tr><tr><td>Gain estimé</td><td>1 point de churn évité ≈ <strong>2M€/an</strong></td></tr><tr><td>Budget projet</td><td>120k€ (2 DS × 3 mois + infra)</td></tr></tbody></table></div>
+<p>ROI estimé = 2M / 0.12 = <strong>16×</strong>. Le projet a du sens. Si le gain était de 100k€, il faudrait refuser.</p>
+
+<h3 id="syn-étape-2-données-et-eda-40-du-temps">Étape 2 — Données et EDA (40% du temps)</h3>
+
+<p>C'est l'étape la plus longue et souvent la plus ingrate, mais celle qui apporte le plus de valeur. Trois sous-étapes :</p>
+
+<p><strong>(a) EDA rapide (premier coup d'œil)</strong> — 1 journée max :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+
+df = pd.read_csv(&quot;customers.csv&quot;)
+
+# Taille et types : repérer immédiatement si on a affaire à 1k ou 10M lignes
+print(df.shape)                      # ex : (50_000, 42)
+print(df.dtypes.value_counts())      # combien de num / cat / date
+
+# Statistiques de base : détecter les ordres de grandeur suspects
+df.describe(include=&quot;all&quot;).T
+
+# Missing values : toute colonne &gt; 30% de manquants est suspecte
+print(df.isnull().mean().sort_values(ascending=False).head(10))
+
+# Cible : équilibrée ou pas ? Si 1% de positifs, c&#x27;est du très déséquilibré
+print(df[&quot;churned&quot;].value_counts(normalize=True))</code></pre></div>
+
+
+<p><strong>(b) Cleaning</strong> — doublons, types, dates, valeurs aberrantes.</p>
+
+<p><strong>(c) Feature engineering</strong> — c'est ici que se gagnent les gains les plus importants. Pour le churn télécom, ajouter <code>ratio_appels_semaine_vs_mois</code>, <code>jours_depuis_derniere_connexion</code>, ou <code>delta_facture_M-1_vs_M-3</code> peut faire gagner <strong>5 à 10 points de F1</strong> — beaucoup plus que passer de RF à XGBoost.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège classique</strong> : négliger l'EDA et plonger directement dans la modélisation. Résultat typique : un modèle qui atteint 99% d'accuracy… parce qu'il a appris que <code>customer_id</code> est corrélé à la cible (fuite de données). En EDA, vous auriez vu <code>customer_id.nunique() == len(df)</code> et éliminé cette feature.</p></div></div>
+
+<h3 id="syn-étape-3-modélisation-20-du-temps">Étape 3 — Modélisation (20% du temps)</h3>
+
+<p>Discipline de fer : <strong>toujours commencer par une baseline triviale</strong>, puis monter en complexité uniquement si ça apporte quelque chose.</p>
+
+<p><strong>Exemple chiffré typique</strong> (projet churn, F1-score sur classe positive) :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Modèle</th><th>F1 validation</th><th>Temps d'entraînement</th><th>Commentaire</th></tr></thead><tbody><tr><td><code>DummyClassifier(strategy=&quot;most_frequent&quot;)</code></td><td>0.00</td><td>< 1 s</td><td>Point zéro obligatoire</td></tr><tr><td>Règle métier "inactif 30j"</td><td>0.42</td><td>0 s</td><td>À battre impérativement</td></tr><tr><td>Régression logistique</td><td>0.58</td><td>5 s</td><td>Première vraie baseline</td></tr><tr><td>Random Forest (défauts)</td><td>0.71</td><td>30 s</td><td>Grand saut</td></tr><tr><td>XGBoost (défauts)</td><td>0.74</td><td>45 s</td><td>+3 pts sur RF</td></tr><tr><td>XGBoost tuné (Optuna 100 essais)</td><td>0.77</td><td>2 h tuning</td><td>+3 pts supplémentaires</td></tr><tr><td>Stacking RF+XGB+LogReg</td><td>0.78</td><td>3 h</td><td>+1 pt pour 3× la complexité — <strong>à éviter en prod</strong></td></tr></tbody></table></div>
+<p>Le bon choix ici est XGBoost tuné : meilleur ratio performance / complexité.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.dummy import DummyClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
+from sklearn.model_selection import cross_val_score
+
+# Baseline triviale : répond toujours la classe majoritaire
+# → utile pour savoir quel score &quot;gratuit&quot; on bat
+dummy = DummyClassifier(strategy=&quot;most_frequent&quot;)
+
+# LogReg = première vraie baseline explicable
+logreg = LogisticRegression(max_iter=1000, class_weight=&quot;balanced&quot;)
+
+# RF = robuste, peu de tuning
+rf = RandomForestClassifier(n_estimators=300, random_state=42, n_jobs=-1)
+
+# XGBoost = performance state-of-the-art sur tabulaire
+xgb = XGBClassifier(eval_metric=&quot;logloss&quot;, tree_method=&quot;hist&quot;)
+
+for name, model in [(&quot;Dummy&quot;, dummy), (&quot;LogReg&quot;, logreg), (&quot;RF&quot;, rf), (&quot;XGB&quot;, xgb)]:
+    scores = cross_val_score(model, X_train, y_train, cv=5, scoring=&quot;f1&quot;)
+    # On affiche moyenne ± écart-type : un modèle &quot;meilleur&quot; mais instable
+    # (gros écart-type) est un drapeau rouge
+    print(f&quot;{name:8s}: {scores.mean():.3f} ± {scores.std():.3f}&quot;)</code></pre></div>
+
+
+<h3 id="syn-étape-4-évaluation-rigoureuse-10-du-temps">Étape 4 — Évaluation rigoureuse (10% du temps)</h3>
+
+<p>Une bonne évaluation repose sur <strong>trois piliers</strong> : cross-validation, métrique business, et interprétation.</p>
+
+<ul>
+<li><strong>Cross-validation</strong> : jamais un seul split. Toujours 5-fold stratifié minimum. Pour des séries temporelles, utilisez <code>TimeSeriesSplit</code> — un split aléatoire entraîne du leakage temporel.</li>
+<li><strong>Métriques business</strong> : accuracy ne veut rien dire sur un dataset à 1% de positifs. Préférez F1, PR-AUC, ou mieux encore une métrique $ (ex : "€ économisés par prédiction correcte moins € perdus par erreur").</li>
+<li><strong>Interprétation</strong> : SHAP values sur quelques centaines d'exemples pour voir ce que le modèle a appris. Si la feature numéro 1 est <code>customer_id</code>, vous avez du leakage.</li>
+</ul>
+
+<h3 id="syn-étape-5-déploiement-et-monitoring-20-du-temps">Étape 5 — Déploiement et monitoring (20% du temps)</h3>
+
+<p>Un modèle qui n'est pas en production n'existe pas. Le plus petit déploiement utile c'est :</p>
+
+<ol>
+<li><strong>Sérialiser</strong> le pipeline complet (preprocessing + modèle) avec <code>joblib.dump(pipe, &quot;model.pkl&quot;)</code>.</li>
+<li><strong>Exposer</strong> via FastAPI ou un batch job Airflow.</li>
+<li><strong>Monitorer</strong> deux choses : (a) la performance (accuracy qui baisse = retraining), (b) le drift des inputs (distribution des features qui change = alerte).</li>
+</ol>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Erreur classique</strong> : passer 80% du temps sur la modélisation et 5% sur les données. La vraie répartition d'un projet pro est <strong>~40% data, 20% modélisation, 40% production</strong>. Les juniors inversent cette proportion et leurs projets échouent en prod.</p></div></div>
+
+<h3 id="syn-choisir-le-bon-modèle-récapitulatif-rapide">Choisir le bon modèle — récapitulatif rapide</h3>
+
+<p>Sur du <strong>tabulaire</strong> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Si...</th><th>Modèle recommandé</th></tr></thead><tbody><tr><td>Interprétabilité critique (médical, légal)</td><td>Régression linéaire/logistique + SHAP</td></tr><tr><td>Petit dataset (< 1000 lignes)</td><td>Random Forest</td></tr><tr><td>Standard (1k–100k lignes)</td><td>XGBoost / LightGBM</td></tr><tr><td>Beaucoup de features catégorielles</td><td>CatBoost</td></tr><tr><td>Contraintes mémoire/CPU fortes</td><td>Régression linéaire, LightGBM léger</td></tr><tr><td>Très gros dataset (> 1M lignes)</td><td>LightGBM ou réseaux de neurones tabulaires</td></tr></tbody></table></div>
+<p>Sur des <strong>images</strong> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Si...</th><th>Modèle recommandé</th></tr></thead><tbody><tr><td>Quelques milliers d'images</td><td>Transfer learning EfficientNet/ResNet</td></tr><tr><td>Beaucoup de données (> 100k)</td><td>Fine-tuning d'un CNN moderne</td></tr><tr><td>Edge device (mobile)</td><td>MobileNet, EfficientNet-Lite</td></tr><tr><td>State of the art</td><td>Vision Transformer pré-entraîné</td></tr></tbody></table></div>
+<p>Sur du <strong>texte</strong> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Si...</th><th>Modèle recommandé</th></tr></thead><tbody><tr><td>Classification simple, baseline</td><td>TF-IDF + LogReg</td></tr><tr><td>Performance</td><td>Fine-tuning de BERT/RoBERTa/DistilBERT</td></tr><tr><td>Génération courte</td><td>T5 fine-tuné</td></tr><tr><td>Génération longue ou conversation</td><td>LLM via API (Claude, GPT)</td></tr><tr><td>Edge device</td><td>DistilBERT quantizé INT8</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Règle d'or</strong> : commencez <strong>toujours</strong> par le modèle le plus simple qui peut potentiellement résoudre le problème. Si une régression logistique atteint 85% et XGBoost 87%, gardez la régression : elle est plus simple, plus rapide, plus interprétable, et 2 points ne justifient probablement pas la complexité supplémentaire en production.</p></div></div>
+
+<h3 id="syn-méthodologie-ditération">Méthodologie d'itération</h3>
+
+<p>Un bon data scientist itère <strong>rapidement et discipliné</strong>. Pattern type :</p>
+
+<ol>
+<li><strong>Hypothèse</strong> : "Je pense que ajouter la feature <code>jours_depuis_derniere_connexion</code> va améliorer le F1 de 3%."</li>
+<li><strong>Implémentation</strong> : ajouter la feature dans le pipeline.</li>
+<li><strong>Mesure</strong> : cross-validation 5-fold.</li>
+<li><strong>Décision</strong> : keep ou rollback selon le résultat.</li>
+<li><strong>Documentation</strong> : tracker dans MLflow le résultat de l'expérience pour ne pas retester la même chose dans 2 semaines.</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import mlflow
+from sklearn.model_selection import cross_val_score
+
+# On isole CHAQUE expérience pour pouvoir la comparer ensuite
+with mlflow.start_run(run_name=&quot;add_feature_days_since_login&quot;):
+    # Tracer l&#x27;hypothèse testée : essentiel pour relire l&#x27;historique 3 mois plus tard
+    mlflow.log_param(&quot;hypothesis&quot;, &quot;days_since_login improves F1 by 3%&quot;)
+    mlflow.log_param(&quot;baseline_f1&quot;, 0.74)
+
+    # Entraîner avec la nouvelle feature
+    pipe = build_pipeline(extra_features=[&quot;days_since_login&quot;])
+    scores = cross_val_score(pipe, X_train, y_train, cv=5, scoring=&quot;f1&quot;)
+
+    # Moyenne + écart-type : une moyenne seule peut cacher un modèle instable
+    mlflow.log_metric(&quot;cv_f1_mean&quot;, scores.mean())
+    mlflow.log_metric(&quot;cv_f1_std&quot;, scores.std())
+
+    # Résultat attendu : 0.74 → 0.77. Si non, rollback.</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : l'itération en ML est comme l'optimisation d'une recette de pâtisserie. Vous changez <strong>un ingrédient à la fois</strong> et goûtez. Si vous changez 5 ingrédients en même temps et que c'est meilleur, vous ne savez pas lequel a aidé. C'est exactement pareil avec les hyperparamètres et le feature engineering : un changement à la fois, mesure rigoureuse, conclusion claire.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-le-bon-ordre-des-optimisations">Le bon ordre des optimisations</h3>
+
+<p>Quand votre baseline est insuffisante, dans quel ordre essayer les améliorations ? Voici l'ordre <strong>par rendement décroissant</strong>, tel qu'observé dans la plupart des projets industriels :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Ordre</th><th>Levier</th><th>Gain typique</th><th>Coût</th></tr></thead><tbody><tr><td>1</td><td>Plus de données (si possible)</td><td>+3 à +10 pts</td><td>Souvent très cher / impossible</td></tr><tr><td>2</td><td>Meilleur feature engineering</td><td>+5 à +10 pts</td><td>Faible (une journée de cerveau)</td></tr><tr><td>3</td><td>Meilleur preprocessing (outliers, encoding)</td><td>+1 à +3 pts</td><td>Faible</td></tr><tr><td>4</td><td>Modèle plus puissant (RF → XGBoost)</td><td>+2 à +5 pts</td><td>Moyen</td></tr><tr><td>5</td><td>Hyperparameter tuning (Optuna)</td><td>+1 à +3 pts</td><td>Moyen (compute)</td></tr><tr><td>6</td><td>Ensemble / stacking</td><td>+1 à +2 pts</td><td>Élevé (complexité prod)</td></tr><tr><td>7</td><td>Architecture custom / deep learning</td><td>+0 à +2 pts</td><td>Très élevé</td></tr></tbody></table></div>
+<p>Commencer par tuner finement avant d'avoir fait du feature engineering est l'erreur la plus courante : on gagne 1% au prix de 2 semaines, au lieu de gagner 8% en une journée de réflexion sur les features.</p>
+
+<h3 id="syn-top-10-des-erreurs-en-ml-applicatif">Top 10 des erreurs en ML applicatif</h3>
+
+<ol>
+<li><strong>Pas de baseline</strong> : impossible de savoir si votre modèle apporte quelque chose.</li>
+<li><strong>Métrique mal choisie</strong> : 99% d'accuracy sur un dataset à 1% de positifs… le modèle qui dit toujours "non" a aussi 99%.</li>
+<li><strong>Data leakage</strong> : train/test pas vraiment séparés (split aléatoire sur du temporel, scaler fitté sur tout le dataset, feature calculée après la cible).</li>
+<li><strong>Pas de cross-validation</strong> : un seul split train/val donne un score bruité à ±3%.</li>
+<li><strong>Tuning sur le test set</strong> : on overfit l'évaluation, le score reporté est mensonger.</li>
+<li><strong>Pipeline pas reproductible</strong> : "ça marche chez moi" en production.</li>
+<li><strong>Pas de monitoring en prod</strong> : on ne voit pas la dégradation, jusqu'au jour où le CEO appelle.</li>
+<li><strong>Modèle trop complexe</strong> pour le besoin business (réseau de neurones pour 500 lignes).</li>
+<li><strong>Communication insuffisante</strong> : les stakeholders ne comprennent pas et n'utilisent pas.</li>
+<li><strong>Pas d'A/B test</strong> : on ne sait pas si le modèle apporte vraiment de la valeur en production.</li>
+</ol>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>L'erreur la plus coûteuse</strong> : entraîner un modèle pendant 3 mois, le déployer, et découvrir que le métier ne l'utilisera jamais parce qu'il n'est pas intégré dans le workflow opérationnel. La technique sans le business est inutile. Avant de commencer à coder, parlez aux utilisateurs finaux pour comprendre comment ils prendraient la décision de l'utiliser ou non.</p></div></div>
+
+<h3 id="syn-communication-des-résultats">Communication des résultats</h3>
+
+<p>Présenter un modèle ML à des non-techniques demande de traduire les concepts. Quatre règles :</p>
+
+<ol>
+<li><strong>Pas de jargon</strong> : "F1-score" devient "qualité moyenne des prédictions positives". "Feature importance" devient "ce qui compte le plus pour la décision".</li>
+<li><strong>Métriques business</strong> : "Notre modèle détecte 85% des fraudes" est plus parlant que "Recall = 0.85". "Économie estimée : 200k€/an" est encore mieux.</li>
+<li><strong>Visualisations claires</strong> : confusion matrix avec couleurs, courbes ROC, SHAP summary plot avec les 10 features les plus importantes.</li>
+<li><strong>Limites explicites</strong> : "Le modèle est moins fiable pour les nouveaux clients (< 3 mois d'historique)". Ne pas cacher les faiblesses, c'est ce qui crée la confiance.</li>
+</ol>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : à la fin de chaque projet, écrivez un <strong>document de 1-2 pages</strong> qui explique le modèle à un non-technique. Si vous n'arrivez pas à le faire, c'est que vous ne le comprenez pas vraiment. C'est aussi le livrable qui distinguera votre travail d'un Kaggle isolé.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Quelle est la première chose à faire avant de commencer un projet ML ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Pas du code. Ce n'est ni un notebook, ni une ligne de Python. C'est une conversation.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Définir précisément le problème business et la métrique de succès</strong>, AVANT toute ligne de code. Questions à clarifier : (1) Quel est l'objectif business ? (réduire le churn de 5%, améliorer la satisfaction de 10 points NPS, économiser 200k€/an). (2) Quelle métrique technique reflète cet objectif ? (F1, ROC-AUC, RMSE, lift sur le top 10%). (3) Quelle est la baseline actuelle ? (comment décident-ils aujourd'hui sans ML ?). (4) Quel niveau de performance serait "utile" ? (un modèle à +1% par rapport à la baseline ne justifie probablement pas le coût). (5) Comment le modèle sera-t-il utilisé ? (real-time, batch, par qui, dans quel workflow ?). (6) Quelles données sont disponibles, lesquelles devraient l'être ? (7) Combien de temps, quelle équipe ? Sans cette clarification, vous risquez de passer 3 mois sur un modèle inutile. Les meilleures équipes ML passent <strong>1-2 semaines</strong> à clarifier ces questions avec les stakeholders avant d'écrire la première ligne. Question d'entretien data science senior : "Par où commencez-vous un nouveau projet ?" — la réponse révèle l'expérience pratique.</p>
+
+</details>
+
+<p><strong>Q2 : Vous avez 6 semaines pour un projet ML. Comment répartiriez-vous le temps ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Pas 80% sur le modèle. Pensez "end-to-end d'abord, optimisation ensuite".</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Répartition typique réaliste pour un projet de 6 semaines (~30 jours ouvrés) : (1) <strong>Semaine 1 (5 jours)</strong> : compréhension du problème, parler aux stakeholders, premier coup d'œil sur les données, définition de la métrique de succès et baseline. (2) <strong>Semaines 2-3 (10 jours)</strong> : EDA approfondie, cleaning, feature engineering, premier modèle baseline. C'est la phase la plus longue. (3) <strong>Semaine 4 (5 jours)</strong> : modélisation sérieuse, comparaison de plusieurs algorithmes, tuning des plus prometteurs. (4) <strong>Semaine 5 (5 jours)</strong> : évaluation rigoureuse (cross-validation, test sur données out-of-time, interprétation SHAP), itération sur les features les plus prometteuses. (5) <strong>Semaine 6 (5 jours)</strong> : déploiement (API, dashboard, ou batch), documentation, présentation aux stakeholders. <strong>Anti-pattern junior</strong> : passer 5 semaines sur le modèle et 1 semaine sur le reste — résultat : un super modèle qui n'est jamais utilisé. <strong>Pro tip</strong> : commencer par construire une <strong>end-to-end</strong> version dégradée dès la semaine 1 (baseline triviale + déploiement minimal), puis itérer. Cela force à résoudre les problèmes d'intégration tôt et garantit qu'il y aura quelque chose à montrer en cas de retard. Question d'entretien data science senior très révélatrice.</p>
+
+</details>
+
+<p><strong>Q3 : Vous présentez votre modèle au métier qui dit "85% d'accuracy ce n'est pas assez". Comment réagir ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Ne pas argumenter techniquement. Creuser le besoin.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Ne pas argumenter techniquement</strong>. Creuser le besoin business. Questions à poser : (1) <strong>Quelle est leur baseline actuelle ?</strong> S'ils décident à 60% d'accuracy aujourd'hui, votre 85% est déjà une amélioration massive. (2) <strong>Quelle est la conséquence d'une erreur ?</strong> Selon que c'est un email marketing (peu grave) ou un diagnostic médical (très grave), 85% est suffisant ou pas. (3) <strong>Quel serait un "bon" niveau ?</strong> 95% ? 99% ? Demandez le chiffre cible. Souvent ils répondent "le plus haut possible" — ce n'est pas une réponse. Demandez ce qui est <strong>acceptable</strong>. (4) <strong>Sont-ils prêts à accepter plus de coût pour plus d'accuracy ?</strong> Passer de 85% à 90% peut nécessiter 10x plus de données ou un modèle 100x plus cher en compute. (5) <strong>Quel est le coût de NE PAS utiliser le modèle ?</strong> Si la décision actuelle est aléatoire (50%), votre 85% est déjà une victoire énorme. <strong>Action concrète</strong> : décomposer le 85% en confusion matrix et discuter ligne par ligne. Souvent le métier réalise que les "erreurs" sont sur des cas spécifiques qu'ils peuvent traiter manuellement, et que le modèle est utile sur les 80% de cas standards. <strong>Exemple concret</strong> : un modèle de scoring de prospect à 85% est utile pour prioriser l'effort commercial — vous appelez d'abord les top 20% au lieu d'appeler tout le monde. Personne ne s'attend à ce que ce soit parfait. Question d'entretien data science : "Comment gérez-vous des attentes irréalistes du métier ?" — la réponse révèle la maturité.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Designing Machine Learning Systems</em> (Chip Huyen) — la référence moderne pour les projets ML</li>
+<li><em>Hands-On Machine Learning with Scikit-Learn, Keras and TensorFlow</em> (Aurélien Géron, 3rd ed.)</li>
+<li><em>The Hundred-Page Machine Learning Book</em> (Andriy Burkov)</li>
+<li><em>Building Machine Learning Powered Applications</em> (Emmanuel Ameisen)</li>
+<li><a href="https://madewithml.com/" target="_blank" rel="noopener">Made With ML</a> — cours gratuit sur les pratiques ML appliquées</li>
+<li><a href="https://developers.google.com/machine-learning/crash-course" target="_blank" rel="noopener">Google ML Crash Course</a></li>
+<li><em>Practical Statistics for Data Scientists</em> (Bruce & Bruce) — pour les bases statistiques</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../mlops/user-interface.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← User Interface</span>
+  </a>
+  <a href="../synthese/mega-tableau-modeles.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Méga-tableau des modèles →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

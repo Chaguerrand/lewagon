@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Natural Language Processing — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Natural Language Processing</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html" class="active">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">NLP & LLM</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Natural Language Processing</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Natural Language Processing</h1>
+        <p class="page-objective">Maîtriser le pipeline NLP classique (preprocessing → vectorisation → modélisation) avec NLTK et scikit-learn, du nettoyage de texte brut jusqu'à la classification (Naive Bayes) et le topic modeling (LDA).</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Bag of Words</div>
+        <div class="key-concept-def">Vecteur de comptage de chaque mot, ignore l&#x27;ordre.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">TF-IDF</div>
+        <div class="key-concept-def">Pondère chaque mot par sa rareté dans le corpus.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Stemming / lemmatisation</div>
+        <div class="key-concept-def">Réduction d&#x27;un mot à sa racine ou à sa forme canonique.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">n-gram</div>
+        <div class="key-concept-def">Séquence contiguë de n tokens, capture un peu de contexte local.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-natural-language-processing">Cheatsheet — Natural Language Processing</a><ol><li><a href="#nettoyage-de-base-python-built-in">Nettoyage de base (Python built-in)</a></li><li><a href="#preprocessing-avancé-nltk">Preprocessing avancé (NLTK)</a></li><li><a href="#pipeline-de-nettoyage-complet">Pipeline de nettoyage complet</a></li><li><a href="#vectorisation">Vectorisation</a></li><li><a href="#paramètres-clés-des-vectoriseurs">Paramètres clés des vectoriseurs</a></li><li><a href="#naive-bayes">Naive Bayes</a></li><li><a href="#lda-topic-modeling">LDA (Topic Modeling)</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-text-preprocessing">1) Text Preprocessing</a><ol><li><a href="#11-pourquoi-preprocesser-du-texte">1.1 Pourquoi preprocesser du texte ?</a></li><li><a href="#12-nettoyage-de-base-avec-python">1.2 Nettoyage de base avec Python</a></li><li><a href="#13-preprocessing-avancé-avec-nltk">1.3 Preprocessing avancé avec NLTK</a></li><li><a href="#14-pipeline-complet-de-preprocessing">1.4 Pipeline complet de preprocessing</a></li></ol></li><li><a href="#2-vectorisation">2) Vectorisation</a><ol><li><a href="#21-bag-of-words-bow">2.1 Bag-of-Words (BoW)</a></li><li><a href="#22-tf-idf">2.2 TF-IDF</a></li><li><a href="#23-contrôler-la-taille-du-vocabulaire">2.3 Contrôler la taille du vocabulaire</a></li><li><a href="#24-n-grams">2.4 N-grams</a></li></ol></li><li><a href="#3-naive-bayes-classification">3) Naive Bayes (Classification)</a><ol><li><a href="#31-le-problème-de-classification-de-mails">3.1 Le problème de classification d'e-mails</a></li><li><a href="#32-théorème-de-bayes-appliqué">3.2 Théorème de Bayes appliqué</a></li><li><a href="#33-exemple-calculatoire">3.3 Exemple calculatoire</a></li><li><a href="#34-smoothing">3.4 Smoothing</a></li><li><a href="#35-avantages-et-inconvénients">3.5 Avantages et inconvénients</a></li><li><a href="#36-implémentation-avec-scikit-learn">3.6 Implémentation avec scikit-learn</a></li><li><a href="#37-tuning-simultané-vectoriseur-modèle">3.7 Tuning simultané vectoriseur + modèle</a></li></ol></li><li><a href="#4-topic-modeling-latent-dirichlet-allocation-lda">4) Topic Modeling — Latent Dirichlet Allocation (LDA)</a><ol><li><a href="#41-quest-ce-que-la-lda">4.1 Qu'est-ce que la LDA ?</a></li><li><a href="#42-inputs-outputs">4.2 Inputs & Outputs</a></li><li><a href="#43-implémentation">4.3 Implémentation</a></li><li><a href="#44-lda-under-the-hood">4.4 LDA Under the Hood</a></li></ol></li><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-natural-language-processing">📋 Cheatsheet — Natural Language Processing</h2>
+
+<h3 id="nettoyage-de-base-python-built-in">Nettoyage de base (Python built-in)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">text.strip()                                # supprime les espaces en début/fin
+text.strip(&#x27;abc&#x27;)                           # supprime les chars a, b, c en début/fin
+text.lower()                                # met en minuscules
+text.replace(&quot;koala&quot;, &quot;panda&quot;)              # remplace toutes les occurrences
+text.split(&quot;/&quot;)                             # découpe en liste sur le séparateur &quot;/&quot;
+
+## Supprimer les chiffres
+&#x27;&#x27;.join(c for c in text if not c.isdigit())  # garde uniquement les non-chiffres
+
+## Supprimer la ponctuation
+import string
+for p in string.punctuation:                 # parcourt !&quot;#$%&amp;&#x27;()*+,-./:;&lt;=&gt;?@[\]^_`{|}~
+    text = text.replace(p, &#x27;&#x27;)               # remplace chaque ponctuation par rien
+
+## Supprimer les tags HTML avec regex
+import re
+re.sub(&#x27;&lt;[^&lt;]+?&gt;&#x27;, &#x27;&#x27;, html_text)            # supprime tout tag &lt;...&gt;
+
+## Extraire des emails avec regex
+re.findall(r&#x27;[\w.+-]+@[\w-]+\.[\w.-]+&#x27;, text)  # retourne la liste des emails trouvés</code></pre></div>
+
+
+<h3 id="preprocessing-avancé-nltk">Preprocessing avancé (NLTK)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from nltk.tokenize import word_tokenize
+tokens = word_tokenize(text)                 # tokenise : phrase → liste de mots
+
+from nltk.corpus import stopwords
+stop_words = set(stopwords.words(&#x27;english&#x27;)) # charge les stopwords anglais
+tokens_clean = [w for w in tokens if w not in stop_words]  # supprime les stopwords
+
+from nltk.stem import WordNetLemmatizer
+lemmatizer = WordNetLemmatizer()
+lemmatizer.lemmatize(&quot;running&quot;, pos=&quot;v&quot;)     # &quot;run&quot; — lemmatise un verbe
+lemmatizer.lemmatize(&quot;hours&quot;, pos=&quot;n&quot;)       # &quot;hour&quot; — lemmatise un nom</code></pre></div>
+
+
+<h3 id="pipeline-de-nettoyage-complet">Pipeline de nettoyage complet</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def clean(sentence):
+    sentence = sentence.lower()                                  # minuscules
+    sentence = &#x27;&#x27;.join(c for c in sentence if not c.isdigit())   # sans chiffres
+    for p in string.punctuation:
+        sentence = sentence.replace(p, &#x27;&#x27;)                       # sans ponctuation
+    sentence = sentence.strip()                                  # sans espaces
+    tokens = word_tokenize(sentence)                             # tokeniser
+    tokens = [w for w in tokens if w not in stop_words]          # sans stopwords
+    tokens = [WordNetLemmatizer().lemmatize(w, pos=&quot;v&quot;) for w in tokens]  # lemmatiser
+    return &#x27; &#x27;.join(tokens)                                      # reconstruire la phrase</code></pre></div>
+
+
+<h3 id="vectorisation">Vectorisation</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+
+## Bag-of-Words (comptage brut)
+cv = CountVectorizer()                       # instancie le vectoriseur
+X = cv.fit_transform(texts)                  # retourne une matrice sparse (docs × mots)
+cv.get_feature_names_out()                   # liste des mots du vocabulaire
+
+## TF-IDF (pondération fréquence/rareté)
+tfidf = TfidfVectorizer()                    # instancie le vectoriseur TF-IDF
+X = tfidf.fit_transform(texts)               # matrice sparse pondérée</code></pre></div>
+
+
+<h3 id="paramètres-clés-des-vectoriseurs">Paramètres clés des vectoriseurs</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">TfidfVectorizer(
+    max_df=0.9,           # ignore les mots présents dans &gt;90% des docs
+    min_df=2,             # ignore les mots présents dans &lt;2 docs
+    max_features=5000,    # garde uniquement les 5000 mots les plus fréquents
+    ngram_range=(1, 2)    # capture unigrams + bigrams
+)</code></pre></div>
+
+
+<h3 id="naive-bayes">Naive Bayes</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.naive_bayes import MultinomialNB
+from sklearn.pipeline import make_pipeline
+
+pipeline = make_pipeline(
+    TfidfVectorizer(),       # vectorise le texte
+    MultinomialNB(alpha=1.0) # classifieur Naive Bayes (alpha = smoothing)
+)
+pipeline.fit(X_train, y_train)               # entraîne le pipeline
+pipeline.predict(X_new)                      # prédit les classes</code></pre></div>
+
+
+<h3 id="lda-topic-modeling">LDA (Topic Modeling)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.decomposition import LatentDirichletAllocation
+
+lda = LatentDirichletAllocation(
+    n_components=5,       # nombre de topics à détecter
+    max_iter=100          # nombre d&#x27;itérations
+)
+lda.fit(X_vectorized)                        # entraîne sur la matrice vectorisée
+doc_topics = lda.transform(X_vectorized)     # matrice document × topic (probas)
+lda.components_                              # matrice topic × mots (poids)</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier de mettre en minuscules avant de vectoriser</strong></p>
+<p>❌ "Football" et "football" sont traités comme deux mots différents</p>
+<p><code>python</p>
+<p>CountVectorizer().fit_transform([&quot;Football is great&quot;, &quot;I love football&quot;])</p>
+<p># → 2 colonnes distinctes : &quot;Football&quot; et &quot;football&quot;</p>
+</code>
+<p>✅ Toujours <code>.lower()</code> avant de vectoriser (ou utiliser <code>lowercase=True</code>, activé par défaut dans sklearn)</p>
+<p><code>python</p>
+<p>texts = [t.lower() for t in texts]  # normalise la casse</p>
+</code></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Supprimer les stopwords pour du sentiment analysis</strong></p>
+<p>❌ Le mot "not" est un stopword mais change complètement le sens</p>
+<p><code>python</p>
+<p># &quot;I do NOT like this&quot; → après suppression stopwords → &quot;like&quot; → sentiment positif !</p>
+</code>
+<p>✅ Ne supprimer les stopwords que pour le topic modeling, pas pour le sentiment analysis</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser CountVectorizer sans contrôler la taille du vocabulaire</strong></p>
+<p>❌ Vocabulaire gigantesque → curse of dimensionality</p>
+<p><code>python</p>
+<p>CountVectorizer()  # aucun filtre → des milliers de colonnes inutiles</p>
+</code>
+<p>✅ Utiliser <code>max_df</code>, <code>min_df</code> et <code>max_features</code> pour limiter le vocabulaire</p>
+<p><code>python</p>
+<p>CountVectorizer(max_df=0.95, min_df=2, max_features=5000)</p>
+</code></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Ignorer le smoothing dans Naive Bayes</strong></p>
+<p>❌ Un mot absent du corpus spam → probabilité = 0 → produit entier = 0</p>
+<p><code>python</p>
+<p>MultinomialNB(alpha=0)  # pas de smoothing → probabilités nulles</p>
+</code>
+<p>✅ Toujours garder <code>alpha &gt; 0</code> (défaut = 1.0 = Laplace smoothing)</p>
+<p><code>python</p>
+<p>MultinomialNB(alpha=1.0)  # smoothing pour éviter les probas nulles</p>
+</code></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Ne pas tuner simultanément le vectoriseur et le modèle</strong></p>
+<p>❌ Tuner le modèle seul sans toucher aux hyperparamètres du vectoriseur</p>
+<p><code>python</p>
+<p>GridSearchCV(MultinomialNB(), {&#x27;alpha&#x27;: [0.1, 1]})  # ne tune que le NB</p>
+</code>
+<p>✅ Utiliser un pipeline et tuner les deux ensemble</p>
+<p><code>python</p>
+<p>pipe = make_pipeline(TfidfVectorizer(), MultinomialNB())</p>
+<p>GridSearchCV(pipe, {</p>
+<p>&#x27;tfidfvectorizer__ngram_range&#x27;: [(1,1), (1,2)],</p>
+<p>&#x27;multinomialnb__alpha&#x27;: [0.1, 1.0]</p>
+<p>})</p>
+</code></div></div>
+
+<hr>
+
+<h2 id="1-text-preprocessing">1) Text Preprocessing</h2>
+
+<h3 id="11-pourquoi-preprocesser-du-texte">1.1 Pourquoi preprocesser du texte ?</h3>
+
+<p>Les algorithmes de ML ne comprennent que des <strong>nombres</strong>. Le preprocessing transforme du texte brut en données exploitables. Les étapes classiques sont : lowercase, suppression chiffres/ponctuation, split, tokenization, suppression stopwords, lemmatisation.</p>
+
+<figure><img src="../../assets/images/nlp-01-8e491379.png" alt="" loading="lazy"></figure>
+
+<h3 id="12-nettoyage-de-base-avec-python">1.2 Nettoyage de base avec Python</h3>
+
+<p><strong><code>strip</code></strong> — supprime les espaces en début/fin de chaîne :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">texts = [
+    &#x27;   Bonjour, comment ça va ?     &#x27;,
+    &#x27;    Heyyyyy, how are you doing ?   &#x27;,
+]
+[text.strip() for text in texts]</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+## [&#x27;Bonjour, comment ça va ?&#x27;, &#x27;Heyyyyy, how are you doing ?&#x27;]</code></pre></div>
+
+
+<p>On peut aussi spécifier des caractères à supprimer :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">text = &quot;abcd Who is abcd ? abcd&quot;
+text.strip(&#x27;bdac&#x27;)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+## &quot; Who is abcd ? &quot;</code></pre></div>
+
+
+<p><strong><code>replace</code></strong> — remplace des sous-chaînes :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;I love koalas, koalas are cute.&quot;.replace(&quot;koala&quot;, &quot;panda&quot;)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+## &#x27;I love pandas, pandas are cute.&#x27;</code></pre></div>
+
+
+<p><strong><code>split</code></strong> — découpe une chaîne en liste :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;linkin park / metallica / red hot chili peppers&quot;.split(&quot;/&quot;)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+## [&#x27;linkin park &#x27;, &#x27; metallica &#x27;, &#x27; red hot chili peppers&#x27;]</code></pre></div>
+
+
+<p><strong><code>lower</code></strong> — uniformise la casse :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;FOOTBALL is my passion. Who else loves fOOtBaLL ?&quot;.lower()</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+## &#x27;football is my passion. who else loves football ?&#x27;</code></pre></div>
+
+
+<p><strong>Supprimer les chiffres</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">text = &quot;we waited for so long, like 30 minutes&quot;
+&#x27;&#x27;.join(char for char in text if not char.isdigit())</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+## &#x27;we waited for so long, like  minutes&#x27;</code></pre></div>
+
+
+<p><strong>Supprimer la ponctuation</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import string
+text = &quot;I love bubble tea! OMG so #tasty @channel XOXO&quot;
+for p in string.punctuation:
+    text = text.replace(p, &#x27;&#x27;)
+## → &#x27;I love bubble tea OMG so tasty channel XOXO&#x27;</code></pre></div>
+
+
+<p><strong>Combo complet</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def basic_cleaning(sentence):
+    sentence = sentence.lower()                                    # minuscules
+    sentence = &#x27;&#x27;.join(c for c in sentence if not c.isdigit())     # sans chiffres
+    for p in string.punctuation:
+        sentence = sentence.replace(p, &#x27;&#x27;)                         # sans ponctuation
+    sentence = sentence.strip()                                    # sans espaces
+    return sentence
+
+[basic_cleaning(s) for s in [&quot;   I LOVE Pizza 999 @^_^&quot;, &quot;  Le Wagon - 666&quot;]]</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+## [&#x27;i love pizza&#x27;, &#x27;le wagon&#x27;]</code></pre></div>
+
+
+<p><strong>Supprimer des tags HTML avec RegEx</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import re
+re.sub(&#x27;&lt;[^&lt;]+?&gt;&#x27;, &#x27;&#x27;, &quot;&lt;head&gt;&lt;body&gt;Hello Le Wagon!&lt;/body&gt;&lt;/head&gt;&quot;)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+## &#x27;Hello Le Wagon!&#x27;</code></pre></div>
+
+
+<p><strong>Extraire des emails</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">re.findall(r&#x27;[\w.+-]+@[\w-]+\.[\w.-]+&#x27;, &quot;authored by darkvador@gmail.com and batman@outlook.com&quot;)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+## [&#x27;darkvador@gmail.com&#x27;, &#x27;batman@outlook.com&#x27;]</code></pre></div>
+
+
+<h3 id="13-preprocessing-avancé-avec-nltk">1.3 Preprocessing avancé avec NLTK</h3>
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>👉 <a href="https://www.nltk.org/" target="_blank" rel="noopener">NLTK — official website</a> | 👉 <a href="https://www.nltk.org/install.html" target="_blank" rel="noopener">Installation</a></p></div></div>
+
+<p><strong>Tokenizing</strong> — découper une phrase en tokens (mots individuels) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from nltk.tokenize import word_tokenize
+
+word_tokenize(&#x27;It is during our darkest moments that we must focus to see the light&#x27;)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+## [&#x27;It&#x27;, &#x27;is&#x27;, &#x27;during&#x27;, &#x27;our&#x27;, &#x27;darkest&#x27;, &#x27;moments&#x27;, &#x27;that&#x27;, &#x27;we&#x27;, &#x27;must&#x27;, &#x27;focus&#x27;, &#x27;to&#x27;, &#x27;see&#x27;, &#x27;the&#x27;, &#x27;light&#x27;]</code></pre></div>
+
+
+<p><strong>Stopwords</strong> — mots trop fréquents qui n'apportent pas d'information :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from nltk.corpus import stopwords
+
+stop_words = set(stopwords.words(&#x27;english&#x27;))
+tokens = [&quot;i&quot;, &quot;am&quot;, &quot;going&quot;, &quot;to&quot;, &quot;go&quot;, &quot;to&quot;, &quot;the&quot;, &quot;club&quot;, &quot;and&quot;, &quot;party&quot;]
+
+[w for w in tokens if w not in stop_words]   # garde les mots significatifs</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+## [&#x27;going&#x27;, &#x27;go&#x27;, &#x27;club&#x27;, &#x27;party&#x27;]</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Attention</strong> : "not" est un stopword ! Ne pas supprimer les stopwords pour du <strong>sentiment analysis</strong>.</p></div></div>
+
+<p>✅ Utile pour : topic modeling</p>
+
+<p>❌ Dangereux pour : sentiment analysis, authorship attribution</p>
+
+<p><strong>Lemmatizing</strong> — trouver la racine des mots pour les regrouper par sens :</p>
+
+<figure><img src="../../assets/images/nlp-02-2faa6553.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from nltk.stem import WordNetLemmatizer
+
+lemmatizer = WordNetLemmatizer()
+lemmatizer.lemmatize(&quot;running&quot;, pos=&quot;v&quot;)    # &quot;run&quot;
+lemmatizer.lemmatize(&quot;hours&quot;, pos=&quot;n&quot;)      # &quot;hour&quot;</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>👉 <a href="https://www.nltk.org/_modules/nltk/stem/wordnet.html" target="_blank" rel="noopener">nltk.stem — WordNetLemmatizer</a></p></div></div>
+
+<h3 id="14-pipeline-complet-de-preprocessing">1.4 Pipeline complet de preprocessing</h3>
+
+<p>Les 4 étapes dans l'ordre :</p>
+
+<ol>
+<li><strong>Basic cleaning</strong> (lower, chiffres, ponctuation, strip)</li>
+<li><strong>Tokenizing</strong> (phrase → liste de mots)</li>
+<li><strong>Suppression des stopwords</strong> (si topic modeling)</li>
+<li><strong>Lemmatizing</strong> (racine des mots)</li>
+</ol>
+
+<div class="table-wrapper"><table><thead><tr><th>Mot original</th><th>Après lemmatisation (verbe)</th><th>Après lemmatisation (nom)</th><th>running</th><th>run</th><th>run</th></tr></thead><tbody><tr><td>eating</td><td>eat</td><td>eat</td><td>swimming</td><td>swim</td><td>swim</td></tr><tr><td>playing</td><td>play</td><td>play</td><td>hours</td><td>hours</td><td>hour</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Takeaway</strong> : le preprocessing texte combine des opérations Python built-in (strip, replace, lower, split) et des techniques NLP (tokenize, stopwords, lemmatize).</p></div></div>
+
+<hr>
+
+<h2 id="2-vectorisation">2) Vectorisation</h2>
+
+<p>Les algorithmes de ML ne traitent que des nombres. <strong>Vectoriser</strong> = convertir du texte brut en représentation numérique.</p>
+
+<h3 id="21-bag-of-words-bow">2.1 Bag-of-Words (BoW)</h3>
+
+<p>La représentation <strong>Bag-of-Words</strong> compte combien de fois chaque mot apparaît dans chaque document :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.feature_extraction.text import CountVectorizer
+
+texts = [
+    &#x27;the young dog is running with the cat&#x27;,
+    &#x27;running is good for your health&#x27;,
+    &#x27;your cat is young&#x27;,
+]
+
+cv = CountVectorizer()
+X = cv.fit_transform(texts)       # matrice sparse (docs × mots)
+cv.get_feature_names_out()         # vocabulaire appris</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+## array([&#x27;cat&#x27;, &#x27;dog&#x27;, &#x27;for&#x27;, &#x27;good&#x27;, &#x27;health&#x27;, &#x27;is&#x27;, &#x27;running&#x27;, &#x27;the&#x27;, &#x27;with&#x27;, &#x27;young&#x27;, &#x27;your&#x27;])</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Limites du BoW</strong> :</p>
+<p>- ❌ Ne prend pas en compte l'<strong>ordre</strong> des mots</p>
+<p>- ❌ Ne prend pas en compte la <strong>longueur</strong> du document → TF-IDF</p>
+<p>- ❌ Ne capture pas le <strong>contexte</strong> → N-grams</p></div></div>
+
+<h3 id="22-tf-idf">2.2 TF-IDF</h3>
+
+<p><strong>Intuition</strong> : donner un poids élevé aux mots fréquents dans un document <strong>mais rares</strong> dans le corpus.</p>
+
+<p>$\text{TF-IDF}_{x,d} = \underbrace{\text{tf}_{x,d}}_{\text{fréquence dans le doc}} \times \underbrace{\left[\log\left(\frac{N+1}{\text{df}_x+1}\right) + 1\right]}_{\text{inverse document frequency}}$</p>
+
+<p>Où :</p>
+
+<ul>
+<li>$\text{tf}_{x,d}$ = nombre d'occurrences du mot $x$ dans le document $d$ / nombre total de mots dans $d$</li>
+<li>$\text{df}_x$ = nombre de documents contenant le mot $x$</li>
+<li>$N$ = nombre total de documents</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.feature_extraction.text import TfidfVectorizer
+
+tfidf = TfidfVectorizer()
+X = tfidf.fit_transform(texts)     # matrice pondérée par TF-IDF</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Exemple : sur <a href="http://eurosport.com/football" target="_blank" rel="noopener">eurosport.com/football</a>, le mot "football" apparaît partout → TF-IDF faible. Le mot "concussion" n'apparaît que dans 2 articles → TF-IDF élevé → plus discriminant.</p></div></div>
+
+<h3 id="23-contrôler-la-taille-du-vocabulaire">2.3 Contrôler la taille du vocabulaire</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">CountVectorizer(
+    max_df=2,           # supprime les mots apparaissant dans &gt;2 documents
+    min_df=1,           # supprime les mots apparaissant dans &lt;1 document
+    max_features=3      # garde uniquement les 3 mots les plus fréquents
+)</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Paramètre</th><th>Type</th><th>Effet</th></tr></thead><tbody><tr><td><code>max_df=20</code></td><td>int</td><td>Ignore les mots dans >20 docs</td></tr><tr><td><code>max_features=5000</code></td><td>int</td><td>Garde les top 5000 mots</td></tr></tbody></table></div>
+<h3 id="24-n-grams">2.4 N-grams</h3>
+
+<p>Les N-grams capturent le <strong>contexte</strong> en considérant des séquences de mots :</p>
+
+<ul>
+<li><strong>Unigram</strong> (n=1) : "mathematics"</li>
+<li><strong>Bigram</strong> (n=2) : "machine learning"</li>
+<li><strong>Trigram</strong> (n=3) : "natural language processing"</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">CountVectorizer(ngram_range=(1, 2))   # unigrams + bigrams
+CountVectorizer(ngram_range=(2, 2))   # bigrams uniquement
+CountVectorizer(ngram_range=(1, 3))   # unigrams + bigrams + trigrams</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Problème résolu</strong> : "I like the movie but NOT the actors" vs "I like the actors but NOT the movie" → identiques en BoW, <strong>distinguables</strong> avec des bigrams !</p></div></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Takeaway Vectorisation</strong> :</p>
+<p>- <code>CountVectorizer</code> = comptage brut</p>
+<p>- <code>TfidfVectorizer</code> = pondération (robuste à la longueur du document)</p>
+<p>- Paramètres clés : <code>min_df</code>, <code>max_df</code>, <code>max_features</code>, <code>ngram_range</code></p></div></div>
+
+<hr>
+
+<h2 id="3-naive-bayes-classification">3) Naive Bayes (Classification)</h2>
+
+<h3 id="31-le-problème-de-classification-de-mails">3.1 Le problème de classification d'e-mails</h3>
+
+<p>🎯 Classifier les e-mails en <strong>Normal (N)</strong> ou <strong>Spam (S)</strong> à partir de leur contenu.</p>
+
+<figure><img src="../../assets/images/nlp-03-31bbc516.png" alt="" loading="lazy"></figure>
+
+<h3 id="32-théorème-de-bayes-appliqué">3.2 Théorème de Bayes appliqué</h3>
+
+<p>La probabilité qu'un e-mail contenant les mots $x_1, x_2, \ldots, x_k$ soit du spam :</p>
+
+<p>$P(S | x_1, \ldots, x_k) = \frac{P(S) \times \prod_{i=1}^{k} P(x_i | S)}{P(S) \times \prod_{i=1}^{k} P(x_i | S) + P(N) \times \prod_{i=1}^{k} P(x_i | N)}$</p>
+
+<p>L'hypothèse <strong>naïve</strong> : les mots sont <strong>conditionnellement indépendants</strong> → on peut multiplier les probabilités individuelles.</p>
+
+<figure><img src="../../assets/images/nlp-04-b912ceda.jpeg" alt="" loading="lazy"></figure>
+
+<h3 id="33-exemple-calculatoire">3.3 Exemple calculatoire</h3>
+
+<p>Avec 8 e-mails normaux et 4 spams, calculer $P(S | \text{"Dear"}, \text{"Friend"})$ :</p>
+
+<p><strong>Probabilités a priori</strong> :</p>
+
+<ul>
+<li>$P(N) = 8/12 = 0.67$, $P(S) = 4/12 = 0.33$</li>
+</ul>
+
+<p><strong>Vraisemblances</strong> :</p>
+
+<ul>
+<li>$P(text{"Dear"}|N) = 8/17 = 0.47$, $P(\text{"Friend"}|N) = 5/17 = 0.29$</li>
+<li>$P(text{"Dear"}|S) = 2/7 = 0.29$, $P(\text{"Friend"}|S) = 1/7 = 0.14$</li>
+</ul>
+
+<p><strong>Résultat</strong> :</p>
+
+<p>$P(S | \text{"Dear"}, \text{"Friend"}) = \frac{0.0136}{0.0136 + 0.0923} = 0.129 = 12.9\%$</p>
+
+<h3 id="34-smoothing">3.4 Smoothing</h3>
+
+<p>Si un mot n'apparaît jamais dans les spams → $P(\text{mot}|S) = 0$ → le produit entier = 0.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Solution</strong> : ajouter $\alpha > 0$ aux comptages (Laplace smoothing). Le paramètre <code>alpha</code> dans <code>MultinomialNB</code> contrôle ce lissage (défaut = 1.0).</p></div></div>
+
+<figure><img src="../../assets/images/nlp-05-68a77a62.png" alt="" loading="lazy"></figure>
+
+<h3 id="35-avantages-et-inconvénients">3.5 Avantages et inconvénients</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead><tbody><tr><td>Très rapide (pas d'apprentissage itératif)</td><td>Ne capture pas les dépendances entre mots</td></tr><tr><td>Pas de paramètres β à apprendre</td><td></td></tr></tbody></table></div>
+<h3 id="36-implémentation-avec-scikit-learn">3.6 Implémentation avec scikit-learn</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+from sklearn.pipeline import make_pipeline
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.model_selection import cross_validate
+
+data = pd.read_csv(&quot;data/emails.csv&quot;)          # colonnes : text, spam
+X = data[&quot;text&quot;]
+y = data[&quot;spam&quot;]
+
+## Pipeline : vectorisation + Naive Bayes
+pipeline = make_pipeline(TfidfVectorizer(), MultinomialNB())
+
+## Cross-validation
+cv_results = cross_validate(pipeline, X, y, cv=5, scoring=[&quot;recall&quot;])
+print(cv_results[&quot;test_recall&quot;].mean())         # ~0.45 recall sur les spams</code></pre></div>
+
+
+<h3 id="37-tuning-simultané-vectoriseur-modèle">3.7 Tuning simultané vectoriseur + modèle</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import GridSearchCV
+
+params = {
+    &#x27;tfidfvectorizer__ngram_range&#x27;: [(1,1), (2,2)],
+    &#x27;multinomialnb__alpha&#x27;: [0.1, 1.0]
+}
+
+grid = GridSearchCV(pipeline, params, scoring=&quot;recall&quot;, cv=5, n_jobs=-1)
+grid.fit(X, y)
+
+print(grid.best_score_)    # ~0.95 recall
+print(grid.best_params_)   # {&#x27;alpha&#x27;: 0.1, &#x27;ngram_range&#x27;: (1,1)}</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Le tuning conjoint fait passer le recall de ~45% à ~95% ! Les hyperparamètres du vectoriseur ont un impact majeur.</p></div></div>
+
+<hr>
+
+<h2 id="4-topic-modeling-latent-dirichlet-allocation-lda">4) Topic Modeling — Latent Dirichlet Allocation (LDA)</h2>
+
+<h3 id="41-quest-ce-que-la-lda">4.1 Qu'est-ce que la LDA ?</h3>
+
+<p>La <strong>Latent Dirichlet Allocation</strong> est un algorithme <strong>non supervisé</strong> pour découvrir des topics cachés dans un corpus de documents.</p>
+
+<ul>
+<li><strong>Latent</strong> = topics cachés</li>
+<li><strong>Dirichlet</strong> = type de distribution de probabilité</li>
+<li>Chaque <strong>document</strong> = mélange de topics</li>
+<li>Chaque <strong>topic</strong> = mélange de mots</li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html" target="_blank" rel="noopener">sklearn.decomposition.LatentDirichletAllocation</a> | 👉 <a href="https://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf" target="_blank" rel="noopener">Paper original — Blei, Ng, Jordan (2003)</a></p></div></div>
+
+<h3 id="42-inputs-outputs">4.2 Inputs & Outputs</h3>
+
+<p><strong>Inputs</strong> :</p>
+
+<ul>
+<li><strong>Matrice document-terme</strong> (vectorisée via CountVectorizer ou TfidfVectorizer)</li>
+<li><strong>Nombre de topics</strong> (<code>n_components</code>)</li>
+<li><strong>Nombre d'itérations</strong> (<code>max_iter</code>)</li>
+</ul>
+
+<p><strong>Output</strong> :</p>
+
+<ul>
+<li><strong>Topics</strong> = groupes de mots cohérents, interprétables comme des "composantes principales non-linéaires"</li>
+</ul>
+
+<h3 id="43-implémentation">4.3 Implémentation</h3>
+
+<p><strong>Étape 1 — Nettoyage</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def cleaning(sentence):
+    sentence = sentence.strip().lower()                           # strip + lower
+    sentence = &#x27;&#x27;.join(c for c in sentence if not c.isdigit())    # sans chiffres
+    for p in string.punctuation:
+        sentence = sentence.replace(p, &#x27;&#x27;)                        # sans ponctuation
+    tokens = word_tokenize(sentence)                              # tokeniser
+    tokens = [w for w in tokens if w not in stop_words]           # sans stopwords
+    tokens = [WordNetLemmatizer().lemmatize(w, pos=&quot;v&quot;) for w in tokens]  # lemmatiser
+    return &#x27; &#x27;.join(tokens)
+
+cleaned = documents[&quot;documents&quot;].apply(cleaning)</code></pre></div>
+
+
+<p><strong>Étape 2 — Vectorisation</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">vectorizer = TfidfVectorizer()
+X = vectorizer.fit_transform(cleaned)</code></pre></div>
+
+
+<p><strong>Étape 3 — Entraîner la LDA</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.decomposition import LatentDirichletAllocation
+
+lda = LatentDirichletAllocation(n_components=2, max_iter=100)
+lda.fit(X)</code></pre></div>
+
+
+<p><strong>Document-Topic Matrix</strong> (mélange de topics par document) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">doc_topics = lda.transform(X)        # shape (n_docs, n_topics) — probas</code></pre></div>
+
+
+<p><strong>Topic-Word Matrix</strong> (mélange de mots par topic) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">topic_words = pd.DataFrame(
+    lda.components_,                   # poids de chaque mot dans chaque topic
+    columns=vectorizer.get_feature_names_out()
+)</code></pre></div>
+
+
+<p><strong>Afficher les top mots par topic</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def print_topics(lda_model, vectorizer, top_words=5):
+    topic_df = pd.DataFrame(
+        lda_model.components_,
+        columns=vectorizer.get_feature_names_out()
+    )
+    for i in range(topic_df.shape[0]):
+        print(f&quot;--- Topic {i} ---&quot;)
+        print(topic_df.iloc[i].sort_values(ascending=False).head(top_words))
+
+print_topics(lda, vectorizer, 5)</code></pre></div>
+
+
+<h3 id="44-lda-under-the-hood">4.4 LDA Under the Hood</h3>
+
+<p>L'algorithme fonctionne de manière itérative :</p>
+
+<ol>
+<li>Choisir le nombre de topics (<code>n_components</code>)</li>
+<li>Assigner <strong>aléatoirement</strong> chaque mot de chaque document à un topic</li>
+<li>Pour chaque mot, recalculer :</li>
+</ol>
+<ul>
+<li><strong>Document Mixture</strong> $P(\text{topic } t | \text{document } d)$ — à quelle fréquence le topic $t$ apparaît dans le document $d$</li>
+<li><strong>Topic Mixture</strong> $P(\text{mot } w | \text{topic } t)$ — à quelle fréquence le mot $w$ apparaît dans le topic $t$</li>
+<li><strong>Mise à jour</strong> : $P(\text{mot } w, \text{topic } t) = P(t|d) \times P(w|t)$</li>
+</ul>
+<ol>
+<li>Répéter l'étape 2 sur de nombreuses itérations → les topics convergent</li>
+</ol>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Améliorer le topic modeling</strong> : augmenter le nombre de documents, augmenter <code>max_iter</code>, ajuster <code>n_components</code>.</p></div></div>
+
+<hr>
+
+<h2 id="bibliographie">Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://www.nltk.org/" target="_blank" rel="noopener">NLTK — official website</a></li>
+<li>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html" target="_blank" rel="noopener">sklearn CountVectorizer</a></li>
+<li>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html" target="_blank" rel="noopener">sklearn TfidfVectorizer</a></li>
+<li>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html" target="_blank" rel="noopener">sklearn MultinomialNB</a></li>
+<li>👉 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html" target="_blank" rel="noopener">sklearn LatentDirichletAllocation</a></li>
+<li>👉 <a href="https://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf" target="_blank" rel="noopener">Latent Dirichlet Allocation — Blei, Ng, Jordan (2003)</a></li>
+<li>👉 <a href="https://en.wikipedia.org/wiki/Natural_language_processing" target="_blank" rel="noopener">Wikipedia — NLP</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">Challenges</h2>
+
+<p>Construire un pipeline complet NLP : preprocessing du texte (nettoyage, tokenisation, lemmatisation) → vectorisation (TF-IDF) → classification (Naive Bayes) et topic modeling (LDA).</p>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-pourquoi-le-nlp">Pourquoi le NLP ?</a></li><li><a href="#ref-5-choses-à-retenir-absolument">5 choses à retenir absolument</a></li><li><a href="#ref-analogie-fil-rouge">Analogie fil rouge</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-preprocessing-nettoyer-le-texte">1. Preprocessing — Nettoyer le texte</a><ol><li><a href="#ref-11-pourquoi-nettoyer">1.1 Pourquoi nettoyer ?</a></li><li><a href="#ref-12-nettoyage-de-base-avec-python-built-in">1.2 Nettoyage de base avec Python (built-in)</a></li><li><a href="#ref-13-preprocessing-avancé-avec-nltk">1.3 Preprocessing avancé avec NLTK</a></li><li><a href="#ref-14-pipeline-complet-de-preprocessing">1.4 Pipeline complet de preprocessing</a></li></ol></li><li><a href="#ref-2-vectorisation-transformer-le-texte-en-nombres">2. Vectorisation — Transformer le texte en nombres</a><ol><li><a href="#ref-21-bag-of-words-sac-de-mots">2.1 Bag-of-Words (Sac de mots)</a></li><li><a href="#ref-22-tf-idf-pondération-intelligente">2.2 TF-IDF — Pondération intelligente</a></li><li><a href="#ref-23-contrôler-la-taille-du-vocabulaire">2.3 Contrôler la taille du vocabulaire</a></li><li><a href="#ref-24-n-grams-capturer-le-contexte">2.4 N-grams — Capturer le contexte</a></li></ol></li><li><a href="#ref-3-classification-avec-naive-bayes">3. Classification avec Naive Bayes</a><ol><li><a href="#ref-31-le-problème-détecter-les-spams">3.1 Le problème : détecter les spams</a></li><li><a href="#ref-32-lidée-de-bayes">3.2 L'idée de Bayes</a></li><li><a href="#ref-33-exemple-chiffré-pas-à-pas">3.3 Exemple chiffré pas à pas</a></li><li><a href="#ref-34-le-smoothing-éviter-les-probabilités-nulles">3.4 Le smoothing — Éviter les probabilités nulles</a></li><li><a href="#ref-35-avantages-et-limites-de-naive-bayes">3.5 Avantages et limites de Naive Bayes</a></li><li><a href="#ref-36-pipeline-complet-code-sklearn">3.6 Pipeline complet — Code sklearn</a></li><li><a href="#ref-37-tuner-le-pipeline-vectoriseur-et-modèle-ensemble">3.7 Tuner le pipeline — Vectoriseur ET modèle ensemble</a></li></ol></li><li><a href="#ref-4-topic-modeling-lda-latent-dirichlet-allocation">4. Topic Modeling — LDA (Latent Dirichlet Allocation)</a><ol><li><a href="#ref-41-quest-ce-que-le-topic-modeling">4.1 Qu'est-ce que le topic modeling ?</a></li><li><a href="#ref-42-comment-ça-fonctionne-intuitif">4.2 Comment ça fonctionne ? (intuitif)</a></li><li><a href="#ref-43-pipeline-complet-lda">4.3 Pipeline complet LDA</a></li></ol></li><li><a href="#ref-erreurs-classiques-à-éviter">Erreurs classiques à éviter</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<h3 id="ref-pourquoi-le-nlp">Pourquoi le NLP ?</h3>
+
+<p>Imagine que tu veuilles apprendre une langue étrangère — disons le japonais. Avant de pouvoir lire un roman, tu dois d'abord apprendre l'alphabet, puis les mots de base, puis comprendre comment les mots se combinent pour former un sens. Le NLP (Natural Language Processing — Traitement Automatique du Langage Naturel), c'est exactement ça, mais pour une machine.</p>
+
+<p>Un algorithme de Machine Learning ne comprend que des <strong>nombres</strong>. Il ne "lit" pas. Ton travail en NLP consiste à transformer du texte brut ("J'adore ce film !") en une suite de chiffres qu'un modèle peut analyser.</p>
+
+<p>Ce cours couvre le <strong>pipeline NLP classique</strong> :</p>
+
+<ol>
+<li><strong>Preprocessing</strong> — nettoyer le texte brut (retirer la ponctuation, uniformiser la casse, etc.)</li>
+<li><strong>Bag-of-Words</strong> — représenter chaque texte par le comptage de ses mots</li>
+<li><strong>TF-IDF</strong> — pondérer les mots par leur importance réelle</li>
+<li><strong>Classification (Naive Bayes)</strong> — prédire une catégorie (spam / pas spam)</li>
+<li><strong>Topic Modeling (LDA)</strong> — découvrir automatiquement les thèmes d'un corpus</li>
+</ol>
+
+<h3 id="ref-5-choses-à-retenir-absolument">5 choses à retenir absolument</h3>
+
+<ol>
+<li>Les modèles ne lisent pas — ils manipulent des <strong>vecteurs de nombres</strong>.</li>
+<li>Le <strong>preprocessing</strong> est crucial : "Football" et "football" sont deux mots différents pour une machine si on ne normalise pas la casse.</li>
+<li>Le <strong>Bag-of-Words</strong> compte les mots ; le <strong>TF-IDF</strong> les pondère selon leur rareté dans le corpus.</li>
+<li>En <strong>sentiment analysis</strong>, ne jamais supprimer le mot "not" (c'est un stopword, mais il change tout le sens d'une phrase).</li>
+<li>Un pipeline <code>TfidfVectorizer → MultinomialNB</code> bien tuné peut atteindre ~95% de recall sur la détection de spam.</li>
+</ol>
+
+<h3 id="ref-analogie-fil-rouge">Analogie fil rouge</h3>
+
+<blockquote><p>Apprendre une langue étrangère, c'est comme construire un pipeline NLP :<br>- Tu mémorises le vocabulaire → <strong>Bag-of-Words</strong><br>- Tu comprends que "le" et "la" ne portent pas de sens fort → <strong>Stopwords</strong><br>- Tu ramènes "allait", "irait", "ira" à "aller" → <strong>Lemmatisation</strong><br>- Tu retiens que "machine learning" est un concept entier, pas deux mots séparés → <strong>N-grams</strong><br>- Tu attribues une importance à un mot rare mais précis → <strong>TF-IDF</strong></p></blockquote>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">1. Preprocessing    → nettoyer le texte
+2. Vectorisation    → transformer le texte en nombres (BoW, TF-IDF, N-grams)
+3. Naive Bayes      → classifier des textes (ex : spam / ham)
+4. LDA              → découvrir des thèmes cachés dans un corpus</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-1-preprocessing-nettoyer-le-texte">1. Preprocessing — Nettoyer le texte</h2>
+
+<h3 id="ref-11-pourquoi-nettoyer">1.1 Pourquoi nettoyer ?</h3>
+
+<p>Imagine deux phrases :</p>
+
+<ul>
+<li><code>&quot;   I LOVE Pizza 999 @^_^&quot;</code></li>
+<li><code>&quot;i love pizza&quot;</code></li>
+</ul>
+
+<p>Pour un humain, c'est la même idée. Pour une machine, ce sont des entrées totalement différentes. Le preprocessing uniformise le texte pour que les mots identiques soient reconnus comme tels.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le preprocessing, c'est comme préparer des ingrédients avant de cuisiner : tu épluches, tu laves, tu coupes. Sans ça, la recette ne marche pas.</p></div></div>
+
+<h3 id="ref-12-nettoyage-de-base-avec-python-built-in">1.2 Nettoyage de base avec Python (built-in)</h3>
+
+<p>Python fournit des méthodes de chaîne (<code>str</code>) qui couvrent la majorité des besoins.</p>
+
+<p><strong>Supprimer les espaces en début/fin — <code>.strip()</code></strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">texte = &quot;   Bonjour, comment ça va ?     &quot;
+texte.strip()
+# → &#x27;Bonjour, comment ça va ?&#x27;</code></pre></div>
+
+
+<p><strong>Mettre en minuscules — <code>.lower()</code></strong></p>
+
+<p>Sans <code>.lower()</code>, "Football" et "football" sont deux mots distincts pour la machine.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;FOOTBALL is my passion. Who else loves fOOtBaLL ?&quot;.lower()
+# → &#x27;football is my passion. who else loves football ?&#x27;</code></pre></div>
+
+
+<p><strong>Remplacer des mots — <code>.replace()</code></strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;I love koalas, koalas are cute.&quot;.replace(&quot;koala&quot;, &quot;panda&quot;)
+# → &#x27;I love pandas, pandas are cute.&#x27;</code></pre></div>
+
+
+<p><strong>Supprimer les chiffres</strong></p>
+
+<p>On garde uniquement les caractères qui ne sont PAS des chiffres :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">texte = &quot;we waited for so long, like 30 minutes&quot;
+&#x27;&#x27;.join(char for char in texte if not char.isdigit())
+# → &#x27;we waited for so long, like  minutes&#x27;</code></pre></div>
+
+
+<p><strong>Supprimer la ponctuation</strong></p>
+
+<p><code>string.punctuation</code> contient tous les caractères de ponctuation standard (<code>!&quot;#$%&amp;&#x27;()*+,-./:;&lt;=&gt;?@[\]^_{|}~</code>) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import string
+
+texte = &quot;I love bubble tea! OMG so #tasty @channel XOXO&quot;
+for p in string.punctuation:                   # on parcourt chaque signe de ponctuation
+    texte = texte.replace(p, &#x27;&#x27;)               # on le remplace par rien (= suppression)
+# → &#x27;I love bubble tea OMG so tasty channel XOXO&#x27;</code></pre></div>
+
+
+<p><strong>Pipeline de nettoyage de base — tout en une fonction</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import string
+
+def basic_cleaning(sentence):
+    sentence = sentence.lower()                                  # 1. minuscules
+    sentence = &#x27;&#x27;.join(c for c in sentence if not c.isdigit())  # 2. sans chiffres
+    for p in string.punctuation:
+        sentence = sentence.replace(p, &#x27;&#x27;)                       # 3. sans ponctuation
+    sentence = sentence.strip()                                  # 4. sans espaces
+    return sentence
+
+# Test
+basic_cleaning(&quot;   I LOVE Pizza 999 @^_^&quot;)
+# → &#x27;i love pizza&#x27;</code></pre></div>
+
+
+<p><strong>Supprimer des balises HTML — RegEx</strong></p>
+
+<p>La bibliothèque <code>re</code> permet d'utiliser des <strong>expressions régulières</strong> (des formules pour décrire des motifs de texte) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import re
+
+re.sub(&#x27;&lt;[^&lt;]+?&gt;&#x27;, &#x27;&#x27;, &quot;&lt;head&gt;&lt;body&gt;Hello Le Wagon!&lt;/body&gt;&lt;/head&gt;&quot;)
+# → &#x27;Hello Le Wagon!&#x27;
+# re.sub(motif, remplacement, texte)
+# &#x27;&lt;[^&lt;]+?&gt;&#x27; signifie : tout ce qui commence par &lt; et finit par &gt;</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Une expression régulière est un "motif" pour décrire une forme de texte. <code>&lt;[^&lt;]+?&gt;</code> se lit : un <code>&lt;</code>, suivi de n'importe quels caractères sauf <code>&lt;</code>, suivi d'un <code>&gt;</code>. Cela cible les balises HTML.</p></div></div>
+
+<h3 id="ref-13-preprocessing-avancé-avec-nltk">1.3 Preprocessing avancé avec NLTK</h3>
+
+<p>NLTK (Natural Language Toolkit) est une bibliothèque Python spécialisée dans le traitement du langage naturel.</p>
+
+<p><strong>Tokenisation — découper en mots individuels</strong></p>
+
+<p>Un <strong>token</strong> est une unité de texte (généralement un mot). La tokenisation, c'est passer d'une phrase à une liste de mots.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from nltk.tokenize import word_tokenize
+
+phrase = &#x27;It is during our darkest moments that we must focus to see the light&#x27;
+word_tokenize(phrase)
+# → [&#x27;It&#x27;, &#x27;is&#x27;, &#x27;during&#x27;, &#x27;our&#x27;, &#x27;darkest&#x27;, &#x27;moments&#x27;, &#x27;that&#x27;,
+#    &#x27;we&#x27;, &#x27;must&#x27;, &#x27;focus&#x27;, &#x27;to&#x27;, &#x27;see&#x27;, &#x27;the&#x27;, &#x27;light&#x27;]</code></pre></div>
+
+
+<p><strong>Stopwords — supprimer les mots vides</strong></p>
+
+<p>Les <strong>stopwords</strong> sont des mots très fréquents qui n'apportent pas de sens particulier : "the", "is", "a", "to", etc. On peut les supprimer pour se concentrer sur les mots porteurs de sens.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from nltk.corpus import stopwords
+
+stop_words = set(stopwords.words(&#x27;english&#x27;))     # liste des mots vides en anglais
+tokens = [&quot;i&quot;, &quot;am&quot;, &quot;going&quot;, &quot;to&quot;, &quot;go&quot;, &quot;to&quot;, &quot;the&quot;, &quot;club&quot;, &quot;and&quot;, &quot;party&quot;]
+
+[w for w in tokens if w not in stop_words]       # on garde uniquement les mots significatifs
+# → [&#x27;going&#x27;, &#x27;go&#x27;, &#x27;club&#x27;, &#x27;party&#x27;]</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>"not" est un stopword en anglais. Si tu l'enlèves, "I do NOT like this" devient "like" → le modèle croit que c'est positif ! Ne supprime jamais les stopwords pour une tâche d'<strong>analyse de sentiment</strong>. Réserve cette étape au topic modeling uniquement.</p></div></div>
+
+<p><strong>Lemmatisation — ramener les mots à leur forme de base</strong></p>
+
+<p>La <strong>lemmatisation</strong> regroupe les variantes d'un mot sous une forme canonique (le "lemme"). Par exemple : "running", "ran", "runs" → "run".</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from nltk.stem import WordNetLemmatizer
+
+lemmatizer = WordNetLemmatizer()
+lemmatizer.lemmatize(&quot;running&quot;, pos=&quot;v&quot;)   # pos=&quot;v&quot; = verbe → &quot;run&quot;
+lemmatizer.lemmatize(&quot;hours&quot;, pos=&quot;n&quot;)     # pos=&quot;n&quot; = nom  → &quot;hour&quot;</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Mot original</th><th>Lemme (verbe)</th><th>Lemme (nom)</th></tr></thead><tbody><tr><td>running</td><td>run</td><td>run</td></tr><tr><td>eating</td><td>eat</td><td>eat</td></tr><tr><td>hours</td><td>hours</td><td>hour</td></tr><tr><td>playing</td><td>play</td><td>play</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La lemmatisation est plus intelligente que le simple "stemming" (couper la fin du mot). "better" → lemme : "good". Le stemming donnerait "bett". La lemmatisation comprend la langue.</p></div></div>
+
+<h3 id="ref-14-pipeline-complet-de-preprocessing">1.4 Pipeline complet de preprocessing</h3>
+
+<p>On assemble toutes les étapes dans l'ordre :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import string
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
+stop_words = set(stopwords.words(&#x27;english&#x27;))
+
+def clean(sentence):
+    # Étape 1 : nettoyage de base
+    sentence = sentence.lower()                                    # minuscules
+    sentence = &#x27;&#x27;.join(c for c in sentence if not c.isdigit())    # sans chiffres
+    for p in string.punctuation:
+        sentence = sentence.replace(p, &#x27;&#x27;)                         # sans ponctuation
+    sentence = sentence.strip()                                    # sans espaces
+
+    # Étape 2 : tokenisation
+    tokens = word_tokenize(sentence)                               # phrase → liste de mots
+
+    # Étape 3 : suppression des stopwords (uniquement pour topic modeling)
+    tokens = [w for w in tokens if w not in stop_words]
+
+    # Étape 4 : lemmatisation
+    tokens = [WordNetLemmatizer().lemmatize(w, pos=&quot;v&quot;) for w in tokens]
+
+    # On reconstruit une phrase propre
+    return &#x27; &#x27;.join(tokens)
+
+# Exemple
+clean(&quot;I was RUNNING to the club with 3 friends!&quot;)
+# → &#x27;run club friend&#x27;</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Résumé preprocessing :</p>
+<p>- <code>lower()</code> + suppression chiffres/ponctuation/espaces = nettoyage de base</p>
+<p>- <code>word_tokenize()</code> = découpage en tokens</p>
+<p>- Suppression stopwords = uniquement pour topic modeling, PAS pour sentiment analysis</p>
+<p>- <code>lemmatize()</code> = regrouper les variantes d'un même mot</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-vectorisation-transformer-le-texte-en-nombres">2. Vectorisation — Transformer le texte en nombres</h2>
+
+<p>Une fois le texte nettoyé, il faut le convertir en nombres. C'est ce qu'on appelle la <strong>vectorisation</strong>.</p>
+
+<h3 id="ref-21-bag-of-words-sac-de-mots">2.1 Bag-of-Words (Sac de mots)</h3>
+
+<p>L'idée du <strong>Bag-of-Words (BoW)</strong> est simple : on ignore l'ordre des mots, on compte juste combien de fois chaque mot apparaît dans chaque document.</p>
+
+<p>Imagine un "sac" dans lequel tu vides tous les mots d'un texte, sans te souvenir de l'ordre dans lequel ils étaient. Tu comptes ensuite combien il y a de chaque mot. C'est le BoW.</p>
+
+<p><strong>Exemple concret</strong> avec 3 phrases :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.feature_extraction.text import CountVectorizer
+
+texts = [
+    &#x27;the young dog is running with the cat&#x27;,   # document 0
+    &#x27;running is good for your health&#x27;,          # document 1
+    &#x27;your cat is young&#x27;,                        # document 2
+]
+
+cv = CountVectorizer()                          # crée le vectoriseur
+X = cv.fit_transform(texts)                    # apprend le vocabulaire et transforme
+cv.get_feature_names_out()                     # liste tous les mots appris
+# → [&#x27;cat&#x27;, &#x27;dog&#x27;, &#x27;for&#x27;, &#x27;good&#x27;, &#x27;health&#x27;, &#x27;is&#x27;, &#x27;running&#x27;, &#x27;the&#x27;, &#x27;with&#x27;, &#x27;young&#x27;, &#x27;your&#x27;]</code></pre></div>
+
+
+<p>La matrice résultante <code>X</code> ressemble à ceci (une ligne par document, une colonne par mot) :</p>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>cat</th><th>dog</th><th>for</th><th>good</th><th>health</th><th>is</th><th>running</th><th>the</th><th>with</th><th>young</th><th>your</th></tr></thead><tbody><tr><td>doc 0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td><td>1</td><td>1</td><td>0</td></tr><tr><td>doc 1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr><tr><td>doc 2</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td></tr></tbody></table></div>
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Limites du Bag-of-Words :</p>
+<p>- Il ignore l'<strong>ordre</strong> des mots : "dog bites man" = "man bites dog"</p>
+<p>- Il ne tient pas compte de la <strong>longueur</strong> du document : un doc de 1000 mots aura des comptages bien plus élevés qu'un doc de 10 mots</p>
+<p>- Il ne capture pas le <strong>contexte</strong> : "not good" est traité comme "not" + "good" séparément</p></div></div>
+
+<h3 id="ref-22-tf-idf-pondération-intelligente">2.2 TF-IDF — Pondération intelligente</h3>
+
+<p>Le <strong>TF-IDF</strong> (Term Frequency – Inverse Document Frequency) résout le problème de longueur du BoW et donne plus d'importance aux mots <strong>rares mais pertinents</strong>.</p>
+
+<p><strong>Intuition</strong> : sur un site de sport, le mot "football" apparaît partout → il ne dit rien de spécifique. Mais le mot "commotion cérébrale" n'apparaît que dans 2 articles → il est très discriminant pour ces articles.</p>
+
+<p><strong>La formule TF-IDF</strong></p>
+
+<div class="katex-display">$$\text{TF-IDF}_{x,d} = \underbrace{\text{tf}_{x,d}}_{\text{(A)}} \times \underbrace{\left[\log\left(\frac{N+1}{\text{df}_x+1}\right) + 1\right]}_{\text{(B)}}$$</div>
+
+<ul>
+<li><strong>(A) TF</strong> — Term Frequency : fréquence du mot $x$ dans le document $d$</li>
+</ul>
+
+<div class="katex-display">$$\text{tf}_{x,d} = \frac{\text{nombre d'occurrences de } x \text{ dans } d}{\text{nombre total de mots dans } d}$$</div>
+
+<ul>
+<li><strong>(B) IDF</strong> — Inverse Document Frequency : mesure la rareté du mot $x$ dans tout le corpus</li>
+</ul>
+
+<ul>
+<li>$N$ = nombre total de documents dans le corpus</li>
+<li>$\text{df}_x$ = nombre de documents contenant le mot $x$</li>
+<li>Si $x$ est dans tous les documents → $\text{df}_x \approx N$ → $\log(\frac{N+1}{N+1}) = 0$ → TF-IDF faible</li>
+<li>Si $x$ est dans peu de documents → $\text{df}_x \approx 1$ → $\log(\frac{N+1}{2})$ grand → TF-IDF élevé</li>
+</ul>
+
+<p><strong>Exemple numérique chiffré</strong></p>
+
+<p>Corpus de $N = 100$ documents. Le mot "football" apparaît dans 80 documents, le mot "commotion" dans 2.</p>
+
+<p>Pour un document où "football" apparaît 3 fois sur 150 mots :</p>
+
+<div class="katex-display">$$\text{tf}_{\text{football},d} = \frac{3}{150} = 0.02$$</div>
+
+<div class="katex-display">$$\text{IDF}_{\text{football}} = \log\left(\frac{100+1}{80+1}\right) + 1 = \log(1.247) + 1 \approx 0.22 + 1 = 1.22$$</div>
+
+<div class="katex-display">$$\text{TF-IDF}_{\text{football},d} = 0.02 \times 1.22 = 0.024$$</div>
+
+<p>Pour "commotion" (1 occurrence sur 150 mots, dans 2 documents du corpus) :</p>
+
+<div class="katex-display">$$\text{tf}_{\text{commotion},d} = \frac{1}{150} = 0.0067$$</div>
+
+<div class="katex-display">$$\text{IDF}_{\text{commotion}} = \log\left(\frac{101}{3}\right) + 1 = \log(33.67) + 1 \approx 3.52 + 1 = 4.52$$</div>
+
+<div class="katex-display">$$\text{TF-IDF}_{\text{commotion},d} = 0.0067 \times 4.52 = 0.030$$</div>
+
+<p>"Commotion" obtient un score plus élevé que "football", même avec moins d'occurrences — car il est beaucoup plus rare et donc plus informatif.</p>
+
+<p><strong>Implémentation avec sklearn</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.feature_extraction.text import TfidfVectorizer
+
+tfidf = TfidfVectorizer()                   # instancie le vectoriseur TF-IDF
+X = tfidf.fit_transform(texts)             # calcule les scores TF-IDF pour chaque mot
+# X est une matrice sparse (docs × mots) avec des scores flottants entre 0 et 1</code></pre></div>
+
+
+<h3 id="ref-23-contrôler-la-taille-du-vocabulaire">2.3 Contrôler la taille du vocabulaire</h3>
+
+<p>Sans contrôle, le vocabulaire peut atteindre des dizaines de milliers de colonnes — ce qui ralentit tout et nuit aux performances (c'est la "malédiction de la dimensionnalité").</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.feature_extraction.text import TfidfVectorizer
+
+tfidf = TfidfVectorizer(
+    max_df=0.9,           # ignore les mots présents dans plus de 90% des documents
+                          # (trop fréquents → peu informatifs, comme &quot;the&quot;, &quot;is&quot;)
+    min_df=2,             # ignore les mots présents dans moins de 2 documents
+                          # (trop rares → probablement des fautes de frappe)
+    max_features=5000,    # ne garde que les 5000 mots les plus fréquents
+    ngram_range=(1, 2)    # inclut les unigrams ET les bigrams (voir section suivante)
+)</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>Paramètre</th><th>Valeur exemple</th><th>Ce que ça fait</th></tr></thead><tbody><tr><td><code>max_df=0.9</code></td><td>0.9</td><td>Ignore les mots dans >90% des docs</td></tr><tr><td><code>min_df=2</code></td><td>2</td><td>Ignore les mots dans <2 docs</td></tr><tr><td><code>max_features=5000</code></td><td>5000</td><td>Garde les 5000 mots les plus fréquents</td></tr></tbody></table></div>
+<h3 id="ref-24-n-grams-capturer-le-contexte">2.4 N-grams — Capturer le contexte</h3>
+
+<p>Un <strong>N-gram</strong> est une séquence de N mots consécutifs.</p>
+
+<ul>
+<li><strong>Unigram</strong> (n=1) : <code>&quot;machine&quot;</code>, <code>&quot;learning&quot;</code></li>
+<li><strong>Bigram</strong> (n=2) : <code>&quot;machine learning&quot;</code></li>
+<li><strong>Trigram</strong> (n=3) : <code>&quot;natural language processing&quot;</code></li>
+</ul>
+
+<p><strong>Pourquoi c'est utile ?</strong></p>
+
+<p>Compare ces deux phrases :</p>
+<ul>
+<li>"I like the movie but NOT the actors"</li>
+<li>"I like the actors but NOT the movie"</li>
+</ul>
+
+<p>En BoW (unigrams), les deux phrases donnent exactement les mêmes mots → impossible à distinguer.</p>
+<p>Avec des bigrams, "NOT the actors" et "NOT the movie" sont des features distinctes → le modèle peut les différencier.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.feature_extraction.text import CountVectorizer
+
+CountVectorizer(ngram_range=(1, 1))   # unigrams seulement (défaut)
+CountVectorizer(ngram_range=(1, 2))   # unigrams + bigrams
+CountVectorizer(ngram_range=(2, 2))   # bigrams seulement
+CountVectorizer(ngram_range=(1, 3))   # unigrams + bigrams + trigrams</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Plus on augmente N, plus on capture de contexte — mais plus le vocabulaire explose en taille. En pratique, <code>ngram_range=(1, 2)</code> est un bon point de départ.</p></div></div>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Récap vectorisation :</p>
+<p>- <code>CountVectorizer</code> = Bag-of-Words (comptage brut)</p>
+<p>- <code>TfidfVectorizer</code> = pondération par rareté (meilleur en général)</p>
+<p>- Paramètres clés : <code>min_df</code>, <code>max_df</code>, <code>max_features</code>, <code>ngram_range</code></p>
+<p>- Les deux retournent une <strong>matrice sparse</strong> : docs × mots</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-classification-avec-naive-bayes">3. Classification avec Naive Bayes</h2>
+
+<h3 id="ref-31-le-problème-détecter-les-spams">3.1 Le problème : détecter les spams</h3>
+
+<p>On veut classifier automatiquement des e-mails en deux catégories : <strong>Spam (S)</strong> ou <strong>Normal/Ham (N)</strong>.</p>
+
+<p>On a un corpus de 12 e-mails étiquetés, et on veut prédire la classe d'un nouveau message contenant les mots "Dear" et "Friend".</p>
+
+<h3 id="ref-32-lidée-de-bayes">3.2 L'idée de Bayes</h3>
+
+<p>Le <strong>théorème de Bayes</strong> permet de calculer la probabilité qu'un e-mail soit un spam <strong>sachant</strong> qu'il contient certains mots.</p>
+
+<div class="katex-display">$$P(S \mid x_1, \ldots, x_k) = \frac{P(S) \times \prod_{i=1}^{k} P(x_i \mid S)}{P(S) \times \prod_{i=1}^{k} P(x_i \mid S) + P(N) \times \prod_{i=1}^{k} P(x_i \mid N)}$$</div>
+
+<p>Symboles :</p>
+<ul>
+<li>$P(S)$ = probabilité a priori que n'importe quel e-mail soit un spam</li>
+<li>$P(x_i \mid S)$ = probabilité que le mot $x_i$ apparaisse dans un spam</li>
+<li>Le dénominateur normalise pour que la somme des probabilités fasse 1</li>
+</ul>
+
+<p>L'hypothèse <strong>naïve</strong> : les mots sont <strong>indépendants</strong> entre eux. C'est faux dans la réalité (les mots sont liés par le contexte), mais cela simplifie énormément le calcul et donne de bons résultats en pratique.</p>
+
+<h3 id="ref-33-exemple-chiffré-pas-à-pas">3.3 Exemple chiffré pas à pas</h3>
+
+<p><strong>Données :</strong> 12 e-mails → 8 normaux (N), 4 spams (S).</p>
+
+<p><strong>Probabilités a priori :</strong></p>
+
+<div class="katex-display">$$P(N) = \frac{8}{12} = 0.67 \qquad P(S) = \frac{4}{12} = 0.33$$</div>
+
+<p><strong>Vraisemblances</strong> (en comptant les mots dans les e-mails étiquetés) :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Mot</th><th>Dans les N (17 mots total)</th><th>Dans les S (7 mots total)</th></tr></thead><tbody><tr><td>"Dear"</td><td>8/17 = 0.47</td><td>2/7 = 0.29</td></tr><tr><td>"Friend"</td><td>5/17 = 0.29</td><td>1/7 = 0.14</td></tr></tbody></table></div>
+<p><strong>Calcul :</strong></p>
+
+<ul>
+<li>Numérateur (spam) : $0.33 \times 0.29 \times 0.14 = 0.0134$</li>
+<li>Numérateur (normal) : $0.67 \times 0.47 \times 0.29 = 0.0914$</li>
+</ul>
+
+<div class="katex-display">$$P(S \mid \text{"Dear"}, \text{"Friend"}) = \frac{0.0134}{0.0134 + 0.0914} = \frac{0.0134}{0.1048} \approx 12.8\%$$</div>
+
+<p>Conclusion : un e-mail contenant "Dear" et "Friend" a seulement 12.8% de chances d'être un spam. Le modèle le classe comme <strong>Normal</strong>.</p>
+
+<h3 id="ref-34-le-smoothing-éviter-les-probabilités-nulles">3.4 Le smoothing — Éviter les probabilités nulles</h3>
+
+<p><strong>Problème :</strong> si un mot n'a jamais été vu dans les spams du corpus d'entraînement, alors $P(\text{mot} \mid S) = 0$. Et comme on multiplie les probabilités, le produit entier vaut 0 → toujours "non-spam", quelle que soit la phrase.</p>
+
+<p><strong>Solution — Laplace Smoothing :</strong> on ajoute une petite valeur $\alpha$ à tous les comptages pour éviter les zéros.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.naive_bayes import MultinomialNB
+
+MultinomialNB(alpha=1.0)   # alpha=1.0 = Laplace smoothing classique
+                            # alpha=0 = pas de smoothing (dangereux)
+                            # alpha=0.1 = smoothing plus léger</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais utiliser <code>alpha=0</code>. Un seul mot inconnu met toute la probabilité à zéro.</p></div></div>
+
+<h3 id="ref-35-avantages-et-limites-de-naive-bayes">3.5 Avantages et limites de Naive Bayes</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Avantages</th><th>Limites</th></tr></thead><tbody><tr><td>Très rapide à entraîner</td><td>Suppose l'indépendance des mots (fausse en réalité)</td></tr><tr><td>Fonctionne bien avec peu de données</td><td>Ne capture pas l'ordre ni le contexte</td></tr><tr><td>Pas de poids $\beta$ à apprendre</td><td>Peut être battu par des modèles plus complexes</td></tr></tbody></table></div>
+<h3 id="ref-36-pipeline-complet-code-sklearn">3.6 Pipeline complet — Code sklearn</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+from sklearn.pipeline import make_pipeline
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.model_selection import cross_validate
+
+# Chargement des données
+data = pd.read_csv(&quot;data/emails.csv&quot;)     # colonnes : &quot;text&quot; et &quot;spam&quot; (0 ou 1)
+X = data[&quot;text&quot;]                           # les e-mails (texte brut)
+y = data[&quot;spam&quot;]                           # les étiquettes (0=normal, 1=spam)
+
+# Pipeline : vectorisation TF-IDF + classifieur Naive Bayes
+pipeline = make_pipeline(
+    TfidfVectorizer(),        # étape 1 : convertir le texte en vecteurs TF-IDF
+    MultinomialNB()           # étape 2 : classifieur probabiliste
+)
+
+# Évaluation par cross-validation (5 folds)
+cv_results = cross_validate(pipeline, X, y, cv=5, scoring=[&quot;recall&quot;])
+print(cv_results[&quot;test_recall&quot;].mean())   # ~0.45 recall → médiocre, on peut mieux faire</code></pre></div>
+
+
+<h3 id="ref-37-tuner-le-pipeline-vectoriseur-et-modèle-ensemble">3.7 Tuner le pipeline — Vectoriseur ET modèle ensemble</h3>
+
+<p>L'erreur classique : n'optimiser que le modèle sans toucher aux paramètres du vectoriseur. Le vectoriseur a un impact énorme sur les performances.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.model_selection import GridSearchCV
+
+# Paramètres à tester (notation : &#x27;nom_etape__parametre&#x27;)
+params = {
+    &#x27;tfidfvectorizer__ngram_range&#x27;: [(1, 1), (1, 2)],  # unigrams vs unigrams+bigrams
+    &#x27;multinomialnb__alpha&#x27;: [0.1, 1.0]                  # smoothing léger vs standard
+}
+
+# Recherche sur grille
+grid = GridSearchCV(pipeline, params, scoring=&quot;recall&quot;, cv=5, n_jobs=-1)
+grid.fit(X, y)
+
+print(grid.best_score_)    # ~0.95 recall !
+print(grid.best_params_)   # ex: {&#x27;ngram_range&#x27;: (1,1), &#x27;alpha&#x27;: 0.1}</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Le tuning conjoint vectoriseur + modèle fait passer le recall de ~45% à ~95% ! C'est l'une des optimisations les plus impactantes en NLP.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-topic-modeling-lda-latent-dirichlet-allocation">4. Topic Modeling — LDA (Latent Dirichlet Allocation)</h2>
+
+<h3 id="ref-41-quest-ce-que-le-topic-modeling">4.1 Qu'est-ce que le topic modeling ?</h3>
+
+<p>Jusqu'ici, on avait des <strong>étiquettes</strong> (spam/ham). Le topic modeling est <strong>non supervisé</strong> : on n'a pas d'étiquettes. On demande à l'algorithme de découvrir lui-même des <strong>thèmes cachés</strong> dans un corpus.</p>
+
+<p><strong>Exemple concret :</strong> tu as 10 000 articles de presse. Tu demandes à la LDA de trouver 5 topics. Elle va découvrir quelque chose comme :</p>
+<ul>
+<li>Topic 0 : "goal", "player", "match", "team" → football</li>
+<li>Topic 1 : "interest", "rate", "bank", "inflation" → économie</li>
+<li>Topic 2 : "election", "vote", "candidate", "party" → politique</li>
+<li>etc.</li>
+</ul>
+
+<p><strong>LDA</strong> = Latent Dirichlet Allocation :</p>
+<ul>
+<li><strong>Latent</strong> = les topics sont cachés (on ne les voit pas directement)</li>
+<li><strong>Dirichlet</strong> = type de distribution de probabilité utilisée</li>
+<li>Chaque <strong>document</strong> = mélange de topics (ex : 70% sport, 30% économie)</li>
+<li>Chaque <strong>topic</strong> = mélange de mots (ex : "goal", "player", "match" ont des poids élevés pour le topic sport)</li>
+</ul>
+
+<h3 id="ref-42-comment-ça-fonctionne-intuitif">4.2 Comment ça fonctionne ? (intuitif)</h3>
+
+<p>L'algorithme travaille de façon itérative :</p>
+
+<ol>
+<li>On choisit le nombre de topics $K$ (ex : 5)</li>
+<li>On assigne <strong>aléatoirement</strong> chaque mot de chaque document à un topic</li>
+<li>Pour chaque mot, on recalcule :</li>
+</ol>
+<ul>
+<li>$P(\text{topic } t \mid \text{document } d)$ — à quelle fréquence ce topic apparaît dans ce document</li>
+<li>$P(\text{mot } w \mid \text{topic } t)$ — à quelle fréquence ce mot apparaît dans ce topic</li>
+<li>On met à jour : $P(w, t) = P(t \mid d) \times P(w \mid t)$</li>
+</ul>
+<ol>
+<li>On répète l'étape 3 pendant <code>max_iter</code> itérations → les topics convergent progressivement</li>
+</ol>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Imagine que tu tries des cartes aléatoirement dans des piles. À chaque tour, tu regardes quelle pile convient le mieux à chaque carte et tu la déplaces. Après beaucoup de tours, les piles deviennent cohérentes — c'est ce que fait la LDA.</p></div></div>
+
+<h3 id="ref-43-pipeline-complet-lda">4.3 Pipeline complet LDA</h3>
+
+<p><strong>Étape 1 — Nettoyage du texte</strong></p>
+
+<p>Pour le topic modeling, on supprime les stopwords (contrairement au sentiment analysis) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import string
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
+stop_words = set(stopwords.words(&#x27;english&#x27;))
+
+def cleaning(sentence):
+    sentence = sentence.strip().lower()                            # strip + minuscules
+    sentence = &#x27;&#x27;.join(c for c in sentence if not c.isdigit())    # sans chiffres
+    for p in string.punctuation:
+        sentence = sentence.replace(p, &#x27;&#x27;)                         # sans ponctuation
+    tokens = word_tokenize(sentence)                               # tokenisation
+    tokens = [w for w in tokens if w not in stop_words]            # sans stopwords ← OK pour LDA
+    tokens = [WordNetLemmatizer().lemmatize(w, pos=&quot;v&quot;) for w in tokens]  # lemmatisation
+    return &#x27; &#x27;.join(tokens)
+
+# Appliquer sur tout le corpus
+cleaned = documents[&quot;documents&quot;].apply(cleaning)</code></pre></div>
+
+
+<p><strong>Étape 2 — Vectorisation</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.feature_extraction.text import TfidfVectorizer
+
+vectorizer = TfidfVectorizer()
+X = vectorizer.fit_transform(cleaned)   # matrice (n_docs × n_mots)</code></pre></div>
+
+
+<p><strong>Étape 3 — Entraîner la LDA</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.decomposition import LatentDirichletAllocation
+
+lda = LatentDirichletAllocation(
+    n_components=5,    # nombre de topics à découvrir
+    max_iter=100       # nombre d&#x27;itérations (plus = plus précis, plus lent)
+)
+lda.fit(X)             # l&#x27;algorithme découvre les topics</code></pre></div>
+
+
+<p><strong>Étape 4 — Lire les résultats</strong></p>
+
+<p>La LDA produit deux matrices :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Matrice document-topic : pour chaque document, la probabilité d&#x27;appartenir à chaque topic
+doc_topics = lda.transform(X)   # shape : (n_docs, n_topics)
+# Exemple : doc_topics[0] = [0.05, 0.70, 0.10, 0.10, 0.05]
+# → le document 0 appartient à 70% au topic 1
+
+# Matrice topic-mots : pour chaque topic, le poids de chaque mot
+# lda.components_  shape : (n_topics, n_mots)</code></pre></div>
+
+
+<p><strong>Étape 5 — Afficher les mots les plus importants par topic</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+
+def print_topics(lda_model, vectorizer, top_words=5):
+    # On crée un DataFrame avec les poids de chaque mot par topic
+    topic_df = pd.DataFrame(
+        lda_model.components_,                        # poids des mots par topic
+        columns=vectorizer.get_feature_names_out()    # nom des colonnes = mots
+    )
+    for i in range(topic_df.shape[0]):
+        print(f&quot;--- Topic {i} ---&quot;)
+        # On trie les mots par poids décroissant et on garde les top_words premiers
+        print(topic_df.iloc[i].sort_values(ascending=False).head(top_words))
+        print()
+
+print_topics(lda, vectorizer, top_words=5)
+# --- Topic 0 ---
+# goal      4.23
+# player    3.87
+# match     3.12
+# team      2.98
+# score     2.45</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Les topics n'ont pas de nom automatique. C'est <strong>toi</strong> qui interprètes les mots du topic et lui donnes un nom (ex : "football", "économie"). C'est le côté artisanal du topic modeling.</p></div></div>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Récap LDA :</p>
+<p>- Algorithme <strong>non supervisé</strong> : pas besoin d'étiquettes</p>
+<p>- Paramètre crucial : <code>n_components</code> (nombre de topics) → à ajuster à la main</p>
+<p>- Output 1 : matrice doc-topic (probas) → dit à quel topic appartient chaque document</p>
+<p>- Output 2 : matrice topic-mots (poids) → dit quels mots définissent chaque topic</p>
+<p>- Pour améliorer : augmenter <code>max_iter</code>, ajuster <code>n_components</code>, nettoyer mieux le texte</p></div></div>
+
+<hr>
+
+<h2 id="ref-erreurs-classiques-à-éviter">Erreurs classiques à éviter</h2>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Ne pas mettre en minuscules avant de vectoriser</strong></p>
+<p>"Football" et "football" → 2 colonnes distinctes. Toujours utiliser <code>.lower()</code> ou s'assurer que <code>lowercase=True</code> (actif par défaut dans sklearn).</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Mauvais
+CountVectorizer().fit_transform([&quot;Football is great&quot;, &quot;I love football&quot;])
+# → crée 2 colonnes : &quot;Football&quot; et &quot;football&quot;
+
+# Bon
+texts = [t.lower() for t in texts]</code></pre></div></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Supprimer les stopwords pour du sentiment analysis</strong></p>
+<p>"I do NOT like this" → après suppression des stopwords → "like" → le modèle pense que c'est positif. Ne supprimer les stopwords que pour le topic modeling.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Vocabulaire non contrôlé</strong></p>
+<p>Sans <code>max_features</code>, le vocabulaire peut exploser en dizaines de milliers de colonnes → malédiction de la dimensionnalité.</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Toujours contrôler
+TfidfVectorizer(max_df=0.95, min_df=2, max_features=5000)</code></pre></div></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Oublier le smoothing dans Naive Bayes</strong></p>
+<p>Un seul mot absent du corpus d'entraînement → probabilité = 0 → tout le produit = 0. Toujours garder <code>alpha &gt; 0</code>.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Tuner le modèle sans toucher au vectoriseur</strong></p>
+<p>Les hyperparamètres du vectoriseur (<code>ngram_range</code>, <code>max_features</code>, etc.) ont autant d'impact que ceux du modèle. Toujours tuner le pipeline entier avec <code>GridSearchCV</code>.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1</strong></p>
+<p>Tu travailles sur un modèle qui doit détecter les avis négatifs ("Je n'aime PAS ce produit"). Ton collègue suggère de supprimer les stopwords pour nettoyer le texte. Que lui réponds-tu, et pourquoi ?</p>
+
+<p><strong>Question 2</strong></p>
+<p>Quelle est la différence entre <code>CountVectorizer</code> et <code>TfidfVectorizer</code> ? Dans quel cas préféres-tu l'un ou l'autre ?</p>
+
+<p><strong>Question 3</strong></p>
+<p>Un modèle Naive Bayes rencontre le mot "blockchain" dans un e-mail à classifier, mais ce mot n'est jamais apparu dans le corpus d'entraînement. Que se passe-t-il sans smoothing ? Comment corriger ça ?</p>
+
+<p><strong>Question 4</strong></p>
+<p>Tu entraînes une LDA sur 50 000 articles de presse et tu obtiens des topics incohérents. Quels leviers peux-tu actionner pour améliorer les résultats ?</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Le <strong>preprocessing</strong> transforme le texte brut en données propres : lowercase, suppression ponctuation/chiffres, tokenisation, stopwords, lemmatisation.</li>
+<li>Le <strong>Bag-of-Words</strong> (<code>CountVectorizer</code>) représente chaque document par le comptage de ses mots — simple mais ne tient pas compte de la longueur des documents.</li>
+<li>Le <strong>TF-IDF</strong> (<code>TfidfVectorizer</code>) améliore le BoW en pondérant les mots selon leur rareté dans le corpus — les mots fréquents partout ont moins d'importance.</li>
+<li>Les <strong>N-grams</strong> capturent le contexte en considérant des séquences de mots ("machine learning" plutôt que "machine" et "learning" séparément).</li>
+<li><strong>Naive Bayes</strong> (<code>MultinomialNB</code>) est un classifieur probabiliste rapide, idéal pour le texte — toujours utiliser <code>alpha &gt; 0</code> (Laplace smoothing).</li>
+<li>Ne <strong>jamais</strong> supprimer les stopwords pour une tâche de sentiment analysis ("not" change tout).</li>
+<li>Tuner <strong>simultanément</strong> le vectoriseur et le modèle avec <code>GridSearchCV</code> sur un pipeline — le recall spam peut passer de 45% à 95%.</li>
+<li>La <strong>LDA</strong> est un algorithme non supervisé pour découvrir des thèmes cachés dans un corpus — elle produit une matrice doc-topic et une matrice topic-mots.</li>
+<li>En NLP, le preprocessing et le choix des hyperparamètres de vectorisation ont souvent <strong>plus d'impact</strong> que le choix du modèle lui-même.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-le-pipeline-nlp-traditionnel">Le pipeline NLP traditionnel</a></li><li><a href="#syn-bag-of-words-et-tf-idf">Bag of Words et TF-IDF</a></li><li><a href="#syn-stemming-et-lemmatisation">Stemming et lemmatisation</a></li><li><a href="#syn-n-grams-et-statistiques">N-grams et statistiques</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-topic-modeling-lda">Topic modeling : LDA</a></li><li><a href="#syn-named-entity-recognition">Named Entity Recognition</a></li><li><a href="#syn-word-embeddings-statiques-vs-contextuels">Word embeddings statiques vs contextuels</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-le-pipeline-nlp-traditionnel">Le pipeline NLP traditionnel</h3>
+
+<p>Avant l'arrivée des transformers, tout projet NLP suivait un <strong>pipeline en cascade</strong>. Chaque étape transforme progressivement du texte brut (désordonné, bruité) en une représentation numérique exploitable par un modèle de machine learning. Comprendre ce pipeline reste essentiel aujourd'hui, même à l'ère des LLM, pour trois raisons : il fournit des baselines excellentes, il est infiniment moins coûteux qu'un transformer, et il aide à interpréter ce qu'un modèle a réellement appris.</p>
+
+<ol>
+<li><strong>Nettoyage</strong> : enlever le HTML, la ponctuation superflue, normaliser la casse</li>
+<li><strong>Tokenisation</strong> : découper le texte en mots (ou phrases)</li>
+<li><strong>Suppression des stop words</strong> : retirer les mots vides ("le", "de", "et", "the", "of"...)</li>
+<li><strong>Stemming/Lemmatisation</strong> : ramener chaque mot à sa forme canonique</li>
+<li><strong>Vectorisation</strong> : transformer les tokens en vecteurs (BoW, TF-IDF, embeddings)</li>
+<li><strong>Modélisation</strong> : régression, classification, clustering...</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import nltk
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import word_tokenize
+import re
+
+text = &quot;&lt;p&gt;The quick brown foxes are jumping over the lazy dogs!&lt;/p&gt;&quot;
+
+# 1. Nettoyage : enlever les balises HTML avec une regex
+text = re.sub(r&#x27;&lt;[^&gt;]+&gt;&#x27;, &#x27;&#x27;, text)        # supprime &lt;p&gt;, &lt;/p&gt;, etc.
+text = re.sub(r&#x27;[^a-zA-Z\s]&#x27;, &#x27;&#x27;, text)    # enlève ponctuation &amp; chiffres
+text = text.lower()                         # normalisation de la casse
+
+# 2. Tokenisation : on passe d&#x27;une string à une liste de mots
+tokens = word_tokenize(text)
+# [&#x27;the&#x27;, &#x27;quick&#x27;, &#x27;brown&#x27;, &#x27;foxes&#x27;, &#x27;are&#x27;, &#x27;jumping&#x27;, &#x27;over&#x27;, &#x27;the&#x27;, &#x27;lazy&#x27;, &#x27;dogs&#x27;]
+
+# 3. Stop words : on retire les mots fonctionnels sans sens informatif
+sw = set(stopwords.words(&quot;english&quot;))
+tokens = [t for t in tokens if t not in sw]
+# [&#x27;quick&#x27;, &#x27;brown&#x27;, &#x27;foxes&#x27;, &#x27;jumping&#x27;, &#x27;lazy&#x27;, &#x27;dogs&#x27;]
+
+# 4. Lemmatisation : on normalise les formes morphologiques
+lemmatizer = WordNetLemmatizer()
+tokens = [lemmatizer.lemmatize(t) for t in tokens]
+# [&#x27;quick&#x27;, &#x27;brown&#x27;, &#x27;fox&#x27;, &#x27;jumping&#x27;, &#x27;lazy&#x27;, &#x27;dog&#x27;]</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : ce pipeline ressemble au traitement d'un signal audio avant analyse — on filtre le bruit, on normalise le volume, on extrait des features. Aujourd'hui, les transformers font tout cela en interne, mais comprendre le pipeline traditionnel reste utile pour : (1) construire des baselines rapides, (2) gérer des cas où les transformers sont trop lourds (embarqué, batch massif), (3) déboguer et interpréter ce qu'un modèle apprend vraiment.</p></div></div>
+
+<h3 id="syn-bag-of-words-et-tf-idf">Bag of Words et TF-IDF</h3>
+
+<p><strong>Bag of Words (BoW)</strong> représente un document par la <strong>fréquence de chaque mot</strong> du vocabulaire. L'ordre des mots est ignoré : "le chat mange la souris" et "la souris mange le chat" produisent exactement le même vecteur. Malgré cette perte d'information, BoW reste suffisant pour beaucoup de tâches (classification de sentiment, détection de spam, topic detection).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.feature_extraction.text import CountVectorizer
+
+corpus = [
+    &quot;The cat sat on the mat&quot;,
+    &quot;The dog ate the bone&quot;,
+]
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(corpus)
+print(vectorizer.get_feature_names_out())
+# [&#x27;ate&#x27; &#x27;bone&#x27; &#x27;cat&#x27; &#x27;dog&#x27; &#x27;mat&#x27; &#x27;on&#x27; &#x27;sat&#x27; &#x27;the&#x27;]
+print(X.toarray())
+# [[0 0 1 0 1 1 1 2]   ← le mot &quot;the&quot; apparaît 2 fois dans le doc 1
+#  [1 1 0 1 0 0 0 2]]</code></pre></div>
+
+
+<p><strong>Limites de BoW</strong> : (1) ignore l'ordre, (2) tous les mots ont le même poids — "the" pèse autant que "quantum". TF-IDF corrige le second problème.</p>
+
+<p><strong>TF-IDF</strong> (Term Frequency × Inverse Document Frequency) pondère chaque mot selon son <strong>pouvoir discriminant</strong> :</p>
+
+<div class="katex-display">$$\text{tf-idf}(t, d) = \text{tf}(t, d) \cdot \log\frac{N}{1 + \text{df}(t)}$$</div>
+
+<p>Lecture française terme par terme :</p>
+
+<ul>
+<li>$\text{tf}(t, d)$ = <em>term frequency</em>, le nombre de fois où le terme $t$ apparaît dans le document $d$. Un mot qui apparaît souvent dans un document est probablement important <strong>pour ce document</strong>.</li>
+<li>$N$ = nombre total de documents dans le corpus.</li>
+<li>$\text{df}(t)$ = <em>document frequency</em>, le nombre de documents qui contiennent au moins une occurrence de $t$.</li>
+<li>$\log(N / (1 + \text{df}(t)))$ = <em>inverse document frequency</em>, c'est élevé quand le terme est rare dans le corpus, proche de 0 quand il est partout.</li>
+<li>Le "+1" au dénominateur évite la division par zéro et lisse un peu l'IDF pour les mots rares.</li>
+</ul>
+
+<p><strong>Exemple chiffré</strong> sur un corpus de 10 000 articles de presse :</p>
+
+<ul>
+<li>Le mot <strong>"the"</strong> apparaît dans <strong>9 000 documents</strong> (90%). Son IDF : $\log(10000/9001) \approx 0{,}105$. Peu importe sa fréquence dans un document, le TF-IDF reste minuscule.</li>
+<li>Le mot <strong>"quantum"</strong> apparaît dans <strong>100 documents</strong> (1%). Son IDF : $\log(10000/101) \approx 4{,}60$. Si "quantum" apparaît 5 fois dans un document, son TF-IDF est $5 \times 4{,}60 \approx 23$ — un signal très fort.</li>
+<li>Verdict : "quantum" a un poids environ <strong>220 fois supérieur</strong> à "the" pour la même fréquence locale. Le modèle apprend à se focaliser sur "quantum" sans qu'on lui ait explicitement dit d'ignorer "the".</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.feature_extraction.text import TfidfVectorizer
+
+# max_features limite le vocabulaire aux 10 000 mots les plus fréquents
+# ngram_range=(1, 2) capture unigrammes et bigrammes
+vectorizer = TfidfVectorizer(max_features=10000, ngram_range=(1, 2))
+X = vectorizer.fit_transform(corpus)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : pour une baseline NLP rapide, <strong>TF-IDF + LogisticRegression</strong> reste étonnamment performant sur la plupart des tâches de classification de texte. On se retrouve souvent à 5-10 points d'un fine-tuning BERT sur des problèmes simples, pour un coût 1000x moindre. <strong>Toujours</strong> commencer par cette baseline avant d'invoquer des transformers.</p></div></div>
+
+<h3 id="syn-stemming-et-lemmatisation">Stemming et lemmatisation</h3>
+
+<p>Deux techniques pour ramener un mot à sa forme canonique — indispensables quand on utilise BoW/TF-IDF, car sinon "run", "running" et "runs" créent trois colonnes différentes.</p>
+
+<p><strong>Stemming</strong> : coupe brutalement le suffixe selon des règles empiriques. Rapide mais imprécis, et parfois incorrect.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from nltk.stem import PorterStemmer
+stemmer = PorterStemmer()
+stemmer.stem(&quot;running&quot;)    # &quot;run&quot;      ← correct
+stemmer.stem(&quot;studies&quot;)    # &quot;studi&quot;    ← incorrect (pas un vrai mot)
+stemmer.stem(&quot;better&quot;)     # &quot;better&quot;   ← rate la relation avec &quot;good&quot;</code></pre></div>
+
+
+<p><strong>Lemmatisation</strong> : utilise un dictionnaire (WordNet) pour trouver la <strong>forme de base correcte</strong> (le lemme). Plus lent, mais plus précis.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from nltk.stem import WordNetLemmatizer
+lem = WordNetLemmatizer()
+lem.lemmatize(&quot;running&quot;, pos=&quot;v&quot;)    # &quot;run&quot;    ← verbe
+lem.lemmatize(&quot;studies&quot;, pos=&quot;v&quot;)    # &quot;study&quot;  ← verbe
+lem.lemmatize(&quot;better&quot;, pos=&quot;a&quot;)     # &quot;good&quot;   ← adjectif</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Note moderne</strong> : avec les tokeniseurs subword (BPE, WordPiece) et les embeddings contextuels, <strong>le stemming/lemmatisation est devenu inutile</strong>. BERT sait tout seul que "running" et "run" sont liés. Cette étape ne reste pertinente que pour les approches BoW/TF-IDF classiques.</p></div></div>
+
+<h3 id="syn-n-grams-et-statistiques">N-grams et statistiques</h3>
+
+<p>Un <strong>n-gram</strong> est une séquence de $n$ tokens consécutifs :</p>
+
+<ul>
+<li>1-gram (unigram) : "the", "cat", "sat"</li>
+<li>2-gram (bigram) : "the cat", "cat sat", "sat on"</li>
+<li>3-gram (trigram) : "the cat sat", "cat sat on"</li>
+</ul>
+
+<p>Les n-grams capturent un peu de <strong>contexte local</strong>. Exemple fondamental : "not good" en bigramme garde l'information de négation, tandis qu'"not" + "good" en unigrammes perdent ce signal. Sur une tâche de sentiment analysis, cette différence vaut plusieurs points d'accuracy.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">TfidfVectorizer(ngram_range=(1, 2))   # Unigrams + bigrams</code></pre></div>
+
+
+<p><strong>Coût</strong> : explosion combinatoire. Avec 10 000 unigrammes possibles, vous avez ~100 millions de bigrammes théoriques. En pratique, on garde uniquement les top N les plus fréquents (<code>max_features=50000</code>).</p>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-topic-modeling-lda">Topic modeling : LDA</h3>
+
+<p><strong>Latent Dirichlet Allocation</strong> (Blei, Ng, Jordan, 2003) découvre des "topics" latents dans un corpus de documents. Hypothèse du modèle : chaque document est un <strong>mélange de topics</strong>, et chaque topic est une <strong>distribution sur les mots</strong>. Le modèle apprend les deux simultanément.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sklearn.decomposition import LatentDirichletAllocation
+from sklearn.feature_extraction.text import CountVectorizer
+
+vectorizer = CountVectorizer(max_features=5000, stop_words=&quot;english&quot;)
+X = vectorizer.fit_transform(documents)
+
+# n_components = nombre de topics qu&#x27;on veut découvrir
+lda = LatentDirichletAllocation(n_components=10, random_state=42)
+lda.fit(X)
+
+# Extraction des 10 mots les plus représentatifs de chaque topic
+feature_names = vectorizer.get_feature_names_out()
+for i, topic in enumerate(lda.components_):
+    top_words = [feature_names[j] for j in topic.argsort()[-10:][::-1]]
+    print(f&quot;Topic {i}: {&#x27; &#x27;.join(top_words)}&quot;)</code></pre></div>
+
+
+<p><strong>Cas d'usage</strong> : organiser une grande collection de documents (articles de presse, plaintes clients, papiers scientifiques) en thèmes dominants sans annotation manuelle.</p>
+
+<p><strong>Limites</strong> : (1) suppose un nombre de topics fixé à l'avance, (2) repose sur un modèle BoW (ignore l'ordre), (3) interprétation parfois incertaine, (4) performance médiocre sur de petits corpus.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Alternative moderne</strong> : <code>BERTopic</code> combine embeddings BERT + UMAP (réduction de dim) + HDBSCAN (clustering auto) + c-TF-IDF pour extraire les mots distinctifs. Qualité bien supérieure, surtout sur de petits corpus. C'est le standard 2025.</p></div></div>
+
+<h3 id="syn-named-entity-recognition">Named Entity Recognition</h3>
+
+<p>La <strong>reconnaissance d'entités nommées</strong> identifie les noms propres et concepts structurés : personnes, lieux, organisations, dates, montants, produits...</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import spacy
+
+nlp = spacy.load(&quot;en_core_web_sm&quot;)
+doc = nlp(&quot;Apple is looking at buying U.K. startup for $1 billion in March 2024&quot;)
+
+for ent in doc.ents:
+    print(f&quot;{ent.text} → {ent.label_}&quot;)
+# Apple → ORG
+# U.K. → GPE (geo-political entity)
+# $1 billion → MONEY
+# March 2024 → DATE</code></pre></div>
+
+
+<p>C'est une tâche fondamentale en extraction d'information : indexation de news, anonymisation RGPD, KYC (Know Your Customer), extraction médicale de médicaments, etc. Pour une qualité supérieure, on fine-tune un BERT spécialisé comme <code>dslim/bert-base-NER</code> disponible sur Hugging Face.</p>
+
+<h3 id="syn-word-embeddings-statiques-vs-contextuels">Word embeddings statiques vs contextuels</h3>
+
+<p><strong>Word2Vec / GloVe / FastText</strong> : un mot = <strong>un vecteur fixe</strong>. Facile à utiliser, rapide, excellent pour les baselines et les tâches qui ne dépendent pas fortement du contexte.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import gensim.downloader as api
+glove = api.load(&quot;glove-wiki-gigaword-100&quot;)   # 100-dim embeddings
+glove.most_similar(&quot;paris&quot;)
+# [(&#x27;london&#x27;, 0.79), (&#x27;berlin&#x27;, 0.71), (&#x27;rome&#x27;, 0.68), ...]</code></pre></div>
+
+
+<p><strong>BERT / Sentence Transformers</strong> : un mot = un vecteur <strong>qui dépend du contexte</strong>. "bank" dans "river bank" et "bank account" donne deux vecteurs différents — c'est cette sensibilité contextuelle qui explique les gains des transformers sur les embeddings statiques.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sentence_transformers import SentenceTransformer
+
+# Modèle léger (22 MB), dim 384, très bon rapport qualité/vitesse
+model = SentenceTransformer(&quot;all-MiniLM-L6-v2&quot;)
+embeddings = model.encode([
+    &quot;I deposited money at the bank&quot;,     # bank = institution financière
+    &quot;I sat by the river bank&quot;,           # bank = berge
+])
+# Les vecteurs de &quot;bank&quot; sont radicalement différents dans les deux phrases</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Recommandation 2025</strong> : pour la similarité sémantique entre phrases ou documents, utilisez <code>sentence-transformers</code>. Pour une similarité mot à mot ou un contexte ultra-léger, GloVe/Word2Vec restent acceptables. Pour de la classification ou de la génération, fine-tunez directement un transformer pré-entraîné depuis Hugging Face.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi TF-IDF est-il généralement supérieur à un simple Bag of Words pour la classification de documents ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>pondération discriminante.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>BoW donne un poids égal à tous les mots, donc "the" qui apparaît partout reçoit le même score que "quantum" qui apparaît rarement mais est très informatif. Conséquence : le modèle se concentre sur les mots fréquents (et inutiles) au lieu des mots discriminants. <strong>TF-IDF</strong> corrige cela en pondérant par l'<strong>inverse document frequency</strong> : un mot qui apparaît dans 80% des documents reçoit un poids quasi nul, un mot qui apparaît dans 1% reçoit un poids élevé. Conséquence : un classifieur entraîné sur TF-IDF se focalise automatiquement sur les mots discriminants, sans même qu'on lui dise quels mots ignorer. C'est exactement pourquoi <code>TfidfVectorizer</code> + <code>LogisticRegression</code> constitue une baseline NLP excellente : tout le travail de feature engineering est fait par TF-IDF. Gain typique sur des tâches de classification : <strong>+5 à +15 points de F1 vs BoW</strong>. Question d'entretien NLP fondamentale.</p>
+
+</details>
+
+<p><strong>Q2 : Vous voulez classifier 10 000 emails en spam/non-spam. Faut-il commencer par BERT ou par TF-IDF + LogReg ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Pareto et baseline.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Toujours commencer par TF-IDF + LogReg comme baseline</strong>. Trois raisons. (1) <strong>Vitesse</strong> : 1 minute d'entraînement vs 1-2 heures pour BERT. (2) <strong>Performance</strong> : sur la classification de spam, qui repose largement sur des mots-clés ("VIAGRA", "lottery", "click here"), TF-IDF + LogReg atteint typiquement 95-98% d'accuracy. C'est suffisant pour beaucoup de cas. (3) <strong>Interprétabilité</strong> : vous pouvez regarder les coefficients de la régression et voir exactement quels mots déclenchent un spam. Avec BERT, vous avez une boîte noire. <strong>Quand passer à BERT</strong> : si vous avez besoin d'aller au-delà de 99%, ou si la frontière spam/non-spam est subtile (par exemple distinguer du phishing sophistiqué de vrais emails de banque). Dans ces cas, BERT apportera +1 à +3 points. <strong>Règle générale</strong> : 80% de la valeur business vient de 20% de l'effort. La baseline TF-IDF couvre les 20%. Le fine-tuning BERT couvre les 5% supplémentaires au prix d'un effort 10x. Calculer si cela en vaut la peine est un choix business, pas technique.</p>
+
+</details>
+
+<p><strong>Q3 : Vous avez 5 000 documents en français et vous voulez identifier les principaux thèmes abordés. Quelle approche : LDA, BERTopic, ou clustering K-means sur embeddings ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>qualité et interprétabilité.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>BERTopic</strong> est généralement le meilleur choix moderne. <strong>LDA</strong> : approche classique, rapide, mais souvent décevante sur des petits corpus (< 10k docs) et difficile à interpréter parce qu'elle repose sur BoW. <strong>K-means + embeddings</strong> : peut marcher pour obtenir des clusters, mais ne donne pas naturellement les "mots représentatifs" de chaque cluster. <strong>BERTopic</strong> : combine sentence-transformers (embeddings de qualité, capture du sens), UMAP (réduction de dim), HDBSCAN (clustering qui trouve automatiquement le bon $K$) et une étape c-TF-IDF qui extrait les mots distinctifs de chaque topic. Pour 5 000 documents en français, utilisez un sentence-transformer multilingue (<code>paraphrase-multilingual-MiniLM-L12-v2</code>) et BERTopic vous donnera 10-30 topics interprétables en quelques minutes. Code minimal :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from bertopic import BERTopic
+from sentence_transformers import SentenceTransformer
+
+model = SentenceTransformer(&quot;paraphrase-multilingual-MiniLM-L12-v2&quot;)
+topic_model = BERTopic(embedding_model=model, language=&quot;multilingual&quot;)
+topics, probs = topic_model.fit_transform(documents)
+topic_model.get_topic_info()</code></pre></div>
+
+
+<p>Question d'entretien NLP moderne : "Comment faire du topic modeling sur un petit corpus ?" — la réponse 2025 mentionne BERTopic en premier.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Speech and Language Processing</em> (Jurafsky & Martin, gratuit) — la bible NLP</li>
+<li><em>Natural Language Processing with Python</em> (Bird, Klein, Loper) — référence NLTK</li>
+<li><a href="https://spacy.io/" target="_blank" rel="noopener">spaCy documentation</a> — librairie NLP de qualité production</li>
+<li><a href="https://maartengr.github.io/BERTopic/" target="_blank" rel="noopener">BERTopic documentation</a> — pour le topic modeling moderne</li>
+<li><a href="https://www.sbert.net/" target="_blank" rel="noopener">Sentence Transformers</a> — embeddings de phrases</li>
+<li><em>Latent Dirichlet Allocation</em> (Blei, Ng, Jordan, 2003) — papier LDA original</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../deep-learning/nlp-dl.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← NLP Deep Learning</span>
+  </a>
+  <a href="../nlp-llm/transformers-llm.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Transformers & LLM →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

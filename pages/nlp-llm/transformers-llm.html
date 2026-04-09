@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transformers &amp; LLM — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Transformers &amp; LLM</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html" class="active">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">NLP & LLM</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Transformers &amp; LLM</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Transformers &amp; LLM</h1>
+        <p class="page-objective">Comprendre l'architecture Transformer — self-attention, multi-head attention, encodeur/décodeur — et savoir utiliser les LLMs (BERT, GPT, T5) pour des tâches NLP via Hugging Face et le prompt engineering.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Self-attention</div>
+        <div class="key-concept-def">Chaque token regarde tous les autres et pondère leur contribution.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Q, K, V</div>
+        <div class="key-concept-def">Query, Key, Value : projections apprises qui calculent les scores d&#x27;attention.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Multi-head</div>
+        <div class="key-concept-def">Plusieurs attentions en parallèle qui capturent différents types de relations.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Positional encoding</div>
+        <div class="key-concept-def">Injecte l&#x27;information de position dans les embeddings.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-transformers-llm">Cheatsheet — Transformers & LLM</a><ol><li><a href="#self-attention-formule">Self-Attention — Formule</a></li><li><a href="#architecture-transformer-résumé">Architecture Transformer (résumé)</a></li><li><a href="#hugging-face-pipeline">Hugging Face — Pipeline</a></li><li><a href="#paramètres-de-génération">Paramètres de génération</a></li><li><a href="#métriques-dévaluation-nlp">Métriques d'évaluation NLP</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-pourquoi-les-transformers">1) Pourquoi les Transformers ?</a><li><a href="#2-rappels-rnn-limites">2) Rappels RNN — Limites</a><ol><li><a href="#21-vanishing-gradient-through-time">2.1 Vanishing gradient through time</a></li></ol></li><li><a href="#3-prérequis-techniques">3) Prérequis techniques</a><ol><li><a href="#31-intuition-query-key-value">3.1 Intuition Query-Key-Value</a></li><li><a href="#32-produit-scalaire-mesure-de-similarité">3.2 Produit scalaire = mesure de similarité</a></li><li><a href="#33-softmax">3.3 Softmax</a></li></ol></li><li><a href="#4-architecture-transformer">4) Architecture Transformer</a><ol><li><a href="#41-vue-densemble">4.1 Vue d'ensemble</a></li><li><a href="#42-entrées-embedding-positional-encoding">4.2 Entrées — Embedding + Positional Encoding</a></li><li><a href="#43-bloc-encoder-self-attention">4.3 Bloc Encoder — Self-Attention</a></li><li><a href="#44-multi-head-attention">4.4 Multi-Head Attention</a></li><li><a href="#45-résidu-normalisation-et-ffn">4.5 Résidu, normalisation et FFN</a></li><li><a href="#46-le-decoder">4.6 Le Decoder</a></li><li><a href="#47-couche-de-sortie">4.7 Couche de sortie</a></li><li><a href="#48-entraînement">4.8 Entraînement</a></li></ol></li><li><a href="#5-variantes-darchitecture">5) Variantes d'architecture</a><ol><li><a href="#51-encoder-only-bert">5.1 Encoder-only — BERT</a></li><li><a href="#52-decoder-only-gpt">5.2 Decoder-only — GPT</a></li><li><a href="#53-vision-transformers-et-modèles-multimodaux">5.3 Vision Transformers et modèles multimodaux</a></li></ol></li><li><a href="#6-utiliser-un-llm-pour-sa-tâche">6) Utiliser un LLM pour sa tâche</a><ol><li><a href="#61-encoder-only-bert-fine-tuning">6.1 Encoder-only (BERT) — Fine-tuning</a></li><li><a href="#62-encoder-decoder-t5-prompt-textuel">6.2 Encoder-Decoder (T5) — Prompt textuel</a></li><li><a href="#63-decoder-only-gpt-prompt-engineering">6.3 Decoder-only (GPT) — Prompt Engineering</a></li><li><a href="#64-paramètres-de-génération">6.4 Paramètres de génération</a></li></ol></li><li><a href="#7-évaluer-les-llms">7) Évaluer les LLMs</a><ol><li><a href="#71-tâches-de-classification">7.1 Tâches de classification</a></li><li><a href="#72-tâches-seq2seq-traduction-résumé">7.2 Tâches seq2seq (traduction, résumé)</a></li><li><a href="#73-tâches-génératives-ouvertes">7.3 Tâches génératives ouvertes</a></li></ol></li><li><a href="#8-hugging-face-et-la-librairie-transformers">8) Hugging Face et la librairie `transformers`</a><ol><li><a href="#81-présentation">8.1 Présentation</a></li><li><a href="#82-sous-le-capot">8.2 Sous le capot</a></li></ol></li><li><a href="#bibliographie">Bibliographie</a><li><a href="#annexe-nombre-de-paramètres-transformer-original">📎 Annexe — Nombre de paramètres (Transformer original)</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-transformers-llm">📋 Cheatsheet — Transformers & LLM</h2>
+
+<h3 id="self-attention-formule">Self-Attention — Formule</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Scaled Dot-Product Attention
+## Attention(Q, K, V) = softmax(Q @ K.T / √d_k) @ V
+
+## Q = query  : &quot;Que cherche ce token ?&quot;        shape (seq_len, d_k)
+## K = key    : &quot;Qui suis-je ?&quot;                  shape (seq_len, d_k)
+## V = value  : &quot;Quelle info j&#x27;apporte ?&quot;        shape (seq_len, d_v)
+
+## Q, K, V = X @ W_Q, X @ W_K, X @ W_V          # projections linéaires apprises
+## d_k = d_model / n_heads                        # ex: 512 / 8 = 64</code></pre></div>
+
+
+<h3 id="architecture-transformer-résumé">Architecture Transformer (résumé)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Encoder (×6 blocs) :
+##   Input → Token Embedding + Positional Encoding
+##   → Multi-Head Self-Attention → Add &amp; Norm
+##   → Feed-Forward Network → Add &amp; Norm
+##   → Output : représentation contextuelle (shape = seq_len × d_model)
+
+## Decoder (×6 blocs) :
+##   Output → Token Embedding + Positional Encoding
+##   → Masked Multi-Head Self-Attention → Add &amp; Norm
+##   → Cross-Attention (Q=decoder, K/V=encoder) → Add &amp; Norm
+##   → Feed-Forward Network → Add &amp; Norm
+##   → Linear(d_model → vocab_size) + Softmax → token suivant</code></pre></div>
+
+
+<h3 id="hugging-face-pipeline">Hugging Face — Pipeline</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## pip install transformers
+from transformers import pipeline
+
+## Traduction anglais → français
+translator = pipeline(&quot;translation&quot;, model=&quot;Helsinki-NLP/opus-mt-en-fr&quot;)
+result = translator(&quot;I am a student studying in London&quot;)
+result[0][&#x27;translation_text&#x27;]             # &quot;Je suis étudiante et j&#x27;étudie à Londres.&quot;
+
+## Analyse de sentiment
+classifier = pipeline(&quot;sentiment-analysis&quot;)
+classifier(&quot;This movie was absolutely fantastic!&quot;)
+## [{&#x27;label&#x27;: &#x27;POSITIVE&#x27;, &#x27;score&#x27;: 0.9998}]
+
+## Génération de texte
+generator = pipeline(&quot;text-generation&quot;, model=&quot;gpt2&quot;)
+generator(&quot;The future of AI is&quot;, max_length=50)</code></pre></div>
+
+
+<h3 id="paramètres-de-génération">Paramètres de génération</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Temperature : contrôle le caractère aléatoire
+## T basse (0.1) → déterministe, focalisé
+## T haute (1.5) → créatif, aléatoire
+
+## Top-k : limite aux k tokens les plus probables
+## Top-p (nucleus) : limite aux tokens dont la proba cumulée ≤ p
+## Max tokens : longueur max de la sortie générée</code></pre></div>
+
+
+<h3 id="métriques-dévaluation-nlp">Métriques d'évaluation NLP</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Classification : accuracy, precision, recall, F1 (comme en ML classique)
+
+## Traduction → BLEU (precision-based, n-gram overlap)
+## Résumé → ROUGE (recall-based, n-gram + LCS overlap)
+## Génération → perplexité (surprise du modèle) + évaluation humaine</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre self-attention et cross-attention</strong></p>
+<p>La self-attention opère <strong>au sein d'une seule séquence</strong> (chaque token attend tous les autres tokens de la même séquence). La cross-attention opère <strong>entre deux séquences</strong> (le decoder attend les tokens de l'encoder).</p>
+<p>❌ Croire que l'encoder et le decoder utilisent le même mécanisme d'attention partout</p>
+<p>✅ Encoder = self-attention | Decoder = masked self-attention + cross-attention (Q=decoder, K/V=encoder)</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier le masking dans le decoder</strong></p>
+<p>Pendant l'entraînement, le decoder ne doit pas voir les tokens futurs — sinon il triche.</p>
+<p>❌ Self-attention standard dans le decoder → le modèle voit la réponse avant de la prédire</p>
+<p>✅ Masked self-attention : les positions futures sont mises à −∞ avant le softmax → attention = 0</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser le mauvais tokenizer avec un modèle pré-entraîné</strong></p>
+<p>Chaque modèle a été entraîné avec son propre tokenizer — les vocabulaires et les encodages diffèrent.</p>
+<p>❌ Tokenizer de BERT avec un modèle GPT-2 → tokens incohérents, prédictions absurdes</p>
+<p>✅ Toujours charger le tokenizer qui correspond au modèle : <code>AutoTokenizer.from_pretrained(&quot;model_name&quot;)</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Ignorer que la complexité de l'attention est quadratique</strong></p>
+<p>L'attention calcule une matrice (seq_len × seq_len) — la mémoire et le calcul explosent avec la longueur de séquence.</p>
+<p>❌ Passer des documents de 100 000 tokens à un Transformer standard → out of memory</p>
+<p>✅ Limiter la longueur d'entrée au <code>max_position_embeddings</code> du modèle (ex: 512 pour BERT, 2048+ pour GPT)</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre encoder-only, decoder-only et encoder-decoder</strong></p>
+<p>Chaque architecture est conçue pour un type de tâche différent.</p>
+<p>❌ Utiliser GPT (decoder-only) pour de la NER ou BERT (encoder-only) pour de la génération de texte</p>
+<p>✅ Encoder-only (BERT) → compréhension (classification, NER) | Decoder-only (GPT) → génération | Encoder-decoder (T5) → seq2seq (traduction, résumé)</p></div></div>
+
+<hr>
+
+<h2 id="1-pourquoi-les-transformers">1) Pourquoi les Transformers ?</h2>
+
+<p>Les modèles de langage modernes (ChatGPT, Claude, Gemini…) sont tous basés sur l'architecture <strong>Transformer</strong>, introduite dans le papier <em>"Attention is All You Need"</em> (2017).</p>
+
+<figure><img src="../../assets/images/transformers-llm-01-86858909.jpg" alt="" loading="lazy"></figure>
+
+<p>Les Transformers résolvent les trois problèmes majeurs des RNN :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Problème RNN</th><th>Solution Transformer</th></tr></thead><tbody><tr><td><strong>Goulot d'information</strong> — tout compressé dans un seul vecteur caché</td><td><strong>Attention</strong> — chaque token accède directement à tous les autres</td></tr><tr><td><strong>Vanishing gradient</strong> — mémoire courte, même avec LSTM</td><td><strong>Skip connections</strong>  • attention directe = gradient stable</td></tr><tr><td><strong>Calcul séquentiel</strong> — impossible de paralléliser</td><td><strong>Parallélisation totale</strong> — tous les tokens traités simultanément</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="2-rappels-rnn-limites">2) Rappels RNN — Limites</h2>
+
+<h3 id="21-vanishing-gradient-through-time">2.1 Vanishing gradient through time</h3>
+
+<figure><img src="../../assets/images/transformers-llm-02-51f7e404.png" alt="" loading="lazy"></figure>
+
+<p>Pendant la backpropagation à travers le temps, le gradient s'annule à mesure qu'on remonte dans la séquence. Résultat : les RNN (même LSTM/GRU) ont un <strong>biais de récence</strong> — ils oublient le contexte lointain.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Exemple : <em>"Sally adored reading; when she received a book on her birthday she was happy"</em> — un RNN risque de prédire "older" au lieu de "happy" car "Sally" et "reading" sont trop loin.</p></div></div>
+
+<p>👉 <a href="https://medium.com/towards-data-science/illustrated-guide-to-recurrent-neural-networks-79e5eb8049c9" target="_blank" rel="noopener">Illustrated Guide to RNNs — Michael Phi</a></p>
+
+<hr>
+
+<h2 id="3-prérequis-techniques">3) Prérequis techniques</h2>
+
+<h3 id="31-intuition-query-key-value">3.1 Intuition Query-Key-Value</h3>
+
+<p>L'attention fonctionne comme un dictionnaire Python avec <strong>lookup flou</strong> (soft lookup) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Lookup exact (dict classique)
+words = {&quot;cat&quot;: &quot;animal&quot;, &quot;dog&quot;: &quot;animal&quot;, &quot;talk&quot;: &quot;verb&quot;}
+words[&quot;dog&quot;]                          # → &quot;animal&quot;
+
+## Lookup flou (attention)
+## query = &quot;puppy&quot; → pas dans le dict, mais similaire à &quot;dog&quot;
+## → résultat = mélange pondéré des values selon la similarité query-keys</code></pre></div>
+
+
+<p>Au lieu d'un match exact, on calcule la <strong>similarité</strong> (produit scalaire) entre la query et toutes les keys, puis on pondère les values en conséquence.</p>
+
+<h3 id="32-produit-scalaire-mesure-de-similarité">3.2 Produit scalaire = mesure de similarité</h3>
+
+<figure><img src="../../assets/images/transformers-llm-03-534bc58d.png" alt="" loading="lazy"></figure>
+
+<p>$\text{similarity}(q, k) = q \cdot k = \sum_{i=1}^{d} q_i \cdot k_i$</p>
+
+<p>Vecteurs alignés → dot product élevé (similaires). Vecteurs orthogonaux → dot product ≈ 0 (non liés).</p>
+
+<h3 id="33-softmax">3.3 Softmax</h3>
+
+<p>Convertit des logits (nombres quelconques) en <strong>probabilités</strong> (valeurs entre 0 et 1, somme = 1).</p>
+
+<figure><img src="../../assets/images/transformers-llm-04-773e7c6b.png" alt="The softmax function&#x27;s formula, and how it translates logits into probabilities." loading="lazy"></figure>
+
+<hr>
+
+<h2 id="4-architecture-transformer">4) Architecture Transformer</h2>
+
+<h3 id="41-vue-densemble">4.1 Vue d'ensemble</h3>
+
+<figure><img src="../../assets/images/transformers-llm-05-b56b11e5.png" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/transformers-llm-06-95b11500.png" alt="High level the transformer model consists of an encoder and a decoder. The input to the encoder is for example &quot;I am happy&quot;. The output of the decoder would then be &quot;Je suis content&quot;." loading="lazy"></figure>
+
+<p>L'encoder et le decoder sont chacun composés d'un <strong>empilement de 6 blocs identiques</strong> (même structure, poids différents). Chaque bloc produit une représentation plus riche de l'entrée.</p>
+
+<figure><img src="../../assets/images/transformers-llm-07-687766e5.png" alt="Both encoder and decoder consist of a stack of 6 blocks. The 6 encoder blocks all have the same architecture. The same goes for the decoder blocks. At each layer, the decoder uses part of the information that&#x27;s generated by the encoder." loading="lazy"></figure>
+
+<h3 id="42-entrées-embedding-positional-encoding">4.2 Entrées — Embedding + Positional Encoding</h3>
+
+<h4 id="tokenization-en-sous-mots-subword">Tokenization en sous-mots (subword)</h4>
+
+<figure><img src="../../assets/images/transformers-llm-08-6c57948e.svg" alt="Unfriendly is tokenized as un - friend - ly" loading="lazy"></figure>
+
+<p>Les mots sont découpés en sous-unités (ex: "walking" → "walk" + "ing"), ce qui permet de gérer les mots inconnus et de partager des représentations entre mots similaires.</p>
+
+<h4 id="positional-encoding">Positional Encoding</h4>
+
+<figure><img src="../../assets/images/transformers-llm-09-82b7a188.png" alt="Each word receives an embedding (512 dimensions), and, based on its position, a positional encoding (also 512 dimensions). The two are summed up and form the input that goes into the encoder." loading="lazy"></figure>
+
+<p>Un RNN traite les tokens séquentiellement — l'ordre est implicite. Un Transformer traite tous les tokens <strong>en parallèle</strong> — il faut ajouter explicitement l'information de position via un vecteur de positional encoding (appris ou sinusoïdal).</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Dans <em>"Dog bites man"</em> vs <em>"Man bites dog"</em>, le token "dog" a le même embedding mais un positional encoding différent.</p></div></div>
+
+<h3 id="43-bloc-encoder-self-attention">4.3 Bloc Encoder — Self-Attention</h3>
+
+<figure><img src="../../assets/images/transformers-llm-10-2c9ec3d2.png" alt="One transformer block with a (multi-headed) attention block and a feed forward network." loading="lazy"></figure>
+
+<p>Chaque token est projeté en 3 vecteurs via des matrices de poids apprises :</p>
+
+<ul>
+<li><strong>Query</strong> (Q) : "Que cherche ce token ?"</li>
+<li><strong>Key</strong> (K) : "Qui suis-je ?"</li>
+<li><strong>Value</strong> (V) : "Quelle information j'apporte ?"</li>
+</ul>
+
+<figure><img src="../../assets/images/transformers-llm-11-3acda7ce.png" alt="Each token in a sentence is translated into a Q, K and V" loading="lazy"></figure>
+
+<h4 id="calcul-de-lattention-pas-à-pas">Calcul de l'attention pas à pas</h4>
+
+<p><strong>1) Similarité</strong> — produit scalaire Q · K pour chaque paire de tokens :</p>
+
+<figure><img src="../../assets/images/transformers-llm-12-0d3c98f9.png" alt="The dot product for each query - key pair, i.e. for all keys." loading="lazy"></figure>
+
+<p><strong>2) Scaling</strong> — diviser par √d_k pour éviter les valeurs trop grandes :</p>
+
+<figure><img src="../../assets/images/transformers-llm-13-d81905d6.png" alt="We scale the result by the square root of the model dimension = 512, so we divide by 22.6." loading="lazy"></figure>
+
+<p><strong>3) Softmax</strong> — convertir en poids d'attention (0 à 1, somme = 1) :</p>
+
+<figure><img src="../../assets/images/transformers-llm-14-42481ee3.png" alt="The softmax formula, and the results after applying it." loading="lazy"></figure>
+
+<p><strong>4) Matrice d'attention</strong> — pour tous les tokens en parallèle :</p>
+
+<figure><img src="../../assets/images/transformers-llm-15-b7c7abb6.png" alt="Repeat the same for all queries." loading="lazy"></figure>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>La matrice d'attention est de taille <code>(seq_len × seq_len)</code> — la complexité est <strong>quadratique</strong> en la longueur de séquence.</p></div></div>
+
+<p><strong>5) Output</strong> = attention × values :</p>
+
+<figure><img src="../../assets/images/transformers-llm-16-a65d6863.png" alt="All attention vectors together form a matrix. We multiply the matrix with the value vectors to get the results for all queries." loading="lazy"></figure>
+
+<h4 id="formule-complète">Formule complète</h4>
+
+<p>$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right) V$</p>
+
+<figure><img src="../../assets/images/transformers-llm-17-1229249b.png" alt="At the bottom each token is translated into a V, K, and Q. To the right, similarity scores between Q and each K are calculated. These scores are then used to calculate a weighted sum of all Vs. Resulting in one output vector. This happens for every Q." loading="lazy"></figure>
+
+<p>👉 <a href="https://wagon-public-datasets.s3.amazonaws.com/data-science-images/lectures/Transformers/slowest_qkv.gif" target="_blank" rel="noopener">Visualisation animée du QKV</a></p>
+
+<h3 id="44-multi-head-attention">4.4 Multi-Head Attention</h3>
+
+<figure><img src="../../assets/images/transformers-llm-18-8d5c862b.png" alt="Instead of having one head, we have multiple heads in parallel." loading="lazy"></figure>
+
+<p>Plutôt qu'une seule attention sur d_model=512, on utilise <strong>8 têtes</strong> (heads) qui travaillent chacune sur d_k=64 dimensions. Chaque tête peut se spécialiser sur un aspect différent (sémantique, syntaxe…). Les sorties sont concaténées puis projetées via une couche linéaire.</p>
+
+<h3 id="45-résidu-normalisation-et-ffn">4.5 Résidu, normalisation et FFN</h3>
+
+<figure><img src="../../assets/images/transformers-llm-19-ef933dbb.png" alt="The full transformer drawing again. We circled the encoder." loading="lazy"></figure>
+
+<p>Chaque sous-couche est suivie de :</p>
+
+<ul>
+<li><strong>Skip connection</strong> (connexion résiduelle) : le modèle n'apprend que le résidu → stabilise et accélère l'entraînement</li>
+<li><strong>Layer Normalization</strong> : normalise chaque sortie → stabilise l'entraînement</li>
+<li><strong>Feed-Forward Network</strong> : deux couches linéaires avec ReLU — ajoute la non-linéarité et mélange les features au sein de chaque token</li>
+</ul>
+
+<h3 id="46-le-decoder">4.6 Le Decoder</h3>
+
+<h4 id="masked-self-attention">Masked Self-Attention</h4>
+
+<figure><img src="../../assets/images/transformers-llm-20-2bb26150.png" alt="The similarity calculation: all elements in the top right corner are replaced by minus infinity." loading="lazy"></figure>
+
+<p>Identique à la self-attention de l'encoder, sauf que les positions futures sont masquées (−∞ → softmax donne 0) pour empêcher le modèle de "tricher" pendant l'entraînement.</p>
+
+<h4 id="cross-attention">Cross-Attention</h4>
+
+<figure><img src="../../assets/images/transformers-llm-21-0e2d3458.png" alt="Cross-attention is very similar to self-attention. The difference: the Ks and Vs are based on the encoder block&#x27;s output, not on the decoder side. Only the Q comes from the decoder side." loading="lazy"></figure>
+
+<p>La query vient du <strong>decoder</strong>, les keys et values viennent de l'<strong>encoder</strong>. Cela permet au decoder de "consulter" la représentation de la séquence source pour générer chaque token de sortie.</p>
+
+<h3 id="47-couche-de-sortie">4.7 Couche de sortie</h3>
+
+<figure><img src="../../assets/images/transformers-llm-22-02b844f0.png" alt="The final output layer: matrix multiplication to go from d_model 512 to vocabulary size 25.000. Then apply softmax, and pick the token with the highest probability." loading="lazy"></figure>
+
+<p>La dernière couche est une <strong>classification</strong> sur tout le vocabulaire :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">layers.Dense(vocab_size, activation=&#x27;softmax&#x27;)  # ex: 37 000 tokens possibles</code></pre></div>
+
+
+<h3 id="48-entraînement">4.8 Entraînement</h3>
+
+<ul>
+<li><strong>Entrées</strong> : séquences source + séquences cible (avec token <code>&lt;start&gt;</code>)</li>
+<li><strong>Loss</strong> : categorical cross-entropy entre la prédiction et le vrai token suivant</li>
+<li><strong>Backpropagation</strong> en parallèle sur tous les tokens</li>
+<li><strong>Paramètres</strong> : ~65M pour le Transformer original (d_model=512, 6 blocs, vocab=37K)</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Les principaux facteurs du nombre de paramètres sont <code>d_model</code> et la taille du vocabulaire. Les LLMs modernes utilisent d_model de 4096 à 12288+.</p></div></div>
+
+<hr>
+
+<h2 id="5-variantes-darchitecture">5) Variantes d'architecture</h2>
+
+<figure><img src="../../assets/images/transformers-llm-23-24453bda.png" alt="The Transformer family tree with Decoders, Encoders and Encoder-Decoder branches" loading="lazy"></figure>
+
+<div class="table-wrapper"><table><thead><tr><th>Architecture</th><th>Tâches</th><th>Exemples</th><th>Attention</th></tr></thead><tbody><tr><td><strong>Encoder-Decoder</strong></td><td>Traduction, résumé, QA</td><td>T5, BART</td><td>Self + Cross</td></tr><tr><td><strong>Encoder-only</strong></td><td>Classification, NER, sentiment</td><td>BERT</td><td>Bidirectionnelle</td></tr><tr><td><strong>Decoder-only</strong></td><td>Génération, chatbot, code</td><td>GPT-2/3/4, Claude, Llama</td><td>Causale (masquée)</td></tr></tbody></table></div>
+<h3 id="51-encoder-only-bert">5.1 Encoder-only — BERT</h3>
+
+<figure><img src="../../assets/images/transformers-llm-24-b861a084.png" alt="" loading="lazy"></figure>
+
+<p>BERT lit <strong>toute la séquence</strong> en une seule passe (attention bidirectionnelle). Le token spécial <code>[CLS]</code> produit une représentation résumée de la phrase entière → on ajoute une tête de classification dessus.</p>
+
+<h3 id="52-decoder-only-gpt">5.2 Decoder-only — GPT</h3>
+
+<figure><img src="../../assets/images/transformers-llm-25-2c541d45.png" alt="The architecture of GPT-2 looks quite similar to the decoder side of what we saw before." loading="lazy"></figure>
+
+<p>GPT génère du texte <strong>de gauche à droite</strong>, un token à la fois. Pas d'encoder — tout repose sur le prompt d'entrée et l'auto-régression.</p>
+
+<h3 id="53-vision-transformers-et-modèles-multimodaux">5.3 Vision Transformers et modèles multimodaux</h3>
+
+<figure><img src="../../assets/images/transformers-llm-26-fc025112.png" alt="" loading="lazy"></figure>
+
+<p>Les Vision Transformers (ViT) découpent une image en patches et les traitent comme une séquence de tokens — même architecture que pour le texte.</p>
+
+<hr>
+
+<h2 id="6-utiliser-un-llm-pour-sa-tâche">6) Utiliser un LLM pour sa tâche</h2>
+
+<h3 id="61-encoder-only-bert-fine-tuning">6.1 Encoder-only (BERT) — Fine-tuning</h3>
+
+<p>On ajoute une <strong>tête</strong> (head) adaptée à la tâche au-dessus de l'encodeur pré-entraîné :</p>
+
+<ul>
+<li>Classification de sentiment → Dense(n_classes) sur la sortie <code>[CLS]</code></li>
+<li>NER → Dense(n_entity_types) sur chaque token</li>
+</ul>
+
+<figure><img src="../../assets/images/transformers-llm-27-ebfa74ca.png" alt="BERT with a classification head on top. Each input token gets converted into an output embedding of size 768. This gets fed into a classication head, e.g. a dense neural network, and outputs a class for each token." loading="lazy"></figure>
+
+<p>Deux options : (1) ne fine-tuner que la tête, ou (2) fine-tuner tête + encoder (unfreeze).</p>
+
+<h3 id="62-encoder-decoder-t5-prompt-textuel">6.2 Encoder-Decoder (T5) — Prompt textuel</h3>
+
+<p>T5 traite tout comme du texte-vers-texte :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">summarize: state authorities dispatched emergency crews...
+translate English to German: That is good.
+cola sentence: The course is jumping well.</code></pre></div>
+
+
+<h3 id="63-decoder-only-gpt-prompt-engineering">6.3 Decoder-only (GPT) — Prompt Engineering</h3>
+
+<p>Les modèles génératifs produisent la <strong>suite de la séquence d'entrée</strong>. Tout passe par le prompt.</p>
+
+<p><strong>Zero-shot</strong> (pas d'exemple) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Q: Who was the first president of the United States?
+A:</code></pre></div>
+
+
+<p><strong>Few-shot</strong> (quelques exemples) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Translate English to French:
+English: Hello → French: Bonjour
+English: Thank you → French: Merci
+English: Good night → French:</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>On peut utiliser un modèle génératif pour de la <strong>classification</strong> en formulant le prompt correctement : <em>"Classify this review as POSITIVE, NEUTRAL or NEGATIVE. Review: ... Sentiment:"</em></p></div></div>
+
+<h3 id="64-paramètres-de-génération">6.4 Paramètres de génération</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Paramètre</th><th>Rôle</th><th>Valeurs typiques</th></tr></thead><tbody><tr><td>🌡️ <strong>Temperature</strong></td><td>Contrôle l'aléatoire du softmax final</td><td>0.1 (déterministe) → 1.5 (créatif)</td></tr><tr><td>🔝 <strong>Top-k</strong></td><td>Limite aux k tokens les plus probables</td><td>10–50</td></tr><tr><td>📈 <strong>Top-p</strong> (nucleus)</td><td>Limite aux tokens dont la proba cumulée ≤ p</td><td>0.9–0.95</td></tr><tr><td>📝 <strong>Max tokens</strong></td><td>Longueur max de la sortie</td><td>Selon la tâche</td></tr></tbody></table></div>
+<p>👉 <a href="https://platform.openai.com/playground/prompts" target="_blank" rel="noopener">OpenAI Playground</a> — tester les paramètres avec GPT</p>
+
+<p>👉 <a href="https://aistudio.google.com/prompts/new_chat" target="_blank" rel="noopener">Google AI Studio</a> — tester avec Gemini</p>
+
+<hr>
+
+<h2 id="7-évaluer-les-llms">7) Évaluer les LLMs</h2>
+
+<h3 id="71-tâches-de-classification">7.1 Tâches de classification</h3>
+
+<p>Accuracy, Precision, Recall, F1 — exactement comme en ML classique.</p>
+
+<h3 id="72-tâches-seq2seq-traduction-résumé">7.2 Tâches seq2seq (traduction, résumé)</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Métrique</th><th>Type</th><th>Principe</th><th>Usage</th></tr></thead><tbody><tr><td><strong>BLEU</strong></td><td>Precision-based</td><td>Overlap de n-grams entre texte généré et référence</td><td>Traduction</td></tr><tr><td><strong>ROUGE</strong></td><td>Recall-based</td><td>Combien d'info de la référence est dans le texte généré</td><td>Résumé</td></tr></tbody></table></div>
+<p>Variantes ROUGE : ROUGE-1 (unigrams), ROUGE-2 (bigrams), ROUGE-L (plus longue sous-séquence commune).</p>
+
+<h3 id="73-tâches-génératives-ouvertes">7.3 Tâches génératives ouvertes</h3>
+
+<ul>
+<li><strong>Perplexité</strong> : mesure la "surprise" du modèle face aux données (utilisée pendant l'entraînement)</li>
+<li><strong>Évaluation humaine</strong> : fluence, pertinence, cohérence, factualité</li>
+<li><strong>LLM-as-a-judge</strong> : utiliser un autre LLM pour évaluer la qualité des réponses</li>
+<li><strong>Code</strong> : exact match, BLEU, passage des tests unitaires</li>
+</ul>
+
+<hr>
+
+<h2 id="8-hugging-face-et-la-librairie-transformers">8) Hugging Face et la librairie <code>transformers</code></h2>
+
+<h3 id="81-présentation">8.1 Présentation</h3>
+
+<p>Hugging Face est une plateforme open-source donnant accès à des milliers de modèles pré-entraînés (BERT, GPT, T5, Llama…) via une API simple et unifiée.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## pip install transformers
+
+from transformers import pipeline
+
+## Traduction
+translator = pipeline(&quot;translation&quot;, model=&quot;Helsinki-NLP/opus-mt-en-fr&quot;)
+translator(&quot;I am a student studying in London&quot;)
+## → [{&#x27;translation_text&#x27;: &quot;Je suis étudiante et j&#x27;étudie à Londres.&quot;}]
+
+## Sentiment
+classifier = pipeline(&quot;sentiment-analysis&quot;)
+classifier(&quot;This movie was terrible&quot;)
+## → [{&#x27;label&#x27;: &#x27;NEGATIVE&#x27;, &#x27;score&#x27;: 0.9997}]
+
+## Génération
+generator = pipeline(&quot;text-generation&quot;, model=&quot;gpt2&quot;)
+generator(&quot;The future of AI is&quot;, max_length=50)</code></pre></div>
+
+
+<h3 id="82-sous-le-capot">8.2 Sous le capot</h3>
+
+<p>Un <code>pipeline</code> combine un <strong>tokenizer</strong> et un <strong>modèle</strong>. Chaque modèle a son propre tokenizer — il faut toujours les utiliser ensemble.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from transformers import AutoTokenizer, AutoModelForSequenceClassification
+
+tokenizer = AutoTokenizer.from_pretrained(&quot;distilbert-base-uncased&quot;)
+model = AutoModelForSequenceClassification.from_pretrained(&quot;distilbert-base-uncased&quot;)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Si le pipeline a été créé avec PyTorch mais que vous travaillez avec TensorFlow, préfixer le nom du modèle par <code>TF</code> et passer <code>from_pt=True</code>.</p></div></div>
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Attention is All You Need — Vaswani et al. (2017)</a> — le papier fondateur</li>
+<li>👉 <a href="https://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener">The Illustrated Transformer — Jay Alammar</a> — visualisations pas à pas</li>
+<li>👉 <a href="https://wikidocs.net/book/8027" target="_blank" rel="noopener">The Deep Learning Bible</a> — gratuit, mis à jour continuellement</li>
+<li>👉 <a href="https://lena-voita.github.io/nlp_course/seq2seq_and_attention.html#transformer_intro" target="_blank" rel="noopener">Intro to Transformers — Lena Voita</a></li>
+<li>👉 <a href="https://www.youtube.com/watch?v=zxQyTK8quyY&vl=en" target="_blank" rel="noopener">StatsQuest — Self-Attention</a> — vidéo pas à pas</li>
+<li>👉 <a href="https://www.oreilly.com/library/view/natural-language-processing/9781098136789/" target="_blank" rel="noopener">HuggingFace + Transformers Textbook (O'Reilly)</a></li>
+<li>👉 <a href="https://github.com/nlp-with-transformers/notebooks" target="_blank" rel="noopener">GitHub notebooks du livre ci-dessus</a> — accès libre</li>
+<li>👉 <a href="https://www.youtube.com/watch?v=dichIcUZfOw&t=278s" target="_blank" rel="noopener">Positional Encoding expliqué (vidéo)</a></li>
+</ul>
+
+<hr>
+
+<h2 id="annexe-nombre-de-paramètres-transformer-original">📎 Annexe — Nombre de paramètres (Transformer original)</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Composant</th><th>Formule</th><th>Valeurs (d_model=512)</th><th>Total (M)</th></tr></thead><tbody><tr><td>Token embeddings</td><td>vocab × d_model</td><td>37 000 × 512</td><td>19</td></tr><tr><td>Attention Q/K/V</td><td>d_model × d_k × n_heads × n_layers × 3</td><td>512 × 64 × 8 × 6 × 3</td><td>14</td></tr><tr><td>Attention output projection</td><td>d_model × d_model × n_layers × 2</td><td>512 × 512 × 6 × 2</td><td>4.7</td></tr><tr><td>FFN</td><td>(d_model × d_ff + d_ff × d_model) × n_layers × 2</td><td>(512 × 2048 × 2) × 6 × 2</td><td>25</td></tr><tr><td>LayerNorm</td><td>(γ + β) × d_model × sous-couches</td><td>~</td><td>0.02</td></tr></tbody></table></div>
+<p><strong>Total ≈ 65 millions de paramètres</strong> pour le Transformer original. Les LLMs modernes ont des milliards de paramètres (GPT-3 = 175B, GPT-4 estimé > 1T).</p>
+
+<hr>
+
+<h2 id="challenges">🚀 Challenges</h2>
+
+<ul>
+<li>Utiliser Hugging Face <code>pipeline</code> pour de la traduction, de l'analyse de sentiment et de la génération de texte</li>
+<li>Fine-tuner un modèle BERT pour une tâche de classification sur un dataset custom</li>
+<li>Expérimenter avec les paramètres de génération (temperature, top-k, top-p) et observer leur impact</li>
+</ul>
+
+<p><a href="../nlp-llm/transformers-advanced.html">🧠 Transformers & LLM — Compléments avancés</a></p>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-ce-fil-rouge-le-lecteur-omniscient">Ce fil rouge : le lecteur omniscient</a></li><li><a href="#ref-à-retenir-absolument">À retenir absolument</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-pourquoi-les-transformers-les-limites-des-rnn">1. Pourquoi les Transformers ? Les limites des RNN</a><ol><li><a href="#ref-le-problème-des-rnn-en-une-image">Le problème des RNN en une image</a></li><li><a href="#ref-les-trois-problèmes-des-rnn">Les trois problèmes des RNN</a></li></ol></li><li><a href="#ref-2-les-briques-de-base">2. Les briques de base</a><ol><li><a href="#ref-21-la-tokenisation-en-sous-mots">2.1 La tokenisation en sous-mots</a></li><li><a href="#ref-22-le-token-embedding">2.2 Le Token Embedding</a></li><li><a href="#ref-23-le-positional-encoding">2.3 Le Positional Encoding</a></li></ol></li><li><a href="#ref-3-le-mécanisme-de-self-attention">3. Le mécanisme de Self-Attention</a><ol><li><a href="#ref-31-lintuition-un-dictionnaire-flou">3.1 L'intuition : un dictionnaire flou</a></li><li><a href="#ref-32-les-trois-vecteurs-query-key-value">3.2 Les trois vecteurs : Query, Key, Value</a></li><li><a href="#ref-33-le-calcul-de-lattention-étape-par-étape">3.3 Le calcul de l'attention, étape par étape</a></li><li><a href="#ref-34-la-formule-complète">3.4 La formule complète</a></li></ol></li><li><a href="#ref-4-multi-head-attention-plusieurs-regards-en-même-temps">4. Multi-Head Attention : plusieurs regards en même temps</a><ol><li><a href="#ref-le-problème-dune-seule-tête-dattention">Le problème d'une seule tête d'attention</a></li><li><a href="#ref-la-solution-plusieurs-têtes-en-parallèle">La solution : plusieurs têtes en parallèle</a></li></ol></li><li><a href="#ref-5-le-bloc-encodeur-complet">5. Le bloc Encodeur complet</a><ol><li><a href="#ref-51-structure-dun-bloc-encodeur">5.1 Structure d'un bloc encodeur</a></li><li><a href="#ref-52-le-feed-forward-network-ffn">5.2 Le Feed-Forward Network (FFN)</a></li><li><a href="#ref-53-skip-connections-et-layer-normalization">5.3 Skip connections et Layer Normalization</a></li></ol></li><li><a href="#ref-6-le-décodeur">6. Le Décodeur</a><ol><li><a href="#ref-61-masked-self-attention-interdire-de-tricher">6.1 Masked Self-Attention : interdire de tricher</a></li><li><a href="#ref-62-cross-attention-consulter-lencodeur">6.2 Cross-Attention : consulter l'encodeur</a></li><li><a href="#ref-63-la-couche-de-sortie">6.3 La couche de sortie</a></li></ol></li><li><a href="#ref-7-les-trois-familles-de-transformers">7. Les trois familles de Transformers</a><ol><li><a href="#ref-71-bert-encoder-only">7.1 BERT (Encoder-only)</a></li><li><a href="#ref-72-gpt-decoder-only">7.2 GPT (Decoder-only)</a></li><li><a href="#ref-73-t5-encoder-decoder">7.3 T5 (Encoder-Decoder)</a></li></ol></li><li><a href="#ref-8-utiliser-un-llm-en-pratique-avec-hugging-face">8. Utiliser un LLM en pratique avec Hugging Face</a><ol><li><a href="#ref-81-le-pipeline-la-voie-rapide">8.1 Le pipeline : la voie rapide</a></li><li><a href="#ref-82-sous-le-capot-tokenizer-modèle">8.2 Sous le capot : tokenizer + modèle</a></li><li><a href="#ref-83-le-prompt-engineering-pour-les-modèles-génératifs">8.3 Le prompt engineering pour les modèles génératifs</a></li><li><a href="#ref-84-paramètres-de-génération">8.4 Paramètres de génération</a></li></ol></li><li><a href="#ref-9-évaluer-un-llm">9. Évaluer un LLM</a><ol><li><a href="#ref-91-tâches-de-classification">9.1 Tâches de classification</a></li><li><a href="#ref-92-tâches-de-traduction-et-résumé">9.2 Tâches de traduction et résumé</a></li><li><a href="#ref-93-tâches-génératives-ouvertes">9.3 Tâches génératives ouvertes</a></li></ol></li><li><a href="#ref-10-récapitulatif-les-erreurs-classiques-des-débutants">10. Récapitulatif — Les erreurs classiques des débutants</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Les Transformers sont l'architecture qui a révolutionné le traitement du langage naturel (NLP) depuis 2017. Tous les grands modèles de langage que tu connais — ChatGPT, Claude, Gemini, Llama — reposent sur cette même idée fondatrice.</p>
+
+<p>Avant les Transformers, on utilisait des RNN (réseaux récurrents) qui lisaient le texte mot par mot, de gauche à droite, comme un lecteur distrait qui oublie le début d'une longue phrase. Le Transformer, lui, fonctionne comme un lecteur qui peut regarder <strong>tous les mots en même temps</strong> et décider, pour chaque mot, lesquels des autres mots importent le plus pour le comprendre. C'est l'idée centrale du cours.</p>
+
+<h3 id="ref-ce-fil-rouge-le-lecteur-omniscient">Ce fil rouge : le lecteur omniscient</h3>
+
+<p>Imagine que tu lis la phrase : <em>"Le chat que ma voisine avait recueilli l'hiver dernier dort sur le canapé."</em></p>
+
+<p>Un lecteur humain comprend immédiatement que <strong>"dort"</strong> concerne <strong>"le chat"</strong>, pas "ma voisine" ni "l'hiver". Il a balayé toute la phrase en une fraction de seconde. C'est exactement ce que fait le mécanisme d'<strong>attention</strong> : pour chaque mot, il calcule quels autres mots de la phrase méritent le plus d'attention.</p>
+
+<h3 id="ref-à-retenir-absolument">À retenir absolument</h3>
+
+<ul>
+<li>Les Transformers traitent tous les tokens <strong>en parallèle</strong> (pas séquentiellement comme les RNN).</li>
+<li>Le mécanisme clé s'appelle la <strong>self-attention</strong> : chaque token regarde tous les autres.</li>
+<li>L'architecture se divise en <strong>encodeur</strong> (comprendre) et <strong>décodeur</strong> (générer).</li>
+<li><strong>BERT</strong> = encodeur seul → excellent pour classer, annoter, comprendre.</li>
+<li><strong>GPT</strong> = décodeur seul → excellent pour générer du texte, répondre à des questions.</li>
+</ul>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li>Pourquoi les Transformers ont remplacé les RNN</li>
+<li>Les briques de base : embedding, positional encoding, Q/K/V</li>
+<li>Le mécanisme de self-attention (avec la formule)</li>
+<li>L'architecture complète encodeur/décodeur</li>
+<li>Les variantes (BERT, GPT, T5)</li>
+<li>Utiliser un LLM en pratique avec Hugging Face</li>
+<li>Évaluer les performances d'un LLM</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-pourquoi-les-transformers-les-limites-des-rnn">1. Pourquoi les Transformers ? Les limites des RNN</h2>
+
+<h3 id="ref-le-problème-des-rnn-en-une-image">Le problème des RNN en une image</h3>
+
+<p>Les RNN (et leurs variantes LSTM, GRU) lisent une phrase de gauche à droite, en maintenant un <strong>vecteur d'état caché</strong> qui résume tout ce qui a été lu jusqu'ici. C'est comme essayer de résumer un roman entier en une seule note Post-it : à un moment, on perd de l'information.</p>
+
+<p><strong>Exemple concret :</strong> La phrase <em>"Sally adorait lire ; quand elle reçut un livre pour son anniversaire, elle était ______"</em>. La réponse évidente est <em>"heureuse"</em> — mais un RNN risque de l'oublier parce que le mot "Sally" et "adorait lire" sont trop loin dans la séquence pour rester dans l'état caché.</p>
+
+<h3 id="ref-les-trois-problèmes-des-rnn">Les trois problèmes des RNN</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Problème</th><th>Ce qui se passe concrètement</th><th>Solution dans le Transformer</th></tr></thead><tbody><tr><td><strong>Goulot d'information</strong></td><td>Toute la phrase compressée dans un seul vecteur → perte d'info</td><td>L'attention permet à chaque token d'accéder directement à tous les autres</td></tr><tr><td><strong>Vanishing gradient</strong></td><td>Le gradient s'annule en remontant dans le temps → oubli du contexte lointain</td><td>Les skip connections maintiennent un gradient stable</td></tr><tr><td><strong>Calcul séquentiel</strong></td><td>Impossible de paralléliser → lent à entraîner</td><td>Tous les tokens sont traités en même temps sur GPU</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le papier fondateur s'intitule "Attention is All You Need" (Vaswani et al., 2017). Le titre résume tout : on n'a besoin que de l'attention, plus de récurrence.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-les-briques-de-base">2. Les briques de base</h2>
+
+<h3 id="ref-21-la-tokenisation-en-sous-mots">2.1 La tokenisation en sous-mots</h3>
+
+<p>Avant d'entrer dans un Transformer, le texte est découpé en <strong>tokens</strong>. Un token n'est pas forcément un mot entier — c'est souvent un fragment de mot.</p>
+
+<p><strong>Exemple :</strong></p>
+<ul>
+<li>"walking" → <code>walk</code> + <code>ing</code></li>
+<li>"unfriendly" → <code>un</code> + <code>friend</code> + <code>ly</code></li>
+<li>"GPT" → <code>G</code> + <code>PT</code> (selon le vocabulaire)</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Pourquoi des sous-mots ? Pour gérer les mots inconnus sans exploser la taille du vocabulaire. "Unbelievably" n'a peut-être jamais été vu à l'entraînement, mais "un", "believ", "ably" oui.</p></div></div>
+
+<h3 id="ref-22-le-token-embedding">2.2 Le Token Embedding</h3>
+
+<p>Chaque token est converti en un <strong>vecteur de nombres</strong> (par exemple, un vecteur de 512 dimensions). Ces vecteurs sont <strong>appris pendant l'entraînement</strong> : des mots de sens proches se retrouvent proches dans cet espace.</p>
+
+<p><strong>Exemple :</strong> Le vecteur de "roi" moins le vecteur de "homme" plus le vecteur de "femme" ≈ vecteur de "reine". C'est la magie des embeddings.</p>
+
+<h3 id="ref-23-le-positional-encoding">2.3 Le Positional Encoding</h3>
+
+<p>Les RNN connaissent l'ordre des mots naturellement (ils les lisent un par un). Les Transformers traitent tout en parallèle, donc ils ne savent pas qui vient avant qui. On ajoute alors un <strong>vecteur de position</strong> à chaque embedding.</p>
+
+<p><strong>Exemple :</strong> Dans "Dog bites man" vs "Man bites dog", le mot "dog" a le même embedding de sens, mais un positional encoding différent selon qu'il est en position 1 ou en position 3.</p>
+
+<div class="katex-display">$$\text{input\_final} = \text{token\_embedding} + \text{positional\_encoding}$$</div>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le positional encoding peut être appris (comme un embedding classique) ou calculé via des fonctions sinus/cosinus fixes. Les deux fonctionnent bien en pratique.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-le-mécanisme-de-self-attention">3. Le mécanisme de Self-Attention</h2>
+
+<p>C'est le coeur du Transformer. Comprends ça, et tout le reste devient logique.</p>
+
+<h3 id="ref-31-lintuition-un-dictionnaire-flou">3.1 L'intuition : un dictionnaire flou</h3>
+
+<p>Imagine un dictionnaire Python classique :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Dictionnaire exact : la clé doit correspondre exactement
+mots = {&quot;chat&quot;: &quot;animal&quot;, &quot;chien&quot;: &quot;animal&quot;, &quot;courir&quot;: &quot;verbe&quot;}
+mots[&quot;chien&quot;]  # → &quot;animal&quot;   ✅
+mots[&quot;toutou&quot;] # → KeyError   ❌  (même si &quot;toutou&quot; ≈ &quot;chien&quot;)</code></pre></div>
+
+
+<p>La self-attention fonctionne comme un dictionnaire <strong>flou</strong> : si tu cherches "toutou", tu obtiens un mélange pondéré de toutes les valeurs, selon à quel point chaque clé ressemble à ta requête.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Lookup flou (idée de l&#x27;attention)
+# query = &quot;toutou&quot;  → similaire à &quot;chien&quot; à 80%, à &quot;chat&quot; à 15%
+# résultat ≈ 0.80 × &quot;animal&quot; + 0.15 × &quot;animal&quot; + 0.05 × &quot;verbe&quot;
+#          = &quot;animal&quot; (avec beaucoup de confiance)</code></pre></div>
+
+
+<h3 id="ref-32-les-trois-vecteurs-query-key-value">3.2 Les trois vecteurs : Query, Key, Value</h3>
+
+<p>Pour chaque token de la séquence, on calcule <strong>trois vecteurs</strong> en multipliant l'embedding par trois matrices de poids apprises (W_Q, W_K, W_V) :</p>
+
+<ul>
+<li><strong>Query (Q)</strong> — "Que cherche ce token ?" → c'est la question posée</li>
+<li><strong>Key (K)</strong> — "Qui suis-je ?" → c'est l'étiquette de chaque token</li>
+<li><strong>Value (V)</strong> — "Quelle information j'apporte ?" → c'est le contenu utile</li>
+</ul>
+
+<p><strong>Analogie :</strong> Dans une bibliothèque, la Query c'est ta recherche ("un roman policier des années 80"), la Key c'est le titre sur la couverture, et la Value c'est le contenu du livre.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Les projections linéaires (apprises à l&#x27;entraînement)
+# X est la matrice des embeddings, forme (seq_len, d_model)
+
+Q = X @ W_Q   # (seq_len, d_k)   — les requêtes
+K = X @ W_K   # (seq_len, d_k)   — les clés
+V = X @ W_V   # (seq_len, d_v)   — les valeurs</code></pre></div>
+
+
+<h3 id="ref-33-le-calcul-de-lattention-étape-par-étape">3.3 Le calcul de l'attention, étape par étape</h3>
+
+<p>Prenons une phrase de 4 tokens : ["Le", "chat", "dort", "bien"]</p>
+
+<p><strong>Étape 1 — Similarité</strong> : Pour chaque paire de tokens, on calcule le produit scalaire entre leur Query et leur Key.</p>
+
+<div class="katex-display">$$\text{score}(i, j) = Q_i \cdot K_j$$</div>
+
+<p>Le produit scalaire est une mesure de similarité : deux vecteurs alignés dans le même sens donnent un score élevé, deux vecteurs perpendiculaires donnent 0.</p>
+
+<p><strong>Étape 2 — Mise à l'échelle (scaling)</strong> : On divise par $\sqrt{d_k}$ pour éviter que les valeurs soient trop grandes (ce qui rendrait le softmax trop "piqué").</p>
+
+<div class="katex-display">$$\text{score\_scaled}(i, j) = \frac{Q_i \cdot K_j}{\sqrt{d_k}}$$</div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Pourquoi diviser par $\sqrt{d_k}$ ? Si les vecteurs ont $d_k = 64$ dimensions, leurs produits scalaires peuvent devenir très grands, poussant le softmax vers des distributions presque binaires (0 ou 1). La division stabilise l'entraînement.</p></div></div>
+
+<p><strong>Exemple numérique</strong> : Supposons $d_k = 4$ et les scores bruts pour le token "dort" face aux autres tokens :</p>
+
+<div class="katex-display">$$\text{scores} = [0.2,\ 3.5,\ 1.0,\ 0.1]$$</div>
+
+<p>Après division par $\sqrt{4} = 2$ :</p>
+
+<div class="katex-display">$$\text{scores\_scaled} = [0.1,\ 1.75,\ 0.5,\ 0.05]$$</div>
+
+<p><strong>Étape 3 — Softmax</strong> : On convertit ces scores en probabilités (entre 0 et 1, somme = 1).</p>
+
+<div class="katex-display">$$\text{poids} = \text{softmax}(\text{scores\_scaled}) \approx [0.04,\ 0.84,\ 0.11,\ 0.01]$$</div>
+
+<p>Interprétation : pour comprendre "dort", le token regarde surtout "chat" (84% d'attention), un peu "dort" lui-même (11%), très peu "Le" et "bien".</p>
+
+<p><strong>Étape 4 — Pondération des Values</strong> : La sortie est la somme pondérée des vecteurs V.</p>
+
+<div class="katex-display">$$\text{output} = \sum_j \text{poids}_j \times V_j$$</div>
+
+<h3 id="ref-34-la-formule-complète">3.4 La formule complète</h3>
+
+<div class="katex-display">$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{Q K^T}{\sqrt{d_k}}\right) V$$</div>
+
+<p>En pratique, on calcule ça pour <strong>tous les tokens en parallèle</strong> via des opérations matricielles, ce qui rend le Transformer très efficace sur GPU.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+
+def attention(Q, K, V):
+    d_k = Q.shape[-1]                       # dimension des vecteurs clé/requête
+    scores = Q @ K.T / np.sqrt(d_k)         # similarités mises à l&#x27;échelle
+    weights = softmax(scores)               # poids d&#x27;attention (somme = 1)
+    output = weights @ V                    # pondération des valeurs
+    return output</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>La matrice d'attention est de taille (seq_len × seq_len). Si ta séquence a 1000 tokens, la matrice fait 1 000 000 de valeurs. La complexité est <strong>quadratique</strong> en la longueur : doubler la séquence quadruple la mémoire nécessaire.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-multi-head-attention-plusieurs-regards-en-même-temps">4. Multi-Head Attention : plusieurs regards en même temps</h2>
+
+<h3 id="ref-le-problème-dune-seule-tête-dattention">Le problème d'une seule tête d'attention</h3>
+
+<p>Un seul mécanisme d'attention capture une seule "perspective" sur les relations entre mots. Or une phrase peut avoir des relations multiples : sémantiques, syntaxiques, coréférences...</p>
+
+<h3 id="ref-la-solution-plusieurs-têtes-en-parallèle">La solution : plusieurs têtes en parallèle</h3>
+
+<p>On découpe l'espace $d_{model}$ en plusieurs sous-espaces, et chaque <strong>tête</strong> (head) travaille indépendamment sur son sous-espace.</p>
+
+<p><strong>Exemple concret :</strong> Avec $d_{model} = 512$ et 8 têtes, chaque tête travaille sur $d_k = 512 / 8 = 64$ dimensions.</p>
+
+<ul>
+<li>Tête 1 : peut apprendre à relier les sujets à leurs verbes</li>
+<li>Tête 2 : peut apprendre à relier les pronoms à leurs antécédents</li>
+<li>Tête 3 : peut capturer les relations de négation</li>
+<li>etc.</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Multi-Head Attention (version simplifiée)
+n_heads = 8
+d_model = 512
+d_k = d_model // n_heads   # = 64
+
+# Pour chaque tête h :
+#   Q_h = X @ W_Q_h    (seq_len, 64)
+#   K_h = X @ W_K_h    (seq_len, 64)
+#   V_h = X @ W_V_h    (seq_len, 64)
+#   head_h = Attention(Q_h, K_h, V_h)
+
+# Concaténation de toutes les têtes :
+#   MultiHead = concat(head_1, ..., head_8) @ W_O
+#             → (seq_len, 512)    ← même forme qu&#x27;en entrée</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Chaque tête a ses propres matrices W_Q, W_K, W_V — elles sont toutes apprises indépendamment. Elles se spécialisent naturellement sur des aspects différents du langage.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-le-bloc-encodeur-complet">5. Le bloc Encodeur complet</h2>
+
+<p>Un bloc encodeur contient deux sous-couches principales, chacune suivie d'une skip connection et d'une normalisation.</p>
+
+<h3 id="ref-51-structure-dun-bloc-encodeur">5.1 Structure d'un bloc encodeur</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Input
+  ↓
+[Multi-Head Self-Attention]
+  ↓ + (skip connection : on ajoute l&#x27;input)
+[Layer Normalization]
+  ↓
+[Feed-Forward Network (FFN)]
+  ↓ + (skip connection : on ajoute l&#x27;entrée du FFN)
+[Layer Normalization]
+  ↓
+Output (même forme que l&#x27;input)</code></pre></div>
+
+
+<h3 id="ref-52-le-feed-forward-network-ffn">5.2 Le Feed-Forward Network (FFN)</h3>
+
+<p>Après l'attention, chaque token passe dans un petit réseau de neurones à deux couches appliqué <strong>indépendamment</strong> :</p>
+
+<div class="katex-display">$$\text{FFN}(x) = \text{ReLU}(x W_1 + b_1) W_2 + b_2$$</div>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>L'attention mélange l'information <em>entre</em> les tokens (qui regarde qui). Le FFN transforme l'information <em>au sein</em> de chaque token (ajoute de la non-linéarité et de la capacité d'apprentissage).</p></div></div>
+
+<h3 id="ref-53-skip-connections-et-layer-normalization">5.3 Skip connections et Layer Normalization</h3>
+
+<ul>
+<li><strong>Skip connection</strong> : On ajoute l'entrée de la sous-couche à sa sortie. Le réseau apprend seulement la "correction" à apporter, pas la transformation complète. Cela stabilise énormément l'entraînement des réseaux profonds.</li>
+<li><strong>Layer Normalization</strong> : Normalise les activations pour éviter les explosions ou disparitions de valeurs.</li>
+</ul>
+
+<p>L'encodeur complet empile <strong>6 blocs identiques</strong> (même architecture, poids différents). Chaque passage enrichit la représentation de chaque token en tenant compte de son contexte.</p>
+
+<hr>
+
+<h2 id="ref-6-le-décodeur">6. Le Décodeur</h2>
+
+<p>Le décodeur génère les tokens de sortie <strong>un par un</strong>, en se basant sur deux sources d'information : ce qu'il a déjà généré, et la représentation encodée de l'entrée.</p>
+
+<h3 id="ref-61-masked-self-attention-interdire-de-tricher">6.1 Masked Self-Attention : interdire de tricher</h3>
+
+<p>Pendant l'entraînement, on donne au décodeur la séquence de sortie correcte d'un coup (pour aller vite). Mais il ne doit pas voir les tokens futurs pour prédire le token actuel — sinon il "triche".</p>
+
+<p><strong>Solution :</strong> On <strong>masque</strong> les positions futures en leur assignant $-\infty$ avant le softmax, ce qui rend leur poids d'attention = 0.</p>
+
+<p><strong>Exemple :</strong> Pour générer "suis" dans "Je suis étudiant", le décodeur peut voir "Je" mais pas "étudiant".</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Masque causal (triangulaire)
+# Pour une séquence de longueur 4 :
+#
+#       Je   suis   étud.   .
+# Je  [  1     0      0    0 ]   ← &quot;Je&quot; ne voit que lui-même
+# suis[  1     1      0    0 ]   ← &quot;suis&quot; voit &quot;Je&quot; et &quot;suis&quot;
+# étud[  1     1      1    0 ]   ← &quot;étudiant&quot; voit les 3 premiers
+# .   [  1     1      1    1 ]   ← &quot;.&quot; voit tout
+#
+# Les 0 deviennent -inf avant le softmax → poids = 0</code></pre></div>
+
+
+<h3 id="ref-62-cross-attention-consulter-lencodeur">6.2 Cross-Attention : consulter l'encodeur</h3>
+
+<p>Le décodeur a une deuxième couche d'attention qui lui permet de "regarder" la représentation produite par l'encodeur.</p>
+
+<ul>
+<li><strong>Q</strong> vient du décodeur : "Qu'est-ce que je cherche dans la source ?"</li>
+<li><strong>K</strong> et <strong>V</strong> viennent de l'encodeur : toute la représentation de la phrase source</li>
+</ul>
+
+<p><strong>Exemple :</strong> Pour traduire "I am happy" → "Je suis heureux", quand le décodeur génère "heureux", il consulte l'encodeur et met beaucoup d'attention sur le token "happy".</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Cross-attention dans le décodeur
+# decoder_output joue le rôle des Q
+# encoder_output joue le rôle des K et V
+
+cross_attention_output = Attention(
+    Q = decoder_output @ W_Q,   # depuis le décodeur
+    K = encoder_output @ W_K,   # depuis l&#x27;encodeur
+    V = encoder_output @ W_V    # depuis l&#x27;encodeur
+)</code></pre></div>
+
+
+<h3 id="ref-63-la-couche-de-sortie">6.3 La couche de sortie</h3>
+
+<p>La dernière couche projette le vecteur de sortie ($d_{model}$ dimensions) sur <strong>tout le vocabulaire</strong> (ex. 37 000 tokens possibles), puis applique un softmax pour obtenir une distribution de probabilités.</p>
+
+<div class="katex-display">$$P(\text{prochain token}) = \text{softmax}(\text{output} \cdot W_{\text{vocab}})$$</div>
+
+<p>On choisit ensuite le token avec la probabilité la plus haute (ou on échantillonne — voir section 8).</p>
+
+<hr>
+
+<h2 id="ref-7-les-trois-familles-de-transformers">7. Les trois familles de Transformers</h2>
+
+<div class="table-wrapper"><table><thead><tr><th>Architecture</th><th>Comment ça lit</th><th>Pour quoi faire</th><th>Exemples</th></tr></thead><tbody><tr><td><strong>Encoder-only</strong></td><td>Toute la séquence d'un coup (bidirectionnel)</td><td>Comprendre, classifier, annoter</td><td>BERT, RoBERTa, DistilBERT</td></tr><tr><td><strong>Decoder-only</strong></td><td>De gauche à droite seulement (causal)</td><td>Générer du texte</td><td>GPT-2/3/4, Claude, Llama</td></tr><tr><td><strong>Encoder-Decoder</strong></td><td>Encoder lit tout, Decoder génère</td><td>Transformer une séquence en une autre</td><td>T5, BART, mT5</td></tr></tbody></table></div>
+<h3 id="ref-71-bert-encoder-only">7.1 BERT (Encoder-only)</h3>
+
+<p>BERT lit la phrase <strong>entièrement dans les deux sens</strong> grâce à la self-attention bidirectionnelle. Un token spécial <code>[CLS]</code> est ajouté au début ; sa représentation finale capture le sens de toute la phrase.</p>
+
+<p><strong>Usage typique :</strong> On ajoute une petite couche de classification au-dessus du <code>[CLS]</code> pour faire de l'analyse de sentiment, de la NER (reconnaissance d'entités), de la classification de documents...</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># BERT pour la classification de sentiment (avec Hugging Face)
+from transformers import pipeline
+
+# Pipeline prêt à l&#x27;emploi
+classifier = pipeline(&quot;sentiment-analysis&quot;, model=&quot;distilbert-base-uncased-finetuned-sst-2-english&quot;)
+result = classifier(&quot;Ce film était absolument magnifique !&quot;)
+print(result)
+# → [{&#x27;label&#x27;: &#x27;POSITIVE&#x27;, &#x27;score&#x27;: 0.9998}]</code></pre></div>
+
+
+<h3 id="ref-72-gpt-decoder-only">7.2 GPT (Decoder-only)</h3>
+
+<p>GPT génère du texte <strong>de gauche à droite</strong>, un token à la fois. Il n'y a pas d'encodeur — tout passe par le prompt. Chaque token généré est ajouté au contexte pour générer le suivant (auto-régression).</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais utiliser GPT pour de la NER ou de la classification de tokens — il n'a pas été conçu pour "lire" une séquence entière bidirectionnellement. Utiliser BERT pour ça.</p></div></div>
+
+<h3 id="ref-73-t5-encoder-decoder">7.3 T5 (Encoder-Decoder)</h3>
+
+<p>T5 reformule toutes les tâches NLP comme du "texte vers texte". On préfixe simplement l'entrée avec une instruction en clair :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">summarize: Les autorités ont envoyé des équipes d&#x27;urgence...
+
+translate English to French: The weather is nice today.
+
+sentiment: This product is terrible and I want a refund.</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-8-utiliser-un-llm-en-pratique-avec-hugging-face">8. Utiliser un LLM en pratique avec Hugging Face</h2>
+
+<h3 id="ref-81-le-pipeline-la-voie-rapide">8.1 Le pipeline : la voie rapide</h3>
+
+<p>Hugging Face propose une API unifiée pour utiliser des milliers de modèles pré-entraînés en quelques lignes.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Installation
+# pip install transformers
+
+from transformers import pipeline
+
+# --- Traduction ---
+translator = pipeline(
+    &quot;translation&quot;,
+    model=&quot;Helsinki-NLP/opus-mt-en-fr&quot;   # modèle anglais → français
+)
+result = translator(&quot;I am a student studying in London&quot;)
+print(result[0][&#x27;translation_text&#x27;])
+# → &quot;Je suis étudiante et j&#x27;étudie à Londres.&quot;
+
+# --- Analyse de sentiment ---
+classifier = pipeline(&quot;sentiment-analysis&quot;)
+result = classifier(&quot;This movie was absolutely fantastic!&quot;)
+print(result)
+# → [{&#x27;label&#x27;: &#x27;POSITIVE&#x27;, &#x27;score&#x27;: 0.9998}]
+
+# --- Génération de texte ---
+generator = pipeline(&quot;text-generation&quot;, model=&quot;gpt2&quot;)
+result = generator(
+    &quot;The future of AI is&quot;,   # le prompt de départ
+    max_length=50            # longueur maximale de la sortie
+)
+print(result[0][&#x27;generated_text&#x27;])</code></pre></div>
+
+
+<h3 id="ref-82-sous-le-capot-tokenizer-modèle">8.2 Sous le capot : tokenizer + modèle</h3>
+
+<p>Un <code>pipeline</code> est en réalité la combinaison de deux objets :</p>
+<ul>
+<li>un <strong>tokenizer</strong> qui convertit le texte en IDs numériques</li>
+<li>un <strong>modèle</strong> qui prédit à partir de ces IDs</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import torch
+
+# Toujours charger le tokenizer du MÊME modèle
+# (chaque modèle a son propre vocabulaire et ses propres tokens spéciaux)
+model_name = &quot;distilbert-base-uncased-finetuned-sst-2-english&quot;
+
+tokenizer = AutoTokenizer.from_pretrained(model_name)   # charge le tokenizer lié au modèle
+model = AutoModelForSequenceClassification.from_pretrained(model_name)  # charge les poids
+
+# Tokenisation : texte → IDs
+inputs = tokenizer(
+    &quot;This course is great!&quot;,
+    return_tensors=&quot;pt&quot;   # format PyTorch (&quot;tf&quot; pour TensorFlow)
+)
+print(inputs)
+# → {&#x27;input_ids&#x27;: tensor([[101, 2023, 2607, 2003, 2307, 999, 102]]),
+#    &#x27;attention_mask&#x27;: tensor([[1, 1, 1, 1, 1, 1, 1]])}
+
+# Inférence
+with torch.no_grad():
+    outputs = model(**inputs)   # passe les inputs dans le modèle
+    logits = outputs.logits     # scores bruts avant softmax
+
+# Décodage du résultat
+predicted_class = logits.argmax().item()   # indice de la classe la plus probable
+print(model.config.id2label[predicted_class])
+# → &quot;POSITIVE&quot;</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais mélanger le tokenizer d'un modèle avec un autre modèle. BERT et GPT-2 ont des vocabulaires différents, des tokens spéciaux différents (<code>[CLS]</code> vs <code>&lt;|endoftext|&gt;</code>). Un mauvais tokenizer produit des résultats absurdes.</p></div></div>
+
+<h3 id="ref-83-le-prompt-engineering-pour-les-modèles-génératifs">8.3 Le prompt engineering pour les modèles génératifs</h3>
+
+<p>Les modèles décodeur-seulement (GPT, Llama...) continuent simplement la séquence d'entrée. Tout repose sur la formulation du <strong>prompt</strong>.</p>
+
+<p><strong>Zero-shot</strong> (aucun exemple, on fait confiance au modèle) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Q: Quelle est la capitale de la France ?
+A:</code></pre></div>
+
+
+<p><strong>Few-shot</strong> (quelques exemples pour guider le modèle) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Traduis en français :
+Anglais: Hello → Français: Bonjour
+Anglais: Thank you → Français: Merci
+Anglais: Good night → Français:</code></pre></div>
+
+
+<p><strong>Astuce :</strong> On peut utiliser un modèle génératif pour de la classification avec un prompt bien formulé :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Classe cette critique comme POSITIVE, NEUTRE ou NÉGATIVE.
+Critique: &quot;Le service était lent mais la nourriture était délicieuse.&quot;
+Sentiment:</code></pre></div>
+
+
+<h3 id="ref-84-paramètres-de-génération">8.4 Paramètres de génération</h3>
+
+<p>Ces paramètres contrôlent <strong>comment</strong> le modèle choisit le prochain token à partir de la distribution de probabilités.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Paramètre</th><th>Rôle</th><th>Valeur basse</th><th>Valeur haute</th></tr></thead><tbody><tr><td><strong>Temperature</strong></td><td>Aplatit ou pique la distribution</td><td>Déterministe (0.1)</td><td>Créatif/aléatoire (1.5)</td></tr><tr><td><strong>Top-k</strong></td><td>Garde seulement les k tokens les plus probables</td><td>Concentré (k=5)</td><td>Plus varié (k=50)</td></tr><tr><td><strong>Top-p</strong> (nucleus)</td><td>Garde les tokens dont la proba cumulée ≤ p</td><td>Concentré (p=0.5)</td><td>Plus varié (p=0.95)</td></tr><tr><td><strong>Max tokens</strong></td><td>Longueur maximale de la réponse</td><td>—</td><td>—</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Temperature = 0 rend le modèle entièrement déterministe (prend toujours le token le plus probable). Temperature = 1 correspond au comportement standard. Au-dessus de 1, le modèle devient de plus en plus "créatif" (et potentiellement incohérent).</p></div></div>
+
+<hr>
+
+<h2 id="ref-9-évaluer-un-llm">9. Évaluer un LLM</h2>
+
+<h3 id="ref-91-tâches-de-classification">9.1 Tâches de classification</h3>
+
+<p>Les métriques habituelles du ML classique s'appliquent directement : accuracy, précision, rappel, F1-score.</p>
+
+<h3 id="ref-92-tâches-de-traduction-et-résumé">9.2 Tâches de traduction et résumé</h3>
+
+<p>Pour évaluer si une traduction ou un résumé généré est bon, on le compare à une <strong>référence humaine</strong> via :</p>
+
+<p><strong>BLEU</strong> (pour la traduction) : compte le chevauchement de n-grams entre le texte généré et la référence. Basé sur la <strong>précision</strong> (ce que le modèle génère, est-ce correct ?).</p>
+
+<p><strong>ROUGE</strong> (pour le résumé) : compte combien d'éléments de la référence se retrouvent dans le texte généré. Basé sur le <strong>rappel</strong> (le modèle a-t-il capturé l'essentiel ?).</p>
+
+<p><strong>Exemple :</strong></p>
+<ul>
+<li>Référence : "Le chat dort sur le canapé."</li>
+<li>Généré : "Le chat est allongé sur le canapé."</li>
+<li>BLEU-1 : 4/6 ≈ 0.67 (4 unigrammes en commun sur 6 générés)</li>
+</ul>
+
+<h3 id="ref-93-tâches-génératives-ouvertes">9.3 Tâches génératives ouvertes</h3>
+
+<ul>
+<li><strong>Perplexité</strong> : mesure à quel point le modèle est "surpris" par les données de test. Plus basse = mieux.</li>
+<li><strong>Évaluation humaine</strong> : fluidité, pertinence, cohérence, factualité — irremplaçable.</li>
+<li><strong>LLM-as-a-judge</strong> : utiliser un autre LLM (ex. GPT-4) pour noter les réponses automatiquement.</li>
+</ul>
+
+<hr>
+
+<h2 id="ref-10-récapitulatif-les-erreurs-classiques-des-débutants">10. Récapitulatif — Les erreurs classiques des débutants</h2>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Confondre self-attention et cross-attention</strong> : La self-attention opère <em>au sein d'une seule séquence</em> (chaque token regarde les autres tokens de la même séquence). La cross-attention opère <em>entre deux séquences</em> (le décodeur regarde les tokens de l'encodeur).</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Oublier le masking dans le décodeur</strong> : Sans masque, le décodeur voit les tokens futurs pendant l'entraînement et "triche". Toujours utiliser la masked self-attention côté décodeur.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Mélanger tokenizer et modèle</strong> : Chaque modèle a son propre tokenizer. Utiliser <code>AutoTokenizer.from_pretrained(&quot;nom_du_modele&quot;)</code> avec exactement le même nom que le modèle.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Dépasser la longueur maximale</strong> : L'attention est quadratique. BERT supporte max 512 tokens, GPT-2 max 1024. Dépasser ces limites entraîne des erreurs ou des résultats dégradés.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Utiliser le mauvais type de modèle pour la tâche</strong> : BERT (encoder-only) → pour comprendre et classifier. GPT (decoder-only) → pour générer. T5 (encoder-decoder) → pour transformer une séquence en une autre.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1.</strong> Dans la formule de l'attention $\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right) V$, à quoi correspondent Q, K et V ? Pourquoi divise-t-on par $\sqrt{d_k}$ ?</p>
+
+<p><strong>Question 2.</strong> Quelle est la différence entre un modèle encoder-only (BERT) et un modèle decoder-only (GPT) ? Donne un exemple de tâche pour laquelle chacun est adapté.</p>
+
+<p><strong>Question 3.</strong> Qu'est-ce que le "masked self-attention" dans le décodeur ? Pourquoi est-il indispensable pendant l'entraînement ?</p>
+
+<p><strong>Question 4.</strong> Tu veux classer des emails en "spam" ou "non-spam" avec Hugging Face. Quel type de modèle utilises-tu ? Écris les deux lignes de code essentielles pour charger le tokenizer et le modèle.</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Les <strong>Transformers</strong> traitent tous les tokens d'une séquence en parallèle, contrairement aux RNN qui les lisent un par un — d'où leur efficacité sur GPU et leur capacité à capturer les dépendances lointaines.</li>
+<li>Le mécanisme central est la <strong>self-attention</strong> : pour chaque token, on calcule à quel point il doit "regarder" chacun des autres tokens. La formule clé est $\text{softmax}(QK^T / \sqrt{d_k}) \cdot V$.</li>
+<li>La <strong>multi-head attention</strong> applique plusieurs mécanismes d'attention en parallèle, chacun se spécialisant sur un aspect différent (syntaxe, sémantique, coréférences...).</li>
+<li>Le <strong>positional encoding</strong> injecte l'information d'ordre des tokens, indispensable car le Transformer ne lit pas séquentiellement.</li>
+<li><strong>BERT</strong> (encoder-only) = lecture bidirectionnelle → tâches de compréhension (classification, NER). <strong>GPT</strong> (decoder-only) = lecture causale → génération de texte. <strong>T5</strong> (encoder-decoder) → traduction, résumé.</li>
+<li>Avec <strong>Hugging Face</strong>, trois lignes suffisent pour faire de l'analyse de sentiment, de la traduction ou de la génération de texte via <code>pipeline()</code>.</li>
+<li>Toujours utiliser le <strong>tokenizer associé au modèle</strong> — chaque modèle a son propre vocabulaire.</li>
+<li>La complexité de l'attention est <strong>quadratique</strong> en la longueur de la séquence : attention aux modèles avec une limite de tokens (512 pour BERT, 1024+ pour GPT).</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-le-mécanisme-de-self-attention">Le mécanisme de self-attention</a></li><li><a href="#syn-larchitecture-transformer">L'architecture Transformer</a></li><li><a href="#syn-bert-gpt-t5-trois-familles">BERT, GPT, T5 : trois familles</a></li><li><a href="#syn-tokenisation-subword-bpe-wordpiece">Tokenisation subword (BPE / WordPiece)</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-positional-encoding">Positional encoding</a></li><li><a href="#syn-multi-head-attention">Multi-head attention</a></li><li><a href="#syn-scaling-laws-et-émergence">Scaling laws et émergence</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-le-mécanisme-de-self-attention">Le mécanisme de self-attention</h3>
+
+<p>Le <strong>self-attention</strong> est l'innovation centrale des transformers (Vaswani et al., 2017, <em>Attention Is All You Need</em>). L'intuition : pour comprendre un mot dans une phrase, le modèle "regarde" <strong>tous les autres mots</strong> de la séquence et pondère leur importance relative. Contrairement aux RNN qui traitent les mots un par un et oublient peu à peu le contexte lointain, l'attention permet à chaque mot de consulter <strong>l'ensemble de la séquence en une seule étape</strong>.</p>
+
+<p>À partir de chaque token, on apprend <strong>trois projections linéaires</strong> :</p>
+
+<ul>
+<li><strong>Query (Q)</strong> : ce que le token "cherche" — sa question adressée aux autres</li>
+<li><strong>Key (K)</strong> : ce que le token "offre" — son étiquette de contenu</li>
+<li><strong>Value (V)</strong> : ce que le token "représente" — l'information réelle à partager</li>
+</ul>
+
+<p>La sortie pour le token $i$ est calculée selon la formule fondamentale :</p>
+
+<div class="katex-display">$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right) V$$</div>
+
+<p><strong>Décryptage terme par terme en français simple</strong> :</p>
+
+<ul>
+<li>$Q K^T$ : on prend le produit scalaire de chaque query avec chaque key. Résultat : une matrice de scores $n \times n$ où la case $(i,j)$ dit à quel point le token $i$ est "intéressé par" le token $j$. Un score élevé = forte affinité.</li>
+<li>$\sqrt{d_k}$ : facteur de normalisation, où $d_k$ est la dimension des vecteurs key. Sans cette division, les scores grandissent avec la dimension et saturent le softmax (voir Q1 en fin de fiche).</li>
+<li>$\text{softmax}(\cdot)$ : transforme chaque ligne de scores en une distribution de <strong>poids d'attention</strong> (positifs, sommant à 1). On peut les lire comme des pourcentages : "20% sur le token 1, 75% sur le token 3, 5% ailleurs".</li>
+<li>Multiplication finale par $V$ : chaque token reçoit une <strong>combinaison pondérée des values</strong> de toute la séquence, en privilégiant les tokens auxquels il prête attention.</li>
+</ul>
+
+<p><strong>Mini-exemple concret</strong> sur la phrase "The cat sat". Supposons que pour le token "sat", le mécanisme produise les poids d'attention $[0{,}1\ ;\ 0{,}7\ ;\ 0{,}2]$ sur ("The", "cat", "sat"). La sortie pour "sat" sera alors :</p>
+
+<div class="katex-display">$$0{,}1 \cdot V_{\text{The}} + 0{,}7 \cdot V_{\text{cat}} + 0{,}2 \cdot V_{\text{sat}}$$</div>
+
+<p>Le modèle a "compris" que pour représenter "sat", l'information la plus utile vient de "cat" (le sujet du verbe), un peu de lui-même, et peu de "The".</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import torch
+import torch.nn.functional as F
+
+def attention(Q, K, V):
+    d_k = Q.size(-1)                                      # dimension des keys
+    scores = Q @ K.transpose(-2, -1) / (d_k ** 0.5)       # QK^T / sqrt(d_k)
+    weights = F.softmax(scores, dim=-1)                   # poids sommant à 1
+    return weights @ V                                    # somme pondérée des values</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : le self-attention ressemble à un séminaire scientifique. Chaque chercheur (token) lève la main avec une question (Q). Tous les autres chercheurs ont une expertise (K) et une réponse potentielle (V). On évalue la pertinence de chaque expertise pour la question, puis on combine les réponses pondérées par leur pertinence. Résultat : chaque chercheur reçoit une réponse synthétisée en exploitant les connaissances de <strong>tout le séminaire</strong> d'un seul coup, sans attendre que l'information circule de bouche à oreille (comme ferait un RNN).</p></div></div>
+
+<h3 id="syn-larchitecture-transformer">L'architecture Transformer</h3>
+
+<p>Le Transformer est composé d'une pile de <strong>blocs identiques</strong>, chacun contenant :</p>
+
+<ol>
+<li><strong>Multi-head self-attention</strong> : plusieurs attentions en parallèle (8 à 12 têtes typiquement)</li>
+<li><strong>Feed-forward network</strong> : un MLP à 2 couches appliqué indépendamment à chaque position</li>
+<li><strong>Residual connections</strong> : skip connections autour de chaque sous-couche</li>
+<li><strong>Layer normalization</strong> : normalisation par layer (par sample, pas par batch)</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Input → [Self-Attention → Residual + Norm] → [FFN → Residual + Norm] → bloc suivant</code></pre></div>
+
+
+<p>Dans la version originale (encoder-decoder pour la traduction), on a :</p>
+
+<ul>
+<li>Un <strong>encoder</strong> (6 blocs) qui lit la séquence source de façon bidirectionnelle</li>
+<li>Un <strong>decoder</strong> (6 blocs) qui génère la séquence cible avec une attention <strong>masquée</strong> (ne voit que les tokens passés) et une attention croisée sur les sorties de l'encoder</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import torch.nn as nn
+
+class TransformerBlock(nn.Module):
+    def __init__(self, d_model=512, nhead=8, dim_ff=2048):
+        super().__init__()
+        self.attn = nn.MultiheadAttention(d_model, nhead)         # self-attention multi-tête
+        self.ffn = nn.Sequential(
+            nn.Linear(d_model, dim_ff),                           # projection vers 2048
+            nn.GELU(),                                            # activation non-linéaire
+            nn.Linear(dim_ff, d_model),                           # retour à 512
+        )
+        self.norm1 = nn.LayerNorm(d_model)
+        self.norm2 = nn.LayerNorm(d_model)
+
+    def forward(self, x):
+        attn_out, _ = self.attn(x, x, x)                          # Q=K=V=x (self-attention)
+        x = self.norm1(x + attn_out)                              # residual + norm
+        ff_out = self.ffn(x)
+        x = self.norm2(x + ff_out)                                # residual + norm
+        return x</code></pre></div>
+
+
+<h3 id="syn-bert-gpt-t5-trois-familles">BERT, GPT, T5 : trois familles</h3>
+
+<p>Trois architectures de transformer pré-entraîné, chacune optimisée pour des cas d'usage différents.</p>
+
+<p><strong>BERT</strong> (Devlin et al., 2018) : <strong>encoder-only</strong>. Bidirectionnel : chaque token voit tous les autres, passés et futurs. Pré-entraîné sur Masked Language Modeling (prédire des mots masqués au hasard) et Next Sentence Prediction.</p>
+
+<ul>
+<li><strong>Fort pour</strong> : compréhension, classification, NER, QA extractif, similarité sémantique</li>
+<li><strong>Tailles</strong> : base (110M), large (340M)</li>
+<li><strong>Variantes</strong> : RoBERTa (BERT mieux entraîné), DistilBERT (40% plus petit, 95% des perfs), CamemBERT (BERT français)</li>
+</ul>
+
+<p><strong>GPT</strong> (Radford et al., 2018+) : <strong>decoder-only</strong>. Causal : l'attention est masquée pour ne voir que les tokens passés. Pré-entraîné sur du Language Modeling classique (prédire le token suivant).</p>
+
+<ul>
+<li><strong>Fort pour</strong> : génération de texte, complétion, chat, code</li>
+<li><strong>Tailles</strong> : GPT-1 (117M), GPT-2 (1,5B), GPT-3 (175B), GPT-4 (plusieurs centaines de milliards)</li>
+</ul>
+
+<p><strong>T5</strong> (Raffel et al., 2019) : <strong>encoder-decoder</strong>. "Text-to-Text Transfer Transformer". Toutes les tâches sont reformulées comme du texte → texte ("translate English to German: ...", "summarize: ...").</p>
+
+<ul>
+<li><strong>Fort pour</strong> : traduction, résumé, QA génératif, multi-tâche</li>
+<li><strong>Variante notable</strong> : Flan-T5 (instruction-tuned)</li>
+</ul>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th><strong>BERT</strong> (encoder)</th><th><strong>GPT</strong> (decoder)</th><th><strong>T5</strong> (enc-dec)</th></tr></thead><tbody><tr><td>Architecture</td><td>Bidirectionnel</td><td>Causal</td><td>Les deux</td></tr><tr><td>Pré-entraînement</td><td>MLM</td><td>LM</td><td>Span corruption</td></tr><tr><td>Cas d'usage</td><td>Compréhension</td><td>Génération</td><td>Les deux</td></tr><tr><td>Exemple typique</td><td>Sentiment classification</td><td>ChatGPT, Copilot</td><td>Traduction, résumé</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Recommandation 2025</strong> : pour un nouveau projet NLP, fine-tunez <strong>un modèle pré-entraîné</strong> depuis Hugging Face plutôt que d'entraîner from scratch. Pour de la classification → DistilBERT/RoBERTa. Pour de la génération courte contrôlée → un T5 fine-tuné. Pour de la génération longue ou des conversations → un LLM via API (Claude, GPT, Gemini) ou en local (LLaMA, Mistral).</p></div></div>
+
+<h3 id="syn-tokenisation-subword-bpe-wordpiece">Tokenisation subword (BPE / WordPiece)</h3>
+
+<p>Les transformers utilisent une tokenisation <strong>subword</strong> : le vocabulaire contient à la fois des mots entiers et des fragments de mots fréquents. C'est le compromis idéal entre la tokenisation caractère-par-caractère (séquences trop longues) et la tokenisation mot-par-mot (qui explose le vocabulaire et rate les mots rares ou inconnus).</p>
+
+<p><strong>BPE</strong> (Byte-Pair Encoding) — algorithme :</p>
+
+<ol>
+<li>Commencer avec un vocabulaire de caractères individuels</li>
+<li>Trouver la paire de tokens la plus fréquente dans le corpus</li>
+<li>Fusionner cette paire en un nouveau token unique</li>
+<li>Répéter jusqu'à atteindre la taille de vocabulaire cible (typiquement 30k-50k)</li>
+</ol>
+
+<p><strong>Avantages</strong> :</p>
+
+<ul>
+<li><strong>Pas d'OOV</strong> (out-of-vocabulary) : tout texte peut être tokenisé, à la pire en caractères bruts</li>
+<li><strong>Compromis taille/longueur</strong> : les mots fréquents sont un seul token, les mots rares sont découpés</li>
+<li><strong>Multilingue</strong> : un seul vocabulaire peut couvrir plusieurs langues</li>
+</ul>
+
+<p><strong>Exemple concret</strong> — tokenisation WordPiece (BERT) sur "Tokenization is amazing" :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from transformers import AutoTokenizer
+tokenizer = AutoTokenizer.from_pretrained(&quot;bert-base-uncased&quot;)
+tokenizer.tokenize(&quot;Tokenization is amazing&quot;)
+# [&#x27;token&#x27;, &#x27;##ization&#x27;, &#x27;is&#x27;, &#x27;amazing&#x27;]</code></pre></div>
+
+
+<p>Lecture : "tokenization" n'est pas dans le vocabulaire BERT, donc il est découpé en <code>token</code> + <code>##ization</code>. Le préfixe <code>##</code> signale "ceci est une suite du token précédent, sans espace". En revanche "is" et "amazing" sont assez fréquents pour être des tokens entiers.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from transformers import GPT2Tokenizer
+tokenizer = GPT2Tokenizer.from_pretrained(&quot;gpt2&quot;)
+tokenizer.tokenize(&quot;tokenization is amazing&quot;)
+# [&#x27;token&#x27;, &#x27;ization&#x27;, &#x27; is&#x27;, &#x27; amazing&#x27;]     ← GPT-2 encode l&#x27;espace dans le token</code></pre></div>
+
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-positional-encoding">Positional encoding</h3>
+
+<p>Sans information de position, l'attention traiterait "le chat mange la souris" et "la souris mange le chat" comme identiques, parce que le mécanisme est <strong>invariant à la permutation</strong> — il n'a aucune notion d'ordre intrinsèque. Le <strong>positional encoding</strong> injecte cette information en ajoutant un vecteur dépendant de la position à chaque embedding de token.</p>
+
+<p><strong>Sinusoïdal</strong> (papier original Vaswani et al. 2017) — une fonction trigonométrique fixe, pas apprise :</p>
+
+<div class="katex-display">$$PE(pos, 2i) = \sin\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
+<div class="katex-display">$$PE(pos, 2i+1) = \cos\left(\frac{pos}{10000^{2i/d}}\right)$$</div>
+
+<p>Lecture : à chaque position $pos$ et chaque dimension $i$ de l'embedding, on calcule un sinus ou un cosinus de fréquence différente. Les basses dimensions oscillent lentement, les hautes dimensions oscillent vite. Résultat : chaque position de la séquence a une <strong>signature unique</strong> de sinus/cosinus, et deux positions proches ont des signatures similaires.</p>
+
+<p><strong>Learned</strong> : embeddings de position appris comme des paramètres normaux. Utilisé par BERT et GPT-2.</p>
+
+<p><strong>Rotary (RoPE)</strong> : encode la position via une rotation 2D des vecteurs Q et K. Utilisé par LLaMA, GPT-NeoX, Mistral. Avantage : extrapolation plus naturelle à des séquences plus longues que celles vues à l'entraînement.</p>
+
+<p><strong>ALiBi</strong> : ajoute un biais linéaire aux scores d'attention basé sur la distance entre tokens. Excellente généralisation aux longues séquences.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Pourquoi c'est important</strong> : sans positional encoding, un transformer est invariant à la permutation — vous pourriez mélanger les mots d'une phrase et obtenir la même sortie. L'ajout du PE lui apprend à respecter l'ordre. C'est exactement ce qui distingue un transformer de séquence d'un Set Transformer (qui, lui, traite des ensembles non ordonnés).</p></div></div>
+
+<h3 id="syn-multi-head-attention">Multi-head attention</h3>
+
+<p>Au lieu d'une seule attention, on en exécute <strong>plusieurs en parallèle</strong> avec des projections différentes de $Q$, $K$, $V$. Si $d_{\text{model}} = 512$ et qu'on a 8 têtes, chaque tête travaille dans un sous-espace de dimension 64.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class MultiHeadAttention(nn.Module):
+    def __init__(self, d_model=512, nhead=8):
+        super().__init__()
+        self.d_head = d_model // nhead                  # 64 par tête
+        self.nhead = nhead
+        # Projections apprises pour Q, K, V (et sortie)
+        self.W_q = nn.Linear(d_model, d_model)
+        self.W_k = nn.Linear(d_model, d_model)
+        self.W_v = nn.Linear(d_model, d_model)
+        self.W_o = nn.Linear(d_model, d_model)</code></pre></div>
+
+
+<p><strong>Pourquoi plusieurs têtes ?</strong> Chaque tête peut apprendre à se focaliser sur un <strong>type d'information différent</strong> : syntaxe (qui est le sujet de quel verbe ?), sémantique (quels mots se ressemblent ?), coréférence (à quoi "il" se réfère ?), distance courte vs longue, etc. C'est exactement comme avoir 8 spécialistes qui examinent la même phrase sous des angles différents et combinent ensuite leurs analyses.</p>
+
+<p><strong>Visualisation</strong> : <code>bertviz</code> et <code>captum</code> permettent de visualiser ce que chaque tête apprend. Spoiler : ce n'est pas toujours interprétable par un humain, mais c'est rarement aléatoire.</p>
+
+<h3 id="syn-scaling-laws-et-émergence">Scaling laws et émergence</h3>
+
+<p>Kaplan et al. (2020) ont découvert des <strong>lois d'échelle</strong> : les performances d'un transformer suivent une loi de puissance en fonction de trois variables :</p>
+
+<ol>
+<li>Le nombre de paramètres $N$</li>
+<li>La quantité de données d'entraînement $D$</li>
+<li>La compute totale $C$ (en FLOPs)</li>
+</ol>
+
+<div class="katex-display">$$\mathcal{L} \propto N^{-0{,}076}$$</div>
+
+<p>Cette loi est étonnamment robuste sur 7 ordres de grandeur. Elle permet de prédire à l'avance, avec bonne précision, l'impact d'un scaling donné.</p>
+
+<p><strong>Émergence</strong> : à certaines tailles critiques, des capacités apparaissent <strong>discontinûment</strong>. GPT-3 s'est soudain mis à pouvoir faire de l'arithmétique et de la programmation à partir de ~10B paramètres, alors que les versions plus petites en étaient totalement incapables. Ces capacités "émergent" sans qu'on les ait explicitement entraînées.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Attention au mythe</strong> : "les LLM raisonnent". En réalité, ils font du pattern matching statistique très sophistiqué sur des milliards d'exemples. Ils peuvent simuler du raisonnement sur des problèmes proches de leur dataset d'entraînement, mais échouent souvent sur des variantes qui demandent un vrai raisonnement déductif. Voir les travaux de Subbarao Kambhampati, Yejin Choi, et les benchmarks comme ARC pour des contre-exemples instructifs.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi le facteur $\sqrt{d_k}$ dans la formule de self-attention est-il important ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>magnitude et saturation du softmax.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Sans ce facteur, le produit $QK^T$ a des valeurs qui croissent avec $d_k$ (la dimension des vecteurs). Pour $d_k = 64$, les valeurs typiques sont déjà de l'ordre de plusieurs unités. Quand on passe ces valeurs dans un softmax, elles sont écrasées vers 0 ou 1 — la distribution devient <strong>quasi-binaire</strong> (un seul token reçoit toute l'attention). Conséquences : (1) le gradient à travers le softmax devient presque nul (le softmax est saturé), donc l'apprentissage stagne. (2) On perd la capacité de distribuer l'attention sur plusieurs tokens simultanément. <strong>Diviser par $\sqrt{d_k}$</strong> ramène la variance des produits scalaires à environ 1, ce qui maintient le softmax dans une zone réactive (gradients non nuls, distribution étalée). C'est exactement le même principe que la normalisation dans les ResNets : maintenir les activations dans une plage où l'apprentissage fonctionne. Question d'entretien transformer fondamentale : si un candidat ne peut pas l'expliquer, il a juste lu le papier en diagonale.</p>
+
+</details>
+
+<p><strong>Q2 : Quelle est la différence entre BERT et GPT, et pourquoi BERT n'est-il pas adapté à la génération de texte ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>direction de l'attention et causalité.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>BERT</strong> est <strong>bidirectionnel</strong> : à chaque position, l'attention regarde <strong>tous</strong> les autres tokens, passés et futurs. C'est puissant pour la compréhension (un mot prend du sens grâce au contexte gauche ET droit), mais inadapté à la génération : pour générer le mot suivant, vous ne pouvez pas regarder le futur (qui n'existe pas encore). <strong>GPT</strong> est <strong>causal</strong> : l'attention est masquée pour ne voir que les tokens <strong>passés</strong>. Cette restriction est exactement ce qui permet de générer auto-régressivement : on prédit un token, on l'ajoute à l'entrée, on prédit le suivant, etc. Conséquences pratiques : (1) BERT est idéal pour classification, NER, QA extractif, embeddings. (2) GPT est idéal pour génération, chat, complétion. (3) T5 est encoder-decoder : encode bidirectionnellement la source, génère causalement la cible. Question d'entretien : "Pourquoi BERT n'est-il pas un chatbot ?" — la réponse parle de masquage causal vs bidirectionnel.</p>
+
+</details>
+
+<p><strong>Q3 : Vous voulez fine-tuner un modèle pré-entraîné de 175B paramètres (comme GPT-3) sur votre dataset. Pourquoi est-ce techniquement infaisable et quelles sont les alternatives ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>LoRA, adapters, PEFT.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Techniquement infaisable</strong> parce que : (1) <strong>Mémoire</strong> : 175B params en float16 = 350 Go juste pour les poids. Avec les gradients, les momentums Adam et les activations, il faut 4 à 8 fois plus, soit 1,5 à 3 To. Aucun GPU ne tient ça. Il faut un cluster avec sharding sophistiqué (FSDP, DeepSpeed). (2) <strong>Coût</strong> : entraîner une epoch sur quelques milliers d'exemples coûte des dizaines de milliers de dollars. <strong>Alternatives modernes — Parameter-Efficient Fine-Tuning (PEFT)</strong> : (a) <strong>LoRA</strong> (Low-Rank Adaptation) : geler tous les poids du modèle, ajouter des matrices de rang faible (~rank=8) à chaque couche d'attention, n'entraîner que ces matrices (~0,1% des paramètres totaux). (b) <strong>Adapters</strong> : insérer des petites couches MLP entre les couches du modèle, n'entraîner que celles-ci. (c) <strong>Prefix tuning / P-tuning</strong> : ajouter des "soft prompts" appris avant l'entrée, ne rien toucher d'autre. Avec LoRA, on peut fine-tuner LLaMA-2 70B sur un seul GPU A100 80GB — c'est la révolution PEFT. <strong>Alternative encore plus simple</strong> : ne pas fine-tuner du tout et utiliser le <strong>prompt engineering</strong> + <strong>few-shot learning</strong> + éventuellement <strong>RAG</strong> pour ajouter le contexte spécifique. C'est ce que fait 80% de l'industrie aujourd'hui pour la plupart des cas d'usage. Question d'entretien LLM moderne : "Comment adapter un grand modèle à votre domaine ?" — la réponse moderne parle de PEFT et RAG, pas de fine-tuning complet.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Attention Is All You Need</em> (Vaswani et al., 2017) — papier original</li>
+<li><a href="https://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener">The Illustrated Transformer</a> (Jay Alammar) — la meilleure explication visuelle</li>
+<li><em>BERT: Pre-training of Deep Bidirectional Transformers</em> (Devlin et al., 2018)</li>
+<li><em>Language Models are Few-Shot Learners</em> (Brown et al., 2020) — papier GPT-3</li>
+<li><a href="https://huggingface.co/learn/nlp-course" target="_blank" rel="noopener">Hugging Face Course</a> — gratuit, hands-on</li>
+<li><a href="https://arxiv.org/abs/2001.08361" target="_blank" rel="noopener">Scaling Laws for Neural Language Models</a> (Kaplan et al., 2020)</li>
+<li><em>The Annotated Transformer</em> (Harvard NLP) — implémentation pas-à-pas en PyTorch</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../nlp-llm/nlp.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Natural Language Processing</span>
+  </a>
+  <a href="../nlp-llm/transformers-advanced.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Transformers — Compléments →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

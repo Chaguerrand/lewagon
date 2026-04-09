@@ -1,0 +1,1848 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Properly — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Coding Properly</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html" class="active">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Data Toolkit</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Coding Properly</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Coding Properly</h1>
+        <p class="page-objective">Apprendre à écrire du code Python professionnel : organisation en fichiers `.py`, tests avec pytest et TDD, bonnes pratiques Git, OOP, style PEP8, documentation et type hinting.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">PEP8</div>
+        <div class="key-concept-def">Style guide officiel de Python : indentation 4 espaces, snake_case, etc.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Test unitaire</div>
+        <div class="key-concept-def">Vérifie qu&#x27;une fonction renvoie le bon résultat sur des cas connus.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Refactoring</div>
+        <div class="key-concept-def">Améliorer la structure du code sans changer son comportement.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Docstring</div>
+        <div class="key-concept-def">Documentation embarquée dans une fonction (`&quot;&quot;&quot;…&quot;&quot;&quot;`).</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-coding-properly">Cheatsheet — Coding properly</a><ol><li><a href="#tests-tdd">Tests & TDD</a></li><li><a href="#git-commit-propre">Git — commit propre</a></li><li><a href="#style-de-code">Style de code</a></li><li><a href="#linting-formatage">Linting & formatage</a></li><li><a href="#makefile">Makefile</a></li><li><a href="#type-hinting">Type hinting</a></li><li><a href="#oop-héritage">OOP — héritage</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-pourquoi-coder-proprement">1) Pourquoi coder proprement ?</a><li><a href="#2-passer-des-notebooks-aux-fichiers-py">2) Passer des notebooks aux fichiers `.py`</a><li><a href="#3-tests-et-tdd">3) Tests et TDD</a><ol><li><a href="#31-pourquoi-tester">3.1 Pourquoi tester ?</a></li><li><a href="#32-le-cycle-tdd-red-green-refactor">3.2 Le cycle TDD : Red → Green → Refactor</a></li></ol></li><li><a href="#4-git-commiter-proprement">4) Git — commiter proprement</a><ol><li><a href="#41-règles-pratiques">4.1 Règles pratiques</a></li><li><a href="#42-conventional-commits">4.2 Conventional Commits</a></li></ol></li><li><a href="#5-oop-programmation-orientée-objet">5) OOP — Programmation orientée objet</a><ol><li><a href="#51-quest-ce-que-loop">5.1 Qu'est-ce que l'OOP ?</a></li><li><a href="#52-classes-et-instances">5.2 Classes et instances</a></li><li><a href="#53-créer-la-classe-student">5.3 Créer la classe Student</a></li><li><a href="#54-lancer-les-tests">5.4 Lancer les tests</a></li><li><a href="#55-class-methods">5.5 Class methods</a></li><li><a href="#56-héritage-dry">5.6 Héritage (DRY)</a></li></ol></li><li><a href="#6-style-de-code">6) Style de code</a><ol><li><a href="#61-pourquoi-ça-compte">6.1 Pourquoi ça compte</a></li><li><a href="#62-les-7-erreurs-classiques-à-repérer">6.2 Les 7 erreurs classiques (à repérer)</a></li><li><a href="#63-pep8-les-règles-essentielles">6.3 PEP8 — Les règles essentielles</a></li><li><a href="#64-formatters-et-linters">6.4 Formatters et linters</a></li></ol></li><li><a href="#7-documenter-le-code">7) Documenter le code</a><ol><li><a href="#71-pourquoi-documenter">7.1 Pourquoi documenter ?</a></li><li><a href="#72-types-de-documentation">7.2 Types de documentation</a></li><li><a href="#73-styles-de-docstrings">7.3 Styles de docstrings</a></li><li><a href="#74-générer-la-doc-automatiquement">7.4 Générer la doc automatiquement</a></li></ol></li><li><a href="#8-type-hinting">8) Type hinting</a><li><a href="#9-automatiser-avec-make">9) Automatiser avec Make</a><ol><li><a href="#91-quatre-outils-à-combiner">9.1 Quatre outils à combiner</a></li><li><a href="#92-makefile">9.2 Makefile</a></li><li><a href="#93-cicd-pipelines">9.3 CI/CD Pipelines</a></li></ol></li></ol></div>
+<p>Apprendre à écrire du code Python professionnel : organisation en fichiers <code>.py</code>, tests avec pytest et TDD, bonnes pratiques Git, OOP, style PEP8, documentation et type hinting.</p>
+
+<hr>
+
+<h2 id="cheatsheet-coding-properly">📋 Cheatsheet — Coding properly</h2>
+
+<h3 id="tests-tdd">Tests & TDD</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pytest -v                        # lance tous les tests avec détails
+pytest -v -k data_student        # filtre sur les tests contenant &quot;data_student&quot;
+python -m doctest -v school/student.py  # lance les doctests d&#x27;un fichier</code></pre></div>
+
+
+<h3 id="git-commit-propre">Git — commit propre</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git status                                         # vérifier l&#x27;état avant de commiter
+git add school/student.py                          # stager un fichier spécifique
+git commit -m &quot;feat(students): minimal working Student&quot;  # message conventionnel
+git add tests/school/test_student.py
+git commit -m &quot;test(students): new test case for Student&quot;  # commiter tests séparément</code></pre></div>
+
+
+<h3 id="style-de-code">Style de code</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from datetime import date    # ✅ import explicite en haut du fichier
+## import datetime            # ❌ import non-explicite
+## from modulename import *   # ❌ import star
+
+class EngStudent():           # ✅ CamelCase pour les classes
+    language = &quot;Python&quot;       # ✅ attributs de classe juste après la définition
+
+    def __init__(self, name, age):       # ✅ 4 espaces d&#x27;indentation
+        self.name = name.capitalize()    # ✅ espaces autour de =
+        self.age = age
+
+    def says(self, quote):               # ✅ snake_case pour les méthodes
+        return f&quot;{self.name} says: {quote}&quot;  # ✅ guillemets doubles cohérents
+
+    @classmethod
+    def from_birth_year(cls, name, birth_year):  # ✅ cls, noms explicites
+        return cls(name=name, age=date.today().year - birth_year)</code></pre></div>
+
+
+<h3 id="linting-formatage">Linting & formatage</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install autopep8 pylint mypy pdoc     # installer les outils
+autopep8 --in-place school/engstudent.py  # formate le fichier en place
+pylint --output-format colorized school/engstudent.py  # analyse le style
+python -m mypy school/engstudent.py       # vérifie les types statiquement
+pdoc school                               # génère la documentation HTML</code></pre></div>
+
+
+<h3 id="makefile">Makefile</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">make test        # lance pytest
+make lint        # lance pylint
+make format lint # formate puis analyse
+make             # lance lint + test + typecheck (default)</code></pre></div>
+
+
+<h3 id="type-hinting">Type hinting</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from typing import Self
+
+class EngStudent():
+    @classmethod
+    def from_birth_year(cls, name: str, birth_year: int) -&gt; Self:
+        # str et int sont des hints : documentent les types attendus
+        # mypy vérifiera statiquement ces annotations
+        age = date.today().year - birth_year
+        return cls(name=name, age=age)</code></pre></div>
+
+
+<h3 id="oop-héritage">OOP — héritage</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Student():
+    language = &quot;Ruby&quot;
+
+    def __init__(self, name, age):
+        self.name = name.capitalize()   # capitalise automatiquement
+        self.age = age
+
+    def says(self, quote):
+        return f&quot;{self.name} says: {quote}&quot;
+
+    @classmethod
+    def from_birth_year(cls, name, birth_year):
+        age = date.today().year - birth_year
+        return cls(name, age)
+
+class DataStudent(Student):        # ✅ hérite de Student (DRY)
+    language = &quot;Python&quot;            # surcharge l&#x27;attribut de classe
+
+    def __init__(self, name, age):
+        super().__init__(name, int(age))  # force le cast en int + appelle __init__ parent</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<blockquote><p>[!CAUTION]<br></p></blockquote>
+
+<blockquote><p><strong>Mettre plusieurs classes dans un seul fichier <code>.py</code></strong><br></p></blockquote>
+
+<blockquote><p>❌ <code>student.py</code> contient <code>Student</code>, <code>DataStudent</code>, <code>EngStudent</code><br></p></blockquote>
+
+<blockquote><p>✅ Un fichier par classe : <code>student.py</code>, <code>datastudent.py</code>, <code>engstudent.py</code><br></p></blockquote>
+
+<blockquote><p>[!CAUTION]<br></p></blockquote>
+
+<blockquote><p><strong>Ne pas commiter avant de refactorer</strong><br></p></blockquote>
+
+<blockquote><p>❌ Refactorer directement sans avoir sauvegardé l'état fonctionnel<br></p></blockquote>
+
+<blockquote><p>✅ Commiter la version qui passe les tests, puis refactorer (on peut toujours revenir)<br></p></blockquote>
+
+<blockquote><p>[!CAUTION]<br></p></blockquote>
+
+<blockquote><p><strong>Importer à l'intérieur d'une fonction ou avec <code>import *</code></strong><br></p></blockquote>
+
+<blockquote><p>❌ <code>def from_birth_year(...): import datetime</code> → import dans une fonction<br></p></blockquote>
+
+<blockquote><p>✅ <code>from datetime import date</code> → en haut du fichier, explicite<br></p></blockquote>
+
+<blockquote><p>[!CAUTION]<br></p></blockquote>
+
+<blockquote><p><strong>Écrire des commits fourre-tout avec des messages vagues</strong><br></p></blockquote>
+
+<blockquote><p>❌ <code>git commit -m &quot;changes&quot;</code> ou commiter tous les fichiers d'un coup<br></p></blockquote>
+
+<blockquote><p>✅ Un commit = un changement, message au format Conventional Commits<br></p></blockquote>
+
+<blockquote><p>[!CAUTION]<br></p></blockquote>
+
+<blockquote><p><strong>Oublier d'écrire des docstrings</strong><br></p></blockquote>
+
+<blockquote><p>❌ Des fonctions sans documentation → incompréhensibles dans 6 mois<br></p></blockquote>
+
+<blockquote><p>✅ Une docstring minimale sur chaque fonction, classe et module<br></p></blockquote>
+
+<hr>
+
+<h2 id="1-pourquoi-coder-proprement">1) Pourquoi coder proprement ?</h2>
+
+<p>On passe <strong>plus de temps à lire du code qu'à en écrire</strong> — le sien et celui des autres. La qualité du code détermine sa maintenabilité, sa réutilisabilité et sa testabilité.</p>
+
+<p>Les quatre axes couverts dans ce cours : organisation en fichiers <code>.py</code>, tests et TDD, style de code, documentation et type hinting.</p>
+
+<hr>
+
+<h2 id="2-passer-des-notebooks-aux-fichiers-py">2) Passer des notebooks aux fichiers <code>.py</code></h2>
+
+<p>Déplacer le code dans des fichiers <code>.py</code> permet de simplifier les notebooks (ne garder que l'essentiel), de réutiliser le même code dans plusieurs notebooks, de le tester extensivement, et de le déployer en production.</p>
+
+<hr>
+
+<h2 id="3-tests-et-tdd">3) Tests et TDD</h2>
+
+<h3 id="31-pourquoi-tester">3.1 Pourquoi tester ?</h3>
+
+<p>Les tests permettent d'améliorer la qualité et la fiabilité, de détecter les bugs avant production, d'automatiser la vérification du comportement attendu, de faciliter le refactoring en toute sécurité, et d'activer les pipelines CI/CD.</p>
+
+<p>Frameworks Python populaires : 👉 <a href="https://docs.python.org/3/library/unittest.html" target="_blank" rel="noopener">unittest</a>, 👉 <a href="https://docs.pytest.org/" target="_blank" rel="noopener">pytest</a>, 👉 <a href="https://docs.nose2.io/" target="_blank" rel="noopener">nose2</a>, 👉 <a href="https://docs.python.org/3/library/doctest.html" target="_blank" rel="noopener">doctest</a></p>
+
+<h3 id="32-le-cycle-tdd-red-green-refactor">3.2 Le cycle TDD : Red → Green → Refactor</h3>
+
+<ol>
+<li><strong>Write a test first</strong> — Définir comment la fonction doit se comporter 🖊️</li>
+<li><strong>Run the test</strong> — Il doit échouer à ce stade 🔴</li>
+<li><strong>Write minimal code</strong> — Juste assez pour faire passer le test ✍️ 🟢</li>
+<li><strong>Run all existing tests</strong> — Adapter jusqu'à ce que tout passe 🟢</li>
+<li><strong>Refactor</strong> — Nettoyer le code tout en gardant les tests verts 🧹 🟢</li>
+</ol>
+
+<figure><img src="../../assets/images/coding-properly-01-ab94272d.png" alt="" loading="lazy"></figure>
+
+<blockquote><p>[!TIP]<br></p></blockquote>
+
+<blockquote><p>Le TDD encourage du code <strong>modulaire et maintenable</strong>, réduit le temps de débogage, et les tests servent de documentation des comportements attendus.<br></p></blockquote>
+
+<hr>
+
+<h2 id="4-git-commiter-proprement">4) Git — commiter proprement</h2>
+
+<h3 id="41-règles-pratiques">4.1 Règles pratiques</h3>
+
+<p><strong>Commiter souvent et en petit</strong> — Les petits commits permettent des retours en arrière précis.</p>
+
+<p><strong>Un changement = un commit</strong> — Si plusieurs fichiers ont changé, les commiter séparément (ex. : tests et code séparément).</p>
+
+<p><strong>Messages de commit significatifs :</strong></p>
+
+<ul>
+<li>❌ Ne pas décrire les changements de code (on les voit dans le diff)</li>
+<li>✅ Décrire <em>pourquoi</em> le changement a été fait et ce qu'il accomplit</li>
+<li>Format : une ligne de titre, éventuellement un corps plus détaillé</li>
+</ul>
+
+<h3 id="42-conventional-commits">4.2 Conventional Commits</h3>
+
+<p>👉 <a href="http://conventionalcommits.org" target="_blank" rel="noopener">conventionalcommits.org</a></p>
+
+<p>Exemples de messages conformes :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">feat: csv loader                              # nouvelle fonctionnalité
+feat(sourcing): add stock data fetcher        # fonctionnalité dans un scope
+fix(sourcing): catch non-existing ticker      # correction de bug
+test(preproc): no null values                 # ajout de test
+doc: add changelog                            # documentation
+refactor(students): DataStudent inherits from Student  # refactoring
+build: Makefile to format, test, lint, type check      # build/tooling</code></pre></div>
+
+
+<hr>
+
+<h2 id="5-oop-programmation-orientée-objet">5) OOP — Programmation orientée objet</h2>
+
+<h3 id="51-quest-ce-que-loop">5.1 Qu'est-ce que l'OOP ?</h3>
+
+<blockquote><p>Object-oriented programming (OOP) is a programming paradigm based on the concept of objects, which can contain data (attributes) and code (methods). — Wikipedia 👉 <a href="http://en.wikipedia.org/wiki/Object-oriented_programming" target="_blank" rel="noopener">en.wikipedia.org/wiki/Object-oriented_programming</a><br></p></blockquote>
+
+<p>L'OOP rend le code <strong>modulaire, réutilisable et maintenable</strong>, améliore la scalabilité et facilite le débogage.</p>
+
+<p>Tu as déjà utilisé l'OOP sans le savoir :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df = pd.DataFrame()             # df est une instance de la classe DataFrame
+response = requests.get(url)    # response est une instance de la classe Response
+response.status_code            # attribut de l&#x27;instance</code></pre></div>
+
+
+<h3 id="52-classes-et-instances">5.2 Classes et instances</h3>
+
+<p>Une <strong>classe</strong> est un modèle (le moule). Une <strong>instance</strong> est l'objet créé à partir de ce modèle (le gâteau).</p>
+
+<figure><img src="../../assets/images/coding-properly-02-82b1999c.jpg" alt="" loading="lazy"></figure>
+
+<p>Comportement attendu de la classe <code>Student</code> (format doctest) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&gt;&gt;&gt; margo = Student(&quot;margo&quot;, 34)
+&gt;&gt;&gt; margo.name
+&#x27;Margo&#x27;
+&gt;&gt;&gt; margo.age
+34
+&gt;&gt;&gt; margo.language
+&#x27;Ruby&#x27;
+&gt;&gt;&gt; margo.says(&quot;I was a student of batch 7!&quot;)
+&#x27;Margo says: I was a student of batch 7!&#x27;</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">python -m doctest -v school/student.py   # lancer les doctests</code></pre></div>
+
+
+<h3 id="53-créer-la-classe-student">5.3 Créer la classe Student</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Student():
+
+    # Attribut de classe (partagé par toutes les instances)
+    language = &quot;Ruby&quot;
+
+    # Constructeur : appelé à chaque création d&#x27;instance
+    def __init__(self, name, age):
+        self.name = name        # attribut d&#x27;instance
+        self.age = age          # attribut d&#x27;instance
+
+    # Méthode d&#x27;instance
+    def says(self, quote):
+        return f&quot;{self.name} says: {quote}&quot;</code></pre></div>
+
+
+<p>Déplacer dans un fichier :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">mkdir school
+touch school/student.py       # crée le fichier
+git init                      # initialise le repo
+git add school/student.py
+git commit -m &quot;feat(students): minimal working Student&quot;</code></pre></div>
+
+
+<h3 id="54-lancer-les-tests">5.4 Lancer les tests</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pytest -v                     # lance tous les tests</code></pre></div>
+
+
+<p>Corriger les erreurs et commiter tests et code séparément :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git add tests/school/test_student.py
+git commit -m &quot;test(students): new test case for Student&quot;
+
+git add school/student.py
+git commit -m &quot;feat(students): Student capitalize name&quot;</code></pre></div>
+
+
+<h3 id="55-class-methods">5.5 Class methods</h3>
+
+<p>Permettent d'instancier une classe d'une manière alternative (factory pattern) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Student:
+    # [...]
+
+    @classmethod
+    def from_birth_year(cls, name, birth_year):   # cls = la classe elle-même
+        age = date.today().year - birth_year       # calcul de l&#x27;âge
+        return cls(name, age)                      # crée une instance</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&gt;&gt;&gt; pedro = Student.from_birth_year(&quot;pedro&quot;, 1988)
+&gt;&gt;&gt; pedro.name
+&quot;Pedro&quot;</code></pre></div>
+
+
+<h3 id="56-héritage-dry">5.6 Héritage (DRY)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class DataStudent(Student):   # hérite de Student
+    language = &quot;Python&quot;       # surcharge l&#x27;attribut de classe
+
+    def __init__(self, name, age):
+        super().__init__(name, int(age))   # appelle __init__ de Student + cast int</code></pre></div>
+
+
+<p>Un fichier par classe (bonne pratique) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">touch school/datastudent.py   # ✅ une classe = un fichier</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## datastudent.py
+from school.student import Student    # importer la classe parente
+
+class DataStudent(Student):
+    [...]</code></pre></div>
+
+
+<hr>
+
+<h2 id="6-style-de-code">6) Style de code</h2>
+
+<h3 id="61-pourquoi-ça-compte">6.1 Pourquoi ça compte</h3>
+
+<p>Un bon style améliore la lisibilité, facilite la détection d'erreurs, aide les collègues à relire le code, et est évalué lors des entretiens techniques.</p>
+
+<h3 id="62-les-7-erreurs-classiques-à-repérer">6.2 Les 7 erreurs classiques (à repérer)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## ❌ Version avec erreurs
+class engstudent ( ) :
+    school=&quot;Le Wagon&quot;
+    def __init__ (self, name, age) :
+      self.name=name.capitalize()
+      self.age=age
+    def says(self,Quote):
+        return f&quot;{self.name} says: {Quote}&quot;
+    @classmethod
+    def from_birth_year(clas, name, by):
+        import datetime
+        return clas(name = name.capitalize(),age =datetime.date.today().year-by)
+    language=&#x27;Python&#x27;</code></pre></div>
+
+
+<p>Les 7 problèmes : indentation à 2 espaces (doit être 4), espaces manquants autour de <code>=</code>, espaces inutiles autour des parenthèses, <code>engstudent</code> pas en CamelCase, <code>Quote</code> pas en snake_case, variable <code>by</code> non descriptive, <code>clas</code> au lieu de <code>cls</code>, attribut de classe en bas au lieu d'en haut, <code>import</code> à l'intérieur d'une fonction, guillemets incohérents.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## ✅ Version corrigée
+from datetime import date
+
+class EngStudent():
+    language = &quot;Python&quot;
+
+    def __init__(self, name, age):
+        self.name = name.capitalize()
+        self.age = age
+
+    def says(self, quote):
+        return f&quot;{self.name} says: {quote}&quot;
+
+    @classmethod
+    def from_birth_year(cls, name, birth_year):
+        age = date.today().year - birth_year
+        return cls(name=name, age=age)</code></pre></div>
+
+
+<h3 id="63-pep8-les-règles-essentielles">6.3 PEP8 — Les règles essentielles</h3>
+
+<p>👉 <a href="http://peps.python.org/pep-0008" target="_blank" rel="noopener">peps.python.org/pep-0008</a></p>
+
+<p><strong>Espaces :</strong> autour de <code>=</code> et des opérateurs binaires, pas avant les parenthèses/crochets, pas autour de <code>=</code> dans les appels de fonction (<code>my_function(arg=1)</code>).</p>
+
+<p><strong>Lignes vides :</strong> une ligne entre méthodes, deux lignes entre classes/fonctions au top level.</p>
+
+<p><strong>Nommage :</strong> variables, fonctions, méthodes → <code>snake_case</code> ; classes → <code>CamelCase</code> ; modules → minuscules courts.</p>
+
+<p><strong>Longueur de ligne :</strong> max 79 caractères.</p>
+
+<p><strong>Imports :</strong> en haut du fichier, explicites (<code>from module import ClassName</code>).</p>
+
+<h3 id="64-formatters-et-linters">6.4 Formatters et linters</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## Formatters (style)
+pip install autopep8                         # respecte votre style si PEP8
+autopep8 --in-place school/engstudent.py     # formate en place
+
+## Linters (détection de problèmes)
+pip install pylint
+pylint --output-format colorized school/engstudent.py  # analyse et score /10
+
+## Ruff (alternatif moderne et rapide)
+pip install ruff</code></pre></div>
+
+
+<p>👉 <a href="https://trunk.io/learn/comparing-ruff-flake8-and-pylint-linting-speed" target="_blank" rel="noopener">Comparaison Ruff / flake8 / pylint</a></p>
+
+<hr>
+
+<h2 id="7-documenter-le-code">7) Documenter le code</h2>
+
+<h3 id="71-pourquoi-documenter">7.1 Pourquoi documenter ?</h3>
+
+<p>Le code sera relu par d'autres, par vous-même dans 6 mois, et par les utilisateurs de vos librairies. Une documentation claire explique <strong>ce que fait</strong> le code, <strong>comment l'utiliser</strong>, et <strong>pourquoi certains choix ont été faits</strong>.</p>
+
+<h3 id="72-types-de-documentation">7.2 Types de documentation</h3>
+
+<p><strong>Docstrings</strong> (modules, classes, méthodes, fonctions) : permettent aux utilisateurs de savoir comment utiliser le code, visibles dans VS Code / Jupyter au survol, utilisables pour générer une doc automatique.</p>
+
+<p><strong>Commentaires inline</strong> : pour les développeurs, expliquent le pourquoi d'une implémentation, les limitations ou les TODO.</p>
+
+<h3 id="73-styles-de-docstrings">7.3 Styles de docstrings</h3>
+
+<p>Les styles principaux : SciPy/NumPy (utilisé par Pandas, scikit-learn), Google docstrings (TensorFlow, Keras), reStructuredText (Sphinx/Read The Docs). Tous partagent la même idée : décrire la fonction, lister les paramètres et leur type, décrire la valeur de retour.</p>
+
+<blockquote><p>[!TIP]<br></p></blockquote>
+
+<blockquote><p>Une docstring non-standard vaut mieux qu'aucune docstring. GitHub Copilot peut les générer automatiquement.<br></p></blockquote>
+
+<h3 id="74-générer-la-doc-automatiquement">7.4 Générer la doc automatiquement</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install pdoc
+pdoc school         # génère une documentation HTML navigable</code></pre></div>
+
+
+<hr>
+
+<h2 id="8-type-hinting">8) Type hinting</h2>
+
+<p>Python est un langage <strong>dynamiquement typé</strong> : il ne connaît les types qu'à l'exécution. Le type hinting permet de <strong>documenter</strong> les types attendus et d'effectuer une <strong>vérification statique</strong> avec <code>mypy</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from typing import Self
+
+class EngStudent():
+    @classmethod
+    def from_birth_year(cls, name: str, birth_year: int) -&gt; Self:
+        # name doit être un str, birth_year un int, retourne une instance de la classe
+        age = date.today().year - birth_year
+        return cls(name=name, age=age)</code></pre></div>
+
+
+<p>Le type hinting ne change pas l'exécution, mais permet la vérification statique et la validation avec Pydantic (vue dans le module MLOps).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install mypy
+python -m mypy school/engstudent.py    # vérifie les types et signale les incohérences</code></pre></div>
+
+
+<hr>
+
+<h2 id="9-automatiser-avec-make">9) Automatiser avec Make</h2>
+
+<h3 id="91-quatre-outils-à-combiner">9.1 Quatre outils à combiner</h3>
+
+<p>Une fois le code écrit, quatre vérifications sont nécessaires : <code>autopep8</code> (formatage), <code>pytest</code> (tests), <code>pylint</code> (style), <code>mypy</code> (types).</p>
+
+<h3 id="92-makefile">9.2 Makefile</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## Makefile
+default: lint test typecheck
+
+format:
+    autopep8 --in-place school/*.py   # formate tous les fichiers Python
+
+test:
+    pytest                            # lance tous les tests
+
+lint:
+    pylint --output-format colorized school; true  # analyse le style
+
+typecheck:
+    python -m mypy school; true       # vérifie les types</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">make test              # lance uniquement les tests
+make lint              # lance uniquement le linter
+make format lint       # formate puis analyse
+make                   # exécute tout (lint + test + typecheck)</code></pre></div>
+
+
+<h3 id="93-cicd-pipelines">9.3 CI/CD Pipelines</h3>
+
+<p>Ces mêmes étapes peuvent être intégrées dans un pipeline CI/CD (Continuous Integration / Continuous Deployment). Ce sera couvert lors des semaines projet.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git add Makefile
+git commit -m &quot;build: Makefile to format, test, lint, type check&quot;</code></pre></div>
+
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-les-5-points-à-retenir-absolument">Les 5 points à retenir absolument</a></li><li><a href="#ref-analogie-fil-rouge-le-dossier-de-recettes-de-cuisine">Analogie fil rouge : le dossier de recettes de cuisine</a></li><li><a href="#ref-plan-du-cours">Plan du cours</a></li></ol></li><li><a href="#ref-1-pourquoi-coder-proprement">1. Pourquoi coder proprement ?</a><li><a href="#ref-2-passer-des-notebooks-aux-fichiers-py">2. Passer des notebooks aux fichiers `.py`</a><ol><li><a href="#ref-pourquoi-quitter-les-notebooks">Pourquoi quitter les notebooks ?</a></li><li><a href="#ref-ce-que-ça-change-concrètement">Ce que ça change concrètement</a></li></ol></li><li><a href="#ref-3-tests-et-tdd">3. Tests et TDD</a><ol><li><a href="#ref-31-pourquoi-écrire-des-tests">3.1 Pourquoi écrire des tests ?</a></li><li><a href="#ref-32-le-cycle-tdd-rouge-vert-refactor">3.2 Le cycle TDD : Rouge → Vert → Refactor</a></li></ol></li><li><a href="#ref-4-git-commiter-proprement">4. Git — Commiter proprement</a><ol><li><a href="#ref-41-les-trois-règles-dor">4.1 Les trois règles d'or</a></li><li><a href="#ref-42-le-format-conventional-commits">4.2 Le format Conventional Commits</a></li></ol></li><li><a href="#ref-5-oop-programmation-orientée-objet">5. OOP — Programmation Orientée Objet</a><ol><li><a href="#ref-51-cest-quoi-la-poo">5.1 C'est quoi la POO ?</a></li><li><a href="#ref-52-créer-une-classe-student">5.2 Créer une classe Student</a></li><li><a href="#ref-53-les-class-methods-construire-différemment">5.3 Les class methods — construire différemment</a></li><li><a href="#ref-54-lhéritage-le-principe-dry">5.4 L'héritage — le principe DRY</a></li><li><a href="#ref-55-un-fichier-par-classe-organisation-des-fichiers">5.5 Un fichier par classe — organisation des fichiers</a></li></ol></li><li><a href="#ref-6-style-de-code-pep8">6. Style de code — PEP8</a><ol><li><a href="#ref-61-pourquoi-un-style-standardisé">6.1 Pourquoi un style standardisé ?</a></li><li><a href="#ref-62-les-7-erreurs-classiques-à-repérer">6.2 Les 7 erreurs classiques à repérer</a></li><li><a href="#ref-63-les-règles-pep8-essentielles-à-retenir">6.3 Les règles PEP8 essentielles à retenir</a></li><li><a href="#ref-64-les-outils-pour-automatiser-le-style">6.4 Les outils pour automatiser le style</a></li></ol></li><li><a href="#ref-7-documenter-le-code">7. Documenter le code</a><ol><li><a href="#ref-71-pourquoi-documenter">7.1 Pourquoi documenter ?</a></li><li><a href="#ref-72-les-deux-types-de-documentation">7.2 Les deux types de documentation</a></li><li><a href="#ref-73-générer-la-documentation-automatiquement">7.3 Générer la documentation automatiquement</a></li></ol></li><li><a href="#ref-8-type-hinting">8. Type hinting</a><ol><li><a href="#ref-81-cest-quoi">8.1 C'est quoi ?</a></li><li><a href="#ref-82-syntaxe">8.2 Syntaxe</a></li><li><a href="#ref-83-vérification-statique-avec-mypy">8.3 Vérification statique avec mypy</a></li></ol></li><li><a href="#ref-9-automatiser-avec-make">9. Automatiser avec Make</a><ol><li><a href="#ref-91-quatre-vérifications-à-lancer-à-chaque-fois">9.1 Quatre vérifications à lancer à chaque fois</a></li><li><a href="#ref-92-créer-un-makefile">9.2 Créer un Makefile</a></li><li><a href="#ref-93-commiter-le-makefile">9.3 Commiter le Makefile</a></li><li><a href="#ref-94-et-après-les-pipelines-cicd">9.4 Et après : les pipelines CI/CD</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Quand on commence à coder, on pense souvent que l'essentiel c'est de faire fonctionner le programme. C'est vrai — mais seulement au début. Dès qu'un projet grandit, ou qu'on y revient après quelques semaines, un code "qui marche mais qu'on ne comprend pas" devient un vrai problème.</p>
+
+<p>Ce cours t'apprend à écrire du code Python <strong>professionnel</strong> : lisible, organisé, testé, et documenté. Ce sont les mêmes pratiques qu'on retrouve dans toutes les équipes de développement et de data science.</p>
+
+<h3 id="ref-les-5-points-à-retenir-absolument">Les 5 points à retenir absolument</h3>
+
+<ol>
+<li><strong>On passe plus de temps à lire du code qu'à en écrire</strong> — autant le rendre clair.</li>
+<li><strong>Les tests automatiques</strong> permettent de vérifier que le code fonctionne, même après des modifications.</li>
+<li><strong>Un commit Git = un seul changement précis</strong> — avec un message qui explique <em>pourquoi</em>.</li>
+<li><strong>Le style PEP8</strong> est le standard officiel Python : tout le monde l'utilise, donc tout le monde se comprend.</li>
+<li><strong>Documenter, c'est un cadeau qu'on se fait à soi-même</strong> pour dans 6 mois.</li>
+</ol>
+
+<h3 id="ref-analogie-fil-rouge-le-dossier-de-recettes-de-cuisine">Analogie fil rouge : le dossier de recettes de cuisine</h3>
+
+<p>Imagine que tu gères un dossier de recettes partagé avec toute ton équipe.</p>
+<ul>
+<li>Chaque recette dans <strong>son propre fichier</strong> (pas tout dans un seul carnet illisible).</li>
+<li>Des <strong>tests</strong> pour vérifier que la recette marche avant de la partager.</li>
+<li>Un <strong>historique des modifications</strong> (Git) pour savoir qui a changé quoi et pourquoi.</li>
+<li>Un <strong>style cohérent</strong> pour que tout le monde puisse lire et contribuer.</li>
+<li>Des <strong>commentaires et descriptions</strong> pour que même un débutant comprenne.</li>
+</ul>
+
+<h3 id="ref-plan-du-cours">Plan du cours</h3>
+
+<ol>
+<li>Pourquoi coder proprement ?</li>
+<li>Passer des notebooks aux fichiers <code>.py</code></li>
+<li>Tests et TDD (Test-Driven Development)</li>
+<li>Git — bien commiter son code</li>
+<li>Programmation orientée objet (OOP)</li>
+<li>Style de code et PEP8</li>
+<li>Documenter le code</li>
+<li>Type hinting</li>
+<li>Automatiser avec un Makefile</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-pourquoi-coder-proprement">1. Pourquoi coder proprement ?</h2>
+
+<p>Voici une réalité que tous les développeurs découvrent tôt ou tard :</p>
+
+<blockquote><p>On passe <strong>plus de temps à lire du code qu'à en écrire</strong> — le sien ET celui des autres.</p></blockquote>
+
+<p>Un code mal écrit, c'est comme une chambre où tout est en vrac. Tu peux t'y retrouver juste après avoir rangé, mais si tu reviens 2 semaines plus tard (ou si quelqu'un d'autre entre), c'est le chaos.</p>
+
+<p>Les quatre axes que ce cours couvre :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Axe</th><th>Objectif</th></tr></thead><tbody><tr><td>Organisation en fichiers <code>.py</code></td><td>Réutiliser et déployer le code</td></tr><tr><td>Tests et TDD</td><td>Vérifier automatiquement que tout fonctionne</td></tr><tr><td>Style de code (PEP8)</td><td>Que tout le monde puisse lire et comprendre</td></tr><tr><td>Documentation et types</td><td>Expliquer ce que fait le code</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="ref-2-passer-des-notebooks-aux-fichiers-py">2. Passer des notebooks aux fichiers <code>.py</code></h2>
+
+<h3 id="ref-pourquoi-quitter-les-notebooks">Pourquoi quitter les notebooks ?</h3>
+
+<p>Les notebooks Jupyter sont parfaits pour explorer des données. Mais pour du code qu'on veut <strong>réutiliser</strong>, <strong>tester</strong>, ou <strong>déployer</strong>, ils posent problème : tout est mélangé, difficile à importer ailleurs, impossible à tester proprement.</p>
+
+<p>La solution : <strong>déplacer le code dans des fichiers <code>.py</code></strong>.</p>
+
+<h3 id="ref-ce-que-ça-change-concrètement">Ce que ça change concrètement</h3>
+
+<p>Avant (tout dans un notebook) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Dans mon_notebook.ipynb — tout mélangé, impossible à réutiliser
+class Student:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+margo = Student(&quot;margo&quot;, 34)
+print(margo.name)</code></pre></div>
+
+
+<p>Après (code organisé dans des fichiers) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># school/student.py — la classe dans son propre fichier
+class Student:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># mon_notebook.ipynb — le notebook ne fait qu&#x27;utiliser la classe
+from school.student import Student  # on importe depuis le fichier
+
+margo = Student(&quot;margo&quot;, 34)
+print(margo.name)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Un fichier <code>.py</code> peut être importé dans n'importe quel notebook ou script. C'est la base de la réutilisabilité.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-tests-et-tdd">3. Tests et TDD</h2>
+
+<h3 id="ref-31-pourquoi-écrire-des-tests">3.1 Pourquoi écrire des tests ?</h3>
+
+<p>Imagine que tu modifies une fonction dans ton code. Comment tu sais que tu n'as rien cassé d'autre ? Sans tests, tu vérifies à la main. Avec des tests, tu lances une commande et Python vérifie tout automatiquement.</p>
+
+<p>Les avantages des tests :</p>
+
+<ul>
+<li>Détecter les bugs <strong>avant</strong> qu'ils arrivent en production</li>
+<li>Modifier du code <strong>en confiance</strong> (si les tests passent, tout va bien)</li>
+<li>Avoir une <strong>documentation du comportement attendu</strong> du code</li>
+<li>Activer les pipelines CI/CD (vérification automatique à chaque commit)</li>
+</ul>
+
+<p>Le framework le plus utilisé en Python : <strong>pytest</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pytest -v                        # lance tous les tests du projet avec les détails
+pytest -v -k data_student        # lance uniquement les tests dont le nom contient &quot;data_student&quot;</code></pre></div>
+
+
+<h3 id="ref-32-le-cycle-tdd-rouge-vert-refactor">3.2 Le cycle TDD : Rouge → Vert → Refactor</h3>
+
+<p>Le <strong>TDD (Test-Driven Development)</strong> est une méthode de développement où on écrit les tests <strong>avant</strong> le code. Ça semble contre-intuitif, mais ça force à bien réfléchir à ce que le code doit faire.</p>
+
+<p>Le cycle en 5 étapes :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">1. ✍️  Écrire un test  →  le test décrit le comportement attendu
+2. 🔴  Lancer le test  →  il doit ÉCHOUER (normal, le code n&#x27;existe pas encore)
+3. ✍️  Écrire le code  →  le minimum pour faire passer le test
+4. 🟢  Relancer les tests  →  tous les tests doivent passer
+5. 🧹  Refactorer  →  nettoyer le code tout en gardant les tests au vert</code></pre></div>
+
+
+<p>Exemple concret : on veut créer une classe <code>Student</code> qui capitalise automatiquement le prénom.</p>
+
+<p><strong>Étape 1 — On écrit le test d'abord :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># tests/school/test_student.py
+
+from school.student import Student  # on importe la classe (qui n&#x27;existe pas encore)
+
+def test_student_name_is_capitalized():
+    margo = Student(&quot;margo&quot;, 34)  # on crée un étudiant avec un nom en minuscules
+    assert margo.name == &quot;Margo&quot;  # on vérifie que le prénom est capitalisé automatiquement</code></pre></div>
+
+
+<p><strong>Étape 2 — On lance : le test échoue (🔴 normal, <code>student.py</code> n'existe pas encore).</strong></p>
+
+<p><strong>Étape 3 — On écrit le code minimal :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># school/student.py
+
+class Student:
+    def __init__(self, name, age):
+        self.name = name.capitalize()  # capitalise le prénom automatiquement
+        self.age = age</code></pre></div>
+
+
+<p><strong>Étape 4 — On relance : le test passe (🟢).</strong></p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le TDD t'oblige à réfléchir à ce que tu veux obtenir avant de coder. C'est plus lent au début, mais ça évite de nombreux bugs et rend le code plus modulaire.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-git-commiter-proprement">4. Git — Commiter proprement</h2>
+
+<h3 id="ref-41-les-trois-règles-dor">4.1 Les trois règles d'or</h3>
+
+<p>Git c'est l'outil qui sauvegarde l'historique de ton code. Bien l'utiliser, c'est comme avoir une machine à remonter le temps fiable.</p>
+
+<p><strong>Règle 1 — Commiter souvent et en petit</strong></p>
+
+<p>Chaque commit est un point de sauvegarde. Plus les commits sont petits et précis, plus tu peux revenir en arrière avec précision.</p>
+
+<p><strong>Règle 2 — Un changement = un commit</strong></p>
+
+<p>Si tu as modifié le code ET les tests, fais deux commits séparés :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git add school/student.py                            # on stage uniquement le code
+git commit -m &quot;feat(students): Student capitalize name&quot;  # commit du code
+
+git add tests/school/test_student.py                 # on stage uniquement les tests
+git commit -m &quot;test(students): new test case for Student&quot;  # commit des tests</code></pre></div>
+
+
+<p><strong>Règle 3 — Des messages de commit qui expliquent le POURQUOI</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># ❌ Messages inutiles — ne disent rien sur ce qui a changé ou pourquoi
+git commit -m &quot;changes&quot;
+git commit -m &quot;fix&quot;
+git commit -m &quot;update&quot;
+
+# ✅ Messages utiles — expliquent l&#x27;intention
+git commit -m &quot;feat(students): Student capitalize name&quot;
+git commit -m &quot;fix(sourcing): catch non-existing ticker&quot;</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Un message de commit ne doit pas décrire ce que tu as changé (on le voit dans le diff). Il doit expliquer POURQUOI tu l'as changé et ce que ça accomplit.</p></div></div>
+
+<h3 id="ref-42-le-format-conventional-commits">4.2 Le format Conventional Commits</h3>
+
+<p>Il existe un standard appelé <strong>Conventional Commits</strong> qui structure les messages de commit. Son format est :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">type(scope): description courte</code></pre></div>
+
+
+<p>Les types les plus courants :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">feat(students): minimal working Student       # nouvelle fonctionnalité
+fix(sourcing): catch non-existing ticker      # correction de bug
+test(students): new test case for Student     # ajout/modification de test
+refactor(students): DataStudent inherits Student  # refactoring sans nouveau comportement
+doc: add changelog                            # documentation
+build: Makefile to format, test, lint         # outils/build</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Utiliser Conventional Commits te permet aussi de générer des changelogs automatiquement et de comprendre l'historique d'un projet d'un coup d'oeil.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-oop-programmation-orientée-objet">5. OOP — Programmation Orientée Objet</h2>
+
+<h3 id="ref-51-cest-quoi-la-poo">5.1 C'est quoi la POO ?</h3>
+
+<p>La <strong>Programmation Orientée Objet (POO ou OOP en anglais)</strong> est une façon d'organiser le code autour d'<strong>objets</strong> qui regroupent des données (attributs) et des comportements (méthodes).</p>
+
+<p>Tu l'as déjà utilisée sans le savoir :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import pandas as pd
+import requests
+
+df = pd.DataFrame()             # df est un OBJET de la classe DataFrame
+response = requests.get(url)    # response est un OBJET de la classe Response
+response.status_code            # .status_code est un ATTRIBUT de l&#x27;objet response
+df.head()                       # .head() est une MÉTHODE de l&#x27;objet df</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Une <strong>classe</strong> = le moule (la recette). Une <strong>instance</strong> = l'objet créé à partir du moule (le gâteau). Chaque gâteau est unique (ses propres données), mais suit la même recette.</p></div></div>
+
+<h3 id="ref-52-créer-une-classe-student">5.2 Créer une classe Student</h3>
+
+<p>Objectif : une classe <code>Student</code> avec un nom, un âge, une langue, et une méthode pour "parler".</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># school/student.py
+
+from datetime import date  # import en haut du fichier, explicite
+
+class Student():
+
+    language = &quot;Ruby&quot;  # attribut de CLASSE : partagé par TOUTES les instances
+
+    def __init__(self, name, age):  # constructeur : appelé à chaque création d&#x27;objet
+        self.name = name.capitalize()  # attribut d&#x27;INSTANCE : propre à chaque objet
+        self.age = age                 # self.age est stocké sur l&#x27;objet lui-même
+
+    def says(self, quote):  # méthode d&#x27;instance : reçoit self (l&#x27;objet lui-même)
+        return f&quot;{self.name} says: {quote}&quot;  # f-string pour formater la sortie</code></pre></div>
+
+
+<p>Utilisation :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">margo = Student(&quot;margo&quot;, 34)  # crée une instance
+print(margo.name)              # &#x27;Margo&#x27; — capitalize() a été appliqué
+print(margo.age)               # 34
+print(margo.language)          # &#x27;Ruby&#x27; — attribut de classe
+print(margo.says(&quot;Hello!&quot;))    # &#x27;Margo says: Hello!&#x27;</code></pre></div>
+
+
+<h3 id="ref-53-les-class-methods-construire-différemment">5.3 Les class methods — construire différemment</h3>
+
+<p>Parfois, on veut créer un objet à partir d'informations différentes. Par exemple, donner l'<strong>année de naissance</strong> plutôt que l'<strong>âge</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># school/student.py (suite)
+
+class Student():
+    language = &quot;Ruby&quot;
+
+    def __init__(self, name, age):
+        self.name = name.capitalize()
+        self.age = age
+
+    def says(self, quote):
+        return f&quot;{self.name} says: {quote}&quot;
+
+    @classmethod  # décorateur : indique que c&#x27;est une méthode de classe
+    def from_birth_year(cls, name, birth_year):  # cls = la classe elle-même (pas une instance)
+        age = date.today().year - birth_year       # calcule l&#x27;âge à partir de l&#x27;année de naissance
+        return cls(name, age)                      # crée et retourne une nouvelle instance</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">pedro = Student.from_birth_year(&quot;pedro&quot;, 1988)  # on appelle la méthode sur la CLASSE
+print(pedro.name)  # &#x27;Pedro&#x27;
+print(pedro.age)   # 37 (en 2025)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La class method <code>from_birth_year</code> est ce qu'on appelle un <strong>factory pattern</strong> : une façon alternative de construire un objet. <code>cls</code> joue le rôle de la classe (comme <code>Student</code>), ce qui permet à la méthode de fonctionner même si la classe est héritée.</p></div></div>
+
+<h3 id="ref-54-lhéritage-le-principe-dry">5.4 L'héritage — le principe DRY</h3>
+
+<p><strong>DRY = Don't Repeat Yourself</strong> (Ne te répète pas). Si deux classes partagent des comportements, on crée une classe parente et on en hérite.</p>
+
+<p>Exemple : <code>DataStudent</code> est comme <code>Student</code>, mais sa langue est Python (pas Ruby), et on s'assure que l'âge est bien un entier.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># school/datastudent.py
+
+from school.student import Student  # on importe la classe parente
+
+class DataStudent(Student):   # DataStudent HÉRITE de Student
+    language = &quot;Python&quot;       # surcharge l&#x27;attribut de classe (remplace &quot;Ruby&quot;)
+
+    def __init__(self, name, age):
+        super().__init__(name, int(age))  # appelle __init__ de Student + force l&#x27;age en int</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">alice = DataStudent(&quot;alice&quot;, &quot;28&quot;)  # âge passé comme string — pas de problème
+print(alice.name)      # &#x27;Alice&#x27; — capitalize() hérité de Student
+print(alice.language)  # &#x27;Python&#x27; — surchargé dans DataStudent
+print(alice.says(&quot;I love Python!&quot;))  # &#x27;Alice says: I love Python!&#x27; — méthode héritée</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Avec l'héritage, <code>DataStudent</code> récupère TOUTES les méthodes de <code>Student</code> sans les réécrire. Si on améliore <code>Student</code>, <code>DataStudent</code> en bénéficie automatiquement.</p></div></div>
+
+<h3 id="ref-55-un-fichier-par-classe-organisation-des-fichiers">5.5 Un fichier par classe — organisation des fichiers</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">school/
+    student.py       # contient uniquement class Student
+    datastudent.py   # contient uniquement class DataStudent
+    engstudent.py    # contient uniquement class EngStudent</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Ne jamais mettre plusieurs classes dans le même fichier <code>.py</code>. C'est difficile à maintenir, difficile à tester, et difficile à importer proprement.</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-style-de-code-pep8">6. Style de code — PEP8</h2>
+
+<h3 id="ref-61-pourquoi-un-style-standardisé">6.1 Pourquoi un style standardisé ?</h3>
+
+<p>PEP8 est le guide de style officiel de Python. Tout le monde qui code en Python le suit (ou devrait le suivre). Un code PEP8-compatible est <strong>lisible par n'importe quel développeur Python dans le monde</strong>.</p>
+
+<p>Un bon style, c'est aussi ce qui est évalué dans les <strong>entretiens techniques</strong>.</p>
+
+<h3 id="ref-62-les-7-erreurs-classiques-à-repérer">6.2 Les 7 erreurs classiques à repérer</h3>
+
+<p>Voici un exemple de code truffé d'erreurs de style :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ❌ Code avec 7 problèmes de style
+
+class engstudent ( ) :       # erreur 1 : pas en CamelCase (devrait être EngStudent)
+    school=&quot;Le Wagon&quot;        # erreur 2 : pas d&#x27;espaces autour de = (devrait être school = &quot;Le Wagon&quot;)
+    def __init__ (self, name, age) :  # erreur 3 : espace avant ( inutile
+      self.name=name.capitalize()     # erreur 4 : indentation 2 espaces (doit être 4)
+      self.age=age
+    def says(self,Quote):    # erreur 5 : Quote pas en snake_case (devrait être quote)
+        return f&quot;{self.name} says: {Quote}&quot;
+    @classmethod
+    def from_birth_year(clas, name, by):  # erreur 6 : clas au lieu de cls, by trop court
+        import datetime               # erreur 7 : import à l&#x27;intérieur d&#x27;une fonction
+        return clas(name=name, age=datetime.date.today().year - by)
+    language=&#x27;Python&#x27;        # bonus : attribut de classe doit être en haut, guillemets incohérents</code></pre></div>
+
+
+<p>Le même code corrigé :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ✅ Code corrigé, conforme PEP8
+
+from datetime import date    # import en haut du fichier, explicite
+
+class EngStudent():          # CamelCase pour les classes
+    language = &quot;Python&quot;      # attribut de classe en haut, espaces autour de =, guillemets doubles
+
+    def __init__(self, name, age):      # 4 espaces d&#x27;indentation
+        self.name = name.capitalize()   # espaces autour de =
+        self.age = age
+
+    def says(self, quote):              # snake_case pour les méthodes et paramètres
+        return f&quot;{self.name} says: {quote}&quot;
+
+    @classmethod
+    def from_birth_year(cls, name, birth_year):  # cls standard, noms de variables explicites
+        age = date.today().year - birth_year      # calcul lisible
+        return cls(name=name, age=age)</code></pre></div>
+
+
+<h3 id="ref-63-les-règles-pep8-essentielles-à-retenir">6.3 Les règles PEP8 essentielles à retenir</h3>
+
+<p><strong>Nommage :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Variables, fonctions, méthodes → snake_case
+my_variable = 10
+def calculate_age(): pass
+
+# Classes → CamelCase
+class DataStudent: pass
+
+# Modules (fichiers .py) → minuscules courts
+# student.py, datastudent.py</code></pre></div>
+
+
+<p><strong>Espaces :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ✅ Espaces autour de = et des opérateurs
+x = 5
+y = x + 1
+
+# ✅ Pas d&#x27;espace autour de = dans les appels de fonction
+my_function(arg=1)
+
+# ✅ Pas d&#x27;espace avant les parenthèses/crochets
+my_list[0]
+my_function()</code></pre></div>
+
+
+<p><strong>Imports :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ✅ Imports en haut du fichier, explicites
+from datetime import date
+import pandas as pd
+
+# ❌ Import dans une fonction
+def my_function():
+    import datetime  # NON
+
+# ❌ Import star — importe TOUT, on ne sait plus ce qui vient d&#x27;où
+from module import *  # NON</code></pre></div>
+
+
+<p><strong>Divers :</strong></p>
+<ul>
+<li>Maximum <strong>79 caractères</strong> par ligne</li>
+<li><strong>Une ligne vide</strong> entre méthodes d'une classe</li>
+<li><strong>Deux lignes vides</strong> entre classes ou fonctions au niveau du module</li>
+</ul>
+
+<h3 id="ref-64-les-outils-pour-automatiser-le-style">6.4 Les outils pour automatiser le style</h3>
+
+<p>On n'a pas besoin de tout vérifier à la main. Des outils le font automatiquement :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># autopep8 — FORMATE automatiquement le code selon PEP8
+pip install autopep8
+autopep8 --in-place school/engstudent.py   # modifie le fichier directement
+
+# pylint — ANALYSE le code et donne un score /10 avec les problèmes trouvés
+pip install pylint
+pylint --output-format colorized school/engstudent.py  # affiche les problèmes en couleur
+
+# ruff — alternative moderne, très rapide, remplace flake8 + isort
+pip install ruff</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Commence par faire tourner <code>autopep8</code> pour les corrections automatiques, puis <code>pylint</code> pour détecter les problèmes que <code>autopep8</code> ne peut pas corriger tout seul (noms de variables mal choisis, logique suspecte, etc.).</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-documenter-le-code">7. Documenter le code</h2>
+
+<h3 id="ref-71-pourquoi-documenter">7.1 Pourquoi documenter ?</h3>
+
+<p>Le code sera relu :</p>
+<ul>
+<li><strong>par toi</strong>, dans 6 mois, quand tu auras tout oublié</li>
+<li><strong>par tes collègues</strong>, qui n'ont pas ton contexte</li>
+<li><strong>par les utilisateurs</strong> de tes librairies, qui ont besoin de savoir comment s'en servir</li>
+</ul>
+
+<p>Une bonne documentation explique <strong>ce que fait</strong> le code, <strong>comment l'utiliser</strong>, et <strong>pourquoi certains choix ont été faits</strong>.</p>
+
+<h3 id="ref-72-les-deux-types-de-documentation">7.2 Les deux types de documentation</h3>
+
+<p><strong>Les docstrings</strong> — pour les modules, classes, fonctions et méthodes :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># school/student.py
+
+&quot;&quot;&quot;Module contenant la classe Student pour la gestion des étudiants.&quot;&quot;&quot;  # docstring du module
+
+class Student():
+    &quot;&quot;&quot;Représente un étudiant avec un nom, un âge et une langue.&quot;&quot;&quot;  # docstring de classe
+
+    language = &quot;Ruby&quot;
+
+    def __init__(self, name, age):
+        &quot;&quot;&quot;
+        Initialise un Student.
+
+        Args:
+            name (str): Le prénom de l&#x27;étudiant (sera capitalisé automatiquement).
+            age (int): L&#x27;âge de l&#x27;étudiant.
+        &quot;&quot;&quot;
+        self.name = name.capitalize()  # capitalize pour avoir une majuscule
+        self.age = age
+
+    def says(self, quote):
+        &quot;&quot;&quot;
+        Retourne une phrase dite par l&#x27;étudiant.
+
+        Args:
+            quote (str): La phrase à dire.
+
+        Returns:
+            str: La phrase formatée avec le nom de l&#x27;étudiant.
+
+        Example:
+            &gt;&gt;&gt; margo = Student(&quot;margo&quot;, 34)
+            &gt;&gt;&gt; margo.says(&quot;Hello!&quot;)
+            &#x27;Margo says: Hello!&#x27;
+        &quot;&quot;&quot;
+        return f&quot;{self.name} says: {quote}&quot;</code></pre></div>
+
+
+<p><strong>Les commentaires inline</strong> — pour les développeurs, expliquent le POURQUOI :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ✅ Bon commentaire : explique pourquoi
+self.age = int(age)  # force en int car l&#x27;âge peut arriver comme string depuis un CSV
+
+# ❌ Mauvais commentaire : répète juste ce que le code fait
+self.age = int(age)  # convertit age en int</code></pre></div>
+
+
+<h3 id="ref-73-générer-la-documentation-automatiquement">7.3 Générer la documentation automatiquement</h3>
+
+<p>Une fois les docstrings écrites, on peut générer un site de documentation HTML en une commande :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install pdoc
+pdoc school   # génère une documentation HTML navigable pour tout le dossier school/</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Si tu as bien écrit tes docstrings, <code>pdoc</code> crée automatiquement un site de documentation professionnel. C'est ce que font Pandas, scikit-learn, etc.</p></div></div>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Tu n'as pas encore l'habitude d'écrire des docstrings ? Commence par quelque chose de simple. Une docstring imparfaite vaut infiniment mieux qu'aucune docstring. GitHub Copilot peut aussi en générer automatiquement.</p></div></div>
+
+<hr>
+
+<h2 id="ref-8-type-hinting">8. Type hinting</h2>
+
+<h3 id="ref-81-cest-quoi">8.1 C'est quoi ?</h3>
+
+<p>Python est un langage <strong>dynamiquement typé</strong> : il ne connaît le type d'une variable qu'au moment de l'exécution. Tu peux donc passer un string là où on attend un entier — Python ne te préviendra pas avant de planter.</p>
+
+<p>Le <strong>type hinting</strong> permet de <strong>déclarer les types attendus</strong> dans la signature des fonctions. Ça n'empêche pas les erreurs à l'exécution, mais ça permet :</p>
+<ul>
+<li>De <strong>documenter</strong> clairement ce qu'une fonction attend et retourne</li>
+<li>De détecter les erreurs <strong>statiquement</strong> (avant d'exécuter) avec <code>mypy</code></li>
+</ul>
+
+<h3 id="ref-82-syntaxe">8.2 Syntaxe</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># school/engstudent.py
+
+from datetime import date
+from typing import Self  # Self = &quot;retourne une instance de cette même classe&quot;
+
+class EngStudent():
+    language = &quot;Python&quot;
+
+    def __init__(self, name: str, age: int):  # name doit être str, age doit être int
+        self.name = name.capitalize()
+        self.age = age
+
+    def says(self, quote: str) -&gt; str:  # prend un str, retourne un str
+        return f&quot;{self.name} says: {quote}&quot;
+
+    @classmethod
+    def from_birth_year(cls, name: str, birth_year: int) -&gt; Self:  # retourne une instance de EngStudent
+        age = date.today().year - birth_year  # calcul de l&#x27;âge
+        return cls(name=name, age=age)        # crée et retourne l&#x27;instance</code></pre></div>
+
+
+<h3 id="ref-83-vérification-statique-avec-mypy">8.3 Vérification statique avec mypy</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install mypy
+python -m mypy school/engstudent.py   # analyse le fichier et signale les incohérences de types</code></pre></div>
+
+
+<p>Exemple de ce que <code>mypy</code> détecte :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">student = EngStudent(&quot;alice&quot;, &quot;vingt-huit&quot;)  # ❌ mypy détecte que &quot;vingt-huit&quot; n&#x27;est pas un int</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le type hinting ne change rien à l'exécution du programme — Python reste dynamique. C'est un outil de documentation et de prévention des bugs, pas une contrainte du langage.</p></div></div>
+
+<hr>
+
+<h2 id="ref-9-automatiser-avec-make">9. Automatiser avec Make</h2>
+
+<h3 id="ref-91-quatre-vérifications-à-lancer-à-chaque-fois">9.1 Quatre vérifications à lancer à chaque fois</h3>
+
+<p>Quand ton projet grossit, tu dois régulièrement lancer quatre commandes :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">autopep8 --in-place school/*.py          # 1. formate le code
+pytest                                   # 2. lance les tests
+pylint --output-format colorized school  # 3. vérifie le style
+python -m mypy school                    # 4. vérifie les types</code></pre></div>
+
+
+<p>C'est fastidieux. La solution : un <strong>Makefile</strong>.</p>
+
+<h3 id="ref-92-créer-un-makefile">9.2 Créer un Makefile</h3>
+
+<p>Un Makefile est un fichier qui définit des <strong>raccourcis de commandes</strong>. Il s'appelle littéralement <code>Makefile</code> (sans extension), à la racine du projet.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash"># Makefile  ← ce fichier s&#x27;appelle exactement &quot;Makefile&quot; sans extension
+
+default: lint test typecheck  # &quot;make&quot; sans argument lance lint + test + typecheck
+
+format:                                      # &quot;make format&quot; lance autopep8
+	autopep8 --in-place school/*.py          # ⚠️ indentation avec une TABULATION (pas des espaces)
+
+test:                                        # &quot;make test&quot; lance pytest
+	pytest                                   # lance tous les tests du projet
+
+lint:                                        # &quot;make lint&quot; lance pylint
+	pylint --output-format colorized school; true  # ; true = continuer même si pylint trouve des erreurs
+
+typecheck:                                   # &quot;make typecheck&quot; lance mypy
+	python -m mypy school; true              # ; true = continuer même si mypy trouve des erreurs</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Dans un Makefile, les commandes DOIVENT être indentées avec une <strong>tabulation</strong>, pas des espaces. C'est une des rares situations en Python/shell où tabulation et espaces ne sont pas interchangeables.</p></div></div>
+
+<p>Utilisation :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">make test              # lance uniquement les tests
+make lint              # lance uniquement le linter
+make format lint       # formate le code PUIS analyse le style
+make                   # lance tout : lint + test + typecheck</code></pre></div>
+
+
+<h3 id="ref-93-commiter-le-makefile">9.3 Commiter le Makefile</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">git add Makefile
+git commit -m &quot;build: Makefile to format, test, lint, type check&quot;</code></pre></div>
+
+
+<h3 id="ref-94-et-après-les-pipelines-cicd">9.4 Et après : les pipelines CI/CD</h3>
+
+<p>Ces mêmes commandes (<code>make test</code>, <code>make lint</code>, etc.) peuvent être exécutées <strong>automatiquement sur GitHub</strong> à chaque push ou pull request. C'est ce qu'on appelle la <strong>CI/CD (Continuous Integration / Continuous Deployment)</strong>. Tu verras ça dans les semaines projet.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>L'objectif final : chaque fois que tu pousses du code, des vérifications automatiques s'assurent que tout est en ordre — tests, style, types. Personne n'a besoin de vérifier manuellement.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1 — TDD</strong></p>
+
+<p>Quel est l'ordre correct dans le cycle TDD ?</p>
+
+<p>a) Écrire le code → Écrire le test → Refactorer</p>
+<p>b) Écrire le test → Écrire le code → Refactorer</p>
+<p>c) Refactorer → Écrire le test → Écrire le code</p>
+
+<details>
+<summary>Réponse</summary>
+
+<p><strong>b)</strong> On écrit toujours le test en premier (et il doit échouer), puis on écrit le code minimum pour le faire passer, puis on refactorise.</p>
+
+</details>
+
+<hr>
+
+<p><strong>Question 2 — Git</strong></p>
+
+<p>Lequel de ces messages de commit est le meilleur ?</p>
+
+<p>a) <code>git commit -m &quot;changes&quot;</code></p>
+<p>b) <code>git commit -m &quot;fix&quot;</code></p>
+<p>c) <code>git commit -m &quot;feat(students): Student capitalize name&quot;</code></p>
+
+<details>
+<summary>Réponse</summary>
+
+<p><strong>c)</strong> Le format Conventional Commits (<code>type(scope): description</code>) explique clairement ce qui a été fait et dans quel contexte. Les options a) et b) ne donnent aucune information utile.</p>
+
+</details>
+
+<hr>
+
+<p><strong>Question 3 — OOP</strong></p>
+
+<p>Quelle est la différence entre un attribut de classe et un attribut d'instance ?</p>
+
+<details>
+<summary>Réponse</summary>
+
+<p>Un <strong>attribut de classe</strong> (<code>language = &quot;Python&quot;</code>) est partagé par toutes les instances de la classe. Un <strong>attribut d'instance</strong> (<code>self.name = name</code>) est propre à chaque objet créé. Si tu changes un attribut de classe, toutes les instances non surchargées sont affectées.</p>
+
+</details>
+
+<hr>
+
+<p><strong>Question 4 — Style</strong></p>
+
+<p>Parmi ces imports, lequel est conforme aux bonnes pratiques PEP8 ?</p>
+
+<p>a) <code>from datetime import *</code></p>
+<p>b) <code>def my_function(): import datetime</code></p>
+<p>c) <code>from datetime import date</code></p>
+
+<details>
+<summary>Réponse</summary>
+
+<p><strong>c)</strong> L'import doit être en haut du fichier et explicite. L'option a) (import star) pollue l'espace de noms. L'option b) (import dans une fonction) est une très mauvaise pratique — l'import est répété à chaque appel de la fonction.</p>
+
+</details>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li><strong>Code propre = lisible, testable, maintenable</strong> : on passe plus de temps à lire du code qu'à en écrire, autant qu'il soit clair.</li>
+<li><strong>Un fichier <code>.py</code> par classe</strong> : facilite les imports, les tests et la réutilisation.</li>
+<li><strong>TDD (Rouge → Vert → Refactor)</strong> : écrire le test avant le code force à bien définir le comportement attendu et facilite le refactoring en sécurité.</li>
+<li><strong>Git : un commit = un changement précis</strong>, avec un message au format Conventional Commits qui explique le POURQUOI.</li>
+<li><strong>PEP8</strong> : le standard de style Python — CamelCase pour les classes, snake_case pour tout le reste, imports en haut du fichier, 4 espaces d'indentation.</li>
+<li><strong>Documenter avec des docstrings</strong> : indispensable pour soi-même et pour les autres, et permet de générer une doc HTML automatiquement avec <code>pdoc</code>.</li>
+<li><strong>Type hinting</strong> : annote les types attendus dans les fonctions pour documenter et détecter les bugs statiquement avec <code>mypy</code>.</li>
+<li><strong>Makefile</strong> : un fichier qui centralise les commandes récurrentes (<code>make test</code>, <code>make lint</code>, <code>make</code>) pour ne jamais oublier une vérification.</li>
+<li><strong>Les outils clés</strong> : <code>pytest</code> (tests), <code>autopep8</code> (formatage), <code>pylint</code> ou <code>ruff</code> (linting), <code>mypy</code> (types), <code>pdoc</code> (documentation).</li>
+<li><strong>L'objectif final</strong> : un code qu'on peut modifier, tester et déployer en confiance — seul ou en équipe.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-pourquoi-le-code-propre-nest-pas-un-luxe">Pourquoi le code propre n'est pas un luxe</a></li><li><a href="#syn-pep-8-et-les-linters">PEP 8 et les linters</a></li><li><a href="#syn-tests-unitaires-intégration-doctests">Tests : unitaires, intégration, doctests</a></li><li><a href="#syn-refactoring-extraire-renommer-simplifier">Refactoring : extraire, renommer, simplifier</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-type-hints-et-mypy">Type hints et `mypy`</a></li><li><a href="#syn-pre-commit-hooks-et-ci">Pre-commit hooks et CI</a></li><li><a href="#syn-architecture-hexagonal-layered-scripts">Architecture : hexagonal, layered, scripts</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-pourquoi-le-code-propre-nest-pas-un-luxe">Pourquoi le code propre n'est pas un luxe</h3>
+
+<p>"Du code propre" sonne comme un caprice esthétique. C'est en réalité une question d'<strong>économie</strong>. Une étude classique (Yourdon, 1979) estime que le coût de maintenance d'un logiciel représente <strong>60-90%</strong> de son coût total. Le code que vous écrivez aujourd'hui sera lu, modifié, debuggé, étendu — par vous-même dans 6 mois, ou par un collègue dans 6 jours.</p>
+
+<p>Le principe de Kent Beck : <em>"Make it work, make it right, make it fast"</em>. <strong>Dans cet ordre</strong>.</p>
+
+<ol>
+<li><strong>Make it work</strong> : un script qui marche, même moche</li>
+<li><strong>Make it right</strong> : refactor pour la lisibilité, tests, gestion d'erreurs</li>
+<li><strong>Make it fast</strong> : optimisation <strong>seulement si nécessaire</strong></li>
+</ol>
+
+<p>L'erreur typique du junior est de mélanger les trois étapes en parallèle, ce qui produit du code qui <strong>ne marche pas, est moche ET lent</strong>.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : écrire du code propre, c'est comme ranger sa cuisine après avoir cuisiné. Personne n'aime le faire, mais celui qui le fait peut cuisiner à nouveau le lendemain sans chercher la spatule pendant 20 minutes. Sur un projet d'un mois, vous "cuisinez" tous les jours — la cuisine doit être propre.</p></div></div>
+
+<h3 id="syn-pep-8-et-les-linters">PEP 8 et les linters</h3>
+
+<p><strong>PEP 8</strong> est le style guide officiel de Python : indentation 4 espaces, <code>snake_case</code> pour fonctions et variables, <code>PascalCase</code> pour classes, lignes ≤ 79 caractères, deux lignes vides entre fonctions de top-level…</p>
+
+<p>L'idée n'est pas que PEP 8 soit objectivement "le mieux", mais qu'<strong>une convention partagée</strong> vaut mieux qu'un débat infini. Quand tout le monde écrit le même style, on <strong>lit plus vite, on review plus vite</strong>, on évite les conflits de merge sur les espaces.</p>
+
+<p><strong>Linters</strong> : programmes qui vérifient automatiquement la conformité à PEP 8 et signalent des bugs probables.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Outil</th><th>Rôle</th></tr></thead><tbody><tr><td><code>flake8</code></td><td>Linter classique, vérifie PEP 8 + erreurs simples</td></tr><tr><td><code>pylint</code></td><td>Plus strict, donne un score sur 10</td></tr><tr><td><code>ruff</code></td><td>Successeur moderne, 100x plus rapide (en Rust)</td></tr><tr><td><code>black</code></td><td>Formatter qui réécrit le code selon un style fixe</td></tr><tr><td><code>isort</code></td><td>Trie automatiquement les imports</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install ruff black
+ruff check src/              # Linting
+ruff check src/ --fix        # Auto-correction des erreurs simples
+black src/                   # Formatage automatique</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : adoptez <code>ruff</code> + <code>black</code> dès le premier jour d'un projet. Configurez-les en pre-commit hook pour qu'ils s'exécutent automatiquement avant chaque commit. Vous éliminez 80% des débats de style en code review et vous garantissez un code base homogène quel que soit le contributeur.</p></div></div>
+
+<h3 id="syn-tests-unitaires-intégration-doctests">Tests : unitaires, intégration, doctests</h3>
+
+<p><strong>Test unitaire</strong> : vérifie qu'une fonction isolée renvoie le bon résultat sur des cas connus. Petit, rapide, focalisé.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># src/preprocessing.py
+def normalize(value, min_val, max_val):
+    &quot;&quot;&quot;Map value to [0, 1] given the data range.&quot;&quot;&quot;
+    return (value - min_val) / (max_val - min_val)</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># tests/test_preprocessing.py
+import pytest
+from src.preprocessing import normalize
+
+def test_normalize_middle():
+    &quot;&quot;&quot;Une valeur au milieu de l&#x27;intervalle doit donner 0.5.&quot;&quot;&quot;
+    assert normalize(5, 0, 10) == 0.5
+
+def test_normalize_min():
+    &quot;&quot;&quot;La borne inférieure doit donner 0.0.&quot;&quot;&quot;
+    assert normalize(0, 0, 10) == 0.0
+
+def test_normalize_max():
+    &quot;&quot;&quot;La borne supérieure doit donner 1.0.&quot;&quot;&quot;
+    assert normalize(10, 0, 10) == 1.0
+
+def test_normalize_division_by_zero():
+    &quot;&quot;&quot;Si min == max, doit lever ZeroDivisionError.&quot;&quot;&quot;
+    with pytest.raises(ZeroDivisionError):
+        normalize(5, 5, 5)</code></pre></div>
+
+
+<p>Lancement : <code>pytest tests/</code>. Pytest découvre automatiquement les fichiers <code>test_&lt;em&gt;.py</code> et exécute toutes les fonctions <code>test_&lt;/em&gt;</code>.</p>
+
+<p><strong>Test d'intégration</strong> : vérifie que plusieurs composants interagissent correctement. Plus lent, plus large.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def test_full_pipeline_runs():
+    &quot;&quot;&quot;Le pipeline complet doit au moins tourner et battre une baseline.&quot;&quot;&quot;
+    df = pd.read_csv(&quot;tests/fixtures/sample.csv&quot;)
+    pipeline = build_pipeline()
+    pipeline.fit(df.drop(&quot;target&quot;, axis=1), df[&quot;target&quot;])
+    score = pipeline.score(X_test, y_test)
+    assert score &gt; 0.5  # Sanity check : meilleur que random</code></pre></div>
+
+
+<p><strong>Doctest</strong> : les exemples dans les docstrings sont aussi des tests exécutables.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def double(x):
+    &quot;&quot;&quot;Return twice the input.
+
+    &gt;&gt;&gt; double(3)
+    6
+    &gt;&gt;&gt; double(-2)
+    -4
+    &quot;&quot;&quot;
+    return 2 * x</code></pre></div>
+
+
+<p><code>pytest --doctest-modules</code> les exécute.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Anti-pattern</strong> : tester l'implémentation au lieu du comportement. <code>assert sklearn.LinearRegression()._coef_init_method == &#x27;zero&#x27;</code> casse à la première mise à jour de sklearn alors que le comportement n'a pas changé. <strong>Testez ce que la fonction fait</strong>, pas <strong>comment</strong> elle le fait.</p></div></div>
+
+<h3 id="syn-refactoring-extraire-renommer-simplifier">Refactoring : extraire, renommer, simplifier</h3>
+
+<p><strong>Trois opérations</strong> qui couvrent 80% des cas :</p>
+
+<p><strong>1. Extraire une fonction</strong> : un bloc de code qui mérite un nom devient une fonction.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># ❌ Avant
+def process(df):
+    df = df.dropna()
+    df[&quot;price&quot;] = df[&quot;price&quot;].astype(float)
+    df = df[df[&quot;price&quot;] &gt; 0]
+    df[&quot;price_log&quot;] = np.log1p(df[&quot;price&quot;])
+    # ... 50 lignes ...
+
+# ✓ Après
+def clean_prices(df):
+    &quot;&quot;&quot;Drop nulls, cast to float, remove non-positive prices.&quot;&quot;&quot;
+    df = df.dropna(subset=[&quot;price&quot;])
+    df[&quot;price&quot;] = df[&quot;price&quot;].astype(float)
+    return df[df[&quot;price&quot;] &gt; 0]
+
+def add_log_features(df):
+    &quot;&quot;&quot;Add log-transformed price column.&quot;&quot;&quot;
+    df[&quot;price_log&quot;] = np.log1p(df[&quot;price&quot;])
+    return df
+
+def process(df):
+    df = clean_prices(df)
+    df = add_log_features(df)
+    return df</code></pre></div>
+
+
+<p><strong>2. Renommer pour clarifier</strong> : <code>x</code>, <code>temp</code>, <code>data2</code> deviennent <code>cleaned_prices</code>, <code>validation_set</code>, <code>model_with_pca</code>. Un bon IDE refactore en une commande sans rien casser.</p>
+
+<p><strong>3. Simplifier les conditions</strong> : remplacer <code>if x: return True else: return False</code> par <code>return bool(x)</code>. Remplacer des boucles par des comprehensions ou des opérations vectorisées.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Règle d'or</strong> : refactorez <strong>uniquement</strong> quand vous avez des tests qui couvrent le code modifié. Sans tests, vous risquez d'introduire un bug invisible. C'est exactement pour ça qu'on écrit des tests <strong>avant</strong> de refactorer (voir TDD).</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-type-hints-et-mypy">Type hints et <code>mypy</code></h3>
+
+<p>Les annotations de type sont un investissement massif en clarté et en sécurité, surtout sur des code bases > 1000 lignes.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from typing import Optional
+
+def find_user(user_id: int) -&gt; Optional[dict[str, str]]:
+    &quot;&quot;&quot;Find a user by id, returning None if absent.&quot;&quot;&quot;
+    ...</code></pre></div>
+
+
+<p><code>mypy</code> vérifie statiquement que les types sont cohérents :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">mypy src/
+# src/main.py:42: error: Argument 1 to &quot;find_user&quot; has incompatible type &quot;str&quot;; expected &quot;int&quot;</code></pre></div>
+
+
+<p>L'erreur est attrapée <strong>avant</strong> d'exécuter le code. Sur une code base de 10k lignes, mypy détecte typiquement des dizaines de bugs latents la première fois qu'on le passe.</p>
+
+<p><strong>Astuce pour adopter mypy progressivement</strong> : commencez par <code>mypy --strict</code> sur les nouveaux fichiers seulement, et migrez les anciens module par module. La directive <code># type: ignore</code> en bout de ligne vous permet d'ignorer une erreur ponctuelle pendant la transition.</p>
+
+<h3 id="syn-pre-commit-hooks-et-ci">Pre-commit hooks et CI</h3>
+
+<p>Un <strong>pre-commit hook</strong> est un script qui s'exécute automatiquement <strong>avant chaque <code>git commit</code></strong>. Si le script échoue, le commit est bloqué. C'est l'arme absolue pour maintenir la qualité.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># .pre-commit-config.yaml
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.5.0
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.10.0
+    hooks:
+      - id: mypy</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">pip install pre-commit
+pre-commit install
+# Désormais, chaque git commit passe par ruff + mypy automatiquement</code></pre></div>
+
+
+<p>La <strong>CI</strong> (Continuous Integration) refait les mêmes vérifications côté serveur (GitHub Actions, GitLab CI, Jenkins…) sur chaque push, plus les tests, le build, et éventuellement le déploiement. C'est le <strong>filet de sécurité ultime</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext"># .github/workflows/ci.yml
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: &#x27;3.11&#x27; }
+      - run: pip install -e .[dev]
+      - run: ruff check .
+      - run: mypy src/
+      - run: pytest --cov=src --cov-fail-under=80</code></pre></div>
+
+
+<h3 id="syn-architecture-hexagonal-layered-scripts">Architecture : hexagonal, layered, scripts</h3>
+
+<p>Un projet data science peut s'organiser de plusieurs façons selon sa maturité :</p>
+
+<p><strong>Niveau 1 — Notebook unique</strong> : <code>analyse.ipynb</code> qui contient tout. Acceptable pour exploration ; déconseillé pour quoi que ce soit de durable.</p>
+
+<p><strong>Niveau 2 — Scripts + notebook</strong> : <code>src/preprocessing.py</code>, <code>src/train.py</code>, et un notebook qui les orchestre. Permet de tester les fonctions extraites.</p>
+
+<p><strong>Niveau 3 — Package installable</strong> : <code>pyproject.toml</code>, structure <code>src/mypackage/</code>. Importable depuis n'importe où, déployable.</p>
+
+<p><strong>Niveau 4 — Architecture en couches</strong> : séparation domaine / infrastructure / interface. C'est l'<strong>architecture hexagonale</strong> (ports & adapters), surdimensionnée pour 90% des projets data mais essentielle pour un service ML en production.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">src/mypackage/
+├── domain/         # Logique métier pure (sans dépendances externes)
+├── infra/          # I/O : DB, API, fichiers
+├── application/    # Use cases (orchestre domain + infra)
+└── interface/      # CLI, REST API, UI</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : l'architecture hexagonale, c'est comme une cuisine professionnelle. La cuisson (domain) ne sait rien des fournisseurs (infra) ni des serveurs (interface). On peut changer le boucher sans toucher aux recettes. Pour un food truck (script jetable), c'est overkill ; pour un grand restaurant (service prod), c'est indispensable.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Quelle est la différence entre TDD (Test-Driven Development) et "écrire des tests" ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Ordre d'écriture.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>TDD est une discipline stricte</strong> qui inverse l'ordre habituel :</p>
+
+<ol>
+<li><strong>Red</strong> : écrire un test qui échoue</li>
+<li><strong>Green</strong> : écrire le <strong>minimum</strong> de code pour le faire passer</li>
+<li><strong>Refactor</strong> : améliorer le code sans casser le test</li>
+</ol>
+
+<p>Vous écrivez <strong>toujours</strong> le test <strong>avant</strong> le code.</p>
+
+<p><strong>Avantages</strong> :</p>
+
+<ul>
+<li>Vous êtes forcé de réfléchir à l'API avant l'implémentation — souvent vous découvrez que votre design initial était mauvais.</li>
+<li>Vous écrivez le <strong>minimum</strong> de code, pas une généralité spéculative.</li>
+<li>Votre couverture de test est garantie à <strong>100% par construction</strong>.</li>
+<li>Vous savez immédiatement quand vous avez fini (tous les tests passent).</li>
+</ul>
+
+<p><strong>Limites</strong> : TDD a un coût d'entrée et est mal adapté à l'<strong>exploration data science</strong> (où on ne sait pas encore ce qu'on cherche).</p>
+
+<p><strong>Compromis pragmatique</strong> : TDD pour la couche domaine et les utilities critiques, tests post-hoc pour le code exploratoire.</p>
+
+<p>Question d'entretien backend : <em>"Pratiquez-vous TDD ?"</em> — réponse honnête : <em>"Pour la logique métier critique, oui ; pour l'exploration, non"</em>.</p>
+
+</details>
+
+<p><strong>Q2 : Vous avez une fonction de 200 lignes avec 5 niveaux d'imbrication. Quels sont les signaux qu'elle doit être refactorée et comment commencer ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Code smells.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Cinq code smells</strong> :</p>
+
+<ol>
+<li><strong>Longueur</strong> > 30 lignes</li>
+<li><strong>Imbrication</strong> > 3 niveaux</li>
+<li><strong>Commentaires explicatifs</strong> ("ici on calcule X parce que…") qui devraient devenir des noms de fonction</li>
+<li><strong>Variables locales</strong> > 10</li>
+<li><strong>Plusieurs raisons de changer</strong> (la fonction fait du parsing, du calcul ET de l'écriture)</li>
+</ol>
+
+<p><strong>Comment commencer</strong> : identifier les <strong>paragraphes naturels</strong> (blocs séparés par des lignes vides ou des commentaires) et <strong>extraire</strong> chacun en fonction nommée.</p>
+
+<p>Après extraction, les fonctions extraites devraient s'<strong>expliquer par leur nom seul</strong>, sans commentaire. Continuez jusqu'à ce que chaque fonction tienne sur <strong>un écran</strong> et ne fasse <strong>qu'une seule chose</strong>.</p>
+
+<p>C'est exactement la discipline du livre <strong>Refactoring</strong> de Martin Fowler, et c'est probablement la compétence senior la plus impactante.</p>
+
+</details>
+
+<p><strong>Q3 : Vos tests passent en local mais échouent sur la CI. Quelles sont les causes les plus probables ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Reproductibilité.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Cinq causes courantes</strong> :</p>
+
+<ol>
+<li><strong>Différence d'environnement</strong> : versions de packages différentes. Solution : <code>requirements.txt</code> figé ou <code>poetry.lock</code>.</li>
+<li><strong>Variables d'environnement manquantes</strong> : les secrets d'API, chemins, configs ne sont pas dans la CI. Solution : configurer les secrets côté CI.</li>
+<li><strong>Fichiers locaux</strong> : le test lit <code>~/data/file.csv</code> qui n'existe que chez vous. Solution : utiliser des fixtures dans <code>tests/data/</code>.</li>
+<li><strong>Random sans seed</strong> : <code>np.random.shuffle</code> produit des résultats différents à chaque run. Solution : <code>np.random.seed(42)</code>.</li>
+<li><strong>Ordre d'exécution</strong> : les tests dépendent les uns des autres et passent en local parce que vous lancez dans un certain ordre. Solution : <code>pytest --random-order</code> détecte cet anti-pattern et chaque test doit être indépendant.</li>
+</ol>
+
+<p><strong>Diagnostic d'entretien</strong> : <em>"Mes tests passent en local mais pas en CI"</em> est une question d'entretien classique pour DevOps — la réponse exhaustive révèle une vraie expérience opérationnelle.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Clean Code</em> (Robert Martin) — la bible du code propre, attention le ton dogmatique</li>
+<li><em>Refactoring</em> (Martin Fowler, 2nd ed.) — catalogue exhaustif des techniques</li>
+<li><em>The Pragmatic Programmer</em> (Hunt & Thomas) — principes intemporels</li>
+<li><a href="https://peps.python.org/pep-0008/" target="_blank" rel="noopener">PEP 8</a> et <a href="https://peps.python.org/pep-0020/" target="_blank" rel="noopener">PEP 20 (Zen of Python)</a></li>
+<li><a href="https://docs.pytest.org/" target="_blank" rel="noopener">pytest documentation</a> — la doc officielle</li>
+<li><a href="https://pre-commit.com/" target="_blank" rel="noopener">pre-commit.com</a> — pour automatiser les checks</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../data-toolkit/scraping.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Web Scraping</span>
+  </a>
+  <a href="../data-toolkit/python-reboot.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Python Reboot →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

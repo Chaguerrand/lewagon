@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dictionaries — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Dictionaries</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html" class="active">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Python & SQL Week</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Dictionaries</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Dictionaries</h1>
+        <p class="page-objective">Comprendre ce qu'est un **dictionnaire** (`dict`) en Python, quand l'utiliser, et maîtriser les opérations courantes (création, lecture, écriture, suppression, parcours).</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Hash map</div>
+        <div class="key-concept-def">Structure clé→valeur à accès O(1) en moyenne.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Clé hashable</div>
+        <div class="key-concept-def">Clé immuable (str, int, tuple) — listes interdites comme clés.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">`get(key, default)`</div>
+        <div class="key-concept-def">Lecture sans `KeyError` si la clé manque.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Dict comprehension</div>
+        <div class="key-concept-def">`{k: v for k, v in …}` pour construire un dict en une ligne.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-dictionnaires">Cheatsheet — Dictionnaires</a><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-pourquoi-des-dictionnaires">1) Pourquoi des dictionnaires ?</a><ol><li><a href="#exemple-moins-pratique">Exemple (moins pratique)</a></li><li><a href="#ce-quon-veut-faire">Ce qu'on veut faire</a></li><li><a href="#solution-un-dict">Solution : un `dict`</a></li></ol></li><li><a href="#2-dict-définition">2) `dict` : définition</a><li><a href="#3-créer-un-dictionnaire">3) Créer un dictionnaire</a><li><a href="#4-lire-des-valeurs">4) Lire des valeurs</a><li><a href="#5-ajouter-une-clé-valeur">5) Ajouter une clé / valeur</a><li><a href="#6-mettre-à-jour-une-valeur">6) Mettre à jour une valeur</a><li><a href="#7-supprimer-une-clé-valeur">7) Supprimer une clé / valeur</a><li><a href="#8-méthodes-utiles">8) Méthodes utiles</a><ol><li><a href="#81-taille-du-dictionnaire">8.1 Taille du dictionnaire</a></li><li><a href="#82-accès-sûr-avec-get">8.2 Accès sûr avec `get()`</a></li></ol></li><li><a href="#9-parcourir-un-dictionnaire-boucles">9) Parcourir un dictionnaire (boucles)</a><ol><li><a href="#91-parcourir-les-clés">9.1 Parcourir les clés</a></li><li><a href="#92-parcourir-les-valeurs">9.2 Parcourir les valeurs</a></li><li><a href="#93-parcourir-les-paires-clévaleur">9.3 Parcourir les paires clé/valeur</a></li></ol></li><li><a href="#10-bonus-dict-comprehension">10) Bonus : dict comprehension</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-dictionnaires">📋 Cheatsheet — Dictionnaires</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## ── CRÉER ────────────────────────────────────────────
+d = {}                                  # dict vide
+d = {&quot;nom&quot;: &quot;Alice&quot;, &quot;age&quot;: 30}         # dict avec valeurs initiales
+
+## ── LIRE ─────────────────────────────────────────────
+d[&quot;nom&quot;]                        # &quot;Alice&quot; — KeyError si clé absente
+d.get(&quot;nom&quot;)                    # &quot;Alice&quot; — None si clé absente (pas d&#x27;erreur)
+d.get(&quot;ville&quot;)                  # None
+d.get(&quot;ville&quot;, &quot;inconnue&quot;)      # &quot;inconnue&quot; (valeur par défaut)
+
+## ── ÉCRIRE / METTRE À JOUR ───────────────────────────
+d[&quot;ville&quot;] = &quot;Paris&quot;            # ajoute une nouvelle clé
+d[&quot;age&quot;] = 31                   # modifie une valeur existante (même syntaxe)
+d.update({&quot;age&quot;: 32, &quot;pays&quot;: &quot;France&quot;})  # met à jour plusieurs clés à la fois
+
+## ── SUPPRIMER ────────────────────────────────────────
+del d[&quot;ville&quot;]                  # supprime la clé, ne retourne rien
+d.pop(&quot;age&quot;)                    # supprime et retourne la valeur associée
+
+## ── INFOS ────────────────────────────────────────────
+len(d)                          # nombre de clés dans le dict
+&quot;nom&quot; in d                      # True si la clé existe, False sinon
+
+## ── PARCOURIR ────────────────────────────────────────
+for key in d:                   # itère sur les clés
+    print(key)
+
+for value in d.values():        # itère sur les valeurs
+    print(value)
+
+for key, value in d.items():    # itère sur les paires clé/valeur
+    print(f&quot;{key} → {value}&quot;)
+
+## ── DICT COMPREHENSION ───────────────────────────────
+{k: v*2 for k, v in d.items()}            # double chaque valeur
+{k: v for k, v in zip(keys, values)}      # construit un dict depuis deux listes</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Accéder à une clé inexistante avec <code>[]</code></strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">london = {&quot;country&quot;: &quot;England&quot;}
+london[&quot;population&quot;]      # ❌ KeyError
+london.get(&quot;population&quot;)  # ✅ retourne None</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser une valeur mutable comme clé</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">d = {[1, 2]: &quot;valeur&quot;}  # ❌ TypeError: unhashable type &#x27;list&#x27;
+d = {(1, 2): &quot;valeur&quot;}  # ✅ les tuples sont hashables</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier que les clés sont uniques — une assignation écrase</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">d = {&quot;age&quot;: 20, &quot;age&quot;: 30}  # ❌ la clé &quot;age&quot;: 20 est silencieusement écrasée
+print(d)  # {&quot;age&quot;: 30}</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Itérer sur <code>.items()</code> sans déstructurer</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for item in d.items():
+    print(item[0], item[1])  # ❌ fonctionne mais peu lisible
+
+for key, value in d.items():  # ✅
+    print(key, value)</code></pre></div></div></div>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Modifier un dict pendant qu'on itère dessus</strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for key in d:
+    del d[key]  # ❌ RuntimeError: dictionary changed size during iteration
+## ✅ Itère sur une copie : for key in list(d.keys()):</code></pre></div></div></div>
+
+<hr>
+
+<h2 id="1-pourquoi-des-dictionnaires">1) Pourquoi des dictionnaires ?</h2>
+
+<p>Quand tu as deux listes "parallèles" (ex : noms et âges), tu dois gérer des index, ce qui devient fragile et difficile à maintenir.</p>
+
+<h3 id="exemple-moins-pratique">Exemple (moins pratique)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">students = [&quot;Peter&quot;, &quot;Mary&quot;, &quot;George&quot;, &quot;Emma&quot;]
+student_ages = [24, 25, 22, 20]
+
+for index, student in enumerate(students):
+	age = student_ages[index]
+	print(f&quot;- {student} ({age} years old)&quot;)</code></pre></div>
+
+
+<h3 id="ce-quon-veut-faire">Ce qu'on veut faire</h3>
+
+<p>Accéder directement à la valeur via une clé.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">print(students_age[&quot;Peter&quot;])</code></pre></div>
+
+
+<h3 id="solution-un-dict">Solution : un <code>dict</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">students_age = {
+	&quot;Peter&quot;: 24,
+	&quot;Mary&quot;: 25,
+	&quot;George&quot;: 22,
+	&quot;Emma&quot;: 20,
+}</code></pre></div>
+
+
+<hr>
+
+<h2 id="2-dict-définition">2) <code>dict</code> : définition</h2>
+
+<p>Un dictionnaire est une collection de paires <strong>clé → valeur</strong>.</p>
+
+<ul>
+<li>Les <strong>clés</strong> sont <strong>uniques</strong>.</li>
+<li>L'accès par clé est rapide et lisible.</li>
+</ul>
+
+<p>👉 <a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries" target="_blank" rel="noopener">Documentation Python — Dictionaries</a></p>
+
+<hr>
+
+<h2 id="3-créer-un-dictionnaire">3) Créer un dictionnaire</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">empty_dict = {}
+
+london = {
+	&quot;country&quot;: &quot;England&quot;,
+	&quot;population&quot;: 8_982_000,
+}</code></pre></div>
+
+
+<hr>
+
+<h2 id="4-lire-des-valeurs">4) Lire des valeurs</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">london[&quot;country&quot;]      #=&gt; &quot;England&quot;
+london[&quot;population&quot;]   #=&gt; 8982000</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Si la clé n'existe pas, <code>london[&quot;missing&quot;]</code> lève une <code>KeyError</code>.</p>
+<p>Pour éviter ça, utilise <code>get()</code> (voir section 8).</p></div></div>
+
+<hr>
+
+<h2 id="5-ajouter-une-clé-valeur">5) Ajouter une clé / valeur</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">london[&quot;star_monument&quot;] = &quot;Big Ben&quot;</code></pre></div>
+
+
+<hr>
+
+<h2 id="6-mettre-à-jour-une-valeur">6) Mettre à jour une valeur</h2>
+
+<p>Même syntaxe que pour l'ajout.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">london[&quot;population&quot;] = 8_982_001</code></pre></div>
+
+
+<hr>
+
+<h2 id="7-supprimer-une-clé-valeur">7) Supprimer une clé / valeur</h2>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">del london[&quot;star_monument&quot;]</code></pre></div>
+
+
+<hr>
+
+<h2 id="8-méthodes-utiles">8) Méthodes utiles</h2>
+
+<h3 id="81-taille-du-dictionnaire">8.1 Taille du dictionnaire</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">len(london)  #=&gt; 2</code></pre></div>
+
+
+<h3 id="82-accès-sûr-avec-get">8.2 Accès sûr avec <code>get()</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">london.get(&quot;country&quot;)                        #=&gt; &quot;England&quot;
+
+london.get(&quot;prime minister&quot;)                 #=&gt; None
+
+london.get(&quot;prime minister&quot;, &quot;no key prime minister&quot;)  #=&gt; &quot;no key prime minister&quot;</code></pre></div>
+
+
+<hr>
+
+<h2 id="9-parcourir-un-dictionnaire-boucles">9) Parcourir un dictionnaire (boucles)</h2>
+
+<h3 id="91-parcourir-les-clés">9.1 Parcourir les clés</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for key in london:
+	print(key)</code></pre></div>
+
+
+<h3 id="92-parcourir-les-valeurs">9.2 Parcourir les valeurs</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for value in london.values():
+	print(value)</code></pre></div>
+
+
+<h3 id="93-parcourir-les-paires-clévaleur">9.3 Parcourir les paires clé/valeur</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for key, value in london.items():
+	print(f&quot;{key} -&gt; {value}&quot;)</code></pre></div>
+
+
+<hr>
+
+<h2 id="10-bonus-dict-comprehension">10) Bonus : dict comprehension</h2>
+
+<p>Transformer deux listes en dictionnaire.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">students = [&quot;Peter&quot;, &quot;Mary&quot;, &quot;George&quot;, &quot;Emma&quot;]
+student_ages = [24, 25, 22, 20]
+
+student_ages_dict = {key: value for key, value in zip(students, student_ages)}
+print(student_ages_dict)
+#=&gt; {&#x27;Peter&#x27;: 24, &#x27;Mary&#x27;: 25, &#x27;George&#x27;: 22, &#x27;Emma&#x27;: 20}</code></pre></div>
+
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-a-retenir">A retenir</a></li><li><a href="#ref-analogie-fil-rouge">Analogie fil rouge</a></li><li><a href="#ref-mini-plan">Mini-plan</a></li></ol></li><li><a href="#ref-1-pourquoi-un-dictionnaire-plutôt-quune-liste">1 — Pourquoi un dictionnaire plutôt qu'une liste ?</a><ol><li><a href="#ref-le-problème-avec-deux-listes-parallèles">Le problème avec deux listes parallèles</a></li><li><a href="#ref-la-solution-un-dictionnaire">La solution : un dictionnaire</a></li></ol></li><li><a href="#ref-2-créer-un-dictionnaire">2 — Créer un dictionnaire</a><li><a href="#ref-3-lire-des-valeurs">3 — Lire des valeurs</a><ol><li><a href="#ref-avec-les-crochets">Avec les crochets `[]`</a></li><li><a href="#ref-avec-get-la-lecture-sécurisée">Avec `.get()` — la lecture sécurisée</a></li></ol></li><li><a href="#ref-4-ajouter-et-modifier-des-entrées">4 — Ajouter et modifier des entrées</a><li><a href="#ref-5-supprimer-une-entrée">5 — Supprimer une entrée</a><li><a href="#ref-6-méthodes-utiles">6 — Méthodes utiles</a><ol><li><a href="#ref-connaître-la-taille-dun-dictionnaire">Connaître la taille d'un dictionnaire</a></li><li><a href="#ref-vérifier-si-une-clé-existe">Vérifier si une clé existe</a></li></ol></li><li><a href="#ref-7-parcourir-un-dictionnaire-boucles">7 — Parcourir un dictionnaire (boucles)</a><ol><li><a href="#ref-71-parcourir-les-clés">7.1 Parcourir les clés</a></li><li><a href="#ref-72-parcourir-les-valeurs">7.2 Parcourir les valeurs</a></li><li><a href="#ref-73-parcourir-les-paires-clévaleur-le-plus-courant">7.3 Parcourir les paires clé/valeur (le plus courant)</a></li></ol></li><li><a href="#ref-8-dict-comprehension-bonus">8 — Dict comprehension (bonus)</a><ol><li><a href="#ref-construire-un-dict-depuis-deux-listes">Construire un dict depuis deux listes</a></li><li><a href="#ref-transformer-les-valeurs-dun-dict-existant">Transformer les valeurs d'un dict existant</a></li></ol></li><li><a href="#ref-9-erreurs-courantes-à-éviter">9 — Erreurs courantes à éviter</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Jusqu'ici, pour stocker plusieurs informations, tu utilisais probablement des listes. Mais les listes ont une limite : pour retrouver une valeur, il faut connaître sa <strong>position</strong> (index 0, 1, 2…). C'est vite inconfortable quand les données ont un sens naturel de type "nom → valeur".</p>
+
+<p>Les <strong>dictionnaires</strong> (<code>dict</code>) résolvent ce problème en Python. Ce sont des structures qui associent une <strong>clé</strong> (un nom, une étiquette) à une <strong>valeur</strong>. Au lieu de demander "donne-moi l'élément numéro 2", tu demandes "donne-moi l'âge de Pierre".</p>
+
+<h3 id="ref-a-retenir">A retenir</h3>
+
+<ul>
+<li>Un dictionnaire stocke des paires <strong>clé → valeur</strong>.</li>
+<li>Les clés sont <strong>uniques</strong> (pas de doublon possible).</li>
+<li>L'accès à une valeur se fait par sa clé, pas par un index.</li>
+<li>On peut ajouter, modifier et supprimer des entrées à tout moment.</li>
+<li>On peut parcourir un dictionnaire sur ses clés, ses valeurs, ou les deux à la fois.</li>
+</ul>
+
+<h3 id="ref-analogie-fil-rouge">Analogie fil rouge</h3>
+
+<p>Imagine un <strong>carnet d'adresses papier</strong> : chaque page a un nom (la clé) et, en face, un numéro de téléphone (la valeur). Pour retrouver le numéro de Marie, tu cherches directement "Marie" — tu n'as pas besoin de compter les pages. C'est exactement ce que fait un dictionnaire Python.</p>
+
+<h3 id="ref-mini-plan">Mini-plan</h3>
+
+<ol>
+<li>Pourquoi utiliser un dictionnaire plutôt qu'une liste ?</li>
+<li>Créer un dictionnaire</li>
+<li>Lire des valeurs (avec <code>[]</code> ou <code>.get()</code>)</li>
+<li>Ajouter et modifier des entrées</li>
+<li>Supprimer une entrée</li>
+<li>Méthodes utiles (<code>len</code>, <code>get</code>, <code>in</code>)</li>
+<li>Parcourir un dictionnaire (boucles)</li>
+<li>Dict comprehension (niveau bonus)</li>
+<li>Erreurs courantes à éviter</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-pourquoi-un-dictionnaire-plutôt-quune-liste">1 — Pourquoi un dictionnaire plutôt qu'une liste ?</h2>
+
+<h3 id="ref-le-problème-avec-deux-listes-parallèles">Le problème avec deux listes parallèles</h3>
+
+<p>Supposons que tu veuilles stocker les âges de quatre étudiants. Avec des listes, ça ressemble à ceci.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">students = [&quot;Peter&quot;, &quot;Mary&quot;, &quot;George&quot;, &quot;Emma&quot;]  # liste des prénoms
+student_ages = [24, 25, 22, 20]                  # liste des âges, dans le même ordre
+
+# Pour afficher chaque étudiant avec son âge,
+# on doit utiliser enumerate() pour avoir l&#x27;index
+for index, student in enumerate(students):       # index = 0, 1, 2, 3 tour à tour
+    age = student_ages[index]                    # on récupère l&#x27;âge via l&#x27;index
+    print(f&quot;- {student} ({age} years old)&quot;)      # on affiche le résultat</code></pre></div>
+
+
+<p>Ca fonctionne, mais c'est fragile : si tu changes l'ordre d'une liste sans changer l'autre, tout est faux. Et pour trouver l'âge de "Peter", tu ne peux pas écrire <code>student_ages[&quot;Peter&quot;]</code> — ça ne marche pas avec une liste.</p>
+
+<h3 id="ref-la-solution-un-dictionnaire">La solution : un dictionnaire</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># On regroupe tout dans un seul dict :
+# chaque prénom (clé) est directement lié à son âge (valeur)
+students_age = {
+    &quot;Peter&quot;: 24,    # clé &quot;Peter&quot;  →  valeur 24
+    &quot;Mary&quot;: 25,     # clé &quot;Mary&quot;   →  valeur 25
+    &quot;George&quot;: 22,   # clé &quot;George&quot; →  valeur 22
+    &quot;Emma&quot;: 20,     # clé &quot;Emma&quot;   →  valeur 20
+}
+
+# Accès direct, clair et sans risque d&#x27;erreur d&#x27;index
+print(students_age[&quot;Peter&quot;])   # affiche 24</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Un dictionnaire rend le code plus <strong>lisible</strong> et plus <strong>robuste</strong>. Quand les données ont un sens de type "nom → valeur", le dictionnaire est presque toujours le bon choix.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-créer-un-dictionnaire">2 — Créer un dictionnaire</h2>
+
+<p>Un dictionnaire se crée avec des <strong>accolades</strong> <code>{}</code>. Chaque entrée est une paire <code>clé: valeur</code>, séparée des autres par une virgule.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Dictionnaire vide — on le remplira plus tard
+empty_dict = {}
+
+# Dictionnaire avec des valeurs initiales
+london = {
+    &quot;country&quot;: &quot;England&quot;,          # clé &quot;country&quot;    →  valeur &quot;England&quot;
+    &quot;population&quot;: 8_982_000,       # clé &quot;population&quot;  →  valeur 8982000
+}                                  # le _ dans les nombres est juste pour la lisibilité</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Les clés sont le plus souvent des <strong>chaînes de caractères</strong> (strings), mais elles peuvent aussi être des nombres ou des tuples. En revanche, elles ne peuvent <strong>pas</strong> être des listes (on verra pourquoi dans la section sur les erreurs courantes).</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-lire-des-valeurs">3 — Lire des valeurs</h2>
+
+<h3 id="ref-avec-les-crochets">Avec les crochets <code>[]</code></h3>
+
+<p>C'est la façon la plus directe. On écrit le nom du dictionnaire, puis la clé entre crochets.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">london[&quot;country&quot;]      # renvoie &quot;England&quot;
+london[&quot;population&quot;]   # renvoie 8982000</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Si la clé n'existe pas, Python lève une erreur <code>KeyError</code> et le programme s'arrête. Exemple : <code>london[&quot;mayor&quot;]</code> → <code>KeyError: &#x27;mayor&#x27;</code>. Pour éviter ça, utilise <code>.get()</code> (voir juste en dessous).</p></div></div>
+
+<h3 id="ref-avec-get-la-lecture-sécurisée">Avec <code>.get()</code> — la lecture sécurisée</h3>
+
+<p>La méthode <code>.get()</code> ne plante jamais : si la clé est absente, elle renvoie <code>None</code> (ou une valeur par défaut que tu choisis).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">london.get(&quot;country&quot;)                         # renvoie &quot;England&quot; — clé présente
+london.get(&quot;mayor&quot;)                           # renvoie None      — clé absente, pas d&#x27;erreur
+london.get(&quot;mayor&quot;, &quot;information inconnue&quot;)   # renvoie &quot;information inconnue&quot; — valeur par défaut</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>En pratique, préfère toujours <code>.get()</code> quand tu n'es pas certain que la clé existe. Ca évite les crashs inattendus.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-ajouter-et-modifier-des-entrées">4 — Ajouter et modifier des entrées</h2>
+
+<p>Bonne nouvelle : la syntaxe est <strong>exactement la même</strong> pour ajouter une nouvelle clé et pour modifier une clé existante.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Ajouter une nouvelle clé qui n&#x27;existait pas encore
+london[&quot;star_monument&quot;] = &quot;Big Ben&quot;    # le dict contient maintenant 3 entrées
+
+# Modifier la valeur d&#x27;une clé déjà présente
+london[&quot;population&quot;] = 8_982_001       # la valeur précédente est remplacée</code></pre></div>
+
+
+<p>Pour mettre à jour plusieurs clés en une seule fois, utilise <code>.update()</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># .update() accepte un dict en argument et fusionne les valeurs
+london.update({&quot;population&quot;: 9_000_000, &quot;country&quot;: &quot;England&quot;})
+# Les clés existantes sont mises à jour, les nouvelles sont ajoutées</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Les clés d'un dictionnaire sont <strong>uniques</strong>. Si tu assigne une valeur à une clé déjà existante, l'ancienne valeur est <strong>silencieusement écrasée</strong> sans avertissement. Fais attention lors de la construction d'un dict avec des doublons.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-supprimer-une-entrée">5 — Supprimer une entrée</h2>
+
+<p>Deux façons de supprimer une entrée.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># del supprime la clé et sa valeur, ne retourne rien
+del london[&quot;star_monument&quot;]    # &quot;star_monument&quot; disparaît du dict
+
+# .pop() supprime ET retourne la valeur supprimée (utile si tu en as besoin)
+population_retiree = london.pop(&quot;population&quot;)    # renvoie 9_000_000
+print(population_retiree)                        # affiche 9000000</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Utilise <code>del</code> quand tu veux juste supprimer. Utilise <code>.pop()</code> quand tu veux récupérer la valeur au passage.</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-méthodes-utiles">6 — Méthodes utiles</h2>
+
+<h3 id="ref-connaître-la-taille-dun-dictionnaire">Connaître la taille d'un dictionnaire</h3>
+
+<p><code>len()</code> renvoie le <strong>nombre de clés</strong> dans le dictionnaire.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">london = {&quot;country&quot;: &quot;England&quot;, &quot;population&quot;: 8_982_000}
+len(london)    # renvoie 2 — il y a 2 paires clé/valeur</code></pre></div>
+
+
+<h3 id="ref-vérifier-si-une-clé-existe">Vérifier si une clé existe</h3>
+
+<p>L'opérateur <code>in</code> renvoie <code>True</code> ou <code>False</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">&quot;country&quot; in london      # True  — la clé existe
+&quot;mayor&quot; in london        # False — la clé n&#x27;existe pas</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Combiner <code>in</code> et <code>.get()</code> couvre tous tes besoins de lecture sécurisée. <code>in</code> est utile quand tu veux <strong>tester</strong> l'existence avant d'agir ; <code>.get()</code> est utile quand tu veux <strong>lire</strong> sans risquer une erreur.</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-parcourir-un-dictionnaire-boucles">7 — Parcourir un dictionnaire (boucles)</h2>
+
+<p>Un dictionnaire peut être parcouru de trois manières différentes selon ce dont tu as besoin.</p>
+
+<h3 id="ref-71-parcourir-les-clés">7.1 Parcourir les clés</h3>
+
+<p>Par défaut, une boucle <code>for</code> sur un dictionnaire donne les <strong>clés</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">london = {&quot;country&quot;: &quot;England&quot;, &quot;population&quot;: 8_982_000}
+
+for key in london:          # key vaut &quot;country&quot;, puis &quot;population&quot;
+    print(key)              # affiche chaque clé
+# Résultat :
+# country
+# population</code></pre></div>
+
+
+<h3 id="ref-72-parcourir-les-valeurs">7.2 Parcourir les valeurs</h3>
+
+<p>La méthode <code>.values()</code> donne accès aux <strong>valeurs</strong> uniquement.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for value in london.values():    # value vaut &quot;England&quot;, puis 8982000
+    print(value)                 # affiche chaque valeur
+# Résultat :
+# England
+# 8982000</code></pre></div>
+
+
+<h3 id="ref-73-parcourir-les-paires-clévaleur-le-plus-courant">7.3 Parcourir les paires clé/valeur (le plus courant)</h3>
+
+<p>La méthode <code>.items()</code> donne des paires <code>(clé, valeur)</code>. On les "déstructure" directement dans la boucle avec deux variables.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for key, value in london.items():              # chaque tour donne une paire
+    print(f&quot;{key} -&gt; {value}&quot;)                 # on affiche les deux ensemble
+# Résultat :
+# country -&gt; England
+# population -&gt; 8982000</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p><code>.items()</code> est la façon la plus lisible et la plus utilisée pour parcourir un dictionnaire. Mémorise-la en priorité.</p></div></div>
+
+<hr>
+
+<h2 id="ref-8-dict-comprehension-bonus">8 — Dict comprehension (bonus)</h2>
+
+<p>La <strong>dict comprehension</strong> permet de créer un dictionnaire en une seule ligne, à partir d'une logique. C'est l'équivalent des list comprehensions, mais pour les dicts.</p>
+
+<h3 id="ref-construire-un-dict-depuis-deux-listes">Construire un dict depuis deux listes</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">students = [&quot;Peter&quot;, &quot;Mary&quot;, &quot;George&quot;, &quot;Emma&quot;]    # liste des prénoms
+student_ages = [24, 25, 22, 20]                   # liste des âges correspondants
+
+# zip() associe les deux listes élément par élément : (&quot;Peter&quot;, 24), (&quot;Mary&quot;, 25)...
+# la comprehension transforme chaque paire en entrée clé/valeur
+student_ages_dict = {key: value for key, value in zip(students, student_ages)}
+
+print(student_ages_dict)
+# Résultat : {&#x27;Peter&#x27;: 24, &#x27;Mary&#x27;: 25, &#x27;George&#x27;: 22, &#x27;Emma&#x27;: 20}</code></pre></div>
+
+
+<h3 id="ref-transformer-les-valeurs-dun-dict-existant">Transformer les valeurs d'un dict existant</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">scores = {&quot;Alice&quot;: 10, &quot;Bob&quot;: 8, &quot;Clara&quot;: 15}    # scores d&#x27;origine
+
+# On crée un nouveau dict en doublant chaque score
+scores_doubles = {k: v * 2 for k, v in scores.items()}   # k = clé, v = valeur
+
+print(scores_doubles)
+# Résultat : {&#x27;Alice&#x27;: 20, &#x27;Bob&#x27;: 16, &#x27;Clara&#x27;: 30}</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>La dict comprehension suit toujours le même schéma : <code>{nouvelle_clé: nouvelle_valeur for clé, valeur in source}</code>. Elle est très appréciée car concise, mais ne sacrifie jamais la lisibilité — si la logique est complexe, une boucle classique reste préférable.</p></div></div>
+
+<hr>
+
+<h2 id="ref-9-erreurs-courantes-à-éviter">9 — Erreurs courantes à éviter</h2>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Accéder à une clé inexistante avec <code>[]</code></strong></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">london = {&quot;country&quot;: &quot;England&quot;}
+london[&quot;population&quot;]      # KeyError — la clé &quot;population&quot; n&#x27;existe pas
+london.get(&quot;population&quot;)  # None     — pas d&#x27;erreur, retourne None</code></pre></div></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Utiliser une liste comme clé</strong></p>
+<p>Les clés doivent être des valeurs "hashables" (immuables). Les listes ne le sont pas.</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">d = {[1, 2]: &quot;valeur&quot;}   # TypeError: unhashable type: &#x27;list&#x27;
+d = {(1, 2): &quot;valeur&quot;}   # OK — un tuple est immuable, donc utilisable comme clé</code></pre></div></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Oublier que les clés sont uniques</strong></p>
+<p>Si tu définis deux fois la même clé dans un dict, la deuxième valeur écrase la première, sans avertissement.</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">d = {&quot;age&quot;: 20, &quot;age&quot;: 30}   # Python accepte ça sans erreur
+print(d)                      # {&quot;age&quot;: 30} — la valeur 20 a disparu</code></pre></div></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Modifier un dict pendant qu'on itère dessus</strong></p>
+<p>Supprimer ou ajouter des clés en pleine boucle provoque une <code>RuntimeError</code>.</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">for key in london:
+    del london[key]           # RuntimeError: dictionary changed size during iteration
+
+# Solution : itérer sur une copie des clés
+for key in list(london.keys()):
+    del london[key]           # OK — on itère sur une liste figée</code></pre></div></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>1.</strong> Quelle est la différence entre <code>d[&quot;cle&quot;]</code> et <code>d.get(&quot;cle&quot;)</code> ? Dans quel cas préfères-tu l'un à l'autre ?</p>
+
+<p><strong>2.</strong> Tu as ce dictionnaire :</p>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">produit = {&quot;nom&quot;: &quot;Stylo&quot;, &quot;prix&quot;: 1.5, &quot;stock&quot;: 200}</code></pre></div>
+
+<p>Comment augmentes-tu le stock de 50 unités ? Ecris le code.</p>
+
+<p><strong>3.</strong> Que produit ce code ? Explique pourquoi.</p>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">panier = {&quot;pomme&quot;: 3, &quot;banane&quot;: 2, &quot;pomme&quot;: 5}
+print(len(panier))</code></pre></div>
+
+
+<p><strong>4.</strong> A partir de ces deux listes, construis un dictionnaire avec une dict comprehension :</p>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">villes = [&quot;Paris&quot;, &quot;Lyon&quot;, &quot;Marseille&quot;]
+populations = [2_161_000, 515_000, 861_000]</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Un <strong>dictionnaire</strong> (<code>dict</code>) stocke des paires <code>clé: valeur</code> entre accolades <code>{}</code>.</li>
+<li>On accède à une valeur avec <code>d[&quot;cle&quot;]</code> (plante si la clé est absente) ou <code>d.get(&quot;cle&quot;)</code> (retourne <code>None</code>, plus sûr).</li>
+<li>On ajoute ou modifie une entrée avec <code>d[&quot;cle&quot;] = valeur</code> — même syntaxe dans les deux cas.</li>
+<li>On supprime avec <code>del d[&quot;cle&quot;]</code> (sans retour) ou <code>d.pop(&quot;cle&quot;)</code> (retourne la valeur supprimée).</li>
+<li><code>len(d)</code> donne le nombre de clés ; <code>&quot;cle&quot; in d</code> teste l'existence d'une clé.</li>
+<li>Pour parcourir : <code>for k in d</code> (clés), <code>for v in d.values()</code> (valeurs), <code>for k, v in d.items()</code> (les deux).</li>
+<li>Les clés sont <strong>uniques</strong> — assigner deux fois la même clé écrase silencieusement la première valeur.</li>
+<li>Les clés doivent être <strong>immuables</strong> (strings, nombres, tuples) — les listes ne peuvent pas être des clés.</li>
+<li>La <strong>dict comprehension</strong> <code>{k: v for k, v in source}</code> crée un dict en une ligne à partir d'une séquence.</li>
+<li>Ne jamais modifier un dict pendant qu'on itère dessus — itérer sur <code>list(d.keys())</code> à la place.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-le-dict-hashmap-omniprésent">Le dict, hashmap omniprésent</a></li><li><a href="#syn-création-lecture-écriture">Création, lecture, écriture</a></li><li><a href="#syn-itération-sur-un-dict">Itération sur un dict</a></li><li><a href="#syn-patterns-courants">Patterns courants</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-comment-fonctionne-le-hashing">Comment fonctionne le hashing</a></li><li><a href="#syn-defaultdict-et-counter">`defaultdict` et `Counter`</a></li><li><a href="#syn-dict-ordonnés-et-dict-comprehensions">Dict ordonnés et `dict comprehensions`</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-le-dict-hashmap-omniprésent">Le dict, hashmap omniprésent</h3>
+
+<p>Le <strong>dictionnaire</strong> Python est une <strong>table de hachage</strong> : chaque clé est convertie en un entier (le hash), qui sert d'index dans un tableau interne. Conséquence : <code>dict[key]</code> et <code>key in dict</code> sont des opérations en <strong>$O(1)$ amorti</strong>, quel que soit le nombre de clés.</p>
+
+<p>C'est la structure de données la plus utilisée en Python — elle est partout : namespaces (<code>globals()</code>, <code>locals()</code>), attributs d'objets (<code>obj.__dict__</code>), modules, JSON, configurations.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">user = {&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 30, &quot;city&quot;: &quot;Paris&quot;}
+
+user[&quot;name&quot;]                # &quot;Alice&quot; — accès O(1)
+user[&quot;age&quot;] = 31            # Modification
+user[&quot;email&quot;] = &quot;a@x.com&quot;   # Insertion (clé absente)
+del user[&quot;city&quot;]            # Suppression
+&quot;name&quot; in user              # True — test d&#x27;appartenance O(1)
+len(user)                   # 3</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : un dict est une bibliothèque où chaque livre a un emplacement déterminé par un calcul sur son titre. Quand vous cherchez "Le Petit Prince", la bibliothécaire applique la fonction de hachage au titre, va directement à l'étagère 47, case 12, et trouve le livre instantanément. Pas besoin de parcourir tous les rayons.</p></div></div>
+
+<h3 id="syn-création-lecture-écriture">Création, lecture, écriture</h3>
+
+<p><strong>Trois syntaxes de création</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># 1. Littéral (le plus courant)
+d = {&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 3}
+
+# 2. Constructeur
+d = dict(a=1, b=2, c=3)              # Pour des clés qui sont des identifiants
+d = dict([(&quot;a&quot;, 1), (&quot;b&quot;, 2)])       # Depuis une liste de paires
+
+# 3. Comprehension
+d = {k: v**2 for k, v in [(&quot;a&quot;, 1), (&quot;b&quot;, 2)]}
+# {&#x27;a&#x27;: 1, &#x27;b&#x27;: 4}</code></pre></div>
+
+
+<p><strong>L'accès</strong> <code>d[key]</code> lève <code>KeyError</code> si la clé n'existe pas. <strong>Trois alternatives plus sûres</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">d.get(&quot;z&quot;)              # None si absent (pas d&#x27;erreur)
+d.get(&quot;z&quot;, 0)           # 0 par défaut si absent
+d.setdefault(&quot;z&quot;, 0)    # Insère z=0 si absent, renvoie la valeur</code></pre></div>
+
+
+<p><strong><code>setdefault</code></strong> est subtil : il <strong>modifie</strong> le dict si la clé manque. Utile pour grouper :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">words = [&quot;apple&quot;, &quot;ant&quot;, &quot;banana&quot;, &quot;berry&quot;]
+groups = {}
+for word in words:
+    # Ajoute à la liste existante OU crée une nouvelle liste
+    groups.setdefault(word[0], []).append(word)
+# {&#x27;a&#x27;: [&#x27;apple&#x27;, &#x27;ant&#x27;], &#x27;b&#x27;: [&#x27;banana&#x27;, &#x27;berry&#x27;]}</code></pre></div>
+
+
+<h3 id="syn-itération-sur-un-dict">Itération sur un dict</h3>
+
+<p><strong>Trois méthodes</strong> selon ce qu'on veut :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">d = {&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 3}
+
+# Clés seules (par défaut)
+for key in d:
+    print(key)              # a, b, c
+
+# Clés (plus explicite, identique)
+for key in d.keys():
+    print(key)
+
+# Valeurs
+for value in d.values():
+    print(value)            # 1, 2, 3
+
+# Paires (clé, valeur)
+for key, value in d.items():
+    print(f&quot;{key} = {value}&quot;)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : utilisez <strong>toujours <code>.items()</code></strong> quand vous avez besoin des deux. Évitez <code>for k in d: v = d[k]</code> qui fait <strong>deux lookups</strong> au lieu d'un.</p></div></div>
+
+<h3 id="syn-patterns-courants">Patterns courants</h3>
+
+<p><strong>Comptage</strong> d'occurrences :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">words = [&quot;apple&quot;, &quot;banana&quot;, &quot;apple&quot;, &quot;cherry&quot;, &quot;banana&quot;, &quot;apple&quot;]
+counts = {}
+for word in words:
+    counts[word] = counts.get(word, 0) + 1
+# {&#x27;apple&#x27;: 3, &#x27;banana&#x27;: 2, &#x27;cherry&#x27;: 1}
+
+# Version pythonique
+from collections import Counter
+counts = Counter(words)
+counts.most_common(2)        # [(&#x27;apple&#x27;, 3), (&#x27;banana&#x27;, 2)]</code></pre></div>
+
+
+<p><strong>Inversion</strong> clé/valeur :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">d = {&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 3}
+inverted = {v: k for k, v in d.items()}
+# {1: &#x27;a&#x27;, 2: &#x27;b&#x27;, 3: &#x27;c&#x27;}</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège</strong> : si plusieurs clés ont la même valeur, l'inversion en perd : <code>{&quot;a&quot;: 1, &quot;b&quot;: 1}</code> devient <code>{1: &quot;b&quot;}</code> (la dernière écrase). Pour conserver toutes les clés : <code>inverted = {}; for k, v in d.items(): inverted.setdefault(v, []).append(k)</code>.</p></div></div>
+
+<p><strong>Fusion</strong> de deux dicts (Python 3.9+) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">defaults = {&quot;theme&quot;: &quot;dark&quot;, &quot;lang&quot;: &quot;fr&quot;}
+user_prefs = {&quot;lang&quot;: &quot;en&quot;, &quot;font_size&quot;: 14}
+merged = defaults | user_prefs
+# {&#x27;theme&#x27;: &#x27;dark&#x27;, &#x27;lang&#x27;: &#x27;en&#x27;, &#x27;font_size&#x27;: 14}
+# L&#x27;opérande de droite gagne en cas de conflit</code></pre></div>
+
+
+<p><strong>Filtrage</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">scores = {&quot;Alice&quot;: 85, &quot;Bob&quot;: 60, &quot;Charlie&quot;: 92}
+passing = {name: score for name, score in scores.items() if score &gt;= 80}
+# {&#x27;Alice&#x27;: 85, &#x27;Charlie&#x27;: 92}</code></pre></div>
+
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-comment-fonctionne-le-hashing">Comment fonctionne le hashing</h3>
+
+<p>Quand vous faites <code>d[&quot;alice&quot;] = 42</code>, Python :</p>
+
+<ol>
+<li>Calcule <code>hash(&quot;alice&quot;)</code> — un entier (généralement très grand).</li>
+<li>Prend <code>hash(&quot;alice&quot;) % capacity</code> pour obtenir un index dans le tableau interne.</li>
+<li>Stocke la paire <code>(clé, valeur)</code> à cet index.</li>
+</ol>
+
+<p>Quand <strong>deux clés</strong> ont la même position (<strong>collision</strong>), Python utilise un mécanisme appelé <strong>open addressing</strong> : il cherche le slot suivant disponible. Quand le tableau dépasse 2/3 de remplissage, il est <strong>reconstruit</strong> avec une capacité plus grande pour maintenir l'opération moyenne en $O(1)$.</p>
+
+<p><strong>Conséquence cruciale</strong> : les clés doivent être <strong>hashables</strong> (<code>hash(key)</code> doit être implémenté et stable). En pratique :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Type</th><th>Hashable ?</th></tr></thead><tbody><tr><td><code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>, <code>None</code></td><td>Oui</td></tr><tr><td><code>tuple</code></td><td>Oui (si tous ses éléments le sont)</td></tr><tr><td><code>frozenset</code></td><td>Oui</td></tr><tr><td><code>list</code>, <code>dict</code>, <code>set</code></td><td><strong>Non</strong></td></tr><tr><td>Classes custom</td><td>Oui par défaut (basé sur l'identité)</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">d = {(1, 2): &quot;ok&quot;}          # OK : tuple hashable
+d[[1, 2]] = &quot;fail&quot;          # TypeError: unhashable type: &#x27;list&#x27;</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Question d'entretien classique</strong> : <em>"Pourquoi une liste ne peut-elle pas être une clé de dict ?"</em> Réponse : parce qu'elle est <strong>mutable</strong>. Si vous l'utilisiez comme clé puis la modifiiez, son hash changerait — et le dict ne saurait plus retrouver la valeur associée. Python interdit donc cet usage à la racine. Le tuple est safe parce qu'il est immuable par conception.</p></div></div>
+
+<h3 id="syn-defaultdict-et-counter"><code>defaultdict</code> et <code>Counter</code></h3>
+
+<p><code>collections</code> propose deux variantes du dict qui éliminent du boilerplate :</p>
+
+<p><strong><code>defaultdict</code></strong> : crée automatiquement la valeur par défaut quand on accède à une clé inexistante.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from collections import defaultdict
+
+# Sans defaultdict
+groups = {}
+for word in words:
+    if word[0] not in groups:
+        groups[word[0]] = []
+    groups[word[0]].append(word)
+
+# Avec defaultdict — bien plus concis
+groups = defaultdict(list)        # La &quot;factory&quot; est list, qui crée []
+for word in words:
+    groups[word[0]].append(word)  # Si la clé n&#x27;existe pas, crée [] automatiquement</code></pre></div>
+
+
+<p>L'argument de <code>defaultdict</code> est une <strong>factory</strong> : une fonction sans argument qui renvoie la valeur par défaut.</p>
+
+<ul>
+<li><code>defaultdict(list)</code> → <code>[]</code></li>
+<li><code>defaultdict(int)</code> → <code>0</code> (utile pour des compteurs)</li>
+<li><code>defaultdict(dict)</code> → <code>{}</code> (nested dicts)</li>
+</ul>
+
+<p><strong><code>Counter</code></strong> : compteur multi-éléments avec API riche.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from collections import Counter
+
+c = Counter(&quot;mississippi&quot;)
+# Counter({&#x27;i&#x27;: 4, &#x27;s&#x27;: 4, &#x27;p&#x27;: 2, &#x27;m&#x27;: 1})
+
+c.most_common(2)            # [(&#x27;i&#x27;, 4), (&#x27;s&#x27;, 4)]
+c[&quot;i&quot;]                      # 4
+c[&quot;z&quot;]                      # 0 — pas de KeyError pour les clés absentes
+c.update(&quot;missouri&quot;)        # Incrémente les compteurs
+
+# Opérations arithmétiques entre Counters
+c1 = Counter(&quot;apple&quot;)
+c2 = Counter(&quot;ape&quot;)
+c1 - c2                     # Counter({&#x27;p&#x27;: 1, &#x27;l&#x27;: 1}) — soustraction
+c1 + c2                     # Counter({&#x27;p&#x27;: 3, &#x27;a&#x27;: 2, &#x27;e&#x27;: 2, &#x27;l&#x27;: 1})</code></pre></div>
+
+
+<h3 id="syn-dict-ordonnés-et-dict-comprehensions">Dict ordonnés et <code>dict comprehensions</code></h3>
+
+<p><strong>Depuis Python 3.7</strong>, les dicts conservent <strong>garantissement</strong> l'ordre d'insertion. Avant 3.6, l'ordre était indéterminé.</p>
+
+<p>Cette garantie permet des patterns intéressants :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Dédupliquer en préservant l&#x27;ordre
+items = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+unique = list(dict.fromkeys(items))
+# [3, 1, 4, 5, 9, 2, 6]</code></pre></div>
+
+
+<p><code>dict.fromkeys(items)</code> crée un dict avec les éléments comme clés et <code>None</code> comme valeur. Les clés étant uniques par définition, on dédoublonne. L'ordre d'insertion est préservé.</p>
+
+<p><strong>Dict comprehensions</strong> suivent la même syntaxe que les list comprehensions :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Carré de chaque entier
+squares = {x: x**2 for x in range(5)}
+# {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+
+# Inverser un dict
+inverted = {v: k for k, v in d.items()}
+
+# Conditionner
+filtered = {k: v for k, v in d.items() if v &gt; 0}</code></pre></div>
+
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Quelle est la complexité moyenne et pire-cas de <code>key in dict</code>, et qu'est-ce qui peut faire dégénérer le dict en O(n) ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Collisions de hash.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>En moyenne</strong> : $O(1)$.</p>
+
+<p><strong>Pire cas théorique</strong> : $O(n)$, qui se produit quand toutes les clés ont le même hash — donc toutes finissent à la même position et Python doit parcourir une chaîne linéaire.</p>
+
+<p>En pratique cela n'arrive que si quelqu'un crée des clés <strong>conçues exprès</strong> pour entrer en collision — c'est l'attaque <strong>hash flooding</strong>, qui a déjà été un vecteur d'attaque DoS sur des serveurs web.</p>
+
+<p>Python a depuis introduit une <strong>randomisation du hash de strings</strong> au démarrage de l'interpréteur (<code>PYTHONHASHSEED</code>) pour rendre cette attaque imprédictible. Pour les dicts construits par votre application avec des clés normales (strings, ints, tuples), vous restez en $O(1)$ amorti.</p>
+
+</details>
+
+<p><strong>Q2 : Vous voulez stocker en dict des objets de classe <code>Point</code> (avec <code>.x</code> et <code>.y</code>). Pourquoi ça ne marche pas par défaut, et comment réparer ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p><code>__hash__</code> et <code>__eq__</code>.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Par défaut</strong>, les classes Python ont un <code>__hash__</code> basé sur l'<strong>identité</strong> (id en mémoire), donc deux objets <code>Point(1, 2)</code> et <code>Point(1, 2)</code> créés séparément ont des hash différents et sont considérés comme des clés différentes.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">class Point:
+    def __init__(self, x, y):
+        self.x, self.y = x, y
+
+p1 = Point(1, 2)
+p2 = Point(1, 2)
+d = {p1: &quot;a&quot;}
+d[p2]              # KeyError ! Alors qu&#x27;on a les mêmes valeurs</code></pre></div>
+
+
+<p>Pour qu'ils soient interchangeables, il faut implémenter <code>__hash__</code> ET <code>__eq__</code> de manière <strong>cohérente</strong> : deux objets égaux doivent avoir le même hash.</p>
+
+<p><strong>Solution moderne avec <code>@dataclass(frozen=True)</code></strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from dataclasses import dataclass
+
+@dataclass(frozen=True)   # frozen=True génère __hash__ ET __eq__ automatiquement
+class Point:
+    x: int
+    y: int
+
+p1 = Point(1, 2)
+p2 = Point(1, 2)
+d = {p1: &quot;a&quot;}
+d[p2]              # &#x27;a&#x27; — fonctionne !</code></pre></div>
+
+
+<p>Le <code>frozen=True</code> fait <strong>deux</strong> choses : (1) rend l'instance immuable (le hash reste stable) et (2) génère <code>__hash__</code> basé sur les valeurs des champs.</p>
+
+</details>
+
+<p><strong>Q3 : Vous avez un dict de dict de listes (ex: <code>data[&quot;users&quot;][&quot;alice&quot;][&quot;scores&quot;]</code>) et vous voulez <code>data[&quot;users&quot;][&quot;bob&quot;][&quot;scores&quot;].append(95)</code>. Que se passe-t-il si "bob" n'existe pas, et comment gérer proprement ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Nested defaultdict.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Vous obtenez <strong><code>KeyError: &#x27;bob&#x27;</code></strong> parce que <code>data[&quot;users&quot;][&quot;bob&quot;]</code> n'existe pas.</p>
+
+<p><strong>Trois solutions</strong> de plus en plus élégantes :</p>
+
+<p><strong>1. <code>setdefault</code> chaîné</strong> — verbeux mais explicite :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">data[&quot;users&quot;].setdefault(&quot;bob&quot;, {}).setdefault(&quot;scores&quot;, []).append(95)</code></pre></div>
+
+
+<p><strong>2. <code>defaultdict</code> à deux niveaux</strong> — beaucoup plus propre :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from collections import defaultdict
+data = {&quot;users&quot;: defaultdict(lambda: defaultdict(list))}
+data[&quot;users&quot;][&quot;bob&quot;][&quot;scores&quot;].append(95)    # Crée tout automatiquement</code></pre></div>
+
+
+<p><strong>3. Arbre récursif</strong> pour des structures <strong>profondes</strong> à profondeur variable :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from collections import defaultdict
+
+def tree():
+    return defaultdict(tree)
+
+data = tree()
+data[&quot;users&quot;][&quot;bob&quot;][&quot;scores&quot;] = [95]   # Crée toute la chaîne automatiquement
+data[&quot;users&quot;][&quot;alice&quot;][&quot;info&quot;][&quot;city&quot;] = &quot;Paris&quot;  # Profondeur arbitraire</code></pre></div>
+
+
+<p><strong>Tip pratique</strong> : pour de la donnée structurée plus complexe, ne réinventez pas la roue — utilisez <code>pydantic</code> ou des <code>dataclass</code> qui apportent <strong>validation</strong> et <strong>auto-complétion</strong> IDE.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><a href="https://docs.python.org/3/library/stdtypes.html#mapping-types-dict" target="_blank" rel="noopener">Python <code>dict</code> documentation</a></li>
+<li><a href="https://docs.python.org/3/library/collections.html" target="_blank" rel="noopener">collections — defaultdict, Counter, OrderedDict</a></li>
+<li><a href="https://peps.python.org/pep-0468/" target="_blank" rel="noopener">PEP 468 — Preserving Keyword Argument Order</a> — l'origine de l'ordre des dicts</li>
+<li><em>Fluent Python</em> (Luciano Ramalho), chapitre 3 sur les dicts et sets</li>
+<li><a href="https://www.python.org/dev/security/" target="_blank" rel="noopener">Hash flooding attacks</a> — la sécurité derrière <code>PYTHONHASHSEED</code></li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../python-sql/list-and-loops.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Lists & loops</span>
+  </a>
+  <a href="../python-sql/classes.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Classes →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

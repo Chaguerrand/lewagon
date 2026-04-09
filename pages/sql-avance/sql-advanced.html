@@ -1,0 +1,1965 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL (avancé) — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">SQL (avancé)</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html" class="active">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">SQL avancé</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>SQL (avancé)</span>
+      </div>
+
+      <div class="page-header">
+        <h1>SQL (avancé)</h1>
+        <p class="page-objective">Maîtriser SQL pour interroger, manipuler et analyser des données relationnelles, et intégrer SQL dans des workflows Python avec pandas.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">CTE (`WITH`)</div>
+        <div class="key-concept-def">Sous-requête nommée et réutilisable dans la suite d&#x27;une requête.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Window function</div>
+        <div class="key-concept-def">`OVER (PARTITION BY … ORDER BY …)` pour calculs cumulatifs et rangs.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Index</div>
+        <div class="key-concept-def">Structure auxiliaire qui accélère drastiquement les `WHERE` et `JOIN`.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Plan d&#x27;exécution</div>
+        <div class="key-concept-def">Stratégie que la base choisit pour exécuter votre requête (`EXPLAIN`).</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-sql">Cheatsheet — SQL</a><ol><li><a href="#ordre-des-clauses">Ordre des clauses</a></li><li><a href="#agrégations">Agrégations</a></li><li><a href="#arithmétique-fonctions">Arithmétique & fonctions</a></li><li><a href="#jointures">Jointures</a></li><li><a href="#window-functions">Window Functions</a></li><li><a href="#cte-avec-with">CTE avec `WITH`</a></li><li><a href="#crud-dml">CRUD (DML)</a></li><li><a href="#sql-python-pandas">SQL + Python (pandas)</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-rappels-sql-les-8-clauses-clés">1) Rappels SQL — Les 8 clauses clés</a><li><a href="#2-travailler-avec-les-données">2) Travailler avec les données</a><ol><li><a href="#21-arithmétique-sur-une-colonne">2.1 Arithmétique sur une colonne</a></li><li><a href="#22-combiner-plusieurs-colonnes">2.2 Combiner plusieurs colonnes</a></li><li><a href="#23-fonctions-sur-les-chaînes">2.3 Fonctions sur les chaînes</a></li></ol></li><li><a href="#3-jointures-sql">3) Jointures SQL</a><ol><li><a href="#31-inner-join">3.1 INNER JOIN</a></li><li><a href="#32-left-join">3.2 LEFT JOIN</a></li><li><a href="#33-right-join">3.3 RIGHT JOIN</a></li><li><a href="#34-full-outer-join">3.4 FULL OUTER JOIN</a></li><li><a href="#35-self-join">3.5 SELF JOIN</a></li></ol></li><li><a href="#4-window-functions">4) Window Functions</a><ol><li><a href="#41-setup-de-la-base-ecommerce">4.1 Setup de la base ecommerce</a></li><li><a href="#42-agrégation-globale-vs-window">4.2 Agrégation globale vs window</a></li><li><a href="#43-partition-par-client">4.3 Partition par client</a></li><li><a href="#44-cumul-dans-le-temps">4.4 Cumul dans le temps</a></li><li><a href="#45-rang-des-commandes">4.5 Rang des commandes</a></li></ol></li><li><a href="#5-clause-with-cte-common-table-expression">5) Clause `WITH` — CTE (Common Table Expression)</a><ol><li><a href="#51-pourquoi-utiliser-with">5.1 Pourquoi utiliser WITH ?</a></li><li><a href="#52-exemple-calcul-de-la-variance">5.2 Exemple : calcul de la variance</a></li><li><a href="#53-exemple-avancé-nombre-cumulé-de-matchs-par-mois">5.3 Exemple avancé : nombre cumulé de matchs par mois</a></li></ol></li><li><a href="#6-sql-et-python-pandas">6) SQL et Python (pandas)</a><ol><li><a href="#61-connexion-avec-sqlite3">6.1 Connexion avec sqlite3</a></li><li><a href="#62-requêtes-dynamiques-éviter-les-injections-sql">6.2 Requêtes dynamiques — éviter les injections SQL</a></li><li><a href="#63-connexion-à-dautres-bases-postgresql-bigquery">6.3 Connexion à d'autres bases (PostgreSQL, BigQuery...)</a></li></ol></li><li><a href="#7-crud-manipulation-des-données-dml">7) CRUD — Manipulation des données (DML)</a><ol><li><a href="#71-create-insérer-une-ligne">7.1 CREATE — Insérer une ligne</a></li><li><a href="#72-update-modifier-des-lignes">7.2 UPDATE — Modifier des lignes</a></li><li><a href="#73-delete-supprimer-des-lignes">7.3 DELETE — Supprimer des lignes</a></li></ol></li><li><a href="#8-annexe-sql-injection">8) Annexe — SQL Injection 😈</a><li><a href="#bibliographie">Bibliographie</a></ol></div>
+<p>Maîtriser SQL pour interroger, manipuler et analyser des données relationnelles, et intégrer SQL dans des workflows Python avec pandas.</p>
+
+<hr>
+
+<h2 id="cheatsheet-sql">📋 Cheatsheet — SQL</h2>
+
+<h3 id="ordre-des-clauses">Ordre des clauses</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT col1, col2        -- colonnes à afficher
+  FROM table             -- source principale
+  JOIN other ON ...      -- jointure (optionnelle)
+ WHERE condition         -- filtre sur les lignes
+ GROUP BY col1           -- regroupement
+HAVING condition         -- filtre sur l&#x27;agrégat
+ ORDER BY col1 DESC      -- tri du résultat
+ LIMIT 10                -- nombre de lignes à retourner</code></pre></div>
+
+
+<h3 id="agrégations">Agrégations</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(*)                          -- nombre total de lignes
+       MIN(weight), MAX(weight),         -- min et max
+       AVG(weight), SUM(weight)          -- moyenne et somme
+  FROM Player
+
+SELECT country_id, COUNT(*)              -- agrégat par groupe
+  FROM &quot;Match&quot;
+ GROUP BY country_id</code></pre></div>
+
+
+<h3 id="arithmétique-fonctions">Arithmétique & fonctions</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">ROUND(MIN(weight) / 2.205, 0)           -- division + arrondi
+POWER(height / 100, 2)                  -- mise au carré
+SUBSTR(name, 1, 3)                      -- extrait les 3 premiers caractères
+UPPER(name), LOWER(name)                -- mise en majuscules / minuscules
+LENGTH(name)                            -- longueur de la chaîne
+REPLACE(name, &#x27;old&#x27;, &#x27;new&#x27;)             -- remplacement de sous-chaîne
+COALESCE(value, &#x27;default&#x27;)              -- remplace NULL par une valeur par défaut
+STRFTIME(&#x27;%Y-%m&#x27;, DATE(col))            -- formatage de date</code></pre></div>
+
+
+<h3 id="jointures">Jointures</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- INNER JOIN : lignes communes aux deux tables
+SELECT * FROM League
+  JOIN Country ON Country.id = League.country_id
+
+-- LEFT JOIN : toutes les lignes de gauche, NULL si pas de correspondance
+SELECT * FROM League
+  LEFT JOIN Country ON Country.id = League.country_id
+
+-- SELF JOIN : une table jointe à elle-même
+SELECT e.name, m.name AS manager
+  FROM employees e
+  LEFT JOIN employees m ON m.id = e.manager_id</code></pre></div>
+
+
+<h3 id="window-functions">Window Functions</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SUM(amount) OVER()                               -- agrégat sur toute la table
+SUM(amount) OVER(PARTITION BY customer_id)       -- agrégat par partition
+SUM(amount) OVER(PARTITION BY customer_id        -- cumul ordonné
+                 ORDER BY ordered_at)
+RANK() OVER(PARTITION BY customer_id             -- rang dans chaque partition
+            ORDER BY ordered_at)</code></pre></div>
+
+
+<h3 id="cte-avec-with">CTE avec <code>WITH</code></h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">WITH tmp AS (
+    SELECT AVG(weight) AS avg_weight    -- sous-requête nommée
+      FROM Player
+)
+SELECT AVG(POWER(weight - tmp.avg_weight, 2)) AS var_weight
+  FROM Player, tmp                      -- utilisation du CTE</code></pre></div>
+
+
+<h3 id="crud-dml">CRUD (DML)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">INSERT INTO table (col1, col2) VALUES (val1, val2)   -- insertion
+UPDATE table SET col1 = val1 WHERE condition          -- mise à jour
+DELETE FROM table WHERE condition                     -- suppression</code></pre></div>
+
+
+<h3 id="sql-python-pandas">SQL + Python (pandas)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sqlite3 import connect
+import pandas as pd
+
+with connect(&#x27;data/soccer.sqlite&#x27;) as conn:     # connexion avec context manager
+    query = &quot;&quot;&quot;SELECT * FROM Player&quot;&quot;&quot;
+    df = pd.read_sql(query, con=conn)           # charge le résultat en DataFrame
+
+## Requête paramétrée (sécurisée contre les injections SQL)
+with connect(&#x27;data/soccer.sqlite&#x27;) as conn:
+    query = &quot;&quot;&quot;SELECT * FROM Player WHERE player_name LIKE ?&quot;&quot;&quot;
+    df = pd.read_sql(query, con=conn, params=[&quot;John%&quot;])  # ? remplacé par la valeur</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Mauvais ordre des clauses SQL</strong></p>
+<p>L'ordre <code>SELECT → FROM → JOIN → WHERE → GROUP BY → HAVING → ORDER BY → LIMIT</code> est obligatoire.</p>
+<p>❌ <code>WHERE ... GROUP BY ... FROM</code> → erreur de syntaxe</p>
+<p>✅ <code>SELECT ... FROM ... WHERE ... GROUP BY ...</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>SELECT avec GROUP BY : colonnes non agrégées</strong></p>
+<p>Toute colonne dans <code>SELECT</code> doit être dans <code>GROUP BY</code> ou dans une fonction d'agrégation.</p>
+<p>❌ <code>SELECT country_id, name, COUNT(*) FROM Match GROUP BY country_id</code></p>
+<p>✅ <code>SELECT country_id, COUNT(*) FROM Match GROUP BY country_id</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser f-string pour les paramètres SQL (injection)</strong></p>
+<p>L'interpolation de chaîne dans les requêtes SQL expose à des injections malveillantes.</p>
+<p>❌ <code>query = f&quot;SELECT * FROM users WHERE name = &#x27;{name}&#x27;&quot;</code></p>
+<p>✅ <code>pd.read_sql(query, con=conn, params=[name])</code> avec <code>WHERE name = ?</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre WHERE et HAVING</strong></p>
+<p><code>WHERE</code> filtre les lignes avant l'agrégation, <code>HAVING</code> filtre après.</p>
+<p>❌ <code>SELECT country_id, COUNT(<em>) FROM Match WHERE COUNT(</em>) &gt; 10 GROUP BY country_id</code></p>
+<p>✅ <code>SELECT country_id, COUNT(<em>) FROM Match GROUP BY country_id HAVING COUNT(</em>) &gt; 10</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Oublier de fermer la connexion à la base</strong></p>
+<p>Sans <code>with</code>, la connexion reste ouverte si le code plante.</p>
+<p>❌ <code>conn = connect(&#x27;db.sqlite&#x27;)</code> sans <code>conn.close()</code> ni <code>with</code></p>
+<p>✅ <code>with connect(&#x27;db.sqlite&#x27;) as conn:</code> — fermeture automatique garantie</p></div></div>
+
+<hr>
+
+<h2 id="1-rappels-sql-les-8-clauses-clés">1) Rappels SQL — Les 8 clauses clés</h2>
+
+<p>🤔 Dans l'ordre, les 8 mots-clés fondamentaux :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Clause</th><th>Rôle</th><th></th><th></th></tr></thead><tbody><tr><td><code>SELECT</code></td><td>Colonnes à afficher</td><td></td><td></td></tr><tr><td><code>FROM</code></td><td>Table source</td><td></td><td></td></tr><tr><td><code>JOIN ... ON</code></td><td>Jointure avec une autre table</td><td></td><td></td></tr><tr><td><code>WHERE</code></td><td>Filtre sur les lignes</td><td></td><td></td></tr><tr><td><code>GROUP BY</code></td><td>Regroupement des données</td><td></td><td></td></tr><tr><td><code>HAVING</code></td><td>Filtre sur les groupes agrégés</td><td></td><td></td></tr><tr><td><code>ORDER BY</code></td><td>Tri du résultat</td><td></td><td></td></tr><tr><td><code>LIMIT</code></td><td>Nombre de lignes à retourner</td><td></td><td></td></tr></tbody></table></div>
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>L'ordre des clauses est <strong>obligatoire</strong> — toujours écrire les instructions dans cet ordre.</p></div></div>
+
+<hr>
+
+<h2 id="2-travailler-avec-les-données">2) Travailler avec les données</h2>
+
+<h3 id="21-arithmétique-sur-une-colonne">2.1 Arithmétique sur une colonne</h3>
+
+<p>Poids des joueurs converti en kg et arrondi :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(*),
+       ROUND(MIN(weight) / 2.205, 0) AS min_weight,
+       ROUND(AVG(weight) / 2.205, 0) AS avg_weight,
+       ROUND(MAX(weight) / 2.205, 0) AS max_weight
+  FROM Player</code></pre></div>
+
+
+<h3 id="22-combiner-plusieurs-colonnes">2.2 Combiner plusieurs colonnes</h3>
+
+<p>Calcul du BMI moyen (poids / taille²) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT ROUND(
+         AVG(
+           weight / 2.205 / POWER(height / 100, 2)
+         )
+       ) AS bmi
+  FROM Player</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Bien indenter les calculs imbriqués améliore la lisibilité.</p></div></div>
+
+<h3 id="23-fonctions-sur-les-chaînes">2.3 Fonctions sur les chaînes</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SUBSTR(name, 1, 3)     -- extrait un sous-ensemble de caractères
+INSTR(name, &#x27;a&#x27;)       -- position d&#x27;un caractère dans la chaîne
+TRIM(name)             -- supprime les espaces en début et fin
+LENGTH(name)           -- longueur de la chaîne
+UPPER(name)            -- met en majuscules
+LOWER(name)            -- met en minuscules
+REPLACE(name, &#x27;x&#x27;, &#x27;y&#x27;) -- remplace une sous-chaîne</code></pre></div>
+
+
+<p>👉 <a href="http://sqlitetutorial.net/sqlite-string-functions/" target="_blank" rel="noopener">sqlitetutorial.net/sqlite-string-functions/</a></p>
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>Fonctions disponibles en PostgreSQL uniquement (pas dans SQLite) : <code>LEFT(string, n)</code>, <code>RIGHT(string, n)</code>, <code>POSITION(pattern IN string)</code></p></div></div>
+
+<hr>
+
+<h2 id="3-jointures-sql">3) Jointures SQL</h2>
+
+<h3 id="31-inner-join">3.1 INNER JOIN</h3>
+
+<p>Retourne uniquement les lignes qui ont une correspondance dans les deux tables.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT *
+  FROM League
+  JOIN Country
+    ON Country.id = League.country_id</code></pre></div>
+
+
+<h3 id="32-left-join">3.2 LEFT JOIN</h3>
+
+<p>Conserve toutes les lignes de la table de gauche, même sans correspondance à droite (valeur <code>NULL</code>).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT *
+  FROM League
+  LEFT JOIN Country
+    ON Country.id = League.country_id</code></pre></div>
+
+
+<p>Remplacer les <code>NULL</code> avec <code>COALESCE</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT League.id,
+       League.name,
+       COALESCE(Country.name, &#x27;Unknown&#x27;) AS country_name   -- &#x27;Unknown&#x27; si NULL
+  FROM League
+  LEFT JOIN Country
+    ON Country.id = League.country_id</code></pre></div>
+
+
+<h3 id="33-right-join">3.3 RIGHT JOIN</h3>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>RIGHT JOIN</code> est rarement utilisé — on préfère inverser les tables dans un <code>LEFT JOIN</code>, qui est plus lisible.</p></div></div>
+
+<h3 id="34-full-outer-join">3.4 FULL OUTER JOIN</h3>
+
+<p>Retourne toutes les lignes des deux tables, avec <code>NULL</code> là où il n'y a pas de correspondance.</p>
+
+<p>👉 <a href="http://www.sqlservertutorial.net/sql-server-basics/sql-server-full-outer-join/" target="_blank" rel="noopener">Exemple Project & Members</a></p>
+
+<h3 id="35-self-join">3.5 SELF JOIN</h3>
+
+<p>Joindre une table à elle-même (ex : trouver le manager de chaque employé).</p>
+
+<p>Table <code>employees</code> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>id</th><th>name</th><th>title</th><th>manager_id</th></tr></thead><tbody><tr><td>1</td><td>Steve Jobs</td><td>CEO</td><td>NULL</td></tr><tr><td>2</td><td>Tim Cook</td><td>COO</td><td>1</td></tr><tr><td>3</td><td>Jony Ive</td><td>CDO</td><td>1</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT employees.id,
+       employees.name,
+       employees.title,
+       managers.name AS manager          -- nom du manager via self join
+  FROM employees
+  LEFT JOIN employees AS managers
+    ON managers.id = employees.manager_id</code></pre></div>
+
+
+<p>Résultat :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>id</th><th>name</th><th>title</th><th>manager</th></tr></thead><tbody><tr><td>1</td><td>Steve Jobs</td><td>CEO</td><td>NULL</td></tr><tr><td>2</td><td>Tim Cook</td><td>COO</td><td>Steve Jobs</td></tr><tr><td>3</td><td>Jony Ive</td><td>CDO</td><td>Steve Jobs</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="4-window-functions">4) Window Functions</h2>
+
+<p>Une window function effectue un calcul sur un ensemble de lignes lié à la ligne courante <strong>sans regrouper</strong> les lignes en une seule.</p>
+
+<h3 id="41-setup-de-la-base-ecommerce">4.1 Setup de la base ecommerce</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Bash</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-bash">## Dans le répertoire de travail :
+mkdir -p data
+curl https://gist.githubusercontent.com/krokrob/bbfc76830e80477ebf0724dd36bca66a/raw/ecommerce.py | python
+ls -lh ./data   # ecommerce.sqlite a été créé</code></pre></div>
+
+
+<h3 id="42-agrégation-globale-vs-window">4.2 Agrégation globale vs window</h3>
+
+<p>Part de chaque commande dans le total des ventes :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Sans window function : une seule ligne retournée
+SELECT SUM(amount) FROM orders
+
+-- Avec OVER() : agrégat calculé pour chaque ligne
+SELECT amount,
+       SUM(amount) OVER() AS total,                           -- total global
+       amount / SUM(amount) OVER() AS share                   -- part de chaque commande
+  FROM orders</code></pre></div>
+
+
+<h3 id="43-partition-par-client">4.3 Partition par client</h3>
+
+<p>Part de chaque commande dans le total <strong>par client</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT amount,
+       SUM(amount) OVER(PARTITION BY customer_id) AS total,   -- total par client
+       amount / SUM(amount) OVER(PARTITION BY customer_id) AS share
+  FROM orders</code></pre></div>
+
+
+<h3 id="44-cumul-dans-le-temps">4.4 Cumul dans le temps</h3>
+
+<p>Montant cumulé des commandes par client, dans l'ordre chronologique :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Étape 1 : cumul par client
+SELECT orders.customer_id,
+       orders.ordered_at,
+       orders.amount,
+       SUM(orders.amount) OVER (
+         PARTITION BY orders.customer_id
+         ORDER BY orders.ordered_at          -- cumul dans l&#x27;ordre des dates
+       ) AS cumulative_amount
+  FROM orders</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Étape 2 : ajout des infos client via JOIN
+SELECT customers.first_name,
+       customers.last_name,
+       orders.ordered_at,
+       SUM(orders.amount) OVER (
+         PARTITION BY orders.customer_id
+         ORDER BY orders.ordered_at
+       ) AS cumulative_amount
+  FROM customers
+  LEFT JOIN orders ON orders.customer_id = customers.id</code></pre></div>
+
+
+<h3 id="45-rang-des-commandes">4.5 Rang des commandes</h3>
+
+<p>Rang de chaque commande pour chaque client (utile comme feature ML) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT orders.id,
+       orders.ordered_at,
+       orders.customer_id,
+       RANK() OVER (
+         PARTITION BY orders.customer_id
+         ORDER BY orders.ordered_at          -- 1ère, 2ème commande...
+       ) AS order_rank
+  FROM orders</code></pre></div>
+
+
+<hr>
+
+<h2 id="5-clause-with-cte-common-table-expression">5) Clause <code>WITH</code> — CTE (Common Table Expression)</h2>
+
+<p>👉 <a href="https://www.sqlite.org/draft/lang_with.html" target="_blank" rel="noopener">Documentation SQLite WITH</a></p>
+
+<h3 id="51-pourquoi-utiliser-with">5.1 Pourquoi utiliser WITH ?</h3>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Les CTEs permettent de nommer des sous-requêtes pour les réutiliser, rendant le code SQL plus lisible et évitant les sous-requêtes imbriquées.</p></div></div>
+
+<h3 id="52-exemple-calcul-de-la-variance">5.2 Exemple : calcul de la variance</h3>
+
+<p>En BigQuery/PostgreSQL, <code>VARIANCE()</code> existe nativement. En SQLite, il faut le calculer manuellement.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Toujours préciser son <strong>dialecte SQL</strong> lors des recherches — les fonctions varient selon la base de données.</p></div></div>
+
+<p><strong>Avec sous-requête imbriquée (peu lisible) :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT AVG(
+         POWER(weight - (SELECT AVG(weight) FROM Player), 2)  -- difficile à lire
+       ) AS var_weight
+  FROM Player</code></pre></div>
+
+
+<p><strong>Avec CTE (recommandé) :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">WITH tmp AS (
+    SELECT AVG(weight) AS avg_weight   -- étape 1 : calcul de la moyenne
+      FROM Player
+)
+SELECT AVG(
+         POWER(weight - tmp.avg_weight, 2)   -- étape 2 : variance
+       ) AS var_weight
+  FROM Player, tmp</code></pre></div>
+
+
+<p><strong>Avec window function :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">WITH tmp AS (
+    SELECT POWER(weight - AVG(weight) OVER(), 2) AS var_weight  -- écart au carré
+      FROM Player
+)
+SELECT AVG(var_weight) AS var_weight   -- variance finale
+  FROM tmp</code></pre></div>
+
+
+<h3 id="53-exemple-avancé-nombre-cumulé-de-matchs-par-mois">5.3 Exemple avancé : nombre cumulé de matchs par mois</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Étape 1 : nombre de matchs par mois
+SELECT STRFTIME(&#x27;%Y-%m&#x27;, DATE(matches.date)) AS period,
+       COUNT(*) AS cnt
+  FROM &quot;Match&quot; AS matches
+ GROUP BY period
+ ORDER BY period</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Étape 2 : cumul avec window function via CTE
+WITH matches_per_month AS (
+    SELECT STRFTIME(&#x27;%Y-%m&#x27;, DATE(matches.date)) AS period,
+           COUNT(*) AS cnt
+      FROM &quot;Match&quot; AS matches
+     GROUP BY period
+     ORDER BY period
+)
+SELECT matches_per_month.period,
+       SUM(matches_per_month.cnt) OVER (
+         ORDER BY matches_per_month.period    -- cumul dans l&#x27;ordre chronologique
+       ) AS cumulative_count
+  FROM matches_per_month</code></pre></div>
+
+
+<hr>
+
+<h2 id="6-sql-et-python-pandas">6) SQL et Python (pandas)</h2>
+
+<h3 id="61-connexion-avec-sqlite3">6.1 Connexion avec sqlite3</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sqlite3 import connect
+import pandas as pd
+
+## Téléchargement de la base
+## !mkdir -p data
+## !curl -s https://wagon-public-datasets.s3.amazonaws.com/sql_databases/soccer.sqlite &gt; data/soccer.sqlite
+
+with connect(&#x27;data/soccer.sqlite&#x27;) as conn:    # context manager : connexion fermée automatiquement
+    query = &quot;&quot;&quot;
+        SELECT *
+          FROM Player
+    &quot;&quot;&quot;
+    players_df = pd.read_sql(query, con=conn)  # retourne un DataFrame pandas
+
+players_df.head()</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le <code>with</code> (context manager) garantit que la connexion est fermée même si une erreur survient. Équivalent à <code>conn.close()</code> mais plus robuste.</p></div></div>
+
+<h3 id="62-requêtes-dynamiques-éviter-les-injections-sql">6.2 Requêtes dynamiques — éviter les injections SQL</h3>
+
+<p>❌ <strong>Mauvaise pratique : f-string (vulnérable aux injections)</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">name = &quot;John%&quot;
+
+with connect(&#x27;data/soccer.sqlite&#x27;) as conn:
+    query = f&quot;&quot;&quot;
+        SELECT *
+          FROM Player
+         WHERE player_name LIKE &#x27;{name}&#x27;   -- DANGEREUX si name vient d&#x27;un user
+    &quot;&quot;&quot;
+    players_df = pd.read_sql(query, con=conn)</code></pre></div>
+
+
+<p>✅ <strong>Bonne pratique : paramètre substitution</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">name = &quot;Paul%&quot;
+
+with connect(&#x27;data/soccer.sqlite&#x27;) as conn:
+    query = &quot;&quot;&quot;
+        SELECT *
+          FROM Player
+         WHERE player_name LIKE ?          -- ? sera remplacé par le paramètre
+    &quot;&quot;&quot;
+    players_df = pd.read_sql(
+        query,
+        con=conn,
+        params=[name]                      # valeur injectée de façon sécurisée
+    )</code></pre></div>
+
+
+<p><strong>Plusieurs paramètres :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">name = &quot;John%&quot;
+min_weight = 200
+
+with connect(&#x27;data/soccer.sqlite&#x27;) as conn:
+    query = &quot;&quot;&quot;
+        SELECT *
+          FROM Player
+         WHERE player_name LIKE ?          -- 1er paramètre
+           AND weight &gt; ?                  -- 2ème paramètre
+    &quot;&quot;&quot;
+    players_df = pd.read_sql(
+        query,
+        con=conn,
+        params=[name, min_weight]          -- liste des paramètres dans l&#x27;ordre
+    )</code></pre></div>
+
+
+<h3 id="63-connexion-à-dautres-bases-postgresql-bigquery">6.3 Connexion à d'autres bases (PostgreSQL, BigQuery...)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sqlalchemy import create_engine, engine
+
+## Connexion à une base PostgreSQL
+conn = create_engine(
+    engine.url.URL.create(
+        drivername=&#x27;postgresql+psycopg2&#x27;,
+        username=&quot;dbuser&quot;,
+        password=&quot;dbpassword&quot;,             # mot de passe en clair (non encodé)
+        host=&quot;123.456.789&quot;,
+        port=5432,
+        database=&quot;soccer&quot;
+    )
+)
+
+## Utilisation identique à sqlite3
+players_df = pd.read_sql(&quot;SELECT * FROM Player&quot;, conn)</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>👉 <a href="https://www.sqlalchemy.org/" target="_blank" rel="noopener">SQLAlchemy Documentation</a> — pour les connexions à PostgreSQL, MySQL, SQL Server, etc.</p></div></div>
+
+<hr>
+
+<h2 id="7-crud-manipulation-des-données-dml">7) CRUD — Manipulation des données (DML)</h2>
+
+<h3 id="71-create-insérer-une-ligne">7.1 CREATE — Insérer une ligne</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">INSERT INTO table (column1, column2)
+VALUES (value1, value2)               -- insère une nouvelle ligne</code></pre></div>
+
+
+<h3 id="72-update-modifier-des-lignes">7.2 UPDATE — Modifier des lignes</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">UPDATE Country
+SET
+    name = &#x27;République Française&#x27;     -- nouvelle valeur
+WHERE
+    id = 4769                         -- condition de ciblage</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Toujours tester sa condition <code>WHERE</code> avec un <code>SELECT</code> avant d'exécuter un <code>UPDATE</code> ou un <code>DELETE</code>.</p></div></div>
+
+<h3 id="73-delete-supprimer-des-lignes">7.3 DELETE — Supprimer des lignes</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">DELETE FROM Country
+WHERE id = 4769                       -- supprime uniquement les lignes ciblées</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Un <code>DELETE</code> sans <code>WHERE</code> supprime <strong>toutes</strong> les lignes de la table. Toujours vérifier la condition avant d'exécuter.</p></div></div>
+
+<hr>
+
+<h2 id="8-annexe-sql-injection">8) Annexe — SQL Injection 😈</h2>
+
+<p>L'injection SQL exploite une requête construite par f-string pour exécuter du code malveillant.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Requête vulnérable
+def authenticate(username, password):
+    query = f&quot;&quot;&quot;
+        SELECT * FROM users
+        WHERE users.username = &#x27;{username}&#x27;
+        AND users.password = &#x27;{password}&#x27;   -- vulnérable
+    &quot;&quot;&quot;
+    c.execute(query)
+    return &quot;Authorized&quot; if c.fetchone() else &quot;Unauthorized&quot;
+
+authenticate(&quot;john&quot;, &quot;&#x27; OR 1=1 --&quot;)   # contourne le mot de passe !</code></pre></div>
+
+
+<p>La requête exécutée devient :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT * FROM users
+WHERE users.username = &#x27;john&#x27;
+AND users.password = &#x27;&#x27; OR 1=1 --&#x27;    -- la condition est toujours vraie !</code></pre></div>
+
+
+<p>✅ <strong>Solution : paramètre substitution</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def authenticate_safe(username, password):
+    query = &quot;&quot;&quot;
+        SELECT * FROM users
+        WHERE users.username = ?
+        AND users.password = ?          -- ? injecté de façon sécurisée
+    &quot;&quot;&quot;
+    c.execute(query, (username, password))
+    return &quot;Authorized&quot; if c.fetchone() else &quot;Unauthorized&quot;
+
+authenticate_safe(&quot;john&quot;, &quot;&#x27; OR 1=1 --&quot;)   # retourne &#x27;Unauthorized&#x27; ✅</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>👉 <a href="https://docs.python.org/3.7/library/sqlite3.html#sqlite3.Cursor.execute" target="_blank" rel="noopener">Documentation sqlite3 — execute vs executescript</a> — l'injection ne fonctionne pas avec <code>execute()</code> en SQLite, mais fonctionne avec <code>executescript()</code></p></div></div>
+
+<hr>
+
+<h2 id="bibliographie">Bibliographie</h2>
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>📺 👉 <a href="https://youtu.be/W2Z7fbCLSTw" target="_blank" rel="noopener">7 Database Paradigms</a> — pour aller au-delà de SQL</p>
+<p>👉 <a href="http://sqlitetutorial.net/sqlite-string-functions/" target="_blank" rel="noopener">sqlitetutorial.net/sqlite-string-functions/</a></p>
+<p>👉 <a href="https://www.sqlalchemy.org/" target="_blank" rel="noopener">SQLAlchemy</a></p></div></div>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-5-choses-à-retenir-absolument">5 choses à retenir absolument</a></li><li><a href="#ref-lanalogie-fil-rouge-le-restaurant">L'analogie fil rouge : le restaurant</a></li><li><a href="#ref-mini-plan-du-cours">Mini-plan du cours</a></li></ol></li><li><a href="#ref-1-les-8-clauses-fondamentales">1) Les 8 clauses fondamentales</a><ol><li><a href="#ref-la-différence-cruciale-where-vs-having">La différence cruciale : WHERE vs HAVING</a></li></ol></li><li><a href="#ref-2-travailler-avec-les-données">2) Travailler avec les données</a><ol><li><a href="#ref-21-calculs-sur-les-colonnes">2.1 Calculs sur les colonnes</a></li><li><a href="#ref-22-fonctions-sur-le-texte">2.2 Fonctions sur le texte</a></li></ol></li><li><a href="#ref-3-jointures-sql">3) Jointures SQL</a><ol><li><a href="#ref-31-inner-join-seulement-les-correspondances">3.1 INNER JOIN — seulement les correspondances</a></li><li><a href="#ref-32-left-join-garder-toutes-les-lignes-de-gauche">3.2 LEFT JOIN — garder toutes les lignes de gauche</a></li><li><a href="#ref-33-self-join-une-table-jointe-à-elle-même">3.3 SELF JOIN — une table jointe à elle-même</a></li></ol></li><li><a href="#ref-4-window-functions-calculs-sans-écraser-les-lignes">4) Window Functions — calculs sans écraser les lignes</a><ol><li><a href="#ref-41-comprendre-la-différence">4.1 Comprendre la différence</a></li><li><a href="#ref-42-partition-by-calculer-par-groupe">4.2 PARTITION BY — calculer par groupe</a></li><li><a href="#ref-43-order-by-dans-over-cumul-chronologique">4.3 ORDER BY dans OVER — cumul chronologique</a></li><li><a href="#ref-44-rank-classer-les-lignes">4.4 RANK() — classer les lignes</a></li></ol></li><li><a href="#ref-5-ctes-avec-with-organiser-les-requêtes">5) CTEs avec `WITH` — organiser les requêtes</a><ol><li><a href="#ref-51-cest-quoi-un-cte">5.1 C'est quoi un CTE ?</a></li><li><a href="#ref-52-exemple-simple-calculer-la-variance-du-poids-des-joueurs">5.2 Exemple simple : calculer la variance du poids des joueurs</a></li><li><a href="#ref-53-exemple-avancé-nombre-cumulé-de-matchs-par-mois">5.3 Exemple avancé : nombre cumulé de matchs par mois</a></li></ol></li><li><a href="#ref-6-sql-python-avec-pandas">6) SQL + Python avec pandas</a><ol><li><a href="#ref-61-connexion-et-lecture-de-base">6.1 Connexion et lecture de base</a></li><li><a href="#ref-62-requêtes-dynamiques-le-danger-des-f-strings">6.2 Requêtes dynamiques — le danger des f-strings</a></li><li><a href="#ref-63-se-connecter-à-postgresql-ou-bigquery">6.3 Se connecter à PostgreSQL ou BigQuery</a></li></ol></li><li><a href="#ref-7-crud-créer-lire-modifier-supprimer-des-données">7) CRUD — Créer, Lire, Modifier, Supprimer des données</a><ol><li><a href="#ref-71-insert-ajouter-une-ligne">7.1 INSERT — ajouter une ligne</a></li><li><a href="#ref-72-update-modifier-des-lignes-existantes">7.2 UPDATE — modifier des lignes existantes</a></li><li><a href="#ref-73-delete-supprimer-des-lignes">7.3 DELETE — supprimer des lignes</a></li></ol></li><li><a href="#ref-8-sécurité-les-injections-sql">8) Sécurité — Les injections SQL</a><ol><li><a href="#ref-quest-ce-quune-injection-sql">Qu'est-ce qu'une injection SQL ?</a></li><li><a href="#ref-la-solution-substitution-de-paramètres">La solution : substitution de paramètres</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<hr>
+
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>SQL ("Structured Query Language") est le langage universel pour parler à une base de données. Dans ce cours, on va au-delà du simple <code>SELECT * FROM table</code> : on apprend à <strong>combiner des tables</strong>, à faire des <strong>calculs sophistiqués ligne par ligne</strong>, à <strong>organiser des requêtes complexes</strong> et à <strong>connecter SQL à Python</strong>.</p>
+
+<h3 id="ref-5-choses-à-retenir-absolument">5 choses à retenir absolument</h3>
+
+<ol>
+<li>L'ordre des clauses SQL est <strong>obligatoire</strong> : <code>SELECT → FROM → JOIN → WHERE → GROUP BY → HAVING → ORDER BY → LIMIT</code>. Ne pas le respecter = erreur.</li>
+<li>Les <strong>jointures</strong> permettent de fusionner plusieurs tables en une seule requête.</li>
+<li>Les <strong>window functions</strong> (<code>OVER</code>) calculent des agrégats sans écraser les lignes individuelles.</li>
+<li>Les <strong>CTEs</strong> (<code>WITH</code>) servent à nommer des sous-requêtes pour rendre le code lisible.</li>
+<li>En Python, on utilise <strong>toujours</strong> la substitution de paramètres (<code>?</code>) — jamais les f-strings — pour éviter les injections SQL.</li>
+</ol>
+
+<h3 id="ref-lanalogie-fil-rouge-le-restaurant">L'analogie fil rouge : le restaurant</h3>
+
+<p>Imagine une base de données d'un restaurant avec trois tables :</p>
+<ul>
+<li><code>clients</code> — liste des clients</li>
+<li><code>commandes</code> — chaque commande passée (avec montant et date)</li>
+<li><code>employes</code> — liste des employeurs avec leur manager</li>
+</ul>
+
+<p>On va utiliser ces tables tout au long du cours pour rendre chaque concept concret.</p>
+
+<h3 id="ref-mini-plan-du-cours">Mini-plan du cours</h3>
+
+<ol>
+<li>Les 8 clauses fondamentales (rappel)</li>
+<li>Travailler avec les données (calculs, texte)</li>
+<li>Jointures : INNER, LEFT, SELF</li>
+<li>Window functions : calculs "en parallèle"</li>
+<li>CTEs avec <code>WITH</code> : organiser les requêtes</li>
+<li>SQL + Python avec pandas</li>
+<li>CRUD : modifier les données</li>
+<li>Sécurité : les injections SQL</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-les-8-clauses-fondamentales">1) Les 8 clauses fondamentales</h2>
+
+<p>Toute requête SQL suit toujours ce même squelette, dans cet ordre précis :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT col1, col2        -- 1. quelles colonnes afficher
+  FROM table             -- 2. depuis quelle table
+  JOIN autre ON ...      -- 3. fusionner avec une autre table (optionnel)
+ WHERE condition         -- 4. filtrer les lignes
+ GROUP BY col1           -- 5. regrouper par valeur
+HAVING condition         -- 6. filtrer sur les groupes
+ ORDER BY col1 DESC      -- 7. trier le résultat
+ LIMIT 10               -- 8. limiter le nombre de lignes</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>L'ordre est imposé par le langage SQL. Écrire <code>WHERE</code> avant <code>FROM</code>, par exemple, produit une erreur de syntaxe. Mémorisez ce squelette une bonne fois pour toutes.</p></div></div>
+
+<h3 id="ref-la-différence-cruciale-where-vs-having">La différence cruciale : WHERE vs HAVING</h3>
+
+<p><code>WHERE</code> filtre <strong>avant</strong> le regroupement (sur les lignes brutes).</p>
+<p><code>HAVING</code> filtre <strong>après</strong> le regroupement (sur les résultats agrégés).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- MAUVAIS : on ne peut pas utiliser COUNT(*) dans WHERE
+SELECT country_id, COUNT(*)
+  FROM commandes
+ WHERE COUNT(*) &gt; 10       -- erreur ! COUNT n&#x27;est pas encore calculé ici
+ GROUP BY country_id
+
+-- BON : on utilise HAVING pour filtrer après le GROUP BY
+SELECT country_id, COUNT(*)
+  FROM commandes
+ GROUP BY country_id
+HAVING COUNT(*) &gt; 10       -- filtre appliqué après le regroupement</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Règle simple : si tu veux filtrer sur un résultat d'agrégation (<code>COUNT</code>, <code>SUM</code>, <code>AVG</code>...), utilise <code>HAVING</code>. Sinon, utilise <code>WHERE</code>.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-travailler-avec-les-données">2) Travailler avec les données</h2>
+
+<h3 id="ref-21-calculs-sur-les-colonnes">2.1 Calculs sur les colonnes</h3>
+
+<p>SQL peut faire des maths directement dans la requête. Exemple : convertir le poids des joueurs de livres en kilogrammes.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT COUNT(*),                                  -- nombre total de joueurs
+       ROUND(MIN(weight) / 2.205, 0) AS min_weight, -- poids min en kg, arrondi
+       ROUND(AVG(weight) / 2.205, 0) AS avg_weight, -- poids moyen en kg
+       ROUND(MAX(weight) / 2.205, 0) AS max_weight  -- poids max en kg
+  FROM Player</code></pre></div>
+
+
+<p>Résultat (exemple) :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>COUNT(*)</th><th>min_weight</th><th>avg_weight</th><th>max_weight</th></tr></thead><tbody><tr><td>11060</td><td>59</td><td>75</td><td>108</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>ROUND(valeur, nombre_de_décimales)</code> arrondit le résultat. <code>ROUND(3.7891, 2)</code> donne <code>3.79</code>.</p></div></div>
+
+<p>On peut imbriquer plusieurs calculs. Exemple : calcul du BMI (Indice de Masse Corporelle = poids / taille²) :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT ROUND(
+         AVG(
+           weight / 2.205 / POWER(height / 100, 2)  -- poids en kg / taille en m²
+         )
+       ) AS bmi_moyen
+  FROM Player</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><code>POWER(x, 2)</code> calcule x². Ici <code>POWER(height / 100, 2)</code> convertit la taille en mètres puis la met au carré.</p></div></div>
+
+<h3 id="ref-22-fonctions-sur-le-texte">2.2 Fonctions sur le texte</h3>
+
+<p>SQL propose de nombreuses fonctions pour manipuler des chaînes de caractères :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SUBSTR(name, 1, 3)        -- extrait les 3 premiers caractères de &quot;name&quot;
+LENGTH(name)               -- retourne le nombre de caractères
+UPPER(name)                -- met tout en MAJUSCULES
+LOWER(name)                -- met tout en minuscules
+TRIM(name)                 -- supprime les espaces en début et fin
+REPLACE(name, &#x27;FC&#x27;, &#x27;CF&#x27;) -- remplace toutes les occurrences de &#x27;FC&#x27; par &#x27;CF&#x27;
+COALESCE(name, &#x27;Inconnu&#x27;) -- si name est NULL, retourne &#x27;Inconnu&#x27;</code></pre></div>
+
+
+<p>Exemple concret : afficher les 3 premières lettres du nom de chaque joueur en majuscules :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT name,                     -- nom complet
+       UPPER(SUBSTR(name, 1, 3)) -- initiales en majuscules
+  FROM Player
+ LIMIT 5</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>name</th><th>UPPER(SUBSTR(name, 1, 3))</th></tr></thead><tbody><tr><td>Aaron Appindangoye</td><td>AAR</td></tr><tr><td>Aaron Galindo</td><td>AAR</td></tr><tr><td>Aaron Hughes</td><td>AAR</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>COALESCE</code> est très utile après un <code>LEFT JOIN</code> : si une colonne est <code>NULL</code> (pas de correspondance), on peut la remplacer par une valeur par défaut.</p></div></div>
+
+<hr>
+
+<h2 id="ref-3-jointures-sql">3) Jointures SQL</h2>
+
+<p>Une jointure permet de <strong>combiner des données de plusieurs tables</strong> en une seule requête. C'est l'une des fonctionnalités les plus puissantes de SQL.</p>
+
+<p>Imagine deux tables dans ton restaurant :</p>
+
+<p><strong>Table <code>leagues</code> :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>id</th><th>name</th><th>country_id</th></tr></thead><tbody><tr><td>1</td><td>Premier League</td><td>101</td></tr><tr><td>2</td><td>Ligue 1</td><td>102</td></tr><tr><td>3</td><td>Coupe Mystère</td><td>NULL</td></tr></tbody></table></div>
+<p><strong>Table <code>countries</code> :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>id</th><th>name</th></tr></thead><tbody><tr><td>101</td><td>England</td></tr><tr><td>102</td><td>France</td></tr><tr><td>103</td><td>Germany</td></tr></tbody></table></div>
+<h3 id="ref-31-inner-join-seulement-les-correspondances">3.1 INNER JOIN — seulement les correspondances</h3>
+
+<p>L'<code>INNER JOIN</code> (ou simplement <code>JOIN</code>) retourne uniquement les lignes qui ont une correspondance <strong>dans les deux tables</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT League.name AS ligue,     -- nom de la ligue
+       Country.name AS pays       -- nom du pays correspondant
+  FROM League
+  JOIN Country                    -- on joint la table Country
+    ON Country.id = League.country_id  -- condition de jointure : les id doivent correspondre</code></pre></div>
+
+
+<p>Résultat : la ligue "Coupe Mystère" disparaît (pas de country_id), et l'Allemagne n'apparaît pas (pas de ligue associée).</p>
+
+<div class="table-wrapper"><table><thead><tr><th>ligue</th><th>pays</th></tr></thead><tbody><tr><td>Premier League</td><td>England</td></tr><tr><td>Ligue 1</td><td>France</td></tr></tbody></table></div>
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Avec <code>INNER JOIN</code>, les lignes sans correspondance sont <strong>perdues</strong>. Si tu veux les garder, utilise <code>LEFT JOIN</code>.</p></div></div>
+
+<h3 id="ref-32-left-join-garder-toutes-les-lignes-de-gauche">3.2 LEFT JOIN — garder toutes les lignes de gauche</h3>
+
+<p>Le <code>LEFT JOIN</code> garde <strong>toutes</strong> les lignes de la table de gauche (celle dans <code>FROM</code>), même si elles n'ont pas de correspondance à droite. Les colonnes sans correspondance seront remplies avec <code>NULL</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT League.name AS ligue,                          -- nom de la ligue
+       Country.name AS pays                            -- NULL si pas de pays
+  FROM League
+  LEFT JOIN Country                                    -- LEFT = on garde tout à gauche
+    ON Country.id = League.country_id</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>ligue</th><th>pays</th></tr></thead><tbody><tr><td>Premier League</td><td>England</td></tr><tr><td>Ligue 1</td><td>France</td></tr><tr><td>Coupe Mystère</td><td>NULL</td></tr></tbody></table></div>
+<p>On peut remplacer les <code>NULL</code> avec <code>COALESCE</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT League.name AS ligue,
+       COALESCE(Country.name, &#x27;Pays inconnu&#x27;) AS pays  -- remplace NULL par &#x27;Pays inconnu&#x27;
+  FROM League
+  LEFT JOIN Country
+    ON Country.id = League.country_id</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>ligue</th><th>pays</th></tr></thead><tbody><tr><td>Premier League</td><td>England</td></tr><tr><td>Ligue 1</td><td>France</td></tr><tr><td>Coupe Mystère</td><td>Pays inconnu</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>En data science, on utilise très souvent <code>LEFT JOIN</code> pour enrichir un dataset principal avec des informations complémentaires, tout en conservant toutes les lignes originales.</p></div></div>
+
+<h3 id="ref-33-self-join-une-table-jointe-à-elle-même">3.3 SELF JOIN — une table jointe à elle-même</h3>
+
+<p>Un <code>SELF JOIN</code> joint une table sur elle-même. Cela paraît bizarre au premier abord, mais c'est très utile pour des données hiérarchiques (employé / manager, catégorie / sous-catégorie...).</p>
+
+<p><strong>Table <code>employees</code> :</strong></p>
+
+<div class="table-wrapper"><table><thead><tr><th>id</th><th>name</th><th>title</th><th>manager_id</th></tr></thead><tbody><tr><td>1</td><td>Steve Jobs</td><td>CEO</td><td>NULL</td></tr><tr><td>2</td><td>Tim Cook</td><td>COO</td><td>1</td></tr><tr><td>3</td><td>Jony Ive</td><td>CDO</td><td>1</td></tr></tbody></table></div>
+<p>La colonne <code>manager_id</code> fait référence à une autre ligne <strong>dans la même table</strong>. Pour retrouver le nom du manager de chaque employé :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT e.id,                  -- id de l&#x27;employé
+       e.name AS employe,     -- nom de l&#x27;employé
+       e.title,               -- titre de l&#x27;employé
+       m.name AS manager      -- nom du manager (autre ligne de la même table)
+  FROM employees AS e         -- alias &#x27;e&#x27; pour l&#x27;employé
+  LEFT JOIN employees AS m    -- on joint la même table avec alias &#x27;m&#x27; pour le manager
+    ON m.id = e.manager_id    -- le manager est la ligne dont l&#x27;id = manager_id de l&#x27;employé</code></pre></div>
+
+
+<p>Résultat :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>id</th><th>employe</th><th>title</th><th>manager</th></tr></thead><tbody><tr><td>1</td><td>Steve Jobs</td><td>CEO</td><td>NULL</td></tr><tr><td>2</td><td>Tim Cook</td><td>COO</td><td>Steve Jobs</td></tr><tr><td>3</td><td>Jony Ive</td><td>CDO</td><td>Steve Jobs</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>On utilise des <strong>alias</strong> (<code>AS e</code>, <code>AS m</code>) pour distinguer les deux "copies" de la table. Sans alias, SQL ne saurait pas de quelle "copie" on parle.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-window-functions-calculs-sans-écraser-les-lignes">4) Window Functions — calculs sans écraser les lignes</h2>
+
+<p>Une window function effectue un <strong>calcul sur un groupe de lignes</strong>, mais contrairement à <code>GROUP BY</code>, elle <strong>ne fusionne pas les lignes</strong> — chaque ligne garde son existence propre dans le résultat.</p>
+
+<p>Le mot-clé clé : <strong><code>OVER</code></strong>. Dès que tu vois <code>OVER(...)</code>, c'est une window function.</p>
+
+<h3 id="ref-41-comprendre-la-différence">4.1 Comprendre la différence</h3>
+
+<p>Imaginons une table <code>orders</code> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>id</th><th>customer_id</th><th>amount</th><th>ordered_at</th></tr></thead><tbody><tr><td>1</td><td>A</td><td>50</td><td>2024-01-01</td></tr><tr><td>2</td><td>A</td><td>30</td><td>2024-01-15</td></tr><tr><td>3</td><td>B</td><td>80</td><td>2024-01-03</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Avec GROUP BY : on perd les lignes individuelles, on obtient 1 ligne par client
+SELECT customer_id,
+       SUM(amount) AS total
+  FROM orders
+ GROUP BY customer_id</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>customer_id</th><th>total</th></tr></thead><tbody><tr><td>A</td><td>80</td></tr><tr><td>B</td><td>80</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Avec window function OVER() : toutes les lignes sont conservées
+SELECT amount,                          -- montant de la commande
+       SUM(amount) OVER() AS total,     -- total global calculé pour chaque ligne
+       amount / SUM(amount) OVER() AS share  -- part de cette commande dans le total
+  FROM orders</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>amount</th><th>total</th><th>share</th></tr></thead><tbody><tr><td>50</td><td>160</td><td>0.31</td></tr><tr><td>30</td><td>160</td><td>0.19</td></tr><tr><td>80</td><td>160</td><td>0.50</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><code>OVER()</code> vide (sans rien dedans) = le calcul porte sur <strong>toutes</strong> les lignes de la table. C'est comme si tu demandais "le total de tout le monde".</p></div></div>
+
+<h3 id="ref-42-partition-by-calculer-par-groupe">4.2 PARTITION BY — calculer par groupe</h3>
+
+<p><code>PARTITION BY</code> divise la table en "fenêtres" (partitions) et effectue le calcul <strong>dans chaque fenêtre séparément</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT amount,
+       customer_id,
+       SUM(amount) OVER(PARTITION BY customer_id) AS total_client,  -- total par client
+       amount / SUM(amount) OVER(PARTITION BY customer_id) AS share -- part par client
+  FROM orders</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>amount</th><th>customer_id</th><th>total_client</th><th>share</th></tr></thead><tbody><tr><td>50</td><td>A</td><td>80</td><td>0.625</td></tr><tr><td>30</td><td>A</td><td>80</td><td>0.375</td></tr><tr><td>80</td><td>B</td><td>80</td><td>1.000</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Analogie : imagine que tu mettes chaque client dans une boite séparée, et que tu calcules le total <strong>dans chaque boite</strong>. <code>PARTITION BY customer_id</code> crée une boite par client.</p></div></div>
+
+<h3 id="ref-43-order-by-dans-over-cumul-chronologique">4.3 ORDER BY dans OVER — cumul chronologique</h3>
+
+<p>Ajouter <code>ORDER BY</code> dans <code>OVER</code> crée un <strong>cumul progressif</strong> : le calcul s'accumule au fur et à mesure qu'on avance dans l'ordre.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT customer_id,
+       ordered_at,
+       amount,
+       SUM(amount) OVER (
+         PARTITION BY customer_id     -- une fenêtre par client
+         ORDER BY ordered_at          -- cumul dans l&#x27;ordre des dates
+       ) AS montant_cumule
+  FROM orders</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>customer_id</th><th>ordered_at</th><th>amount</th><th>montant_cumule</th></tr></thead><tbody><tr><td>A</td><td>2024-01-01</td><td>50</td><td>50</td></tr><tr><td>A</td><td>2024-01-15</td><td>30</td><td>80</td></tr><tr><td>B</td><td>2024-01-03</td><td>80</td><td>80</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le cumul est très utile pour suivre l'évolution d'un chiffre dans le temps : revenu cumulé, nombre de clients cumulé, etc.</p></div></div>
+
+<h3 id="ref-44-rank-classer-les-lignes">4.4 RANK() — classer les lignes</h3>
+
+<p><code>RANK()</code> attribue un rang à chaque ligne à l'intérieur d'une partition. Utile pour retrouver la 1ère commande, le meilleur client, etc.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT id,
+       customer_id,
+       ordered_at,
+       RANK() OVER (
+         PARTITION BY customer_id     -- rang recalculé pour chaque client
+         ORDER BY ordered_at          -- rang basé sur la date (1 = plus ancienne)
+       ) AS rang_commande
+  FROM orders</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>id</th><th>customer_id</th><th>ordered_at</th><th>rang_commande</th></tr></thead><tbody><tr><td>1</td><td>A</td><td>2024-01-01</td><td>1</td></tr><tr><td>2</td><td>A</td><td>2024-01-15</td><td>2</td></tr><tr><td>3</td><td>B</td><td>2024-01-03</td><td>1</td></tr></tbody></table></div>
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>En machine learning, <code>RANK()</code> permet de créer des <strong>features</strong> utiles : "est-ce la première commande du client ?", "est-ce son 10ème achat ?", etc.</p></div></div>
+
+<hr>
+
+<h2 id="ref-5-ctes-avec-with-organiser-les-requêtes">5) CTEs avec <code>WITH</code> — organiser les requêtes</h2>
+
+<h3 id="ref-51-cest-quoi-un-cte">5.1 C'est quoi un CTE ?</h3>
+
+<p>Un CTE (Common Table Expression) est une <strong>sous-requête que l'on nomme</strong> pour pouvoir l'utiliser ensuite, comme si c'était une vraie table. On l'écrit avec le mot-clé <code>WITH</code>.</p>
+
+<p>Sans CTE, les requêtes complexes deviennent vite illisibles. Avec <code>WITH</code>, on découpe le problème en <strong>étapes nommées</strong>.</p>
+
+<h3 id="ref-52-exemple-simple-calculer-la-variance-du-poids-des-joueurs">5.2 Exemple simple : calculer la variance du poids des joueurs</h3>
+
+<p><strong>Sans CTE (difficile à lire) :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT AVG(
+         POWER(weight - (SELECT AVG(weight) FROM Player), 2)  -- sous-requête imbriquée
+       ) AS variance_poids
+  FROM Player</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>La sous-requête <code>(SELECT AVG(weight) FROM Player)</code> est exécutée pour chaque ligne — c'est valide mais illisible et potentiellement lent.</p></div></div>
+
+<p><strong>Avec CTE (recommandé) :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">WITH poids_moyen AS (
+    -- Étape 1 : on calcule la moyenne du poids, on lui donne un nom
+    SELECT AVG(weight) AS avg_weight
+      FROM Player
+)
+-- Étape 2 : on utilise ce résultat nommé comme une table normale
+SELECT AVG(
+         POWER(weight - poids_moyen.avg_weight, 2)  -- écart au carré
+       ) AS variance_poids
+  FROM Player, poids_moyen   -- on &quot;croise&quot; Player avec notre CTE (1 seule ligne)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Lire un CTE comme une recette de cuisine : "d'abord, prépare ceci (<code>WITH</code>), puis utilise-le dans la recette principale (<code>SELECT</code>)."</p></div></div>
+
+<h3 id="ref-53-exemple-avancé-nombre-cumulé-de-matchs-par-mois">5.3 Exemple avancé : nombre cumulé de matchs par mois</h3>
+
+<p>On veut savoir combien de matchs ont été joués en tout depuis le début, mois par mois.</p>
+
+<p><strong>Étape 1 : compter les matchs par mois</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT STRFTIME(&#x27;%Y-%m&#x27;, DATE(matches.date)) AS periode,  -- format &quot;2024-03&quot;
+       COUNT(*) AS nb_matchs                               -- nombre de matchs ce mois
+  FROM &quot;Match&quot; AS matches
+ GROUP BY periode
+ ORDER BY periode</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>periode</th><th>nb_matchs</th></tr></thead><tbody><tr><td>2008-07</td><td>2</td></tr><tr><td>2008-08</td><td>380</td></tr><tr><td>2008-09</td><td>370</td></tr></tbody></table></div>
+<p><strong>Étape 2 : ajouter le cumul avec une window function via CTE</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">WITH matchs_par_mois AS (
+    -- Étape 1 nommée : matchs regroupés par mois
+    SELECT STRFTIME(&#x27;%Y-%m&#x27;, DATE(matches.date)) AS periode,
+           COUNT(*) AS nb_matchs
+      FROM &quot;Match&quot; AS matches
+     GROUP BY periode
+     ORDER BY periode
+)
+SELECT matchs_par_mois.periode,
+       matchs_par_mois.nb_matchs,
+       SUM(matchs_par_mois.nb_matchs) OVER (
+         ORDER BY matchs_par_mois.periode   -- cumul dans l&#x27;ordre chronologique
+       ) AS total_cumule
+  FROM matchs_par_mois</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th>periode</th><th>nb_matchs</th><th>total_cumule</th></tr></thead><tbody><tr><td>2008-07</td><td>2</td><td>2</td></tr><tr><td>2008-08</td><td>380</td><td>382</td></tr><tr><td>2008-09</td><td>370</td><td>752</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>On ne peut pas utiliser une window function directement sur un <code>GROUP BY</code> — le CTE résout ce problème en séparant les deux opérations en deux étapes distinctes.</p></div></div>
+
+<hr>
+
+<h2 id="ref-6-sql-python-avec-pandas">6) SQL + Python avec pandas</h2>
+
+<p>En data science, on écrit rarement des requêtes SQL dans un outil dédié. On les exécute <strong>depuis Python</strong>, et on récupère le résultat dans un <strong>DataFrame pandas</strong>.</p>
+
+<h3 id="ref-61-connexion-et-lecture-de-base">6.1 Connexion et lecture de base</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sqlite3 import connect    # module de connexion SQLite intégré à Python
+import pandas as pd
+
+# On utilise &#x27;with&#x27; pour ouvrir la connexion (elle se ferme automatiquement après)
+with connect(&#x27;data/soccer.sqlite&#x27;) as conn:
+    query = &quot;&quot;&quot;
+        SELECT *          -- toutes les colonnes
+          FROM Player     -- table des joueurs
+    &quot;&quot;&quot;
+    players_df = pd.read_sql(query, con=conn)  # exécute la requête et retourne un DataFrame
+
+players_df.head()   # affiche les 5 premières lignes</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le <code>with connect(...) as conn</code> est un "context manager" : il garantit que la connexion à la base est <strong>fermée automatiquement</strong> même si une erreur survient dans le code. C'est la bonne façon de faire.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Sans <code>with</code>, si une erreur se produit, la connexion reste ouverte indéfiniment — ce qui peut provoquer des blocages ou des fuites de ressources.</p></div></div>
+
+<h3 id="ref-62-requêtes-dynamiques-le-danger-des-f-strings">6.2 Requêtes dynamiques — le danger des f-strings</h3>
+
+<p>Parfois, on veut passer une variable dans une requête (par exemple, un nom saisi par l'utilisateur). Il y a une bonne et une mauvaise façon de faire.</p>
+
+<p><strong>Mauvaise pratique — f-string (dangereux) :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">name = &quot;John%&quot;
+
+with connect(&#x27;data/soccer.sqlite&#x27;) as conn:
+    query = f&quot;&quot;&quot;
+        SELECT *
+          FROM Player
+         WHERE player_name LIKE &#x27;{name}&#x27;   -- DANGER : name est injecté directement
+    &quot;&quot;&quot;
+    players_df = pd.read_sql(query, con=conn)</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Si <code>name</code> vient d'un utilisateur externe (formulaire, API...), il peut contenir du code SQL malveillant. C'est ce qu'on appelle une <strong>injection SQL</strong> (voir section 8).</p></div></div>
+
+<p><strong>Bonne pratique — substitution de paramètres (sécurisé) :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">name = &quot;Paul%&quot;
+
+with connect(&#x27;data/soccer.sqlite&#x27;) as conn:
+    query = &quot;&quot;&quot;
+        SELECT *
+          FROM Player
+         WHERE player_name LIKE ?          -- le &#x27;?&#x27; est un emplacement réservé
+    &quot;&quot;&quot;
+    players_df = pd.read_sql(
+        query,
+        con=conn,
+        params=[name]    # la valeur est passée séparément, jamais concaténée
+    )</code></pre></div>
+
+
+<p>Avec plusieurs paramètres :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">name = &quot;John%&quot;
+min_weight = 200
+
+with connect(&#x27;data/soccer.sqlite&#x27;) as conn:
+    query = &quot;&quot;&quot;
+        SELECT *
+          FROM Player
+         WHERE player_name LIKE ?   -- 1er &#x27;?&#x27; = premier paramètre de la liste
+           AND weight &gt; ?           -- 2ème &#x27;?&#x27; = deuxième paramètre
+    &quot;&quot;&quot;
+    players_df = pd.read_sql(
+        query,
+        con=conn,
+        params=[name, min_weight]   -- les valeurs dans l&#x27;ordre des &#x27;?&#x27;
+    )</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Règle : <strong>toujours</strong> passer les valeurs variables via <code>params=[...]</code>. Le <code>?</code> dans la requête est simplement un emplacement réservé que pandas/sqlite3 remplira de façon sécurisée.</p></div></div>
+
+<h3 id="ref-63-se-connecter-à-postgresql-ou-bigquery">6.3 Se connecter à PostgreSQL ou BigQuery</h3>
+
+<p>Pour des bases de données en production (pas SQLite), on utilise <code>SQLAlchemy</code> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from sqlalchemy import create_engine, engine
+
+# Création d&#x27;une connexion vers une base PostgreSQL
+conn = create_engine(
+    engine.url.URL.create(
+        drivername=&#x27;postgresql+psycopg2&#x27;,  -- type de base de données
+        username=&quot;dbuser&quot;,                  -- nom d&#x27;utilisateur
+        password=&quot;dbpassword&quot;,              -- mot de passe
+        host=&quot;123.456.789&quot;,                 -- adresse du serveur
+        port=5432,                          -- port PostgreSQL par défaut
+        database=&quot;soccer&quot;                   -- nom de la base
+    )
+)
+
+# Utilisation identique à sqlite3
+players_df = pd.read_sql(&quot;SELECT * FROM Player&quot;, conn)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Une fois la connexion créée, <code>pd.read_sql(...)</code> fonctionne de la même façon, quelle que soit la base de données (SQLite, PostgreSQL, MySQL...). Seule la création de <code>conn</code> change.</p></div></div>
+
+<hr>
+
+<h2 id="ref-7-crud-créer-lire-modifier-supprimer-des-données">7) CRUD — Créer, Lire, Modifier, Supprimer des données</h2>
+
+<p>Jusqu'ici on a appris à <strong>lire</strong> (<code>SELECT</code>). SQL permet aussi de <strong>modifier</strong> les données.</p>
+
+<h3 id="ref-71-insert-ajouter-une-ligne">7.1 INSERT — ajouter une ligne</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">INSERT INTO Country (id, name)       -- colonnes dans lesquelles on insère
+VALUES (999, &#x27;Wakanda&#x27;)              -- valeurs correspondantes</code></pre></div>
+
+
+<h3 id="ref-72-update-modifier-des-lignes-existantes">7.2 UPDATE — modifier des lignes existantes</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">UPDATE Country                       -- table à modifier
+SET
+    name = &#x27;République Française&#x27;    -- nouvelle valeur pour la colonne &#x27;name&#x27;
+WHERE
+    id = 4769                        -- condition : seulement la ligne avec id=4769</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Bonne pratique</strong> : avant d'exécuter un <code>UPDATE</code>, teste d'abord ta condition <code>WHERE</code> avec un <code>SELECT</code> pour vérifier quelles lignes seront affectées. Exemple : <code>SELECT * FROM Country WHERE id = 4769</code>.</p></div></div>
+
+<h3 id="ref-73-delete-supprimer-des-lignes">7.3 DELETE — supprimer des lignes</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">DELETE FROM Country
+WHERE id = 4769      -- supprime uniquement la ligne avec id=4769</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Un <code>DELETE FROM Country</code> <strong>sans</strong> clause <code>WHERE</code> supprime TOUTES les lignes de la table, irréversiblement. Toujours vérifier avec un <code>SELECT</code> avant.</p></div></div>
+
+<hr>
+
+<h2 id="ref-8-sécurité-les-injections-sql">8) Sécurité — Les injections SQL</h2>
+
+<h3 id="ref-quest-ce-quune-injection-sql">Qu'est-ce qu'une injection SQL ?</h3>
+
+<p>Une injection SQL, c'est quand un utilisateur malveillant <strong>insère du code SQL dans une valeur</strong> pour manipuler ta requête.</p>
+
+<p>Voici une fonction d'authentification vulnérable :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def authenticate(username, password):
+    query = f&quot;&quot;&quot;
+        SELECT * FROM users
+        WHERE users.username = &#x27;{username}&#x27;   -- valeurs injectées directement
+        AND users.password = &#x27;{password}&#x27;
+    &quot;&quot;&quot;
+    c.execute(query)
+    return &quot;Autorisé&quot; if c.fetchone() else &quot;Refusé&quot;
+
+# Appel normal
+authenticate(&quot;alice&quot;, &quot;secret123&quot;)   -- fonctionne normalement
+
+# Appel malveillant
+authenticate(&quot;john&quot;, &quot;&#x27; OR 1=1 --&quot;) -- contourne complètement le mot de passe !</code></pre></div>
+
+
+<p>La requête exécutée devient :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT * FROM users
+WHERE users.username = &#x27;john&#x27;
+AND users.password = &#x27;&#x27; OR 1=1 --&#x27;  -- &#x27;1=1&#x27; est toujours vrai, &#x27;--&#x27; commente le reste
+                                     -- résultat : l&#x27;utilisateur est toujours &quot;autorisé&quot; !</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><code>OR 1=1</code> rend la condition toujours vraie. <code>--</code> est un commentaire SQL qui ignore tout ce qui suit. L'attaquant est connecté sans connaître le mot de passe.</p></div></div>
+
+<h3 id="ref-la-solution-substitution-de-paramètres">La solution : substitution de paramètres</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def authenticate_safe(username, password):
+    query = &quot;&quot;&quot;
+        SELECT * FROM users
+        WHERE users.username = ?   -- &#x27;?&#x27; = emplacement sécurisé
+        AND users.password = ?
+    &quot;&quot;&quot;
+    c.execute(query, (username, password))   -- les valeurs sont passées séparément
+    return &quot;Autorisé&quot; if c.fetchone() else &quot;Refusé&quot;
+
+authenticate_safe(&quot;john&quot;, &quot;&#x27; OR 1=1 --&quot;)   -- retourne &#x27;Refusé&#x27; : l&#x27;injection ne fonctionne plus</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Avec la substitution de paramètres, le driver SQL traite les valeurs comme de simples <strong>chaînes de caractères</strong>, jamais comme du code SQL. L'injection est impossible.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>1. Quelle est la différence entre <code>WHERE</code> et <code>HAVING</code> ? Donne un exemple où tu utiliserais chacun.</strong></p>
+
+<blockquote><p><code>WHERE</code> filtre les lignes <strong>avant</strong> le groupement (sur les données brutes). <code>HAVING</code> filtre <strong>après</strong> le groupement (sur les résultats agrégés). Exemple : <code>WHERE age &gt; 18</code> pour garder seulement les adultes, <code>HAVING COUNT(*) &gt; 5</code> pour garder seulement les groupes avec plus de 5 lignes.</p></blockquote>
+
+<p><strong>2. Explique avec tes mots la différence entre <code>GROUP BY</code> et une window function avec <code>OVER</code>.</strong></p>
+
+<blockquote><p>Avec <code>GROUP BY</code>, les lignes sont fusionnées en une ligne par groupe — on perd le détail. Avec <code>OVER</code>, chaque ligne reste intacte et le calcul est ajouté comme une colonne supplémentaire. On garde le détail ET l'agrégat.</p></blockquote>
+
+<p><strong>3. Pourquoi est-il dangereux d'utiliser une f-string pour construire une requête SQL avec une valeur externe ?</strong></p>
+
+<blockquote><p>Parce que la valeur externe peut contenir du code SQL malveillant (injection SQL) qui sera exécuté. Un attaquant peut ainsi contourner une authentification, accéder à toutes les données, ou même supprimer des tables entières.</p></blockquote>
+
+<p><strong>4. À quoi sert un CTE (<code>WITH</code>) ? Dans quel cas est-il particulièrement utile ?</strong></p>
+
+<blockquote><p>Un CTE permet de nommer une sous-requête pour la réutiliser ensuite. Il est particulièrement utile quand on doit combiner deux opérations incompatibles directement (comme un <code>GROUP BY</code> suivi d'une window function), ou pour rendre une requête complexe plus lisible en la découpant en étapes.</p></blockquote>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>L'ordre des clauses SQL est <strong>obligatoire</strong> : <code>SELECT → FROM → JOIN → WHERE → GROUP BY → HAVING → ORDER BY → LIMIT</code>.</li>
+<li><code>JOIN</code> fusionne deux tables sur une condition ; <code>LEFT JOIN</code> garde toutes les lignes de gauche (avec <code>NULL</code> si pas de correspondance) ; <code>SELF JOIN</code> joint une table sur elle-même (utile pour les hiérarchies).</li>
+<li>Une <strong>window function</strong> (<code>OVER</code>) calcule un agrégat sans fusionner les lignes — <code>PARTITION BY</code> divise en groupes, <code>ORDER BY</code> crée un cumul, <code>RANK()</code> attribue des rangs.</li>
+<li>Un <strong>CTE</strong> (<code>WITH nom AS (...)</code>) nomme une sous-requête pour la réutiliser : il rend le code lisible et permet de chaîner des opérations complexes.</li>
+<li>En Python, utiliser <code>with connect(...) as conn</code> + <code>pd.read_sql(query, conn, params=[...])</code> : le <code>with</code> ferme la connexion automatiquement, le <code>params</code> protège contre les injections SQL.</li>
+<li><strong>Ne jamais</strong> construire une requête SQL avec une f-string à partir d'une valeur externe : toujours utiliser <code>?</code> et <code>params=[...]</code>.</li>
+<li><code>WHERE</code> filtre avant le groupement, <code>HAVING</code> filtre après — les confondre provoque une erreur.</li>
+<li><code>COALESCE(colonne, &#x27;valeur_par_défaut&#x27;)</code> est pratique pour remplacer les <code>NULL</code> issus des jointures.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-joins-avancés-et-auto-join">JOINs avancés et auto-join</a></li><li><a href="#syn-subqueries-et-cte">Subqueries et CTE</a></li><li><a href="#syn-window-functions">Window functions</a></li><li><a href="#syn-group-by-avancé-having-rollup-cube">`GROUP BY` avancé : `HAVING`, `ROLLUP`, `CUBE`</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-index-et-plan-dexécution">Index et plan d'exécution</a></li><li><a href="#syn-optimisation-des-requêtes-lentes">Optimisation des requêtes lentes</a></li><li><a href="#syn-partitioning-et-sharding">Partitioning et sharding</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-joins-avancés-et-auto-join">JOINs avancés et auto-join</h3>
+
+<p>Au-delà de l'INNER/LEFT/RIGHT JOIN basique, plusieurs patterns sont essentiels pour écrire des requêtes de vrai niveau data analyst.</p>
+
+<p><strong>Rappel express</strong> : un JOIN fusionne deux tables selon une condition. INNER ne garde que les lignes qui matchent des deux côtés ; LEFT garde toutes les lignes de gauche (avec NULL à droite si pas de match).</p>
+
+<p><strong>Self-join (auto-jointure)</strong> : joindre une table avec elle-même. Cas typique : hiérarchie employé/manager, où manager est lui-même un employé.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Chaque employé + le nom de son manager
+SELECT
+    e.name AS employee,           -- alias &quot;e&quot; pour l&#x27;employé
+    m.name AS manager             -- alias &quot;m&quot; pour le manager (même table !)
+FROM employees e
+LEFT JOIN employees m             -- on joint employees à elle-même
+  ON e.manager_id = m.id;         -- condition de jointure hiérarchique
+-- LEFT JOIN car le CEO n&#x27;a pas de manager (manager_id NULL)</code></pre></div>
+
+
+<p>L'astuce : utiliser des <strong>alias</strong> différents (<code>e</code> et <code>m</code>) pour distinguer les deux instances de la table. Sans alias, SQL ne saurait pas à quelle copie faire référence.</p>
+
+<p><strong>Exemple chiffré</strong> : avec une table de 1000 employés dont 100 managers, la requête retourne 1000 lignes (chaque employé + son manager ou NULL).</p>
+
+<p><strong>JOIN sur intervalle</strong> : utile pour matcher une date avec une période de validité.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Pour chaque commande, trouver la promo active à ce moment
+SELECT o.order_id, p.promo_name
+FROM orders o
+JOIN promotions p
+  ON o.created_at BETWEEN p.start_date AND p.end_date;
+-- Attention : si plusieurs promos se chevauchent, une commande apparaît plusieurs fois</code></pre></div>
+
+
+<p><strong>Anti-join (LEFT JOIN + WHERE NULL)</strong> : trouver les lignes de A qui n'ont <strong>pas</strong> de correspondance dans B.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Tous les utilisateurs qui n&#x27;ont JAMAIS commandé
+SELECT u.*
+FROM users u
+LEFT JOIN orders o ON u.id = o.user_id
+WHERE o.id IS NULL;               -- le filtre clé : pas de match = NULL du côté droit
+-- Résultat : utilisateurs &quot;dormants&quot;</code></pre></div>
+
+
+<p><strong>Semi-join (EXISTS)</strong> : retourner les lignes de A qui ont <strong>au moins une</strong> correspondance dans B, sans dupliquer.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Tous les utilisateurs qui ont commandé au moins une fois (1 ligne par user)
+SELECT u.*
+FROM users u
+WHERE EXISTS (
+    SELECT 1 FROM orders o        -- SELECT 1 : on ne lit pas les colonnes, juste &quot;existe ?&quot;
+    WHERE o.user_id = u.id        -- corrélation avec la requête extérieure
+);
+-- Contrairement à un INNER JOIN, pas de duplication si l&#x27;user a 50 commandes</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : INNER JOIN multiplie les lignes (un user avec 5 orders apparaît 5 fois). EXISTS dédoublonne (un user avec ≥1 order apparaît une fois). Pour "qui a fait au moins une commande", utilisez EXISTS. Pour "afficher chaque commande avec son utilisateur", utilisez JOIN. Confondre les deux donne des résultats faux ou des lignes en trop.</p></div></div>
+
+<h3 id="syn-subqueries-et-cte">Subqueries et CTE</h3>
+
+<p>Une <strong>sous-requête</strong> est une <code>SELECT</code> imbriquée dans une autre. Utile pour les petits filtres, vite illisible pour les requêtes complexes.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Top 3 utilisateurs par dépenses, avec leurs infos
+SELECT * FROM users
+WHERE id IN (                     -- filtre sur les ids retournés par la sous-requête
+    SELECT user_id FROM orders
+    GROUP BY user_id
+    ORDER BY SUM(amount) DESC     -- tri par dépenses décroissantes
+    LIMIT 3                        -- garde les 3 premiers
+);</code></pre></div>
+
+
+<p>Les sous-requêtes deviennent vite illisibles dès qu'elles s'imbriquent sur 2-3 niveaux. La <strong>CTE</strong> (Common Table Expression, syntaxe <code>WITH</code>) est plus claire et permet de réutiliser des blocs :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Même résultat, mais lisible étape par étape
+WITH user_totals AS (             -- étape 1 : calcul des totaux par user
+    SELECT user_id, SUM(amount) AS total
+    FROM orders
+    GROUP BY user_id
+),
+top_users AS (                    -- étape 2 : top 3 par total
+    SELECT user_id FROM user_totals
+    ORDER BY total DESC
+    LIMIT 3
+)
+SELECT u.*, ut.total              -- étape 3 : join final avec la table users
+FROM users u
+INNER JOIN user_totals ut ON u.id = ut.user_id
+INNER JOIN top_users t ON u.id = t.user_id
+ORDER BY ut.total DESC;</code></pre></div>
+
+
+<p>Lire ça comme une suite de transformations : <em>"construis user_totals, puis top_users à partir de la première, puis fais le SELECT final"</em>. Cette discipline rend les requêtes complexes maintenables, versionnables et testables.</p>
+
+<p><strong>Récursive CTE</strong> : pour parcourir des hiérarchies (graphes, arborescences).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Tous les descendants d&#x27;une catégorie (sous-catégories, sous-sous-catégories, ...)
+WITH RECURSIVE descendants AS (
+    -- Cas de base : la catégorie de départ
+    SELECT id, name, parent_id, 1 AS level
+    FROM categories
+    WHERE id = 42                  -- point de départ
+
+    UNION ALL                      -- concaténation avec l&#x27;étape récursive
+
+    -- Cas récursif : enfants des catégories déjà trouvées
+    SELECT c.id, c.name, c.parent_id, d.level + 1
+    FROM categories c
+    INNER JOIN descendants d ON c.parent_id = d.id  -- jointure avec &quot;soi-même&quot; (itération)
+)
+SELECT * FROM descendants;
+-- Résultat : toute la sous-arborescence, avec un niveau de profondeur</code></pre></div>
+
+
+<h3 id="syn-window-functions">Window functions</h3>
+
+<p>LE concept SQL avancé qui change la donne quand on fait de l'analytics. Une window function calcule une valeur agrégée <strong>sans regrouper les lignes</strong>.</p>
+
+<p>Syntaxe : <code>function() OVER (PARTITION BY col1 ORDER BY col2)</code>.</p>
+
+<ul>
+<li><code>PARTITION BY</code> : définit les groupes (comme un GROUP BY interne)</li>
+<li><code>ORDER BY</code> : définit l'ordre dans chaque groupe (utile pour ROW_NUMBER, LAG, cumulés)</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Rang des commandes par utilisateur, du plus récent au plus ancien
+SELECT
+    user_id,
+    order_id,
+    created_at,
+    ROW_NUMBER() OVER (
+        PARTITION BY user_id      -- redémarre le compteur à chaque user
+        ORDER BY created_at DESC  -- la plus récente = rang 1
+    ) AS rn
+FROM orders;
+-- Chaque commande conserve ses colonnes + gagne une colonne &quot;rn&quot;</code></pre></div>
+
+
+<p>Le résultat conserve <strong>toutes les lignes</strong> d'origine, plus une nouvelle colonne <code>rn</code>. Pour ne garder que la commande la plus récente par user :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">WITH ranked AS (
+    SELECT *,
+        ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY created_at DESC) AS rn
+    FROM orders
+)
+SELECT * FROM ranked WHERE rn = 1;     -- ne garde que la 1ère de chaque partition
+-- Pattern canonique : &quot;dernier enregistrement par groupe&quot;</code></pre></div>
+
+
+<p>Fonctions de fenêtre courantes :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Fonction</th><th>Usage</th></tr></thead><tbody><tr><td><code>ROW_NUMBER()</code></td><td>Numéro unique par ligne dans la partition (1, 2, 3, 4)</td></tr><tr><td><code>RANK()</code></td><td>Rang avec gaps en cas d'égalité (1, 2, 2, 4)</td></tr><tr><td><code>DENSE_RANK()</code></td><td>Rang sans gaps (1, 2, 2, 3)</td></tr><tr><td><code>LAG(col)</code> / <code>LEAD(col)</code></td><td>Valeur de la ligne précédente / suivante</td></tr><tr><td><code>SUM(col) OVER (...)</code></td><td>Somme cumulative ou par groupe</td></tr><tr><td><code>AVG(col) OVER (...)</code></td><td>Moyenne mobile</td></tr><tr><td><code>FIRST_VALUE(col)</code> / <code>LAST_VALUE(col)</code></td><td>Première / dernière valeur</td></tr></tbody></table></div>
+<p><strong>Exemple : calcul de rétention avec LAG</strong> :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Pour chaque commande, calculer le gap avec la commande précédente du même user
+SELECT
+    user_id,
+    created_at,
+    LAG(created_at) OVER (
+        PARTITION BY user_id
+        ORDER BY created_at
+    ) AS prev_order,             -- date de la commande précédente
+    created_at - LAG(created_at) OVER (
+        PARTITION BY user_id
+        ORDER BY created_at
+    ) AS gap                       -- intervalle entre les 2
+FROM orders;
+-- Résultat : user_id | created_at | prev_order | gap (ex: 14 days)
+-- Utile pour calculer la fréquence d&#x27;achat</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : un GROUP BY classique écrase les détails (vous obtenez une ligne par groupe). Les window functions sont un GROUP BY qui <strong>garde tous les détails</strong> et ajoute juste une colonne d'agrégat. C'est exactement comme <code>df.groupby(&#x27;city&#x27;)[&#x27;salary&#x27;].transform(&#x27;mean&#x27;)</code> en pandas — ça enrichit le DataFrame sans perdre de lignes.</p></div></div>
+
+<h3 id="syn-group-by-avancé-having-rollup-cube"><code>GROUP BY</code> avancé : <code>HAVING</code>, <code>ROLLUP</code>, <code>CUBE</code></h3>
+
+<p><code>HAVING</code> filtre les groupes après agrégation (vs <code>WHERE</code> qui filtre les lignes avant).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Villes d&#x27;engineering avec un salaire moyen &gt; 50k
+SELECT city, AVG(salary) AS avg_sal
+FROM employees
+WHERE department = &#x27;engineering&#x27;   -- étape 1 : filtre les lignes (avant group)
+GROUP BY city                       -- étape 2 : regroupe par ville
+HAVING AVG(salary) &gt; 50000;         -- étape 3 : filtre les groupes (après agrégation)
+-- Ordre d&#x27;exécution : WHERE → GROUP BY → HAVING → SELECT → ORDER BY</code></pre></div>
+
+
+<p><code>GROUP BY ROLLUP(a, b)</code> génère des sous-totaux hiérarchiques :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Totaux par (region, country), puis par region, puis total global
+SELECT region, country, SUM(sales)
+FROM orders
+GROUP BY ROLLUP(region, country);
+-- Résultat :
+-- (&#x27;EMEA&#x27;, &#x27;France&#x27;, 1000), (&#x27;EMEA&#x27;, &#x27;Germany&#x27;, 1500),  -- détails par pays
+-- (&#x27;EMEA&#x27;, NULL, 2500),                                  -- sous-total EMEA
+-- (NULL, NULL, 10000)                                    -- grand total</code></pre></div>
+
+
+<p><code>CUBE(a, b)</code> génère <strong>tous</strong> les croisements possibles :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Totaux par (region, country), par region, par country, et global
+SELECT region, country, SUM(sales)
+FROM orders
+GROUP BY CUBE(region, country);
+-- Ajoute par rapport à ROLLUP : ligne &quot;par country seul&quot; (tous pays tous regions confondus)</code></pre></div>
+
+
+<p>C'est ce qui sous-tend les pivot tables d'Excel et les "tableaux croisés dynamiques" en BI (Tableau, Power BI).</p>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-index-et-plan-dexécution">Index et plan d'exécution</h3>
+
+<p>Un <strong>index</strong> est une structure auxiliaire (généralement un B-tree) qui maintient une ou plusieurs colonnes triées avec un pointeur vers les lignes. Conséquence : les requêtes <code>WHERE indexed_col = X</code> passent de $O(n)$ à $O(\log n)$.</p>
+
+<p>Lecture : <em>en notation big-O, $O(n)$ signifie que le temps est proportionnel au nombre de lignes (1 million de lignes = 1 million d'opérations). $O(\log n)$ signifie que le temps croît très lentement (1 million de lignes ≈ 20 opérations seulement, grâce au parcours dichotomique du B-tree)</em>.</p>
+
+<p><strong>Exemple chiffré</strong> : sur une table de 10M lignes, trouver une ligne spécifique :</p>
+
+<ul>
+<li>Sans index : ~10M opérations, ~10 secondes</li>
+<li>Avec index B-tree : ~$\log_2(10^7) \approx 23$ opérations, ~1 ms</li>
+<li>Facteur d'accélération : ~10 000×</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Index simple sur une colonne
+CREATE INDEX idx_orders_user ON orders(user_id);
+CREATE INDEX idx_orders_date ON orders(created_at);
+
+-- Index composite (ordre des colonnes important !)
+CREATE INDEX idx_orders_user_date ON orders(user_id, created_at);
+
+-- Index partiel (PostgreSQL) : n&#x27;indexe qu&#x27;un sous-ensemble
+CREATE INDEX idx_orders_active ON orders(user_id) WHERE status = &#x27;active&#x27;;
+-- Bien plus petit si seulement 5% des orders sont &quot;active&quot;
+
+-- Index unique (impose la contrainte d&#x27;unicité en plus d&#x27;accélérer)
+CREATE UNIQUE INDEX idx_users_email ON users(email);</code></pre></div>
+
+
+<p><strong>Règle de l'index composite</strong> : <code>(a, b)</code> accélère les requêtes filtrant sur <code>a</code> ou <code>(a, b)</code> mais <strong>pas</strong> sur <code>b</code> seul. C'est comme un annuaire trié par "nom puis prénom" — vous trouvez vite "Dupont Marie" mais pas tous les "Marie".</p>
+
+<p>Pour comprendre ce que la base fait :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">EXPLAIN ANALYZE
+SELECT * FROM orders WHERE user_id = 42 AND created_at &gt; &#x27;2024-01-01&#x27;;</code></pre></div>
+
+
+<p>Sortie typique :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Index Scan using idx_orders_user_date on orders  (cost=0.42..8.45 rows=10 width=128)
+  Index Cond: (user_id = 42 AND created_at &gt; &#x27;2024-01-01&#x27;)
+  Actual time: 0.123..0.145 ms</code></pre></div>
+
+
+<p>Cherchez dans le plan :</p>
+
+<ul>
+<li><strong><code>Index Scan</code></strong> : utilise un index — bon</li>
+<li><strong><code>Seq Scan</code></strong> : parcourt toute la table — mauvais (sauf si la table est petite)</li>
+<li><strong><code>Hash Join</code></strong> vs <strong><code>Nested Loop</code></strong> : selon la taille des tables jointes</li>
+<li><strong><code>actual time</code></strong> : temps réel d'exécution (le plus important à optimiser)</li>
+</ul>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piège des index</strong> : chaque index accélère les SELECT mais <strong>ralentit</strong> les INSERT/UPDATE/DELETE (il faut mettre à jour le B-tree). Sur une table très écrite, trop d'index tuent les performances d'écriture. Règle : créer un index seulement quand une requête lente est identifiée par EXPLAIN, pas "au cas où".</p></div></div>
+
+<h3 id="syn-optimisation-des-requêtes-lentes">Optimisation des requêtes lentes</h3>
+
+<p>Cinq leviers, par ordre d'impact :</p>
+
+<p><strong>1. Ajouter un index</strong> sur les colonnes de <code>WHERE</code>, <code>JOIN</code>, <code>ORDER BY</code>. Effet souvent x100 à x1000.</p>
+
+<p><strong>2. Réécrire avec des CTE ou éviter les sous-requêtes corrélées</strong> (qui sont exécutées une fois par ligne extérieure).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Mauvais : subquery corrélée, O(n²)
+SELECT u.*, (
+    SELECT COUNT(*) FROM orders WHERE user_id = u.id
+) AS n_orders                       -- exécuté pour CHAQUE utilisateur = n exécutions
+FROM users u;
+-- Avec 10 000 users et 1M orders : 10 000 × 1M opérations = 10 milliards
+
+-- Bon : un seul GROUP BY puis JOIN, O(n + m)
+SELECT u.*, COALESCE(o.n, 0) AS n_orders
+FROM users u
+LEFT JOIN (
+    SELECT user_id, COUNT(*) AS n
+    FROM orders
+    GROUP BY user_id                -- un seul parcours des orders
+) o ON u.id = o.user_id;
+-- Avec 10 000 users et 1M orders : ~1M opérations. Facteur 10 000.</code></pre></div>
+
+
+<p><strong>3. Limiter les colonnes lues</strong> : <code>SELECT *</code> lit toutes les colonnes, ce qui peut multiplier la taille du résultat. Lisez seulement ce dont vous avez besoin — impact I/O significatif sur des colonnes BLOB/TEXT.</p>
+
+<p><strong>4. <code>LIMIT</code> tôt</strong> : si vous voulez seulement le top 10, ajoutez <code>LIMIT 10</code> plutôt que de tout calculer puis filtrer côté Python.</p>
+
+<p><strong>5. Matérialiser les agrégats coûteux</strong> : si la même agrégation est calculée 100 fois par jour, créez une <strong>vue matérialisée</strong> qui la précalcule.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Vue matérialisée : calculée une fois, stockée comme une table
+CREATE MATERIALIZED VIEW user_stats AS
+SELECT user_id, COUNT(*) AS n_orders, SUM(amount) AS total_spent
+FROM orders
+GROUP BY user_id;
+
+-- À rafraîchir périodiquement (cron, trigger, ou manuellement)
+REFRESH MATERIALIZED VIEW user_stats;
+-- Désormais SELECT user_stats est instantané au lieu d&#x27;un GROUP BY à chaque appel</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique</strong> : avant d'optimiser, <strong>mesurez</strong>. <code>EXPLAIN ANALYZE</code> est votre meilleur ami. Beaucoup d'optimisations "intuitives" n'apportent rien parce que la base est déjà très intelligente. Les vraies victoires viennent de comprendre le plan réel et ses chiffres.</p></div></div>
+
+<h3 id="syn-partitioning-et-sharding">Partitioning et sharding</h3>
+
+<p><strong>Partitioning</strong> : découper une grosse table en plusieurs sous-tables physiques selon une clé (souvent la date). Tout reste sur le même serveur.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Table maître partitionnée par date
+CREATE TABLE orders (
+    id BIGINT,
+    user_id BIGINT,
+    created_at TIMESTAMP,
+    amount NUMERIC
+) PARTITION BY RANGE (created_at);
+
+-- Une partition par mois
+CREATE TABLE orders_2024_01 PARTITION OF orders
+    FOR VALUES FROM (&#x27;2024-01-01&#x27;) TO (&#x27;2024-02-01&#x27;);
+CREATE TABLE orders_2024_02 PARTITION OF orders
+    FOR VALUES FROM (&#x27;2024-02-01&#x27;) TO (&#x27;2024-03-01&#x27;);
+-- ... et ainsi de suite</code></pre></div>
+
+
+<p>Une requête <code>WHERE created_at &gt; &#x27;2024-02-15&#x27;</code> ne touche que les partitions concernées (<code>partition pruning</code>), ce qui peut accélérer d'un facteur 100 sur des historiques de plusieurs années.</p>
+
+<p><strong>Exemple chiffré</strong> : table orders de 500M lignes sur 5 ans.</p>
+
+<ul>
+<li>Sans partitionnement : une requête "commandes de février 2024" scanne 500M lignes</li>
+<li>Avec partitionnement mensuel : scanne seulement ~8M lignes (la partition de février)</li>
+<li>Gain : ×60 sur cette requête</li>
+</ul>
+
+<p><strong>Sharding</strong> : répartir une table sur <strong>plusieurs serveurs</strong>. Utilisé pour passer à l'échelle au-delà de ce qu'une machine peut stocker ou traiter. Le shard key (souvent un user_id hashé) détermine sur quel serveur va chaque ligne. Plus complexe : les jointures cross-shard sont coûteuses, les transactions distribuées sont fragiles (problème du "two-phase commit").</p>
+
+<p>C'est ce que font Cassandra, MongoDB sharded clusters, Vitess (MySQL sharded), CockroachDB, Google Spanner.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Conseil</strong> : ne shardez pas tant que vous pouvez l'éviter. Une seule machine PostgreSQL peut tenir des centaines de millions de lignes avec de bons index. Le sharding ajoute une complexité opérationnelle énorme (topologie, reshard, failover, observabilité). Question d'entretien architecture data : "Quand passer au sharding ?" — réponse : "quand le scale-up vertical (CPU/RAM/SSD) plus l'optimisation des requêtes ne suffisent plus".</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi <code>WHERE created_at &gt; &#x27;2024-01-01&#x27; AND status = &#x27;paid&#x27;</code> peut-il être beaucoup plus lent que <code>WHERE status = &#x27;paid&#x27; AND created_at &gt; &#x27;2024-01-01&#x27;</code> sur certaines bases ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Ordre des conditions dans un index composite.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Sur les bases modernes (PostgreSQL, MySQL 8+, SQL Server), l'ordre des conditions dans le WHERE n'a aucune importance</strong> : l'optimiseur réorganise intelligemment. Cependant, l'ordre des <strong>colonnes dans un index composite</strong> est crucial.</p>
+
+<ul>
+<li>Avec <code>INDEX (status, created_at)</code> : les deux versions de la requête utilisent l'index efficacement, peu importe l'ordre des conditions dans le WHERE.</li>
+<li>Avec <code>INDEX (created_at, status)</code> : la condition <code>status = &#x27;paid&#x27;</code> ne peut être utilisée qu'après avoir filtré par date. Si la date matche beaucoup de lignes (par exemple 80% de votre historique), l'index devient presque inutile pour le statut.</li>
+</ul>
+
+<p><strong>Règle</strong> : dans un index composite, mettez en <strong>première</strong> position la colonne qui filtre le plus drastiquement (la plus sélective). Calculez la sélectivité comme <code>n_valeurs_distinctes / n_lignes_totales</code> — plus c'est proche de 1, plus c'est sélectif.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Bon index pour cette requête (status = 2-3 valeurs, date = large plage)
+CREATE INDEX idx_status_date ON orders(status, created_at);
+
+-- Vérifier que l&#x27;index est bien utilisé
+EXPLAIN ANALYZE SELECT * FROM orders
+WHERE status = &#x27;paid&#x27; AND created_at &gt; &#x27;2024-01-01&#x27;;
+-- Doit afficher : Index Scan using idx_status_date</code></pre></div>
+
+
+<p>Pour des bases anciennes (Oracle 9, certains MySQL ≤ 5.6), l'ordre dans le WHERE pouvait avoir un impact réel — mais ce n'est plus le cas en 2025. Question d'entretien data engineering : "Comment concevoir un index pour cette requête ?" — la réponse révèle si le candidat a vraiment optimisé des requêtes en prod.</p>
+
+</details>
+
+<p><strong>Q2 : Vous voulez calculer le pourcentage du chiffre d'affaires total représenté par chaque commande. Comment écrire cela en SQL ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Window function sans <code>PARTITION BY</code>.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT
+    order_id,
+    amount,
+    100.0 * amount / SUM(amount) OVER () AS pct_of_total
+    --                             ^^^^ window vide = total global
+FROM orders;</code></pre></div>
+
+
+<p>L'astuce est <code>SUM(amount) OVER ()</code> sans <code>PARTITION BY</code> ni <code>ORDER BY</code> : c'est une window function qui calcule la somme <strong>sur toutes les lignes</strong> sans regrouper. Chaque ligne reçoit la même valeur de total dans une nouvelle colonne (le grand total du dataset).</p>
+
+<p><strong>Exemple chiffré</strong> : 3 commandes de 100, 200, 700 (total = 1000).</p>
+
+<div class="table-wrapper"><table><thead><tr><th>order_id</th><th>amount</th><th>pct_of_total</th></tr></thead><tbody><tr><td>1</td><td>100</td><td>10.0</td></tr><tr><td>2</td><td>200</td><td>20.0</td></tr><tr><td>3</td><td>700</td><td>70.0</td></tr></tbody></table></div>
+<p>Sans window function, il faudrait faire un sous-SELECT qui calcule le total, puis joindre. La version window est plus lisible et souvent plus rapide (un seul scan de la table).</p>
+
+<p><strong>Variante par catégorie</strong> : pourcentage au sein de chaque catégorie plutôt qu'au total.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT
+    order_id,
+    category,
+    amount,
+    100.0 * amount / SUM(amount) OVER (PARTITION BY category) AS pct_of_category
+FROM orders;</code></pre></div>
+
+
+<p><strong>Variante cumul</strong> : revenu cumulé jour par jour, essentiel pour les dashboards.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">SELECT
+    date,
+    daily_revenue,
+    SUM(daily_revenue) OVER (ORDER BY date) AS cumulative_revenue
+FROM daily_sales;</code></pre></div>
+
+
+<p>C'est l'idiome canonique pour les calculs de pourcentages, de cumulés, ou de moyennes mobiles. Question d'entretien data analyst : "Comment calculer le revenu cumulé jour par jour ?" — réponse : <code>SUM(daily_revenue) OVER (ORDER BY date)</code>.</p>
+
+</details>
+
+<p><strong>Q3 : Vous avez une requête qui prend 30 secondes et <code>EXPLAIN ANALYZE</code> montre <code>Seq Scan on orders (cost=0.00..1500000.00 rows=10000000)</code>. Quel est le diagnostic et la première chose à essayer ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Index manquant sur la colonne de WHERE.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><code>Seq Scan</code> signifie que la base parcourt <strong>toutes les lignes</strong> de la table — 10 millions ici — pour appliquer le filtre. C'est presque toujours le signe d'un index manquant sur la colonne du <code>WHERE</code>.</p>
+
+<p><strong>Première action</strong> : créer un index sur la ou les colonnes du <code>WHERE</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">SQL</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-sql">-- Avant : Seq Scan sur 10M lignes, ~30 secondes
+SELECT * FROM orders WHERE user_id = 42 AND created_at &gt; &#x27;2024-01-01&#x27;;
+
+-- Action : créer l&#x27;index
+CREATE INDEX idx_orders_user_date ON orders(user_id, created_at);
+
+-- Après : Index Scan, ~50 ms
+EXPLAIN ANALYZE SELECT * FROM orders WHERE user_id = 42 AND created_at &gt; &#x27;2024-01-01&#x27;;
+-- Index Scan using idx_orders_user_date on orders (cost=0.42..8.45 rows=10)</code></pre></div>
+
+
+<p>Effet typique x600. Sur des requêtes très sélectives, l'accélération peut dépasser x10 000.</p>
+
+<p><strong>Cas particulier</strong> : si le <code>WHERE</code> retourne plus de ~5-10% des lignes de la table, l'optimiseur peut <strong>volontairement</strong> choisir un Seq Scan parce que c'est plus rapide qu'un Index Scan (les pages contiguës se lisent plus vite que des accès aléatoires sur l'index, à cause du fonctionnement des disques). Dans ce cas, vous devez réduire la sélectivité du filtre, ou repenser le schéma (partitionner par date par exemple).</p>
+
+<p><strong>Checklist complète quand vous voyez un Seq Scan lent</strong> :</p>
+
+<ol>
+<li>Y a-t-il un index sur la colonne du WHERE ?</li>
+<li>L'index existe-t-il mais n'est pas utilisé ? (stats obsolètes → <code>ANALYZE orders;</code>)</li>
+<li>Le filtre est-il trop peu sélectif ? (envisager un index partiel)</li>
+<li>La table est-elle trop grosse pour un seul serveur ? (envisager partitioning)</li>
+</ol>
+
+<p>Toujours mesurer après : un index ne sert à rien si l'optimiseur l'ignore pour de bonnes raisons. <code>EXPLAIN ANALYZE</code> avant/après est le seul juge fiable.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>SQL Antipatterns</em> (Bill Karwin) — toutes les erreurs classiques</li>
+<li><em>Use The Index, Luke!</em> (Markus Winand, gratuit en HTML) — la référence sur les index</li>
+<li><em>Designing Data-Intensive Applications</em> (Martin Kleppmann) — pour comprendre les bases distribuées</li>
+<li><a href="https://www.postgresql.org/docs/current/sql-explain.html" target="_blank" rel="noopener">PostgreSQL EXPLAIN documentation</a></li>
+<li><a href="https://mode.com/sql-tutorial/sql-window-functions/" target="_blank" rel="noopener">Mode SQL Tutorial — Advanced</a> — chapitre window functions</li>
+<li><a href="https://www.itprotoday.com/" target="_blank" rel="noopener">Window Functions in SQL by Itzik Ben-Gan</a> — l'expert mondial des window functions</li>
+<li><a href="https://www.pgmustard.com/" target="_blank" rel="noopener">pgMustard</a> — visualiseur de plan d'exécution PostgreSQL</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../mathematiques/under-the-hood.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Under the Hood</span>
+  </a>
+  <a href="../data-engineering/data-preparation.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Data Preparation →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

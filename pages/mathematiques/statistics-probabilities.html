@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistics &amp; Probabilities — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">Statistics &amp; Probabilities</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html" class="active">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Maths & Statistiques</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Statistics &amp; Probabilities</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Statistics &amp; Probabilities</h1>
+        <p class="page-objective">découvrir des patterns dans des données brutes, les représenter et les résumer.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Variable aléatoire</div>
+        <div class="key-concept-def">Quantité dont la valeur dépend du hasard.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Distribution</div>
+        <div class="key-concept-def">Loi qui décrit la probabilité de chaque valeur (Normale, Bernoulli, …).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Moyenne / variance</div>
+        <div class="key-concept-def">Centre et dispersion d&#x27;une distribution.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Théorème central limite</div>
+        <div class="key-concept-def">La somme de nombreuses variables tend vers une loi normale.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-statistics-probabilities">Cheatsheet — Statistics & Probabilities</a><ol><li><a href="#imports">Imports</a></li><li><a href="#statistiques-descriptives">Statistiques descriptives</a></li><li><a href="#corrélation">Corrélation</a></li><li><a href="#visualisations">Visualisations</a></li><li><a href="#probabilités-et-distributions">Probabilités et distributions</a></li><li><a href="#théorème-central-limite">Théorème Central Limite</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#0-introduction">0) Introduction</a><li><a href="#1-statistiques-descriptives">1) Statistiques descriptives</a><ol><li><a href="#11-histogramme">1.1 Histogramme</a></li></ol></li><li><a href="#2-summary-statistics">2) Summary Statistics</a><ol><li><a href="#21-mesures-de-tendance-centrale">2.1 Mesures de tendance centrale</a></li><li><a href="#22-dispersion-statistique">2.2 Dispersion statistique</a></li><li><a href="#23-cinq-nombres-résumés-et-boxplot">2.3 Cinq nombres résumés et boxplot</a></li><li><a href="#24-corrélation-entre-deux-variables">2.4 Corrélation entre deux variables</a></li><li><a href="#25-méfie-toi-du-datasaurus">2.5 ⚠️ Méfie-toi du Datasaurus 🦕</a></li></ol></li><li><a href="#3-probabilités">3) Probabilités</a><ol><li><a href="#31-ensembles-et-expérience-aléatoire">3.1 Ensembles et expérience aléatoire</a></li><li><a href="#32-union-et-intersection">3.2 Union et intersection</a></li><li><a href="#33-probabilité-conditionnelle">3.3 Probabilité conditionnelle</a></li><li><a href="#34-théorème-de-bayes">3.4 Théorème de Bayes</a></li></ol></li><li><a href="#4-variables-aléatoires">4) Variables aléatoires</a><ol><li><a href="#41-définition">4.1 Définition</a></li><li><a href="#42-fonction-de-masse-de-probabilité-pmf">4.2 Fonction de masse de probabilité (PMF)</a></li><li><a href="#43-loi-de-bernoulli-et-binomiale">4.3 Loi de Bernoulli et Binomiale</a></li><li><a href="#44-loi-normale-nμ-σ²">4.4 🔥 Loi Normale N(μ, σ²)</a></li></ol></li><li><a href="#5-théorème-central-limite-tcl">5) Théorème Central Limite (TCL)</a><ol><li><a href="#51-énoncé">5.1 Énoncé</a></li><li><a href="#52-z-score">5.2 Z-score</a></li><li><a href="#53-vérification-empirique">5.3 Vérification empirique</a></li></ol></li><li><a href="#6-pour-aller-plus-loin">6) Pour aller plus loin</a></ol></div>
+<p>Comprendre comment résumer des données, modéliser le hasard et tirer des conclusions à partir d'échantillons. Maîtriser les distributions de probabilité et le Théorème Central Limite pour la data science.</p>
+
+<hr>
+
+<h2 id="cheatsheet-statistics-probabilities">📋 Cheatsheet — Statistics & Probabilities</h2>
+
+<h3 id="imports">Imports</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import math
+import scipy.stats as stats</code></pre></div>
+
+
+<h3 id="statistiques-descriptives">Statistiques descriptives</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df[&#x27;col&#x27;].mean()        # moyenne arithmétique (sensible aux outliers)
+df[&#x27;col&#x27;].median()      # valeur médiane (robuste aux outliers)
+df[&#x27;col&#x27;].mode()        # valeur(s) la(les) plus fréquente(s)
+df[&#x27;col&#x27;].std()         # écart-type (sample, ddof=1 par défaut)
+df[&#x27;col&#x27;].var()         # variance (sample)
+df[&#x27;col&#x27;].describe()    # résumé : count, mean, std, min, 25%, 50%, 75%, max</code></pre></div>
+
+
+<h3 id="corrélation">Corrélation</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df[[&#x27;x&#x27;, &#x27;y&#x27;]].corr()          # matrice de corrélation de Pearson
+df[&#x27;x&#x27;].corr(df[&#x27;y&#x27;])          # coefficient r entre deux colonnes
+sns.heatmap(df.corr(), annot=True, cmap=&#x27;coolwarm&#x27;, vmin=-1, vmax=1)</code></pre></div>
+
+
+<h3 id="visualisations">Visualisations</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">sns.histplot(df[&#x27;col&#x27;], bins=20, kde=True)               # histogramme + KDE
+sns.histplot(df[&#x27;col&#x27;], cumulative=True, stat=&quot;percent&quot;)  # distribution cumulative
+sns.boxplot(x=df[&#x27;col&#x27;])                                  # boxplot (IQR, outliers)</code></pre></div>
+
+
+<h3 id="probabilités-et-distributions">Probabilités et distributions</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Loi binomiale B(n, p)
+np.random.binomial(n=5, p=0.3, size=1000)   # 1000 simulations
+stats.binom.pmf(k=2, n=5, p=0.3)            # P(X = 2)
+
+## Loi normale N(μ, σ)
+stats.norm.pdf(x=1.5, loc=0, scale=1)       # densité en x=1.5
+stats.norm.cdf(x=1.5, loc=0, scale=1)       # P(X ≤ 1.5)
+stats.norm.ppf(q=0.95, loc=0, scale=1)      # quantile à 95%
+
+## Z-score
+z = (x - mu) / sigma                        # nb d&#x27;écarts-types au-dessus de la moyenne</code></pre></div>
+
+
+<h3 id="théorème-central-limite">Théorème Central Limite</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## X̄ ~ N(μ, σ/√n) quand n → ∞, quelle que soit la distribution d&#x27;origine
+sample_means = [np.mean(np.random.exponential(scale=2, size=30)) for _ in range(1000)]
+sns.histplot(sample_means, kde=True)  # converge vers une gaussienne</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Confondre histogramme et bar chart</strong></p>
+<p>L'histogramme représente la distribution d'une variable <strong>continue</strong>. Le bar chart est pour les variables <strong>catégorielles ou discrètes</strong>.</p>
+<p>❌ <code>sns.barplot(x=weights)</code> → ✅ <code>sns.histplot(x=weights)</code></p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Utiliser la moyenne en présence d'outliers</strong></p>
+<p>La moyenne est très sensible aux valeurs extrêmes. Un seul outlier peut la fausser considérablement.</p>
+<p>❌ Salaires : [2000, 2000, 2100, 2050, 500000] → mean = 101 630 (trompeur)</p>
+<p>✅ Préférer la <strong>médiane</strong> = 2050 dans ce cas</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Conclure à l'indépendance depuis une corrélation nulle</strong></p>
+<p><code>Corr(X, Y) = 0</code> ne signifie <strong>pas</strong> que X et Y sont indépendants. La corrélation de Pearson ne capture que la dépendance <strong>linéaire</strong>.</p>
+<p>❌ X et X² ont une corrélation ~0, pourtant X² dépend totalement de X.</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Diviser par n au lieu de n−1 pour la variance d'un échantillon</strong></p>
+<p>Diviser par <code>n</code> sous-estime la vraie variance de la population (correction de Bessel).</p>
+<p>✅ <code>np.std(x, ddof=1)</code> ou <code>df[&#x27;col&#x27;].std()</code> — comportement par défaut de pandas</p></div></div>
+<div class="callout callout-error"><div class="callout-icon">❌</div><div class="callout-content"><p><strong>Interpréter un test positif comme une certitude</strong></p>
+<p>Même avec un test à 99% de sensibilité, si la maladie touche 1/1000 personnes, la probabilité d'être vraiment malade après un test positif est < 5% (paradoxe des faux positifs).</p>
+<p>✅ Toujours appliquer le <strong>Théorème de Bayes</strong> pour raisonner sur les probabilités conditionnelles.</p></div></div>
+
+<hr>
+
+<h2 id="0-introduction">0) Introduction</h2>
+
+<p>Les statistiques permettent de <strong>résumer des données</strong> en un petit nombre d'indicateurs. Combinées aux probabilités, elles permettent de <strong>tirer des conclusions</strong> à partir d'<strong>échantillons</strong>.</p>
+
+<p>Trois grands domaines :</p>
+
+<ul>
+<li><strong>Statistiques descriptives</strong> : collecter, afficher et résumer des données</li>
+<li><strong>Probabilités</strong> : modéliser le hasard et l'incertitude</li>
+<li><strong>Inférence statistique</strong> : tirer des conclusions sur une population à partir d'un échantillon</li>
+</ul>
+
+<hr>
+
+<h2 id="1-statistiques-descriptives">1) Statistiques descriptives</h2>
+
+
+<p><strong>Exemple fil rouge</strong> : poids (en livres) d'étudiants d'une université.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">male_df = pd.DataFrame(
+    [140, 145, 160, 190, 155, 165, 150, 190, 195, 138, 160, 155, 153, 145,
+     170, 175, 175, 170, 180, 135, 170, 157, 130, 185, 190, 155, 170, 155,
+     215, 150, 145, 155, 155, 150, 155, 150, 180, 160, 135, 160, 130, 155,
+     150, 148, 155, 150, 140, 180, 190, 145, 150, 164, 140, 142, 136, 123, 155],
+    columns=[&#x27;weight&#x27;])
+male_df[&#x27;sex&#x27;] = &#x27;male&#x27;
+
+female_df = pd.DataFrame(
+    [140, 120, 130, 138, 121, 116, 125, 145, 150, 112, 125, 130, 120, 130,
+     131, 120, 118, 125, 135, 125, 118, 122, 115, 102, 115, 150, 110, 116,
+     108, 95, 125, 133, 110, 150, 108],
+    columns=[&#x27;weight&#x27;])
+female_df[&#x27;sex&#x27;] = &#x27;female&#x27;
+
+weights_df = pd.concat([male_df, female_df], ignore_index=True)
+weights_df.sample(5)</code></pre></div>
+
+
+<h3 id="11-histogramme">1.1 Histogramme</h3>
+
+<p>Un histogramme représente la <strong>distribution</strong> de données <strong>numériques continues</strong>. C'est une estimation de la densité de probabilité.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Histogramme ≠ Bar chart</strong> : l'histogramme est pour les variables <strong>continues</strong> ; le bar chart pour les variables <strong>catégorielles ou discrètes</strong>.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Une barre par entier dans [95, 215]
+ax = sns.histplot(weights_df[&quot;weight&quot;],
+                  bins=weights_df[&quot;weight&quot;].max() - weights_df[&quot;weight&quot;].min())
+ax.set_xlabel(&quot;Weight (in lbs)&quot;)
+plt.show()</code></pre></div>
+
+
+<p><strong>Choix du nombre de bins :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">f, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(15, 4))
+ax1.hist(weights_df[&quot;weight&quot;], bins=[95, 105, 115, 125, 135, 145, 155, 165, 175, 185, 195, 205, 215])
+ax2.hist(weights_df[&quot;weight&quot;], bins=12)
+sns.histplot(weights_df[&quot;weight&quot;], bins=12, ax=ax3, kde=True)
+plt.show()</code></pre></div>
+
+
+<p><strong>Distribution cumulative :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">f, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 4))
+ax1.hist(weights_df[&quot;weight&quot;], bins=25, cumulative=True, density=True)   # densité cumulée (0→1)
+sns.histplot(weights_df[&quot;weight&quot;], binwidth=5, ax=ax2,
+             kde=True, cumulative=True, stat=&quot;percent&quot;)                   # pourcentage cumulé (0→100%)
+plt.show()</code></pre></div>
+
+
+<hr>
+
+<h2 id="2-summary-statistics">2) Summary Statistics</h2>
+
+<p><strong>Objectif</strong> : résumer un jeu de données en quelques indicateurs clés.</p>
+
+<h3 id="21-mesures-de-tendance-centrale">2.1 Mesures de tendance centrale</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Mesure</th><th>Définition</th><th>Robustesse aux outliers</th><th>Moyenne μ</th><th>Σxᵢ / n</th><th>❌ Sensible</th></tr></thead><tbody><tr><td>Médiane</td><td>valeur centrale</td><td>✅ Robuste</td><td>Mode</td><td>valeur la plus fréquente</td><td>✅ Robuste</td></tr></tbody></table></div>
+<p><strong>Médiane :</strong></p>
+
+<ul>
+<li>Nombre impair de valeurs : 1 3 3 <strong>6</strong> 7 8 9 → médiane = <strong>6</strong></li>
+<li>Nombre pair de valeurs : 1 2 3 <strong>4 5</strong> 6 8 9 → médiane = <strong>(4+5)/2 = 4.5</strong></li>
+</ul>
+
+<p><strong>Mode en Python :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df[&#x27;col&#x27;].mode()       # retourne une Series (plusieurs valeurs si bimodal)
+df[&#x27;col&#x27;].mode()[0]    # premier mode uniquement
+
+s = pd.Series([1, 1, 2, 4, 4])
+s.mode()               # → [1, 4] (bimodal)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La médiane est préférable à la moyenne en présence d'<strong>outliers</strong> (ex : salaires, prix immobiliers).</p></div></div>
+
+<p>👉 <a href="https://en.wikipedia.org/wiki/Skewness" target="_blank" rel="noopener">Skewness (asymétrie)</a> — quand la distribution est asymétrique, moyenne ≠ médiane ≠ mode.</p>
+
+<h3 id="22-dispersion-statistique">2.2 Dispersion statistique</h3>
+
+<p>La dispersion mesure à quel point les données sont <strong>étalées ou concentrées</strong> autour de la tendance centrale.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Mesure</th><th>Formule</th><th>Variance σ²</th><th>moyenne des carrés des écarts à la moyenne</th></tr></thead><tbody><tr><td>Écart-type σ</td><td>√σ² (même unité que les données)</td><td>IQR</td><td>Q3 − Q1 (interquartile range)</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Correction de Bessel</strong> : sur un échantillon, diviser par <code>n−1</code> (et non <code>n</code>) donne un estimateur non-biaisé de la variance. C'est le comportement par défaut de pandas (<code>ddof=1</code>).</p></div></div>
+
+<p><strong>IQR et détection d'outliers :</strong></p>
+
+<ul>
+<li>Outlier inférieur : valeur < Q1 − 1.5 × IQR</li>
+<li>Outlier supérieur : valeur > Q3 + 1.5 × IQR</li>
+</ul>
+
+<p>C'est exactement la règle appliquée par seaborn pour les moustaches d'un boxplot.</p>
+
+<h3 id="23-cinq-nombres-résumés-et-boxplot">2.3 Cinq nombres résumés et boxplot</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">weights_df[&#x27;weight&#x27;].describe()</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Output
+## count     92.000000
+## mean     145.152174
+## std       23.739398
+## min       95.000000
+## 25%      125.000000
+## 50%      145.000000
+## 75%      155.500000
+## max      215.000000</code></pre></div>
+
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">sns.boxplot(x=weights_df[&#x27;weight&#x27;])
+plt.show()</code></pre></div>
+
+
+<h3 id="24-corrélation-entre-deux-variables">2.4 Corrélation entre deux variables</h3>
+
+<p>Le <strong>coefficient de corrélation de Pearson</strong> mesure la dépendance linéaire entre X et Y (valeur entre −1 et +1).</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Valeur de r</th><th>Interprétation</th><th>r ≈ +1</th><th>forte corrélation positive</th></tr></thead><tbody><tr><td>r ≈ 0</td><td>pas de dépendance linéaire</td><td>r ≈ −1</td><td>forte corrélation négative</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">weights_df[&#x27;weight&#x27;].corr(weights_df[&#x27;age&#x27;])   # coefficient r
+
+sns.heatmap(
+    weights_df.select_dtypes(&#x27;number&#x27;).corr(),
+    annot=True, cmap=&#x27;coolwarm&#x27;, vmin=-1, vmax=1
+)
+plt.show()</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>(X,Y) indépendants ⇒ r = 0</strong>, mais <strong>r = 0 ⇏ indépendance</strong> ! La corrélation de Pearson ne capture que la dépendance <strong>linéaire</strong>.</p></div></div>
+
+<h3 id="25-méfie-toi-du-datasaurus">2.5 ⚠️ Méfie-toi du Datasaurus 🦕</h3>
+
+<p>Les statistiques résumées (moyenne, écart-type, corrélation) peuvent être <strong>identiques</strong> pour des distributions visuellement très différentes. Il faut <strong>toujours visualiser les données</strong> (EDA).</p>
+
+<p>👉 <a href="https://dl.acm.org/doi/10.1145/3025453.3025912" target="_blank" rel="noopener">The Datasaurus Dozen</a> — des datasets aux statistiques identiques mais aux formes radicalement différentes.</p>
+
+<hr>
+
+<h2 id="3-probabilités">3) Probabilités</h2>
+
+<h3 id="31-ensembles-et-expérience-aléatoire">3.1 Ensembles et expérience aléatoire</h3>
+
+<p>Une <strong>expérience aléatoire</strong> est un processus dont le résultat est incertain. L'ensemble de tous les résultats possibles est l'<strong>espace d'échantillonnage</strong> S (ou Ω).</p>
+
+<p>Exemples :</p>
+
+<ul>
+<li>Lancer un dé : S = {1, 2, 3, 4, 5, 6}</li>
+<li>Lancer une pièce 3 fois : S contient 8 éléments (HHH, HHT, HTH…)</li>
+<li>Observer le nombre de buts : S = {0, 1, 2, 3, …}</li>
+</ul>
+
+<p>Un <strong>événement</strong> est un sous-ensemble de S auquel on assigne une probabilité P(A) ∈ [0, 1].</p>
+
+<h3 id="32-union-et-intersection">3.2 Union et intersection</h3>
+
+<ul>
+<li><strong>P(Aᶜ) = 1 − P(A)</strong> — complémentaire</li>
+<li><strong>P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</strong> — union</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Ces propriétés se visualisent facilement avec des diagrammes de Venn.</p>
+<p>- <strong>Union A ∪ B</strong> : tout ce qui appartient à A ou B</p>
+<p>- <strong>Intersection A ∩ B</strong> : ce qui appartient à la fois à A et à B</p></div></div>
+
+<h3 id="33-probabilité-conditionnelle">3.3 Probabilité conditionnelle</h3>
+
+<p>Quand on dispose d'information supplémentaire, on <strong>met à jour</strong> les probabilités.</p>
+
+<p>Par définition : <strong>P(A ∩ B) = P(A) · P(B|A)</strong></p>
+
+<p>P(B|A) est la probabilité de B <strong>sachant</strong> A.</p>
+
+<p><strong>Exemple — Tirer deux cartes sans remise :</strong></p>
+
+<p>On tire la première carte : c'est un Roi (événement A). Quelle est la probabilité que la deuxième soit aussi un Roi (événement B) ?</p>
+
+<ul>
+<li>P(A) = 4/52 ≈ 0.077</li>
+<li>P(B|A) = 3/51 ≈ 0.059 <em>(il ne reste que 3 Rois sur 51 cartes)</em></li>
+<li>P(A ∩ B) = P(A) · P(B|A) = 12/2652 ≈ 0.005</li>
+</ul>
+
+<p><strong>Indépendance statistique :</strong> A et B sont indépendants ssi P(A|B) = P(A).</p>
+
+<h3 id="34-théorème-de-bayes">3.4 Théorème de Bayes</h3>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>P(A|B) = P(B|A) · P(A) / P(B)</strong></p>
+<p>Permet de « renverser » une probabilité conditionnelle : si on connaît P(B|A), on peut calculer P(A|B).</p></div></div>
+
+<p><strong>Exemple — Test médical :</strong></p>
+
+<ul>
+<li>P(Malade) = 0.001 (1 personne sur 1000)</li>
+<li>P(+|Malade) = 0.99 (99% de vrais positifs)</li>
+<li>P(+|Sain) = 0.02 (2% de faux positifs)</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Calcul de P(Malade | test positif)
+p_sick = 0.001
+p_pos_given_sick = 0.99
+p_pos_given_healthy = 0.02
+
+p_pos = p_pos_given_sick * p_sick + p_pos_given_healthy * (1 - p_sick)   # = 0.02097
+p_sick_given_pos = (p_pos_given_sick * p_sick) / p_pos                   # ≈ 0.047
+print(f&quot;P(Malade | +) ≈ {p_sick_given_pos:.1%}&quot;)  # → ~4.7% seulement !</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>C'est le <strong>paradoxe des faux positifs</strong> (base rate fallacy) : même avec un test très fiable, si la maladie est rare, la majorité des tests positifs sont des faux positifs.</p></div></div>
+
+<p>👉 <a href="https://www.youtube.com/watch?v=HZGCoVF3YvM" target="_blank" rel="noopener">Bayes Theorem — 3Blue1Brown</a></p>
+
+<hr>
+
+<h2 id="4-variables-aléatoires">4) Variables aléatoires</h2>
+
+<h3 id="41-définition">4.1 Définition</h3>
+
+<p>Une <strong>variable aléatoire</strong> X est une fonction qui associe à chaque résultat de S un nombre réel : X : S → ℝ</p>
+
+<p><strong>Exemple</strong> — lancer une pièce 2 fois, X = nombre de faces :</p>
+
+<ul>
+<li>S = {(H,H), (H,T), (T,H), (T,T)}</li>
+<li>Range(X) = {0, 1, 2}</li>
+</ul>
+
+<h3 id="42-fonction-de-masse-de-probabilité-pmf">4.2 Fonction de masse de probabilité (PMF)</h3>
+
+<p>La PMF donne P(X = xᵢ) pour chaque valeur possible de X.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">plt.bar(x=[0, 1, 2], height=[0.25, 0.5, 0.25], width=0.3)
+plt.xlabel(&quot;Nombre de faces&quot;)
+plt.ylabel(&quot;Probabilité&quot;)
+plt.title(&quot;PMF — 2 lancers de pièce&quot;)
+plt.show()</code></pre></div>
+
+
+<p><strong>Espérance E[X] :</strong></p>
+
+<p>E[X] = Σ xᵢ · P(X = xᵢ)</p>
+
+<p>Pour notre exemple : E[X] = 0×0.25 + 1×0.5 + 2×0.25 = <strong>1</strong></p>
+
+<h3 id="43-loi-de-bernoulli-et-binomiale">4.3 Loi de Bernoulli et Binomiale</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Bernoulli B(p)</th><th>Binomiale B(n, p)</th><th>Nombre d'essais</th><th>1</th><th>n</th></tr></thead><tbody><tr><td>Résultat possible</td><td>0 ou 1</td><td>0, 1, …, n</td><td>Espérance E[X]</td><td>p</td><td>n·p</td></tr><tr><td>Variance Var(X)</td><td>p(1−p)</td><td>n·p·(1−p)</td><td></td><td></td><td></td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">p = 0.3
+size = 10000
+
+## Bernoulli B(p) — 1 essai, résultat 0 ou 1
+sns.histplot(np.random.binomial(n=1, p=p, size=size), kde=False)
+plt.show()
+
+## Binomiale B(n, p) — nombre de succès sur n essais
+n = 5
+sns.histplot(np.random.binomial(n=n, p=p, size=size), kde=False)
+plt.show()
+
+## Distribution théorique exacte (size → ∞)
+x = np.arange(n + 1)
+pmf = stats.binom.pmf(x, n, p)   # P(X=k) pour k = 0..5
+plt.vlines(x, 0, pmf, linewidth=10)
+plt.show()</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Quand n augmente, B(n,p) se rapproche d'une loi normale N(n·p, √(n·p·(1−p))). C'est le pont vers le Théorème Central Limite.</p></div></div>
+
+<h3 id="44-loi-normale-nμ-σ²">4.4 🔥 Loi Normale N(μ, σ²)</h3>
+
+<p>La loi normale est la distribution la plus importante en statistiques. Sa PDF est une courbe en cloche symétrique :</p>
+
+<p>N(μ, σ) = 1/√(2πσ²) · exp(−(x−μ)²/2σ²)</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def plot_normal_distribution(mu, variance):
+    sigma = math.sqrt(variance)
+    x = np.linspace(-10, 10, 100)
+    plt.plot(x, stats.norm.pdf(x, mu, sigma), label=f&quot;μ={mu}, σ²={variance}&quot;)
+
+plot_normal_distribution(0, 1)    # loi normale standard
+plot_normal_distribution(1, 2)
+plot_normal_distribution(-3, 5)
+plt.legend()
+plt.show()</code></pre></div>
+
+
+<p><strong>Règle empirique 68-95-99.7</strong> — exemple avec la taille humaine (μ = 170 cm, σ = 10 cm) :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Intervalle</th><th>% de la population</th><th>Exemple (μ=170, σ=10)</th><th>[μ − σ, μ + σ]</th><th><strong>68%</strong></th><th>[160 cm, 180 cm]</th></tr></thead><tbody><tr><td>[μ − 2σ, μ + 2σ]</td><td><strong>95%</strong></td><td>[150 cm, 190 cm]</td><td>[μ − 3σ, μ + 3σ]</td><td><strong>99.7%</strong></td><td>[140 cm, 200 cm]</td></tr></tbody></table></div>
+<p><strong>PDF vs CDF :</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def plot_cumulative_normal_distribution(mu, variance):
+    sigma = math.sqrt(variance)
+    x = np.linspace(-10, 10, 100)
+    plt.plot(x, stats.norm.cdf(x, mu, sigma), label=f&quot;μ={mu}, σ²={variance}&quot;)
+    # CDF : P(X ≤ x) — monte de 0 à 1
+
+plot_cumulative_normal_distribution(0, 1)
+plot_cumulative_normal_distribution(1, 2)
+plot_cumulative_normal_distribution(-3, 5)
+plt.legend()
+plt.show()</code></pre></div>
+
+
+<hr>
+
+<h2 id="5-théorème-central-limite-tcl">5) Théorème Central Limite (TCL)</h2>
+
+<h3 id="51-énoncé">5.1 Énoncé</h3>
+
+<p>Quand on additionne (ou moyenne) n variables aléatoires <strong>i.i.d.</strong> (indépendantes et identiquement distribuées) de moyenne μ et d'écart-type σ, leur moyenne X̄ converge vers une loi normale :</p>
+
+<p><strong>X̄ → N(μ, σ/√n) quand n → ∞</strong></p>
+
+<p>Cela est vrai <strong>quelle que soit</strong> la distribution d'origine !</p>
+
+<h3 id="52-z-score">5.2 Z-score</h3>
+
+<p>Le Z-score exprime une observation en <strong>nombre d'écarts-types</strong> au-dessus ou en dessous de la moyenne :</p>
+
+<p>z = (x − μ) / σ</p>
+
+<p>Avec le TCL : <strong>Z = (X̄ − μ) / (σ/√n) → N(0, 1)</strong></p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">mu, sigma = 170, 10
+
+z_185 = (185 - mu) / sigma    # → +1.5 : 1.5 σ au-dessus de la moyenne
+z_155 = (155 - mu) / sigma    # → -1.5 : 1.5 σ en dessous de la moyenne
+
+stats.norm.cdf(z_185)                       # → 0.933 : 93.3% de la pop. en dessous
+stats.norm.cdf(1) - stats.norm.cdf(-1)      # → 0.683 : ~68% entre μ−σ et μ+σ</code></pre></div>
+
+
+<h3 id="53-vérification-empirique">5.3 Vérification empirique</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Distribution de départ : exponentielle (très asymétrique !)
+sample_means = [
+    np.mean(np.random.exponential(scale=2, size=30))
+    for _ in range(1000)
+]
+
+sns.histplot(sample_means, kde=True)
+plt.title(&quot;Distribution des moyennes d&#x27;échantillons (n=30)&quot;)
+plt.xlabel(&quot;Moyenne de l&#x27;échantillon&quot;)
+plt.show()
+## → ressemble à une gaussienne malgré la distribution exponentielle d&#x27;origine !</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">📚</div><div class="callout-content"><p>👉 <a href="https://www.youtube.com/watch?v=zeJD6dqJ5lo" target="_blank" rel="noopener">3Blue1Brown — Central Limit Theorem</a> — visualisation animée très intuitive</p></div></div>
+
+<hr>
+
+<h2 id="6-pour-aller-plus-loin">6) Pour aller plus loin</h2>
+
+<p><strong>Statistiques</strong></p>
+
+<ul>
+<li>👉 <a href="https://en.wikipedia.org/wiki/Sensitivity_and_specificity" target="_blank" rel="noopener">Sensitivity & Specificity</a></li>
+<li>👉 <a href="https://en.wikipedia.org/wiki/Central_limit_theorem" target="_blank" rel="noopener">Central Limit Theorem</a></li>
+<li>👉 <a href="https://codeburst.io/2-important-statistics-terms-you-need-to-know-in-data-science-skewness-and-kurtosis-388fef94eeaa" target="_blank" rel="noopener">Skewness & Kurtosis</a></li>
+<li>👉 <a href="https://www.probabilitycourse.com/chapter8/8_1_0_intro.php" target="_blank" rel="noopener">Sampling & Statistical Inference</a></li>
+<li>👉 <a href="https://en.wikipedia.org/wiki/Confidence_interval" target="_blank" rel="noopener">Confidence Interval</a></li>
+<li>👉 <a href="https://en.wikipedia.org/wiki/Simpson%27s_paradox" target="_blank" rel="noopener">Simpson's Paradox</a></li>
+<li>👉 <a href="https://en.wikipedia.org/wiki/Bootstrapping_%28statistics%29" target="_blank" rel="noopener">Bootstrapping</a></li>
+</ul>
+
+<p><strong>Probabilités</strong></p>
+
+<ul>
+<li>👉 <a href="https://hadrienj.github.io/posts/Probability-Mass-and-Density-Functions/" target="_blank" rel="noopener">Probability Mass & Density Functions</a> — Hadrien Jean</li>
+<li>👉 <a href="https://hadrienj.github.io/posts/Marginal-and-Conditional-Probability/" target="_blank" rel="noopener">Marginal & Conditional Probabilities</a> — Hadrien Jean</li>
+<li>👉 <a href="https://www.youtube.com/watch?v=zeJD6dqJ5lo" target="_blank" rel="noopener">3Blue1Brown — Central Limit Theorem</a></li>
+<li>👉 <a href="https://www.youtube.com/watch?v=HZGCoVF3YvM" target="_blank" rel="noopener">3Blue1Brown — Bayes Theorem</a></li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><ol><li><a href="#ref-a-retenir-absolument">A retenir absolument</a></li><li><a href="#ref-analogie-fil-rouge-urnes-dés-pièces">Analogie fil rouge : urnes, dés, pièces</a></li><li><a href="#ref-mini-plan">Mini-plan</a></li></ol></li><li><a href="#ref-1-statistiques-descriptives">1) Statistiques descriptives</a><ol><li><a href="#ref-11-lhistogramme">1.1 L'histogramme</a></li></ol></li><li><a href="#ref-2-indicateurs-statistiques">2) Indicateurs statistiques</a><ol><li><a href="#ref-21-mesures-de-tendance-centrale">2.1 Mesures de tendance centrale</a></li><li><a href="#ref-22-mesures-de-dispersion">2.2 Mesures de dispersion</a></li><li><a href="#ref-23-le-boxplot-et-le-résumé-en-cinq-chiffres">2.3 Le boxplot et le résumé en cinq chiffres</a></li><li><a href="#ref-24-la-correlation-entre-deux-variables">2.4 La correlation entre deux variables</a></li><li><a href="#ref-25-le-datasaurus-toujours-visualiser">2.5 Le Datasaurus : toujours visualiser !</a></li></ol></li><li><a href="#ref-3-probabilités">3) Probabilités</a><ol><li><a href="#ref-31-expérience-aléatoire-et-espace-déchantillonnage">3.1 Expérience aléatoire et espace d'échantillonnage</a></li><li><a href="#ref-32-union-intersection-et-complementaire">3.2 Union, intersection et complementaire</a></li><li><a href="#ref-33-probabilite-conditionnelle">3.3 Probabilite conditionnelle</a></li><li><a href="#ref-34-theoreme-de-bayes-renverser-une-probabilite">3.4 Theoreme de Bayes — "renverser" une probabilite</a></li></ol></li><li><a href="#ref-4-variables-aleatoires-et-distributions">4) Variables aleatoires et distributions</a><ol><li><a href="#ref-41-quest-ce-quune-variable-aléatoire">4.1 Qu'est-ce qu'une variable aléatoire ?</a></li><li><a href="#ref-42-fonction-de-masse-de-probabilite-pmf">4.2 Fonction de masse de probabilite (PMF)</a></li><li><a href="#ref-43-lesperance-ex">4.3 L'esperance E[X]</a></li><li><a href="#ref-44-loi-de-bernoulli-bp">4.4 Loi de Bernoulli B(p)</a></li><li><a href="#ref-45-loi-binomiale-bn-p">4.5 Loi Binomiale B(n, p)</a></li><li><a href="#ref-46-la-loi-normale-nμ-σ²-la-reine-des-distributions">4.6 La loi Normale N(μ, σ²) — la reine des distributions</a></li></ol></li><li><a href="#ref-5-theoreme-central-limite-tcl">5) Theoreme Central Limite (TCL)</a><ol><li><a href="#ref-51-enonce">5.1 Enonce</a></li><li><a href="#ref-52-le-z-score">5.2 Le Z-score</a></li><li><a href="#ref-53-verification-empirique-le-tcl-en-action">5.3 Verification empirique — le TCL en action</a></li></ol></li><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Les statistiques et les probabilités sont les deux piliers mathématiques de la data science. Sans eux, impossible de savoir si une tendance observée dans des données est réelle ou due au hasard.</p>
+
+<p><strong>Contexte data science :</strong> chaque fois qu'un modèle prédit un résultat, qu'un A/B test compare deux versions d'un site, ou qu'un algorithme de recommandation suggère un film, des statistiques et des probabilités travaillent en coulisses.</p>
+
+<h3 id="ref-a-retenir-absolument">A retenir absolument</h3>
+
+<ul>
+<li>Les statistiques <strong>décrivent</strong> ce qu'on observe ; les probabilités <strong>modélisent</strong> ce qui pourrait arriver.</li>
+<li>Une moyenne peut être trompeuse : toujours regarder aussi la dispersion (écart-type, IQR).</li>
+<li>Corrélation ne veut pas dire causalité — et corrélation nulle ne veut pas dire indépendance.</li>
+<li>Le Théorème Central Limite est le résultat le plus puissant des stats : il explique pourquoi la loi normale est partout.</li>
+<li>Bayes permet de mettre à jour une croyance à la lumière d'une nouvelle information — c'est la base du raisonnement sous incertitude.</li>
+</ul>
+
+<h3 id="ref-analogie-fil-rouge-urnes-dés-pièces">Analogie fil rouge : urnes, dés, pièces</h3>
+
+<p>Tout au long de ce cours, on utilisera des expériences simples — lancer un dé, tirer une pièce de monnaie, piocher une bille dans une urne — pour illustrer des concepts qui s'appliquent ensuite à n'importe quelle donnée réelle (salaires, tailles, clics, résultats médicaux...).</p>
+
+<h3 id="ref-mini-plan">Mini-plan</h3>
+
+<ol>
+<li>Statistiques descriptives — résumer des données avec des graphiques et des chiffres</li>
+<li>Indicateurs de tendance centrale et de dispersion</li>
+<li>Probabilités — modéliser le hasard</li>
+<li>Variables aléatoires et distributions (Bernoulli, Binomiale, Normale)</li>
+<li>Théorème Central Limite — le grand unificateur</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-statistiques-descriptives">1) Statistiques descriptives</h2>
+
+<p><strong>Objectif :</strong> explorer des données brutes, les visualiser, en extraire du sens avant de calculer quoi que ce soit.</p>
+
+<p><strong>Exemple fil rouge :</strong> poids (en livres) d'étudiants d'une université.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import math
+import scipy.stats as stats
+
+# Construction du jeu de données : poids d&#x27;hommes et de femmes
+male_df = pd.DataFrame(
+    [140, 145, 160, 190, 155, 165, 150, 190, 195, 138, 160, 155, 153, 145,
+     170, 175, 175, 170, 180, 135, 170, 157, 130, 185, 190, 155, 170, 155,
+     215, 150, 145, 155, 155, 150, 155, 150, 180, 160, 135, 160, 130, 155,
+     150, 148, 155, 150, 140, 180, 190, 145, 150, 164, 140, 142, 136, 123, 155],
+    columns=[&#x27;weight&#x27;])
+male_df[&#x27;sex&#x27;] = &#x27;male&#x27;  # on ajoute la colonne sexe
+
+female_df = pd.DataFrame(
+    [140, 120, 130, 138, 121, 116, 125, 145, 150, 112, 125, 130, 120, 130,
+     131, 120, 118, 125, 135, 125, 118, 122, 115, 102, 115, 150, 110, 116,
+     108, 95, 125, 133, 110, 150, 108],
+    columns=[&#x27;weight&#x27;])
+female_df[&#x27;sex&#x27;] = &#x27;female&#x27;
+
+# On fusionne les deux groupes en un seul DataFrame
+weights_df = pd.concat([male_df, female_df], ignore_index=True)
+weights_df.sample(5)  # afficher 5 lignes au hasard pour vérifier</code></pre></div>
+
+
+<p>On a maintenant 92 individus avec leur poids et leur sexe.</p>
+
+<h3 id="ref-11-lhistogramme">1.1 L'histogramme</h3>
+
+<p>Un histogramme représente la <strong>distribution</strong> d'une variable numérique continue. Il regroupe les valeurs en intervalles appelés "bins" (cases) et montre combien de valeurs tombent dans chaque case.</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Histogramme ≠ Bar chart. L'histogramme est réservé aux variables <strong>continues</strong> (poids, taille, prix...). Le bar chart est pour les variables <strong>catégorielles</strong> (couleurs, pays, oui/non...). Confondre les deux est une erreur très courante.</p></div></div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Un bin par livre entière entre le min et le max
+ax = sns.histplot(
+    weights_df[&quot;weight&quot;],
+    bins=weights_df[&quot;weight&quot;].max() - weights_df[&quot;weight&quot;].min()  # nb de bins = plage de valeurs
+)
+ax.set_xlabel(&quot;Poids (en livres)&quot;)
+plt.show()</code></pre></div>
+
+
+<p><strong>Choisir le bon nombre de bins :</strong> trop peu de bins et on perd l'information ; trop de bins et le graphique devient bruité.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">f, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(15, 4))
+
+# 13 bins définis manuellement
+ax1.hist(weights_df[&quot;weight&quot;], bins=[95, 105, 115, 125, 135, 145, 155, 165, 175, 185, 195, 205, 215])
+# 12 bins automatiques
+ax2.hist(weights_df[&quot;weight&quot;], bins=12)
+# 12 bins + courbe KDE (estimation de la densité)
+sns.histplot(weights_df[&quot;weight&quot;], bins=12, ax=ax3, kde=True)
+
+plt.show()</code></pre></div>
+
+
+<p><strong>Distribution cumulative :</strong> au lieu de compter les valeurs dans chaque bin, on cumule les proportions de gauche à droite. La courbe monte de 0% à 100%.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">f, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 4))
+
+# Version densité (axe y de 0 à 1)
+ax1.hist(weights_df[&quot;weight&quot;], bins=25, cumulative=True, density=True)
+
+# Version pourcentage (axe y de 0% à 100%)
+sns.histplot(weights_df[&quot;weight&quot;], binwidth=5, ax=ax2,
+             kde=True, cumulative=True, stat=&quot;percent&quot;)
+
+plt.show()
+# Lecture : &quot;environ 50% des étudiants pèsent moins de 145 livres&quot;</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>La courbe cumulative permet de répondre à des questions du type : "Quel pourcentage d'étudiants pèse moins de 150 livres ?" — il suffit de lire la valeur sur l'axe y à x=150.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-indicateurs-statistiques">2) Indicateurs statistiques</h2>
+
+<p><strong>Objectif :</strong> résumer tout un jeu de données en quelques chiffres clés.</p>
+
+<h3 id="ref-21-mesures-de-tendance-centrale">2.1 Mesures de tendance centrale</h3>
+
+<p>Ces indicateurs indiquent "où se situe le centre" des données.</p>
+
+<h4 id="ref-la-moyenne">La moyenne</h4>
+
+<p>La <strong>moyenne arithmétique</strong> est la somme de toutes les valeurs divisée par leur nombre.</p>
+
+<div class="katex-display">$$\bar{x} = \frac{\text{somme de toutes les valeurs}}{\text{nombre de valeurs}} = \frac{x_1 + x_2 + \cdots + x_n}{n}$$</div>
+
+<p><strong>Exemple numérique :</strong> poids [140, 150, 155, 160, 170]</p>
+
+<div class="katex-display">$$\bar{x} = \frac{140 + 150 + 155 + 160 + 170}{5} = \frac{775}{5} = 155 \text{ livres}$$</div>
+
+<p><strong>Problème avec la moyenne :</strong> elle est très sensible aux valeurs extrêmes (outliers).</p>
+
+<p><strong>Exemple :</strong> salaires [2000, 2000, 2100, 2050, 500000]</p>
+
+<div class="katex-display">$$\bar{x} = \frac{2000 + 2000 + 2100 + 2050 + 500\,000}{5} = 101\,630 \text{ €}$$</div>
+
+<p>Ce chiffre ne représente aucun des 5 individus ! Un seul salaire extrême a tout faussé.</p>
+
+<h4 id="ref-la-médiane">La médiane</h4>
+
+<p>La <strong>médiane</strong> est la valeur du milieu quand on trie les données dans l'ordre.</p>
+
+<ul>
+<li>Nombre <strong>impair</strong> de valeurs : 1, 3, 3, <strong>6</strong>, 7, 8, 9 → médiane = <strong>6</strong></li>
+<li>Nombre <strong>pair</strong> de valeurs : 1, 2, 3, <strong>4</strong>, <strong>5</strong>, 6, 8, 9 → médiane = $\frac{4+5}{2} = 4{,}5$</li>
+</ul>
+
+<p>Sur les salaires précédents : médiane = <strong>2050 €</strong>. C'est bien plus représentatif.</p>
+
+<h4 id="ref-le-mode">Le mode</h4>
+
+<p>Le <strong>mode</strong> est la valeur qui apparaît le plus souvent.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">s = pd.Series([1, 1, 2, 4, 4])
+s.mode()               # retourne [1, 4] → deux modes (distribution bimodale)
+
+df[&#x27;weight&#x27;].mode()    # premier mode du dataset poids
+df[&#x27;weight&#x27;].mode()[0] # si on veut une seule valeur</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Quelle mesure choisir ?</strong></p>
+<p>- Données avec outliers (salaires, prix immobiliers) → <strong>médiane</strong></p>
+<p>- Données bien distribuées, sans valeurs extrêmes → <strong>moyenne</strong></p>
+<p>- Données catégorielles (couleur préférée, taille de vêtement) → <strong>mode</strong></p></div></div>
+
+<p><strong>Asymétrie (skewness) :</strong> quand une distribution est asymétrique (queue longue d'un côté), la moyenne, la médiane et le mode ne coïncident plus. La queue "tire" la moyenne vers elle.</p>
+
+<h3 id="ref-22-mesures-de-dispersion">2.2 Mesures de dispersion</h3>
+
+<p>Ces indicateurs disent à quel point les données sont <strong>étalées</strong> autour du centre.</p>
+
+<h4 id="ref-la-variance">La variance</h4>
+
+<p>La <strong>variance</strong> mesure la moyenne des carrés des écarts à la moyenne. On met les écarts au carré pour que les valeurs positives et négatives ne s'annulent pas.</p>
+
+<div class="katex-display">$$\sigma^2 = \frac{\sum_{i=1}^{n}(x_i - \bar{x})^2}{n - 1}$$</div>
+
+<p>En français : on calcule l'écart de chaque valeur par rapport à la moyenne, on le met au carré, on fait la somme, puis on divise par $n-1$ (et non $n$).</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Pourquoi diviser par $n-1$ et non $n$ ?</strong> C'est la <strong>correction de Bessel</strong>. Quand on travaille sur un <em>échantillon</em> (et non la population entière), diviser par $n$ sous-estime systématiquement la vraie variance. Diviser par $n-1$ corrige ce biais. C'est le comportement par défaut de pandas (<code>ddof=1</code>).</p></div></div>
+
+<p><strong>Exemple :</strong> poids [140, 150, 155, 160, 170], moyenne = 155</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Valeur $x_i$</th><th>Ecart $(x_i - \bar{x})$</th><th>Ecart au carré $(x_i - \bar{x})^2$</th></tr></thead><tbody><tr><td>140</td><td>-15</td><td>225</td></tr><tr><td>150</td><td>-5</td><td>25</td></tr><tr><td>155</td><td>0</td><td>0</td></tr><tr><td>160</td><td>+5</td><td>25</td></tr><tr><td>170</td><td>+15</td><td>225</td></tr></tbody></table></div>
+<div class="katex-display">$$\sigma^2 = \frac{225 + 25 + 0 + 25 + 225}{5 - 1} = \frac{500}{4} = 125$$</div>
+
+<h4 id="ref-lecart-type">L'ecart-type</h4>
+
+<p>L'<strong>ecart-type</strong> est la racine carrée de la variance. Il a l'avantage d'être dans la même unité que les données.</p>
+
+<div class="katex-display">$$\sigma = \sqrt{\sigma^2} = \sqrt{125} \approx 11{,}2 \text{ livres}$$</div>
+
+<p>Intuition : en moyenne, chaque poids s'écarte d'environ 11 livres de la moyenne.</p>
+
+<h4 id="ref-liqr-intervalle-interquartile">L'IQR (intervalle interquartile)</h4>
+
+<p>L'<strong>IQR</strong> mesure l'écart entre le 3e quartile (Q3 = 75% des données) et le 1er quartile (Q1 = 25% des données).</p>
+
+<div class="katex-display">$$\text{IQR} = Q3 - Q1$$</div>
+
+<p>L'IQR contient les 50% du milieu des données. Il est robuste aux outliers (les extrêmes ne l'affectent pas).</p>
+
+<p><strong>Detection d'outliers avec l'IQR :</strong></p>
+
+<div class="katex-display">$$\text{Outlier inférieur} : x < Q1 - 1{,}5 \times \text{IQR}$$</div>
+
+<div class="katex-display">$$\text{Outlier supérieur} : x > Q3 + 1{,}5 \times \text{IQR}$$</div>
+
+<p>C'est exactement la règle utilisée par les moustaches d'un <strong>boxplot</strong> seaborn.</p>
+
+<h3 id="ref-23-le-boxplot-et-le-résumé-en-cinq-chiffres">2.3 Le boxplot et le résumé en cinq chiffres</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Résumé statistique complet
+weights_df[&#x27;weight&#x27;].describe()
+# count     92.000000   → nombre d&#x27;individus
+# mean     145.152174   → moyenne
+# std       23.739398   → écart-type
+# min       95.000000   → minimum
+# 25%      125.000000   → Q1 : 25% des données sont en dessous
+# 50%      145.000000   → médiane
+# 75%      155.500000   → Q3 : 75% des données sont en dessous
+# max      215.000000   → maximum
+
+# Boxplot : représentation visuelle de ces 5 chiffres
+sns.boxplot(x=weights_df[&#x27;weight&#x27;])
+plt.show()
+# La boite = IQR (de Q1 à Q3)
+# Le trait dans la boite = médiane
+# Les moustaches = valeurs dans [Q1 - 1.5*IQR, Q3 + 1.5*IQR]
+# Les points au-delà = outliers</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Le boxplot résume en un seul graphique : le centre (médiane), la dispersion (IQR), l'asymétrie (position de la médiane dans la boite), et les outliers (points isolés).</p></div></div>
+
+<h3 id="ref-24-la-correlation-entre-deux-variables">2.4 La correlation entre deux variables</h3>
+
+<p>Le <strong>coefficient de correlation de Pearson</strong> $r$ mesure la force de la relation <strong>lineaire</strong> entre deux variables. Sa valeur est toujours comprise entre $-1$ et $+1$.</p>
+
+<div class="katex-display">$$r = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2} \cdot \sqrt{\sum_{i=1}^{n}(y_i - \bar{y})^2}}$$</div>
+
+<p>En français : on multiplie les écarts de x et de y à leur moyenne respective, on fait la somme, et on normalise par le produit des écarts-types.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Valeur de $r$</th><th>Interprétation</th></tr></thead><tbody><tr><td>$r \approx +1$</td><td>forte relation lineaire positive (si x augmente, y augmente)</td></tr><tr><td>$r \approx 0$</td><td>pas de relation lineaire</td></tr><tr><td>$r \approx -1$</td><td>forte relation lineaire negative (si x augmente, y diminue)</td></tr></tbody></table></div>
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Coefficient de corrélation entre poids et âge
+weights_df[&#x27;weight&#x27;].corr(weights_df[&#x27;age&#x27;])
+
+# Matrice de corrélation (toutes les paires de variables numériques)
+sns.heatmap(
+    weights_df.select_dtypes(&#x27;number&#x27;).corr(),
+    annot=True,        # afficher les valeurs dans les cases
+    cmap=&#x27;coolwarm&#x27;,   # bleu=négatif, rouge=positif
+    vmin=-1, vmax=1    # fixer l&#x27;échelle
+)
+plt.show()</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Piege classique :</strong> $(X, Y)$ independants $\Rightarrow r = 0$, mais $r = 0 \not\Rightarrow$ independance ! La correlation de Pearson ne capture que la dependance <strong>lineaire</strong>. Exemple : $X$ et $X^2$ ont une correlation proche de 0, pourtant $X^2$ depend totalement de $X$.</p></div></div>
+
+<h3 id="ref-25-le-datasaurus-toujours-visualiser">2.5 Le Datasaurus : toujours visualiser !</h3>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Des datasets complètement différents (un dinosaure, un cercle, une étoile...) peuvent avoir <strong>exactement</strong> la même moyenne, le même écart-type et le même coefficient de corrélation. Les statistiques résumées seules ne suffisent pas. <strong>Toujours faire une Analyse Exploratoire (EDA) avec des graphiques.</strong></p></div></div>
+
+<hr>
+
+<h2 id="ref-3-probabilités">3) Probabilités</h2>
+
+<h3 id="ref-31-expérience-aléatoire-et-espace-déchantillonnage">3.1 Expérience aléatoire et espace d'échantillonnage</h3>
+
+<p>Une <strong>expérience aleatoire</strong> est une situation dont le résultat est incertain. L'ensemble de <strong>tous les résultats possibles</strong> s'appelle l'<strong>espace d'echantillonnage</strong>, noté $\Omega$ (oméga) ou $S$.</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Expérience</th><th>Espace d'échantillonnage $\Omega$</th></tr></thead><tbody><tr><td>Lancer un dé à 6 faces</td><td>$\{1, 2, 3, 4, 5, 6\}$</td></tr><tr><td>Lancer une pièce 3 fois</td><td>$\{PPP, PPF, PFP, FPP, PFF, FPF, FFP, FFF\}$ — 8 éléments</td></tr><tr><td>Compter les buts d'un match</td><td>$\{0, 1, 2, 3, \ldots\}$</td></tr></tbody></table></div>
+<p>Un <strong>evenement</strong> $A$ est un sous-ensemble de $\Omega$. La probabilité $P(A)$ est un nombre entre 0 et 1 :</p>
+
+<div class="katex-display">$$0 \leq P(A) \leq 1$$</div>
+
+<p>Exemple : $A$ = "obtenir un nombre pair avec un dé" = $\{2, 4, 6\}$</p>
+
+<div class="katex-display">$$P(A) = \frac{3}{6} = 0{,}5$$</div>
+
+<h3 id="ref-32-union-intersection-et-complementaire">3.2 Union, intersection et complementaire</h3>
+
+<p><strong>Le complementaire $A^c$</strong> : tout ce qui n'est pas dans $A$.</p>
+
+<div class="katex-display">$$P(A^c) = 1 - P(A)$$</div>
+
+<p>Exemple : $P(\text{ne pas obtenir un pair}) = 1 - 0{,}5 = 0{,}5$</p>
+
+<p><strong>L'union $A \cup B$</strong> : au moins l'un des deux evenements se réalise.</p>
+
+<div class="katex-display">$$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$</div>
+
+<p>On soustrait $P(A \cap B)$ pour ne pas compter deux fois les elements qui appartiennent à la fois à $A$ et à $B$.</p>
+
+<p><strong>Exemple :</strong> avec un dé, $A$ = "obtenir un pair" = $\{2,4,6\}$, $B$ = "obtenir un multiple de 3" = $\{3,6\}$.</p>
+
+<div class="katex-display">$$P(A \cup B) = \frac{3}{6} + \frac{2}{6} - \frac{1}{6} = \frac{4}{6} \approx 0{,}67$$</div>
+
+<p>(L'element 6 est dans les deux ensembles, on le retire une fois.)</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Ces formules se visualisent facilement avec des diagrammes de Venn : deux cercles qui se chevauchent. L'union c'est tout ce qui est dans l'un ou l'autre cercle ; l'intersection c'est la zone de chevauchement.</p></div></div>
+
+<h3 id="ref-33-probabilite-conditionnelle">3.3 Probabilite conditionnelle</h3>
+
+<p>On dit qu'on calcule une probabilite <strong>conditionnelle</strong> quand on dispose d'une information supplementaire qui change le contexte.</p>
+
+<p><strong>Definition :</strong></p>
+
+<div class="katex-display">$$P(A \cap B) = P(A) \cdot P(B \mid A)$$</div>
+
+<p>En français : la probabilité que A ET B se produisent = probabilité que A se produise × probabilité que B se produise <strong>sachant que A s'est déjà produit</strong>.</p>
+
+<p>On en déduit :</p>
+
+<div class="katex-display">$$P(B \mid A) = \frac{P(A \cap B)}{P(A)}$$</div>
+
+<p><strong>Exemple — Tirer deux Rois d'un jeu de cartes sans remise :</strong></p>
+
+<ul>
+<li>$P(A)$ = probabilité que la 1re carte soit un Roi = $\frac{4}{52} \approx 0{,}077$</li>
+<li>$P(B \mid A)$ = probabilité que la 2e carte soit un Roi <strong>sachant que</strong> la 1re était un Roi = $\frac{3}{51} \approx 0{,}059$</li>
+</ul>
+<p>(il ne reste plus que 3 Rois parmi 51 cartes)</p>
+<ul>
+<li>$P(A \cap B) = P(A) \cdot P(B \mid A) = \frac{4}{52} \times \frac{3}{51} = \frac{12}{2652} \approx 0{,}0045$</li>
+</ul>
+
+<p><strong>Independance statistique :</strong> $A$ et $B$ sont independants si et seulement si connaitre $A$ ne change rien à la probabilité de $B$ :</p>
+
+<div class="katex-display">$$A \text{ et } B \text{ indépendants} \iff P(A \mid B) = P(A)$$</div>
+
+<p>Exemple : lancer deux dés. Le resultat du 2e dé ne depend pas du 1er.</p>
+
+<h3 id="ref-34-theoreme-de-bayes-renverser-une-probabilite">3.4 Theoreme de Bayes — "renverser" une probabilite</h3>
+
+<p>Le theoreme de Bayes permet de calculer $P(A \mid B)$ quand on connait $P(B \mid A)$.</p>
+
+<div class="katex-display">$$P(A \mid B) = \frac{P(B \mid A) \cdot P(A)}{P(B)}$$</div>
+
+<p>En français : "la probabilité d'avoir A sachant B" = "la probabilité d'avoir B sachant A" × "la probabilité a priori de A", le tout divisé par "la probabilité globale de B".</p>
+
+<p><strong>Exemple — Test medical :</strong></p>
+
+<p>Imaginons une maladie rare qui touche 1 personne sur 1000. Un test détecte correctement 99% des malades (vrais positifs), mais annonce faussement positif pour 2% des personnes saines (faux positifs).</p>
+
+<div class="katex-display">$$P(\text{Malade}) = 0{,}001$$</div>
+<div class="katex-display">$$P(+ \mid \text{Malade}) = 0{,}99$$</div>
+<div class="katex-display">$$P(+ \mid \text{Sain}) = 0{,}02$$</div>
+
+<p>Question : si le test est positif, quelle est la vraie probabilité d'être malade ?</p>
+
+<p>D'abord, calculons $P(+)$, la probabilité globale d'avoir un test positif :</p>
+
+<div class="katex-display">$$P(+) = P(+ \mid \text{Malade}) \cdot P(\text{Malade}) + P(+ \mid \text{Sain}) \cdot P(\text{Sain})$$</div>
+
+<div class="katex-display">$$P(+) = 0{,}99 \times 0{,}001 + 0{,}02 \times 0{,}999 = 0{,}02097$$</div>
+
+<p>Puis on applique Bayes :</p>
+
+<div class="katex-display">$$P(\text{Malade} \mid +) = \frac{P(+ \mid \text{Malade}) \cdot P(\text{Malade})}{P(+)} = \frac{0{,}99 \times 0{,}001}{0{,}02097} \approx 0{,}047$$</div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Mêmes calculs en Python
+p_sick = 0.001              # probabilité a priori d&#x27;être malade
+p_pos_given_sick = 0.99     # sensibilité du test
+p_pos_given_healthy = 0.02  # taux de faux positifs
+
+# Probabilité globale d&#x27;un test positif (loi des probabilités totales)
+p_pos = p_pos_given_sick * p_sick + p_pos_given_healthy * (1 - p_sick)  # = 0.02097
+
+# Bayes : P(Malade | test positif)
+p_sick_given_pos = (p_pos_given_sick * p_sick) / p_pos  # ≈ 0.047
+
+print(f&quot;P(Malade | test positif) ≈ {p_sick_given_pos:.1%}&quot;)  # → ~4.7% seulement !</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p><strong>Paradoxe des faux positifs (base rate fallacy) :</strong> même avec un test à 99% de fiabilité, si la maladie est très rare, la <strong>grande majorité des tests positifs sont des faux positifs</strong>. Ici, seulement 4,7% des personnes testées positives sont vraiment malades ! C'est contre-intuitif mais mathématiquement exact. La rareté de la maladie domine tout.</p></div></div>
+
+<hr>
+
+<h2 id="ref-4-variables-aleatoires-et-distributions">4) Variables aleatoires et distributions</h2>
+
+<h3 id="ref-41-quest-ce-quune-variable-aléatoire">4.1 Qu'est-ce qu'une variable aléatoire ?</h3>
+
+<p>Une <strong>variable aleatoire</strong> $X$ est une façon d'attacher un nombre à chaque résultat d'une expérience aléatoire. C'est une "machine" qui transforme le hasard en nombre.</p>
+
+<p><strong>Exemple — lancer une pièce 2 fois, $X$ = nombre de Faces obtenues :</strong></p>
+
+<ul>
+<li>Espace $\Omega$ = $\{(P,P), (P,F), (F,P), (F,F)\}$</li>
+<li>$X$ peut prendre les valeurs $\{0, 1, 2\}$</li>
+</ul>
+
+<div class="katex-display">$$P(X = 0) = \frac{1}{4}, \quad P(X = 1) = \frac{2}{4} = \frac{1}{2}, \quad P(X = 2) = \frac{1}{4}$$</div>
+
+<h3 id="ref-42-fonction-de-masse-de-probabilite-pmf">4.2 Fonction de masse de probabilite (PMF)</h3>
+
+<p>La <strong>PMF</strong> (Probability Mass Function) donne la probabilité de chaque valeur possible d'une variable aleatoire <strong>discrete</strong> (qui prend des valeurs séparées, comme 0, 1, 2...).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Représentation graphique de la PMF de notre exemple
+plt.bar(x=[0, 1, 2], height=[0.25, 0.5, 0.25], width=0.3)
+plt.xlabel(&quot;Nombre de Faces obtenues&quot;)
+plt.ylabel(&quot;Probabilité P(X = k)&quot;)
+plt.title(&quot;PMF — 2 lancers de pièce&quot;)
+plt.show()
+# Lecture : la barre à x=1 a une hauteur de 0.5 → P(X=1) = 50%</code></pre></div>
+
+
+<h3 id="ref-43-lesperance-ex">4.3 L'esperance E[X]</h3>
+
+<p>L'<strong>esperance</strong> (ou moyenne théorique) est la valeur moyenne qu'on obtiendrait si on répétait l'expérience un nombre infini de fois.</p>
+
+<div class="katex-display">$$\mathbb{E}[X] = \sum_{i} x_i \cdot P(X = x_i)$$</div>
+
+<p>En français : on multiplie chaque valeur possible par sa probabilité, et on fait la somme.</p>
+
+<p><strong>Exemple :</strong></p>
+
+<div class="katex-display">$$\mathbb{E}[X] = 0 \times 0{,}25 + 1 \times 0{,}5 + 2 \times 0{,}25 = 0 + 0{,}5 + 0{,}5 = \mathbf{1}$$</div>
+
+<p>En moyenne, on obtient 1 face sur 2 lancers. Ce résultat est logique : avec une pièce équilibrée, on s'attend à tomber sur Face la moitié du temps.</p>
+
+<h3 id="ref-44-loi-de-bernoulli-bp">4.4 Loi de Bernoulli B(p)</h3>
+
+<p>La <strong>loi de Bernoulli</strong> modélise une expérience avec <strong>un seul essai</strong> et <strong>deux résultats possibles</strong> : succes (1) ou échec (0).</p>
+
+<p>Parametre : $p$ = probabilité de succes.</p>
+
+<div class="katex-display">$$P(X = 1) = p \qquad P(X = 0) = 1 - p$$</div>
+
+<div class="katex-display">$$\mathbb{E}[X] = p \qquad \text{Var}(X) = p(1-p)$$</div>
+
+<p><strong>Exemples :</strong> lancer une pièce une fois ($p = 0{,}5$), un email est ouvert ou non ($p = 0{,}3$), un patient guérit ou non ($p = 0{,}7$).</p>
+
+<h3 id="ref-45-loi-binomiale-bn-p">4.5 Loi Binomiale B(n, p)</h3>
+
+<p>La <strong>loi binomiale</strong> generalise Bernoulli à $n$ essais independants. Elle compte le nombre de succes.</p>
+
+<p>Parametres : $n$ = nombre d'essais, $p$ = probabilité de succes à chaque essai.</p>
+
+<div class="katex-display">$$P(X = k) = \binom{n}{k} \cdot p^k \cdot (1-p)^{n-k}$$</div>
+
+<p>En français : "la probabilité d'obtenir exactement $k$ succes sur $n$ essais" = le nombre de façons d'arranger $k$ succes parmi $n$ essais, multiplié par la probabilité de chaque arrangement.</p>
+
+<div class="katex-display">$$\mathbb{E}[X] = n \cdot p \qquad \text{Var}(X) = n \cdot p \cdot (1-p)$$</div>
+
+<p><strong>Exemple numerique :</strong> on lance un dé 5 fois, $p = P(\text{obtenir un 6}) = \frac{1}{6} \approx 0{,}167$. Quelle est la probabilité d'obtenir exactement 2 fois un 6 ?</p>
+
+<div class="katex-display">$$P(X = 2) = \binom{5}{2} \cdot \left(\frac{1}{6}\right)^2 \cdot \left(\frac{5}{6}\right)^3 = 10 \times 0{,}028 \times 0{,}579 \approx 0{,}161$$</div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">p = 0.3   # probabilité de succès = 30%
+n = 5     # nombre d&#x27;essais
+size = 10000  # nombre de simulations
+
+# Simulation : B(1, p) — loi de Bernoulli (1 essai : 0 ou 1)
+bernoulli_samples = np.random.binomial(n=1, p=p, size=size)
+sns.histplot(bernoulli_samples, kde=False)
+plt.title(&quot;Bernoulli B(p=0.3) — 10 000 simulations&quot;)
+plt.show()
+
+# Simulation : B(5, p) — nombre de succès sur 5 essais
+binomial_samples = np.random.binomial(n=n, p=p, size=size)
+sns.histplot(binomial_samples, kde=False)
+plt.title(&quot;Binomiale B(n=5, p=0.3)&quot;)
+plt.show()
+
+# Distribution théorique exacte (formule mathématique)
+x = np.arange(n + 1)                # k = 0, 1, 2, 3, 4, 5
+pmf = stats.binom.pmf(x, n, p)      # P(X=k) pour chaque k
+plt.vlines(x, 0, pmf, linewidth=10) # barres verticales
+plt.xlabel(&quot;Nombre de succès k&quot;)
+plt.ylabel(&quot;P(X = k)&quot;)
+plt.show()</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Quand $n$ devient grand, $B(n, p)$ ressemble de plus en plus à une courbe en cloche — la loi normale. C'est le pont vers le Théorème Central Limite.</p></div></div>
+
+<h3 id="ref-46-la-loi-normale-nμ-σ²-la-reine-des-distributions">4.6 La loi Normale N(μ, σ²) — la reine des distributions</h3>
+
+<p>La <strong>loi normale</strong> est la distribution la plus importante en statistiques. Elle ressemble à une cloche symétrique, centrée sur $\mu$ (mu = moyenne) et de largeur controlée par $\sigma$ (sigma = ecart-type).</p>
+
+<p>Sa formule mathematique (la PDF = Probability Density Function) :</p>
+
+<div class="katex-display">$$f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \cdot e^{-\frac{(x - \mu)^2}{2\sigma^2}}$$</div>
+
+<p>En français : c'est une courbe en cloche centrée sur $\mu$, dont la largeur dépend de $\sigma$. Plus $\sigma$ est grand, plus la cloche est large et aplatie.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def tracer_loi_normale(mu, variance):
+    sigma = math.sqrt(variance)   # écart-type = racine de la variance
+    x = np.linspace(-10, 10, 100)
+    plt.plot(x, stats.norm.pdf(x, mu, sigma), label=f&quot;μ={mu}, σ²={variance}&quot;)
+
+tracer_loi_normale(0, 1)    # loi normale standard : centrée sur 0, σ=1
+tracer_loi_normale(1, 2)    # décalée à droite, plus étalée
+tracer_loi_normale(-3, 5)   # décalée à gauche, encore plus étalée
+plt.legend()
+plt.show()</code></pre></div>
+
+
+<p><strong>La regle empirique 68-95-99.7 :</strong></p>
+
+<p>Pour n'importe quelle loi normale, quelle que soit sa moyenne ou son ecart-type :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Intervalle</th><th>Pourcentage de la population</th><th>Exemple : taille humaine ($\mu = 170$ cm, $\sigma = 10$ cm)</th></tr></thead><tbody><tr><td>$[\mu - \sigma,\ \mu + \sigma]$</td><td><strong>68%</strong></td><td>[160 cm, 180 cm]</td></tr><tr><td>$[\mu - 2\sigma,\ \mu + 2\sigma]$</td><td><strong>95%</strong></td><td>[150 cm, 190 cm]</td></tr><tr><td>$[\mu - 3\sigma,\ \mu + 3\sigma]$</td><td><strong>99,7%</strong></td><td>[140 cm, 200 cm]</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Retenir cette règle suffit pour estimer rapidement la probabilité d'observer une valeur dans un intervalle autour de la moyenne. Par exemple : "Une personne mesurant 190 cm est dans les 2,5% les plus grands" (au-delà de μ + 2σ).</p></div></div>
+
+<p><strong>PDF vs CDF :</strong></p>
+
+<ul>
+<li>La <strong>PDF</strong> (densité) donne la "hauteur" de la courbe en un point. Elle ne donne pas directement une probabilité (ce serait la surface sous la courbe).</li>
+<li>La <strong>CDF</strong> (fonction de repartition cumulative) donne $P(X \leq x)$ — la probabilité que la variable soit inférieure ou égale à $x$.</li>
+</ul>
+
+<div class="katex-display">$$F(x) = P(X \leq x) = \int_{-\infty}^{x} f(t) \, dt$$</div>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">def tracer_cdf_normale(mu, variance):
+    sigma = math.sqrt(variance)
+    x = np.linspace(-10, 10, 100)
+    # stats.norm.cdf donne P(X ≤ x), monte de 0 à 1
+    plt.plot(x, stats.norm.cdf(x, mu, sigma), label=f&quot;μ={mu}, σ²={variance}&quot;)
+
+tracer_cdf_normale(0, 1)
+tracer_cdf_normale(1, 2)
+tracer_cdf_normale(-3, 5)
+plt.legend()
+plt.show()
+# Lecture : stats.norm.cdf(x=180, loc=170, scale=10) ≈ 0.84
+# → 84% des individus mesurent moins de 180 cm</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-5-theoreme-central-limite-tcl">5) Theoreme Central Limite (TCL)</h2>
+
+<h3 id="ref-51-enonce">5.1 Enonce</h3>
+
+<p>C'est le resultat le plus remarquable des statistiques. Il dit :</p>
+
+<blockquote><p>Quelle que soit la distribution d'origine d'une variable aleatoire, si on calcule la <strong>moyenne</strong> de suffisamment de valeurs ($n$ grand), cette moyenne suit approximativement une <strong>loi normale</strong>.</p></blockquote>
+
+<p>Formellement, si $X_1, X_2, \ldots, X_n$ sont des variables independantes et identiquement distribuees de moyenne $\mu$ et d'ecart-type $\sigma$, alors leur moyenne $\bar{X}$ suit :</p>
+
+<div class="katex-display">$$\bar{X} \xrightarrow[n \to \infty]{} \mathcal{N}\!\left(\mu,\ \frac{\sigma}{\sqrt{n}}\right)$$</div>
+
+<p>En français :</p>
+<ul>
+<li><strong>Centre :</strong> la moyenne des moyennes d'echantillons est egale à la vraie moyenne $\mu$ de la population.</li>
+<li><strong>Dispersion :</strong> l'ecart-type des moyennes d'echantillons vaut $\frac{\sigma}{\sqrt{n}}$ — il diminue quand on augmente la taille des echantillons.</li>
+</ul>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Intuition avec des dés : si on lance un seul dé, on obtient uniformément 1, 2, 3, 4, 5 ou 6. Mais si on lance 30 dés et qu'on calcule leur moyenne, cette moyenne sera presque toujours proche de 3,5. Avec 1000 dés, la moyenne sera quasi-certainement entre 3,4 et 3,6. Plus on prend de dés, plus la distribution des moyennes se resserre autour de la vraie valeur et ressemble à une cloche.</p></div></div>
+
+<h3 id="ref-52-le-z-score">5.2 Le Z-score</h3>
+
+<p>Le <strong>Z-score</strong> exprime une valeur en <strong>nombre d'ecarts-types</strong> au-dessus ou en dessous de la moyenne. Il "standardise" n'importe quelle distribution.</p>
+
+<div class="katex-display">$$z = \frac{x - \mu}{\sigma}$$</div>
+
+<p>En français : "de combien d'ecarts-types suis-je eloigne de la moyenne ?"</p>
+
+<p>Avec le TCL, on peut standardiser la moyenne d'echantillon :</p>
+
+<div class="katex-display">$$Z = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \xrightarrow[n \to \infty]{} \mathcal{N}(0, 1)$$</div>
+
+<p>Cela permet d'utiliser la loi normale standard pour calculer des probabilites.</p>
+
+<p><strong>Exemple numerique :</strong> taille humaine ($\mu = 170$ cm, $\sigma = 10$ cm).</p>
+
+<p>Quelle proportion de personnes mesurent moins de 185 cm ?</p>
+
+<div class="katex-display">$$z_{185} = \frac{185 - 170}{10} = +1{,}5$$</div>
+
+<p>185 cm est à 1,5 ecart-type au-dessus de la moyenne. On cherche $P(Z \leq 1{,}5)$.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">mu, sigma = 170, 10  # taille humaine : moyenne 170 cm, écart-type 10 cm
+
+# Calcul des Z-scores
+z_185 = (185 - mu) / sigma    # → +1.5 : 1.5 σ au-dessus de la moyenne
+z_155 = (155 - mu) / sigma    # → -1.5 : 1.5 σ en dessous de la moyenne
+
+# P(X ≤ 185) : proportion de personnes mesurant moins de 185 cm
+prob_185 = stats.norm.cdf(z_185)   # → 0.933 → 93.3% de la population
+print(f&quot;93.3% des personnes mesurent moins de 185 cm&quot;)
+
+# P(160 ≤ X ≤ 180) : proportion entre μ-σ et μ+σ
+prob_centre = stats.norm.cdf(1) - stats.norm.cdf(-1)   # → 0.683 → ~68%
+print(f&quot;68% des personnes mesurent entre 160 et 180 cm&quot;)</code></pre></div>
+
+
+<h3 id="ref-53-verification-empirique-le-tcl-en-action">5.3 Verification empirique — le TCL en action</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Distribution de départ : exponentielle (très asymétrique, pas du tout une cloche)
+# Le TCL prédit que les MOYENNES d&#x27;échantillons seront quand même normales
+
+sample_means = [
+    np.mean(np.random.exponential(scale=2, size=30))  # moyenne de 30 valeurs exponentielles
+    for _ in range(1000)                               # répéter 1000 fois
+]
+
+sns.histplot(sample_means, kde=True)
+plt.title(&quot;Distribution des moyennes d&#x27;échantillons (n=30, loi exponentielle)&quot;)
+plt.xlabel(&quot;Moyenne de l&#x27;échantillon&quot;)
+plt.show()
+# Résultat : une cloche ! Malgré la distribution exponentielle d&#x27;origine.</code></pre></div>
+
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p><strong>Ce que confirme ce code :</strong> même si les données individuelles suivent une loi exponentielle (très asymétrique), la distribution des <strong>moyennes</strong> d'échantillons de taille 30 ressemble déjà fortement à une loi normale. Le TCL fonctionne !</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1 — Moyenne vs médiane :</strong></p>
+<p>Les salaires d'une équipe sont : 2 000 €, 2 200 €, 2 100 €, 1 900 €, 95 000 €. Quelle mesure de tendance centrale est la plus représentative ? Calculez-la.</p>
+
+<p><strong>Question 2 — Probabilité conditionnelle :</strong></p>
+<p>Dans un jeu de cartes de 52 cartes, on tire deux cartes sans remise. Quelle est la probabilité que les deux cartes soient des As ? Détaillez le calcul avec $P(A)$ et $P(B \mid A)$.</p>
+
+<p><strong>Question 3 — Loi normale et Z-score :</strong></p>
+<p>Les notes à un examen suivent une loi normale de moyenne $\mu = 12$ et d'écart-type $\sigma = 3$. Quel Z-score correspond à une note de 18 ? Que peut-on en déduire sur le rang de cet étudiant ?</p>
+
+<p><strong>Question 4 — Théorème Central Limite :</strong></p>
+<p>On lance un dé équilibré à 6 faces. La distribution des valeurs individuelles est uniforme (pas une cloche). Que prédit le Théorème Central Limite si on calcule la moyenne de 100 lancers répétés 10 000 fois ?</p>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Les <strong>statistiques descriptives</strong> résument les données : moyenne (sensible aux outliers), médiane (robuste), mode, écart-type, IQR, boxplot.</li>
+<li><strong>Toujours visualiser</strong> avant de résumer — deux datasets aux statistiques identiques peuvent avoir des formes radicalement différentes (Datasaurus).</li>
+<li>Une <strong>probabilité</strong> est un nombre entre 0 et 1 qui mesure la chance d'un événement. La probabilité conditionnelle $P(B \mid A)$ met à jour cette chance selon une information connue.</li>
+<li>Le <strong>théorème de Bayes</strong> permet de "renverser" une probabilité conditionnelle — il révèle le paradoxe des faux positifs : un test fiable sur une maladie rare donne majoritairement de faux positifs.</li>
+<li>Une <strong>variable aléatoire</strong> associe un nombre à chaque résultat du hasard. Son espérance est sa "moyenne théorique".</li>
+<li>La <strong>loi binomiale</strong> $B(n, p)$ compte les succès sur $n$ essais independants ; la <strong>loi normale</strong> $\mathcal{N}(\mu, \sigma^2)$ est la courbe en cloche symétrique omniprésente en data.</li>
+<li>La <strong>règle 68-95-99,7 %</strong> : pour toute loi normale, 68 % des valeurs tombent dans $[\mu - \sigma, \mu + \sigma]$, 95 % dans $[\mu - 2\sigma, \mu + 2\sigma]$, et 99,7 % dans $[\mu - 3\sigma, \mu + 3\sigma]$.</li>
+<li>Le <strong>Théorème Central Limite</strong> est le résultat fondateur : quelle que soit la distribution d'origine, la moyenne d'un grand nombre de valeurs suit une loi normale $\mathcal{N}(\mu, \sigma/\sqrt{n})$.</li>
+<li>Le <strong>Z-score</strong> $z = (x - \mu) / \sigma$ standardise toute valeur en nombre d'écarts-types — il permet de comparer des données d'origines différentes et de calculer des probabilités via la loi normale standard.</li>
+<li>La <strong>corrélation de Pearson</strong> mesure uniquement la relation linéaire entre deux variables : $r = 0$ ne signifie pas indépendance, et corrélation ne signifie pas causalité.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-variables-aléatoires-et-distributions">Variables aléatoires et distributions</a></li><li><a href="#syn-espérance-variance-écart-type">Espérance, variance, écart-type</a></li><li><a href="#syn-distributions-usuelles">Distributions usuelles</a></li><li><a href="#syn-loi-des-grands-nombres-et-tcl">Loi des grands nombres et TCL</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-théorème-de-bayes">Théorème de Bayes</a></li><li><a href="#syn-covariance-et-corrélation">Covariance et corrélation</a></li><li><a href="#syn-distributions-conjointes-et-marginales">Distributions conjointes et marginales</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-variables-aléatoires-et-distributions">Variables aléatoires et distributions</h3>
+
+<p>Une <strong>variable aléatoire</strong> (VA) est une fonction qui assigne un nombre à chaque résultat possible d'une expérience aléatoire. On note $X$ pour la VA et $x$ pour ses réalisations.</p>
+
+<p><strong>Deux familles</strong> :</p>
+
+<ul>
+<li><strong>Discrètes</strong> : prennent un nombre fini ou dénombrable de valeurs (lancer de dé, nombre de clients)</li>
+<li><strong>Continues</strong> : prennent des valeurs dans un intervalle (taille, prix, temps)</li>
+</ul>
+
+<p>La <strong>distribution</strong> de $X$ décrit la probabilité de chaque valeur possible :</p>
+
+<ul>
+<li>Pour une VA <strong>discrète</strong> : la <strong>PMF</strong> (Probability Mass Function) $P(X = x)$ — probabilité exacte d'une valeur.</li>
+<li>Pour une VA <strong>continue</strong> : la <strong>PDF</strong> (Probability Density Function) $f(x)$ avec $P(a \leq X \leq b) = \int_a^b f(x)\, dx$.</li>
+</ul>
+
+<p>Lecture : pour une VA continue, $f(x)$ n'est pas une probabilité (elle peut dépasser 1 !), c'est une <strong>densité</strong>. La probabilité est l'<strong>aire sous la courbe</strong> entre deux bornes.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+from scipy import stats
+
+# Distribution normale standard N(0, 1)
+x = np.linspace(-4, 4, 100)
+pdf = stats.norm.pdf(x, loc=0, scale=1)      # Densité en chaque x
+cdf = stats.norm.cdf(x, loc=0, scale=1)      # Probabilité cumulée P(X &lt;= x)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : la distribution est l'<strong>ADN</strong> d'une variable aléatoire. Deux variables peuvent avoir la même moyenne et la même variance mais des distributions très différentes (normale vs uniforme vs bimodale). Pour comprendre une variable, ne regardez jamais juste sa moyenne — regardez sa <strong>distribution complète</strong>, soit en histogramme, soit avec <code>describe()</code> qui donne les percentiles.</p></div></div>
+
+<h3 id="syn-espérance-variance-écart-type">Espérance, variance, écart-type</h3>
+
+<p>L'<strong>espérance</strong> (mean) est la valeur "moyenne attendue" :</p>
+
+<div class="katex-display">$$E[X] = \sum_x x \cdot P(X = x) \quad \text{(discret)}$$</div>
+
+<div class="katex-display">$$E[X] = \int x \cdot f(x) \, dx \quad \text{(continu)}$$</div>
+
+<p>Lecture : <em>chaque valeur possible est pondérée par sa probabilité, et on somme (ou intègre) tout</em>. C'est la "moyenne pondérée par les probabilités".</p>
+
+<p>La <strong>variance</strong> mesure la dispersion :</p>
+
+<div class="katex-display">$$\text{Var}(X) = E[(X - E[X])^2] = E[X^2] - (E[X])^2$$</div>
+
+<p>Lecture : <em>variance = moyenne des carrés des écarts à la moyenne</em>. Plus les valeurs sont étalées autour de la moyenne, plus la variance est grande.</p>
+
+<p>L'<strong>écart-type</strong> $\sigma = \sqrt{\text{Var}(X)}$ a l'avantage d'être dans la <strong>même unité</strong> que $X$.</p>
+
+<p><strong>Propriétés essentielles</strong> :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Opération</th><th>Espérance</th><th>Variance</th></tr></thead><tbody><tr><td>$aX + b$</td><td>$aE[X] + b$</td><td>$a^2 \text{Var}(X)$</td></tr><tr><td>$X + Y$ (indépendants)</td><td>$E[X] + E[Y]$</td><td>$\text{Var}(X) + \text{Var}(Y)$</td></tr><tr><td>$X \cdot Y$ (indépendants)</td><td>$E[X] \cdot E[Y]$</td><td>(formule plus complexe)</td></tr></tbody></table></div>
+<p><strong>Exemple chiffré</strong> : si $X$ = taille en cm avec $E[X] = 170$, $\text{Var}(X) = 100$ (donc $\sigma = 10$ cm).</p>
+<p>Si $Y = X - 170$ (taille centrée), alors $E[Y] = 0$ et $\text{Var}(Y) = 100$ (même dispersion).</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Question d'entretien classique</strong> : <em>"Pourquoi l'écart-type est-il préféré à la variance pour décrire une distribution ?"</em> Réponse : la variance est en <strong>unités au carré</strong> (€², kg²) qui n'ont pas de sens physique. L'écart-type est dans l'unité originale et permet des comparaisons directes ("le salaire varie de ±15k€"). C'est pourquoi <code>df.describe()</code> affiche <code>std</code>, pas <code>var</code>.</p></div></div>
+
+<h3 id="syn-distributions-usuelles">Distributions usuelles</h3>
+
+<p><strong>Distribution normale (Gauss)</strong> $\mathcal{N}(\mu, \sigma^2)$ — la plus importante :</p>
+
+<div class="katex-display">$$f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$</div>
+
+<p>Lecture : <em>forme en cloche symétrique centrée en $\mu$, la largeur est contrôlée par $\sigma$</em>. Le facteur $\frac{1}{\sigma\sqrt{2\pi}}$ normalise pour que l'intégrale totale fasse 1.</p>
+
+<p><strong>Règle 68/95/99.7</strong> :</p>
+
+<ul>
+<li><strong>68%</strong> des valeurs sont dans $[\mu - \sigma, \mu + \sigma]$</li>
+<li><strong>95%</strong> dans $[\mu - 2\sigma, \mu + 2\sigma]$</li>
+<li><strong>99.7%</strong> dans $[\mu - 3\sigma, \mu + 3\sigma]$</li>
+</ul>
+
+<p>Cette règle permet de juger qu'une valeur à 5σ est <strong>extrêmement improbable</strong> (1 sur 3.5 millions) — c'est exactement ce que les physiciens utilisent pour annoncer une découverte (Higgs boson : 5σ).</p>
+
+<p><strong>Autres distributions essentielles</strong> :</p>
+
+<ul>
+<li><strong>Bernoulli</strong> : essai binaire (succès/échec). $P(X=1) = p$, $P(X=0) = 1-p$.</li>
+<li><strong>Binomiale</strong> : nombre de succès en $n$ essais Bernoulli indépendants.</li>
+</ul>
+
+<div class="katex-display">$$P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}$$</div>
+
+<p>Lecture : <em>probabilité d'obtenir $k$ succès en $n$ essais quand chaque essai a probabilité $p$ de réussir</em>.</p>
+
+<ul>
+<li><strong>Poisson</strong> : nombre d'événements rares dans un intervalle de temps fixe (clients arrivant à un guichet, erreurs dans un texte).</li>
+</ul>
+
+<div class="katex-display">$$P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}$$</div>
+
+<p>Lecture : $\lambda$ est le <strong>taux moyen</strong> d'événements par intervalle.</p>
+
+<ul>
+<li><strong>Uniforme</strong> : toutes les valeurs de l'intervalle $[a, b]$ sont équiprobables.</li>
+<li><strong>Exponentielle</strong> : <strong>temps entre</strong> deux événements Poisson. Sans mémoire.</li>
+</ul>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Échantillonner depuis ces distributions
+np.random.normal(loc=0, scale=1, size=1000)
+np.random.binomial(n=10, p=0.3, size=1000)
+np.random.poisson(lam=3, size=1000)
+np.random.uniform(low=0, high=1, size=1000)
+np.random.exponential(scale=2, size=1000)</code></pre></div>
+
+
+<h3 id="syn-loi-des-grands-nombres-et-tcl">Loi des grands nombres et TCL</h3>
+
+<p>Deux théorèmes <strong>fondateurs</strong> de toute la statistique inférentielle.</p>
+
+<p><strong>Loi des grands nombres</strong> : la moyenne empirique converge vers l'espérance.</p>
+
+<div class="katex-display">$$\bar{X}_n = \frac{1}{n}\sum_{i=1}^n X_i \xrightarrow{n \to \infty} E[X]$$</div>
+
+<p>Lecture : <em>plus vous avez d'échantillons, plus la moyenne empirique approche la vraie moyenne de la distribution</em>.</p>
+
+<p>C'est pourquoi un <strong>sondage sur 10 000 personnes</strong> donne une estimation fiable de la moyenne d'une population de 60 millions.</p>
+
+<p><strong>Théorème central limite (TCL)</strong> : peu importe la distribution d'origine de $X$, la moyenne empirique suit (asymptotiquement) une <strong>loi normale</strong> :</p>
+
+<div class="katex-display">$$\bar{X}_n \approx \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right)$$</div>
+
+<p>Lecture : <em>la moyenne empirique est distribuée normalement autour de la vraie moyenne $\mu$, avec une variance qui décroît en $1/n$</em>. Autrement dit, plus $n$ est grand, plus la distribution de $\bar{X}_n$ est serrée autour de $\mu$.</p>
+
+<p>C'est l'un des théorèmes les plus puissants des mathématiques. Il explique pourquoi tant de phénomènes naturels ont une distribution normale (taille, QI, erreurs de mesure) : ils sont la <strong>somme de nombreux effets indépendants</strong>.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : le TCL est la raison pour laquelle vous pouvez faire de la statistique sans connaître la distribution sous-jacente. Vous mesurez une moyenne, vous savez qu'elle est gaussienne autour de la vraie moyenne, vous pouvez calculer un intervalle de confiance. C'est ce qui rend la statistique inférentielle universelle.</p></div></div>
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-théorème-de-bayes">Théorème de Bayes</h3>
+
+<p>Sans doute la formule la plus importante en data science :</p>
+
+<div class="katex-display">$$P(A | B) = \frac{P(B | A) \cdot P(A)}{P(B)}$$</div>
+
+<p>Lecture détaillée :</p>
+
+<ul>
+<li>$P(A \mid B)$ : probabilité de $A$ <strong>sachant</strong> $B$ (c'est ce qu'on cherche, la "<strong>posterior</strong>").</li>
+<li>$P(B \mid A)$ : probabilité de $B$ sachant $A$ (ce qu'on connaît souvent, la "<strong>likelihood</strong>").</li>
+<li>$P(A)$ : probabilité de $A$ <strong>avant</strong> de savoir $B$ (la "<strong>prior</strong>").</li>
+<li>$P(B)$ : probabilité totale de $B$, normalise le résultat.</li>
+</ul>
+
+<p><strong>Application classique</strong> : un test médical avec 99% de sensibilité et 99% de spécificité, pour une maladie qui touche 1 personne sur 10 000. Si vous êtes positif, quelle est la probabilité que vous soyez vraiment malade ?</p>
+
+<div class="katex-display">$$P(\text{malade} \mid +) = \frac{P(+ \mid \text{malade}) \cdot P(\text{malade})}{P(+)}$$</div>
+
+<div class="katex-display">$$= \frac{0.99 \times 0.0001}{0.99 \times 0.0001 + 0.01 \times 0.9999} \approx 0.0098 \approx 1\%$$</div>
+
+<p><strong>Seulement 1% !</strong> Pas 99%. Parce que la prior (1/10 000) est si petite que les <strong>faux positifs dominent</strong>. C'est l'erreur de jugement la plus fréquente en santé publique, et c'est aussi exactement ce qui se passe en <strong>classification déséquilibrée</strong> : un classifieur peut avoir 99% d'accuracy en disant toujours "négatif".</p>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Question d'entretien</strong> : <em>"Quel est le piège du test médical à 99% de sensibilité ?"</em> Si le candidat ne pense pas immédiatement à <strong>Bayes et à la prior</strong>, il n'a pas compris le théorème.</p></div></div>
+
+<h3 id="syn-covariance-et-corrélation">Covariance et corrélation</h3>
+
+<p>La <strong>covariance</strong> mesure dans quelle mesure deux variables varient ensemble :</p>
+
+<div class="katex-display">$$\text{Cov}(X, Y) = E[(X - E[X])(Y - E[Y])]$$</div>
+
+<p>Lecture : <em>moyenne du produit des écarts à la moyenne de chaque variable</em>. Positive si les deux varient dans le même sens, négative si opposées, nulle si indépendantes (pour le linéaire).</p>
+
+<p>Le problème de la covariance est qu'elle <strong>dépend des unités</strong>. Pour un nombre interprétable, on normalise par les écarts-types pour obtenir la <strong>corrélation de Pearson</strong> :</p>
+
+<div class="katex-display">$$\rho(X, Y) = \frac{\text{Cov}(X, Y)}{\sigma_X \sigma_Y} \in [-1, 1]$$</div>
+
+<p><strong>Lecture</strong> : Pearson mesure une relation <strong>linéaire</strong> entre -1 (opposition parfaite) et +1 (alignement parfait), avec 0 = aucune relation linéaire.</p>
+
+<p><strong>Limite</strong> : Pearson ne capture <strong>que le linéaire</strong>. Pour des relations monotones non linéaires (par exemple $Y = X^2$ pour $X > 0$), utilisez <strong>Spearman</strong> qui calcule la corrélation des rangs.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">df.corr(method=&#x27;pearson&#x27;)    # Linéaire
+df.corr(method=&#x27;spearman&#x27;)   # Monotone (ranges)
+df.corr(method=&#x27;kendall&#x27;)    # Plus robuste, plus lent</code></pre></div>
+
+
+<h3 id="syn-distributions-conjointes-et-marginales">Distributions conjointes et marginales</h3>
+
+<p>Quand on a deux variables aléatoires $X$ et $Y$, leur <strong>distribution conjointe</strong> $P(X, Y)$ décrit la probabilité de chaque paire de valeurs.</p>
+
+<p>Les <strong>distributions marginales</strong> sont obtenues en sommant/intégrant sur l'autre variable :</p>
+
+<div class="katex-display">$$P(X = x) = \sum_y P(X = x, Y = y)$$</div>
+
+<p>Lecture : <em>pour connaître $X$ seul, on "oublie" $Y$ en sommant sur toutes ses valeurs possibles</em>.</p>
+
+<p>Et la <strong>distribution conditionnelle</strong> :</p>
+
+<div class="katex-display">$$P(X = x | Y = y) = \frac{P(X = x, Y = y)}{P(Y = y)}$$</div>
+
+<p>Lecture : <em>probabilité de $X$ sachant une valeur fixée de $Y$</em>.</p>
+
+<p>Deux variables sont <strong>indépendantes</strong> si $P(X, Y) = P(X) \cdot P(Y)$, c'est-à-dire si connaître $Y$ n'apporte aucune information sur $X$.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : la distribution conjointe est une <strong>carte 2D</strong> qui montre où vivent les couples $(X, Y)$. La marginale est la <strong>projection</strong> sur un axe (oubliez l'autre dimension). La conditionnelle est une <strong>tranche</strong> de la carte à une valeur fixe de $Y$. Ce vocabulaire est exactement celui des matrices de confusion en classification.</p></div></div>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Pourquoi <code>np.random.seed(42)</code> est-il essentiel en science des données ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Reproductibilité.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Le générateur de nombres aléatoires de NumPy <strong>n'est pas vraiment aléatoire</strong> : c'est un <strong>PRNG</strong> (pseudo-random) déterministe partant d'une <strong>seed</strong>. Si vous fixez la seed, <strong>toutes</strong> les opérations aléatoires qui suivent (échantillonnage, train_test_split, init de poids, dropout) produisent <strong>exactement les mêmes résultats</strong>.</p>
+
+<p><strong>Conséquences</strong> :</p>
+
+<ol>
+<li><strong>Reproductibilité</strong> : votre collègue obtient les mêmes scores que vous.</li>
+<li><strong>Debuggabilité</strong> : un bug reproductible est 10x plus facile à corriger.</li>
+<li><strong>A/B testing fair</strong> : comparer deux modèles sur <strong>exactement</strong> les mêmes splits.</li>
+</ol>
+
+<p><strong>Conventions</strong> : <code>42</code> (référence à H2G2) est utilisée par habitude, mais n'importe quel entier marche.</p>
+
+<p><strong>Attention</strong> :</p>
+
+<ul>
+<li>sklearn utilise <code>random_state=</code> (pas <code>seed</code>)</li>
+<li>PyTorch utilise <code>torch.manual_seed</code></li>
+<li>Il faut aussi seed <code>random</code> (Python) et <code>cuDNN</code> pour une reproductibilité totale en deep learning</li>
+</ul>
+
+<p>Question d'entretien data science : <em>"Comment garantir la reproductibilité d'une expérience ?"</em> — la réponse exhaustive révèle de l'expérience.</p>
+
+</details>
+
+<p><strong>Q2 : Vous mesurez la moyenne d'une variable sur 100 échantillons et obtenez 50.3 ± 2.1 (intervalle de confiance à 95%). Vous prenez 1000 échantillons et obtenez 50.5 ± 0.66. Pourquoi l'intervalle a-t-il rétréci d'un facteur ~3.16 ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Racine carrée.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>L'écart-type de la moyenne empirique (qu'on appelle l'<strong>erreur standard</strong>) est :</p>
+
+<div class="katex-display">$$\text{SE} = \frac{\sigma}{\sqrt{n}}$$</div>
+
+<p>où $\sigma$ est l'écart-type de la population et $n$ la taille de l'échantillon.</p>
+
+<p><strong>En passant de $n=100$ à $n=1000$</strong>, vous multipliez $n$ par 10 mais vous divisez l'erreur par $\sqrt{10} \approx 3.16$.</p>
+
+<p><strong>Conséquence pratique</strong> :</p>
+
+<ul>
+<li>Pour réduire votre intervalle de confiance d'un facteur <strong>2</strong>, il faut <strong>quadrupler</strong> l'échantillon.</li>
+<li>Pour le diviser par <strong>10</strong>, il faut multiplier l'échantillon par <strong>100</strong>.</li>
+</ul>
+
+<p>C'est pourquoi les sondages ont rarement plus de quelques milliers de répondants : doubler le coût pour gagner 30% de précision n'est pas rentable au-delà d'un certain point.</p>
+
+<p>Cette propriété en <strong>racine carrée</strong> est fondamentale pour dimensionner une étude statistique ou un test A/B.</p>
+
+</details>
+
+<p><strong>Q3 : Vous testez si la moyenne d'un groupe A est différente de celle du groupe B. Vous obtenez une p-value de 0.03. Pouvez-vous dire que A et B sont "vraiment" différents ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Interprétation correcte.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Une p-value de 0.03 dit : <em>"S'il n'y avait vraiment <strong>aucune</strong> différence entre A et B (hypothèse nulle), la probabilité d'observer une différence aussi grande ou plus grande que celle qu'on a mesurée est de 3%"</em>.</p>
+
+<p>Ce <strong>n'est PAS</strong> la probabilité que les groupes soient identiques (qui est non calculable sans une approche bayésienne).</p>
+
+<p>À 0.03 vous rejetez généralement l'hypothèse nulle (seuil arbitraire de 0.05). Mais <strong>attention</strong> :</p>
+
+<ol>
+<li><strong>Cela ne dit rien sur la taille de l'effet</strong> — un effet minuscule peut être statistiquement significatif sur un échantillon énorme sans avoir d'importance pratique. Toujours rapporter aussi l'<strong>intervalle de confiance</strong> et la <strong>taille d'effet</strong> (Cohen's d).</li>
+</ol>
+
+<ol>
+<li><strong>Si vous testez 100 hypothèses</strong>, 5 seront "significatives" par hasard. C'est pourquoi en bioinformatique on applique des <strong>corrections multiples</strong> (Bonferroni, Benjamini-Hochberg).</li>
+</ol>
+
+<ol>
+<li><strong>Une p-value > 0.05 ne prouve pas l'absence d'effet</strong> ; elle prouve juste que vous n'avez pas assez de données pour le détecter. C'est l'erreur d'interprétation la plus fréquente en sciences sociales et la cause de la <strong>crise de réplication</strong>.</li>
+</ol>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Think Stats</em> (Allen Downey, gratuit en ligne) — introduction Pythonique aux probas/stats</li>
+<li><em>All of Statistics</em> (Larry Wasserman) — référence rigoureuse, 300 pages denses</li>
+<li><a href="https://www.khanacademy.org/math/statistics-probability" target="_blank" rel="noopener">Khan Academy — Statistics and Probability</a> — vidéos pour combler des lacunes</li>
+<li><a href="https://seeing-theory.brown.edu/" target="_blank" rel="noopener">Seeing Theory (Brown University)</a> — visualisations interactives des concepts clés</li>
+<li><em>Statistical Rethinking</em> (Richard McElreath) — excellent livre sur l'approche bayésienne</li>
+<li><a href="https://www.youtube.com/watch?v=HZGCoVF3YvM" target="_blank" rel="noopener">3Blue1Brown — Bayes theorem</a> — vidéo magistrale</li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../mathematiques/algebra-calculus.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Algebra & Calculus</span>
+  </a>
+  <a href="../mathematiques/statistical-inference.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Statistical Inference →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NLP Deep Learning — Le Wagon Notes</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚂</text></svg>">
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <header class="mobile-header">
+    <button class="mobile-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <span class="mobile-page-title">NLP Deep Learning</span>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../../index.html">
+        <span class="sidebar-logo-icon">W</span>
+        <span class="sidebar-logo-text">Le Wagon Notes</span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+<div class="nav-category">
+  <div class="nav-category-title">Notes perso</div>
+  <ul class="nav-links">
+    <li><a href="../notes-perso/terminal.html">Terminal</a></li>
+    <li><a href="../notes-perso/note-diverses.html">Notes diverses</a></li>
+    <li><a href="../notes-perso/methodes-fonctions.html">Méthodes & fonctions</a></li>
+    <li><a href="../notes-perso/gestion-erreurs.html">Gestion des erreurs</a></li>
+    <li><a href="../notes-perso/git.html">Git push & commit</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Python & SQL Week</div>
+  <ul class="nav-links">
+    <li><a href="../python-sql/python-101.html">Python 101</a></li>
+    <li><a href="../python-sql/list-and-loops.html">Lists & loops</a></li>
+    <li><a href="../python-sql/dictionaries.html">Dictionaries</a></li>
+    <li><a href="../python-sql/classes.html">Classes</a></li>
+    <li><a href="../python-sql/sql-intro.html">SQL (intro)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Toolkit</div>
+  <ul class="nav-links">
+    <li><a href="../data-toolkit/python-for-data-science.html">Python for Data Science</a></li>
+    <li><a href="../data-toolkit/data-analysis.html">Data Analysis</a></li>
+    <li><a href="../data-toolkit/data-sourcing.html">Data Sourcing</a></li>
+    <li><a href="../data-toolkit/scraping.html">Web Scraping</a></li>
+    <li><a href="../data-toolkit/coding-properly.html">Coding Properly</a></li>
+    <li><a href="../data-toolkit/python-reboot.html">Python Reboot</a></li>
+    <li><a href="../data-toolkit/ai-as-developer.html">AI as Developer</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Maths & Statistiques</div>
+  <ul class="nav-links">
+    <li><a href="../mathematiques/algebra-calculus.html">Algebra & Calculus</a></li>
+    <li><a href="../mathematiques/statistics-probabilities.html">Statistics & Probabilities</a></li>
+    <li><a href="../mathematiques/statistical-inference.html">Statistical Inference</a></li>
+    <li><a href="../mathematiques/under-the-hood.html">Under the Hood</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">SQL avancé</div>
+  <ul class="nav-links">
+    <li><a href="../sql-avance/sql-advanced.html">SQL (avancé)</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Data Engineering</div>
+  <ul class="nav-links">
+    <li><a href="../data-engineering/data-preparation.html">Data Preparation</a></li>
+    <li><a href="../data-engineering/data-viz.html">Data Viz & Dashboarding</a></li>
+    <li><a href="../data-engineering/ml-workflow.html">ML Workflow</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Machine Learning</div>
+  <ul class="nav-links">
+    <li><a href="../machine-learning/fundamentals-ml.html">Fundamentals of ML</a></li>
+    <li><a href="../machine-learning/linear-regression.html">Linear Regression</a></li>
+    <li><a href="../machine-learning/logistic-regression.html">Logistic Regression</a></li>
+    <li><a href="../machine-learning/performance-metrics.html">Performance Metrics</a></li>
+    <li><a href="../machine-learning/model-tuning.html">Model Tuning</a></li>
+    <li><a href="../machine-learning/ensemble-methods.html">Ensemble Methods</a></li>
+    <li><a href="../machine-learning/unsupervised-learning.html">Unsupervised Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Deep Learning</div>
+  <ul class="nav-links">
+    <li><a href="../deep-learning/fundamentals-dl.html">Fundamentals of DL</a></li>
+    <li><a href="../deep-learning/optimizer-loss-fitting.html">Optimizer, Loss & Fitting</a></li>
+    <li><a href="../deep-learning/cnn.html">Convolutional Neural Networks</a></li>
+    <li><a href="../deep-learning/rnn.html">Recurrent Neural Networks</a></li>
+    <li><a href="../deep-learning/nlp-dl.html" class="active">NLP Deep Learning</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">NLP & LLM</div>
+  <ul class="nav-links">
+    <li><a href="../nlp-llm/nlp.html">Natural Language Processing</a></li>
+    <li><a href="../nlp-llm/transformers-llm.html">Transformers & LLM</a></li>
+    <li><a href="../nlp-llm/transformers-advanced.html">Transformers — Compléments</a></li>
+    <li><a href="../nlp-llm/gen-ai-rag-agents.html">GenAI, RAG & Agents</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Domaines spécialisés</div>
+  <ul class="nav-links">
+    <li><a href="../specialise/time-series.html">Time Series</a></li>
+    <li><a href="../specialise/reinforcement-learning.html">Reinforcement Learning</a></li>
+    <li><a href="../specialise/explainable-ai.html">Explainable AI</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">MLOps & Production</div>
+  <ul class="nav-links">
+    <li><a href="../mlops/automate-lifecycle.html">Automate Model Lifecycle</a></li>
+    <li><a href="../mlops/ml-ops.html">ML Ops</a></li>
+    <li><a href="../mlops/training-cloud.html">Training in the Cloud</a></li>
+    <li><a href="../mlops/predict-production.html">Predict in Production</a></li>
+    <li><a href="../mlops/ci-cd.html">CI / CD</a></li>
+    <li><a href="../mlops/coding-team.html">Coding as a Team</a></li>
+    <li><a href="../mlops/user-interface.html">User Interface</a></li>
+  </ul>
+</div>
+<div class="nav-category">
+  <div class="nav-category-title">Synthèses & Cheatsheets</div>
+  <ul class="nav-links">
+    <li><a href="../synthese/synthese-ml.html">Synthèse ML (v2)</a></li>
+    <li><a href="../synthese/mega-tableau-modeles.html">Méga-tableau des modèles</a></li>
+    <li><a href="../synthese/cheatsheet-ml-pipeline.html">Cheatsheet ML E2E</a></li>
+    <li><a href="../synthese/arbre-decision.html">Arbre de décision modèles</a></li>
+  </ul>
+</div>
+
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="breadcrumb">
+        <a href="../../index.html">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../../index.html">Deep Learning</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>NLP Deep Learning</span>
+      </div>
+
+      <div class="page-header">
+        <h1>NLP Deep Learning</h1>
+        <p class="page-objective">Maîtriser le traitement du langage naturel (NLP) avec les réseaux de neurones — convertir du texte en vecteurs via Tokenization, Embedding et Word2Vec, puis appliquer des RNN (LSTM) et des CNN 1D pour des tâches de classification de texte et d'analyse de sentiment.</p>
+      </div>
+
+      <div class="key-concepts">
+        <div class="key-concepts-header">
+          <span class="key-concepts-icon">🎯</span>
+          <span class="key-concepts-title">Notions cles a retenir</span>
+        </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Tokenisation</div>
+        <div class="key-concept-def">Découpage du texte en unités traitables (mots, sous-mots, BPE).</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Embedding</div>
+        <div class="key-concept-def">Vecteur dense qui représente la sémantique d&#x27;un mot ou token.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Word2Vec / GloVe</div>
+        <div class="key-concept-def">Embeddings pré-entraînés sur de grands corpus.</div>
+      </div>
+      <div class="key-concept-item">
+        <div class="key-concept-title">Padding / masking</div>
+        <div class="key-concept-def">Aligner les séquences à longueur fixe et ignorer les positions vides.</div>
+      </div>
+      </div>
+
+      <div class="page-tabs" role="tablist">
+        <button class="page-tab active" role="tab" data-tab="cours" aria-selected="true">📘 Cours le Wagon</button>
+        <button class="page-tab" role="tab" data-tab="reformule" aria-selected="false">📖 Cours le Wagon reformulé</button>
+        <button class="page-tab" role="tab" data-tab="synthese" aria-selected="false">✨ Synthèse enrichie</button>
+      </div>
+
+      <div class="content-body">
+        <section class="tab-content active" data-tab-content="cours">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#cheatsheet-nlp-deep-learning">Cheatsheet — NLP Deep Learning</a><ol><li><a href="#tokenization-et-padding">Tokenization et padding</a></li><li><a href="#embedding-layer-custom-appris-avec-le-modèle">Embedding layer (custom, appris avec le modèle)</a></li><li><a href="#word2vec-embedding-indépendant-pré-entraîné-ou-custom">Word2Vec (embedding indépendant, pré-entraîné ou custom)</a></li><li><a href="#modèle-rnn-pour-nlp-classification-de-sentiment">Modèle RNN pour NLP (classification de sentiment)</a></li><li><a href="#modèle-cnn-1d-pour-nlp-alternative-au-rnn">Modèle CNN 1D pour NLP (alternative au RNN)</a></li></ol></li><li><a href="#récapitulatif-erreurs-clés-à-éviter">️ Récapitulatif — Erreurs clés à éviter</a><li><a href="#1-rappels-rnn-structure-des-données-séquentielles">1) Rappels RNN — Structure des données séquentielles</a><ol><li><a href="#11-x-et-y-dans-un-contexte-rnn">1.1 X et y dans un contexte RNN</a></li><li><a href="#12-return_sequencestrue">1.2 `return_sequences=True`</a></li><li><a href="#13-padding">1.3 Padding</a></li></ol></li><li><a href="#2-applications-du-nlp">2) Applications du NLP</a><ol><li><a href="#21-modèle-de-langage-language-model">2.1 Modèle de langage (Language Model)</a></li><li><a href="#22-classification-de-texte-analyse-de-sentiment">2.2 Classification de texte / Analyse de sentiment</a></li><li><a href="#23-sequence-to-sequence-traduction">2.3 Sequence-to-Sequence (traduction)</a></li></ol></li><li><a href="#3-convertir-des-mots-en-nombres">3) Convertir des mots en nombres</a><ol><li><a href="#31-le-problème">3.1 Le problème</a></li><li><a href="#32-tokenization-nécessaire-mais-insuffisante">3.2 Tokenization — nécessaire mais insuffisante</a></li></ol></li><li><a href="#4-embedding-la-solution">4) Embedding — La solution</a><ol><li><a href="#41-principe">4.1 Principe</a></li><li><a href="#42-propriétés-dun-bon-embedding">4.2 Propriétés d'un bon embedding</a></li><li><a href="#43-deux-approches-pour-obtenir-un-embedding">4.3 Deux approches pour obtenir un embedding</a></li></ol></li><li><a href="#5-custom-embedding-avec-layersembedding">5) Custom Embedding avec `layers.Embedding`</a><ol><li><a href="#51-principe">5.1 Principe</a></li><li><a href="#52-shape-du-tenseur-dentrée">5.2 Shape du tenseur d'entrée</a></li><li><a href="#53-pipeline-complet-tokenize-pad-embed-lstm-dense">5.3 Pipeline complet : Tokenize → Pad → Embed → LSTM → Dense</a></li><li><a href="#54-optimiser-la-vitesse-dentraînement">5.4 Optimiser la vitesse d'entraînement</a></li></ol></li><li><a href="#6-word2vec-embedding-indépendant">6) Word2Vec — Embedding indépendant</a><ol><li><a href="#61-principe">6.1 Principe</a></li><li><a href="#62-fonctionnement-interne">6.2 Fonctionnement interne</a></li><li><a href="#63-implémentation-avec-gensim">6.3 Implémentation avec Gensim</a></li><li><a href="#64-hyperparamètres-word2vec">6.4 Hyperparamètres Word2Vec</a></li><li><a href="#65-transfer-learning-embeddings-pré-entraînés">6.5 Transfer Learning — Embeddings pré-entraînés</a></li><li><a href="#66-arithmétique-sur-les-mots">6.6 Arithmétique sur les mots</a></li></ol></li><li><a href="#7-cnn-1d-pour-le-nlp">7) CNN 1D pour le NLP</a><ol><li><a href="#71-pourquoi-pas-conv2d">7.1 Pourquoi pas Conv2D ?</a></li><li><a href="#72-conv1d-convolution-le-long-des-mots">7.2 Conv1D — Convolution le long des mots</a></li><li><a href="#73-comparaison-rnn-vs-cnn-pour-le-nlp">7.3 Comparaison RNN vs CNN pour le NLP</a></li></ol></li><li><a href="#8-attention-et-transformers-aperçu">8) Attention et Transformers (aperçu)</a><ol><li><a href="#81-mécanisme-dattention">8.1 Mécanisme d'attention</a></li><li><a href="#82-transformers-attention-is-all-you-need">8.2 Transformers — "Attention is All You Need"</a></li></ol></li><li><a href="#bibliographie">Bibliographie</a><li><a href="#challenges">Challenges</a></ol></div>
+
+<hr>
+
+<h2 id="cheatsheet-nlp-deep-learning">📋 Cheatsheet — NLP Deep Learning</h2>
+
+<h3 id="tokenization-et-padding">Tokenization et padding</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.utils import pad_sequences
+
+## Tokenizer : convertit les mots en entiers (dictionnaire)
+tk = Tokenizer()                              # instancie le tokenizer
+tk.fit_on_texts(X)                            # construit le vocabulaire à partir du corpus
+X_token = tk.texts_to_sequences(X)            # convertit chaque phrase en liste d&#x27;entiers
+vocab_size = len(tk.word_index)               # nombre de mots uniques dans le corpus
+
+## Padding : toutes les séquences à la même longueur (pour le tenseur)
+X_pad = pad_sequences(X_token, dtype=&#x27;float32&#x27;, padding=&#x27;post&#x27;)  # complète avec des 0 à droite
+## X_pad.shape = (n_sentences, max_sentence_length)</code></pre></div>
+
+
+<h3 id="embedding-layer-custom-appris-avec-le-modèle">Embedding layer (custom, appris avec le modèle)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import Sequential, Input, layers
+
+model = Sequential()
+model.add(Input(shape=X_pad.shape[1:]))        # shape = (max_sentence_length,)
+model.add(layers.Embedding(
+    input_dim=vocab_size + 1,                  # +1 pour le token de padding (0)
+    output_dim=embedding_size,                 # dimension de l&#x27;espace d&#x27;embedding (ex: 100)
+    mask_zero=True                             # ignore les 0 du padding automatiquement
+))
+## Output shape : (batch_size, max_sentence_length, embedding_size)
+## Nb de paramètres = (vocab_size + 1) × embedding_size</code></pre></div>
+
+
+<h3 id="word2vec-embedding-indépendant-pré-entraîné-ou-custom">Word2Vec (embedding indépendant, pré-entraîné ou custom)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from gensim.models import Word2Vec
+
+## Entraîner Word2Vec sur son propre corpus
+word2vec = Word2Vec(
+    sentences=X_train,                         # liste de listes de mots
+    vector_size=100,                           # dimension de l&#x27;embedding
+    window=5,                                  # nb de mots voisins utilisés pour la prédiction
+    min_count=5                                # ignore les mots vus &lt; 5 fois
+)
+
+word2vec.wv[&#x27;movie&#x27;]                           # vecteur de dimension 100 pour &quot;movie&quot;
+word2vec.wv.most_similar(&#x27;movie&#x27;, topn=5)      # 5 mots les plus proches sémantiquement
+
+## Charger un embedding pré-entraîné (transfer learning)
+import gensim.downloader
+model_wiki = gensim.downloader.load(&#x27;glove-wiki-gigaword-50&#x27;)  # GloVe 50D pré-entraîné
+model_wiki.most_similar(&#x27;movie&#x27;, topn=5)       # résultats bien meilleurs sur petit corpus</code></pre></div>
+
+
+<h3 id="modèle-rnn-pour-nlp-classification-de-sentiment">Modèle RNN pour NLP (classification de sentiment)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = Sequential([
+    Input(shape=X_pad.shape[1:]),
+    layers.Embedding(input_dim=vocab_size+1, output_dim=30, mask_zero=True),
+    layers.LSTM(20),                           # couche récurrente
+    layers.Dense(1, activation=&quot;sigmoid&quot;)      # classification binaire
+])
+model.compile(loss=&#x27;binary_crossentropy&#x27;, optimizer=&#x27;rmsprop&#x27;, metrics=[&#x27;accuracy&#x27;])
+model.fit(X_pad, y, epochs=5, batch_size=32)</code></pre></div>
+
+
+<h3 id="modèle-cnn-1d-pour-nlp-alternative-au-rnn">Modèle CNN 1D pour NLP (alternative au RNN)</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model = Sequential([
+    Input(shape=X_pad.shape[1:]),
+    layers.Embedding(input_dim=vocab_size+1, output_dim=30, mask_zero=True),
+    layers.Conv1D(20, kernel_size=3),          # convolution sur 3 mots adjacents
+    layers.Flatten(),                          # aplatit avant la couche Dense
+    layers.Dense(1, activation=&quot;sigmoid&quot;)
+])
+## Conv1D glisse le long de l&#x27;axe des mots (pas de l&#x27;embedding)
+## kernel_size = nombre de mots adjacents analysés par le filtre</code></pre></div>
+
+
+<hr>
+
+<h2 id="récapitulatif-erreurs-clés-à-éviter">⚠️ Récapitulatif — Erreurs clés à éviter</h2>
+
+<p><strong>Utiliser les tokens bruts comme features d'un modèle</strong></p>
+
+<p>Les entiers assignés par le <code>Tokenizer</code> sont arbitraires — ils imposent un faux ordre entre les mots.</p>
+
+<p>❌ <code>model.fit(X_token, y)</code> — le modèle traite "good"=1 < "bad"=32 comme une relation ordinale</p>
+
+<p>✅ Toujours passer par un <code>layers.Embedding</code> ou Word2Vec pour représenter chaque mot comme un vecteur dense</p>
+
+<p><strong>Oublier de padder les séquences avant de les passer au modèle</strong></p>
+
+<p>Les phrases ont des longueurs différentes, mais le tenseur d'entrée doit être rectangulaire.</p>
+
+<p>❌ <code>model.fit(X_token, y)</code> où <code>X_token</code> est une liste de listes de longueurs différentes → erreur</p>
+
+<p>✅ <code>X_pad = pad_sequences(X_token, padding=&#x27;post&#x27;)</code> + <code>mask_zero=True</code> dans l'Embedding</p>
+
+<p><strong>Oublier le <code>+1</code> dans <code>input_dim</code> de l'Embedding</strong></p>
+
+<p>Le padding utilise la valeur 0, qui doit aussi avoir un slot dans la matrice d'embedding.</p>
+
+<p>❌ <code>layers.Embedding(input_dim=vocab_size, ...)</code> → <code>IndexError</code> ou embedding décalé</p>
+
+<p>✅ <code>layers.Embedding(input_dim=vocab_size + 1, ...)</code> pour réserver l'index 0 au padding</p>
+
+<p><strong>Appliquer une Conv2D sur du texte embedé</strong></p>
+
+<p>L'ordre des dimensions de l'embedding est arbitraire — convoluer verticalement n'a pas de sens.</p>
+
+<p>❌ <code>layers.Conv2D(...)</code> sur une matrice (mots × embedding_dim) → capture des patterns absurdes</p>
+
+<p>✅ <code>layers.Conv1D(...)</code> glisse uniquement le long de l'axe des mots (horizontal)</p>
+
+<p><strong>Entraîner Word2Vec sur un corpus trop petit sans transfer learning</strong></p>
+
+<p>Un petit corpus produit des embeddings de mauvaise qualité — les mots rares n'ont pas assez de contexte.</p>
+
+<p>❌ <code>Word2Vec(sentences=X_train[:100], vector_size=100)</code> — embeddings bruités et non fiables</p>
+
+<p>✅ Charger un embedding pré-entraîné :</p>
+
+<p><code>gensim.downloader.load(&#x27;glove-wiki-gigaword-50&#x27;)</code></p>
+
+<hr>
+
+<h2 id="1-rappels-rnn-structure-des-données-séquentielles">1) Rappels RNN — Structure des données séquentielles</h2>
+
+<h3 id="11-x-et-y-dans-un-contexte-rnn">1.1 X et y dans un contexte RNN</h3>
+
+<figure><img src="../../assets/images/nlp-dl-01-91cb0691.png" alt="" loading="lazy"></figure>
+
+<p>En Time Series et en NLP, <code>X</code> est une <strong>séquence d'observations</strong> (valeurs passées, mots successifs…) et <code>y</code> est ce qu'on veut prédire (valeur future, catégorie, sentiment…).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## Shape de X pour un RNN
+## X.shape = (N_SEQUENCES, N_OBSERVATIONS, N_FEATURES)
+## Ex NLP : (nb_phrases, max_longueur_phrase, embedding_dim)</code></pre></div>
+
+
+<figure><img src="../../assets/images/nlp-dl-02-f3310083.png" alt="" loading="lazy"></figure>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le nombre d'observations peut varier d'une séquence à l'autre — c'est pour ça qu'on <strong>padde</strong> les séquences avant de les passer au modèle.</p></div></div>
+
+<h3 id="12-return_sequencestrue">1.2 <code>return_sequences=True</code></h3>
+
+<figure><img src="../../assets/images/nlp-dl-03-f8337f88.png" alt="" loading="lazy"></figure>
+
+<p>Par défaut, un LSTM ne retourne que la <strong>dernière sortie</strong> (un seul vecteur). Avec <code>return_sequences=True</code>, il retourne <strong>une sortie à chaque pas de temps</strong> — nécessaire pour empiler plusieurs couches RNN.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">model.add(layers.LSTM(10, activation=&#x27;tanh&#x27;, return_sequences=True))  # output à chaque step
+model.add(layers.LSTM(10, activation=&#x27;tanh&#x27;))                         # dernière sortie seulement
+model.add(layers.Dense(1))</code></pre></div>
+
+
+<figure><img src="../../assets/images/nlp-dl-04-49e68e84.png" alt="" loading="lazy"></figure>
+
+<h3 id="13-padding">1.3 Padding</h3>
+
+<p>Les séquences de longueurs différentes doivent être complétées (paddées) pour former un tenseur rectangulaire.</p>
+
+<figure><img src="../../assets/images/nlp-dl-05-7e5583af.png" alt="" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.utils import pad_sequences
+
+X_pad = pad_sequences(X, dtype=&#x27;float32&#x27;, padding=&#x27;post&#x27;, value=-1000)  # padding à droite
+model.add(layers.Masking(mask_value=-1000))                             # ignore les valeurs paddées</code></pre></div>
+
+
+<hr>
+
+<h2 id="2-applications-du-nlp">2) Applications du NLP</h2>
+
+<h3 id="21-modèle-de-langage-language-model">2.1 Modèle de langage (Language Model)</h3>
+
+<p>Prédire le <strong>mot suivant</strong> à partir des mots précédents — c'est ce qui alimente la prédiction de texte sur smartphone.</p>
+
+<figure><img src="../../assets/images/nlp-dl-06-bff399c5.jpeg" alt="" loading="lazy"></figure>
+
+<h3 id="22-classification-de-texte-analyse-de-sentiment">2.2 Classification de texte / Analyse de sentiment</h3>
+
+<p>Classer une phrase comme positive, négative, ou une émotion spécifique (joie, colère…).</p>
+
+<figure><img src="../../assets/images/nlp-dl-07-cc6e5a44.png" alt="" loading="lazy"></figure>
+
+<h3 id="23-sequence-to-sequence-traduction">2.3 Sequence-to-Sequence (traduction)</h3>
+
+<p>Produire une séquence de sortie à partir d'une séquence d'entrée — ex : traduction automatique.</p>
+
+<figure><img src="../../assets/images/nlp-dl-08-7a1b01c4.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="3-convertir-des-mots-en-nombres">3) Convertir des mots en nombres</h2>
+
+<h3 id="31-le-problème">3.1 Le problème</h3>
+
+<p>Les RNN attendent des <strong>nombres</strong> en entrée, pas du texte. Il faut convertir chaque mot en une représentation numérique exploitable.</p>
+
+<figure><img src="../../assets/images/nlp-dl-09-038bd514.png" alt="" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/nlp-dl-10-b7fd97f0.png" alt="Google Translate" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/nlp-dl-11-75b86030.png" alt="Google Translate" loading="lazy"></figure>
+
+<h3 id="32-tokenization-nécessaire-mais-insuffisante">3.2 Tokenization — nécessaire mais insuffisante</h3>
+
+<p>La tokenization assigne un <strong>entier unique</strong> à chaque mot du vocabulaire.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## &quot;this is good and this is bad&quot; → [9, 8, 1, 109, 9, 8, 32]
+## Dictionnaire : {&quot;this&quot;: 9, &quot;is&quot;: 8, &quot;good&quot;: 1, ...}</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>La tokenization seule n'est <strong>pas une bonne représentation</strong> : les entiers imposent un ordre arbitraire (good=1 < bad=32 ?) qui n'a aucun sens sémantique. Le OneHotEncoding n'est pas viable non plus — les vocabulaires sont trop grands (>10 000 mots).</p></div></div>
+
+<hr>
+
+<h2 id="4-embedding-la-solution">4) Embedding — La solution</h2>
+
+<h3 id="41-principe">4.1 Principe</h3>
+
+<p>Chaque mot est représenté par un <strong>vecteur dense</strong> dans un espace de dimension choisie (30 à 300 typiquement). Les mots sémantiquement proches sont proches dans cet espace.</p>
+
+<figure><img src="../../assets/images/nlp-dl-12-d7e41252.png" alt="Google Translate" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/nlp-dl-13-0ddb6576.png" alt="Google Translate" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/nlp-dl-14-2448416d.png" alt="Google Translate" loading="lazy"></figure>
+
+<h3 id="42-propriétés-dun-bon-embedding">4.2 Propriétés d'un bon embedding</h3>
+
+<figure><img src="../../assets/images/nlp-dl-15-5a092b1a.png" alt="" loading="lazy"></figure>
+
+<p>Les mots sémantiquement <strong>proches</strong> sont mathématiquement <strong>proches</strong> dans l'espace d'embedding. On peut même faire de l'arithmétique sur les mots :</p>
+
+<p>$V(\text{Queen}) - V(\text{King}) + V(\text{Man}) \approx V(\text{Woman})$</p>
+
+<figure><img src="../../assets/images/nlp-dl-16-5ac0787a.png" alt="Word2Vec" loading="lazy"></figure>
+
+<h3 id="43-deux-approches-pour-obtenir-un-embedding">4.3 Deux approches pour obtenir un embedding</h3>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Custom Embedding (<code>layers.Embedding</code>)</th><th>Word2Vec / GloVe</th></tr></thead><tbody><tr><td><strong>Principe</strong></td><td>Appris conjointement avec le modèle (backprop)</td><td>Appris indépendamment sur un grand corpus</td></tr><tr><td><strong>Avantage</strong></td><td>Optimisé pour la tâche spécifique</td><td>Rapide, bon sur petit corpus (transfer learning)</td></tr><tr><td><strong>Inconvénient</strong></td><td>Plus de paramètres → plus lent à entraîner</td><td>Pas optimisé pour la tâche</td></tr><tr><td><strong>Quand l'utiliser</strong></td><td>Grand corpus d'entraînement disponible</td><td>Petit corpus ou besoin de rapidité</td></tr></tbody></table></div>
+<figure><img src="../../assets/images/nlp-dl-17-8e2e12e7.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="5-custom-embedding-avec-layersembedding">5) Custom Embedding avec <code>layers.Embedding</code></h2>
+
+<h3 id="51-principe">5.1 Principe</h3>
+
+<p>L'embedding est une <strong>couche du réseau de neurones</strong> qui apprend la meilleure représentation vectorielle de chaque mot pour la tâche donnée.</p>
+
+<figure><img src="../../assets/images/nlp-dl-18-74f24ae7.png" alt="Word2Vec" loading="lazy"></figure>
+
+<figure><img src="../../assets/images/nlp-dl-19-275157d3.png" alt="Word2Vec" loading="lazy"></figure>
+
+<p>Le token (entier) sert d'<strong>index</strong> dans la matrice d'embedding — le réseau apprend les poids de cette matrice par backpropagation.</p>
+
+<figure><img src="../../assets/images/nlp-dl-20-63ff84c5.png" alt="Word2Vec" loading="lazy"></figure>
+
+<h3 id="52-shape-du-tenseur-dentrée">5.2 Shape du tenseur d'entrée</h3>
+
+<figure><img src="../../assets/images/nlp-dl-21-98ebc192.png" alt="Word2Vec" loading="lazy"></figure>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## X.shape = (n_sentences, max_sentence_length, embedding_dim)</code></pre></div>
+
+
+<h3 id="53-pipeline-complet-tokenize-pad-embed-lstm-dense">5.3 Pipeline complet : Tokenize → Pad → Embed → LSTM → Dense</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.utils import pad_sequences
+from tensorflow.keras import Sequential, Input, layers
+
+## --- Données mock ---
+X = [&#x27;Deep learning is super easy&#x27;,
+     &#x27;Deep learning was super bad and too long&#x27;,
+     &#x27;This is the best lecture of the camp!&#x27;]
+y = np.array([1., 0., 0.])
+
+## --- Étape 1 : Tokenizer ---
+tk = Tokenizer()
+tk.fit_on_texts(X)                             # construit le dictionnaire
+vocab_size = len(tk.word_index)                # 16 mots uniques
+X_token = tk.texts_to_sequences(X)             # chaque phrase → liste d&#x27;entiers
+
+## --- Étape 2 : Padding ---
+X_pad = pad_sequences(X_token, dtype=&#x27;float32&#x27;, padding=&#x27;post&#x27;)
+## X_pad.shape = (3, 8) — 3 phrases, max 8 mots
+
+## --- Étape 3 : Modèle ---
+embedding_size = 100
+
+model = Sequential()
+model.add(Input(shape=X_pad.shape[1:]))
+model.add(layers.Embedding(
+    input_dim=vocab_size + 1,                  # 16 + 1 pour le padding (index 0)
+    output_dim=embedding_size,                 # vecteur de dim 100 par mot
+    mask_zero=True                             # ignore le padding
+))
+model.add(layers.LSTM(20))
+model.add(layers.Dense(1, activation=&quot;sigmoid&quot;))
+
+model.compile(loss=&#x27;binary_crossentropy&#x27;, optimizer=&#x27;rmsprop&#x27;, metrics=[&#x27;accuracy&#x27;])
+model.fit(X_pad, y, epochs=5, batch_size=16, verbose=0)</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Nombre de paramètres de l'Embedding</strong> = <code>(vocab_size + 1) × embedding_size</code>. Avec 10 000 mots en 100 dimensions → <strong>1M de paramètres</strong> rien que pour l'embedding.</p></div></div>
+
+<h3 id="54-optimiser-la-vitesse-dentraînement">5.4 Optimiser la vitesse d'entraînement</h3>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p>Pour accélérer le prototypage :</p>
+<p>- Réduire <code>embedding_size</code> (30 au lieu de 100)</p>
+<p>- Réduire le nombre de phrases d'entraînement</p>
+<p>- Limiter <code>max_sentence_length</code> dans <code>pad_sequences(X_token, maxlen=100)</code> — les phrases très longues ajoutent beaucoup de zéros inutiles</p>
+<p>- Augmenter le <code>batch_size</code> (64, 128) pendant le prototypage</p></div></div>
+
+<hr>
+
+<h2 id="6-word2vec-embedding-indépendant">6) Word2Vec — Embedding indépendant</h2>
+
+<h3 id="61-principe">6.1 Principe</h3>
+
+<p>Word2Vec apprend un embedding <strong>indépendamment de la tâche finale</strong> : il prédit un mot à partir de ses voisins (ou inversement). Le résultat est une représentation vectorielle de qualité pour chaque mot.</p>
+
+<figure><img src="../../assets/images/nlp-dl-22-9194710e.png" alt="" loading="lazy"></figure>
+
+<h3 id="62-fonctionnement-interne">6.2 Fonctionnement interne</h3>
+
+<p>Word2Vec découpe le corpus en fenêtres de mots adjacents et entraîne un auto-encodeur à prédire le mot central à partir de ses voisins.</p>
+
+<figure><img src="../../assets/images/nlp-dl-23-5d855adb.png" alt="" loading="lazy"></figure>
+
+<p>L'espace latent (couche cachée) de ce réseau constitue l'embedding.</p>
+
+<p>👉 <a href="https://www.youtube.com/watch?v=64qSgA66P-8" target="_blank" rel="noopener">Vidéo explicative Word2Vec — 8 min</a></p>
+
+<h3 id="63-implémentation-avec-gensim">6.3 Implémentation avec Gensim</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from gensim.models import Word2Vec
+from tensorflow.keras.preprocessing.text import text_to_word_sequence
+
+## Convertir les phrases en listes de mots
+X_train_words = [text_to_word_sequence(s) for s in train_sentences]
+
+## Entraîner Word2Vec sur le corpus
+word2vec = Word2Vec(
+    sentences=X_train_words,
+    vector_size=100,                           # dimension de l&#x27;embedding
+    window=5,                                  # fenêtre de contexte
+    min_count=5                                # ignore les mots rares (&lt; 5 occurrences)
+)
+
+## Accéder au vecteur d&#x27;un mot
+word2vec.wv[&#x27;movie&#x27;]                           # array de dim 100
+
+## Mots les plus proches
+word2vec.wv.most_similar(&#x27;movie&#x27;, topn=5)      # [(&#x27;film&#x27;, 0.96), (&#x27;sequel&#x27;, 0.94), ...]</code></pre></div>
+
+
+<h3 id="64-hyperparamètres-word2vec">6.4 Hyperparamètres Word2Vec</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Paramètre</th><th>Rôle</th><th>Valeur typique</th></tr></thead><tbody><tr><td><code>vector_size</code></td><td>Dimension de l'embedding</td><td>50–300</td></tr><tr><td><code>window</code></td><td>Nb de mots voisins utilisés</td><td>2–10</td></tr><tr><td><code>min_count</code></td><td>Ignore les mots vus < N fois</td><td>1–10</td></tr></tbody></table></div>
+<h3 id="65-transfer-learning-embeddings-pré-entraînés">6.5 Transfer Learning — Embeddings pré-entraînés</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import gensim.downloader
+
+## Liste des modèles disponibles
+print(list(gensim.downloader.info()[&#x27;models&#x27;].keys()))
+
+## Charger GloVe pré-entraîné sur Wikipedia (50 dimensions)
+model_wiki = gensim.downloader.load(&#x27;glove-wiki-gigaword-50&#x27;)
+model_wiki.most_similar(&#x27;movie&#x27;, topn=5)       # résultats de meilleure qualité</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Sur un <strong>petit corpus</strong>, les embeddings pré-entraînés (GloVe, Word2Vec Google News) donnent de bien meilleurs résultats que l'entraînement from scratch.</p></div></div>
+
+<h3 id="66-arithmétique-sur-les-mots">6.6 Arithmétique sur les mots</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">v_queen = word2vec.wv[&#x27;queen&#x27;]
+v_king = word2vec.wv[&#x27;king&#x27;]
+v_man = word2vec.wv[&#x27;man&#x27;]
+
+v_result = v_queen - v_king + v_man            # ≈ V(woman)
+word2vec.wv.similar_by_vector(v_result)        # → [(&#x27;woman&#x27;, 0.89), (&#x27;girl&#x27;, 0.87), ...]</code></pre></div>
+
+
+<hr>
+
+<h2 id="7-cnn-1d-pour-le-nlp">7) CNN 1D pour le NLP</h2>
+
+<h3 id="71-pourquoi-pas-conv2d">7.1 Pourquoi pas Conv2D ?</h3>
+
+<figure><img src="../../assets/images/nlp-dl-24-72b7f592.png" alt="" loading="lazy"></figure>
+
+<p>Chaque ligne de la matrice (mots × embedding_dim) correspond à une coordonnée arbitraire de l'embedding. Convoluer <strong>verticalement</strong> n'a aucun sens — il ne faut jamais regarder "la moitié d'un embedding".</p>
+
+<h3 id="72-conv1d-convolution-le-long-des-mots">7.2 Conv1D — Convolution le long des mots</h3>
+
+<figure><img src="../../assets/images/nlp-dl-25-dc2b01dc.png" alt="" loading="lazy"></figure>
+
+<p><code>layers.Conv1D</code> glisse le filtre <strong>uniquement le long de l'axe des mots</strong>, mot par mot. Le <code>kernel_size</code> détermine combien de mots adjacents sont analysés ensemble.</p>
+
+<h3 id="73-comparaison-rnn-vs-cnn-pour-le-nlp">7.3 Comparaison RNN vs CNN pour le NLP</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">## --- RNN (LSTM) ---
+rnn = Sequential([
+    Input(shape=X_pad.shape[1:]),
+    layers.Embedding(input_dim=5000, output_dim=30, mask_zero=True),
+    layers.LSTM(20),                           # mémoire séquentielle
+    layers.Dense(1, activation=&quot;sigmoid&quot;)
+])
+
+## --- CNN 1D ---
+cnn = Sequential([
+    Input(shape=X_pad.shape[1:]),
+    layers.Embedding(input_dim=5000, output_dim=30, mask_zero=True),
+    layers.Conv1D(20, kernel_size=3),          # patterns locaux de 3 mots
+    layers.Flatten(),
+    layers.Dense(1, activation=&quot;sigmoid&quot;)
+])</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>RNN (LSTM)</th><th>CNN 1D</th></tr></thead><tbody><tr><td><strong>Capture</strong></td><td>Dépendances longue distance</td><td>Patterns locaux (n-grams)</td></tr><tr><td><strong>Vitesse</strong></td><td>Plus lent (séquentiel)</td><td>Plus rapide (parallélisable)</td></tr><tr><td><strong>Usage NLP</strong></td><td>Traduction, génération</td><td>Classification de texte, sentiment</td></tr></tbody></table></div>
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>L'embedding est <strong>indépendant</strong> de la couche suivante — on peut utiliser <code>layers.Embedding</code> ou Word2Vec avec un RNN <strong>ou</strong> un CNN.</p></div></div>
+
+<hr>
+
+<h2 id="8-attention-et-transformers-aperçu">8) Attention et Transformers (aperçu)</h2>
+
+<h3 id="81-mécanisme-dattention">8.1 Mécanisme d'attention</h3>
+
+<p>L'attention permet au modèle de <strong>pondérer</strong> l'importance de chaque mot de la séquence d'entrée lors de la prédiction — au lieu de compresser toute l'information dans un seul vecteur caché.</p>
+
+<figure><img src="../../assets/images/nlp-dl-26-2d14bf41.jpeg" alt="" loading="lazy"></figure>
+
+<p>👉 <a href="https://youtu.be/XXtpJxZBa2c?t=3725" target="_blank" rel="noopener">Stanford CS224N — Attention</a></p>
+
+<p>👉 <a href="https://medium.com/towards-data-science.com/intuitive-understanding-of-attention-mechanism-in-deep-learning-6c9482aecf4f" target="_blank" rel="noopener">Blog — Intuitive Understanding of Attention</a></p>
+
+<h3 id="82-transformers-attention-is-all-you-need">8.2 Transformers — "Attention is All You Need"</h3>
+
+<p>Les Transformers remplacent entièrement les RNN par des mécanismes d'<strong>auto-attention</strong> (self-attention), permettant de traiter tous les mots en parallèle. Ils sont à la base de GPT, BERT, et de tous les LLM modernes.</p>
+
+<figure><img src="../../assets/images/nlp-dl-27-03209700.png" alt="" loading="lazy"></figure>
+
+<hr>
+
+<h2 id="bibliographie">📚 Bibliographie</h2>
+
+<ul>
+<li>👉 <a href="https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z" target="_blank" rel="noopener">CS224N: NLP with Deep Learning — Stanford</a></li>
+<li>👉 <a href="https://www.youtube.com/watch?v=SGZ6BttHMPw&list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH" target="_blank" rel="noopener">92 vidéos NLP — Hugo Larochelle</a></li>
+<li>👉 <a href="https://www.youtube.com/watch?v=64qSgA66P-8" target="_blank" rel="noopener">Word2Vec expliqué — vidéo 8 min</a></li>
+<li>👉 <a href="https://radimrehurek.com/gensim/models/word2vec.html" target="_blank" rel="noopener">Gensim Word2Vec documentation</a></li>
+<li>👉 <a href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Embedding" target="_blank" rel="noopener">TensorFlow Embedding layer</a></li>
+<li>👉 <a href="https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/text/Tokenizer" target="_blank" rel="noopener">TensorFlow Tokenizer</a></li>
+</ul>
+
+<hr>
+
+<h2 id="challenges">🚀 Challenges</h2>
+
+<ul>
+<li>Implémenter un pipeline NLP complet : tokenization → padding → embedding → LSTM → classification de sentiment sur le dataset IMDB</li>
+<li>Comparer les performances entre <code>layers.Embedding</code> custom et Word2Vec pré-entraîné</li>
+<li>Tester un CNN 1D comme alternative au LSTM pour la classification de texte</li>
+</ul>
+        </section>
+        <section class="tab-content" data-tab-content="reformule">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#ref-introduction">🧭 Introduction</a><li><a href="#ref-1-rappels-les-données-séquentielles">1) Rappels — Les données séquentielles</a><ol><li><a href="#ref-11-la-structure-de-x-et-y-pour-un-rnn">1.1 La structure de X et y pour un RNN</a></li><li><a href="#ref-12-le-padding-mettre-toutes-les-phrases-à-la-même-taille">1.2 Le padding : mettre toutes les phrases à la même taille</a></li><li><a href="#ref-13-return_sequencestrue-dans-un-lstm">1.3 `return_sequences=True` dans un LSTM</a></li></ol></li><li><a href="#ref-2-applications-du-nlp">2) Applications du NLP</a><li><a href="#ref-3-convertir-les-mots-en-nombres-la-tokenization">3) Convertir les mots en nombres : la tokenization</a><ol><li><a href="#ref-31-le-principe-de-base">3.1 Le principe de base</a></li><li><a href="#ref-32-pourquoi-les-tokens-bruts-sont-insuffisants">3.2 Pourquoi les tokens bruts sont insuffisants</a></li></ol></li><li><a href="#ref-4-lembedding-représenter-les-mots-comme-des-points-dans-lespace">4) L'embedding : représenter les mots comme des points dans l'espace</a><ol><li><a href="#ref-41-le-principe">4.1 Le principe</a></li><li><a href="#ref-42-la-magie-de-larithmétique-des-mots">4.2 La magie de l'arithmétique des mots</a></li><li><a href="#ref-43-deux-façons-dobtenir-un-embedding">4.3 Deux façons d'obtenir un embedding</a></li></ol></li><li><a href="#ref-5-custom-embedding-avec-layersembedding">5) Custom Embedding avec `layers.Embedding`</a><ol><li><a href="#ref-51-comment-fonctionne-la-couche-embedding">5.1 Comment fonctionne la couche Embedding</a></li><li><a href="#ref-52-pipeline-complet-de-la-phrase-brute-à-la-prédiction">5.2 Pipeline complet : de la phrase brute à la prédiction</a></li><li><a href="#ref-53-astuce-accélérer-le-prototypage">5.3 Astuce : accélérer le prototypage</a></li></ol></li><li><a href="#ref-6-word2vec-lembedding-indépendant">6) Word2Vec — L'embedding indépendant</a><ol><li><a href="#ref-61-lidée-derrière-word2vec">6.1 L'idée derrière Word2Vec</a></li><li><a href="#ref-62-implémenter-word2vec-avec-gensim">6.2 Implémenter Word2Vec avec Gensim</a></li><li><a href="#ref-63-les-hyperparamètres-de-word2vec">6.3 Les hyperparamètres de Word2Vec</a></li><li><a href="#ref-64-transfer-learning-utiliser-un-embedding-pré-entraîné">6.4 Transfer Learning : utiliser un embedding pré-entraîné</a></li><li><a href="#ref-65-larithmétique-des-mots-en-pratique">6.5 L'arithmétique des mots en pratique</a></li></ol></li><li><a href="#ref-7-cnn-1d-une-alternative-rapide-au-lstm">7) CNN 1D — Une alternative rapide au LSTM</a><ol><li><a href="#ref-71-pourquoi-pas-conv2d">7.1 Pourquoi pas Conv2D ?</a></li><li><a href="#ref-72-conv1d-convoluer-uniquement-le-long-des-mots">7.2 Conv1D : convoluer uniquement le long des mots</a></li><li><a href="#ref-73-lstm-vs-cnn-1d-lequel-choisir">7.3 LSTM vs CNN 1D : lequel choisir ?</a></li></ol></li><li><a href="#ref-8-aperçu-attention-et-transformers">8) Aperçu : Attention et Transformers</a><ol><li><a href="#ref-81-le-problème-du-lstm-le-goulot-détranglement">8.1 Le problème du LSTM : le goulot d'étranglement</a></li><li><a href="#ref-82-le-mécanisme-dattention">8.2 Le mécanisme d'attention</a></li><li><a href="#ref-83-les-transformers-attention-is-all-you-need">8.3 Les Transformers : "Attention is All You Need"</a></li></ol></li><li><a href="#ref-erreurs-classiques-à-éviter">Erreurs classiques à éviter</a><li><a href="#ref-questions-de-vérification">🎯 Questions de vérification</a><li><a href="#ref-tldr">📌 TL;DR</a></ol></div>
+<h2 id="ref-introduction">🧭 Introduction</h2>
+
+<p>Le <strong>NLP</strong> (Natural Language Processing, ou traitement du langage naturel) est la branche du deep learning qui permet à un réseau de neurones de comprendre et de classer du texte. Concrètement : analyser si un avis est positif ou négatif, traduire une phrase, ou prédire le mot suivant dans une saisie de clavier.</p>
+
+<p>Le problème fondamental : les réseaux de neurones ne comprennent que des <strong>nombres</strong>. Une phrase comme "ce film est nul" doit être transformée en vecteurs numériques avant de pouvoir entrer dans un modèle.</p>
+
+<p>Ce cours couvre la chaîne complète pour y arriver :</p>
+
+<ol>
+<li><strong>Tokenization</strong> : convertir chaque mot en un identifiant entier</li>
+<li><strong>Embedding</strong> : transformer cet identifiant en un vecteur dense et significatif</li>
+<li><strong>Word2Vec</strong> : une méthode alternative pour obtenir des embeddings de qualité</li>
+<li><strong>LSTM</strong> : un réseau récurrent qui lit une séquence mot par mot</li>
+<li><strong>CNN 1D</strong> : une alternative plus rapide pour analyser des patterns locaux dans le texte</li>
+</ol>
+
+<p><strong>5 choses à retenir absolument :</strong></p>
+
+<ul>
+<li>Un token brut (entier) n'est PAS une bonne entrée pour un réseau — il faut passer par un embedding.</li>
+<li>Un embedding représente chaque mot comme un point dans un espace multidimensionnel. Les mots proches sémantiquement sont proches dans cet espace.</li>
+<li>Les phrases ont des longueurs différentes : il faut les aligner (padding) pour former un tableau rectangulaire.</li>
+<li>Word2Vec permet d'utiliser des représentations pré-entraînées sur des milliards de mots (transfer learning).</li>
+<li>Pour du texte, on utilise <code>Conv1D</code> et non <code>Conv2D</code>.</li>
+</ul>
+
+<p><strong>Analogie fil rouge — le dictionnaire visuel :</strong></p>
+
+<p>Imaginez un immense plan en 2D (ou en 100 dimensions) où chaque mot du dictionnaire est placé comme un point. Les mots qui se ressemblent sémantiquement sont placés proches les uns des autres : "chat" et "chien" sont voisins, "roi" et "reine" sont proches, "voiture" est loin des deux. C'est exactement ce qu'est un <strong>espace d'embedding</strong>. Toutes les opérations du NLP deep learning construisent ou exploitent cet espace.</p>
+
+<p><strong>Mini-plan du cours :</strong></p>
+<ol>
+<li>Rappels sur les séquences et les RNN</li>
+<li>Les applications du NLP</li>
+<li>Convertir les mots en nombres : la tokenization</li>
+<li>L'embedding : la vraie solution</li>
+<li>Embedding custom avec <code>layers.Embedding</code></li>
+<li>Word2Vec : embedding indépendant</li>
+<li>CNN 1D : une alternative au LSTM</li>
+<li>Aperçu : Attention et Transformers</li>
+</ol>
+
+<hr>
+
+<h2 id="ref-1-rappels-les-données-séquentielles">1) Rappels — Les données séquentielles</h2>
+
+<h3 id="ref-11-la-structure-de-x-et-y-pour-un-rnn">1.1 La structure de X et y pour un RNN</h3>
+
+<p>En NLP comme en séries temporelles, <code>X</code> est une <strong>séquence</strong> et <code>y</code> est ce qu'on veut prédire.</p>
+
+<ul>
+<li>Pour la classification de sentiment : <code>X</code> = une phrase (suite de mots), <code>y</code> = positif ou négatif.</li>
+<li>Pour la traduction : <code>X</code> = une phrase en anglais, <code>y</code> = la traduction en français.</li>
+</ul>
+
+<p>Le tenseur <code>X</code> a toujours la forme suivante quand on travaille avec des séquences :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Shape de X pour un réseau récurrent
+# X.shape = (N_SEQUENCES, N_OBSERVATIONS, N_FEATURES)
+#
+# En NLP concrètement :
+# N_SEQUENCES  = nombre de phrases dans le dataset
+# N_OBSERVATIONS = longueur maximale d&#x27;une phrase (en mots)
+# N_FEATURES   = dimension de l&#x27;embedding (ex: 100)</code></pre></div>
+
+
+<p>Exemple concret : si on a 1000 avis de films, chaque avis fait au plus 50 mots, et chaque mot est représenté par un vecteur de 100 dimensions, alors <code>X.shape = (1000, 50, 100)</code>.</p>
+
+<h3 id="ref-12-le-padding-mettre-toutes-les-phrases-à-la-même-taille">1.2 Le padding : mettre toutes les phrases à la même taille</h3>
+
+<p>Le problème : "Bon film" a 2 mots, "Un chef-d'œuvre absolument sublime" a 4 mots. Un tableau numpy doit être rectangulaire — toutes les lignes doivent avoir la même longueur.</p>
+
+<p>La solution : <strong>le padding</strong>. On complète les phrases courtes avec des zéros jusqu'à atteindre la longueur de la plus longue.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.utils import pad_sequences
+
+# X_token est une liste de listes d&#x27;entiers (longueurs différentes)
+# Exemple : [[9, 1], [3, 8, 12, 5], [7, 2, 4]]
+
+X_pad = pad_sequences(
+    X_token,
+    dtype=&#x27;float32&#x27;,
+    padding=&#x27;post&#x27;   # complète avec des 0 à DROITE de chaque séquence
+)
+# Résultat : tableau rectangulaire, ex shape (3, 4)
+# [[9, 1, 0, 0],
+#  [3, 8, 12, 5],
+#  [7, 2, 4, 0]]</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Le paramètre <code>mask_zero=True</code> dans la couche <code>Embedding</code> indique au modèle d'ignorer ces 0 de remplissage lors du calcul. Sans ça, le réseau essaierait d'interpréter les 0 comme de vrais mots.</p></div></div>
+
+<h3 id="ref-13-return_sequencestrue-dans-un-lstm">1.3 <code>return_sequences=True</code> dans un LSTM</h3>
+
+<p>Par défaut, un LSTM lit toute la séquence et ne retourne qu'<strong>un seul vecteur</strong> à la fin (le résumé de la phrase entière). C'est souvent ce qu'on veut pour la classification.</p>
+
+<p>Mais si on veut <strong>empiler plusieurs couches LSTM</strong>, chaque couche doit recevoir une séquence complète en entrée, pas juste un vecteur final. On utilise alors <code>return_sequences=True</code>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import Sequential, layers
+
+model = Sequential()
+# Premier LSTM : retourne une sortie à CHAQUE mot
+model.add(layers.LSTM(32, return_sequences=True))  # output shape: (batch, temps, 32)
+# Deuxième LSTM : retourne seulement la sortie finale
+model.add(layers.LSTM(16))                         # output shape: (batch, 16)
+model.add(layers.Dense(1, activation=&#x27;sigmoid&#x27;))</code></pre></div>
+
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Règle simple : seule la DERNIÈRE couche LSTM (avant la couche Dense) n'a PAS <code>return_sequences=True</code>. Toutes les couches LSTM intermédiaires doivent l'avoir.</p></div></div>
+
+<hr>
+
+<h2 id="ref-2-applications-du-nlp">2) Applications du NLP</h2>
+
+<p>Voici les trois grandes familles de tâches NLP qu'on peut résoudre avec du deep learning :</p>
+
+<p><strong>Modèle de langage</strong> : prédire le mot suivant. C'est ce qui permet la complétion automatique sur votre téléphone. Si vous tapez "Je vais au…", le modèle prédit "supermarché", "travail", "restaurant"…</p>
+
+<p><strong>Classification de texte / Analyse de sentiment</strong> : décider dans quelle catégorie tombe un texte. Exemple : un avis client est-il positif ou négatif ? Un email est-il un spam ? Quel est le sujet d'un article de presse ?</p>
+
+<p><strong>Séquence-à-séquence (traduction)</strong> : transformer une séquence de mots en une autre séquence. La traduction automatique (Google Translate), le résumé automatique, ou les chatbots fonctionnent ainsi.</p>
+
+<hr>
+
+<h2 id="ref-3-convertir-les-mots-en-nombres-la-tokenization">3) Convertir les mots en nombres : la tokenization</h2>
+
+<h3 id="ref-31-le-principe-de-base">3.1 Le principe de base</h3>
+
+<p>La tokenization assigne un <strong>entier unique</strong> à chaque mot du vocabulaire. C'est comme numéroter les entrées d'un dictionnaire.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras.preprocessing.text import Tokenizer
+
+phrases = [&#x27;ce film est super&#x27;,
+           &#x27;ce film est nul&#x27;,
+           &#x27;super nul&#x27;]
+
+tk = Tokenizer()
+tk.fit_on_texts(phrases)    # construit le dictionnaire à partir des phrases
+
+# Le dictionnaire créé ressemble à :
+# {&#x27;ce&#x27;: 1, &#x27;film&#x27;: 2, &#x27;est&#x27;: 3, &#x27;super&#x27;: 4, &#x27;nul&#x27;: 5}
+print(tk.word_index)
+
+X_token = tk.texts_to_sequences(phrases)
+# Résultat : [[1, 2, 3, 4], [1, 2, 3, 5], [4, 5]]
+
+vocab_size = len(tk.word_index)   # 5 mots uniques dans ce petit corpus</code></pre></div>
+
+
+<h3 id="ref-32-pourquoi-les-tokens-bruts-sont-insuffisants">3.2 Pourquoi les tokens bruts sont insuffisants</h3>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Les entiers attribués par le Tokenizer sont <strong>arbitraires</strong>. Le mot "super" a reçu l'index 4 et "nul" l'index 5 — mais cela ne veut PAS dire que "nul" est "plus" que "super". Pourtant, si on donne ces entiers directement à un réseau de neurones, il va traiter 5 > 4 comme une relation ordinale réelle. C'est une erreur fondamentale.</p></div></div>
+
+<p>Le One-Hot Encoding (encoder chaque mot comme un vecteur de zéros avec un seul 1) serait mathématiquement correct mais impraticable : avec un vocabulaire de 50 000 mots, chaque mot deviendrait un vecteur de 50 000 dimensions, dont 49 999 sont des zéros. Trop grand, trop vide, trop lent.</p>
+
+<p>La solution : <strong>les embeddings</strong>.</p>
+
+<hr>
+
+<h2 id="ref-4-lembedding-représenter-les-mots-comme-des-points-dans-lespace">4) L'embedding : représenter les mots comme des points dans l'espace</h2>
+
+<h3 id="ref-41-le-principe">4.1 Le principe</h3>
+
+<p>Un embedding transforme chaque mot en un <strong>vecteur dense</strong> de dimension fixe (typiquement entre 30 et 300). On choisit cette dimension, appelée <code>embedding_size</code> ou <code>output_dim</code>.</p>
+
+<p>Dans notre "dictionnaire visuel" :</p>
+<ul>
+<li>"chat" et "chien" ont des vecteurs proches (animaux domestiques)</li>
+<li>"chat" et "voiture" ont des vecteurs éloignés (catégories différentes)</li>
+<li>"roi" et "reine" sont proches, et leur différence ressemble à la différence entre "homme" et "femme"</li>
+</ul>
+
+<h3 id="ref-42-la-magie-de-larithmétique-des-mots">4.2 La magie de l'arithmétique des mots</h3>
+
+<p>Un bon embedding permet même de faire des calculs sur les mots. Le résultat le plus célèbre :</p>
+
+<div class="katex-display">$$V(\text{roi}) - V(\text{homme}) + V(\text{femme}) \approx V(\text{reine})$$</div>
+
+<p>En clair : si on prend le vecteur de "roi", qu'on soustrait le vecteur de "homme" et qu'on ajoute le vecteur de "femme", on obtient un vecteur très proche de celui de "reine". Le modèle a appris la notion de genre royal sans qu'on le lui ait jamais enseigné explicitement.</p>
+
+<p>Exemple numérique simplifié (en 2D) :</p>
+
+<div class="table-wrapper"><table><thead><tr><th>Mot</th><th>Dimension 1 (animalité)</th><th>Dimension 2 (taille)</th></tr></thead><tbody><tr><td>chat</td><td>0.9</td><td>0.2</td></tr><tr><td>chien</td><td>0.85</td><td>0.5</td></tr><tr><td>voiture</td><td>0.01</td><td>0.7</td></tr><tr><td>fourmi</td><td>0.9</td><td>0.01</td></tr></tbody></table></div>
+<p>"chat" et "chien" sont proches en dimension 1 (tous les deux des animaux). "voiture" est loin. "fourmi" et "chat" partagent le fait d'être des animaux mais diffèrent sur la taille.</p>
+
+<h3 id="ref-43-deux-façons-dobtenir-un-embedding">4.3 Deux façons d'obtenir un embedding</h3>
+
+<p><strong>Option 1 — Custom Embedding (<code>layers.Embedding</code>)</strong> : l'embedding est une couche du réseau et ses poids sont appris par backpropagation, en même temps que le reste du modèle. Idéal quand on a un grand dataset.</p>
+
+<p><strong>Option 2 — Word2Vec / GloVe</strong> : l'embedding est entraîné séparément sur un très grand corpus (Wikipedia, Google News…), puis réutilisé tel quel dans notre modèle (transfer learning). Idéal quand notre dataset est petit.</p>
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>Custom Embedding</th><th>Word2Vec / GloVe</th></tr></thead><tbody><tr><td><strong>Apprentissage</strong></td><td>Conjoint avec le modèle (backprop)</td><td>Indépendant, sur grand corpus</td></tr><tr><td><strong>Avantage</strong></td><td>Optimisé pour notre tâche</td><td>Excellent même sur petit dataset</td></tr><tr><td><strong>Inconvénient</strong></td><td>Beaucoup de paramètres</td><td>Pas spécifique à notre tâche</td></tr><tr><td><strong>Utiliser quand</strong></td><td>Grand corpus disponible</td><td>Petit dataset ou besoin de rapidité</td></tr></tbody></table></div>
+<hr>
+
+<h2 id="ref-5-custom-embedding-avec-layersembedding">5) Custom Embedding avec <code>layers.Embedding</code></h2>
+
+<h3 id="ref-51-comment-fonctionne-la-couche-embedding">5.1 Comment fonctionne la couche Embedding</h3>
+
+<p>La couche <code>Embedding</code> est essentiellement une <strong>grande table de correspondance</strong> (une matrice). Chaque ligne correspond à un mot (identifié par son index entier), et contient le vecteur de dimension <code>embedding_size</code> qui représente ce mot.</p>
+
+<ul>
+<li>Nombre de lignes : <code>vocab_size + 1</code> (le +1 réserve l'index 0 pour le padding)</li>
+<li>Nombre de colonnes : <code>embedding_size</code> (à choisir, ex : 100)</li>
+<li>Nombre total de paramètres appris : <code>(vocab_size + 1) × embedding_size</code></li>
+</ul>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Avec 10 000 mots et un embedding de dimension 100, la couche Embedding contient à elle seule <strong>1 000 100 paramètres</strong>. C'est souvent la couche la plus lourde du modèle !</p></div></div>
+
+<p>Quand on donne l'entier 4 (le token de "super") à la couche Embedding, elle retourne simplement la 4ème ligne de sa matrice. Pendant l'entraînement, les poids de cette matrice se mettent à jour pour que les représentations vectorielles soient utiles à la tâche finale.</p>
+
+<h3 id="ref-52-pipeline-complet-de-la-phrase-brute-à-la-prédiction">5.2 Pipeline complet : de la phrase brute à la prédiction</h3>
+
+<p>Voici le pipeline complet, étape par étape, avec un exemple de classification de sentiment :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import numpy as np
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.utils import pad_sequences
+from tensorflow.keras import Sequential, Input, layers
+
+# --- Données d&#x27;exemple ---
+X = [&#x27;Deep learning is super easy&#x27;,
+     &#x27;Deep learning was super bad and too long&#x27;,
+     &#x27;This is the best lecture of the camp!&#x27;]
+y = np.array([1., 0., 0.])   # 1 = positif, 0 = négatif
+
+# =============================================
+# ÉTAPE 1 : Tokenization
+# Chaque mot unique reçoit un entier distinct
+# =============================================
+tk = Tokenizer()
+tk.fit_on_texts(X)               # construit le dictionnaire (vocabulaire)
+
+vocab_size = len(tk.word_index)  # nombre de mots uniques, ici 16
+X_token = tk.texts_to_sequences(X)
+# X_token = [[1, 2, 3, 4, 5],
+#             [1, 2, 6, 4, 7, 8, 9, 10],
+#             [11, 3, 12, 13, 14, 15, 12, 16]]
+
+# =============================================
+# ÉTAPE 2 : Padding
+# Toutes les séquences à la même longueur
+# (complète avec des 0 à droite)
+# =============================================
+X_pad = pad_sequences(X_token, dtype=&#x27;float32&#x27;, padding=&#x27;post&#x27;)
+# X_pad.shape = (3, 8)  — 3 phrases, longueur max = 8 mots
+
+# =============================================
+# ÉTAPE 3 : Construction du modèle
+# =============================================
+embedding_size = 100   # chaque mot sera représenté par 100 nombres
+
+model = Sequential()
+
+# Entrée : séquences de tokens paddés
+model.add(Input(shape=X_pad.shape[1:]))   # shape = (8,) — longueur max de phrase
+
+# Couche Embedding : convertit chaque token en vecteur dense
+model.add(layers.Embedding(
+    input_dim=vocab_size + 1,   # +1 obligatoire pour réserver l&#x27;index 0 au padding
+    output_dim=embedding_size,  # dimension du vecteur de sortie par mot
+    mask_zero=True              # ignore les 0 de padding dans les calculs suivants
+))
+# Après Embedding : shape = (batch_size, 8, 100)
+# Chaque mot est maintenant un vecteur de 100 valeurs
+
+# Couche LSTM : lit la séquence de vecteurs mot par mot
+model.add(layers.LSTM(20))
+# Après LSTM : shape = (batch_size, 20)
+# Toute la phrase est résumée en un vecteur de 20 valeurs
+
+# Couche de sortie : classification binaire (positif/négatif)
+model.add(layers.Dense(1, activation=&#x27;sigmoid&#x27;))
+
+# =============================================
+# ÉTAPE 4 : Compilation et entraînement
+# =============================================
+model.compile(
+    loss=&#x27;binary_crossentropy&#x27;,   # pour classification binaire
+    optimizer=&#x27;rmsprop&#x27;,
+    metrics=[&#x27;accuracy&#x27;]
+)
+model.fit(X_pad, y, epochs=5, batch_size=16, verbose=0)</code></pre></div>
+
+
+<p><strong>Récapitulatif du pipeline :</strong></p>
+<ol>
+<li><code>Tokenizer.fit_on_texts(X)</code> → crée le dictionnaire mot → entier</li>
+<li><code>texts_to_sequences(X)</code> → transforme chaque phrase en liste d'entiers</li>
+<li><code>pad_sequences(...)</code> → aligne les longueurs avec des zéros</li>
+<li><code>layers.Embedding(vocab_size+1, embedding_size)</code> → table de vecteurs appris</li>
+<li><code>layers.LSTM(n)</code> → lecture séquentielle, résumé final</li>
+<li><code>layers.Dense(1, activation=&#x27;sigmoid&#x27;)</code> → prédiction</li>
+</ol>
+
+<div class="callout callout-success"><div class="callout-icon">✅</div><div class="callout-content"><p>Toujours mettre <code>vocab_size + 1</code> (et non <code>vocab_size</code>) dans <code>input_dim</code> de l'Embedding. Le Tokenizer ne génère jamais l'index 0 — il est réservé au padding. Si on oublie le <code>+1</code>, on obtient une erreur d'index ou un embedding décalé.</p></div></div>
+
+<h3 id="ref-53-astuce-accélérer-le-prototypage">5.3 Astuce : accélérer le prototypage</h3>
+
+<p>Quand on teste rapidement un modèle, plusieurs réglages réduisent le temps d'entraînement sans changer l'architecture :</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Réduire la dimension de l&#x27;embedding
+embedding_size = 30   # au lieu de 100, beaucoup plus rapide
+
+# Limiter la longueur des phrases (coupe les phrases très longues)
+X_pad = pad_sequences(X_token, maxlen=100, padding=&#x27;post&#x27;)
+# Les phrases &gt; 100 mots seront tronquées
+
+# Augmenter le batch_size pendant le dev
+model.fit(X_pad, y, epochs=5, batch_size=128)</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-6-word2vec-lembedding-indépendant">6) Word2Vec — L'embedding indépendant</h2>
+
+<h3 id="ref-61-lidée-derrière-word2vec">6.1 L'idée derrière Word2Vec</h3>
+
+<p>Word2Vec est un algorithme qui apprend des embeddings de mots <strong>sans avoir de tâche supervisée</strong> (pas d'étiquette positif/négatif). Il apprend à partir d'un seul principe : <strong>les mots qui apparaissent dans des contextes similaires ont des significations similaires</strong>.</p>
+
+<p>Concrètement, Word2Vec découpe le corpus en fenêtres glissantes et entraîne un petit réseau de neurones à prédire : "quel mot central se trouve entouré de ces mots voisins ?" L'espace latent de ce réseau (la couche cachée) constitue l'embedding.</p>
+
+<p>Exemple avec une fenêtre de taille 2 :</p>
+
+<blockquote><p>"le chat mange la souris"</p></blockquote>
+
+<p>Pour le mot central "mange", les mots de contexte sont : "le", "chat", "la", "souris". Le réseau apprend que "mange" est un verbe d'action qui apparaît entre des animaux et des proies. Au fil de millions d'exemples, les vecteurs encodent ces relations.</p>
+
+<h3 id="ref-62-implémenter-word2vec-avec-gensim">6.2 Implémenter Word2Vec avec Gensim</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from gensim.models import Word2Vec
+from tensorflow.keras.preprocessing.text import text_to_word_sequence
+
+# Les phrases doivent être des listes de mots (pas des chaînes de caractères)
+# text_to_word_sequence gère la ponctuation, la casse, etc.
+train_sentences = [&quot;the movie was great&quot;, &quot;i loved this film&quot;, &quot;terrible acting&quot;]
+X_train_words = [text_to_word_sequence(s) for s in train_sentences]
+# [[&#x27;the&#x27;, &#x27;movie&#x27;, &#x27;was&#x27;, &#x27;great&#x27;], [&#x27;i&#x27;, &#x27;loved&#x27;, &#x27;this&#x27;, &#x27;film&#x27;], ...]
+
+# Entraîner Word2Vec sur notre corpus
+word2vec = Word2Vec(
+    sentences=X_train_words,
+    vector_size=100,   # dimension de chaque vecteur de mot
+    window=5,          # nombre de mots voisins utilisés (de chaque côté)
+    min_count=5        # ignorer les mots qui apparaissent moins de 5 fois
+)
+
+# Accéder au vecteur d&#x27;un mot
+vecteur_movie = word2vec.wv[&#x27;movie&#x27;]   # array numpy de forme (100,)
+print(vecteur_movie.shape)             # (100,)
+
+# Trouver les mots sémantiquement les plus proches
+word2vec.wv.most_similar(&#x27;movie&#x27;, topn=5)
+# Retourne : [(&#x27;film&#x27;, 0.96), (&#x27;sequel&#x27;, 0.94), (&#x27;director&#x27;, 0.91), ...]</code></pre></div>
+
+
+<h3 id="ref-63-les-hyperparamètres-de-word2vec">6.3 Les hyperparamètres de Word2Vec</h3>
+
+<div class="table-wrapper"><table><thead><tr><th>Paramètre</th><th>Rôle</th><th>Valeur typique</th></tr></thead><tbody><tr><td><code>vector_size</code></td><td>Dimension du vecteur de chaque mot</td><td>50 à 300</td></tr><tr><td><code>window</code></td><td>Nombre de mots voisins considérés</td><td>2 à 10</td></tr><tr><td><code>min_count</code></td><td>Ignorer les mots vus moins de N fois</td><td>1 à 10</td></tr></tbody></table></div>
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>Entraîner Word2Vec sur un petit corpus (quelques centaines de phrases) produit des embeddings de mauvaise qualité. Les mots rares n'ont pas assez d'exemples de contexte pour apprendre une bonne représentation. Solution : utiliser un modèle pré-entraîné.</p></div></div>
+
+<h3 id="ref-64-transfer-learning-utiliser-un-embedding-pré-entraîné">6.4 Transfer Learning : utiliser un embedding pré-entraîné</h3>
+
+<p>Des modèles Word2Vec et GloVe ont été entraînés sur des milliards de mots (Wikipedia, Google News, Twitter…). On peut les télécharger et les utiliser directement — c'est du <strong>transfer learning</strong>.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import gensim.downloader
+
+# Voir tous les modèles disponibles
+print(list(gensim.downloader.info()[&#x27;models&#x27;].keys()))
+
+# Télécharger GloVe pré-entraîné sur Wikipedia (50 dimensions, ~66MB)
+model_wiki = gensim.downloader.load(&#x27;glove-wiki-gigaword-50&#x27;)
+
+# Ce modèle a été entraîné sur des centaines de millions de phrases
+# Les résultats sont bien meilleurs qu&#x27;un entraînement from scratch sur 1000 phrases
+model_wiki.most_similar(&#x27;movie&#x27;, topn=5)
+# [(&#x27;film&#x27;, 0.85), (&#x27;movies&#x27;, 0.82), (&#x27;cinema&#x27;, 0.78), ...]</code></pre></div>
+
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>Sur un petit dataset (< 10 000 phrases), <strong>toujours préférer un embedding pré-entraîné</strong> à un <code>layers.Embedding</code> custom. Le modèle pré-entraîné apporte une connaissance linguistique vaste que notre petit dataset ne pourrait jamais générer seul.</p></div></div>
+
+<h3 id="ref-65-larithmétique-des-mots-en-pratique">6.5 L'arithmétique des mots en pratique</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># La formule magique : roi - homme + femme ≈ reine
+v_roi   = model_wiki[&#x27;king&#x27;]
+v_homme = model_wiki[&#x27;man&#x27;]
+v_femme = model_wiki[&#x27;woman&#x27;]
+
+v_resultat = v_roi - v_homme + v_femme   # opération vectorielle simple
+
+# Trouver le mot dont le vecteur est le plus proche du résultat
+model_wiki.similar_by_vector(v_resultat, topn=3)
+# → [(&#x27;queen&#x27;, 0.85), (&#x27;princess&#x27;, 0.79), (&#x27;monarch&#x27;, 0.76)]</code></pre></div>
+
+
+<hr>
+
+<h2 id="ref-7-cnn-1d-une-alternative-rapide-au-lstm">7) CNN 1D — Une alternative rapide au LSTM</h2>
+
+<h3 id="ref-71-pourquoi-pas-conv2d">7.1 Pourquoi pas Conv2D ?</h3>
+
+<p>Après la couche Embedding, chaque phrase est représentée comme une <strong>matrice</strong> de forme <code>(longueur_phrase, embedding_dim)</code>. On pourrait être tenté d'y appliquer une convolution 2D comme pour les images.</p>
+
+<p>Mais ce serait une erreur. Dans une image, les dimensions x et y ont un sens spatial (les pixels voisins sont vraiment proches dans l'espace). Dans la matrice de texte, les lignes (mots) ont un ordre logique (l'ordre des mots), mais les colonnes (dimensions de l'embedding) sont des coordonnées <strong>arbitraires</strong> — la dimension 5 de l'embedding ne "touche" pas la dimension 6 dans un sens géographique. Convoluer verticalement n'a aucun sens.</p>
+
+<h3 id="ref-72-conv1d-convoluer-uniquement-le-long-des-mots">7.2 Conv1D : convoluer uniquement le long des mots</h3>
+
+<p><code>layers.Conv1D</code> glisse un filtre <strong>uniquement le long de l'axe des mots</strong> (horizontalement). Le paramètre <code>kernel_size</code> détermine combien de mots adjacents sont analysés ensemble.</p>
+
+<p>Avec <code>kernel_size=3</code>, le filtre analyse les triplets de mots consécutifs : "ce film est", puis "film est super", puis "est super bien"… C'est l'équivalent des n-grammes en linguistique classique, mais appris automatiquement.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from tensorflow.keras import Sequential, Input, layers
+
+# Exemple : classification de sentiment avec CNN 1D
+cnn_model = Sequential([
+    Input(shape=X_pad.shape[1:]),
+
+    # Couche Embedding : même utilisation qu&#x27;avec le LSTM
+    layers.Embedding(
+        input_dim=vocab_size + 1,
+        output_dim=30,           # embedding de dimension 30
+        mask_zero=True
+    ),
+
+    # Conv1D : analyse les séquences de 3 mots adjacents
+    # 20 = nombre de filtres (patterns locaux à apprendre)
+    # kernel_size=3 = largeur du filtre (3 mots à la fois)
+    layers.Conv1D(20, kernel_size=3),
+
+    # Flatten : aplatit la sortie 2D en vecteur 1D avant la couche Dense
+    layers.Flatten(),
+
+    # Couche de sortie : classification binaire
+    layers.Dense(1, activation=&#x27;sigmoid&#x27;)
+])</code></pre></div>
+
+
+<h3 id="ref-73-lstm-vs-cnn-1d-lequel-choisir">7.3 LSTM vs CNN 1D : lequel choisir ?</h3>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># --- Version LSTM ---
+rnn_model = Sequential([
+    Input(shape=X_pad.shape[1:]),
+    layers.Embedding(input_dim=5000, output_dim=30, mask_zero=True),
+    layers.LSTM(20),          # lit la séquence de gauche à droite, mémorise
+    layers.Dense(1, activation=&#x27;sigmoid&#x27;)
+])
+
+# --- Version CNN 1D ---
+cnn_model = Sequential([
+    Input(shape=X_pad.shape[1:]),
+    layers.Embedding(input_dim=5000, output_dim=30, mask_zero=True),
+    layers.Conv1D(20, kernel_size=3),   # détecte des patterns locaux
+    layers.Flatten(),
+    layers.Dense(1, activation=&#x27;sigmoid&#x27;)
+])</code></pre></div>
+
+
+<div class="table-wrapper"><table><thead><tr><th></th><th>LSTM</th><th>CNN 1D</th></tr></thead><tbody><tr><td><strong>Ce qu'il capture</strong></td><td>Dépendances longue distance dans la phrase</td><td>Patterns locaux (groupes de 2-5 mots)</td></tr><tr><td><strong>Vitesse</strong></td><td>Plus lent (traitement séquentiel)</td><td>Plus rapide (parallélisable)</td></tr><tr><td><strong>Bon pour</strong></td><td>Traduction, génération de texte</td><td>Classification de sentiment, catégorisation</td></tr></tbody></table></div>
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>Pour la classification de texte simple (spam/non-spam, positif/négatif), le CNN 1D donne souvent des résultats <strong>comparables au LSTM</strong> tout en étant bien plus rapide à entraîner. C'est un excellent point de départ.</p></div></div>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>L'embedding est <strong>interchangeable</strong> : que ce soit un <code>layers.Embedding</code> custom ou un Word2Vec pré-entraîné, on peut le connecter indifféremment à un LSTM ou à un CNN 1D. Les deux blocs sont indépendants.</p></div></div>
+
+<hr>
+
+<h2 id="ref-8-aperçu-attention-et-transformers">8) Aperçu : Attention et Transformers</h2>
+
+<h3 id="ref-81-le-problème-du-lstm-le-goulot-détranglement">8.1 Le problème du LSTM : le goulot d'étranglement</h3>
+
+<p>Le LSTM compresse toute l'information d'une longue phrase dans un seul vecteur final. Si la phrase fait 200 mots, les premiers mots ont souvent "oublié" d'influencer la sortie finale. C'est le problème du <strong>goulot d'étranglement</strong> de la mémoire.</p>
+
+<h3 id="ref-82-le-mécanisme-dattention">8.2 Le mécanisme d'attention</h3>
+
+<p>L'attention permet au modèle de "regarder en arrière" vers tous les mots de la séquence d'entrée au moment de produire chaque mot de la sortie, en leur attribuant des <strong>poids d'importance</strong>.</p>
+
+<p>Exemple en traduction : pour traduire le mot "chat" en anglais, le mécanisme d'attention regarde toute la phrase française et décide que le mot "chat" est très pertinent, "mange" est un peu pertinent, "le" est peu pertinent.</p>
+
+<div class="katex-display">$$\text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\right) V$$</div>
+
+<p>Intuition : $Q$ (query) est "ce qu'on cherche", $K$ (keys) sont "les étiquettes des informations disponibles", $V$ (values) est "l'information elle-même". On calcule à quel point chaque source correspond à notre requête, on normalise (softmax), et on fait la somme pondérée.</p>
+
+<h3 id="ref-83-les-transformers-attention-is-all-you-need">8.3 Les Transformers : "Attention is All You Need"</h3>
+
+<p>Les Transformers (2017, Google) remplacent entièrement les RNN par des mécanismes d'<strong>auto-attention</strong> (self-attention). Tous les mots sont traités <strong>en parallèle</strong>, ce qui permet d'entraîner des modèles bien plus grands beaucoup plus vite.</p>
+
+<p>Les Transformers sont la base de GPT, BERT, et de tous les LLM (Large Language Models) modernes. C'est le paradigme dominant du NLP depuis 2018.</p>
+
+<div class="callout callout-info"><div class="callout-icon">🧠</div><div class="callout-content"><p>BERT et GPT utilisent des centaines de millions, voire des milliards de paramètres. Ils sont pré-entraînés sur la quasi-totalité du web, puis affinés (fine-tuned) sur des tâches spécifiques. C'est le transfer learning poussé à l'extrême.</p></div></div>
+
+<hr>
+
+<h2 id="ref-erreurs-classiques-à-éviter">Erreurs classiques à éviter</h2>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Utiliser les tokens entiers comme entrée directe d'un modèle Dense ou RNN</strong> — les entiers imposent un ordre arbitraire. Toujours passer par une couche <code>Embedding</code> ou Word2Vec.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Oublier le padding</strong> — les phrases ont des longueurs différentes. Un tenseur numpy doit être rectangulaire. Toujours utiliser <code>pad_sequences</code> avant <code>model.fit</code>.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Oublier le <code>+1</code> dans <code>input_dim</code></strong> — l'index 0 est réservé au padding. <code>layers.Embedding(vocab_size + 1, ...)</code> et non <code>layers.Embedding(vocab_size, ...)</code>.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Utiliser <code>Conv2D</code> sur du texte</strong> — les dimensions de l'embedding sont arbitraires. Toujours utiliser <code>Conv1D</code> pour le texte.</p></div></div>
+
+<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p><strong>Entraîner Word2Vec sur un petit corpus</strong> — résultats médiocres. Préférer un modèle pré-entraîné (<code>glove-wiki-gigaword-50</code>) dès que le dataset est petit.</p></div></div>
+
+<hr>
+
+<h2 id="ref-questions-de-vérification">🎯 Questions de vérification</h2>
+
+<p><strong>Question 1</strong> — Pourquoi ne peut-on pas donner directement les tokens entiers (ex : <code>[9, 8, 1, 32]</code>) comme entrée à un réseau de neurones pour faire du NLP ?</p>
+
+<blockquote><p>Les entiers sont arbitraires et imposent de fausses relations ordinales entre les mots. Le modèle interpréterait "bad" (index 32) comme "plus grand que" "good" (index 1), ce qui n'a aucun sens sémantique. Il faut passer par un embedding qui représente chaque mot comme un vecteur dense dans un espace où la proximité a un sens.</p></blockquote>
+
+<p><strong>Question 2</strong> — Qu'est-ce que le padding, et pourquoi est-il nécessaire ?</p>
+
+<blockquote><p>Les phrases d'un dataset ont des longueurs différentes, mais un tenseur numpy doit être rectangulaire (même nombre de colonnes pour chaque ligne). Le padding complète les phrases courtes avec des zéros jusqu'à la longueur de la plus longue. <code>mask_zero=True</code> dans l'Embedding indique ensuite au modèle d'ignorer ces zéros artificiels.</p></blockquote>
+
+<p><strong>Question 3</strong> — Quelle est la différence entre <code>layers.Embedding</code> et Word2Vec ?</p>
+
+<blockquote><p><code>layers.Embedding</code> est une couche du réseau dont les poids sont appris par backpropagation en même temps que le reste du modèle — elle est optimisée pour notre tâche spécifique. Word2Vec est entraîné séparément sur un grand corpus externe, indépendamment de notre tâche. Sur un petit dataset, Word2Vec pré-entraîné donne de meilleurs résultats car il bénéficie d'un vocabulaire et d'un contexte bien plus riches.</p></blockquote>
+
+<p><strong>Question 4</strong> — Pourquoi utilise-t-on <code>Conv1D</code> et non <code>Conv2D</code> pour analyser du texte embedé ?</p>
+
+<blockquote><p>Après la couche Embedding, chaque phrase est une matrice <code>(mots × embedding_dim)</code>. Les lignes (mots) ont un ordre logique. Mais les colonnes (dimensions de l'embedding) sont des coordonnées arbitraires — elles n'ont pas de relation de voisinage spatiale entre elles. <code>Conv2D</code> convoluerait aussi sur l'axe des dimensions d'embedding, ce qui n'a aucun sens. <code>Conv1D</code> glisse le filtre uniquement le long de l'axe des mots, ce qui est la seule direction porteuse de sens.</p></blockquote>
+
+<hr>
+
+<h2 id="ref-tldr">📌 TL;DR</h2>
+
+<ul>
+<li>Les réseaux de neurones ne lisent que des nombres : le texte doit être converti en vecteurs.</li>
+<li>La <strong>tokenization</strong> assigne un entier à chaque mot, mais les entiers seuls sont inutilisables directement — ils imposent de faux ordres.</li>
+<li>L'<strong>embedding</strong> transforme chaque token en un vecteur dense ; les mots sémantiquement proches ont des vecteurs proches dans l'espace d'embedding.</li>
+<li>Le <strong>padding</strong> (<code>pad_sequences</code>) aligne toutes les phrases à la même longueur en ajoutant des zéros ; <code>mask_zero=True</code> dit au modèle de les ignorer.</li>
+<li><code>layers.Embedding(vocab_size + 1, embedding_size)</code> apprend les vecteurs de mots par backprop, conjointement avec le reste du modèle.</li>
+<li><strong>Word2Vec</strong> (via Gensim) apprend des embeddings indépendamment ; les modèles pré-entraînés (GloVe, Google News) sont très efficaces sur les petits datasets.</li>
+<li>Un <strong>LSTM</strong> lit la séquence mot par mot et mémorise les dépendances à longue distance ; un <strong>CNN 1D</strong> détecte des patterns locaux (groupes de mots adjacents) plus rapidement.</li>
+<li>Pour du texte, toujours utiliser <code>Conv1D</code> (jamais <code>Conv2D</code>).</li>
+<li>Les <strong>Transformers</strong> (GPT, BERT) ont remplacé les RNN grâce au mécanisme d'attention, qui permet de traiter tous les mots en parallèle.</li>
+<li>Pipeline standard : <code>Tokenizer</code> → <code>pad_sequences</code> → <code>Embedding</code> → <code>LSTM</code> ou <code>Conv1D</code> → <code>Dense</code>.</li>
+</ul>
+
+        </section>
+        <section class="tab-content" data-tab-content="synthese">
+<div class="toc"><div class="toc-title">Sommaire</div><ol><li><a href="#syn-a-concepts-du-cours">A. Concepts du cours</a><ol><li><a href="#syn-du-texte-au-tenseur">Du texte au tenseur</a></li><li><a href="#syn-tokenisation-moderne">Tokenisation moderne</a></li><li><a href="#syn-word-embeddings">Word embeddings</a></li><li><a href="#syn-padding-et-masking">Padding et masking</a></li><li><a href="#syn-architecture-seq-to-seq">Architecture seq-to-seq</a></li></ol></li><li><a href="#syn-b-compléments-avancés">B. Compléments avancés</a><ol><li><a href="#syn-attention-mechanism">Attention mechanism</a></li><li><a href="#syn-pré-entraînement-et-fine-tuning">Pré-entraînement et fine-tuning</a></li><li><a href="#syn-évaluation-bleu-rouge-perplexity">Évaluation : BLEU, ROUGE, perplexity</a></li></ol></li><li><a href="#syn-c-questions-de-compréhension">C. Questions de compréhension</a><li><a href="#syn-ressources-additionnelles">Ressources additionnelles</a></ol></div>
+<h2 id="syn-a-concepts-du-cours">A. Concepts du cours</h2>
+
+<h3 id="syn-du-texte-au-tenseur">Du texte au tenseur</h3>
+
+<p>Un réseau de neurones ne comprend que des nombres. Pour traiter du texte, il faut le <strong>convertir</strong> en suite d'entiers, puis en vecteurs denses.</p>
+
+<p>Pipeline canonique :</p>
+
+<ol>
+<li><strong>Tokenisation</strong> : "Le chat mange" → ["Le", "chat", "mange"] → [42, 156, 89]</li>
+<li><strong>Padding</strong> : aligner toutes les séquences à une longueur fixe (souvent ~512 tokens)</li>
+<li><strong>Embedding</strong> : chaque entier devient un vecteur dense de dimension 128 ou plus</li>
+<li><strong>Forward dans le réseau</strong> (RNN, transformer)</li>
+</ol>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">import tensorflow as tf
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+texts = [&quot;Le chat mange la souris&quot;, &quot;Le chien dort dans le jardin&quot;]
+
+# On construit un vocabulaire des 10k mots les plus fréquents, avec &lt;UNK&gt; pour les OOV
+tokenizer = Tokenizer(num_words=10000, oov_token=&quot;&lt;UNK&gt;&quot;)
+tokenizer.fit_on_texts(texts)              # Calcule la correspondance mot -&gt; entier
+sequences = tokenizer.texts_to_sequences(texts)   # Ex : [[3, 7, 12, 4, 23], [3, 18, ...]]
+# On aligne toutes les phrases à 20 tokens max, padding avec des 0 à la fin
+padded = pad_sequences(sequences, maxlen=20, padding=&quot;post&quot;)</code></pre></div>
+
+
+<p><strong>Lecture du code</strong> : le tokenizer associe chaque mot à un entier unique (42 = "chat", 156 = "mange"...). <code>texts_to_sequences</code> transforme chaque phrase en liste d'entiers. <code>pad_sequences</code> égalise les longueurs en complétant avec des 0 (les mini-batches ont besoin de tenseurs rectangulaires). L'option <code>padding=&quot;post&quot;</code> ajoute les zéros à la fin ; <code>&quot;pre&quot;</code> les ajouterait au début. On utilisera ensuite un <strong>masque</strong> pour que le modèle ignore ces zéros.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : tokenisation = découper une phrase en briques élémentaires. Embedding = donner à chaque brique sa "personnalité" mathématique (un vecteur). Le miracle des embeddings : deux mots sémantiquement proches ont des vecteurs proches dans l'espace, même si vous ne leur avez jamais explicitement dit qu'ils étaient liés.</p></div></div>
+
+<h3 id="syn-tokenisation-moderne">Tokenisation moderne</h3>
+
+<p>Trois niveaux de granularité :</p>
+
+<p><strong>Word-level</strong> : un token = un mot. Simple mais souffre de l'<strong>OOV</strong> (out-of-vocabulary) : tout mot non vu pendant l'entraînement devient <code>&lt;UNK&gt;</code>.</p>
+
+<p><strong>Character-level</strong> : un token = un caractère. Pas d'OOV mais séquences très longues.</p>
+
+<p><strong>Subword (BPE, WordPiece, SentencePiece)</strong> : compromis intelligent. Découpe les mots fréquents en un seul token, et les mots rares en plusieurs sous-mots. Standard moderne (utilisé par BERT, GPT, T5).</p>
+
+<p><strong>BPE (Byte-Pair Encoding)</strong> — algorithme minimal :</p>
+
+<ol>
+<li>Initialiser le vocabulaire avec tous les caractères.</li>
+<li>Compter les paires de tokens consécutifs les plus fréquentes dans le corpus.</li>
+<li>Fusionner la paire la plus fréquente en un nouveau token.</li>
+<li>Répéter (2-3) jusqu'à atteindre une taille de vocabulaire cible (ex. 30 000).</li>
+</ol>
+
+<p><strong>Exemple concret</strong> : corpus "low, lower, newest, widest". On commence avec les caractères {l, o, w, e, r, n, s, t, i, d, ','}. La paire la plus fréquente est probablement "es" (dans "newest", "widest"), puis "est", puis "er", etc. Au fil des fusions, des sous-mots apparaissent : "est", "er", "low", etc. Les mots fréquents comme "low" finiront comme un seul token ; les mots rares seront décomposés.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Mot &quot;tokenization&quot; → [&quot;token&quot;, &quot;##ization&quot;]
+Mot &quot;play&quot; → [&quot;play&quot;]
+Mot &quot;playing&quot; → [&quot;play&quot;, &quot;##ing&quot;]</code></pre></div>
+
+
+<p>L'avantage : un vocabulaire de 30 000 tokens BPE peut représenter n'importe quel mot, même les nouveaux mots ou les noms propres rares. Le préfixe "##" de WordPiece (BERT) indique un "sous-mot qui continue le précédent".</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from transformers import BertTokenizer
+tokenizer = BertTokenizer.from_pretrained(&quot;bert-base-uncased&quot;)
+# Découpe en sous-mots selon le vocabulaire WordPiece pré-appris
+tokens = tokenizer.tokenize(&quot;Tokenization is amazing&quot;)
+# [&#x27;token&#x27;, &#x27;##ization&#x27;, &#x27;is&#x27;, &#x27;amazing&#x27;]
+# encode() ajoute les tokens spéciaux [CLS] (101) et [SEP] (102)
+ids = tokenizer.encode(&quot;Tokenization is amazing&quot;)
+# [101, 19204, 3989, 2003, 6429, 102]</code></pre></div>
+
+
+<h3 id="syn-word-embeddings">Word embeddings</h3>
+
+<p>Au lieu de représenter chaque mot par un vecteur one-hot (sparse, $|V|$ dimensions), on apprend une <strong>représentation dense</strong> de dimension 50-768.</p>
+
+<p><strong>Word2Vec</strong> (Mikolov et al., 2013) : entraîné à prédire un mot depuis ses voisins (CBOW) ou ses voisins depuis un mot (Skip-gram).</p>
+
+<p><strong>Skip-gram en une ligne</strong> :</p>
+
+<div class="katex-display">$$\mathcal{L} = -\sum_{t} \sum_{-c \leq j \leq c, j \neq 0} \log p(w_{t+j} | w_t)$$</div>
+
+<p><strong>Lecture de la formule</strong> : pour chaque mot $w_t$ du corpus, on prend une fenêtre de $c$ mots de part et d'autre (les "voisins"). L'objectif est de maximiser la probabilité de prédire ces voisins à partir du mot central. $p(w_{t+j} | w_t)$ est calculé via un softmax sur tout le vocabulaire (ou une approximation comme le negative sampling pour l'efficacité). En pratique, le modèle apprend deux matrices d'embeddings : l'une pour les mots "centraux", l'autre pour les mots "contextes". On garde généralement celle des centraux.</p>
+
+<p>Première démonstration de la propriété arithmétique des embeddings :</p>
+
+<div class="katex-display">$$\text{vec}(\text{king}) - \text{vec}(\text{man}) + \text{vec}(\text{woman}) \approx \text{vec}(\text{queen})$$</div>
+
+<p><strong>Lecture</strong> : dans l'espace des embeddings appris, des relations sémantiques comme "homme/femme" correspondent à des <strong>directions</strong> linéaires. Soustraire "man" et ajouter "woman" à "king" donne un vecteur très proche de celui de "queen". Ce n'est pas explicitement appris — c'est une <strong>propriété émergente</strong> de l'apprentissage par co-occurrence. C'est le résultat qui a popularisé Word2Vec en 2013.</p>
+
+<p><strong>GloVe</strong> (Pennington et al., 2014) : alternative basée sur les statistiques globales du corpus.</p>
+
+<p><strong>FastText</strong> (Bojanowski et al., 2017) : Word2Vec amélioré qui apprend des embeddings de <strong>sous-mots</strong>, donc gère les mots inconnus.</p>
+
+<p><strong>Embeddings contextuels</strong> (BERT, ELMo, GPT) : la représentation d'un mot <strong>dépend du contexte</strong>. "bank" dans "river bank" et "bank account" a deux vecteurs différents.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from gensim.models import KeyedVectors
+
+# Charge 3 millions de vecteurs Word2Vec pré-entraînés sur Google News
+wv = KeyedVectors.load_word2vec_format(&quot;GoogleNews-vectors-negative300.bin&quot;, binary=True)
+
+# Similarité cosinus entre deux mots
+wv.similarity(&quot;king&quot;, &quot;queen&quot;)  # ~0.65
+# Les 5 mots les plus proches de &quot;paris&quot;
+wv.most_similar(&quot;paris&quot;)
+# [(&#x27;london&#x27;, 0.75), (&#x27;berlin&#x27;, 0.71), ...]</code></pre></div>
+
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Bonne pratique 2025</strong> : pour un nouveau projet NLP, <strong>n'apprenez plus</strong> vos embeddings from scratch. Utilisez un transformer pré-entraîné (BERT, RoBERTa, sentence-transformers) qui donne des embeddings contextuels de qualité supérieure. Word2Vec et GloVe sont à connaître pour la culture et restent utiles pour des cas embedded ou ultra-light.</p></div></div>
+
+<h3 id="syn-padding-et-masking">Padding et masking</h3>
+
+<p>Quand on met des séquences de longueurs différentes dans un même batch, on pad les plus courtes avec des zéros. Problème : si on ne fait rien, le modèle "apprend" ces zéros comme si c'était du vrai contenu.</p>
+
+<p>Solution : un <strong>masque</strong> qui indique au modèle quels tokens sont réels (1) et quels sont du padding (0). Les couches attention et loss utilisent ce masque pour ignorer les zéros.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># mask_zero=True : la couche d&#x27;embedding génère automatiquement un masque
+# que les couches suivantes (LSTM, attention, loss) propageront
+layers.Embedding(input_dim=10000, output_dim=128, mask_zero=True)</code></pre></div>
+
+
+<p>Dans un transformer, le masque devient un bias de $-\infty$ dans la matrice d'attention : les scores d'attention vers les positions paddées deviennent 0 après softmax, donc ces positions n'influencent pas la sortie.</p>
+
+<h3 id="syn-architecture-seq-to-seq">Architecture seq-to-seq</h3>
+
+<p>L'architecture <strong>encoder-decoder</strong> sépare la lecture de la génération.</p>
+
+<p><strong>Encoder</strong> : lit la séquence d'entrée et produit un vecteur (ou une matrice) de représentation.</p>
+
+<p><strong>Decoder</strong> : génère la séquence de sortie token par token, en se basant sur la représentation de l'encoder.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Code</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-plaintext">Source: &quot;Hello world&quot;
+   |
+[Encoder] -&gt; context
+              |
+       [Decoder] -&gt; &quot;Bonjour le monde&quot;</code></pre></div>
+
+
+<p>C'est l'architecture des premiers traducteurs neuronaux (Sutskever et al., 2014) et toujours la base des LLM modernes (GPT est un decoder-only, T5 un encoder-decoder, BERT un encoder-only).</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python"># Pseudo-code Keras encoder-decoder LSTM (simplifié)
+encoder_inputs = layers.Input(shape=(None,))                          # Séquence source
+encoder_emb = layers.Embedding(vocab_in, 128)(encoder_inputs)         # Embeddings source
+_, h, c = layers.LSTM(256, return_state=True)(encoder_emb)            # États finaux de l&#x27;encoder
+
+decoder_inputs = layers.Input(shape=(None,))                          # Séquence cible
+decoder_emb = layers.Embedding(vocab_out, 128)(decoder_inputs)        # Embeddings cible
+decoder_outputs, _, _ = layers.LSTM(256, return_sequences=True, return_state=True)(
+    decoder_emb, initial_state=[h, c]                                 # Initialisé par l&#x27;encoder
+)
+output = layers.Dense(vocab_out, activation=&quot;softmax&quot;)(decoder_outputs)  # Proba sur le vocab cible
+
+model = models.Model([encoder_inputs, decoder_inputs], output)</code></pre></div>
+
+
+<h2 id="syn-b-compléments-avancés">B. Compléments avancés</h2>
+
+<h3 id="syn-attention-mechanism">Attention mechanism</h3>
+
+<p>Le problème des seq2seq classiques : compresser toute la séquence d'entrée dans un seul vecteur context fait perdre de l'information, surtout pour les longues séquences.</p>
+
+<p><strong>Attention</strong> (Bahdanau et al., 2014) résout ça : à chaque pas de génération, le decoder regarde <strong>directement</strong> toutes les positions de l'encoder et calcule un poids d'attention pour chacune.</p>
+
+<div class="katex-display">$$\text{score}(\mathbf{s}_t, \mathbf{h}_i) = \mathbf{s}_t^\top \mathbf{h}_i \quad (\text{attention "dot-product"})$$</div>
+
+<div class="katex-display">$$\alpha_t(i) = \frac{\exp(\text{score}(\mathbf{s}_t, \mathbf{h}_i))}{\sum_j \exp(\text{score}(\mathbf{s}_t, \mathbf{h}_j))}$$</div>
+
+<div class="katex-display">$$\mathbf{c}_t = \sum_i \alpha_t(i) \cdot \mathbf{h}_i$$</div>
+
+<p><strong>Lecture de la formule</strong> :</p>
+<ul>
+<li><strong>Score</strong> : une mesure de compatibilité entre l'état courant du decoder $\mathbf{s}_t$ et chaque état $\mathbf{h}_i$ de l'encoder. Ici on utilise un produit scalaire (plus c'est grand, plus l'état de l'encoder est "pertinent" pour le pas courant du decoder).</li>
+<li><strong>$\alpha_t(i)$</strong> : softmax des scores. Résultat : un vecteur de poids qui somme à 1, chaque $\alpha_t(i)$ représentant "quelle proportion d'attention on met sur la position $i$ de la source".</li>
+<li><strong>$\mathbf{c}_t$</strong> : la "moyenne pondérée" des états de l'encoder, avec les poids d'attention. C'est un résumé <strong>adaptatif</strong> du contexte pour ce pas du decoder — très différent pour chaque mot généré.</li>
+</ul>
+
+<p>Exemple intuitif : en traduisant "Hello world" → "Bonjour le monde", quand le decoder génère "Bonjour", l'attention se concentre sur "Hello" ($\alpha \approx 0{,}9$ pour "Hello"). Quand il génère "monde", elle se concentre sur "world".</p>
+
+<p>Le decoder utilise ensuite $\mathbf{c}_t$ (contextuel et adaptatif) au lieu d'un vecteur fixe.</p>
+
+<p>C'est l'innovation qui a engendré les Transformers (Vaswani et al., 2017, <em>Attention Is All You Need</em>) : remplacer entièrement les RNN par de l'attention. La formule centrale du transformer est :</p>
+
+<div class="katex-display">$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{Q K^\top}{\sqrt{d_k}}\right) V$$</div>
+
+<p><strong>Lecture</strong> : $Q$ (queries), $K$ (keys), $V$ (values) sont trois projections des mêmes tokens. $QK^\top$ calcule la compatibilité entre chaque paire de positions. On divise par $\sqrt{d_k}$ pour éviter que les produits scalaires explosent avec la dimension. Softmax transforme en distribution de poids. Multiplication par $V$ produit pour chaque position une moyenne pondérée des "values" de toutes les autres positions.</p>
+
+<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p><strong>Analogie</strong> : sans attention, le decoder est un traducteur qui lit la phrase entière, la mémorise dans sa tête, puis ferme le livre et traduit. Avec attention, il garde le livre ouvert et y revient mot par mot pendant qu'il traduit. C'est évidemment plus efficace.</p></div></div>
+
+<h3 id="syn-pré-entraînement-et-fine-tuning">Pré-entraînement et fine-tuning</h3>
+
+<p>Le paradigme moderne du NLP en deux temps :</p>
+
+<p><strong>1. Pré-entraînement</strong> sur un corpus massif (Wikipedia, Common Crawl, code GitHub...) avec un objectif <strong>non supervisé</strong> :</p>
+
+<ul>
+<li><strong>BERT</strong> : masked language modeling (prédire les mots masqués) + next sentence prediction</li>
+<li><strong>GPT</strong> : language modeling causal (prédire le mot suivant)</li>
+<li><strong>T5</strong> : prédire des spans masqués</li>
+</ul>
+
+<p>Ce pré-entraînement coûte des millions de dollars et produit un modèle qui "comprend" le langage en général.</p>
+
+<p><strong>2. Fine-tuning</strong> sur votre tâche spécifique avec <strong>quelques milliers d'exemples</strong> seulement.</p>
+
+
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">Python</span><button class="code-copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier</button></div><pre><code class="language-python">from transformers import BertTokenizer, TFBertForSequenceClassification
+
+# Charge le tokenizer ET le modèle pré-entraînés (matching !)
+tokenizer = BertTokenizer.from_pretrained(&quot;bert-base-uncased&quot;)
+model = TFBertForSequenceClassification.from_pretrained(&quot;bert-base-uncased&quot;, num_labels=2)
+
+# Tokeniser : padding + troncature à une longueur uniforme, retour en tenseurs TF
+inputs = tokenizer(texts, padding=True, truncation=True, return_tensors=&quot;tf&quot;)
+# LR très petit (2e-5) : on &quot;affine&quot; les poids pré-entraînés sans les casser
+model.compile(optimizer=tf.keras.optimizers.Adam(2e-5), loss=&quot;sparse_categorical_crossentropy&quot;)
+model.fit(inputs.data, labels, epochs=3)  # 2-4 epochs suffisent presque toujours</code></pre></div>
+
+
+<p>C'est exactement comme le transfer learning en vision avec ImageNet, mais en NLP avec BERT/GPT.</p>
+
+<div class="callout callout-info"><div class="callout-icon">👉</div><div class="callout-content"><p><strong>Recommandation 2025</strong> : pour quasi tout projet NLP, la baseline est : <strong>fine-tune un transformer pré-entraîné</strong>. C'est plus simple, plus rapide, et plus performant que d'entraîner from scratch. Hugging Face Transformers est l'outil standard. Pour des tâches simples (classification, NER), <code>distilbert</code> suffit souvent — plus rapide que BERT pour 95% des performances.</p></div></div>
+
+<h3 id="syn-évaluation-bleu-rouge-perplexity">Évaluation : BLEU, ROUGE, perplexity</h3>
+
+<p>Évaluer du texte généré est plus dur que de la classification : il y a souvent plusieurs réponses correctes.</p>
+
+<p><strong>BLEU</strong> (Bilingual Evaluation Understudy) : pour la traduction. Compare les n-grammes du texte généré aux n-grammes de la référence. Score entre 0 et 1.</p>
+
+<p><strong>ROUGE</strong> (Recall-Oriented Understudy for Gisting Evaluation) : pour le résumé. Mesure le recall des n-grammes.</p>
+
+<p><strong>Perplexity</strong> : pour les language models. Mesure la qualité de la prédiction de texte. Plus bas = mieux.</p>
+
+<div class="katex-display">$$\text{perplexity} = \exp\left(-\frac{1}{N}\sum_{i=1}^{N} \log p(x_i)\right)$$</div>
+
+<p><strong>Lecture de la formule</strong> : on calcule la log-probabilité moyenne que le modèle assigne aux tokens réels du corpus de test, on la négative (pour avoir un nombre positif), puis on l'exponentialise. C'est exactement $\exp$(cross-entropy moyenne). Interprétation intuitive : la perplexité mesure "combien de choix équiprobables" le modèle hésite pour chaque mot. Une perplexité de 1 signifie "le modèle est toujours certain et toujours juste". Une perplexité de 100 signifie "le modèle hésite entre environ 100 options à chaque mot". Un bon LM moderne a une perplexité de 10-30 sur un corpus de test.</p>
+
+<p><strong>Limites</strong> : ces métriques mesurent la similarité de surface, pas la qualité sémantique. Un texte parfaitement reformulé peut avoir un BLEU faible. C'est pourquoi l'évaluation humaine reste irremplaçable, et pourquoi des métriques basées sur des LLM (BERTScore, GPTScore) gagnent du terrain.</p>
+
+<h2 id="syn-c-questions-de-compréhension">C. Questions de compréhension</h2>
+
+<p><strong>Q1 : Quelle est la différence entre un embedding statique (Word2Vec) et un embedding contextuel (BERT) ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>polysémie.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Word2Vec</strong> : chaque mot a <strong>un seul vecteur</strong> fixe. Le mot "bank" a la même représentation dans "river bank" et "bank account", malgré des sens différents. Limite : ne capture pas la <strong>polysémie</strong>. <strong>BERT</strong> : la représentation d'un mot <strong>dépend du contexte</strong>. "bank" dans deux phrases différentes a deux vecteurs différents, tirés de l'attention sur les mots voisins. Le bénéfice est massif sur les tâches qui dépendent du sens contextuel (QA, NER, sentiment analysis). Conséquence pratique : pour un projet NLP moderne, utilisez quasi toujours des embeddings contextuels (BERT, RoBERTa, sentence-transformers) plutôt que Word2Vec. La seule exception : contraintes mémoire/latence extrêmes (edge devices) où Word2Vec reste pertinent. Question d'entretien NLP : "Pourquoi BERT a-t-il révolutionné le NLP ?" — la réponse parle des embeddings contextuels et du paradigme pré-entraînement / fine-tuning.</p>
+
+</details>
+
+<p><strong>Q2 : Vous fine-tunez un BERT pour un classifieur de sentiment et le score est mauvais. Avant de changer d'architecture, quelles sont les premières choses à vérifier ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>hyperparamètres et données.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Six choses dans cet ordre. (1) <strong>Learning rate</strong> : pour fine-tuner un modèle pré-entraîné, le LR doit être petit (1e-5 à 5e-5 typiquement). Un LR trop grand (1e-3) "cassera" les poids pré-entraînés et vous repartirez à zéro. (2) <strong>Nombre d'epochs</strong> : 2-4 suffisent généralement. Au-delà, vous overfittez. (3) <strong>Tokenizer correspondant au modèle</strong> : si vous fine-tunez <code>bert-base-uncased</code>, utilisez <code>BertTokenizer.from_pretrained(&quot;bert-base-uncased&quot;)</code>, pas un autre. (4) <strong>Max length</strong> : <code>padding=&quot;max_length&quot;, truncation=True, max_length=128</code>. Trop court tronque l'info, trop long ralentit. (5) <strong>Class imbalance</strong> : si vos classes sont déséquilibrées, utilisez des class weights ou de l'undersampling. (6) <strong>Données nettoyées</strong> : enlever HTML, normaliser les emojis, etc. Mauvaise réponse : "essayer GPT-4". La vraie cause d'un mauvais fine-tuning est presque toujours un de ces six points. Question d'entretien NLP applicatif classique.</p>
+
+</details>
+
+<p><strong>Q3 : Vous voulez faire une recherche sémantique sur 100k documents. Quelle approche : Word2Vec moyenné, sentence-transformers, ou un LLM ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>qualité vs vitesse.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p><strong>Sentence-transformers</strong> est le bon choix par défaut. <strong>Word2Vec moyenné</strong> : prendre la moyenne des Word2Vec des mots d'une phrase est rapide mais ignore la syntaxe et le contexte. Qualité ~30-50% des sentence-transformers. <strong>LLM (GPT, Claude embeddings)</strong> : meilleure qualité sémantique mais coût d'API et latence pour 100k documents. <strong>Sentence-transformers</strong> (<code>sentence-transformers/all-MiniLM-L6-v2</code> par exemple) : conçu pour la similarité sémantique, taille modeste (~80M params), tourne en local en ~1 ms par document. Pipeline canonique : (1) Encoder tous vos documents en vecteurs avec <code>model.encode(docs)</code> — une fois pour toutes. (2) Stocker les vecteurs dans une base vectorielle (FAISS, Qdrant, Chroma). (3) Pour une requête, encoder la requête, faire une recherche par similarité cosinus dans la base, retourner le top-k. C'est exactement le pattern RAG (Retrieval-Augmented Generation) sur lequel reposent les chatbots modernes. Question d'entretien NLP applicatif moderne, très révélatrice de l'expérience pratique.</p>
+
+</details>
+
+<p><strong>Q4 : Pourquoi divise-t-on par $\sqrt{d_k}$ dans la formule de self-attention du transformer ?</strong></p>
+
+<details><summary>💡 Voir l'indice</summary>
+
+<p>Stabilité numérique du softmax.</p>
+
+</details>
+
+<details><summary>✅ Voir la réponse</summary>
+
+<p>Sans cette division, le produit scalaire $Q K^\top$ a une variance qui grandit avec $d_k$ (la dimension des queries/keys). Si $d_k$ est grand (typiquement 64), les scores bruts peuvent prendre des valeurs très grandes (de l'ordre de $\sqrt{d_k}$). Passés dans un softmax, ces grandes valeurs saturent la fonction : le softmax devient quasiment one-hot (presque toute la masse sur un seul token), ce qui rend le gradient de la loss par rapport aux scores <strong>quasiment nul</strong> pour tous les autres tokens. Conséquence : le modèle ne peut plus apprendre à redistribuer l'attention. En divisant par $\sqrt{d_k}$, on ramène la variance des scores à l'échelle unitaire, le softmax reste "tempéré" (distributions lisses), et les gradients circulent proprement. C'est un détail numérique mais <strong>crucial</strong> : sans lui, entraîner un transformer depuis zéro est presque impossible. Question d'entretien transformer qui sépare les lecteurs du papier original de ceux qui ne connaissent que le concept.</p>
+
+</details>
+
+<h2 id="syn-ressources-additionnelles">Ressources additionnelles</h2>
+
+<ul>
+<li><em>Speech and Language Processing</em> (Jurafsky & Martin, 3rd ed., gratuit) — la bible NLP</li>
+<li><em>Natural Language Processing with Transformers</em> (Tunstall, von Werra, Wolf) — par les créateurs de Hugging Face</li>
+<li><a href="https://huggingface.co/learn/nlp-course" target="_blank" rel="noopener">Hugging Face Course</a> — gratuit, hands-on</li>
+<li><em>Distributed Representations of Words and Phrases</em> (Mikolov et al., 2013) — Word2Vec</li>
+<li><em>BERT: Pre-training of Deep Bidirectional Transformers</em> (Devlin et al., 2018)</li>
+<li><em>Attention Is All You Need</em> (Vaswani et al., 2017) — le papier fondateur des transformers</li>
+<li><a href="http://web.stanford.edu/class/cs224n/" target="_blank" rel="noopener">Stanford CS224N — NLP with Deep Learning</a> — cours de Manning</li>
+<li><a href="https://www.sbert.net/" target="_blank" rel="noopener">Sentence Transformers documentation</a></li>
+</ul>
+
+        </section>
+
+        <div class="page-nav">
+  <a href="../deep-learning/rnn.html">
+    <span class="page-nav-label">Precedent</span>
+    <span class="page-nav-title">← Recurrent Neural Networks</span>
+  </a>
+  <a href="../nlp-llm/nlp.html" class="page-nav-next">
+    <span class="page-nav-label">Suivant</span>
+    <span class="page-nav-title">Natural Language Processing →</span>
+  </a>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <button class="scroll-top-btn" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="../../assets/vendor/prism.min.js"></script>
+  <script src="../../assets/vendor/prism-python.min.js"></script>
+  <script src="../../assets/vendor/prism-sql.min.js"></script>
+  <script src="../../assets/vendor/prism-bash.min.js"></script>
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/auto-render.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false});});</script>
+  <script src="../../assets/js/nav.js"></script>
+</body>
+</html>
